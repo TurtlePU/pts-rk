@@ -1,0 +1,66 @@
+\documentclass[a4paper,12pt]{extreport}
+\usepackage[
+    a4paper,
+    left=25mm,
+    right=10mm,
+    top=20mm,
+    bottom=20mm,
+]{geometry}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\pagestyle{fancyplain}
+\fancyhf{}
+\fancyhead[C]{\thepage}
+
+\usepackage{biblatex,csquotes}
+\addbibresource{SokolovPP.bib}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{5em}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries\centering}
+    {}{0pt}{\thechapter.\ }
+\titleformat{name=\chapter,numberless}[display]
+    {\normalfont\huge\bfseries\centering}{}{0pt}{}
+
+\def\uchapter#1{
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{#1}
+}
+
+\def\usection#1{
+    \section*{#1}
+    \addcontentsline{toc}{section}{#1}
+}
+
+\begin{document}
+    \begin{titlepage}\input{title}\end{titlepage}
+    \stepcounter{page}
+
+    \renewcommand*\contentsname{Оглавление}
+    \tableofcontents
+
+    \uchapter{Введение}
+    \input{intro}
+
+    \chapter{Резюме представленных к защите публикаций}
+    (Вместо этой главы будет несколько нумерованных глав)
+
+    \uchapter{Заключение}
+    \input{conclusion}
+
+    \appendix
+    \chapter{Список сокращений и условных обозначений}
+    \chapter{Словарь терминов}
+    \chapter{Список литературы}
+    \printbibliography[heading=none]
+    \chapter{Список иллюстрированного материала}
+    \chapter{Приложения}
+\end{document}
