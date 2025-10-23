@@ -18,7 +18,7 @@
 \fancyhead[C]{\thepage}
 
 \usepackage{biblatex,csquotes}
-\addbibresource{../bibliography.bib}
+\addbibresource{bibliography.bib}
 
 \usepackage{indentfirst}
 \setlength{\parindent}{5em}
@@ -41,20 +41,20 @@
 }
 
 \begin{document}
-    \begin{titlepage}\input{title}\end{titlepage}
+    \begin{titlepage}\input{thesis/title}\end{titlepage}
     \stepcounter{page}
 
     \renewcommand*\contentsname{Оглавление}
     \tableofcontents
 
     \uchapter{Введение}
-    \input{intro}
+    \input{thesis/intro}
 
     \chapter{Резюме представленных к защите публикаций}
     (Вместо этой главы будет несколько нумерованных глав)
 
     \uchapter{Заключение}
-    \input{conclusion}
+    \input{thesis/conclusion}
 
     \appendix
     \chapter{Список сокращений и условных обозначений}
