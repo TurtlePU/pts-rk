@@ -200,30 +200,4 @@
 % build the poster foot
 %==============================================================================
 
-\setbeamertemplate{footline}{
- \leavevmode
-    \vskip2cm
-  \begin{center}
-\begin{minipage}[c][3cm][c]{0.95\textwidth}
-  \begin{center}
-%
-     \begin{flushleft}
-     \vskip-1cm
-     \begin{tikzpicture}[
-remember picture,overlay,
-%background rectangle/.style={fill=color3},show background rectangle
-]
-       \shade [inner color=color2,outer color=color3] (0,0) rectangle (\textwidth,0.3cm);
-     \end{tikzpicture}
-     \end{flushleft}
-%
-  \vskip1cm
-    \centering
-    %\usebeamercolor{title in headline}
-{\color{fg} \textbf{\large{\insertshorttitle}}}
-%
-  \end{center}
-\end{minipage}
-  \end{center}
-    \vskip1cm
-}
+
