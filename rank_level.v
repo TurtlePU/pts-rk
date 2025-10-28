@@ -119,6 +119,14 @@ auto; simpl; unfold shift;
 rewrite rename_comp, rename_comp; reflexivity.
 Qed.
 
+Lemma replace_var {n} {f: Fin n -> Term n} {t: Term n}:
+  (forall i, f i = var i) -> replace f t = t.
+Proof.
+induction t; intros; simpl; f_equal; auto;
+rewrite IHt2; auto; dependent destruction i; auto;
+simpl; rewrite H; auto.
+Qed.
+
 Lemma replace_rename {l m n}
   (f: Fin m -> Term n) (g: Fin l -> Fin m) (t: Term l):
   replace f (rename g t) =
@@ -129,6 +137,20 @@ generalize dependent m.
 induction t; intros; simpl; f_equal; auto;
 rewrite IHt2; apply replace_ext; intros;
 dependent destruction i; auto.
+Qed.
+
+Lemma replace_replace {l m n}
+  (f: Fin m -> Term n) (g: Fin l -> Term m) (t: Term l):
+  replace f (replace g t) =
+  replace (fun i => replace f (g i)) t.
+Proof.
+generalize dependent n.
+generalize dependent m.
+induction t; intros; simpl; f_equal; auto;
+rewrite IHt2; apply replace_ext;
+dependent destruction i; auto; simpl; unfold shift;
+rewrite replace_rename, rename_replace;
+apply replace_ext; auto.
 Qed.
 
 Definition subst {n} (f: Term (S n)) (t: Term n)
@@ -143,6 +165,20 @@ unfold subst. intros.
 rewrite rename_replace, replace_rename.
 apply replace_ext. intros.
 dependent destruction i; reflexivity.
+Qed.
+
+Lemma replace_subst {n} {t: Term (S n)}:
+  forall u m (f: Fin n -> Term m),
+  replace f (t ◁ u) =
+  replace (transpose f) t ◁ replace f u.
+Proof.
+unfold subst. intros.
+rewrite replace_replace, replace_replace.
+apply replace_ext. dependent destruction i; simpl.
+- reflexivity.
+- unfold shift. rewrite replace_rename.
+  rewrite replace_var. auto.
+  dependent destruction i; auto.
 Qed.
 
 (* Term reduction *)
@@ -199,6 +235,16 @@ Proof.
 intro. unfold shift. apply rename_par_step. auto.
 Qed.
 
+Lemma transpose_par_step
+  {m n} {f f': Fin m -> Term n}:
+  (forall i, f i ⇉ f' i) ->
+  forall j, transpose f j ⇉ transpose f' j.
+Proof.
+intros. dependent destruction j; simpl.
+- reflexivity.
+- apply shift_par_step. auto.
+Qed.
+
 Lemma replace_par_step {m} {t: Term m}:
   forall {n} {f f': Fin m -> Term n},
   (forall i, f i ⇉ f' i) ->
@@ -209,11 +255,33 @@ apply IHt2; intro; dependent destruction i;
 try reflexivity; simpl; apply shift_par_step; auto.
 Qed.
 
+Lemma par_step_replace
+  {m n} {f f': Fin m -> Term n} {t t': Term m}:
+  (forall i, f i ⇉ f' i) -> t ⇉ t' ->
+  replace f t ⇉ replace f' t'.
+Proof.
+intros. generalize dependent n.
+induction H0; intros; simpl; try constructor; auto.
+- apply replace_par_step. auto.
+- apply IHpar_step2, transpose_par_step. auto.
+- apply IHpar_step2, transpose_par_step. auto.
+- rewrite replace_subst. constructor; auto.
+  apply IHpar_step1, transpose_par_step. auto.
+Qed.
+
 Lemma sub_par_step {n} {f: Term (S n)}:
   forall {t} {t'}, (t ⇉ t') -> f ◁ t ⇉ f ◁ t'.
 Proof.
 intros. unfold subst. apply replace_par_step.
 dependent destruction i; simpl; auto; reflexivity.
+Qed.
+
+Lemma par_step_sub
+  {n} {f f': Term (S n)} {t t': Term n}:
+  (f ⇉ f') -> (t ⇉ t') -> f ◁ t ⇉ f' ◁ t'.
+Proof.
+intros. unfold subst. apply par_step_replace; auto.
+dependent destruction i; auto; reflexivity.
 Qed.
 
 Lemma par_step_lam_fun
@@ -252,6 +320,13 @@ intros. induction H.
   apply @par_step_lam with (T := T) (T' := T) in H4.
   apply IHpar_step1 in H4. destruct H4 as [f₁ [H2 H4]].
   apply IHpar_step2 in H6. destruct H6 as [t₁ [H3 H6]].
+  apply par_step_lam_fun in H2.
+  destruct H2 as [T'0 [f' [H2 [H5 H9]]]]. subst.
+  exists (f' ◁ t₁). repeat constructor; auto.
+  apply par_step_lam_fun in H4.
+  destruct H4 as [T'1 [f'1 [H4 [H10 H11]]]].
+  inversion H4. subst. apply par_step_sub; auto.
+  reflexivity.
 Qed.
 
 Inductive RTC {A} (R: A -> A -> Prop): A -> A -> Prop :=
