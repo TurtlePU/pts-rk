@@ -16,17 +16,17 @@ end eq_refl.
 
 (* Definition of a term *)
 
-Inductive Term (n: nat) : Type :=
-| Rank: nat -> Term n
-| Π: Term n -> Term (S n) -> Term n
-| var: Fin n -> Term n
-| λ: Term n -> Term (S n) -> Term n
-| app: Term n -> Term n -> Term n.
-Arguments Rank [_] _.
-Arguments Π [_] _ _.
-Arguments var [_] _.
-Arguments λ [_] _ _.
-Arguments app [_] _ _.
+Inductive Term (L: Type) (n: nat) : Type :=
+| Rank: L -> Term L n
+| Π: Term L n -> Term L (S n) -> Term L n
+| var: Fin n -> Term L n
+| λ: Term L n -> Term L (S n) -> Term L n
+| app: Term L n -> Term L n -> Term L n.
+Arguments Rank [_] [_] _.
+Arguments Π [_] [_] _ _.
+Arguments var [_] [_] _.
+Arguments λ [_] [_] _ _.
+Arguments app [_] [_] _ _.
 Infix "$" := app (at level 40, left associativity).
 
 (* Term renaming *)
@@ -35,8 +35,8 @@ Definition weak {m n} (f: Fin m -> Fin n)
   : Fin (S m) -> Fin (S n) :=
   fin_match fzero (fun x => fsucc (f x)).
 
-Fixpoint rename {m n} (f: Fin m -> Fin n) (t: Term m)
-  : Term n :=
+Fixpoint rename {L m n} (f: Fin m -> Fin n)
+  (t: Term L m): Term L n :=
 match t with
 | Rank l => Rank l
 | Π T U => Π (rename f T) (rename (weak f) U)
@@ -45,9 +45,9 @@ match t with
 | g $ t => rename f g $ rename f t
 end.
 
-Lemma rename_ext {m n} {f g: Fin m -> Fin n}:
+Lemma rename_ext {L m n} {f g: Fin m -> Fin n}:
   (forall i, f i = g i) ->
-  forall t, rename f t = rename g t.
+  forall t: Term L m, rename f t = rename g t.
 Proof.
 intros. generalize dependent n.
 induction t; intros; auto; simpl; f_equal; auto;
@@ -55,8 +55,8 @@ apply IHt2; intros; dependent destruction i; auto;
 simpl; rewrite H; reflexivity.
 Qed.
 
-Lemma rename_comp {l m n}
-  {f: Fin m -> Fin n} {g: Fin l -> Fin m} {t: Term l}:
+Lemma rename_comp {L l m n}
+  {f: Fin m -> Fin n} {g: Fin l -> Fin m} {t: Term L l}:
   rename f (rename g t) = rename (fun i => f (g i)) t.
 Proof.
 generalize dependent n.
@@ -68,14 +68,14 @@ Qed.
 
 (* Term substitution *)
 
-Definition shift {n} (t: Term n) : Term (S n) :=
+Definition shift {L n} (t: Term L n) : Term L (S n) :=
   rename (fun x => fsucc x) t.
 
-Definition transpose {m n} (f: Fin m -> Term n)
-  : Fin (S m) -> Term (S n) :=
+Definition transpose {L m n} (f: Fin m -> Term L n)
+  : Fin (S m) -> Term L (S n) :=
   fin_match (var fzero) (fun x => shift (f x)).
 
-Lemma transpose_ext {m n} (f g: Fin m -> Term n):
+Lemma transpose_ext {L m n} (f g: Fin m -> Term L n):
   (forall j, f j = g j) ->
   forall i, transpose f i = transpose g i.
 Proof.
@@ -84,8 +84,8 @@ dependent destruction i.
 - simpl. rewrite H. reflexivity.
 Qed.
 
-Fixpoint replace {m n} (f: Fin m -> Term n)
-  (t: Term m) : Term n :=
+Fixpoint replace {L m n} (f: Fin m -> Term L n)
+  (t: Term L m) : Term L n :=
 match t with
 | Rank l => Rank l
 | Π T U => Π (replace f T) (replace (transpose f) U)
@@ -95,7 +95,7 @@ match t with
 end.
 
 Lemma replace_ext
-  {m n} (f g: Fin m -> Term n) (t: Term m):
+  {L m n} (f g: Fin m -> Term L n) (t: Term L m):
   (forall i, f i = g i) -> replace f t = replace g t.
 Proof.
 generalize dependent n.
@@ -104,8 +104,9 @@ f_equal; auto; apply IHt2; intros;
 rewrite transpose_ext with (g := g); auto.
 Qed.
 
-Lemma rename_replace {l m n}
-  (f: Fin m -> Fin n) (g: Fin l -> Term m) (t: Term l):
+Lemma rename_replace {L l m n}
+  (f: Fin m -> Fin n) (g: Fin l -> Term L m)
+  (t: Term L l):
   rename f (replace g t) =
   replace (fun i => rename f (g i)) t.
 Proof.
@@ -117,7 +118,8 @@ auto; simpl; unfold shift;
 rewrite rename_comp, rename_comp; reflexivity.
 Qed.
 
-Lemma replace_var {n} {f: Fin n -> Term n} {t: Term n}:
+Lemma replace_var {L n}
+  (f: Fin n -> Term L n) (t: Term L n):
   (forall i, f i = var i) -> replace f t = t.
 Proof.
 induction t; intros; simpl; f_equal; auto;
@@ -125,8 +127,9 @@ rewrite IHt2; auto; dependent destruction i; auto;
 simpl; rewrite H; auto.
 Qed.
 
-Lemma replace_rename {l m n}
-  (f: Fin m -> Term n) (g: Fin l -> Fin m) (t: Term l):
+Lemma replace_rename {L l m n}
+  (f: Fin m -> Term L n) (g: Fin l -> Fin m)
+  (t: Term L l):
   replace f (rename g t) =
   replace (fun i => f (g i)) t.
 Proof.
@@ -137,8 +140,9 @@ rewrite IHt2; apply replace_ext; intros;
 dependent destruction i; auto.
 Qed.
 
-Lemma replace_replace {l m n}
-  (f: Fin m -> Term n) (g: Fin l -> Term m) (t: Term l):
+Lemma replace_replace {L l m n}
+  (f: Fin m -> Term L n) (g: Fin l -> Term L m)
+  (t: Term L l):
   replace f (replace g t) =
   replace (fun i => replace f (g i)) t.
 Proof.
@@ -151,11 +155,12 @@ rewrite replace_rename, rename_replace;
 apply replace_ext; auto.
 Qed.
 
-Definition subst {n} (f: Term (S n)) (t: Term n)
-  : Term n := replace (fin_match t (fun x => var x)) f.
+Definition subst {L n}
+  (f: Term L (S n)) (t: Term L n): Term L n :=
+  replace (fin_match t (fun x => var x)) f.
 Infix "◁" := subst (at level 45, left associativity).
 
-Lemma rename_subst {n} {t: Term (S n)}:
+Lemma rename_subst {L n} {t: Term L (S n)}:
   forall u m (f: Fin n -> Fin m),
   rename f (t ◁ u) = rename (weak f) t ◁ rename f u.
 Proof.
@@ -165,8 +170,8 @@ apply replace_ext. intros.
 dependent destruction i; reflexivity.
 Qed.
 
-Lemma replace_subst {n} {t: Term (S n)}:
-  forall u m (f: Fin n -> Term m),
+Lemma replace_subst {L n} {t: Term L (S n)}:
+  forall u m (f: Fin n -> Term L m),
   replace f (t ◁ u) =
   replace (transpose f) t ◁ replace f u.
 Proof.
@@ -178,3 +183,4 @@ apply replace_ext. dependent destruction i; simpl.
   rewrite replace_var. auto.
   dependent destruction i; auto.
 Qed.
+
