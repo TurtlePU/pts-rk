@@ -210,7 +210,8 @@ we have to enforce some kind of a typing discipline for introducing
 terms amenable to reinterpretation. In a sense, reinterpretation is a
 strong form of polymorphism, so let's structure our grammar and
 typing rules similarly to how it's done in Hindley-Milner type
-systems today and see how far we can go.
+systems today and see how far we can go. In particular, notice how we
+modify \texttt{let}-polymorphism to introduce reinterpretable terms.
 
 \begin{figure}[h]
     \centering
@@ -223,7 +224,7 @@ systems today and see how far we can go.
         ;;
         $\sigma$ : \textsf{PolyType} ::=
         | T : monomorphic type
-        | $\forall\alpha.\sigma$ : forall type 
+        | $\forall\alpha.\sigma$ : forall type
         ;;
         $s,t$ : \textsf{Term} ::=
         | $x$ : variable
@@ -241,7 +242,6 @@ systems today and see how far we can go.
     \end{bnf}
     \caption{STLC-R grammar}
     \Description{STLC-R grammar}
-    \label{stlc-r-grammar}
 \end{figure}
 
 \begin{figure}[h]
@@ -327,10 +327,11 @@ To check universes, we abuse our type system a bit in order to avoid
 adding type operators and complicate the type system: types of
 arrows, products and exponentials are specified as open monomorphic
 types with two type variables $0$,$1$ in a context which are then
-filled in by substitution. Operations in a universe are typed with
-types having type variables $\alpha$,$\beta$,$\gamma$ in a context
-once again, since we don't have ``usual'' polymorphic functions, only
-reinterpreting ones.
+filled in by substitution; this is reflected in the syntax with
+explicit $\Lambda$ binders (though, we repeat, there are no true type
+operators in the system). Operations in a universe are typed in a
+context containing type variables $\alpha$,$\beta$,$\gamma$, since we
+don't have ``usual'' polymorphic functions, only reinterpreting ones.
 
 We could generalize universe definition to include something else as
 objects instead of types, but there is no way to build meaningful
