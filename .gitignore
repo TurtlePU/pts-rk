@@ -7,3 +7,4 @@ CoqMakefile.conf
 *.vo
 *.vok
 *.vos
+dist-newstyle
