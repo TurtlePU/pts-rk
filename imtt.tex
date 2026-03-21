@@ -659,7 +659,16 @@ theories. To type universes, we have to consider:
 
 To deal with both problems, we use Categories-with-Families
 \cite{castellan2020cwf} as one of the most convenient models of
-dependent type theories in use today.
+dependent type theories in use today. To avoid universe
+inconsistencies, type of contexts (as well as type and term
+presheaves) are typed with universe which is "higher than all levels"
+used in terms, $\omega$. It is not accessible to be used on the term
+level; alternatively it can be viewed as a level variable which is
+postulated to be higher than any level of form $\mathrm{suc}^n 0$.
+To work with arbitrary universe levels, we still had to introduce
+restricted form of level polymorphism in definition of internal
+model, in the same way we had to introduce limited form of type
+operators in STLC-R.
 
 The problem with Church-Rosser is solved in absolutely the same way
 as with simply-typed case: we just do not perform any
@@ -672,8 +681,9 @@ types which were \textit{definitionally} equal before
 reinterpretation are now only \textit{propositionally} equal. To
 solve this issue, we start by first pinpointing the locations where
 conversion rule is actually used; in order to do this, we
-\textit{need} to use bidirectional type checking. After translation,
-point of conversion is wrapped in a \texttt{rewrite} call.
+\textit{need} to use bidirectional type checking
+\cite{bidirectional}. After translation, point of conversion is
+wrapped in a \texttt{rewrite} call.
 
 But how do we synthesize a propositional proof of equivalence? Here
 we translate a chain of reductions performed during checking of
@@ -683,13 +693,12 @@ taken from coherence conditions proven in the definition of a model.
 \begin{figure}
     \centering
 \begin{bnf}(comment={//}, single-line-delim={\&})
-    $i$ // \textsf{Level} ::=
-    | $l$ // variable
+    $\ell,\kappa$ // \textsf{Level} ::=
     | $0$ // ground level
-    | $suc\,i$ // next universe level
+    | $suc\,\ell$ // next universe level
     ;;
     $S,T,s,f$ // \textsf{Term} ::=
-    | $U_i$ // universe
+    | $U_\ell$ // universe
     | $x$ // variable
     | $\Sigma_{x:S}T(x)$ // dependent sum type
     | $(s, t)$ // dependent sum introduction
@@ -697,6 +706,7 @@ taken from coherence conditions proven in the definition of a model.
     | $\Pi_{x:S}T(x)$ // dependent product type
     | $\lambda x.t$ // abstraction
     | $t\,s$ // application
+    | $t:T$ // ascription
     | $s=_T t$ // propositional equality type
     | $\mathtt{refl}\,t$ // reflexivity proof
     | $\mathtt{rewrite}_{x\,y.T(x,y)}s\,t$ // rewrite
@@ -710,7 +720,6 @@ taken from coherence conditions proven in the definition of a model.
 \end{bnf}
     \caption{MLTT-R grammar}
     \Description{MLTT-R grammar}
-    \label{mltt-r-grammar}
 \end{figure}
 
 \begin{figure}
@@ -719,23 +728,23 @@ taken from coherence conditions proven in the definition of a model.
     \inferrule{}{\cdot\,\mathrm{ctx}}
     \and\inferrule{
         \Gamma\,\mathrm{ctx}\\
-        \Gamma\vdash T\Rightarrow U_i
+        \Gamma\vdash T\Rightarrow U_\ell
     }{
         \Gamma,x:T\,\mathrm{ctx}\\
         \Gamma,x:\square T\,\mathrm{ctx}
     }
     \and\inferrule{}{
-        \Gamma\vdash U_i\Rightarrow U_{\mathrm{suc}\,i}
+        \Gamma\vdash U_\ell\Rightarrow U_{\mathrm{suc}\,\ell}
     }
     \and\inferrule
-        {\Gamma\vdash t\Rightarrow U_i\\ i\le j}
-        {\Gamma\vdash t\Leftarrow U_j}
+        {\Gamma\vdash t\Rightarrow S\\ S\leftrightarrow T}
+        {\Gamma\vdash t\Leftarrow T}
     \and\inferrule{}
         {\Gamma,x:T,\Delta\vdash x\Rightarrow T}
     \and\inferrule{
-        \Gamma\vdash S\Leftarrow U_i\\
-        \Gamma,x:(S:U_i)\vdash T\Leftarrow U_i
-    }{\Gamma\vdash\Sigma_{x:S}T(x)\Leftarrow U_i}
+        \Gamma\vdash S\Rightarrow U_\ell\\
+        \Gamma,x:S\vdash T\Rightarrow U_\kappa
+    }{\Gamma\vdash\Sigma_{x:S}T(x)\Rightarrow U_{\ell\lor\kappa}}
     \and\inferrule{
         \Gamma\vdash s\Leftarrow S\\
         \Gamma\vdash t\Leftarrow T(s)
@@ -748,11 +757,11 @@ taken from coherence conditions proven in the definition of a model.
         {\Gamma\vdash \pi_2 t\Rightarrow T(\pi_1 t)}
     \and\inferrule{}{\pi_i((t_1,t_2):\Sigma_{x:S}T(x))\to_\beta t_i}
     \and\inferrule{
-        \Gamma\vdash S\Leftarrow U_i\\
-        \Gamma,x:(S:U_i)\vdash T\Leftarrow U_i
-    }{\Gamma\vdash\Pi_{x:S}T(x)\Leftarrow U_i}
+        \Gamma\vdash S\Rightarrow U_\ell\\
+        \Gamma,x:S\vdash T\Rightarrow U_\kappa
+    }{\Gamma\vdash\Pi_{x:S}T(x)\Rightarrow U_{\ell\lor\kappa}}
     \and\inferrule
-        {\Gamma\vdash S\Rightarrow U_i\\
+        {\Gamma\vdash S\Rightarrow U_\ell\\
         \Gamma,x:S\vdash t\Leftarrow T(x)}
         {\Gamma\vdash\lambda x.t\Leftarrow
             \Pi_{x:S}.T(x)}
@@ -764,10 +773,13 @@ taken from coherence conditions proven in the definition of a model.
         (\lambda x. t : \Pi_{x:S}T(x))s\to_\beta
         t[x\coloneqq(s:S)]
     }
+    \and\inferrule
+        {\Gamma\vdash t\Leftarrow T}
+        {\Gamma\vdash (t:T)\Rightarrow T}
     \and\inferrule{
-        \Gamma\vdash T: U_i\\
+        \Gamma\vdash T\Rightarrow U_\ell\\
         \Gamma\vdash s,t\Leftarrow T
-    }{\Gamma\vdash s=_T t: U_i}
+    }{\Gamma\vdash s=_T t\Rightarrow U_\ell}
     \and\inferrule
         {\Gamma\vdash t\Rightarrow T}
         {\Gamma\vdash\mathtt{refl}\,t\Rightarrow t=_T t}
@@ -803,18 +815,25 @@ taken from coherence conditions proven in the definition of a model.
     \and\inferrule{
         \square\Gamma\vdash x\Rightarrow\square T\\
         \mathcal{U}\,\mathrm{model}
-    }{x\,@\,\mathcal{U}\Rightarrow\mathcal{U}\llbracket T\rrbracket}
+    }{\square\Gamma,\Delta\vdash x\,@\,\mathcal{U}
+        \Rightarrow\mathcal{U}\llbracket T\rrbracket}
     \and\inferrule{
-        \mathtt{C}\Rightarrow U_0\\
-        \mathtt{Sub}\Rightarrow C\to C\to U_0\\
-        \mathtt{*}\Rightarrow C\\
-        \mathtt{Ty}\Rightarrow C\to U_0\\
+        \mathtt{C}\Leftarrow U_\omega\\
+        \mathtt{*}\Leftarrow C\\
+        \ell\;\mathrm{Level}\vdash
+            \mathtt{Ty}\Leftarrow C\to U_\omega\\
+        \mathtt{\_,\_}\Leftarrow
+            \Pi(\Gamma:C)\to\mathtt{Ty}[\alpha]\,\Gamma\to C\\
+        \mathtt{Tm}\Leftarrow
+            \Pi(\Gamma:C)\to\mathtt{Ty}[\alpha]\,\Gamma\to U_\omega\\
         \ldots
-    }{\langle \mathtt{C},\ldots \rangle\,\mathrm{model}}
+    }{\langle
+        \mathtt{C},\mathtt{*},\forall\ell.\mathtt{Ty},\mathtt{\_,\_},
+        \mathtt{Tm},\ldots
+    \rangle\,\mathrm{model}}
 \end{mathpar}
     \caption{MLTT-R typing rules}
     \Description{MLTT-R typing rules}
-    \label{mltt-r-typing}
 \end{figure}
 
 To actually compute interpretation in MLTT-R, we need two mutually
