@@ -235,3 +235,18 @@ constructor; intro.
     intros. apply backwards. auto. auto.
 Qed.
 
+Lemma rename_step {L m n}
+  (f: Fin m -> Fin n) (t t': Term L m):
+  t ↠ t' -> rename f t ↠ rename f t'.
+Proof.
+intro. generalize dependent n. induction H; simpl;
+try (constructor; apply IHstep). intros.
+rewrite rename_subst. constructor.
+Qed.
+
+Lemma rename_equiv {L m n}
+  (f: Fin m -> Fin n) (t t': Term L m):
+  t ≡ t' -> rename f t ≡ rename f t'.
+Proof. intro. apply eq_map with (Q := step L m).
+apply rename_step. assumption.
+Qed.

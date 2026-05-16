@@ -61,6 +61,20 @@ Definition subst {L n}
 replace (fin_match t (fun x => var x)) f.
 Infix "◁" := subst (at level 45, left associativity).
 
+Fixpoint push {L m n} (t: Term L n):
+  Fin (S m + n) -> Term L (m + n) :=
+match m with
+| 0 => fin_match t (fun x => var x)
+| S m =>
+  fin_match (var fzero) (fun i => shift (push t i))
+end.
+
+Definition subst_at {L m n}
+  (f: Term L (S (m + n))) (t: Term L n):
+  Term L (m + n) := replace (push t) f.
+Infix "⏪" :=
+  subst_at (at level 45, left associativity).
+
 Lemma rename_ext {L m n} (f g: Fin m -> Fin n):
   (forall i, f i = g i) ->
   forall t: Term L m, rename f t = rename g t.
@@ -171,3 +185,20 @@ apply replace_ext. dependent destruction i; simpl.
   + apply replace_var.
 Qed.
 
+Lemma shift_subst {L n} (t u: Term L n):
+  shift t ◁ u = t.
+Proof.
+unfold shift, subst. rewrite replace_rename.
+transitivity (replace (fun x => var x) t).
+- apply replace_ext. destruct i; reflexivity.
+- apply replace_var.
+Qed.
+
+Lemma shift_subst_at {L m n}
+  (t: Term L (S m + n)) (u: Term L n):
+  shift t ⏪u = shift (t ⏪u).
+Proof.
+unfold shift, subst_at.
+rewrite replace_rename, rename_replace.
+apply replace_ext. reflexivity.
+Qed.

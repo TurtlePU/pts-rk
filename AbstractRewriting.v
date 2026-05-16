@@ -48,6 +48,19 @@ intro. induction H. constructor.
 apply rtc_trans with (y := y). auto. apply rtc_in. auto.
 Qed.
 
+Lemma sym_map {A B} (f: A -> B) {Q: Rel A} {R: Rel B}:
+  (forall a a', Q a a' -> R (f a) (f a')) ->
+  forall a a', Sym Q a a' -> Sym R (f a) (f a').
+Proof. intros. destruct H0.
+- apply forward, H, H0.
+- apply backwards, H, H0.
+Qed.
+
+Theorem eq_map {A B} (f: A -> B) {Q: Rel A} {R: Rel B}:
+  (forall a a', Q a a' -> R (f a) (f a')) ->
+  forall a a', EquivClosure Q a a' -> EquivClosure R (f a) (f a').
+Proof. intro. apply rtc_map, sym_map. assumption. Qed.
+
 Theorem CR_ext {A} (Q R: Rel A):
   (forall a b, Q a b <-> R a b) ->
   ChurchRosser Q <-> ChurchRosser R.

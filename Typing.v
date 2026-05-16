@@ -45,6 +45,22 @@ match m with
 | S m => fun Γ => shrink (ctx_pred Γ)
 end.
 
+Fixpoint subst_into {L m n}:
+  Ctx L (S m + n) -> Term L n -> Ctx L (m + n) :=
+match m with
+| 0 => fun Γ _ => ctx_pred Γ
+| S m => fun Γ t =>
+    subst_into (ctx_pred Γ) t & ctx_top Γ ⏪t
+end.
+Infix "*⏪" :=
+  subst_into (at level 45, left associativity).
+
+Fixpoint squeeze {L m n}: Ctx L (S m + n) -> Term L n :=
+match m with
+| 0 => ctx_top
+| S m => fun Γ => squeeze (ctx_pred Γ)
+end.
+
 Lemma wr_fsucc {m n} (i: Fin (m + n)):
   @wr (S m) n (fsucc i) = fsucc (wr i).
 Proof. reflexivity. Qed.
@@ -93,11 +109,11 @@ Inductive typ {L} {sig: Levels_sig L}:
    Γ ⊢ U ⇐ Rank ℓ -> Γ & U ⊢ t ⇐ T ->
 (* ---------------------------------- *)
            Γ ⊢ λ U t ⇐ Π U T
-| typ_app {n} {Γ : Ctx L n} {t S T s}:
-   Γ ⊢ t ⇐ Π S T -> Γ ⊢ s ⇐ S ->
+| typ_app {n} {Γ : Ctx L n} {t T u} U:
+   Γ ⊢ t ⇐ Π U T -> Γ ⊢ u ⇐ U ->
 (* ----------------------------- *)
-         Γ ⊢ t $ s ⇐ T ◁ s
-| typ_conv {n} {Γ: Ctx L n} {t T T' ℓ}:
+         Γ ⊢ t $ u ⇐ T ◁ u
+| typ_conv {n} {Γ: Ctx L n} {t T'} T ℓ:
    Γ ⊢ t ⇐ T -> Γ ⊢ T' ⇐ Rank ℓ -> T ≡ T' ->
 (* ----------------------------------------- *)
                   Γ ⊢ t ⇐ T'
@@ -111,37 +127,85 @@ Inductive wf {L} {sig: Levels_sig L}:
 (* ------------------------- *)
           wf (Γ & T).
 
-Lemma weaken_strong L m n Γ ℓ (sig: Levels_sig L)
+Lemma rename_weak_wr {L m n} (t: Term L (S m + n)):
+  rename (weak wr) t = rename wr t.
+Proof. apply rename_ext, weak_wr. Qed.
+
+Lemma weakening_strong m {L n Γ} (sig: Levels_sig L)
   (t T : Term L (m + n)) (U: Term L n):
-  Γ ⊢ t ⇐ T -> shrink Γ ⊢ U ⇐ Rank ℓ ->
-  insert Γ U ⊢ rename wr t ⇐ rename wr T.
+                  Γ ⊢ t ⇐ T ->
+(* --------------------------------------- *)
+   insert Γ U ⊢ rename wr t ⇐ rename wr T.
 Proof. intros. dependent induction H.
 - constructor.
 - constructor.
-  + apply IHtyp1 with (ℓ := ℓ) (T := Rank ℓₛ);
-    try reflexivity. assumption.
-  + specialize IHtyp2 with
-    (ℓ := ℓ) (m := S m) (n := n) (Γ := Γ & T0)
-    (t := U0) (U := U) (T := Rank ℓₜ).
-    assert (H' : rename (weak wr) U0
-               = rename (@wr (S m) n) U0).
-    * apply rename_ext, weak_wr.
-    * unfold rename in H'. rewrite H'.
-      apply IHtyp2; try reflexivity. assumption.
+  + apply IHtyp1 with (T := Rank ℓₛ); reflexivity.
+  + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & T0)
+    (T := Rank ℓₜ); reflexivity.
 - rewrite <- insert_index with (T := U). constructor.
-- simpl.
-  assert (wwt : rename (weak wr) t0
-              = rename (@wr (S m) n) t0).
-  { apply rename_ext, weak_wr. }
-  rewrite wwt.
-  assert (wwT : rename (weak wr) T0
-              = rename (@wr (S m) n) T0).
-  { apply rename_ext, weak_wr. }
-  rewrite wwT. apply typ_lam with (ℓ := ℓ0).
-  + apply IHtyp1 with (ℓ := ℓ) (T := Rank ℓ0);
+- apply typ_lam with (ℓ := ℓ).
+  + apply IHtyp1 with (T := Rank ℓ); reflexivity.
+  + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & U0);
+    reflexivity.
+- rewrite rename_subst. simpl rename.
+  apply typ_app with (U := rename wr U0).
+  + apply IHtyp1 with (T := Π U0 T0); reflexivity.
+  + apply IHtyp2; reflexivity.
+- apply typ_conv with (T := rename wr T0) (ℓ := ℓ).
+  + apply IHtyp1; reflexivity.
+  + apply IHtyp2 with (T := Rank ℓ); reflexivity.
+  + apply rename_equiv. assumption.
+Qed.
+
+Lemma weakening {L n Γ}
+  (sig: Levels_sig L) (t T U: Term L n):
+          Γ ⊢ t ⇐ T ->
+(* -------------------------- *)
+   Γ & U ⊢ shift t ⇐ shift T.
+Proof. apply weakening_strong with (m := 0). Qed.
+
+Lemma substitution_lemma_strong m
+  {L n Γ} (sig: Levels_sig L)
+  (t T: Term L (S m + n)) (u: Term L n):
+  Γ ⊢ t ⇐ T -> shrink Γ ⊢ u ⇐ squeeze Γ ->
+  Γ *⏪u ⊢ t ⏪u ⇐ T ⏪u.
+Proof. intros. dependent induction H.
+- constructor.
+- constructor.
+  + apply IHtyp1 with (T := Rank ℓₛ); try reflexivity.
+    assumption.
+  + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & _)
+    (T := Rank ℓₜ); try reflexivity. assumption.
+- induction m.
+  + dependent destruction i; simpl.
+    * replace (@subst_at _ 0 n (shift (ctx_top Γ)) u)
+              with (squeeze Γ).
+      assumption. symmetry. unfold subst_at, push.
+      apply shift_subst.
+    * replace
+        (@subst_at _ 0 n (shift (ctx_pred Γ !! i)) u)
+        with (ctx_pred Γ !! i).
+      apply typ_var. symmetry. unfold subst_at, push.
+      apply shift_subst.
+  + dependent destruction i.
+    * apply eq_rect with (x := shift (ctx_top Γ ⏪u)).
+      constructor. simpl. unfold shift, subst_at.
+      rewrite rename_replace, replace_rename.
+      apply replace_ext. reflexivity.
+    * apply eq_rect with
+      (x := shift ((ctx_pred Γ !! i) ⏪u)).
+      apply weakening, IHm. assumption.
+      rewrite <- shift_subst_at. reflexivity.
+- apply typ_lam with (ℓ := ℓ).
+  + apply IHtyp1 with (T := Rank ℓ); try reflexivity.
+    assumption.
+  + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & _);
     try reflexivity. assumption.
-  + apply IHtyp2 with (ℓ := ℓ) (m := S m) (n := n)
-    (Γ := Γ & U0); try reflexivity. assumption.
+- unfold subst_at. rewrite replace_subst.
+  apply typ_app with (U := U ⏪u).
+  + apply IHtyp1 with (T := Π U T0); try reflexivity.
+    assumption.
+  + apply IHtyp2; try reflexivity. assumption.
 - Admitted.
 
 Lemma typSubst L n Γ (sig: Levels_sig L)
