@@ -1,67 +1,99 @@
 Require Import Setoid.
 
-Definition Rel (A: Type): Type := A -> A -> Prop.
-
-Inductive RTC {A} (R: Rel A): Rel A :=
+Inductive RTC {A} (R: relation A): relation A :=
 | rtc_refl x: RTC R x x
 | rtc_step {x y z}: R x y -> RTC R y z -> RTC R x z.
 
-Inductive Sym {A} (R: Rel A): Rel A :=
+Inductive Sym {A} (R: relation A): relation A :=
 | forward {x y}: R x y -> Sym R x y
 | backwards {x y}: R y x -> Sym R x y.
 
-Definition Inv {A} (R: Rel A): Rel A :=
+Definition Inv {A} (R: relation A): relation A :=
   fun x y => R y x.
 
-Definition EquivClosure {A} (R: Rel A): Rel A :=
-  RTC (Sym R).
+Definition EquivClosure {A} (R: relation A):
+  relation A := RTC (Sym R).
 
-Definition ChurchRosser {A} (R: Rel A): Prop :=
+Definition Preimage {A B} (R: relation B) (f: A -> B):
+  relation A := fun x y => R (f x) (f y).
+Infix "@" := Preimage (at level 50).
+
+Definition ChurchRosser {A} (R: relation A): Prop :=
   forall t t₁ t₂, R t t₁ -> R t t₂ ->
   exists u, R t₁ u /\ R t₂ u.
 
-Lemma rtc_in {A} {R: Rel A} {a a'}:
-  R a a' -> RTC R a a'.
+Arguments inclusion [_] _.
+
+Instance rtc_refl_inst {A} (R: relation A):
+  Reflexive (RTC R).
+Proof. unfold Reflexive. apply rtc_refl. Qed.
+
+Instance rtc_trans {A} (R: relation A):
+  Transitive (RTC R).
+Proof. unfold Transitive. intros. induction H.
+assumption. apply rtc_step with (y := y); auto.
+Qed.
+
+Lemma rtc_in {A} (R: relation A): inclusion R (RTC R).
+Proof. unfold inclusion. intros.
+apply rtc_step with (y := y). assumption. reflexivity.
+Qed.
+
+Instance rtc_symmetric {A} (R: relation A)
+  (sym: Symmetric R): Symmetric (RTC R).
+Proof. unfold Symmetric. intros. induction H.
+- reflexivity.
+- transitivity y. assumption. apply rtc_in. symmetry.
+  assumption.
+Qed.
+
+Instance sym_symmetric {A} (R: relation A):
+  Symmetric (Sym R).
+Proof. unfold Symmetric. intros. destruct H.
+- apply backwards. assumption.
+- apply forward. assumption.
+Qed.
+
+Add Parametric Relation {A} (R: relation A): A (EquivClosure R)
+  reflexivity proved by reflexivity
+  symmetry proved by symmetry
+  transitivity proved by transitivity
+  as equiv_clos.
+
+Theorem inv_rtc_inv {A} (R: relation A):
+  inclusion (RTC (Inv R)) (Inv (RTC R)).
+Proof. unfold inclusion, Inv. intros. induction H.
+reflexivity. transitivity y. auto. apply rtc_in. auto.
+Qed.
+
+Theorem rtc_map {A B} (f: A -> B) Q R:
+  inclusion Q (R @ f) -> inclusion (RTC Q) (RTC R @ f).
+Proof. unfold inclusion, Preimage. intros. induction H0.
+reflexivity. apply rtc_step with (y := f y).
+apply H, H0. assumption.
+Qed.
+
+Lemma sym_map {A B} (f: A -> B) Q R:
+  inclusion Q (R @ f) ->
+  inclusion (Sym Q) (Sym R @ f).
+Proof. unfold inclusion, Preimage. intros. destruct H0.
+- apply forward, H. assumption.
+- apply backwards, H. assumption.
+Qed.
+
+Lemma eq_in {A} (R: relation A):
+  inclusion R (EquivClosure R).
 Proof.
-intro. apply rtc_step with (y := a'); auto. constructor.
+unfold inclusion, EquivClosure. intros. apply rtc_in.
+apply forward. auto.
 Qed.
 
-Theorem rtc_map {A B} (f: A -> B) {Q: Rel A} {R: Rel B}:
-  (forall a a', Q a a' -> R (f a) (f a')) ->
-  forall a a', RTC Q a a' -> RTC R (f a) (f a').
-Proof.
-intros. induction H0. constructor.
-apply rtc_step with (y := f y). apply H. auto. auto.
-Qed.
-
-Theorem rtc_trans {A} {R: Rel A} x y z:
-  RTC R x y -> RTC R y z -> RTC R x z.
-Proof.
-intros. induction H. auto.
-apply rtc_step with (y := y); auto.
-Qed.
-
-Theorem inv_rtc_inv {A} {R: Rel A} x y:
-  RTC (Inv R) x y -> RTC R y x.
-Proof.
-intro. induction H. constructor.
-apply rtc_trans with (y := y). auto. apply rtc_in. auto.
-Qed.
-
-Lemma sym_map {A B} (f: A -> B) {Q: Rel A} {R: Rel B}:
-  (forall a a', Q a a' -> R (f a) (f a')) ->
-  forall a a', Sym Q a a' -> Sym R (f a) (f a').
-Proof. intros. destruct H0.
-- apply forward, H, H0.
-- apply backwards, H, H0.
-Qed.
-
-Theorem eq_map {A B} (f: A -> B) {Q: Rel A} {R: Rel B}:
-  (forall a a', Q a a' -> R (f a) (f a')) ->
-  forall a a', EquivClosure Q a a' -> EquivClosure R (f a) (f a').
+Theorem eq_map {A B} (f: A -> B) Q R:
+  inclusion Q (R @ f) ->
+  inclusion (EquivClosure Q) (EquivClosure R @ f).
 Proof. intro. apply rtc_map, sym_map. assumption. Qed.
 
-Theorem CR_ext {A} (Q R: Rel A):
+Theorem CR_ext {A} (Q R: relation A):
   (forall a b, Q a b <-> R a b) ->
   ChurchRosser Q <-> ChurchRosser R.
 Proof.
@@ -74,7 +106,7 @@ intro. unfold ChurchRosser. constructor; intros.
   constructor; auto. rewrite <- H. auto.
 Qed.
 
-Theorem CR_RTC {A} {R: Rel A}:
+Theorem CR_RTC {A} {R: relation A}:
   ChurchRosser R -> ChurchRosser (RTC R).
 Proof.
 unfold ChurchRosser. intro CR.

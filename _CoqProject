@@ -1,6 +1,9 @@
 -R . PhD
-AbstractRewriting.v
 Syntax.v
+AbstractRewriting.v
 DefinitionalEquivalence.v
+Context.v
 Levels.v
 Typing.v
+Inversions.v
+Metatheory.v
