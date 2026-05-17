@@ -1,8 +1,9 @@
 Require Import Setoid.
 Require Import Stdlib.Program.Equality.
 Require Import Stdlib.Relations.Relations.
-Require Import PhD.Syntax.
-Require Import PhD.AbstractRewriting.
+Require Import Syntax.
+Require Import AbstractRewriting.
+Require Import Congruence.
 
 Reserved Notation "t ↠ t'"
   (at level 50, no associativity).
@@ -15,23 +16,6 @@ Inductive step L n: relation (Term L n) :=
 | step_app_right {f t t'}: t ↠ t' -> f $ t ↠ f $ t'
 | step_beta T f t: λ T f $ t ↠ f ◁ t
 where "t ↠ t'" := (step _ _ t t').
-
-Definition reduces_to L n: relation (Term L n) :=
-  RTC (step L n).
-Infix "⇛" := (reduces_to _ _)
-  (at level 50, no associativity).
-
-Definition def_equiv L n: relation (Term L n) :=
-  EquivClosure (step L n).
-Infix "≡" := (def_equiv _ _)
-  (at level 50, no associativity).
-
-Instance def_equiv_trans L n:
-  Transitive (def_equiv L n).
-Proof.
-unfold Transitive, def_equiv. intros x y z.
-transitivity y; assumption.
-Qed.
 
 Reserved Notation "t ⇉ t'"
   (at level 50, no associativity).
@@ -47,6 +31,20 @@ Inductive par_step L n: relation (Term L n) :=
   f ⇉ f' -> t ⇉ t' -> λ T f $ t ⇉ f' ◁ t'
 where "t ⇉ t'" := (par_step _ _ t t').
 
+Definition reduces_to L n: relation (Term L n) :=
+  RTC (step L n).
+Infix "⇛" := (reduces_to _ _)
+  (at level 50, no associativity).
+
+Definition def_equiv L n: relation (Term L n) :=
+  EquivClosure (step L n).
+Infix "≡" := (def_equiv _ _)
+  (at level 50, no associativity).
+Typeclasses Transparent def_equiv.
+
+Instance step_cong L: Congruence L (fun n x y => x ↠ y).
+Proof. split; intros; constructor; assumption. Qed.
+
 Lemma step_par_step {L n} (t t': Term L n):
   t ↠ t' -> t ⇉ t'.
 Proof.
@@ -58,33 +56,13 @@ Lemma par_step_rtc_step {L n} (t t': Term L n):
 Proof.
 intro. induction H.
 - constructor.
-- transitivity (Π T U').
-  + apply rtc_map with (f := Π T) (Q := step _ (S n)).
-    constructor. auto. auto.
-  + apply rtc_map with (f := fun T => Π T U')
-                       (Q := step _ n).
-    constructor. auto. auto.
-- transitivity (λ T t').
-  + apply rtc_map with (f := λ T) (Q := step _ (S n)).
-    constructor. auto. auto.
-  + apply rtc_map with (f := fun T => λ T t')
-                       (Q := step _ n).
-    constructor. auto. auto.
-- transitivity (f $ t').
-  + apply rtc_map with (f := app f) (Q := step _ n).
-    constructor. auto. auto.
-  + apply rtc_map with (f := fun f => f $ t')
-                       (Q := step _ n).
-    constructor. auto. auto.
-- transitivity (λ T f $ t').
-  + apply rtc_map with (f := app (λ T f))
-                       (Q := step _ n).
-    constructor. auto. auto.
-  + transitivity (λ T f' $ t').
-    apply rtc_map with (f := fun f => λ T f $ t')
-                       (Q := step _ (S n)).
-    repeat constructor. auto. auto.
-    apply rtc_in. constructor.
+- apply Π_cong_par; auto; typeclasses eauto.
+- apply λ_cong_par; auto; typeclasses eauto.
+- apply app_cong_par; auto; typeclasses eauto.
+- transitivity (λ T f' $ t').
+  + apply app_cong_par; try (apply λ_cong_r); auto;
+    typeclasses eauto.
+  + apply rtc_in. constructor.
 Qed.
 
 Lemma rename_par_step {L m n}
@@ -235,13 +213,10 @@ constructor; intro.
     destruct H2 as [v []]. exists v. constructor. auto.
     apply rtc_trans with (y := u); auto.
 - destruct H as [u []]. apply rtc_trans with (y := u).
-  + apply rtc_map with (f := fun x => x)
-                       (Q := step L n).
-    unfold inclusion. intros. apply forward. auto. auto.
-  + apply inv_rtc_inv, rtc_map with (f := fun x => x)
-                                    (Q := step L n).
-    unfold inclusion. intros. apply backwards.
-    auto. auto.
+  + apply rtc_map with (Q := step L n).
+    intros. apply forward. auto. auto.
+  + apply inv_rtc_inv, rtc_map with (Q := step L n).
+    intros. apply backwards. auto. auto.
 Qed.
 
 Lemma rename_step {L m n}
@@ -265,13 +240,15 @@ Qed.
 Lemma rename_equiv {L m n}
   (f: Fin m -> Fin n) (t t': Term L m):
   t ≡ t' -> rename f t ≡ rename f t'.
-Proof. intro. apply eq_map with (Q := step L m).
-unfold inclusion. apply rename_step. assumption.
+Proof. intro. apply eq_unmap.
+apply eq_map with (Q := step L m).
+apply rename_step. assumption.
 Qed.
 
 Lemma replace_equiv {L m n}
   (f: Fin m -> Term L n) (t t': Term L m):
   t ≡ t' -> replace f t ≡ replace f t'.
-Proof. intro. apply eq_map with (Q := step L m).
-unfold inclusion. apply replace_step. assumption.
+Proof. intro. apply eq_unmap.
+apply eq_map with (Q := step L m).
+apply replace_step. assumption.
 Qed.

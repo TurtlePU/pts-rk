@@ -1,8 +1,9 @@
 Require Import Stdlib.Program.Equality.
+Require Import AbstractRewriting.
+Require Import DefinitionalEquivalence.
 Require Import Levels.
 Require Import Typing.
 Require Import Context.
-Require Import DefinitionalEquivalence.
 Require Import Syntax.
 
 Lemma pi_inversion {L n Γ} (sig: Levels_sig L)

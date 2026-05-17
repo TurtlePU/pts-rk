@@ -34,9 +34,11 @@ Proof. unfold Transitive. intros. induction H.
 assumption. apply rtc_step with (y := y); auto.
 Qed.
 
-Lemma rtc_in {A} (R: relation A): inclusion R (RTC R).
-Proof. unfold inclusion. intros.
-apply rtc_step with (y := y). assumption. reflexivity.
+Lemma rtc_in {A} (R: relation A):
+  forall x y, R x y -> RTC R x y.
+Proof. intros. apply rtc_step with (y := y).
+- auto.
+- reflexivity.
 Qed.
 
 Instance rtc_symmetric {A} (R: relation A)
@@ -54,46 +56,66 @@ Proof. unfold Symmetric. intros. destruct H.
 - apply forward. assumption.
 Qed.
 
-Add Parametric Relation {A} (R: relation A): A (EquivClosure R)
-  reflexivity proved by reflexivity
-  symmetry proved by symmetry
-  transitivity proved by transitivity
-  as equiv_clos.
+Instance equiv_closure_equiv {A} (R: relation A):
+  Equivalence (EquivClosure R).
+Proof. split; typeclasses eauto. Qed.
 
-Theorem inv_rtc_inv {A} (R: relation A):
-  inclusion (RTC (Inv R)) (Inv (RTC R)).
-Proof. unfold inclusion, Inv. intros. induction H.
-reflexivity. transitivity y. auto. apply rtc_in. auto.
+Lemma inv_rtc_inv {A} (R: relation A):
+  forall x y, RTC (Inv R) x y -> Inv (RTC R) x y.
+Proof. unfold Inv. intros. induction H.
+- reflexivity.
+- transitivity y. auto. apply rtc_in. auto.
 Qed.
 
-Theorem rtc_map {A B} (f: A -> B) Q R:
-  inclusion Q (R @ f) -> inclusion (RTC Q) (RTC R @ f).
-Proof. unfold inclusion, Preimage. intros. induction H0.
-reflexivity. apply rtc_step with (y := f y).
-apply H, H0. assumption.
+Lemma rtc_unmap {A B} (f: A -> B) R:
+  forall x y, RTC (R @ f) x y -> RTC R (f x) (f y).
+Proof. intros. induction H.
+- reflexivity.
+- apply rtc_step with (y := f y); auto.
 Qed.
 
-Lemma sym_map {A B} (f: A -> B) Q R:
-  inclusion Q (R @ f) ->
-  inclusion (Sym Q) (Sym R @ f).
-Proof. unfold inclusion, Preimage. intros. destruct H0.
-- apply forward, H. assumption.
-- apply backwards, H. assumption.
+Lemma rtc_map {A} (Q R: relation A):
+  (forall x y, Q x y -> R x y) ->
+  forall x y, RTC Q x y -> RTC R x y.
+Proof. intros. induction H0.
+- reflexivity.
+- apply rtc_step with (y := y); auto.
+Qed.
+
+Lemma sym_unmap {A B} (f: A -> B) R:
+  forall x y, Sym (R @ f) x y -> Sym R (f x) (f y).
+Proof. intros. destruct H.
+- apply forward. auto.
+- apply backwards. auto.
+Qed.
+
+Lemma sym_map {A} (Q R: relation A):
+  (forall x y, Q x y -> R x y) ->
+  forall x y, Sym Q x y -> Sym R x y.
+Proof. intros. destruct H0.
+- apply forward. auto.
+- apply backwards. auto.
 Qed.
 
 Lemma eq_in {A} (R: relation A):
-  inclusion R (EquivClosure R).
+  forall x y, R x y -> EquivClosure R x y.
+Proof. intros. apply rtc_in. apply forward. auto. Qed.
+
+Lemma eq_unmap {A B} (f: A -> B) R:
+  forall x y, EquivClosure (R @ f) x y ->
+  EquivClosure R (f x) (f y).
 Proof.
-unfold inclusion, EquivClosure. intros. apply rtc_in.
-apply forward. auto.
+intros. apply rtc_unmap.
+apply rtc_map with (Q := Sym (R @ f)).
+apply sym_unmap. auto.
 Qed.
 
-Theorem eq_map {A B} (f: A -> B) Q R:
-  inclusion Q (R @ f) ->
-  inclusion (EquivClosure Q) (EquivClosure R @ f).
+Lemma eq_map {A} (Q R: relation A):
+  (forall x y, Q x y -> R x y) ->
+  forall x y, EquivClosure Q x y -> EquivClosure R x y.
 Proof. intro. apply rtc_map, sym_map. assumption. Qed.
 
-Theorem CR_ext {A} (Q R: relation A):
+Lemma CR_ext {A} (Q R: relation A):
   (forall a b, Q a b <-> R a b) ->
   ChurchRosser Q <-> ChurchRosser R.
 Proof.

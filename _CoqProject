@@ -1,6 +1,7 @@
 -R . PhD
 Syntax.v
 AbstractRewriting.v
+Congruence.v
 DefinitionalEquivalence.v
 Context.v
 Levels.v
