@@ -237,6 +237,80 @@ try (constructor; apply IHstep). intros.
 rewrite replace_subst. constructor.
 Qed.
 
+Lemma rtc_pi_repr {L n} (T t: Term L n)
+  (U: Term L (S n)):
+  Π T U ⇛ t -> exists T' U', t = Π T' U'.
+Proof. intro. dependent induction H.
+- exists T, U. reflexivity.
+- inversion H; subst; exact (IHRTC _ _ eq_refl).
+Qed.
+
+Lemma rtc_pi_mono {L n} (T T': Term L n)
+  (U U': Term L (S n)):
+  Π T U ⇛ Π T' U' -> T ⇛ T' /\ U ⇛ U'.
+Proof. intro. dependent induction H.
+- split; reflexivity.
+- inversion H; subst.
+  + destruct (IHRTC _ _ _ _ eq_refl eq_refl) as [H1 H2].
+    split; auto. apply rtc_step with (y := T'0); auto.
+  + destruct (IHRTC _ _ _ _ eq_refl eq_refl) as [H1 H2].
+    split; auto. apply rtc_step with (y := U'0); auto.
+Qed.
+
+Lemma equiv_pi_mono {L n} (T T': Term L n)
+  (U U': Term L (S n)):
+  Π T U ≡ Π T' U' -> T ≡ T' /\ U ≡ U'.
+Proof.
+rewrite def_equiv_prop. intros [u [H1 H2]].
+assert (H := H1). apply rtc_pi_repr in H.
+destruct H as [T1 [U1 H]]. subst.
+apply rtc_pi_mono in H1, H2.
+destruct H1 as [H1 H3]. destruct H2 as [H2 H4].
+split; rewrite def_equiv_prop;
+[exists T1 | exists U1]; auto.
+Qed.
+
+Lemma rename_rtc {L m n}
+  (f: Fin m -> Fin n) (t t': Term L m):
+  t ⇛ t' -> rename f t ⇛ rename f t'.
+Proof. intros. induction H.
+- reflexivity.
+- apply rtc_step with (y := rename f y); auto.
+  apply rename_step. auto.
+Qed.
+
+Lemma rtc_transpose {L m n} (f f': Fin m -> Term L n):
+  (forall i, f i ⇛ f' i) ->
+  forall i, transpose f i ⇛ transpose f' i.
+Proof. intros. dependent destruction i; simpl.
+- reflexivity.
+- apply rename_rtc. auto.
+Qed.
+
+Lemma rtc_replace {L m n}
+  (f f': Fin m -> Term L n) (t: Term L m):
+  (forall i, f i ⇛ f' i) -> replace f t ⇛ replace f' t.
+Proof. intros. generalize dependent n.
+induction t; simpl; intros.
+- reflexivity.
+- apply Π_cong_par; try (apply IHt2, rtc_transpose);
+  auto; typeclasses eauto.
+- auto.
+- apply λ_cong_par; try (apply IHt2, rtc_transpose);
+  auto; typeclasses eauto.
+- apply app_cong_par; auto; typeclasses eauto.
+Qed.
+
+Lemma equiv_sub {L n} (f: Term L (S n))
+  (t t': Term L n):
+  t ≡ t' -> f ◁ t ≡ f ◁ t'.
+Proof.
+rewrite def_equiv_prop. intros [u [H H']].
+rewrite def_equiv_prop. exists (f ◁ u).
+constructor; apply rtc_replace; dependent destruction i;
+auto; reflexivity.
+Qed.
+
 Lemma rename_equiv {L m n}
   (f: Fin m -> Fin n) (t t': Term L m):
   t ≡ t' -> rename f t ≡ rename f t'.
