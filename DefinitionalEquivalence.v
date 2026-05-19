@@ -31,6 +31,8 @@ Inductive par_step L n: relation (Term L n) :=
   f ⇉ f' -> t ⇉ t' -> λ T f $ t ⇉ f' ◁ t'
 where "t ⇉ t'" := (par_step _ _ t t').
 
+Definition SN {L n}: Term L n -> Prop := Acc (step L n).
+
 Definition reduces_to L n: relation (Term L n) :=
   RTC (step L n).
 Infix "⇛" := (reduces_to _ _)
@@ -325,4 +327,12 @@ Lemma replace_equiv {L m n}
 Proof. intro. apply eq_unmap.
 apply eq_map with (Q := step L m).
 apply replace_step. assumption.
+Qed.
+
+Lemma head_SN {L n} (t u: Term L n): SN (t $ u) -> SN t.
+Proof.
+intro. dependent induction H. constructor. intros.
+apply H0 with (y := y $ u) (u := u).
+- apply step_app_left. auto.
+- auto.
 Qed.
