@@ -336,3 +336,77 @@ apply H0 with (y := y $ u) (u := u).
 - apply step_app_left. auto.
 - auto.
 Qed.
+
+Lemma atomic_preserv {L n} (t t': Term L n):
+  t ↠ t' -> Atomic t -> Atomic t'.
+Proof.
+intros. generalize dependent t'. induction H0; intros;
+inversion H; try constructor.
+- apply IHAtomic. auto.
+- auto.
+- subst. inversion H0.
+Qed.
+
+Lemma atomic_app_SN {L n} (t u: Term L n):
+  Atomic t -> SN t -> SN u -> SN (t $ u).
+Proof.
+intros. induction H0. induction H1.
+constructor. intros. inversion H4.
+- apply H2. auto.
+  apply atomic_preserv with (t := x); auto.
+- apply H3. auto. intros.
+  assert (H': SN (y0 $ x0)). { apply H2; auto. }
+  dependent destruction H'.
+  apply H11, step_app_right. auto.
+- subst. inversion H.
+Qed.
+
+Lemma lam_if_rename_is_lam {L m n} f
+  (T: Term L n) (t: Term L m) (u: Term L (S n)):
+  λ T u = rename f t ->
+  exists T' u', t = λ T' u'
+  /\ rename f T' = T
+  /\ rename (weak f) u' = u.
+Proof.
+intros. destruct t; inversion H. exists t1, t2.
+split; [|split]; auto.
+Qed.
+
+Lemma rename_step_is_renamed {L m n} f
+  (t: Term L m) (u: Term L n):
+  rename f t ↠ u -> exists v, u = rename f v /\ t ↠ v.
+Proof. generalize dependent n.
+induction t; intros; inversion H.
+- apply IHt1 in H3. destruct H3 as [T0 [H3 H4]]. subst.
+  exists (Π T0 t2). split. auto. apply step_pi_left.
+  auto.
+- apply IHt2 in H3. destruct H3 as [U0 [H3 H4]]. subst.
+  exists (Π t1 U0). split. auto. apply step_pi_right.
+  auto.
+- apply IHt1 in H3. destruct H3 as [T0 [H3 H4]]. subst.
+  exists (λ T0 t2). split. auto. apply step_lam_left.
+  auto.
+- apply IHt2 in H3. destruct H3 as [t0 [H3 H4]]. subst.
+  exists (λ t1 t0). split. auto. apply step_lam_right.
+  auto.
+- apply IHt1 in H3. destruct H3 as [f1 [H3 H4]]. subst.
+  exists (f1 $ t2). split. auto. apply step_app_left.
+  auto.
+- apply IHt2 in H3. destruct H3 as [t0 [H3 H4]]. subst.
+  exists (t1 $ t0). split. auto. apply step_app_right.
+  auto.
+- apply lam_if_rename_is_lam in H1.
+  destruct H1 as [T' [u' [H1 [H3 H4]]]]. subst.
+  exists (u' ◁ t2). split.
+  + rewrite rename_subst. auto.
+  + constructor.
+Qed.
+
+Lemma rename_SN {L m n}
+  (f: Fin m -> Fin n) (t: Term L m):
+  SN t -> SN (rename f t).
+Proof.
+intro. generalize dependent n. induction H. constructor.
+intros. apply rename_step_is_renamed in H1.
+destruct H1 as [v [H1 H2]]. subst. apply H0. auto.
+Qed.

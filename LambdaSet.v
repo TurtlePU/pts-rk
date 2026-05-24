@@ -74,6 +74,8 @@ Class 𝔈_Set L 𝔈 𝔄 :=
 Instance Λ_Set_from_𝔈_Set `(𝔈_Set L 𝔈 𝔄) (α: 𝔄):
   Λ_Set L (Λ_set α) := Λ_set_inst α.
 
+Infix "⟪ i ⟫" := (set_equiv i) (at level 50).
+
 Notation "x ⟨ i ⟩ y" :=
   (carriers_equiv i
     (existT Λ_set _ x)
@@ -88,18 +90,15 @@ match m with
 | S m => fun i => fsucc (adjust i)
 end.
 
-Lemma adjust_SN {L n} m (t: Term L n):
-  SN (rename (@adjust m _) t) -> SN t.
-Proof. intros. dependent induction H. constructor.
-intros. apply H0 with (m := m) (y := rename adjust y);
-auto. apply rename_step. auto. Qed.
+Definition Π' `{𝔈_Set L 𝔈 𝔄} `{𝔈_Set L 𝔈 𝔅}
+  (X: 𝔄) (Y: Λ_set X -> 𝔅): Type :=
+    { f: forall α, Λ_set (Y α)
+    | forall α α' i, α ⟨ i ⟩ α' -> f α ⟨ i ⟩ f α'
+    }.
 
 Instance Product `{𝔈_Set L 𝔈 𝔄} `{𝔈_Set L 𝔈 𝔅}
-  (X: 𝔄) (Y: Λ_set X -> 𝔅):
-  Λ_Set L { f: forall α, Λ_set (Y α) |
-      forall α α' i, α ⟨ i ⟩ α' -> f α ⟨ i ⟩ f α'
-    } := {
-  models := fun n t f =>
+  (X: 𝔄) (Y: Λ_set X -> 𝔅): Λ_Set L (Π' X Y) :=
+{ models := fun n t f =>
     forall α m (u: Term L (m + n)),
     u ⊨ α -> rename adjust t $ u ⊨ proj1_sig f α
 }.
@@ -110,7 +109,27 @@ Lemma product_has_center `{𝔈_Set L 𝔈 𝔄} `{𝔈_Set L 𝔈 𝔅}
   {Ys: forall α, Saturated_Λ_Set (Λ_set_inst (Y α))}:
   forall α α' i, α ⟨ i ⟩ α' ->
     @center _ _ _ (Ys α) ⟨ i ⟩ @center _ _ _ (Ys α').
-Proof. Admitted.
+Proof. Admitted. (* FIXME: discover equiv props *)
+
+Lemma adjust_SN {L n} m (t: Term L n):
+  SN (rename (@adjust m _) t) -> SN t.
+Proof. intros. dependent induction H. constructor.
+intros. apply H0 with (m := m) (y := rename adjust y);
+auto. apply rename_step. auto. Qed.
+
+Lemma rename_whe {L m n} (f: Fin m -> Fin n)
+  (t t': Term L m):
+  head_β_expansion t t' ->
+  head_β_expansion (rename f t) (rename f t').
+Proof. intros. induction H.
+- constructor. auto.
+- rewrite rename_subst.
+  constructor; apply rename_SN; auto.
+Qed.
+
+Lemma whe_SN {L n} (t t' u: Term L n):
+  head_β_expansion t t' -> SN (t' $ u) -> SN (t $ u).
+Proof. Admitted. (* FIXME: adapt Altenkirch *)
 
 #[refine]
 Instance saturated_Product `(𝔈_Set L 𝔈 𝔄) `(𝔈_Set L 𝔈 𝔅)
@@ -131,4 +150,33 @@ Proof.
   inversion H3.
 - simpl. intros. apply center_realized.
   + constructor. apply rename_atomic. auto.
-  + 
+  + apply atomic_app_SN.
+    * apply rename_atomic. auto.
+    * apply rename_SN. auto.
+    * apply realizers_SN with (x := α). auto.
+- simpl. intros. apply realizers_expansion_closed
+  with (t' := rename adjust t' $ u).
+  + constructor. apply rename_whe. auto.
+  + apply H2. auto.
+Qed.
+
+Definition Product_equiv `(𝔈_Set L 𝔈 𝔄) `(𝔈_Set L 𝔈 𝔅):
+  𝔈 -> relation { X: 𝔄 & Λ_set X -> 𝔅 } :=
+fun i xy xy' => match xy, xy' with
+| existT _ X Y, existT _ X' Y' =>
+    X ⟪ i ⟫ X'
+    /\ (forall α α', α ⟨ i ⟩ α' -> Y α ⟪ i ⟫ Y' α')
+end.
+
+Definition Product_carrier_equiv
+  `(𝔈_Set L 𝔈 𝔄) `(𝔈_Set L 𝔈 𝔅): 𝔈 ->
+  relation { X: 𝔄 & { Y: Λ_set X -> 𝔅 & Π' X Y } } :=
+fun i xyp xyp' => match xyp, xyp' with
+| existT _ _ (existT _ _ (exist _ f _)),
+    existT _ _ (existT _ _ (exist _ g _)) =>
+      forall α α', α ⟨ i ⟩ α' -> f α ⟨ i ⟩ g α'
+end.
+
+Infix "⟪ i ⟫ₚ" := (Product_equiv i) (at level 50).
+Infix "⟨ i ⟩ₚ" := (Product_carrier_equiv i)
+  (at level 50).
