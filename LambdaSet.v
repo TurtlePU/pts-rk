@@ -24,7 +24,7 @@ Definition Saturated {L}
   /\ (forall n t, SN t -> Atomic t -> 𝓒 n t)
   /\ (forall n t t', WHE t t' -> 𝓒 n t' -> 𝓒 n t).
 
-Class Saturated_Λ_Set `(X : Λ_Set L X₀) :=
+Class Saturated_Λ_Set L X₀ `{Λ_Set L X₀} :=
 { realizers_SN {n} (t: Term L n) x: t ⊨ x -> SN t
 ; center: X₀
 ; center_realized {n} (t: Term L n):
@@ -33,11 +33,10 @@ Class Saturated_Λ_Set `(X : Λ_Set L X₀) :=
     WHE t t' -> t' ⊨ x -> t ⊨ x
 }.
 
-Remark realizers_are_saturated
-  `(X: Saturated_Λ_Set L X₀):
+Remark realizers_are_saturated `(Saturated_Λ_Set L X₀):
   Saturated (fun _ t => exists x, t ⊨ x).
 Proof. split;[|split].
-- intros n t [x H].
+- intros n t [x H'].
   apply realizers_SN with (x := x).
   auto.
 - intros. exists center. apply center_realized; auto.
@@ -48,16 +47,28 @@ Qed.
 
 Generalizable Variable Y₀.
 
-Definition Λ_morphism
-  `(X: Λ_Set L X₀) `(Y: Λ_Set L Y₀) :=
+Definition Λ_morphism L X₀ Y₀ `{Λ_Set L X₀} `{Λ_Set L Y₀} :=
   { p: X₀ -> Y₀ | forall n (t: Term L n) x,
       t ⊨ x -> t ⊨ p x }.
 
-Definition Λ_iso `(X: Λ_Set L X₀) `(Y: Λ_Set L Y₀) :=
-  { pq: Λ_morphism X Y * Λ_morphism Y X |
-      let '(exist _ p _, exist _ q _) := pq in
-        (forall x, q (p x) = x)
-        /\ (forall y, p (q y) = y) }.
+Record Λ_iso L X₀ Y₀ `{Λ_Set L X₀} `{Λ_Set L Y₀} :=
+  { forward: X₀ -> Y₀
+  ; backward: Y₀ -> X₀
+  ; fb_i x: backward (forward x) = x
+  ; bf_i y: forward (backward y) = y
+  ; respects_model {n} (t: Term L n) x:
+      t ⊨ x <-> t ⊨ forward x
+  }.
+
+Coercion forward : Λ_iso >-> Funclass.
+
+Definition inverse `{X: Λ_Set L X₀} `{Y: Λ_Set L Y₀}:
+  @Λ_iso _ _ _ X Y -> @Λ_iso _ _ _ Y X.
+Proof.
+intros [f b fbi bfi rm].
+apply Build_Λ_iso with (forward := b) (backward := f);
+auto. intros. rewrite rm, bfi. reflexivity.
+Defined.
 
 Generalizable Variables 𝔈 𝔄.
 
@@ -68,6 +79,11 @@ Class 𝔈_Set L 𝔈 𝔄 :=
 ; set_equiv_inst i: Equivalence (set_equiv i)
 ; carriers_equiv: 𝔈 -> relation (sigT Λ_set)
 ; carriers_equiv_inst i: Equivalence (carriers_equiv i)
+; carriers_prop i {X X'} (x: Λ_set X) (x': Λ_set X'):
+    set_equiv i X X' ->
+    (forall n (t: Term L n), Atomic t ->
+      t ⊨ x <-> t ⊨ x') ->
+    carriers_equiv i (existT _ _ x) (existT _ _ x')
 }.
 
 Instance Λ_Set_from_𝔈_Set `(𝔈_Set L 𝔈 𝔄) (α: 𝔄):
@@ -102,13 +118,38 @@ Instance Product `{𝔈_Set L 𝔈 𝔄} `{𝔈_Set L 𝔈 𝔅}
     u ⊨ α -> rename adjust t $ u ⊨ proj1_sig f α
 }.
 
-Lemma product_has_center `{𝔈_Set L 𝔈 𝔄} `{𝔈_Set L 𝔈 𝔅}
-  {X: 𝔄} {Y: Λ_set X -> 𝔅}
-  {Xs: Saturated_Λ_Set (Λ_set_inst X)}
-  {Ys: forall α, Saturated_Λ_Set (Λ_set_inst (Y α))}:
-  forall α α' i, α ⟨ i ⟩ α' ->
-    @center _ _ _ (Ys α) ⟨ i ⟩ @center _ _ _ (Ys α').
-Proof. Admitted. (* FIXME: discover equiv props *)
+Definition RespectfulMapping
+  `{𝔈_Set L 𝔈 𝔄} `{𝔈_Set L 𝔈 𝔅}
+  {X: 𝔄} (Y: Λ_set X -> 𝔅) :=
+  forall α α' i, α ⟨ i ⟩ α' -> Y α ⟪ i ⟫ Y α'.
+
+Record Family `{𝔈_Set L 𝔈 𝔄} (X: 𝔄) 𝔅 `{𝔈_Set L 𝔈 𝔅} :=
+  { mapping: Λ_set X -> 𝔅
+  ; mapping_respects: RespectfulMapping mapping
+  }.
+
+Coercion mapping: Family >-> Funclass.
+
+Definition center_at `{𝔈_Set L 𝔈 𝔄} (X: 𝔄)
+  `{@Saturated_Λ_Set _ _ (Λ_set_inst X)}: Λ_set X :=
+  center.
+
+Lemma center_prop `{Saturated_Λ_Set L X₀} {n}
+  (t: Term L n): Atomic t -> SN t <-> t ⊨ center.
+Proof. split; intro.
+- apply center_realized; auto.
+- apply realizers_SN with (x := center). auto.
+Qed.
+
+Lemma centers_are_equivalent `{𝔈_Set L 𝔈 𝔄} (X Y: 𝔄) i
+  `{@Saturated_Λ_Set _ _ (Λ_set_inst X)}
+  `{@Saturated_Λ_Set _ _ (Λ_set_inst Y)}:
+  X ⟪ i ⟫ Y -> center_at X ⟨ i ⟩ center_at Y.
+Proof.
+intros. apply carriers_prop. auto. unfold center_at.
+intros. repeat (rewrite <- (center_prop _ H3)).
+reflexivity.
+Qed.
 
 Lemma adjust_SN {L n} m (t: Term L n):
   SN (rename (@adjust m _) t) -> SN t.
@@ -131,12 +172,11 @@ Proof. Admitted. (* FIXME: adapt Altenkirch *)
 
 #[refine]
 Instance saturated_Product `(𝔈_Set L 𝔈 𝔄) `(𝔈_Set L 𝔈 𝔅)
-  (X: 𝔄) (Y: Λ_set X -> 𝔅)
-  {Xs: Saturated_Λ_Set (Λ_set_inst X)}
-  {Ys: forall α, Saturated_Λ_Set (Λ_set_inst (Y α))}:
-  Saturated_Λ_Set (Product X Y) := {
-    center := exist _ (fun _ => center)
-      product_has_center
+  (X: 𝔄) (Y: Family X 𝔅)
+  `{Xs: @Saturated_Λ_Set _ _ (Λ_set_inst X)}
+  `{Ys: forall α, Saturated_Λ_Set L (Λ_set (Y α))}:
+  Saturated_Λ_Set L (Π' X Y) := {
+    center := exist _ (fun _ => center) _
 }.
 Proof.
 - intros n t [f H1] H2. simpl in H2.
@@ -146,6 +186,8 @@ Proof.
   apply H2 with (m := 1).
   apply center_realized; constructor. intros.
   inversion H3.
+- intros.
+  apply centers_are_equivalent, mapping_respects. auto.
 - simpl. intros. apply center_realized.
   + constructor. apply rename_atomic. auto.
   + apply atomic_app_SN.
@@ -158,7 +200,7 @@ Proof.
   + apply H2. auto.
 Qed.
 
-Definition Product_equiv `(𝔈_Set L 𝔈 𝔄) `(𝔈_Set L 𝔈 𝔅):
+Definition Product_equiv `{𝔈_Set L 𝔈 𝔄} `{𝔈_Set L 𝔈 𝔅}:
   𝔈 -> relation { X: 𝔄 & Λ_set X -> 𝔅 } :=
 fun i xy xy' => match xy, xy' with
 | existT _ X Y, existT _ X' Y' =>
@@ -167,7 +209,7 @@ fun i xy xy' => match xy, xy' with
 end.
 
 Definition Product_carrier_equiv
-  `(𝔈_Set L 𝔈 𝔄) `(𝔈_Set L 𝔈 𝔅): 𝔈 ->
+  `{𝔈_Set L 𝔈 𝔄} `{𝔈_Set L 𝔈 𝔅}: 𝔈 ->
   relation { X: 𝔄 & { Y: Λ_set X -> 𝔅 & Π' X Y } } :=
 fun i xyp xyp' => match xyp, xyp' with
 | existT _ _ (existT _ _ (exist _ f _)),
@@ -176,5 +218,8 @@ fun i xyp xyp' => match xyp, xyp' with
 end.
 
 Infix "⟪ i ⟫ₚ" := (Product_equiv i) (at level 50).
-Infix "⟨ i ⟩ₚ" := (Product_carrier_equiv i)
+Notation "f ⟨ i ⟩ₚ g" :=
+  (Product_carrier_equiv i
+    (existT _ _ (existT _ _ f))
+    (existT _ _ (existT _ _ g)))
   (at level 50).

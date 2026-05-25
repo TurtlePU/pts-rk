@@ -9,6 +9,7 @@ Context.v
 Levels.v
 Typing.v
 Inversions.v
+WF.v
 Metatheory.v
 Atomic.v
 StronglyNormalizing.v

@@ -1,6 +1,7 @@
 Require Import Stdlib.Program.Equality.
 Require Import Typing.
 Require Import Context.
+Require Import WF.
 Require Import Levels.
 Require Import Syntax.
 Require Import DefEq.
@@ -8,14 +9,6 @@ Require Import Reduction.
 Require Import AbstractRewriting.
 Require Import Inversions.
 Require Import Congruence.
-
-Inductive wf {L} {sig: Levels_sig L}:
-  forall {n}, Ctx L n -> Prop :=
-| wf_empty: wf ε
-| wf_cons {n} {Γ : Ctx L n} {T} ℓ:
-   wf Γ -> Γ ⊢ T ⇐ 𝓤 ℓ ->
-(* ---------------------- *)
-        wf (Γ & T).
 
 Lemma context_reduction_strong {L n Δ} Γ
   (sig: Levels_sig L) (t T: Term L n):
@@ -30,8 +23,8 @@ Proof. intros. induction H.
     * apply wf_cons with (ℓ := ℓₜ); assumption.
     * apply beta_there. assumption.
   + auto.
-- induction i; dependent destruction H1;
-  try (simpl; constructor); dependent destruction H0.
+- induction i; dependent destruction H0;
+  try (simpl; constructor); dependent destruction X.
   + apply typ_conv with (T := shift U) (ℓ := ℓ).
     * constructor.
     * apply weakening with (T := 𝓤 ℓ). assumption.
@@ -70,9 +63,9 @@ Proof. intros. dependent induction H1.
   exists ℓ''. constructor. auto.
 - destruct (axiom_t ℓ) as [ℓ' H3].
   exists ℓ'. constructor. auto.
-- dependent induction H2; dependent destruction i.
+- dependent induction X; dependent destruction i.
   + exists ℓ. apply weakening with (T := 𝓤 _). auto.
-  + specialize IHwf with i. destruct IHwf as [ℓ' H3].
+  + specialize (IHX i) as [ℓ' H3].
     exists ℓ'. apply weakening with (T := 𝓤 _). auto.
 - assert (H3: wf (Γ & U)).
   { apply wf_cons with (ℓ := ℓ); auto. }
@@ -80,7 +73,7 @@ Proof. intros. dependent induction H1.
   destruct (rule_t ℓ ℓ') as [ℓ'' H4].
   exists ℓ''. apply typ_Π with (ℓₜ := ℓ) (ℓᵤ := ℓ');
   auto.
-- apply IHtyp1 in H2. destruct H2 as [ℓ H1].
+- apply IHtyp1 in X. destruct X as [ℓ H1].
   apply Π_inversion in H1.
   destruct H1 as [_ [ℓₜ [_ [_ [_ [H1 _]]]]]].
   exists ℓₜ.
@@ -95,7 +88,7 @@ Theorem subject_reduction `(Levels_total_sig L) {n Γ}
 (* ------------------------------- *)
             Γ ⊢ t' ⇐ T.
 Proof.
-intros. induction H3; assert (H' := H1);
+intros. induction H2; assert (H' := H1);
 apply type_is_correct in H'; auto;
 destruct H' as [ℓ H'].
 - apply Π_inversion in H1.
