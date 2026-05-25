@@ -17,12 +17,6 @@ Arguments λ [_] [_] _ _.
 Arguments app [_] [_] _ _.
 Infix "$" := app (at level 40, left associativity).
 
-Inductive Atomic {L n}: Term L n -> Prop :=
-| 𝓤_atomic ℓ: Atomic (𝓤 ℓ)
-| Π_atomic T U: Atomic (Π T U)
-| var_atomic i: Atomic (var i)
-| app_atomic t u: Atomic t -> Atomic (t $ u).
-
 Definition fin_match {A n} (z: A) (s: Fin n -> A)
   (x: Fin (S n)) : A :=
 match x with
@@ -207,9 +201,4 @@ Proof.
 unfold shift, subst_at.
 rewrite replace_rename, rename_replace.
 apply replace_ext. reflexivity.
-Qed.
-
-Lemma rename_atomic {L m n} (f: Fin m -> Fin n)
-  (t: Term L m): Atomic t -> Atomic (rename f t).
-Proof. intros. dependent induction H; constructor; auto.
 Qed.

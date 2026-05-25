@@ -1,7 +1,9 @@
 Require Import Stdlib.Program.Equality.
 Require Import Setoid.
 Require Import Syntax.
-Require Import DefinitionalEquivalence.
+Require Import StronglyNormalizing.
+Require Import Atomic.
+Require Import Reduction.
 
 Generalizable Variables L X₀.
 
@@ -81,17 +83,17 @@ Notation "x ⟨ i ⟩ y" :=
 
 Generalizable Variable 𝔅.
 
-Fixpoint adjust {m n}: Fin n -> Fin (m + n) :=
-match m with
-| 0 => fun i => i
-| S m => fun i => fsucc (adjust i)
-end.
-
 Definition Π' `{𝔈_Set L 𝔈 𝔄} `{𝔈_Set L 𝔈 𝔅}
   (X: 𝔄) (Y: Λ_set X -> 𝔅): Type :=
     { f: forall α, Λ_set (Y α)
     | forall α α' i, α ⟨ i ⟩ α' -> f α ⟨ i ⟩ f α'
     }.
+
+Fixpoint adjust {m n}: Fin n -> Fin (m + n) :=
+match m with
+| 0 => fun i => i
+| S m => fun i => fsucc (adjust i)
+end.
 
 Instance Product `{𝔈_Set L 𝔈 𝔄} `{𝔈_Set L 𝔈 𝔅}
   (X: 𝔄) (Y: Λ_set X -> 𝔅): Λ_Set L (Π' X Y) :=

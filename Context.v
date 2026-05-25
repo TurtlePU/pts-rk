@@ -1,7 +1,7 @@
 Require Import Stdlib.Program.Equality.
 Require Import Stdlib.Relations.Relations.
 Require Import Syntax.
-Require Import DefinitionalEquivalence.
+Require Import Reduction.
 
 Inductive Ctx L: nat -> Type :=
 | ε: Ctx L 0

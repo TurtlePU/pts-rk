@@ -3,7 +3,8 @@ Require Import Typing.
 Require Import Context.
 Require Import Levels.
 Require Import Syntax.
-Require Import DefinitionalEquivalence.
+Require Import DefEq.
+Require Import Reduction.
 Require Import AbstractRewriting.
 Require Import Inversions.
 Require Import Congruence.

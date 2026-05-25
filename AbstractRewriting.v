@@ -1,8 +1,5 @@
 Require Import Setoid.
 
-Inductive Acc {A} (R: relation A): A -> Prop :=
-| acc x: (forall y, R x y -> Acc R y) -> Acc R x.
-
 Inductive RTC {A} (R: relation A): relation A :=
 | rtc_refl x: RTC R x x
 | rtc_step {x y z}: R x y -> RTC R y z -> RTC R x z.

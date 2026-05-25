@@ -1,6 +1,6 @@
 Require Import Stdlib.Program.Equality.
 Require Import Context.
-Require Import DefinitionalEquivalence.
+Require Import DefEq.
 Require Import Levels.
 Require Import Syntax.
 
