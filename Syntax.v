@@ -5,12 +5,12 @@ Inductive Fin: nat -> Type :=
 | fsucc {n}: Fin n -> Fin (S n).
 
 Inductive Term (L: Type) (n: nat) : Type :=
-| Rank: L -> Term L n
+| 𝓤: L -> Term L n
 | Π: Term L n -> Term L (S n) -> Term L n
 | var: Fin n -> Term L n
 | λ: Term L n -> Term L (S n) -> Term L n
 | app: Term L n -> Term L n -> Term L n.
-Arguments Rank [_] [_] _.
+Arguments 𝓤 [_] [_] _.
 Arguments Π [_] [_] _ _.
 Arguments var [_] [_] _.
 Arguments λ [_] [_] _ _.
@@ -18,7 +18,7 @@ Arguments app [_] [_] _ _.
 Infix "$" := app (at level 40, left associativity).
 
 Inductive Atomic {L n}: Term L n -> Prop :=
-| Rank_atomic ℓ: Atomic (Rank ℓ)
+| 𝓤_atomic ℓ: Atomic (𝓤 ℓ)
 | Π_atomic T U: Atomic (Π T U)
 | var_atomic i: Atomic (var i)
 | app_atomic t u: Atomic t -> Atomic (t $ u).
@@ -38,7 +38,7 @@ fin_match fzero (fun x => fsucc (f x)).
 Fixpoint rename {L m n} (f: Fin m -> Fin n)
   (t: Term L m): Term L n :=
 match t with
-| Rank l => Rank l
+| 𝓤 ℓ => 𝓤 ℓ
 | Π T U => Π (rename f T) (rename (weak f) U)
 | var x => var (f x)
 | λ T t => λ (rename f T) (rename (weak f) t)
@@ -55,7 +55,7 @@ fin_match (var fzero) (fun x => shift (f x)).
 Fixpoint replace {L m n} (f: Fin m -> Term L n)
   (t: Term L m) : Term L n :=
 match t with
-| Rank l => Rank l
+| 𝓤 ℓ => 𝓤 ℓ
 | Π T U => Π (replace f T) (replace (transpose f) U)
 | var x => f x
 | λ T t => λ (replace f T) (replace (transpose f) t)

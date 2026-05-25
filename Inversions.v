@@ -7,10 +7,9 @@ Require Import Context.
 Require Import Syntax.
 Require Import Congruence.
 
-Lemma Rank_inversion {L n Γ} (sig: Levels_sig L)
+Lemma 𝓤_inversion {L n Γ} (sig: Levels_sig L)
   (ℓ: L) (T: Term L n):
-  Γ ⊢ Rank ℓ ⇐ T ->
-  exists ℓ', axiom ℓ ℓ' /\ T ≡ Rank ℓ'.
+  Γ ⊢ 𝓤 ℓ ⇐ T -> exists ℓ', axiom ℓ ℓ' /\ T ≡ 𝓤 ℓ'.
 Proof. intro. dependent induction H.
 - exists ℓ'. split. auto. reflexivity.
 - destruct (IHtyp1 _ eq_refl) as [ℓ' [H2 H3]].
@@ -22,9 +21,9 @@ Lemma Π_inversion {L n Γ} (sig: Levels_sig L)
   Γ ⊢ Π T U ⇐ V ->
   exists ℓₜ ℓᵤ ℓ,
   rule ℓₜ ℓᵤ ℓ
-  /\ Γ ⊢ T ⇐ Rank ℓₜ
-  /\ Γ & T ⊢ U ⇐ Rank ℓᵤ
-  /\ V ≡ Rank ℓ.
+  /\ Γ ⊢ T ⇐ 𝓤 ℓₜ
+  /\ Γ & T ⊢ U ⇐ 𝓤 ℓᵤ
+  /\ V ≡ 𝓤 ℓ.
 Proof. intro. dependent induction H.
 - exists ℓₜ, ℓᵤ, ℓ. repeat constructor; auto.
 - destruct (IHtyp1 _ _ eq_refl)
@@ -45,7 +44,7 @@ Lemma λ_inversion {L n Γ} (sig: Levels_sig L)
   (T V: Term L n) (t: Term L (S n)):
   Γ ⊢ λ T t ⇐ V ->
   exists ℓ U,
-  Γ ⊢ T ⇐ Rank ℓ
+  Γ ⊢ T ⇐ 𝓤 ℓ
   /\ Γ & T ⊢ t ⇐ U
   /\ V ≡ Π T U.
 Proof. intro. dependent induction H.
@@ -77,7 +76,7 @@ Theorem uniqueness_of_typing `(Levels_functional_sig L)
   {n Γ} (t T T': Term L n):
   Γ ⊢ t ⇐ T -> Γ ⊢ t ⇐ T' -> T ≡ T'.
 Proof. intros. induction t.
-- apply Rank_inversion in H1, H2.
+- apply 𝓤_inversion in H1, H2.
   destruct (H1, H2) as [[ℓ₁ [H3 H5]] [ℓ₂ [H4 H6]]].
   assert (H': ℓ₁ = ℓ₂). {
     apply axiom_f with (ℓ := l); auto.
@@ -89,13 +88,13 @@ Proof. intros. induction t.
   rewrite H7, H8. replace ℓ with ℓ'. reflexivity.
   apply rule_f with (ℓₜ := ℓₜ') (ℓᵤ := ℓᵤ'). auto.
   replace ℓᵤ' with ℓᵤ. replace ℓₜ' with ℓₜ. auto.
-  + assert (Hℓ: @Rank _ n ℓₜ ≡ Rank ℓₜ').
+  + assert (Hℓ: @𝓤 _ n ℓₜ ≡ 𝓤 ℓₜ').
     { apply IHt1 with (Γ := Γ); assumption. }
     rewrite def_equiv_prop in Hℓ.
     destruct Hℓ as [u [H9 H10]].
     inversion H9. subst. inversion H10. subst.
     reflexivity. inversion H11. inversion H11.
-  + assert (Hℓ: @Rank _ (S n) ℓᵤ ≡ Rank ℓᵤ').
+  + assert (Hℓ: @𝓤 _ (S n) ℓᵤ ≡ 𝓤 ℓᵤ').
     { apply IHt2 with (Γ := Γ & t1); assumption. }
     rewrite def_equiv_prop in Hℓ.
     destruct Hℓ as [u [H9 H10]].

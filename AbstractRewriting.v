@@ -25,8 +25,6 @@ Definition ChurchRosser {A} (R: relation A): Prop :=
   forall t t₁ t₂, R t t₁ -> R t t₂ ->
   exists u, R t₁ u /\ R t₂ u.
 
-Arguments inclusion [_] _.
-
 Instance rtc_refl_inst {A} (R: relation A):
   Reflexive (RTC R).
 Proof. unfold Reflexive. apply rtc_refl. Qed.

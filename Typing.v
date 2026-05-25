@@ -7,29 +7,29 @@ Require Import Syntax.
 Reserved Notation "Γ ⊢ t ⇐ T" (at level 60).
 Inductive typ {L} {sig: Levels_sig L}:
   forall {n}, Ctx L n -> Term L n -> Term L n -> Prop :=
-| typ_rank {n} {Γ : Ctx L n} ℓ ℓ':
-       axiom ℓ ℓ' ->
-(* -------------------- *)
-   Γ ⊢ Rank ℓ ⇐ Rank ℓ'
-| typ_pi {n} {Γ : Ctx L n} {T U} ℓₜ ℓᵤ ℓ:
-   Γ ⊢ T ⇐ Rank ℓₜ -> Γ & T ⊢ U ⇐ Rank ℓᵤ -> rule ℓₜ ℓᵤ ℓ ->
-(* --------------------------------------------------------- *)
-                      Γ ⊢ Π T U ⇐ Rank ℓ
+| typ_𝓤 {n} {Γ : Ctx L n} ℓ ℓ':
+    axiom ℓ ℓ' ->
+(* -------------- *)
+   Γ ⊢ 𝓤 ℓ ⇐ 𝓤 ℓ'
+| typ_Π {n} {Γ : Ctx L n} {T U} ℓₜ ℓᵤ ℓ:
+   Γ ⊢ T ⇐ 𝓤 ℓₜ -> Γ & T ⊢ U ⇐ 𝓤 ℓᵤ -> rule ℓₜ ℓᵤ ℓ ->
+(* -------------------------------------------------- *)
+                   Γ ⊢ Π T U ⇐ 𝓤 ℓ
 | typ_var {n} {Γ : Ctx L n} i:
 (* ------------------ *)
    Γ ⊢ var i ⇐ Γ !! i
-| typ_lam {n} {Γ : Ctx L n} {U t T} ℓ:
-   Γ ⊢ U ⇐ Rank ℓ -> Γ & U ⊢ t ⇐ T ->
-(* ---------------------------------- *)
-           Γ ⊢ λ U t ⇐ Π U T
+| typ_λ {n} {Γ : Ctx L n} {U t T} ℓ:
+   Γ ⊢ U ⇐ 𝓤 ℓ -> Γ & U ⊢ t ⇐ T ->
+(* ------------------------------- *)
+         Γ ⊢ λ U t ⇐ Π U T
 | typ_app {n} {Γ : Ctx L n} {t T u} U:
    Γ ⊢ t ⇐ Π U T -> Γ ⊢ u ⇐ U ->
 (* ----------------------------- *)
          Γ ⊢ t $ u ⇐ T ◁ u
 | typ_conv {n} {Γ: Ctx L n} {t T'} T ℓ:
-   Γ ⊢ t ⇐ T -> Γ ⊢ T' ⇐ Rank ℓ -> T ≡ T' ->
-(* ----------------------------------------- *)
-                  Γ ⊢ t ⇐ T'
+   Γ ⊢ t ⇐ T -> Γ ⊢ T' ⇐ 𝓤 ℓ -> T ≡ T' ->
+(* -------------------------------------- *)
+                Γ ⊢ t ⇐ T'
 where "Γ ⊢ t ⇐ T" := (typ Γ t T).
 
 Lemma weakening_strong m {L n Γ} (sig: Levels_sig L)
@@ -39,14 +39,14 @@ Lemma weakening_strong m {L n Γ} (sig: Levels_sig L)
    insert Γ U ⊢ rename wr t ⇐ rename wr T.
 Proof. intros. dependent induction H.
 - constructor. auto.
-- apply typ_pi with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
-  + apply IHtyp1 with (T := Rank ℓₜ); reflexivity.
+- apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
+  + apply IHtyp1 with (T := 𝓤 ℓₜ); reflexivity.
   + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & T0)
-    (T := Rank ℓᵤ); reflexivity.
+    (T := 𝓤 ℓᵤ); reflexivity.
   + auto.
 - rewrite <- insert_index with (T := U). constructor.
-- apply typ_lam with (ℓ := ℓ).
-  + apply IHtyp1 with (T := Rank ℓ); reflexivity.
+- apply typ_λ with (ℓ := ℓ).
+  + apply IHtyp1 with (T := 𝓤 ℓ); reflexivity.
   + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & U0);
     reflexivity.
 - rewrite rename_subst. simpl rename.
@@ -55,7 +55,7 @@ Proof. intros. dependent induction H.
   + apply IHtyp2; reflexivity.
 - apply typ_conv with (T := rename wr T0) (ℓ := ℓ).
   + apply IHtyp1; reflexivity.
-  + apply IHtyp2 with (T := Rank ℓ); reflexivity.
+  + apply IHtyp2 with (T := 𝓤 ℓ); reflexivity.
   + apply rename_equiv. assumption.
 Qed.
 
@@ -73,11 +73,11 @@ Lemma substitution_lemma_strong m
   Γ *⏪u ⊢ t ⏪u ⇐ T ⏪u.
 Proof. intros. dependent induction H.
 - constructor. auto.
-- apply typ_pi with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
-  + apply IHtyp1 with (T := Rank ℓₜ); try reflexivity.
+- apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
+  + apply IHtyp1 with (T := 𝓤 ℓₜ); try reflexivity.
     assumption.
   + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & _)
-    (T := Rank ℓᵤ); try reflexivity. assumption.
+    (T := 𝓤 ℓᵤ); try reflexivity. assumption.
   + auto.
 - induction m.
   + dependent destruction i; simpl.
@@ -99,8 +99,8 @@ Proof. intros. dependent induction H.
       (x := shift ((ctx_pred Γ !! i) ⏪u)).
       apply weakening, IHm. assumption.
       rewrite <- shift_subst_at. reflexivity.
-- apply typ_lam with (ℓ := ℓ).
-  + apply IHtyp1 with (T := Rank ℓ); try reflexivity.
+- apply typ_λ with (ℓ := ℓ).
+  + apply IHtyp1 with (T := 𝓤 ℓ); try reflexivity.
     assumption.
   + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & _);
     try reflexivity. assumption.
@@ -111,7 +111,7 @@ Proof. intros. dependent induction H.
   + apply IHtyp2; try reflexivity. assumption.
 - apply typ_conv with (ℓ := ℓ) (T := T0 ⏪u).
   + apply IHtyp1; try reflexivity. assumption.
-  + apply IHtyp2 with (T := Rank ℓ); try reflexivity.
+  + apply IHtyp2 with (T := 𝓤 ℓ); try reflexivity.
     assumption.
   + apply replace_equiv. assumption.
 Qed.

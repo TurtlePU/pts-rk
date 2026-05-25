@@ -12,9 +12,9 @@ Inductive wf {L} {sig: Levels_sig L}:
   forall {n}, Ctx L n -> Prop :=
 | wf_empty: wf ε
 | wf_cons {n} {Γ : Ctx L n} {T} ℓ:
-   wf Γ -> Γ ⊢ T ⇐ Rank ℓ ->
-(* ------------------------- *)
-          wf (Γ & T).
+   wf Γ -> Γ ⊢ T ⇐ 𝓤 ℓ ->
+(* ---------------------- *)
+        wf (Γ & T).
 
 Lemma context_reduction_strong {L n Δ} Γ
   (sig: Levels_sig L) (t T: Term L n):
@@ -23,7 +23,7 @@ Lemma context_reduction_strong {L n Δ} Γ
              Δ ⊢ t ⇐ T.
 Proof. intros. induction H.
 - constructor. auto.
-- apply typ_pi with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
+- apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
   + apply IHtyp1; assumption.
   + apply IHtyp2.
     * apply wf_cons with (ℓ := ℓₜ); assumption.
@@ -33,11 +33,11 @@ Proof. intros. induction H.
   try (simpl; constructor); dependent destruction H0.
   + apply typ_conv with (T := shift U) (ℓ := ℓ).
     * constructor.
-    * apply weakening with (T := Rank ℓ). assumption.
+    * apply weakening with (T := 𝓤 ℓ). assumption.
     * apply rename_equiv. symmetry.
       apply eq_in. assumption.
   + apply weakening with (t := var i). apply IHi; auto.
-- apply typ_lam with (ℓ := ℓ).
+- apply typ_λ with (ℓ := ℓ).
   + apply IHtyp1; assumption.
   + apply IHtyp2.
     * apply wf_cons with (ℓ := ℓ); assumption.
@@ -48,7 +48,7 @@ Qed.
 
 Lemma context_reduction {L n Γ} ℓ (sig: Levels_sig L)
   (U U': Term L n) (t T: Term L (S n)):
-   Γ & U ⊢ t ⇐ T -> wf Γ -> Γ ⊢ U ⇐ Rank ℓ -> U ↠ U' ->
+   Γ & U ⊢ t ⇐ T -> wf Γ -> Γ ⊢ U ⇐ 𝓤 ℓ -> U ↠ U' ->
 (* ------------------------------------------------- *)
                    Γ & U' ⊢ t ⇐ T.
 Proof. intros.
@@ -61,29 +61,29 @@ Generalizable Variable L.
 
 Lemma type_is_correct `(Levels_total_sig L) {n Γ}
   (t T: Term L n):
-      Γ ⊢ t ⇐ T -> wf Γ ->
-(* ------------------------- *)
-   exists ℓ, Γ ⊢ T ⇐ Rank ℓ.
+    Γ ⊢ t ⇐ T -> wf Γ ->
+(* ---------------------- *)
+   exists ℓ, Γ ⊢ T ⇐ 𝓤 ℓ.
 Proof. intros. dependent induction H1.
 - destruct (axiom_t ℓ') as [ℓ'' H3].
   exists ℓ''. constructor. auto.
 - destruct (axiom_t ℓ) as [ℓ' H3].
   exists ℓ'. constructor. auto.
 - dependent induction H2; dependent destruction i.
-  + exists ℓ. apply weakening with (T := Rank _). auto.
+  + exists ℓ. apply weakening with (T := 𝓤 _). auto.
   + specialize IHwf with i. destruct IHwf as [ℓ' H3].
-    exists ℓ'. apply weakening with (T := Rank _). auto.
+    exists ℓ'. apply weakening with (T := 𝓤 _). auto.
 - assert (H3: wf (Γ & U)).
   { apply wf_cons with (ℓ := ℓ); auto. }
   apply IHtyp2 in H3. destruct H3 as [ℓ' H3].
   destruct (rule_t ℓ ℓ') as [ℓ'' H4].
-  exists ℓ''. apply typ_pi with (ℓₜ := ℓ) (ℓᵤ := ℓ');
+  exists ℓ''. apply typ_Π with (ℓₜ := ℓ) (ℓᵤ := ℓ');
   auto.
 - apply IHtyp1 in H2. destruct H2 as [ℓ H1].
   apply Π_inversion in H1.
   destruct H1 as [_ [ℓₜ [_ [_ [_ [H1 _]]]]]].
   exists ℓₜ.
-  apply substitution_lemma with (U := U) (T := Rank _);
+  apply substitution_lemma with (U := U) (T := 𝓤 _);
   auto.
 - exists ℓ. auto.
 Qed.
@@ -99,22 +99,22 @@ apply type_is_correct in H'; auto;
 destruct H' as [ℓ H'].
 - apply Π_inversion in H1.
   destruct H1 as [ℓₜ [ℓᵤ [ℓ' [H4 [H5 [H6 H7]]]]]].
-  apply typ_conv with (ℓ := ℓ) (T := Rank ℓ'); auto.
-  + apply typ_pi with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
+  apply typ_conv with (ℓ := ℓ) (T := 𝓤 ℓ'); auto.
+  + apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
     apply context_reduction with (ℓ := ℓₜ) (U := T0);
     auto.
   + symmetry. assumption.
 - apply Π_inversion in H1.
   destruct H1 as [ℓₜ [ℓᵤ [ℓ' [H4 [H5 [H6 H7]]]]]].
-  apply typ_conv with (ℓ := ℓ) (T := Rank ℓ'); auto.
-  + apply typ_pi with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
+  apply typ_conv with (ℓ := ℓ) (T := 𝓤 ℓ'); auto.
+  + apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
     apply IHstep; auto.
     apply wf_cons with (ℓ := ℓₜ); auto.
   + symmetry. assumption.
 - apply λ_inversion in H1.
   destruct H1 as [ℓ' [U [H1 [H4 H5]]]].
   apply typ_conv with (ℓ := ℓ) (T := Π T' U); auto.
-  + apply typ_lam with (ℓ := ℓ').
+  + apply typ_λ with (ℓ := ℓ').
     * apply IHstep; auto.
     * apply context_reduction with (ℓ := ℓ') (U := T0);
       auto.
@@ -123,7 +123,7 @@ destruct H' as [ℓ H'].
 - apply λ_inversion in H1.
   destruct H1 as [ℓ' [U [H1 [H4 H5]]]].
   apply typ_conv with (ℓ := ℓ) (T := Π T0 U); auto.
-  + apply typ_lam with (ℓ := ℓ'); auto.
+  + apply typ_λ with (ℓ := ℓ'); auto.
     apply IHstep; auto.
     apply wf_cons with (ℓ := ℓ'); auto.
   + symmetry. auto.
