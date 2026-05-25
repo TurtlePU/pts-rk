@@ -10,20 +10,17 @@ Class Λ_Set L X₀ :=
 
 Infix "⊨" := (models _) (at level 60).
 
-Inductive head_β_expansion {L n}: relation (Term L n) :=
-| head_β_there t t' u:
-    head_β_expansion t t' ->
-    head_β_expansion (t $ u) (t' $ u)
-| head_β_here U t u:
-    SN U -> SN u ->
-    head_β_expansion (λ U t $ u) (t ◁ u).
+(* WHE stands for Weak Head Expansion *)
+Inductive WHE {L n}: relation (Term L n) :=
+| whe_there t t' u: WHE t t' -> WHE (t $ u) (t' $ u)
+| whe_here U t u:
+    SN U -> SN u -> WHE (λ U t $ u) (t ◁ u).
 
 Definition Saturated {L}
   (𝓒: forall n, Term L n -> Prop) :=
   (forall n t, 𝓒 n t -> SN t)
   /\ (forall n t, SN t -> Atomic t -> 𝓒 n t)
-  /\ (forall n t t', head_β_expansion t t' ->
-      𝓒 n t' -> 𝓒 n t).
+  /\ (forall n t t', WHE t t' -> 𝓒 n t' -> 𝓒 n t).
 
 Class Saturated_Λ_Set `(X : Λ_Set L X₀) :=
 { realizers_SN {n} (t: Term L n) x: t ⊨ x -> SN t
@@ -31,7 +28,7 @@ Class Saturated_Λ_Set `(X : Λ_Set L X₀) :=
 ; center_realized {n} (t: Term L n):
     Atomic t -> SN t -> t ⊨ center
 ; realizers_expansion_closed {n} (t t': Term L n) x:
-    head_β_expansion t t' -> t' ⊨ x -> t ⊨ x
+    WHE t t' -> t' ⊨ x -> t ⊨ x
 }.
 
 Remark realizers_are_saturated
@@ -119,8 +116,7 @@ auto. apply rename_step. auto. Qed.
 
 Lemma rename_whe {L m n} (f: Fin m -> Fin n)
   (t t': Term L m):
-  head_β_expansion t t' ->
-  head_β_expansion (rename f t) (rename f t').
+  WHE t t' -> WHE (rename f t) (rename f t').
 Proof. intros. induction H.
 - constructor. auto.
 - rewrite rename_subst.
@@ -128,7 +124,7 @@ Proof. intros. induction H.
 Qed.
 
 Lemma whe_SN {L n} (t t' u: Term L n):
-  head_β_expansion t t' -> SN (t' $ u) -> SN (t $ u).
+  WHE t t' -> SN (t' $ u) -> SN (t $ u).
 Proof. Admitted. (* FIXME: adapt Altenkirch *)
 
 #[refine]
