@@ -5,56 +5,76 @@ Require Import Syntax.
 Require Import AbstractRewriting.
 Require Import Congruence.
 
-Reserved Notation "t ↠ t'"
+Reserved Notation "t →ᵝ t'"
   (at level 50, no associativity).
 Inductive step L n: relation (Term L n) :=
-| step_pi_left {T T' U}: T ↠ T' -> Π T U ↠ Π T' U
-| step_pi_right {T U U'}: U ↠ U' -> Π T U ↠ Π T U'
-| step_lam_left {T T' t}: T ↠ T' -> λ T t ↠ λ T' t
-| step_lam_right {T t t'}: t ↠ t' -> λ T t ↠ λ T t'
-| step_app_left {f f' t}: f ↠ f' -> f $ t ↠ f' $ t
-| step_app_right {f t t'}: t ↠ t' -> f $ t ↠ f $ t'
-| step_beta T f t: λ T f $ t ↠ f ◁ t
-where "t ↠ t'" := (step _ _ t t').
+| step_pi_left {T T' U}:
+       T →ᵝ T' ->
+(* --------------- *)
+   Π T U →ᵝ Π T' U
+| step_pi_right {T U U'}:
+       U →ᵝ U' ->
+(* --------------- *)
+   Π T U →ᵝ Π T U'
+| step_lam_left {T T' t}:
+       T →ᵝ T' ->
+(* --------------- *)
+   λ T t →ᵝ λ T' t
+| step_lam_right {T t t'}:
+       t →ᵝ t' ->
+(* --------------- *)
+   λ T t →ᵝ λ T t'
+| step_app_left {f f' t}:
+       f →ᵝ f' ->
+(* --------------- *)
+   f $ t →ᵝ f' $ t
+| step_app_right {f t t'}:
+       t →ᵝ t' ->
+(* --------------- *)
+   f $ t →ᵝ f $ t'
+| step_beta T f t:
+(* ------------------ *)
+   λ T f $ t →ᵝ f ◁ t
+where "t →ᵝ t'" := (step _ _ t t').
 
-Reserved Notation "t ⇉ t'"
+Reserved Notation "t ⇉ᵝ t'"
   (at level 50, no associativity).
 Inductive par_step L n: relation (Term L n) :=
-| par_step_refl t: t ⇉ t
+| par_step_refl t: t ⇉ᵝ t
 | par_step_pi {T T' U U'}:
-  T ⇉ T' -> U ⇉ U' -> Π T U ⇉ Π T' U'
+  T ⇉ᵝ T' -> U ⇉ᵝ U' -> Π T U ⇉ᵝ Π T' U'
 | par_step_lam {T T' t t'}:
-  T ⇉ T' -> t ⇉ t' -> λ T t ⇉ λ T' t'
+  T ⇉ᵝ T' -> t ⇉ᵝ t' -> λ T t ⇉ᵝ λ T' t'
 | par_step_app {f f' t t'}:
-  f ⇉ f' -> t ⇉ t' -> f $ t ⇉ f' $ t'
+  f ⇉ᵝ f' -> t ⇉ᵝ t' -> f $ t ⇉ᵝ f' $ t'
 | par_step_beta {T f f' t t'}:
-  f ⇉ f' -> t ⇉ t' -> λ T f $ t ⇉ f' ◁ t'
-where "t ⇉ t'" := (par_step _ _ t t').
+  f ⇉ᵝ f' -> t ⇉ᵝ t' -> λ T f $ t ⇉ᵝ f' ◁ t'
+where "t ⇉ᵝ t'" := (par_step _ _ t t').
 
 Definition SN {L n}: Term L n -> Prop := Acc (step L n).
 
 Definition reduces_to L n: relation (Term L n) :=
   RTC (step L n).
-Infix "⇛" := (reduces_to _ _)
+Infix "↠ᵝ" := (reduces_to _ _)
   (at level 50, no associativity).
 
 Definition def_equiv L n: relation (Term L n) :=
   EquivClosure (step L n).
-Infix "≡" := (def_equiv _ _)
+Infix "=ᵝ" := (def_equiv _ _)
   (at level 50, no associativity).
 Typeclasses Transparent def_equiv.
 
-Instance step_cong L: Congruence L (fun n x y => x ↠ y).
+Instance step_cong L: Congruence L (fun n x y => x →ᵝ y).
 Proof. split; intros; constructor; assumption. Qed.
 
 Lemma step_par_step {L n} (t t': Term L n):
-  t ↠ t' -> t ⇉ t'.
+  t →ᵝ t' -> t ⇉ᵝ t'.
 Proof.
 intro. induction H; repeat constructor; assumption.
 Qed.
 
 Lemma par_step_rtc_step {L n} (t t': Term L n):
-  t ⇉ t' -> t ⇛ t'.
+  t ⇉ᵝ t' -> t ↠ᵝ t'.
 Proof.
 intro. induction H.
 - constructor.
@@ -69,44 +89,38 @@ Qed.
 
 Lemma rename_par_step {L m n}
   (f: Fin m -> Fin n) (t t': Term L m):
-  t ⇉ t' -> rename f t ⇉ rename f t'.
+  t ⇉ᵝ t' -> rename f t ⇉ᵝ rename f t'.
 Proof.
 intros. generalize dependent n.
 induction H; try constructor; auto.
 intros. rewrite rename_subst. constructor; auto.
 Qed.
 
-Lemma shift_par_step {L n} (t t': Term L n):
-  t ⇉ t' -> shift t ⇉ shift t'.
-Proof.
-intro. unfold shift. apply rename_par_step. auto.
-Qed.
-
 Lemma transpose_par_step {L m n}
   (f f': Fin m -> Term L n):
-  (forall i, f i ⇉ f' i) ->
-  forall j, transpose f j ⇉ transpose f' j.
+  (forall i, f i ⇉ᵝ f' i) ->
+  forall j, transpose f j ⇉ᵝ transpose f' j.
 Proof.
 intros. dependent destruction j; simpl.
 - constructor.
-- apply shift_par_step. auto.
+- apply rename_par_step. auto.
 Qed.
 
 Lemma replace_par_step {L m n}
   (f f': Fin m -> Term L n) (t: Term L m):
-  (forall i, f i ⇉ f' i) ->
-  replace f t ⇉ replace f' t.
+  (forall i, f i ⇉ᵝ f' i) ->
+  replace f t ⇉ᵝ replace f' t.
 Proof.
 generalize dependent n. induction t; simpl; intros;
 try constructor; auto; apply IHt2; intro;
 dependent destruction i; try constructor; simpl;
-apply shift_par_step; auto.
+apply rename_par_step; auto.
 Qed.
 
 Lemma par_step_replace {L m n}
   (f f': Fin m -> Term L n) (t t': Term L m):
-  (forall i, f i ⇉ f' i) -> t ⇉ t' ->
-  replace f t ⇉ replace f' t'.
+  (forall i, f i ⇉ᵝ f' i) -> t ⇉ᵝ t' ->
+  replace f t ⇉ᵝ replace f' t'.
 Proof.
 intros. generalize dependent n.
 induction H0; intros; simpl; try constructor; auto.
@@ -119,7 +133,7 @@ Qed.
 
 Lemma sub_par_step {L n}
   (f: Term L (S n)) (t t': Term L n):
-  t ⇉ t' -> f ◁ t ⇉ f ◁ t'.
+  t ⇉ᵝ t' -> f ◁ t ⇉ᵝ f ◁ t'.
 Proof.
 intros. unfold subst. apply replace_par_step.
 dependent destruction i; simpl; auto; constructor.
@@ -127,15 +141,15 @@ Qed.
 
 Lemma par_step_sub {L n}
   (f f': Term L (S n)) (t t': Term L n):
-  f ⇉ f' -> t ⇉ t' -> f ◁ t ⇉ f' ◁ t'.
+  f ⇉ᵝ f' -> t ⇉ᵝ t' -> f ◁ t ⇉ᵝ f' ◁ t'.
 Proof.
 intros. unfold subst. apply par_step_replace; auto.
 dependent destruction i; auto; constructor.
 Qed.
 
 Lemma par_step_lam_fun {L n}
-  (T t': Term L n) (f: Term L (S n)): λ T f ⇉ t' ->
-  exists T' f', t' = λ T' f' /\ T ⇉ T' /\ f ⇉ f'.
+  (T t': Term L n) (f: Term L (S n)): λ T f ⇉ᵝ t' ->
+  exists T' f', t' = λ T' f' /\ T ⇉ᵝ T' /\ f ⇉ᵝ f'.
 Proof.
 intro. inversion H; subst.
 - exists T, f. repeat constructor.
@@ -203,7 +217,7 @@ apply CR_ext with (R := RTC (par_step L n)).
 Qed.
 
 Theorem def_equiv_prop {L n} (t t': Term L n):
-  t ≡ t' <-> exists u, t ⇛ u /\ t' ⇛ u.
+  t =ᵝ t' <-> exists u, t ↠ᵝ u /\ t' ↠ᵝ u.
 Proof.
 constructor; intro.
 - induction H. exists x; repeat constructor.
@@ -223,7 +237,7 @@ Qed.
 
 Lemma rename_step {L m n}
   (f: Fin m -> Fin n) (t t': Term L m):
-  t ↠ t' -> rename f t ↠ rename f t'.
+  t →ᵝ t' -> rename f t →ᵝ rename f t'.
 Proof.
 intro. generalize dependent n. induction H; simpl;
 try (constructor; apply IHstep). intros.
@@ -232,24 +246,24 @@ Qed.
 
 Lemma replace_step {L m n}
   (f: Fin m -> Term L n) (t t': Term L m):
-  t ↠ t' -> replace f t ↠ replace f t'.
+  t →ᵝ t' -> replace f t →ᵝ replace f t'.
 Proof.
 intro. generalize dependent n. induction H; simpl;
 try (constructor; apply IHstep). intros.
 rewrite replace_subst. constructor.
 Qed.
 
-Lemma rtc_pi_repr {L n} (T t: Term L n)
+Lemma rtc_Π_repr {L n} (T t: Term L n)
   (U: Term L (S n)):
-  Π T U ⇛ t -> exists T' U', t = Π T' U'.
+  Π T U ↠ᵝ t -> exists T' U', t = Π T' U'.
 Proof. intro. dependent induction H.
 - exists T, U. reflexivity.
 - inversion H; subst; exact (IHRTC _ _ eq_refl).
 Qed.
 
-Lemma rtc_pi_mono {L n} (T T': Term L n)
+Lemma rtc_Π_inversion {L n} (T T': Term L n)
   (U U': Term L (S n)):
-  Π T U ⇛ Π T' U' -> T ⇛ T' /\ U ⇛ U'.
+  Π T U ↠ᵝ Π T' U' -> T ↠ᵝ T' /\ U ↠ᵝ U'.
 Proof. intro. dependent induction H.
 - split; reflexivity.
 - inversion H; subst.
@@ -259,14 +273,14 @@ Proof. intro. dependent induction H.
     split; auto. apply rtc_step with (y := U'0); auto.
 Qed.
 
-Lemma equiv_pi_mono {L n} (T T': Term L n)
+Lemma equiv_Π_inversion {L n} (T T': Term L n)
   (U U': Term L (S n)):
-  Π T U ≡ Π T' U' -> T ≡ T' /\ U ≡ U'.
+  Π T U =ᵝ Π T' U' -> T =ᵝ T' /\ U =ᵝ U'.
 Proof.
 rewrite def_equiv_prop. intros [u [H1 H2]].
-assert (H := H1). apply rtc_pi_repr in H.
+assert (H := H1). apply rtc_Π_repr in H.
 destruct H as [T1 [U1 H]]. subst.
-apply rtc_pi_mono in H1, H2.
+apply rtc_Π_inversion in H1, H2.
 destruct H1 as [H1 H3]. destruct H2 as [H2 H4].
 split; rewrite def_equiv_prop;
 [exists T1 | exists U1]; auto.
@@ -274,7 +288,7 @@ Qed.
 
 Lemma rename_rtc {L m n}
   (f: Fin m -> Fin n) (t t': Term L m):
-  t ⇛ t' -> rename f t ⇛ rename f t'.
+  t ↠ᵝ t' -> rename f t ↠ᵝ rename f t'.
 Proof. intros. induction H.
 - reflexivity.
 - apply rtc_step with (y := rename f y); auto.
@@ -282,8 +296,8 @@ Proof. intros. induction H.
 Qed.
 
 Lemma rtc_transpose {L m n} (f f': Fin m -> Term L n):
-  (forall i, f i ⇛ f' i) ->
-  forall i, transpose f i ⇛ transpose f' i.
+  (forall i, f i ↠ᵝ f' i) ->
+  forall i, transpose f i ↠ᵝ transpose f' i.
 Proof. intros. dependent destruction i; simpl.
 - reflexivity.
 - apply rename_rtc. auto.
@@ -291,7 +305,8 @@ Qed.
 
 Lemma rtc_replace {L m n}
   (f f': Fin m -> Term L n) (t: Term L m):
-  (forall i, f i ⇛ f' i) -> replace f t ⇛ replace f' t.
+  (forall i, f i ↠ᵝ f' i) ->
+  replace f t ↠ᵝ replace f' t.
 Proof. intros. generalize dependent n.
 induction t; simpl; intros.
 - reflexivity.
@@ -305,7 +320,7 @@ Qed.
 
 Lemma equiv_sub {L n} (f: Term L (S n))
   (t t': Term L n):
-  t ≡ t' -> f ◁ t ≡ f ◁ t'.
+  t =ᵝ t' -> f ◁ t =ᵝ f ◁ t'.
 Proof.
 rewrite def_equiv_prop. intros [u [H H']].
 rewrite def_equiv_prop. exists (f ◁ u).
@@ -315,7 +330,7 @@ Qed.
 
 Lemma rename_equiv {L m n}
   (f: Fin m -> Fin n) (t t': Term L m):
-  t ≡ t' -> rename f t ≡ rename f t'.
+  t =ᵝ t' -> rename f t =ᵝ rename f t'.
 Proof. intro. apply eq_unmap.
 apply eq_map with (Q := step L m).
 apply rename_step. assumption.
@@ -323,7 +338,7 @@ Qed.
 
 Lemma replace_equiv {L m n}
   (f: Fin m -> Term L n) (t t': Term L m):
-  t ≡ t' -> replace f t ≡ replace f t'.
+  t =ᵝ t' -> replace f t =ᵝ replace f t'.
 Proof. intro. apply eq_unmap.
 apply eq_map with (Q := step L m).
 apply replace_step. assumption.
@@ -338,7 +353,7 @@ apply H0 with (y := y $ u) (u := u).
 Qed.
 
 Lemma atomic_preserv {L n} (t t': Term L n):
-  t ↠ t' -> Atomic t -> Atomic t'.
+  t →ᵝ t' -> Atomic t -> Atomic t'.
 Proof.
 intros. generalize dependent t'. induction H0; intros;
 inversion H; try constructor.
@@ -374,7 +389,7 @@ Qed.
 
 Lemma rename_step_is_renamed {L m n} f
   (t: Term L m) (u: Term L n):
-  rename f t ↠ u -> exists v, u = rename f v /\ t ↠ v.
+  rename f t →ᵝ u -> exists v, u = rename f v /\ t →ᵝ v.
 Proof. generalize dependent n.
 induction t; intros; inversion H.
 - apply IHt1 in H3. destruct H3 as [T0 [H3 H4]]. subst.

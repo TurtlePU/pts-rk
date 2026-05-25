@@ -18,7 +18,7 @@ Inductive wf {L} {sig: Levels_sig L}:
 
 Lemma context_reduction_strong {L n Δ} Γ
   (sig: Levels_sig L) (t T: Term L n):
-   Γ ⊢ t ⇐ T -> wf Γ -> Γ ↠ₓ Δ ->
+   Γ ⊢ t ⇐ T -> wf Γ -> Γ →ˠ Δ ->
 (* ------------------------------ *)
              Δ ⊢ t ⇐ T.
 Proof. intros. induction H.
@@ -48,8 +48,8 @@ Qed.
 
 Lemma context_reduction {L n Γ} ℓ (sig: Levels_sig L)
   (U U': Term L n) (t T: Term L (S n)):
-   Γ & U ⊢ t ⇐ T -> wf Γ -> Γ ⊢ U ⇐ 𝓤 ℓ -> U ↠ U' ->
-(* ------------------------------------------------- *)
+   Γ & U ⊢ t ⇐ T -> wf Γ -> Γ ⊢ U ⇐ 𝓤 ℓ -> U →ᵝ U' ->
+(* -------------------------------------------------- *)
                    Γ & U' ⊢ t ⇐ T.
 Proof. intros.
 apply context_reduction_strong with (Γ := Γ & U); auto.
@@ -90,8 +90,8 @@ Qed.
 
 Theorem subject_reduction `(Levels_total_sig L) {n Γ}
   (t t' T: Term L n):
-   Γ ⊢ t ⇐ T -> wf Γ -> t ↠ t' ->
-(* ------------------------------ *)
+   Γ ⊢ t ⇐ T -> wf Γ -> t →ᵝ t' ->
+(* ------------------------------- *)
             Γ ⊢ t' ⇐ T.
 Proof.
 intros. induction H3; assert (H' := H1);
@@ -142,7 +142,7 @@ destruct H' as [ℓ H'].
   destruct H1 as [T' [U [H1 [H4 H5]]]].
   apply λ_inversion in H1.
   destruct H1 as [ℓₜ [T2 [H1 [H6 H7]]]].
-  apply equiv_pi_mono in H7. destruct H7.
+  apply equiv_Π_inversion in H7. destruct H7.
   apply typ_conv with (ℓ := ℓ) (T := T2 ◁ t); auto.
   + apply substitution_lemma with (U := T0); auto.
     apply typ_conv with (ℓ := ℓₜ) (T := T'); auto.

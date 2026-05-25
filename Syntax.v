@@ -78,7 +78,7 @@ end.
 Definition subst_at {L m n}
   (f: Term L (S (m + n))) (t: Term L n):
   Term L (m + n) := replace (push t) f.
-Infix "⏪" :=
+Infix "◁ᵢ" :=
   subst_at (at level 45, left associativity).
 
 Lemma rename_ext {L m n} (f g: Fin m -> Fin n):
@@ -202,7 +202,7 @@ Qed.
 
 Lemma shift_subst_at {L m n}
   (t: Term L (S m + n)) (u: Term L n):
-  shift t ⏪u = shift (t ⏪u).
+  shift t ◁ᵢ u = shift (t ◁ᵢ u).
 Proof.
 unfold shift, subst_at.
 rewrite replace_rename, rename_replace.

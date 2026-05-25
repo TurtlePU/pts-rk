@@ -27,8 +27,8 @@ Inductive typ {L} {sig: Levels_sig L}:
 (* ----------------------------- *)
          Γ ⊢ t $ u ⇐ T ◁ u
 | typ_conv {n} {Γ: Ctx L n} {t T'} T ℓ:
-   Γ ⊢ t ⇐ T -> Γ ⊢ T' ⇐ 𝓤 ℓ -> T ≡ T' ->
-(* -------------------------------------- *)
+   Γ ⊢ t ⇐ T -> Γ ⊢ T' ⇐ 𝓤 ℓ -> T =ᵝ T' ->
+(* --------------------------------------- *)
                 Γ ⊢ t ⇐ T'
 where "Γ ⊢ t ⇐ T" := (typ Γ t T).
 
@@ -70,7 +70,7 @@ Lemma substitution_lemma_strong m
   {L n Γ} (sig: Levels_sig L)
   (t T: Term L (S m + n)) (u: Term L n):
   Γ ⊢ t ⇐ T -> shrink Γ ⊢ u ⇐ squeeze Γ ->
-  Γ *⏪u ⊢ t ⏪u ⇐ T ⏪u.
+  Γ ◁ⁱ u ⊢ t ◁ᵢ u ⇐ T ◁ᵢ u.
 Proof. intros. dependent induction H.
 - constructor. auto.
 - apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
@@ -91,12 +91,12 @@ Proof. intros. dependent induction H.
       apply typ_var. symmetry. unfold subst_at, push.
       apply shift_subst.
   + dependent destruction i.
-    * apply eq_rect with (x := shift (ctx_top Γ ⏪u)).
+    * apply eq_rect with (x := shift (ctx_top Γ ◁ᵢ u)).
       constructor. simpl. unfold shift, subst_at.
       rewrite rename_replace, replace_rename.
       apply replace_ext. reflexivity.
     * apply eq_rect with
-      (x := shift ((ctx_pred Γ !! i) ⏪u)).
+      (x := shift ((ctx_pred Γ !! i) ◁ᵢ u)).
       apply weakening, IHm. assumption.
       rewrite <- shift_subst_at. reflexivity.
 - apply typ_λ with (ℓ := ℓ).
@@ -105,11 +105,11 @@ Proof. intros. dependent induction H.
   + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & _);
     try reflexivity. assumption.
 - unfold subst_at. rewrite replace_subst.
-  apply typ_app with (U := U ⏪u).
+  apply typ_app with (U := U ◁ᵢ u).
   + apply IHtyp1 with (T := Π U T0); try reflexivity.
     assumption.
   + apply IHtyp2; try reflexivity. assumption.
-- apply typ_conv with (ℓ := ℓ) (T := T0 ⏪u).
+- apply typ_conv with (ℓ := ℓ) (T := T0 ◁ᵢ u).
   + apply IHtyp1; try reflexivity. assumption.
   + apply IHtyp2 with (T := 𝓤 ℓ); try reflexivity.
     assumption.

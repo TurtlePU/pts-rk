@@ -10,14 +10,18 @@ Arguments ε {_}.
 Arguments cons [_] [_] _ _.
 Infix "&" := cons (at level 50, left associativity).
 
-Reserved Notation "Γ ↠ₓ Δ" (at level 60).
+Reserved Notation "Γ →ˠ Δ" (at level 60).
 Inductive ctx_beta {L}:
   forall {n}, relation (Ctx L n) :=
 | beta_here {n} {Γ: Ctx L n} {T U}:
-  T ↠ U -> Γ & T ↠ₓ Γ & U
+       T →ᵝ U ->
+(* -------------- *)
+   Γ & T →ˠ Γ & U
 | beta_there {n} {Γ Δ: Ctx L n} {T}:
-  Γ ↠ₓ Δ -> Γ & T ↠ₓ Δ & T
-where "Γ ↠ₓ Δ" := (ctx_beta Γ Δ).
+       Γ →ˠ Δ ->
+(* -------------- *)
+   Γ & T →ˠ Δ & T
+where "Γ →ˠ Δ" := (ctx_beta Γ Δ).
 
 Definition ctx_pred {L n} (Γ: Ctx L (S n)): Ctx L n :=
 match Γ with | Γ & _ => Γ end.
@@ -59,9 +63,9 @@ Fixpoint subst_into {L m n}:
 match m with
 | 0 => fun Γ _ => ctx_pred Γ
 | S m => fun Γ t =>
-    subst_into (ctx_pred Γ) t & ctx_top Γ ⏪t
+    subst_into (ctx_pred Γ) t & ctx_top Γ ◁ᵢ t
 end.
-Infix "*⏪" :=
+Infix "◁ⁱ" :=
   subst_into (at level 45, left associativity).
 
 Fixpoint squeeze {L m n}: Ctx L (S m + n) -> Term L n :=
