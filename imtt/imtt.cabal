@@ -19,16 +19,17 @@ common stanzas
 
 library
     import:          stanzas
-    exposed-modules: Source
+    exposed-modules: Core, Source
     -- other-modules:
-    build-depends:   base >=4.21 && <5, megaparsec, text
+    build-depends:
+      base >=4.21 && <5, megaparsec, selective, text, transformers
     hs-source-dirs:  src
 
 executable imtt
     import:         stanzas
     main-is:        Main.hs
     -- other-modules:
-    build-depends:  base, imtt, haskeline
+    build-depends:  base, containers, haskeline, imtt, mtl
     hs-source-dirs: app
 
 test-suite imtt-test

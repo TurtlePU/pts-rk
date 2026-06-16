@@ -1,7 +1,6 @@
 module Source where
 
 import Control.Applicative (Alternative (..), asum, (<**>))
-import Data.Bifunctor (first)
 import Data.Char qualified as Char
 import Data.Text (Text)
 import Data.Text qualified as Text
@@ -11,7 +10,7 @@ import Text.Megaparsec qualified as Megaparsec
 import Text.Megaparsec.Char qualified as Char
 import Text.Megaparsec.Char.Lexer qualified as Lexer
 
-newtype Name = MkName { nameText :: Text } deriving newtype Show
+newtype Name = MkName { nameText :: Text } deriving newtype (Eq, Ord, Show)
 
 data Intro = MkIntro !Name !SourceTerm deriving Show
 
@@ -27,6 +26,12 @@ data SourceTerm
   deriving Show
 
 data ReplCommand = Eval !SourceTerm | Def !Name !SourceTerm deriving Show
+
+getTerm :: ReplCommand -> SourceTerm
+getTerm = \case { Eval t -> t; Def _ t -> t }
+
+getName :: ReplCommand -> Maybe Name
+getName = \case { Eval _ -> Nothing; Def n _ -> Just n }
 
 type Parsec = Megaparsec.Parsec Void String
 
@@ -67,7 +72,13 @@ replCommand = Megaparsec.between space eof $ asum
   , Eval <$> term
   ]
 
-parseReplCommand :: String -> Either String ReplCommand
-parseReplCommand =
-  first Megaparsec.errorBundlePretty
-  . Megaparsec.parse @Void replCommand "repl"
+newtype ParseError = MkParseError
+  { errorBundle :: Megaparsec.ParseErrorBundle String Void }
+
+instance Show ParseError where
+  show = Megaparsec.errorBundlePretty . errorBundle
+
+parseReplCommand ::
+  Applicative f => (forall a. ParseError -> f a) -> String -> f ReplCommand
+parseReplCommand throw =
+  either (throw . MkParseError) pure . Megaparsec.parse replCommand "repl"
