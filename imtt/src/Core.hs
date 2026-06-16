@@ -52,8 +52,11 @@ resolveNames throw global st = case runReaderT (s2c st) [] of
     App s t -> TApp <$> s2c s <*> s2c t
     Sig (MkIntro n s) t -> TSig (Just n) <$> s2c s <*> ctxExtend n (s2c t)
     Pair s t -> TPair <$> s2c s <*> s2c t
-    Var n -> TVar <$> ReaderT \local -> case elemIndex n local of
-      Just i -> pure $ Right (MkIndex i)
-      Nothing -> if global n then pure (Left n) else Failure (MkCatList (n :|))
+    Var n -> case nameText n of
+      "fst" -> pure (TProj Fst)
+      "snd" -> pure (TProj Snd)
+      _ -> TVar <$> ReaderT \local -> case elemIndex n local of
+        Just i -> pure $ Right (MkIndex i)
+        Nothing -> if global n then pure (Left n) else Failure (MkCatList (n :|))
     Ascr s t -> TAscr <$> s2c s <*> s2c t
     Hole -> pure THole

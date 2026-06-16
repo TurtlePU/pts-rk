@@ -19,7 +19,7 @@ common stanzas
 
 library
     import:          stanzas
-    exposed-modules: Core, Source
+    exposed-modules: Core, Source, Value
     -- other-modules:
     build-depends:
       base >=4.21 && <5, megaparsec, selective, text, transformers
