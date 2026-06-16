@@ -19,9 +19,9 @@ common stanzas
 
 library
     import:          stanzas
-    -- exposed-modules:
+    exposed-modules: Source
     -- other-modules:
-    build-depends:   base >=4.21 && <5
+    build-depends:   base >=4.21 && <5, megaparsec, text
     hs-source-dirs:  src
 
 executable imtt
