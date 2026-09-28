@@ -1,0 +1,259 @@
+\documentclass[russian]{beamer}
+\usepackage[T2A]{fontenc}
+\usepackage[english,main=russian]{babel}
+\usepackage{
+    amssymb,mathpartir,mathtools,simplebnf,stmaryrd,
+    tikz-cd
+}
+\title{Чистая система типов с рангами функций в качестве сортов}
+\author{Соколов П.П.}
+\institute{Высшая Школа Экономики}
+\date{2026}
+\begin{document}
+\frame{\titlepage}
+\begin{frame}{План на сегодня}
+\tableofcontents
+\end{frame}
+\section{Мотивация и идея}
+\begin{frame}{Мотивация и идея}
+\begin{itemize}
+\item Больше всего вопросов при изучении современных
+    средств интерактивных доказательств (Lean, Rocq,
+    Agda...) вызывает устройство \textit{иерархий
+    вселенных}: $\mathtt{Type}_1 : \mathtt{Type}_2 :
+    \ldots$
+\item Вызывают они вопросы и с метатеоретической точки
+    зрения --- в доказательствах здравости системы
+    $\mathtt{Type}_n$ интерпретируется как $n$-й
+    недостижимый кардинал.
+\item Поэтому интересно искать альтернативные варианты
+    устройства иерархии. Далее описан забавный вариант,
+    располагающий типы по ``вселенным'' соответственно
+    \textit{рангу функций}.
+\item Б\'{о}льшая часть описанных результатов формально
+    верифицирована на Rocq $\checkmark$.
+\end{itemize}
+\end{frame}
+\section{Чистые системы типов}
+\begin{frame}{Чистые системы типов: синтаксис
+    $\checkmark$}
+\begin{bnf}
+$x$ : \textsf{Переменная} :in: $X$;;
+$s$ : \textsf{Сорт} :in: $S$;;
+$T$, $U$, $t$, $u$ : \textsf{Терм} ::=
+| $x$ : переменная
+| $s$ : сорт как тип
+| $\Pi(x\colon T).\,U$ : тип зависимых ф-й
+| $\lambda(x\colon T).\,u$ : анонимная функция
+| $u\,t$ : применение функции
+;;
+\end{bnf}
+\end{frame}
+\begin{frame}{ЧСТ: правила одношаговой редукции
+    $\checkmark$}
+\begin{mathpar}
+\inferrule{T \to_\beta T'}
+    {\Pi(x:T).U \to_\beta \Pi(x:T').U}
+\and
+\inferrule{U \to_\beta U'}
+    {\Pi(x:T).U \to_\beta \Pi(x:T).U'}
+\and
+\inferrule{T \to_\beta T'}
+    {\lambda(x:T).t \to_\beta \lambda(x:T').t}
+\and
+\inferrule{t \to_\beta t'}
+    {\lambda(x:T).t \to_\beta \lambda(x:T).t'}
+\and
+\inferrule{t \to_\beta t'}{t\,u \to_\beta t'\,u}
+\and
+\inferrule{u \to_\beta u'}{t\,u \to_\beta t\,u'}
+\and
+\inferrule{}
+    {(\lambda(x:T).t)\,u \to_\beta t[x\coloneqq u]}
+\end{mathpar}
+\end{frame}
+\begin{frame}{ЧСТ: правила типизации $\checkmark$}
+\begin{mathpar}
+\inferrule{x:T\in\Gamma}{\Gamma\vdash x:T}
+\and
+\inferrule{ }{\Gamma\vdash s:s'} (s, s')\in\mathrm{Ax}
+\and
+\inferrule{
+    \Gamma\vdash T:s_T \\
+    \Gamma,x:T\vdash U:s_U
+}{\Gamma\vdash\Pi(x:T).\,U:s}
+(s_T, s_U, s)\in\mathrm{Rule}
+\and
+\inferrule{
+    \Gamma\vdash T:s_T \\
+    \Gamma,x:T\vdash u:U
+}{\Gamma\vdash\lambda(x:T).u:\Pi(x:T).U}
+\and
+\inferrule{
+    \Gamma\vdash u:\Pi(x:T).U \\
+    \Gamma\vdash t:T
+}{\Gamma\vdash u\,t:U[x\coloneqq t]}
+\and
+\inferrule{
+    \Gamma\vdash t:T \\
+    \Gamma\vdash U:s \\
+    T =_\beta U
+}{\Gamma\vdash t:U}
+\end{mathpar}
+\end{frame}
+\section{<<Комбинаторные>> свойства ЧСТ}
+\begin{frame}[fragile]
+\frametitle{Метатеоретические свойства ЧСТ}
+\begin{itemize}
+    \item $\checkmark$ Отношение многошаговой редукции
+        $(\to_\beta^*)$ конфлюэнтно, т.е.
+        \[\begin{tikzcd}
+            t \arrow[r] \arrow[d]
+            & t' \arrow[d, dashed] \\
+            t'' \arrow[r, dashed] & t^*
+        \end{tikzcd}\]
+    \item $\checkmark$ Редукция сохраняет типизацию,
+        т.е.
+        \[\dfrac{\Gamma\vdash t:T\quad t\to_\beta t'}
+                {\Gamma\vdash t':T}\]
+    \item Здравы ли ЧСТ? (<<есть ли полезная модель у
+        ЧСТ?>> или <<все ли типы населены?>> или
+        <<любой ли терм нормализуется?>>)
+\end{itemize}
+\end{frame}
+\section{О здравости ЧСТ}
+\begin{frame}{Какие ЧСТ здравы?}
+\begin{itemize}
+    \item Исчисление конструкций:
+        \[\begin{array}{c}
+            S=\{*,\square\}
+            \quad \mathrm{Ax}=\{(*,\square)\}
+            \\ \mathrm{Rule}=\{
+                (*,*,*),(*,\square,\square),
+                (\square,*,*),(\square,\square,\square)
+            \}
+        \end{array}\]
+    \item Первая счётная иерархия \textit{вселенных}:
+        \[\begin{array}{c}
+            S=\{\mathcal{U}_\ell\;|\;\ell\in\mathbb{N}\}
+            \quad \mathrm{Ax}=\{
+                (\mathcal{U}_\ell,\mathcal{U}_{\ell+1})
+                \;|\;\ell\in\mathbb{N}
+            \}
+            \\ \mathrm{Rule}=\{
+                (\mathcal{U}_\ell, \mathcal{U}_{\ell'},
+                \mathcal{U}_{\max(\ell,\ell')}) \;|\;
+                \ell,\ell'\in\mathbb{N}
+            \}
+        \end{array}\]
+    \item Счётная иерархия с импредикативным
+        \texttt{Prop}:
+        \[\begin{array}{rcl}
+            S &=&\{\mathtt{Prop}\}\sqcup
+            \{\mathcal{U}_\ell\;|\;\ell\in\mathbb{N}\}
+            \\ \mathrm{Ax} &=&
+            \{(\mathtt{Prop},\mathcal{U}_0)
+            \}\sqcup\{
+                (\mathcal{U}_\ell,\mathcal{U}_{\ell+1})
+                \;|\;\ell\in\mathbb{N}
+            \}
+            \\ \mathrm{Rule} &=&\{
+                (\mathcal{U}_\ell,\mathtt{Prop},
+                \mathtt{Prop}) \;|\;
+                \ell\in\mathbb{N}
+            \} \;\sqcup
+            \\ & \sqcup & \{
+                (\mathcal{U}_\ell, \mathcal{U}_{\ell'},
+                \mathcal{U}_{\max(\ell,\ell')}) \;|\;
+                \ell,\ell'\in\mathbb{N}
+            \}
+        \end{array}\]
+\end{itemize}
+\end{frame}
+\begin{frame}{Парадокс Жирара}
+    \begin{theorem}[Girard'72]
+    Следующая ЧСТ (известная как System U) содержит
+    \textbf{не нормализующийся} терм:
+    \[\begin{array}{c}
+        S=\{*,\square,\triangle\}
+        \quad\mathrm{Ax}=\{
+            (*,\square),(\square,\triangle)
+        \}
+        \\ \mathrm{Rule}=\{
+            (*,*,*),(\square,*,*),(\triangle,*,*),
+            (\square,\square,\square),
+            (\triangle,\square,\square)
+        \}
+    \end{array}\]
+    Более того, этот терм имеет тип $\Pi(T:*).T$.
+    \end{theorem}
+    Другими словами, <<здравая ЧСТ не может поддерживать
+    одновременно \textbf{и} импредикативный
+    \texttt{Prop}, \textbf{и} полиморфные функции>>.
+
+    Из парадокса Жирара выводится противоречивость ещё
+    более простой ЧСТ, известной как Type-in-Type:
+    \[S=\{*\}\quad\mathrm{Ax}=\{(*,*)\}\quad
+    \mathrm{Rule}=\{(*,*,*)\}\]
+\end{frame}
+\begin{frame}{Как насчёт рангов?}
+\textit{Рангом} функции называется максимальная
+вложенность $\Pi$ в позиции аргумента:
+\[\mathrm{rk}\,(\Pi(x:T).U)=\max\,(\mathrm{rk}\,T+1,
+    \mathrm{rk}\,U)\]
+Рассмотрим $S=\{\mathrm{rk}_n\;|\;n\in\mathbb{N}\}$, и
+\[\mathrm{Rule}=\{(\mathrm{rk}_m,\mathrm{rk}_n,
+    \mathrm{rk}_{\max(m+1,n)})\;|\;m,n\in\mathbb{N}\}.\]
+В качестве $\mathrm{Ax}$ можно взять цепочку
+$\mathrm{rk}_0:\mathrm{rk}_1:\mathrm{rk}_2:\ldots$, но
+получится система, строго менее удобная, чем обычная
+иерархия вселенных. Попробуем поступить следующим
+образом:
+\[\mathrm{Ax}=\{(\mathrm{rk}_n,\mathrm{rk}_0)\;|\;
+    n\in\mathbb{N}\}\]
+В частности, $\mathrm{rk}_0:\mathrm{rk}_0$. Но в данной
+системе парадокс Жирара не применим!
+\end{frame}
+\begin{frame}{Варианты доказательств здравости ЧСТ}
+\begin{itemize}
+    \item Наличие хорошей модели;
+    \item Normalization-by-evaluation: наличие модели,
+        для которой есть операция <<квотинга>>, по
+        значению в модели получающая соответствующую
+        нормальную форму;
+    \item Доказательство строгой нормализации;
+    \item \dots
+\end{itemize}
+\end{frame}
+\begin{frame}{<<Общее доказательство нормализации для
+    ЧСТ>>}
+\begin{itemize}
+    \item $\checkmark$ (насыщенное) $\Lambda$-множество:
+        множество \textit{реализаторов} $S$ вместе с
+        отношением
+        $(\vDash)\subseteq S\times\mathrm{Term}$ (и
+        дополнительные условия, связанные с реализацией
+        строго нормализуемых термов);
+    \item $\checkmark$ $\mathfrak{E}$-множество:
+        семейство $\Lambda$-множеств $F$ вместе с
+        отношениями эквивалентности $\|i\|$ на $F$ и
+        $|i|$ на $\cup F$ для каждого
+        $i\in\mathfrak{E}$.
+    \item $\checkmark$ Иерархия вселенных:
+        изоморфные друг другу $\mathfrak{E}$-множество
+        $\mathfrak{A}^\Uparrow(s)$ и $\Lambda$-множество
+        $\mathfrak{A}^\Downarrow(s)$ для каждого сорта
+        $s$ с рядом допусловий.
+    \item Пара интерпретаций
+        $[\Gamma\vdash t](\gamma)$ и $\llbracket\Gamma
+        \vdash t\rrbracket(\gamma)$ такие, что, если
+        $\Gamma\vdash T:s$, то
+        $[\Gamma\vdash T]\in\mathfrak{A}^\Downarrow(s)$
+        и $\llbracket\Gamma\vdash T\rrbracket\in
+        \mathfrak{A}^\Uparrow(s)$. Из корректности
+        интерпретации следует сильная нормализация.
+    \item Собственно, конструкция иерархии для нашей
+        ЧСТ.
+\end{itemize}
+\end{frame}
+\end{document}

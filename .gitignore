@@ -3,6 +3,7 @@ aux
 .CoqMakefile.d
 CoqMakefile.conf
 *.aux
+*.dvi
 *.glob
 *.vo
 *.vok
