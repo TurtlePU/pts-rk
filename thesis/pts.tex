@@ -1221,20 +1221,23 @@ Type-in-Type:
 интерпретирует $\mathcal{U}_\ell$ как $\ell$-й
 недостижимый кардинал.
 
-\section{О чистой системе типов, основанной на рангах}
+\section{О здравости чистой системы типов, основанной
+на рангах}
 
 (TODO: завершить формализацию)
 
 \begin{definition}
-\emph{Рангом} функции называется максимальная
-вложенность $\Pi$ в позиции аргумента:
-\[\mathrm{rk}\,(\Pi(x:T).U)=\max\,(\mathrm{rk}\,T+1,
-    \mathrm{rk}\,U)\]
+    \emph{Рангом} функции называется максимальная
+    вложенность $\Pi$ в позиции аргумента:
+    \[\mathrm{rk}\,(\Pi(x:T).U)=
+        \max\,(\mathrm{rk}\,T+1,\mathrm{rk}\,U)\]
 \end{definition}
 
 Рассмотрим $S=\{\mathrm{rk}_n\;|\;n\in\mathbb{N}\}$, и
-\[\mathrm{Rule}=\{(\mathrm{rk}_m,\mathrm{rk}_n,
-    \mathrm{rk}_{\max(m+1,n)})\;|\;m,n\in\mathbb{N}\}.\]
+\[
+    \mathrm{Rule}=\{(\mathrm{rk}_m,\mathrm{rk}_n,
+    \mathrm{rk}_{\max(m+1,n)})\;|\;m,n\in\mathbb{N}\}.
+\]
 В качестве $\mathrm{Ax}$ можно взять цепочку
 $\mathrm{rk}_0:\mathrm{rk}_1:\mathrm{rk}_2:\ldots$, но
 получится система, строго менее удобная, чем обычная
@@ -1242,117 +1245,194 @@ $\mathrm{rk}_0:\mathrm{rk}_1:\mathrm{rk}_2:\ldots$, но
 образом:
 \[\mathrm{Ax}=\{(\mathrm{rk}_n,\mathrm{rk}_0)\;|\;
     n\in\mathbb{N}\}\]
-В частности, $\mathrm{rk}_0:\mathrm{rk}_0$. Но в данной
-системе парадокс Жирара не применим!
+В частности, $\mathrm{rk}_0:\mathrm{rk}_0$. Казалось
+бы, такая система не должна нормализовываться из-за
+парадокса Жирара; однако он здесь не применим потому,
+что для его кодирования в системе необходим как минимум
+один сорт, замкнутый относительно типов функций; такого
+сорта в нашей системе нет.
 
 \subsection{Сильная нормализация}
 
-Мы доказываем сильную нормализуемость с помощью аргумента кандидатов
-приводимости, используя тот факт, что система \textbf{предикативна}: правило
-произведения строго повышает уровень сорта, поэтому, хотя
-\(\mathsf{Sort}_0:\mathsf{Sort}_0\), сорт \(\mathsf{Sort}_0\) не замкнут
-относительно произведений.
+Мы доказываем сильную нормализацию с помощью
+стандартной техники \textit{кандидатов редуцируемости},
+используя тот факт, что система \textbf{предикативна}:
+правило произведения строго повышает уровень сорта,
+поэтому, хотя \(\mathrm{rk}_0:\mathrm{rk}_0\), сорт
+\(\mathrm{rk}_0\) не замкнут относительно произведений.
 
-\subsubsection{Кандидаты приводимости}
+\begin{definition}[Кандидаты редуцируемости для сортов]
+Определим кандидаты \(C_n \subseteq \mathrm{SN}\) для
+каждого сорта \(\mathrm{rk}_n\) индукцией по \(n\).
+\begin{itemize}
+    \item \(n=0\): \(C_0 \coloneqq \{ t \in \mathrm{SN}
+        \;|\; \cdot \vdash t:\mathrm{rk}_0\}\).
+    \item \(n>0\): \(C_n \coloneqq \{ t \in \mathrm{SN}
+        \;|\; \cdot \vdash t:\mathrm{rk}_n \land
+        \mathsf{Cond}_n(t)\} \).
 
-\begin{definition}
-\textbf{Кандидат} — это множество \(C\subseteq \mathrm{SN}\), такое что:
-\begin{enumerate}
-\item Если \(t\in C\) и \(t\to t'\), то \(t'\in C\).
-\item Если \(t\) нейтрален и всякий его непосредственный редукт лежит в \(C\), то \(t\in C\).
-\end{enumerate}
+        Условие $\mathsf{Cond}_n(t)$ гласит следующее:
+        если $t$ редуцируется в $\Pi(x:A).B$, то
+        \[
+            A \in C_m, \qquad
+            \forall u \in \llbracket \mathrm{nf}(A)
+            \rrbracket,\;B[x\coloneqq u]\in C_k, \qquad
+            \max(m+1,k)=n.
+        \]
+        Здесь \(\llbracket \mathrm{nf}(A)\rrbracket\) —
+        кандидат, являющийся интерпретацией замкнутой
+        нормальной формы элемента $C_m$, определённый
+        ниже.
+\end{itemize}
 \end{definition}
 
-Множество \(\mathrm{SN}\) всех сильно нормализуемых термов само является кандидатом.
+Это определение корректно, поскольку в функции ранга
+\(n\) область определения имеет ранг \(m<n\), так что
+\(C_m\) уже определено. Множество значений может иметь
+ранг \(k\le n\), но оно встречается как подтерм,
+поэтому рекурсия структурна по термам.
 
-Определим кандидаты \(C_n\) для каждого сорта \(\mathsf{Sort}_n\) индукцией по \(n\).
+\begin{definition}
+    [Кандидаты редуцироемости канонических типов]
+Для завершения определения кандидатов $C_n$ нам
+достаточно определить интерпретацию замкнутых
+нормальных форм элементов $C_m$. Таких всего два вида:
+\begin{align*}
+    \llbracket \mathrm{rk}_n \rrbracket &\coloneqq C_n,
+    \\\llbracket \Pi x{:}A.B \rrbracket &\coloneqq
+    \left\{ t\in\mathrm{SN} \mid
+    \forall u\in \llbracket A\rrbracket,\ t\,u\in
+    \llbracket \mathrm{nf}(B[x\coloneqq u])\rrbracket
+    \right\}.
+\end{align*}
+\end{definition}
 
-\begin{itemize}
-\item \(C_0 := \mathrm{SN}\).
-\item Для \(n>0\): \(C_n\) — наименьший кандидат, содержащий:
-\begin{itemize}
-\item всякую переменную;
-\item всякое произведение \(\Pi x{:}A.B\), такое что
+Перед формулировкой Основной леммы нам понадобится ещё
+одно определение: корректности подстановки и контекста.
+
+\begin{definition}
+    Контекст $\Gamma$ и подстановка
+    $\sigma:\Fin(|\Gamma|)\to\Term(0)$ являются
+    \emph{корректными} (обозначается
+    $\sigma\dblcolon\Gamma$), если:
+    \begin{enumerate}
+        \item $w:\wf(\Gamma)$;
+        \item Для любого $x$ верно, что
+            $\sigma(x): (\Gamma\mathbin{!!}x)[\sigma]$;
+        \item Если в $w:\wf(\Gamma)$ указано, что
+            $T:\mathrm{rk}_k$, то $T[\sigma]\in C_k$;
+        \item Для любого $x$ верно, что
+            $\sigma(x)\in\llbracket\mathrm{nf}(
+            (\Gamma\mathbin{!!}x)[\sigma])\rrbracket$.
+    \end{enumerate}
+\end{definition}
+
+Теперь мы готовы сформулировать и доказать Основную
+лемму.
+
+\begin{lemma}[Основная лемма]
 \[
-A\in C_m,\qquad 
-\forall u\in \llbracket A\rrbracket,\ B[u]\in C_k,
-\qquad \max(m+1,k)=n.
+    \left\{\begin{array}{l}
+        \Gamma\vdash t:T \\
+        \sigma\dblcolon\Gamma
+    \end{array}\right.\Rightarrow
+    \left\{\begin{array}{l}
+        \exists n.\; T[\sigma] \in C_n \\
+        t[\sigma] \in
+            \llbracket\mathrm{nf}(T[\sigma])\rrbracket
+    \end{array}\right.
 \]
-\end{itemize}
-\end{itemize}
-
-Здесь \(\llbracket A\rrbracket\) — кандидат, интерпретирующий тип \(A\),
-определённый ниже.
-
-Это определение обосновано, поскольку в произведении сорта \(n\) область имеет
-сорт \(m<n\), так что \(C_m\) уже определено. Кодомен может иметь сорт
-\(k\le n\), но он встречается как подтерм, поэтому рекурсия структурна по
-термам.
-
-Затем доказывается индукцией по структуре термов, что каждое \(C_n\)
-действительно является кандидатом.
-
-\subsubsection{Интерпретация типов}
-
-Для окружения \(\rho\), отображающего переменные типов в кандидаты, а термовые
-переменные — в элементы соответствующих кандидатов, определим:
-\[
-\llbracket \mathsf{Sort}_n \rrbracket_\rho := C_n,
-\]
-\[
-\llbracket x \rrbracket_\rho := \rho(x),
-\]
-\[
-\llbracket \Pi x{:}A.B \rrbracket_\rho
-:=
-\Bigl\{ t \mid t\in\mathrm{SN}\ \wedge\
-\forall u\in \llbracket A\rrbracket_\rho,\ t\,u\in \llbracket B\rrbracket_{\rho[x:=u]} \Bigr\}.
-\]
-
-Для типа \(A\) сорта \(\mathsf{Sort}_m\) индукцией по \(A\) показывается, что
-\(\llbracket A\rrbracket_\rho\) — кандидат и что \(A\in C_m\).
-
-Ключевой момент — случай произведения: если \(A\in C_m\) и для всех
-\(u\in\llbracket A\rrbracket\) выполнено \(B[u]\in C_k\), то по определению
-\(C_{\max(m+1,k)}\) произведение \(\Pi x{:}A.B\) лежит в \(C_{\max(m+1,k)}\).
-
-\subsubsection{Основная лемма}
-
-\begin{lemma}
-Если \(\Gamma\vdash t:A\), то для всякого окружения \(\rho\), удовлетворяющего
-\(\Gamma\), имеем \(t\in \llbracket A\rrbracket_\rho\).
 \end{lemma}
 
 \begin{proof}
 Индукцией по выводу \(\Gamma\vdash t:A\).
 \begin{itemize}
-\item \textbf{Переменная:} непосредственно из того, что \(\rho\) удовлетворяет \(\Gamma\).
-\item \textbf{Сорт:} \(\mathsf{Sort}_n:\mathsf{Sort}_0\). Нужно
-    \(\mathsf{Sort}_n\in C_0=\mathrm{SN}\), что выполнено, поскольку сорта
-        сильно нормализуемы.
-\item \textbf{Произведение:} Если \(\Gamma\vdash A:\mathsf{Sort}_m\) и
-    \(\Gamma,x:A\vdash B:\mathsf{Sort}_n\), то
-    \(\Pi x{:}A.B:\mathsf{Sort}_{\max(m+1,n)}\). По индукции \(A\in C_m\) и для
-    всех \(u\in\llbracket A\rrbracket\) имеем \(B[u]\in C_n\). Следовательно,
-    \(\Pi x{:}A.B\in C_{\max(m+1,n)}\) по определению \(C_{\max(m+1,n)}\).
+\item \textbf{Переменная:} непосредственно из
+    \(\sigma\dblcolon\Gamma\).
+\item \textbf{Сорт:} \(\mathrm{rk}_n:\mathrm{rk}_0\).
+    Нужно \(\mathrm{rk}_n,\mathrm{rk}_0\in C_0\), что
+    выполнено.
+\item \textbf{Тип функций:} Если
+    \(\Gamma\vdash A:\mathrm{rk}_m\) и
+    \(\Gamma,x:A\vdash B:\mathrm{rk}_n\), то
+    \(\Pi x{:}A.B:\mathrm{rk}_{\max(m+1,n)}\). По
+    индукции \(A[\sigma]\in C_m\) и для
+    всех \(u\in\llbracket A[\sigma]\rrbracket\) имеем
+    \(B[\sigma, x\coloneqq u[\sigma]]\in C_n\).
+    Следовательно,
+    \((\Pi x{:}A.B)[\sigma]\in C_{\max(m+1,n)}\); 
+    кроме этого нужно
+    $\mathrm{rk}_{\max(m+1,n)}\in C_0$, что выполнено.
 \item \textbf{Применение:} Если \(\Gamma\vdash f:\Pi x{:}A.B\) и
-    \(\Gamma\vdash u:A\), то \(f\,u:B[u]\). По индукции
-    \(f\in\llbracket \Pi x{:}A.B\rrbracket\) и \(u\in\llbracket A\rrbracket\).
-    По определению интерпретации \(\Pi\) получаем
-    \(f\,u\in\llbracket B[u]\rrbracket\).
-\item \textbf{Абстракция:} Если \(\Gamma,x:A\vdash t:B\) и
-    \(\Gamma\vdash \Pi x{:}A.B:\mathsf{Sort}_m\), то
-    \(\lambda x{:}A.t:\Pi x{:}A.B\). Чтобы показать
-    \(\lambda x{:}A.t\in\llbracket \Pi x{:}A.B\rrbracket\), возьмём произвольное
-    \(u\in\llbracket A\rrbracket\). Тогда
-\[
-(\lambda x{:}A.t)\,u \to t[x:=u].
-\]
-По индукции \(t[x:=u]\in\llbracket B[u]\rrbracket\), а кандидаты замкнуты
-относительно редукции, поэтому
-\((\lambda x{:}A.t)\,u\in\llbracket B[u]\rrbracket\). Кроме того,
-\(\lambda x{:}A.t\) сильно нормализуем, так как лежит в кандидате.
+    \(\Gamma\vdash u:A\), то \(f\,u:B[x\coloneqq u]\).
+    По индукции \((\Pi(x:A).B)[\sigma]\in C_n\),
+    \(f[\sigma]\in\llbracket (\Pi x{:}A.B)[\sigma]
+        \rrbracket\) и
+    \(u[\sigma]\in\llbracket A[\sigma]\rrbracket\).
+    По определению $C_n$ получаем
+    $B[\sigma,x\coloneqq u]\in C_m$, а по
+    определению интерпретации \(\Pi\) получаем
+    \((f\,u)[\sigma]\in\llbracket
+        B[\sigma,x\coloneqq u]\rrbracket\).
+\item \textbf{Абстракция:} Если
+    \(\Gamma\vdash A:\mathrm{rk}_n\) и
+    \(\Gamma,x:A\vdash t:B\), то
+    \(\Gamma\vdash\lambda x{:}A.t:\Pi x{:}A.B\).
+    $(\Pi(x:A).B)[\sigma]\in C_m$ верно по индукции;
+    чтобы показать
+    \((\lambda x{:}A.t)[\sigma]\in\llbracket
+    (\Pi x{:}A.B)[\sigma]\rrbracket\), возьмём
+    произвольное
+    \(u\in\llbracket A[\sigma]\rrbracket\). Тогда
+\[ (\lambda x{:}A.t)[\sigma]\,u \bstep
+        t[\sigma, x\coloneqq u]. \]
+По индукции \(t[\sigma,x\coloneqq u]\in\llbracket B[u]
+\rrbracket\), а кандидаты замкнуты относительно
+редукции, поэтому
+\((\lambda x{:}A.t)\,u\in\llbracket B[u]\rrbracket\).
+Кроме того, $\lambda(x:A).t$ сильно нормализуем, так
+как является головой сильно нормализуемого терма.
+\item \textbf{Конверсия:} Если $\Gamma\vdash t:A$ и
+$\Gamma\vdash B:\mathrm{rk}_n$, а также $A =_\beta B$,
+то $\Gamma\vdash t:B$. Тогда $B[\sigma] \in C_n$ верно
+по предположению индукции; кроме этого, по
+предположению индукции
+$t[\sigma]\in\llbracket A[\sigma]\rrbracket =
+\llbracket B[\sigma] \rrbracket$.
 \end{itemize}
 Таким образом, всякий хорошо типизированный терм лежит в некотором кандидате, а
 значит, и в \(\mathrm{SN}\).
 \end{proof}
+
+\subsection{Теоретико-множественная семантика}
+
+У нашей системы на основе рангов очень интересная
+теоретико-множественная семантика. В силу того, что
+$\mathrm{rk}_0:\mathrm{rk}_0$, мы не можем
+интерпретировать суждение о типизации $t:T$ как
+$\llbracket t \rrbracket \in \llbracket T \rrbracket$;
+вместо этого мы построим два разных отображения, $[\_]$
+и $\llbracket\_\rrbracket$, и покажем, что если $t:T$,
+то $\llbracket t \rrbracket \in [T]$ (идея такого
+построения вдохновлена подходом из статьи A Generic
+Normalization Proof for Pure Type Systems, TODO: link).
+
+TODO: завершить описание.
+
+В целом, обе интерпретации термов совпадают;
+единственное существенное отличие в том, как они
+интерпретируют $\mathrm{rk}_0$:
+
+\begin{align*}
+    \llbracket \mathrm{rk}_0 \rrbracket &=
+        \mathbb{N}; \\
+    [\mathrm{rk}_0] &=
+        \{ \llbracket \mathrm{rk}_n \rrbracket \;|\;
+            n \in \mathbb{N} \}.
+\end{align*}
+
+Хотим обратить внимание, что пока непонятно,
+интерпретируется ли в нашей системе сколько-нибудь
+содержательная теория множеств, так что ничего сильно
+удивительного в этом результате нет: это лишь небольшое
+обобщение результата о сильной нормализуемости системы.
