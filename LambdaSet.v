@@ -1,8 +1,7 @@
 Require Import Stdlib.Program.Equality.
 Require Import Setoid.
 Require Import Syntax.
-Require Import StronglyNormalizing.
-Require Import Atomic.
+Require Import SN.
 Require Import Reduction.
 
 Class Λ_Set X₀ L :=

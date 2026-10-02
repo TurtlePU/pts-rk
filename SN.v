@@ -2,7 +2,6 @@ Require Import Stdlib.Program.Equality.
 Require Import Stdlib.Relations.Relations.
 Require Import Syntax.
 Require Import Reduction.
-Require Import Atomic.
 
 Inductive Acc {A} (R: relation A): A -> Prop :=
 | acc x: (forall y, R x y -> Acc R y) -> Acc R x.
@@ -17,6 +16,26 @@ apply H0 with (y := y $ u) (u := u).
 - auto.
 Qed.
 
+Inductive Atomic {L n}: Term L n -> Prop :=
+| 𝓤_atomic ℓ: Atomic (𝓤 ℓ)
+| Π_atomic T U: Atomic (Π T U)
+| var_atomic i: Atomic (var i)
+| app_atomic t u: Atomic t -> Atomic (t $ u).
+
+Lemma rename_atomic {L m n} (f: Fin m -> Fin n)
+  (t: Term L m): Atomic t -> Atomic (rename f t).
+Proof. intros. dependent induction H; constructor; auto.
+Qed.
+
+Lemma atomic_preservation {L n} (t t': Term L n):
+  t →ᵝ t' -> Atomic t -> Atomic t'.
+Proof.
+intros. generalize dependent t'. induction H0; intros;
+inversion H; try constructor.
+- apply IHAtomic. auto.
+- auto.
+- subst. inversion H0.
+Qed.
 Lemma atomic_app_SN {L n} (t u: Term L n):
   Atomic t -> SN t -> SN u -> SN (t $ u).
 Proof.

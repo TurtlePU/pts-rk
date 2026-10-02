@@ -2,10 +2,9 @@ Require Import Corelib.Init.Specif.
 Require Import LambdaSet.
 Require Import Levels.
 Require Import Context.
-Require Import WF.
 Require Import Typing.
 Require Import Syntax.
-Require Import StronglyNormalizing.
+Require Import SN.
 
 Class Interpretation L A B 𝔈 C :=
   { term_set: L -> A -> Prop

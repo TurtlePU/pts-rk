@@ -1,6 +1,6 @@
 -R . PhD
-AbstractRewriting.v
 Syntax.v
+AbstractRewriting.v
 Congruence.v
 Reduction.v
 Confluence.v
@@ -9,8 +9,6 @@ Context.v
 Levels.v
 Typing.v
 Inversions.v
-WF.v
-Metatheory.v
-Atomic.v
-StronglyNormalizing.v
+Preservation.v
+SN.v
 LambdaSet.v

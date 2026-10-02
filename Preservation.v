@@ -1,7 +1,6 @@
 Require Import Stdlib.Program.Equality.
 Require Import Typing.
 Require Import Context.
-Require Import WF.
 Require Import Levels.
 Require Import Syntax.
 Require Import DefEq.
@@ -9,6 +8,14 @@ Require Import Reduction.
 Require Import AbstractRewriting.
 Require Import Inversions.
 Require Import Congruence.
+
+Inductive wf {L} {sig: Levels_sig L}:
+  forall {n}, Ctx L n -> Type :=
+| wf_empty: wf ε
+| wf_cons {n} {Γ : Ctx L n} {T} ℓ:
+   wf Γ -> Γ ⊢ T ⇐ 𝓤 ℓ ->
+(* ---------------------- *)
+        wf (Γ & T).
 
 Lemma context_reduction_strong {L n Δ} Γ
   (sig: Levels_sig L) (t T: Term L n):
