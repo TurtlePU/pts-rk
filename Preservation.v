@@ -60,7 +60,7 @@ Qed.
 
 Generalizable Variable L.
 
-Lemma type_is_correct `(Levels_total_sig L) {n Γ}
+Lemma type_is_correct `{Levels_total_sig L} {n Γ}
   (t T: Term L n):
     Γ ⊢ t ⇐ T -> wf Γ ->
 (* ---------------------- *)
@@ -148,4 +148,29 @@ destruct H' as [ℓ H'].
   + apply substitution_lemma with (U := T0); auto.
     apply typ_conv with (ℓ := ℓₜ) (T := T'); auto.
   + rewrite H5. apply replace_equiv. symmetry. auto.
+Qed.
+
+Lemma subject_reduction' `{Levels_total_sig L} {n Γ}
+  (t t' T: Term L n):
+   Γ ⊢ t ⇐ T -> wf Γ -> t ↠ᵝ t' ->
+(* ------------------------------- *)
+            Γ ⊢ t' ⇐ T.
+Proof. intros. induction H2.
+- assumption.
+- apply IHRTC, subject_reduction with (t := x); auto.
+Qed.
+
+Theorem type_stability `{sig: Levels_sig L}
+  `{@Levels_total_sig L sig}
+  `{@Levels_functional_sig L sig} {n} Γ
+  (t t' T T': Term L n):
+   Γ ⊢ t ⇐ T -> Γ ⊢ t' ⇐ T' -> wf Γ -> t =ᵝ t' ->
+(* ---------------------------------------------- *)
+                      T =ᵝ T'.
+Proof.
+intros.
+apply def_equiv_prop in H3. destruct H3 as [u [H5 H6]].
+apply uniqueness_of_typing with (Γ := Γ) (t := u).
+- apply subject_reduction' with (t := t); auto.
+- apply subject_reduction' with (t := t'); auto.
 Qed.

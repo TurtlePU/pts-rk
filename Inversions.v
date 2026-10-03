@@ -73,8 +73,8 @@ Qed.
 
 Generalizable Variable L.
 
-Theorem uniqueness_of_typing `(Levels_functional_sig L)
-  {n Γ} (t T T': Term L n):
+Theorem uniqueness_of_typing `{Levels_functional_sig L}
+  {n} (Γ: Ctx L n) (t T T': Term L n):
   Γ ⊢ t ⇐ T -> Γ ⊢ t ⇐ T' -> T =ᵝ T'.
 Proof. intros. induction t.
 - apply 𝓤_inversion in H1, H2.
