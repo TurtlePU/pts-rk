@@ -103,6 +103,14 @@ induction t; intros; simpl; f_equal; auto;
 apply IHt2, transpose_ext; auto.
 Qed.
 
+Lemma rename_id {L n} (t: Term L n):
+  rename (fun i => i) t = t.
+Proof.
+induction t; simpl; f_equal; auto;
+transitivity (rename (fun i => i) t2); auto;
+apply rename_ext; dependent destruction i; auto.
+Qed.
+
 Lemma rename_comp {L l m n}
   (f: Fin m -> Fin n) (g: Fin l -> Fin m) (t: Term L l):
   rename f (rename g t) = rename (fun i => f (g i)) t.
@@ -201,4 +209,27 @@ Proof.
 unfold shift, subst_at.
 rewrite replace_rename, rename_replace.
 apply replace_ext. reflexivity.
+Qed.
+
+Fixpoint up {m n}: Fin n -> Fin (m + n) :=
+match m with
+| 0 => fun x => x
+| S m => fun x => fsucc (up x)
+end.
+
+Lemma subst_at_var {L m n}
+  (f: Fin (S m + n)) (u: Term L n):
+  var f ◁ᵢ u = rename up u
+  \/ exists i, var f ◁ᵢ u = var i.
+Proof. unfold subst_at. induction m.
+- dependent destruction f; simpl.
+  + left. rewrite rename_id. auto.
+  + right. eexists. auto.
+- dependent destruction f; simpl.
+  + right. eexists. auto.
+  + specialize IHm with (f := f). destruct IHm.
+    * left. unfold shift. simpl in H.
+      rewrite H. apply rename_comp.
+    * right. simpl in H. destruct H. rewrite H.
+      eexists. reflexivity.
 Qed.

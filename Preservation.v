@@ -89,7 +89,7 @@ Proof. intros. dependent induction H1.
 - exists ℓ. auto.
 Qed.
 
-Theorem subject_reduction `(Levels_total_sig L) {n Γ}
+Theorem subject_reduction `{Levels_total_sig L} {n Γ}
   (t t' T: Term L n):
    Γ ⊢ t ⇐ T -> wf Γ -> t →ᵝ t' ->
 (* ------------------------------- *)

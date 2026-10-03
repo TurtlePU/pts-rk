@@ -38,7 +38,7 @@ end.
 Infix "!!" := index (at level 55, left associativity).
 
 (* weakening renamer *)
-Fixpoint wr {m n}: Fin (m + n) -> Fin (S (m + n)) :=
+Fixpoint wr {m n}: Fin (m + n) -> Fin (S m + n) :=
 match m with
 | 0 => fsucc
 | S m => fin_match fzero (fun i => fsucc (wr i))

@@ -8,12 +8,73 @@ Inductive Acc {A} (R: relation A) (x: A): Prop :=
 
 Definition SN {L n}: Term L n -> Prop := Acc (step L n).
 
+Lemma dom_SN {L n} (T: Term L n) U: SN (Π T U) -> SN T.
+Proof.
+intros. dependent induction H. constructor. intros.
+apply H0 with (T := y) (U := U) (y := Π y U).
+- apply step_pi_left. auto.
+- auto.
+Qed.
+
+Lemma codom_SN {L n} (T: Term L n) U:
+  SN (Π T U) -> SN U.
+Proof.
+intros. dependent induction H. constructor. intros.
+apply H0 with (T := T) (U := y) (y := Π T y).
+- apply step_pi_right. auto.
+- auto.
+Qed.
+
+Lemma arg_SN {L n} (T: Term L n) t: SN (λ T t) -> SN T.
+Proof.
+intros. dependent induction H. constructor. intros.
+apply H0 with (T := y) (t := t) (y := λ y t).
+- apply step_lam_left. auto.
+- auto.
+Qed.
+
+Lemma body_SN {L n} (T: Term L n) t: SN (λ T t) -> SN t.
+Proof.
+intro. dependent induction H. constructor. intros.
+apply H0 with (T := T) (t := y) (y := λ T y).
+- apply step_lam_right. auto.
+- auto.
+Qed.
+
 Lemma head_SN {L n} (t u: Term L n): SN (t $ u) -> SN t.
 Proof.
 intro. dependent induction H. constructor. intros.
 apply H0 with (y := y $ u) (u := u).
 - apply step_app_left. auto.
 - auto.
+Qed.
+
+Lemma tail_SN {L n} (t u: Term L n): SN (t $ u) -> SN u.
+Proof.
+intros. dependent induction H. constructor. intros.
+apply H0 with (t := t) (u := y) (y := t $ y).
+- apply step_app_right. auto.
+- auto.
+Qed.
+
+Lemma Π_SN {L n} (T: Term L n) U:
+  SN T -> SN U -> SN (Π T U).
+Proof. intros. induction H. induction H0. constructor.
+intros. inversion H3; subst.
+- apply H1. auto.
+- apply H2. auto. intros. assert (H': SN (Π y x0)).
+  apply H1. auto. dependent destruction H'.
+  apply H5. apply step_pi_right. auto.
+Qed.
+
+Lemma λ_SN {L n} (T: Term L n) t:
+  SN T -> SN t -> SN (λ T t).
+Proof. intros. induction H. induction H0. constructor.
+intros. inversion H3; subst.
+- apply H1. auto.
+- apply H2. auto. intros. assert (H': SN (λ y x0)).
+  apply H1. auto. dependent destruction H'.
+  apply H5. apply step_lam_right. auto.
 Qed.
 
 Inductive Atomic {L n}: Term L n -> Prop :=
@@ -49,6 +110,17 @@ constructor. intros. inversion H4.
   dependent destruction H'.
   apply H11, step_app_right. auto.
 - subst. inversion H.
+Qed.
+
+Inductive WHL {L n}: Term L n -> Prop :=
+| whlam T t: WHL (λ T t)
+| whapp t u: WHL t -> WHL (t $ u).
+
+Lemma decide_atomic {L n} (t: Term L n):
+  Atomic t \/ WHL t.
+Proof. induction t; try (left; constructor; fail).
+- right. constructor.
+- destruct IHt1; [left | right]; constructor; auto.
 Qed.
 
 Lemma rename_SN {L m n}

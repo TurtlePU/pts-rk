@@ -29,6 +29,14 @@ constructor; intro.
     intros. apply backwards. auto. auto.
 Qed.
 
+Lemma equiv_𝓤_inversion {L n} ℓ ℓ':
+  def_equiv L n (𝓤 ℓ) (𝓤 ℓ') -> ℓ = ℓ'.
+Proof.
+rewrite def_equiv_prop. intros [u [H H']].
+inversion H; subst; try (inversion H0).
+inversion H'. auto. inversion H0.
+Qed.
+
 Lemma equiv_Π_inversion {L n} (T T': Term L n)
   (U U': Term L (S n)):
   Π T U =ᵝ Π T' U' -> T =ᵝ T' /\ U =ᵝ U'.
