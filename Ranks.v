@@ -62,55 +62,75 @@ Qed.
 
 Lemma AL_to_SL: forall r, AL r -> SL r.
 Proof.
-unfold SL. intros. induction H4. dependent induction x.
-- unfold subst. simpl. constructor. intros.
-  inversion H7.
-- change (Term nat (S (S m + n))) in x2. apply Π_SN.
-  + apply IHx1 with (Γ := Γ) (T := T) (U := U); auto;
-    intros.
-    * apply dom_SN with (U := x2), H4, step_pi_left.
+unfold SL. intros. induction H4. dependent induction H2.
+- apply sort_SN.
+- apply Π_SN.
+  + apply IHtyp1 with (Γ := Γ) (T := 𝓤 ℓₜ) (U := U);
+    auto; intros.
+    * apply dom_SN with (U := U0), H4, step_pi_left.
       auto.
-    * apply dom_SN with (U := x2 ◁ᵢ u),
-      H5 with (y := Π y x2), step_pi_left. auto.
-  + change (SN (x2 ◁ᵢ u)).
-    apply IHx2 with (Γ := Γ) (U := U); auto; intros.
-    * apply codom_SN with (T := x1), H3, step_pi_right.
+    * apply dom_SN with (U := U0 ◁ᵢ u),
+      H6 with (y := Π y U0). apply step_pi_left. auto.
+      apply subject_reduction with (t := Π T0 U0); auto.
+      apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
+      apply step_pi_left. auto.
+  + change (SN (U0 ◁ᵢ u)).
+    apply IHtyp2 with (Γ := Γ & T0) (T := 𝓤 ℓᵤ)
+                      (U := U); auto; intros.
+    * apply wf_cons with (ℓ := ℓₜ); auto.
+    * apply codom_SN with (T := T0), H4, step_pi_right.
       auto.
-    * apply codom_SN with (T := x1 ◁ᵢ u),
-      H5 with (y := Π x1 y), step_pi_right. auto.
-- destruct (subst_at_var f u).
-  + apply eq_rect with (x := rename up u).
-    * apply rename_SN. auto.
-    * symmetry. exact H6.
-  + destruct H6. apply eq_rect with (x := var x).
-    * constructor. intros. inversion H7.
-    * symmetry. exact H6.
-- change (Term nat (S (S m + n))) in x2. apply λ_SN.
-  + apply IHx1 with (Γ := Γ) (U := U); auto; intros.
-    * apply arg_SN with (t := x2), H3, step_lam_left.
+    * apply codom_SN with (T := T0 ◁ᵢ u),
+      H6 with (y := Π T0 y). apply step_pi_right. auto.
+      apply subject_reduction with (t := Π T0 U0); auto.
+      apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
+      apply step_pi_right. auto.
+- destruct (subst_at_var i u).
+  + rewrite H2. apply rename_SN. auto.
+  + destruct H2. rewrite H2. apply var_SN.
+- apply λ_SN.
+  + apply IHtyp1 with (Γ := Γ) (T := 𝓤 ℓ) (U := U);
+      auto; intros.
+    * apply arg_SN with (t := t), H4, step_lam_left.
       auto.
-    * apply arg_SN with (t := x2 ◁ᵢ u),
-      H5 with (y := λ y x2), step_lam_left. auto.
-  + change (SN (x2 ◁ᵢ u)).
-    apply IHx2 with (Γ := Γ) (U := U); auto; intros.
-    * apply body_SN with (T := x1), H3, step_lam_right.
+    * apply arg_SN with (t := t ◁ᵢ u),
+      H6 with (y := λ y t). apply step_lam_left. auto.
+      apply subject_reduction with (t := λ U0 t); auto.
+      apply typ_λ with (ℓ := ℓ); auto.
+      apply step_lam_left. auto.
+  + change (SN (t ◁ᵢ u)).
+    apply IHtyp2 with (Γ := Γ & U0) (T := T0) (U := U);
+      auto; intros.
+    * apply wf_cons with (ℓ := ℓ); auto.
+    * apply body_SN with (T := U0), H4, step_lam_right.
       auto.
-    * apply body_SN with (T := x1 ◁ᵢ u),
-      H5 with (y := λ x1 y), step_lam_right. auto.
-- change (SN ((x1 ◁ᵢ u) $ (x2 ◁ᵢ u))).
-  destruct (decide_atomic (x1 ◁ᵢ u)).
+    * apply body_SN with (T := U0 ◁ᵢ u),
+      H6 with (y := λ U0 y). apply step_lam_right. auto.
+      apply subject_reduction with (t := λ U0 t); auto.
+      apply typ_λ with (ℓ := ℓ); auto.
+      apply step_lam_right. auto.
+- change (SN ((t ◁ᵢ u) $ (u0 ◁ᵢ u))).
+  destruct (decide_atomic (t ◁ᵢ u)).
   + apply atomic_app_SN; auto.
-    * apply IHx1 with (Γ := Γ) (U := U); auto; intros.
-      apply head_SN with (u := x2), H3, step_app_left.
-      auto. apply head_SN with (u := x2 ◁ᵢ u),
-      H5 with (y := y $ x2), step_app_left. auto.
-    * apply IHx2 with (Γ := Γ) (U := U); auto; intros.
-      apply tail_SN with (t := x1), H3, step_app_right.
-      auto. apply tail_SN with (t := x1 ◁ᵢ u),
-      H5 with (y := x1 $ y), step_app_right. auto.
-  + destruct (decide_atomic x1).
-    * induction H7; try (inversion H6; fail).
+    * apply IHtyp1 with (Γ := Γ) (T := Π U0 T0)
+                        (U := U); auto; intros.
+      apply head_SN with (u := u0), H4, step_app_left.
+      auto. apply head_SN with (u := u0 ◁ᵢ u),
+      H6 with (y := y $ u0). apply step_app_left. auto.
+      apply subject_reduction with (t := t $ u0); auto.
+      apply typ_app with (U := U0); auto.
+      apply step_app_left. auto.
+    * apply IHtyp2 with (Γ := Γ) (T := U0) (U := U);
+        auto; intros.
+      apply tail_SN with (t := t), H4, step_app_right.
+      auto. apply tail_SN with (t := t ◁ᵢ u),
+      H6 with (y := t $ y). apply step_app_right. auto.
+      apply subject_reduction with (t := t $ u0); auto.
+      apply typ_app with (U := U0); auto.
+      apply step_app_right. auto.
+  + destruct (decide_atomic t).
+    * induction H7; try (inversion H2; fail).
       { destruct (subst_at_var i u).
-        - apply eq_rect with (x := rename up u)
-               (P := fun t => SN (t $ (x2 ◁ᵢ u))).
-          +
+        - rewrite H7. unfold AL in H.
+          apply H with (Γ := Γ ◁ⁱ u) (T := U0 ◁ᵢ u)
+                       (U := T0 ◁ᵢ u).

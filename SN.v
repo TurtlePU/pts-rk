@@ -8,6 +8,12 @@ Inductive Acc {A} (R: relation A) (x: A): Prop :=
 
 Definition SN {L n}: Term L n -> Prop := Acc (step L n).
 
+Lemma var_SN {L n} x: @SN L n (var x).
+Proof. constructor. intros. inversion H. Qed.
+
+Lemma sort_SN {L n} ℓ: @SN L n (𝓤 ℓ).
+Proof. constructor. intros. inversion H. Qed.
+
 Lemma dom_SN {L n} (T: Term L n) U: SN (Π T U) -> SN T.
 Proof.
 intros. dependent induction H. constructor. intros.
