@@ -211,6 +211,10 @@ rewrite replace_rename, rename_replace.
 apply replace_ext. reflexivity.
 Qed.
 
+Lemma subst_at_subst {L m n} (t: Term L (S (S m + n)))
+  u v: t ◁ u ◁ᵢ v = (t ◁ᵢ v) ◁ (u ◁ᵢ v).
+Proof. unfold subst_at. apply replace_subst. Qed.
+
 Fixpoint up {m n}: Fin n -> Fin (m + n) :=
 match m with
 | 0 => fun x => x
