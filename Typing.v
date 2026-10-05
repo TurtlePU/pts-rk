@@ -123,3 +123,16 @@ Lemma substitution_lemma {L n Γ} (sig: Levels_sig L)
         Γ ⊢ t ◁ u ⇐ T ◁ u.
 Proof. apply substitution_lemma_strong with (m := 0).
 Qed.
+
+Lemma unshrink_lemma {L m n} (sig: Levels_sig L)
+  (Γ: Ctx L (S m + n)) (t T: Term L n):
+        shrink Γ ⊢ t ⇐ T ->
+(* ------------------------------ *)
+   Γ ⊢ rename up t ⇐ rename up T.
+Proof. induction m; dependent destruction Γ.
+- apply weakening.
+- intros. rewrite <- shift_up.
+  replace (rename (@up (S (S m)) n) T)
+  with (shift (rename (@up (S m) n) T)).
+  apply weakening, IHm. auto. apply shift_up.
+Qed.

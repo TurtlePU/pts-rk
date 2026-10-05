@@ -37,16 +37,10 @@ Definition SL r := (* Substitution lemma *)
 
 Lemma SL_to_AL:
   forall r, (forall j, j < r -> SL j) -> AL r.
-Proof. unfold SL, AL. intros.
-induction H4. induction H5. constructor. intros.
-inversion H8; subst.
-- apply H6. auto.
-  apply subject_reduction with (t := x); auto.
-- apply H7. auto.
-  apply subject_reduction with (t := x0); auto.
-  intros. assert (H' : SN (y $ x0)). { apply H6; auto. }
-  destruct H'. apply H11, step_app_right. auto.
-- apply Π_inversion in H2.
+Proof. unfold AL. intros. induction H4.
+- constructor. constructor; auto.
+- eapply SN_WHR. constructor; auto.
+  apply Π_inversion in H2.
   destruct H2 as [ℓₜ [ℓᵤ [ℓ [HR [HT [HU HE]]]]]].
   change (ℓ = max (S ℓₜ) ℓᵤ) in HR.
   apply equiv_𝓤_inversion in HE. subst.
@@ -54,69 +48,42 @@ inversion H8; subst.
   destruct H0 as [ℓ₀ [U0 [HT0 [HF HE']]]].
   apply equiv_Π_inversion in HE'. destruct HE'.
   apply H with (m := 0) (j := ℓₜ) (Γ := Γ & T0)
-               (T := U0).
+               (T := U0); auto.
   + apply PeanoNat.Nat.le_max_l.
   + simpl. apply typ_conv with (T := T) (ℓ := ℓ₀); auto.
   + simpl. replace ℓₜ with ℓ₀. auto.
     symmetry. eapply equiv_𝓤_inversion.
     apply type_stability with (t := T) (t' := T0)
                               (Γ := Γ); auto.
-  + assumption.
   + apply wf_cons with (ℓ := ℓ₀); auto.
-  + apply body_SN with (T := T0). constructor. auto.
-  + constructor. auto.
+- eapply SN_WHR. constructor. apply H4.
+  apply IHSN with (Γ := Γ) (T := T) (U := U); auto.
+  apply subject_reduction with (t := t0); auto.
+  apply reduction_weakening. auto.
 Qed.
 
 Lemma AL_to_SL: forall r, AL r -> SL r.
-Proof.
-unfold SL. intros. induction H4. dependent induction H2.
-- apply sort_SN.
-- apply Π_SN.
-  + apply IHtyp1 with (Γ := Γ) (T := 𝓤 ℓₜ);
-    auto; intros.
-    * apply dom_SN with (U := U), H4, step_pi_left.
-      auto.
-    * apply dom_SN with (U := U ◁ᵢ u),
-      H6 with (y := Π y U). apply step_pi_left. auto.
-      apply subject_reduction with (t := Π T0 U); auto.
-      apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
-      apply step_pi_left. auto.
+Proof. unfold SL. intros. dependent induction H2.
+- constructor. constructor.
+- constructor. constructor.
+  + apply IHtyp1 with (Γ := Γ) (T := 𝓤 ℓₜ); auto.
+    apply dom_SN with (U := U). auto.
   + change (SN (U ◁ᵢ u)).
-    apply IHtyp2 with (Γ := Γ & T0) (T := 𝓤 ℓᵤ);
-    auto; intros.
+    apply IHtyp2 with (Γ := Γ & T0) (T := 𝓤 ℓᵤ); auto.
     * apply wf_cons with (ℓ := ℓₜ); auto.
-    * apply codom_SN with (T := T0), H4, step_pi_right.
-      auto.
-    * apply codom_SN with (T := T0 ◁ᵢ u),
-      H6 with (y := Π T0 y). apply step_pi_right. auto.
-      apply subject_reduction with (t := Π T0 U); auto.
-      apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
-      apply step_pi_right. auto.
-- destruct (subst_at_var i u).
-  + rewrite H2. apply rename_SN. auto.
-  + destruct H2. rewrite H2. apply var_SN.
-- apply λ_SN.
-  + apply IHtyp1 with (Γ := Γ) (T := 𝓤 ℓ); auto; intros.
-    * apply arg_SN with (t := t), H4, step_lam_left.
-      auto.
-    * apply arg_SN with (t := t ◁ᵢ u),
-      H6 with (y := λ y t). apply step_lam_left. auto.
-      apply subject_reduction with (t := λ U t); auto.
-      apply typ_λ with (ℓ := ℓ); auto.
-      apply step_lam_left. auto.
-  + change (SN (t ◁ᵢ u)).
-    apply IHtyp2 with (Γ := Γ & U) (T := T0);
-    auto; intros.
+    * apply codom_SN with (T := T0). auto.
+- destruct (subst_at_var i u); destruct H2.
+  + rewrite H6. apply rename_SN. auto.
+  + rewrite H2. constructor. constructor.
+- apply SN_λ.
+  + apply IHtyp1 with (Γ := Γ) (T := 𝓤 ℓ); auto.
+    apply arg_SN with (t := t0). auto.
+  + change (SN (t0 ◁ᵢ u)).
+    apply IHtyp2 with (Γ := Γ & U) (T := T0); auto.
     * apply wf_cons with (ℓ := ℓ); auto.
-    * apply body_SN with (T := U), H4, step_lam_right.
-      auto.
-    * apply body_SN with (T := U ◁ᵢ u),
-      H6 with (y := λ U y). apply step_lam_right. auto.
-      apply subject_reduction with (t := λ U t); auto.
-      apply typ_λ with (ℓ := ℓ); auto.
-      apply step_lam_right. auto.
-- change (SN ((t ◁ᵢ u) $ (u0 ◁ᵢ u))).
-  destruct (decide_atomic (t ◁ᵢ u)).
+    * apply body_SN with (T := U). auto.
+- change (SN ((t0 ◁ᵢ u) $ (u0 ◁ᵢ u))).
+  destruct (decide_atomic (t0 ◁ᵢ u)).
   + apply atomic_app_SN; auto.
     * apply IHtyp1 with (Γ := Γ) (T := Π U T0);
       auto; intros.
@@ -135,15 +102,38 @@ unfold SL. intros. induction H4. dependent induction H2.
       apply step_app_right. auto.
   + destruct (decide_atomic t).
     * induction H7; try (inversion H2; fail).
-      { destruct (subst_at_var i u).
-        - rewrite H7. unfold AL in H.
+      { destruct (subst_at_var i u); destruct H7.
+        - rewrite H8. unfold AL in H.
           apply H with (Γ := Γ ◁ⁱ u) (T := U ◁ᵢ u)
                        (U := T0 ◁ᵢ u).
-          + rewrite <- H7.
+          + rewrite <- H8.
             apply substitution_lemma_strong with
               (T := Π U T0); auto.
           + apply substitution_lemma_strong; auto.
           + apply substitution_lemma_strong with
               (t := Π U T0) (T := 𝓤 r); auto.
+            pose proof H2_.
             apply type_is_correct in H2_; auto.
-            destruct H2_. auto.
+            destruct H2_. replace r with x. auto.
+            eapply equiv_𝓤_inversion.
+            apply type_stability with (Γ := Γ)
+            (t := Π U T0) (t' := rename up (squeeze Γ));
+            auto. apply unshrink_lemma with (T := 𝓤 r).
+            auto. rewrite squeeze_prop, <- H7.
+            apply var_inversion
+            with (sig := RankLevels). auto.
+          + apply wf_subst_at; auto.
+          + apply rename_SN. auto.
+          + apply IHtyp2 with (Γ := Γ) (T := U);
+            auto; intros.
+            * apply tail_SN with (t := var i), H4,
+              step_app_right, H9.
+            * apply tail_SN with (t := var i ◁ᵢ u),
+              H6 with (y := var i $ y).
+              apply step_app_right. auto.
+              apply subject_reduction
+              with (t := var i $ u0); auto.
+              apply typ_app with (U := U); auto.
+              apply step_app_right. auto.
+        - rewrite H7 in H2. inversion H2.
+      }

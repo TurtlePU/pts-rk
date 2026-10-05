@@ -17,6 +17,21 @@ Inductive wf {L} {sig: Levels_sig L}:
 (* ---------------------- *)
         wf (Γ & T).
 
+Lemma wf_subst_at {L m n} (Γ: Ctx L (S m + n))
+  (sig: Levels_sig L) u:
+   wf Γ -> shrink Γ ⊢ u ⇐ squeeze Γ ->
+(* ----------------------------------- *)
+             wf (Γ ◁ⁱ u).
+Proof. generalize dependent n.
+induction m; intros; dependent destruction X.
+- auto.
+- apply wf_cons with (ℓ := ℓ).
+  + apply IHm; auto.
+  + change (Γ0 ◁ⁱ u ⊢ T ◁ᵢ u ⇐ 𝓤 ℓ).
+    apply substitution_lemma_strong with (T := 𝓤 ℓ);
+    auto.
+Qed.
+
 Lemma context_reduction_strong {L n Δ} Γ
   (sig: Levels_sig L) (t T: Term L n):
    Γ ⊢ t ⇐ T -> wf Γ -> Γ →ˠ Δ ->

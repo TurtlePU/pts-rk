@@ -217,9 +217,19 @@ match m with
 | S m => fun x => fsucc (up x)
 end.
 
+Lemma shift_up {L m n} (t: Term L n):
+  shift (rename (@up m n) t) = rename (@up (S m) n) t.
+Proof. unfold shift. rewrite rename_comp. auto. Qed.
+
+Fixpoint division {m n}: Fin (S m + n) :=
+match m with
+| 0 => fzero
+| S m => fsucc division
+end.
+
 Lemma subst_at_var {L m n}
   (f: Fin (S m + n)) (u: Term L n):
-  var f ◁ᵢ u = rename up u
+  (f = division /\ var f ◁ᵢ u = rename up u)
   \/ exists i, var f ◁ᵢ u = var i.
 Proof. unfold subst_at. induction m.
 - dependent destruction f; simpl.
@@ -228,8 +238,8 @@ Proof. unfold subst_at. induction m.
 - dependent destruction f; simpl.
   + right. eexists. auto.
   + specialize IHm with (f := f). destruct IHm.
-    * left. unfold shift. simpl in H.
-      rewrite H. apply rename_comp.
+    * left. unfold shift. simpl in H. destruct H.
+      rewrite H0, H, rename_comp. auto.
     * right. simpl in H. destruct H. rewrite H.
       eexists. reflexivity.
 Qed.

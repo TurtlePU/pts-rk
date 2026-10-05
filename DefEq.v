@@ -56,8 +56,7 @@ Lemma equiv_sub {L n} (f: Term L (S n))
 Proof.
 rewrite def_equiv_prop. intros [u [H H']].
 rewrite def_equiv_prop. exists (f ◁ u).
-constructor; apply rtc_replace; dependent destruction i;
-auto; reflexivity.
+constructor; apply rtc_sub; auto.
 Qed.
 
 Lemma rename_equiv {L m n}

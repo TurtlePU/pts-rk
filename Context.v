@@ -74,6 +74,17 @@ match m with
 | S m => fun Γ => squeeze (ctx_pred Γ)
 end.
 
+Lemma squeeze_prop {L m n} (Γ: Ctx L (S m + n)):
+  rename up (squeeze Γ) = Γ !! division.
+Proof. induction m.
+- reflexivity.
+- dependent destruction Γ.
+  change
+  (rename up (squeeze (Γ & t : Ctx L (S (S m) + n))) =
+  (shift (Γ !! division) : Term L (S (S m) + n))).
+  rewrite <- shift_up. f_equal. apply IHm.
+Qed.
+
 Lemma wr_fsucc {m n} (i: Fin (m + n)):
   @wr (S m) n (fsucc i) = fsucc (wr i).
 Proof. reflexivity. Qed.

@@ -135,6 +135,21 @@ induction t; simpl; intros.
 - apply app_cong_par; auto; typeclasses eauto.
 Qed.
 
+Lemma rtc_sub {L n} (t: Term L (S n)) u u':
+  u ↠ᵝ u' -> t ◁ u ↠ᵝ t ◁ u'.
+Proof.
+intros. apply rtc_replace.
+dependent destruction i; [ assumption | reflexivity ].
+Qed.
+
+Lemma replace_rtc {L m n} (f: Fin m -> Term L n) t t':
+  t ↠ᵝ t' -> replace f t ↠ᵝ replace f t'.
+Proof. intros. induction H.
+- reflexivity.
+- apply rtc_step with (y := replace f y).
+  apply replace_step. all: auto.
+Qed.
+
 Lemma rtc_Π_repr {L n} (T t: Term L n)
   (U: Term L (S n)):
   Π T U ↠ᵝ t -> exists T' U', t = Π T' U'.
