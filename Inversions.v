@@ -1,4 +1,4 @@
-Require Import Stdlib.Program.Equality.
+From Equations Require Import Equations.
 Require Import AbstractRewriting.
 Require Import DefEq.
 Require Import Levels.
@@ -11,9 +11,9 @@ Require Import Reduction.
 Lemma 𝓤_inversion {L n Γ} (sig: Levels_sig L)
   (ℓ: L) (T: Term L n):
   Γ ⊢ 𝓤 ℓ ⇐ T -> exists ℓ', axiom ℓ ℓ' /\ T =ᵝ 𝓤 ℓ'.
-Proof. intro. dependent induction H.
-- exists ℓ'. split. auto. reflexivity.
-- destruct (IHtyp1 _ eq_refl) as [ℓ' [H2 H3]].
+Proof. intro. depind H.
+- repeat eexists; [ exact H | reflexivity ].
+- destruct IHtyp1 as [ℓ' [H2 H3]].
   exists ℓ'. split. auto. rewrite <- H1. auto.
 Qed.
 
@@ -25,10 +25,9 @@ Lemma Π_inversion {L n Γ} (sig: Levels_sig L)
   /\ Γ ⊢ T ⇐ 𝓤 ℓₜ
   /\ Γ & T ⊢ U ⇐ 𝓤 ℓᵤ
   /\ V =ᵝ 𝓤 ℓ.
-Proof. intro. dependent induction H.
+Proof. intro. depind H.
 - exists ℓₜ, ℓᵤ, ℓ. repeat constructor; auto.
-- destruct (IHtyp1 _ _ eq_refl)
-  as [ℓₜ [ℓᵤ [ℓ' [H2 [H3 [H4 H5]]]]]].
+- destruct IHtyp1 as [ℓₜ [ℓᵤ [ℓ' [H2 [H3 [H4 H5]]]]]].
   exists ℓₜ, ℓᵤ, ℓ'. repeat constructor; auto.
   rewrite <- H1. auto.
 Qed.
@@ -36,22 +35,21 @@ Qed.
 Lemma var_inversion {L n Γ} (sig: Levels_sig L)
   (i: Fin n) (T: Term L n):
   Γ ⊢ var i ⇐ T -> T =ᵝ (Γ !! i).
-Proof. intro. dependent induction H.
+Proof. intro. depind H.
 - reflexivity.
-- rewrite <- H1. apply IHtyp1. reflexivity.
+- rewrite <- H1. apply IHtyp1.
 Qed.
 
 Lemma λ_inversion {L n Γ} (sig: Levels_sig L)
   (T V: Term L n) (t: Term L (S n)):
-  Γ ⊢ λ T t ⇐ V ->
+  Γ ⊢ [T] t ⇐ V ->
   exists ℓ U,
   Γ ⊢ T ⇐ 𝓤 ℓ
   /\ Γ & T ⊢ t ⇐ U
   /\ V =ᵝ Π T U.
-Proof. intro. dependent induction H.
-- exists ℓ, T0. repeat constructor; auto.
-- destruct (IHtyp1 _ _ eq_refl)
-  as [ℓ' [U [H2 [H3 H4]]]].
+Proof. intro. depind H.
+- exists ℓ, T. repeat constructor; auto.
+- destruct IHtyp1 as [ℓ' [U [H2 [H3 H4]]]].
   exists ℓ', U. repeat constructor; auto.
   rewrite <- H1. auto.
 Qed.
@@ -63,10 +61,9 @@ Lemma app_inversion {L n Γ} (sig: Levels_sig L)
   Γ ⊢ t ⇐ Π U T
   /\ Γ ⊢ u ⇐ U
   /\ V =ᵝ T ◁ u.
-Proof. intro. dependent induction H.
+Proof. intro. depind H.
 - exists U, T. repeat constructor; auto.
-- destruct (IHtyp1 _ _ eq_refl)
-  as [U [T'' [H2 [H3 H4]]]].
+- destruct IHtyp1 as [U [T'' [H2 [H3 H4]]]].
   exists U, T''. repeat constructor; auto.
   rewrite <- H1. auto.
 Qed.

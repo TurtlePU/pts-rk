@@ -1,8 +1,6 @@
 Require Import Stdlib.Relations.Relations.
-Require Import Stdlib.Program.Equality.
-Require Import Syntax.
-Require Import Congruence.
-Require Import AbstractRewriting.
+From Equations Require Import Equations.
+Require Import Syntax Congruence AbstractRewriting.
 
 Reserved Notation "t →ᵝ t'"
   (at level 50, no associativity).
@@ -18,11 +16,11 @@ Inductive step L n: relation (Term L n) :=
 | step_lam_left {T T' t}:
        T →ᵝ T' ->
 (* --------------- *)
-   λ T t →ᵝ λ T' t
+   [T] t →ᵝ [T'] t
 | step_lam_right {T t t'}:
        t →ᵝ t' ->
 (* --------------- *)
-   λ T t →ᵝ λ T t'
+   [T] t →ᵝ [T] t'
 | step_app_left {f f' t}:
        f →ᵝ f' ->
 (* --------------- *)
@@ -33,7 +31,7 @@ Inductive step L n: relation (Term L n) :=
    f $ t →ᵝ f $ t'
 | step_beta T f t:
 (* ------------------ *)
-   λ T f $ t →ᵝ f ◁ t
+   [T] f $ t →ᵝ f ◁ t
 where "t →ᵝ t'" := (step _ _ t t').
 
 Instance step_cong L: Congruence L (fun n x y => x →ᵝ y).
@@ -64,8 +62,8 @@ Qed.
 
 Lemma lam_if_rename_is_lam {L m n} f
   (T: Term L n) (t: Term L m) (u: Term L (S n)):
-  λ T u = rename f t ->
-  exists T' u', t = λ T' u'
+  [T] u = rename f t ->
+  exists T' u', t = [T'] u'
   /\ rename f T' = T
   /\ rename (weak f) u' = u.
 Proof.
@@ -85,10 +83,10 @@ induction t; intros; inversion H.
   exists (Π t1 U0). split. auto. apply step_pi_right.
   auto.
 - apply IHt1 in H3. destruct H3 as [T0 [H3 H4]]. subst.
-  exists (λ T0 t2). split. auto. apply step_lam_left.
+  exists ([T0] t2). split. auto. apply step_lam_left.
   auto.
 - apply IHt2 in H3. destruct H3 as [t0 [H3 H4]]. subst.
-  exists (λ t1 t0). split. auto. apply step_lam_right.
+  exists ([t1] t0). split. auto. apply step_lam_right.
   auto.
 - apply IHt1 in H3. destruct H3 as [f1 [H3 H4]]. subst.
   exists (f1 $ t2). split. auto. apply step_app_left.
@@ -115,7 +113,7 @@ Qed.
 Lemma rtc_transpose {L m n} (f f': Fin m -> Term L n):
   (forall i, f i ↠ᵝ f' i) ->
   forall i, transpose f i ↠ᵝ transpose f' i.
-Proof. intros. dependent destruction i; simpl.
+Proof. intros. dependent elimination i; simpl.
 - reflexivity.
 - apply rename_rtc. auto.
 Qed.
@@ -138,8 +136,8 @@ Qed.
 Lemma rtc_sub {L n} (t: Term L (S n)) u u':
   u ↠ᵝ u' -> t ◁ u ↠ᵝ t ◁ u'.
 Proof.
-intros. apply rtc_replace.
-dependent destruction i; [ assumption | reflexivity ].
+intros. apply rtc_replace. intros.
+dependent elimination i; [ assumption | reflexivity ].
 Qed.
 
 Lemma replace_rtc {L m n} (f: Fin m -> Term L n) t t':
@@ -153,19 +151,18 @@ Qed.
 Lemma rtc_Π_repr {L n} (T t: Term L n)
   (U: Term L (S n)):
   Π T U ↠ᵝ t -> exists T' U', t = Π T' U'.
-Proof. intro. dependent induction H.
+Proof. intro. depind H.
 - exists T, U. reflexivity.
-- inversion H; subst; exact (IHRTC _ _ eq_refl).
+- inversion H; subst; eapply IHRTC; reflexivity.
 Qed.
 
 Lemma rtc_Π_inversion {L n} (T T': Term L n)
   (U U': Term L (S n)):
   Π T U ↠ᵝ Π T' U' -> T ↠ᵝ T' /\ U ↠ᵝ U'.
-Proof. intro. dependent induction H.
-- split; reflexivity.
-- inversion H; subst.
-  + destruct (IHRTC _ _ _ _ eq_refl eq_refl) as [H1 H2].
-    split; auto. apply rtc_step with (y := T'0); auto.
-  + destruct (IHRTC _ _ _ _ eq_refl eq_refl) as [H1 H2].
-    split; auto. apply rtc_step with (y := U'0); auto.
+Proof. intro. depind H. split; reflexivity.
+all: inversion H; subst;
+destruct (IHRTC _ _ _ _ eq_refl) as [H1 H2]; split;
+auto;
+[ apply rtc_step with T'0 | apply rtc_step with U'0 ];
+auto.
 Qed.

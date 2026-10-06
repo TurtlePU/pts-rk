@@ -1,4 +1,4 @@
-Require Import Stdlib.Program.Equality.
+From Equations Require Import Equations.
 
 Inductive Fin: nat -> Type :=
 | fzero {n}: Fin (S n)
@@ -8,17 +8,19 @@ Inductive Term (L: Type) (n: nat) : Type :=
 | 𝓤: L -> Term L n
 | Π: Term L n -> Term L (S n) -> Term L n
 | var: Fin n -> Term L n
-| λ: Term L n -> Term L (S n) -> Term L n
+| lam: Term L n -> Term L (S n) -> Term L n
 | app: Term L n -> Term L n -> Term L n.
 Arguments 𝓤 [_] [_] _.
 Arguments Π [_] [_] _ _.
 Arguments var [_] [_] _.
-Arguments λ [_] [_] _ _.
+Arguments lam [_] [_] _ _.
 Arguments app [_] [_] _ _.
+Notation "[ T ] t" := (lam T t) (at level 30).
 Infix "$" := app (at level 40, left associativity).
+Derive NoConfusion NoConfusionHom for Term.
 
-Definition fin_match {A n} (z: A) (s: Fin n -> A)
-  (x: Fin (S n)) : A :=
+Definition fin_match {A: Type} {n} (z: A)
+  (s: Fin n -> A) (x: Fin (S n)) : A :=
 match x with
 | fzero => fun _ => z
 | @fsucc n' x => fun eq: n' = n =>
@@ -35,7 +37,7 @@ match t with
 | 𝓤 ℓ => 𝓤 ℓ
 | Π T U => Π (rename f T) (rename (weak f) U)
 | var x => var (f x)
-| λ T t => λ (rename f T) (rename (weak f) t)
+| [ T ] t => [ rename f T ] rename (weak f) t
 | g $ t => rename f g $ rename f t
 end.
 
@@ -52,7 +54,7 @@ match t with
 | 𝓤 ℓ => 𝓤 ℓ
 | Π T U => Π (replace f T) (replace (transpose f) U)
 | var x => f x
-| λ T t => λ (replace f T) (replace (transpose f) t)
+| [ T ] t => [ replace f T ] replace (transpose f) t
 | g $ t => replace f g $ replace f t
 end.
 
@@ -81,7 +83,7 @@ Lemma rename_ext {L m n} (f g: Fin m -> Fin n):
 Proof.
 intros. generalize dependent n.
 induction t; intros; auto; simpl; f_equal; auto;
-apply IHt2; intros; dependent destruction i; auto;
+apply IHt2; intros; dependent elimination i; auto;
 simpl; rewrite H; reflexivity.
 Qed.
 
@@ -89,7 +91,7 @@ Lemma transpose_ext {L m n} (f g: Fin m -> Term L n):
   (forall j, f j = g j) ->
   forall i, transpose f i = transpose g i.
 Proof.
-dependent destruction i.
+intros. dependent elimination i.
 - reflexivity.
 - simpl. rewrite H. reflexivity.
 Qed.
@@ -108,7 +110,7 @@ Lemma rename_id {L n} (t: Term L n):
 Proof.
 induction t; simpl; f_equal; auto;
 transitivity (rename (fun i => i) t2); auto;
-apply rename_ext; dependent destruction i; auto.
+apply rename_ext; intros; dependent elimination i; auto.
 Qed.
 
 Lemma rename_comp {L l m n}
@@ -119,7 +121,7 @@ generalize dependent n.
 generalize dependent m.
 induction t; intros; simpl; f_equal; auto;
 rewrite IHt2; apply rename_ext;
-intros; dependent destruction i; auto.
+intros; dependent elimination i; auto.
 Qed.
 
 Lemma rename_replace {L l m n} (f: Fin m -> Fin n)
@@ -130,7 +132,7 @@ Proof.
 generalize dependent n.
 generalize dependent m.
 induction t; intros; simpl; f_equal; auto; rewrite IHt2;
-apply replace_ext; intros; dependent destruction i;
+apply replace_ext; intros; dependent elimination i;
 auto; simpl; unfold shift;
 rewrite rename_comp, rename_comp; reflexivity.
 Qed.
@@ -143,7 +145,7 @@ generalize dependent n.
 generalize dependent m.
 induction t; intros; simpl; f_equal; auto;
 rewrite IHt2; apply replace_ext; intros;
-dependent destruction i; auto.
+dependent elimination i; auto.
 Qed.
 
 Lemma replace_var {L n} (t: Term L n):
@@ -151,7 +153,8 @@ Lemma replace_var {L n} (t: Term L n):
 Proof.
 induction t; simpl; f_equal; auto;
 transitivity (replace (fun x => var x) t2); auto;
-apply replace_ext; dependent destruction i; auto.
+apply replace_ext;
+intros; dependent elimination i; auto.
 Qed.
 
 Lemma replace_replace {L l m n} (f: Fin m -> Term L n)
@@ -162,8 +165,8 @@ Proof.
 generalize dependent n.
 generalize dependent m.
 induction t; intros; simpl; f_equal; auto;
-rewrite IHt2; apply replace_ext;
-dependent destruction i; auto; simpl; unfold shift;
+rewrite IHt2; apply replace_ext; intros;
+dependent elimination i; auto; simpl; unfold shift;
 rewrite replace_rename, rename_replace;
 apply replace_ext; auto.
 Qed.
@@ -175,7 +178,7 @@ Proof.
 unfold subst. intros.
 rewrite rename_replace, replace_rename.
 apply replace_ext. intros.
-dependent destruction i; reflexivity.
+dependent elimination i; reflexivity.
 Qed.
 
 Lemma replace_subst {L n} {t: Term L (S n)}:
@@ -185,9 +188,10 @@ Lemma replace_subst {L n} {t: Term L (S n)}:
 Proof.
 unfold subst. intros.
 rewrite replace_replace, replace_replace.
-apply replace_ext. dependent destruction i; simpl.
+apply replace_ext. intros.
+dependent elimination i as [ fzero | fsucc i].
 - reflexivity.
-- unfold shift. rewrite replace_rename. symmetry.
+- simpl. unfold shift. rewrite replace_rename. symmetry.
   transitivity (replace (fun x => var x) (f i)).
   + apply replace_ext. auto.
   + apply replace_var.
@@ -236,10 +240,10 @@ Lemma subst_at_var {L m n}
   (f = division /\ var f ◁ᵢ u = rename up u)
   \/ exists i, var f ◁ᵢ u = var i.
 Proof. unfold subst_at. induction m.
-- dependent destruction f; simpl.
+- dependent elimination f; simpl.
   + left. rewrite rename_id. auto.
   + right. eexists. auto.
-- dependent destruction f; simpl.
+- dependent elimination f as [fzero | fsucc f]; simpl.
   + right. eexists. auto.
   + specialize IHm with (f := f). destruct IHm.
     * left. unfold shift. simpl in H. destruct H.

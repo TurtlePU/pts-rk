@@ -1,5 +1,5 @@
+From Equations Require Import Equations.
 Require Import Stdlib.Relations.Relations.
-Require Import Stdlib.Program.Equality.
 Require Import AbstractRewriting.
 Require Import Syntax.
 Require Import Reduction.
@@ -12,11 +12,11 @@ Inductive par_step L n: relation (Term L n) :=
 | par_step_pi {T T' U U'}:
   T ⇉ᵝ T' -> U ⇉ᵝ U' -> Π T U ⇉ᵝ Π T' U'
 | par_step_lam {T T' t t'}:
-  T ⇉ᵝ T' -> t ⇉ᵝ t' -> λ T t ⇉ᵝ λ T' t'
+  T ⇉ᵝ T' -> t ⇉ᵝ t' -> [T] t ⇉ᵝ [T'] t'
 | par_step_app {f f' t t'}:
   f ⇉ᵝ f' -> t ⇉ᵝ t' -> f $ t ⇉ᵝ f' $ t'
 | par_step_beta {T f f' t t'}:
-  f ⇉ᵝ f' -> t ⇉ᵝ t' -> λ T f $ t ⇉ᵝ f' ◁ t'
+  f ⇉ᵝ f' -> t ⇉ᵝ t' -> [T] f $ t ⇉ᵝ f' ◁ t'
 where "t ⇉ᵝ t'" := (par_step _ _ t t').
 
 Lemma step_par_step {L n} (t t': Term L n):
@@ -33,7 +33,7 @@ intro. induction H.
 - apply Π_cong_par; auto; typeclasses eauto.
 - apply λ_cong_par; auto; typeclasses eauto.
 - apply app_cong_par; auto; typeclasses eauto.
-- transitivity (λ T f' $ t').
+- transitivity ([T] f' $ t').
   + apply app_cong_par; try (apply λ_cong_r); auto;
     typeclasses eauto.
   + apply rtc_in. constructor.
@@ -53,7 +53,7 @@ Lemma transpose_par_step {L m n}
   (forall i, f i ⇉ᵝ f' i) ->
   forall j, transpose f j ⇉ᵝ transpose f' j.
 Proof.
-intros. dependent destruction j; simpl.
+intros. dependent elimination j; simpl.
 - constructor.
 - apply rename_par_step. auto.
 Qed.
@@ -65,7 +65,7 @@ Lemma replace_par_step {L m n}
 Proof.
 generalize dependent n. induction t; simpl; intros;
 try constructor; auto; apply IHt2; intro;
-dependent destruction i; try constructor; simpl;
+dependent elimination i; try constructor; simpl;
 apply rename_par_step; auto.
 Qed.
 
@@ -87,8 +87,8 @@ Lemma sub_par_step {L n}
   (f: Term L (S n)) (t t': Term L n):
   t ⇉ᵝ t' -> f ◁ t ⇉ᵝ f ◁ t'.
 Proof.
-intros. unfold subst. apply replace_par_step.
-dependent destruction i; simpl; auto; constructor.
+intros. unfold subst. apply replace_par_step. intros.
+dependent elimination i; simpl; auto; constructor.
 Qed.
 
 Lemma par_step_sub {L n}
@@ -96,16 +96,15 @@ Lemma par_step_sub {L n}
   f ⇉ᵝ f' -> t ⇉ᵝ t' -> f ◁ t ⇉ᵝ f' ◁ t'.
 Proof.
 intros. unfold subst. apply par_step_replace; auto.
-dependent destruction i; auto; constructor.
+intros. dependent elimination i; auto; constructor.
 Qed.
 
 Lemma par_step_lam_fun {L n}
-  (T t': Term L n) (f: Term L (S n)): λ T f ⇉ᵝ t' ->
-  exists T' f', t' = λ T' f' /\ T ⇉ᵝ T' /\ f ⇉ᵝ f'.
+  (T t': Term L n) (f: Term L (S n)): [T] f ⇉ᵝ t' ->
+  exists T' f', t' = [T'] f' /\ T ⇉ᵝ T' /\ f ⇉ᵝ f'.
 Proof.
-intro. inversion H; subst.
-- exists T, f. repeat constructor.
-- exists T', t'0. repeat constructor; auto.
+intro.
+inversion H; subst; repeat eexists; auto; constructor.
 Qed.
 
 Lemma par_step_diamond {L n}:
@@ -119,10 +118,10 @@ unfold ChurchRosser. intros. induction H.
   apply IHpar_step2 in H6. destruct H6 as [U₁ []].
   exists (Π T₁ U₁). repeat constructor; auto.
 - inversion H0; subst.
-  exists (λ T' t'). repeat constructor; auto.
+  exists ([T'] t'). repeat constructor; auto.
   apply IHpar_step1 in H4. destruct H4 as [T₁ []].
   apply IHpar_step2 in H6. destruct H6 as [t₁ []].
-  exists (λ T₁ t₁). repeat constructor; auto.
+  exists ([T₁] t₁). repeat constructor; auto.
 - inversion H0; subst.
   exists (f' $ t'). repeat constructor; auto.
   apply IHpar_step1 in H4. destruct H4 as [f₁ []].

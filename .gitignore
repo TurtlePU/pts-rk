@@ -1,11 +1,4 @@
 aux
 *.synctex.gz
-.CoqMakefile.d
-CoqMakefile.conf
-*.aux
 *.dvi
-*.glob
-*.vo
-*.vok
-*.vos
-dist-newstyle
+_build

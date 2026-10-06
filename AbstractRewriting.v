@@ -1,8 +1,10 @@
+From Equations Require Import Equations.
 Require Import Setoid.
 
 Inductive RTC {A} (R: relation A): relation A :=
 | rtc_refl x: RTC R x x
 | rtc_step {x y z}: R x y -> RTC R y z -> RTC R x z.
+Derive Signature for RTC.
 
 Inductive Sym {A} (R: relation A): relation A :=
 | forward {x y}: R x y -> Sym R x y

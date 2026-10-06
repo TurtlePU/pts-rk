@@ -9,9 +9,9 @@ Class Congruence L
 ; Π_cong_r {n} {T: Term L n}:
     forall U U', R U U' -> R (Π T U) (Π T U')
 ; λ_cong_l {n} {t: Term L (S n)}:
-    forall T T', R T T' -> R (λ T t) (λ T' t)
+    forall T T', R T T' -> R ([T] t) ([T'] t)
 ; λ_cong_r {n} {T: Term L n}:
-    forall t t', R t t' -> R (λ T t) (λ T t')
+    forall t t', R t t' -> R ([T] t) ([T] t')
 ; app_cong_l {n} {u: Term L n}:
     forall t t', R t t' -> R (t $ u) (t' $ u)
 ; app_cong_r {n} {t: Term L n}:
@@ -60,8 +60,8 @@ Lemma λ_cong_par L R
   {trans: forall n, Transitive (R n)}
   {cong: Congruence L R}:
   forall n (T T': Term L n) t t',
-  R _ T T' -> R _ t t' -> R _ (λ T t) (λ T' t').
-Proof. intros. transitivity (λ T t').
+  R _ T T' -> R _ t t' -> R _ ([T] t) ([T'] t').
+Proof. intros. transitivity ([T] t').
 - apply λ_cong_r. auto.
 - apply λ_cong_l. auto.
 Qed.

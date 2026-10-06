@@ -1,4 +1,4 @@
-Require Import Stdlib.Program.Equality.
+From Equations Require Import Equations.
 Require Import Stdlib.Relations.Relations.
 Require Import Syntax.
 Require Import Reduction.
@@ -9,6 +9,7 @@ Inductive Ctx L: nat -> Type :=
 Arguments ε {_}.
 Arguments cons [_] [_] _ _.
 Infix "&" := cons (at level 50, left associativity).
+Derive Signature NoConfusionHom for Ctx.
 
 Reserved Notation "Γ →ˠ Δ" (at level 60).
 Inductive ctx_beta {L}:
@@ -78,9 +79,9 @@ Lemma squeeze_prop {L m n} (Γ: Ctx L (S m + n)):
   rename up (squeeze Γ) = Γ !! division.
 Proof. induction m.
 - reflexivity.
-- dependent destruction Γ.
+- dependent elimination Γ as [Γ & T].
   change
-  (rename up (squeeze (Γ & t : Ctx L (S (S m) + n))) =
+  (rename up (squeeze (Γ & T : Ctx L (S (S m) + n))) =
   (shift (Γ !! division) : Term L (S (S m) + n))).
   rewrite <- shift_up. f_equal. apply IHm.
 Qed.
@@ -91,7 +92,7 @@ Proof. reflexivity. Qed.
 
 Lemma weak_wr {m n}:
   forall (i: Fin (S m + n)), weak wr i = wr i.
-Proof. intro. dependent destruction i; reflexivity. Qed.
+Proof. intro. dependent elimination i; reflexivity. Qed.
 
 Lemma rename_weak_wr {L m n} (t: Term L (S m + n)):
   rename (weak wr) t = rename wr t.
@@ -107,7 +108,8 @@ Lemma insert_index {L m n}
   insert Γ T !! wr i = rename wr (Γ !! i).
 Proof. induction m.
 - reflexivity.
-- dependent destruction Γ. dependent destruction i.
+- dependent elimination Γ as [Γ & _].
+  dependent elimination i as [ fzero | fsucc i ].
   + simpl. unfold shift.
     rewrite rename_comp, rename_comp.
     apply rename_ext. reflexivity.

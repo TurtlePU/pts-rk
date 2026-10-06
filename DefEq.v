@@ -1,4 +1,3 @@
-Require Import Stdlib.Program.Equality.
 Require Import Stdlib.Relations.Relations.
 Require Import Syntax.
 Require Import AbstractRewriting.

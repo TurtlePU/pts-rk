@@ -1,0 +1,6 @@
+(rocq.theory
+  (name PTSrk)
+  (package pts-rk)
+  (modules Syntax AbstractRewriting Congruence Reduction Confluence DefEq
+           Context Levels Typing Inversions Preservation SN Ranks)
+  (theories Stdlib Equations))

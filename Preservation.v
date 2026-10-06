@@ -1,4 +1,4 @@
-Require Import Stdlib.Program.Equality.
+From Equations Require Import Equations.
 Require Import Typing.
 Require Import Context.
 Require Import Levels.
@@ -23,7 +23,7 @@ Lemma wf_subst_at {L m n} (Γ: Ctx L (S m + n))
 (* ----------------------------------- *)
              wf (Γ ◁ⁱ u).
 Proof. generalize dependent n.
-induction m; intros; dependent destruction X.
+induction m; intros; dependent elimination X.
 - auto.
 - apply wf_cons with (ℓ := ℓ).
   + apply IHm; auto.
@@ -45,8 +45,8 @@ Proof. intros. induction H.
     * apply wf_cons with (ℓ := ℓₜ); assumption.
     * apply beta_there. assumption.
   + auto.
-- induction i; dependent destruction H0;
-  try (simpl; constructor); dependent destruction X.
+- induction i; dependent elimination H0;
+  dependent elimination X; try (simpl; constructor).
   + apply typ_conv with (T := shift U) (ℓ := ℓ).
     * constructor.
     * apply weakening with (T := 𝓤 ℓ). assumption.
@@ -80,14 +80,14 @@ Lemma type_is_correct `{Levels_total_sig L} {n Γ}
     Γ ⊢ t ⇐ T -> wf Γ ->
 (* ---------------------- *)
    exists ℓ, Γ ⊢ T ⇐ 𝓤 ℓ.
-Proof. intros. dependent induction H1.
+Proof. intros. depind H1.
 - destruct (axiom_t ℓ') as [ℓ'' H3].
   exists ℓ''. constructor. auto.
 - destruct (axiom_t ℓ) as [ℓ' H3].
   exists ℓ'. constructor. auto.
-- dependent induction X; dependent destruction i.
+- depind X; dependent elimination i.
   + exists ℓ. apply weakening with (T := 𝓤 _). auto.
-  + specialize (IHX i) as [ℓ' H3].
+  + specialize (IHX f) as [ℓ' H3].
     exists ℓ'. apply weakening with (T := 𝓤 _). auto.
 - assert (H3: wf (Γ & U)).
   { apply wf_cons with (ℓ := ℓ); auto. }

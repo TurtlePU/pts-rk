@@ -1,4 +1,4 @@
-Require Import Stdlib.Program.Equality.
+From Equations Require Import Equations.
 Require Import Stdlib.Relations.Relations.
 Require Import Syntax.
 Require Import Reduction.
@@ -7,6 +7,7 @@ Require Import Congruence.
 
 Inductive Acc {A} (R: relation A) (x: A): Prop :=
 | acc: (forall y, R x y -> Acc R y) -> Acc R x.
+Derive Signature for Acc.
 
 Lemma acc_step {A} {R: relation A} x y:
   R x y -> Acc R x -> Acc R y.
@@ -38,18 +39,18 @@ intros. inversion H3; subst.
 Qed.
 
 Lemma λ_sn {L n} (T: Term L n) t:
-  sn T -> sn t -> sn (λ T t).
+  sn T -> sn t -> sn ([T] t).
 Proof. intros. induction H. induction H0. constructor.
 intros. inversion H3; subst.
 - apply H1. auto.
 - apply H2. auto. intros.
-  apply acc_step with (x := λ y x0);
+  apply acc_step with (x := [y] x0);
   [ apply step_lam_right | apply H1]; auto.
 Qed.
 
 Lemma dom_sn {L n} (T: Term L n) U: sn (Π T U) -> sn T.
 Proof.
-intros. dependent induction H. constructor. intros.
+intros. depind H. constructor. intros.
 apply H0 with (T := y) (U := U) (y := Π y U).
 - apply step_pi_left. auto.
 - auto.
@@ -58,31 +59,31 @@ Qed.
 Lemma codom_sn {L n} (T: Term L n) U:
   sn (Π T U) -> sn U.
 Proof.
-intros. dependent induction H. constructor. intros.
+intros. depind H. constructor. intros.
 apply H0 with (T := T) (U := y) (y := Π T y).
 - apply step_pi_right. auto.
 - auto.
 Qed.
 
-Lemma arg_sn {L n} (T: Term L n) t: sn (λ T t) -> sn T.
+Lemma arg_sn {L n} (T: Term L n) t: sn ([T] t) -> sn T.
 Proof.
-intros. dependent induction H. constructor. intros.
-apply H0 with (T := y) (t := t) (y := λ y t).
+intros. depind H. constructor. intros.
+apply H0 with (T := y) (t := t) (y := [y] t).
 - apply step_lam_left. auto.
 - auto.
 Qed.
 
-Lemma body_sn {L n} (T: Term L n) t: sn (λ T t) -> sn t.
+Lemma body_sn {L n} (T: Term L n) t: sn ([T] t) -> sn t.
 Proof.
-intro. dependent induction H. constructor. intros.
-apply H0 with (T := T) (t := y) (y := λ T y).
+intro. depind H. constructor. intros.
+apply H0 with (T := T) (t := y) (y := [T] y).
 - apply step_lam_right. auto.
 - auto.
 Qed.
 
 Lemma head_sn {L n} (t u: Term L n): sn (t $ u) -> sn t.
 Proof.
-intro. dependent induction H. constructor. intros.
+intro. depind H. constructor. intros.
 apply H0 with (y := y $ u) (u := u).
 - apply step_app_left. auto.
 - auto.
@@ -90,7 +91,7 @@ Qed.
 
 Lemma tail_sn {L n} (t u: Term L n): sn (t $ u) -> sn u.
 Proof.
-intros. dependent induction H. constructor. intros.
+intros. depind H. constructor. intros.
 apply H0 with (t := t) (u := y) (y := t $ y).
 - apply step_app_right. auto.
 - auto.
@@ -108,15 +109,15 @@ Qed.
 Lemma sn_unsub {L m n} (t: Term L (S m + n)) u:
   sn (t ◁ᵢ u) -> sn t.
 Proof.
-intros. dependent induction H. constructor. intros.
+intros. depind H. constructor. intros.
 inversion H1; subst.
 - apply H0 with (y := Π T' U ◁ᵢ u) (u := u); auto.
   apply replace_step, step_pi_left. auto.
 - apply H0 with (y := Π T U' ◁ᵢ u) (u := u); auto.
   apply replace_step, step_pi_right. auto.
-- apply H0 with (y := λ T' t0 ◁ᵢ u) (u := u); auto.
+- apply H0 with (y := [T'] t0 ◁ᵢ u) (u := u); auto.
   apply replace_step, step_lam_left. auto.
-- apply H0 with (y := λ T t' ◁ᵢ u) (u := u); auto.
+- apply H0 with (y := [T] t' ◁ᵢ u) (u := u); auto.
   apply replace_step, step_lam_right. auto.
 - apply H0 with (y := f' $ t0 ◁ᵢ u) (u := u); auto.
   apply replace_step, step_app_left. auto.
@@ -134,8 +135,7 @@ Inductive Atomic {L n}: Term L n -> Prop :=
 
 Lemma rename_atomic {L m n} (f: Fin m -> Fin n)
   (t: Term L m): Atomic t -> Atomic (rename f t).
-Proof. intros. dependent induction H; constructor; auto.
-Qed.
+Proof. intros. depind H; constructor; auto. Qed.
 
 Lemma atomic_preservation {L n} (t t': Term L n):
   t →ᵝ t' -> Atomic t -> Atomic t'.
@@ -164,7 +164,7 @@ Qed.
 Inductive WHR_sn {L n}:
   relation (Term L n) :=
 | whr_sn_here U t u:
-    sn U -> sn u -> WHR_sn (λ U t $ u) (t ◁ u)
+    sn U -> sn u -> WHR_sn ([U] t $ u) (t ◁ u)
 | whr_sn_there t t' u:
     WHR_sn t t' -> WHR_sn (t $ u) (t' $ u)
 .
@@ -194,19 +194,31 @@ intros. generalize dependent u. induction H; intros.
 Qed.
 
 Lemma weak_head_expansion {L n} (T t: Term L n) u:
-  sn T -> sn t -> sn (u ◁ t) -> sn (λ T u $ t).
+  sn T -> sn t -> sn (u ◁ t) -> sn ([T] u $ t).
 Proof.
 intros. pose proof H1. apply (@sn_unsub L 0) in H1.
-apply (λ_sn _ _ H) in H1. clear H.
-dependent induction H1. induction H0.
-constructor. intros. inversion H4. inversion H8; subst.
-- apply H1 with (y := λ T' u); auto. constructor. auto.
-- apply H1 with (y := λ T t'); auto.
-  + constructor. auto.
-  + apply acc_step with (x := u ◁ x).
+induction H. induction H0. induction H1.
+constructor. intros. inversion H6. inversion H10.
+all: subst.
+- apply H3. auto.
+- apply H5. auto.
+  + intros. apply acc_step with ([y] x1 $ x0);
+    [ apply step_app_left, step_lam_right | apply H3];
+    auto.
+  + intros. apply acc_step with ([x] x1 $ y).
+    apply step_app_left, step_lam_right. auto.
+    apply H4. auto.
+    * intros. apply acc_step with ([y0] x1 $ x0);
+      [ apply step_app_right | apply H3]; auto.
+    * apply acc_steps with (x1 ◁ x0).
+      apply rtc_sub, rtc_in. all: auto.
+  + apply acc_step with (x1 ◁ x0).
     apply replace_step. all: auto.
-- apply H3. auto. apply acc_steps with (x := u ◁ x).
-  apply rtc_sub, rtc_in. all: auto.
+- apply H4. auto.
+  + intros. apply acc_step with ([y] x1 $ x0);
+    [ apply step_app_right | apply H3 ]; auto.
+  + apply acc_steps with (x1 ◁ x0).
+    apply rtc_sub, rtc_in. all: auto.
 - auto.
 Qed.
 
@@ -214,9 +226,9 @@ Lemma whe_app {L n} (t t' u: Term L n):
   WHR_sn t t' -> sn t -> sn (t' $ u) -> sn (t $ u).
 Proof.
 intros. generalize dependent t'. generalize dependent u.
-dependent induction H0. intros. dependent induction H2.
-constructor. intros. inversion H4; subst.
-- apply acc in H3. destruct (WHR_sn_comm _ _ _ H1 H8).
+depind H0. intros. depind H2. constructor. intros.
+inversion H4; subst.
+- apply acc in H1. destruct (WHR_sn_comm _ _ _ H3 H8).
   + subst. auto.
   + destruct H5 as [v [wh rv]]. apply H0 with (t' := v).
     1-2: auto. apply acc_steps with (x := t' $ u).
@@ -224,7 +236,7 @@ constructor. intros. inversion H4; subst.
     all: auto.
 - apply H2 with (y := t' $ t'0) (t' := t'); auto.
   apply step_app_right. auto.
-- inversion H1.
+- inversion H3.
 Qed.
 
 Lemma sn_backward_closure {L n} (t t': Term L n):
@@ -242,11 +254,11 @@ Inductive SNx {L n}: Term L n -> Prop :=
 | SNx_app t u: SNx t -> SN u -> SNx (t $ u)
 with SN {L n}: Term L n -> Prop :=
 | SN_SNx t: SNx t -> SN t
-| SN_λ T t: SN T -> SN t -> SN (λ T t)
+| SN_λ T t: SN T -> SN t -> SN ([T] t)
 | SN_WHR t u: WHR_SN t u -> SN u -> SN t
 with WHR_SN {L n}: relation (Term L n) :=
 | WHR_SN_here U t u:
-    SN U -> SN u -> WHR_SN (λ U t $ u) (t ◁ u)
+    SN U -> SN u -> WHR_SN ([U] t $ u) (t ◁ u)
 | WHR_SN_there t t' u:
     WHR_SN t t' -> WHR_SN (t $ u) (t' $ u)
 .
@@ -258,10 +270,10 @@ Lemma codom_SN {L n} (T: Term L n) U:
   SN (Π T U) -> SN U.
 Proof. intros. inversion H; inversion H0. auto. Qed.
 
-Lemma arg_SN {L n} (T: Term L n) t: SN (λ T t) -> SN T.
+Lemma arg_SN {L n} (T: Term L n) t: SN ([T] t) -> SN T.
 Proof. intros. inversion H; auto; inversion H0. Qed.
 
-Lemma body_SN {L n} (T: Term L n) t: SN (λ T t) -> SN t.
+Lemma body_SN {L n} (T: Term L n) t: SN ([T] t) -> SN t.
 Proof. intros. inversion H; auto; inversion H0. Qed.
 
 Scheme snx_sn_whr := Minimality for SNx Sort Prop
@@ -341,7 +353,7 @@ Proof. constructor.
  *)
 
 Inductive WHL {L n}: Term L n -> Prop :=
-| whlam T t: WHL (λ T t)
+| whlam T t: WHL ([T] t)
 | whapp t u: WHL t -> WHL (t $ u).
 
 Lemma decide_atomic {L n} (t: Term L n):

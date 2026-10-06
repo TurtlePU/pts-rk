@@ -1,4 +1,4 @@
-Require Import Stdlib.Program.Equality.
+From Equations Require Import Equations.
 Require Import Context.
 Require Import DefEq.
 Require Import Levels.
@@ -21,7 +21,7 @@ Inductive typ {L} {sig: Levels_sig L}:
 | typ_λ {n} {Γ : Ctx L n} {U t T} ℓ:
    Γ ⊢ U ⇐ 𝓤 ℓ -> Γ & U ⊢ t ⇐ T ->
 (* ------------------------------- *)
-         Γ ⊢ λ U t ⇐ Π U T
+         Γ ⊢ [U] t ⇐ Π U T
 | typ_app {n} {Γ : Ctx L n} {t T u} U:
    Γ ⊢ t ⇐ Π U T -> Γ ⊢ u ⇐ U ->
 (* ----------------------------- *)
@@ -31,31 +31,32 @@ Inductive typ {L} {sig: Levels_sig L}:
 (* --------------------------------------- *)
                 Γ ⊢ t ⇐ T'
 where "Γ ⊢ t ⇐ T" := (typ Γ t T).
+Derive Signature for typ.
 
 Lemma weakening_strong m {L n Γ} (sig: Levels_sig L)
   (t T : Term L (m + n)) (U: Term L n):
                   Γ ⊢ t ⇐ T ->
 (* --------------------------------------- *)
    insert Γ U ⊢ rename wr t ⇐ rename wr T.
-Proof. intros. dependent induction H.
+Proof. intros. depind H.
 - constructor. auto.
 - apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
-  + apply IHtyp1 with (T := 𝓤 ℓₜ); reflexivity.
-  + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & T0)
+  + apply IHtyp1; reflexivity.
+  + apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & T)
     (T := 𝓤 ℓᵤ); reflexivity.
   + auto.
 - rewrite <- insert_index with (T := U). constructor.
 - apply typ_λ with (ℓ := ℓ).
-  + apply IHtyp1 with (T := 𝓤 ℓ); reflexivity.
-  + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & U0);
+  + apply IHtyp1; reflexivity.
+  + apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & U);
     reflexivity.
 - rewrite rename_subst. simpl rename.
-  apply typ_app with (U := rename wr U0).
-  + apply IHtyp1 with (T := Π U0 T0); reflexivity.
-  + apply IHtyp2; reflexivity.
-- apply typ_conv with (T := rename wr T0) (ℓ := ℓ).
+  apply typ_app with (U := rename wr U).
   + apply IHtyp1; reflexivity.
-  + apply IHtyp2 with (T := 𝓤 ℓ); reflexivity.
+  + apply IHtyp2; reflexivity.
+- apply typ_conv with (T := rename wr T) (ℓ := ℓ).
+  + apply IHtyp1; reflexivity.
+  + apply IHtyp2; reflexivity.
   + apply rename_equiv. assumption.
 Qed.
 
@@ -71,48 +72,41 @@ Lemma substitution_lemma_strong m
   (t T: Term L (S m + n)) (u: Term L n):
   Γ ⊢ t ⇐ T -> shrink Γ ⊢ u ⇐ squeeze Γ ->
   Γ ◁ⁱ u ⊢ t ◁ᵢ u ⇐ T ◁ᵢ u.
-Proof. intros. dependent induction H.
+Proof. intros. depind H.
 - constructor. auto.
 - apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
-  + apply IHtyp1 with (T := 𝓤 ℓₜ); try reflexivity.
-    assumption.
-  + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & _)
+  + apply IHtyp1; try reflexivity. assumption.
+  + apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & _)
     (T := 𝓤 ℓᵤ); try reflexivity. assumption.
   + auto.
 - induction m.
-  + dependent destruction i; simpl.
-    * replace (@subst_at _ 0 n (shift (ctx_top Γ)) u)
-              with (squeeze Γ).
+  + dependent elimination i as [fzero | fsucc i]; simpl.
+    * apply eq_rect with (squeeze (Γ: Ctx L (1 + n0))).
       assumption. symmetry. unfold subst_at, push.
       apply shift_subst.
-    * replace
-        (@subst_at _ 0 n (shift (ctx_pred Γ !! i)) u)
-        with (ctx_pred Γ !! i).
+    * apply eq_rect with (ctx_pred Γ !! i).
       apply typ_var. symmetry. unfold subst_at, push.
       apply shift_subst.
-  + dependent destruction i.
-    * apply eq_rect with (x := shift (ctx_top Γ ◁ᵢ u)).
+  + dependent elimination i as [fzero | fsucc i].
+    * apply eq_rect with (shift (ctx_top Γ ◁ᵢ u)).
       constructor. simpl. unfold shift, subst_at.
       rewrite rename_replace, replace_rename.
       apply replace_ext. reflexivity.
     * apply eq_rect with
-      (x := shift ((ctx_pred Γ !! i) ◁ᵢ u)).
+      (shift ((ctx_pred Γ !! i) ◁ᵢ u)).
       apply weakening, IHm. assumption.
       rewrite <- shift_subst_at. reflexivity.
 - apply typ_λ with (ℓ := ℓ).
-  + apply IHtyp1 with (T := 𝓤 ℓ); try reflexivity.
-    assumption.
-  + apply IHtyp2 with (m := S m) (n := n) (Γ := Γ & _);
+  + apply IHtyp1; try reflexivity. assumption.
+  + apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & _);
     try reflexivity. assumption.
 - unfold subst_at. rewrite replace_subst.
-  apply typ_app with (U := U ◁ᵢ u).
-  + apply IHtyp1 with (T := Π U T0); try reflexivity.
-    assumption.
-  + apply IHtyp2; try reflexivity. assumption.
-- apply typ_conv with (ℓ := ℓ) (T := T0 ◁ᵢ u).
+  apply typ_app with (U := U ◁ᵢ u0).
   + apply IHtyp1; try reflexivity. assumption.
-  + apply IHtyp2 with (T := 𝓤 ℓ); try reflexivity.
-    assumption.
+  + apply IHtyp2; try reflexivity. assumption.
+- apply typ_conv with (ℓ := ℓ) (T := T ◁ᵢ u).
+  + apply IHtyp1; try reflexivity. assumption.
+  + apply IHtyp2; try reflexivity. assumption.
   + apply replace_equiv. assumption.
 Qed.
 
@@ -129,7 +123,7 @@ Lemma unshrink_lemma {L m n} (sig: Levels_sig L)
         shrink Γ ⊢ t ⇐ T ->
 (* ------------------------------ *)
    Γ ⊢ rename up t ⇐ rename up T.
-Proof. induction m; dependent destruction Γ.
+Proof. induction m; dependent elimination Γ.
 - apply weakening.
 - intros. rewrite <- shift_up.
   replace (rename (@up (S (S m)) n) T)
