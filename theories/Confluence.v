@@ -31,7 +31,7 @@ intro. induction H.
 - apply λ_cong_par; auto; typeclasses eauto.
 - apply app_cong_par; auto; typeclasses eauto.
 - transitivity ([T] f' $ t').
-  + apply app_cong_par; try (apply λ_cong_r); auto;
+  + apply app_cong_par; auto with cong;
     typeclasses eauto.
   + apply rtc_in. constructor.
 Qed.

@@ -223,13 +223,11 @@ Lemma main_lemma {n} Γ (t T: Term nat n):
   wf Γ -> Γ ⊢ t ⇐ T -> SN t.
 Proof. intros. induction H.
 - constructor. constructor.
+- constructor. constructor. auto.
+  apply IHtyp2, wf_cons with (ℓ := ℓₜ); auto.
 - constructor. constructor.
-  + apply IHtyp1. auto.
-  + apply IHtyp2, wf_cons with (ℓ := ℓₜ); auto.
-- constructor. constructor.
-- apply SN_λ.
-  + apply IHtyp1. auto.
-  + apply IHtyp2, wf_cons with (ℓ := ℓ); auto.
+- apply SN_λ. auto.
+  apply IHtyp2, wf_cons with (ℓ := ℓ); auto.
 - pose proof H. apply type_is_correct in H; auto.
   destruct H. pose proof (AL_holds x). unfold AL in H2.
   apply H2 with (Γ := Γ) (T := U) (U := T); auto.

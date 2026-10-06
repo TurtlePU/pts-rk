@@ -31,8 +31,8 @@ Proof. intros. induction H. induction H0. constructor.
 intros. inversion H3; subst.
 - apply H1. auto.
 - apply H2. auto. intros.
-  apply acc_step with (x := Π y x0);
-  [ apply step_pi_right | apply H1 ]; auto.
+  apply acc_step with (x := Π y x0); [ | apply H1 ];
+  auto with cong.
 Qed.
 
 Lemma λ_sn {L n} (T: Term L n) t:
@@ -41,37 +41,22 @@ Proof. intros. induction H. induction H0. constructor.
 intros. inversion H3; subst.
 - apply H1. auto.
 - apply H2. auto. intros.
-  apply acc_step with (x := [y] x0);
-  [ apply step_lam_right | apply H1]; auto.
+  apply acc_step with (x := [y] x0); [ | apply H1];
+  auto with cong.
 Qed.
 
 Lemma head_sn {L n} (t u: Term L n): sn (t $ u) -> sn t.
 Proof.
 intro. depind H. constructor. intros.
-apply H0 with (y := y $ u) (u := u).
-- apply step_app_left. auto.
-- auto.
+apply H0 with (y := y $ u) (u := u); auto with cong.
 Qed.
 
 Lemma sn_unsub {L m n} (t: Term L (S m + n)) u:
   sn (t ◁ᵢ u) -> sn t.
 Proof.
 intros. depind H. constructor. intros.
-inversion H1; subst.
-- apply H0 with (y := Π T' U ◁ᵢ u) (u := u); auto.
-  apply replace_step, step_pi_left. auto.
-- apply H0 with (y := Π T U' ◁ᵢ u) (u := u); auto.
-  apply replace_step, step_pi_right. auto.
-- apply H0 with (y := [T'] t0 ◁ᵢ u) (u := u); auto.
-  apply replace_step, step_lam_left. auto.
-- apply H0 with (y := [T] t' ◁ᵢ u) (u := u); auto.
-  apply replace_step, step_lam_right. auto.
-- apply H0 with (y := f' $ t0 ◁ᵢ u) (u := u); auto.
-  apply replace_step, step_app_left. auto.
-- apply H0 with (y := f $ t' ◁ᵢ u) (u := u); auto.
-  apply replace_step, step_app_right. auto.
-- apply H0 with (y := (f ◁ t0) ◁ᵢ u) (u := u); auto.
-  apply replace_step, step_beta.
+inversion H1; subst; eapply H0; auto;
+apply replace_step; auto with cong.
 Qed.
 
 Inductive Atomic {L n}: Term L n -> Prop :=
@@ -98,8 +83,8 @@ constructor. intros. inversion H4.
 - apply H2. auto.
   apply atomic_preservation with (t := x); auto.
 - apply H3. auto. intros.
-  apply acc_step with (x := y0 $ x0);
-  [ apply step_app_right | apply H2 ]; auto.
+  apply acc_step with (x := y0 $ x0); [ | apply H2 ];
+  auto with cong.
 - subst. inversion H.
 Qed.
 
@@ -130,7 +115,7 @@ intros. generalize dependent u. induction H; intros.
     right. destruct H1 as [H1 [HW HR]].
     eexists. constructor.
     * apply whr_sn_there, HW.
-    * apply app_cong_l. auto.
+    * auto with cong.
   + right. eexists. constructor. apply whr_sn_there, H.
     apply app_cong_r, rtc_in. auto.
   + inversion H.
@@ -146,20 +131,18 @@ all: subst.
 - apply H3. auto.
 - apply H5. auto.
   + intros. apply acc_step with ([y] x1 $ x0);
-    [ apply step_app_left, step_lam_right | apply H3];
-    auto.
+    [ | apply H3]; eauto with cong.
   + intros. apply acc_step with ([x] x1 $ y).
-    apply step_app_left, step_lam_right. auto.
-    apply H4. auto.
+    auto with cong. apply H4. auto.
     * intros. apply acc_step with ([y0] x1 $ x0);
-      [ apply step_app_right | apply H3]; auto.
+      [ | apply H3]; auto with cong.
     * apply acc_steps with (x1 ◁ x0).
       apply rtc_sub, rtc_in. all: auto.
   + apply acc_step with (x1 ◁ x0).
     apply replace_step. all: auto.
 - apply H4. auto.
   + intros. apply acc_step with ([y] x1 $ x0);
-    [ apply step_app_right | apply H3 ]; auto.
+    [ | apply H3 ]; auto with cong.
   + apply acc_steps with (x1 ◁ x0).
     apply rtc_sub, rtc_in. all: auto.
 - auto.
@@ -175,10 +158,9 @@ inversion H4; subst.
   + subst. auto.
   + destruct H5 as [v [wh rv]]. apply H0 with (t' := v).
     1-2: auto. apply acc_steps with (x := t' $ u).
-    change (t' $ u ↠ᵝ v $ u). apply app_cong_l.
-    all: auto.
-- apply H2 with (y := t' $ t'0) (t' := t'); auto.
-  apply step_app_right. auto.
+    change (t' $ u ↠ᵝ v $ u). all: auto with cong.
+- apply H2 with (y := t' $ t'0) (t' := t');
+  auto with cong.
 - inversion H3.
 Qed.
 
@@ -233,8 +215,8 @@ Proof. intros. induction H; constructor. auto. Qed.
 
 Lemma reduction_weakening {L n} (t t': Term L n):
   WHR_SN t t' -> t →ᵝ t'.
-Proof. intros. induction H. apply step_beta.
-apply step_app_left. auto.
+Proof.
+intros. induction H. apply step_beta. auto with cong.
 Qed.
 
 Theorem SN_soundness {L n} (t: Term L n): SN t -> sn t.

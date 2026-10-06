@@ -1,3 +1,4 @@
+From Ltac2 Require Import Ltac2.
 Require Import Setoid.
 Require Import Syntax AbstractRewriting.
 
@@ -17,18 +18,27 @@ Class Congruence L
     forall u u', R u u' -> R (t $ u) (t $ u')
 }.
 
+Ltac2 cong_simpl0 () := Control.enter (fun () =>
+  match! goal with
+  | [ |- _ (Π _ ?_u) (Π _ ?_u) ] => apply Π_cong_l
+  | [ |- _ (Π ?_t _) (Π ?_t _) ] => apply Π_cong_r
+  | [ |- _ ([_] ?_t) ([_] ?_t) ] => apply λ_cong_l
+  | [ |- _ ([?_t] _) ([?_t] _) ] => apply λ_cong_r
+  | [ |- _ (_ $ ?_u) (_ $ ?_u) ] => apply app_cong_l
+  | [ |- _ (?_t $ _) (?_t $ _) ] => apply app_cong_r
+  end
+).
+Ltac2 Abbreviation cong_simple := cong_simpl0 ().
+Create HintDb cong.
+Hint Extern 1 => cong_simple : cong.
+
 Instance sym_cong L R (cong: Congruence L R):
   Congruence L (fun n => Sym (R n)).
 Proof.
 split; intros; try (apply sym_unmap);
 try (apply sym_unmap with (f := fun x => _ x _));
-apply sym_map with (Q := R _); auto.
-- apply Π_cong_l.
-- apply Π_cong_r.
-- apply λ_cong_l.
-- apply λ_cong_r.
-- apply app_cong_l.
-- apply app_cong_r.
+apply sym_map with (Q := R _); unfold Preimage;
+auto with cong.
 Qed.
 
 Instance rtc_cong L R (cong: Congruence L R):
@@ -36,23 +46,19 @@ Instance rtc_cong L R (cong: Congruence L R):
 Proof.
 split; intros; try (apply rtc_unmap);
 try (apply rtc_unmap with (f := fun x => _ x _));
-apply rtc_map with (Q := R _); auto.
-- apply Π_cong_l.
-- apply Π_cong_r.
-- apply λ_cong_l.
-- apply λ_cong_r.
-- apply app_cong_l.
-- apply app_cong_r.
+apply rtc_map with (Q := R _); unfold Preimage;
+auto with cong.
 Qed.
+
+Ltac2 Notation "transitivity" mid(constr) :=
+  Std.transitivity mid.
 
 Lemma Π_cong_par L R
   {trans: forall n, Transitive (R n)}
   {cong: Congruence L R}:
   forall n (T T': Term L n) U U',
   R _ T T' -> R _ U U' -> R _ (Π T U) (Π T' U').
-Proof. intros. transitivity (Π T U').
-- apply Π_cong_r. auto.
-- apply Π_cong_l. auto.
+Proof. intros. transitivity (Π T U'); auto with cong.
 Qed.
 
 Lemma λ_cong_par L R
@@ -60,9 +66,7 @@ Lemma λ_cong_par L R
   {cong: Congruence L R}:
   forall n (T T': Term L n) t t',
   R _ T T' -> R _ t t' -> R _ ([T] t) ([T'] t').
-Proof. intros. transitivity ([T] t').
-- apply λ_cong_r. auto.
-- apply λ_cong_l. auto.
+Proof. intros. transitivity ([T] t'); auto with cong.
 Qed.
 
 Lemma app_cong_par L R
@@ -70,7 +74,5 @@ Lemma app_cong_par L R
   {cong: Congruence L R}:
   forall n (t t' u u': Term L n),
   R _ t t' -> R _ u u' -> R _ (t $ u) (t' $ u').
-Proof. intros. transitivity (t $ u').
-- apply app_cong_r. auto.
-- apply app_cong_l. auto.
+Proof. intros. transitivity (t $ u'); auto with cong.
 Qed.
