@@ -1,7 +1,6 @@
 From Equations Require Import Equations.
 Require Import Stdlib.Relations.Relations.
-Require Import Syntax.
-Require Import Reduction.
+Require Import Syntax Reduction.
 
 Inductive Ctx L: nat -> Type :=
 | ε: Ctx L 0
@@ -86,23 +85,6 @@ Proof. induction m.
   rewrite <- shift_up. f_equal. apply IHm.
 Qed.
 
-Lemma wr_fsucc {m n} (i: Fin (m + n)):
-  @wr (S m) n (fsucc i) = fsucc (wr i).
-Proof. reflexivity. Qed.
-
-Lemma weak_wr {m n}:
-  forall (i: Fin (S m + n)), weak wr i = wr i.
-Proof. intro. dependent elimination i; reflexivity. Qed.
-
-Lemma rename_weak_wr {L m n} (t: Term L (S m + n)):
-  rename (weak wr) t = rename wr t.
-Proof. apply rename_ext, weak_wr. Qed.
-
-Lemma index_fsucc {L n}
-  (Γ: Ctx L n) (T: Term L n) (i: Fin n):
-  Γ & T !! fsucc i = shift (Γ !! i).
-Proof. reflexivity. Qed.
-
 Lemma insert_index {L m n}
   (Γ: Ctx L (m + n)) (T: Term L n) (i: Fin (m + n)):
   insert Γ T !! wr i = rename wr (Γ !! i).
@@ -113,7 +95,8 @@ Proof. induction m.
   + simpl. unfold shift.
     rewrite rename_comp, rename_comp.
     apply rename_ext. reflexivity.
-  + simpl insert. rewrite wr_fsucc, index_fsucc.
+  + change (shift (insert Γ T !! wr i) =
+            rename (@wr (S m) n) (Γ & t !! fsucc i)).
     transitivity
       (rename (@wr (S m) n) (shift (Γ !! i))).
     * rewrite IHm. unfold shift.

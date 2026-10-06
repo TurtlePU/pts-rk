@@ -1,8 +1,5 @@
 From Equations Require Import Equations.
-Require Import Context.
-Require Import DefEq.
-Require Import Levels.
-Require Import Syntax.
+Require Import Context DefEq Levels Syntax.
 
 Reserved Notation "Γ ⊢ t ⇐ T" (at level 60).
 Inductive typ {L} {sig: Levels_sig L}:

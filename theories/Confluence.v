@@ -1,9 +1,6 @@
 From Equations Require Import Equations.
 Require Import Stdlib.Relations.Relations.
-Require Import AbstractRewriting.
-Require Import Syntax.
-Require Import Reduction.
-Require Import Congruence.
+Require Import AbstractRewriting Syntax Reduction Congruence.
 
 Reserved Notation "t ⇉ᵝ t'"
   (at level 50, no associativity).

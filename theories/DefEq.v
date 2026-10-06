@@ -1,8 +1,5 @@
 Require Import Stdlib.Relations.Relations.
-Require Import Syntax.
-Require Import AbstractRewriting.
-Require Import Reduction.
-Require Import Confluence.
+Require Import Syntax AbstractRewriting Reduction Confluence.
 
 Definition def_equiv L n: relation (Term L n) :=
   EquivClosure (step L n).

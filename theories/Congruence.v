@@ -1,6 +1,5 @@
 Require Import Setoid.
-Require Import Syntax.
-Require Import AbstractRewriting.
+Require Import Syntax AbstractRewriting.
 
 Class Congruence L
   (R: forall {n}, relation (Term L n)) :=

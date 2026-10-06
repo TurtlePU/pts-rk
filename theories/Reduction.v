@@ -60,47 +60,6 @@ try (constructor; apply IHstep). intros.
 rewrite replace_subst. constructor.
 Qed.
 
-Lemma lam_if_rename_is_lam {L m n} f
-  (T: Term L n) (t: Term L m) (u: Term L (S n)):
-  [T] u = rename f t ->
-  exists T' u', t = [T'] u'
-  /\ rename f T' = T
-  /\ rename (weak f) u' = u.
-Proof.
-intros. destruct t; inversion H. exists t1, t2.
-split; [|split]; auto.
-Qed.
-
-Lemma rename_step_is_renamed {L m n} f
-  (t: Term L m) (u: Term L n):
-  rename f t →ᵝ u -> exists v, u = rename f v /\ t →ᵝ v.
-Proof. generalize dependent n.
-induction t; intros; inversion H.
-- apply IHt1 in H3. destruct H3 as [T0 [H3 H4]]. subst.
-  exists (Π T0 t2). split. auto. apply step_pi_left.
-  auto.
-- apply IHt2 in H3. destruct H3 as [U0 [H3 H4]]. subst.
-  exists (Π t1 U0). split. auto. apply step_pi_right.
-  auto.
-- apply IHt1 in H3. destruct H3 as [T0 [H3 H4]]. subst.
-  exists ([T0] t2). split. auto. apply step_lam_left.
-  auto.
-- apply IHt2 in H3. destruct H3 as [t0 [H3 H4]]. subst.
-  exists ([t1] t0). split. auto. apply step_lam_right.
-  auto.
-- apply IHt1 in H3. destruct H3 as [f1 [H3 H4]]. subst.
-  exists (f1 $ t2). split. auto. apply step_app_left.
-  auto.
-- apply IHt2 in H3. destruct H3 as [t0 [H3 H4]]. subst.
-  exists (t1 $ t0). split. auto. apply step_app_right.
-  auto.
-- apply lam_if_rename_is_lam in H1.
-  destruct H1 as [T' [u' [H1 [H3 H4]]]]. subst.
-  exists (u' ◁ t2). split.
-  + rewrite rename_subst. auto.
-  + constructor.
-Qed.
-
 Lemma rename_rtc {L m n}
   (f: Fin m -> Fin n) (t t': Term L m):
   t ↠ᵝ t' -> rename f t ↠ᵝ rename f t'.

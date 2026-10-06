@@ -1,12 +1,5 @@
 From Equations Require Import Equations.
-Require Import AbstractRewriting.
-Require Import DefEq.
-Require Import Levels.
-Require Import Typing.
-Require Import Context.
-Require Import Syntax.
-Require Import Congruence.
-Require Import Reduction.
+Require Import AbstractRewriting DefEq Levels Typing Context Syntax Congruence Reduction.
 
 Lemma 𝓤_inversion {L n Γ} (sig: Levels_sig L)
   (ℓ: L) (T: Term L n):

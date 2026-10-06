@@ -1,13 +1,6 @@
 From Equations Require Import Equations.
 Require Import Typing.
-Require Import Context.
-Require Import Levels.
-Require Import Syntax.
-Require Import DefEq.
-Require Import Reduction.
-Require Import AbstractRewriting.
-Require Import Inversions.
-Require Import Congruence.
+Require Import Context Levels Syntax DefEq Reduction AbstractRewriting Inversions Congruence.
 
 Inductive wf {L} {sig: Levels_sig L}:
   forall {n}, Ctx L n -> Type :=

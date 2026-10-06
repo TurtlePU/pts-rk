@@ -1,9 +1,6 @@
 From Equations Require Import Equations.
 Require Import Stdlib.Relations.Relations.
-Require Import Syntax.
-Require Import Reduction.
-Require Import AbstractRewriting.
-Require Import Congruence.
+Require Import Syntax Reduction AbstractRewriting Congruence.
 
 Inductive Acc {A} (R: relation A) (x: A): Prop :=
 | acc: (forall y, R x y -> Acc R y) -> Acc R x.
@@ -48,62 +45,12 @@ intros. inversion H3; subst.
   [ apply step_lam_right | apply H1]; auto.
 Qed.
 
-Lemma dom_sn {L n} (T: Term L n) U: sn (Π T U) -> sn T.
-Proof.
-intros. depind H. constructor. intros.
-apply H0 with (T := y) (U := U) (y := Π y U).
-- apply step_pi_left. auto.
-- auto.
-Qed.
-
-Lemma codom_sn {L n} (T: Term L n) U:
-  sn (Π T U) -> sn U.
-Proof.
-intros. depind H. constructor. intros.
-apply H0 with (T := T) (U := y) (y := Π T y).
-- apply step_pi_right. auto.
-- auto.
-Qed.
-
-Lemma arg_sn {L n} (T: Term L n) t: sn ([T] t) -> sn T.
-Proof.
-intros. depind H. constructor. intros.
-apply H0 with (T := y) (t := t) (y := [y] t).
-- apply step_lam_left. auto.
-- auto.
-Qed.
-
-Lemma body_sn {L n} (T: Term L n) t: sn ([T] t) -> sn t.
-Proof.
-intro. depind H. constructor. intros.
-apply H0 with (T := T) (t := y) (y := [T] y).
-- apply step_lam_right. auto.
-- auto.
-Qed.
-
 Lemma head_sn {L n} (t u: Term L n): sn (t $ u) -> sn t.
 Proof.
 intro. depind H. constructor. intros.
 apply H0 with (y := y $ u) (u := u).
 - apply step_app_left. auto.
 - auto.
-Qed.
-
-Lemma tail_sn {L n} (t u: Term L n): sn (t $ u) -> sn u.
-Proof.
-intros. depind H. constructor. intros.
-apply H0 with (t := t) (u := y) (y := t $ y).
-- apply step_app_right. auto.
-- auto.
-Qed.
-
-Lemma rename_sn {L m n}
-  (f: Fin m -> Fin n) (t: Term L m):
-  sn t -> sn (rename f t).
-Proof.
-intro. generalize dependent n. induction H. constructor.
-intros. apply rename_step_is_renamed in H1.
-destruct H1 as [v [H1 H2]]. subst. apply H0. auto.
 Qed.
 
 Lemma sn_unsub {L m n} (t: Term L (S m + n)) u:
@@ -132,10 +79,6 @@ Inductive Atomic {L n}: Term L n -> Prop :=
 | Π_atomic T U: Atomic (Π T U)
 | var_atomic i: Atomic (var i)
 | app_atomic t u: Atomic t -> Atomic (t $ u).
-
-Lemma rename_atomic {L m n} (f: Fin m -> Fin n)
-  (t: Term L m): Atomic t -> Atomic (rename f t).
-Proof. intros. depind H; constructor; auto. Qed.
 
 Lemma atomic_preservation {L n} (t t': Term L n):
   t →ᵝ t' -> Atomic t -> Atomic t'.
@@ -263,19 +206,6 @@ with WHR_SN {L n}: relation (Term L n) :=
     WHR_SN t t' -> WHR_SN (t $ u) (t' $ u)
 .
 
-Lemma dom_SN {L n} (T: Term L n) U: SN (Π T U) -> SN T.
-Proof. intros. inversion H; inversion H0. auto. Qed.
-
-Lemma codom_SN {L n} (T: Term L n) U:
-  SN (Π T U) -> SN U.
-Proof. intros. inversion H; inversion H0. auto. Qed.
-
-Lemma arg_SN {L n} (T: Term L n) t: SN ([T] t) -> SN T.
-Proof. intros. inversion H; auto; inversion H0. Qed.
-
-Lemma body_SN {L n} (T: Term L n) t: SN ([T] t) -> SN t.
-Proof. intros. inversion H; auto; inversion H0. Qed.
-
 Scheme snx_sn_whr := Minimality for SNx Sort Prop
 with sn_whr_snx := Minimality for SN Sort Prop
 with whr_sn_snx := Minimality for WHR_SN Sort Prop.
@@ -319,46 +249,4 @@ Proof. intros. apply sn_whr_snx with (P := fun _ => sn)
 - apply sn_backward_closure with (t' := u); auto.
 - apply whr_sn_here; auto.
 - constructor. auto.
-Qed.
-
-(*
-Theorem SN_completeness {L n} (t: Term L n):
-  sn t -> SN t.
-Proof. intros. dependent induction H. induction x.
-1-3: constructor; constructor. 3: apply SN_λ.
-1,3: apply IHx1. 5,6: apply IHx2. all: intros.
-- eapply dom_sn, H, step_pi_left, H1.
-- eapply arg_sn, H.
-- eapply codom_sn, H.
-- eapply body_sn, H.
-- destruct (IHt1 (head_sn _ _ H)).
-  + constructor. constructor. auto.
-    apply IHt2, tail_sn with (t := t). auto.
-  + clear IHt1. specialize (IHt2 (tail_sn _ _ H)).
-    dependent induction H.
-    apply SN_WHR with (u := t ◁ t2). constructor. auto.
-    apply IHt2, tail_sn with (t := λ T t). auto.
-    apply acc_step with (t := λ T t $ t2).
-
-Theorem sn_eq_SN {L n} (t: Term L n): sn t <-> SN t.
-Proof. constructor.
-- induction t. 1,3: constructor; constructor.
-  3: destruct (decide_neutral t1) as [Hneut | Hlam].
-  1-3: constructor; auto; [ apply IHt1 | apply IHt2 ];
-  clear IHt1 IHt2. 5,6: clear Hneut.
-  1-6: dependent induction H; constructor;
-  intros; eapply H0; auto; constructor; auto.
-  destruct Hlam as [T [u eq]]. subst. intros.
-  apply SN_β. auto. [ apply IHt1 | apply IHt2 ]. Admitted.
- *)
-
-Inductive WHL {L n}: Term L n -> Prop :=
-| whlam T t: WHL ([T] t)
-| whapp t u: WHL t -> WHL (t $ u).
-
-Lemma decide_atomic {L n} (t: Term L n):
-  Atomic t \/ WHL t.
-Proof. induction t; try (left; constructor; fail).
-- right. constructor.
-- destruct IHt1; [left | right]; constructor; auto.
 Qed.

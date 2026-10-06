@@ -1,14 +1,6 @@
-From Stdlib Require PeanoNat.
+From Stdlib Require Import PeanoNat.
 From Equations Require Import Equations.
-Require Import Levels.
-Require Import Typing.
-Require Import Syntax.
-Require Import Context.
-Require Import SN.
-Require Import Preservation.
-Require Import Reduction.
-Require Import Inversions.
-Require Import DefEq.
+Require Import Levels Typing Syntax Context SN Preservation Reduction Inversions DefEq.
 
 Instance RankLevels : Levels_sig nat :=
   { axiom := fun x y => y = 0
@@ -55,7 +47,7 @@ Proof. unfold AL. intros r X. intros. induction H2.
   apply equiv_Π_inversion in HE'. destruct HE'.
   apply X with (m := 0) (j := ℓₜ) (Γ := Γ & T0)
                (T := U0); auto.
-  + apply PeanoNat.Nat.le_max_l.
+  + apply Nat.le_max_l.
   + simpl. replace ℓₜ with ℓ₀. auto.
     symmetry. eapply equiv_𝓤_inversion.
     apply type_stability with (t := T) (t' := T0)
@@ -152,7 +144,7 @@ auto; clear HEND; intros; subst; simpl.
       change (ℓᵤᵥ = max (S ℓᵤ) ℓᵥ) in lq. subst.
       exists ℓᵥ. split.
       { transitivity s. replace s with (max (S ℓᵤ) ℓᵥ).
-        apply PeanoNat.Nat.le_max_r. symmetry.
+        apply Nat.le_max_r. symmetry.
         eapply equiv_𝓤_inversion, bq. auto. }
       { apply type_is_correct in HT; auto. destruct HT.
         replace ℓᵥ with x. auto.
