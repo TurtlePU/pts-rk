@@ -1,4 +1,2 @@
-aux
-*.synctex.gz
-*.dvi
 _build
+*.synctex.gz
