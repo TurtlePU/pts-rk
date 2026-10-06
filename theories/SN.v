@@ -203,7 +203,7 @@ apply sn_whr_snx with
 (P1 := fun m t t' =>
   forall n (f: Fin m -> Fin n),
     WHR_SN (rename f t) (rename f t'));
-try (constructor; auto; fail); intros.
+try solve [constructor; auto]; intros.
 - apply SN_WHR with (u := rename f u); auto.
 - rewrite rename_subst. constructor; auto.
 - auto.

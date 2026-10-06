@@ -85,9 +85,7 @@ Proof. intros. depind H1.
   exists ℓ''. apply typ_Π with (ℓₜ := ℓ) (ℓᵤ := ℓ');
   auto.
 - apply IHtyp1 in X. destruct X as [ℓ H1].
-  apply Π_inversion in H1.
-  destruct H1 as [_ [ℓₜ [_ [_ [_ [H1 _]]]]]].
-  exists ℓₜ.
+  typ_inversion H1. exists ℓᵤ.
   apply substitution_lemma with (U := U) (T := 𝓤 _);
   auto.
 - exists ℓ. auto.
@@ -101,57 +99,42 @@ Theorem subject_reduction `{Levels_total_sig L} {n Γ}
 Proof.
 intros. induction H2; assert (H' := H1);
 apply type_is_correct in H'; auto;
-destruct H' as [ℓ H'].
-- apply Π_inversion in H1.
-  destruct H1 as [ℓₜ [ℓᵤ [ℓ' [H4 [H5 [H6 H7]]]]]].
-  apply typ_conv with (ℓ := ℓ) (T := 𝓤 ℓ'); auto.
+destruct H' as [ℓ H']; typ_inversion H1.
+- apply typ_conv with (ℓ := ℓ) (T := 𝓤 ℓ0); auto.
   + apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
     apply context_reduction with (ℓ := ℓₜ) (U := T0);
     auto.
   + symmetry. assumption.
-- apply Π_inversion in H1.
-  destruct H1 as [ℓₜ [ℓᵤ [ℓ' [H4 [H5 [H6 H7]]]]]].
-  apply typ_conv with (ℓ := ℓ) (T := 𝓤 ℓ'); auto.
+- apply typ_conv with (ℓ := ℓ) (T := 𝓤 ℓ0); auto.
   + apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
     apply IHstep; auto.
     apply wf_cons with (ℓ := ℓₜ); auto.
   + symmetry. assumption.
-- apply λ_inversion in H1.
-  destruct H1 as [ℓ' [U [H1 [H4 H5]]]].
-  apply typ_conv with (ℓ := ℓ) (T := Π T' U); auto.
-  + apply typ_λ with (ℓ := ℓ').
+- apply typ_conv with (ℓ := ℓ) (T := Π T' U); auto.
+  + apply typ_λ with (ℓ := ℓ0).
     * apply IHstep; auto.
-    * apply context_reduction with (ℓ := ℓ') (U := T0);
+    * apply context_reduction with (ℓ := ℓ0) (U := T0);
       auto.
   + rewrite H5. cong_simple. symmetry. apply eq_in.
     auto.
-- apply λ_inversion in H1.
-  destruct H1 as [ℓ' [U [H1 [H4 H5]]]].
-  apply typ_conv with (ℓ := ℓ) (T := Π T0 U); auto.
-  + apply typ_λ with (ℓ := ℓ'); auto.
+- apply typ_conv with (ℓ := ℓ) (T := Π T0 U); auto.
+  + apply typ_λ with (ℓ := ℓ0); auto.
     apply IHstep; auto.
-    apply wf_cons with (ℓ := ℓ'); auto.
+    apply wf_cons with (ℓ := ℓ0); auto.
   + symmetry. auto.
-- apply app_inversion in H1.
-  destruct H1 as [U [T0 [H1 [H4 H5]]]].
-  apply typ_conv with (ℓ := ℓ) (T := T0 ◁ t); auto.
+- apply typ_conv with (ℓ := ℓ) (T := T0 ◁ t); auto.
   + apply typ_app with (U := U); auto.
   + symmetry. auto.
-- apply app_inversion in H1.
-  destruct H1 as [U [T0 [H1 [H4 H5]]]].
-  apply typ_conv with (ℓ := ℓ) (T := T0 ◁ t'); auto.
+- apply typ_conv with (ℓ := ℓ) (T := T0 ◁ t'); auto.
   + apply typ_app with (U := U); auto.
   + rewrite H5. apply equiv_sub. symmetry. apply eq_in.
     auto.
-- apply app_inversion in H1.
-  destruct H1 as [T' [U [H1 [H4 H5]]]].
-  apply λ_inversion in H1.
-  destruct H1 as [ℓₜ [T2 [H1 [H6 H7]]]].
-  apply equiv_Π_inversion in H7. destruct H7.
-  apply typ_conv with (ℓ := ℓ) (T := T2 ◁ t); auto.
+- typ_inversion H2.
+  apply equiv_Π_inversion in H6. destruct H6.
+  apply typ_conv with (ℓ := ℓ) (T := U0 ◁ t); auto.
   + apply substitution_lemma with (U := T0); auto.
-    apply typ_conv with (ℓ := ℓₜ) (T := T'); auto.
-  + rewrite H5. apply replace_equiv. symmetry. auto.
+    apply typ_conv with (ℓ := ℓ0) (T := U); auto.
+  + rewrite H4. apply replace_equiv. symmetry. auto.
 Qed.
 
 Lemma subject_reduction' `{Levels_total_sig L} {n Γ}

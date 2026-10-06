@@ -38,22 +38,20 @@ Lemma SL_to_AL:
 Proof. unfold AL. intros r X. intros. induction H2.
 - constructor. constructor; auto.
 - eapply SN_WHR. constructor; auto.
-  apply Π_inversion in H1.
-  destruct H1 as [ℓₜ [ℓᵤ [ℓ [HR [HT [HU HE]]]]]].
-  change (ℓ = max (S ℓₜ) ℓᵤ) in HR.
-  apply equiv_𝓤_inversion in HE. subst.
-  apply λ_inversion in H.
-  destruct H as [ℓ₀ [U0 [HT0 [HF HE']]]].
-  apply equiv_Π_inversion in HE'. destruct HE'.
+  typ_inversion H1.
+  change (ℓ = max (S ℓₜ) ℓᵤ) in H1.
+  apply equiv_𝓤_inversion in H6. subst.
+  typ_inversion H.
+  apply equiv_Π_inversion in H6. destruct H6.
   apply X with (m := 0) (j := ℓₜ) (Γ := Γ & T0)
                (T := U0); auto.
   + apply Nat.le_max_l.
-  + simpl. replace ℓₜ with ℓ₀. auto.
+  + simpl. replace ℓₜ with ℓ. auto.
     symmetry. eapply equiv_𝓤_inversion.
     apply type_stability with (t := T) (t' := T0)
                               (Γ := Γ); auto.
-  + apply wf_cons with (ℓ := ℓ₀); auto.
-  + simpl. apply typ_conv with (T := T) (ℓ := ℓ₀); auto.
+  + apply wf_cons with (ℓ := ℓ); auto.
+  + simpl. apply typ_conv with (T := T) (ℓ := ℓ); auto.
 - eapply SN_WHR. constructor. apply H2.
   apply IHSN with (Γ := Γ) (T := T) (U := U); auto.
   apply subject_reduction with (t := t0); auto.
@@ -94,12 +92,11 @@ apply sn_whr_snx with (P := SL_ind_hyp r
   WHR_SN (t1' ◁ᵢ u) (t2' ◁ᵢ u)
   /\ (SN (t2' ◁ᵢ u) -> SN (t1' ◁ᵢ u))
 ); unfold SL_SN_Ind_hyp, SL_ind_hyp, SL_skel;
-auto; clear HEND; intros; subst; simpl.
+auto; clear HEND; intros; subst; simpl;
+try (simpl in H7).
 - left. constructor.
 - left. change (SNx (Π (T ◁ᵢ u) (U ◁ᵢ u))).
-  apply Π_inversion in H7.
-  destruct H7 as [ℓₜ [ℓᵤ [ℓ [eq [typT [typU beq]]]]]].
-  constructor.
+  typ_inversion H7. constructor.
   + apply H1 with (Γ := Γ) (T := 𝓤 ℓₜ) (H := eq_refl);
     auto.
   + apply (H3 (S m0) n1) with (Γ := Γ & T) (T := 𝓤 ℓᵤ)
@@ -119,47 +116,45 @@ auto; clear HEND; intros; subst; simpl.
       apply var_inversion with (sig := RankLevels).
       auto.
   + left. apply eq_rect with (var x). constructor. auto.
-- pose proof H7 as HT. apply app_inversion in H7.
-  destruct H7 as [U [V [typt [typu beq]]]].
+- pose proof H7 as HT. typ_inversion H7.
   assert (H3': SN (u ◁ᵢ u0)).
     { apply H3 with (Γ := Γ) (T := U) (H := eq_refl);
       auto. }
   assert (HH: SNx (t0 ◁ᵢ u0) \/ SN (t0 ◁ᵢ u0)
-              /\ exists s, s <= r /\ Γ ⊢ Π U V ⇐ 𝓤 s).
+              /\ exists s, s <= r /\ Γ ⊢ Π U T0 ⇐ 𝓤 s).
   { apply H1 with (H := eq_refl); auto. } destruct HH.
   + left. constructor; auto.
-  + right. destruct H4 as [snt [s [sler typs]]]. split.
+  + right. unpack H7. split.
     * unfold AL in H. apply H with (s := s)
-      (Γ := Γ ◁ⁱ u0) (T := U ◁ᵢ u0) (U := V ◁ᵢ u0);
+      (Γ := Γ ◁ⁱ u0) (T := U ◁ᵢ u0)
+      (U := (T0: Term nat (S (S m0 + n1))) ◁ᵢ u0);
       auto.
-      { change (Γ ◁ⁱ u0 ⊢ t0 ◁ᵢ u0 ⇐ Π U V ◁ᵢ u0).
+      { change (Γ ◁ⁱ u0 ⊢ t0 ◁ᵢ u0 ⇐ Π U T0 ◁ᵢ u0).
         apply substitution_lemma_strong; auto. }
       { change (Γ ◁ⁱ u0 ⊢ u ◁ᵢ u0 ⇐ U ◁ᵢ u0).
         apply substitution_lemma_strong; auto. }
-      { change (Γ ◁ⁱ u0 ⊢ Π U V ◁ᵢ u0 ⇐ 𝓤 s ◁ᵢ u0).
+      { change (Γ ◁ⁱ u0 ⊢ Π U T0 ◁ᵢ u0 ⇐ 𝓤 s ◁ᵢ u0).
         apply substitution_lemma_strong; auto. }
       { apply wf_subst_at; auto. }
-    * apply Π_inversion in typs.
-      destruct typs as [ℓᵤ [ℓᵥ [ℓᵤᵥ [lq [_ [tv bq]]]]]].
-      change (ℓᵤᵥ = max (S ℓᵤ) ℓᵥ) in lq. subst.
-      exists ℓᵥ. split.
-      { transitivity s. replace s with (max (S ℓᵤ) ℓᵥ).
+    * typ_inversion H13.
+      change (ℓ = max (S ℓₜ) ℓᵤ) in H13. subst.
+      exists ℓᵤ. split.
+      { transitivity s. replace s with (max (S ℓₜ) ℓᵤ).
         apply Nat.le_max_r. symmetry.
-        eapply equiv_𝓤_inversion, bq. auto. }
+        eapply equiv_𝓤_inversion, H16. auto. }
       { apply type_is_correct in HT; auto. destruct HT.
-        replace ℓᵥ with x. auto.
+        replace ℓᵤ with x. auto.
         eapply equiv_𝓤_inversion.
         apply type_stability
-        with (Γ := Γ) (t := T) (t' := V ◁ u); auto.
+        with (Γ := Γ) (t := T) (t' := T0 ◁ u); auto.
         apply substitution_lemma
-        with (T := 𝓤 ℓᵥ) (U := U); auto.
+        with (T := 𝓤 ℓᵤ) (U := U); auto.
       }
 - assert (HH: SNx (t0 ◁ᵢ u) \/ SN (t0 ◁ᵢ u)
               /\ exists s, s <= r /\ Γ ⊢ T ⇐ 𝓤 s).
               { apply H1 with (H := eq_refl); auto. }
   destruct HH; [ constructor | destruct H2 ]; auto.
-- apply λ_inversion in H7.
-  destruct H7 as [ℓ [U [tT [tt beq]]]]. apply SN_λ.
+- typ_inversion H7. apply SN_λ.
   + apply H1 with (Γ := Γ) (T := 𝓤 ℓ) (H := eq_refl);
     auto.
   + change (SN (t0 ◁ᵢ u)).
@@ -170,10 +165,7 @@ auto; clear HEND; intros; subst; simpl.
   apply H3 with (Γ := Γ) (T := T) (H := eq_refl); auto.
   apply subject_reduction with (t := t0); auto.
   apply reduction_weakening. auto.
-- apply app_inversion in H8.
-  destruct H8 as [U0 [T0 [tl [tu beq]]]].
-  apply λ_inversion in tl.
-  destruct tl as [ℓ [U1 [tU [tt beq']]]].
+- simpl in H8. typ_inversion H8. typ_inversion H4.
   assert (wh: WHR_SN
     ([U ◁ᵢ u0] (t0 ◁ᵢ u0) $ (u ◁ᵢ u0))
     (t0 ◁ u ◁ᵢ u0)
@@ -185,8 +177,7 @@ auto; clear HEND; intros; subst; simpl.
          (H := eq_refl); auto.
      }
   split. auto. intros. eapply SN_WHR. apply wh. auto.
-- apply app_inversion in H6.
-  destruct H6 as [U [T0 [tt [tu beq]]]].
+- simpl in H6. typ_inversion H6.
   assert (HH: WHR_SN (t0 ◁ᵢ u0) (t' ◁ᵢ u0)
           /\ (SN (t' ◁ᵢ u0) -> SN (t0 ◁ᵢ u0))).
         { apply H1 with (Γ := Γ) (T := Π U T0)
@@ -222,22 +213,21 @@ Qed.
 
 Lemma main_lemma {n} Γ (t T: Term nat n):
   wf Γ -> Γ ⊢ t ⇐ T -> SN t.
-Proof. intros. induction H.
-- constructor. constructor.
+Proof. intros. induction H;
+try solve [constructor; constructor]; auto.
 - constructor. constructor. auto.
   apply IHtyp2, wf_cons with (ℓ := ℓₜ); auto.
-- constructor. constructor.
 - apply SN_λ. auto.
   apply IHtyp2, wf_cons with (ℓ := ℓ); auto.
 - pose proof H. apply type_is_correct in H; auto.
   destruct H. pose proof (AL_holds x). unfold AL in H2.
   apply H2 with (Γ := Γ) (T := U) (U := T); auto.
-- auto.
 Qed.
 
 Theorem strong_normalization {n} Γ (t T: Term nat n):
   wf Γ -> Γ ⊢ t ⇐ T -> sn t.
-Proof. intros.
+Proof.
+intros.
 apply SN_soundness, main_lemma with (Γ := Γ) (T := T);
 auto.
 Qed.

@@ -1,13 +1,24 @@
 From Equations Require Import Equations.
 Require Import AbstractRewriting DefEq Levels Typing Context Syntax Congruence Reduction.
 
+Ltac unpack H :=
+  lazymatch type of H with
+  | _ /\ _ =>
+      let hl := fresh "H" in let hr := fresh "H" in
+      destruct H as [hl hr]; unpack hl; unpack hr
+  | exists (x:_), _ =>
+      let y := fresh x in let h := fresh "H" in
+      destruct H as [y h]; unpack h
+  | _ => idtac
+  end.
+
 Lemma 𝓤_inversion {L n Γ} (sig: Levels_sig L)
   (ℓ: L) (T: Term L n):
   Γ ⊢ 𝓤 ℓ ⇐ T -> exists ℓ', axiom ℓ ℓ' /\ T =ᵝ 𝓤 ℓ'.
 Proof. intro. depind H.
 - repeat eexists; [ exact H | reflexivity ].
-- destruct IHtyp1 as [ℓ' [H2 H3]].
-  exists ℓ'. split. auto. rewrite <- H1. auto.
+- unpack IHtyp1. exists ℓ'. split.
+  2: rewrite <- H1. all: auto.
 Qed.
 
 Lemma Π_inversion {L n Γ} (sig: Levels_sig L)
@@ -20,9 +31,8 @@ Lemma Π_inversion {L n Γ} (sig: Levels_sig L)
   /\ V =ᵝ 𝓤 ℓ.
 Proof. intro. depind H.
 - exists ℓₜ, ℓᵤ, ℓ. repeat constructor; auto.
-- destruct IHtyp1 as [ℓₜ [ℓᵤ [ℓ' [H2 [H3 [H4 H5]]]]]].
-  exists ℓₜ, ℓᵤ, ℓ'. repeat constructor; auto.
-  rewrite <- H1. auto.
+- unpack IHtyp1. exists ℓₜ, ℓᵤ, ℓ0.
+  intuition. rewrite <- H1. auto.
 Qed.
 
 Lemma var_inversion {L n Γ} (sig: Levels_sig L)
@@ -42,8 +52,7 @@ Lemma λ_inversion {L n Γ} (sig: Levels_sig L)
   /\ V =ᵝ Π T U.
 Proof. intro. depind H.
 - exists ℓ, T. repeat constructor; auto.
-- destruct IHtyp1 as [ℓ' [U [H2 [H3 H4]]]].
-  exists ℓ', U. repeat constructor; auto.
+- unpack IHtyp1. exists ℓ0, U. intuition.
   rewrite <- H1. auto.
 Qed.
 
@@ -56,52 +65,43 @@ Lemma app_inversion {L n Γ} (sig: Levels_sig L)
   /\ V =ᵝ T ◁ u.
 Proof. intro. depind H.
 - exists U, T. repeat constructor; auto.
-- destruct IHtyp1 as [U [T'' [H2 [H3 H4]]]].
-  exists U, T''. repeat constructor; auto.
+- unpack IHtyp1. exists U, T0. intuition.
   rewrite <- H1. auto.
 Qed.
+
+Ltac typ_inversion H :=
+  match type of H with
+  _ ⊢ ?t ⇐ ?T =>
+  lazymatch t with
+  | 𝓤 ?ℓ => apply 𝓤_inversion in H
+  | Π _ _ => apply Π_inversion in H
+  | var _ => apply var_inversion in H
+  | [_] _ => apply λ_inversion in H
+  | _ $ _ => apply app_inversion in H
+  end; unpack H
+  end.
 
 Generalizable Variable L.
 
 Theorem uniqueness_of_typing `{Levels_functional_sig L}
   {n} (Γ: Ctx L n) (t T T': Term L n):
   Γ ⊢ t ⇐ T -> Γ ⊢ t ⇐ T' -> T =ᵝ T'.
-Proof. intros. induction t.
-- apply 𝓤_inversion in H1, H2.
-  destruct (H1, H2) as [[ℓ₁ [H3 H5]] [ℓ₂ [H4 H6]]].
-  assert (H': ℓ₁ = ℓ₂). {
+Proof.
+intros. induction t; typ_inversion H1; typ_inversion H2.
+- assert (H': ℓ' = ℓ'0). {
     apply axiom_f with (ℓ := l); auto.
-  }
-  rewrite H5, H6, H'. reflexivity.
-- apply Π_inversion in H1, H2.
-  destruct H1 as [ℓₜ [ℓᵤ [ℓ [H1 [H3 [H5 H7]]]]]].
-  destruct H2 as [ℓₜ' [ℓᵤ' [ℓ' [H2 [H4 [H6 H8]]]]]].
-  rewrite H7, H8. replace ℓ with ℓ'. reflexivity.
-  apply rule_f with (ℓₜ := ℓₜ') (ℓᵤ := ℓᵤ'). auto.
-  replace ℓᵤ' with ℓᵤ. replace ℓₜ' with ℓₜ. auto.
-  + assert (Hℓ: @𝓤 _ n ℓₜ =ᵝ 𝓤 ℓₜ').
-    { apply IHt1 with (Γ := Γ); assumption. }
-    rewrite def_equiv_prop in Hℓ.
-    destruct Hℓ as [u [H9 H10]].
-    inversion H9. subst. inversion H10. subst.
-    reflexivity. inversion H11. inversion H11.
-  + assert (Hℓ: @𝓤 _ (S n) ℓᵤ =ᵝ 𝓤 ℓᵤ').
-    { apply IHt2 with (Γ := Γ & t1); assumption. }
-    rewrite def_equiv_prop in Hℓ.
-    destruct Hℓ as [u [H9 H10]].
-    inversion H9. subst. inversion H10. subst.
-    reflexivity. inversion H11. inversion H11.
-- apply var_inversion in H1, H2. rewrite H2. auto.
-- apply λ_inversion in H1, H2.
-  destruct H1 as [ℓ [U [H1 [H3 H5]]]].
-  destruct H2 as [ℓ' [U' [H2 [H4 H6]]]].
-  rewrite H5, H6. apply Π_cong_r.
+  } rewrite H4, H5, H'. reflexivity.
+- rewrite H6, H9. replace ℓ with ℓ0. reflexivity.
+  apply rule_f with (ℓₜ := ℓₜ0) (ℓᵤ := ℓᵤ0). auto.
+  replace ℓᵤ0 with ℓᵤ. replace ℓₜ0 with ℓₜ. auto.
+  all: eapply equiv_𝓤_inversion.
+  + apply IHt1 with Γ; auto.
+  + apply IHt2 with (Γ & t1); auto.
+- rewrite H2. auto.
+- rewrite H5, H7. cong_simple.
   apply IHt2 with (Γ := Γ & t1); auto.
-- apply app_inversion in H1, H2.
-  destruct H1 as [U [T0 [H1 [H3 H5]]]].
-  destruct H2 as [U' [T0' [H2 [H4 H6]]]].
-  rewrite H5, H6. apply replace_equiv.
-  assert (HT: Π U T0 =ᵝ Π U' T0').
+- rewrite H5, H7. apply replace_equiv.
+  assert (HT: Π U T0 =ᵝ Π U0 T1).
   { apply IHt1 with (Γ := Γ); auto. }
   apply equiv_Π_inversion in HT. destruct HT. auto.
 Qed.

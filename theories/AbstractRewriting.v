@@ -84,30 +84,31 @@ Qed.
 
 Lemma sym_unmap {A B} (f: A -> B) R:
   forall x y, Sym (R @ f) x y -> Sym R (f x) (f y).
-Proof. intros. destruct H.
-- apply forward. auto.
-- apply backwards. auto.
+Proof.
+intros. destruct H;
+[apply forward | apply backwards]; auto.
 Qed.
 
 Lemma sym_map {A} (Q R: relation A):
   (forall x y, Q x y -> R x y) ->
   forall x y, Sym Q x y -> Sym R x y.
-Proof. intros. destruct H0.
-- apply forward. auto.
-- apply backwards. auto.
+Proof.
+intros. destruct H0;
+[apply forward | apply backwards]; auto.
 Qed.
 
 Lemma eq_in {A} (R: relation A):
   forall x y, R x y -> EquivClosure R x y.
-Proof. intros. apply rtc_in. apply forward. auto. Qed.
+Proof. intros. apply rtc_in, forward. auto. Qed.
 
 Lemma eq_unmap {A B} (f: A -> B) R:
   forall x y, EquivClosure (R @ f) x y ->
   EquivClosure R (f x) (f y).
 Proof.
-intros. apply rtc_unmap.
-apply rtc_map with (Q := Sym (R @ f)).
-apply sym_unmap. auto.
+intros.
+apply rtc_unmap, rtc_map with (Q := Sym (R @ f)).
+apply sym_unmap.
+auto.
 Qed.
 
 Lemma eq_map {A} (Q R: relation A):
@@ -119,13 +120,11 @@ Lemma CR_ext {A} (Q R: relation A):
   (forall a b, Q a b <-> R a b) ->
   ChurchRosser Q <-> ChurchRosser R.
 Proof.
-intro. unfold ChurchRosser. constructor; intros.
-- rewrite <- H in H1. apply H0 with (t₂ := t₂) in H1.
-  destruct H1 as [u []]. exists u; rewrite <- H, <- H.
-  constructor; auto. rewrite H. auto.
-- rewrite H in H1. apply H0 with (t₂ := t₂) in H1.
-  destruct H1 as [u []]. exists u; rewrite H, H.
-  constructor; auto. rewrite <- H. auto.
+unfold ChurchRosser. split. 1: symmetry in H.
+all:
+intros; repeat rewrite H in *;
+destruct (H0 _ _ _ H1 H2) as [u []];
+repeat rewrite <- H in *; exists u; auto.
 Qed.
 
 Theorem CR_RTC {A} {R: relation A}:
@@ -151,5 +150,5 @@ intros. generalize dependent t₂. induction H; intros.
   destruct H as [t₃ []].
   apply IHRTC in H. destruct H as [u []].
   exists u. constructor; auto.
-  apply rtc_step with (y := t₃); auto. auto.
+  apply rtc_step with (y := t₃). all: auto.
 Qed.
