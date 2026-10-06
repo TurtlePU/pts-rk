@@ -34,8 +34,9 @@ Inductive step L n: relation (Term L n) :=
    [T] f $ t →ᵝ f ◁ t
 where "t →ᵝ t'" := (step _ _ t t').
 
-Instance step_cong L: Congruence L (fun n x y => x →ᵝ y).
-Proof. split; intros; constructor; assumption. Qed.
+Instance step_cong L:
+  Congruence L (fun n x y => x →ᵝ y).
+Proof. repeat constructor; auto. Qed.
 
 Definition reduces_to L n: relation (Term L n) :=
   RTC (step L n).

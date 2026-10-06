@@ -1,4 +1,3 @@
-From Ltac2 Require Import Ltac2.
 Require Import Setoid.
 Require Import Syntax AbstractRewriting.
 
@@ -18,17 +17,15 @@ Class Congruence L
     forall u u', R u u' -> R (t $ u) (t $ u')
 }.
 
-Ltac2 cong_simpl0 () := Control.enter (fun () =>
-  match! goal with
+Ltac cong_simple :=
+  match goal with
   | [ |- _ (Π _ ?_u) (Π _ ?_u) ] => apply Π_cong_l
   | [ |- _ (Π ?_t _) (Π ?_t _) ] => apply Π_cong_r
   | [ |- _ ([_] ?_t) ([_] ?_t) ] => apply λ_cong_l
   | [ |- _ ([?_t] _) ([?_t] _) ] => apply λ_cong_r
   | [ |- _ (_ $ ?_u) (_ $ ?_u) ] => apply app_cong_l
   | [ |- _ (?_t $ _) (?_t $ _) ] => apply app_cong_r
-  end
-).
-Ltac2 Abbreviation cong_simple := cong_simpl0 ().
+  end.
 Create HintDb cong.
 Hint Extern 1 => cong_simple : cong.
 
@@ -49,9 +46,6 @@ try (apply rtc_unmap with (f := fun x => _ x _));
 apply rtc_map with (Q := R _); unfold Preimage;
 auto with cong.
 Qed.
-
-Ltac2 Notation "transitivity" mid(constr) :=
-  Std.transitivity mid.
 
 Lemma Π_cong_par L R
   {trans: forall n, Transitive (R n)}

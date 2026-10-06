@@ -38,23 +38,17 @@ Lemma weakening_strong m {L n Γ} (sig: Levels_sig L)
 Proof. intros. depind H.
 - constructor. auto.
 - apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
-  + apply IHtyp1; reflexivity.
-  + apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & T)
-    (T := 𝓤 ℓᵤ); reflexivity.
-  + auto.
+  2: apply IHtyp2 with (m := S m) (Γ := Γ & T)
+                       (T := 𝓤 ℓᵤ).
+  all: auto.
 - rewrite <- insert_index with (T := U). constructor.
 - apply typ_λ with (ℓ := ℓ).
-  + apply IHtyp1; reflexivity.
-  + apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & U);
-    reflexivity.
+  2: apply IHtyp2 with (m := S m) (Γ := Γ & U).
+  all: auto.
 - rewrite rename_subst. simpl rename.
-  apply typ_app with (U := rename wr U).
-  + apply IHtyp1; reflexivity.
-  + apply IHtyp2; reflexivity.
-- apply typ_conv with (T := rename wr T) (ℓ := ℓ).
-  + apply IHtyp1; reflexivity.
-  + apply IHtyp2; reflexivity.
-  + apply rename_equiv. assumption.
+  apply typ_app with (U := rename wr U); auto.
+- apply typ_conv with (T := rename wr T) (ℓ := ℓ); auto.
+  apply rename_equiv. auto.
 Qed.
 
 Lemma weakening {L n Γ}
@@ -71,40 +65,24 @@ Lemma substitution_lemma_strong m
   Γ ◁ⁱ u ⊢ t ◁ᵢ u ⇐ T ◁ᵢ u.
 Proof. intros. depind H.
 - constructor. auto.
-- apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
-  + apply IHtyp1; try reflexivity. assumption.
-  + apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & _)
-    (T := 𝓤 ℓᵤ); try reflexivity. assumption.
-  + auto.
+- apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
+  apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & _)
+  (T := 𝓤 ℓᵤ); auto.
 - induction m.
-  + dependent elimination i as [fzero | fsucc i]; simpl.
-    * apply eq_rect with (squeeze (Γ: Ctx L (1 + n0))).
-      assumption. symmetry. unfold subst_at, push.
-      apply shift_subst.
-    * apply eq_rect with (ctx_pred Γ !! i).
-      apply typ_var. symmetry. unfold subst_at, push.
-      apply shift_subst.
+  + dependent elimination i as [fzero | fsucc i];
+    syntax_simp. apply typ_var.
   + dependent elimination i as [fzero | fsucc i].
     * apply eq_rect with (shift (ctx_top Γ ◁ᵢ u)).
-      constructor. simpl. unfold shift, subst_at.
-      rewrite rename_replace, replace_rename.
-      apply replace_ext. reflexivity.
+      constructor. syntax_simp.
     * apply eq_rect with
       (shift ((ctx_pred Γ !! i) ◁ᵢ u)).
-      apply weakening, IHm. assumption.
-      rewrite <- shift_subst_at. reflexivity.
-- apply typ_λ with (ℓ := ℓ).
-  + apply IHtyp1; try reflexivity. assumption.
-  + apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & _);
-    try reflexivity. assumption.
+      apply weakening, IHm. all: syntax_simp.
+- apply typ_λ with (ℓ := ℓ); auto.
+  apply IHtyp2 with (m := S m) (Γ := Γ & _); auto.
 - unfold subst_at. rewrite replace_subst.
-  apply typ_app with (U := U ◁ᵢ u0).
-  + apply IHtyp1; try reflexivity. assumption.
-  + apply IHtyp2; try reflexivity. assumption.
-- apply typ_conv with (ℓ := ℓ) (T := T ◁ᵢ u).
-  + apply IHtyp1; try reflexivity. assumption.
-  + apply IHtyp2; try reflexivity. assumption.
-  + apply replace_equiv. assumption.
+  apply typ_app with (U := U ◁ᵢ u0); auto.
+- apply typ_conv with (ℓ := ℓ) (T := T ◁ᵢ u); auto.
+  apply replace_equiv. assumption.
 Qed.
 
 Lemma substitution_lemma {L n Γ} (sig: Levels_sig L)

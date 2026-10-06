@@ -92,15 +92,8 @@ Proof. induction m.
 - reflexivity.
 - dependent elimination Γ as [Γ & _].
   dependent elimination i as [ fzero | fsucc i ].
-  + simpl. unfold shift.
-    rewrite rename_comp, rename_comp.
-    apply rename_ext. reflexivity.
-  + change (shift (insert Γ T !! wr i) =
-            rename (@wr (S m) n) (Γ & t !! fsucc i)).
-    transitivity
-      (rename (@wr (S m) n) (shift (Γ !! i))).
-    * rewrite IHm. unfold shift.
-      rewrite rename_comp, rename_comp.
-      apply rename_ext. reflexivity.
-    * reflexivity.
+  2: change (shift (insert Γ T !! wr i) =
+             rename (@wr (S m) n) (Γ & t !! fsucc i));
+     rewrite IHm.
+  all: syntax_simp.
 Qed.

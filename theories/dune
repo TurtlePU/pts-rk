@@ -3,4 +3,4 @@
   (package pts-rk)
   (modules Syntax AbstractRewriting Congruence Reduction Confluence DefEq
            Context Levels Typing Inversions Preservation SN Ranks)
-  (theories Ltac2 Stdlib Equations))
+  (theories Stdlib Equations))

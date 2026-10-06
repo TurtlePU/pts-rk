@@ -32,12 +32,10 @@ Lemma context_reduction_strong {L n Δ} Γ
              Δ ⊢ t ⇐ T.
 Proof. intros. induction H.
 - constructor. auto.
-- apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
-  + apply IHtyp1; assumption.
-  + apply IHtyp2.
-    * apply wf_cons with (ℓ := ℓₜ); assumption.
-    * apply beta_there. assumption.
-  + auto.
+- apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
+  apply IHtyp2.
+  + apply wf_cons with (ℓ := ℓₜ); assumption.
+  + apply beta_there. assumption.
 - induction i; dependent elimination H0;
   dependent elimination X; try (simpl; constructor).
   + apply typ_conv with (T := shift U) (ℓ := ℓ).
@@ -46,11 +44,9 @@ Proof. intros. induction H.
     * apply rename_equiv. symmetry.
       apply eq_in. assumption.
   + apply weakening with (t := var i). apply IHi; auto.
-- apply typ_λ with (ℓ := ℓ).
-  + apply IHtyp1; assumption.
-  + apply IHtyp2.
-    * apply wf_cons with (ℓ := ℓ); assumption.
-    * apply beta_there. assumption.
+- apply typ_λ with (ℓ := ℓ); auto. apply IHtyp2.
+  + apply wf_cons with (ℓ := ℓ); assumption.
+  + apply beta_there. assumption.
 - apply typ_app with (U := U); auto.
 - apply typ_conv with (T := T) (ℓ := ℓ); auto.
 Qed.
@@ -127,7 +123,7 @@ destruct H' as [ℓ H'].
     * apply IHstep; auto.
     * apply context_reduction with (ℓ := ℓ') (U := T0);
       auto.
-  + rewrite H5. apply Π_cong_l. symmetry. apply eq_in.
+  + rewrite H5. cong_simple. symmetry. apply eq_in.
     auto.
 - apply λ_inversion in H1.
   destruct H1 as [ℓ' [U [H1 [H4 H5]]]].

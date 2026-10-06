@@ -117,7 +117,7 @@ intros. generalize dependent u. induction H; intros.
     * apply whr_sn_there, HW.
     * auto with cong.
   + right. eexists. constructor. apply whr_sn_there, H.
-    apply app_cong_r, rtc_in. auto.
+    cong_simple. apply rtc_in. auto.
   + inversion H.
 Qed.
 

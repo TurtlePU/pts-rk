@@ -177,7 +177,8 @@ auto; clear HEND; intros; subst; simpl.
   assert (wh: WHR_SN
     ([U ◁ᵢ u0] (t0 ◁ᵢ u0) $ (u ◁ᵢ u0))
     (t0 ◁ u ◁ᵢ u0)
-  ). { rewrite subst_at_subst. apply WHR_SN_here.
+  ). { unfold subst_at. rewrite replace_subst.
+       apply WHR_SN_here.
        - apply H1 with (Γ := Γ) (T := 𝓤 ℓ)
          (H := eq_refl); auto.
        - apply H3 with (Γ := Γ) (T := U0)

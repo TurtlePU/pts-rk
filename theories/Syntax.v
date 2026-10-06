@@ -87,23 +87,26 @@ apply IHt2; intros; dependent elimination i; auto;
 simpl; rewrite H; reflexivity.
 Qed.
 
-Lemma transpose_ext {L m n} (f g: Fin m -> Term L n):
-  (forall j, f j = g j) ->
-  forall i, transpose f i = transpose g i.
-Proof.
-intros. dependent elimination i.
-- reflexivity.
-- simpl. rewrite H. reflexivity.
-Qed.
-
 Lemma replace_ext {L m n} (f g: Fin m -> Term L n):
   (forall i, f i = g i) ->
   forall t, replace f t = replace g t.
 Proof.
+assert (transpose_ext: forall L m n
+  (f g: Fin m -> Term L n),
+  (forall j, f j = g j) ->
+  forall i, transpose f i = transpose g i).
+  { clear. intros. dependent elimination i.
+    - reflexivity.
+    - simpl. rewrite H. reflexivity.
+  }
 intros. generalize dependent n.
-induction t; intros; simpl; f_equal; auto;
-apply IHt2, transpose_ext; auto.
+induction t; intros; simpl; f_equal; auto.
 Qed.
+
+Create Rewrite HintDb syntax.
+Ltac syntax_simp :=
+  simpl; unfold shift, push, subst, subst_at; simpl;
+  autorewrite with syntax; auto.
 
 Lemma rename_id {L n} (t: Term L n):
   rename (fun i => i) t = t.
@@ -112,6 +115,7 @@ induction t; simpl; f_equal; auto;
 transitivity (rename (fun i => i) t2); auto;
 apply rename_ext; intros; dependent elimination i; auto.
 Qed.
+Hint Rewrite @rename_id: syntax.
 
 Lemma rename_comp {L l m n}
   (f: Fin m -> Fin n) (g: Fin l -> Fin m) (t: Term L l):
@@ -123,6 +127,7 @@ induction t; intros; simpl; f_equal; auto;
 rewrite IHt2; apply rename_ext;
 intros; dependent elimination i; auto.
 Qed.
+Hint Rewrite @rename_comp: syntax.
 
 Lemma rename_replace {L l m n} (f: Fin m -> Fin n)
   (g: Fin l -> Term L m) (t: Term L l):
@@ -132,10 +137,10 @@ Proof.
 generalize dependent n.
 generalize dependent m.
 induction t; intros; simpl; f_equal; auto; rewrite IHt2;
-apply replace_ext; intros; dependent elimination i;
-auto; simpl; unfold shift;
-rewrite rename_comp, rename_comp; reflexivity.
+apply replace_ext; intros;
+dependent elimination i; syntax_simp.
 Qed.
+Hint Rewrite @rename_replace: syntax.
 
 Lemma replace_rename {L l m n} (f: Fin m -> Term L n)
   (g: Fin l -> Fin m) (t: Term L l):
@@ -147,6 +152,7 @@ induction t; intros; simpl; f_equal; auto;
 rewrite IHt2; apply replace_ext; intros;
 dependent elimination i; auto.
 Qed.
+Hint Rewrite @replace_rename: syntax.
 
 Lemma replace_var {L n} (t: Term L n):
   replace (fun x => var x) t = t.
@@ -156,6 +162,7 @@ transitivity (replace (fun x => var x) t2); auto;
 apply replace_ext;
 intros; dependent elimination i; auto.
 Qed.
+Hint Rewrite @replace_var: syntax.
 
 Lemma replace_replace {L l m n} (f: Fin m -> Term L n)
   (g: Fin l -> Term L m) (t: Term L l):
@@ -166,20 +173,20 @@ generalize dependent n.
 generalize dependent m.
 induction t; intros; simpl; f_equal; auto;
 rewrite IHt2; apply replace_ext; intros;
-dependent elimination i; auto; simpl; unfold shift;
-rewrite replace_rename, rename_replace;
-apply replace_ext; auto.
+dependent elimination i; syntax_simp.
 Qed.
+Hint Rewrite @replace_replace: syntax.
 
 Lemma rename_subst {L n} {t: Term L (S n)}:
   forall u m (f: Fin n -> Fin m),
   rename f (t ◁ u) = rename (weak f) t ◁ rename f u.
 Proof.
 unfold subst. intros.
-rewrite rename_replace, replace_rename.
+autorewrite with syntax.
 apply replace_ext. intros.
 dependent elimination i; reflexivity.
 Qed.
+Hint Rewrite @rename_subst: syntax.
 
 Lemma replace_subst {L n} {t: Term L (S n)}:
   forall u m (f: Fin n -> Term L m),
@@ -187,37 +194,11 @@ Lemma replace_subst {L n} {t: Term L (S n)}:
   replace (transpose f) t ◁ replace f u.
 Proof.
 unfold subst. intros.
-rewrite replace_replace, replace_replace.
+autorewrite with syntax.
 apply replace_ext. intros.
-dependent elimination i as [ fzero | fsucc i].
-- reflexivity.
-- simpl. unfold shift. rewrite replace_rename. symmetry.
-  transitivity (replace (fun x => var x) (f i)).
-  + apply replace_ext. auto.
-  + apply replace_var.
+dependent elimination i; syntax_simp.
 Qed.
-
-Lemma shift_subst {L n} (t u: Term L n):
-  shift t ◁ u = t.
-Proof.
-unfold shift, subst. rewrite replace_rename.
-transitivity (replace (fun x => var x) t).
-- apply replace_ext. destruct i; reflexivity.
-- apply replace_var.
-Qed.
-
-Lemma shift_subst_at {L m n}
-  (t: Term L (S m + n)) (u: Term L n):
-  shift t ◁ᵢ u = shift (t ◁ᵢ u).
-Proof.
-unfold shift, subst_at.
-rewrite replace_rename, rename_replace.
-apply replace_ext. reflexivity.
-Qed.
-
-Lemma subst_at_subst {L m n} (t: Term L (S (S m + n)))
-  u v: t ◁ u ◁ᵢ v = (t ◁ᵢ v) ◁ (u ◁ᵢ v).
-Proof. unfold subst_at. apply replace_subst. Qed.
+Hint Rewrite @replace_subst: syntax.
 
 Fixpoint up {m n}: Fin n -> Fin (m + n) :=
 match m with
@@ -227,7 +208,7 @@ end.
 
 Lemma shift_up {L m n} (t: Term L n):
   shift (rename (@up m n) t) = rename (@up (S m) n) t.
-Proof. unfold shift. rewrite rename_comp. auto. Qed.
+Proof. syntax_simp. Qed.
 
 Fixpoint division {m n}: Fin (S m + n) :=
 match m with
@@ -241,13 +222,13 @@ Lemma subst_at_var {L m n}
   \/ exists i, var f ◁ᵢ u = var i.
 Proof. unfold subst_at. induction m.
 - dependent elimination f; simpl.
-  + left. rewrite rename_id. auto.
+  + syntax_simp.
   + right. eexists. auto.
 - dependent elimination f as [fzero | fsucc f]; simpl.
   + right. eexists. auto.
   + specialize IHm with (f := f). destruct IHm.
-    * left. unfold shift. simpl in H. destruct H.
-      rewrite H0, H, rename_comp. auto.
-    * right. simpl in H. destruct H. rewrite H.
-      eexists. reflexivity.
+    * unfold shift. simpl in H. destruct H.
+      rewrite H0, H. syntax_simp.
+    * simpl in H. destruct H. rewrite H.
+      right. eexists. reflexivity.
 Qed.
