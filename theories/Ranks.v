@@ -1,4 +1,5 @@
 From Stdlib Require Import PeanoNat.
+From Stdlib.Arith Require Import Wf_nat.
 From Equations Require Import Equations.
 Require Import Levels Typing Syntax Context SN Preservation Reduction Inversions DefEq.
 
@@ -190,25 +191,14 @@ Qed.
 
 Lemma AL_holds: forall r, AL r.
 Proof.
-enough (H: forall r s, s <= r -> AL s /\ SL s). {
-  intro. assert (H': AL r /\ SL r).
-  { apply H with (r := r). reflexivity. }
-  destruct H'. auto.
-}
-induction r; intros.
-- inversion H. subst. assert (H': AL 0).
-  { apply SL_to_AL. intros. inversion H0. }
-  split. auto. apply AL_to_SL.
-  intros. inversion H0. auto.
-- inversion H.
-  + assert (H': AL (S r)). {
-      apply SL_to_AL. intros. assert (H': AL j /\ SL j);
-      [ apply IHr, le_S_n | destruct H' ]; auto.
-    }
-    split. auto. apply AL_to_SL. intros. inversion H1.
-    auto. assert (H'': AL s0 /\ SL s0);
-    [ apply IHr | destruct H'' ]; auto.
-  + apply IHr. auto.
+enough (H: forall r, AL r /\ SL r).
+  { intro. destruct (H r). auto. }
+induction r using (well_founded_induction lt_wf).
+assert (HAL: AL r). apply SL_to_AL.
+- intros. specialize (H j). intuition.
+- split. auto. apply AL_to_SL. intros. inversion H0.
+  auto. subst. apply le_n_S in H1. specialize (H s).
+  intuition.
 Qed.
 
 Lemma main_lemma {n} Γ (t T: Term nat n):
