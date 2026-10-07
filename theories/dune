@@ -2,5 +2,5 @@
   (name PTSrk)
   (package pts-rk)
   (modules Syntax AbstractRewriting Congruence Reduction Confluence DefEq
-           Context Levels Typing Inversions Preservation SN Ranks)
+           Context Typing Inversions Preservation SN Ranks)
   (theories Stdlib Equations))

@@ -1,20 +1,20 @@
 From Stdlib Require Import PeanoNat.
 From Stdlib.Arith Require Import Wf_nat.
 From Equations Require Import Equations.
-Require Import Levels Typing Syntax Context SN Preservation Reduction Inversions DefEq.
+Require Import Typing Syntax Context SN Preservation Reduction Inversions DefEq.
 
-Instance RankLevels : Levels_sig nat :=
+Instance RankSorts : Sort_sig nat :=
   { axiom := fun x y => y = 0
   ; rule := fun x y z => z = max (S x) y
   }.
 
 #[refine]
-Instance RankLevels_fun :
-  Levels_functional_sig nat := {}.
+Instance RankSorts_fun :
+  Sort_functional_sig nat := {}.
 Proof. all: intros; rewrite H0; assumption. Qed.
 
 #[refine]
-Instance RankLevels_total : Levels_total_sig nat := {}.
+Instance RankSorts_total : Sort_total_sig nat := {}.
 Proof. all: intros; eexists; reflexivity. Qed.
 
 Definition AL r := (* Application lemma *)
@@ -114,7 +114,7 @@ try (simpl in H7).
     (t' := rename up (squeeze Γ)); auto.
     * apply unshrink_lemma with (T := 𝓤 r). auto.
     * rewrite squeeze_prop, <- H0.
-      apply var_inversion with (sig := RankLevels).
+      apply var_inversion with (sig := RankSorts).
       auto.
   + left. apply eq_rect with (var x). constructor. auto.
 - pose proof H7 as HT. typ_inversion H7.

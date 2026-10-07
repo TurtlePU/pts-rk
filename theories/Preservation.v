@@ -1,8 +1,8 @@
 From Equations Require Import Equations.
 Require Import Typing.
-Require Import Context Levels Syntax DefEq Reduction AbstractRewriting Inversions Congruence.
+Require Import Context Syntax DefEq Reduction AbstractRewriting Inversions Congruence.
 
-Inductive wf {L} {sig: Levels_sig L}:
+Inductive wf {L} {sig: Sort_sig L}:
   forall {n}, Ctx L n -> Type :=
 | wf_empty: wf ε
 | wf_cons {n} {Γ : Ctx L n} {T} ℓ:
@@ -11,7 +11,7 @@ Inductive wf {L} {sig: Levels_sig L}:
         wf (Γ & T).
 
 Lemma wf_subst_at {L m n} (Γ: Ctx L (S m + n))
-  (sig: Levels_sig L) u:
+  (sig: Sort_sig L) u:
    wf Γ -> shrink Γ ⊢ u ⇐ squeeze Γ ->
 (* ----------------------------------- *)
              wf (Γ ◁ⁱ u).
@@ -26,7 +26,7 @@ induction m; intros; dependent elimination X.
 Qed.
 
 Lemma context_reduction_strong {L n Δ} Γ
-  (sig: Levels_sig L) (t T: Term L n):
+  (sig: Sort_sig L) (t T: Term L n):
    Γ ⊢ t ⇐ T -> wf Γ -> Γ →ˠ Δ ->
 (* ------------------------------ *)
              Δ ⊢ t ⇐ T.
@@ -51,7 +51,7 @@ Proof. intros. induction H.
 - apply typ_conv with (T := T) (ℓ := ℓ); auto.
 Qed.
 
-Lemma context_reduction {L n Γ} ℓ (sig: Levels_sig L)
+Lemma context_reduction {L n Γ} ℓ (sig: Sort_sig L)
   (U U': Term L n) (t T: Term L (S n)):
    Γ & U ⊢ t ⇐ T -> wf Γ -> Γ ⊢ U ⇐ 𝓤 ℓ -> U →ᵝ U' ->
 (* -------------------------------------------------- *)
@@ -62,9 +62,7 @@ apply context_reduction_strong with (Γ := Γ & U); auto.
 - apply beta_here. auto.
 Qed.
 
-Generalizable Variable L.
-
-Theorem type_is_correct `{Levels_total_sig L} {n Γ}
+Theorem type_is_correct {L n Γ} `{Sort_total_sig L}
   (t T: Term L n):
     Γ ⊢ t ⇐ T -> wf Γ ->
 (* ---------------------- *)
@@ -91,7 +89,7 @@ Proof. intros. depind H1.
 - exists ℓ. auto.
 Qed.
 
-Theorem subject_reduction `{Levels_total_sig L} {n Γ}
+Theorem subject_reduction {L n Γ} `{Sort_total_sig L}
   (t t' T: Term L n):
    Γ ⊢ t ⇐ T -> wf Γ -> t →ᵝ t' ->
 (* ------------------------------- *)
@@ -137,7 +135,7 @@ destruct H' as [ℓ H']; typ_inversion H1.
   + rewrite H4. apply replace_equiv. symmetry. auto.
 Qed.
 
-Corollary subject_reduction' `{Levels_total_sig L} {n Γ}
+Corollary subject_reduction' {L n Γ} `{Sort_total_sig L}
   (t t' T: Term L n):
    Γ ⊢ t ⇐ T -> wf Γ -> t ↠ᵝ t' ->
 (* ------------------------------- *)
@@ -147,9 +145,9 @@ Proof. intros. induction H2.
 - apply IHRTC, subject_reduction with (t := x); auto.
 Qed.
 
-Theorem type_stability `{sig: Levels_sig L}
-  `{@Levels_total_sig L sig}
-  `{@Levels_functional_sig L sig} {n} Γ
+Theorem type_stability {L n} `{sig: Sort_sig L}
+  `{@Sort_total_sig L sig}
+  `{@Sort_functional_sig L sig} Γ
   (t t' T T': Term L n):
    Γ ⊢ t ⇐ T -> Γ ⊢ t' ⇐ T' -> wf Γ -> t =ᵝ t' ->
 (* ---------------------------------------------- *)

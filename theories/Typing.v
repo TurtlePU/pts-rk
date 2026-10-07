@@ -1,8 +1,25 @@
 From Equations Require Import Equations.
-Require Import Context DefEq Levels Syntax.
+Require Import Context DefEq Syntax.
+
+Class Sort_sig (L: Type) :=
+  { axiom: L -> L -> Prop
+  ; rule: L -> L -> L -> Prop
+  }.
+
+Class Sort_functional_sig L `{Sort_sig L} :=
+  { axiom_f {ℓ₁ ℓ₂} ℓ:
+      axiom ℓ ℓ₁ -> axiom ℓ ℓ₂ -> ℓ₁ = ℓ₂
+  ; rule_f {ℓ₁ ℓ₂} ℓₜ ℓᵤ:
+      rule ℓₜ ℓᵤ ℓ₁ -> rule ℓₜ ℓᵤ ℓ₂ -> ℓ₁ = ℓ₂
+  }.
+
+Class Sort_total_sig L `{Sort_sig L} :=
+  { axiom_t ℓ: exists ℓ', axiom ℓ ℓ'
+  ; rule_t ℓₜ ℓᵤ: exists ℓ, rule ℓₜ ℓᵤ ℓ
+  }.
 
 Reserved Notation "Γ ⊢ t ⇐ T" (at level 60).
-Inductive typ {L} {sig: Levels_sig L}:
+Inductive typ {L} {sig: Sort_sig L}:
   forall {n}, Ctx L n -> Term L n -> Term L n -> Prop :=
 | typ_𝓤 {n} {Γ : Ctx L n} ℓ ℓ':
     axiom ℓ ℓ' ->
@@ -30,7 +47,7 @@ Inductive typ {L} {sig: Levels_sig L}:
 where "Γ ⊢ t ⇐ T" := (typ Γ t T).
 Derive Signature for typ.
 
-Lemma weakening_strong m {L n Γ} (sig: Levels_sig L)
+Lemma weakening_strong m {L n Γ} (sig: Sort_sig L)
   (t T : Term L (m + n)) (U: Term L n):
                   Γ ⊢ t ⇐ T ->
 (* --------------------------------------- *)
@@ -52,14 +69,14 @@ Proof. intros. depind H.
 Qed.
 
 Corollary weakening {L n Γ}
-  (sig: Levels_sig L) (t T U: Term L n):
+  (sig: Sort_sig L) (t T U: Term L n):
           Γ ⊢ t ⇐ T ->
 (* -------------------------- *)
    Γ & U ⊢ shift t ⇐ shift T.
 Proof. apply weakening_strong with (m := 0). Qed.
 
 Lemma substitution_lemma_strong m
-  {L n Γ} (sig: Levels_sig L)
+  {L n Γ} (sig: Sort_sig L)
   (t T: Term L (S m + n)) (u: Term L n):
   Γ ⊢ t ⇐ T -> shrink Γ ⊢ u ⇐ squeeze Γ ->
   Γ ◁ⁱ u ⊢ t ◁ᵢ u ⇐ T ◁ᵢ u.
@@ -85,7 +102,7 @@ Proof. intros. depind H.
   apply replace_equiv. assumption.
 Qed.
 
-Corollary substitution_lemma {L n Γ} (sig: Levels_sig L)
+Corollary substitution_lemma {L n Γ} (sig: Sort_sig L)
   (u U: Term L n) (t T: Term L (S n)):
    Γ & U ⊢ t ⇐ T -> Γ ⊢ u ⇐ U ->
 (* ----------------------------- *)
@@ -93,7 +110,7 @@ Corollary substitution_lemma {L n Γ} (sig: Levels_sig L)
 Proof. apply substitution_lemma_strong with (m := 0).
 Qed.
 
-Lemma unshrink_lemma {L m n} (sig: Levels_sig L)
+Lemma unshrink_lemma {L m n} (sig: Sort_sig L)
   (Γ: Ctx L (S m + n)) (t T: Term L n):
         shrink Γ ⊢ t ⇐ T ->
 (* ------------------------------ *)

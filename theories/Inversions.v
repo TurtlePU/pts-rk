@@ -1,5 +1,5 @@
 From Equations Require Import Equations.
-Require Import AbstractRewriting DefEq Levels Typing Context Syntax Congruence Reduction.
+Require Import AbstractRewriting DefEq Typing Context Syntax Congruence Reduction.
 
 Ltac unpack H :=
   lazymatch type of H with
@@ -12,7 +12,7 @@ Ltac unpack H :=
   | _ => idtac
   end.
 
-Lemma 𝓤_inversion {L n Γ} (sig: Levels_sig L)
+Lemma 𝓤_inversion {L n Γ} (sig: Sort_sig L)
   (ℓ: L) (T: Term L n):
   Γ ⊢ 𝓤 ℓ ⇐ T -> exists ℓ', axiom ℓ ℓ' /\ T =ᵝ 𝓤 ℓ'.
 Proof. intro. depind H.
@@ -21,7 +21,7 @@ Proof. intro. depind H.
   2: rewrite <- H1. all: auto.
 Qed.
 
-Lemma Π_inversion {L n Γ} (sig: Levels_sig L)
+Lemma Π_inversion {L n Γ} (sig: Sort_sig L)
   (T V: Term L n) (U: Term L (S n)):
   Γ ⊢ Π T U ⇐ V ->
   exists ℓₜ ℓᵤ ℓ,
@@ -35,7 +35,7 @@ Proof. intro. depind H.
   intuition. rewrite <- H1. auto.
 Qed.
 
-Lemma var_inversion {L n Γ} (sig: Levels_sig L)
+Lemma var_inversion {L n Γ} (sig: Sort_sig L)
   (i: Fin n) (T: Term L n):
   Γ ⊢ var i ⇐ T -> T =ᵝ (Γ !! i).
 Proof. intro. depind H.
@@ -43,7 +43,7 @@ Proof. intro. depind H.
 - rewrite <- H1. apply IHtyp1.
 Qed.
 
-Lemma λ_inversion {L n Γ} (sig: Levels_sig L)
+Lemma λ_inversion {L n Γ} (sig: Sort_sig L)
   (T V: Term L n) (t: Term L (S n)):
   Γ ⊢ [T] t ⇐ V ->
   exists ℓ U,
@@ -56,7 +56,7 @@ Proof. intro. depind H.
   rewrite <- H1. auto.
 Qed.
 
-Lemma app_inversion {L n Γ} (sig: Levels_sig L)
+Lemma app_inversion {L n Γ} (sig: Sort_sig L)
   (t u V: Term L n):
   Γ ⊢ t $ u ⇐ V ->
   exists U T,
@@ -81,10 +81,9 @@ Ltac typ_inversion H :=
   end; unpack H
   end.
 
-Generalizable Variable L.
-
-Theorem uniqueness_of_typing `{Levels_functional_sig L}
-  {n} (Γ: Ctx L n) (t T T': Term L n):
+Theorem uniqueness_of_typing {L n}
+  `{Sort_functional_sig L}
+  (Γ: Ctx L n) (t T T': Term L n):
   Γ ⊢ t ⇐ T -> Γ ⊢ t ⇐ T' -> T =ᵝ T'.
 Proof.
 intros. induction t; typ_inversion H1; typ_inversion H2.
