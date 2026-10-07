@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\title{A strongly normalizing pure type system with
+       ranks as sorts and Type-in-Type}
+\author{Pavel Sokolov}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We present a dependently typed pure type system which
+contains a circular axiom $s:s$ for a certain sort $s$
+and is nonetheless strongly normalizing. Girard's
+paradox is avoided because our sorts are not closed
+under a $\Pi$-former: function types are placed in sorts
+according to their \textit{rank}. A normalization proof
+is surprisingly simple (modulo general metatheoretical
+properties of pure type systems) and has been fully
+formalized in vanilla Rocq without any additional
+axioms.
+\end{abstract}
+\section{Pure type systems and Girard's paradox}
+\section{PTS-rk and its strong normalization}
+\section{Formalizing PTS-rk in Rocq}
+\end{document}
