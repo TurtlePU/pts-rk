@@ -49,7 +49,7 @@ Lemma rename_step {L m n}
 Proof.
 intro. generalize dependent n. induction H; simpl;
 try (constructor; apply IHstep). intros.
-rewrite rename_subst. constructor.
+autorewrite with syntax. constructor.
 Qed.
 
 Lemma replace_step {L m n}
@@ -58,7 +58,7 @@ Lemma replace_step {L m n}
 Proof.
 intro. generalize dependent n. induction H; simpl;
 try (constructor; apply IHstep). intros.
-rewrite replace_subst. constructor.
+autorewrite with syntax. constructor.
 Qed.
 
 Lemma rename_rtc {L m n}
@@ -70,30 +70,25 @@ Proof. intros. induction H.
   apply rename_step. auto.
 Qed.
 
-Lemma rtc_transpose {L m n} (f f': Fin m -> Term L n):
-  (forall i, f i ↠ᵝ f' i) ->
-  forall i, transpose f i ↠ᵝ transpose f' i.
-Proof. intros. dependent elimination i; simpl.
-- reflexivity.
-- apply rename_rtc. auto.
-Qed.
-
 Lemma rtc_replace {L m n}
   (f f': Fin m -> Term L n) (t: Term L m):
   (forall i, f i ↠ᵝ f' i) ->
   replace f t ↠ᵝ replace f' t.
-Proof. intros. generalize dependent n.
-induction t; simpl; intros.
-- reflexivity.
-- apply Π_cong_par; try (apply IHt2, rtc_transpose);
-  auto; typeclasses eauto.
-- auto.
-- apply λ_cong_par; try (apply IHt2, rtc_transpose);
-  auto; typeclasses eauto.
-- apply app_cong_par; auto; typeclasses eauto.
+Proof.
+assert (rtc_transpose: forall L m n
+  (f f': Fin m -> Term L n),
+  (forall i, f i ↠ᵝ f' i) ->
+  forall i, transpose f i ↠ᵝ transpose f' i).
+  { clear. intros. dependent elimination i; simpl.
+    - reflexivity.
+    - apply rename_rtc. auto.
+  }
+intros. generalize dependent n.
+induction t; simpl; intros;
+try cong_par; auto; typeclasses eauto.
 Qed.
 
-Lemma rtc_sub {L n} (t: Term L (S n)) u u':
+Corollary rtc_sub {L n} (t: Term L (S n)) u u':
   u ↠ᵝ u' -> t ◁ u ↠ᵝ t ◁ u'.
 Proof.
 intros. apply rtc_replace. intros.
@@ -116,7 +111,7 @@ Proof. intro. depind H.
 - inversion H; subst; eapply IHRTC; reflexivity.
 Qed.
 
-Lemma rtc_Π_inversion {L n} (T T': Term L n)
+Corollary rtc_Π_inversion {L n} (T T': Term L n)
   (U U': Term L (S n)):
   Π T U ↠ᵝ Π T' U' -> T ↠ᵝ T' /\ U ↠ᵝ U'.
 Proof. intro. depind H. split; reflexivity.

@@ -189,7 +189,7 @@ try (simpl in H7).
   split. auto. intros. eapply SN_WHR. apply wh. auto.
 Qed.
 
-Lemma AL_holds: forall r, AL r.
+Corollary AL_holds: forall r, AL r.
 Proof.
 enough (H: forall r, AL r /\ SL r).
   { intro. destruct (H r). auto. }

@@ -70,3 +70,11 @@ Lemma app_cong_par L R
   R _ t t' -> R _ u u' -> R _ (t $ u) (t' $ u').
 Proof. intros. transitivity (t $ u'); auto with cong.
 Qed.
+
+Ltac cong_par :=
+  lazymatch goal with
+  | [ |- _ (Π _ _) (Π _ _) ] => apply Π_cong_par
+  | [ |- _ ([_] _) ([_] _) ] => apply λ_cong_par
+  | [ |- _ (_ $ _) (_ $ _) ] => apply app_cong_par
+  | [ |- _ ?t ?t ] => reflexivity
+  end.

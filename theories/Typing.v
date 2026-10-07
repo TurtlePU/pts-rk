@@ -51,7 +51,7 @@ Proof. intros. depind H.
   apply rename_equiv. auto.
 Qed.
 
-Lemma weakening {L n Γ}
+Corollary weakening {L n Γ}
   (sig: Levels_sig L) (t T U: Term L n):
           Γ ⊢ t ⇐ T ->
 (* -------------------------- *)
@@ -85,7 +85,7 @@ Proof. intros. depind H.
   apply replace_equiv. assumption.
 Qed.
 
-Lemma substitution_lemma {L n Γ} (sig: Levels_sig L)
+Corollary substitution_lemma {L n Γ} (sig: Levels_sig L)
   (u U: Term L n) (t T: Term L (S n)):
    Γ & U ⊢ t ⇐ T -> Γ ⊢ u ⇐ U ->
 (* ----------------------------- *)

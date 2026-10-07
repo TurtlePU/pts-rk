@@ -6,11 +6,11 @@ Inductive Acc {A} (R: relation A) (x: A): Prop :=
 | acc: (forall y, R x y -> Acc R y) -> Acc R x.
 Derive Signature for Acc.
 
-Lemma acc_step {A} {R: relation A} x y:
+Fact acc_step {A} {R: relation A} x y:
   R x y -> Acc R x -> Acc R y.
 Proof. intros. destruct H0. apply H0, H. Qed.
 
-Lemma acc_steps {A} {R: relation A} x y:
+Fact acc_steps {A} {R: relation A} x y:
   RTC R x y -> Acc R x -> Acc R y.
 Proof.
 intros. induction H. auto.
@@ -19,13 +19,13 @@ Qed.
 
 Definition sn {L n}: Term L n -> Prop := Acc (step L n).
 
-Lemma var_sn {L n} x: @sn L n (var x).
+Fact var_sn {L n} x: @sn L n (var x).
 Proof. constructor. intros. inversion H. Qed.
 
-Lemma sort_sn {L n} ℓ: @sn L n (𝓤 ℓ).
+Fact sort_sn {L n} ℓ: @sn L n (𝓤 ℓ).
 Proof. constructor. intros. inversion H. Qed.
 
-Lemma Π_sn {L n} (T: Term L n) U:
+Fact Π_sn {L n} (T: Term L n) U:
   sn T -> sn U -> sn (Π T U).
 Proof. intros. induction H. induction H0. constructor.
 intros. inversion H3; subst.
@@ -35,7 +35,7 @@ intros. inversion H3; subst.
   auto with cong.
 Qed.
 
-Lemma λ_sn {L n} (T: Term L n) t:
+Fact λ_sn {L n} (T: Term L n) t:
   sn T -> sn t -> sn ([T] t).
 Proof. intros. induction H. induction H0. constructor.
 intros. inversion H3; subst.
@@ -45,13 +45,13 @@ intros. inversion H3; subst.
   auto with cong.
 Qed.
 
-Lemma head_sn {L n} (t u: Term L n): sn (t $ u) -> sn t.
+Fact head_sn {L n} (t u: Term L n): sn (t $ u) -> sn t.
 Proof.
 intro. depind H. constructor. intros.
 apply H0 with (y := y $ u) (u := u); auto with cong.
 Qed.
 
-Lemma sn_unsub {L m n} (t: Term L (S m + n)) u:
+Fact sn_unsub {L m n} (t: Term L (S m + n)) u:
   sn (t ◁ᵢ u) -> sn t.
 Proof.
 intros. depind H. constructor. intros.

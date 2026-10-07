@@ -64,7 +64,7 @@ Qed.
 
 Generalizable Variable L.
 
-Lemma type_is_correct `{Levels_total_sig L} {n Γ}
+Theorem type_is_correct `{Levels_total_sig L} {n Γ}
   (t T: Term L n):
     Γ ⊢ t ⇐ T -> wf Γ ->
 (* ---------------------- *)
@@ -137,7 +137,7 @@ destruct H' as [ℓ H']; typ_inversion H1.
   + rewrite H4. apply replace_equiv. symmetry. auto.
 Qed.
 
-Lemma subject_reduction' `{Levels_total_sig L} {n Γ}
+Corollary subject_reduction' `{Levels_total_sig L} {n Γ}
   (t t' T: Term L n):
    Γ ⊢ t ⇐ T -> wf Γ -> t ↠ᵝ t' ->
 (* ------------------------------- *)

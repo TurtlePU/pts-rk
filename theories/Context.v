@@ -74,7 +74,7 @@ match m with
 | S m => fun Γ => squeeze (ctx_pred Γ)
 end.
 
-Lemma squeeze_prop {L m n} (Γ: Ctx L (S m + n)):
+Fact squeeze_prop {L m n} (Γ: Ctx L (S m + n)):
   rename up (squeeze Γ) = Γ !! division.
 Proof. induction m.
 - reflexivity.
@@ -85,7 +85,7 @@ Proof. induction m.
   rewrite <- shift_up. f_equal. apply IHm.
 Qed.
 
-Lemma insert_index {L m n}
+Fact insert_index {L m n}
   (Γ: Ctx L (m + n)) (T: Term L n) (i: Fin (m + n)):
   insert Γ T !! wr i = rename wr (Γ !! i).
 Proof. induction m.
