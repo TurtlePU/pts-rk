@@ -1,4 +1,7 @@
 \documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{bibliography.bib}
 
 \title{A strongly normalizing pure type system with
        ranks as sorts and Type-in-Type}
@@ -16,10 +19,14 @@ under a $\Pi$-former: function types are placed in sorts
 according to their \textit{rank}. A normalization proof
 is surprisingly simple (modulo general metatheoretical
 properties of pure type systems) and has been fully
-formalized in vanilla Rocq without any additional
-axioms.
+formalized in vanilla Rocq (formerly Coq) without any
+additional axioms.
 \end{abstract}
+\section{Introduction}
 \section{Pure type systems and Girard's paradox}
 \section{PTS-rk and its strong normalization}
 \section{Formalizing PTS-rk in Rocq}
+Inductive characterization of the set of strongly
+normalizing terms follows \cite{Joachimski2003Short}.
+\printbibliography
 \end{document}
