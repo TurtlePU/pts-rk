@@ -3,30 +3,425 @@
 \usepackage[backend=biber]{biblatex}
 \addbibresource{bibliography.bib}
 
-\title{A strongly normalizing pure type system with
-       ranks as sorts and Type-in-Type}
+\usepackage
+{amsmath,amssymb,amsthm,mathpartir,stmaryrd,tikz-cd}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\title{A sound pure type system with ranks as sorts and
+       Type-in-Type}
 \author{Pavel Sokolov}
 \date{\today}
 
 \begin{document}
+
 \maketitle
+
 \begin{abstract}
 We present a dependently typed pure type system which
 contains a circular axiom $s:s$ for a certain sort $s$
 and is nonetheless strongly normalizing. Girard's
 paradox is avoided because our sorts are not closed
 under a $\Pi$-former: function types are placed in sorts
-according to their \textit{rank}. A normalization proof
+according to their \textit{rank}. We prove strong
+normalization of a system and provide barebones
+set-theoretical model for it. A normalization proof
 is surprisingly simple (modulo general metatheoretical
 properties of pure type systems) and has been fully
 formalized in vanilla Rocq (formerly Coq) without any
 additional axioms.
 \end{abstract}
+
 \section{Introduction}
-\section{Pure type systems and Girard's paradox}
-\section{PTS-rk and its strong normalization}
-\section{Formalizing PTS-rk in Rocq}
+Pure type systems (PTSs) are a family of minimalistic
+typed $\lambda$-calculi including grammar formers for
+variables $x\in\mathsf{Var}$, abstraction
+$\lambda(x:T).t$, application $t\,t'$, types of
+dependent functions $\Pi(x:T).U$ (where $U$ might depend
+on $x$) and \textit{sorts} $s\in\mathcal{S}$ which act
+like ``types of types''. In contrast with simpler type
+systems, there is no syntactical distinction between
+terms and types --- they are defined by a single
+grammar; an expression can act both as a term and as a
+type depending on a side where it stands next to the
+colon in the typing relation $\Gamma\vdash\_:\_$.
+A single PTS is determined by two relations:
+\begin{itemize}
+\item \textit{axiom} relation $\mathsf{Ax}\subseteq
+    \mathcal{S}\times\mathcal{S}$ determines ``to which
+    sort(s) a given sort belongs as an element'';
+    instead of $(s,s')\in\mathsf{Ax}$ it is customary to
+    write simply $s:s'$.
+\item \textit{rule} relation $\mathsf{Rule}\subseteq
+    \mathcal{S}^2\times\mathcal{S}$ places types of
+    functions $\Pi(x:T).U$ into sorts accounting for the
+    sorts where $T$ and $U$ are situated.
+\end{itemize}
+
+\begin{figure}
+\begin{mathpar}
+\inferrule[Ax]{ }{\Gamma\vdash s:s'}
+    (s, s')\in\mathsf{Ax}
+\and
+\inferrule[Rule]{
+    \Gamma\vdash T:s_T \\
+    \Gamma,x:T\vdash U:s_U
+}{\Gamma\vdash\Pi(x:T).\,U:s}
+(s_T, s_U, s)\in\mathsf{Rule}
+\and
+\inferrule[Var]{x:T\in\Gamma}{\Gamma\vdash x:T}
+\and
+\inferrule[Abs]{
+    \Gamma\vdash T:s_T \\
+    \Gamma,x:T\vdash u:U
+}{\Gamma\vdash\lambda(x:T).u:\Pi(x:T).U}
+\and
+\inferrule[App]{
+    \Gamma\vdash u:\Pi(x:T).U \\
+    \Gamma\vdash t:T
+}{\Gamma\vdash u\,t:U[t/x]}
+\and
+\inferrule[Conv]{
+    \Gamma\vdash t:T \\
+    \Gamma\vdash U:s \\
+    T =_\beta U
+}{\Gamma\vdash t:U}
+\end{mathpar}
+\caption{Typing rules of pure type systems}
+\label{typing}
+\end{figure}
+
+Systems from Barendregt's lambda cube fit naturally into
+the framework: for example, simply typed lambda calculus
+(STLC) can be viewed as a pure type system with a single
+sort $*$, no axioms and a single rule $(*,*,*)$. In
+general, however, a pure type system is dependently
+typed since $\Pi$ allows the codomain type to depend on
+the value of an argument --- Coquand's Calculus of
+Constructions (CoC) sits comfortably at the top of
+lambda cube and is modeled as a pure type system with
+two sorts $\{*,\square\}$, a single axiom $*:\square$
+and four rules corresponding to simple functions
+$(*,*,*)$, polymorphic functions $(\square,*,*)$, type
+operators $(\square,\square,\square)$ and dependent
+types $(*,\square,\square)$.
+
+As is known, both STLC and CoC are strongly normalizing
+and sound with respect to their set-theoretical
+semantics. A classical result shows that it is not true
+for arbitrary PTS.
+
+\begin{theorem*}[Girard'72]
+    The following PTS called System U is not
+    normalizing:
+    \[\begin{array}{c}
+        \mathcal{S}=\{*,\square,\triangle\},
+        \quad\mathsf{Ax}=\{
+            (*,\square),(\square,\triangle)
+        \},
+        \\ \mathsf{Rule}=\{
+            (*,*,*),(\square,*,*),(\triangle,*,*),
+            (\square,\square,\square),
+            (\triangle,\square,\square)
+        \}
+    \end{array}\]
+    Futhermore, the offending term has type
+    $\Pi(P:*).P$.
+\end{theorem*}
+
+This result is dubbed ``Girard's paradox'' since it
+renders System U inconsistent with respect to its
+intended logical semantics: inhabitedness of
+$\Pi(P:*).P$ would mean that every proposition is
+provable. Thus any system where System U embeds is
+inconsistent, too; in particular, an original version of
+Martin-L\"{o}f's Intuitionistic Type Theory embeds the
+following PTS known as ``Type-in-Type'' which is
+inconsistent due to Girard's paradox:
+\[\mathcal{S}=\{*\},\quad\mathsf{Ax}=\{*:*\},\quad
+\mathsf{Rule}=\{(*,*,*)\}.\]
+For a pure type system with usual set-theoretical
+semantics, it is natural to expect that a sort of
+\textit{small types} $*$ is closed under $\Pi$, thus we
+cannot forbid the rule $(*,*,*)$; then, a circular axiom
+$*:*$ has to go. Long story short, it motivates an
+introduction of \textit{universe hierarchy}
+$\mathcal{S}=\{\mathcal{U}_k\}_{k\in\mathbb{N}}$ with
+axioms $\mathcal{U}_k:\mathcal{U}_{k+1}$ and rules
+$(\mathcal{U}_k,\mathcal{U}_l,\mathcal{U}_{k\vee l})$
+for each $k,l$; when interpreted in sets,
+$\llbracket \mathcal{U}_k \rrbracket$ is taken to be the
+$k$-th inaccessible cardinal.
+
+Observing this, we took interest in the following two
+questions:
+
+\begin{itemize}
+\item If we were to drop the rule $(*,*,*)$ and keep the
+    axiom $*:*$ instead, can we find a nontrivial
+    consistent pure type system?
+\item Is there a consistent pure type system with total
+    relations $\mathsf{Ax}$ and $\mathsf{Rule}$ whose
+    natural set-theoretical semantics do not involve
+    assumption of inaccessible cardinals?
+\end{itemize}
+
+Turns out that, for both questions, answer is ``yes''.
+Furthermore, both yes-s are witnessed by a single PTS,
+which we dub PTS-$rk$:
+\[
+\mathcal{S}=\{\mathsf{rk}_r\}_{r\in\mathbb{N}}
+\quad
+\mathsf{Ax}=
+    \{(\mathsf{rk}_r,\mathsf{rk}_0)\}_{r\in\mathbb{N}}
+\quad
+\mathsf{Rule}=
+    \{(\mathsf{rk}_r,\mathsf{rk}_s,
+        \mathsf{rk}_{(r+1)\vee s})\}_{r,s\in\mathbb{N}}
+\]
+(Naming ``$\mathsf{rk}$'' comes from \textit{rank},
+since rules compute precisely the rank of functions,
+which is the maximal nesting of $\Pi$ in the domain
+type.)
+
+Indeed, there is a circular axiom
+$\mathsf{rk}_0:\mathsf{rk}_0$, and System U is not
+embeddable since $\mathsf{rk}_r$ is not closed
+under $\Pi$ for any $r$. Also, as we will see in
+Section~\ref{rk-soundness}, our PTS-$rk$ is strongly
+normalizing and has a set-theoretical model in ZFC
+despite an intuition that $\mathsf{rk}_r:\mathsf{rk}_0$
+might ``feel wrong''. Modulo general metatheory of pure
+type systems laid out in Section~\ref{pts-metatheory},
+a normalization proof turned out to be suspiciously
+simple, even more so in comparison with normalization
+proofs of other dependently typed systems. To dispel our
+own doubts, we formalized a proof of normalization in
+Rocq (formerly Coq) without using any additional axioms,
+yielding a fully constructive proof; our journey in
+formalization is summarised in
+Section~\ref{formalization}. We provide a closing
+summary and some pointers on possible extensions of the
+system in Section~\ref{conclusion}.
+
+\section{Metatheory of pure type systems}
+\label{pts-metatheory}
+
+For ease of presentation of our results, in this and the
+following section we take a Barendregt convention which
+assumes that all bound variables are distinct from free
+variables and from each other; furthermore,
+$\alpha$-equivalence (renaming of bound variables) is
+assumed as a trivial equality on terms. Nevertheless,
+our formalization takes variable treatment seriously;
+see Section~\ref{formalization} for more details.
+
+In Fig.~\ref{typing}, a rule of \textit{conversion}
+(\textsc{Conv}) mentions \textit{definitional
+equivalence} of types $T=_\beta U$. It is defined as a
+reflexive, symmetric, transitive closure of a one-step
+reduction.
+
+\begin{definition}[One-step reduction]
+Relation of a one-step reduction $t\to_\beta t'$ is the
+smallest relation satisfying the following rules:
+\begin{mathpar}
+\inferrule{T \to_\beta T'}
+    {\Pi(x:T).U \to_\beta \Pi(x:T').U}
+\and
+\inferrule{U \to_\beta U'}
+    {\Pi(x:T).U \to_\beta \Pi(x:T).U'}
+\and
+\inferrule{T \to_\beta T'}
+    {\lambda(x:T).t \to_\beta \lambda(x:T').t}
+\and
+\inferrule{t \to_\beta t'}
+    {\lambda(x:T).t \to_\beta \lambda(x:T).t'}
+\and
+\inferrule{t \to_\beta t'}{t\,u \to_\beta t'\,u}
+\and
+\inferrule{u \to_\beta u'}{t\,u \to_\beta t\,u'}
+\and
+\inferrule[Beta]{}
+    {(\lambda(x:T).t)\,u \to_\beta t[u/x]}
+\end{mathpar}
+\end{definition}
+
+In essence, actual reduction happens only in rule
+\textsc{Beta}; other rules simply state the we can
+freely reduce any subterm.
+
+The following result will be greatly useful in our
+development. It was proven many times over for different
+similar systems; we briefly revisit the proof since
+previous presentations usually did not allow reductions
+in the type of argument $T$ in $\lambda(x:T).t$.
+
+\begin{theorem}[Characterization of $(=_\beta)$]
+    In arbitrary PTS,
+    \[
+        t =_\beta u \quad\Leftrightarrow\quad
+        \exists v.\;t\to_\beta^* v
+        \land u\to_\beta^* v,
+    \]
+    where $(\to_\beta^*)$ is reflexive transitive
+    closure of $(\to_\beta)$.
+\end{theorem}
+\begin{proof}
+    Note that it is enough to prove that $(\to_\beta^*)$
+    has a diamond property --- for each $t_0,t_1,t_2$
+    such that $t_0\to_\beta^* t_1$ and
+    $t_0\to_\beta^* t_2$ there exists a $t'$ such that
+    $t_1\to_\beta^* t'$ and $t_2\to_\beta^* t'$:
+    \[\begin{tikzcd}
+        t_0 \arrow[r] \arrow[d]
+        & t_1 \arrow[d, dashed] \\
+        t_2 \arrow[r, dashed] & t'
+    \end{tikzcd}\]
+    Then, any ``mountains'' in the path $t=_\beta u$ can
+    be switched into ``valleys''.
+
+    Now, diamond property is proven by standard
+    technique of parallel reduction defined as the
+    smallest relation satisfying:
+    \begin{mathpar}
+    \inferrule{}{t\rightrightarrows t}
+    \and
+    \inferrule
+        {T\rightrightarrows T' \\ U\rightrightarrows U'}
+        {\Pi(x:T).U\rightrightarrows\Pi(x:T').U'}
+    \and
+    \inferrule
+        {T\rightrightarrows T' \\ t\rightrightarrows t'}
+        {\lambda(x:T).t\rightrightarrows
+            \lambda(x:T').t'}
+    \and
+    \inferrule
+        {t\rightrightarrows t'\\ u\rightrightarrows u'}
+        {t\,u\rightrightarrows t'\,u'}
+    \and
+    \inferrule
+        {t\rightrightarrows t'\\ u\rightrightarrows u'}
+        {(\lambda(x:T).t)\,u\rightrightarrows t'[u'/x]}
+    \end{mathpar}
+    Intuitively, while $(\to_\beta)$ is a single
+    $\beta$-reduction somewhere in the term and
+    $(\to_\beta)^*$ is a sequence of reductions,
+    $(\rightrightarrows)$ is several simultaneous
+    reductions immediately available in the term.
+    Notice, then, that $(\to_\beta)\subseteq
+    (\rightrightarrows)\subseteq(\to_\beta^*)$; by
+    monotonicity of reflexive transitive closure,
+    $(\to_\beta^*)\subseteq
+    (\rightrightarrows^*)\subseteq(\to_\beta^*)^*
+    =(\to_\beta^*)$, so
+    $(\rightrightarrows^*)=(\to_\beta^*)$. Thus it is
+    enough to prove diamond property of
+    $(\rightrightarrows^*)$. Diamond property is
+    preserved under reflexive transitive closure, so it
+    is enough to prove diamond propery of
+    $(\rightrightarrows)$, which holds by tedious case
+    analysis.
+\end{proof}
+
+Setting aside practical applications of this theorem (to
+algorithmically check equivalence of terms, we can now
+search for common redex), it will prove useful already
+in our proof development. For example, the following
+``equality inversion'' lemmas are direct corollaries:
+
+\begin{corollary}[Equality inversion]
+    If $s=_\beta s'$, then $s=s'\in\mathcal{S}$; if
+    $\Pi(x:T).U=_\beta\Pi(x:T').U'$, then $T=_\beta T'$
+    and $U=_\beta U'$.
+\end{corollary}
+
+They will become necessary in proving subject reduction,
+or type preservation. But first, we will show some
+structural properties of a typing relation given in
+Fig.~\ref{typing}. Again, they surely have been proven
+before for PTS, but we slightly differ in the
+formulation of typing rules in important places so it's
+better to recheck that these hold.
+
+\begin{lemma}[Weakening]
+    The following rule is admissible:
+    \[\dfrac{\Gamma,\Delta\vdash t:T}
+            {\Gamma,x:U,\Delta\vdash t:T}.\]
+\end{lemma}
+\begin{proof}
+    By structural induction on the typing derivation.
+\end{proof}
+
+\begin{lemma}[Substitution]
+    The following rule is admissible:
+    \[\dfrac{
+        \Gamma,x:U,\Delta\vdash t:T\quad
+        \Gamma\vdash u:U
+    }{\Gamma,\Delta[u/x]\vdash t[u/x]:T[u/x]}.\]
+\end{lemma}
+\begin{proof}
+    By structural induction on the typing derivation
+    for $t$. For variables in $\Delta$, it is necessary
+    that both $\Delta$ and $T$ get substitutions of $u$
+    for $x$ so \textsc{Var} is still applicable; for
+    places in $t$ where $x$ used to be we need to apply
+    weakening lemma to the typing derivation for $u$
+    exactly $|\Delta|$ times. In the case of
+    \textsc{Conv} it is important that definitional
+    equality of types is preserved by substitution
+    (thanks to characterization of $(=_\beta)$).
+\end{proof}
+
+In addition, a family of so-called \textit{inversion
+lemmas} stating that type of well-typed term is largely
+determined by shape of a term are also proven by
+straightforward induction on typing derivation (each one
+is proven separately, no mutual induction involved):
+
+\begin{lemma}[Inversion lemmas]
+\begin{align}
+    \Gamma\vdash s:T &\Rightarrow
+    \exists s'. (s,s')\in\mathsf{Ax} \land T =_\beta s'
+    \\
+    \Gamma\vdash\Pi(x:T).U:V &\Rightarrow
+    \exists s_T,s_U,s.\left\{\begin{array}{l}
+        (s_T,s_U,s)\in\mathsf{Rule} \\
+        \Gamma\vdash T:s_T \\
+        \Gamma,x:T\vdash U:s_U \\
+        V =_\beta s
+    \end{array}\right. \\
+    \Gamma,x:T,\Delta\vdash x:U &\Rightarrow T=_\beta U
+    \\
+    \Gamma\vdash\lambda(x:T).t:V &\Rightarrow
+    \exists s,U.\left\{\begin{array}{l}
+        \Gamma\vdash T:s \\
+        \Gamma,x:T\vdash t:U \\
+        V =_\beta \Pi(x:T).U
+    \end{array}\right. \\
+    \Gamma\vdash t\,u:V &\Rightarrow
+    \exists U,T.\left\{\begin{array}{l}
+        \Gamma\vdash t:\Pi(x:U).T \\
+        \Gamma\vdash u:U \\
+        V =_\beta T[u/x]
+    \end{array}\right.
+\end{align}
+\end{lemma}
+
+\section{Soundness of PTS-rk}\label{rk-soundness}
+
+\section{Formalizing normalization of PTS-rk in Rocq}
+\label{formalization}
+
 Inductive characterization of the set of strongly
 normalizing terms follows \cite{Joachimski2003Short}.
+
+\section{Conclusion}
+\label{conclusion}
+
 \printbibliography
 \end{document}
