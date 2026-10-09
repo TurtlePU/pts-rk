@@ -212,20 +212,22 @@ system in Section~\ref{conclusion}.
 \section{Metatheory of pure type systems}
 \label{pts-metatheory}
 
-For ease of presentation of our results, in this and the
-following section we take a Barendregt convention which
-assumes that all bound variables are distinct from free
-variables and from each other; furthermore,
-$\alpha$-equivalence (renaming of bound variables) is
-assumed as a trivial equality on terms. Nevertheless,
-our formalization takes variable treatment seriously;
-see Section~\ref{formalization} for more details.
+For ease of presentation of our results, in
+Sections~\ref{pts-metatheory}-\ref{rk-soundness} we take
+a Barendregt convention which assumes that all bound
+variables are distinct from free variables and from each
+other; furthermore, $\alpha$-equivalence (renaming of
+bound variables) is assumed as a trivial equality on
+terms. Nevertheless, our formalization takes variable
+treatment seriously; see Section~\ref{formalization} for
+more details.
+
+\subsection{PTS as a rewriting system}
 
 In Fig.~\ref{typing}, a rule of \textit{conversion}
-(\textsc{Conv}) mentions \textit{definitional
-equivalence} of types $T=_\beta U$. It is defined as a
-reflexive, symmetric, transitive closure of a one-step
-reduction.
+(\textsc{Conv}) mentions \textit{definitional equality}
+of types $T=_\beta U$. It is defined as a reflexive,
+symmetric, transitive closure of a one-step reduction.
 
 \begin{definition}[One-step reduction]
 Relation of a one-step reduction $t\to_\beta t'$ is the
@@ -331,9 +333,10 @@ in the type of argument $T$ in $\lambda(x:T).t$.
 
 Setting aside practical applications of this theorem (to
 algorithmically check equivalence of terms, we can now
-search for common redex), it will prove useful already
-in our proof development. For example, the following
-``equality inversion'' lemmas are direct corollaries:
+search for common reduction result), it will prove
+useful already in our proof development. For example,
+the following ``equality inversion'' lemmas are direct
+corollaries:
 
 \begin{corollary}[Equality inversion]
     If $s=_\beta s'$, then $s=s'\in\mathcal{S}$; if
@@ -344,7 +347,11 @@ in our proof development. For example, the following
 They will become necessary in proving subject reduction,
 or type preservation. But first, we will show some
 structural properties of a typing judgement given in
-Fig.~\ref{typing}. Again, they surely have been proven
+Fig.~\ref{typing}.
+
+\subsection{Properties of a typing judgement}
+
+Again, they surely have been proven
 before for PTS, but we slightly differ in the
 formulation of typing rules in important places so it's
 better to recheck that these hold.
@@ -457,7 +464,7 @@ on the PTS we have in question.
     \item $t=\Pi(x:T).U$: inversion of typing gives two
         (possibly different) sorts for $T$ and for $U$.
         By induction we get that they're pairwise
-        definitionally equivalent, which by equality
+        definitionally equal, which by equality
         inversion gives strictly equal sorts. Then what
         is needed holds by functionality of
         $\mathsf{Rule}$.
@@ -506,6 +513,7 @@ how decision procedures for typing judgements are
 implemented.
 
 \begin{theorem}[Typing yields correct type]
+\label{type-is-correct}
     In a total PTS, if $\Gamma\vdash t:T$ and
     $\vdash\Gamma$, then there exists $s\in\mathcal{S}$
     such that $\Gamma\vdash T:s$.
@@ -528,16 +536,199 @@ implemented.
     \end{itemize}
 \end{proof}
 
-Totality is not a particularly strict requirement ---
+Totality is not a strictly necessary requirement ---
 similar true propositions can be stated for non-total
 PTS, for example in CoC typing yields type which is
 either itself typable or equal to $\square$. But
 PTS-$rk$ is indeed total so the theorem above is enough
 for our purposes.
 
-\section{Soundness of PTS-rk}\label{rk-soundness}
+\begin{theorem}[Subject reduction]
+    In a total PTS, the following rule is admissible:
+    \[\dfrac{
+        \Gamma\vdash t:T \quad \vdash\Gamma
+        \quad t \to_\beta t'
+    }{\Gamma\vdash t':T}\]
+\end{theorem}
+\begin{proof}
+    By structural induction over derivation of
+    $t\to_\beta t'$. Inversion of a typing judgement
+    yields all necessary info, albeit because of it
+    types are now given only up to definitional equality
+    so we have to apply conversion rule in each case.
+    Crucially, it requires the type we convert into to
+    be typable by a sort, so that's where we use
+    Theorem~\ref{type-is-correct}.
 
-\section{Formalizing normalization of PTS-rk in Rocq}
+    The only tricky case are reductions of a domain type
+    in $\Pi(x:T).U$ and $\lambda(x:T).t$. Let us
+    consider the case of the following reduction:
+    \[\lambda(x:T).t \to_\beta \lambda(x:T').t.\]
+    In order to complete this case, we have to prove
+    that $\Gamma,x:T'\vdash t:U$ given that
+    $\Gamma,x:T\vdash t:U$. By appropriately
+    strengthening the statement, we get that it is
+    enough to prove admissibility of the following rule
+    called \emph{context reduction}:
+    \[\dfrac{
+        \Gamma,x:U,\Delta\vdash t:T\quad
+        \vdash\Gamma,x:U,\Delta\quad U\to_\beta U'
+    }{\Gamma,x:U',\Delta\vdash t:T}\]
+    The proof is, again, by induction on the typing
+    derivation. The only non-trivial case is with
+    \textsc{Var} rule used on $x$; it is taken care of
+    by appropriate use of \textsc{Conv} rule to convert
+    $x:U'$ to $x:U$. To use conversion, we have to prove
+    that $U$ is well-typed; thankfully, it follows from
+    $\vdash\Gamma,x:U,\Delta$.
+
+    Note that context reduction is admissible in
+    arbitrary PTS! We don't need it anywhere else,
+    though, so we didn't state it as a separate lemma.
+\end{proof}
+
+Characterization of definitional equality, uniqueness of
+typing and subject reduction together imply the
+following corollary we're going to use a few times in
+our normalization proof:
+
+\begin{corollary}[Type stability]
+    In a total functional PTS, the following holds:
+    \[\left\{\begin{array}{l}
+        \Gamma\vdash t:T\\
+        \Gamma\vdash t':T'\\
+        \vdash\Gamma\\
+        t =_\beta t'
+    \end{array}\right.\quad\Rightarrow\quad
+    T=_\beta T'.\]
+\end{corollary}
+
+\subsection{Properties of strongly normalizing terms}
+
+We're almost done with classical results! What is left
+now is to state which terms are strongly normalizing and
+collect properties of s.n. terms which allow our
+soundness proof to go through.
+
+Informally, a term is strongly normalizing iff there are
+no infinite reduction chains starting from it.
+In constructive setting and in formalization, the
+following definition is a bit better:
+
+\begin{definition}[Strongly normalizing term]
+    Set of s.n. terms is the smallest set $\mathsf{sn}$
+    in which the following rule is valid:
+    \[\dfrac{\forall t',(t\to_\beta t')\Rightarrow
+        t'\in\mathsf{sn}}{t\in\mathsf{sn}}.\]
+    In other words, a term is strongly normalizing iff
+    all possible reductions from it are strongly
+    normalizing.
+\end{definition}
+
+The following properties are then provable by definition
+of $\mathsf{sn}$ and by structural induction on
+available derivations of $\mathsf{sn}$ for terms in
+question:
+
+\begin{lemma}[Structural properties of $\mathsf{sn}$]
+\begin{mathpar}
+    \inferrule{}{x,s\in\mathsf{sn}}\and
+    \inferrule{T\in\mathsf{sn}\\ U\in\mathsf{sn}}
+        {\Pi(x:T).U\in\mathsf{sn}}\and
+    \inferrule{T\in\mathsf{sn}\\ t\in\mathsf{sn}}
+        {\lambda(x:T).t\in\mathsf{sn}}\and
+    \inferrule{t\,u\in\mathsf{sn}}{t\in\mathsf{sn}}\and
+    \inferrule{t[u/x]\in\mathsf{sn}}{t\in\mathsf{sn}}
+\end{mathpar}
+\end{lemma}
+
+Application, of course, is the only nontrivial case. In
+case of $\beta$-reduction, strong normalization of both
+$(\lambda(x:T).t)$ and $u$ doesn't imply anything about
+normalization behaviour of $t[u/x]$: consider a
+classical example from untyped lambda calculus,
+$\omega=(\lambda(x:T).x\,x)$ and
+$\Omega=\omega\,\omega$; while obviously not typable,
+$\omega$ is strongly normalizing, while $\Omega$
+decidedly is not.
+
+Situation changes when a head of application is not an
+abstraction at all. Thus we arrive at the definition of
+an \textit{atomic term}.
+
+\begin{definition}[Atomic term]
+    Set of atomic terms is the smallest set satisfying
+    the following conditions:
+    \begin{enumerate}
+        \item $s$, $\Pi(x:S).T$ and $y$ are atomic for
+            all variables $x$,$y$, sort $s$ and types
+            $S$,$T$;
+        \item If $t$ is atomic, then $t\,u$ is also
+            atomic.
+    \end{enumerate}
+\end{definition}
+
+Atomic terms are useful precisely because their strong
+normalization survives application:
+
+\begin{lemma}
+    If $t,u\in\mathsf{sn}$ and $t$ is atomic, then
+    $t\,u\in\mathsf{sn}$.
+\end{lemma}
+\begin{proof}
+    By induction on derivations of $\mathsf{sn}$ for $t$
+    and $u$. Consider possible redexes in $t\,u$: $t\,u$
+    is not itself a redex since $t$ is atomic and hence
+    not a lambda; the only possible redexes are either
+    inside $t$ or inside $u$. Applying corresponding
+    induction hypotheses, we reach the desired result.
+    The only caveat is that, for induction to go
+    through, we need to check that atomicity of $t$
+    is preserved by reduction; this is indeed true by
+    induction on derivation of atomicity for $t$.
+\end{proof}
+
+A dual view on strong normalization of application is
+the following: if we already know that
+$t[u/x]\in\mathsf{sn}$, then the most tricky case is
+already taken care of.
+
+\begin{lemma}
+    \[\left\{\begin{array}{l}
+        t[u/x]u_1\ldots u_n\in\mathsf{sn} \\
+        U,u\in\mathsf{sn}
+    \end{array}\right.\Rightarrow
+    (\lambda(x:U).t)u u_1\ldots u_n\in\mathsf{sn}.\]
+\end{lemma}
+\begin{proof}
+    By induction on $n$.
+    \begin{itemize}
+        \item $n=0$. We need to prove that if
+            $t[u/x],u,U\in\mathsf{sn}$, then
+            $(\lambda(x:U).t)u\in\mathsf{sn}$.
+            Note that $t[u/x]\in\mathsf{sn}$ implies
+            $t\in\mathsf{sn}$; then, by structural
+            induction on derivations of $\mathsf{sn}$
+            for $t,u,U$ we get what we want by
+            considering all possible reductions.
+        \item $n\to(n+1)$. By induction hypothesis, it
+            is enough to show the following:
+            \[\left\{\begin{array}{l}
+                (\lambda(x:U).t)u u_1\ldots u_n
+                    \in\mathsf{sn} \\
+                t[u/x]u_1\ldots u_{n+1}\in\mathsf{sn}
+            \end{array}\right.\Rightarrow
+                (\lambda(x:U).t)u u_1\ldots u_n u_{n+1}
+                    \in\mathsf{sn}.
+            \]
+            This is true by structural induction on
+            available evidence.
+    \end{itemize}
+\end{proof}
+
+\section{Soundness of PTS-$rk$}\label{rk-soundness}
+
+\section{Formalizing normalization of PTS-$rk$ in Rocq}
 \label{formalization}
 
 Inductive characterization of the set of strongly
