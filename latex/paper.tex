@@ -48,7 +48,7 @@ systems, there is no syntactical distinction between
 terms and types --- they are defined by a single
 grammar; an expression can act both as a term and as a
 type depending on a side where it stands next to the
-colon in the typing relation $\Gamma\vdash\_:\_$.
+colon in the typing judgement $\Gamma\vdash\_:\_$.
 A single PTS is determined by two relations:
 \begin{itemize}
 \item \textit{axiom} relation $\mathsf{Ax}\subseteq
@@ -73,7 +73,8 @@ A single PTS is determined by two relations:
 }{\Gamma\vdash\Pi(x:T).\,U:s}
 (s_T, s_U, s)\in\mathsf{Rule}
 \and
-\inferrule[Var]{x:T\in\Gamma}{\Gamma\vdash x:T}
+\inferrule[Var]{ }{\Gamma\vdash x:T}
+    x:T\in\Gamma
 \and
 \inferrule[Abs]{
     \Gamma\vdash T:s_T \\
@@ -342,7 +343,7 @@ in our proof development. For example, the following
 
 They will become necessary in proving subject reduction,
 or type preservation. But first, we will show some
-structural properties of a typing relation given in
+structural properties of a typing judgement given in
 Fig.~\ref{typing}. Again, they surely have been proven
 before for PTS, but we slightly differ in the
 formulation of typing rules in important places so it's
@@ -411,6 +412,128 @@ is proven separately, no mutual induction involved):
     \end{array}\right.
 \end{align}
 \end{lemma}
+
+To progress further, we need to make certain assumptions
+on the PTS we have in question.
+
+\begin{definition}[Functional PTS]
+    A pure type system is called \emph{functional} if
+    $\mathsf{Ax}\subseteq\mathcal{S}\times\mathcal{S}$
+    and $\mathsf{Rule}\subseteq\mathcal{S}^2\times
+    \mathcal{S}$ are functional relations, that is,
+    \[
+        (s:s')\land(s:s'')\Rightarrow s'=s''
+        \quad\text{and}\quad
+        (s_1,s_2,s)\in\mathsf{Rule}\land(s_1,s_2,s')\in
+        \mathsf{Rule}\Rightarrow s=s'
+    \]
+\end{definition}
+
+\begin{definition}[Total PTS]
+    A pure type system is called \emph{total} if
+    $\mathsf{Ax}\subseteq\mathcal{S}\times\mathcal{S}$
+    and $\mathsf{Rule}\subseteq\mathcal{S}^2\times
+    \mathcal{S}$ are total relations, that is,
+    \[
+        \forall s.\exists s'.(s,s')\in\mathsf{Ax}
+        \quad\text{and}\quad
+        \forall s_1,s_2.\exists s.(s_1,s_2,s)\in
+        \mathsf{Rule}
+    \]
+\end{definition}
+
+\begin{theorem}[Uniqueness of typing]
+    In a functional PTS, the following rule is
+    admissible:
+    \[\dfrac{\Gamma\vdash t:T \quad \Gamma\vdash t:T'}
+        {T =_\beta T'}.\]
+\end{theorem}
+\begin{proof}
+    By structural induction on $t$ and
+    inversion of given typing derivations.
+    \begin{itemize}
+    \item $t=s\in\mathcal{S}$: by functionality of
+        $\mathsf{Ax}$.
+    \item $t=\Pi(x:T).U$: inversion of typing gives two
+        (possibly different) sorts for $T$ and for $U$.
+        By induction we get that they're pairwise
+        definitionally equivalent, which by equality
+        inversion gives strictly equal sorts. Then what
+        is needed holds by functionality of
+        $\mathsf{Rule}$.
+    \item Case for $t=x\in\mathsf{Var}$ holds trivially.
+    \item $t=(\lambda(x:T).u)$: by induction hypotheses
+        and by congruence of $(=_\beta)$.
+    \item $t=u\,v$: by typing inversion and by induction
+        hypothesis for $u$ we get $u:\Pi(x:T_1).U_1$ and
+        $\Pi(x:T_1).U_1=_\beta\Pi(x:T_2).U_2$.
+        We need $U_1[v/x]=_\beta U_2[v/x]$ which we
+        get from equality inversion and preservation of
+        def.eq. under substitution.
+    \end{itemize}
+\end{proof}
+
+In our proof of normalization, we're going to rely on
+yet another property: if there is a derivation for
+$t:T$, then $T$ is itself typeable with some sort.
+However, it doesn't hold in our current formulation of
+typing rules: in $\Gamma\vdash x:T$, nothing prevents a
+context $\Gamma$ to contain an entry $(x:T')$ where $T'$
+is not typeable. Thus we need an additional assumption.
+
+\begin{definition}[Context well-formedness]
+    Context $\Gamma$ is \emph{well-formed} (written
+    $\vdash\Gamma$) if every type in it is typed by some
+    sort. Formally, set of well-formed contexts is the
+    least set closed by the following rules:
+    \[
+        \dfrac{ }{\vdash\cdot} \quad\text{and}\quad
+        \dfrac{\vdash\Gamma\quad\Gamma\vdash T:s}
+              {\vdash\Gamma,x:T}
+    \]
+    (where $\cdot$ denotes an empty context.)
+\end{definition}
+
+Usually, when presenting a dependently typed system,
+context well-formedness is added as a premise to typing
+rules which would otherwise be premise-free (such as
+\textsc{Ax} and \textsc{Var} in a PTS). Here we instead
+provide it as an additional assumption only when
+necessary; in addition to leading to simpler metatheory
+(we avoid an otherwise mutually inductive definition of
+$(\vdash\_)$ and $(\_\vdash\_:\_)$), this is closer to
+how decision procedures for typing judgements are
+implemented.
+
+\begin{theorem}[Typing yields correct type]
+    In a total PTS, if $\Gamma\vdash t:T$ and
+    $\vdash\Gamma$, then there exists $s\in\mathcal{S}$
+    such that $\Gamma\vdash T:s$.
+\end{theorem}
+\begin{proof}
+    By structural induction on typing derivation.
+    \begin{itemize}
+    \item \textsc{Ax}, \textsc{Rule}: by totality of
+        $\mathsf{Ax}$.
+    \item \textsc{Var}: follows from $\vdash\Gamma$.
+    \item \textsc{Abs}: by totality of $\mathsf{Rule}$.
+    \item \textsc{App}: $\Gamma\vdash t\,u:T[u/x]$.
+        From induction hypothesis for $t$ we know that
+        $\Gamma\vdash t:\Pi(x:U).T:s$ for some $s$,
+        then by typing inversion for $\Pi(x:U).T$ we get
+        that $T$ is typable with some sort. Then what is
+        needed follows from substitution lemma.
+    \item \textsc{Conv}: what is needed is present in
+        the premise.
+    \end{itemize}
+\end{proof}
+
+Totality is not a particularly strict requirement ---
+similar true propositions can be stated for non-total
+PTS, for example in CoC typing yields type which is
+either itself typable or equal to $\square$. But
+PTS-$rk$ is indeed total so the theorem above is enough
+for our purposes.
 
 \section{Soundness of PTS-rk}\label{rk-soundness}
 
