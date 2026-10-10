@@ -28,7 +28,7 @@ and is nonetheless strongly normalizing. Girard's
 paradox is avoided because our sorts are not closed
 under a $\Pi$-former: function types are placed in sorts
 according to their \textit{rank}. We prove strong
-normalization of a system and provide barebones
+normalization of a system and provide a barebones
 set-theoretical model for it. A normalization proof
 is surprisingly simple (modulo general metatheoretical
 properties of pure type systems) and has been fully
@@ -43,9 +43,9 @@ variables $x\in\mathsf{Var}$, abstraction
 $\lambda(x:T).t$, application $t\,t'$, types of
 dependent functions $\Pi(x:T).U$ (where $U$ might depend
 on $x$) and \textit{sorts} $s\in\mathcal{S}$ which act
-like ``types of types''. In contrast with simpler type
-systems, there is no syntactical distinction between
-terms and types --- they are defined by a single
+like ``types of types''. In contrast with many other
+type systems, there is no syntactical distinction
+between terms and types --- they are defined by a single
 grammar; an expression can act both as a term and as a
 type depending on a side where it stands next to the
 colon in the typing judgement $\Gamma\vdash\_:\_$.
@@ -150,7 +150,7 @@ semantics, it is natural to expect that a sort of
 \textit{small types} $*$ is closed under $\Pi$, thus we
 cannot forbid the rule $(*,*,*)$; then, a circular axiom
 $*:*$ has to go. Long story short, it motivates an
-introduction of \textit{universe hierarchy}
+introduction of a \textit{universe hierarchy}
 $\mathcal{S}=\{\mathcal{U}_k\}_{k\in\mathbb{N}}$ with
 axioms $\mathcal{U}_k:\mathcal{U}_{k+1}$ and rules
 $(\mathcal{U}_k,\mathcal{U}_l,\mathcal{U}_{k\vee l})$
@@ -289,8 +289,8 @@ in the type of argument $T$ in $\lambda(x:T).t$.
     be switched into ``valleys''.
 
     Now, diamond property is proven by standard
-    technique of parallel reduction defined as the
-    smallest relation satisfying:
+    technique of parallel reduction which is defined as
+    the smallest relation satisfying:
     \begin{mathpar}
     \inferrule{}{t\rightrightarrows t}
     \and
@@ -461,13 +461,13 @@ on the PTS we have in question.
     \begin{itemize}
     \item $t=s\in\mathcal{S}$: by functionality of
         $\mathsf{Ax}$.
-    \item $t=\Pi(x:T).U$: inversion of typing gives two
-        (possibly different) sorts for $T$ and for $U$.
-        By induction we get that they're pairwise
-        definitionally equal, which by equality
-        inversion gives strictly equal sorts. Then what
-        is needed holds by functionality of
-        $\mathsf{Rule}$.
+    \item $t=\Pi(x:T).U$: inversion of typing gives a
+        pair of (possibly different) sorts for $T$ and
+        another pair for $U$. By induction we get that
+        ranks inside pairs are definitionally equal,
+        which by equality inversion gives strictly equal
+        sorts. Then what is needed holds by
+        functionality of $\mathsf{Rule}$.
     \item Case for $t=x\in\mathsf{Var}$ holds trivially.
     \item $t=(\lambda(x:T).u)$: by induction hypotheses
         and by congruence of $(=_\beta)$.
@@ -631,6 +631,7 @@ available derivations of $\mathsf{sn}$ for terms in
 question:
 
 \begin{lemma}[Structural properties of $\mathsf{sn}$]
+\label{sn-props}
 \begin{mathpar}
     \inferrule{}{x,s\in\mathsf{sn}}\and
     \inferrule{T\in\mathsf{sn}\\ U\in\mathsf{sn}}
@@ -727,6 +728,163 @@ already taken care of.
 \end{proof}
 
 \section{Soundness of PTS-$rk$}\label{rk-soundness}
+
+\subsection{Strong normalization}
+
+\begin{theorem}[Strong normalization of PTS-$rk$]
+    \[ \Gamma\vdash t:T\,\land\vdash\Gamma
+    \Rightarrow t \in\mathsf{sn}. \]
+\end{theorem}
+\begin{proof}
+    By induction on the typing derivation. Case
+    \textsc{Conv} is trivial; due to
+    Lemma~\ref{sn-props}, cases \textsc{Ax},
+    \textsc{Rule}, \textsc{Var} and \textsc{Abs} present
+    no problem as well. The only problematic case is
+    application:
+    \[
+        \left\{\begin{array}{l}
+            \Gamma\vdash u:\Pi(x:T).U \\
+            \Gamma\vdash t:T \\
+            \vdash\Gamma \\
+            t,u\in\mathsf{sn}
+        \end{array}\right.\Rightarrow u\,t\in\mathsf{sn}
+    \]
+    Now, here is the part where stratification according
+    to ranks comes in useful. As typing yields correct
+    type, there is some $r$ such that
+    $\Gamma\vdash \Pi(x:T).U:\mathsf{rk}_r$. Let us
+    explicitly add this to the list of premises; we will
+    call the following proposition
+    \emph{Application Lemma}:
+    \[ \mathrm{AL}_r \triangleq \quad
+        \text{``}\left\{\begin{array}{l}
+            \Gamma\vdash \Pi(x:T).U:\mathsf{rk}_r\\
+            \Gamma\vdash u:\Pi(x:T).U \\
+            \Gamma\vdash t:T \\
+            \vdash\Gamma \\
+            t,u\in\mathsf{sn}
+        \end{array}\right.\Rightarrow u\,t\in\mathsf{sn}
+        \text{''}
+    \]
+    What indexing by $r$ bought us is that now we can
+    try proving this lemma by induction on $r$. Again,
+    as it always is with strong normalization of
+    application, the problem is in case where
+    application head is a lambda and a $\beta$-reduction
+    takes place. This calls for another lemma,
+    \emph{Substitution Lemma}:
+    \[ \mathrm{SL}_r \triangleq \quad
+        \text{``}\left\{\begin{array}{l}
+            \Gamma,x:T,\Delta\vdash u:U\\
+            \Gamma\vdash T:\mathsf{rk}_r\\
+            \Gamma\vdash t:T\\
+            \vdash\Gamma\\
+            t,u\in\mathsf{sn}
+        \end{array}\right.\Rightarrow
+        u[t/x]\in\mathsf{sn}\text{''}
+    \]
+    A proof of $\mathrm{AL}_r$ for all $r$ (which is
+    what we're after) is done by complete mutual
+    induction with $\mathrm{SL}_r$. Thus there are two
+    main parts:
+    \begin{itemize}
+        \item $(\forall s<r.\;\mathrm{SL}_s)
+            \Rightarrow \mathrm{AL}_r$: by induction on
+            derivations of $u,t\in\mathsf{sn}$. Consider
+            possible reductions of $u\,t$: most of them
+            happen either in $u$ or in $t$, so that
+            results of reductions from $u\,t$ are
+            strongly normalizing by inductive
+            hypotheses. The only problematic case is
+            when $u=\lambda(x:T').v$ and the reduction
+            is $\beta$-reduction. By inversion of typing
+            for $u$, it should be the case that
+            $T'=_\beta T$; and by inversion of typing
+            for $\Pi(x:T).U$, we get that
+            $T:\mathsf{rk}_s$ and $U:\mathsf{rk}_t$ such
+            that $r=\max(s+1, t)$. Then, by type
+            stability, $T':\mathsf{rk}_s$, and
+            furthermore, $s<r$, so we can apply
+            substitution lemma.
+        \item $(\forall s\le r.\;\mathrm{AL}_s)
+            \Rightarrow \mathrm{SL}_r$. So we need to
+            prove $u[t/x]\in\mathsf{sn}$. We do it by
+            simultaneous induction on derivation of
+            $u\in\mathsf{sn}$ and structural induction
+            on $u$. As substitution propagates through
+            $u$, most cases are satisfied by
+            Lemma~\ref{sn-props}. A funny case is when
+            $u=x$: then, a premise that
+            $t\in\mathsf{sn}$ helps.
+
+            The only problematic case is
+            application $u=u_1\,u_2$; we consider three
+            cases here:
+            \begin{itemize}
+                \item $u_1[t/x]$ is atomic --- handled
+                    by Lemma~\ref{sn-props}.
+                \item $u_1$ is not atomic --- by virtue
+                    of it being well-typed, it means
+                    that $u=(\lambda(x:V).u')v_1
+                    \ldots v_k u_2$. All possible
+                    reductions from $u[t/x]$ are then
+                    handled by induction hypotheses.
+                \item $u_1$ is atomic, but $u_1[t/x]$ is
+                    not --- by virtue of $u_1$ being
+                    well-typed, the only case when
+                    this is possible is when
+                    $u_1 = x v_1\ldots v_k$, thus
+                    $u[t/x]=t (v_1[t/x])\ldots(v_k[t/x])
+                    (u_2[t/x])$. From induction
+                    hypotheses we know that all
+                    $v_i[t/x]$ and $u_2[t/x]$ are s.n.;
+                    $t$ is s.n. by premise and its rank
+                    is $r$. Then $t v_1[t/x]$ is s.n. by
+                    application lemma for $r$; but note
+                    that rank of $t v_1[t/x]$ is not
+                    greater than $r$ so application
+                    lemma applies again. Thus, by
+                    induction on $k$, the whole chain of
+                    applications is s.n.
+            \end{itemize}
+    \end{itemize}
+\end{proof}
+
+This is a retelling of a proof that our friend,
+Aleksandr Levin, got after half-jokingly inputting the
+following prompt into ChatGPT:
+
+\begin{quote}
+\begin{verbatim}
+Consider the following pure type system:
+
+S = { rk_n | n natural }
+Axiom = { (rk_n, rk_0) | n natural }
+Rule = { (rk_m, rk_n, rk_max(m+1,n)) | m, n natural }
+
+Is it strongly normalizing or not?
+\end{verbatim}
+\end{quote}
+
+After approximately 20 minutes, LLM outputted the proof
+which we retold above. Looking at it in retrospect, it
+seems as if we stratified functions by ranks with intent
+for such a direct proof to go through; honestly, we
+didn't think of that and were eagerly trying to adapt
+well-known approaches for proving normalization of pure
+type systems employing either saturated sets or
+candidates of reducibility, which didn't work because
+our ``hierarchy'' of ranks is not well-founded enough
+because of axioms $\mathsf{rk}_n:\mathsf{rk}_0$. This
+proof, however, doesn't even bother with it which means
+that we could pick \emph{any} relation as
+$\mathsf{Ax}$. Nevertheless, putting all sorts into
+$\mathsf{rk}_0$ seems the most sensible approach to us
+since, informally, sort is kind of a constant which
+cannot be converted into a function.
+
+\subsection{Set-theoretical model}
 
 \section{Formalizing normalization of PTS-$rk$ in Rocq}
 \label{formalization}
