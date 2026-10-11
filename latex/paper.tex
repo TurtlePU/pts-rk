@@ -28,7 +28,13 @@
 
 \title{A sound pure type system with ranks as sorts and
        Type-in-Type}
-\author{Pavel Sokolov}
+\author{
+    Pavel Sokolov \\ HSE University, Laboratory of
+    Theoretical Computer Science
+    \and
+    Alexander Kuklev \\ Radboud Univ. Nijmegen,
+    Department of Software Science
+}
 \date{\today}
 
 \begin{document}
@@ -914,12 +920,12 @@ STLC. And indeed, upon taking a closer look at the proof
 of Theorem~\ref{normalisation}, one cannot help but
 notice it actually being a primitive-recursive algorithm
 for term normalisation in disguise.
-Or something a tad more faster:
+Or something a tad faster:
 
 \begin{definition}[$d$-bounded terms]
     A PTS-$rk$ term is $d$-bounded if it is well-typed
-    and heads of all redexes in it have rank equal to or
-    below $d$.
+    in some well-formed context and heads of all
+    redexes in it have rank equal to or below $d$.
 \end{definition}
 
 \begin{theorem}
@@ -944,7 +950,7 @@ Consider the following relation of
     {t\Rightarrow(\lambda(x:T).t')\\ u\Rightarrow u'}
     {t\,u\Rightarrow t'[u'/x]}\and
 \inferrule
-    {t\Rightarrow t'\\ t'\,\mathrm{atomic}
+    {t\Rightarrow t'\\ t'\ne\lambda\ldots
     \\ u\Rightarrow u'}
     {t\,u\Rightarrow t'\,u'}
 \end{mathpar}
@@ -1088,7 +1094,7 @@ the one for STLC).
     \]
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{uniform-elementary}
     A family of elementary recursive functions
     is not uniformly expressible in PTS-$rk$.
 \end{theorem}
@@ -1126,6 +1132,161 @@ the one for STLC).
     is by virtue of expression under $\mathcal{SN}$
     being $(r+1)$-bounded; the last is by definition
     of $h$ being encoded by $\mathcal{H}$.
+\end{proof}
+
+(In the following text, we're going to use some common
+syntax conventions to make it more lightweight:
+application associates to the left, so $a\,b\,c$ is
+understood as $(a\,b)\,c$; in a sequence of
+abstractions, all $\lambda$ symbols except the first
+can be omitted; $T\to U$ is an alias for $\Pi(x:T).U$
+(where $U$ doesn't depend on $x$); $(\to)$ is
+right-associative, so $T\to U\to V$ is understood as
+$T\to(U\to V)$. In addition, even though our
+abstractions are always annotated with a type of an
+argument, we're going to omit it whenever it's clear
+from the context.)
+
+A logical next question is then: which functions are
+computable? Elementary recursive! Though, of course,
+not in the same sense as before.
+
+\begin{definition}[Polymorphic numeral family]
+    For each fixed $j\ge 0$, there's a type of
+    \emph{polymorphic Church numerals} of rank $j+2$:
+    \[ \mathcal{N}_j \triangleq \Pi(X:\mathsf{rk}_j).
+        (X\to X)\to X\to X;
+    \]
+    and for each fixed $n$, there's a corresponding
+    \emph{Church literal} of type $\mathcal{N}_j$:
+    \[
+        \overline{n}\triangleq
+        \lambda\,X\,f\,x.f^n\,x.
+    \]
+    ($f^n\,x$ means repeated application of $f$ to $x$:
+    $f(\ldots(f\,x)\ldots)$.)
+\end{definition}
+
+\begin{theorem}
+    [Non-uniform elementary representability]
+    For each elementary recursive function
+    $f:\mathbb{N}^n\to\mathbb{N}$, there is a
+    \emph{cost} $c_f$ such that for each \emph{base
+    rank} $j$, there is an \emph{encoding} $F_j:
+    \mathcal{N}_{j+c_f}\to\ldots\to\mathcal{N}_{j+c_f}
+    \to\mathcal{N}_j$ such that
+    \[
+        \forall (x_1,\ldots,x_n)\in\mathbb{N}^n:\quad
+        F_j\,\overline{x_1}\,\ldots\,\overline{x_n}
+        =_\beta\overline{f(x_1,\ldots,x_n)}.
+    \]
+\end{theorem}
+\begin{proof}
+    As is well-known, simply typed Church numerals
+    admit addition and multiplication. It's still true
+    for our rank-refined version:
+    \[\begin{array}{rcll}
+        \mathsf{Add}_j &\triangleq&
+        \lambda\,m\,n\,X\,f\,x.
+            m\,X\,f\,(n\,X\,f\,x) &:
+            \mathcal{N}_j\to\mathcal{N}_j\to
+            \mathcal{N}_j \\
+        \mathsf{Mul}_j &\triangleq&
+        \lambda\,m\,n\,X\,f\,x.
+            m\,X\,(n\,X\,f)\,x &:
+            \mathcal{N}_j\to\mathcal{N}_j\to
+            \mathcal{N}_j
+    \end{array}\]
+    By substitution-basis theorem, it is enough to
+    additionally provide modulus $x\,\mathrm{mod}\,y$
+    (where $x\,\mathrm{mod}\,0=x$) and binary
+    exponentiation $2^x$ since substitution, constants
+    and projections are ``free'' in our calculus.
+
+    By Theorem~\ref{uniform-elementary}, we cannot hope
+    to have both remaining operations represented
+    uniformly. Indeed, na\"{i}ve import of traditional
+    exponentiation term for Church numerals raises the
+    rank of an exponent:
+    \begin{multline*}
+        \mathsf{Exp}_j \triangleq
+        \lambda\,m\,n\,(X:\mathsf{rk}_j)\,f\,x.\,
+        n\,(X\to X)\,(\lambda (h:X\to X)(y:X).
+            m\,X\,h\,y
+        )\,f\,x
+        \\:\mathcal{N}_j\to\mathcal{N}_{j+1}\to
+        \mathcal{N}_j
+    \end{multline*}
+    And that's exactly the reason we allowed input and
+    output ranks of Church numerals to differ.
+
+    There still remains a problem, however: by allowing
+    ranks to differ, we lost uniformity of
+    substitution. In particular, consider an elementary
+    function $x\mapsto x + 2^x$. To represent such
+    computation using combinators we defined, $x$ has
+    to have both type $\mathcal{N}_j$ (as left addend)
+    and $\mathcal{N}_{j+1}$ (as exponentiation power).
+    Instead of introducing subtyping in the system, we
+    make use of the following family of
+    \emph{numeral-preserving lowerings}:
+    \[\delta_j\triangleq\lambda\,n\,X\,f\,x.\,
+        n\,(X\to X)\,(\lambda\,h\,y.f\,(h\,y))\,
+        (\lambda\,y.y)\,x
+        :\mathcal{N}_{j+1}\to\mathcal{N}_j
+    \]
+    As the name implies, the goal of such combinators
+    is to lower the rank of a numeral, but preserve its
+    ``value''. It is achieved in the following way:
+    given an $f$ and $x$ for lower-ranked type, an
+    original combinator for $n$ is used to build an
+    $n$-fold composition of $f$ with itself which is
+    then applied to $x$.
+
+    Thus we can lower ranks arbitrarily: $\delta_{b,a}
+    \triangleq\delta_a\circ\ldots\circ\delta_{b-1}:
+    \mathcal{N}_b\to\mathcal{N}_a$. This restores
+    substitution and allows gluing representation of
+    functions together; cost $c_f$ of a function can be
+    computed from any expression that represents it ---
+    addition and multiplication cost $0$,
+    exponentiation costs $1$, operands are merged by
+    taking the maximum of their costs. (Of course, cost
+    is not unique and depends on the way function is
+    represented with an expression.)
+
+    All that's left, then, is to represent modulus.
+    General idea is as follows: first, suppose that
+    we're dealing with a simpler problem of taking
+    modulus by a constant modulo, e.g.
+    $\mathrm{mod}\,5$. Notice that there are only $5$
+    possible answers: $0$,$1$,$2$,$3$,$4$. As such,
+    they can be represented by the type which contains
+    exactly $5$ elements; Church encoding yields a type
+    of \emph{selectors}:
+    \[V_5 \triangleq \Pi(X:\mathsf{rk}_j).\,
+        X\to X\to X\to X\to X\to X
+        :\mathsf{rk}_{j+1}
+    \]
+    Its $5$ different canonical values simply pick one
+    of $5$ inputs, to each their own.
+
+    There is an operation of \emph{cyclic shift} on
+    selectors:
+    \[c_5\triangleq \lambda\,s\,X\,x_1\,x_2\,x_3\,x_4
+    \,x_5.\,s\,X\,x_2\,x_3\,x_4\,x_5\,x_1
+    :V_5\to V_5\]
+    Iterating it $n$ times on some pinned ``zeroth''
+    selector, we actually get the
+    $(n\,\mathrm{mod}\,5)$-th selector. All that's left
+    is to read the numeral back:
+    \[\rho\triangleq \lambda\,s\,X\,f\,x.\,s\,X\,
+    (f^0\,x)\,(f^1\,x)\,(f^2\,x)\,(f^3\,x)\,(f^4\,x):
+        V_5\to\mathcal{N}_j\]
+    Now, in order to model $m\,\mathrm{mod}\,n$ in this
+    vein, we need to \emph{generate} $V_n$ dynamically.
+    Lucky for us, PTS-$rk$ is dependently typed so
+    there is hope.
 \end{proof}
 
 \subsection{Set-theoretical model}
