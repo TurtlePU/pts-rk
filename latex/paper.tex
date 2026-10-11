@@ -902,6 +902,12 @@ cannot be converted into a function.
 
 \subsection{Computational complexity of PTS-$rk$}
 
+(Proofs in the remainder of Section~\ref{rk-metatheory}
+are not formalized in Rocq: they are relatively simple,
+non-technical and their formalization would require
+many times more preliminary work than seems
+reasonable.)
+
 As requested further, LLM confessed that it was largely
 inspired by studies on complexity of normalisation for
 STLC. And indeed, upon taking a closer look at the proof
@@ -973,65 +979,22 @@ $\mathcal{A}$ for $d$ times in total to normalize a
 $d$-bounded term; since input size on $k$-th run is
 bounded by $k$-th tower of exponents, the whole
 algorithm is elementary-recursive.
+
+To make sure that the corresponding function is total,
+output $0$ if result of an algorithm contains a
+$\beta$-redex.
 \end{proof}
 
-Because of this bound on normalization, we get a
-natural upper bound for functions \textit{uniformly}
-expressible in PTS-$rk$.
-
-\begin{definition}
-    A family of functions $\mathcal{F}$ on natural
-    numbers is \emph{uniformly} expressible in PTS-$rk$
-    if there is a \emph{natural number type}
-    $N:\mathsf{rk}_r$, a \emph{zero} $Z:N$, and a
-    \emph{successor} $S:N\to N$ such that for each
-    $(f:\mathbb{N}^k\to\mathbb{N})$ there is an
-    \emph{encoding} $F:N\to\ldots\to N\to N$ such that
-    \[
-        \forall (n_1,\ldots,n_k)\in\mathbb{N}^k:
-        \quad F\,(S^{n_1}\,Z)\,\ldots\,(S^{n_k}\,Z)
-        =_\beta S^{f(n_1,\,\ldots,\,n_k)}\,Z
-    \]
-\end{definition}
+Similar result was already proven for STLC since simple
+types can be classified by ranks as well. And since
+rank is easily computable for simple types,
+normalization of arbitrary STLC terms is in
+$\mathsf{TOWER}$. A little weaker result holds for our
+dependently typed PTS:
 
 \begin{theorem}
-    A family of elementary recursive functions
-    is not uniformly expressible in PTS-$rk$.
-\end{theorem}
-\begin{proof}
-    By direct diagonalisation argument. Suppose we
-    could encode all elementary recursive functions
-    with $N:\mathsf{rk}_r$.
-    By Theorem~\ref{bounded-sn}, normalisation of
-    $(r+1)$-bounded terms $\mathcal{SN}_{r+1}$ is
-    elementary recursive, so the following function is
-    elementary recursive as well:
-    \[
-        f(t) = \begin{cases}
-            1,&\mathcal{SN}_{r+1}(t)=\mathrm{nf}(Z),\\
-            0&\text{otherwise}.
-        \end{cases}
-    \]
-    By assumption, it is encodable by $F:N\to N$. Take
-    $t^*=\mathrm{nf}(F)\,(\mathrm{nf}(S)^{[F]}\,
-    \mathrm{nf}(Z))$ where $[F]$ is coding of a term
-    $F$; it is $(r+1)$-bounded. Then consider value of
-    $f(t^*)$:
-    \[
-        f(t^*)=1\Leftrightarrow
-        \mathcal{SN}_{r+1}(t^*)=\mathrm{nf}(Z)
-        \Leftrightarrow
-        \mathrm{nf}(F)\,(\mathrm{nf}(S)^{[F]})=_\beta
-        \mathrm{nf}(Z)
-        \Leftrightarrow
-        f([F])=0
-    \]
-    Since $N:\mathsf{rk}_r$, $T$ is $(r+1)$-bounded.
-\end{proof}
-
-\begin{theorem}
-    Normalisation of closed well-typed PTS-$rk$ terms
-    is in $\mathsf{TOWER}$.
+    Normalisation of \textbf{closed} well-typed
+    PTS-$rk$ terms is in $\mathsf{TOWER}$.
 \end{theorem}
 \begin{proof}
     By Theorem~\ref{bounded-sn}, it is enough to
@@ -1097,6 +1060,72 @@ estimateRank t =
     here so it's enough to provide some upper bound on
     it; thus it is enough to output a maximal rank
     which occurs in original term as a subterm.
+\end{proof}
+
+Note that closedness condition is unavoidable: without
+it, we wouldn't know ranks of type variables from
+context and there would be no known bound to the rank
+of redexes.
+
+Another consequence of Theorem~\ref{bounded-sn} is a
+natural upper bound for functions \textit{uniformly}
+expressible in PTS-$rk$ (this result is also similar to
+the one for STLC).
+
+\begin{definition}
+    A family of functions on natural numbers
+    $\mathcal{F}$ is \emph{uniformly} expressible in
+    PTS-$rk$ if there is a \emph{natural number type}
+    $N:\mathsf{rk}_r$, a \emph{zero} $Z:N$, and a
+    \emph{successor} $S:N\to N$ such that for each
+    $(f:\mathbb{N}^k\to\mathbb{N})\in\mathcal{F}$ there
+    is an \emph{encoding} $F:N\to\ldots\to N\to N$ such
+    that
+    \[
+        \forall (n_1,\ldots,n_k)\in\mathbb{N}^k:
+        \quad F\,(S^{n_1}\,Z)\,\ldots\,(S^{n_k}\,Z)
+        =_\beta S^{f(n_1,\,\ldots,\,n_k)}\,Z
+    \]
+\end{definition}
+
+\begin{theorem}
+    A family of elementary recursive functions
+    is not uniformly expressible in PTS-$rk$.
+\end{theorem}
+\begin{proof}
+    By direct diagonalisation argument. Suppose we
+    could encode all elementary recursive functions
+    with $N:\mathsf{rk}_r$, $Z:N$ and $S:N\to N$.
+
+    Denote by $z$ and $s$ normal forms of $Z$ and $S$,
+    respectively. By Theorem~\ref{bounded-sn},
+    normalisation of $(r+1)$-bounded terms
+    $\mathcal{SN}_{r+1}$ is elementary recursive, so
+    the following function is elementary recursive as
+    well:
+    \[
+        h(t) = \begin{cases}
+            1,&\mathcal{SN}_{r+1}(t\,(s^{[t]}\,z))=z,\\
+            0&\text{otherwise}.
+        \end{cases}
+    \]
+    (Where $[t]\in\mathbb{N}$ is code of a term $t$.)
+
+    By assumption, it is encodable by
+    $\mathcal{H}:N\to N$; denote by $H$ its normal
+    form. Observe the value of $h(H)$:
+    \[
+        h(H)=1\Leftrightarrow
+        \mathcal{SN}_{r+1}(H\,(s^{[H]}\,z))=z
+        \Leftrightarrow
+        H\,(s^{[H]}\,z) =_\beta z
+        \Leftrightarrow
+        h(H)=0
+    \]
+    First equivalence is by definition of $h$; second
+    is by virtue of expression under $\mathcal{SN}$
+    being $(r+1)$-bounded; the last is by definition
+    of $h$ being encoded by $\mathcal{H}$.
 \end{proof}
 
 \subsection{Set-theoretical model}
