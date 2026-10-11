@@ -1,16 +1,30 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+
 \usepackage[backend=biber]{biblatex}
 \addbibresource{bibliography.bib}
 
 \usepackage
-{amsmath,amssymb,amsthm,mathpartir,stmaryrd,tikz-cd}
+{amsmath,amssymb,mathpartir,minted,stmaryrd,tikz-cd}
+
+\usepackage{amsthm}
 \newtheorem{theorem}{Theorem}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{corollary}{Corollary}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
+
+\usepackage{newunicodechar}
+\newunicodechar{Γ}{$\Gamma$}
+\newunicodechar{Π}{$\Pi$}
+\newunicodechar{λ}{$\lambda$}
+\newunicodechar{ᵀ}{\textsuperscript{T}}
+\newunicodechar{ᵁ}{\textsuperscript{U}}
+\newunicodechar{ᵗ}{\textsuperscript{t}}
+\newunicodechar{ᵘ}{\textsuperscript{u}}
+\newunicodechar{ᵣ}{\textsubscript{r}}
+\newunicodechar{⊔}{$\sqcup$}
 
 \title{A sound pure type system with ranks as sorts and
        Type-in-Type}
@@ -28,8 +42,8 @@ and is nonetheless strongly normalizing. Girard's
 paradox is avoided because our sorts are not closed
 under a $\Pi$-former: function types are placed in sorts
 according to their \textit{rank}. We prove strong
-normalization of a system and provide a barebones
-set-theoretical model for it. A normalization proof
+normalisation of a system and provide a barebones
+set-theoretical model for it. A normalisation proof
 is surprisingly simple (modulo general metatheoretical
 properties of pure type systems) and has been fully
 formalized in vanilla Rocq (formerly Coq) without any
@@ -193,15 +207,15 @@ Indeed, there is a circular axiom
 $\mathsf{rk}_0:\mathsf{rk}_0$, and System U is not
 embeddable since $\mathsf{rk}_r$ is not closed
 under $\Pi$ for any $r$. Also, as we will see in
-Section~\ref{rk-soundness}, our PTS-$rk$ is strongly
+Section~\ref{rk-metatheory}, our PTS-$rk$ is strongly
 normalizing and has a set-theoretical model in ZFC
 despite an intuition that $\mathsf{rk}_r:\mathsf{rk}_0$
 might ``feel wrong''. Modulo general metatheory of pure
 type systems laid out in Section~\ref{pts-metatheory},
-a normalization proof turned out to be suspiciously
-simple, even more so in comparison with normalization
+a normalisation proof turned out to be suspiciously
+simple, even more so in comparison with normalisation
 proofs of other dependently typed systems. To dispel our
-own doubts, we formalized a proof of normalization in
+own doubts, we formalized a proof of normalisation in
 Rocq (formerly Coq) without using any additional axioms,
 yielding a fully constructive proof; our journey in
 formalization is summarised in
@@ -213,7 +227,7 @@ system in Section~\ref{conclusion}.
 \label{pts-metatheory}
 
 For ease of presentation of our results, in
-Sections~\ref{pts-metatheory}-\ref{rk-soundness} we take
+Sections~\ref{pts-metatheory}-\ref{rk-metatheory} we take
 a Barendregt convention which assumes that all bound
 variables are distinct from free variables and from each
 other; furthermore, $\alpha$-equivalence (renaming of
@@ -480,7 +494,7 @@ on the PTS we have in question.
     \end{itemize}
 \end{proof}
 
-In our proof of normalization, we're going to rely on
+In our proof of normalisation, we're going to rely on
 yet another property: if there is a derivation for
 $t:T$, then $T$ is itself typeable with some sort.
 However, it doesn't hold in our current formulation of
@@ -590,7 +604,7 @@ for our purposes.
 Characterization of definitional equality, uniqueness of
 typing and subject reduction together imply the
 following corollary we're going to use a few times in
-our normalization proof:
+our normalisation proof:
 
 \begin{corollary}[Type stability]
     In a total functional PTS, the following holds:
@@ -644,9 +658,9 @@ question:
 \end{lemma}
 
 Application, of course, is the only nontrivial case. In
-case of $\beta$-reduction, strong normalization of both
+case of $\beta$-reduction, strong normalisation of both
 $(\lambda(x:T).t)$ and $u$ doesn't imply anything about
-normalization behaviour of $t[u/x]$: consider a
+normalisation behaviour of $t[u/x]$: consider a
 classical example from untyped lambda calculus,
 $\omega=(\lambda(x:T).x\,x)$ and
 $\Omega=\omega\,\omega$; while obviously not typable,
@@ -670,7 +684,7 @@ an \textit{atomic term}.
 \end{definition}
 
 Atomic terms are useful precisely because their strong
-normalization survives application:
+normalisation survives application:
 
 \begin{lemma}
     If $t,u\in\mathsf{sn}$ and $t$ is atomic, then
@@ -689,7 +703,7 @@ normalization survives application:
     induction on derivation of atomicity for $t$.
 \end{proof}
 
-A dual view on strong normalization of application is
+A dual view on strong normalisation of application is
 the following: if we already know that
 $t[u/x]\in\mathsf{sn}$, then the most tricky case is
 already taken care of.
@@ -727,11 +741,13 @@ already taken care of.
     \end{itemize}
 \end{proof}
 
-\section{Soundness of PTS-$rk$}\label{rk-soundness}
+\section{Metatheoretical properties of PTS-$rk$}
+\label{rk-metatheory}
 
-\subsection{Strong normalization}
+\subsection{Strong normalisation}
 
-\begin{theorem}[Strong normalization of PTS-$rk$]
+\begin{theorem}[Strong normalisation of PTS-$rk$]
+\label{normalisation}
     \[ \Gamma\vdash t:T\,\land\vdash\Gamma
     \Rightarrow t \in\mathsf{sn}. \]
 \end{theorem}
@@ -769,7 +785,7 @@ already taken care of.
     \]
     What indexing by $r$ bought us is that now we can
     try proving this lemma by induction on $r$. Again,
-    as it always is with strong normalization of
+    as it always is with strong normalisation of
     application, the problem is in case where
     application head is a lambda and a $\beta$-reduction
     takes place. This calls for another lemma,
@@ -872,7 +888,7 @@ which we retold above. Looking at it in retrospect, it
 seems as if we stratified functions by ranks with intent
 for such a direct proof to go through; honestly, we
 didn't think of that and were eagerly trying to adapt
-well-known approaches for proving normalization of pure
+well-known approaches for proving normalisation of pure
 type systems employing either saturated sets or
 candidates of reducibility, which didn't work because
 our ``hierarchy'' of ranks is not well-founded enough
@@ -884,9 +900,208 @@ $\mathsf{rk}_0$ seems the most sensible approach to us
 since, informally, sort is kind of a constant which
 cannot be converted into a function.
 
+\subsection{Computational complexity of PTS-$rk$}
+
+As requested further, LLM confessed that it was largely
+inspired by studies on complexity of normalisation for
+STLC. And indeed, upon taking a closer look at the proof
+of Theorem~\ref{normalisation}, one cannot help but
+notice it actually being a primitive-recursive algorithm
+for term normalisation in disguise.
+Or something a tad more faster:
+
+\begin{definition}[$d$-bounded terms]
+    A PTS-$rk$ term is $d$-bounded if it is well-typed
+    and heads of all redexes in it have rank equal to or
+    below $d$.
+\end{definition}
+
+\begin{theorem}
+[Elementary recursive normalisation of bounded PTS-$rk$]
+\label{bounded-sn}
+For each $d$, there is an elementary recursive
+algorithm for finding a normal form of $d$-bounded
+terms.
+\end{theorem}
+\begin{proof}
+Consider the following relation of
+``greedy parallel reduction'':
+\begin{mathpar}
+\inferrule{}{x\Rightarrow x\\ s\Rightarrow s}\and
+\inferrule
+    {T\Rightarrow T'\\ U\Rightarrow U'}
+    {\Pi(x:T).U\Rightarrow\Pi(x:T').U'}\and
+\inferrule
+    {T\Rightarrow T'\\ t\Rightarrow t'}
+    {\lambda(x:T).t\Rightarrow\lambda(x:T').t'}\and
+\inferrule
+    {t\Rightarrow(\lambda(x:T).t')\\ u\Rightarrow u'}
+    {t\,u\Rightarrow t'[u'/x]}\and
+\inferrule
+    {t\Rightarrow t'\\ t'\,\mathrm{atomic}
+    \\ u\Rightarrow u'}
+    {t\,u\Rightarrow t'\,u'}
+\end{mathpar}
+It differs from usual parallel reduction since it
+greedily applies every ``many-argument'' redex
+available in a term. For example,
+$(\lambda(x:X).\lambda(y:Y).\lambda(z:Z).t)\,a\,b\,c$
+gets reduced to $t'[a/x][b/y][c/z]$ in a single step.
+This relation has the following properties:
+\begin{itemize}
+    \item $(\Rightarrow)\subseteq(\to_\beta^*)$, so it's
+        several usual reductions baked into one.
+    \item This relation is total and functional.
+    \item This relation can be realised with an
+        elementary recursive algorithm $\mathcal{A}$:
+        traverse the term bottom-up, immediately
+        applying every $\beta$-redex which is formed
+        when result of a recursive run of algorithm on
+        application head is a lambda.
+    \item If $t\Rightarrow t'$, then
+        $|t'|\le(2+\varepsilon)^{\mathcal{O}(|t|)}$.
+    \item If redex heads in $t$ have ranks less than or
+        equal to $d$ and $t\Rightarrow t'$, redex heads
+        in $t'$ have ranks less than $d$: new redexes
+        appear only after substitution of $\lambda$ into
+        application head, and rank of this lambda is
+        strictly less than the rank of a redex in which
+        this substitution happened.
+\end{itemize}
+Because of the last property, it is enough to run
+$\mathcal{A}$ for $d$ times in total to normalize a
+$d$-bounded term; since input size on $k$-th run is
+bounded by $k$-th tower of exponents, the whole
+algorithm is elementary-recursive.
+\end{proof}
+
+Because of this bound on normalization, we get a
+natural upper bound for functions \textit{uniformly}
+expressible in PTS-$rk$.
+
+\begin{definition}
+    A family of functions $\mathcal{F}$ on natural
+    numbers is \emph{uniformly} expressible in PTS-$rk$
+    if there is a \emph{natural number type}
+    $N:\mathsf{rk}_r$, a \emph{zero} $Z:N$, and a
+    \emph{successor} $S:N\to N$ such that for each
+    $(f:\mathbb{N}^k\to\mathbb{N})$ there is an
+    \emph{encoding} $F:N\to\ldots\to N\to N$ such that
+    \[
+        \forall (n_1,\ldots,n_k)\in\mathbb{N}^k:
+        \quad F\,(S^{n_1}\,Z)\,\ldots\,(S^{n_k}\,Z)
+        =_\beta S^{f(n_1,\,\ldots,\,n_k)}\,Z
+    \]
+\end{definition}
+
+\begin{theorem}
+    A family of elementary recursive functions
+    is not uniformly expressible in PTS-$rk$.
+\end{theorem}
+\begin{proof}
+    By direct diagonalisation argument. Suppose we
+    could encode all elementary recursive functions
+    with $N:\mathsf{rk}_r$.
+    By Theorem~\ref{bounded-sn}, normalisation of
+    $(r+1)$-bounded terms $\mathcal{SN}_{r+1}$ is
+    elementary recursive, so the following function is
+    elementary recursive as well:
+    \[
+        f(t) = \begin{cases}
+            1,&\mathcal{SN}_{r+1}(t)=\mathrm{nf}(Z),\\
+            0&\text{otherwise}.
+        \end{cases}
+    \]
+    By assumption, it is encodable by $F:N\to N$. Take
+    $t^*=\mathrm{nf}(F)\,(\mathrm{nf}(S)^{[F]}\,
+    \mathrm{nf}(Z))$ where $[F]$ is coding of a term
+    $F$; it is $(r+1)$-bounded. Then consider value of
+    $f(t^*)$:
+    \[
+        f(t^*)=1\Leftrightarrow
+        \mathcal{SN}_{r+1}(t^*)=\mathrm{nf}(Z)
+        \Leftrightarrow
+        \mathrm{nf}(F)\,(\mathrm{nf}(S)^{[F]})=_\beta
+        \mathrm{nf}(Z)
+        \Leftrightarrow
+        f([F])=0
+    \]
+    Since $N:\mathsf{rk}_r$, $T$ is $(r+1)$-bounded.
+\end{proof}
+
+\begin{theorem}
+    Normalisation of closed well-typed PTS-$rk$ terms
+    is in $\mathsf{TOWER}$.
+\end{theorem}
+\begin{proof}
+    By Theorem~\ref{bounded-sn}, it is enough to
+    compute some upper bound $B$ on the rank of types
+    appearing in abstractions of a term, then run a
+    normalizer for $(B+1)$-bounded terms. Consider the
+    following elementary recursive functions, written
+    in pseudocode and using a suitable encoding of
+    terms, tuples and lists:
+    \begin{minted}{agda}
+maxRankLiteral rkᵣ      = r
+maxRankLiteral Π(x:T).U =
+    maxRankLiteral T ⊔ maxRankLiteral U
+maxRankLiteral x        = 0
+maxRankLiteral λ(x:T).t =
+    maxRankLiteral T ⊔ maxRankLiteral t
+maxRankLiteral (t u)    =
+    maxRankLiteral t ⊔ maxRankLiteral u
+
+traversal _ rkᵣ      _ = (r , 0 , 0)
+traversal Γ Π(x:T).U d =
+    let (vᵀ , rᵀ , aᵀ) = traversal Γ T d
+        (vᵁ , rᵁ , aᵁ) = traversal (x := vᵀ, Γ) U d
+     in (vᵁ , suc rᵀ ⊔ rᵁ , aᵀ ⊔ aᵁ)
+traversal Γ x        d = (d , Γ[x] , 0)
+traversal Γ λ(x:T).t d =
+    let (vᵀ , rᵀ , aᵀ) = traversal Γ T d
+        (vᵗ , rᵗ , aᵗ) = traversal (x := vᵀ, Γ) t d
+     in (vᵗ , rᵗ , rᵀ ⊔ aᵀ ⊔ aᵗ)
+traversal Γ (t u)    d =
+    let (vᵗ , rᵗ , aᵗ) = traversal Γ t d
+        (_  , _  , aᵘ) = traversal Γ u d
+     in (vᵗ , rᵗ , aᵗ ⊔ aᵘ)
+
+estimateRank t =
+    let (vᵗ , rᵗ , aᵗ) =
+        traversal [] t (maxRankLiteral t)
+     in aᵗ
+    \end{minted}
+    Function $\mathtt{maxRankLiteral}\;t$ computes
+    maximal rank which is contained as a subterm in
+    term $t$. The workhorse of this algorithm,
+    $\mathtt{traversal}\;\Gamma\;t\;d$, accepts the
+    list $\Gamma$ of ranks in context of a term $t$ and
+    a ``default rank'' $d$, and outputs the triple
+    $(v,r,a)$, where $v$ is value of $t$ as a rank (if
+    supplied with enough arguments), $r$ is its rank if
+    $t$ is a type (if supplied with enough arguments)
+    and $a$ is an upper bound on rank of types
+    appearing in abstractions which we are trying to
+    compute. The only suspicious case is
+    $\mathtt{traversal}\,\Gamma\,x\,d$ where we output
+    $d$ (the ``default'' rank) as a value of $x$:
+    couldn't we compute value of $x$ instead, if
+    present? Regrettably, this would require
+    normalization of a term corresponding to $x$, which
+    is too long; instead we notice that $\mathsf{rk}_r$
+    can be reduced only from terms which already
+    contain it as a subterm, so value of $x$ as a rank
+    can only be $\mathsf{rk}_r$ which is already
+    present somewhere in original term. And our result
+    is monotone with respect to the value we output
+    here so it's enough to provide some upper bound on
+    it; thus it is enough to output a maximal rank
+    which occurs in original term as a subterm.
+\end{proof}
+
 \subsection{Set-theoretical model}
 
-\section{Formalizing normalization of PTS-$rk$ in Rocq}
+\section{Formalizing normalisation of PTS-$rk$ in Rocq}
 \label{formalization}
 
 Inductive characterization of the set of strongly
