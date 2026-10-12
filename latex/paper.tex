@@ -213,7 +213,7 @@ Indeed, there is a circular axiom
 $\mathsf{rk}_0:\mathsf{rk}_0$, and System U is not
 embeddable since $\mathsf{rk}_r$ is not closed
 under $\Pi$ for any $r$. Also, as we will see in
-Section~\ref{rk-metatheory}, our PTS-$rk$ is strongly
+Section~\ref{rk-sn}, our PTS-$rk$ is strongly
 normalizing and has a set-theoretical model in ZFC
 despite an intuition that $\mathsf{rk}_r:\mathsf{rk}_0$
 might ``feel wrong''. Modulo general metatheory of pure
@@ -233,7 +233,7 @@ system in Section~\ref{conclusion}.
 \label{pts-metatheory}
 
 For ease of presentation of our results, in
-Sections~\ref{pts-metatheory}-\ref{rk-metatheory} we take
+Sections~\ref{pts-metatheory}-\ref{rk-sn} we take
 a Barendregt convention which assumes that all bound
 variables are distinct from free variables and from each
 other; furthermore, $\alpha$-equivalence (renaming of
@@ -747,10 +747,8 @@ already taken care of.
     \end{itemize}
 \end{proof}
 
-\section{Metatheoretical properties of PTS-$rk$}
-\label{rk-metatheory}
-
-\subsection{Strong normalisation}
+\section{Strong normalisation of PTS-$rk$}
+\label{rk-sn}
 
 \begin{theorem}[Strong normalisation of PTS-$rk$]
 \label{normalisation}
@@ -906,13 +904,19 @@ $\mathsf{rk}_0$ seems the most sensible approach to us
 since, informally, sort is kind of a constant which
 cannot be converted into a function.
 
-\subsection{Computational complexity of PTS-$rk$}
+\subsection
+{Formalizing normalisation of PTS-$rk$ in Rocq}
+\label{formalization}
 
-(Proofs in the remainder of Section~\ref{rk-metatheory}
-are not formalized in Rocq: they are relatively simple,
-non-technical and their formalization would require
-many times more preliminary work than seems
-reasonable.)
+Inductive characterization of the set of strongly
+normalizing terms follows \cite{Joachimski2003Short}.
+
+\section{Computational complexity of PTS-$rk$}
+
+(Proofs in the following sections are not formalized in
+Rocq: they are relatively simple, non-technical and
+their formalization would require many times more
+preliminary work than seems reasonable.)
 
 As requested further, LLM confessed that it was largely
 inspired by studies on complexity of normalisation for
@@ -1287,15 +1291,213 @@ not in the same sense as before.
     vein, we need to \emph{generate} $V_n$ dynamically.
     Lucky for us, PTS-$rk$ is dependently typed so
     there is hope.
+
+    And indeed, the following construction was produced
+    in discussion with GPT-6 Astra.
+
+    We're going to produce a combinator $\mathsf{Mod}:
+    \mathcal{N}_{j+1}\to\mathcal{N}_{j+4}\to
+    \mathcal{N}_j$. Fix parameter $X:\mathsf{rk}_j$ and
+    consider the following signature for abstract
+    $S:\mathsf{rk}_{j+1}$:
+    \[\begin{array}{ll}
+        K:X\to S, &z:S,\\
+        L:(X\to S)\to X\to S, &c:S\to S,\\
+        \rho:S\to(X\to X)\to X\to X,
+        &r:(X\to X)\to(X\to X).
+    \end{array}\]
+    Intention is that $S$ is simply-typed $V_q$ for
+    $X$, $z$ is its ``zero'', $K$ is a ``zero'' for
+    $V_{q+1}$, $c$ is a cyclic shift for $V_q$, $L$ is
+    a cyclic shift for $V_{q+1}$, $\rho$ converts a
+    selector into a numeral, and $r$ is the result of
+    modulus computed using structure from the previous
+    step (this is similar to the trick used to define a
+    predecessor function).
+
+    A callback accepting such structure and returning
+    $X$ has the following type:
+    \begin{align*}
+        H_X \triangleq\;&\Pi(S:\mathsf{rk}_{j+1}).\;
+        (X\to S)\to S\to((X\to S)\to X\to S)\to(S\to S)
+        \to\\&(S\to (X\to X)\to X\to X)\to
+        ((X\to X)\to X\to X)\to X
+        \quad :\mathsf{rk}_{j+3}
+    \end{align*}
+    A type of ``records'' is thus
+    $P_X\triangleq H_X\to X:\mathsf{rk}_{j+4}$, with a
+    constructor
+    \[
+        \langle S,K,z,L,c,\rho,r\rangle\triangleq
+        \lambda h.\,h\,S\,K\,z\,L\,c\,\rho\,r.
+    \]
+    As an initial $P_X$, we build a structure for
+    $V_1$ and an $r$ which behaves like
+    $m\,\mathrm{mod}\,0=m$:
+    \begin{align*}
+        S_0&\triangleq X\to X,\\
+        K_0&\triangleq\lambda(a:X)(b:X).a,&
+        z_0&\triangleq\lambda(a:X).a,\\
+        L_0&\triangleq\lambda(t:X\to S_0)(a:X)(b:X).
+            t\,b\,a,&
+        c_0&\triangleq\lambda(s:S_0).s,\\
+        \rho_0&\triangleq
+            \lambda(s:S_0)(g:X\to X)(a:X).s\,a,&
+        r_0&\triangleq\delta_j\,m\,X.
+    \end{align*}
+    Pack them into $p_0\triangleq\langle\ldots\rangle$.
+
+    Then, given a structure for $q$, a structure for
+    $q+1$ is:
+    \begin{align*}
+        S^+&\triangleq X\to S,\\
+        K^+&\triangleq\lambda(a:X)(b:X).Ka,&
+        z^+&\triangleq K,\\
+        L^+&\triangleq\lambda(t:X\to S^+)(a:X)(b:X).
+            L\,(t\,b)\,a,&
+        c^+&\triangleq L,\\
+        \rho^+&\triangleq\lambda(t:S^+)(g:X\to X)(a:X).
+            \rho\,(ta)\,g\,(ga),&
+        r^+&:=\rho\,(m\,S\,c\,z).
+    \end{align*}
+    A transition term can be written like this:
+    \[
+        T\triangleq\lambda(p:P_X)(h:H_X).
+            p\,(\lambda\,S\,K\,z\,L\,c\,\rho\,r.\,
+            h\,S^+\,K^+\,z^+\,L^+\,c^+\,\rho^+\,r^+)
+        :P_X\to P_X
+    \]
+    Therefore, the following term computes modulus with
+    expected behaviour:
+    \begin{multline*}
+        \mathsf{Mod}_j\triangleq\lambda
+        (m:\mathcal{N}_{j+1})(n:\mathcal{N}_{j+4})
+        (X:\mathsf{rk}_j)(f:X\to X)(x:X).\\
+            n\,P_X\,T\,p_0\,
+            (\lambda\,\_\,\_\,\_\,\_\,\_\,\_\,r.
+                r\,X\,f\,x).
+    \end{multline*}
 \end{proof}
 
-\subsection{Set-theoretical model}
+Two questions remain open: a) whether there are
+non-elementary functions which are non-uniformly
+computable in PTS-$rk$ and b) whether there are any
+non-polynomial functions which are uniformly
+computable in PTS-$rk$.
 
-\section{Formalizing normalisation of PTS-$rk$ in Rocq}
-\label{formalization}
+\section{Set-theoretical model of PTS-$rk$}
 
-Inductive characterization of the set of strongly
-normalizing terms follows \cite{Joachimski2003Short}.
+Now, studying computational properties of a calculus is
+great, but a logic is only useful when it can tell
+right from wrong. In this section, we're going to
+provide a nontrivial set-theoretical semantics for
+PTS-$rk$ with respect to which it is sound.
+In particular,
+$\llbracket\Pi(X:\mathsf{rk}_j).X\rrbracket$ is going
+to be an empty set, as expected.
+
+We're going to need an unusual assumption however:
+
+\begin{theorem}
+    PTS-$rk$ has a sound model in ZF+GCH.
+\end{theorem}
+\begin{proof}
+    Produced in discussion with GPT 6 Astra.
+
+    Take distinct codes \(c_\kappa\) for every cardinal
+    below \(\aleph_\omega\) and distinct additional
+    codes \(s_j\) for \(j\in\mathbb N\). Define
+    \[
+        U_i=\{c_\kappa:\kappa\le\aleph_i\}\cup
+            \{s_j:j\in\mathbb N\},
+        \qquad
+        \operatorname{El}(c_\kappa)=\kappa,\quad
+        \operatorname{El}(s_j)=U_j.
+    \]
+    That is,
+    \begin{align*}
+        U_0 &= \{c_0,c_1,\ldots,c_\omega=c_{\aleph_0},
+                s_0,s_1,\ldots\},\\
+        U_1 &= \{c_0,c_1,\ldots,c_{\aleph_0},
+                c_{\aleph_1},s_0,s_1,\ldots\},\\
+        \ldots\\
+        U_k &= \{
+            c_0,c_1,\ldots,c_{\aleph_0},
+            c_{\aleph_1},\ldots,c_{\aleph_k},
+            s_0,s_1,\ldots\}\\
+        \ldots
+    \end{align*}
+    (Note that $x\in U_i\Rightarrow|\mathrm{El}(x)|\le
+    \aleph_i$ since all $U_i$ are countable.)
+
+    Interpretation then goes as follows:
+    \begin{itemize}
+        \item Interpret \(\mathsf{rk}_i\) by \(s_i\).
+            The sort axiom holds since
+            \(s_i\in U_0=\operatorname{El}(s_0)\).
+        \item If \(a\in U_m\) and \(b(x)\in U_n\) for
+            every \(x\in\operatorname{El}(a)\), the
+            ordinary dependent function set has
+            cardinality at most
+            \[
+                \left|\prod_{x\in\operatorname{El}(a)}
+                \operatorname{El}(b(x))\right|
+                \le \aleph_n^{\aleph_m}
+                \le \aleph_{\max(m+1,n)}.
+            \]
+            (The last inequality follows from GCH since
+            alephs have finite indices.)
+
+            Thus, for all such $a,b$ we can choose a
+            cardinal $\kappa_{\Pi(x:a).b(x)}$ (whose
+            code lies in $U_{\max(m+1,n)}$) along with
+            a bijection
+            \[
+                f:\left(\prod_{
+                    x\in\operatorname{El}(a)}
+                \operatorname{El}(b(x))
+                \right)\simeq\kappa_{\Pi(x:a).b(x)}
+            \]
+            The eligible pairs $(\kappa, f)$ form a
+            set, so ordinary choice (which holds in
+            ZF+GCH) suffices. Make each choice once for
+            each $(a,b)$, independently of a typing
+            derivation or rank bound.
+        \item Abstraction and application are modeled
+            by $f$ and $f^{-1}$ respectively, as
+            defined above.
+        \item Contexts are interpreted by valuations.
+    \end{itemize}
+    It is easy to check that typing rules are respected
+    by such interpretation, making it a sound model.
+\end{proof}
+
+A few corollaries:
+
+\begin{itemize}
+    \item Indeed, the product interpreting
+        \(\Pi Z:\mathsf{rk}_0.Z\) ranges over \(U_0\),
+        which contains \(c_0\), whose decoding is
+        $\varnothing$. That product is therefore empty.
+    \item A system with rank cumulativity
+        $t:\mathrm{rk}_j\Rightarrow
+        t:\mathrm{rk}_{j+1}$ is sound with respect to
+        this model; normalization of bounded terms
+        remains elementary as in
+        Theorem~\ref{bounded-sn}.
+\end{itemize}
+
+Note that usage of GCH is unavoidable in this model to
+validate the rules. We could try building a model in
+ZFC using $\beth$-s instead of $\aleph$-s, but that
+would break an assumption that $U_i$ are countable,
+which would falsify axioms
+$\mathsf{rk}_n:\mathsf{rk}_0$. That's not a huge
+problem however since ZF+GCH is interpretable in ZFC
+(in contrast to ZFC + inaccessible cardinals which is
+not).
+
+\section{Proof-theoretic strength of PTS-$rk$}
 
 \section{Conclusion}
 \label{conclusion}
