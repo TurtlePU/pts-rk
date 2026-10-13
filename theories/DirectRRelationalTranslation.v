@@ -3,7 +3,7 @@ From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From Equations Require Import Equations.
 From PTSrk Require Import -(notations) Syntax.
 From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRStructural DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRRelationalSyntax.
+  DirectRStructural DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRUnaryBounded DirectRRelationalSyntax.
 Module RelationalTranslation.
 Import Codes Core Structural NegativeLogic.
 Fixpoint term {k n} (env : Fin k -> Term nat n) (t : Relational.term k) : Term nat n :=
@@ -190,6 +190,57 @@ Theorem implication_elimination {k n} (Γ : Ctx nat n) env (A B : Relational.for
   inhabited Γ (formula (Relational.implies A B) env) ->
   inhabited Γ (formula A env) -> inhabited Γ (formula B env).
 Proof. apply arrow_elim. Qed.
+Theorem implication_introduction {k n} (Γ : Ctx nat n) env (A B : Relational.formula k) :
+  (forall i, Typed Γ (env i) (lift_closed Unary.Domain)) ->
+  inhabited (Γ & formula A env) (formula B (fun i => shift (env i))) ->
+  inhabited Γ (formula (Relational.implies A B) env).
+Proof.
+  intros Henv H. apply arrow_intro.
+  - exists (formula_rank A). apply formula_typed. exact Henv.
+  - unfold shift. rewrite formula_rename. exact H.
+Qed.
+Theorem universal_introduction {k n} (Γ : Ctx nat n) env (A : Relational.formula (S k)) :
+  inhabited ((Γ & lift_closed Unary.Domain) & Unary.admitted V0)
+    (formula A (fun i => shift (transpose env i))) ->
+  inhabited Γ (formula (Relational.all A) env).
+Proof.
+  intro H. cbn [formula].
+  assert (HB : inhabited (Γ & lift_closed Unary.Domain)
+    (Arrow (Unary.admitted V0) (formula A (transpose env)))).
+  { apply arrow_intro.
+    - exists 12. apply UnaryAxioms.admitted_formation_in_context.
+      exact (tV (Γ & lift_closed Unary.Domain) fzero).
+    - unfold shift. rewrite formula_rename. exact H. }
+  destruct HB as [p Hp]. exists (lam (lift_closed Unary.Domain) p).
+  exact (tLam (lift_closed_typed Γ _ _ Unary.domain_formation) Hp).
+Qed.
+Lemma environment_shift {k n} (Γ : Ctx nat n) (env : Fin k -> Term nat n) B :
+  (forall i, Typed Γ (env i) (lift_closed Unary.Domain)) ->
+  forall i, Typed (Γ & B) (shift (env i)) (lift_closed Unary.Domain).
+Proof. intros H i. rewrite lift_closed_shift. apply weakening. apply H. Qed.
+Lemma environment_transpose {k n} (Γ : Ctx nat n) (env : Fin k -> Term nat n) :
+  (forall i, Typed Γ (env i) (lift_closed Unary.Domain)) ->
+  forall i, Typed (Γ & lift_closed Unary.Domain) (transpose env i) (lift_closed Unary.Domain).
+Proof.
+  intros H i. dependent elimination i.
+  - exact (tV (Γ & lift_closed Unary.Domain) fzero).
+  - cbn [transpose fin_match]. apply environment_shift. exact H.
+Qed.
+Lemma admitted_environment_shift {k n} (Γ : Ctx nat n) (env : Fin k -> Term nat n) B :
+  (forall i, inhabited Γ (Unary.admitted (env i))) ->
+  forall i, inhabited (Γ & B) (Unary.admitted (shift (env i))).
+Proof. intros H i. exact (inhabited_shift Γ (Unary.admitted (env i)) B (H i)). Qed.
+Lemma admitted_environment_transpose {k n} (Γ : Ctx nat n) (env : Fin k -> Term nat n) :
+  (forall i, inhabited Γ (Unary.admitted (env i))) ->
+  forall i, inhabited ((Γ & lift_closed Unary.Domain) & Unary.admitted V0)
+    (Unary.admitted (shift (transpose env i))).
+Proof.
+  intros H i. dependent elimination i.
+  - exact (newest (Γ & lift_closed Unary.Domain) (Unary.admitted V0)).
+  - cbn [transpose fin_match].
+    exact (inhabited_shift _ _ (Unary.admitted V0)
+      (inhabited_shift Γ _ (lift_closed Unary.Domain) (H f))).
+Qed.
 Theorem universal_elimination {k n} (Γ : Ctx nat n) env A (t : Relational.term k) :
   (forall i, Typed Γ (env i) (lift_closed Unary.Domain)) ->
   (forall i, inhabited Γ (Unary.admitted (env i))) ->
@@ -207,4 +258,129 @@ Proof.
   eapply arrow_elim; [exists (app p (term env t)); exact H |].
   apply term_admitted; assumption.
 Qed.
+Lemma formula_shift {k n} A (env : Fin k -> Term nat n) :
+  shift (formula A env) = formula A (fun i => shift (env i)).
+Proof. apply formula_rename. Qed.
+Lemma formula_instance {k n} A (env : Fin k -> Term nat n) d :
+  subst (formula A (transpose env)) d = formula A (fin_match d env).
+Proof.
+  unfold subst. rewrite formula_replace. apply formula_ext. intro i.
+  dependent elimination i; cbn [transpose fin_match]; [reflexivity |].
+  apply replace_shift_substitution.
+Qed.
+Lemma universal_instance {k n} (Γ : Ctx nat n) (env : Fin k -> Term nat n) A d :
+  Typed Γ d (lift_closed Unary.Domain) -> inhabited Γ (Unary.admitted d) ->
+  inhabited Γ (formula (Relational.all A) env) ->
+  inhabited Γ (formula A (fin_match d env)).
+Proof.
+  intros Hd Hg [p Hp]. pose proof (tApp Hp Hd) as H.
+  change (Typed Γ (app p d)
+    (subst (Arrow (Unary.admitted V0) (formula A (transpose env))) d)) in H.
+  rewrite subst_arrow in H.
+  change (Typed Γ (app p d)
+    (Arrow (Unary.admitted d) (subst (formula A (transpose env)) d))) in H.
+  rewrite formula_instance in H.
+  eapply arrow_elim; [exists (app p d); exact H |exact Hg].
+Qed.
+Lemma instance_environment {k n} (Γ : Ctx nat n) (env : Fin k -> Term nat n) d :
+  (forall i, Typed Γ (env i) (lift_closed Unary.Domain)) ->
+  Typed Γ d (lift_closed Unary.Domain) ->
+  forall i, Typed Γ (fin_match d env i) (lift_closed Unary.Domain).
+Proof. intros H Hd i. dependent elimination i; [exact Hd |apply H]. Qed.
+Lemma universal_instance_arrow {k n} (Γ : Ctx nat n) (env : Fin k -> Term nat n) A d :
+  (forall i, Typed Γ (env i) (lift_closed Unary.Domain)) ->
+  Typed Γ d (lift_closed Unary.Domain) -> inhabited Γ (Unary.admitted d) ->
+  inhabited Γ (Arrow (formula (Relational.all A) env) (formula A (fin_match d env))).
+Proof.
+  intros Henv Hd Hg. apply arrow_intro.
+  - exists (formula_rank (Relational.all A)). apply formula_typed. exact Henv.
+  - rewrite formula_shift.
+    replace (formula A (fun i => shift (fin_match d env i))) with
+      (formula A (fin_match (shift d) (fun i => shift (env i)))).
+    + apply universal_instance.
+      * rewrite lift_closed_shift. apply weakening. exact Hd.
+      * exact (inhabited_shift _ _ _ Hg).
+      * rewrite <- formula_shift. apply newest.
+    + apply formula_ext. intro i. dependent elimination i; reflexivity.
+Qed.
+Lemma equality_stable_in_context {n} (Γ : Ctx nat n) d e :
+  Typed Γ d (lift_closed Unary.Domain) -> Typed Γ e (lift_closed Unary.Domain) ->
+  stable Γ (Unary.E d e).
+Proof.
+  intros Hd He. pose proof (lift_closed_typed Γ _ _ Unary.equality_stability_typed) as H.
+  change (Typed Γ (lift_closed Unary.equality_stability)
+    (Π (lift_closed Unary.Domain) (Π (lift_closed Unary.Domain)
+      (Arrow (Neg (Neg (Unary.E (shift V0) V0))) (Unary.E (shift V0) V0))))) in H.
+  unfold Neg in H. Unary.feed H Hd. Unary.feed H He. eexists. exact H.
+Qed.
+Theorem formula_stable {k} (A : Relational.formula k) : forall n (Γ : Ctx nat n) env,
+  (forall i, Typed Γ (env i) (lift_closed Unary.Domain)) -> stable Γ (formula A env).
+Proof.
+  induction A; intros m Γ env Henv; cbn [formula].
+  - apply equality_stable_in_context; apply term_typed; exact Henv.
+  - apply UnaryBounded.order_stable_in_context; apply term_typed; exact Henv.
+  - apply equality_stable_in_context.
+    + apply binary_operation_typed; [apply Unary.addition_typed | |]; apply term_typed; exact Henv.
+    + apply term_typed. exact Henv.
+  - apply equality_stable_in_context.
+    + apply binary_operation_typed; [apply Unary.multiplication_typed | |]; apply term_typed; exact Henv.
+    + apply term_typed. exact Henv.
+  - apply bottom_stable.
+  - apply arrow_stable.
+    + exists (formula_rank A1). apply formula_typed. exact Henv.
+    + exists (formula_rank A2). apply formula_typed. exact Henv.
+    + apply IHA2. exact Henv.
+  - change (stable Γ (formula (Relational.all A) env)).
+    unfold stable. set (H := Neg (Neg (formula (Relational.all A) env))).
+    apply arrow_intro.
+    + unfold H. apply neg_formed, neg_formed.
+      exists (formula_rank (Relational.all A)). apply formula_typed. exact Henv.
+    + rewrite formula_shift. apply universal_introduction.
+      set (env2 := fun i => shift (transpose (fun j => shift (env j)) i)).
+      set (env3 := fun i => shift (shift (shift (env i)))).
+      assert (HT2 : forall i, Typed ((Γ & H) & lift_closed Unary.Domain & Unary.admitted V0)
+        (env2 i) (lift_closed Unary.Domain)).
+      { unfold env2. apply environment_shift, environment_transpose, environment_shift. exact Henv. }
+      eapply arrow_elim; [exact (IHA _ _ env2 HT2) |].
+      assert (HT3 : forall i, Typed ((Γ & H) & lift_closed Unary.Domain & Unary.admitted V0)
+        (env3 i) (lift_closed Unary.Domain)).
+      { unfold env3. apply environment_shift, environment_shift, environment_shift. exact Henv. }
+      assert (HE : formula A env2 = formula A (fin_match (shift V0) env3)).
+      { apply formula_ext. intro i. dependent elimination i; reflexivity. }
+      rewrite HE.
+      assert (Hd : Typed ((Γ & H) & lift_closed Unary.Domain & Unary.admitted V0)
+        (shift V0) (lift_closed Unary.Domain)).
+      { pose proof (weakening RankSorts _ _ (Unary.admitted V0)
+          (tV ((Γ & H) & lift_closed Unary.Domain) fzero)) as Hv.
+        change (Typed ((Γ & H) & lift_closed Unary.Domain & Unary.admitted V0)
+          (shift V0) (shift (shift (lift_closed Unary.Domain)))) in Hv.
+        rewrite <- !lift_closed_shift in Hv. exact Hv. }
+      eapply double_negation_map.
+      * exists (formula_rank (Relational.all A)). apply formula_typed. exact HT3.
+      * exists (formula_rank A). apply formula_typed, instance_environment; eassumption.
+      * apply universal_instance_arrow; [exact HT3 |exact Hd |].
+        exact (newest ((Γ & H) & lift_closed Unary.Domain) (Unary.admitted V0)).
+      * pose proof (newest Γ H) as Hnn.
+        unfold H in Hnn. normalize_shifts Hnn.
+        weaken_copy Hnn (@lift_closed (S m) Unary.Domain) Hnn2.
+        weaken_copy Hnn2 (Unary.admitted (@V0 (S m))) Hnn3.
+        rewrite !formula_shift in Hnn3. exact Hnn3.
+Qed.
+Theorem classical_elimination {k n} (Γ : Ctx nat n) env (A : Relational.formula k) :
+  (forall i, Typed Γ (env i) (lift_closed Unary.Domain)) ->
+  inhabited Γ (formula (Relational.neg (Relational.neg A)) env) ->
+  inhabited Γ (formula A env).
+Proof. intros Henv H. eapply arrow_elim; [apply formula_stable; exact Henv |exact H]. Qed.
+Lemma equality_reflexivity_in_context {n} (Γ : Ctx nat n) d :
+  Typed Γ d (lift_closed Unary.Domain) -> inhabited Γ (Unary.E d d).
+Proof.
+  intro Hd. pose proof (lift_closed_typed Γ _ _ Unary.equality_reflexivity_typed) as H.
+  change (Typed Γ (lift_closed Unary.equality_reflexivity)
+    (Π (lift_closed Unary.Domain) (Unary.E V0 V0))) in H.
+  Unary.feed H Hd. eexists. exact H.
+Qed.
+Theorem equality_reflexivity {k n} (Γ : Ctx nat n) env (t : Relational.term k) :
+  (forall i, Typed Γ (env i) (lift_closed Unary.Domain)) ->
+  inhabited Γ (formula (Relational.equal t t) env).
+Proof. intro Henv. apply equality_reflexivity_in_context, term_typed. exact Henv. Qed.
 End RelationalTranslation.

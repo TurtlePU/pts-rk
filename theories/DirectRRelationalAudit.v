@@ -1,12 +1,29 @@
-(** Independent source/translation audit. Full deduction preservation remains
-    open; the statements below do not claim that induction has been proved. *)
+(** Independent source/translation audit, including the complete unary
+    relational Theorem 4 from the harmonized manuscript. *)
 From PTSrk Require Import -(notations) Syntax.
 From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRRelationalSyntax DirectRRelationalTranslation DirectRRelationalAxioms DirectRRelationalGround.
+  DirectRRelationalSyntax DirectRRelationalTranslation DirectRRelationalAxioms DirectRRelationalGround
+  DirectRRelationalEquality DirectRRelationalDeduction DirectRRelationalCountermodel DirectRTheorem4.
 Theorem relational_axiom_preservation : forall k n (Γ : Ctx nat n) env (A : Relational.formula k),
   Relational.axiom A -> exists p, @typ nat RankSorts n Γ p (RelationalTranslation.formula A env).
 Proof. exact @RelationalAxioms.source_axiom_realized. Qed.
 Check relational_axiom_preservation.
+Check Theorem4.theorem4.
+Check RelationalDeduction.sentence_preservation.
+Check Theorem4.nonfaithfulness.
+Print Assumptions Theorem4.theorem4.
+Print Assumptions RelationalTranslation.formula_stable.
+Print Assumptions RelationalTranslation.classical_elimination.
+Print Assumptions RelationalTranslation.implication_introduction.
+Print Assumptions RelationalTranslation.universal_introduction.
+Print Assumptions RelationalEquality.formula_transport.
+Print Assumptions RelationalEquality.equality_replacement.
+Print Assumptions RelationalDeduction.preservation.
+Print Assumptions RelationalDeduction.sentence_preservation.
+Print Assumptions RelationalCountermodel.soundness.
+Print Assumptions RelationalCountermodel.order_reflexivity_underivable.
+Print Assumptions Theorem4.ground_correctness.
+Print Assumptions Theorem4.nonfaithfulness.
 Print Relational.derives.
 Check RelationalTranslation.formula_typed.
 Check RelationalTranslation.term_admitted.
