@@ -1,14 +1,17 @@
 (** Checked components of Theorem 7, NOT the completed interpretation theorem.
-    The finite guarded law telescope, bounded invariant and deduction
-    preservation remain explicit obligations in the live handoff. *)
+    Internal separation, the bounded invariant and deduction preservation
+    remain explicit obligations in the live handoff. *)
 From PTSrk Require Import DirectRFunctionalTerms DirectRFunctionalLogic
   DirectRBinaryTables DirectRBinaryObservations DirectRRelationTables
   DirectRFiniteLawElimination DirectRFunctionalFiniteLaws DirectRGuardedFiniteLaws
   DirectRFiniteTransitivity DirectRFiniteCongruence
   DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence DirectRFiniteZeroLaws
   DirectRFiniteExpressions DirectRFiniteRecursionLaws DirectRFiniteOrderLaws
-  DirectRTelescopeArguments DirectRFiniteData DirectRFiniteBinaryDomain DirectRFiniteDomainPrefix.
+  DirectRTelescopeArguments DirectRFiniteData DirectRFiniteBinaryDomain DirectRFiniteDomainPrefix
+  DirectRFiniteSpecialization DirectRFunctionalEvaluation.
 Check FunctionalTerms.term_typed.
+Check FiniteSpecialization.contextual_source_observation.
+Check FunctionalEvaluation.finite_numeral_evaluation.
 Check FunctionalTerms.term_admitted.
 Check FunctionalTerms.ground_evaluation.
 Check FunctionalTerms.ground_equality_true.
@@ -335,3 +338,20 @@ Print Assumptions FiniteDomainPrefix.multiplication_order_right_specialization.
 Print Assumptions FiniteDomainPrefix.full_observation_specialization.
 Print Assumptions FiniteDomainPrefix.observation_certificates.
 Print Assumptions FiniteDomainPrefix.observation_arguments.
+Print Assumptions TelescopeArguments.lift_replaced.
+Print Assumptions TelescopeArguments.closed_arguments_lift.
+Print Assumptions TelescopeArguments.closed_arguments_application.
+Print Assumptions TelescopeArguments.empty_replaced.
+Print Assumptions FiniteSpecialization.contextual_observation.
+Print Assumptions FiniteSpecialization.observation_matches_source.
+Print Assumptions FiniteSpecialization.contextual_source_observation.
+Print Assumptions FunctionalEvaluation.zero_schema.
+Print Assumptions FunctionalEvaluation.evaluate_zero.
+Print Assumptions FunctionalEvaluation.successor_schema.
+Print Assumptions FunctionalEvaluation.evaluate_successor.
+Print Assumptions FunctionalEvaluation.addition_schema.
+Print Assumptions FunctionalEvaluation.evaluate_addition.
+Print Assumptions FunctionalEvaluation.multiplication_schema.
+Print Assumptions FunctionalEvaluation.evaluate_multiplication.
+Print Assumptions FunctionalEvaluation.numeral_evaluation.
+Print Assumptions FunctionalEvaluation.finite_numeral_evaluation.
