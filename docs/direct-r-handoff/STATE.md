@@ -4,8 +4,8 @@
 
 Active focus (latest user request): proceed with Theorem 4, committing and
 pushing when finished. Theorem 7 and the PTS set model are not being advanced
-in this session. Theorem 4 remains incomplete; do not label this checkpoint
-as the requested completed theorem.
+in this session. Theorem 4 now has an unconditional kernel-checked theorem,
+Theorem4.theorem4; fresh-build evidence is recorded below.
 
 The authoritative new reference is
 `PTS_rk_interprets_Tarski_Mostowski_Robinson_arithmetic_R_harmonized.tex`.
@@ -15,8 +15,8 @@ The authoritative new reference is
 - Both include all-index axiom realization, preservation of independently
   defined classical source deductions, ground proofs/refutations, and
   nonfaithfulness on arbitrary sentences.
-- Neither complete theorem has been proved. The old `Kernel.Theorem5Target`
-  is only the functional axiom-witness component, not either whole theorem.
+- The unary Theorem 4 is proved. The functional Theorem 7 remains open.
+  The old `Kernel.Theorem5Target` is only the functional axiom-witness component.
 - The latest user additionally requests the paper's PTS set model using
   rocq-archive/zfc, after the arithmetic work, with separate commits/pushes.
   This supersedes the older exclusion of set models. Its soundness has NOT
@@ -26,7 +26,7 @@ The authoritative new reference is
 ## Checkout and environment
 
 This continuation started at main commit
-`7e2e736ea06970be4682886c12058147d69b4b1a` (checked all relational axiom schemes).
+`a13b0d6f478c235ebea690f675eba562075775f0` (independent relational translation).
 Only the existing untracked logs/ directory was present. It was preserved.
 
 Arithmetic progress checkpoint on main: `a16646b`
@@ -44,6 +44,89 @@ Dune 3.23.1, opam 2.6.1, actionlint 1.7.12. GNU timeout is available.
 The pristine upstream requires Rocq 9.2's Create Rewrite HintDb.
 
 ## Actually compiled
+
+### Complete unary relational Theorem 4, following a13b0d6
+
+DirectRRelationalTranslation now proves implication/universal introduction,
+typed and admitted environment extension, arbitrary-formula stability, classical
+DNE and equality reflexivity. Stability includes arbitrary nesting of guarded
+quantifiers. DirectRLogic adds double-negation mapping using actual PTS terms.
+
+DirectRRelationalEquality proves term and binary-operation congruence, atomic
+equality/order transport, arbitrary-formula transport and equality replacement.
+The quantifier case compares the same bound object and Good guard; it does NOT
+assume that Good is invariant under raw E. Binary congruence uses fully annotated
+lambda abstraction and beta conversion only.
+
+DirectRRelationalDeduction proves preservation by induction on the INDEPENDENT
+Relational.derives judgment, with all nine constructors handled. Its closed
+corollary is exactly:
+
+    forall A : Relational.formula 0, Relational.derives [] A ->
+      exists p, @typ nat RankSorts 0 ε p (RelationalTranslation.sentence A).
+
+DirectRRelationalCountermodel connects the existing option-nat SOURCE model to
+the independent calculus. Atomic decidability and formula stability prove
+classical-rule soundness constructively, without any native classical axiom.
+It proves non-derivability of forall x, x <= x. This is not a PTS set model.
+
+DirectRTheorem4 combines all-index source axiom realization, full deduction
+preservation, proofs/refutations for every closed source atom, and nonfaithfulness.
+The latter uses Unary.rho_realized and source order_reflexivity_underivable.
+Theorem4.theorem4 is a conjunction of those unconditional conclusions in original
+typ, not a record hypothesizing preservation or a finite test collection.
+
+Baseline: `opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer
+theories/DirectRRelationalAudit.vo`, exit 0, relational-intro-baseline.log.
+Incremental commands use `opam exec --switch=pts-rk-ci -- timeout 90 dune build
+--display=short --no-buffer` with the corresponding module target. Successful
+logs under _build/local-ci-logs: relational-intro-build-2.log,
+relational-stability-build-4.log, relational-equality-build-6.log,
+relational-transport-build-2.log, relational-deduction-build-1.log,
+relational-countermodel-build-5.log and theorem4-build-1.log. Earlier failed
+attempts are retained: scope inference, explicit intermediate terms, a missing
+decidability import and tactic syntax were repaired; no assumption was added.
+The final incremental audit reports all 34 assumptions queries closed.
+
+Fresh isolated build exited 0:
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 300 dune build \
+  --build-dir /tmp/pts-rk-theorem4-check.CvEbQd --display=short --no-buffer \
+  theories/DirectRRelationalAudit.vo theories/DirectRUnaryAudit.vo \
+  theories/DirectR.vo theories/DirectRCountermodel.vo \
+  theories/DirectRArithmetic.vo models/SetFunctions.vo
+```
+
+Log: _build/local-ci-logs/theorem4-fresh.log. All original PTS dependencies and
+the complete unary proof rebuilt. There are 99 closed assumption reports across
+the audits, including all 34 relational audit queries. The final unconditional
+theorem types and the compiler transcript are retained in
+verification/theorem4-2026-10-13.log. No full-suite or remote-CI success is inferred
+from this proof-target build.
+
+Full-suite command `opam exec --switch=pts-rk-ci -- timeout 120 dune build
+--build-dir /tmp/pts-rk-theorem4-check.CvEbQd --display=short --no-buffer`
+exited 124 in unchanged DirectRTests. Raw log: _build/local-ci-logs/theorem4-full.log;
+tracked transcript: verification/theorem4-full-2026-10-13.log. This repeats the
+previous legacy-examples timeout, not a compiler error in the new proof. No CI
+stage or timeout was removed or weakened; four new stages cover equality,
+deduction, source countermodel and the final theorem. Shell syntax, actionlint,
+and git diff --check pass. The user logs/ directory remains untouched/untracked.
+The changes are prepared for the authorized ordinary commit/push with message
+`Prove unary relational Theorem 4`.
+
+Next exact command (recheck the final theorem and transitive assumptions):
+
+```sh
+opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer \
+  theories/DirectRRelationalAudit.vo
+```
+
+No unary Theorem 4 proof goal remains. Preserve the separate functional target
+and model work; do not silently relabel either as completed by this theorem.
 
 ### Independent relational source and structural translation, following 7e2e736
 
@@ -495,12 +578,13 @@ Uniform mathematical goals:
    The separate functional Theorem 7's four-constructor invariant remains open.
 3. All unary relational axiom schemes and ground atoms are checked and now
    connected to independent relational syntax via a structural translation.
-4. The independent deduction system and translation/substitution lemmas are
-   checked. Finish guarded equality replacement, formula stability and full
-   deduction preservation. Connect source countermodel soundness to
-   non-derivability of universal reflexivity.
-5. Only claim either main theorem after unconditional final types, a fresh
-   successful build and transitive Print Assumptions.
+4. Unary guarded equality replacement, formula stability, full deduction
+   preservation and source non-derivability are now checked. Theorem4.theorem4
+   assembles the complete unary statement. Do not redo these obligations.
+5. Functional Theorem 7 and the PTS set model remain separate unfinished tasks;
+   only advance them on an applicable user request. The legacy DirectRTests
+   timeout is a separate full-suite verification issue, not an open Theorem 4
+   proof obligation.
 
 Earlier failed approaches: blanket cbv in the symbolic tactic unfolds symbolic
 numerals and loses reusable typing evidence. Direct tApp/arrow applications

@@ -1,4 +1,21 @@
-# Direct R interpretation — modular draft
+# Direct R interpretation
+
+## Current checked result — 2026-10-13
+
+The harmonized manuscript's unary relational **Theorem 4** is proved as
+`Theorem4.theorem4` in `theories/DirectRTheorem4.v`. Import it with
+`From PTSrk Require Import DirectRTheorem4.` Its unconditional statement combines
+all relational axiom schemes, preservation of the independently defined
+classical deduction system, ground proofs/internal refutations, and a concrete
+nonfaithfulness witness. It uses the original annotated PTS typing judgment.
+
+`DirectRRelationalAudit.v` checks the final types and transitive assumptions.
+A fresh isolated build succeeds; all assumption reports are closed. Exact
+commands, logs and the separate legacy full-suite timeout status are in
+`direct-r-handoff/STATE.md` and `direct-r-handoff/verification/`.
+The functional Theorem 7 and PTS set-model soundness remain unfinished.
+
+## Historical modular draft snapshot (superseded status below)
 
 Target: TurtlePU/pts-rk, commit `723cf2ec61c737ae82ba33d2e7db44f650122b0e`.
 Prepared 2026-10-13. This replaces the earlier monolithic DirectR package.

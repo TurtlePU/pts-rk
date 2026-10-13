@@ -112,6 +112,21 @@ Ltac normalize_shifts H :=
 Ltac weaken_copy H B J :=
   pose proof (inhabited_shift _ _ B H) as J; normalize_shifts J.
 
+Lemma double_negation_map {n} (Γ : Ctx nat n) A B :
+  formed Γ A -> formed Γ B -> inhabited Γ (Arrow A B) ->
+  inhabited Γ (Neg (Neg A)) -> inhabited Γ (Neg (Neg B)).
+Proof.
+  intros HA HB Hf Hnn. apply arrow_intro; [apply neg_formed; exact HB |].
+  rewrite <- lift_closed_shift.
+  weaken_copy Hnn (Neg B) Hnn1. eapply arrow_elim; [exact Hnn1 |].
+  apply arrow_intro; [apply formed_shift; exact HA |].
+  rewrite <- lift_closed_shift.
+  pose proof (newest Γ (Neg B)) as Hnb. normalize_shifts Hnb.
+  weaken_copy Hnb (shift A) Hnb2. eapply arrow_elim; [exact Hnb2 |].
+  weaken_copy Hf (Neg B) Hf1. weaken_copy Hf1 (shift A) Hf2.
+  eapply arrow_elim; [exact Hf2 |apply newest].
+Qed.
+
 Lemma arrow_stable {n} (Γ : Ctx nat n) A B :
   formed Γ A -> formed Γ B -> stable Γ B -> stable Γ (Arrow A B).
 Proof.

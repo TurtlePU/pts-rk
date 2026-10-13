@@ -131,8 +131,12 @@ stage 06c-unary-arithmetic "$ROOT" theories/DirectRUnaryArithmetic.vo
 stage 06c-unary-assumptions "$ROOT" theories/DirectRUnaryAudit.vo
 stage 06c-relational-syntax "$ROOT" theories/DirectRRelationalSyntax.vo
 stage 06c-relational-translation "$ROOT" theories/DirectRRelationalTranslation.vo
+stage 06c-relational-equality "$ROOT" theories/DirectRRelationalEquality.vo
+stage 06c-relational-deduction "$ROOT" theories/DirectRRelationalDeduction.vo
+stage 06c-relational-countermodel "$ROOT" theories/DirectRRelationalCountermodel.vo
 stage 06c-relational-ground "$ROOT" theories/DirectRRelationalGround.vo
 stage 06c-relational-axioms "$ROOT" theories/DirectRRelationalAxioms.vo
+stage 06c-theorem4 "$ROOT" theories/DirectRTheorem4.vo
 stage 06c-relational-audit "$ROOT" theories/DirectRRelationalAudit.vo
 stage 06d-source-countermodel "$ROOT" theories/DirectRCountermodel.vo
 stage 06e-set-functions "$ROOT" models/SetFunctions.vo

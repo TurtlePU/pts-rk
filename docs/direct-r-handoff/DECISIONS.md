@@ -1,5 +1,29 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — complete unary relational Theorem 4
+
+- Proved translated formula stability structurally, including guarded universal
+  quantification. Classical elimination constructs original PTS inhabitants;
+  no host classical axiom, positive elimination from negative disjunction, or
+  change to the PTS rules was used.
+- Proved equality transport for every source formula. Bound objects and their
+  Good guards are shared between the compared environments; no equality
+  invariance of Good is assumed. Binary arithmetic congruence uses annotated
+  lambda sections and beta conversion, not eta or annotation erasure.
+- Proved every constructor of the independent classical natural deduction
+  system sound for the structural translation. Sentence preservation has no
+  certificate-record or theorem-soundness premise.
+- Connected the concrete SOURCE countermodel to that calculus, proving its
+  soundness without classical axioms via decidable atoms and structural
+  stability. Universal order reflexivity is underivable there but its guarded
+  target translation has the already checked rho witness.
+- Assembled Theorem4.theorem4 with all axiom schemes, all classical deductions,
+  ground proofs/refutations and nonfaithfulness. The final theorem and each new
+  principal dependency pass Print Assumptions with no global assumptions.
+  Fresh build and full-suite status are recorded separately in STATE.md.
+- Theorem 7, external Bottom nontriviality, internal self-consistency and PTS
+  set-model soundness are not consequences claimed by this theorem.
+
 ## 2026-10-13 — independent relational syntax and structural translation
 
 - Defined a scoped source language with only 0/S terms and the four atomic

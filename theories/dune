@@ -6,5 +6,5 @@
            DirectRCodes DirectRKernel DirectREval DirectRCheck DirectRSymbolic
            DirectRStructural DirectRLogic DirectRPositive DirectRFiniteTables DirectRFiniteObservations DirectRFoundations DirectRProofs DirectRGenerated
            DirectRFirstOrder DirectRObligations DirectRUnary DirectRFiniteUp DirectRUnaryEvaluation DirectRSeparation DirectRUnaryAxioms DirectRUnaryAudit DirectRCountermodel
-           DirectRUnaryBounded DirectRUnaryArithmetic DirectRRelationalSyntax DirectRRelationalTranslation DirectRRelationalGround DirectRRelationalAxioms DirectRRelationalAudit DirectRArithmetic DirectRTests DirectR)
+            DirectRUnaryBounded DirectRUnaryArithmetic DirectRRelationalSyntax DirectRRelationalTranslation DirectRRelationalEquality DirectRRelationalDeduction DirectRRelationalCountermodel DirectRRelationalGround DirectRRelationalAxioms DirectRTheorem4 DirectRRelationalAudit DirectRArithmetic DirectRTests DirectR)
   (theories Stdlib Equations))
