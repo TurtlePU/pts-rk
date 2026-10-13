@@ -63,9 +63,12 @@ the full raw attempt logs remain at the paths listed there.
 `git diff --check` exited 0. No new remote CI result is claimed.
 
 Commit checkpoint: `Construct all finite observation arguments in the original PTS`,
-parent aa443af. This is partial progress on the requested Theorem 7, not its
-completion. A normal authorized push will follow the commit. User logs/ is
-excluded from the commit and remains untouched.
+parent aa443af, commit d348299014ccf659688c6ad077307de94ccd9eab. This is partial
+progress on the requested Theorem 7, not its completion.
+`GIT_TERMINAL_PROMPT=0 timeout 45 git push origin main` exited 0 and reported
+`aa443af..d348299 main -> main`. User logs/ was the only untracked worktree
+entry after the proof commit; it is excluded and untouched. This delivery note
+is a documentation-only follow-up, with no proof changes after validation.
 
 First remaining goal: lift the closed observation argument spine to an arbitrary
 ambient PTS context, specialize the original E/O bodies, and prove finite fold
