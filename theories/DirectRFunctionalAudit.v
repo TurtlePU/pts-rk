@@ -6,7 +6,8 @@ From PTSrk Require Import DirectRFunctionalTerms DirectRFunctionalLogic
   DirectRFiniteLawElimination DirectRFunctionalFiniteLaws DirectRGuardedFiniteLaws
   DirectRFiniteTransitivity DirectRFiniteCongruence
   DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence DirectRFiniteZeroLaws
-  DirectRFiniteExpressions DirectRFiniteRecursionLaws DirectRFiniteOrderLaws.
+  DirectRFiniteExpressions DirectRFiniteRecursionLaws DirectRFiniteOrderLaws
+  DirectRTelescopeArguments DirectRFiniteData.
 Check FunctionalTerms.term_typed.
 Check FunctionalTerms.term_admitted.
 Check FunctionalTerms.ground_evaluation.
@@ -50,6 +51,15 @@ Check FiniteOrderLaws.addition_order_left_realized.
 Check FiniteOrderLaws.addition_order_right_realized.
 Check FiniteOrderLaws.multiplication_order_left_realized.
 Check FiniteOrderLaws.multiplication_order_right_realized.
+Check TelescopeArguments.arguments_application.
+Check FiniteData.data_prefix_matches_source.
+Check FiniteData.data_specialization.
+Check FiniteData.initial_specialization.
+Check FiniteData.step_specialization.
+Print FiniteData.data_telescope.
+Print FiniteData.data_arguments.
+Print FiniteData.initial_annotation.
+Print FiniteData.step_annotation.
 Print FiniteOrderLaws.unary_type.
 Print FiniteOrderLaws.binary_type.
 Print FiniteOrderLaws.body.
@@ -142,3 +152,13 @@ Print Assumptions FiniteOrderLaws.addition_order_left_realized.
 Print Assumptions FiniteOrderLaws.addition_order_right_realized.
 Print Assumptions FiniteOrderLaws.multiplication_order_left_realized.
 Print Assumptions FiniteOrderLaws.multiplication_order_right_realized.
+Print Assumptions TelescopeArguments.substitute_transpose.
+Print Assumptions TelescopeArguments.arguments_application.
+Print Assumptions FiniteData.data_prefix_matches_source.
+Print Assumptions FiniteData.data_arguments_typed.
+Print Assumptions FiniteData.data_specialization.
+Print Assumptions FiniteData.initial_prefix_matches_source.
+Print Assumptions FiniteData.initial_specialization.
+Print Assumptions FiniteData.step_prefix_matches_source.
+Print Assumptions FiniteData.step_annotation_specialized.
+Print Assumptions FiniteData.step_specialization.
