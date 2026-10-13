@@ -48,10 +48,15 @@ It then builds each module separately, stopping with the actual failing status.
 Inspect the script before invoking it; select the local runner or targeted
 commands if the tool dependencies are absent.
 
-The CI reference toolchain is a CANDIDATE configuration, not a previously green
-run: OCaml 4.14.2, Dune 3.23.1, rocq-prover meta.1, rocq-core 9.1.1,
-rocq-stdlib 9.0.0, rocq-equations 1.3.1+9.1. Stdlib has an independent version.
-Prefer an actual working upstream environment; document changes to the candidate.
+The current CI/local toolchain is OCaml 4.14.2, Dune 3.23.1,
+rocq-prover meta.1, rocq-core 9.2.0, rocq-stdlib 9.1.0, and
+rocq-equations 1.3.2+9.2. Stdlib has an independent version. The earlier
+9.1.1 candidate cannot parse the upstream `Create Rewrite HintDb` command.
+The current toolchain has built pristine upstream and the infrastructure,
+structural, and foundations modules locally, but NOT the entire development.
+`bash tools/check-local-ci.sh` selects the installed native ARM switch and
+runs actionlint plus the same staged driver using the available GNU timeout.
+See STATE.md for exact commands, logs, and the remaining proof bottleneck.
 
 ## Development not installed
 

@@ -42,3 +42,60 @@ an architectural change has been verified before compiling it.
   exposed a further opaque-numeral typing problem and was reverted. Repairing
   that symbolic induction layer remains pending; no uniform theorem completion
   is claimed.
+
+## 2026-10-13 — checked structural and numeral foundations
+
+- Pushed the authorized checkpoint `b6fa20660860258717637426605353e0bf3e38e5`
+  with the existing infrastructure fixes, user-supplied handoff, and local CI
+  setup. Downloaded `logs/` artifacts were preserved and not added.
+- Split the previously monolithic proof dependency into DirectRStructural,
+  DirectRFoundations, and the remaining DirectRProofs. Kernel includes
+  Foundations, preserving its public names and the Theorem5Target statement.
+  CI now reports these two new dependency stages separately without dropping
+  any existing stage or relaxing time limits.
+- Proved substitution identities without unfolding symbolic numerals or
+  closed observation certificates. Direct two-step applications now prove
+  observed/admitted successor closure, both uniform numeral families, and
+  the ground-addition base case. Their statements use the original typ.
+- Added rank-annotated dependent telescopes with explicit annotation formation
+  obligations; formation, abstraction, and projection are proved generically.
+  Added all-arity selector formation/typing, typed table application, and
+  beta-computation to the selected entry. These are not finite tests.
+- The new scoped selector implementation is NOT yet identified with the named
+  generator's nSelector/nFType encoding. Nor does table application alone
+  certify unary/binary capped operation tables, delta elimination, or all
+  observation laws. Those integration and realization obligations remain.
+- A recursive application-tactic experiment still stalled in the addition
+  base case and was removed. The direct base-case lemma compiles. The legacy
+  tactic remains only downstream, starting at ground_add_typed's successor
+  step; do not treat that source proof as checked.
+- The new modules compile under the installed toolchain. Assumption queries
+  for telescope formation/abstraction/projection, selector typing/table
+  application/computation, both numeral families, and the addition base-case
+  application all say `Closed under the global context`.
+  Exact transcripts and remaining build status are recorded in STATE.md.
+
+## 2026-10-13 — harmonized Theorems 4 and 7
+
+- The user's harmonized TeX supersedes the old numbering: label main is
+  Theorem 4 (unary relational interpretation); thm:direct-R is Theorem 7
+  (functional interpretation). Neither is just the old axiom-witness record.
+- Completed compilation of the uniform ground addition, multiplication and
+  order families, hence R1_realized/R2_realized. Direct structural application
+  lemmas replaced the legacy symbolic proof calls. All three main assumption
+  queries report no global assumptions.
+- Added DirectRUnary for the distinct unary carrier and negative-test
+  equality/order. Exact-rank formation, constructor certificates and the
+  paper's raw/admitted order-reflexivity terms are checked.
+- Added the concrete source countermodel, with proofs of all relational and
+  functional axiom schemes and failure of universal order reflexivity. It
+  does not replace an independent source deduction system or its soundness.
+- Added the functional admitted-reflexivity witness as well. Both target-side
+  witnesses are separate from the countermodel's host-logic facts.
+- Repaired actual downstream compiler failures: generator notation/type
+  inference, explicit intermediate objects in existing native arithmetic
+  proofs, and the missing scope parameter in the zero-budget test. No rule,
+  target statement, assumption, or CI timeout was weakened.
+- User explicitly put the PTS set model in scope as a subsequent task using
+  rocq-archive/zfc. Preserve its ZF+GCH premise and audit imported library
+  assumptions separately. No model soundness proof has yet been constructed.

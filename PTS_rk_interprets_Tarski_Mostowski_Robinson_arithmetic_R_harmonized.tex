@@ -1,0 +1,783 @@
+% Compile with: pdflatex PTS_rk_interprets_Tarski_Mostowski_Robinson_arithmetic_R_harmonized.tex
+% Run twice to resolve references.
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype,booktabs}
+\usepackage[margin=25mm]{geometry}
+\usepackage{needspace}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\rk}[1]{\mathsf{rk}_{#1}}
+\newcommand{\PTS}{\mathsf{PTS}_{rk}}
+\newcommand{\Rt}{\widetilde{\mathsf R}}
+\newcommand{\R}{\mathsf R}
+\newcommand{\Good}{\mathsf{Good}}
+\newcommand{\Case}{\mathsf{Case}}
+\newcommand{\Inv}{\mathsf{Inv}}
+\newcommand{\ev}{\operatorname{ev}}
+\newcommand{\Add}{\mathsf{Add}}
+\newcommand{\Mul}{\mathsf{Mul}}
+\newcommand{\z}{\mathsf z}
+\newcommand{\suc}{\mathsf s}
+\newcommand{\nc}{\mathop{\neg}\nolimits_c}
+\newcommand{\ac}{\mathbin{\wedge_c}}
+\newcommand{\oc}{\mathbin{\vee_c}}
+\newcommand{\iffc}{\mathbin{\leftrightarrow_c}}
+\newcommand{\Up}{\mathsf{Up}}
+\newcommand{\Da}{D_{\!a}}
+\newcommand{\za}{\mathsf z_a}
+\newcommand{\sa}{\mathsf s_a}
+\newcommand{\adda}{\mathsf a_a}
+\newcommand{\ma}{\mathsf m_a}
+\newcommand{\Ga}{G_a}
+\newcommand{\Ea}{E_a}
+\newcommand{\Oa}{O_a}
+\newcommand{\Gooda}{\mathsf{Good}_a}
+\newcommand{\Casea}{\mathsf{Case}^{a}}
+\newcommand{\Inva}{\mathsf{Inv}^{a}}
+\newcommand{\nua}[1]{\nu^{a}_{#1}}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{proposition}[lemma]{Proposition}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\setlength{\parskip}{2pt}
+\emergencystretch=1.5em
+\title{\bfseries Rank-indexed pure type system $\PTS$\newline
+interprets Tarski--Mostowski--Robinson\newline arithmetic $\R$}
+\author{}\date{13 October 2026}
+\hypersetup{pdftitle={Rank-indexed pure type system PTS-rk interprets Tarski-Mostowski-Robinson arithmetic R},
+ pdfsubject={Classical relational and functional arithmetic interpretations using dependent function types and beta-conversion}}
+\begin{document}
+\begin{center}
+{\Large\bfseries Rank-indexed pure type system $\PTS$\\[3pt]
+interprets Tarski--Mostowski--Robinson arithmetic $\R$\par}
+\vspace{8pt}
+13 October 2026
+\end{center}
+\vspace{-0.3em}
+\begin{abstract}
+We construct a fixed interpretation of Tarski--Mostowski--Robinson
+arithmetic $\R$ in $\PTS$. A unary Church domain and certified finite observations
+first interpret its relational form $\Rt$. Definable graphs then yield
+$\R$; a direct interpretation with arithmetic operators is also given.
+All constructions use only dependent function types and $\beta$-conversion.
+\end{abstract}
+\setlength{\abovedisplayskip}{8pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{8pt plus 2pt minus 2pt}
+
+\section{Classical arithmetic and the target calculus}\label{sec:logic}
+We work in classical first-order logic with equality. Let $\Rt$ be the
+relational presentation of Tarski--Mostowski--Robinson arithmetic in the
+language $\{0,S,=,\le,A,M\}$, with ternary predicates $A,M$ and numerals
+$\bar n=S^n0$. Its axioms are the universal closures of the following schemes,
+indexed by external $m,n\in\mathbb N$:
+\begin{align}
+ A(\bar m,\bar n,x)&\leftrightarrow \overline{m+n}=x,
+    \tag{$\widetilde R1$}\label{rtilde:add}\\
+ M(\bar m,\bar n,x)&\leftrightarrow \overline{mn}=x,
+    \tag{$\widetilde R2$}\label{rtilde:mul}\\
+ \bar m&\ne\bar n\quad(m\ne n),
+    \tag{$\widetilde R3$}\label{rtilde:neq}\\
+ x\le\bar n&\leftrightarrow\bigvee_{i=0}^{n}x=\bar i,
+    \tag{$\widetilde R4$}\label{rtilde:bound}\\
+ x\le\bar n&\lor\bar n\le x.
+    \tag{$\widetilde R5$}\label{rtilde:compare}
+\end{align}
+Here $m+n$ and $mn$ are calculated externally: the language has no binary
+arithmetic function symbols. Section~\ref{sec:nonrelational} relates this theory
+to the original, functional arithmetic $\R$~\cite{tmr};
+Sections~\ref{sec:operators}--\ref{sec:functional} give a direct interpretation
+of those functions.
+
+The pure type system $\PTS$ has sorts $\rk i$ for $i\in\mathbb N$, axioms
+$\rk i:\rk0$, and the formation rule
+\[
+ \frac{\Gamma\vdash T:\rk a\qquad\Gamma,x:T\vdash U:\rk b}
+      {\Gamma\vdash((x:T)\to U):\rk{\max(a+1,b)}}.
+\]
+The other typing rules are the standard rules for variables, abstraction,
+application, and $\beta$-conversion. Dependent function types are written
+$(x:T)\to U$, and arrows associate to the right. There is no cumulativity,
+$\eta$-conversion, or additional proof constant. Omitted lambda annotations
+are determined by the displayed types.
+
+Put
+\[
+ \bot:=((Z:\rk0)\to Z):\rk1,\qquad
+ \top:=\rk0\to\rk0:\rk1,\qquad
+ \mathsf{id}:=\lambda(Z:\rk0).Z:\top.
+\]
+Use the fixed-answer proof types
+\begin{gather*}
+ \nc P:=P\to\bot,\qquad
+ P\ac Q:=(P\to Q\to\bot)\to\bot,\\
+ \bigvee_c(P_0,\ldots,P_k):=
+ (P_0\to\bot)\to\cdots\to(P_k\to\bot)\to\bot,\\
+ P\iffc Q:=(P\to Q)\ac(Q\to P).
+\end{gather*}
+A type $P$ is \emph{stable} when $\nc\nc P\to P$ is inhabited.
+Negative types, dependent functions with stable codomain, and these encoded
+conjunctions and disjunctions are stable. They support the classical logical
+rules on stable proof types; case elimination is into stable targets.
+In particular, $P\oc\nc P$ has the proof
+$\lambda(k:P\to\bot)(l:(P\to\bot)\to\bot).\,l\,k$.
+We never eliminate $\bot$ into an arbitrary positive type.
+
+For a carrier $V$, a domain predicate $\Delta$, and fixed stable atomic
+interpretations, use implication as an arrow and translate quantifiers by
+\begin{align*}
+ (\forall x\,\varphi)^*&:=(x:V)\to\Delta(x)\to\varphi^*(x),\\
+ (\exists x\,\varphi)^*&:=
+ ((x:V)\to\Delta(x)\to\varphi^*(x)\to\bot)\to\bot.
+\end{align*}
+All translated formulas are stable. Once domain closure and atomic
+congruence are proved, the logical rules and equality substitution extend
+structurally to formulas on admitted arguments. All interpretations below
+use this one logical encoding. For the relational interpretation,
+Section~\ref{sec:relational} establishes completeness of the ground
+proof/refutation construction and failure of faithfulness on arbitrary
+first-order sentences.
+
+For exact-rank motives, let $J_1=\top$, $J_{k+1}=J_k\to J_k$, with
+$j_1=\mathsf{id}$ and $j_{k+1}=\lambda(x:J_k).x$.
+If $P:\rk a$, $a\le k$, and $k\ge2$, then
+\[
+ L_k(P):=J_{k-1}\to P:\rk k.
+\]
+Abstraction and evaluation at $j_{k-1}$ give maps between $P$ and $L_k(P)$.
+
+\section{Unary domain and equality}\label{sec:unary}
+Use the Church numeral carrier
+\[
+ D:=\bigl((X:\rk1)\to X\to(X\to X)\to X\bigr):\rk3,
+ \qquad
+ \z:=\lambda X\,z\,s.z,\qquad
+ \suc d:=\lambda X\,z\,s.s(d\,X\,z\,s).
+\]
+Write $\nu_n=\suc^n\z$. Define the two auxiliary, same-type Church operations
+\begin{align*}
+ \Add\,d\,e&:=\lambda X\,z\,s.\ d\,X\,(e\,X\,z\,s)\,s,\\
+ \Mul\,d\,e&:=\lambda X\,z\,s.\ d\,X\,z\,(\lambda y:X.e\,X\,y\,s).
+\end{align*}
+Both have type $D\to D\to D$. On canonical numerals they compute addition
+and multiplication by beta reduction. No eta equation on arbitrary $d:D$
+is used.
+
+The domain predicate is the following constructor-closure certificate:
+\[
+ \Good(d):=\bigl((Q:D\to\rk{10})\to Q(\z)
+ \to((u:D)\to Q(u)\to Q(\suc u))\to Q(d)\bigr):\rk{12}.
+\]
+Zero and successor preserve it by abstraction. For example,
+\[
+ \mathsf{good}_0:=\lambda Q\,q_0\,q_s.\,q_0,\qquad
+ \mathsf{good}_s\,d\,g:=\lambda Q\,q_0\,q_s.\,
+ q_s\,d\,(g\,Q\,q_0\,q_s).
+\]
+Thus the interpreted domain is nonempty and closed under the source
+functions. The auxiliary $\Add,\Mul$ occur only inside predicates, so no
+closure of $\Good$ under them is required.
+
+Define equality by negative tests:
+\[
+ \boxed{E(d,e):=\bigl((P:D\to\rk1)\to
+       ((\nc P(d))\iffc(\nc P(e)))\bigr):\rk5.}
+\]
+Its reflexivity, symmetry, and transitivity follow pointwise from the
+corresponding rules for logical equivalence. Every $F:D\to D$ respects $E$:
+to obtain $E(Fd,Fe)$ from $h:E(d,e)$, specialize $h$ to
+$u\mapsto P(Fu)$. This applies to successor and to each argument of the
+auxiliary arithmetic operations. Equality substitution for $E$ itself follows
+from symmetry and transitivity. Define the arithmetic atoms by
+\[
+ A^*(d,e,f):=E(\Add\,d\,e,f),\qquad
+ M^*(d,e,f):=E(\Mul\,d\,e,f).
+\]
+They respect $E$ in all arguments. Their ground-input defining schemes are
+immediate from the beta equations, including an arbitrary admitted third
+argument.
+
+\section{Order from successor-closed unary tests}\label{sec:order}
+A certified unary algebra is the fixed telescope
+\[
+ \begin{aligned}
+ \mathcal U={}&(X:\rk1)\,(z:X)\,(s:X\to X)\,(\delta:X\to\rk4)\\
+             &(d_0:\delta z)\,
+      (d_s:(u:X)\to\delta u\to\delta(su)).
+ \end{aligned}
+\]
+Writing $\mathcal U\to B$ abbreviates the successive dependent arrows for
+these binders; it does not introduce a record type.
+Put $\ev_{\mathcal U}(d)=d\,X\,z\,s$ and
+$G(d):=(\mathcal U\to\delta(\ev_{\mathcal U}(d))):\rk6$.
+For $P:X\to\rk1$, write
+\[
+ \Up_{\mathcal U}(P):=
+ (u:X)\to\delta u\to\nc P(u)\to\nc P(su).
+\]
+Define
+\[
+ \boxed{\begin{aligned}
+ O(d,e):=\bigl(\mathcal U\to(P:X\to\rk1)\to{}&\Up_{\mathcal U}(P)\to{}\\
+ &\nc P(\ev_{\mathcal U}(d))\to\nc P(\ev_{\mathcal U}(e))\bigr):\rk6.
+ \end{aligned}}
+\]
+This needs only $d_0,d_s$, and an upward-closure certificate. Preorder laws
+and equality compatibility are \emph{derived}, not included as certificates.
+
+\Needspace{7\baselineskip}
+\begin{lemma}\label{basic}
+$G(\z)$ and $G(d)\to G(\suc d)$ are inhabited, as is
+$\Good(d)\to G(d)$. The relation $O$ is reflexive and transitive on all raw
+$D$-objects. Moreover, $E(d,e)\to O(d,e)$ and
+$G(d)\to O(d,\suc d)$ are inhabited. Both arguments of $O$ respect $E$.
+\end{lemma}
+\begin{proof}
+The two $G$-closure terms use $d_0,d_s$ and the beta fold equations. To
+obtain $G(d)$ from $\Good(d)$, instantiate its predicate at
+$u\mapsto L_{10}(G(u))$ and evaluate the result at $j_9$.
+
+Reflexivity and transitivity of $O$ are identity and composition on each
+test. Given $E(d,e)$, instantiate its predicate with
+$u\mapsto P(\ev_{\mathcal U}(u))$ and take the forward implication.
+The step law is the upward-closure certificate applied to
+$\ev_{\mathcal U}(d)$ and the supplied $G$-evidence. Finally use
+$E\Rightarrow O$, symmetry of $E$, and transitivity of $O$ for compatibility.
+\end{proof}
+Consequently, for each external $i\le j$, there is a closed proof of
+$O(\nu_i,\nu_j)$, built by a finite succession of steps.
+
+\section{Finite separation}\label{sec:separation}
+\Needspace{7\baselineskip}
+\begin{lemma}\label{sep}
+For every external $n$, there is a closed term
+$\mathsf{no\_back}_n:O(\nu_{n+1},\nu_n)\to\bot$.
+Consequently distinct standard numerals are internally $E$-unequal, and
+all reversed ground $O$-comparisons have internal refutations.
+\end{lemma}
+\begin{proof}
+Put $c=n+1$, $q=c+1$, and use the rank-one selectors
+\[
+ F_q:=\underbrace{\rk1\to\cdots\to\rk1}_{q\ \mathrm{arguments}}
+           \to\rk1,\qquad
+ e_i:=\lambda Z_0\ldots Z_{q-1}.Z_i.
+\]
+Choose $X=F_q$, $z=e_0$, and the unary table
+\[
+ s(u):=\lambda Z_0\ldots Z_{q-1}.\
+ u\,Z_{\min(0+1,c)}\cdots Z_{\min(c+1,c)}.
+\]
+Thus $s(e_i)=_\beta e_{\min(i+1,c)}$. Let
+\[
+ \delta(u):=\bigl((Q:F_q\to\rk3)\to
+ Q(e_0)\to\cdots\to Q(e_c)\to Q(u)\bigr):\rk4.
+\]
+Selector projection gives $d_0$. To construct $d_s$, open the output
+$\delta(su)$ at $Q$ and its branch proofs, and specialize the input
+certificate to $v\mapsto Q(sv)$. Its branches are the supplied proofs for
+the appropriate successor selectors.
+
+Use the unary test
+\[
+ P(u):=u\,\underbrace{\top\cdots\top}_{c\ \mathrm{entries}}\,\bot.
+\]
+To prove $\Up(P)$, eliminate $\delta(u)$ into the rank-three motive
+$v\mapsto\nc P(v)\to\nc P(sv)$. At $e_c$ both tests are $\bot$ and the
+implication is identity. At $e_i$ with $i<c$, a premise
+$\top\to\bot$ gives $\bot$ by application to $\mathsf{id}:\top$; abstraction
+gives the negative conclusion. 
+
+Specializing $h:O(\nu_c,\nu_n)$ to these data yields
+$(\bot\to\bot)\to(\top\to\bot)$. Apply it to $\mathsf{id}_{\bot}$ and
+$\mathsf{id}_{\top}$.
+
+If $m>n$, compose $O(\nu_{n+1},\nu_m)$ with a purported
+$O(\nu_m,\nu_n)$ and use $\mathsf{no\_back}_n$.
+A purported $E(\nu_m,\nu_n)$ supplies this last order proof by
+Lemma~\ref{basic}; symmetry handles $m<n$.
+\end{proof}
+The selectors are certified only through $\delta$; no parametricity claim
+about all raw inhabitants of $F_q$ is needed. These are finite separating
+observations, not finite models of the entire source theory.
+
+\section{Bounded cases}\label{sec:cases}
+Set
+\[
+ \Case_n(d):=\bigvee_c\bigl(E(d,\nu_0),\ldots,E(d,\nu_n),O(\nu_{n+1},d)\bigr)
+       :\rk8.
+\]
+\Needspace{7\baselineskip}
+\begin{lemma}\label{case}
+$(d:D)\to\Good(d)\to\Case_n(d)$ is inhabited for every external $n$.
+\end{lemma}
+\begin{proof}
+Use the rank-ten positive invariant
+\[
+ \Inv_n(d):=(Z:\rk8)\to(G(d)\to\Case_n(d)\to Z)\to Z.
+\]
+At zero, supply $G(\z)$ and the $E(\z,\nu_0)$ branch. At successor, open
+the target continuation and eliminate the child invariant at that same
+$Z$, obtaining $G(d)$ and $\Case_n(d)$. Obtain $G(\suc d)$ independently.
+To construct the new negative case proof, all branch continuations return
+$\bot$. An $i<n$ branch becomes $i+1$ by successor congruence.
+The $i=n$ branch gives $E(\suc d,\nu_{n+1})$, hence
+$O(\nu_{n+1},\suc d)$. The large branch is composed with
+$O(d,\suc d)$. This proves successor closure.
+
+Instantiate $\Good(d)$ with $\Inv_n$. Project its case component by
+choosing $Z=\Case_n(d)$ and continuation $\lambda g\,c.c$.
+No negative disjunction is eliminated into positive $G$-evidence.
+\end{proof}
+
+\section{The relational interpretation}\label{sec:relational}
+
+\Needspace{8\baselineskip}
+\begin{theorem}\label{main}
+The carrier $D$, admitted domain $\Good$, closed operations $\z,\suc$,
+and relations $E,O,A^*,M^*$ interpret the classical relational theory
+$\Rt$ in $\PTS$. Every translated axiom has an effectively constructible
+closed proof term. The interpretation is closed under classical first-order
+derivations: every $\Rt$-derivation of a sentence effectively yields a closed
+$\PTS$ proof term of its translation. True ground arithmetic atoms have
+proofs, and false ground atoms have internal refutations. The interpretation
+is not, however, faithful on arbitrary first-order sentences.
+\end{theorem}
+\begin{proof}
+Use Section~\ref{sec:logic}'s translation with $V=D$ and $\Delta=\Good$.
+Domain closure, atomic stability, and congruence have been established;
+hence source deductions translate to PTS proofs.
+
+For the first two arithmetic schemes, $\Add\,\nu_m\,\nu_n=_\beta\nu_{m+n}$
+and $\Mul\,\nu_m\,\nu_n=_\beta\nu_{mn}$, so both sides of each translated
+biconditional are beta-convertible. Numeral inequality is Lemma~\ref{sep}.
+
+For bounded order, apply Lemma~\ref{case}. Under $O(d,\nu_n)$ its large
+branch contradicts $\mathsf{no\_back}_n$ by transitivity. Conversely, an
+$E(d,\nu_i)$ branch with $i\le n$ gives $O(d,\nu_n)$ using
+$E\Rightarrow O$ and the ground comparison. For comparability the finite
+branches give $O(d,\nu_n)$ and the large branch gives $O(\nu_n,d)$.
+
+The ground proof/refutation claims follow from the arithmetic beta equations,
+reflexivity, ground order, and Lemma~\ref{sep}.
+\end{proof}
+\begin{remark}
+The fixed ranks are $D:3$, $E,A^*,M^*:5$, $G,O:6$, $\delta:4$,
+$\Case:8$, $\Inv:10$, and $\Good:12$. The proof uses only $d_0,d_s$
+and $\Up(P)$ as observation certificates.
+\end{remark}
+
+\paragraph{Completeness on ground arithmetic.}
+Every source axiom instance has a proof, and every $\Rt$-derivation translates
+using the same fixed definitions. For ground arithmetic atoms, the construction
+provides proofs of all true instances and internal refutations of all false
+instances. This ground completeness is not reflection of arbitrary source
+derivability.
+
+\begin{remark}[Failure of faithfulness]\label{rem:relational-nonfaithful}
+The interpretation of $\Rt$ is not faithful: the translation of
+$\rho:=\forall x\,(x\le x)$ is provable in $\PTS$, although $\Rt\nvdash\rho$.
+
+\emph{An explicit proof of order reflexivity.}
+Its translation is
+$\rho^*=(d:D)\to\Good(d)\to O(d,d)$. Expanding every binder in the
+observation telescope gives the following closed term:
+\[
+\begin{aligned}
+ \mathsf{orderRefl}:={}&\lambda(d:D)(g:\Good(d))\,\\
+ &(X:\rk1)(z:X)(s:X\to X)(\delta:X\to\rk4)\,\\
+ &(d_0:\delta z)(d_s:(u:X)\to\delta u\to\delta(su))\,\\
+ &(P:X\to\rk1)\,\\
+ &(p_{\uparrow}:(u:X)\to\delta u\to
+       (P(u)\to\bot)\to(P(su)\to\bot))\,\\
+ &(h:P(d\,X\,z\,s)\to\bot).\;h.
+\end{aligned}
+\]
+Thus
+\begin{equation}
+ \mathsf{orderRefl}:(d:D)\to\Good(d)\to O(d,d).
+ \label{eq:order-reflexivity}
+\end{equation}
+Indeed, after the binders are opened, the remaining goal is
+$P(d\,X\,z\,s)\to\bot$, exactly the type of $h$. The term simply returns
+$h$; it uses neither the domain proof $g$ nor the three observation
+certificates $d_0,d_s,p_{\uparrow}$. Removing the binder $g$ also gives
+$(d:D)\to O(d,d)$, so the proof works on every raw presentation.
+
+\emph{A relational countermodel.}
+Take $N^+=\mathbb N\sqcup\{\omega\}$, where $\omega$ is one new element.
+Interpret $0$ and successor as usual on $\mathbb N$, put $S\omega=\omega$,
+and use actual equality. For $x,y\in\mathbb N$, let $A(x,y,z)$ hold exactly
+when $z=x+y$, and let $M(x,y,z)$ hold exactly when $z=xy$. When at least one
+of $x,y$ is $\omega$, let each predicate hold exactly when $z=0$. Define
+\[
+ x\le^+ y\quad\Longleftrightarrow\quad
+ \bigl(x,y\in\mathbb N\ \text{and}\ x\le_{\mathbb N}y\bigr)
+ \ \text{or}\ \bigl(x\in\mathbb N\ \text{and}\ y=\omega\bigr).
+\]
+The ground graph schemes hold for every third argument, and distinct numerals
+are unequal. For every standard $n$, the downset of $n$ is exactly
+$\{0,\ldots,n\}$, proving both directions of \eqref{rtilde:bound}.
+Every standard number is comparable with $n$, and $n\le^+\omega$, proving
+\eqref{rtilde:compare}. Hence this is a model of $\Rt$.
+
+However, $\omega\not\le^+\omega$, so $\rho$ is false. By soundness of
+classical first-order logic,
+\[
+ \Rt\nvdash\rho,
+ \qquad\text{whereas}\qquad \PTS\vdash\mathsf{orderRefl}:\rho^*.
+\]
+Thus the relational interpretation preserves derivability but does not
+reflect it. The countermodel is a model of the source theory, not a
+set-theoretic model of $\PTS$. There is no conflict with ground completeness:
+$\rho$ is universally quantified, and its failure occurs at a non-numeral
+element.
+\end{remark}
+
+\section{Relation to the original presentation of \texorpdfstring{$\R$}{R}}\label{sec:nonrelational}
+The original Tarski--Mostowski--Robinson arithmetic $\R$~\cite{tmr} uses
+$\{0,S,+,\cdot,\le\}$ and the following schemes, again with universal closure:
+\begin{align}
+ \bar m+\bar n&=\overline{m+n}, &
+ \bar m\cdot\bar n&=\overline{mn},
+     \tag{R1--R2}\label{r:arithmetic}\\
+ \bar m&\ne\bar n\quad(m\ne n), &&
+     \tag{R3}\label{r:neq}\\
+ x\le\bar n&\longrightarrow\bigvee_{i=0}^{n}x=\bar i, &&
+     \tag{R4}\label{r:bound}\\
+ x\le\bar n&\lor\bar n\le x. &&
+     \tag{R5}\label{r:compare}
+\end{align}
+Requiring $A,M$ in $\Rt$ to be total, single-valued graphs makes them
+interchangeable with the function symbols $+,\cdot$. This functional
+strengthening is definitionally equivalent to $\R$. Even without that
+strengthening, the two theories have the same interpretability degree.
+
+\Needspace{8\baselineskip}
+\begin{proposition}\label{prop:graphs}
+The classical theories $\Rt$ and $\R$ are mutually interpretable.
+Consequently $\PTS$ interprets $\R$ by definable arithmetic graphs.
+\end{proposition}
+\begin{proof}
+In $\R$, interpret $A(x,y,z)$ by $x+y=z$ and $M(x,y,z)$ by $xy=z$.
+The ground arithmetic equations give the two graph schemes.
+For $i<j$, an assumption $\bar j\le\bar i$ contradicts
+\eqref{r:bound} and numeral separation; \eqref{r:compare} therefore yields
+$\bar i\le\bar j$. The case $i=j$ follows from \eqref{r:compare} directly.
+Thus $\R$ proves all true ground comparisons, and equality substitution
+supplies the reverse implication in \eqref{rtilde:bound}.
+The remaining relational schemes are immediate.
+
+For the other direction define, in $\Rt$,
+\begin{align*}
+ U_A(x,y,z)&:=A(x,y,z)\land
+                \forall w\bigl(A(x,y,w)\to w=z\bigr),\\
+ F_A(x,y,z)&:=U_A(x,y,z)\lor
+       \bigl(z=0\land\neg\exists v\,U_A(x,y,v)\bigr).
+\end{align*}
+For fixed $x,y$, either a unique $A$-output exists or it does not. In the
+first case $F_A$ selects that output; in the second it selects zero.
+Hence $F_A$ is provably total and single-valued. At standard inputs,
+\eqref{rtilde:add} forces its value to be $\overline{m+n}$.
+Define $F_M$ identically with $M$ in place of $A$; its standard value is
+$\overline{mn}$. These graphs interpret $+,\cdot$; keep $0,S,=,\le$
+unchanged. All five schemes of $\R$ follow.
+
+Composing this graph interpretation with Theorem~\ref{main} gives the
+claimed interpretation in $\PTS$. The composition uses the encoded
+classical quantifiers to express values and uniqueness; it does not
+assert $\Good$-closure of the raw Church operators $\Add,\Mul$.
+\end{proof}
+The conclusion is mutual interpretability, not bi-interpretability.
+In particular, the totalized graphs need not coincide with the original
+relations $A,M$ on arbitrary arguments.
+
+
+\section{A direct interpretation with arithmetic operators}\label{sec:operators}
+The following construction gives the source operations as closed terms
+with domain-closure certificates. This section defines its domain and
+observations; Section~\ref{sec:arith-finite} proves finite separation and
+bounded cases, and Section~\ref{sec:functional} verifies the interpretation.
+We use the logic, selectors, and invariant method of
+Sections~\ref{sec:logic}--\ref{sec:cases}. Subscript $a$ marks the
+arithmetic-expression domain and its observations.
+
+\subsection{The arithmetic-expression domain}
+Set
+\[
+ \Da:=\bigl((X:\rk1)\to X\to(X\to X)\to(X\to X\to X)
+                    \to(X\to X\to X)\to X\bigr):\rk3.
+\]
+For $\xi=(X,z,s,a,m)$ in this telescope, write
+$\operatorname{fold}_{\xi}(d):=d\,X\,z\,s\,a\,m$. Define
+\begin{align*}
+ \za&:=\lambda\xi.\,z,&
+ \sa\,d&:=\lambda\xi.\,s(\operatorname{fold}_{\xi}(d)),\\
+ \adda\,d\,e&:=\lambda\xi.\,a(\operatorname{fold}_{\xi}(d))
+                          (\operatorname{fold}_{\xi}(e)),&
+ \ma\,d\,e&:=\lambda\xi.\,m(\operatorname{fold}_{\xi}(d))
+                          (\operatorname{fold}_{\xi}(e)).
+\end{align*}
+Here $\lambda\xi$ abbreviates five successive abstractions, not a record
+argument. Let $\nua n=\sa^n\za$. The binary operations build expression
+presentations; their arithmetic equations will be proved in $\Ea$, not
+asserted as $\beta$-equations on canonical numerals.
+
+For $Q:\Da\to\rk{10}$ abbreviate
+\begin{align*}
+ \mathsf{Cl}_s(Q)&:=(u:\Da)\to Q(u)\to Q(\sa u),\\
+ \mathsf{Cl}_f(Q)&:=(u:\Da)\to(v:\Da)\to Q(u)\to Q(v)\to Q(f\,u\,v)
+       \quad(f=\adda,\ma).
+\end{align*}
+Use
+\[
+ \Gooda(d):=\bigl((Q:\Da\to\rk{10})\to Q(\za)
+ \to\mathsf{Cl}_s(Q)\to\mathsf{Cl}_{\adda}(Q)
+ \to\mathsf{Cl}_{\ma}(Q)\to Q(d)\bigr):\rk{12}.
+\]
+The four constructor certificates are obtained by abstraction. For example,
+from $g:\Gooda(d)$ and $h:\Gooda(e)$, addition closure is
+\[
+ \lambda Q\,q_0\,q_s\,q_a\,q_m.\;
+ q_a\,d\,e\,(g\,Q\,q_0\,q_s\,q_a\,q_m)
+             (h\,Q\,q_0\,q_s\,q_a\,q_m).
+\]
+Thus the admitted domain is nonempty and closed under all four source
+operations, without assuming induction on arbitrary raw $\Da$-objects.
+
+\subsection{Certified arithmetic observations}\label{sec:arith-obs}
+An arithmetic observation has data
+\[
+ X:\rk1,\quad z:X,\quad s:X\to X,\quad a,m:X\to X\to X,
+ \quad\delta:X\to\rk4,\quad R_0,C_0:X\to X\to\rk1.
+\]
+Write $u\simeq v:=R_0(u,v)\to\bot$ and
+$u\preceq v:=C_0(u,v)\to\bot$. Its remaining telescope parameters
+certify the following laws. Each object variable is immediately guarded
+by $\delta$; for example $H(u,v)$ abbreviates
+$(u:X)\to\delta(u)\to(v:X)\to\delta(v)\to H(u,v)$.
+Each law is a separate proof argument.
+
+\emph{Domain and congruence.} The predicate $\delta$ contains $z$ and is
+closed under $s,a,m$. The relation $\simeq$ is an equivalence respected by
+all three operations. The relation $\preceq$ is reflexive and transitive,
+and respects $\simeq$ in both arguments:
+\[
+ u\simeq u'\to v\simeq v'\to u\preceq v\to u'\preceq v'.
+\]
+\emph{Arithmetic equations.}
+\begin{align}
+ a(z,u)&\simeq u,& a(su,v)&\simeq s(a(u,v)),\notag\\
+ m(z,u)&\simeq z,& m(su,v)&\simeq a(v,m(u,v)),\qquad m(u,z)\simeq z.
+ \label{eq:arith-laws}
+\end{align}
+\emph{Order propagation}, with $1_X=sz$:
+\begin{gather}
+ u\preceq su,\qquad u\preceq a(u,v),\qquad v\preceq a(u,v),\notag\\
+ 1_X\preceq v\to u\preceq m(u,v),\qquad
+ 1_X\preceq u\to v\preceq m(u,v).
+ \label{eq:arith-order}
+\end{gather}
+There are 23 individual certificates, each of rank at most five. They
+are bound parameters, not axioms of $\PTS$.
+
+Denote the complete telescope by $\mathcal A$ and put
+$\ev_{\mathcal A}(d)=d\,X\,z\,s\,a\,m$. Define
+\begin{align*}
+ \Ea(d,e)&:=\mathcal A\to
+          \ev_{\mathcal A}(d)\simeq\ev_{\mathcal A}(e),\\
+ \Oa(d,e)&:=\mathcal A\to
+          \ev_{\mathcal A}(d)\preceq\ev_{\mathcal A}(e),\\
+ \Ga(d)&:=\mathcal A\to\delta(\ev_{\mathcal A}(d)).
+\end{align*}
+All three have rank six; $\Ea,\Oa$ are stable and $\Ga$ is positive.
+The fold equations and the domain certificates make $\Ga$ constructor
+closed. Instantiating $\Gooda(d)$ at $u\mapsto L_{10}(\Ga(u))$ gives
+$\Gooda(d)\to\Ga(d)$. Denote the resulting closed map by
+$\gamma_a:(d:\Da)\to\Gooda(d)\to\Ga(d)$.
+
+Opening the observation telescope transfers all its guarded laws to
+$\Ga$-objects. In particular, $\Ea$ is an equivalence respected by
+$\sa,\adda,\ma$ and $\Oa$ is a congruent preorder. External induction on
+standard numeral indices gives closed proofs of
+\begin{equation}
+ \Ea(\adda\,\nua m\,\nua n,\nua{m+n}),\quad
+ \Ea(\ma\,\nua m\,\nua n,\nua{mn}),\quad
+ \Oa(\nua i,\nua j)\quad(i\le j).
+ \label{eq:arith-ground}
+\end{equation}
+For the first two use \eqref{eq:arith-laws}; for the last use reflexivity,
+the successor step, and transitivity. No internal arithmetic induction
+is assumed.
+
+\section{Finite separation and bounded cases}\label{sec:arith-finite}
+For external $K\ge0$, set $c=K+1$. On $\{0,\ldots,c\}$ use
+\[
+ z=0,\qquad s(i)=\min(i+1,c),\qquad
+ a(i,j)=\min(i+j,c),\qquad m(i,j)=\min(ij,c),
+\]
+with ordinary equality and order. These tables satisfy the observation
+laws. In the multiplication recursion, $j=0$ makes both sides zero; if
+$j>0$, overflow makes both sides equal $c$. For propagation,
+$j\ge1$ and $i\le c$ imply $\min(ij,c)\ge i$. Addition and the remaining
+laws are checked directly. In particular, $m(c,0)=0$.
+
+Implement the tables using $q=K+2$ and the selectors $F_q,e_i$ of
+Section~\ref{sec:separation}. A unary table is implemented as there; a
+binary table $b$ is
+\[
+ \widehat b(u,v):=\lambda Z_0\ldots Z_{q-1}.\;
+ u\,(v\,Z_{b(0,0)}\cdots Z_{b(0,q-1)})\cdots
+   (v\,Z_{b(q-1,0)}\cdots Z_{b(q-1,q-1)}).
+\]
+For a relation table, omit the outer abstractions and replace each
+selected $Z_{b(i,j)}$ by $\bot$ at a true entry and $\top$ at a false
+entry. This gives $R_0,C_0:X\to X\to\rk1$; their negations are the
+required proof relations.
+
+Use the same $\delta_q$ as in Section~\ref{sec:separation}.
+Selector introduction certifies $z$. To certify an operation's closure,
+open the output $\delta_q$ at a rank-three motive $Q$ and eliminate the
+input certificates into $Q$ composed with the operation. For relation
+laws, open all domain guards and eliminate into the remaining goal,
+whose rank is at most three; apply $L_3$ when its rank is smaller.
+The resulting branches are precisely the finite table checks. A false
+relational premise yields $\bot$ on application to $\mathsf{id}:\top$;
+negative conclusions follow by abstraction. Thus every finite table
+above has a closed implementation of the \emph{entire} telescope
+$\mathcal A$, including its 23 proof arguments.
+
+At cutoff $K=n$, the folds of $\nua{n+1}$ and $\nua n$ are in strictly
+reversed order. Specializing a proposed $\Oa$-proof gives $\top\to\bot$;
+applying it to $\mathsf{id}$ constructs
+\[
+ \mathsf{no\_back}^{a}_n:
+ \Oa(\nua{n+1},\nua n)\to\bot.
+\]
+Ground comparisons and congruence then give all reversed-order and
+unequal-numeral refutations exactly as in Lemma~\ref{sep}.
+
+\Needspace{12\baselineskip}
+\paragraph{Bounded cases.}
+Define
+\[
+ \Casea_n(d):=\bigvee_c\bigl(
+ \Ea(d,\nua0),\ldots,\Ea(d,\nua n),\Oa(\nua{n+1},d)\bigr):\rk8.
+\]
+\Needspace{7\baselineskip}
+\begin{lemma}\label{lem:arith-cases}
+For every external $n$, $(d:\Da)\to\Gooda(d)\to\Casea_n(d)$ is inhabited.
+\end{lemma}
+\begin{proof}
+Use the same positive invariant template as in Lemma~\ref{case}:
+\[
+ \Inva_n(d):=(Z:\rk8)\to(\Ga(d)\to\Casea_n(d)\to Z)\to Z.
+\]
+It has rank ten. Each constructor combines the children's positive
+$\Ga$-evidence independently of their cases. Open the parent's case
+continuations before splitting the child cases, so every branch returns
+$\bot$. The four closure arguments are as follows.
+
+\emph{Zero and successor.} Reflexivity gives the zero case. A successor
+of an $i<n$ case has index $i+1$; at $i=n$ its equality to $\nua{n+1}$
+gives the large branch. A large child remains large by the successor
+step. This is the argument of Lemma~\ref{case} using the transferred laws.
+
+\emph{Addition.} Finite cases $i,j$ give equality to $\nua{i+j}$ by
+congruence and \eqref{eq:arith-ground}. If $i+j\le n$, take that finite
+branch; otherwise ground order gives the large branch. A large child
+bounds the sum below by \eqref{eq:arith-order}.
+
+\emph{Multiplication.} Two finite cases similarly give equality to
+$\nua{ij}$. A zero factor makes the product equal to zero, using the left
+or right zero equation as appropriate. A nonzero finite factor is at
+least one, and a large factor is also at least one since $1\le n+1$.
+Thus a large factor paired with a nonzero factor bounds the product
+below by the multiplication propagation laws. This covers both mixed
+cases and the case of two large factors.
+
+Supply the resulting positive $\Ga$-proof and negative case proof to the
+parent continuation. These are the four closure proofs of $\Inva_n$.
+Instantiate $\Gooda(d)$ at that motive and project the case component by
+taking $Z=\Casea_n(d)$. No negative case proof is used to manufacture
+positive domain evidence.
+\end{proof}
+
+\section{The functional interpretation}\label{sec:functional}
+
+\Needspace{8\baselineskip}
+\begin{theorem}\label{thm:direct-R}
+The carrier $\Da$, admitted domain $\Gooda$, closed operations
+$\za,\sa,\adda,\ma$, and relations $\Ea,\Oa$ directly interpret classical
+$\R$ in $\PTS$. Every translated axiom has an effectively constructible
+closed proof term. The interpretation is closed under classical first-order
+derivations: every $\R$-derivation of a sentence effectively yields a closed
+$\PTS$ proof term of its translation. True ground arithmetic atoms have
+proofs, and false ground atoms have internal refutations. The interpretation
+is not, however, faithful on arbitrary first-order sentences.
+\end{theorem}
+\begin{proof}
+Translate terms compositionally using these four operations, and use
+Section~\ref{sec:logic}'s logical translation with $V=\Da$ and
+$\Delta=\Gooda$. Domain closure, stability, and congruence were proved in
+Section~\ref{sec:arith-obs}; therefore the logical and equality rules
+preserve typing of translated proofs.
+
+The equations \eqref{r:arithmetic} are \eqref{eq:arith-ground}, and
+\eqref{r:neq} follows from finite separation. For \eqref{r:bound}, assume
+$g:\Gooda(d)$ and $h:\Oa(d,\nua n)$ and apply
+Lemma~\ref{lem:arith-cases}. A finite branch gives the required equality;
+the large branch yields $\Oa(\nua{n+1},\nua n)$ by transitivity and is
+refuted by $\mathsf{no\_back}^{a}_n$. For \eqref{r:compare}, a finite
+branch gives $\Oa(d,\nua n)$, and the large branch gives
+$\Oa(\nua n,d)$ by composing with the ground successor comparison.
+These eliminations have stable targets.
+
+Finally, external evaluation of a closed arithmetic term $t$ with value
+$k$ constructs $\Ea(t^\dagger,\nua k)$ by induction on $t$, using
+congruence and \eqref{eq:arith-ground}. Ground comparisons and finite
+separation provide the required proofs or refutations of every closed
+equation or comparison. Every external induction builds a finite PTS
+term; the interpretation itself is independent of the axiom indices.
+\end{proof}
+
+\Needspace{14\baselineskip}
+\paragraph{Order reflexivity in the direct interpretation.}
+Name the order-reflexivity certificate in $\mathcal A$ by
+\[
+ r_{\preceq}:(u:X)\to\delta(u)\to(C_0(u,u)\to\bot).
+\]
+The map $\gamma_a$ of Section~\ref{sec:arith-obs} gives the closed term
+\[
+ \mathsf{orderRefl}_a:=
+ \lambda(d:\Da)(g:\Gooda(d))\,\mathcal A.\;
+ r_{\preceq}\,\ev_{\mathcal A}(d)\,
+               (\gamma_a\,d\,g\,\mathcal A).
+\]
+Here $\lambda\mathcal A$ expands all data and certificate binders,
+including $r_{\preceq}$. The last argument proves
+$\delta(\ev_{\mathcal A}(d))$, enabling the guarded reflexivity law. Hence
+\[
+ \mathsf{orderRefl}_a:\rho^\dagger,
+ \qquad \rho^\dagger:=(d:\Da)\to\Gooda(d)\to\Oa(d,d).
+\]
+The relational countermodel at the end of Section~\ref{sec:relational}
+expands to a model of $\R$: take $+$ and $\cdot$ to be the total functions
+whose graphs are its predicates $A,M$. They have the required values on
+standard inputs. Numeral separation and the two order schemes are unchanged,
+but $\omega\not\le^+\omega$ still holds. Thus $\R\nvdash\rho$, and
+$\mathsf{orderRefl}_a$ shows that the direct interpretation is not faithful.
+The same applies to the graph-based interpretation from
+Proposition~\ref{prop:graphs}: it keeps the unary domain and $O$ unchanged,
+so \eqref{eq:order-reflexivity} supplies its proof of $\rho^*$.
+
+\paragraph{Scope and nontriviality.}
+The ground proof/refutation results remain valid. External uninhabitation of
+$\bot$ follows from strong normalization, subject reduction, and exclusion of
+normal terms of type $X$ in the context $X:\rk0$. No set model of $\PTS$
+is used. These constructions are not a completed Rocq formalization.
+
+\begin{thebibliography}{1}\small
+\bibitem{tmr}
+A. Tarski, A. Mostowski, and R. M. Robinson.
+\emph{Undecidable Theories}. North-Holland, 1953.
+\end{thebibliography}
+\end{document}

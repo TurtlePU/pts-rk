@@ -1,116 +1,135 @@
-# Live proof-development state — update this, do not rely on session memory
+# Live proof-development state — 2026-10-13
 
-## Handoff baseline (2026-10-13)
+## Current request and exact targets
 
-- Active user checkout / branch / commit: NOT INSPECTED by this handoff.
-- Remote fork / PR URL: NOT VERIFIED. Local packages only were prepared in chat;
-  user may since have applied/pushed them. Inspect before claiming anything.
-- Last successful Rocq build of DirectR recorded in chat: NONE.
-- Latest source: modular `DirectR_restructured_PR_package.zip` plus CI add-on.
-- Uniform GeneratorTotal / GeneratorSound: NOT PROVED in that snapshot.
-- Unconditional Theorem5Target: NOT CONSTRUCTED.
-- Source deduction judgment and preservation: NOT COMPLETED.
-- Ground faithfulness as uniform object-language realization/refutation: OPEN.
-- External model / Bottom nontriviality: OUT OF SCOPE, not prerequisites.
-- Last design updates: LATEST_DECISIONS.md.
-- Independent tests: older Python/static tests, NOT compiler evidence.
+The authoritative new reference is
+`PTS_rk_interprets_Tarski_Mostowski_Robinson_arithmetic_R_harmonized.tex`.
 
-## Current environment and verified checkout
+- Theorem 4, label `main`: the unary-domain relational interpretation.
+- Theorem 7, label `thm:direct-R`: the arithmetic-expression functional interpretation.
+- Both include all-index axiom realization, preservation of independently
+  defined classical source deductions, ground proofs/refutations, and
+  nonfaithfulness on arbitrary sentences.
+- Neither complete theorem has been proved. The old `Kernel.Theorem5Target`
+  is only the functional axiom-witness component, not either whole theorem.
+- The latest user additionally requests the paper's PTS set model using
+  rocq-archive/zfc, after the arithmetic work, with separate commits/pushes.
+  This supersedes the older exclusion of set models. Its soundness has NOT
+  been formalized. The paper states ZF+GCH, not unconditional ZFC.
+- Ordinary commits/pushes are authorized. No gh, publish.sh, force-push, or merge.
 
-Fill from actual commands; do not repeat stale assumptions from the old container.
+## Checkout and environment
 
-- Commit: `cb79586d0d9bfcf1835e32e9c2563bc445cf9d24` (user's AGENTS update),
-  on top of amended/pushed `9e01435086ae930267a778b253b497281e738742`.
-- Branch: `main`.
-- User changes to preserve: rewritten `AGENTS.md`, newly supplied
-  `docs/direct-r-handoff/`, and downloaded `logs/` artifacts.
-- Compiler / Dune / Equations versions: locally installed OCaml 4.14.2,
-  Rocq core/runtime 9.2.0, Stdlib 9.1.0, Dune 3.23.1,
-  Equations 1.3.2+9.2, opam 2.6.1, actionlint 1.7.12.
-  Native ARM GMP 6.3.0 was built because Homebrew's GMP is Intel-only.
-- Local environment: `$HOME/.local/share/pts-rk-ci`, opam root `opam/`,
-  named switch `pts-rk-ci`, downloaded tools in `bin/`, native GMP in `native/`.
-- Relevant active AGENTS files / overrides: root `AGENTS.md` and its
-  DirectR handoff instructions; current task is CI repair/local environment
-  setup, not completion of all Theorem 5 mathematical obligations.
-- CI run URL and checked commit:
-  https://github.com/akuklev/pts-rk/actions/runs/38331028223,
-  `9e01435086ae930267a778b253b497281e738742`. Toolchain installation,
-  pristine upstream, and kernel passed; `03-evaluator` failed.
+Base checkpoint on main: `b6fa20660860258717637426605353e0bf3e38e5`
+(`Repair Rocq infrastructure and add local CI handoff`), previously pushed.
+Current proof changes follow that checkpoint. Inspect git log/status for their
+commit; do not reset. User's new harmonized TeX is preserved, including its
+pre-existing trailing space at line 287. Downloaded `logs/` remain untouched
+and untracked.
 
-## Latest actual build
+Installed local environment: `$HOME/.local/share/pts-rk-ci`; opam root
+`opam/`, switch `pts-rk-ci`, binaries `bin/`, native ARM GMP `native/`.
+OCaml 4.14.2, Rocq core/runtime 9.2.0, Stdlib 9.1.0, Equations 1.3.2+9.2,
+Dune 3.23.1, opam 2.6.1, actionlint 1.7.12. GNU timeout is available.
+The pristine upstream requires Rocq 9.2's Create Rewrite HintDb.
 
-- Command: `DIRECT_R_STAGE_SECONDS=60 bash tools/check-local-ci.sh`
-  (workflow lint plus the actual CI driver, with a local diagnostic time limit).
-- Exit code: 124 (timeout) at `07-proof-families`. The committed CI limit remains
-  1200 seconds per stage; this local run does not prove a typing rejection.
-- Passed stage(s): 01 isolated upstream, 02 kernel, 03 evaluator, 04 checker,
-  05 codes, and 06 symbolic.
-- First failing file / line / theorem: initial local run reproduced
-  `DirectREval.v`, `head_step_sound`: incomplete proof. Repaired the evaluator
-  and checker scripts without changing statements or adding assumptions.
-  Latest downstream source repair was `DirectRProofs.v:160`, a partially applied
-  `app` in `fold_left`; changed it to `@app nat 0`. The remaining slow proof is
-  `observed_numeral_typed`, whose successor goal is
-  `Typed ε (observed_numeral (S n)) (GAt (numeral (S n)))`.
-- Exact error or proof goal: the final driver run timed out in proof families.
-  A timed compiler investigation reached `observed_numeral_typed`; see the next
-  checkpoint for the opaque-numeral failure in the reverted experiment.
-- Log path: `_build/local-ci-logs/` for the staged runs; targeted compiler
-  diagnostics in `_build/log` and terminal output.
-- Were remaining stages run? Stages 08–13 were not checked; the driver stopped
-  at stage 07. No overall green build is recorded.
+## Actually compiled
 
-## Proven versus pending
+- Original pristine upstream, evaluator and checker soundness.
+- DirectRStructural: structural substitution identities; generic dependent
+  telescope formation/abstraction/projection; all-arity selector formation,
+  typing, typed table application and beta-computation. Bridges connect to
+  Codes.selector/Codes.selector_type and the named carrier nSelectorType.
+  The named nSelector/operation-table/delta implementations still need bridges.
+- DirectRFoundations: all fixed certificates; observed/admitted numerals;
+  direct application lemmas for constructor closure, equality/congruence,
+  arithmetic equations and order; functional admitted order reflexivity.
+- DirectRProofs: uniform ground addition, multiplication and order,
+  R1_realized and R2_realized. No legacy certify call remains in this module.
+- DirectRGenerated, DirectRFirstOrder, DirectRObligations, DirectR facade,
+  and the separate native-Prop arithmetic module. Compiling the definitions
+  of generator contracts does NOT prove those contracts.
+- DirectRUnary: the revised unary carrier and Church operations, Good,
+  negative-test equality, unary-observation G and order, their exact ranks,
+  constructor certificates, raw and admitted order reflexivity.
+- DirectRCountermodel: the source structure N plus omega satisfies all
+  relational and functional arithmetic axiom schemes, but not universal
+  order reflexivity. This is NOT a PTS set model. Source non-derivability
+  still needs a defined deduction system and its semantic soundness.
 
-The local evaluator/checker repairs preserve the existing statements. At
-`cb79586` plus the working diff, `dune build theories/DirectREval.vo
-theories/DirectRCheck.vo` compiled, and the following assumption queries all
-returned `Closed under the global context`:
+Assumption queries for R1_realized, R2_realized and ground_order_typed returned
+`Closed under the global context`. The same holds for the checked structural
+results and unary rank/closure/reflexivity certificates. No new axiom or
+admission was introduced.
 
-- `RkEval.head_step_sound`: `head_step t = Some u -> t →ᵝ u`.
-- `RkEval.normal_step_sound`: `normal_step t = Some u -> t →ᵝ u`.
-- `RkEval.convert_equal_sound`: `convert fuel A B = ConvEqual -> A =ᵝ B`.
-- `RkCheck.run_check_sound`:
-  `run_check fuel G t A = Accepted tt -> Core.Typed G t A`.
+## Commands and evidence
 
-Here `t`, `u`, `A`, and `B` have the original `Term nat n` type, `G : Ctx nat n`,
-and all scope/fuel variables are universally quantified as in the source.
-The upstream `Ranks.strong_normalization` query also returned `Closed under the
-global context`. Transcript: `_build/local-ci-logs/infrastructure-assumptions.log`.
+Run from repository root:
 
-The uniform generator contracts, unconditional Theorem5Target, full ground
-faithfulness, and first-order deduction preservation remain open. Passing
-infrastructure compilation does not discharge them.
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer \
+  theories/DirectR.vo theories/DirectRUnary.vo \
+  theories/DirectRCountermodel.vo theories/DirectRArithmetic.vo
+```
 
-## Next checkpoint
+Latest module-build transcript: `_build/local-ci-logs/harmonized-modules.log`.
+Other exact transcripts: `ground-families-build.log`, `ground-assumptions.log`,
+`structural-assumptions.log`, `unary-assumptions.log` in that directory.
 
-- Next exact command: `bash tools/check-local-ci.sh` from the repository root.
-  To focus on the remaining module:
-  `OPAMROOT="$HOME/.local/share/pts-rk-ci/opam" "$HOME/.local/share/pts-rk-ci/bin/opam"
-  exec --switch=pts-rk-ci -- dune build theories/DirectRProofs.vo`.
-- Next mathematical lemma: `Kernel.observed_numeral_typed`; its induction step
-  must retain typing evidence for symbolic numerals through substitution/lifting.
-- Why it is needed: all ground calculation families and downstream generators
-  depend on the proof-families module.
-- Current attempted proof and its concrete failure: symbolic `certify` is slow
-  on the successor step. An experiment supplying already checked closed typing
-  lemmas failed with `DirectR: no typing hypothesis for opaque expression`
-  on the unfolded `numeral n`. That experiment was reverted; simply adding
-  the fixed certificates does not fix opaque terms under extended contexts.
-  A direct pair of `tApp` applications also does not convert automatically to
-  the expected type: structural substitution/renaming must be simplified by
-  proved syntax lemmas.
-- Files changed: `DirectREval.v`, `DirectRCheck.v`, `DirectRCodes.v`,
-  `DirectRProofs.v` (explicit `@app nat 0` only), `docs/DirectR-CI.md`, new
-  `tools/check-local-ci.sh`, and this live state file. User handoff/AGENTS edits
-  are preserved. The local setup/proof repairs are not committed or pushed.
-- Unsuccessful approaches worth remembering: the evaluator's original matching
-  only inspected explicit option matches, missing `option_map`. Unconstrained
-  `eapply rtc_step` did not determine its intermediate term. Checker induction
-  patterns omitted the explicit scope index on every constructor. Importing all
-  Syntax notations breaks list patterns in DirectRCodes; excluding only the
-  notation category fixes the assembler without changing upstream Syntax.
+`DIRECT_R_STAGE_SECONDS=120 bash tools/check-local-ci.sh` passed stages
+01 through 12, including the new dependencies, then found an uninferred scope
+in DirectRTests' zero-budget example. Scope is now explicitly 0.
+The subsequent command
+`opam exec --switch=pts-rk-ci -- timeout 120 dune build --display=short
+--no-buffer theories/DirectRTests.vo`
+returned 124. Transcript: `_build/local-ci-logs/examples-build.log`.
+No full green test/CI run is claimed; the ordinary CI stage limit remains 1200.
+An attempted timing probe during dependency rebuilding failed to import the
+temporarily absent Foundations object; this is not a new source proof error.
+A subsequent probe after rebuilding reached and completed R3_1_0 (about
+8 seconds for construction/checking, 2 seconds for Qed), then reached R4_0
+without completing it within its 20-second diagnostic limit. The full
+120-second examples timeout is still a failure to verify the whole suite.
 
-Before ending a session, replace blanks with the current state or explicitly
-say “not yet run / unknown.” Keep detailed work history in DECISIONS.md or logs.
+Tracked build/type/assumption evidence is retained in
+verification/harmonized-2026-10-13.log. All 22 final assumption queries there
+returned Closed under the global context, with no import or query errors.
+
+Workflow lint and shell syntax were checked. Whitespace checking of agent
+changes passes; the supplied TeX's existing trailing space is unchanged.
+
+## Exact remaining work and next commands
+
+First rerun the changed modules using the command above, then inspect the slow
+example with (from `_build/default`, after dependencies finish):
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 120 rocq compile -time \
+  -R theories PTSrk theories/DirectRTests.v
+```
+
+Uniform mathematical goals:
+1. Prove named-selector/operation-table/delta bridges and finite observation
+   realization. For unary Theorem 4, only d0, ds, and Up(P) are needed.
+2. Construct the uniform positive invariant and bounded-case proof for every
+   external cutoff and arbitrary admitted object, preserving G separately.
+3. Prove no_back, then R3–R5 and ground refutations; add ground-expression
+   evaluation witnesses, not just numeral calculations.
+4. Define an independent classical FOL deduction system and prove substitution,
+   guarded equality replacement, stability and deduction preservation. Connect
+   source countermodel soundness to non-derivability of universal reflexivity.
+5. Only claim either main theorem after unconditional final types, a fresh
+   successful build and transitive Print Assumptions.
+
+Earlier failed approaches: blanket cbv in the symbolic tactic unfolds symbolic
+numerals and loses reusable typing evidence. Direct tApp/arrow applications
+plus Structural.structural_substitution_in avoid that. Eauto with transitivity
+as a global search rule became expensive for multiplication; the successful
+proof supplies the two transitivity steps explicitly.
+
+Set-model stage: only the paper's model section and the requested library's
+README have been inspected. No model or soundness proof, no installed ZFC
+dependency, and no second model commit exist yet. Do not label a record of
+assumed model laws as construction/soundness of the paper's model.
