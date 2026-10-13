@@ -6,7 +6,7 @@ From PTSrk Require Import DirectRFunctionalTerms DirectRFunctionalLogic
   DirectRFiniteLawElimination DirectRFunctionalFiniteLaws DirectRGuardedFiniteLaws
   DirectRFiniteTransitivity DirectRFiniteCongruence
   DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence DirectRFiniteZeroLaws
-  DirectRFiniteExpressions DirectRFiniteRecursionLaws.
+  DirectRFiniteExpressions DirectRFiniteRecursionLaws DirectRFiniteOrderLaws.
 Check FunctionalTerms.term_typed.
 Check FunctionalTerms.term_admitted.
 Check FunctionalTerms.ground_evaluation.
@@ -45,6 +45,15 @@ Check FiniteExpressions.denote_typed.
 Check FiniteExpressions.denote_points.
 Check FiniteRecursionLaws.addition_successor_realized.
 Check FiniteRecursionLaws.multiplication_successor_realized.
+Check FiniteOrderLaws.successor_order_realized.
+Check FiniteOrderLaws.addition_order_left_realized.
+Check FiniteOrderLaws.addition_order_right_realized.
+Check FiniteOrderLaws.multiplication_order_left_realized.
+Check FiniteOrderLaws.multiplication_order_right_realized.
+Print FiniteOrderLaws.unary_type.
+Print FiniteOrderLaws.binary_type.
+Print FiniteOrderLaws.body.
+Print FiniteOrderLaws.atom.
 Print FiniteRecursionLaws.expanded_type.
 Print FiniteRecursionLaws.body.
 Print FiniteExpressions.denote.
@@ -122,3 +131,14 @@ Print Assumptions FiniteRecursionLaws.expanded_type_typed.
 Print Assumptions FiniteRecursionLaws.equation_realized.
 Print Assumptions FiniteRecursionLaws.addition_successor_realized.
 Print Assumptions FiniteRecursionLaws.multiplication_successor_realized.
+Print Assumptions FiniteOrderLaws.unary_type_beta.
+Print Assumptions FiniteOrderLaws.unary_type_typed.
+Print Assumptions FiniteOrderLaws.binary_type_beta.
+Print Assumptions FiniteOrderLaws.binary_type_typed.
+Print Assumptions FiniteOrderLaws.unary_law_realized.
+Print Assumptions FiniteOrderLaws.binary_law_realized.
+Print Assumptions FiniteOrderLaws.successor_order_realized.
+Print Assumptions FiniteOrderLaws.addition_order_left_realized.
+Print Assumptions FiniteOrderLaws.addition_order_right_realized.
+Print Assumptions FiniteOrderLaws.multiplication_order_left_realized.
+Print Assumptions FiniteOrderLaws.multiplication_order_right_realized.
