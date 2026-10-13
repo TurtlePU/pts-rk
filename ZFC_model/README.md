@@ -60,12 +60,28 @@ is not the denotation of the PTS Bottom term: product coding and the term
 interpretation still need construction. All ten new assumption reports are
 closed; printed theorem types expose the carrier parameter.
 
+`SetBijections.v` defines bijections using the constructed function sets and
+relational injectivity/surjectivity. It constructs the inverse graph by
+separation from a Cartesian product, proves its typing and bijectivity, and
+proves both evaluation round trips. Identity and composition graphs give
+reflexivity, symmetry and transitivity of set equinumerosity. All nine
+assumption reports are closed. No choice is needed to invert a given bijection.
+
+`CodedFunctions.v` proves the local laws for encoding a dependent function
+graph through a **supplied** bijection to a carrier K. Encoding abstraction
+lands in K; decoding lands in the dependent function set; coded application
+has the right fiber; coded beta evaluates to the body. An empty fiber forces
+K itself to be empty. All six assumption reports are closed. These theorems
+expose the ordinary bijection premise and prove the local laws from it;
+they do not assert existence or coherent selection of the manuscript's
+cardinal-coding bijections and are not a replacement for PTS soundness.
+
 Build from the repository root:
 
 ```sh
 export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
 export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
-opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/SetApplication.vo ZFC_model/CodeUniverses.vo
+opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/CodedFunctions.vo ZFC_model/CodeUniverses.vo
 ```
 
 ## Not yet a model or a soundness proof

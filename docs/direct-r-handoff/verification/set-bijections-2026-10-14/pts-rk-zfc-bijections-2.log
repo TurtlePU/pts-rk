@@ -1,0 +1,24 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/SetBijections.v", line 160, characters 14-24:
+Error:
+In environment
+A, B, C, f, g : Ens
+Hf : bijection A B f
+Hg : bijection B C g
+y : Ens
+Hy : IN y C
+b : Ens
+Hb : IN b B
+Eb : EQ (apply_set g b) y
+a : Ens
+Ha : IN a A
+Ea : EQ (apply_set f a) b
+Unable to unify "apply_set f a" with "a".
+
+File "ZFC_model/dune", lines 1-5, characters 0-161:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/SetBijections.{glob,vo} (exit 1)

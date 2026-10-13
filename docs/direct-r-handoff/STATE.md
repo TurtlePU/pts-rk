@@ -1,5 +1,63 @@
 # Live proof-development state — 2026-10-14
 
+## Concrete bijections and coded beta checked
+
+Committed the previous code-universe checkpoint as
+072c6d96c31557ae3c36563d8466c53a1c54f6f4, `ZFC model: construct countable code
+universes`, as requested. Did not push. Continued proof work below is
+prepared for the subsequently requested commit
+`ZFC model: prove bijection inverses and coded beta`; user-owned untracked
+logs/ remains untouched. No push requested.
+
+SetBijections.v constructs inverse graphs by separation, with inverse typing,
+bijectivity and both evaluation round trips. Concrete identity/composition
+graphs prove equinumerosity reflexive/symmetric/transitive. These are set
+constructions, not choice postulates. CodedFunctions.v proves typed encoding,
+decoding, application, extensionality, coded beta and empty-fiber transport
+for a supplied bijection from a dependent function set to a carrier K.
+There are 15 new closed Print Assumptions reports (9+6).
+
+Exact principal theorem types:
+
+    coded_beta : forall A B K f body x,
+      bijection (dependent_product A B) K f ->
+      family_extensional body ->
+      (forall y, IN y A -> IN (body y) (B y)) -> IN x A ->
+      EQ (coded_application A B K f (encode_function f A body) x) (body x).
+    empty_fiber_forces_empty_code : forall A B K f x,
+      bijection (dependent_product A B) K f ->
+      IN x A -> EQ (B x) Vide -> EQ K Vide.
+
+No existence or coherent selection of coding bijections is claimed. These
+are local lemmas about ordinary bijections, not a PTS soundness statement
+with missing model obligations hidden in its hypotheses. No new axioms,
+unsafe checking changes, choice premise or PTS rule changes.
+
+Baseline targeted build exited 0. Incremental builds 1,2,3,4 exited 0,1,1,0;
+the failures were inference of the graph body in the composition proof,
+fixed by explicit arguments, without weakening statements. Fresh dependency
+build exited 0, all 36 model-module assumption reports closed:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --build-dir
+/tmp/pts-rk-zfc-bijections-fresh.c1GfHf --display=short --no-buffer
+ZFC_model/CodedFunctions.vo ZFC_model/CodeUniverses.vo`.
+Recursive kernel check exited 0, with no axioms:
+`opam exec --switch=pts-rk-ci -- timeout 180 rocq check -silent -o
+-Q /tmp/pts-rk-zfc-bijections-fresh.c1GfHf/default/vendor/zfc ZFC
+-Q /tmp/pts-rk-zfc-bijections-fresh.c1GfHf/default/ZFC_model PTSrkModel
+PTSrkModel.CodedFunctions PTSrkModel.CodeUniverses`.
+Final full local CI, including pristine upstream, exited 0, all 85 stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/zfc-bijections-final"
+bash tools/check-local-ci.sh`. All commands and logs, including both failed
+iterations, are retained in verification/set-bijections-2026-10-14/.
+
+Remaining goal: actual finite-index aleph carriers, precise GCH and the
+dependent-product cardinal bound, then existence and coherent selection of
+coding bijections. Context/term semantics, substitution/beta compatibility
+and soundness for original Typing.typ/RankSorts remain unproved.
+Next exact verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer ZFC_model/CodedFunctions.vo ZFC_model/CodeUniverses.vo`.
+
 ## Code universes and extensional decoding now constructed
 
 Committed and normally pushed the preceding application milestone as

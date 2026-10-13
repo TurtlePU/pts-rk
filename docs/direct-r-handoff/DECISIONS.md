@@ -1,5 +1,25 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — concrete inverses and local coded-function laws
+
+SetBijections.v defines a bijection as a member of the actual function set
+with relational injectivity and surjectivity. Construct its inverse by
+separation from Prod B A, not by choosing inverse values. Prove inverse
+typing/bijectivity, both evaluation round trips, and graph composition.
+Equinumerosity is an existential over these concrete set graphs; reflexivity,
+symmetry and transitivity are proved. No choice or functional extensionality
+axiom is introduced. The Cartesian bound is essential when recognizing a
+function graph: function laws alone do not exclude non-pair junk elements.
+
+CodedFunctions.v combines those constructions with the dependent-function
+graphs. For a supplied ordinary bijection from the dependent product to K,
+prove typed encoding/decoding/application and beta, and transport empty-fiber
+emptiness to K. This factors out a genuine lemma used by the manuscript;
+it is explicitly NOT a soundness theorem with missing model laws moved
+into hypotheses. The remaining existence/coherence of cardinal bijections,
+aleph/GCH construction and original-typing interpretation remain outstanding.
+All fifteen new audited theorems are closed under the global context.
+
 ## 2026-10-14 — constructed code universes, parametric infinite carriers
 
 CodeUniverses.v constructs disjoint finite/infinite/sort codes as tagged

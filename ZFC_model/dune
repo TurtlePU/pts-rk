@@ -1,5 +1,5 @@
 (rocq.theory
  (name PTSrkModel)
  (package pts-rk)
- (modules SetFunctions SetApplication CodeUniverses)
+ (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions)
  (theories Stdlib ZFC PTSrk))
