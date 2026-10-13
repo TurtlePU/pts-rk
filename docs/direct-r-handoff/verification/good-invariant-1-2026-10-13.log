@@ -1,0 +1,344 @@
+*** Warning: in file DirectR.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectR.v, 
+    required library DirectRProofs exactly matches several files in path
+    (found DirectRProofs.v in ../functional and .; used the latter).
+*** Warning: in file DirectR.v, 
+    required library DirectRGenerated exactly matches several files in path
+    (found DirectRGenerated.v in ../functional and .; used the latter).
+*** Warning: in file DirectR.v, 
+    required library DirectRFirstOrder exactly matches several files in path
+    (found DirectRFirstOrder.v in ../functional and .; used the latter).
+*** Warning: in file DirectR.v, 
+    required library DirectRObligations exactly matches several files in path
+    (found DirectRObligations.v in ../functional and .; used the latter).
+*** Warning: in file DirectRArithmetic.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteBinaryCongruence.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteBinaryCongruence.v, 
+    required library DirectRFunctionalFiniteLaws exactly matches several files in path
+    (found DirectRFunctionalFiniteLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteBinaryDomain.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteBinaryDomain.v, 
+    required library DirectRFiniteBinaryCongruence exactly matches several files in path
+    (found DirectRFiniteBinaryCongruence.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteCongruence.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteData.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFiniteData exactly matches several files in path
+    (found DirectRFiniteData.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFiniteBinaryDomain exactly matches several files in path
+    (found DirectRFiniteBinaryDomain.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFunctionalFiniteLaws exactly matches several files in path
+    (found DirectRFunctionalFiniteLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFiniteTransitivity exactly matches several files in path
+    (found DirectRFiniteTransitivity.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFiniteUnaryCongruence exactly matches several files in path
+    (found DirectRFiniteUnaryCongruence.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFiniteBinaryCongruence exactly matches several files in path
+    (found DirectRFiniteBinaryCongruence.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFiniteCongruence exactly matches several files in path
+    (found DirectRFiniteCongruence.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFiniteExpressions exactly matches several files in path
+    (found DirectRFiniteExpressions.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFiniteZeroLaws exactly matches several files in path
+    (found DirectRFiniteZeroLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFiniteRecursionLaws exactly matches several files in path
+    (found DirectRFiniteRecursionLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteDomainPrefix.v, 
+    required library DirectRFiniteOrderLaws exactly matches several files in path
+    (found DirectRFiniteOrderLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteExpressions.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteExpressions.v, 
+    required library DirectRFiniteUnaryCongruence exactly matches several files in path
+    (found DirectRFiniteUnaryCongruence.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteExpressions.v, 
+    required library DirectRFiniteBinaryCongruence exactly matches several files in path
+    (found DirectRFiniteBinaryCongruence.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteOrderLaws.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteOrderLaws.v, 
+    required library DirectRFiniteZeroLaws exactly matches several files in path
+    (found DirectRFiniteZeroLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteOrderLaws.v, 
+    required library DirectRFiniteExpressions exactly matches several files in path
+    (found DirectRFiniteExpressions.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteRecursionLaws.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteRecursionLaws.v, 
+    required library DirectRFiniteZeroLaws exactly matches several files in path
+    (found DirectRFiniteZeroLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteRecursionLaws.v, 
+    required library DirectRFiniteExpressions exactly matches several files in path
+    (found DirectRFiniteExpressions.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteRecursionLaws.v, 
+    required library DirectRArithmetic exactly matches several files in path
+    (found DirectRArithmetic.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteSpecialization.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteSpecialization.v, 
+    required library DirectRFiniteData exactly matches several files in path
+    (found DirectRFiniteData.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteSpecialization.v, 
+    required library DirectRFiniteDomainPrefix exactly matches several files in path
+    (found DirectRFiniteDomainPrefix.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteSpecialization.v, 
+    required library DirectRFunctionalEvaluation exactly matches several files in path
+    (found DirectRFunctionalEvaluation.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteTransitivity.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteUnaryCongruence.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteUnaryCongruence.v, 
+    required library DirectRFunctionalFiniteLaws exactly matches several files in path
+    (found DirectRFunctionalFiniteLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteZeroLaws.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFiniteZeroLaws.v, 
+    required library DirectRFiniteBinaryCongruence exactly matches several files in path
+    (found DirectRFiniteBinaryCongruence.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFirstOrder.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFirstOrder.v, 
+    required library DirectRProofs exactly matches several files in path
+    (found DirectRProofs.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFoundations.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAddition.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAddition.v, 
+    required library DirectRFoundations exactly matches several files in path
+    (found DirectRFoundations.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAddition.v, 
+    required library DirectRProofs exactly matches several files in path
+    (found DirectRProofs.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAddition.v, 
+    required library DirectRFunctionalTerms exactly matches several files in path
+    (found DirectRFunctionalTerms.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAddition.v, 
+    required library DirectRFunctionalBounded exactly matches several files in path
+    (found DirectRFunctionalBounded.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFunctionalTerms exactly matches several files in path
+    (found DirectRFunctionalTerms.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFunctionalLogic exactly matches several files in path
+    (found DirectRFunctionalLogic.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFunctionalFiniteLaws exactly matches several files in path
+    (found DirectRFunctionalFiniteLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteTransitivity exactly matches several files in path
+    (found DirectRFiniteTransitivity.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteCongruence exactly matches several files in path
+    (found DirectRFiniteCongruence.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteUnaryCongruence exactly matches several files in path
+    (found DirectRFiniteUnaryCongruence.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteBinaryCongruence exactly matches several files in path
+    (found DirectRFiniteBinaryCongruence.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteZeroLaws exactly matches several files in path
+    (found DirectRFiniteZeroLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteExpressions exactly matches several files in path
+    (found DirectRFiniteExpressions.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteRecursionLaws exactly matches several files in path
+    (found DirectRFiniteRecursionLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteOrderLaws exactly matches several files in path
+    (found DirectRFiniteOrderLaws.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteData exactly matches several files in path
+    (found DirectRFiniteData.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteBinaryDomain exactly matches several files in path
+    (found DirectRFiniteBinaryDomain.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteDomainPrefix exactly matches several files in path
+    (found DirectRFiniteDomainPrefix.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFiniteSpecialization exactly matches several files in path
+    (found DirectRFiniteSpecialization.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFunctionalEvaluation exactly matches several files in path
+    (found DirectRFunctionalEvaluation.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFunctionalSeparation exactly matches several files in path
+    (found DirectRFunctionalSeparation.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFunctionalBounded exactly matches several files in path
+    (found DirectRFunctionalBounded.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFunctionalAddition exactly matches several files in path
+    (found DirectRFunctionalAddition.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalAudit.v, 
+    required library DirectRFunctionalMultiplication exactly matches several files in path
+    (found DirectRFunctionalMultiplication.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalBounded.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalBounded.v, 
+    required library DirectRFoundations exactly matches several files in path
+    (found DirectRFoundations.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalBounded.v, 
+    required library DirectRFunctionalTerms exactly matches several files in path
+    (found DirectRFunctionalTerms.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalCases.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalCases.v, 
+    required library DirectRFoundations exactly matches several files in path
+    (found DirectRFoundations.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalCases.v, 
+    required library DirectRFunctionalTerms exactly matches several files in path
+    (found DirectRFunctionalTerms.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalCases.v, 
+    required library DirectRFunctionalBounded exactly matches several files in path
+    (found DirectRFunctionalBounded.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalCases.v, 
+    required library DirectRFunctionalAddition exactly matches several files in path
+    (found DirectRFunctionalAddition.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalCases.v, 
+    required library DirectRFunctionalMultiplication exactly matches several files in path
+    (found DirectRFunctionalMultiplication.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalEvaluation.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalFiniteLaws.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalLogic.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalLogic.v, 
+    required library DirectRFoundations exactly matches several files in path
+    (found DirectRFoundations.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalMultiplication.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalMultiplication.v, 
+    required library DirectRFoundations exactly matches several files in path
+    (found DirectRFoundations.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalMultiplication.v, 
+    required library DirectRProofs exactly matches several files in path
+    (found DirectRProofs.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalMultiplication.v, 
+    required library DirectRFunctionalTerms exactly matches several files in path
+    (found DirectRFunctionalTerms.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalMultiplication.v, 
+    required library DirectRFunctionalBounded exactly matches several files in path
+    (found DirectRFunctionalBounded.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalMultiplication.v, 
+    required library DirectRFunctionalAddition exactly matches several files in path
+    (found DirectRFunctionalAddition.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalSeparation.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalSeparation.v, 
+    required library DirectRFoundations exactly matches several files in path
+    (found DirectRFoundations.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalSeparation.v, 
+    required library DirectRFiniteSpecialization exactly matches several files in path
+    (found DirectRFiniteSpecialization.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalSeparation.v, 
+    required library DirectRFiniteData exactly matches several files in path
+    (found DirectRFiniteData.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalSeparation.v, 
+    required library DirectRFiniteDomainPrefix exactly matches several files in path
+    (found DirectRFiniteDomainPrefix.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalSeparation.v, 
+    required library DirectRFunctionalEvaluation exactly matches several files in path
+    (found DirectRFunctionalEvaluation.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalSeparation.v, 
+    required library DirectRProofs exactly matches several files in path
+    (found DirectRProofs.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalSeparation.v, 
+    required library DirectRFunctionalTerms exactly matches several files in path
+    (found DirectRFunctionalTerms.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalSeparation.v, 
+    required library DirectRFirstOrder exactly matches several files in path
+    (found DirectRFirstOrder.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalTerms.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalTerms.v, 
+    required library DirectRFoundations exactly matches several files in path
+    (found DirectRFoundations.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalTerms.v, 
+    required library DirectRProofs exactly matches several files in path
+    (found DirectRProofs.v in ../functional and .; used the latter).
+*** Warning: in file DirectRFunctionalTerms.v, 
+    required library DirectRFirstOrder exactly matches several files in path
+    (found DirectRFirstOrder.v in ../functional and .; used the latter).
+*** Warning: in file DirectRGenerated.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRGenerated.v, 
+    required library DirectRProofs exactly matches several files in path
+    (found DirectRProofs.v in ../functional and .; used the latter).
+*** Warning: in file DirectRObligations.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRObligations.v, 
+    required library DirectRProofs exactly matches several files in path
+    (found DirectRProofs.v in ../functional and .; used the latter).
+*** Warning: in file DirectRObligations.v, 
+    required library DirectRGenerated exactly matches several files in path
+    (found DirectRGenerated.v in ../functional and .; used the latter).
+*** Warning: in file DirectRObligations.v, 
+    required library DirectRFirstOrder exactly matches several files in path
+    (found DirectRFirstOrder.v in ../functional and .; used the latter).
+*** Warning: in file DirectRProofs.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRProofs.v, 
+    required library DirectRFoundations exactly matches several files in path
+    (found DirectRFoundations.v in ../functional and .; used the latter).
+*** Warning: in file DirectRTests.v, 
+    required library DirectRCodes exactly matches several files in path
+    (found DirectRCodes.v in ../functional and .; used the latter).
+*** Warning: in file DirectRTests.v, 
+    required library DirectRProofs exactly matches several files in path
+    (found DirectRProofs.v in ../functional and .; used the latter).
+*** Warning: in file DirectRTests.v, 
+    required library DirectRGenerated exactly matches several files in path
+    (found DirectRGenerated.v in ../functional and .; used the latter).
+        rocq Interpretation_of_R/functional/.Interpretation_of_R.theory.d
+        rocq Interpretation_of_R/functional/DirectRFunctionalCases.{glob,vo}

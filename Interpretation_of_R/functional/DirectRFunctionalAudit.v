@@ -1,16 +1,118 @@
 (** Checked components of Theorem 7, NOT the completed interpretation theorem.
-    The bounded invariant, R4/R5 and deduction preservation
-    remain explicit obligations in the live handoff. *)
+    Functional deduction preservation remains an explicit obligation. *)
 From Interpretation_of_R.functional Require Import DirectRFunctionalTerms DirectRFunctionalLogic
   DirectRFunctionalFiniteLaws DirectRFiniteTransitivity DirectRFiniteCongruence
   DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence DirectRFiniteZeroLaws
   DirectRFiniteExpressions DirectRFiniteRecursionLaws DirectRFiniteOrderLaws DirectRFiniteData
   DirectRFiniteBinaryDomain DirectRFiniteDomainPrefix DirectRFiniteSpecialization
   DirectRFunctionalEvaluation DirectRFunctionalSeparation DirectRFunctionalBounded
-  DirectRFunctionalAddition.
+  DirectRFunctionalAddition DirectRFunctionalMultiplication DirectRFunctionalCases
+  DirectRFunctionalAxioms DirectRFunctionalSyntax DirectRFunctionalTranslation
+  DirectRFunctionalFormulaLogic DirectRFunctionalSourceAxioms.
 From Interpretation_of_R Require Import DirectRBinaryTables DirectRBinaryObservations
   DirectRRelationTables DirectRFiniteLawElimination DirectRGuardedFiniteLaws
   DirectRTelescopeArguments.
+Print FunctionalSyntax.derives.
+Check FunctionalTranslation.instantiate_translation.
+Check FunctionalFormulaLogic.formula_formed.
+Check FunctionalFormulaLogic.formula_stable.
+Check FunctionalSourceAxioms.source_axiom_realized.
+Print Assumptions FunctionalSyntax.trename_ext.
+Print Assumptions FunctionalSyntax.tsubst_ext.
+Print Assumptions FunctionalSyntax.fsubst_ext.
+Print Assumptions FunctionalSyntax.weakening.
+Print Assumptions FunctionalSyntax.source_ex_falso.
+Print Assumptions FunctionalTranslation.term_ext.
+Print Assumptions FunctionalTranslation.formula_ext.
+Print Assumptions FunctionalTranslation.term_rename.
+Print Assumptions FunctionalTranslation.term_replace.
+Print Assumptions FunctionalTranslation.term_source_rename.
+Print Assumptions FunctionalTranslation.term_source_subst.
+Print Assumptions FunctionalTranslation.formula_replace.
+Print Assumptions FunctionalTranslation.formula_rename.
+Print Assumptions FunctionalTranslation.formula_source_subst.
+Print Assumptions FunctionalTranslation.formula_source_rename.
+Print Assumptions FunctionalTranslation.instantiate_translation.
+Print Assumptions FunctionalFormulaLogic.domain_in_context.
+Print Assumptions FunctionalFormulaLogic.environment_shift.
+Print Assumptions FunctionalFormulaLogic.environment_extend.
+Print Assumptions FunctionalFormulaLogic.product_formed.
+Print Assumptions FunctionalFormulaLogic.formula_formed.
+Print Assumptions FunctionalFormulaLogic.formula_shift.
+Print Assumptions FunctionalFormulaLogic.formula_instance.
+Print Assumptions FunctionalFormulaLogic.universal_introduction.
+Print Assumptions FunctionalFormulaLogic.universal_instance.
+Print Assumptions FunctionalFormulaLogic.instance_environment.
+Print Assumptions FunctionalFormulaLogic.universal_instance_arrow.
+Print Assumptions FunctionalFormulaLogic.formula_stable.
+Print Assumptions FunctionalSourceAxioms.numeral_translation.
+Print Assumptions FunctionalSourceAxioms.formula_disjunction.
+Print Assumptions FunctionalSourceAxioms.formula_bounded.
+Print Assumptions FunctionalSourceAxioms.source_axiom_realized.
+Print FunctionalCases.good_invariant_type.
+Print FunctionalCases.bounded_case_type.
+Check FunctionalCases.good_invariant_realized.
+Check FunctionalCases.bounded_case_realized.
+Check FunctionalAxioms.R4_realized.
+Check FunctionalAxioms.R5_realized.
+Check FunctionalAxioms.all_axioms_realized.
+Print Assumptions FunctionalCases.specialize_typed.
+Print Assumptions FunctionalCases.specialize_good.
+Print Assumptions FunctionalCases.family_application.
+Print Assumptions FunctionalCases.family_shift.
+Print Assumptions FunctionalCases.step_formation.
+Print Assumptions FunctionalCases.binary_formation.
+Print Assumptions FunctionalCases.motive_in_context.
+Print Assumptions FunctionalCases.step_motive_beta.
+Print Assumptions FunctionalCases.binary_motive_beta.
+Print Assumptions FunctionalCases.motive_zero.
+Print Assumptions FunctionalCases.motive_step.
+Print Assumptions FunctionalCases.motive_binary.
+Print Assumptions FunctionalCases.good_invariant.
+Print Assumptions FunctionalCases.bounded_case.
+Print Assumptions FunctionalCases.good_at_formation.
+Print Assumptions FunctionalCases.shift_good.
+Print Assumptions FunctionalCases.good_invariant_realized.
+Print Assumptions FunctionalCases.bounded_case_realized.
+Print Assumptions FunctionalAxioms.bounded_atoms_formed.
+Print Assumptions FunctionalAxioms.comparison_atoms_formed.
+Print Assumptions FunctionalAxioms.rename_flat.
+Print Assumptions FunctionalAxioms.rename_bounded.
+Print Assumptions FunctionalAxioms.rename_comparison.
+Print Assumptions FunctionalAxioms.rename_good.
+Print Assumptions FunctionalAxioms.no_back_in_context.
+Print Assumptions FunctionalAxioms.order_to_bounded.
+Print Assumptions FunctionalAxioms.finite_branch_order.
+Print Assumptions FunctionalAxioms.comparison.
+Print Assumptions FunctionalAxioms.R4_realized.
+Print Assumptions FunctionalAxioms.R5_realized.
+Print Assumptions FunctionalAxioms.all_axioms_realized.
+Check FunctionalMultiplication.multiplication_case.
+Check FunctionalMultiplication.multiplication_invariant.
+Print FunctionalMultiplication.multiplication_invariant_type.
+Check FunctionalMultiplication.multiplication_invariant_realized.
+Print Assumptions FunctionalMultiplication.multiplication_formation.
+Print Assumptions FunctionalMultiplication.multiplication_observed.
+Print Assumptions FunctionalMultiplication.multiplication_congruence.
+Print Assumptions FunctionalMultiplication.multiplication_order_left.
+Print Assumptions FunctionalMultiplication.multiplication_order_right.
+Print Assumptions FunctionalMultiplication.multiplication_finite_case.
+Print Assumptions FunctionalMultiplication.multiplication_large_left.
+Print Assumptions FunctionalMultiplication.multiplication_large_right.
+Print Assumptions FunctionalMultiplication.multiplication_zero_left.
+Print Assumptions FunctionalMultiplication.multiplication_zero_right.
+Print Assumptions FunctionalMultiplication.multiplication_zero_case_left.
+Print Assumptions FunctionalMultiplication.multiplication_zero_case_right.
+Print Assumptions FunctionalMultiplication.positive_of_numeral_equality.
+Print Assumptions FunctionalMultiplication.positive_of_large.
+Print Assumptions FunctionalMultiplication.multiplication_finite_large.
+Print Assumptions FunctionalMultiplication.multiplication_large_finite.
+Print Assumptions FunctionalMultiplication.multiplication_large_large.
+Print Assumptions FunctionalMultiplication.rename_multiplication.
+Print Assumptions FunctionalMultiplication.rename_order.
+Print Assumptions FunctionalMultiplication.multiplication_case.
+Print Assumptions FunctionalMultiplication.multiplication_invariant.
+Print Assumptions FunctionalMultiplication.multiplication_invariant_realized.
 Check FunctionalAddition.addition_case.
 Check FunctionalAddition.invariant_eliminate_pair.
 Check FunctionalAddition.addition_invariant.

@@ -20,12 +20,19 @@
           DirectRFoundations
           DirectRFunctionalAddition
           DirectRFunctionalAudit
+          DirectRFunctionalAxioms
           DirectRFunctionalBounded
+          DirectRFunctionalCases
           DirectRFunctionalEvaluation
           DirectRFunctionalFiniteLaws
+          DirectRFunctionalFormulaLogic
           DirectRFunctionalLogic
+          DirectRFunctionalMultiplication
           DirectRFunctionalSeparation
+          DirectRFunctionalSyntax
+          DirectRFunctionalSourceAxioms
           DirectRFunctionalTerms
+          DirectRFunctionalTranslation
           DirectRGenerated
           DirectRObligations
           DirectRProofs
