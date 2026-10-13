@@ -5,7 +5,8 @@ From PTSrk Require Import DirectRFunctionalTerms DirectRFunctionalLogic
   DirectRBinaryTables DirectRBinaryObservations DirectRRelationTables
   DirectRFiniteLawElimination DirectRFunctionalFiniteLaws DirectRGuardedFiniteLaws
   DirectRFiniteTransitivity DirectRFiniteCongruence
-  DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence DirectRFiniteZeroLaws.
+  DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence DirectRFiniteZeroLaws
+  DirectRFiniteExpressions DirectRFiniteRecursionLaws.
 Check FunctionalTerms.term_typed.
 Check FunctionalTerms.term_admitted.
 Check FunctionalTerms.ground_evaluation.
@@ -40,6 +41,13 @@ Check FiniteBinaryCongruence.multiplication_congruence_realized.
 Check FiniteZeroLaws.addition_zero_realized.
 Check FiniteZeroLaws.multiplication_zero_left_realized.
 Check FiniteZeroLaws.multiplication_zero_right_realized.
+Check FiniteExpressions.denote_typed.
+Check FiniteExpressions.denote_points.
+Check FiniteRecursionLaws.addition_successor_realized.
+Check FiniteRecursionLaws.multiplication_successor_realized.
+Print FiniteRecursionLaws.expanded_type.
+Print FiniteRecursionLaws.body.
+Print FiniteExpressions.denote.
 Print FiniteZeroLaws.expanded_type.
 Print FiniteZeroLaws.body.
 Print FiniteZeroLaws.lhs.
@@ -106,3 +114,11 @@ Print Assumptions FiniteZeroLaws.zero_law_realized.
 Print Assumptions FiniteZeroLaws.addition_zero_realized.
 Print Assumptions FiniteZeroLaws.multiplication_zero_left_realized.
 Print Assumptions FiniteZeroLaws.multiplication_zero_right_realized.
+Print Assumptions FiniteExpressions.denote_typed.
+Print Assumptions FiniteExpressions.value_bound.
+Print Assumptions FiniteExpressions.denote_points.
+Print Assumptions FiniteRecursionLaws.expanded_type_beta.
+Print Assumptions FiniteRecursionLaws.expanded_type_typed.
+Print Assumptions FiniteRecursionLaws.equation_realized.
+Print Assumptions FiniteRecursionLaws.addition_successor_realized.
+Print Assumptions FiniteRecursionLaws.multiplication_successor_realized.
