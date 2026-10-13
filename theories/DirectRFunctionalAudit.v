@@ -4,7 +4,8 @@
 From PTSrk Require Import DirectRFunctionalTerms DirectRFunctionalLogic
   DirectRBinaryTables DirectRBinaryObservations DirectRRelationTables
   DirectRFiniteLawElimination DirectRFunctionalFiniteLaws DirectRGuardedFiniteLaws
-  DirectRFiniteTransitivity DirectRFiniteCongruence.
+  DirectRFiniteTransitivity DirectRFiniteCongruence
+  DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence.
 Check FunctionalTerms.term_typed.
 Check FunctionalTerms.term_admitted.
 Check FunctionalTerms.ground_evaluation.
@@ -32,6 +33,14 @@ Check FiniteTransitivity.equality_transitivity_realized.
 Check FiniteTransitivity.order_transitivity_realized.
 Check FiniteCongruence.relation_congruence_realized.
 Check FiniteCongruence.order_congruence_realized.
+Check RelationTables.boolean_premises_realized.
+Check FiniteUnaryCongruence.successor_congruence_realized.
+Check FiniteBinaryCongruence.addition_congruence_realized.
+Check FiniteBinaryCongruence.multiplication_congruence_realized.
+Print FiniteUnaryCongruence.expanded_type.
+Print FiniteUnaryCongruence.body.
+Print FiniteBinaryCongruence.expanded_type.
+Print FiniteBinaryCongruence.body.
 Print FiniteTransitivity.expanded_type.
 Print FiniteTransitivity.body.
 Print FiniteCongruence.expanded_type.
@@ -74,3 +83,13 @@ Print Assumptions FiniteTransitivity.order_transitivity_realized.
 Print Assumptions FiniteCongruence.congruence_type_beta.
 Print Assumptions FiniteCongruence.relation_congruence_realized.
 Print Assumptions FiniteCongruence.order_congruence_realized.
+Print Assumptions RelationTables.boolean_premises_realized.
+Print Assumptions FiniteUnaryCongruence.expanded_type_beta.
+Print Assumptions FiniteUnaryCongruence.expanded_type_typed.
+Print Assumptions FiniteUnaryCongruence.unary_congruence_realized.
+Print Assumptions FiniteUnaryCongruence.successor_congruence_realized.
+Print Assumptions FiniteBinaryCongruence.expanded_type_beta.
+Print Assumptions FiniteBinaryCongruence.expanded_type_typed.
+Print Assumptions FiniteBinaryCongruence.binary_congruence_realized.
+Print Assumptions FiniteBinaryCongruence.addition_congruence_realized.
+Print Assumptions FiniteBinaryCongruence.multiplication_congruence_realized.
