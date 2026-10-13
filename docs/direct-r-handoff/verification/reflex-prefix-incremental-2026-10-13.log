@@ -1,0 +1,63 @@
+# Incremental proof development 2026-10-13
+# OPAMROOT=$HOME/.local/share/pts-rk-ci/opam
+# PATH=$HOME/.local/share/pts-rk-ci/bin:$PATH
+# Command for each attempt:
+# opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short --no-buffer theories/DirectRFiniteDomainPrefix.vo
+
+# Attempt 1; exit status 1
+        rocq theories/.PTSrk.theory.d
+File "./theories/DirectRFiniteDomainPrefix.v", line 137, characters 9-49:
+Error: In environment
+q : nat
+r : nat -> nat -> bool
+Hq : 0 < q
+Unable to unify
+ "?G ⊢ Π (selector_type q) ?B
+  ⇐ 𝓤 (Nat.max (S match q with
+                  | 0 => 0
+                  | S _ => 1
+                  end) 5)"
+with
+ "ε
+  ⊢ Π (selector_type q)
+      (Arrow (app (lift_closed (Separation.predicate q)) V0)
+         (Neg
+            (app (app (lift_closed (RelationTables.relation_table q r)) V0)
+               V0)))
+  ⇐ 𝓤 5".
+
+File "theories/dune", lines 1-10, characters 0-1458:
+ 1 | (rocq.theory
+ 2 |   (name PTSrk)
+ 3 |   (package pts-rk)
+ 4 |   (modules Syntax AbstractRewriting Congruence Reduction Confluence DefEq
+ 5 |            Context Typing Inversions Preservation SN Ranks
+ 6 |            DirectRCodes DirectRKernel DirectREval DirectRCheck DirectRSymbolic
+ 7 |             DirectRStructural DirectRLogic DirectRPositive DirectRFiniteTables DirectRBinaryTables DirectRFiniteObservations DirectRBinaryObservations DirectRRelationTables DirectRFiniteLawElimination DirectRFoundations DirectRProofs DirectRGenerated
+ 8 |             DirectRFirstOrder DirectRFunctionalTerms DirectRFunctionalLogic DirectRFunctionalFiniteLaws DirectRGuardedFiniteLaws DirectRFiniteTransitivity DirectRFiniteCongruence DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence DirectRFiniteZeroLaws DirectRFiniteExpressions DirectRFiniteRecursionLaws DirectRFiniteOrderLaws DirectRTelescopeArguments DirectRFiniteBinaryDomain DirectRFiniteDomainPrefix DirectRFiniteData DirectRFunctionalAudit DirectRObligations DirectRUnary DirectRFiniteUp DirectRUnaryEvaluation DirectRSeparation DirectRUnaryAxioms DirectRUnaryAudit DirectRCountermodel
+ 9 |             DirectRUnaryBounded DirectRUnaryArithmetic DirectRRelationalSyntax DirectRRelationalTranslation DirectRRelationalEquality DirectRRelationalDeduction DirectRRelationalCountermodel DirectRRelationalGround DirectRRelationalAxioms DirectRTheorem4 DirectRRelationalAudit DirectRArithmetic DirectRTests DirectR)
+10 |   (theories Stdlib Equations))
+        rocq theories/DirectRFiniteDomainPrefix.{glob,vo} (exit 1)
+
+# Attempt 2; exit status 1
+        rocq theories/.PTSrk.theory.d
+File "./theories/DirectRFiniteDomainPrefix.v", line 171, characters 2-50:
+Error: Found no subterm matching "shift (lift_closed ?M1172)"
+in the current goal.
+
+File "theories/dune", lines 1-10, characters 0-1458:
+ 1 | (rocq.theory
+ 2 |   (name PTSrk)
+ 3 |   (package pts-rk)
+ 4 |   (modules Syntax AbstractRewriting Congruence Reduction Confluence DefEq
+ 5 |            Context Typing Inversions Preservation SN Ranks
+ 6 |            DirectRCodes DirectRKernel DirectREval DirectRCheck DirectRSymbolic
+ 7 |             DirectRStructural DirectRLogic DirectRPositive DirectRFiniteTables DirectRBinaryTables DirectRFiniteObservations DirectRBinaryObservations DirectRRelationTables DirectRFiniteLawElimination DirectRFoundations DirectRProofs DirectRGenerated
+ 8 |             DirectRFirstOrder DirectRFunctionalTerms DirectRFunctionalLogic DirectRFunctionalFiniteLaws DirectRGuardedFiniteLaws DirectRFiniteTransitivity DirectRFiniteCongruence DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence DirectRFiniteZeroLaws DirectRFiniteExpressions DirectRFiniteRecursionLaws DirectRFiniteOrderLaws DirectRTelescopeArguments DirectRFiniteBinaryDomain DirectRFiniteDomainPrefix DirectRFiniteData DirectRFunctionalAudit DirectRObligations DirectRUnary DirectRFiniteUp DirectRUnaryEvaluation DirectRSeparation DirectRUnaryAxioms DirectRUnaryAudit DirectRCountermodel
+ 9 |             DirectRUnaryBounded DirectRUnaryArithmetic DirectRRelationalSyntax DirectRRelationalTranslation DirectRRelationalEquality DirectRRelationalDeduction DirectRRelationalCountermodel DirectRRelationalGround DirectRRelationalAxioms DirectRTheorem4 DirectRRelationalAudit DirectRArithmetic DirectRTests DirectR)
+10 |   (theories Stdlib Equations))
+        rocq theories/DirectRFiniteDomainPrefix.{glob,vo} (exit 1)
+
+# Attempt 3; exit status 0
+        rocq theories/.PTSrk.theory.d
+        rocq theories/DirectRFiniteDomainPrefix.{glob,vo}

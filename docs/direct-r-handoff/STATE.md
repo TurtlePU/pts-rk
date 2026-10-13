@@ -1,6 +1,147 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: typed observation prefix, following 371f5bb
+## Current continuation: equality reflexivity, following e959029
+
+Request: proceed proving then commit (no push requested). Starting HEAD:
+e9590295595b2fc6cf28b71b4860a422f6c39d17. The previous uncommitted four-domain
+prefix work is retained and will be included in this proof checkpoint.
+Untracked user logs/ is untouched. Theorem 7 is NOT complete.
+
+Baseline complete local CI, including pristine upstream, exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/reflex-prefix-baseline"
+bash tools/check-local-ci.sh`, with the documented local bin directory on PATH.
+Output: _build/local-ci-logs/reflex-prefix-baseline.log.
+
+New checked results in DirectRFiniteDomainPrefix:
+- relation_application_typed and relation_application_beta hold at arbitrary
+  scope for the original annotated relation table.
+- reflexivity_application_certificate: for every q>0 and every Boolean r
+  reflexive below q, a closed PTS inhabitant of
+  `Pi u:Fq. predicate_q u -> (relation_table q r u u -> Bottom)`.
+- reflexivity_annotation_specialized and reflexivity_prefix_matches_source
+  check the actual original field 104, for every dependent named suffix.
+- reflexivity_specialization applies all thirteen actual arguments and gives
+  original Typed typing at the exact substitution by the eight data terms
+  and all five chosen proof terms. No premise assumes the observation itself.
+
+Incremental command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFiniteDomainPrefix.vo`.
+Exit 0: _build/local-ci-logs/reflex-prefix-3.log.
+Retained failures: reflex-prefix-1.log needed a positive-q case split to
+resolve the selector formation rank; reflex-prefix-2.log used the wrong
+direction of lift_closed_shift. Both are fixed without changing the calculus.
+
+First remaining goal: source field 105 (equality symmetry). Build its exact
+interleaved predicate-application type, convert to the existing symmetry_type,
+and extend the dependent prefix through the actual symmetry proof. Then apply
+the remaining seventeen relation laws. Full observation specialization,
+no_back/negative ground faithfulness, the four-constructor bounded invariant,
+R3/R4/R5 and independent functional deduction preservation remain open.
+
+Next command after extending the prefix:
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+Updated complete local CI exited 0, including pristine upstream and every
+original stage. Command:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/reflex-prefix-final"
+bash tools/check-local-ci.sh`. The functional audit has 105 closed assumption
+reports and no Axioms report. Tracked output with command/exit status:
+verification/reflex-prefix-ci-2026-10-13.log. The three incremental results,
+including both failures, are retained in
+verification/reflex-prefix-incremental-2026-10-13.log.
+Fresh isolated full build exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 300 dune build
+--build-dir /tmp/pts-rk-reflex-prefix.KuZtT6 --display=short --no-buffer`.
+All 213 assumption reports are closed under the global context; no Axioms
+report appears. Exact output: verification/reflex-prefix-full-2026-10-13.log.
+`git diff --check` and `bash -n tools/ci-check-direct-r.sh` also exited 0.
+This is local verification, not a new remote CI result.
+
+Commit checkpoint: `Prove finite domain and reflexivity observation specialization`,
+parent e959029. Includes the two new proof modules, their module/CI registration,
+assumption audit, handoff and retained verification logs. No push is requested
+or attempted. The only excluded user data is untracked logs/.
+
+## Historical continuation: all domain binders, following e959029
+
+Request: proceed proving. Starting HEAD was
+e9590295595b2fc6cf28b71b4860a422f6c39d17 on main, with only untracked user logs/.
+The local commits e959029 and 371f5bb are preserved. This turn makes no commit
+or push; the previous Keychain delivery blocker is unchanged and no remote
+state is claimed. Theorem 7 is NOT complete.
+
+Complete baseline local CI, including pristine upstream, exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/binary-domain-baseline"
+bash tools/check-local-ci.sh`, with the documented local bin directory on PATH.
+Output: _build/local-ci-logs/binary-domain-baseline.log.
+
+DirectRFiniteBinaryDomain now proves the closed interleaved addition and
+multiplication domain certificates, uniformly for q>0:
+
+```
+Pi u:Fq. predicate_q u -> Pi v:Fq. predicate_q v -> predicate_q (add u v)
+Pi u:Fq. predicate_q u -> Pi v:Fq. predicate_q v -> predicate_q (mul u v)
+```
+
+Their names are addition_certificate and multiplication_certificate.
+The generic bounded-table result uses positive delta_binary closure, not the
+rank-three relational elimination lemma. Formation, beta conversion and the
+final application-type certificates are checked in the original PTS.
+
+DirectRFiniteDomainPrefix.domain_specialization extends the previous ten-argument
+result through both actual proof arguments, yielding original PTS typing after
+twelve applications and the exact suffix substitution by all four domain proofs.
+domain_prefix_matches_source identifies the prefix with firstn 12 of the existing
+Codes.observation_fields for every named suffix. The two annotation-specialization
+equalities check fields 102/103, rather than assuming their types match.
+
+Incremental commands (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFiniteBinaryDomain.vo` and the analogous
+DirectRFiniteDomainPrefix.vo target. Exit-0 logs:
+_build/local-ci-logs/binary-domain-3.log and domain-prefix-3.log.
+Earlier numbered failures are retained: unconstrained intermediate conversion
+types needed explicit source proofs; nested product/arrow substitution needed
+alternating rewrites; change needed an explicit right-hand type. No admissions
+or new assumptions were introduced.
+
+The first twelve of thirty-one observation arguments are now connected. All
+nineteen relational laws have individual proofs but remain to be applied in
+their source binder order. Negative ground faithfulness, the four-constructor
+bounded invariant and independent functional deduction preservation remain open.
+
+Exact next goal: extend domain_specialization through source field 104,
+equality reflexivity. Prove that the specialized annotation converts to the
+checked finite equality-reflexivity type, rewriting both predicate applications
+and equality-table applications by their beta lemmas. Retain the dependent
+suffix substitution by the chosen reflexivity proof. Repeat for the remaining
+eighteen relation binders; do not claim full observation specialization or
+no_back until all thirty-one arguments are checked.
+
+Next command after the reflexivity-prefix addition (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+Fresh isolated full build exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 300 dune build
+--build-dir /tmp/pts-rk-domain-prefix.57mug7 --display=short --no-buffer`.
+Its 204 Print Assumptions reports are closed under the global context;
+there is no Axioms report. Exact command and output are retained in
+verification/domain-prefix-full-2026-10-13.log.
+
+Updated complete local CI exited 0, including pristine upstream and all
+original stages, using
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/domain-prefix-final"
+bash tools/check-local-ci.sh`. The functional audit has 96 closed reports.
+Exact command and output: verification/domain-prefix-ci-2026-10-13.log.
+The stage-by-stage logs and exit-code manifest remain in that diagnostic
+directory. This is local CI evidence, not a new GitHub Actions result.
+
+`git diff --check` and `bash -n tools/ci-check-direct-r.sh` both exited 0.
+The two new proof modules, module registration, audit, CI stages, handoff
+updates and verification logs remain uncommitted. User logs/ is untouched.
+
+## Historical continuation: typed observation prefix, following 371f5bb
 
 Request: proceed proving, then commit and push. Starting HEAD was
 371f5bb3092531abde5e769f180dc26a42ef56a5 on main, with only untracked user logs/.

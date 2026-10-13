@@ -1,5 +1,34 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — equality-reflexivity observation application
+
+- Keep the original predicate and relation-table applications in field 104.
+  Prove their exact formation and beta conversion to the existing uniformly
+  guarded reflexivity certificate; do not substitute a reduced annotation
+  without a checked conversion.
+- Generalize the relation-table application typing and beta lemma to arbitrary
+  ambient scopes. The reflexivity certificate works for any Boolean relation
+  reflexive on all indices below q, and in particular finite equality/order.
+- Identify the thirteen-field prefix with source assembly for every suffix.
+  Apply the equality certificate by tApp and retain the suffix's dependence
+  on all five proof arguments. Eighteen further relational arguments remain.
+
+## 2026-10-13 — four-domain-certificate observation prefix
+
+- Package uniform bounded binary-table closure into an interleaved two-object
+  PTS certificate. Use guarded_intro and the existing positive delta_binary
+  proof; do not apply the rank-at-most-three relational eliminator to the
+  rank-four positive membership conclusion.
+- Convert each closed certificate to the predicate-application type used by
+  the original telescope. Both addition and multiplication discharge the
+  generic bounded-table premise uniformly for every q>0.
+- Prove simultaneous substitution through the generic binary guard. Identify
+  source fields 102 and 103 after all preceding substitutions, retaining any
+  suffix dependence on the actual four certificate terms.
+- domain_prefix_matches_source checks the original first twelve fields for
+  every named body. domain_specialization performs the actual twelve PTS
+  applications. This is not the entire observation or an interpretation theorem.
+
 ## 2026-10-13 — typed dependent application and ten-argument observation prefix
 
 - Represent an argument spine by original typing judgments at successively
