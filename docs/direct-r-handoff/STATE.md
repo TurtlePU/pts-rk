@@ -25,6 +25,10 @@ The authoritative new reference is
 
 ## Checkout and environment
 
+This continuation started at main commit
+`7c10cc1c9cbb948930d2f44729961fa239a95738` (checked unary bounded cases).
+Only the existing untracked logs/ directory was present. It was preserved.
+
 Arithmetic progress checkpoint on main: `a16646b`
 (`Prove ground arithmetic and add harmonized unary foundations`), pushed.
 It follows `b6fa20660860258717637426605353e0bf3e38e5`.
@@ -40,6 +44,63 @@ Dune 3.23.1, opam 2.6.1, actionlint 1.7.12. GNU timeout is available.
 The pristine upstream requires Rocq 9.2's Create Rewrite HintDb.
 
 ## Actually compiled
+
+### Comparability and finite-table milestone, following 7c10cc1
+
+- DirectRUnaryAxioms now proves the complete relational comparability scheme
+  R5_realized for every external cutoff and arbitrary Good object. It is
+  restated as unary_comparability against the original Typing.typ in the audit.
+  Both finite and large branches use the checked Case_n theorem; no separation
+  premise or native expression-tree induction is assumed.
+- DirectRFiniteTables constructs all-arity scoped projection terms and unary
+  selector tables. table_typed and table_action prove typing and beta action
+  uniformly. The capped table has the exact action i |-> min(i+1,q-1), with
+  a checked bound on output indices when q>0.
+- The separating test is typed and beta-evaluates to Top below the cap and
+  Bottom at the cap. iterate_computation proves every external iteration
+  beta-equal to the selector at min(k,c). These are PTS terms and beta proofs,
+  not host-logic truth tables or an eta/annotation-erasing bridge.
+- Valid selector indices are explicitly bounded in action theorems. No claim
+  is made that every raw inhabitant of selector_type q is a selector. The
+  required delta_q certificates are still missing, so no_back is NOT proved.
+
+Successful incremental commands (OPAMROOT/PATH as below):
+`opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer theories/DirectRUnaryAxioms.vo`
+and the analogous targets DirectRFiniteTables.vo and DirectRUnaryAudit.vo.
+Logs (under `_build/local-ci-logs`): `unary-r5-build-3.log`,
+`finite-tables-build-3.log`, `finite-tables-action-build-5.log`,
+`finite-separating-test-build-2.log`, `unary-comparison-audit.log`, all exit 0.
+Earlier numbered logs retain actual failures involving binder/type inference,
+list equality rewrites and an implicit nth_indep argument. No axiom/admission
+was added. All 27 assumption queries in the expanded unary audit are closed.
+
+Fresh isolated build (exit 0):
+`opam exec --switch=pts-rk-ci -- timeout 300 dune build
+ --build-dir /tmp/pts-rk-comparison-check.fCSJuL --display=short --no-buffer
+ theories/DirectRUnaryAudit.vo theories/DirectR.vo
+ theories/DirectRCountermodel.vo theories/DirectRArithmetic.vo
+ models/SetFunctions.vo`.
+This rebuilt the shared original PTS dependencies and existing DirectR modules
+alongside the new proofs. Full transcript, exact theorem types and assumptions:
+`verification/unary-comparison-2026-10-13.log`; local copy:
+`_build/local-ci-logs/unary-comparison-fresh.log`.
+Workflow lint, shell syntax and git diff --check also passed.
+The subsequent full build
+`opam exec --switch=pts-rk-ci -- timeout 120 dune build
+ --build-dir /tmp/pts-rk-comparison-check.fCSJuL --display=short --no-buffer`
+returned 124 in the unchanged DirectRTests module. No full green CI claim is
+made. Exact output is retained in `_build/local-ci-logs/unary-comparison-full.log`
+and `verification/unary-comparison-full-2026-10-13.log`.
+
+Exact next goal: construct delta_q(u) at rank four for q>=2, its point
+certificates and closure under capped_successor q, then the Up certificate for
+separating_test (q-1). Combine these with unary numeral evaluation to obtain
+the uniform original-PTS no_back witness. The finite-table definitions are
+intrinsically scoped alternatives to the old named table generator; no bridge
+to that unused generator is required for this unary construction.
+Next command: `opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer theories/DirectRUnaryAudit.vo`.
+
+### Previously checked bounded cases
 
 Checked Theorem-4 bounded-case milestone (on top of cfb1dc2):
 - Unary equality reflexivity/symmetry/transitivity and congruence for every
@@ -108,7 +169,7 @@ Next proof goal: finite unary selector observation realization and uniform
 `no_back_n : O(numeral (S n), numeral n) -> Bottom`. The all-arity selector
 API in DirectRStructural is available, but capped-successor tables and delta
 closure must still be constructed and typed. Also pending: unary arithmetic
-beta equations and relational R1/R2, all-index R3/R4/R5 packaging, ground
+beta equations and relational R1/R2, all-index R3/R4 packaging, ground
 refutations, independent source deductions and their preservation. The
 functional R1_realized/R2_realized below do not prove unary relational R1/R2.
 
@@ -195,7 +256,7 @@ Uniform mathematical goals:
    realization. For unary Theorem 4, only d0, ds, and Up(P) are needed.
 2. Unary Theorem 4's uniform invariant and bounded-case proof are now checked.
    The separate functional Theorem 7's four-constructor invariant remains open.
-3. Prove no_back, then R3–R5 and ground refutations; add ground-expression
+3. Prove no_back, then R3/R4 and ground refutations (unary R5 is now checked); add ground-expression
    evaluation witnesses, not just numeral calculations.
 4. Define an independent classical FOL deduction system and prove substitution,
    guarded equality replacement, stability and deduction preservation. Connect

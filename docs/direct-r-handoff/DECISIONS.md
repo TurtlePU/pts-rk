@@ -1,5 +1,25 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — relational comparability and uniform finite tables
+
+- Proved the unary relational comparability scheme for all cutoffs, using the
+  existing bounded-case invariant, equality-to-order and ground comparisons.
+  This axiom does not require finite separation. The original-kernel audit
+  states its exact guarded universal type explicitly.
+- Added intrinsically scoped finite projection/table builders with uniform
+  formation and full-term beta equations. This replaces the need to certify
+  the old named assembler's finite table code for the unary interpretation.
+  It does not change Domain, Equality, Order, PTS rules, or annotations.
+- Capped successor action, separating tests and arbitrary iteration are
+  checked, with explicit valid-index bounds. Beta action is not pointwise eta
+  reasoning, and no parametricity over all raw selector inhabitants is used.
+- The positive delta predicate/certificates and the upward test law still
+  need construction. These table lemmas do not by themselves prove no_back,
+  R3/R4, ground refutations, or source deduction preservation.
+- Expanded CI with finite-table and unary-axiom stages, leaving existing
+  stages and timeouts intact. All 27 current unary assumption queries are
+  closed. See STATE.md for commands and compiler evidence.
+
 ## 2026-10-13 — unary Theorem-4 proof continuation
 
 - Follow the latest request's unary Theorem 4; do not advance the separate

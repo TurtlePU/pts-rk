@@ -82,6 +82,21 @@ Proof. reflexivity. Qed.
 Lemma replace_variable {m n} (f : Fin m -> Term nat n) i :
   replace f (var i) = f i.
 Proof. reflexivity. Qed.
+Lemma rename_as_replace {m n} (f : Fin m -> Fin n) (t : Term nat m) :
+  rename f t = replace (fun i => var (f i)) t.
+Proof. rewrite <- (replace_var t) at 1. rewrite rename_replace. reflexivity. Qed.
+Lemma rename_arrow {m n} (f : Fin m -> Fin n) A B :
+  rename f (Arrow A B) = Arrow (rename f A) (rename f B).
+Proof. rewrite !rename_as_replace, replace_arrow. reflexivity. Qed.
+Lemma rename_lift_closed {m n} (f : Fin m -> Fin n) t :
+  rename f (lift_closed t) = lift_closed t.
+Proof. rewrite rename_as_replace, replace_lift_closed. reflexivity. Qed.
+Lemma rename_product {m n} (f : Fin m -> Fin n) (A : Term nat m) (B : Term nat (S m)) :
+  rename f (Π A B) = Π (rename f A) (rename (weak f) B).
+Proof. reflexivity. Qed.
+Lemma rename_application {m n} (f : Fin m -> Fin n) (t u : Term nat m) :
+  rename f (app t u) = app (rename f t) (rename f u).
+Proof. reflexivity. Qed.
 Lemma replace_shift_substitution {n} (t u : Term nat n) :
   replace (fin_match u (fun i => var i)) (shift t) = t.
 Proof. apply substitute_shift. Qed.
