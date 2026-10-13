@@ -3,7 +3,7 @@
 From PTSrk Require Import -(notations) Syntax.
 From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
   DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRFiniteTables
-  DirectRPositive DirectRFiniteObservations.
+  DirectRPositive DirectRFiniteObservations DirectRFiniteUp DirectRUnaryEvaluation DirectRSeparation.
 
 Theorem unary_bounded_cases : forall cutoff, exists p,
   @typ nat RankSorts 0 ε p
@@ -71,3 +71,29 @@ Print Assumptions FiniteObservations.delta_point.
 Print Assumptions FiniteObservations.delta_eliminate.
 Print Assumptions FiniteObservations.delta_successor.
 Print Assumptions FiniteObservations.delta_step_realized.
+
+Theorem unary_no_back : forall k, exists p,
+  @typ nat RankSorts 0 ε p
+    (Codes.Neg (Unary.O (Unary.numeral (S k)) (Unary.numeral k))).
+Proof. exact Separation.no_back_realized. Qed.
+Theorem unary_numeral_inequality : forall i j, i <> j -> exists p,
+  @typ nat RankSorts 0 ε p (Codes.Neg (Unary.E (Unary.numeral i) (Unary.numeral j))).
+Proof. exact Separation.R3_realized. Qed.
+
+Check FiniteUp.upward_realized.
+Print FiniteUp.upward_type.
+Check UnaryEvaluation.numeral_evaluation.
+Check UnaryEvaluation.finite_numeral_evaluation.
+Check unary_no_back.
+Check Separation.ground_order_refutation.
+Check unary_numeral_inequality.
+Print Assumptions FiniteUp.upward_realized.
+Print Assumptions UnaryEvaluation.numeral_evaluation.
+Print Assumptions UnaryEvaluation.finite_numeral_evaluation.
+Print Assumptions Separation.initial_certificate.
+Print Assumptions Separation.step_certificate.
+Print Assumptions Separation.up_certificate.
+Print Assumptions Separation.finite_specialization.
+Print Assumptions unary_no_back.
+Print Assumptions Separation.ground_order_refutation.
+Print Assumptions unary_numeral_inequality.

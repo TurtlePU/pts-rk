@@ -1,0 +1,23 @@
+Full build; exit 124 (timeout in unchanged DirectRTests).
+Command: opam exec --switch=pts-rk-ci -- timeout 120 dune build --build-dir /tmp/pts-rk-separation-check.Xxoo9H --display=short --no-buffer
+OPAMROOT=$HOME/.local/share/pts-rk-ci/opam
+PATH=$HOME/.local/share/pts-rk-ci/bin:$PATH
+
+File "./theories/DirectRTests.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRTests.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRTests.v", line 30, characters 0-226:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Init.Nat.of_num_uint. [abstract-large-number,numbers,default]
+
+
+**************************************************************
+* Press Control+C again quickly to perform an emergency exit *
+**************************************************************
