@@ -5,16 +5,19 @@
 \addbibresource{bibliography.bib}
 
 \usepackage
-{amsmath,amssymb,mathpartir,minted,simplebnf,stmaryrd,
-tikz-cd}
+{amsmath,amssymb,hyperref,mathpartir,mathtools,minted,
+simplebnf,stmaryrd,tikz-cd}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{lemma}{Lemma}
+\newtheorem{proposition}[lemma]{Proposition}
 \newtheorem{corollary}{Corollary}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
 
 \usepackage{newunicodechar}
 \newunicodechar{Γ}{$\Gamma$}
@@ -26,6 +29,36 @@ tikz-cd}
 \newunicodechar{ᵘ}{\textsuperscript{u}}
 \newunicodechar{ᵣ}{\textsubscript{r}}
 \newunicodechar{⊔}{$\sqcup$}
+
+\newcommand{\rk}[1]{\mathsf{rk}_{#1}}
+\newcommand{\PTS}{\mathsf{PTS}_{rk}}
+\newcommand{\Rt}{\widetilde{\mathsf R}}
+\newcommand{\R}{\mathsf R}
+\newcommand{\Good}{\mathsf{Good}}
+\newcommand{\Case}{\mathsf{Case}}
+\newcommand{\Inv}{\mathsf{Inv}}
+\newcommand{\ev}{\operatorname{ev}}
+\newcommand{\Add}{\mathsf{Add}}
+\newcommand{\Mul}{\mathsf{Mul}}
+\newcommand{\z}{\mathsf z}
+\newcommand{\suc}{\mathsf s}
+\newcommand{\nc}{\mathop{\neg}\nolimits_c}
+\newcommand{\ac}{\mathbin{\wedge_c}}
+\newcommand{\oc}{\mathbin{\vee_c}}
+\newcommand{\iffc}{\mathbin{\leftrightarrow_c}}
+\newcommand{\Up}{\mathsf{Up}}
+\newcommand{\Da}{D_{\!a}}
+\newcommand{\za}{\mathsf z_a}
+\newcommand{\sa}{\mathsf s_a}
+\newcommand{\adda}{\mathsf a_a}
+\newcommand{\ma}{\mathsf m_a}
+\newcommand{\Ga}{G_a}
+\newcommand{\Ea}{E_a}
+\newcommand{\Oa}{O_a}
+\newcommand{\Gooda}{\mathsf{Good}_a}
+\newcommand{\Casea}{\mathsf{Case}^{a}}
+\newcommand{\Inva}{\mathsf{Inv}^{a}}
+\newcommand{\nua}[1]{\nu^{a}_{#1}}
 
 \title{A sound pure type system with ranks as sorts and
        Type-in-Type}
@@ -51,11 +84,12 @@ under a $\Pi$-former: function types are placed in
 sorts according to their \textit{rank}. Turns out that
 this system has a unique set of characteristics: it has
 similar normalisation behaviour as STLC (so complexity
-of normalisation is in \textsf{TOWER}) while at the
-same time allowing non-uniform representation of
+of normalisation is \textsf{TOWER}-complete) while at
+the same time allowing non-uniform representation of
 arbitrary elementary recursive functions; furthermore,
-it has a nontrivial set-theoretical model in ZF+GCH.
-Base normalisation proof is surprisingly simple (modulo
+it has a nontrivial set-theoretical model in ZF+GCH and
+allows to carry out nontrivial proof developments. Base
+normalisation proof is surprisingly simple (modulo
 general metatheoretical properties of pure type
 systems) and has been fully formalised in vanilla Rocq
 (formerly Coq) without any additional axioms.
@@ -63,26 +97,29 @@ systems) and has been fully formalised in vanilla Rocq
 
 \section{Introduction}
 Pure type systems (PTSs, introduced independently by
-Berardi [CITE] and Terlouw [CITE]) are a family of
-minimalistic typed $\lambda$-calculi including grammar
-formers for variables $x\in\mathsf{Var}$, abstraction
+Berardi \cite{berardi1988towards} and Terlouw
+\cite{terlouw1989gstt}) are a family of minimalistic
+typed $\lambda$-calculi including grammar formers for
+variables $x\in\mathsf{Var}$, abstraction
 $\lambda(x:T).u$, application $u\,t$, types of
 dependent functions $\Pi(x:T).U$ (where $U$ might
 depend on $x$) and \textit{sorts} $s\in\mathcal{S}$
 which act like ``types of types''.
 
-\begin{figure}[h]
-\begin{bnf}
-$x$ : \textsf{Variable} :in: $X$;;
-$s$ : \textsf{Sort} :in: $S$;;
-$T$, $U$, $t$, $u$ : \textsf{Term} ::=
-| $x$ : variable
-| $s$ : sort as type
-| $\Pi(x\colon T).\,U$ : type of dependent functions
-| $\lambda(x\colon T).\,u$ : anonymous function
-| $u\,t$ : function application
-;;
-\end{bnf}
+\begin{figure}[ht]
+    \begin{bnf}
+    $x$ : \textsf{Variable} :in: $X$;;
+    $s$ : \textsf{Sort} :in: $S$;;
+    $T$, $U$, $t$, $u$ : \textsf{Term} ::=
+    | $x$ : variable
+    | $s$ : sort as type
+    | $\Pi(x\colon T).\,U$
+        : type of dependent functions
+    | $\lambda(x\colon T).\,u$ : anonymous function
+    | $u\,t$ : function application
+    ;;
+    \end{bnf}
+    \caption{Grammar of pure type systems}
 \end{figure}
 
 Common syntax conventions to make it more lightweight
@@ -149,28 +186,34 @@ A single PTS is determined by two relations:
 \label{typing}
 \end{figure}
 
-Systems from Barendregt's lambda cube [CITE] fit
-naturally into the framework: for example, simply typed
-lambda calculus (STLC) [CITE] can be viewed as a pure
+Systems from Barendregt's lambda cube
+\cite{barendregt1991introduction,barendregt1992lambda} 
+fit naturally into the framework: for example, simply
+typed lambda calculus (STLC)
+\cite{church1940formulation} can be viewed as a pure
 type system with a single sort $*$, no axioms and a
 single rule $(*,*,*)$. In general, however, pure type
 systems are dependently typed since $\Pi$ allows the
 codomain type to depend on the value of an argument ---
-Coquand's Calculus of Constructions (CoC) [CITE] sits
-comfortably at the top of lambda cube and is modeled as
-a pure type system with two sorts $\{*,\square\}$, a
-single axiom $*:\square$ and four rules corresponding
-to simple functions $(*,*,*)$, polymorphic functions
+Coquand's Calculus of Constructions (CoC)
+\cite{coquand1988calculus} sits comfortably at the top
+of lambda cube and is modeled as a pure type system
+with two sorts $\{*,\square\}$, a single axiom
+$*:\square$ and four rules corresponding to simple
+functions $(*,*,*)$, polymorphic functions
 $(\square,*,*)$, type operators
 $(\square,\square,\square)$ and dependent types
 $(*,\square,\square)$.
 
-As is known [CITE] [CITE], both STLC and CoC are
-strongly normalising and sound with respect to their
-set-theoretical semantics. A classical result shows
-that it is not true for arbitrary PTS.
+As is known \cite{tait1967intensional,
+coquand1990kripke,geuvers1991modular}, both STLC and
+CoC are strongly normalising and sound with respect to
+their set-theoretical semantics. A classical result
+shows that it is not true for arbitrary PTS.
 
-\begin{theorem*}[Girard'72 [CITE]]
+\begin{theorem*}[Girard'72
+    \cite{girard1972interpretation,
+    hurkens1995simplification}]
     The following PTS called System U is not
     normalising:
     \[\begin{array}{c}
@@ -194,10 +237,11 @@ intended logical semantics: inhabitedness of
 $\Pi(P:*).P$ would mean that every proposition is
 provable. Thus any system where System U embeds is
 inconsistent, too; in particular, an original version
-[CITE] of Martin-L\"{o}f's Intuitionistic Type Theory
-[CITE] embeds the following PTS known as
-``Type-in-Type'' which is inconsistent due to Girard's
-paradox:
+\cite{martinlof1971theory} of Martin-L\"{o}f's
+Intuitionistic Type Theory
+\cite{martinlof1984intuitionistic} embeds the following
+PTS known as ``Type-in-Type'' which is inconsistent due
+to Girard's paradox:
 \[\mathcal{S}=\{*\},\quad\mathsf{Ax}=\{*:*\},\quad
 \mathsf{Rule}=\{(*,*,*)\}.\]
 For a pure type system with usual set-theoretical
@@ -205,13 +249,15 @@ semantics, it is natural to expect that a sort of
 \textit{small types} $*$ is closed under $\Pi$, thus we
 cannot forbid the rule $(*,*,*)$; then, a circular
 axiom $*:*$ has to go. Long story short, it motivates
-an introduction of a \textit{universe hierarchy} [CITE]
+an introduction of a \textit{universe hierarchy} \cite{
+martinlof1975intuitionistic,harper1991universes}
 $\mathcal{S}=\{\mathcal{U}_k\}_{k\in\mathbb{N}}$ with
 axioms $\mathcal{U}_k:\mathcal{U}_{k+1}$ and rules
 $(\mathcal{U}_k,\mathcal{U}_l,\mathcal{U}_{k\vee l})$
 for each $k,l$; when interpreted in sets,
 $\llbracket \mathcal{U}_k \rrbracket$ is taken to be
-the $k$-th inaccessible cardinal [CITE].
+the $k$-th inaccessible cardinal \cite{werner1997sets,
+aczel1998relating}.
 
 Observing this, we took interest in the following two
 questions:
@@ -255,51 +301,59 @@ Modulo general metatheory of pure type systems laid out
 in Section~\ref{pts-metatheory}, a normalisation proof
 turned out to be suspiciously simple, even more so in
 comparison with normalisation proofs of other
-dependently typed systems [CITE]. To dispel our own
-doubts, we formalised a proof of normalisation in Rocq
-(formerly Coq) without using any additional axioms,
-yielding a fully constructive proof; our journey in
-formalisation is summarised in
-Section~\ref{formalisation}.
+dependently typed systems \cite{geuvers1991modular,
+barras1999autovalidation,abel2018decidability}. To
+dispel our own doubts, we formalised a proof of
+normalisation in Rocq (formerly Coq) without using any
+additional axioms, yielding a fully constructive proof;
+our journey in formalisation is summarised in
+Section~\ref{formalisation} and the whole development
+is available at
+\url{https://github.com/TurtlePU/pts-rk}.
 
 Having completed the proof, we noticed that it exposes
 a primitive recursive procedure to normalise terms of
 PTS-$rk$; we dug further and discovered that, actually,
 there is an intimate connection between a class of
-elementary recursive functions [CITE] and our system,
-as seen in Section~\ref{complexity}. As a byproduct of
-our study on complexity, we built a sound set-theoretic
-model for PTS-$rk$ (see Section~\ref{rk-model}) which
-assumes \emph{Generalised Continuum Hypothesis} [CITE]
-which is an unusual pick for dependently typed systems,
+elementary recursive functions \cite{kalmar1943,
+rose1984subrecursion} and our system, as seen in
+Sections~\ref{complexity}-\ref{computational}. As a
+byproduct of our study on complexity, we built a sound
+set-theoretic model for PTS-$rk$ (see
+Section~\ref{rk-model}) which assumes \emph{Generalised
+Continuum Hypothesis} \cite{jech2003set,hausdorff1908}
+which is an unusual pick for dependently typed systems
 where \emph{inaccessible cardinals} are a more common
-assumption [CITE]. We provide a closing summary and
-some pointers on future directions of our research and
-possible extensions of the system in
-Section~\ref{conclusion}.
+assumption \cite{werner1997sets,lee2011proof}. Before
+concluding, we provide a sneak peek into what it is
+like to write proofs in PTS-$rk$ and provide a full
+interpretation of Tarski--Mostowski--Robinson
+arithmetic $R$ in PTS-$rk$
+(Section~\ref{proof-system}).
 
 \subsection{Use of artificial intelligence}
 
 At various points in our research, we interacted with
-GPT-6 Astra [CITE] to prove something for us. Sometimes
-it was a rehash of previously established results;
-sometimes it presented something new. In case we used
-the ideas hinted by LLM, we explicitly state so right
-next to the proof; even so, the text is completely
-human written since we wanted to make sure we
-completely understood the results (in addition,
+GPT-6 Astra \cite{gpt6astra2026} to prove something for
+us. Sometimes it was a rehash of previously established
+results; sometimes it presented something new. In case
+we used the ideas hinted by LLM, we explicitly state so
+right next to the proof; even so, the text is
+completely human written since we wanted to make sure
+we completely understood the results (in addition,
 generated proofs always required additional
 explanations or a complete rewrite to make them
 understandable and simpler to read).
 
-Also, we chatted with Claude Fable 5.1 to find better
-points of reference.
+Also, we chatted with Claude Fable 5.1
+\cite{claude_fable} to find better points of reference.
 
 \section{Metatheory of pure type systems}
 \label{pts-metatheory}
 
-For ease of presentation of our results, we assume a
-Barendregt convention [CITE] that all bound variables
+For ease of presentation of our results in this and
+following sections, we assume a Barendregt convention
+\cite{barendregt1984lambda} that all bound variables
 are distinct from free variables and from each other;
 furthermore, $\alpha$-equivalence (renaming of bound
 variables) is assumed as a trivial equality on terms.
@@ -345,7 +399,8 @@ freely reduce any subterm.
 
 The following result will be greatly useful in our
 development. It was proven many times over for
-different similar systems [CITE] [CITE]; we briefly
+different similar systems \cite{church1936properties,
+barendregt1992lambda}; we briefly
 revisit the proof since previous presentations usually
 did not allow reductions in the type of argument $T$ in
 $\lambda(x:T).t$.
@@ -375,8 +430,9 @@ $\lambda(x:T).t$.
     can be switched into ``valleys''.
 
     Now, diamond property is proven by standard
-    technique of parallel reduction [CITE] which is
-    defined as the smallest relation satisfying:
+    technique of parallel reduction
+    \cite{martinlof1971theory} which is defined as the
+    smallest relation satisfying:
     \begin{mathpar}
     \inferrule{}{t\rightrightarrows t}
     \and
@@ -439,9 +495,10 @@ given in Fig.~\ref{typing}.
 \subsection{Properties of a typing judgement}
 
 Again, they surely have been proven before for PTS
-[CITE], but we slightly differ in the formulation of
-typing rules in important places so it is better to
-recheck that these hold.
+\cite{barendregt1992lambda,geuvers1991modular}, but we
+slightly differ in the formulation of typing rules in
+important places so it is better to recheck that these
+hold.
 
 \begin{lemma}[Weakening]
     The following rule is admissible:
@@ -473,11 +530,12 @@ recheck that these hold.
 \end{proof}
 
 In addition, a family of so-called \textit{inversion
-lemmas} [CITE] stating that type of well-typed term is
-largely determined by shape of a term are also proven
-by straightforward induction on typing derivation (each
-one is proven separately, no mutual induction
-involved):
+lemmas} \cite{barendregt1992lambda,
+vanbenthemjutting1993typing} stating that type of
+well-typed term is largely determined by shape of a
+term are also proven by straightforward induction on
+typing derivation (each one is proven separately, no
+mutual induction involved):
 
 \begin{lemma}[Inversion lemmas]
 \begin{align}
@@ -629,7 +687,8 @@ implemented.
 Totality is not a strictly necessary requirement ---
 similar true propositions can be stated for non-total
 PTS, for example in CoC typing yields type which is
-either itself typable or equal to $\square$ [CITE]. But
+either itself typable or equal to $\square$
+\cite{barendregt1992lambda,luo1994computation}. But
 PTS-$rk$ is indeed total so the theorem above is enough
 for our purposes.
 
@@ -703,7 +762,9 @@ soundness proof to go through.
 Informally, a term is strongly normalising iff there
 are no infinite reduction chains starting from it.
 In constructive setting and in formalisation, the
-following definition is a bit better [CITE]:
+following definition is a bit better
+\cite{altenkirch1993formalization,
+vanraamsdonk1999perpetual}:
 
 \begin{definition}[Strongly normalising term]
 \label{sn-definition}
@@ -746,8 +807,8 @@ Application, of course, is the only nontrivial case. In
 case of $\beta$-reduction, strong normalisation of both
 $(\lambda(x:T).t)$ and $u$ does not imply anything
 about normalisation behaviour of $t[u/x]$: consider a
-classical example from untyped lambda calculus [CITE],
-$\omega=(\lambda(x:T).x\,x)$ and
+classical example from untyped lambda calculus \cite{
+barendregt1984lambda}, $\omega=(\lambda(x:T).x\,x)$ and
 $\Omega=\omega\,\omega$; while obviously not typable,
 $\omega$ is strongly normalising, while $\Omega$
 decidedly is not.
@@ -795,7 +856,10 @@ the following: if we already know that
 $t[u/x]\in\mathsf{sn}$, then the most tricky case is
 already taken care of.
 
-\begin{lemma}[Weak head expansion [CITE]]
+\begin{lemma}[Weak head expansion
+    \cite{joachimski2003short,
+    vanraamsdonk1995normalisation,
+    altenkirch1993constructions}]
 \label{sn-whe}
     \[\left\{\begin{array}{l}
         t[u/x]u_1\ldots u_n\in\mathsf{sn} \\
@@ -829,7 +893,8 @@ already taken care of.
     \end{itemize}
 \end{proof}
 
-\section{Strong normalisation of PTS-$rk$}
+\section{Strong normalisation of
+PTS-\texorpdfstring{$rk$}{rk}}
 \label{rk-sn}
 
 \begin{theorem}[Strong normalisation of PTS-$rk$]
@@ -978,19 +1043,21 @@ intent for such a direct proof to go through; honestly,
 we did not think of that and were eagerly trying to
 adapt well-known approaches for proving normalisation
 of pure type systems employing either saturated sets or
-candidates of reducibility [CITE] [CITE], which did not
-work because our ``hierarchy'' of ranks is not
-well-founded enough because of axioms
-$\mathsf{rk}_n:\mathsf{rk}_0$. This proof, however,
-does not even bother with it which means that we could
-pick \emph{any} relation as $\mathsf{Ax}$.
-Nevertheless, putting all sorts into $\mathsf{rk}_0$
-seems the most sensible approach to us since,
-informally, sort is kind of a constant which cannot be
-converted into a function.
+candidates of reducibility \cite{tait1967intensional,
+girard1972interpretation,girard1989proofs,
+geuvers1991modular}, which did not work because our
+``hierarchy'' of ranks is not well-founded enough
+because of axioms $\mathsf{rk}_n:\mathsf{rk}_0$. This
+proof, however, does not even bother with it which
+means that we could pick \emph{any} relation as
+$\mathsf{Ax}$. Nevertheless, putting all sorts into
+$\mathsf{rk}_0$ seems the most sensible approach to us
+since, informally, sort is kind of a constant which can
+not be converted into a function.
 
 \subsection
-{Formalising normalisation of PTS-$rk$ in Rocq}
+{Formalising normalisation of
+PTS-\texorpdfstring{$rk$}{rk} in Rocq}
 \label{formalisation}
 
 In view of high technicality of the proof for strong
@@ -1001,9 +1068,11 @@ was supplied by the probabilistic machine), we decided
 to formalise it so that a sound simple algorithm would
 check it for us. One of the natural choices for
 formalisation of programming languages is Rocq
-(formerly Coq) [CITE], an interactive theorem prover
+(formerly Coq) \cite{rocq2025manual,
+bertot2004interactive}, an interactive theorem prover
 based on Polymorphic, Cumulative Calculus of Inductive
-Constructions [CITE]. As is the case with similar
+Constructions \cite{sozeau2014universe,
+timany2018cumulative}. As is the case with similar
 typed calculi, it is both a programming language and a
 higher-order logic, and correctness of a proof is
 checked by the type checker; in addition to that, Rocq
@@ -1013,15 +1082,16 @@ written in a meta-language which generate terms of the
 target language, greatly simplifying the proofs. While
 set-theoretical semantics of Rocq assume an existence
 of countable hierarchy of inaccessible cardinals
-[CITE], our formalisation never delves into the
-hierarchy and can be formalised in a much more
-restricted theory.
+\cite{werner1997sets,timany2017consistency}, our
+formalisation never delves into the hierarchy and can
+be formalised in a much more restricted theory.
 
 In order to formalise our strong normalisation proof,
 we first need to provide a general metatheory of PTS as
 laid out in Section~\ref{pts-metatheory}. We could
 reuse existing projects on PTS formalisations such as
-[CITE] but we wanted to explore the topic ourselves
+\cite{siles2012pure,adams2006pure,barras1997coqencoq}
+but we wanted to explore the topic ourselves
 which led to a few minor differences discussed
 previously, thus we started from scratch.
 
@@ -1029,7 +1099,9 @@ When one formalises syntax with binders in a proof
 assistant, one of the most important decisions is how
 to represent binders. Here we went with making our
 terms indexed by the number of free variables it uses,
-a standard technique originating from [CITE]:
+a standard technique originating from
+\cite{bellegarde1994substitution,bird1999debruijn,
+altenkirch1999monadic}:
 
 \begin{minted}{coq}
 Inductive Term (L: Type) (n: nat) : Type :=
@@ -1052,16 +1124,19 @@ What is convenient in this representation is that it
 makes it harder to make mistakes when wrangling with
 context, defining substitution etc. --- all of the
 techinical details which make working with syntax with
-binders so hard (even de Bruijn made mistakes in
-METAMATH when first implementing it! [CITE]). Also it
-has a certain category-theoretical feel to it:
-sufficiently generalised operations of renaming and
-substitution give the typal representation of syntax a
-structure of a \emph{relative monad} [CITE]. It is
-really hard to go wrong when implementing these
-operations (and the natural implementation turns
-variables into de Bruijn indices [CITE]); on top of
-them, usual substitution is easily definable.
+binders so hard (authors of first implementation of
+such calculi, AUTOMATH \cite{debruijn1972lambda,
+debruijn1970automath}, remarked it being notoriously
+hard to get right). Also it has a certain
+category-theoretical feel to it: sufficiently
+generalised operations of renaming and substitution
+give the typal representation of syntax a structure of
+a \emph{relative monad} \cite{altenkirch2015monads,
+altenkirch1999monadic}. It is really hard to go wrong
+when implementing these operations (and the natural
+implementation turns variables into de Bruijn indices
+\cite{debruijn1972lambda}); on top of them, usual
+substitution is easily definable.
 
 Most of the proof development in Rocq mirrors what is
 written in Section~\ref{pts-metatheory}; in fact, we
@@ -1175,20 +1250,27 @@ through.
     treatment above.
 \end{proof}
 
-\section{Computational complexity of PTS-$rk$}
+\section{Computational complexity of
+PTS-\texorpdfstring{$rk$}{rk}}
 \label{complexity}
 
-(Proofs in the following sections are not formalised in
-Rocq: they are relatively simple, non-technical and
-their formalisation would require many times more
-preliminary work than seems reasonable.)
+In this section we prove that convertibility of closed
+well-typed PTS-$rk$ terms is \textsc{TOWER}-complete.
+
+(Proofs in this and following sections are not
+formalised in Rocq: they are relatively simple,
+non-technical and their formalisation would require
+many times more preliminary work than seems
+reasonable.)
 
 As requested further, LLM confessed that it was largely
 inspired by studies on complexity of normalisation for
-STLC [CITE] [CITE]. And indeed, upon taking a closer
+STLC \cite{statman1979typed,schwichtenberg1991upper,
+beckmann2001exact}. And indeed, upon taking a closer
 look at the proof of Theorem~\ref{normalisation}, one
 cannot help but notice it actually being a primitive
-recursive [CITE] algorithm for term normalisation in
+recursive \cite{kleene1952introduction,
+peter1951rekursive} algorithm for term normalisation in
 disguise. Or something a tad faster:
 
 \begin{definition}[$d$-bounded terms]
@@ -1201,9 +1283,9 @@ disguise. Or something a tad faster:
 [Elementary recursive normalisation of bounded
     PTS-$rk$]
 \label{bounded-sn}
-For each $d$, there is an elementary recursive [CITE]
-algorithm for finding a normal form of $d$-bounded
-terms.
+    For each $d$, there is an elementary recursive
+    algorithm \cite{rose1984subrecursion} for finding a
+    normal form of $d$-bounded terms.
 \end{theorem}
 \begin{proof}
 Consider the following relation of
@@ -1262,7 +1344,8 @@ output $0$ if result of an algorithm contains a
 $\beta$-redex.
 \end{proof}
 
-Similar result was already proven for STLC [TODO] since
+Similar result was already proven for STLC
+\cite{schwichtenberg1991upper,beckmann2001exact} since
 simple types can be classified by ranks as well. And
 since rank is easily computable for simple types,
 normalisation of arbitrary STLC terms is in
@@ -1270,17 +1353,20 @@ $\mathsf{TOWER}$. A little weaker result holds for our
 dependently typed PTS:
 
 \begin{theorem}
-    Normalisation of \textbf{closed} well-typed
+    Convertibility of \textbf{closed} well-typed
     PTS-$rk$ terms is in $\mathsf{TOWER}$.
 \end{theorem}
 \begin{proof}
     By Theorem~\ref{bounded-sn}, it is enough to
     compute some upper bound $B$ on the rank of types
     appearing in abstractions of a term, then run a
-    normaliser for $(B+1)$-bounded terms. Consider the
-    following elementary recursive functions, written
-    in pseudocode and using a suitable encoding of
-    terms, tuples and lists:
+    normaliser for $(B+1)$-bounded terms and compare
+    the results; $B$ has to be bound by an elementary
+    recursive function on the size of input. Consider,
+    then, the following elementary recursive functions
+    to compute such upper bound, written in pseudocode
+    and using a suitable encoding of terms, tuples and
+    lists:
     \begin{minted}{agda}
 maxRankLiteral rkᵣ      = r
 maxRankLiteral Π(x:T).U =
@@ -1344,65 +1430,127 @@ it, we would not know ranks of type variables from
 context and there would be no known bound to the rank
 of redexes.
 
+\begin{theorem}
+    Convertibility of closed well-typed PTS-$rk$ terms
+    is \textsc{TOWER}-hard (hence
+    \textsc{TOWER}-complete).
+\end{theorem}
+\begin{proof}
+    By reduction from convertibility of Curry-style
+    STLC terms, since that problem is
+    \textsc{TOWER}-hard \cite{nguyen2024simply}.
+
+    Just in case, we start from Curry-style STLC terms.
+    We then reduce this task to convertibility of
+    \textbf{closed} Curry-style STLC terms by adding
+    $\lambda$-abstractions to close over free
+    variables; finally, we infer types of variables in
+    an STLC term by a linear unification algorithm
+    referenced in \cite{nguyen2024simply} and settle on
+    \textbf{closed} well-typed \textbf{Church-style}
+    STLC terms. The following translation then yields
+    \textbf{open} well-typed PTS-$rk$ terms:
+    \begin{align*}
+        \llparenthesis x \rrparenthesis &= x \\
+        \llparenthesis \lambda x^\sigma.t
+        \rrparenthesis &= \lambda(x:\sigma).
+            \llparenthesis t \rrparenthesis \\
+        \llparenthesis t\,u \rrparenthesis &=
+        \llparenthesis t \rrparenthesis \,
+        \llparenthesis u \rrparenthesis
+    \end{align*}
+    The problem is that types $\sigma$ might contain
+    type variables $T_1,\ldots,T_n$ which are not
+    bound. However, it is easily fixable by introducing
+    missing types via abstractions:
+    \[ t \leadsto \lambda(T_1:\mathsf{rk}_0)\ldots
+    (T_n:\mathsf{rk}_0).\llparenthesis t \rrparenthesis
+    \]
+    Assigning all type variables rank $\mathsf{rk}_0$
+    preserves well-typedness since values of such types
+    were never treated as functions in original term.
+\end{proof}
+
+\section{PTS-\texorpdfstring{$rk$}{rk} as a
+computational model}
+\label{computational}
+
+In this section we prove that functions representable
+in PTS-$rk$ are, under minor assumptions, precisely
+elementary recursive functions, and provide a bunch of
+other, more specialised, results.
+
 Another consequence of Theorem~\ref{bounded-sn} is a
 natural upper bound for functions \textit{uniformly}
-expressible in PTS-$rk$ (this result is also similar to
-the one for STLC [CITE]).
+representable in PTS-$rk$ (this result is also similar
+to the one for STLC
+\cite{schwichtenberg1976definierbare,
+statman1979typed,fortune1983expressiveness}).
 
 \begin{definition}
     A family of functions on natural numbers
-    $\mathcal{F}$ is \emph{uniformly} expressible in
-    PTS-$rk$ if there is a \emph{natural number type}
-    $N:\mathsf{rk}_r$, a \emph{zero} $Z:N$, and a
-    \emph{successor} $S:N\to N$ such that for each
+    $\mathcal{F}$ is \emph{uniformly} representable in
+    PTS-$rk$ if there is an \emph{input natural number
+    type} $N_I:\mathsf{rk}_r$ and an \emph{output
+    natural number type} $N_O:\mathsf{rk}_s$ together
+    with \emph{encodings} $\forall n\in\mathbb{N}.[n]^I
+    :N_I$ and $\forall n.[n]^O:N_O$ such that all of
+    them are in normal form and for each
     $(f:\mathbb{N}^k\to\mathbb{N})\in\mathcal{F}$ there
-    is an \emph{encoding} $F:N\to\ldots\to N\to N$ such
-    that
+    is a \emph{representation}
+    $F:N_I\to\ldots\to N_I\to N_O$
+    which is also in normal form and such that
     \[
         \forall (n_1,\ldots,n_k)\in\mathbb{N}^k:
-        \quad F\,(S^{n_1}\,Z)\,\ldots\,(S^{n_k}\,Z)
-        =_\beta S^{f(n_1,\,\ldots,\,n_k)}\,Z
+        \quad F\,[n_1]^I\,\ldots\,[n_k]^I
+        =_\beta [f(n_1,\,\ldots,\,n_k)]^O
     \]
 \end{definition}
 
+\begin{remark}
+    Note that requirement for terms to be in normal
+    form is not restrictive: we can always normalise a
+    non-normal term.
+\end{remark}
+
 \begin{theorem}\label{uniform-elementary}
     A family of elementary recursive functions
-    is not uniformly expressible in PTS-$rk$.
+    is \textbf{not} uniformly representable in
+    PTS-$rk$.
 \end{theorem}
 \begin{proof}
     By direct diagonalisation argument. Suppose we
     could encode all elementary recursive functions
-    with $N:\mathsf{rk}_r$, $Z:N$ and $S:N\to N$.
+    with $N_I:\mathsf{rk}_r$ and $N_O:\mathsf{rk}_s$.
 
-    Denote by $z$ and $s$ normal forms of $Z$ and $S$,
-    respectively. By Theorem~\ref{bounded-sn},
-    normalisation of $(r+1)$-bounded terms
-    $\mathcal{SN}_{r+1}$ is elementary recursive, so
-    the following function is elementary recursive as
-    well:
+    By Theorem~\ref{bounded-sn}, normalisation of
+    $(r+1)$-bounded terms $\mathcal{SN}_{r+1}$ is
+    elementary recursive, so the following function is
+    elementary recursive as well:
     \[
         h(t) = \begin{cases}
-            1,&\mathcal{SN}_{r+1}(t\,(s^{[t]}\,z))=z,\\
+            1,&\mathcal{SN}_{r+1}(t\,[\mathtt{t}]^I)
+            =[0]^O,\\
             0&\text{otherwise}.
         \end{cases}
     \]
-    (Where $[t]\in\mathbb{N}$ is code of a term $t$.)
+    (Where $\mathtt{t}\in\mathbb{N}$ is code of a term
+    $t$ used in the definition of $h$.)
 
-    By assumption, it is encodable by
-    $\mathcal{H}:N\to N$; denote by $H$ its normal
-    form. Observe the value of $h(H)$:
+    By assumption, it is encodable by $H:N_I\to N_O$.
+    Observe the value of $h(H)$:
     \[
         h(H)=1\Leftrightarrow
-        \mathcal{SN}_{r+1}(H\,(s^{[H]}\,z))=z
+        \mathcal{SN}_{r+1}(H\,[\mathtt{H}]^I)=[0]^O
         \Leftrightarrow
-        H\,(s^{[H]}\,z) =_\beta z
+        H\,[\mathtt{H}]^I =_\beta [0]^O
         \Leftrightarrow
         h(H)=0
     \]
     First equivalence is by definition of $h$; second
     is by virtue of expression under $\mathcal{SN}$
     being $(r+1)$-bounded; the last is by definition
-    of $h$ being encoded by $\mathcal{H}$.
+    of $h$ being encoded by $H$.
 \end{proof}
 
 A logical next question is then: which functions are
@@ -1427,10 +1575,11 @@ not in the same sense as before.
 
 \begin{theorem}
     [Non-uniform elementary representability]
+    \label{non-uniform-rep}
     For each elementary recursive function
     $f:\mathbb{N}^n\to\mathbb{N}$, there is a
     \emph{cost} $c_f$ such that for each \emph{base
-    rank} $j$, there is an \emph{encoding} $F_j:
+    rank} $j$, there is a \emph{representation} $F_j:
     \mathcal{N}_{j+c_f}\to\ldots\to\mathcal{N}_{j+c_f}
     \to\mathcal{N}_j$ such that
     \[
@@ -1441,8 +1590,9 @@ not in the same sense as before.
 \end{theorem}
 \begin{proof}
     As is well-known, simply typed Church numerals
-    admit addition and multiplication [CITE]. It is
-    still true for our rank-refined version:
+    admit addition and multiplication
+    \cite{church1941calculi,barendregt1984lambda}. It
+    is still true for our rank-refined version:
     \[\begin{array}{rcll}
         \mathsf{Add}_j &\triangleq&
         \lambda\,m\,n\,X\,f\,x.
@@ -1455,7 +1605,9 @@ not in the same sense as before.
             \mathcal{N}_j\to\mathcal{N}_j\to
             \mathcal{N}_j
     \end{array}\]
-    By substitution-basis theorem [CITE], it is enough
+    By substitution-basis theorem
+    \cite{mazzanti2002plain,
+    marchenkov2007superpositions}, it is enough
     to additionally provide modulus
     $x\,\mathrm{mod}\,y$ (where $x\,\mathrm{mod}\,0=x$)
     and binary exponentiation $2^x$ since substitution,
@@ -1465,7 +1617,8 @@ not in the same sense as before.
     By Theorem~\ref{uniform-elementary}, we cannot hope
     to have both remaining operations represented
     uniformly. Indeed, na\"{i}ve import of traditional
-    exponentiation term for Church numerals [CITE]
+    exponentiation term for untyped Church numerals
+    \cite{church1941calculi,rosser1984highlights}
     raises the rank of an exponent:
     \begin{multline*}
         \mathsf{Exp}_j \triangleq
@@ -1521,8 +1674,9 @@ not in the same sense as before.
     $\mathrm{mod}\,5$. Notice that there are only $5$
     possible answers: $0$,$1$,$2$,$3$,$4$. As such,
     they can be represented by the type which contains
-    exactly $5$ elements; Church encoding [CITE] yields
-    a type of \emph{selectors}:
+    exactly $5$ elements; Church encoding
+    \cite{bohm1985automatic} yields a type of
+    \emph{selectors}:
     \[V_5 \triangleq \Pi(X:\mathsf{rk}_j).\,
         X\to X\to X\to X\to X\to X
         :\mathsf{rk}_{j+1}
@@ -1613,7 +1767,7 @@ not in the same sense as before.
         c^+&\triangleq L,\\
         \rho^+&\triangleq\lambda(t:S^+)(g:X\to X)(a:X).
             \rho\,(ta)\,g\,(ga),&
-        r^+&:=\rho\,(m\,S\,c\,z).
+        r^+&\triangleq\rho\,(m\,S\,c\,z).
     \end{align*}
     A transition term can be written like this:
     \[
@@ -1634,13 +1788,132 @@ not in the same sense as before.
     \end{multline*}
 \end{proof}
 
+\begin{remark}
+    Note that the only difference between uniform and
+    non-uniform representations is that, in non-uniform
+    representations, we are allowed to pick different
+    $N_I$ and $N_O$ for each function.
+\end{remark}
+
+\begin{corollary}
+    Unary functions in $\mathcal{E}^2$ are uniformly
+    representable in PTS-$rk$.
+\end{corollary}
+\begin{proof}
+    There is a binary function $\mathsf{ev}:
+    \mathbb{N}^2\to\mathbb{N}$ in $\mathcal{E}^3$ which
+    is universal for unary functions in $\mathcal{E}^2$
+    \cite[Section~5, p.~873, footnote~5]{Skordev2008}.
+    In other words, for each $f:\mathbb{N}\to
+    \mathbb{N}$ in $\mathcal{E}^2$, there is a code
+    $\mathtt{f}\in\mathbb{N}$ such that
+    \[
+        \forall n,\quad\mathsf{ev}(\mathtt{f},n)
+        =f(n).
+    \]
+    And $\mathcal{E}^3$ is precisely elementary
+    recursive functions, so by
+    Theorem~\ref{non-uniform-rep} there is a cost $r$
+    and a term
+    $E:\mathcal{N}_r\to\mathcal{N}_r\to\mathcal{N}_0$
+    such that
+    \[
+        \forall m n,\quad E\,\overline{m}\,\overline{n}
+        =_\beta\overline{\mathsf{ev}(m,n)}
+    \]
+    Therefore, there exist $N_I\coloneqq\mathcal{N}_r$
+    and $N_O\coloneqq\mathcal{N}_0$ such that, for each
+    unary $f\in\mathcal{E}^2$, there is a term
+    $F\coloneqq E\,\overline{\mathtt{f}}$ such that
+    \[
+        \forall n,\quad F\,\overline{n}=_\beta
+        E\,\overline{\mathtt{f}}\,\overline{n}=_\beta
+        \overline{\mathsf{ev}(\mathtt{f},n)}=
+        \overline{f(n)}.
+    \]
+\end{proof}
+
+\begin{remark}
+    While our system appears to be restricted to
+    elementary recursive functions, turns out that
+    there is another dependently typed system in which
+    functions on natural numbers are \emph{primitive}
+    recursive \cite{buchholtz2024primitive}.
+    Interestingly enough, part of their solution is in
+    forbidding function types from appearing in the
+    lowest universe, just like in PTS-$rk$.
+\end{remark}
+
+There is also a boundary result which stems from
+information-theoretical considerations.
+
+\begin{theorem}\label{rep-bound}
+    If a function $f:\mathbb{N}^k\to\mathbb{N}$ is
+    representable in PTS-$rk$, it is asymptotically
+    bounded above by an elementary recursive function
+    of the size of input encoding.
+\end{theorem}
+\begin{proof}
+    Since it is representable, there are
+    $N_I:\mathsf{rk}_r$, $N_O:\mathsf{rk}_s$ and
+    $F:N_I\to\ldots\to N_I\to N_O$ such that $F$
+    represents $f$. Therefore,
+    \[
+        \forall(n_1,\ldots,n_k),\quad
+        F\,[n_1]^I\,\ldots\,[n_k]^I=_\beta
+        [f(n_1,\ldots,n_k)]^O
+    \]
+    Since terms are definitionally equal, they must
+    have the same normal form which is then equal to
+    $[f(n_1,\ldots,n_k)]^O$ as a word. Looking at the
+    proof of Theorem~\ref{bounded-sn}, its length is
+    then bounded above by
+    $\mathcal{O}(c\uparrow\ldots\uparrow c\uparrow
+    i(n_1,\ldots,n_k))$ where $i(n_1,\ldots,n_k)$ is
+    length of $F\,[n_1]^I\,\ldots\,[n_k]^I$ as a word.
+    Height of the tower of exponents depends not on the
+    $n_i$-s, but on the $d$-bound which is equal to
+    $r+1$ so this bound is \textsc{ELEMENTARY}.
+
+    By combinatorial considerations, length of $[x]^O$
+    is $\Omega(\log{x})$ so
+    \begin{multline*}
+        f(n_1,\ldots,n_k)=\mathcal{O}(\log\left(c
+        \uparrow\ldots\uparrow c\uparrow i(n_1,\ldots,
+        n_k)\right))
+        =\\=\mathcal{O}(c\uparrow\ldots\uparrow c
+        \uparrow i(n_1,\ldots,n_k)),
+    \end{multline*}
+    thus bounded by an elementary recursive function of
+    the size of input encoding.
+\end{proof}
+
+In particular case where elementary recursive encoding
+is used, function representable in PTS-$rk$ is bounded
+by elementary recursive function.
+
+\begin{corollary}
+    Functions representable in PTS-$rk$ with elementary
+    recursive bound on input encoding size are
+    precisely elementary recursive functions.
+\end{corollary}
+\begin{proof}
+    Since functions computable under elementary
+    recursive time bound are elementary recursive
+    \cite{CookKapron2017PrimitiveRecursive}, this
+    follows from Theorems~\ref{non-uniform-rep},
+    \ref{rep-bound}.
+\end{proof}
+
 Two questions remain open: a) whether there are
 non-elementary functions which are non-uniformly
-computable in PTS-$rk$ and b) whether there are any
-non-polynomial functions which are uniformly
-computable in PTS-$rk$.
+computable in PTS-$rk$ because of non-elementary input
+encoding and b) whether there are any
+functions which are not in $\mathcal{E}^2$ and are
+uniformly computable in PTS-$rk$.
 
-\section{Set-theoretical model of PTS-$rk$}
+\section{Set-theoretical model of
+PTS-\texorpdfstring{$rk$}{rk}}
 \label{rk-model}
 
 Now, studying computational properties of a calculus is
@@ -1660,8 +1933,9 @@ We are going to need an unusual assumption however:
     Produced in discussion with GPT 6 Astra.
 
     Take distinct codes \(c_\kappa\) for every cardinal
-    below \(\aleph_\omega\) and distinct additional
-    codes \(s_j\) for \(j\in\mathbb N\). Define
+    $\kappa$ below \(\aleph_\omega\) and distinct
+    additional codes \(s_j\) for \(j\in\mathbb N\).
+    Define
     \[
         U_i=\{c_\kappa:\kappa\le\aleph_i\}\cup
             \{s_j:j\in\mathbb N\},
@@ -1715,7 +1989,9 @@ We are going to need an unusual assumption however:
             \]
             The eligible pairs $(\kappa, f)$ form a
             set, so ordinary choice (which holds in
-            ZF+GCH [CITE]) suffices. Make each choice
+            ZF+GCH \cite{sierpinski1947hypothese,
+            specker1954verallgemeinerte}) suffices.
+            Make each choice
             once for each $(a,b)$, independently of a
             typing derivation or rank bound.
         \item Abstraction and application are modeled
@@ -1749,13 +2025,543 @@ would break an assumption that $U_i$ are countable,
 which would falsify axioms
 $\mathsf{rk}_n:\mathsf{rk}_0$. That is not a huge
 problem however since ZF+GCH is interpretable in ZFC
-[CITE] (in contrast to ZFC + inaccessible cardinals
-which is not [CITE]).
+\cite{godel1938consistency,godel1940consistency} (in
+contrast to ZFC + inaccessible cardinals which is not
+\cite{kanamori2003higher,kunen1980set,godel1931formal}
+).
 
-\section{Proof-theoretic strength of PTS-$rk$}
+\section{PTS-\texorpdfstring{$rk$}{rk} as a proof
+system}
+\label{proof-system}
+
+To demonstrate ability of PTS-$rk$ to embed nontrivial
+logical theories, we construct a fixed interpretation
+of Tarski--Mostowski--Robinson arithmetic $\R$ in
+$\PTS$: Church numerals and certified finite
+observations first interpret its relational form $\Rt$;
+definable graphs yield $\R$. Interpretation is split
+into two parts since interpretation of $\Rt$ is simpler
+and already exposes all of the main ideas, while direct
+interpretation of $\R$ would be strictly more
+cumbersome.
+
+The following proof was obtained in discussion with
+GPT 6 Astra.
+
+\subsection
+{Classical arithmetic and the target calculus}
+
+Let $\Rt$ be the relational presentation of
+Tarski--Mostowski--Robinson arithmetic in the
+first-order language with equality $\{0,S,=,\le,A,M\}$,
+with ternary predicates $A,M$ and numerals
+$\bar n=S^n0$. Its axioms are the universal closures of
+the following schemes, indexed by external
+$m,n\in\mathbb N$:
+\begin{align}
+    A(\bar m,\bar n,x)&\leftrightarrow
+    \overline{m+n}=x,
+    \tag{$\widetilde R1$}\label{rtilde:add}\\
+    M(\bar m,\bar n,x)&\leftrightarrow \overline{mn}=x,
+    \tag{$\widetilde R2$}\\
+    \bar m&\ne\bar n\quad(m\ne n),
+    \tag{$\widetilde R3$}\\
+    x\le\bar n&\leftrightarrow\bigvee_{i=0}^{n}x=
+    \bar i,
+    \tag{$\widetilde R4$}\label{rtilde:bound}\\
+    x\le\bar n&\lor\bar n\le x.
+    \tag{$\widetilde R5$}\label{rtilde:compare}
+\end{align}
+Here $m+n$ and $mn$ are calculated externally: the
+language has no binary arithmetic function symbols.
+Section~\ref{sec:nonrelational} relates this theory
+to the original, functional arithmetic
+$\R$~\cite{tarski1953undecidable}.
+
+Let us start constructing the model inside PTS-$rk$ and
+proving that axioms hold in our model. First, some
+preliminaries on interpretation of first-order logic
+formulas: put
+\[
+    \bot\triangleq(\Pi(Z:\rk0).Z):\rk1,\qquad
+    \top\triangleq\rk0\to\rk0:\rk1,\qquad
+    \mathsf{id}\triangleq\lambda(Z:\rk0).Z:\top.
+\]
+Use the fixed-answer proof types
+\begin{gather*}
+    \nc P\triangleq P\to\bot,\qquad
+    P\ac Q\triangleq(P\to Q\to\bot)\to\bot,\\
+    \bigvee_c(P_0,\ldots,P_k)\triangleq
+    (P_0\to\bot)\to\cdots\to(P_k\to\bot)\to\bot,\\
+    P\iffc Q\triangleq(P\to Q)\ac(Q\to P).
+\end{gather*}
+A type $P$ is \emph{stable} when $\nc\nc P\to P$ is
+inhabited. Negative types, dependent functions with
+stable codomain, and these encoded conjunctions and
+disjunctions are stable. They support the classical
+logical rules on stable proof types; case elimination
+is into stable targets. In particular, $P\oc\nc P$ has
+the proof
+$\lambda(k:P\to\bot)(l:(P\to\bot)\to\bot).\,l\,k$.
+We never eliminate $\bot$ into an arbitrary positive
+type.
+
+For a carrier $D$, a domain predicate $\Good$, and
+fixed stable atomic interpretations, translate
+quantifiers by
+\begin{align*}
+    (\forall x\,\varphi)^*&\triangleq
+    \Pi(x:D).\,\Good(x)\to\varphi^*(x),\\
+    (\exists x\,\varphi)^*&\triangleq
+    (\Pi(x:D).\,\Good(x)\to\varphi^*(x)\to\bot)
+    \to\bot.
+\end{align*}
+All translated formulas are stable. Once domain closure
+and atomic congruence are proved, the logical rules and
+equality substitution extend structurally to formulas
+on admitted arguments. All interpretations below use
+this one logical encoding.
+
+For lifting propositions $P:\rk a$ into arbitrary
+higher ranks $k\ge 2$, let
+\[
+    L_k(P)\triangleq (\Pi(T:\mathsf{rk}_{k-2}).T\to T)
+        \to P:\rk k.
+\]
+Abstraction gives a map from $P$ to $L_k(P)$;
+application on term $(\lambda\,T\,x.x)$ gives a map in
+the opposite direction.
+
+\subsection{Unary domain and equality}
+Use Church numerals with addition and multiplication as
+a carrier: $D\triangleq\mathcal{N}_1$.
+As a reminder, here are two only \emph{constructors} of
+Church numerals, $\z$ and $\suc$:
+\[
+    \z\triangleq\lambda(X:\rk 1)(f:X\to X)(x:X).x\quad
+    \suc\triangleq\lambda(n:\mathcal{N}_1)\,X\,f\,x.
+        f\,(n\,X\,f\,x).
+\]
+
+Even if the theory we interpret and the host type
+system are not strong enough to support induction on
+Church numerals, we still need to prove some properties
+by induction. For this, we introduce a special helper
+proposition as a domain predicate $\Good$. It would
+state for a given $d:V$ that each inductive property
+$Q$ is satisfied for $d$:
+\begin{multline*}
+    \Good(d)\triangleq\bigl(\Pi(Q:D\to\rk{10}).\;
+    Q(\z)\to(\Pi(u:D).\,Q(u)\to Q(\suc u))\to
+    Q(d)\bigr)\\:\rk{12}.
+\end{multline*}
+
+Zero and successor preserve it by abstraction. For
+example,
+\[
+    \mathsf{good}_0\triangleq\lambda Q\,q_0\,q_s.
+        \,q_0,\qquad
+    \mathsf{good}_s\,d\,g\triangleq
+        \lambda Q\,q_0\,q_s.\,
+        q_s\,d\,(g\,Q\,q_0\,q_s).
+\]
+
+Define equality by negative tests:
+\[
+    E(d,e)\triangleq\Pi(P:D\to\rk1).\;
+    (\nc P(d))\iffc(\nc P(e))\quad:\rk5.
+\]
+It is reflexive, symmetric and transitive; every
+$F:D\to D$ respects it. Equality substitution for $E$
+itself follows from symmetry and transitivity. Define
+the arithmetic atoms by
+\[
+    A^*(d,e,f)\triangleq E(\Add\,d\,e,f),\qquad
+    M^*(d,e,f)\triangleq E(\Mul\,d\,e,f).
+\]
+They respect $E$ in all arguments; axioms
+$\widetilde R1$ and $\widetilde R2$ hold
+definitionally.
+
+\subsection{Order from successor-closed unary tests}
+
+\begin{definition}
+    A \emph{certified unary algebra} is the fixed
+    telescope
+    \[
+        \begin{aligned}
+            \mathcal U={}&(X:\rk1)\,(z:X)\,
+            (s:X\to X)\,(\delta:X\to\rk4)\\
+            &(d_0:\delta z)\,
+            (d_s:(u:X)\to\delta u\to\delta(su)).
+        \end{aligned}
+    \]
+\end{definition}
+
+Basically, this telescope contains all the necessary
+information to ``reinterpret'' Church numerals into new
+carrier $X$ with a domain predicate $\delta$.
+
+Writing $\mathcal U\to B$ abbreviates the successive
+dependent arrows for these binders; it does not
+introduce a record type. Put $\ev_{\mathcal U}(d)=d\,X
+\,z\,s$ and $G(d)\triangleq(\mathcal U\to\delta(\ev_{
+\mathcal U}(d))):\rk6$. For $P:X\to\rk1$, write
+\[
+    \Up_{\mathcal U}(P)\triangleq
+    \Pi(u:X).\,\delta u\to\nc P(u)\to\nc P(su).
+\]
+Meaning that, for ``good'' values in new domain $X$, a
+negation of $P$ is upwards closed. Define
+\[
+    \begin{aligned}
+        O(d,e)\triangleq\bigl(
+        \mathcal U\to\Pi(P:X\to\rk1).\;&
+        \Up_{\mathcal U}(P)\to{}\\
+        &\nc P(\ev_{\mathcal U}(d))\to\nc P(\ev_{
+            \mathcal U}(e))\bigr):\rk6.
+    \end{aligned}
+\]
+
+With such definition, preorder laws and equality
+compatibility are derivable.
+
+\begin{lemma}\label{r-common}
+    The following holds:
+    \begin{itemize}
+        \item $G(\z)$, $G(d)\to G(\suc d)$ and
+            $\Good(d)\to G(d)$ are inhabited.
+        \item $O$ is reflexive and transitive.
+        \item $E(d,e)\to O(d,e)$ and
+            $G(d)\to O(d,\suc d)$ are inhabited.
+        \item Arguments of $O$ respect $E$.
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    Proof terms for most propositions are constructed
+    in an obvious way. The last proposition holds
+    because $O$ is transitive and $E$ is symmetric.
+\end{proof}
+Consequently, for each external $m\le n$, there is a
+closed proof of $O(\overline{m},\overline{n})$, built
+by a finite succession of steps.
+
+\subsection{Finite separation}
+
+In this section we prove that $\widetilde R3$ also
+holds in our interpretation of $\Rt$.
+
+\begin{lemma}
+    For each $n\in\mathbb{N}$, there is a proof of
+    $O(\overline{n+1},\overline{n})\to\bot$.
+\end{lemma}
+\begin{proof}
+    By contradiction. Suppose $H:O(\overline{n+1},
+    \overline{n})$;
+    put $c=n+1$, $q=c+1$, and remember already familiar
+    type of selectors
+    \[
+        F_q\triangleq\underbrace{
+            \rk1\to\cdots\to\rk1}_{
+            q\ \mathrm{arguments}}
+        \to\rk1,\qquad
+        e_i\triangleq\lambda Z_0\ldots Z_{q-1}.Z_i.
+    \]
+    We're going to use them as a ``model'' to interpret
+    an assumed $O$ and get a contradiction: set
+    $X=F_q$, $z=e_0$, and use ``saturated addition''
+    as a successor:
+    \[
+        s(u)\triangleq\lambda Z_0\ldots Z_{q-1}.\
+        u\,Z_{\min(0+1,c)}\cdots Z_{\min(c+1,c)}.
+    \]
+    Thus $s(e_i)=_\beta e_{\min(i+1,c)}$. Define the
+    domain predicate as
+    \[
+        \delta(u)\triangleq\bigl(\Pi(Q:F_q\to\rk3).\;
+        Q(e_0)\to\cdots\to Q(e_c)\to Q(u)\bigr):\rk4.
+    \]
+    Selector projection gives $d_0$. To construct
+    $d_s$, open the output $\delta(su)$ at $Q$ and its
+    branch proofs, and specialize the input certificate
+    to $v\mapsto Q(sv)$. Its branches are the supplied
+    proofs for the appropriate successor selectors.
+
+    Use the unary test
+    \[
+        P(u)\triangleq u\,\underbrace{\top\cdots\top}_{
+            c\ \mathrm{entries}}\,\bot.
+    \]
+    To prove $\Up(P)$, eliminate $\delta(u)$ into the
+    rank-three motive $v\mapsto\nc P(v)\to\nc P(sv)$.
+    At $e_c$ both tests are $\bot$ and the implication
+    is identity. At $e_i$ with $i<c$, there is a
+    premise $\top\to\bot$.
+
+    Specializing $H:O(\overline{c},\overline{n})$ to
+    these data yields $(\bot\to\bot)\to(\top\to\bot)$.
+\end{proof}
+
+\begin{lemma}\label{sep}
+    For each $m>n$, there is a proof of
+    $O(\overline{m},\overline{n})\to\bot$.
+\end{lemma}
+\begin{proof}
+    Suppose $O(\overline{m},\overline{n})$ is
+    inhabited; since $m>n$,
+    $O(\overline{n+1},\overline{m})$ is also inhabited.
+    By transitivity of $O$ it means that
+    $O(\overline{n+1},\overline{n})$ which we know is
+    absurd.
+\end{proof}
+
+Thus, $\widetilde R3$ also holds: if $m\ne n$, then
+either $m>n$ or $m<n$ (these are external natural
+numbers). Assuming $E(\overline{m},\overline{n})$, we
+obtain a paradoxical $O$ and derive a contradiction by
+Lemma~\ref{sep}.
+
+\subsection{Bounded cases}
+
+Here, we prove a crucial lemma from which remaining
+axioms follow. Set
+\[
+    \Case_n(d)\triangleq\bigvee_c
+    \bigl(E(d,\overline{0}),\ldots,E(d,\overline{n}),
+    O(\overline{n+1},d)\bigr):\rk8.
+\]
+\begin{lemma}\label{case}
+    $\Pi(d:D).\;\Good(d)\to\Case_n(d)$ is inhabited for
+    every external $n$.
+\end{lemma}
+\begin{proof}
+    We're going to use the following positive invariant
+    as a $Q$:
+    \[
+        \Inv_n(d)\triangleq\Pi(Z:\rk8).\;(G(d)\to
+        \Case_n(d)\to Z)\to Z\quad:\rk{10}.
+    \]
+    At zero, supply $G(\z)$ and the
+    $E(\z,\overline{0})$
+    branch. At successor, open the target continuation
+    and eliminate the child invariant at that same $Z$,
+    obtaining $G(d)$ and $\Case_n(d)$. Obtain
+    $G(\suc d)$ independently.
+    To construct the new negative case proof, all
+    branch continuations return $\bot$. An $i<n$ branch
+    becomes $i+1$ by successor congruence. The $i=n$
+    branch gives $E(\suc d,\overline{n+1})$, hence
+    $O(\overline{n+1},\suc d)$. The large branch is
+    composed with $O(d,\suc d)$. This proves successor
+    closure.
+
+    Instantiate $\Good(d)$ with $\Inv_n$. Project its
+    case component by choosing $Z=\Case_n(d)$ and
+    continuation $\lambda g\,c.c$. No negative
+    disjunction is eliminated into positive
+    $G$-evidence.
+\end{proof}
+
+\subsection{The relational interpretation}
+
+\begin{theorem}\label{main}
+    The carrier $D$, admitted domain $\Good$, closed
+    operations $\z,\suc$, and relations $E,O,A^*,M^*$
+    interpret the classical relational theory $\Rt$ in
+    $\PTS$. Every translated axiom has an effectively
+    constructible closed proof term. The interpretation
+    is closed under classical first-order derivations:
+    every $\Rt$-derivation of a sentence effectively
+    yields a closed $\PTS$ proof term of its
+    translation. True ground arithmetic atoms have
+    proofs, and false ground atoms have internal
+    refutations.
+\end{theorem}
+\begin{proof}
+    Domain closure, atomic stability, and congruence
+    have been established; hence source deductions
+    translate to PTS proofs. We know that
+    $\widetilde R1$-$\widetilde R3$ hold; let us check
+    the remaining axioms.
+
+    For bounded order ($\widetilde R4$), apply
+    Lemma~\ref{case}. Under $O(d,\overline{n})$, a case
+    with $O(\overline{n+1},d)$ contradicts
+    $\nc O(\overline{n+1},\overline{n})$ by
+    transitivity.
+    Conversely, an $E(d,\overline{i})$ branch with
+    $i\le n$ gives $O(d,\overline{n})$ using
+    $E\Rightarrow O$ and the ground comparison.
+
+    For comparability ($\widetilde R5$), the finite
+    branches of Lemma~\ref{case} give
+    $O(d,\overline{n})$ and the large branch gives
+    $O(\overline{n},d)$.
+
+    The ground proof/refutation claims follow from the
+    arithmetic beta equations, reflexivity, ground
+    order, and Lemma~\ref{sep}.
+\end{proof}
+
+While this interpretation is full, it, however, is not
+faithful on arbitrary first-order sentences.
+
+\begin{remark}[Failure of faithfulness]
+    The interpretation of $\Rt$ is not faithful: the
+    translation of $\rho\triangleq\forall x\,(x\le x)$
+    is provable in $\PTS$, although $\Rt\nvdash\rho$.
+\end{remark}
+\begin{proof}
+    We already know that $O$ is reflexive
+    (Lemma~\ref{r-common}) But why is reflexivity not
+    derivable in $\widetilde R$? It follows from
+    model-theoretic considerations: there is a
+    set-theoretic countermodel.
+
+    Take $N^+=\mathbb N\sqcup\{\omega\}$, where
+    $\omega$ is one new element. Interpret $0$ and
+    successor as usual on $\mathbb N$, put
+    $S\omega=\omega$, and use actual equality. For
+    $x,y\in\mathbb N$, let $A(x,y,z)$ hold exactly when
+    $z=x+y$, and let $M(x,y,z)$ hold exactly when
+    $z=xy$. When at least one of $x,y$ is $\omega$, let
+    each predicate hold exactly when $z=0$. Define
+    \[
+        x\le^+ y\quad\Longleftrightarrow\quad
+        \bigl(x,y\in\mathbb N\ \text{and}
+        \ x\le_{\mathbb N}y\bigr)
+        \ \text{or}\ \bigl(x\in\mathbb N\ \text{and}
+        \ y=\omega\bigr).
+    \]
+    The ground graph schemes hold for every third
+    argument, and distinct numerals are unequal. For
+    every standard $n$, the downset of $n$ is exactly
+    $\{0,\ldots,n\}$, proving both directions of
+    \eqref{rtilde:bound}. Every standard number is
+    comparable with $n$, and $n\le^+\omega$, proving
+    \eqref{rtilde:compare}. Hence this is a model of
+    $\Rt$.
+
+    However, $\omega\not\le^+\omega$, so $\rho$ is
+    false.
+\end{proof}
+
+\subsection{Relation to the original presentation of
+\texorpdfstring{$\R$}{R}}\label{sec:nonrelational}
+The original Tarski--Mostowski--Robinson arithmetic
+$\R$~\cite{tarski1953undecidable} uses
+$\{0,S,+,\cdot,\le\}$ and the following schemes, again
+with universal closure:
+\begin{align}
+    \bar m+\bar n&=\overline{m+n}, &&\tag{R1}\\
+    \bar m\cdot\bar n&=\overline{mn}, &&\tag{R2}\\
+    \bar m&\ne\bar n\quad(m\ne n), &&\tag{R3}\\
+    x\le\bar n&\longrightarrow
+        \bigvee_{i=0}^{n}x=\bar i,
+        &&\tag{R4}\label{r:bound}\\
+    x\le\bar n&\lor\bar n\le x.
+        &&\tag{R5}\label{r:compare}
+\end{align}
+Requiring $A,M$ in $\Rt$ to be total, single-valued
+graphs makes them interchangeable with the function
+symbols $+,\cdot$. This functional strengthening is
+definitionally equivalent to $\R$; even without that
+strengthening, the two theories have the same
+interpretability degree.
+
+\begin{proposition}
+    The classical theories $\Rt$ and $\R$ are mutually
+    interpretable. Consequently $\PTS$ interprets $\R$
+    by definable arithmetic graphs.
+\end{proposition}
+\begin{proof}
+    In $\R$, interpret $A(x,y,z)$ by $x+y=z$ and
+    $M(x,y,z)$ by $xy=z$. The ground arithmetic
+    equations give the two graph schemes. For $i<j$, an
+    assumption $\bar j\le\bar i$ contradicts
+    \eqref{r:bound} and numeral separation;
+    \eqref{r:compare} therefore yields
+    $\bar i\le\bar j$. The case $i=j$ follows from
+    \eqref{r:compare} directly. Thus $\R$ proves all
+    true ground comparisons, and equality substitution
+    supplies the reverse implication in
+    \eqref{rtilde:bound}. The remaining relational
+    schemes are immediate.
+
+    For the other direction define, in $\Rt$,
+    \begin{align*}
+        U_A(x,y,z)&\triangleq A(x,y,z)\land
+        \forall w\bigl(A(x,y,w)\to w=z\bigr),\\
+        F_A(x,y,z)&\triangleq U_A(x,y,z)\lor
+        \bigl(z=0\land\neg\exists v\,U_A(x,y,v)\bigr).
+    \end{align*}
+    For fixed $x,y$, either a unique $A$-output exists
+    or it does not. In the first case $F_A$ selects
+    that output; in the second it selects zero. Hence
+    $F_A$ is provably total and single-valued. At
+    standard inputs, \eqref{rtilde:add} forces its
+    value to be $\overline{m+n}$. Define $F_M$
+    identically with $M$ in place of $A$; its standard
+    value is $\overline{mn}$. These graphs interpret
+    $+,\cdot$; keep $0,S,=,\le$ unchanged. All five
+    schemes of $\R$ follow.
+
+    Composing this graph interpretation with
+    Theorem~\ref{main} gives the claimed interpretation
+    in $\PTS$. The composition uses the encoded
+    classical quantifiers to express values and
+    uniqueness; it does not assert $\Good$-closure of
+    the raw Church operators $\Add,\Mul$.
+\end{proof}
+
+The conclusion is mutual interpretability, not
+bi-interpretability. In particular, the totalized
+graphs need not coincide with the original relations
+$A,M$ on arbitrary arguments.
 
 \section{Conclusion}
-\label{conclusion}
+
+To sum it all up, what started as a funny idea (what if
+there actually was a sound pure type system with
+$\mathsf{type}:\mathsf{type}$) led us to stumble on a
+truly unique dependently typed pure type system,
+PTS-$rk$.
+
+First of all, its normalisation proof is suspiciously
+simple and reminds of classic proofs of normalisation
+for STLC where, instead of an established technique by
+reducibility candidates, one patiently tracks
+complexities of arrow types and makes sure that they
+become simpler after sequences of reductions
+(Section~\ref{rk-sn}). To make sure that this approach
+works for our system, we formalised our proof in Rocq
+proof assistant (Section~\ref{formalisation}) and in
+doing so prepared the groundwork for future verified
+interactions with PTS-$rk$.
+
+After noticing that normalisation proof yields a
+primitive recursive normalisation procedure, we found
+tighter bounds and found out that it has the same
+complexity as normalisation of STLC, which was
+previously unheard of for a dependently typed system
+(Section~\ref{complexity}). In contrast with existing
+pure type systems, our system is able to represent
+elementary recursive functions (both in the sense that
+it is stronger than STLC and weaker than more classical
+dependently typed systems) and seems intimately
+connected to it (Section~\ref{computational}). To
+check if constructions inside PTS-$rk$ even make sense,
+we constructed a set-theoretical model for it which
+assumes a Generalised Continuum Hypothesis in order to
+strictify the hierarchy of $\aleph$-s which act as
+interpretations of our function types
+(Section~\ref{rk-model}). Finally, we provide a lower
+bound on proof-theoretical strength of PTS-$rk$ by
+providing a full interpretation of
+Tarski--Mostowski--Robinson arithmetic $R$ inside it;
+we did it partly because we suspect our system to be
+able to prove its own consistency, therefore
+interpretation of $R$ is the natural first step.
 
 \printbibliography
 \end{document}
