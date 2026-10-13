@@ -2,10 +2,12 @@
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From Equations Require Import Equations.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRStructural DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRUnaryBounded DirectRRelationalSyntax.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural DirectRLogic.
+From Interpretation_of_R.relational Require Import DirectRUnary DirectRUnaryAxioms
+  DirectRUnaryBounded DirectRRelationalSyntax.
 Module RelationalTranslation.
-Import Codes Core Structural NegativeLogic.
+Import CommonCodes Core Structural NegativeLogic.
 Fixpoint term {k n} (env : Fin k -> Term nat n) (t : Relational.term k) : Term nat n :=
   match t with
   | Relational.variable i => env i

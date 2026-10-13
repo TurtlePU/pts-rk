@@ -1,12 +1,14 @@
 (** Uniform beta fold equations for the actual unary Church numerals. *)
 From Stdlib Require Import Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting
-  DirectRCodes DirectRKernel DirectRStructural DirectRSymbolic DirectRUnary
-  DirectRFiniteTables.
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRSymbolic DirectRFiniteTables DirectRIterations.
+From Interpretation_of_R.relational Require Import DirectRUnary.
 
 Module UnaryEvaluation.
-Import Codes Core Structural FiniteTables.
+Import CommonCodes Core Structural FiniteTables.
+Export Iterations.
 Definition evaluate {n} (d X z s : Term nat n) := app (app (app d X) z) s.
 
 (** Prove the fixed open schema, then substitute arbitrary scoped terms.
@@ -41,8 +43,6 @@ Proof.
     _ _ successor_schema) as H.
   unfold evaluate in H. rewrite !replace_application, replace_lift_closed in H. exact H.
 Qed.
-Fixpoint iterations {n} k (z s : Term nat n) : Term nat n :=
-  match k with 0 => z | S k => app s (iterations k z s) end.
 Theorem numeral_evaluation k : forall n (X z s : Term nat n),
   evaluate (lift_closed (Unary.numeral k)) X z s =ᵝ iterations k z s.
 Proof.
@@ -52,9 +52,6 @@ Proof.
       (lift_closed (Unary.numeral k))) X z s =ᵝ app s (iterations k z s)).
     eapply beta_trans; [apply evaluate_successor |]. apply beta_app; [reflexivity |apply IH].
 Qed.
-Lemma finite_iterations q k :
-  iterations k (point q 0) (capped_successor q) = iterate q k.
-Proof. induction k; cbn [iterations iterate]; congruence. Qed.
 Theorem finite_numeral_evaluation c k :
   evaluate (Unary.numeral k) (selector_type (S c)) (point (S c) 0)
     (capped_successor (S c)) =ᵝ point (S c) (Nat.min k c).

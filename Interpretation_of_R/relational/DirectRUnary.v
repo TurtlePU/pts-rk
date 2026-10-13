@@ -1,14 +1,15 @@
 (** Unary presentation from the harmonized note, Theorem 4 (label [main]).
-    This is distinct from Codes.Domain and the functional Theorem 7.
+    This is distinct from the functional Codes.Domain and Theorem 7.
     All certificates below conclude the original PTS typing judgment. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting DirectRCodes DirectRKernel DirectRCheck
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRCheck
   DirectRStructural DirectRLogic.
 Import ListNotations.
 
 Module Unary.
-Import Codes Core.
+Import CommonCodes Core.
 
 Definition bot := NClosed Bottom.
 Definition neg A := nArrow A bot.
@@ -781,9 +782,6 @@ Proof.
   unfold family_step_type, family_result_type in H.
   feed H HC. feed H H0. feed H HS. exact H.
 Qed.
-Lemma arrow_beta {n} (A A' B B' : Term nat n) :
-  A =ᵝ A' -> B =ᵝ B' -> Arrow A B =ᵝ Arrow A' B'.
-Proof. intros HA HB. apply beta_pi; [exact HA | apply rename_equiv; exact HB]. Qed.
 Lemma shift_closed (t : closed_term) : shift t = lift_closed t.
 Proof. rewrite lift_closed_shift, lift_closed_zero. reflexivity. Qed.
 Lemma family_step_beta cutoff :

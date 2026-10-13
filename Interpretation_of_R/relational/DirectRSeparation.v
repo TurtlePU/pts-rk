@@ -1,67 +1,16 @@
 (** Closed finite observations for internal unary order separation. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting
-  DirectRCodes DirectRKernel DirectRCheck DirectRStructural DirectRLogic
-  DirectRFiniteTables DirectRFiniteObservations DirectRFiniteUp
-  DirectRUnary DirectRUnaryEvaluation.
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRCheck
+  DirectRStructural DirectRLogic DirectRFiniteTables DirectRFiniteObservations DirectRFiniteUp
+  DirectRFiniteCertificates.
+From Interpretation_of_R.relational Require Import DirectRUnary DirectRUnaryEvaluation.
 Import ListNotations.
 
 Module Separation.
-Import Codes Core Structural NegativeLogic FiniteTables FiniteObservations FiniteUp UnaryEvaluation.
-Definition predicate q : closed_term := lam (selector_type q) (delta q V0).
-Lemma predicate_typed q : 0 < q -> Typed ε (predicate q) (Arrow (selector_type q) (𝓤 4)).
-Proof.
-  intro Hq. apply (tLam (selector_type_formation q ε)), delta_formation; [exact Hq |].
-  pose proof (tV (ε & selector_type q) fzero) as H.
-  change (Typed (ε & selector_type q) V0 (shift (selector_type q))) in H.
-  unfold shift in H. rewrite rename_selector_type in H. exact H.
-Qed.
-Lemma predicate_beta q {n} (u : Term nat n) :
-  app (lift_closed (predicate q)) u =ᵝ delta q u.
-Proof.
-  unfold lift_closed at 1. unfold predicate.
-  change (app (lam (rename empty_renaming (selector_type q))
-    (rename (weak empty_renaming) (delta q V0))) u =ᵝ delta q u).
-  rewrite rename_selector_type, rename_delta.
-  eapply beta_trans; [apply beta_contract |]. unfold subst. rewrite replace_delta. reflexivity.
-Qed.
-Lemma predicate_in_context {n} (Γ : Ctx nat n) q : 0 < q ->
-  Typed Γ (lift_closed (predicate q)) (Arrow (selector_type q) (𝓤 4)).
-Proof.
-  intro Hq. pose proof (lift_closed_typed Γ _ _ (predicate_typed q Hq)) as H.
-  unfold lift_closed at 2 in H. rewrite rename_arrow, rename_selector_type in H. exact H.
-Qed.
-Lemma predicate_application {n} (Γ : Ctx nat n) q u : 0 < q ->
-  Typed Γ u (selector_type q) -> Typed Γ (app (lift_closed (predicate q)) u) (𝓤 4).
-Proof. intros Hq Hu. eapply arrow_application; [apply predicate_in_context; exact Hq |exact Hu]. Qed.
-Theorem initial_certificate q : 0 < q -> Realizes (app (predicate q) (point q 0)).
-Proof.
-  intro Hq. rewrite <- (lift_closed_zero (predicate q)).
-  eapply inhabited_conversion; [|apply predicate_application; auto using point_typed |symmetry; apply predicate_beta].
-  rewrite <- (lift_closed_zero (point q 0)). apply delta_point. exact Hq.
-Qed.
-Definition step_type q : closed_term := Π (selector_type q)
-  (Arrow (app (lift_closed (predicate q)) V0)
-    (app (lift_closed (predicate q)) (app (lift_closed (capped_successor q)) V0))).
-Lemma step_type_formation q : 0 < q -> Typed ε (step_type q) (𝓤 5).
-Proof.
-  intro Hq. assert (HA : Typed ε (selector_type q) (𝓤 1)).
-  { destruct q; [lia |apply selector_type_formation]. }
-  unfold step_type. apply (tPi (b:=5) HA).
-  assert (Hu : Typed (ε & selector_type q) V0 (selector_type q)).
-  { pose proof (tV (ε & selector_type q) fzero) as H.
-    change (Typed (ε & selector_type q) V0 (shift (selector_type q))) in H.
-    unfold shift in H. rewrite rename_selector_type in H. exact H. }
-  apply (arrow_formation _ _ _ 4 4); apply predicate_application; auto.
-  eapply arrow_application; [apply capped_typed |exact Hu].
-Qed.
-Theorem step_certificate q : 0 < q -> Realizes (step_type q).
-Proof.
-  intro Hq. eapply inhabited_conversion; [apply delta_step_realized; exact Hq |apply step_type_formation; exact Hq |].
-  unfold delta_step_type, step_type. apply beta_pi; [reflexivity |].
-  apply Unary.arrow_beta; symmetry; apply predicate_beta.
-Qed.
+Import CommonCodes Core Structural NegativeLogic FiniteTables FiniteObservations FiniteUp UnaryEvaluation.
+Export FiniteCertificates.
 Definition up_type c : closed_term := Π (selector_type (S c))
   (Arrow (app (lift_closed (predicate (S c))) V0) (Step c V0)).
 Lemma up_type_formation c : Typed ε (up_type c) (𝓤 5).
@@ -79,12 +28,10 @@ Theorem up_certificate c : Realizes (up_type c).
 Proof.
   eapply inhabited_conversion; [apply upward_realized |apply up_type_formation |].
   unfold upward_type, up_type. apply beta_pi; [reflexivity |].
-  apply Unary.arrow_beta; [symmetry; apply predicate_beta |reflexivity].
+  apply Structural.arrow_beta; [symmetry; apply predicate_beta |reflexivity].
 Qed.
 
 (** A fixed, checked eliminator exposes the observation binders of O. *)
-Definition step_guard {n} (X s D : Term nat n) :=
-  Π X (Arrow (app (shift D) V0) (app (shift D) (app (shift s) V0))).
 Definition upward_guard {n} (X s D P : Term nat n) :=
   Π X (Arrow (app (shift D) V0)
     (Arrow (Neg (app (shift P) V0)) (Neg (app (shift P) (app (shift s) V0))))).
@@ -215,7 +162,7 @@ Proof.
     assert (HC : inhabited Γ (Arrow (Neg (lift_closed Bottom)) (Neg (lift_closed Top)))).
     { eapply inhabited_conversion; [exact H | |].
       - apply (arrow_formation _ _ _ 2 2); apply neg_formation; auto using bottom_in_context.
-      - apply Unary.arrow_beta; apply neg_beta; assumption. }
+      - apply Structural.arrow_beta; apply neg_beta; assumption. }
     eapply arrow_elim.
     + eapply arrow_elim; [exact HC |]. apply identity_inhabited. exists 1. apply bottom_in_context.
     + exists (lift_closed top_proof). apply lift_closed_typed, top_inhabited.

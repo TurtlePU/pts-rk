@@ -3,7 +3,8 @@
 From Stdlib Require Import Lists.List Arith.PeanoNat Arith.Compare_dec Lia Setoids.Setoid.
 From Equations Require Import Equations.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import DirectRCountermodel DirectRRelationalSyntax.
+From Interpretation_of_R Require Import DirectRCountermodel.
+From Interpretation_of_R.relational Require Import DirectRRelationalSyntax.
 Import ListNotations.
 Module RelationalCountermodel.
 Import SourceCountermodel.

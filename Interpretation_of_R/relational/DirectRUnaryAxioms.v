@@ -1,12 +1,13 @@
 (** Relational axiom witnesses for the harmonized unary interpretation. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRStructural DirectRLogic DirectRUnary.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural DirectRLogic.
+From Interpretation_of_R.relational Require Import DirectRUnary.
 Import ListNotations.
 
 Module UnaryAxioms.
-Import Codes Core Structural NegativeLogic Unary.
+Import CommonCodes Core Structural NegativeLogic Unary.
 
 Lemma rename_case {m n} (f : Fin m -> Fin n) cutoff d :
   rename f (Case cutoff d) = Case cutoff (rename f d).

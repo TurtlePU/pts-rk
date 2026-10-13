@@ -2,12 +2,13 @@
     system, in the original PTS typing judgment. *)
 From Stdlib Require Import Lists.List.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRStructural DirectRLogic DirectRUnary DirectRRelationalSyntax
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural DirectRLogic.
+From Interpretation_of_R.relational Require Import DirectRUnary DirectRRelationalSyntax
   DirectRRelationalTranslation DirectRRelationalEquality DirectRRelationalAxioms.
 Import ListNotations.
 Module RelationalDeduction.
-Import Codes Core Structural NegativeLogic RelationalTranslation.
+Import CommonCodes Core Structural NegativeLogic RelationalTranslation.
 
 Theorem preservation {k} Ξ (A : Relational.formula k) : Relational.derives Ξ A ->
   forall n (Γ : Ctx nat n) env,

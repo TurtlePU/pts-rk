@@ -2,13 +2,14 @@
     interpretation. This is separate from the functional Theorem5Target. *)
 From Stdlib Require Import Lists.List Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRUnary DirectRRelationalSyntax DirectRRelationalTranslation
-  DirectRRelationalAxioms DirectRRelationalGround DirectRRelationalDeduction
-  DirectRRelationalCountermodel.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel.
+From Interpretation_of_R.relational Require Import DirectRUnary DirectRRelationalSyntax
+  DirectRRelationalTranslation DirectRRelationalAxioms DirectRRelationalGround
+  DirectRRelationalDeduction DirectRRelationalCountermodel.
 Import ListNotations.
 Module Theorem4.
-Import Codes Core RelationalTranslation.
+Import CommonCodes Core RelationalTranslation.
 
 Inductive ground_atom :=
 | equality_atom (t u : Relational.term 0)

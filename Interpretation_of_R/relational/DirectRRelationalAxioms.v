@@ -1,12 +1,14 @@
 (** Source axiom preservation for the structural relational translation. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRStructural DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRUnaryBounded
-  DirectRUnaryArithmetic DirectRSeparation DirectRRelationalSyntax DirectRRelationalTranslation.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural DirectRLogic.
+From Interpretation_of_R.relational Require Import DirectRUnary DirectRUnaryAxioms
+  DirectRUnaryBounded DirectRUnaryArithmetic DirectRSeparation DirectRRelationalSyntax
+  DirectRRelationalTranslation.
 Import ListNotations.
 Module RelationalAxioms.
-Import Codes Core Structural NegativeLogic RelationalTranslation.
+Import CommonCodes Core Structural NegativeLogic RelationalTranslation.
 Lemma formula_iff {k n} A B (env : Fin k -> Term nat n) :
   formula (Relational.iff A B) env = UnaryBounded.Equivalence (formula A env) (formula B env).
 Proof. reflexivity. Qed.

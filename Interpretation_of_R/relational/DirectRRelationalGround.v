@@ -1,11 +1,12 @@
 (** Ground correctness for the independent relational source syntax.
     Truth and falsity produce PTS inhabitants, not merely host propositions. *)
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRStructural DirectRUnary DirectRSeparation DirectRUnaryArithmetic
-  DirectRRelationalSyntax DirectRRelationalTranslation.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural.
+From Interpretation_of_R.relational Require Import DirectRUnary DirectRSeparation
+  DirectRUnaryArithmetic DirectRRelationalSyntax DirectRRelationalTranslation.
 Module RelationalGround.
-Import Codes Core Structural RelationalTranslation.
+Import CommonCodes Core Structural RelationalTranslation.
 Theorem equality_true t u : value t = value u -> Realizes (sentence (Relational.equal t u)).
 Proof.
   intro H. unfold sentence. cbn [formula]. rewrite !closed_term_translation, H.

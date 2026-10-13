@@ -1,9 +1,12 @@
 (** Independent source/translation audit, including the complete unary
     relational Theorem 4 from the harmonized manuscript. *)
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRRelationalSyntax DirectRRelationalTranslation DirectRRelationalAxioms DirectRRelationalGround
-  DirectRRelationalEquality DirectRRelationalDeduction DirectRRelationalCountermodel DirectRTheorem4.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel.
+From Interpretation_of_R.relational Require Import DirectRRelationalSyntax
+  DirectRRelationalTranslation DirectRRelationalAxioms DirectRRelationalGround
+  DirectRRelationalEquality DirectRRelationalDeduction DirectRRelationalCountermodel
+  DirectRTheorem4.
 Theorem relational_axiom_preservation : forall k n (Γ : Ctx nat n) env (A : Relational.formula k),
   Relational.axiom A -> exists p, @typ nat RankSorts n Γ p (RelationalTranslation.formula A env).
 Proof. exact @RelationalAxioms.source_axiom_realized. Qed.

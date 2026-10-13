@@ -1,11 +1,12 @@
 (** Both directions of the relational bounded-order axiom. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRStructural DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRSeparation.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural DirectRLogic.
+From Interpretation_of_R.relational Require Import DirectRUnary DirectRUnaryAxioms DirectRSeparation.
 Import ListNotations.
 Module UnaryBounded.
-Import Codes Core Structural NegativeLogic Unary UnaryAxioms.
+Import CommonCodes Core Structural NegativeLogic Unary UnaryAxioms.
 
 Definition bounded_atoms {n} cutoff (d : Term nat n) :=
   map (fun i => E d (lift_closed (Unary.numeral i))) (seq 0 (S cutoff)).

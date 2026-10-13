@@ -1,10 +1,12 @@
 (** Relational arithmetic schemes, with an arbitrary third argument. *)
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting
-  DirectRCodes DirectRKernel DirectRStructural DirectRLogic DirectRFiniteUp
-  DirectRUnary DirectRUnaryAxioms DirectRUnaryBounded DirectRUnaryEvaluation DirectRSeparation.
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRLogic DirectRFiniteUp.
+From Interpretation_of_R.relational Require Import DirectRUnary DirectRUnaryAxioms
+  DirectRUnaryBounded DirectRUnaryEvaluation DirectRSeparation.
 Module UnaryArithmetic.
-Import Codes Core Structural NegativeLogic FiniteUp Unary UnaryAxioms UnaryBounded UnaryEvaluation.
+Import CommonCodes Core Structural NegativeLogic FiniteUp Unary UnaryAxioms UnaryBounded UnaryEvaluation.
 
 Definition GraphEquivalence {n} (l r : closed_term) (d : Term nat n) :=
   Equivalence (E (lift_closed l) d) (E (lift_closed r) d).

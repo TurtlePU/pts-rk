@@ -2,11 +2,13 @@
 From Stdlib Require Import Lists.List.
 From Equations Require Import Equations.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import AbstractRewriting DefEq Context Typing Ranks
-  DirectRCodes DirectRKernel DirectRStructural DirectRLogic DirectRUnary
-  DirectRUnaryAxioms DirectRFiniteUp DirectRRelationalSyntax DirectRRelationalTranslation.
+From PTSrk Require Import AbstractRewriting DefEq Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRLogic DirectRFiniteUp.
+From Interpretation_of_R.relational Require Import DirectRUnary DirectRUnaryAxioms
+  DirectRRelationalSyntax DirectRRelationalTranslation.
 Module RelationalEquality.
-Import Codes Core Structural NegativeLogic RelationalTranslation.
+Import CommonCodes Core Structural NegativeLogic RelationalTranslation.
 
 Lemma symmetry {n} (Γ : Ctx nat n) d e :
   Typed Γ d (lift_closed Unary.Domain) -> Typed Γ e (lift_closed Unary.Domain) ->

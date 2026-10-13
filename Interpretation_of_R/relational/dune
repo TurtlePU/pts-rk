@@ -1,0 +1,24 @@
+(rocq.theory
+ (name Interpretation_of_R.relational)
+ (package pts-rk)
+ (modules DirectRRelationalAudit
+          DirectRRelationalAxioms
+          DirectRRelationalCountermodel
+          DirectRRelationalDeduction
+          DirectRRelationalEquality
+          DirectRRelationalGround
+          DirectRRelationalSyntax
+          DirectRRelationalTranslation
+          DirectRSeparation
+          DirectRTheorem4
+          DirectRUnary
+          DirectRUnaryArithmetic
+          DirectRUnaryAudit
+          DirectRUnaryAxioms
+          DirectRUnaryBounded
+          DirectRUnaryEvaluation)
+ (theories Stdlib Equations PTSrk Interpretation_of_R))
+
+(alias
+ (name audit)
+ (deps DirectRRelationalAudit.vo DirectRUnaryAudit.vo))

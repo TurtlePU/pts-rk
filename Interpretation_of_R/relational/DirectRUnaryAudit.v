@@ -1,14 +1,16 @@
 (** Explicit original-kernel statement and assumption audit for the unary
     bounded-case milestone. This is not an assertion of Theorem 4. *)
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRFiniteTables
-  DirectRPositive DirectRFiniteObservations DirectRFiniteUp DirectRUnaryEvaluation DirectRSeparation
-  DirectRUnaryBounded DirectRUnaryArithmetic.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRFiniteCertificates.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRLogic
+  DirectRFiniteTables DirectRPositive DirectRFiniteObservations DirectRFiniteUp.
+From Interpretation_of_R.relational Require Import DirectRUnary DirectRUnaryAxioms
+  DirectRUnaryEvaluation DirectRSeparation DirectRUnaryBounded DirectRUnaryArithmetic.
 
 Theorem unary_bounded_cases : forall cutoff, exists p,
   @typ nat RankSorts 0 ε p
-    (Π Unary.Domain (Codes.Arrow (Unary.admitted Codes.V0) (Unary.Case cutoff Codes.V0))).
+    (Π Unary.Domain (CommonCodes.Arrow (Unary.admitted CommonCodes.V0) (Unary.Case cutoff CommonCodes.V0))).
 Proof. exact Unary.bounded_case_realized. Qed.
 
 Check unary_bounded_cases.
@@ -34,8 +36,8 @@ Print Assumptions NegativeLogic.positive_invariant_intro.
 
 Theorem unary_comparability : forall cutoff, exists p,
   @typ nat RankSorts 0 ε p
-    (Π Unary.Domain (Codes.Arrow (Unary.admitted Codes.V0)
-      (UnaryAxioms.Compare cutoff Codes.V0))).
+    (Π Unary.Domain (CommonCodes.Arrow (Unary.admitted CommonCodes.V0)
+      (UnaryAxioms.Compare cutoff CommonCodes.V0))).
 Proof. exact UnaryAxioms.R5_realized. Qed.
 
 Check unary_comparability.
@@ -75,10 +77,10 @@ Print Assumptions FiniteObservations.delta_step_realized.
 
 Theorem unary_no_back : forall k, exists p,
   @typ nat RankSorts 0 ε p
-    (Codes.Neg (Unary.O (Unary.numeral (S k)) (Unary.numeral k))).
+    (CommonCodes.Neg (Unary.O (Unary.numeral (S k)) (Unary.numeral k))).
 Proof. exact Separation.no_back_realized. Qed.
 Theorem unary_numeral_inequality : forall i j, i <> j -> exists p,
-  @typ nat RankSorts 0 ε p (Codes.Neg (Unary.E (Unary.numeral i) (Unary.numeral j))).
+  @typ nat RankSorts 0 ε p (CommonCodes.Neg (Unary.E (Unary.numeral i) (Unary.numeral j))).
 Proof. exact Separation.R3_realized. Qed.
 
 Check FiniteUp.upward_realized.
@@ -91,8 +93,8 @@ Check unary_numeral_inequality.
 Print Assumptions FiniteUp.upward_realized.
 Print Assumptions UnaryEvaluation.numeral_evaluation.
 Print Assumptions UnaryEvaluation.finite_numeral_evaluation.
-Print Assumptions Separation.initial_certificate.
-Print Assumptions Separation.step_certificate.
+Print Assumptions FiniteCertificates.initial_certificate.
+Print Assumptions FiniteCertificates.step_certificate.
 Print Assumptions Separation.up_certificate.
 Print Assumptions Separation.finite_specialization.
 Print Assumptions unary_no_back.
