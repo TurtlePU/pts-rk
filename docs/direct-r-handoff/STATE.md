@@ -1,6 +1,220 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: separate relational and functional libraries
+## Current continuation: independent functional deduction infrastructure
+
+Request: proceed proving Theorem 7. Existing uncommitted proof work and index
+state are preserved; user logs/ untouched. HEAD remains 7b6bdab. No commit/push.
+Baseline local CI including pristine upstream exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/functional-deduction-baseline"
+bash tools/check-local-ci.sh`; /tmp/pts-rk-functional-deduction-baseline.log.
+
+New checked modules:
+- DirectRFunctionalSyntax: source renaming/substitution, the five functional R
+  schemes, independent classical natural deduction with primitive conjunction,
+  disjunction/existential, equality replacement, weakening and ex falso.
+- DirectRFunctionalTranslation: environment extensionality, source and target
+  renaming/substitution, and instantiate_translation for arbitrary formulas.
+- DirectRFunctionalFormulaLogic: formation and stability of every translated
+  formula, plus guarded universal introduction/instantiation. All constructions
+  use the original annotated PTS terms and typing judgment.
+- DirectRFunctionalSourceAxioms: source_axiom_realized bridges each independent
+  source scheme to the existing all-index PTS witnesses, in arbitrary contexts.
+  The harmonized paper's functional R4 is implication, not relational iff.
+
+Exact per-module build command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer Interpretation_of_R/functional/DirectRFunctionalSyntax.vo`, and
+similarly DirectRFunctionalTranslation.vo, DirectRFunctionalFormulaLogic.vo,
+DirectRFunctionalSourceAxioms.vo.
+Compiler logs /tmp/pts-rk-functional-syntax-{1,2}.log: exit 1 (tactic branch
+count), then 0. Translation-1: exit 0. Formula-logic-{1,2,3}: exits 1,1,0
+(implicit lifted sort, then unspecified domain of double_negation_map; fixed
+by explicit domain formation and source formula). Source-axioms-1: exit 0.
+No timeout. New lemmas are registered for Print Assumptions, and CI retains
+its unchanged checks/timeouts with four additional explicit module stages.
+
+Theorem 7 remains INCOMPLETE. First remaining goal is congruence/equality
+replacement for arbitrary translated formulas, then induction on the independent
+FunctionalSyntax.derives (including all logical and eigenvariable rules).
+Target preservation: typed Good-admitted environments and inhabited translated
+hypotheses imply an inhabitant of the translated conclusion, in original typ.
+For equality transport, reuse the scoped successor_congruence in
+FunctionalBounded, addition_congruence/equality_transitivity in
+FunctionalAddition, and multiplication_congruence in FunctionalMultiplication.
+Unlike the unary equality API, these require GAt premises; obtain them from
+FunctionalTerms.term_observed on the Good-admitted environments. Do not discard
+those premises when adapting the relational proof. Symmetry also needs a scoped
+wrapper around Foundations.Law_eq_sym_typed (FunctionalTerms' wrapper is closed).
+Also retain the final theorem's nonfaithfulness witness and effective witness
+packaging obligations; no Type-valued Theorem5Target or generator totality claim.
+Next exact command after adding the equality module and its Dune registration:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer Interpretation_of_R/functional/DirectRFunctionalEquality.vo`.
+The functional audit exited 0, with 428 closed assumption reports (32 new
+queries) and no Axioms report. Exact command (same environment):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer Interpretation_of_R/functional/DirectRFunctionalAudit.vo`.
+Final local CI exited 0 including pristine upstream and the four new stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/functional-deduction-final"
+bash tools/check-local-ci.sh`. Contribution stages were incremental. The separate
+fresh full build exited 0, with 536 closed assumption reports and no Axioms:
+`opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-functional-deduction-full.uFR5gh --display=short --no-buffer`.
+Exact durable logs: verification/functional-deduction-full-2026-10-13.log and
+verification/functional-deduction-ci-2026-10-13.log. Both match their /tmp originals
+byte-for-byte. No remote CI result is claimed. No timeout occurred.
+All new proof work remains uncommitted, HEAD 7b6bdab, and no push was performed.
+Source/docs diff checks and shell syntax check
+exited 0. Exact compiler transcripts, including all three failures, are retained
+under verification/functional-{syntax-1,syntax-2,translation-1,formula-logic-1,
+formula-logic-2,formula-logic-3,source-axioms-1,deduction-baseline,deduction-audit}
+-2026-10-13.log (each brace entry denotes one filename, with no line break).
+These retained transcripts have been compared byte-for-byte to the /tmp logs;
+compiler whitespace is intentional and excluded from source diff checks.
+
+## Current continuation: Good instantiation and bounded cases
+
+Request: proceed proving Theorem 7. All uncommitted multiplication work, index
+state and user logs/ are preserved. HEAD remains 7b6bdab; no commit or push.
+Baseline local CI including pristine upstream exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/good-invariant-baseline"
+bash tools/check-local-ci.sh`; /tmp/pts-rk-good-invariant-baseline.log.
+
+New module DirectRFunctionalCases: a fixed checked specialization exposes the
+ORIGINAL Good eliminator for arbitrary scoped d and rank-10 family Q. Its
+first build exited 0. Generic closure-family formation and beta conversion to
+the existing invariant-closure types are being checked. Build 2 exited 1 for
+an implicit scope parameter in step_motive_beta's change command; explicit
+scope annotations are now supplied in both motive beta lemmas.
+Command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer Interpretation_of_R/functional/DirectRFunctionalCases.vo`.
+Logs: /tmp/pts-rk-good-invariant-1.log through -3.log.
+Build 3 exited 1 because lifting an indexed invariant is not definitionally
+its scoped instance; proved renaming equalities normalize that plumbing.
+Build 4 reached motive_zero and exited 1 for the same implicit-scope issue;
+build 5 exited 0 after an explicit renaming equality. Build 6 exited 0:
+good_invariant_realized and bounded_case_realized now give closed original
+typ witnesses uniformly in cutoff, for arbitrary Good-admitted elements.
+They instantiate the existing Good motive at rank 10 and apply the four
+constructor-closure witnesses; no host induction over expression trees is used.
+
+DirectRFunctionalAxioms compiled on its first build (exit 0): use the bounded case
+to derive original R4 by internal no_back refutation of its large branch, and
+R5 by transporting each finite equality or composing the large lower bound.
+Command is the same as above with DirectRFunctionalAxioms.vo; first log is
+/tmp/pts-rk-functional-axioms-1.log. Independent functional deduction
+preservation remains; Theorem 7 is not complete.
+The new unconditional results are `forall n, Realizes (R4 n)`,
+`forall n, Realizes (R5 n)`, and
+`forall a, Realizes (axiom_type a)`, with the original Codes definitions.
+Core.Realizes means `exists p, @typ nat RankSorts 0 ε p ...`.
+The old generated-witness totality contracts and Type-valued Theorem5Target
+record are not asserted to be constructed by this Prop-valued existence theorem.
+31 new lemma assumption queries, public type checks and both modules have been
+registered in the functional audit and unchanged-timeout CI driver.
+The functional audit exited 0 with 396 closed assumption reports, including
+all 31 new lemma queries. Exact audit command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer Interpretation_of_R/functional/DirectRFunctionalAudit.vo`.
+Log: /tmp/pts-rk-functional-axioms-audit.log.
+The new bounded_case_type is exactly
+`Π Domain (Arrow (GoodAt V0) (CaseAt n V0))`; its theorem is unconditional
+`forall n, Realizes (bounded_case_type n)`.
+Final local CI exited 0, including pristine upstream and both new stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/functional-axioms-final"
+bash tools/check-local-ci.sh`. Its contribution stages were incremental.
+The fresh FULL build exited 0 with 504 closed assumption reports and no Axioms
+report. Exact command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-functional-axioms-full.qDviqx --display=short --no-buffer`.
+Durable full transcript: verification/functional-axioms-full-2026-10-13.log.
+No timeout occurred. Source/documentation `git diff --check` and
+`bash -n tools/ci-check-direct-r.sh` exited 0; raw logs retain compiler whitespace.
+All new work is uncommitted, prior multiplication changes and index state are
+preserved, user logs/ are untouched, and HEAD remains 7b6bdab. No push was
+requested or performed and no remote CI success is claimed.
+Durable final audit/CI transcripts:
+verification/functional-axioms-audit-2026-10-13.log and
+verification/functional-axioms-ci-2026-10-13.log.
+Baseline and incremental transcripts are retained in verification/ as
+good-invariant-baseline, good-invariant-1 through -6, and functional-axioms-1
+(all suffixed -2026-10-13.log). Failed scope/renaming attempts remain visible.
+
+First remaining proof obligation: DirectRFirstOrder currently defines terms,
+formulas and translation but no source substitution or derives relation.
+Define independent scoped classical deduction over that functional syntax,
+then prove translation/substitution, formula stability and equality replacement
+for admitted arguments, and deduction preservation. Bridge its source axiom
+formulas to these Codes scheme witnesses; do not define derivability as target
+inhabitation or replace the functional carrier by the relational one.
+Next exact command after implementing the independent functional deduction
+system/translation preservation (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer @Interpretation_of_R/functional/audit`.
+
+## Previous continuation: multiplication invariant, after 7b6bdab
+
+User requested commit/push, then further Theorem 7 proofs. Committed the
+reorganization and accumulated checked milestones as 7b6bdab74d1518bf8e830d717c0025de4df485db;
+`git push origin main` exited 0. User logs/ remain untracked and untouched.
+The commit retains exact compiler logs, including trailing whitespace emitted
+by rocqdep; the pre-commit diff check reported that log whitespace (not a proof
+failure). Earlier diff checks had not inspected these then-untracked logs.
+
+Baseline local CI (including pristine upstream) exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/multiplication-baseline"
+bash tools/check-local-ci.sh`; /tmp/pts-rk-multiplication-baseline.log.
+New DirectRFunctionalMultiplication proves scoped constructor formation,
+observation closure, congruence, and both order bounds with their explicit
+positive-factor premises, plus finite/finite and positive large-factor cases.
+The first and second incremental builds exited 0, including both zero-factor
+laws, equality-to-zero transport, finite/large and large/finite cases, and the
+large/large branch. The third build exited 1 for a missing rename_order lemma
+in the combined case proof; that structural equality has now been proved.
+The fourth run exited 0 for the module and functional assumption audit:
+365 closed assumption reports, including all 22 new multiplication lemmas.
+The unconditional public result is
+`forall n, Realizes (multiplication_invariant_type n)`, where the type is
+`Π Domain (Π (lift_closed Domain)
+  (Arrow (InvariantAt n (shift V0)) (Arrow (InvariantAt n V0)
+    (InvariantAt n (multiplication_at (shift V0) V0)))))`.
+Here multiplication_at x y is the original doubly applied multiplication
+constructor. The scoped theorem also accepts arbitrary typed x,y and their
+two invariant witnesses. It never assumes the output invariant.
+No PTS rule or proof assumption is changed.
+Command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer Interpretation_of_R/functional/DirectRFunctionalMultiplication.vo`.
+Logs: /tmp/pts-rk-multiplication-1.log through -4.log. The combined negative
+cases and positive invariant closure now compile; both G witnesses remain
+separate. The fresh full build exited 0, with 473 closed assumption reports
+and no Axioms report. Exact command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-multiplication-full.bL0el8 --display=short --no-buffer`.
+Durable log: verification/multiplication-full-2026-10-13.log.
+No timeout occurred. The first final-CI
+attempt exited 1 at 02-kernel because its build overlapped the still-finishing
+audit in the same Dune directory; rerunning after the audit exited is recorded
+as /tmp/pts-rk-multiplication-ci-2.log and exited 0. Exact successful command:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/multiplication-final-2"
+bash tools/check-local-ci.sh`. It includes pristine upstream and the new
+multiplication stage; contribution stages reuse the completed audit output.
+No proof or resource limit was weakened.
+Durable logs: verification/multiplication-baseline-2026-10-13.log,
+multiplication-1/-2/-3/-4-2026-10-13.log, multiplication-ci-2026-10-13.log
+(the Dune-lock failure), and multiplication-ci-final-2026-10-13.log.
+Theorem 7 remains incomplete. Next goal: instantiate Good at invariant_motive,
+then project CaseAt, derive R4/R5, and prove functional deduction preservation.
+Next exact command after that edit (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer @Interpretation_of_R/functional/audit`.
+This new multiplication work is not yet committed. Source/documentation
+`git diff --check` and `bash -n tools/ci-check-direct-r.sh` exited 0. Raw logs
+retain compiler whitespace. HEAD and origin/main remain 7b6bdab; the user
+logs/ directory is untouched. No remote CI result is claimed for this work.
+
+## Previous continuation: separate relational and functional libraries
 
 Request: isolate the interpretations in Interpretation_of_R, with relational/
 and functional/ subdirectories. Existing uncommitted proof changes and user

@@ -161,6 +161,9 @@ stage 06a-functional-evaluation "$ROOT" Interpretation_of_R/functional/DirectRFu
 stage 06a-functional-separation "$ROOT" Interpretation_of_R/functional/DirectRFunctionalSeparation.vo
 stage 06a-functional-bounded "$ROOT" Interpretation_of_R/functional/DirectRFunctionalBounded.vo
 stage 06a-functional-addition "$ROOT" Interpretation_of_R/functional/DirectRFunctionalAddition.vo
+stage 06a-functional-multiplication "$ROOT" Interpretation_of_R/functional/DirectRFunctionalMultiplication.vo
+stage 06a-functional-cases "$ROOT" Interpretation_of_R/functional/DirectRFunctionalCases.vo
+stage 06a-functional-axioms "$ROOT" Interpretation_of_R/functional/DirectRFunctionalAxioms.vo
 stage 06b-foundations "$ROOT" Interpretation_of_R/functional/DirectRFoundations.vo
 stage 06c-unary "$ROOT" Interpretation_of_R/relational/DirectRUnary.vo
 stage 06c-finite-up "$ROOT" Interpretation_of_R/DirectRFiniteUp.vo
@@ -188,6 +191,10 @@ stage 08-generators "$ROOT" Interpretation_of_R/functional/DirectRGenerated.vo
 stage 09-first-order "$ROOT" Interpretation_of_R/functional/DirectRFirstOrder.vo
 stage 09a-functional-terms "$ROOT" Interpretation_of_R/functional/DirectRFunctionalTerms.vo
 stage 09a-functional-logic "$ROOT" Interpretation_of_R/functional/DirectRFunctionalLogic.vo
+stage 09b-functional-syntax "$ROOT" Interpretation_of_R/functional/DirectRFunctionalSyntax.vo
+stage 09b-functional-translation "$ROOT" Interpretation_of_R/functional/DirectRFunctionalTranslation.vo
+stage 09b-functional-formula-logic "$ROOT" Interpretation_of_R/functional/DirectRFunctionalFormulaLogic.vo
+stage 09b-functional-source-axioms "$ROOT" Interpretation_of_R/functional/DirectRFunctionalSourceAxioms.vo
 stage 09a-functional-audit "$ROOT" Interpretation_of_R/functional/DirectRFunctionalAudit.vo
 stage 10-obligations "$ROOT" Interpretation_of_R/functional/DirectRObligations.vo
 stage 11-entry-point "$ROOT" Interpretation_of_R/functional/DirectR.vo

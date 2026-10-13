@@ -1,5 +1,39 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — instantiate Good and realize all functional axiom indices
+
+- Expose the original Good predicate with a fixed, checked specialization
+  term. Its arguments are arbitrary typed d and an exact rank-10 family Q;
+  no recursion on host expression trees or new induction principle is added.
+- Instantiate Q at the existing annotated invariant_motive. Generic family
+  formation and proved beta/renaming equations transport the four constructor
+  closure witnesses to the exact binder annotations required by Good.
+- Project the uniform negative bounded case from the positive invariant.
+  Derive R4 using internal no_back in the large branch, and derive R5 from
+  finite equality/order transport or transitivity of the global large bound.
+- Package all five original schemes as a uniform Prop-valued existence of
+  original PTS typing witnesses. This does not prove the archived generator
+  contracts or build the legacy Type-valued witness-selection record.
+- Independent functional first-order deduction preservation still must be
+  proved. Do not call this axiom-realization milestone the completed Theorem 7.
+
+## 2026-10-13 — multiplication closure with guarded order bounds
+
+- Reuse the addition milestone's negative case eliminator and two-child
+  positive-invariant elimination, without changing the carrier or ranks.
+- Multiplication propagation requires the OTHER factor to be at least one.
+  Keep that premise explicit in both scoped order-bound lemmas. Obtain it
+  from equality to a positive numeral or a global large-branch lower bound.
+- Handle both zero-factor cases separately, transporting equality through
+  multiplication congruence and then using the appropriate original zero law.
+  A large factor with a zero factor never enters a propagation branch.
+- Cover finite/finite, finite/large, large/finite and large/large branches by
+  actual target proof terms. Case analysis only returns the stable CaseAt;
+  positive G evidence is retained outside that analysis for invariant closure.
+- The next mathematical step after checked closure is Good instantiation at
+  the existing rank-10 invariant motive. This does not yet discharge R4/R5 or
+  functional first-order deduction preservation.
+
 ## 2026-10-13 — addition closure and two-child invariant elimination
 
 - Generalize finite-branch injection to equality with an arbitrary numeral:
@@ -554,6 +588,26 @@ an architectural change has been verified before compiling it.
 - The paper's coding universes/cardinal bound/coherent bijections and original
   PTS typing soundness remain open. This checkpoint does not claim them, nor
   does it call the generic empty-fiber fact a proof of PTS nontriviality.
+
+## 2026-10-13 — independent functional deduction infrastructure
+
+Keep the existing FirstOrder functional syntax and translation, including its
+primitive conjunction/disjunction/existential. Define a separate source
+natural-deduction relation without target typing/inhabitation in its premises.
+Use syntactic source substitutions and proper eigenvariable contexts, not
+target inhabitation as a definition of source provability. Adapt structural
+proof patterns from the relational development without importing that library.
+
+The original functional R4 (harmonized paper, r:bound) is implication; do not
+copy the relational biconditional as a source axiom. Use a classically equivalent
+flat negative finite disjunction to match Codes.R4/R5; the source's primitive
+binary disjunction remains unchanged. All five independent source schemes now
+have unconditional realization theorems for arbitrary scoped environments.
+
+Prove formula formation and stability compositionally for every formula,
+including both guarded quantifiers. These are checked prerequisites, not a
+claim of deduction preservation or completion of Theorem 7. Equality
+replacement and induction over derives remain the next proof obligations.
 
 ## 2026-10-13 — independent interpretation libraries
 
