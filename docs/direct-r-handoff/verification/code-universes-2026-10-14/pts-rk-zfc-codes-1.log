@@ -1,0 +1,11 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/CodeUniverses.v", line 32, characters 57-63:
+Error: The variable le_dec was not found in the current environment.
+
+File "ZFC_model/dune", lines 1-5, characters 0-132:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/CodeUniverses.{glob,vo} (exit 1)

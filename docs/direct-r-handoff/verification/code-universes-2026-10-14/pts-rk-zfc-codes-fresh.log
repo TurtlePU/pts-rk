@@ -1,0 +1,47 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+        rocq vendor/zfc/.ZFC.theory.d
+File "./vendor/zfc/Sets.v", line 111, characters 0-40:
+Warning: Implicitly declaring hint databases is deprecated. Please explicitly
+create "zfc"
+[implicit-create-hint-db,deprecated-since-9.2,deprecated,default]
+        rocq vendor/zfc/Sets.{glob,vo}
+        rocq vendor/zfc/Axioms.{glob,vo}
+        rocq vendor/zfc/Cartesian.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetFunctions.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetApplication.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+universe_enumeration
+     : forall i : nat, EQ (U i) (sup nat (enumerate_universe i))
+decode_repr
+     : forall (infinite_carrier : nat -> Ens) (c : Code),
+       EQ (El infinite_carrier (repr c)) (code_value infinite_carrier c)
+sort_axiom
+     : forall (infinite_carrier : nat -> Ens) (i : nat),
+       IN (repr (sort i)) (El infinite_carrier (repr (sort 0)))
+decoded_sort_product_empty
+     : forall (infinite_carrier : nat -> Ens) (j : nat) (g : Ens),
+       ~
+       IN g
+         (dependent_product (El infinite_carrier (repr (sort j)))
+            (El infinite_carrier))
+        rocq ZFC_model/CodeUniverses.{glob,vo}

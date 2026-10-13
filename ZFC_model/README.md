@@ -39,12 +39,33 @@ does not add an eta-conversion rule to the PTS. This operation interprets
 application of ordinary graphs; application of the paper's **cardinal-coded**
 functions additionally requires the still-missing inverse coding bijections.
 
+`CodeUniverses.v` constructs the countable universes themselves. Codes for
+finite carriers, infinite carriers and sorts are distinct sets, using tagged
+singleton numerals. `U_i` contains every finite code, every sort code, and
+exactly the infinite codes with index at most i. Membership, monotonicity,
+strict growth, and an explicit natural-number enumeration are proved.
+
+Decoding `El` is defined on arbitrary sets, without deciding set equality:
+union the values of all matching codes. Injectivity of code representations
+makes the matching value unique up to set equality. `El` is extensional and
+has the specified value on every code. Finite carriers are explicitly
+constructed finite sets; sort codes decode to the constructed `U_j`.
+The sort-axiom membership `s_i in El(s_0)` and emptiness of the ordinary
+dependent function set over `El(s_j)` with fiber `El` are proved.
+
+**Boundary:** the infinite carriers remain an explicit parameter
+`nat -> Ens`, with no cardinal properties assumed. They are not yet proved
+to be the finite-index aleph hierarchy. The decoded-product emptiness result
+is not the denotation of the PTS Bottom term: product coding and the term
+interpretation still need construction. All ten new assumption reports are
+closed; printed theorem types expose the carrier parameter.
+
 Build from the repository root:
 
 ```sh
 export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
 export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
-opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/SetApplication.vo
+opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/SetApplication.vo ZFC_model/CodeUniverses.vo
 ```
 
 ## Not yet a model or a soundness proof
@@ -52,7 +73,6 @@ opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model
 The paper's actual model uses distinct cardinal codes and sort codes, with
 `El(c_kappa)=kappa` and `El(s_j)=U_j`. Its remaining requirements include:
 
-- construction of the countable sets `U_i` and extensional decoding;
 - the finite-aleph cardinal hierarchy and a precise GCH premise;
 - the bound on dependent function cardinality at `max(m+1,n)`;
 - a coherent selection of coding bijections, independent of rank bounds;

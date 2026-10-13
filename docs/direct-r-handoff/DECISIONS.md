@@ -1,5 +1,28 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — constructed code universes, parametric infinite carriers
+
+CodeUniverses.v constructs disjoint finite/infinite/sort codes as tagged
+singleton numerals in the existing Ens universe. U_i is a subset-indexed
+supremum over the codes permitted at level i. Explicit enumeration by nat
+proves countability; exact membership proves monotonicity and strict growth.
+No countability or code distinctness is an assumed model field.
+
+Extensional decoding is the union of the set of values indexed by codes
+whose representations equal the argument. This avoids arbitrary-set equality
+decisions and choice. Code injectivity proves the decoding equations. Finite
+carriers are bounded-nat-indexed sets of distinct numerals (not asserted to
+be von Neumann ordinals); sorts decode to the constructed U_j. An explicit
+parameter nat -> Ens supplies the infinite carriers, with NO assumed aleph,
+GCH, product-closure or soundness properties. It must later be instantiated
+with a genuine hierarchy; the parameter is not a substitute for that proof.
+
+The sort axiom and ordinary decoded-product emptiness now follow from the
+construction. The latter still does not establish semantic or syntactic PTS
+Bottom nontriviality: the product code and typing interpretation are absent.
+All ten new Print Assumptions checks are closed. CI adds the module as a
+separate stage and preserves all older stages.
+
 ## 2026-10-14 — concrete set application, not assumed model soundness
 
 The latest user explicitly requests finishing the set model, superseding the

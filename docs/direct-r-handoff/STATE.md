@@ -1,5 +1,63 @@
 # Live proof-development state — 2026-10-14
 
+## Code universes and extensional decoding now constructed
+
+Committed and normally pushed the preceding application milestone as
+15f587a98055982615af5cb270ea67f0ec5a440d, `ZFC model: prove concrete graph
+application`; origin/main matched HEAD after push. The user subsequently
+requested committing this code-universe checkpoint, followed by further
+proof work; prepared as `ZFC model: construct countable code universes`.
+No push requested for this checkpoint. User-owned logs/ remains untouched.
+
+New ZFC_model/CodeUniverses.v constructs distinct finite/infinite/sort codes,
+the actual sets U_i, exact membership, monotonicity and strict growth, and
+an explicit enumeration by nat. Extensional decoding El is a concrete
+union of matching code values, not an assumed model field. Finite carriers
+and sort decoding are constructed. Infinite carriers remain an explicit
+arbitrary parameter nat -> Ens, with no cardinality assumptions or claims.
+The paper's aleph hierarchy is NOT yet constructed by this module.
+
+Exact checked public theorem types (K : nat -> Ens):
+
+    universe_enumeration : forall i,
+      EQ (U i) (sup nat (enumerate_universe i)).
+    decode_repr : forall K c, EQ (El K (repr c)) (code_value K c).
+    sort_axiom : forall K i, IN (repr (sort i)) (El K (repr (sort 0))).
+    decoded_sort_product_empty : forall K j g,
+      ~ IN g (dependent_product (El K (repr (sort j))) (El K)).
+
+The last theorem concerns ordinary decoded function graphs, not yet the
+denotation of the original PTS Bottom term. All ten new Print Assumptions
+reports are closed under the global context. No new axioms, assumed model
+laws, unsafe checking changes or PTS rule changes.
+
+Incremental CodeUniverses.vo builds 1/2/3 exited 1 (missing le_dec import,
+ZFC/Stdlib exist-name collision, elimination into the library's Set-valued
+empty type); build 4 exited 0. Statements were not weakened. Fresh build
+including strict-growth proof and all three local model modules exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --build-dir
+/tmp/pts-rk-zfc-codes-fresh.Pj0oAh --display=short --no-buffer
+ZFC_model/CodeUniverses.vo ZFC_model/SetApplication.vo`.
+Log /tmp/pts-rk-zfc-codes-fresh.log has 21 closed reports (5+6+10).
+Recursive kernel check exited 0 with no axioms:
+`opam exec --switch=pts-rk-ci -- timeout 180 rocq check -silent -o
+-Q /tmp/pts-rk-zfc-codes-fresh.Pj0oAh/default/vendor/zfc ZFC
+-Q /tmp/pts-rk-zfc-codes-fresh.Pj0oAh/default/ZFC_model PTSrkModel
+PTSrkModel.CodeUniverses PTSrkModel.SetApplication`.
+Final full local CI, including pristine upstream, exited 0 with 83 stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/zfc-codes-final"
+bash tools/check-local-ci.sh`. Exact commands and all logs, including the
+three failed iterations, are in verification/code-universes-2026-10-14/.
+
+Next proof obligation: construct the finite-index aleph hierarchy and a
+precise GCH proposition, prove the dependent-product cardinal bound, then
+construct coherent coding bijections. No bound properties of K have been
+assumed. Context/term interpretation, substitution/beta semantics and
+original-typing soundness remain unfinished. Next exact verification command
+(README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer ZFC_model/CodeUniverses.vo ZFC_model/SetApplication.vo`.
+
 ## Set-model continuation: functional application checked; soundness unfinished
 
 Parent HEAD: 3345146540c54a05c4c1187bcc603d509742586d. User requests finishing

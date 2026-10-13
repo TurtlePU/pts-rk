@@ -1,0 +1,18 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/CodeUniverses.v", line 41, characters 39-40:
+Error:
+In environment
+i : nat
+x : Ens
+c : Code
+Hc : Allowed i c
+E : EQ x (repr c)
+The term "c" has type "Code" while it is expected to have type "?A -> Prop".
+
+File "ZFC_model/dune", lines 1-5, characters 0-132:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/CodeUniverses.{glob,vo} (exit 1)
