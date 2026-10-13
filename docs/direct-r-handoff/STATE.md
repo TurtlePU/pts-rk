@@ -1,6 +1,85 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: finite zero laws, following 9ef8568
+## Current continuation: finite recursion equations, following 281a252
+
+Request: retry push, proceed proving, commit and push. Starting HEAD was
+281a252cd48a8f7bc43ef1174da29a219e744076 on main. Only untracked user logs/
+was present and is preserved. The prior push stalled in macOS Keychain and was
+terminated (143); this session's `timeout 45 git push origin HEAD:main` exited 0
+and pushed 281a252 to origin/main. Theorem 7 is NOT complete.
+
+Complete baseline local CI, including pristine upstream, exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/recursion-laws-baseline"
+bash tools/check-local-ci.sh`, with the documented local bin directory on PATH.
+Raw log: _build/local-ci-logs/recursion-laws-baseline.log.
+
+New checked modules:
+- DirectRFiniteExpressions proves original PTS typing, substitution compatibility,
+  bounded numerical evaluation and beta evaluation for nested finite-table
+  expressions in two variables. This auxiliary syntax does not change D.
+- DirectRFiniteRecursionLaws compiles a numerical equation valid on all selector
+  pairs into a closed guarded PTS equality certificate. The two public instances
+  have only the premise q>0, and realize the expanded types:
+
+```
+Pi u:Fq. delta(u) -> Pi v:Fq. delta(v) ->
+  Neg(R0 (add (s u) v) (s (add u v)))
+Pi u:Fq. delta(u) -> Pi v:Fq. delta(v) ->
+  Neg(R0 (mul (s u) v) (add v (mul u v)))
+```
+
+Here s/add/mul are capped tables and R0 is the finite equality test. The
+public names are addition_successor_realized and multiplication_successor_realized.
+Their expanded types have checked rank five and retain both domain guards.
+The generic equation_realized uses native equations only to build the selector
+branch proofs, followed by original PTS positive-membership elimination.
+
+Incremental command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFiniteRecursionLaws.vo`.
+Exit-0 log: _build/local-ci-logs/recursion-laws-3.log. Earlier compiler errors
+are retained in recursion-laws-1.log (beta_app needed eapply for its intermediate
+term) and recursion-laws-2.log (the capped identities live in CappedArithmetic,
+not ArithmeticCore). No error was bypassed or admitted.
+
+Fourteen of nineteen relational observation certificates are now proved,
+including all five arithmetic equations. Five order-propagation laws remain.
+Full observation assembly, negative ground faithfulness, the four-constructor
+bounded invariant, and independent functional deduction preservation remain open.
+The external set model is out of scope under the replacement AGENTS instructions.
+
+Exact next goal: uniformly for q>0, construct
+`Pi u:Fq. delta(u) -> Neg(C0 u (s u))`, where C0 is the finite order test.
+Use a rank-two unary family and guarded_finite_realized. The point branch is
+i <= min(S i,pred q), for i<q; construct negative_true after checked table
+conversion. Then compile the two addition and two conditional multiplication
+order-propagation laws with the finite-expression evaluator.
+
+Next command after implementing the next law (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+Fresh isolated full build exited 0, including all legacy examples:
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 300 dune build \
+  --build-dir /tmp/pts-rk-recursion-laws.3JZyHM --display=short --no-buffer
+```
+
+All 170 assumption reports are closed (62 in the functional audit). The exact
+public theorem types, expanded definitions and output are retained in
+verification/recursion-laws-full-2026-10-13.log; raw output is in
+_build/local-ci-logs/recursion-laws-full.log. Complete updated local CI also
+exited 0, including pristine upstream and the two new stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/recursion-laws-final"
+bash tools/check-local-ci.sh`. Its inventory and results are retained in
+verification/recursion-laws-ci-2026-10-13.log and raw
+_build/local-ci-logs/recursion-laws-ci.log. Shell syntax, actionlint and
+git diff --check pass. Remote CI has not been inspected. This checked progress
+checkpoint follows 281a252 and is authorized for ordinary commit and push.
+
+## Historical continuation: finite zero laws, following 9ef8568
 
 Request: proceed proving Theorem 7, commit and push. Starting HEAD was
 9ef85681155441855a38295ba6c077b3705d38a0 on main. Only the user's untracked

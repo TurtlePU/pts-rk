@@ -148,6 +148,8 @@ stage 06a-finite-congruence "$ROOT" theories/DirectRFiniteCongruence.vo
 stage 06a-finite-unary-congruence "$ROOT" theories/DirectRFiniteUnaryCongruence.vo
 stage 06a-finite-binary-congruence "$ROOT" theories/DirectRFiniteBinaryCongruence.vo
 stage 06a-finite-zero-laws "$ROOT" theories/DirectRFiniteZeroLaws.vo
+stage 06a-finite-expressions "$ROOT" theories/DirectRFiniteExpressions.vo
+stage 06a-finite-recursion-laws "$ROOT" theories/DirectRFiniteRecursionLaws.vo
 stage 06b-foundations "$ROOT" theories/DirectRFoundations.vo
 stage 06c-unary "$ROOT" theories/DirectRUnary.vo
 stage 06c-finite-up "$ROOT" theories/DirectRFiniteUp.vo

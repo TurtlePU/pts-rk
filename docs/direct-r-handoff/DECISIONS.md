@@ -1,5 +1,24 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — finite-table expression evaluation and recursion equations
+
+- Introduce a small two-variable expression syntax solely for composing finite
+  observation tables. Its denotation is an original annotated PTS term. It is
+  not a replacement for the arithmetic-expression domain D or its Good predicate.
+- Prove denotation typing, substitution compatibility, bounded numerical
+  evaluation and beta evaluation on selector inputs compositionally. These
+  lemmas avoid duplicating nested table reductions in each observation law.
+- Compile universally valid numerical equations into original PTS negative
+  equality inhabitants, then close the two interleaved domain guards. Export
+  expanded types with explicit beta-conversion and exact-rank formation proofs.
+- Reuse CappedArithmetic.capped_add_succ and capped_mul_succ only as numerical
+  side facts. The native observation record is not used as a PTS inhabitant;
+  every proof of membership/equality is constructed by checked PTS lemmas.
+- All five finite arithmetic equations are now proved. Five finite order laws,
+  complete observation assembly, the bounded invariant and independent functional
+  deduction preservation remain open. The external set model is out of scope
+  under the user's replacement AGENTS instructions.
+
 ## 2026-10-13 — finite arithmetic zero laws
 
 - Compile all three zero equations through one guarded, rank-two unary family.
