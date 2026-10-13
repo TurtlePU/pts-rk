@@ -17,12 +17,34 @@ The selected upstream subset has no choice or GCH axiom. The original full
 library also exposes choice/collection results as conditional statements;
 do not silently turn those conditions into unconditional facts.
 
+`SetApplication.v` extends this foundation with a total, choice-free set
+operation `apply_set g x`. It separates the possible values from a concrete
+set bound and takes their union. The library's ordered pair is
+`{{x},{empty,{y}}}`, so **three** unions of the graph bound its values.
+No witness is extracted from an existential in Prop and no choice axiom is
+needed. The following results are checked:
+
+- `apply_set_extensional`: equal graphs and arguments give equal results.
+- `apply_set_beta`: applying `graph A f` to an element x of A gives f x.
+- `apply_set_typed`: a dependent function applied within its domain belongs
+  to the corresponding fiber.
+- `apply_set_spec`: that result is related to the argument by the graph.
+- `apply_set_eta`: rebuilding a dependent function from its values gives
+  the same set graph.
+- `dependent_product_extensionality`: pointwise-equal dependent functions
+  are equal as sets.
+
+All six additional `Print Assumptions` reports are closed. Set-level eta
+does not add an eta-conversion rule to the PTS. This operation interprets
+application of ordinary graphs; application of the paper's **cardinal-coded**
+functions additionally requires the still-missing inverse coding bijections.
+
 Build from the repository root:
 
 ```sh
 export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
 export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
-opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/SetFunctions.vo
+opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/SetApplication.vo
 ```
 
 ## Not yet a model or a soundness proof

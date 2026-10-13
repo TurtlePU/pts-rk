@@ -1,5 +1,29 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — concrete set application, not assumed model soundness
+
+The latest user explicitly requests finishing the set model, superseding the
+old scope exclusion. Inspection found only SetFunctions.v, not a latent
+interpreter or pending final soundness lemma. Keep the paper's ZF+GCH
+qualification; do not turn the missing cardinal arithmetic, code universes
+or coherent coding bijections into assumed model-record fields.
+
+SetApplication.v defines application of ordinary set graphs constructively:
+separate the value fiber from Union^3 g and take its union. Three unions are
+needed because this ZFC library uses {{x},{empty,{y}}} as its ordered pair.
+Prove the fiber characterization and extensionality, graph beta, dependent
+application typing/specification, graph reconstruction and function
+extensionality. All six audited theorems are closed under the global context.
+This avoids choice merely to implement graph evaluation, but does not remove
+the manuscript's need for choice/GCH in its cardinal-coding construction.
+Graph reconstruction is a set equality, not a new PTS eta-conversion rule.
+Add a CI stage for the new module without removing or relaxing existing stages.
+
+Full PTS soundness remains unproved. The next construction is the actual
+countable code universes with decoding, followed by finite-aleph/GCH bounds
+and coherent coding bijections; graph application alone does not interpret
+the cardinal elements that represent functions in the manuscript's model.
+
 ## 2026-10-14 — annotation-preserving STLC reduction for completeness
 
 The updated manuscript claims TOWER-completeness of closed well-typed

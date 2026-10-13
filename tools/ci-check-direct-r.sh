@@ -187,6 +187,7 @@ stage 06c-theorem4 "$ROOT" Interpretation_of_R/relational/DirectRTheorem4.vo
 stage 06c-relational-audit "$ROOT" Interpretation_of_R/relational/DirectRRelationalAudit.vo
 stage 06d-source-countermodel "$ROOT" Interpretation_of_R/DirectRCountermodel.vo
 stage 06e-set-functions "$ROOT" ZFC_model/SetFunctions.vo
+stage 06f-set-application "$ROOT" ZFC_model/SetApplication.vo
 stage 07-proof-families "$ROOT" Interpretation_of_R/functional/DirectRProofs.vo
 stage 08-generators "$ROOT" Interpretation_of_R/functional/DirectRGenerated.vo
 stage 09-first-order "$ROOT" Interpretation_of_R/functional/DirectRFirstOrder.vo

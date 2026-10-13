@@ -1,5 +1,62 @@
 # Live proof-development state — 2026-10-14
 
+## Set-model continuation: functional application checked; soundness unfinished
+
+Parent HEAD: 3345146540c54a05c4c1187bcc603d509742586d. User requests finishing
+set-model soundness, explicitly placing that work in scope. Initial worktree
+had only user-owned untracked logs/, which remains untouched. The user
+subsequently requested commit and push; this checkpoint is prepared for
+`ZFC model: prove concrete graph application` on main, then normal push.
+
+Inspection: ZFC_model previously contained only SetFunctions.v and README,
+not a term interpretation or soundness theorem awaiting a final proof.
+The paper's model is specifically in ZF+GCH. The pinned ZFC subset has no
+finite-aleph/GCH infrastructure. No missing model laws have been postulated.
+
+Implemented SetApplication.v, now included in dune and a new full-CI stage.
+Its concrete total application is Union of a separated value fiber bounded
+by three unions of the graph (the library has a non-Kuratowski pair encoding).
+Checked public results, with EQ/IN from the original ZFC library:
+
+- apply_set_extensional: EQ g h -> EQ x x' -> EQ (apply_set g x) (apply_set h x').
+- apply_set_beta: family_extensional f -> IN x A ->
+  EQ (apply_set (graph A f) x) (f x).
+- apply_set_typed: IN g (dependent_product A B) -> IN x A ->
+  IN (apply_set g x) (B x).
+- apply_set_spec: same premises -> application g x (apply_set g x).
+- apply_set_eta: IN g (dependent_product A B) -> EQ (graph A (apply_set g)) g.
+- dependent_product_extensionality: g,h in dependent_product A B and
+  pointwise EQ of their applications on A imply EQ g h.
+
+Both incremental builds exited 0. Fresh dependency build exited 0 with all
+11 Print Assumptions reports closed (five old, six new):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --build-dir
+/tmp/pts-rk-zfc-fresh.glVoYd --display=short --no-buffer
+ZFC_model/SetApplication.vo`; /tmp/pts-rk-zfc-fresh.log.
+Recursive kernel check exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 180 rocq check -silent -o
+-Q /tmp/pts-rk-zfc-fresh.glVoYd/default/vendor/zfc ZFC
+-Q /tmp/pts-rk-zfc-fresh.glVoYd/default/ZFC_model PTSrkModel
+PTSrkModel.SetApplication`; /tmp/pts-rk-zfc-kernel.log.
+Baseline full local CI, including pristine upstream, exited 0;
+/tmp/pts-rk-zfc-baseline.log. No new axioms or PTS rule changes.
+Final full local CI exited 0 with all 82 stages passing:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/zfc-application-final"
+bash tools/check-local-ci.sh`; /tmp/pts-rk-zfc-ci.log. Exact commands, both
+incremental builds, baseline, fresh build, kernel check, final CI and stage
+summaries are retained in verification/set-application-2026-10-14/.
+
+First remaining construction: actual countable cardinal/sort-code universes
+U_i and extensional decoding, then finite-aleph/GCH cardinal bounds and
+coherent coding bijections. The new operation evaluates ordinary graphs,
+not the cardinal elements used as function codes in the paper. Context/term
+interpretation, substitution and beta semantics, original-typing soundness,
+and the interpreted Bottom corollary remain unproved. Do not call these
+graph results a finalized PTS soundness proof or an unconditional ZFC model.
+Next exact verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer ZFC_model/SetApplication.vo`.
+
 ## Completeness update: STLC reduction checked, external hardness outstanding
 
 Current parent HEAD: b61eef6 (updated manuscript merge). This task adds
