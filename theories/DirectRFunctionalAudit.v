@@ -1,0 +1,56 @@
+(** Checked components of Theorem 7, NOT the completed interpretation theorem.
+    The finite guarded law telescope, bounded invariant and deduction
+    preservation remain explicit obligations in the live handoff. *)
+From PTSrk Require Import DirectRFunctionalTerms DirectRFunctionalLogic
+  DirectRBinaryTables DirectRBinaryObservations DirectRRelationTables
+  DirectRFiniteLawElimination DirectRFunctionalFiniteLaws.
+Check FunctionalTerms.term_typed.
+Check FunctionalTerms.term_admitted.
+Check FunctionalTerms.ground_evaluation.
+Check FunctionalTerms.ground_equality_true.
+Check FunctionalTerms.ground_order_true.
+Check FunctionalLogic.equality_stability_typed.
+Check FunctionalLogic.order_stability_typed.
+Check BinaryTables.binary_table_typed.
+Check BinaryTables.binary_table_action.
+Check BinaryObservations.delta_binary.
+Check RelationTables.relation_table_typed.
+Check RelationTables.relation_table_action.
+Check FiniteLawElimination.delta_eliminate_lower.
+Check FiniteLawElimination.delta_eliminate_arguments.
+Check FunctionalFiniteLaws.equality_reflexivity_realized.
+Check FunctionalFiniteLaws.order_reflexivity_realized.
+Check RelationTables.boolean_horn_typed.
+Check RelationTables.boolean_horn_realized.
+Check FunctionalFiniteLaws.relation_symmetry.
+Check FunctionalFiniteLaws.equality_symmetry_realized.
+Print FunctionalFiniteLaws.symmetry_type.
+Print Assumptions FunctionalTerms.term_typed.
+Print Assumptions FunctionalTerms.term_admitted.
+Print Assumptions FunctionalTerms.term_observed.
+Print Assumptions FunctionalTerms.ground_evaluation.
+Print Assumptions FunctionalTerms.ground_equality_true.
+Print Assumptions FunctionalTerms.ground_order_true.
+Print Assumptions FunctionalLogic.equality_stability_typed.
+Print Assumptions FunctionalLogic.order_stability_typed.
+Print Assumptions FunctionalLogic.equality_stable.
+Print Assumptions FunctionalLogic.order_stable.
+Print Assumptions BinaryTables.binary_table_typed.
+Print Assumptions BinaryTables.binary_table_action.
+Print Assumptions BinaryTables.capped_addition_action.
+Print Assumptions BinaryTables.capped_multiplication_action.
+Print Assumptions BinaryObservations.delta_binary.
+Print Assumptions BinaryObservations.delta_addition.
+Print Assumptions BinaryObservations.delta_multiplication.
+Print Assumptions RelationTables.relation_table_typed.
+Print Assumptions RelationTables.relation_table_action.
+Print Assumptions RelationTables.negative_true.
+Print Assumptions RelationTables.negative_false.
+Print Assumptions FiniteLawElimination.delta_eliminate_lower.
+Print Assumptions FiniteLawElimination.delta_eliminate_arguments.
+Print Assumptions FunctionalFiniteLaws.equality_reflexivity_realized.
+Print Assumptions FunctionalFiniteLaws.order_reflexivity_realized.
+Print Assumptions RelationTables.boolean_horn_typed.
+Print Assumptions RelationTables.boolean_horn_realized.
+Print Assumptions FunctionalFiniteLaws.relation_symmetry.
+Print Assumptions FunctionalFiniteLaws.equality_symmetry_realized.
