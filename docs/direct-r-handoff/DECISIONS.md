@@ -1,5 +1,30 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — unary Theorem-4 proof continuation
+
+- Follow the latest request's unary Theorem 4; do not advance the separate
+  functional or set-model developments in this session.
+- Added fixed closed certificates for the unary basic laws, equality/order
+  stability, and a rank-ten positive invariant eliminator. The latter retains
+  explicit case-family closure premises and is not advertised as bounded cases.
+- Uniform numeral/order proofs use structural application and external
+  induction. Variable-arity negative logic uses original typ derivations,
+  not a fuel check repeated on finite examples.
+- Case_n is exactly the manuscript's flat list of rank-five equalities plus
+  one rank-six order atom. Its rank eight, Inv_n's rank ten and both zero
+  witnesses compile uniformly. G remains positive and is constructed separately.
+- No PTS syntax/rule changes, new axioms, admissions, or positive ex-falso.
+  See STATE.md for exact successful and failed compiler transcripts.
+- Completed the actual all-cutoff successor closure using stable flat
+  elimination, successor congruence and order transitivity. Instantiating
+  cases_from_closure with the actual Case_n family now proves the unconditional
+  bounded-case lemma for arbitrary Good inhabitants, not expression trees.
+- Added a distinct original-typ audit theorem and CI stage. All 15 transitive
+  assumption reports are closed; a fresh isolated build of the unary audit,
+  old DirectR facade, arithmetic, countermodel and model foundations succeeded.
+  This milestone is not Theorem 4: finite separation, complete relational axiom
+  realization, ground refutations and first-order preservation remain open.
+
 ## 2026-10-13 — imported handoff
 
 - Keep TurtlePU's original scoped beta-only PTS kernel.

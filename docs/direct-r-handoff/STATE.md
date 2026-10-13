@@ -2,6 +2,11 @@
 
 ## Current request and exact targets
 
+Active focus (latest user request): proceed with Theorem 4, committing and
+pushing when finished. Theorem 7 and the PTS set model are not being advanced
+in this session. Theorem 4 remains incomplete; do not label this checkpoint
+as the requested completed theorem.
+
 The authoritative new reference is
 `PTS_rk_interprets_Tarski_Mostowski_Robinson_arithmetic_R_harmonized.tex`.
 
@@ -35,6 +40,80 @@ Dune 3.23.1, opam 2.6.1, actionlint 1.7.12. GNU timeout is available.
 The pristine upstream requires Rocq 9.2's Create Rewrite HintDb.
 
 ## Actually compiled
+
+Checked Theorem-4 bounded-case milestone (on top of cfb1dc2):
+- Unary equality reflexivity/symmetry/transitivity and congruence for every
+  raw endofunction; positive G closure and Good-to-G via exact rank lifting.
+- Raw order transitivity, equality-to-order, G-guarded successor order,
+  compatibility in both arguments, and equality/order double-negation stability.
+- Uniform numeral typing/admission/observation and ground_order_realized for
+  every external i <= j (not a finite test).
+- Generic rank-ten invariant eliminator cases_from_closure_typed. Its rank-eight
+  family, zero proof and G-guarded successor closure are explicit parameters.
+  The actual Case_n family now satisfies all those premises uniformly.
+- DirectRLogic: all-arity flat disjunction formation, injection and application;
+  stability and elimination into stable targets; positive invariant formation
+  and introduction. No Bottom elimination into arbitrary positive types.
+- DirectRUnary: exact Case_n/Inv_n ranks, zero witnesses, all-cutoff successor
+  closure in arbitrary contexts, and the UNCONDITIONAL bounded_case_realized.
+  DirectRUnaryAudit restates this as unary_bounded_cases in original typ:
+
+  `forall cutoff, exists p : Term nat 0, @typ nat RankSorts 0 ε p
+   (Π Unary.Domain (Codes.Arrow (Unary.admitted Codes.V0)
+      (Unary.Case cutoff Codes.V0)))`.
+
+  This quantifies over arbitrary admitted raw objects, not native expression
+  trees. It is Lemma `case` of the harmonized note, NOT all of Theorem 4.
+
+Latest successful command (exit 0):
+`opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer theories/DirectRUnary.vo`
+with OPAMROOT/PATH as below. Logs: `_build/local-ci-logs/unary-basic-build.log`,
+`unary-ground-build.log`, `unary-invariant-build.log`, `unary-case-build.log`,
+`unary-case-zero-build.log`. The new generic logic layer first failed on a
+nonexistent rename lemma, then on folded syntax, a list-length equation, and
+a backwards shift rewrite. Exact failures are retained in
+`negative-logic-build.log` and `negative-logic-build-{2,3,4}.log`; the repaired
+build is `negative-logic-build-5.log` (exit 0). No failed proof was admitted.
+
+Subsequent successful logs: `negative-stability-build-2.log`,
+`negative-elimination-build.log`, `unary-context-build.log`,
+`unary-case-step-build-6.log`, `unary-case-closure-build-3.log`,
+`unary-bounded-build-2.log`, and `unary-audit-build.log`. Earlier numbered
+attempts retain actual syntax/import/unification failures; none was bypassed.
+All 15 unary/negative-logic Print Assumptions queries report
+`Closed under the global context`, including unary_bounded_cases.
+
+Fresh isolated build (exit 0, no pre-existing compiled objects):
+`opam exec --switch=pts-rk-ci -- timeout 300 dune build
+ --build-dir /tmp/pts-rk-unary-check.C7rVtH --display=short --no-buffer
+ theories/DirectRUnaryAudit.vo theories/DirectR.vo
+ theories/DirectRCountermodel.vo theories/DirectRArithmetic.vo
+ models/SetFunctions.vo`.
+Full output is `_build/local-ci-logs/unary-fresh-build.log`.
+The exact fresh-build transcript is also tracked as
+`verification/unary-bounded-2026-10-13.log`.
+The subsequent full-theory command
+`opam exec --switch=pts-rk-ci -- timeout 120 dune build
+ --build-dir /tmp/pts-rk-unary-check.C7rVtH --display=short --no-buffer`
+returned 124 while compiling the unchanged DirectRTests module. Output is
+`_build/local-ci-logs/unary-full-build.log` and the tracked
+`verification/unary-full-build-2026-10-13.log`. Thus the fresh proof/module
+build passed, but the full legacy example suite is still not verified.
+`git diff --check`, actionlint on the existing workflow, and shell syntax
+checking of the CI driver passed. Existing user logs/ and TeX were untouched.
+The CI driver now explicitly builds negative logic and the unary assumption
+audit, without removing any old stage or changing any timeout.
+
+Next proof goal: finite unary selector observation realization and uniform
+`no_back_n : O(numeral (S n), numeral n) -> Bottom`. The all-arity selector
+API in DirectRStructural is available, but capped-successor tables and delta
+closure must still be constructed and typed. Also pending: unary arithmetic
+beta equations and relational R1/R2, all-index R3/R4/R5 packaging, ground
+refutations, independent source deductions and their preservation. The
+functional R1_realized/R2_realized below do not prove unary relational R1/R2.
+
+Next exact baseline command:
+`opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer theories/DirectRUnaryAudit.vo`.
 
 - Original pristine upstream, evaluator and checker soundness.
 - DirectRStructural: structural substitution identities; generic dependent
@@ -114,8 +193,8 @@ opam exec --switch=pts-rk-ci -- timeout 120 rocq compile -time \
 Uniform mathematical goals:
 1. Prove named-selector/operation-table/delta bridges and finite observation
    realization. For unary Theorem 4, only d0, ds, and Up(P) are needed.
-2. Construct the uniform positive invariant and bounded-case proof for every
-   external cutoff and arbitrary admitted object, preserving G separately.
+2. Unary Theorem 4's uniform invariant and bounded-case proof are now checked.
+   The separate functional Theorem 7's four-constructor invariant remains open.
 3. Prove no_back, then R3–R5 and ground refutations; add ground-expression
    evaluation witnesses, not just numeral calculations.
 4. Define an independent classical FOL deduction system and prove substitution,

@@ -116,8 +116,10 @@ stage 04-checker "$ROOT" theories/DirectRCheck.vo
 stage 05-codes "$ROOT" theories/DirectRCodes.vo
 stage 06-symbolic "$ROOT" theories/DirectRSymbolic.vo
 stage 06a-structural "$ROOT" theories/DirectRStructural.vo
+stage 06a-negative-logic "$ROOT" theories/DirectRLogic.vo
 stage 06b-foundations "$ROOT" theories/DirectRFoundations.vo
 stage 06c-unary "$ROOT" theories/DirectRUnary.vo
+stage 06c-unary-assumptions "$ROOT" theories/DirectRUnaryAudit.vo
 stage 06d-source-countermodel "$ROOT" theories/DirectRCountermodel.vo
 stage 06e-set-functions "$ROOT" models/SetFunctions.vo
 stage 07-proof-families "$ROOT" theories/DirectRProofs.vo
