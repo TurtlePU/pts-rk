@@ -1,0 +1,21 @@
+File "theories/NormalizationComplexity/dune", lines 1-5, characters 0-140:
+1 | (rocq.theory
+2 |  (name PTSrk.NormalizationComplexity)
+3 |  (package pts-rk)
+4 |  (modules Rank Greedy Bounds Audit)
+5 |  (theories Stdlib Equations PTSrk))
+Error: No rule found for theories/NormalizationComplexity/Audit.v
+File "theories/NormalizationComplexity/dune", lines 1-5, characters 0-140:
+1 | (rocq.theory
+2 |  (name PTSrk.NormalizationComplexity)
+3 |  (package pts-rk)
+4 |  (modules Rank Greedy Bounds Audit)
+5 |  (theories Stdlib Equations PTSrk))
+Error: No rule found for theories/NormalizationComplexity/Bounds.v
+File "theories/NormalizationComplexity/dune", lines 1-5, characters 0-140:
+1 | (rocq.theory
+2 |  (name PTSrk.NormalizationComplexity)
+3 |  (package pts-rk)
+4 |  (modules Rank Greedy Bounds Audit)
+5 |  (theories Stdlib Equations PTSrk))
+Error: No rule found for theories/NormalizationComplexity/Greedy.v

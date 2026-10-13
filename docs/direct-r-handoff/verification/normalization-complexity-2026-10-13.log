@@ -1,0 +1,40 @@
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+        rocq theories/.PTSrk.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+        rocq theories/Congruence.{glob,vo}
+        rocq theories/NormalizationComplexity/Rank.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+        rocq theories/NormalizationComplexity/Greedy.{glob,vo}
+        rocq theories/NormalizationComplexity/Bounds.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/NormalizationComplexity/Audit.{glob,vo}

@@ -1,5 +1,67 @@
 # Live proof-development state — 2026-10-13
 
+## NormalizationComplexity: checked groundwork, full classification OPEN
+
+Latest task: translate rank.agda and formalize the paper's TOWER / fixed-rank
+ELEMENTARY normalization claims. Starting HEAD d60de9cf84dd5921a809b4a63b1590b21a000397;
+only user-owned untracked logs/ existed. Those logs remain untouched. No commit
+or push was requested for this task; changes remain in the worktree.
+
+Baseline command (exit 0):
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/normalization-complexity-baseline"
+bash tools/check-local-ci.sh`; outer log /tmp/pts-rk-normalization-baseline.log.
+This includes the separate pristine upstream build.
+
+Added theories/NormalizationComplexity/{Rank,Greedy,Bounds,Audit}.v, dune,
+and README.md. Original syntax, rules, annotations and beta relation unchanged.
+The Agda estimator variants are translated; optimization equalities checked.
+Greedy passes/iterates are beta sound. A bounded successful result is normal.
+Proved node-size substitution/product and greedy exponential/iterated-tower
+bounds, linear numeric estimator magnitude, and linear abstract word-model
+traversal cost (NOT a claim about unary-nat machine execution).
+
+Successful targeted build (exit 0):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/NormalizationComplexity/Audit.vo`.
+Log /tmp/pts-rk-normalization-15.log: all 15 Print Assumptions reports closed.
+The regular CI driver now has an additional normalization audit stage.
+
+Fresh build (exit 0) used a newly allocated absolute build directory:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build
+--build-dir /tmp/pts-rk-normalization-fresh.OFEjeT --display=short --no-buffer
+theories/NormalizationComplexity/Audit.vo`.
+Retained report: verification/normalization-complexity-2026-10-13.log,
+including fresh compilation and 15 closed assumption reports.
+Final complete local CI command (exit 0):
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/normalization-complexity-final"
+bash tools/check-local-ci.sh`.
+All stages pass, including pristine upstream and the new normalization audit.
+Stage table: verification/normalization-complexity-ci-2026-10-13.tsv.
+Development logs, including failures and final CI output, are copied into
+verification/normalization-complexity-development/ for durable continuity.
+
+Earlier failing compiler invocations are retained at
+/tmp/pts-rk-normalization-rank-{1,2,3}.log and
+/tmp/pts-rk-normalization-{4,5,6,7,8,9,10,11,12,13,14}.log.
+Failures were missing Dune modules and proof-script elaboration/arithmetic;
+each was repaired without changing kernel rules or adding assumptions.
+An attempted fresh build using --build-dir _build/normalization-fresh failed
+before compilation (Dune requires an absolute or immediate-child build dir);
+its diagnostic is /tmp/pts-rk-normalization-fresh.log.
+
+The full requested classification is NOT COMPLETE. First next mathematical
+goal: define semantic contextual redex-rank bounds at original RankSorts and
+prove the estimator bounds abstraction-domain ranks under typing/conversion.
+Then prove strict greedy rank descent and consequently
+`normalb (rounds (S (RankEstimate.estimateRank t)) t) = true` for closed typed t.
+Finally cost the actual substitution/greedy implementation: output-size bounds
+alone are not time bounds. See the new README for precise model qualifications.
+No pending obligation is added as an axiom or hypothesis of a completed target.
+
+Next exact incremental command (after environment exports in the README):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/NormalizationComplexity/Audit.vo`.
+
 ## Completed Theorem 7; separate ZFC development relocated
 
 Request: move the set-model development into ZFC_model, finalize Theorem 7,

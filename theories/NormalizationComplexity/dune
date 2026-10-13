@@ -1,0 +1,9 @@
+(rocq.theory
+ (name PTSrk.NormalizationComplexity)
+ (package pts-rk)
+ (modules Rank Greedy Bounds Audit)
+ (theories Stdlib Equations PTSrk))
+
+(alias
+ (name audit)
+ (deps Audit.vo))

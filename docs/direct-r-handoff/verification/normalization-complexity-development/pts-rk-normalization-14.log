@@ -1,0 +1,8 @@
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+        rocq theories/NormalizationComplexity/Bounds.{glob,vo}

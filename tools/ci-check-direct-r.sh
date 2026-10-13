@@ -126,6 +126,7 @@ BASELINE_DIR="$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/direct-r-upstream.XXX
 git archive "$BASELINE_REF" | tar -x -C "$BASELINE_DIR"
 printf '%s\n' "$BASELINE_REF" > "$LOG_DIR/upstream-commit.txt"
 stage 01-upstream "$BASELINE_DIR" theories/Ranks.vo
+stage 01-normalization-complexity "$ROOT" theories/NormalizationComplexity/Audit.vo
 
 stage 02-kernel "$ROOT" Interpretation_of_R/DirectRKernel.vo
 stage 02-common-codes "$ROOT" Interpretation_of_R/DirectRCommonCodes.vo

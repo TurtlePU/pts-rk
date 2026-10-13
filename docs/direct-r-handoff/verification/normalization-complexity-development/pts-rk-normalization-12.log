@@ -1,0 +1,17 @@
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+File "./theories/NormalizationComplexity/Bounds.v", line 101, characters 53-55:
+Error: The variable t1 was not found in the current environment.
+
+File "theories/NormalizationComplexity/dune", lines 1-5, characters 0-134:
+1 | (rocq.theory
+2 |  (name PTSrk.NormalizationComplexity)
+3 |  (package pts-rk)
+4 |  (modules Rank Greedy Bounds)
+5 |  (theories Stdlib Equations PTSrk))
+        rocq theories/NormalizationComplexity/Bounds.{glob,vo} (exit 1)

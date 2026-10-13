@@ -1,5 +1,24 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — normalization-complexity library and cost-model separation
+
+- Create independent PTSrk.NormalizationComplexity library under theories,
+  depending on the unchanged original kernel; no arithmetic interpretation or
+  set-model dependency. Translate rank.agda's reference and optimized variants.
+- Prove optimization agreement with the simplified estimator, not an unjustified
+  equality between reference and simplified algorithms on ill-typed syntax.
+- Count unary labels and variable indices in input encoding. Explicitly charge
+  linked-context lookup; state linearity for an abstract word-operation model,
+  not Rocq unary-natural bit execution. Prove numeric word-size bounds separately.
+- Preserve lambda annotations in greedy reduction. Prove beta soundness and
+  exponential/iterated-tower output-size bounds without assuming rank descent.
+- Use a checked normal-form test for bounded attempts. Do not call a bounded
+  attempt a total typed normalizer until its computed budget is proved sufficient.
+- TOWER/ELEMENTARY membership remains open: semantic estimator soundness,
+  strict greedy redex-rank descent, and implementation time bounds are still
+  required. Closedness/well-typedness restrictions from the paper are retained.
+- Add an audit stage to existing CI; no existing stages are weakened or removed.
+
 ## 2026-10-13 — instantiate Good and realize all functional axiom indices
 
 - Expose the original Good predicate with a fixed, checked specialization
