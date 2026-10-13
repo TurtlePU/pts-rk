@@ -1,5 +1,21 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — uniform unary separation and R3
+
+- Completed the upward separating test with an exact rank-three motive;
+  only negative conclusions are obtained from contradictory test evidence.
+- Proved unary fold computation on arbitrary scoped arguments by substitution
+  into fixed open beta schemas, then induction on the external numeral index.
+  Domain annotations are retained and no eta equality is used.
+- Instantiated the actual O telescope with all three closed certificates:
+  d0, ds and Up. Compact structural telescope types avoid expanding the full
+  named order encoding during substitution. No certificate is assumed.
+- Proved unconditional uniform no_back, every reversed ground order
+  refutation, and all distinct-numeral R3 instances in original Typing.typ.
+- Theorem 4 is still incomplete: relational R1/R2, both directions of R4,
+  ground ternary arithmetic and independent source deduction preservation
+  remain. This is not a claim that Kernel.Theorem5Target (functional) is proved.
+
 ## 2026-10-13 — positive finite observations
 
 - Added positive finite membership with rank-3 predicate parameters rather

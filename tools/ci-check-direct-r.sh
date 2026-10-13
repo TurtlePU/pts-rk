@@ -122,6 +122,9 @@ stage 06a-positive-telescopes "$ROOT" theories/DirectRPositive.vo
 stage 06a-finite-observations "$ROOT" theories/DirectRFiniteObservations.vo
 stage 06b-foundations "$ROOT" theories/DirectRFoundations.vo
 stage 06c-unary "$ROOT" theories/DirectRUnary.vo
+stage 06c-finite-up "$ROOT" theories/DirectRFiniteUp.vo
+stage 06c-unary-evaluation "$ROOT" theories/DirectRUnaryEvaluation.vo
+stage 06c-separation "$ROOT" theories/DirectRSeparation.vo
 stage 06c-unary-axioms "$ROOT" theories/DirectRUnaryAxioms.vo
 stage 06c-unary-assumptions "$ROOT" theories/DirectRUnaryAudit.vo
 stage 06d-source-countermodel "$ROOT" theories/DirectRCountermodel.vo

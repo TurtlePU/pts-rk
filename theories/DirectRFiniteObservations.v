@@ -57,6 +57,16 @@ Qed.
 
 Definition compose {n} (A Q f : Term nat n) :=
   lam A (app (shift Q) (app (shift f) V0)).
+Lemma replace_delta {m n} (f : Fin m -> Term nat n) q u :
+  replace f (delta q u) = delta q (replace f u).
+Proof.
+  unfold delta. rewrite replace_membership, replace_selector_type.
+  unfold points. rewrite map_map.
+  assert (H : map (fun i => replace f (lift_closed (point q i))) (seq 0 q) =
+    map (fun i => lift_closed (point q i)) (seq 0 q)).
+  { apply map_ext. intro i. apply replace_lift_closed. }
+  rewrite H. reflexivity.
+Qed.
 Lemma compose_typed {n} (Γ : Ctx nat n) A Q f :
   Typed Γ A (𝓤 1) -> Typed Γ Q (Arrow A (𝓤 3)) ->
   Typed Γ f (Arrow A A) -> Typed Γ (compose A Q f) (Arrow A (𝓤 3)).

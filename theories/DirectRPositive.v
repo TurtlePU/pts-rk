@@ -114,6 +114,16 @@ Proof.
   rewrite H. f_equal. f_equal. apply map_ext. exact H.
 Qed.
 
+Lemma replace_membership {m n} (f : Fin m -> Term nat n) A xs u :
+  replace f (Membership A xs u) =
+  Membership (replace f A) (map (replace f) xs) (replace f u).
+Proof.
+  unfold Membership. rewrite replace_product, replace_arrow, replace_arrows, !map_map.
+  assert (H : forall x, replace (transpose f) (app V0 (shift x)) =
+    app V0 (shift (replace f x))).
+  { intro x. rewrite replace_application, replace_shift. reflexivity. }
+  rewrite H. f_equal. f_equal. apply map_ext. exact H.
+Qed.
 Lemma membership_intro {n} (Γ : Ctx nat n) A xs u :
   Typed Γ A (𝓤 1) -> Forall (fun x => Typed Γ x A) xs -> In u xs ->
   inhabited Γ (Membership A xs u).

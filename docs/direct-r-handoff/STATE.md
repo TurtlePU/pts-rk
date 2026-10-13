@@ -26,7 +26,7 @@ The authoritative new reference is
 ## Checkout and environment
 
 This continuation started at main commit
-`8b49750cac120f9dab7a30c63e714245ad52c6a3` (checked unary comparability and finite tables).
+`b89cdd2cd2d3c1d56b09500e94f3f5cf31227b7a` (checked positive finite observations).
 Only the existing untracked logs/ directory was present. It was preserved.
 
 Arithmetic progress checkpoint on main: `a16646b`
@@ -44,6 +44,68 @@ Dune 3.23.1, opam 2.6.1, actionlint 1.7.12. GNU timeout is available.
 The pristine upstream requires Rocq 9.2's Create Rewrite HintDb.
 
 ## Actually compiled
+
+### Upward closure and numeral evaluation, following b89cdd2
+
+DirectRFiniteUp.upward_realized now constructs the uniform closed judgment
+`Realizes (Pi u:F_(c+1). delta_(c+1)(u) -> Neg(Pu) -> Neg(P(su)))`.
+Its exact-rank-three motive is eliminated using the positive delta predicate.
+Below the cap an inhabitant of Top supplies the contradiction; at the cap
+the negative implication is identity. No positive ex-falso is used.
+DirectRUnaryEvaluation.numeral_evaluation proves the actual unary numeral
+fold into arbitrary scoped arguments, and finite_numeral_evaluation connects
+it to the capped selector at min(k,c), uniformly in both external indices.
+Fixed open zero/successor beta schemas are instantiated by the original
+replace_equiv lemma; this is not finite testing or annotation erasure.
+Incremental commands: `opam exec --switch=pts-rk-ci -- dune build
+ --display=short --no-buffer theories/DirectRFiniteUp.vo`, then the same
+command with DirectRUnaryEvaluation.vo and DirectRSeparation.vo.
+Logs `_build/local-ci-logs/up-build-2.log`, `unary-evaluation-build-1.log`,
+`separation-build-2.log` exited 0. The last includes exact observation
+predicate d0/ds/Up wrappers and a checked fixed order eliminator.
+The first Up attempt needed an explicit scope; the first observation wrapper
+needed an explicit rank-one formation proof. Both failures are retained.
+Specializing the complete telescope with unstructured substitutions was
+interrupted (exit 130); a repeat timed out at 45 seconds (exit 124).
+Logs `separation-build-3.log` and `separation-build-4.log` preserve these.
+Compact intermediate observation types now solve the telescope specialization;
+the new replace_observation lemma keeps closed encodings opaque. Remaining
+compiler errors were scope/rank inference and selector substitution, repaired
+without changing a statement. `separation-build-7.log`, `separation-build-10.log`
+and `separation-build-11.log` exited 0 (60-second command limit).
+Separation.no_back_realized is now unconditional for every external k:
+`exists p, @typ nat RankSorts 0 ε p
+ (Neg (Unary.O (Unary.numeral (S k)) (Unary.numeral k)))`.
+Separation.ground_order_refutation handles every j<i, and
+Separation.R3_realized handles every i<>j with an internal E refutation.
+No hypothesis asserts canonicality of raw selectors or the desired theorem.
+Theorem 4 remains incomplete. Exact next goal: both directions of relational
+R4, combining bounded_case_realized with no_back_in_context to eliminate
+the large branch, and the existing ground comparison for the converse.
+Also remaining: unary arithmetic beta equations and relational R1/R2,
+ground ternary atoms, and independent classical deduction preservation.
+Fresh isolated build exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 300 dune build
+ --build-dir /tmp/pts-rk-separation-check.Xxoo9H --display=short --no-buffer
+ theories/DirectRUnaryAudit.vo theories/DirectR.vo
+ theories/DirectRCountermodel.vo theories/DirectRArithmetic.vo models/SetFunctions.vo`.
+The original PTS dependencies were rebuilt from source alongside the new
+proofs and existing interpretation modules. All ten new Print Assumptions
+queries are closed under the global context (52 closed reports in total,
+including existing modules). Exact types and compiler output:
+`verification/unary-separation-2026-10-13.log`; working copy:
+`_build/local-ci-logs/separation-fresh.log`.
+Whitespace, shell syntax and actionlint checks passed. Dedicated finite-Up,
+unary-evaluation and separation stages were added without removing old checks.
+The subsequent full build exited 124 after 120 seconds in unchanged
+DirectRTests: `opam exec --switch=pts-rk-ci -- timeout 120 dune build
+ --build-dir /tmp/pts-rk-separation-check.Xxoo9H --display=short --no-buffer`.
+Output is retained in `verification/unary-separation-full-2026-10-13.log`
+and `_build/local-ci-logs/separation-full.log`. No full green build or remote
+CI result is claimed. Only the pre-existing user logs/ directory remains
+outside the intended commit; no user changes were modified.
+Next command: `opam exec --switch=pts-rk-ci -- dune build --display=short
+ --no-buffer theories/DirectRSeparation.vo`.
 
 ### Positive finite-observation certificates, following 8b49750
 
@@ -86,7 +148,7 @@ The subsequent full build, `opam exec --switch=pts-rk-ci -- timeout 120
 `verification/unary-positive-full-2026-10-13.log`. No full-build or remote
 CI success is claimed, and no CI timeout or test was weakened.
 
-Exact next proof goal: build Up(separating_test c) using delta elimination
+At that checkpoint the next proof goal was: build Up(separating_test c) using delta elimination
 at the rank-3 motive `Neg(P v) -> Neg(P(s v))`. Finite branches below the cap
 use the inhabited Top; the capped branch is identity on Neg Bottom.
 Then prove unary numeral evaluation in this observation, specialize O at
@@ -303,13 +365,14 @@ opam exec --switch=pts-rk-ci -- timeout 120 rocq compile -time \
 ```
 
 Uniform mathematical goals:
-1. Finish finite observation realization: delta formation, d0 and ds are
-   checked in DirectRFiniteObservations; Up(P) and the unary evaluation bridge
-   remain. The unused legacy named-generator bridge is not required here.
+1. Finite unary observations and no_back are now checked in DirectRSeparation,
+   with Up and numeral evaluation in their own modules. The unused legacy
+   named-generator bridge is not required for the unary interpretation.
 2. Unary Theorem 4's uniform invariant and bounded-case proof are now checked.
    The separate functional Theorem 7's four-constructor invariant remains open.
-3. Prove no_back, then R3/R4 and ground refutations (unary R5 is now checked); add ground-expression
-   evaluation witnesses, not just numeral calculations.
+3. Unary R3/R5 and reversed ground-order refutations are checked. Prove both
+   directions of relational R4 and unary arithmetic R1/R2; add full ground
+   ternary-atom proofs/refutations, not just comparisons of numerals.
 4. Define an independent classical FOL deduction system and prove substitution,
    guarded equality replacement, stability and deduction preservation. Connect
    source countermodel soundness to non-derivability of universal reflexivity.
