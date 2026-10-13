@@ -1,0 +1,5 @@
+(rocq.theory
+ (name PTSrkModel)
+ (package pts-rk)
+ (modules SetFunctions)
+ (theories Stdlib ZFC PTSrk))

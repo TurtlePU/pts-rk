@@ -1,0 +1,5 @@
+(rocq.theory
+ (name ZFC)
+ (package pts-rk)
+ (modules Sets Axioms Cartesian)
+ (theories Stdlib))
