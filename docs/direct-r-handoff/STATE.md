@@ -1,5 +1,86 @@
 # Live proof-development state — 2026-10-13
 
+## Current continuation: finite transitivity and congruence, following 5b8e676
+
+Request: proceed proving Theorem 7, commit and push. Starting HEAD is
+5b8e676f288aa6c12e0c61d7e6b60cab5692754d on main. Only the user's untracked
+logs/ was present; it is preserved. Theorem 7 is still NOT complete.
+
+The baseline complete local CI driver exited 0, including pristine upstream:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/theorem7-transitive-baseline"
+bash tools/check-local-ci.sh` (with the documented local bin directory on PATH).
+Log: _build/local-ci-logs/theorem7-transitive-baseline.log.
+
+New checked modules:
+- DirectRGuardedFiniteLaws opens arbitrary finite telescopes of interleaved
+  selector/domain binders, then uses the already checked rank-three finite
+  eliminator. guarded_typed proves exact rank r for arity zero and max(5,r)
+  otherwise. No membership certificate is eliminated into the rank-five
+  guard telescope; all guards are opened first.
+- DirectRFiniteTransitivity constructs closed equality- and order-transitivity
+  certificates for every q>0. Their PUBLIC types are the expanded three-object
+  telescopes, with a domain guard immediately after each object.
+- DirectRFiniteCongruence proves equality transport in both arguments of every
+  finite Boolean relation, hence the observation's order-congruence certificate.
+  Its public type is the expanded four-object interleaved telescope.
+
+All three laws are original PTS inhabitants. Explicit beta equivalences and
+rank-five formation proofs connect the generic curried families to those
+expanded statements; annotations are retained. Boolean Horn branch validity
+is discharged using native equality/transitivity only as numerical side facts.
+There is no new axiom, admission, cumulativity or unchecked cast.
+
+Incremental commands used the documented opam switch and
+`timeout 90 dune build --display=short --no-buffer TARGET.vo`.
+Exit-0 logs under _build/local-ci-logs: guarded-telescope-5.log,
+finite-transitivity-4.log, finite-congruence-2.log, finite-laws-audit-2.log.
+The extended functional audit has 38 closed assumption reports.
+Earlier numbered compiler failures remain available: fixed renaming scope,
+dependent empty-index elimination, list-predicate inference, a bracket typo,
+and a rank-max arithmetic normalization step. None was admitted.
+The updated complete local CI driver exited 0, including the three added
+stages and pristine upstream; raw log _build/local-ci-logs/finite-laws-ci-driver.log.
+Fresh isolated FULL build exited 0, including every legacy example:
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 300 dune build \
+  --build-dir /tmp/pts-rk-finite-laws.uRpSAn --display=short --no-buffer
+```
+
+All 146 assumption reports are closed (38 in the functional audit). Exact
+public types, expanded definitions and full output are retained in
+verification/finite-laws-full-2026-10-13.log; raw log:
+_build/local-ci-logs/finite-laws-fresh-full.log. The local CI inventory, stage
+statuses and exit result are in verification/finite-laws-ci-2026-10-13.log.
+Shell syntax, actionlint and git diff --check pass. This checkpoint is committed
+as proof progress after 5b8e676; it does not claim remote CI success or a complete
+Theorem 7. Ordinary commit and push are authorized by the current request.
+
+Exact next proof goal: for every q>0, construct the closed successor-congruence
+certificate
+`Pi u:Fq. delta(u) -> Pi v:Fq. delta(v) ->
+Neg(R0 u v) -> Neg(R0 (s u) (s v))`,
+where R0 is the equality test and s is capped_successor q. Use the generic
+guarded_finite_realized theorem and capped table beta action. Then handle
+addition/multiplication congruence analogously using binary_table_action.
+
+Six of the nineteen relational observation certificates are now proved:
+equality reflexivity/symmetry/transitivity, order reflexivity/transitivity,
+and order congruence. Thirteen remain: three operation congruences, five
+arithmetic equations and five order-propagation laws. Assemble the entire
+observation telescope before claiming no_back or negative ground faithfulness.
+The four-constructor invariant and independent functional deduction preservation
+also remain open. This checkpoint is NOT an unconditional Theorem 7.
+
+Next build command after implementing the next law (with documented OPAMROOT/PATH):
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short --no-buffer \
+  theories/DirectRFunctionalAudit.vo
+```
+
 ## CI continuation: supplied logs_103946087456
 
 The supplied job reports a runner shutdown, exit 143, not a Rocq diagnostic or
@@ -20,8 +101,8 @@ Signal-injection test, shell syntax and actionlint passed.
 
 ## Current request and exact targets
 
-Active focus (latest user request): repair CI, commit/push, then continue
-Theorem 7 and separately commit/push the checked proof progress.
+Active focus (latest user request): continue Theorem 7, commit and push
+the checked proof progress. See the current continuation at the top.
 Theorem 7 is NOT complete. Theorem 4 remains proved as Theorem4.theorem4.
 The PTS set model is not being advanced in this continuation.
 
@@ -43,7 +124,7 @@ The authoritative new reference is
 
 ## Checkout and environment
 
-This continuation started at main commit
+The earlier continuation started at main commit
 `04cf08bb26def30c100ebb1c6cceca6a4de75138` (complete unary relational Theorem 4).
 Only the existing untracked logs/ directory was present. It was preserved.
 
@@ -63,7 +144,10 @@ The pristine upstream requires Rocq 9.2's Create Rewrite HintDb.
 
 ## Actually compiled
 
-### Functional Theorem 7 continuation, following 04cf08b
+### Historical functional checkpoint through 5b8e676
+
+The current continuation at the top supersedes this checkpoint's remaining-law
+counts and next goal; its commands and logs below remain historical evidence.
 
 The target is the harmonized thm:direct-R, using the EXISTING Codes.Domain,
 Good, Equality, Order and four expression constructors, not Unary.Domain or a

@@ -1,5 +1,21 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — arbitrary guarded telescopes and finite relational laws
+
+- Factor interleaved selector/domain abstraction into a uniform guarded_intro
+  theorem using actual context-extension paths. Open every guard before
+  applying delta_eliminate_arguments; never eliminate membership directly
+  into the rank-five outer telescope. Prove the telescope's exact rank.
+- Compile equality/order transitivity and arbitrary finite-relation equality
+  transport using the Boolean Horn branch constructor. Instantiate it with
+  fully discharged native truth-table side facts to obtain PTS inhabitants.
+- Export the expanded, interleaved-guard law types, not only applications of
+  curried family terms. Prove their rank-five formation and explicit beta
+  equivalence before converting the constructed certificates.
+- These three additional certificates do not by themselves assemble the full
+  finite observation or prove Theorem 7. Keep the remaining thirteen relation
+  laws, bounded invariant and functional deduction preservation explicit.
+
 ## 2026-10-13 — CI interruption and generated-example memory repair
 
 - Distinguish the supplied runner shutdown (143) from a compiler rejection.

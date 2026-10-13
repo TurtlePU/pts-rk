@@ -142,6 +142,9 @@ stage 06a-binary-observations "$ROOT" theories/DirectRBinaryObservations.vo
 stage 06a-relation-tables "$ROOT" theories/DirectRRelationTables.vo
 stage 06a-finite-law-elimination "$ROOT" theories/DirectRFiniteLawElimination.vo
 stage 06a-functional-finite-laws "$ROOT" theories/DirectRFunctionalFiniteLaws.vo
+stage 06a-guarded-finite-laws "$ROOT" theories/DirectRGuardedFiniteLaws.vo
+stage 06a-finite-transitivity "$ROOT" theories/DirectRFiniteTransitivity.vo
+stage 06a-finite-congruence "$ROOT" theories/DirectRFiniteCongruence.vo
 stage 06b-foundations "$ROOT" theories/DirectRFoundations.vo
 stage 06c-unary "$ROOT" theories/DirectRUnary.vo
 stage 06c-finite-up "$ROOT" theories/DirectRFiniteUp.vo
