@@ -48,9 +48,12 @@ Exact output: verification/context-observation-ci-2026-10-13.log.
 No new remote CI result is claimed.
 
 Commit checkpoint: `Lift finite observations into contexts and prove functional folds`,
-parent 947f08e. Includes the generic transport lemmas, two new modules, audit,
-module/CI registration, handoff and verification logs. Commit/push are authorized;
-a normal push will follow the commit. User logs/ is excluded and untouched.
+parent 947f08e, commit 747362729e626ac122b5866d2a726f757dd2f71d. Includes the
+generic transport lemmas, two new modules, audit, module/CI registration,
+handoff and verification logs. `GIT_TERMINAL_PROMPT=0 timeout 45 git push origin main`
+exited 0 and reported `947f08e..7473627 main -> main`. After the proof commit,
+only untracked user logs/ remained; it is excluded and untouched. This delivery
+note is a documentation-only follow-up with no proof changes after validation.
 
 First remaining goal: relate the original EqAt/LeAt bodies on closed numerals
 by beta conversion to observation_type with the corresponding fold suffix.
