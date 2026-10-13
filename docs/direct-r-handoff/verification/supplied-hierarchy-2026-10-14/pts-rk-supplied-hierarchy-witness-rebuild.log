@@ -1,0 +1,15 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+envelope_decoding_graph
+     : forall (W H : Ens) (i : nat),
+       INC omega_codes W -> tower_envelope W H -> IN (decoding_graph i) H
+        rocq ZFC_model/SuppliedHierarchy.{glob,vo}

@@ -18,6 +18,18 @@ soundness or the strength of the Ens representation.
 
 ## Checked construction
 
+`CountablePairing.v` constructs a set-graph bijection from the Cartesian
+square of omega_codes onto omega_codes, using the checked natural-number
+Cantor pairing and its inverse. This establishes the countable base for
+Cartesian cardinal estimates; no GCH or choice premise is needed.
+
+`BoundedBijections.v` gives bounded first-order formulas for graph bijections
+and eligible coding witnesses. The bijection formula is equivalent to the
+existing definition, including exclusion of non-pair graph elements. Eligible
+witnesses are separated from an explicit Cartesian product; the graph bound
+omits no bijection and the witness set lies within eight powerset steps under
+the stated carrier bounds. Nonemptiness for cardinal targets remains unproved.
+
 `SuppliedHierarchy.v` proves closure and containment results for a supplied
 union of finite powerset levels, including the concrete decoding graph.
 Its membership characterization is an explicit premise; existence and

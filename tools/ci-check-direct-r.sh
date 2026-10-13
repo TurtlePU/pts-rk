@@ -204,6 +204,8 @@ stage 06s-bounded-families "$ROOT" ZFC_model/BoundedFamilies.vo
 stage 06t-bounded-products "$ROOT" ZFC_model/BoundedProducts.vo
 stage 06u-code-hierarchy "$ROOT" ZFC_model/CodeHierarchyBounds.vo
 stage 06v-supplied-hierarchy "$ROOT" ZFC_model/SuppliedHierarchy.vo
+stage 06w-bounded-bijections "$ROOT" ZFC_model/BoundedBijections.vo
+stage 06x-countable-pairing "$ROOT" ZFC_model/CountablePairing.vo
 stage 07-proof-families "$ROOT" Interpretation_of_R/functional/DirectRProofs.vo
 stage 08-generators "$ROOT" Interpretation_of_R/functional/DirectRGenerated.vo
 stage 09-first-order "$ROOT" Interpretation_of_R/functional/DirectRFirstOrder.vo

@@ -4,7 +4,7 @@
     be V_omega; that identification remains a separate foundation obligation. *)
 From Stdlib Require Import Arith.PeanoNat Lia.
 From ZFC Require Import Sets Axioms Cartesian.
-From PTSrkModel Require Import SetFunctions CodeUniverses CountableCodes
+From PTSrkModel Require Import SetFunctions SetApplication SetBijections CodeUniverses CountableCodes
   CardinalGrowth CardinalHierarchy HierarchyBounds CodeHierarchyBounds.
 Import CodeUniverses.CodeUniverses.
 
@@ -72,6 +72,41 @@ Proof.
   apply decoded_product_rank_bound.
 Qed.
 
+Lemma typed_graph_cartesian_bound A B f :
+  IN f (dependent_product A (fun _ => B)) -> INC f (Prod A B).
+Proof.
+  intros Hf e He.
+  destruct (dependent_product_pair A (fun _ => B) f e Hf He)
+    as [x [y [E [Hx Hxy]]]].
+  apply (IN_sound_left (Couple x y) e _ E). apply Couple_IN_Prod; [exact Hx |].
+  exact (proj2 (proj1 (proj2 (dependent_product_elimination _ _ _ Hf)) x y Hxy)).
+Qed.
+
+Theorem coding_bijection_rank_bound W A K f :
+  transitive_set W -> INC A W -> INC K W -> bijection A K f ->
+  IN f (iterated_power W 4).
+Proof.
+  intros HW HA HK Hf. apply INC_IN_Power. intros e He.
+  apply (product_rank_bound W A K HW HA HK).
+  exact (typed_graph_cartesian_bound A K f (proj1 Hf) e He).
+Qed.
+
+(** Every eligible (carrier, coding bijection) lies in this explicit bound.
+    This theorem does not assert that the eligible set is nonempty. *)
+Theorem coding_witness_rank_bound W A K f :
+  transitive_set W -> INC A W -> INC K W -> bijection A K f ->
+  IN (Couple K f) (iterated_power W 7).
+Proof.
+  intros HW HA HK Hf. replace 7 with (3 + 4) by reflexivity.
+  rewrite <- iterated_power_add. apply couple_rank_bound.
+  - apply iterated_power_transitive; exact HW.
+  - apply (iterated_power_inclusion W 1 4 HW); [lia |].
+    apply INC_IN_Power; exact HK.
+  - exact (coding_bijection_rank_bound W A K f HW HA HK Hf).
+Qed.
+
+Print Assumptions coding_bijection_rank_bound.
+Print Assumptions coding_witness_rank_bound.
 Print Assumptions envelope_contains_level.
 Print Assumptions envelope_transitive.
 Print Assumptions envelope_power_closed.

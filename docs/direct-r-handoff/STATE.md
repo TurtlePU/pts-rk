@@ -1,5 +1,85 @@
 # Live proof-development state — 2026-10-14
 
+## Countable Cartesian square bijection checked; commit requested
+
+The previous turn constructed bounded eligible-witness sets. This turn adds
+CountablePairing.v and proves an actual set-graph bijection:
+
+    countable_pairing_bijection :
+      bijection (Prod omega_codes omega_codes) omega_codes pairing_graph.
+
+Four new reports closed. Incremental and fresh builds exited 0; fresh build
+printed 51 closed reports including dependencies. Recursive kernel check
+exited 0, reporting no axioms or unsafe settings. Full local CI including
+pristine upstream passed all 100 stages, exit 0. Commands and raw logs:
+verification/countable-pairing-2026-10-14/COMMANDS.md.
+
+User requests commit, then further proof. Prepare accumulated witness and
+pairing work as `ZFC model: construct bounded witnesses and countable pairing`.
+Parent HEAD 5f88ec1c1c5048b6049fa5f5a1ef3c3ee0f8a0c8. User logs/ preserved
+and excluded. Next proof combines this pairing with subset_function_embeds
+and powerset_embeds to bound the countable subset-valued function space.
+All-rank cardinal estimates, GCH classification/nonemptiness, coherent
+selection, hierarchy identification, and original PTS soundness remain open.
+Next command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/CountablePairing.vo`.
+
+## Bounded eligible-bijection set constructed and checked
+
+Previous turn was progress: committed hierarchy infrastructure and proved
+coding witness bounds. This turn adds BoundedBijections.v: bounded formulas
+equivalent to graph bijection, and an eligible-witness set with exact membership
+specification, completeness of the graph bound, and rank bound P^8(W).
+Six new theorem reports are closed. No choice, GCH, cardinal classification,
+or model soundness is assumed or proved by this construction.
+
+Incremental builds exited 0,1,0,1,0. Failures were missing imports for the rank
+definitions and an uninferred domain parameter, repaired explicitly. Fresh
+build exited 0 with 108 closed reports including dependencies. Recursive
+kernel check exited 0; its library-wide summary lists imported functional
+extensionality, with no unsafe settings. Full CI including pristine upstream
+passed all 99 stages, exit 0. Commands/raw logs including failures are in
+verification/bounded-bijections-2026-10-14/COMMANDS.md.
+
+HEAD remains 5f88ec1c1c5048b6049fa5f5a1ef3c3ee0f8a0c8. New certificates,
+post-commit witness lemmas and handoff/log updates are uncommitted; user logs/
+preserved. No additional commit/push requested or performed in this turn.
+
+Next goal: prove the cardinal bound and classification that make eligible
+sets nonempty for the intended targets. Start with Cartesian-product estimates
+for the concrete countable/powerset carriers; then the exponent bound and
+GCH classification, before coherent set choice. This is still only one part
+of full original PTS soundness; supplied hierarchy identification and the
+typing interpretation remain open. Next inspection command:
+`cat ZFC_model/SubsetFunctions.v; cat ZFC_model/CardinalHierarchy.v; rg -n 'pair|inject|cancel' /Users/akuklev/.local/share/pts-rk-ci/opam/pts-rk-ci/lib/coq/user-contrib/Stdlib/Arith/Cantor.v`.
+Next verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedBijections.vo`.
+
+## Checkpoint committed; coding witness bounds proved afterward
+
+Committed accumulated work as 5f88ec1c1c5048b6049fa5f5a1ef3c3ee0f8a0c8,
+`ZFC model: bound constructions in a supplied hierarchy`. No push requested
+or performed. User logs/ excluded and preserved.
+
+Continued with coding_bijection_rank_bound and coding_witness_rank_bound in
+SuppliedHierarchy.v: if W is transitive and A,K are subsets of W, every
+bijection f : A -> K lies in P^4(W), and Couple K f lies in P^7(W). This
+provides an explicit ambient bound for eligible witnesses; their existence
+and coherent selection still need proof. Both new assumption reports are
+closed. Incremental build and rebuild in the isolated previous fresh directory
+passed, as did recursive kernel checking. All ten reports in the rebuilt
+module are closed; library-wide check still lists imported functional
+extensionality. Raw logs and commands appended to the same verification
+directory. Full 98-stage CI covers the committed checkpoint, not these two
+subsequent lemmas; these received targeted rebuild/kernel checks.
+
+Current diff after the commit contains these witness lemmas and handoff/log
+updates. Next goal: formalize the bounded eligible-witness predicate and its
+set; then prove cardinal classification/nonemptiness using the intended GCH
+hypothesis before choosing witnesses. Full original PTS soundness remains
+unproved. Next command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/SuppliedHierarchy.vo`.
+
 ## Supplied hierarchy closure checked; checkpoint commit requested
 
 SuppliedHierarchy.v characterizes a supplied H by membership in some finite

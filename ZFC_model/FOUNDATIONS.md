@@ -81,6 +81,14 @@ references for the foundation audit, not citations proving this PTS model.
 
 ## Checked bounded-formula checkpoint
 
+BoundedBijections.v now certifies bijections and the eligible-witness predicate
+in the bounded formula syntax. Its graph clause excludes arbitrary non-pair
+elements, which functionality alone would not exclude. The separated witness
+set has an exact membership characterization, completeness of the supplied
+graph bound, and an eight-powerset-step rank bound. This supplies the set
+bound needed for ordinary choice. Nonemptiness for the intended cardinal
+targets and coherent selection remain unproved.
+
 CodeHierarchyBounds.v gives the first model-specific hierarchy connection:
 the singleton-numeral carrier is transitive, U_i is included in it, and each
 decoded code in U_i is a subset of carrier i. The decoding graph is typed by

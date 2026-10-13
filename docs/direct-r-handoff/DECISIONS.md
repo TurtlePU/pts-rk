@@ -1,5 +1,31 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — countable Cartesian base as an actual graph bijection
+
+CountablePairing uses Stdlib.Arith.Cantor's checked pairing/inverse to construct
+a graph over the library's set-coded numerals and ordered pairs. Prove graph
+typing, functionality, injectivity and surjectivity before exporting the
+Cartesian-square cardinal estimate. This is the first Cartesian base needed
+for the exponent bound, not the all-rank GCH classification.
+
+## 2026-10-14 — bounded bijection and eligible-witness certificates
+
+BoundedBijections proves syntactic boundedness and equivalence with the existing
+bijection definition. Include graph-element shape, totality, functionality,
+injectivity, and surjectivity explicitly. Construct eligible_bijections by
+separation from Prod T F, with bounded quantifiers over target and graph bounds.
+Prove the graph bound omits no eligible bijection, and the full witness set
+lies in P^8(W). This supplies a concrete set for later choice; do not replace
+the missing GCH classification/nonemptiness proof by an assumed model field.
+
+## 2026-10-14 — bound coding witnesses before selecting them
+
+After checkpoint 5f88ec1, derive the graph bound for any supplied bijection
+between subsets of a transitive W, then bound the pair (K,f) in P^7(W).
+This validates the needed ambient witness bound without assuming existence
+of a suitable cardinal code or bijection. Nonemptiness/GCH and coherent
+selection remain explicit missing obligations.
+
 ## 2026-10-14 — supplied hierarchy characterization and closure
 
 SuppliedHierarchy uses the membership characterization of a supplied union
