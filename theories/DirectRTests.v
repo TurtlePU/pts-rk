@@ -1,5 +1,5 @@
-(** Direct R interpretation -- restructured draft, 2026-10-13.
-    Compiler-unchecked. See docs/DirectR.md for the exact verification status. *)
+(** Concrete generator regressions, checked against original PTS typing.
+    These finite tests are not the all-index interpretation theorem. *)
 
 From Stdlib Require Import Arith.PeanoNat Lia Lists.List Bool.Bool.
 From PTSrk Require Import Syntax AbstractRewriting Congruence Reduction
@@ -28,10 +28,16 @@ Example zero_budget_does_not_contract :
 Proof. reflexivity. Qed.
 
 Ltac realize_instance a :=
-  let t := eval vm_compute in (Generated.witness a) in
-  lazymatch t with
-  | Some ?p => exists p; RkCheck.certify_with 65536
-  | None => fail 1 "DirectR: generator returned ill-scoped syntax"
+  (* Only compute the success tag in Ltac. Reifying the whole generated tree
+     here destroys sharing and makes the quantified examples exhaust memory.
+     The compact expression below is still checked by run_check_sound. *)
+  let scoped := eval vm_compute in
+    (match Generated.witness a with Some _ => true | None => false end) in
+  lazymatch scoped with
+  | true =>
+      exists (match Generated.witness a with Some p => p | None => zero end);
+      RkCheck.certify_with 65536
+  | false => fail 1 "DirectR: generator returned ill-scoped syntax"
   end.
 
 (** These test the quantified formulas with an arbitrary admitted PTS object
@@ -52,8 +58,7 @@ Proof. realize_instance (ax_comparison 1). Qed.
 
 End DirectRTests.
 
-(** These commands must be inspected AFTER a successful Rocq build.
-    No output from them has been reported as observed in this package. *)
+(** Keep the concrete certificates and the checker in the assumption audit. *)
 Print Assumptions RkEval.convert_equal_sound.
 Print Assumptions RkCheck.run_check_sound.
 Print Assumptions Kernel.R1_realized.
