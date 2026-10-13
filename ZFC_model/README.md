@@ -22,7 +22,7 @@ Build from the repository root:
 ```sh
 export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
 export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
-opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer models/SetFunctions.vo
+opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/SetFunctions.vo
 ```
 
 ## Not yet a model or a soundness proof
