@@ -1,6 +1,77 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: operation congruence, following bc5cee0
+## Current continuation: finite zero laws, following 9ef8568
+
+Request: proceed proving Theorem 7, commit and push. Starting HEAD was
+9ef85681155441855a38295ba6c077b3705d38a0 on main. Only the user's untracked
+logs/ was present; it is preserved and excluded from the commit.
+Theorem 7 is NOT complete. The original functional interpretation is unchanged.
+
+Baseline complete local CI driver, including pristine upstream, exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/arithmetic-laws-baseline"
+bash tools/check-local-ci.sh` with the documented local bin directory on PATH.
+Raw log: _build/local-ci-logs/arithmetic-laws-baseline.log.
+
+DirectRFiniteZeroLaws now constructs three original PTS inhabitants, for every
+q>0, of these expanded closed types (R0 is the finite equality test):
+
+```
+Pi u:Fq. delta(u) -> Neg(R0 (add (point q 0) u) u)
+Pi u:Fq. delta(u) -> Neg(R0 (mul (point q 0) u) (point q 0))
+Pi u:Fq. delta(u) -> Neg(R0 (mul u (point q 0)) (point q 0))
+```
+
+The public theorems are addition_zero_realized,
+multiplication_zero_left_realized and multiplication_zero_right_realized.
+Their only premise is 0<q. Generic zero_law_realized accepts a typed binary
+operation and its pointwise beta action; the public laws discharge both using
+the existing capped tables. expanded_type_typed proves exact rank five and
+expanded_type_beta preserves annotations and the interleaved domain guard.
+
+The first incremental build exited 0, without any compiler-error iteration:
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFiniteZeroLaws.vo` with documented OPAMROOT/PATH.
+Output: _build/local-ci-logs/zero-laws-1.log.
+
+Fresh isolated full build exited 0, including all legacy examples:
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 300 dune build \
+  --build-dir /tmp/pts-rk-zero-laws.cYmQHT --display=short --no-buffer
+```
+
+All 162 assumption reports are closed (54 in the functional audit). The public
+theorem types, expanded definitions and fresh output are retained in
+verification/zero-laws-full-2026-10-13.log; raw output is in
+_build/local-ci-logs/zero-laws-full.log. Complete updated local CI also exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/zero-laws-final"
+bash tools/check-local-ci.sh`. Its inventory, stages and result are retained in
+verification/zero-laws-ci-2026-10-13.log and _build/local-ci-logs/zero-laws-ci.log.
+Shell syntax, actionlint and git diff --check pass. Remote CI is not inspected.
+This proof-progress checkpoint follows 9ef8568 and is authorized for ordinary
+commit and push; it is not a completed Theorem 7.
+
+Twelve of nineteen relational observation laws are now proved. Seven remain:
+addition/successor and multiplication/successor equations, and the five order
+propagation laws. The full 31-argument observation assembly, negative ground
+faithfulness, four-constructor bounded invariant, and independent functional
+deduction preservation remain open. No new axioms or admissions were added.
+
+Exact next goal: uniformly for q>0, construct
+`Pi u:Fq. delta(u) -> Pi v:Fq. delta(v) ->
+Neg(R0 (add (s u) v) (s (add u v)))`, for the capped successor and addition.
+Use guarded_finite_realized with a rank-two binary family, reduce selector
+branches using capped_successor_action and capped_addition_action, and prove
+the resulting capped index equation. The analogous multiplication step must
+handle a zero right factor separately when reasoning about saturation.
+
+Next command after implementing the next law (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+
+## Historical continuation: operation congruence, following bc5cee0
 
 Request: proceed proving Theorem 7, commit and push. Starting HEAD was
 bc5cee044179b6adbd3ec5ed6415d560886fffd5 on main. The user's untracked logs/

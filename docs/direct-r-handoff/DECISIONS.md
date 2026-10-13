@@ -1,5 +1,20 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — finite arithmetic zero laws
+
+- Compile all three zero equations through one guarded, rank-two unary family.
+  Its Boolean parameters select the zero argument's side and whether the result
+  is zero or the input; they do not add proof assumptions to the public laws.
+- Prove every point branch using the existing binary table beta action and
+  negative_true, then eliminate positive domain membership through the checked
+  guarded telescope lemma. No raw-selector canonicity is assumed.
+- Export expanded guarded types and audit their formation and beta conversion.
+  The generic constructor requires a pointwise beta equation; each of the three
+  public capped-operation laws discharges that equation for all bounded indices.
+- Twelve of nineteen relational observation certificates are now available.
+  The two successor-recursion equations and five order-propagation laws remain;
+  no full observation, separation, bounded invariant or Theorem 7 is claimed.
+
 ## 2026-10-13 — finite successor and binary-operation congruence
 
 - Prove generic unary/binary operation congruence from original PTS typing
