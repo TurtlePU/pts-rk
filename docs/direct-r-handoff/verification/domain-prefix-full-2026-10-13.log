@@ -1,0 +1,1848 @@
+# Verification checkpoint 2026-10-13
+# Working tree following e9590295595b2fc6cf28b71b4860a422f6c39d17; uncommitted domain-prefix changes
+# OPAMROOT=$HOME/.local/share/pts-rk-ci/opam
+# PATH=$HOME/.local/share/pts-rk-ci/bin:$PATH
+# Command: opam exec --switch=pts-rk-ci -- timeout 300 dune build --build-dir /tmp/pts-rk-domain-prefix.57mug7 --display=short --no-buffer
+# Exit status: 0
+
+        rocq vendor/zfc/.ZFC.theory.d
+        rocq models/.PTSrkModel.theory.d
+        rocq theories/.PTSrk.theory.d
+File "./vendor/zfc/Sets.v", line 111, characters 0-40:
+Warning: Implicitly declaring hint databases is deprecated. Please explicitly
+create "zfc"
+[implicit-create-hint-db,deprecated-since-9.2,deprecated,default]
+        rocq vendor/zfc/Sets.{glob,vo}
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/DirectRCountermodel.{glob,vo}
+        rocq vendor/zfc/Axioms.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+        rocq vendor/zfc/Cartesian.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq models/SetFunctions.{glob,vo}
+        rocq theories/Congruence.{glob,vo}
+        rocq theories/DirectRRelationalSyntax.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+        rocq theories/DirectRRelationalCountermodel.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+        rocq theories/SN.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+        rocq theories/DirectREval.{glob,vo}
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+File "./theories/DirectRKernel.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRKernel.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRKernel.{glob,vo}
+        rocq theories/DirectRCheck.{glob,vo}
+        rocq theories/DirectRCodes.{glob,vo}
+File "./theories/DirectRSymbolic.v", line 13, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRSymbolic.v", line 13, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRArithmetic.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRArithmetic.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRSymbolic.{glob,vo}
+        rocq theories/DirectRStructural.{glob,vo}
+        rocq theories/DirectRArithmetic.{glob,vo}
+File "./theories/DirectRFoundations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRFoundations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRLogic.{glob,vo}
+        rocq theories/DirectRPositive.{glob,vo}
+        rocq theories/DirectRFiniteTables.{glob,vo}
+        rocq theories/DirectRTelescopeArguments.{glob,vo}
+        rocq theories/DirectRBinaryTables.{glob,vo}
+        rocq theories/DirectRFiniteObservations.{glob,vo}
+        rocq theories/DirectRBinaryObservations.{glob,vo}
+        rocq theories/DirectRUnary.{glob,vo}
+        rocq theories/DirectRUnaryAxioms.{glob,vo}
+        rocq theories/DirectRFiniteUp.{glob,vo}
+        rocq theories/DirectRFiniteLawElimination.{glob,vo}
+        rocq theories/DirectRRelationTables.{glob,vo}
+        rocq theories/DirectRUnaryEvaluation.{glob,vo}
+        rocq theories/DirectRGuardedFiniteLaws.{glob,vo}
+        rocq theories/DirectRFunctionalFiniteLaws.{glob,vo}
+        rocq theories/DirectRFiniteTransitivity.{glob,vo}
+        rocq theories/DirectRFiniteUnaryCongruence.{glob,vo}
+        rocq theories/DirectRFiniteCongruence.{glob,vo}
+        rocq theories/DirectRFiniteBinaryCongruence.{glob,vo}
+        rocq theories/DirectRFiniteExpressions.{glob,vo}
+        rocq theories/DirectRFiniteZeroLaws.{glob,vo}
+        rocq theories/DirectRFiniteRecursionLaws.{glob,vo}
+        rocq theories/DirectRFiniteOrderLaws.{glob,vo}
+        rocq theories/DirectRSeparation.{glob,vo}
+        rocq theories/DirectRFiniteBinaryDomain.{glob,vo}
+        rocq theories/DirectRUnaryBounded.{glob,vo}
+        rocq theories/DirectRUnaryArithmetic.{glob,vo}
+unary_bounded_cases
+     : forall cutoff : nat,
+       exists p : Term nat 0,
+         ε ⊢ p
+         ⇐ Π Unary.Domain
+             (Codes.Arrow (Unary.admitted Codes.V0)
+                (Unary.Case cutoff Codes.V0))
+Unary.Case =
+fun (n cutoff : nat) (d : Term nat n) =>
+Codes.FlatOr
+  (ListDef.map
+     (fun i : nat => Unary.E d (Codes.lift_closed (Unary.numeral i)))
+     (ListDef.seq 0 (S cutoff)) ++
+   Unary.O (Codes.lift_closed (Unary.numeral (S cutoff))) d :: nil)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments Unary.Case {n}%_nat_scope cutoff%_nat_scope d
+Unary.Inv =
+fun (n cutoff : nat) (d : Term nat n) =>
+NegativeLogic.positive_invariant (Unary.G d) (Unary.Case cutoff d)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments Unary.Inv {n}%_nat_scope cutoff%_nat_scope d
+Unary.ground_order_realized
+     : forall i j : nat,
+       i <= j -> Core.Realizes (Unary.O (Unary.numeral i) (Unary.numeral j))
+Unary.case_successor_realized
+     : forall (Γ : Ctx nat ?n) (cutoff : nat) (d : Term nat ?n),
+       Core.Typed Γ d (Codes.lift_closed Unary.Domain) ->
+       NegativeLogic.inhabited Γ (Unary.G d) ->
+       NegativeLogic.inhabited Γ (Unary.Case cutoff d) ->
+       NegativeLogic.inhabited Γ
+         (Unary.Case cutoff (app (Codes.lift_closed Unary.successor) d))
+where
+?n : [ |- nat]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/DirectRRelationalTranslation.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/DirectRFiniteData.{glob,vo}
+        rocq theories/DirectRRelationalGround.{glob,vo}
+Closed under the global context
+        rocq theories/DirectRRelationalAxioms.{glob,vo}
+Closed under the global context
+        rocq theories/DirectRRelationalEquality.{glob,vo}
+Closed under the global context
+Closed under the global context
+        rocq theories/DirectRRelationalDeduction.{glob,vo}
+Closed under the global context
+Closed under the global context
+unary_comparability
+     : forall cutoff : nat,
+       exists p : Term nat 0,
+         ε ⊢ p
+         ⇐ Π Unary.Domain
+             (Codes.Arrow (Unary.admitted Codes.V0)
+                (UnaryAxioms.Compare cutoff Codes.V0))
+UnaryAxioms.Compare =
+fun (n cutoff : nat) (d : Term nat n) =>
+Codes.FlatOr
+  (Unary.O d (Codes.lift_closed (Unary.numeral cutoff))
+   :: Unary.O (Codes.lift_closed (Unary.numeral cutoff)) d :: nil)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments UnaryAxioms.Compare {n}%_nat_scope cutoff%_nat_scope d
+FiniteTables.table_typed
+     : forall (q : nat) (perm : list nat),
+       length perm = q ->
+       Core.Typed ε (FiniteTables.table q perm)
+         (Codes.Arrow (DirectRStructural.Structural.selector_type q)
+            (DirectRStructural.Structural.selector_type q))
+FiniteTables.table_action
+     : forall (q : nat) (perm : list nat) (i : nat),
+       length perm = q ->
+       i < q ->
+       DefEq.def_equiv nat 0
+         (app (FiniteTables.table q perm) (FiniteTables.point q i))
+         (FiniteTables.point q (ListDef.nth i perm 0))
+FiniteTables.capped_successor_action
+     : forall q i : nat,
+       i < q ->
+       DefEq.def_equiv nat 0
+         (app (FiniteTables.capped_successor q) (FiniteTables.point q i))
+         (FiniteTables.point q (PeanoNat.Nat.min (S i) (PeanoNat.Nat.pred q)))
+FiniteTables.iterate_computation
+     : forall c k : nat,
+       DefEq.def_equiv nat 0 (FiniteTables.iterate (S c) k)
+         (FiniteTables.point (S c) (PeanoNat.Nat.min k c))
+        rocq theories/DirectRTheorem4.{glob,vo}
+Closed under the global context
+relational_axiom_preservation
+     : forall (k n : nat) (Γ : Ctx nat n) (env : Fin k -> Term nat n)
+         (A : Relational.formula k),
+       Relational.axiom A ->
+       exists p : Term nat n, Γ ⊢ p ⇐ RelationalTranslation.formula A env
+Theorem4.theorem4
+     : (forall A : Relational.formula 0,
+        Relational.axiom A ->
+        exists p : Term nat 0, ε ⊢ p ⇐ RelationalTranslation.sentence A) /\
+       (forall A : Relational.formula 0,
+        Relational.derives nil A ->
+        exists p : Term nat 0, ε ⊢ p ⇐ RelationalTranslation.sentence A) /\
+       (forall a : Theorem4.ground_atom,
+        (Theorem4.atom_truth a ->
+         exists p : Term nat 0,
+           ε ⊢ p ⇐ RelationalTranslation.sentence (Theorem4.atom_formula a)) /\
+        (~ Theorem4.atom_truth a ->
+         exists p : Term nat 0,
+           ε ⊢ p
+           ⇐ Codes.Neg
+               (RelationalTranslation.sentence (Theorem4.atom_formula a)))) /\
+       (exists A : Relational.formula 0,
+          (exists p : Term nat 0, ε ⊢ p ⇐ RelationalTranslation.sentence A) /\
+          ~ Relational.derives nil A)
+RelationalDeduction.sentence_preservation
+     : forall A : Relational.formula 0,
+       Relational.derives nil A ->
+       exists p : Term nat 0, ε ⊢ p ⇐ RelationalTranslation.sentence A
+Theorem4.nonfaithfulness
+     : exists A : Relational.formula 0,
+         Core.Realizes (RelationalTranslation.sentence A) /\
+         ~ Relational.derives nil A
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Positive.membership_intro
+     : forall (Γ : Ctx nat ?n) (A : Term nat ?n) (xs : list (Term nat ?n))
+         (u : Term nat ?n),
+       Core.Typed Γ A (𝓤 1) ->
+       ListDef.Forall (fun x : Term nat ?n => Core.Typed Γ x A) xs ->
+       List.In u xs -> NegativeLogic.inhabited Γ (Positive.Membership A xs u)
+where
+?n : [ |- nat]
+Positive.membership_elim
+     : forall (Γ : Ctx nat ?n) (A : Term nat ?n) (xs : list (Term nat ?n))
+         (u Q : Term nat ?n),
+       NegativeLogic.inhabited Γ (Positive.Membership A xs u) ->
+       Core.Typed Γ Q (Codes.Arrow A (𝓤 3)) ->
+       ListDef.Forall
+         (fun x : Term nat ?n => NegativeLogic.inhabited Γ (app Q x)) xs ->
+       NegativeLogic.inhabited Γ (app Q u)
+where
+?n : [ |- nat]
+FiniteObservations.delta_formation
+     : forall (Γ : Ctx nat ?n) (q : nat) (u : Term nat ?n),
+       0 < q ->
+       Core.Typed Γ u (DirectRStructural.Structural.selector_type q) ->
+       Core.Typed Γ (FiniteObservations.delta q u) (𝓤 4)
+where
+?n : [ |- nat]
+FiniteObservations.delta_point
+     : forall (Γ : Ctx nat ?n) (q i : nat),
+       i < q ->
+       NegativeLogic.inhabited Γ
+         (FiniteObservations.delta q
+            (Codes.lift_closed (FiniteTables.point q i)))
+where
+?n : [ |- nat]
+FiniteObservations.delta_step_realized
+     : forall q : nat,
+       0 < q -> Core.Realizes (FiniteObservations.delta_step_type q)
+FiniteObservations.delta_step_type =
+fun q : nat =>
+Π (DirectRStructural.Structural.selector_type q)
+  (Codes.Arrow (FiniteObservations.delta q Codes.V0)
+     (FiniteObservations.delta q
+        (app (Codes.lift_closed (FiniteTables.capped_successor q)) Codes.V0)))
+     : nat -> Codes.closed_term
+
+Arguments FiniteObservations.delta_step_type q%_nat_scope
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/DirectRFiniteDomainPrefix.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+FiniteUp.upward_realized
+     : forall c : nat, Core.Realizes (FiniteUp.upward_type c)
+FiniteUp.upward_type =
+fun c : nat =>
+Π (DirectRStructural.Structural.selector_type (S c))
+  (Codes.Arrow (FiniteObservations.delta (S c) Codes.V0)
+     (FiniteUp.Step c Codes.V0))
+     : nat -> Codes.closed_term
+
+Arguments FiniteUp.upward_type c%_nat_scope
+UnaryEvaluation.numeral_evaluation
+     : forall (k n : nat) (X z s : Term nat n),
+       DefEq.def_equiv nat n
+         (UnaryEvaluation.evaluate (Codes.lift_closed (Unary.numeral k)) X z
+            s)
+         (UnaryEvaluation.iterations k z s)
+UnaryEvaluation.finite_numeral_evaluation
+     : forall c k : nat,
+       DefEq.def_equiv nat 0
+         (UnaryEvaluation.evaluate (Unary.numeral k)
+            (DirectRStructural.Structural.selector_type (S c))
+            (FiniteTables.point (S c) 0)
+            (FiniteTables.capped_successor (S c)))
+         (FiniteTables.point (S c) (PeanoNat.Nat.min k c))
+unary_no_back
+     : forall k : nat,
+       exists p : Term nat 0,
+         ε ⊢ p ⇐ Codes.Neg (Unary.O (Unary.numeral (S k)) (Unary.numeral k))
+Separation.ground_order_refutation
+     : forall i j : nat,
+       j < i ->
+       Core.Realizes
+         (Codes.Neg (Unary.O (Unary.numeral i) (Unary.numeral j)))
+unary_numeral_inequality
+     : forall i j : nat,
+       i <> j ->
+       exists p : Term nat 0,
+         ε ⊢ p ⇐ Codes.Neg (Unary.E (Unary.numeral i) (Unary.numeral j))
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Inductive
+derives
+    : forall n : nat,
+      list (Relational.formula n) -> Relational.formula n -> Prop :=
+    hypothesis : forall (n : nat) (Γ : list (Relational.formula n))
+                   (A : Relational.formula n),
+                 List.In A Γ -> Relational.derives Γ A
+  | theory : forall (n : nat) (Γ : list (Relational.formula n))
+               (A : Relational.formula n),
+             Relational.axiom A -> Relational.derives Γ A
+  | implication_intro : forall (n : nat) (Γ : list (Relational.formula n))
+                          (A B : Relational.formula n),
+                        Relational.derives (A :: Γ) B ->
+                        Relational.derives Γ (Relational.implies A B)
+  | implication_elim : forall (n : nat) (Γ : list (Relational.formula n))
+                         (A B : Relational.formula n),
+                       Relational.derives Γ (Relational.implies A B) ->
+                       Relational.derives Γ A -> Relational.derives Γ B
+  | universal_intro : forall (n : nat) (Γ : list (Relational.formula n))
+                        (A : Relational.formula (S n)),
+                      Relational.derives
+                        (ListDef.map (Relational.frename fsucc) Γ) A ->
+                      Relational.derives Γ (Relational.all A)
+  | universal_elim : forall (n : nat) (Γ : list (Relational.formula n))
+                       (A : Relational.formula (S n))
+                       (t : Relational.term n),
+                     Relational.derives Γ (Relational.all A) ->
+                     Relational.derives Γ (Relational.instantiate A t)
+  | classical : forall (n : nat) (Γ : list (Relational.formula n))
+                  (A : Relational.formula n),
+                Relational.derives Γ (Relational.neg (Relational.neg A)) ->
+                Relational.derives Γ A
+  | equality_refl : forall (n : nat) (Γ : list (Relational.formula n))
+                      (t : Relational.term n),
+                    Relational.derives Γ (Relational.equal t t)
+  | equality_replace : forall (n : nat) (Γ : list (Relational.formula n))
+                         (A : Relational.formula (S n))
+                         (t u : Relational.term n),
+                       Relational.derives Γ (Relational.equal t u) ->
+                       Relational.derives Γ (Relational.instantiate A t) ->
+                       Relational.derives Γ (Relational.instantiate A u).
+
+Arguments Relational.derives {n}%_nat_scope Γ%_list_scope A
+  (where some original arguments have been renamed)
+Arguments Relational.hypothesis n%_nat_scope Γ%_list_scope A _
+Arguments Relational.theory n%_nat_scope Γ%_list_scope A _
+Arguments Relational.implication_intro n%_nat_scope Γ%_list_scope A B _
+Arguments Relational.implication_elim n%_nat_scope Γ%_list_scope A B _ _
+Arguments Relational.universal_intro n%_nat_scope Γ%_list_scope A _
+Arguments Relational.universal_elim n%_nat_scope Γ%_list_scope A t _
+Arguments Relational.classical n%_nat_scope Γ%_list_scope A _
+Arguments Relational.equality_refl n%_nat_scope Γ%_list_scope t
+Arguments Relational.equality_replace n%_nat_scope Γ%_list_scope A t u _ _
+RelationalTranslation.formula_typed
+     : forall (A : Relational.formula ?k) (n : nat)
+         (Γ : Ctx nat n) (env : Fin ?k -> Term nat n),
+       (forall i : Fin ?k,
+        Core.Typed Γ (env i) (Codes.lift_closed DirectRUnary.Unary.Domain)) ->
+       Core.Typed Γ (RelationalTranslation.formula A env)
+         (𝓤 (RelationalTranslation.formula_rank A))
+where
+?k : [ |- nat]
+RelationalTranslation.term_admitted
+     : forall (Γ : Ctx nat ?n) (env : Fin ?k -> Term nat ?n)
+         (t : Relational.term ?k),
+       (forall i : Fin ?k,
+        Core.Typed Γ (env i) (Codes.lift_closed DirectRUnary.Unary.Domain)) ->
+       (forall i : Fin ?k,
+        DirectRLogic.NegativeLogic.inhabited Γ
+          (DirectRUnary.Unary.admitted (env i))) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRUnary.Unary.admitted (RelationalTranslation.term env t))
+where
+?k : [ |- nat]
+?n : [ |- nat]
+RelationalTranslation.instantiate_translation
+     : forall (A : Relational.formula (S ?k)) (t : Relational.term ?k)
+         (env : Fin ?k -> Term nat ?n),
+       RelationalTranslation.formula (Relational.instantiate A t) env =
+       subst (RelationalTranslation.formula A (transpose env))
+         (RelationalTranslation.term env t)
+where
+?k : [ |- nat]
+?n : [ |- nat]
+RelationalTranslation.universal_elimination
+     : forall (Γ : Ctx nat ?n) (env : Fin ?k -> Term nat ?n)
+         (A : Relational.formula (S ?k)) (t : Relational.term ?k),
+       (forall i : Fin ?k,
+        Core.Typed Γ (env i) (Codes.lift_closed DirectRUnary.Unary.Domain)) ->
+       (forall i : Fin ?k,
+        DirectRLogic.NegativeLogic.inhabited Γ
+          (DirectRUnary.Unary.admitted (env i))) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (RelationalTranslation.formula (Relational.all A) env) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (RelationalTranslation.formula (Relational.instantiate A t) env)
+where
+?k : [ |- nat]
+?n : [ |- nat]
+RelationalGround.addition_true
+     : forall t u v : Relational.term 0,
+       RelationalTranslation.value t + RelationalTranslation.value u =
+       RelationalTranslation.value v ->
+       Core.Realizes
+         (RelationalTranslation.sentence (Relational.add_graph t u v))
+RelationalGround.addition_false
+     : forall t u v : Relational.term 0,
+       RelationalTranslation.value t + RelationalTranslation.value u <>
+       RelationalTranslation.value v ->
+       Core.Realizes
+         (Codes.Neg
+            (RelationalTranslation.sentence (Relational.add_graph t u v)))
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+UnaryBounded.R4_realized
+     : forall cutoff : nat, Core.Realizes (UnaryBounded.R4 cutoff)
+UnaryBounded.R4 =
+fun cutoff : nat =>
+Π Unary.Domain
+  (Codes.Arrow (Unary.admitted Codes.V0)
+     (UnaryBounded.BoundEquivalence cutoff Codes.V0))
+     : nat -> Codes.closed_term
+
+Arguments UnaryBounded.R4 cutoff%_nat_scope
+UnaryBounded.BoundEquivalence =
+fun (n cutoff : nat) (d : Term nat n) =>
+UnaryBounded.Equivalence
+  (Unary.O d (Codes.lift_closed (Unary.numeral cutoff)))
+  (UnaryBounded.Bounded cutoff d)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments UnaryBounded.BoundEquivalence {n}%_nat_scope cutoff%_nat_scope d
+UnaryBounded.Equivalence =
+fun (n : nat) (A B : Term nat n) =>
+Codes.Conj (Codes.Arrow A B) (Codes.Arrow B A)
+     : forall {n : nat}, Term nat n -> Term nat n -> Term nat n
+
+Arguments UnaryBounded.Equivalence {n}%_nat_scope A B
+UnaryEvaluation.addition_numerals
+     : forall m k : nat,
+       DefEq.def_equiv nat 0
+         (app (app Unary.addition (Unary.numeral m)) (Unary.numeral k))
+         (Unary.numeral (m + k))
+UnaryEvaluation.multiplication_numerals
+     : forall m k : nat,
+       DefEq.def_equiv nat 0
+         (app (app Unary.multiplication (Unary.numeral m)) (Unary.numeral k))
+         (Unary.numeral (m * k))
+UnaryArithmetic.R1 =
+fun m n : nat =>
+UnaryArithmetic.equation_scheme
+  (app (app Unary.addition (Unary.numeral m)) (Unary.numeral n))
+  (Unary.numeral (m + n))
+     : nat -> nat -> Codes.closed_term
+
+Arguments UnaryArithmetic.R1 (m n)%_nat_scope
+UnaryArithmetic.R2 =
+fun m n : nat =>
+UnaryArithmetic.equation_scheme
+  (app (app Unary.multiplication (Unary.numeral m)) (Unary.numeral n))
+  (Unary.numeral (m * n))
+     : nat -> nat -> Codes.closed_term
+
+Arguments UnaryArithmetic.R2 (m n)%_nat_scope
+UnaryArithmetic.equation_scheme =
+fun l r : Codes.closed_term =>
+Π Unary.Domain
+  (Codes.Arrow (Unary.admitted Codes.V0)
+     (UnaryArithmetic.GraphEquivalence l r Codes.V0))
+     : Codes.closed_term -> Codes.closed_term -> Codes.closed_term
+
+Arguments UnaryArithmetic.equation_scheme l r
+UnaryArithmetic.GraphEquivalence =
+fun (n : nat) (l r : Codes.closed_term) (d : Term nat n) =>
+UnaryBounded.Equivalence (Unary.E (Codes.lift_closed l) d)
+  (Unary.E (Codes.lift_closed r) d)
+     : forall {n : nat},
+       Codes.closed_term -> Codes.closed_term -> Term nat n -> Term nat n
+
+Arguments UnaryArithmetic.GraphEquivalence {n}%_nat_scope l r d
+UnaryArithmetic.ground_addition_true
+     : forall m n k : nat,
+       m + n = k -> Core.Realizes (UnaryArithmetic.AddAtom m n k)
+UnaryArithmetic.ground_addition_false
+     : forall m n k : nat,
+       m + n <> k ->
+       Core.Realizes (Codes.Neg (UnaryArithmetic.AddAtom m n k))
+UnaryArithmetic.ground_multiplication_true
+     : forall m n k : nat,
+       m * n = k -> Core.Realizes (UnaryArithmetic.MulAtom m n k)
+UnaryArithmetic.ground_multiplication_false
+     : forall m n k : nat,
+       m * n <> k ->
+       Core.Realizes (Codes.Neg (UnaryArithmetic.MulAtom m n k))
+unary_relational_axioms
+     : forall a : UnaryArithmetic.relational_axiom,
+       exists p : Term nat 0, ε ⊢ p ⇐ UnaryArithmetic.axiom_translation a
+UnaryArithmetic.axiom_translation =
+fun a : UnaryArithmetic.relational_axiom =>
+match a with
+| UnaryArithmetic.ax_add m n => UnaryArithmetic.R1 m n
+| UnaryArithmetic.ax_mul m n => UnaryArithmetic.R2 m n
+| UnaryArithmetic.ax_neq m n _ =>
+    Codes.Neg (Unary.E (Unary.numeral m) (Unary.numeral n))
+| UnaryArithmetic.ax_bound n => UnaryBounded.R4 n
+| UnaryArithmetic.ax_compare n => UnaryAxioms.R5 n
+end
+     : UnaryArithmetic.relational_axiom -> Codes.closed_term
+
+Arguments UnaryArithmetic.axiom_translation a
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/DirectRRelationalAudit.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/DirectRUnaryAudit.{glob,vo}
+        rocq theories/DirectRFoundations.{glob,vo}
+File "./theories/DirectRProofs.v", line 5, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRProofs.v", line 5, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRFunctionalLogic.{glob,vo}
+        rocq theories/DirectRProofs.{glob,vo}
+File "./theories/DirectRFirstOrder.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRFirstOrder.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRFirstOrder.{glob,vo}
+        rocq theories/DirectRGenerated.{glob,vo}
+File "./theories/DirectRObligations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRObligations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRTests.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRTests.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRTests.v", line 30, characters 0-586:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Init.Nat.of_num_uint. [abstract-large-number,numbers,default]
+        rocq theories/DirectRObligations.{glob,vo}
+        rocq theories/DirectR.{glob,vo}
+        rocq theories/DirectRFunctionalTerms.{glob,vo}
+FunctionalTerms.term_typed
+     : forall (Γ : Context.Ctx nat ?n)
+         (env : Syntax.Fin ?k -> Syntax.Term nat ?n)
+         (t : DirectRFirstOrder.FirstOrder.term ?k),
+       (forall i : Syntax.Fin ?k,
+        DirectRKernel.Core.Typed Γ (env i)
+          (DirectRCodes.Codes.lift_closed DirectRCodes.Codes.Domain)) ->
+       DirectRKernel.Core.Typed Γ
+         (DirectRFirstOrder.FirstOrder.translate_term env t)
+         (DirectRCodes.Codes.lift_closed DirectRCodes.Codes.Domain)
+where
+?k : [ |- nat]
+?n : [ |- nat]
+FunctionalTerms.term_admitted
+     : forall (Γ : Context.Ctx nat ?n)
+         (env : Syntax.Fin ?k -> Syntax.Term nat ?n)
+         (t : DirectRFirstOrder.FirstOrder.term ?k),
+       (forall i : Syntax.Fin ?k,
+        DirectRKernel.Core.Typed Γ (env i)
+          (DirectRCodes.Codes.lift_closed DirectRCodes.Codes.Domain)) ->
+       (forall i : Syntax.Fin ?k,
+        DirectRLogic.NegativeLogic.inhabited Γ
+          (DirectRCodes.Codes.GoodAt (env i))) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRCodes.Codes.GoodAt
+            (DirectRFirstOrder.FirstOrder.translate_term env t))
+where
+?k : [ |- nat]
+?n : [ |- nat]
+FunctionalTerms.ground_evaluation
+     : forall t : DirectRFirstOrder.FirstOrder.term 0,
+       DirectRKernel.Core.Realizes
+         (DirectRCodes.Codes.EqAt (FunctionalTerms.closed_translation t)
+            (DirectRCodes.Codes.numeral (FunctionalTerms.value t)))
+FunctionalTerms.ground_equality_true
+     : forall t u : DirectRFirstOrder.FirstOrder.term 0,
+       FunctionalTerms.value t = FunctionalTerms.value u ->
+       DirectRKernel.Core.Realizes
+         (DirectRFirstOrder.FirstOrder.sentence_translation
+            (DirectRFirstOrder.FirstOrder.equal t u))
+FunctionalTerms.ground_order_true
+     : forall t u : DirectRFirstOrder.FirstOrder.term 0,
+       FunctionalTerms.value t <= FunctionalTerms.value u ->
+       DirectRKernel.Core.Realizes
+         (DirectRFirstOrder.FirstOrder.sentence_translation
+            (DirectRFirstOrder.FirstOrder.less_equal t u))
+FunctionalLogic.equality_stability_typed
+     : DirectRKernel.Core.Typed Context.ε FunctionalLogic.equality_stability
+         FunctionalLogic.equality_stability_type
+FunctionalLogic.order_stability_typed
+     : DirectRKernel.Core.Typed Context.ε FunctionalLogic.order_stability
+         FunctionalLogic.order_stability_type
+BinaryTables.binary_table_typed
+     : forall (q : nat) (b : nat -> nat -> nat),
+       DirectRKernel.Core.Typed Context.ε (BinaryTables.binary_table q b)
+         (DirectRCodes.Codes.Arrow
+            (DirectRStructural.Structural.selector_type q)
+            (DirectRCodes.Codes.Arrow
+               (DirectRStructural.Structural.selector_type q)
+               (DirectRStructural.Structural.selector_type q)))
+BinaryTables.binary_table_action
+     : forall (q : nat) (b : nat -> nat -> nat) (i j : nat),
+       i < q ->
+       j < q ->
+       DefEq.def_equiv nat 0
+         (Syntax.app
+            (Syntax.app (BinaryTables.binary_table q b)
+               (DirectRFiniteTables.FiniteTables.point q i))
+            (DirectRFiniteTables.FiniteTables.point q j))
+         (DirectRFiniteTables.FiniteTables.point q (b i j))
+BinaryObservations.delta_binary
+     : forall (Γ : Context.Ctx nat ?n) (q : nat) (b : nat -> nat -> nat)
+         (u v : Syntax.Term nat ?n),
+       0 < q ->
+       (forall i j : nat, i < q -> j < q -> b i j < q) ->
+       DirectRKernel.Core.Typed Γ u
+         (DirectRStructural.Structural.selector_type q) ->
+       DirectRKernel.Core.Typed Γ v
+         (DirectRStructural.Structural.selector_type q) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRFiniteObservations.FiniteObservations.delta q u) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRFiniteObservations.FiniteObservations.delta q v) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRFiniteObservations.FiniteObservations.delta q
+            (Syntax.app
+               (Syntax.app
+                  (DirectRCodes.Codes.lift_closed
+                     (BinaryTables.binary_table q b))
+                  u)
+               v))
+where
+?n : [ |- nat]
+RelationTables.relation_table_typed
+     : forall (q : nat) (r : nat -> nat -> bool),
+       DirectRKernel.Core.Typed Context.ε (RelationTables.relation_table q r)
+         (DirectRCodes.Codes.Arrow
+            (DirectRStructural.Structural.selector_type q)
+            (DirectRCodes.Codes.Arrow
+               (DirectRStructural.Structural.selector_type q)
+               (Syntax.𝓤 1)))
+RelationTables.relation_table_action
+     : forall (q : nat) (r : nat -> nat -> bool) (i j : nat),
+       i < q ->
+       j < q ->
+       DefEq.def_equiv nat 0
+         (Syntax.app
+            (Syntax.app (RelationTables.relation_table q r)
+               (DirectRFiniteTables.FiniteTables.point q i))
+            (DirectRFiniteTables.FiniteTables.point q j))
+         (RelationTables.entry (r i j))
+FiniteLawElimination.delta_eliminate_lower
+     : forall (Γ : Context.Ctx nat ?n) (q : nat) (u P : Syntax.Term nat ?n)
+         (r : nat),
+       0 < q ->
+       r <= 3 ->
+       DirectRKernel.Core.Typed Γ u
+         (DirectRStructural.Structural.selector_type q) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRFiniteObservations.FiniteObservations.delta q u) ->
+       DirectRKernel.Core.Typed Γ P
+         (DirectRCodes.Codes.Arrow
+            (DirectRStructural.Structural.selector_type q)
+            (Syntax.𝓤 r)) ->
+       (forall i : nat,
+        i < q ->
+        DirectRLogic.NegativeLogic.inhabited Γ
+          (Syntax.app P
+             (DirectRCodes.Codes.lift_closed
+                (DirectRFiniteTables.FiniteTables.point q i)))) ->
+       DirectRLogic.NegativeLogic.inhabited Γ (Syntax.app P u)
+where
+?n : [ |- nat]
+FiniteLawElimination.delta_eliminate_arguments
+     : forall (Γ : Context.Ctx nat ?n) (q : nat)
+         (xs : list (Syntax.Term nat ?n)) (P : Syntax.Term nat ?n)
+         (r : nat),
+       0 < q ->
+       r <= 3 ->
+       ListDef.Forall
+         (fun x : Syntax.Term nat ?n =>
+          DirectRKernel.Core.Typed Γ x
+            (DirectRStructural.Structural.selector_type q))
+         xs ->
+       ListDef.Forall
+         (fun x : Syntax.Term nat ?n =>
+          DirectRLogic.NegativeLogic.inhabited Γ
+            (DirectRFiniteObservations.FiniteObservations.delta q x))
+         xs ->
+       DirectRKernel.Core.Typed Γ P
+         (DirectRPositive.Positive.Arrows
+            (ListDef.repeat (DirectRStructural.Structural.selector_type q)
+               (length xs))
+            (Syntax.𝓤 r)) ->
+       (forall indices : list nat,
+        length indices = length xs ->
+        ListDef.Forall (fun i : nat => i < q) indices ->
+        DirectRLogic.NegativeLogic.inhabited Γ
+          (DirectRStructural.Structural.table_apply P
+             (ListDef.map
+                (fun i : nat =>
+                 DirectRCodes.Codes.lift_closed
+                   (DirectRFiniteTables.FiniteTables.point q i))
+                indices))) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRStructural.Structural.table_apply P xs)
+where
+?n : [ |- nat]
+FunctionalFiniteLaws.equality_reflexivity_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FunctionalFiniteLaws.reflexivity_type q PeanoNat.Nat.eqb)
+FunctionalFiniteLaws.order_reflexivity_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FunctionalFiniteLaws.reflexivity_type q PeanoNat.Nat.leb)
+RelationTables.boolean_horn_typed
+     : forall (Γ : Context.Ctx nat ?n) (premises : list bool)
+         (conclusion : bool),
+       DirectRKernel.Core.Typed Γ
+         (RelationTables.boolean_horn premises conclusion)
+         (Syntax.𝓤 match premises with
+                   | nil => 2
+                   | (_ :: _)%list => 3
+                   end)
+where
+?n : [ |- nat]
+RelationTables.boolean_horn_realized
+     : forall (Γ : Context.Ctx nat ?n) (premises : list bool)
+         (conclusion : bool),
+       (ListDef.Forall (fun b : bool => b = true) premises ->
+        conclusion = true) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (RelationTables.boolean_horn premises conclusion)
+where
+?n : [ |- nat]
+FunctionalFiniteLaws.relation_symmetry
+     : forall (Γ : Context.Ctx nat ?n) (q : nat) (r : nat -> nat -> bool)
+         (u v : Syntax.Term nat ?n),
+       0 < q ->
+       (forall i j : nat, i < q -> j < q -> r i j = true -> r j i = true) ->
+       DirectRKernel.Core.Typed Γ u
+         (DirectRStructural.Structural.selector_type q) ->
+       DirectRKernel.Core.Typed Γ v
+         (DirectRStructural.Structural.selector_type q) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRFiniteObservations.FiniteObservations.delta q u) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRFiniteObservations.FiniteObservations.delta q v) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (FunctionalFiniteLaws.symmetry_body q r u v)
+where
+?n : [ |- nat]
+FunctionalFiniteLaws.equality_symmetry_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FunctionalFiniteLaws.symmetry_type q PeanoNat.Nat.eqb)
+FunctionalFiniteLaws.symmetry_type =
+fun (q : nat) (r : nat -> nat -> bool) =>
+Syntax.Π (DirectRStructural.Structural.selector_type q)
+  (DirectRCodes.Codes.Arrow
+     (DirectRFiniteObservations.FiniteObservations.delta q
+        DirectRCodes.Codes.V0)
+     (Syntax.Π (DirectRStructural.Structural.selector_type q)
+        (DirectRCodes.Codes.Arrow
+           (DirectRFiniteObservations.FiniteObservations.delta q
+              DirectRCodes.Codes.V0)
+           (FunctionalFiniteLaws.symmetry_body q r
+              (Syntax.shift DirectRCodes.Codes.V0) DirectRCodes.Codes.V0))))
+     : nat -> (nat -> nat -> bool) -> DirectRCodes.Codes.closed_term
+
+Arguments FunctionalFiniteLaws.symmetry_type q%_nat_scope r%_function_scope
+GuardedFiniteLaws.guarded_typed
+     : forall (k n : nat) (Γ : Context.Ctx nat n)
+         (q : nat) (P : Syntax.Term nat n) (r : nat),
+       0 < q ->
+       DirectRKernel.Core.Typed Γ P
+         (DirectRPositive.Positive.Arrows
+            (ListDef.repeat (DirectRStructural.Structural.selector_type q) k)
+            (Syntax.𝓤 r)) ->
+       DirectRKernel.Core.Typed Γ (GuardedFiniteLaws.guarded q k P)
+         (Syntax.𝓤 match k with
+                   | 0 => r
+                   | S _ => PeanoNat.Nat.max 5 r
+                   end)
+GuardedFiniteLaws.guarded_finite_realized
+     : forall (q k : nat) (P : Syntax.Term nat 0) (r : nat),
+       0 < q ->
+       r <= 3 ->
+       DirectRKernel.Core.Typed Context.ε P
+         (DirectRPositive.Positive.Arrows
+            (ListDef.repeat (DirectRStructural.Structural.selector_type q) k)
+            (Syntax.𝓤 r)) ->
+       (forall indices : list nat,
+        length indices = k ->
+        ListDef.Forall (fun i : nat => i < q) indices ->
+        DirectRKernel.Core.Realizes
+          (DirectRStructural.Structural.table_apply P
+             (ListDef.map (DirectRFiniteTables.FiniteTables.point q) indices))) ->
+       DirectRKernel.Core.Realizes (GuardedFiniteLaws.guarded q k P)
+FiniteTransitivity.equality_transitivity_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteTransitivity.expanded_type q PeanoNat.Nat.eqb)
+FiniteTransitivity.order_transitivity_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteTransitivity.expanded_type q PeanoNat.Nat.leb)
+FiniteCongruence.relation_congruence_realized
+     : forall (q : nat) (r : nat -> nat -> bool),
+       0 < q ->
+       DirectRKernel.Core.Realizes (FiniteCongruence.expanded_type q r)
+FiniteCongruence.order_congruence_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteCongruence.expanded_type q PeanoNat.Nat.leb)
+RelationTables.boolean_premises_realized
+     : forall (Γ : Context.Ctx nat ?n) (premises : list bool)
+         (C : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed Γ C (Syntax.𝓤 1) ->
+       (ListDef.Forall (fun b : bool => b = true) premises ->
+        DirectRLogic.NegativeLogic.inhabited Γ (DirectRCodes.Codes.Neg C)) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRPositive.Positive.Arrows
+            (ListDef.map
+               (fun b : bool =>
+                DirectRCodes.Codes.Neg (RelationTables.entry b))
+               premises)
+            (DirectRCodes.Codes.Neg C))
+where
+?n : [ |- nat]
+FiniteUnaryCongruence.successor_congruence_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteUnaryCongruence.expanded_type q
+            (DirectRFiniteTables.FiniteTables.capped_successor q))
+FiniteBinaryCongruence.addition_congruence_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteBinaryCongruence.expanded_type q
+            (BinaryTables.capped_addition q))
+FiniteBinaryCongruence.multiplication_congruence_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteBinaryCongruence.expanded_type q
+            (BinaryTables.capped_multiplication q))
+FiniteZeroLaws.addition_zero_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteZeroLaws.expanded_type q (BinaryTables.capped_addition q)
+            false false)
+FiniteZeroLaws.multiplication_zero_left_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteZeroLaws.expanded_type q
+            (BinaryTables.capped_multiplication q) false true)
+FiniteZeroLaws.multiplication_zero_right_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteZeroLaws.expanded_type q
+            (BinaryTables.capped_multiplication q) true true)
+FiniteExpressions.denote_typed
+     : forall (Γ : Context.Ctx nat ?n) (q : nat)
+         (e : FiniteExpressions.expression) (u v : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed Γ u
+         (DirectRStructural.Structural.selector_type q) ->
+       DirectRKernel.Core.Typed Γ v
+         (DirectRStructural.Structural.selector_type q) ->
+       DirectRKernel.Core.Typed Γ (FiniteExpressions.denote q e u v)
+         (DirectRStructural.Structural.selector_type q)
+where
+?n : [ |- nat]
+FiniteExpressions.denote_points
+     : forall (q : nat) (e : FiniteExpressions.expression) (i j : nat),
+       0 < q ->
+       i < q ->
+       j < q ->
+       DefEq.def_equiv nat 0
+         (FiniteExpressions.denote q e
+            (DirectRFiniteTables.FiniteTables.point q i)
+            (DirectRFiniteTables.FiniteTables.point q j))
+         (DirectRFiniteTables.FiniteTables.point q
+            (FiniteExpressions.value q e i j))
+FiniteRecursionLaws.addition_successor_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteRecursionLaws.expanded_type q
+            (FiniteExpressions.addition
+               (FiniteExpressions.successor FiniteExpressions.first)
+               FiniteExpressions.second)
+            (FiniteExpressions.successor
+               (FiniteExpressions.addition FiniteExpressions.first
+                  FiniteExpressions.second)))
+FiniteRecursionLaws.multiplication_successor_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteRecursionLaws.expanded_type q
+            (FiniteExpressions.multiplication
+               (FiniteExpressions.successor FiniteExpressions.first)
+               FiniteExpressions.second)
+            (FiniteExpressions.addition FiniteExpressions.second
+               (FiniteExpressions.multiplication FiniteExpressions.first
+                  FiniteExpressions.second)))
+FiniteOrderLaws.successor_order_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteOrderLaws.unary_type q
+            (FiniteOrderLaws.comparison FiniteExpressions.first
+               (FiniteExpressions.successor FiniteExpressions.first)))
+FiniteOrderLaws.addition_order_left_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteOrderLaws.binary_type q
+            (FiniteOrderLaws.comparison FiniteExpressions.first
+               (FiniteExpressions.addition FiniteExpressions.first
+                  FiniteExpressions.second)))
+FiniteOrderLaws.addition_order_right_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteOrderLaws.binary_type q
+            (FiniteOrderLaws.comparison FiniteExpressions.second
+               (FiniteExpressions.addition FiniteExpressions.first
+                  FiniteExpressions.second)))
+FiniteOrderLaws.multiplication_order_left_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteOrderLaws.binary_type q
+            (FiniteOrderLaws.conditional
+               (FiniteExpressions.successor FiniteExpressions.zero)
+               FiniteExpressions.second FiniteExpressions.first
+               (FiniteExpressions.multiplication FiniteExpressions.first
+                  FiniteExpressions.second)))
+FiniteOrderLaws.multiplication_order_right_realized
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteOrderLaws.binary_type q
+            (FiniteOrderLaws.conditional
+               (FiniteExpressions.successor FiniteExpressions.zero)
+               FiniteExpressions.first FiniteExpressions.second
+               (FiniteExpressions.multiplication FiniteExpressions.first
+                  FiniteExpressions.second)))
+TelescopeArguments.arguments_application
+     : forall (Γ : Context.Ctx nat ?k)
+         (T : DirectRStructural.Structural.telescope ?n ?m)
+         (σ : Syntax.Fin ?n -> Syntax.Term nat ?k)
+         (xs : list (Syntax.Term nat ?k))
+         (τ : Syntax.Fin ?m -> Syntax.Term nat ?k),
+       TelescopeArguments.arguments Γ T σ xs τ ->
+       forall (f : Syntax.Term nat ?k) (B : Syntax.Term nat ?m),
+       DirectRKernel.Core.Typed Γ f
+         (Syntax.replace σ
+            (DirectRStructural.Structural.telescope_product T B)) ->
+       DirectRKernel.Core.Typed Γ
+         (DirectRStructural.Structural.table_apply f xs)
+         (Syntax.replace τ B)
+where
+?k : [ |- nat]
+?n : [ |- nat]
+?m : [ |- nat]
+FiniteData.data_prefix_matches_source
+     : forall body : DirectRCodes.Codes.named,
+       DirectRCodes.Codes.assemble
+         (DirectRCodes.Codes.npis
+            (ListDef.firstn 8 DirectRCodes.Codes.observation_fields) body)
+         nil =
+       option_map
+         (DirectRStructural.Structural.telescope_product
+            FiniteData.data_telescope)
+         (DirectRCodes.Codes.assemble body
+            (7 :: 6 :: 5 :: 4 :: 3 :: 2 :: 1 :: 0 :: nil))
+FiniteData.data_specialization
+     : forall (q : nat) (f : Syntax.Term nat 0) (B : Syntax.Term nat 8),
+       0 < q ->
+       DirectRKernel.Core.Typed Context.ε f
+         (DirectRStructural.Structural.telescope_product
+            FiniteData.data_telescope B) ->
+       DirectRKernel.Core.Typed Context.ε
+         (DirectRStructural.Structural.table_apply f
+            (FiniteData.data_arguments q))
+         (Syntax.replace (FiniteData.data_substitution q) B)
+FiniteData.initial_specialization
+     : forall (q : nat) (f : Syntax.Term nat 0) (B : Syntax.Term nat 9),
+       0 < q ->
+       DirectRKernel.Core.Typed Context.ε f
+         (DirectRStructural.Structural.telescope_product
+            FiniteData.data_telescope
+            (Syntax.Π FiniteData.initial_annotation B)) ->
+       exists p : Syntax.Term nat 0,
+         DirectRKernel.Core.Typed Context.ε p
+           (Syntax.replace (FiniteData.data_substitution q)
+              FiniteData.initial_annotation) /\
+         DirectRKernel.Core.Typed Context.ε
+           (Syntax.app
+              (DirectRStructural.Structural.table_apply f
+                 (FiniteData.data_arguments q))
+              p)
+           (Syntax.replace
+              (TelescopeArguments.extend p (FiniteData.data_substitution q))
+              B)
+FiniteData.step_specialization
+     : forall (q : nat) (f : Syntax.Term nat 0) (B : Syntax.Term nat 10),
+       0 < q ->
+       DirectRKernel.Core.Typed Context.ε f
+         (DirectRStructural.Structural.telescope_product
+            FiniteData.data_telescope
+            (Syntax.Π FiniteData.initial_annotation
+               (Syntax.Π FiniteData.step_annotation B))) ->
+       exists p0 p1 : Syntax.Term nat 0,
+         DirectRKernel.Core.Typed Context.ε p0
+           (Syntax.replace (FiniteData.data_substitution q)
+              FiniteData.initial_annotation) /\
+         DirectRKernel.Core.Typed Context.ε p1
+           (Syntax.replace
+              (TelescopeArguments.extend p0 (FiniteData.data_substitution q))
+              FiniteData.step_annotation) /\
+         DirectRKernel.Core.Typed Context.ε
+           (Syntax.app
+              (Syntax.app
+                 (DirectRStructural.Structural.table_apply f
+                    (FiniteData.data_arguments q))
+                 p0)
+              p1)
+           (Syntax.replace
+              (TelescopeArguments.extend p1
+                 (TelescopeArguments.extend p0
+                    (FiniteData.data_substitution q)))
+              B)
+FiniteBinaryDomain.addition_certificate
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteBinaryDomain.application_type q
+            (BinaryTables.capped_addition q))
+FiniteBinaryDomain.multiplication_certificate
+     : forall q : nat,
+       0 < q ->
+       DirectRKernel.Core.Realizes
+         (FiniteBinaryDomain.application_type q
+            (BinaryTables.capped_multiplication q))
+FiniteDomainPrefix.domain_prefix_matches_source
+     : forall body : DirectRCodes.Codes.named,
+       DirectRCodes.Codes.assemble
+         (DirectRCodes.Codes.npis
+            (ListDef.firstn 12 DirectRCodes.Codes.observation_fields) body)
+         nil =
+       option_map
+         (fun B : Syntax.Term nat 12 =>
+          DirectRStructural.Structural.telescope_product
+            FiniteData.data_telescope
+            (Syntax.Π FiniteData.initial_annotation
+               (Syntax.Π FiniteData.step_annotation
+                  (Syntax.Π FiniteDomainPrefix.addition_annotation
+                     (Syntax.Π FiniteDomainPrefix.multiplication_annotation B)))))
+         (DirectRCodes.Codes.assemble body
+            (103
+             :: 102
+                :: 101 :: 100 :: 7 :: 6 :: 5 :: 4 :: 3 :: 2 :: 1 :: 0 :: nil))
+FiniteDomainPrefix.domain_specialization
+     : forall (q : nat) (f : Syntax.Term nat 0) (B : Syntax.Term nat 12),
+       0 < q ->
+       DirectRKernel.Core.Typed Context.ε f
+         (DirectRStructural.Structural.telescope_product
+            FiniteData.data_telescope
+            (Syntax.Π FiniteData.initial_annotation
+               (Syntax.Π FiniteData.step_annotation
+                  (Syntax.Π FiniteDomainPrefix.addition_annotation
+                     (Syntax.Π FiniteDomainPrefix.multiplication_annotation B))))) ->
+       exists p0 p1 p2 p3 : Syntax.Term nat 0,
+         DirectRKernel.Core.Typed Context.ε p0
+           (Syntax.replace (FiniteData.data_substitution q)
+              FiniteData.initial_annotation) /\
+         DirectRKernel.Core.Typed Context.ε p1
+           (Syntax.replace
+              (TelescopeArguments.extend p0 (FiniteData.data_substitution q))
+              FiniteData.step_annotation) /\
+         DirectRKernel.Core.Typed Context.ε p2
+           (Syntax.replace
+              (TelescopeArguments.extend p1
+                 (TelescopeArguments.extend p0
+                    (FiniteData.data_substitution q)))
+              FiniteDomainPrefix.addition_annotation) /\
+         DirectRKernel.Core.Typed Context.ε p3
+           (Syntax.replace
+              (TelescopeArguments.extend p2
+                 (TelescopeArguments.extend p1
+                    (TelescopeArguments.extend p0
+                       (FiniteData.data_substitution q))))
+              FiniteDomainPrefix.multiplication_annotation) /\
+         DirectRKernel.Core.Typed Context.ε
+           (Syntax.app
+              (Syntax.app
+                 (Syntax.app
+                    (Syntax.app
+                       (DirectRStructural.Structural.table_apply f
+                          (FiniteData.data_arguments q))
+                       p0)
+                    p1)
+                 p2)
+              p3)
+           (Syntax.replace
+              (TelescopeArguments.extend p3
+                 (TelescopeArguments.extend p2
+                    (TelescopeArguments.extend p1
+                       (TelescopeArguments.extend p0
+                          (FiniteData.data_substitution q)))))
+              B)
+FiniteBinaryDomain.application_type =
+fun (q : nat) (op : DirectRCodes.Codes.closed_term) =>
+Syntax.Π (DirectRStructural.Structural.selector_type q)
+  (DirectRCodes.Codes.Arrow
+     (Syntax.app
+        (DirectRCodes.Codes.lift_closed
+           (DirectRSeparation.Separation.predicate q))
+        DirectRCodes.Codes.V0)
+     (Syntax.Π (DirectRStructural.Structural.selector_type q)
+        (DirectRCodes.Codes.Arrow
+           (Syntax.app
+              (DirectRCodes.Codes.lift_closed
+                 (DirectRSeparation.Separation.predicate q))
+              DirectRCodes.Codes.V0)
+           (Syntax.app
+              (DirectRCodes.Codes.lift_closed
+                 (DirectRSeparation.Separation.predicate q))
+              (Syntax.app
+                 (Syntax.app (DirectRCodes.Codes.lift_closed op)
+                    (Syntax.shift DirectRCodes.Codes.V0))
+                 DirectRCodes.Codes.V0)))))
+     : nat ->
+       DirectRCodes.Codes.closed_term -> DirectRCodes.Codes.closed_term
+
+Arguments FiniteBinaryDomain.application_type q%_nat_scope op
+FiniteDomainPrefix.addition_annotation =
+FiniteDomainPrefix.binary_guard
+  (Syntax.var
+     (Syntax.fsucc
+        (Syntax.fsucc
+           (Syntax.fsucc
+              (Syntax.fsucc
+                 (Syntax.fsucc
+                    (Syntax.fsucc
+                       (Syntax.fsucc
+                          (Syntax.fsucc (Syntax.fsucc Syntax.fzero))))))))))
+  (Syntax.var
+     (Syntax.fsucc
+        (Syntax.fsucc
+           (Syntax.fsucc
+              (Syntax.fsucc (Syntax.fsucc (Syntax.fsucc Syntax.fzero)))))))
+  (Syntax.var
+     (Syntax.fsucc (Syntax.fsucc (Syntax.fsucc (Syntax.fsucc Syntax.fzero)))))
+     : Syntax.Term nat 10
+FiniteDomainPrefix.multiplication_annotation =
+FiniteDomainPrefix.binary_guard
+  (Syntax.var
+     (Syntax.fsucc
+        (Syntax.fsucc
+           (Syntax.fsucc
+              (Syntax.fsucc
+                 (Syntax.fsucc
+                    (Syntax.fsucc
+                       (Syntax.fsucc
+                          (Syntax.fsucc
+                             (Syntax.fsucc (Syntax.fsucc Syntax.fzero)))))))))))
+  (Syntax.var
+     (Syntax.fsucc
+        (Syntax.fsucc
+           (Syntax.fsucc
+              (Syntax.fsucc (Syntax.fsucc (Syntax.fsucc Syntax.fzero)))))))
+  (Syntax.var
+     (Syntax.fsucc
+        (Syntax.fsucc
+           (Syntax.fsucc (Syntax.fsucc (Syntax.fsucc Syntax.fzero))))))
+     : Syntax.Term nat 11
+FiniteData.data_telescope =
+DirectRStructural.Structural.tel_cons 0 (Syntax.𝓤 1)
+  (DirectRStructural.Structural.tel_cons 1 DirectRCodes.Codes.V0
+     (DirectRStructural.Structural.tel_cons 2
+        (DirectRCodes.Codes.Arrow (Syntax.shift DirectRCodes.Codes.V0)
+           (Syntax.shift DirectRCodes.Codes.V0))
+        (DirectRStructural.Structural.tel_cons 2
+           (DirectRCodes.Codes.Arrow
+              (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))
+              (DirectRCodes.Codes.Arrow
+                 (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))
+                 (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))))
+           (DirectRStructural.Structural.tel_cons 2
+              (DirectRCodes.Codes.Arrow
+                 (Syntax.shift
+                    (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0)))
+                 (DirectRCodes.Codes.Arrow
+                    (Syntax.shift
+                       (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0)))
+                    (Syntax.shift
+                       (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0)))))
+              (DirectRStructural.Structural.tel_cons 2
+                 (DirectRCodes.Codes.Arrow
+                    (Syntax.shift
+                       (Syntax.shift
+                          (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))))
+                    (Syntax.𝓤 4))
+                 (DirectRStructural.Structural.tel_cons 2
+                    (DirectRCodes.Codes.Arrow
+                       (Syntax.shift
+                          (Syntax.shift
+                             (Syntax.shift
+                                (Syntax.shift
+                                   (Syntax.shift DirectRCodes.Codes.V0)))))
+                       (DirectRCodes.Codes.Arrow
+                          (Syntax.shift
+                             (Syntax.shift
+                                (Syntax.shift
+                                   (Syntax.shift
+                                      (Syntax.shift DirectRCodes.Codes.V0)))))
+                          (Syntax.𝓤 1)))
+                    (DirectRStructural.Structural.tel_cons 2
+                       (DirectRCodes.Codes.Arrow
+                          (Syntax.shift
+                             (Syntax.shift
+                                (Syntax.shift
+                                   (Syntax.shift
+                                      (Syntax.shift
+                                         (Syntax.shift DirectRCodes.Codes.V0))))))
+                          (DirectRCodes.Codes.Arrow
+                             (Syntax.shift
+                                (Syntax.shift
+                                   (Syntax.shift
+                                      (Syntax.shift
+                                         (Syntax.shift
+                                            (Syntax.shift
+                                               DirectRCodes.Codes.V0))))))
+                             (Syntax.𝓤 1)))
+                       DirectRStructural.Structural.tel_nil)))))))
+     : DirectRStructural.Structural.telescope 0 8
+FiniteData.data_arguments =
+fun q : nat =>
+(DirectRStructural.Structural.selector_type q
+ :: DirectRFiniteTables.FiniteTables.point q 0
+    :: DirectRFiniteTables.FiniteTables.capped_successor q
+       :: BinaryTables.capped_addition q
+          :: BinaryTables.capped_multiplication q
+             :: DirectRSeparation.Separation.predicate q
+                :: RelationTables.relation_table q PeanoNat.Nat.eqb
+                   :: RelationTables.relation_table q PeanoNat.Nat.leb :: nil)%list
+     : nat -> list DirectRCodes.Codes.closed_term
+
+Arguments FiniteData.data_arguments q%_nat_scope
+FiniteData.initial_annotation =
+Syntax.app (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))
+  (Syntax.shift
+     (Syntax.shift
+        (Syntax.shift
+           (Syntax.shift (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))))))
+     : Syntax.Term nat 8
+FiniteData.step_annotation =
+DirectRSeparation.Separation.step_guard
+  (Syntax.shift
+     (Syntax.shift
+        (Syntax.shift
+           (Syntax.shift
+              (Syntax.shift
+                 (Syntax.shift
+                    (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))))))))
+  (Syntax.shift
+     (Syntax.shift
+        (Syntax.shift
+           (Syntax.shift (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))))))
+  (Syntax.shift (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0)))
+     : Syntax.Term nat 9
+FiniteOrderLaws.unary_type =
+fun (q : nat) (L : FiniteOrderLaws.law) =>
+Syntax.Π (DirectRStructural.Structural.selector_type q)
+  (DirectRCodes.Codes.Arrow
+     (DirectRFiniteObservations.FiniteObservations.delta q
+        DirectRCodes.Codes.V0)
+     (FiniteOrderLaws.body q L DirectRCodes.Codes.V0 DirectRCodes.Codes.V0))
+     : nat -> FiniteOrderLaws.law -> DirectRCodes.Codes.closed_term
+
+Arguments FiniteOrderLaws.unary_type q%_nat_scope L
+FiniteOrderLaws.binary_type =
+fun (q : nat) (L : FiniteOrderLaws.law) =>
+Syntax.Π (DirectRStructural.Structural.selector_type q)
+  (DirectRCodes.Codes.Arrow
+     (DirectRFiniteObservations.FiniteObservations.delta q
+        DirectRCodes.Codes.V0)
+     (Syntax.Π (DirectRStructural.Structural.selector_type q)
+        (DirectRCodes.Codes.Arrow
+           (DirectRFiniteObservations.FiniteObservations.delta q
+              DirectRCodes.Codes.V0)
+           (FiniteOrderLaws.body q L (Syntax.shift DirectRCodes.Codes.V0)
+              DirectRCodes.Codes.V0))))
+     : nat -> FiniteOrderLaws.law -> DirectRCodes.Codes.closed_term
+
+Arguments FiniteOrderLaws.binary_type q%_nat_scope L
+FiniteOrderLaws.body =
+fun (n q : nat) (L : FiniteOrderLaws.law) (u v : Syntax.Term nat n) =>
+match L with
+| FiniteOrderLaws.comparison l r => FiniteOrderLaws.atom q l r u v
+| FiniteOrderLaws.conditional a b l r =>
+    DirectRCodes.Codes.Arrow (FiniteOrderLaws.atom q a b u v)
+      (FiniteOrderLaws.atom q l r u v)
+end
+     : forall {n : nat},
+       nat ->
+       FiniteOrderLaws.law ->
+       Syntax.Term nat n -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteOrderLaws.body {n}%_nat_scope q%_nat_scope L u v
+FiniteOrderLaws.atom =
+fun (n q : nat) (l r : FiniteExpressions.expression)
+  (u v : Syntax.Term nat n) =>
+DirectRCodes.Codes.Neg
+  (RelationTables.relation_at q PeanoNat.Nat.leb
+     (FiniteExpressions.denote q l u v) (FiniteExpressions.denote q r u v))
+     : forall {n : nat},
+       nat ->
+       FiniteExpressions.expression ->
+       FiniteExpressions.expression ->
+       Syntax.Term nat n -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteOrderLaws.atom {n}%_nat_scope q%_nat_scope l r u v
+FiniteRecursionLaws.expanded_type =
+fun (q : nat) (l r : FiniteExpressions.expression) =>
+Syntax.Π (DirectRStructural.Structural.selector_type q)
+  (DirectRCodes.Codes.Arrow
+     (DirectRFiniteObservations.FiniteObservations.delta q
+        DirectRCodes.Codes.V0)
+     (Syntax.Π (DirectRStructural.Structural.selector_type q)
+        (DirectRCodes.Codes.Arrow
+           (DirectRFiniteObservations.FiniteObservations.delta q
+              DirectRCodes.Codes.V0)
+           (FiniteRecursionLaws.body q l r
+              (Syntax.shift DirectRCodes.Codes.V0) DirectRCodes.Codes.V0))))
+     : nat ->
+       FiniteExpressions.expression ->
+       FiniteExpressions.expression -> DirectRCodes.Codes.closed_term
+
+Arguments FiniteRecursionLaws.expanded_type q%_nat_scope l r
+FiniteRecursionLaws.body =
+fun (n q : nat) (l r : FiniteExpressions.expression)
+  (u v : Syntax.Term nat n) =>
+DirectRCodes.Codes.Neg
+  (RelationTables.relation_at q PeanoNat.Nat.eqb
+     (FiniteExpressions.denote q l u v) (FiniteExpressions.denote q r u v))
+     : forall {n : nat},
+       nat ->
+       FiniteExpressions.expression ->
+       FiniteExpressions.expression ->
+       Syntax.Term nat n -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteRecursionLaws.body {n}%_nat_scope q%_nat_scope l r u v
+FiniteExpressions.denote =
+fix denote
+  (n q : nat) (e : FiniteExpressions.expression) (u v : Syntax.Term nat n)
+  {struct e} : Syntax.Term nat n :=
+  match e with
+  | FiniteExpressions.zero =>
+      DirectRCodes.Codes.lift_closed
+        (DirectRFiniteTables.FiniteTables.point q 0)
+  | FiniteExpressions.first => u
+  | FiniteExpressions.second => v
+  | FiniteExpressions.successor e0 =>
+      Syntax.app
+        (DirectRCodes.Codes.lift_closed
+           (DirectRFiniteTables.FiniteTables.capped_successor q))
+        (denote n q e0 u v)
+  | FiniteExpressions.addition e0 f =>
+      Syntax.app
+        (Syntax.app
+           (DirectRCodes.Codes.lift_closed (BinaryTables.capped_addition q))
+           (denote n q e0 u v))
+        (denote n q f u v)
+  | FiniteExpressions.multiplication e0 f =>
+      Syntax.app
+        (Syntax.app
+           (DirectRCodes.Codes.lift_closed
+              (BinaryTables.capped_multiplication q))
+           (denote n q e0 u v))
+        (denote n q f u v)
+  end
+     : forall {n : nat},
+       nat ->
+       FiniteExpressions.expression ->
+       Syntax.Term nat n -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteExpressions.denote {n}%_nat_scope q%_nat_scope e u v
+FiniteZeroLaws.expanded_type =
+fun (q : nat) (op : DirectRCodes.Codes.closed_term) (r z : bool) =>
+Syntax.Π (DirectRStructural.Structural.selector_type q)
+  (DirectRCodes.Codes.Arrow
+     (DirectRFiniteObservations.FiniteObservations.delta q
+        DirectRCodes.Codes.V0)
+     (FiniteZeroLaws.body q op r z DirectRCodes.Codes.V0))
+     : nat ->
+       DirectRCodes.Codes.closed_term ->
+       bool -> bool -> DirectRCodes.Codes.closed_term
+
+Arguments FiniteZeroLaws.expanded_type q%_nat_scope op (r z)%_bool_scope
+FiniteZeroLaws.body =
+fun (n q : nat) (op : DirectRCodes.Codes.closed_term)
+  (right result_zero : bool) (u : Syntax.Term nat n) =>
+DirectRCodes.Codes.Neg
+  (RelationTables.relation_at q PeanoNat.Nat.eqb
+     (FiniteZeroLaws.lhs q op right u)
+     (FiniteZeroLaws.argument q result_zero u))
+     : forall {n : nat},
+       nat ->
+       DirectRCodes.Codes.closed_term ->
+       bool -> bool -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteZeroLaws.body {n}%_nat_scope q%_nat_scope
+  op (right result_zero)%_bool_scope u
+FiniteZeroLaws.lhs =
+fun (n q : nat) (op : DirectRCodes.Codes.closed_term)
+  (right : bool) (u : Syntax.Term nat n) =>
+FiniteBinaryCongruence.output op (FiniteZeroLaws.argument q (negb right) u)
+  (FiniteZeroLaws.argument q right u)
+     : forall {n : nat},
+       nat ->
+       DirectRCodes.Codes.closed_term ->
+       bool -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteZeroLaws.lhs {n}%_nat_scope q%_nat_scope
+  op right%_bool_scope u
+FiniteZeroLaws.argument =
+fun (n q : nat) (is_zero : bool) (u : Syntax.Term nat n) =>
+if is_zero
+then
+ DirectRCodes.Codes.lift_closed (DirectRFiniteTables.FiniteTables.point q 0)
+else u
+     : forall {n : nat},
+       nat -> bool -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteZeroLaws.argument {n}%_nat_scope q%_nat_scope
+  is_zero%_bool_scope u
+FiniteUnaryCongruence.expanded_type =
+fun (q : nat) (op : DirectRCodes.Codes.closed_term) =>
+Syntax.Π (DirectRStructural.Structural.selector_type q)
+  (DirectRCodes.Codes.Arrow
+     (DirectRFiniteObservations.FiniteObservations.delta q
+        DirectRCodes.Codes.V0)
+     (Syntax.Π (DirectRStructural.Structural.selector_type q)
+        (DirectRCodes.Codes.Arrow
+           (DirectRFiniteObservations.FiniteObservations.delta q
+              DirectRCodes.Codes.V0)
+           (FiniteUnaryCongruence.body q op
+              (Syntax.shift DirectRCodes.Codes.V0) DirectRCodes.Codes.V0))))
+     : nat ->
+       DirectRCodes.Codes.closed_term -> DirectRCodes.Codes.closed_term
+
+Arguments FiniteUnaryCongruence.expanded_type q%_nat_scope op
+FiniteUnaryCongruence.body =
+fun (n q : nat) (op : DirectRCodes.Codes.closed_term)
+  (u v : Syntax.Term nat n) =>
+DirectRCodes.Codes.Arrow
+  (DirectRCodes.Codes.Neg (RelationTables.relation_at q PeanoNat.Nat.eqb u v))
+  (DirectRCodes.Codes.Neg
+     (RelationTables.relation_at q PeanoNat.Nat.eqb
+        (FiniteUnaryCongruence.output op u)
+        (FiniteUnaryCongruence.output op v)))
+     : forall {n : nat},
+       nat ->
+       DirectRCodes.Codes.closed_term ->
+       Syntax.Term nat n -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteUnaryCongruence.body {n}%_nat_scope q%_nat_scope op u v
+FiniteBinaryCongruence.expanded_type =
+fun (q : nat) (op : DirectRCodes.Codes.closed_term) =>
+Syntax.Π (DirectRStructural.Structural.selector_type q)
+  (DirectRCodes.Codes.Arrow
+     (DirectRFiniteObservations.FiniteObservations.delta q
+        DirectRCodes.Codes.V0)
+     (Syntax.Π (DirectRStructural.Structural.selector_type q)
+        (DirectRCodes.Codes.Arrow
+           (DirectRFiniteObservations.FiniteObservations.delta q
+              DirectRCodes.Codes.V0)
+           (Syntax.Π (DirectRStructural.Structural.selector_type q)
+              (DirectRCodes.Codes.Arrow
+                 (DirectRFiniteObservations.FiniteObservations.delta q
+                    DirectRCodes.Codes.V0)
+                 (Syntax.Π (DirectRStructural.Structural.selector_type q)
+                    (DirectRCodes.Codes.Arrow
+                       (DirectRFiniteObservations.FiniteObservations.delta q
+                          DirectRCodes.Codes.V0)
+                       (FiniteBinaryCongruence.body q op
+                          (Syntax.shift
+                             (Syntax.shift
+                                (Syntax.shift DirectRCodes.Codes.V0)))
+                          (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))
+                          (Syntax.shift DirectRCodes.Codes.V0)
+                          DirectRCodes.Codes.V0))))))))
+     : nat ->
+       DirectRCodes.Codes.closed_term -> DirectRCodes.Codes.closed_term
+
+Arguments FiniteBinaryCongruence.expanded_type q%_nat_scope op
+FiniteBinaryCongruence.body =
+fun (n q : nat) (op : DirectRCodes.Codes.closed_term)
+  (u u' v v' : Syntax.Term nat n) =>
+DirectRCodes.Codes.Arrow
+  (DirectRCodes.Codes.Neg
+     (RelationTables.relation_at q PeanoNat.Nat.eqb u u'))
+  (DirectRCodes.Codes.Arrow
+     (DirectRCodes.Codes.Neg
+        (RelationTables.relation_at q PeanoNat.Nat.eqb v v'))
+     (DirectRCodes.Codes.Neg
+        (RelationTables.relation_at q PeanoNat.Nat.eqb
+           (FiniteBinaryCongruence.output op u v)
+           (FiniteBinaryCongruence.output op u' v'))))
+     : forall {n : nat},
+       nat ->
+       DirectRCodes.Codes.closed_term ->
+       Syntax.Term nat n ->
+       Syntax.Term nat n ->
+       Syntax.Term nat n -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteBinaryCongruence.body {n}%_nat_scope
+  q%_nat_scope op u u' v v'
+FiniteTransitivity.expanded_type =
+fun (q : nat) (r : nat -> nat -> bool) =>
+Syntax.Π (DirectRStructural.Structural.selector_type q)
+  (DirectRCodes.Codes.Arrow
+     (DirectRFiniteObservations.FiniteObservations.delta q
+        DirectRCodes.Codes.V0)
+     (Syntax.Π (DirectRStructural.Structural.selector_type q)
+        (DirectRCodes.Codes.Arrow
+           (DirectRFiniteObservations.FiniteObservations.delta q
+              DirectRCodes.Codes.V0)
+           (Syntax.Π (DirectRStructural.Structural.selector_type q)
+              (DirectRCodes.Codes.Arrow
+                 (DirectRFiniteObservations.FiniteObservations.delta q
+                    DirectRCodes.Codes.V0)
+                 (FiniteTransitivity.body q r
+                    (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))
+                    (Syntax.shift DirectRCodes.Codes.V0)
+                    DirectRCodes.Codes.V0))))))
+     : nat -> (nat -> nat -> bool) -> DirectRCodes.Codes.closed_term
+
+Arguments FiniteTransitivity.expanded_type q%_nat_scope r%_function_scope
+FiniteTransitivity.body =
+fun (n q : nat) (r : nat -> nat -> bool) (u v w : Syntax.Term nat n) =>
+DirectRCodes.Codes.Arrow
+  (DirectRCodes.Codes.Neg (RelationTables.relation_at q r u v))
+  (DirectRCodes.Codes.Arrow
+     (DirectRCodes.Codes.Neg (RelationTables.relation_at q r v w))
+     (DirectRCodes.Codes.Neg (RelationTables.relation_at q r u w)))
+     : forall {n : nat},
+       nat ->
+       (nat -> nat -> bool) ->
+       Syntax.Term nat n ->
+       Syntax.Term nat n -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteTransitivity.body {n}%_nat_scope q%_nat_scope
+  r%_function_scope u v w
+FiniteCongruence.expanded_type =
+fun (q : nat) (r : nat -> nat -> bool) =>
+Syntax.Π (DirectRStructural.Structural.selector_type q)
+  (DirectRCodes.Codes.Arrow
+     (DirectRFiniteObservations.FiniteObservations.delta q
+        DirectRCodes.Codes.V0)
+     (Syntax.Π (DirectRStructural.Structural.selector_type q)
+        (DirectRCodes.Codes.Arrow
+           (DirectRFiniteObservations.FiniteObservations.delta q
+              DirectRCodes.Codes.V0)
+           (Syntax.Π (DirectRStructural.Structural.selector_type q)
+              (DirectRCodes.Codes.Arrow
+                 (DirectRFiniteObservations.FiniteObservations.delta q
+                    DirectRCodes.Codes.V0)
+                 (Syntax.Π (DirectRStructural.Structural.selector_type q)
+                    (DirectRCodes.Codes.Arrow
+                       (DirectRFiniteObservations.FiniteObservations.delta q
+                          DirectRCodes.Codes.V0)
+                       (FiniteCongruence.body q r
+                          (Syntax.shift
+                             (Syntax.shift
+                                (Syntax.shift DirectRCodes.Codes.V0)))
+                          (Syntax.shift (Syntax.shift DirectRCodes.Codes.V0))
+                          (Syntax.shift DirectRCodes.Codes.V0)
+                          DirectRCodes.Codes.V0))))))))
+     : nat -> (nat -> nat -> bool) -> DirectRCodes.Codes.closed_term
+
+Arguments FiniteCongruence.expanded_type q%_nat_scope r%_function_scope
+FiniteCongruence.body =
+fun (n q : nat) (r : nat -> nat -> bool) (u u' v v' : Syntax.Term nat n) =>
+DirectRCodes.Codes.Arrow
+  (DirectRCodes.Codes.Neg
+     (RelationTables.relation_at q PeanoNat.Nat.eqb u u'))
+  (DirectRCodes.Codes.Arrow
+     (DirectRCodes.Codes.Neg
+        (RelationTables.relation_at q PeanoNat.Nat.eqb v v'))
+     (DirectRCodes.Codes.Arrow
+        (DirectRCodes.Codes.Neg (RelationTables.relation_at q r u v))
+        (DirectRCodes.Codes.Neg (RelationTables.relation_at q r u' v'))))
+     : forall {n : nat},
+       nat ->
+       (nat -> nat -> bool) ->
+       Syntax.Term nat n ->
+       Syntax.Term nat n ->
+       Syntax.Term nat n -> Syntax.Term nat n -> Syntax.Term nat n
+
+Arguments FiniteCongruence.body {n}%_nat_scope q%_nat_scope
+  r%_function_scope u u' v v'
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/DirectRFunctionalAudit.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/DirectRTests.{glob,vo}

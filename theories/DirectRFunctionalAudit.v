@@ -7,7 +7,7 @@ From PTSrk Require Import DirectRFunctionalTerms DirectRFunctionalLogic
   DirectRFiniteTransitivity DirectRFiniteCongruence
   DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence DirectRFiniteZeroLaws
   DirectRFiniteExpressions DirectRFiniteRecursionLaws DirectRFiniteOrderLaws
-  DirectRTelescopeArguments DirectRFiniteData.
+  DirectRTelescopeArguments DirectRFiniteData DirectRFiniteBinaryDomain DirectRFiniteDomainPrefix.
 Check FunctionalTerms.term_typed.
 Check FunctionalTerms.term_admitted.
 Check FunctionalTerms.ground_evaluation.
@@ -56,6 +56,18 @@ Check FiniteData.data_prefix_matches_source.
 Check FiniteData.data_specialization.
 Check FiniteData.initial_specialization.
 Check FiniteData.step_specialization.
+Check FiniteBinaryDomain.addition_certificate.
+Check FiniteBinaryDomain.multiplication_certificate.
+Check FiniteDomainPrefix.domain_prefix_matches_source.
+Check FiniteDomainPrefix.domain_specialization.
+Check FiniteDomainPrefix.reflexivity_application_certificate.
+Check FiniteDomainPrefix.reflexivity_prefix_matches_source.
+Check FiniteDomainPrefix.reflexivity_specialization.
+Print FiniteDomainPrefix.reflexivity_application_type.
+Print FiniteDomainPrefix.reflexivity_annotation.
+Print FiniteBinaryDomain.application_type.
+Print FiniteDomainPrefix.addition_annotation.
+Print FiniteDomainPrefix.multiplication_annotation.
 Print FiniteData.data_telescope.
 Print FiniteData.data_arguments.
 Print FiniteData.initial_annotation.
@@ -162,3 +174,25 @@ Print Assumptions FiniteData.initial_specialization.
 Print Assumptions FiniteData.step_prefix_matches_source.
 Print Assumptions FiniteData.step_annotation_specialized.
 Print Assumptions FiniteData.step_specialization.
+Print Assumptions FiniteBinaryDomain.closure_type_typed.
+Print Assumptions FiniteBinaryDomain.closure_realized.
+Print Assumptions FiniteBinaryDomain.application_type_typed.
+Print Assumptions FiniteBinaryDomain.application_type_beta.
+Print Assumptions FiniteBinaryDomain.application_certificate.
+Print Assumptions FiniteBinaryDomain.addition_certificate.
+Print Assumptions FiniteBinaryDomain.multiplication_certificate.
+Print Assumptions FiniteDomainPrefix.replace_binary_guard.
+Print Assumptions FiniteDomainPrefix.binary_guard_closed.
+Print Assumptions FiniteDomainPrefix.domain_prefix_matches_source.
+Print Assumptions FiniteDomainPrefix.addition_annotation_specialized.
+Print Assumptions FiniteDomainPrefix.multiplication_annotation_specialized.
+Print Assumptions FiniteDomainPrefix.domain_specialization.
+Print Assumptions FiniteDomainPrefix.replace_reflexivity_guard.
+Print Assumptions FiniteDomainPrefix.relation_application_typed.
+Print Assumptions FiniteDomainPrefix.relation_application_beta.
+Print Assumptions FiniteDomainPrefix.reflexivity_application_typed.
+Print Assumptions FiniteDomainPrefix.reflexivity_application_beta.
+Print Assumptions FiniteDomainPrefix.reflexivity_application_certificate.
+Print Assumptions FiniteDomainPrefix.reflexivity_annotation_specialized.
+Print Assumptions FiniteDomainPrefix.reflexivity_prefix_matches_source.
+Print Assumptions FiniteDomainPrefix.reflexivity_specialization.
