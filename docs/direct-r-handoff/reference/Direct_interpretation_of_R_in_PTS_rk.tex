@@ -1,0 +1,434 @@
+% Compile twice with: pdflatex Direct_interpretation_of_R_in_PTS_rk.tex
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[margin=25mm,headheight=14pt]{geometry}
+\usepackage{fancyhdr,needspace}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={A direct interpretation of Tarski--Mostowski--Robinson arithmetic R in PTS-rk},pdfsubject={A fixed ground-faithful arithmetic interpretation using certified capped arithmetic algebras}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small A direct interpretation of $\mathsf R$ in $\mathsf{PTS}_{rk}$}
+\fancyhead[R]{\small\thepage}
+\setlength{\parindent}{1.2em}\setlength{\parskip}{2pt}
+\emergencystretch=1.5em
+\newcommand{\rk}[1]{\mathsf{rk}_{#1}}
+\newcommand{\PTS}{\mathsf{PTS}_{rk}}
+\newcommand{\RR}{\mathsf R}
+\newcommand{\Good}{\mathsf{Good}}
+\newcommand{\Case}{\mathsf{Case}}
+\newcommand{\Inv}{\mathsf{Inv}}
+\newcommand{\zz}{\mathsf z}
+\newcommand{\ssu}{\mathsf s}
+\newcommand{\addD}{\mathsf a}
+\newcommand{\mm}{\mathsf m}
+\newcommand{\num}[1]{\nu_{#1}}
+\newcommand{\ev}{\operatorname{ev}}
+\newcommand{\nc}{\mathop{\neg}\nolimits_c}
+\newcommand{\ac}{\mathbin{\wedge_c}}
+\newcommand{\oc}{\mathbin{\vee_c}}
+\newcommand{\Orc}{\mathop{\bigvee_{\!c}}\displaylimits}
+\newcommand{\allA}{\Pi\mathcal A.\,}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\title{\bfseries A direct interpretation of\newline Tarski--Mostowski--Robinson arithmetic $\mathsf R$\newline in $\mathsf{PTS}_{rk}$}
+\author{}\date{12 October 2026}
+\begin{document}
+\begin{center}
+{\Large\bfseries A direct interpretation of\\[3pt]
+Tarski--Mostowski--Robinson arithmetic $\mathsf R$\\[3pt]
+in $\mathsf{PTS}_{rk}$\par}
+\vspace{9pt}
+12 October 2026
+\end{center}
+\thispagestyle{plain}
+\begin{abstract}
+We construct a fixed, ground-faithful interpretation of classical
+Tarski--Mostowski--Robinson arithmetic $\RR$ in the rank-indexed pure type
+system $\PTS$. Arithmetic expressions are Church encoded and equipped with
+a bounded-rank induction certificate. Certified arithmetic observations
+interpret equality and order. A single bounded case lemma verifies the two
+quantified axiom schemes of $\RR$; finite capped arithmetic algebras separate
+standard numerals. The construction uses only dependent products and
+$\beta$-conversion, without an intermediate set or multiset theory.
+\end{abstract}
+
+\section{The target theory and the proof types}
+The pure type system $\PTS$ has sorts $\rk i$ for external $i\in\mathbb N$,
+sort axioms $\rk i:\rk0$, and the product rule
+\[
+ \frac{\Gamma\vdash A:\rk a\qquad\Gamma,x:A\vdash B:\rk b}
+ {\Gamma\vdash\Pi x:A.B:\rk{\max(a+1,b)}}.
+\]
+The other rules are the ordinary PTS rules, with $\beta$-conversion only.
+There is no cumulativity. Arrows associate to the right.
+
+We use $\RR$ in the signature $\{0,S,+,\cdot,\leq\}$ with
+$\bar n=S^n0$ and the following schemes, for external $m,n\in\mathbb N$
+\cite{tmr}\cite[Definition~1.1]{kurahashi}:
+\begin{align}
+ \bar m+\bar n&=\overline{m+n}, \tag{R1}\label{eq:r1}\\
+ \bar m\cdot\bar n&=\overline{mn}, \tag{R2}\label{eq:r2}\\
+ \bar m&\ne\bar n\quad(m\ne n), \tag{R3}\label{eq:r3}\\
+ \forall x\bigl(x\leq\bar n&\to\bigvee_{i=0}^n x=\bar i\bigr),
+ \tag{R4}\label{eq:r4}\\
+ \forall x\bigl(x\leq\bar n&\lor\bar n\leq x\bigr).
+ \tag{R5}\label{eq:r5}
+\end{align}
+Source quantifiers will be relativized to a fixed predicate $\Good$.
+Equality is a definable equivalence relation, not $\beta$-conversion.
+
+Put
+\[
+ \bot:=\Pi Z:\rk0.Z:\rk1,\qquad
+ \top:=\rk0\to\rk0:\rk1,\qquad \mathsf{id}:\top.
+\]
+Section~\ref{sec:empty} justifies that $\bot$ has no closed inhabitant.
+Use the fixed-answer negative connectives
+\begin{gather*}
+ \nc A:=A\to\bot,\qquad
+ A\ac B:=(A\to B\to\bot)\to\bot,\\
+ \Orc_{i=0}^k A_i:=(A_0\to\bot)\to\cdots\to(A_k\to\bot)\to\bot.
+\end{gather*}
+A type $A$ is \emph{stable} if $((A\to\bot)\to\bot)\to A$ is inhabited.
+Negative types are stable, as are dependent products with stable codomain.
+The displayed conjunction and disjunction are stable and have the classical
+rules when their component proof types are stable. They eliminate into
+stable targets; in particular, case branches may all return $\bot$.
+Implication is an arrow. No elimination of $\bot$ into arbitrary positive
+types is assumed.
+
+For exact-rank motives define $J_1:=\top$, $J_{k+1}:=J_k\to J_k$, with
+canonical inhabitants $j_k$. If $A:\rk a$, $a\leq k$, and $k\geq2$, then
+\[
+ L_k(A):=J_{k-1}\to A:\rk k.
+\]
+Abstraction and evaluation at $j_{k-1}$ give maps in both directions.
+We use this lift whenever a motive has rank below the specified rank.
+
+\section{Arithmetic expressions and certified observations}
+\subsection*{The fixed domain}
+Use the Church presentation type
+\[
+ D:=\Pi X:\rk1.\ X\to(X\to X)\to(X\to X\to X)
+                         \to(X\to X\to X)\to X:\rk3.
+\]
+Its four constructors are the following closed lambda terms:
+\begin{align*}
+ \zz&:=\lambda X\,z\,s\,a\,m.\ z,\\
+ \ssu d&:=\lambda X\,z\,s\,a\,m.\ s(d\,X\,z\,s\,a\,m),\\
+ \addD d e&:=\lambda X\,z\,s\,a\,m.\ a(d\,X\,z\,s\,a\,m)(e\,X\,z\,s\,a\,m),\\
+ \mm d e&:=\lambda X\,z\,s\,a\,m.\ m(d\,X\,z\,s\,a\,m)(e\,X\,z\,s\,a\,m).
+\end{align*}
+Binder annotations are dictated by $D$. Set $\num n:=\ssu^n\zz$.
+These are \emph{arithmetic-expression presentations}: $\addD$ and $\mm$ build
+syntax. Their ground arithmetic laws will hold in interpreted equality;
+they are not asserted to reduce to numerals by $\beta$ alone.
+
+Define the domain predicate by
+\begin{align*}
+ \Good(d):={}&\Pi Q:D\to\rk{10}.\ Q(\zz)\\[-2pt]
+ &\to(\Pi u:D.\ Q(u)\to Q(\ssu u))\\[-2pt]
+ &\to(\Pi u,v:D.\ Q(u)\to Q(v)\to Q(\addD u v))\\[-2pt]
+ &\to(\Pi u,v:D.\ Q(u)\to Q(v)\to Q(\mm u v))\to Q(d).
+\end{align*}
+This has rank $12$. It is a definition, not an induction axiom on all of $D$.
+The four constructors preserve $\Good$ by direct abstraction. For example,
+from $g:\Good(d)$ the successor certificate is
+\[
+ \lambda Q\,q_0\,q_s\,q_a\,q_m.\
+ q_s\,d\,(g\,Q\,q_0\,q_s\,q_a\,q_m).
+\]
+The binary certificates apply $q_a$ or $q_m$ to the two child certificates.
+Hence the domain is nonempty and closed under every interpreted function.
+
+\subsection*{The observation telescope}
+An observation has parameters
+\[
+ X:\rk1,\quad z:X,\quad s:X\to X,\quad a,m:X\to X\to X,
+ \quad\delta:X\to\rk4,\quad R_0,C_0:X\to X\to\rk1.
+\]
+Abbreviate the \emph{negative} proof types
+\[
+ u\simeq v:=R_0(u,v)\to\bot,\qquad
+ u\preceq v:=C_0(u,v)\to\bot.
+\]
+Both have rank $2$. The telescope also contains separate proofs of the
+following laws. Every object variable is guarded by $\delta$: thus a law
+$H(u,v)$ means $\Pi u:X.\delta(u)\to\Pi v:X.\delta(v)\to H(u,v)$.
+All displayed paired laws mean separate proof arguments, not encoded records.
+
+\emph{Domain and congruence.} The domain contains $z$ and is closed under
+$s,a,m$. On it, $\simeq$ is an equivalence relation respected by $s,a,m$;
+$\preceq$ respects $\simeq$ in both arguments and is reflexive and transitive.
+For example, its congruence certificate concludes
+\[
+ u\simeq u'\to v\simeq v'\to u\preceq v\to u'\preceq v'.
+\]
+\emph{Arithmetic equations.}
+\begin{align}
+ a(z,u)&\simeq u,&a(su,v)&\simeq s(a(u,v)),\notag\\
+ m(z,u)&\simeq z,&m(su,v)&\simeq a(v,m(u,v)),&m(u,z)&\simeq z.
+ \label{eq:alg-equations}
+\end{align}
+\emph{Order propagation}, with $1_X:=sz$:
+\begin{align}
+ u&\preceq su,&u&\preceq a(u,v),&v&\preceq a(u,v),\notag\\
+ 1_X\preceq v&\to u\preceq m(u,v),&&
+ 1_X\preceq u\to v\preceq m(u,v).
+ \label{eq:alg-order}
+\end{align}
+No successor injectivity, cancellation, or unbounded induction is required.
+Each individual certificate has rank at most $5$: after its domain guards
+are opened, a relation has rank $2$ and an implication between relations
+has rank at most $3$.
+
+Write $\Pi\mathcal A$ for this fixed parameter telescope followed by these
+individual proof arguments. Define
+\[
+ \ev_{\mathcal A}(d):=d\,X\,z\,s\,a\,m
+\]
+and
+\begin{align*}
+ E(d,e)&:=\allA\ev_{\mathcal A}(d)\simeq\ev_{\mathcal A}(e),\\
+ O(d,e)&:=\allA\ev_{\mathcal A}(d)\preceq\ev_{\mathcal A}(e),\\
+ G(d)&:=\allA\delta(\ev_{\mathcal A}(d)).
+\end{align*}
+All three have rank $6$; $E,O$ are stable, while $G$ is positive.
+The certificates are quantified assumptions of an observation, \emph{not}
+axioms added to $\PTS$. The next section constructs closed instances.
+
+\begin{lemma}\label{lem:basic}
+$G$ contains $\zz$ and is closed under $\ssu,\addD,\mm$, and
+$\Pi d:D.\Good(d)\to G(d)$ is inhabited. On $G$-elements, $E$ is an
+equivalence, all three operations respect $E$, and $O$ is a congruent
+preorder. Equations~\eqref{eq:alg-equations} and
+\eqref{eq:alg-order} hold globally with $E,O$.
+\end{lemma}
+\begin{proof}
+The fold equations are beta equations. They and the domain certificates
+prove closure of $G$. Apply $\Good(d)$ to $u\mapsto L_{10}(G(u))$ and
+then evaluate at $j_9$. Every remaining claim follows by opening the
+observation telescope and supplying the relevant $G$-proofs as guards.
+\end{proof}
+External induction on the natural numbers in a \emph{closed} arithmetic
+calculation now constructs proofs of
+\[
+ E(\addD\num m\num n,\num{m+n}),\quad
+ E(\mm\num m\num n,\num{mn}),\quad
+ O(\num i,\num j)\quad(i\leq j).
+\tag{*}\label{eq:ground}
+\]
+For the first two use the recursive equations; for the last use reflexivity,
+$u\preceq su$, and transitivity. No internal arithmetic induction is used.
+
+\section{Finite arithmetic observations and separation}
+For each external $K\geq0$, put $c=K+1$ and take the finite chain
+$C_K=\{0,\ldots,c\}$, with
+\[
+ z=0,\quad s(i)=\min(i+1,c),\quad
+ a(i,j)=\min(i+j,c),\quad m(i,j)=\min(ij,c).
+\]
+Equality and order are the actual equality and order of this chain. All the
+observation laws hold. For the multiplication recursion, $j=0$ gives zero
+on both sides; if $j>0$, reaching the cap makes both sides equal $c$.
+For multiplication propagation, $1\leq j$ gives
+$\min(ij,c)\geq i$, and symmetrically. Addition propagation and the remaining
+laws follow directly from the chain operations. In particular, capped
+multiplication still satisfies $c\cdot0=0$.
+
+\begin{lemma}\label{lem:finite}
+Every $C_K$ has a closed implementation of the entire observation telescope.
+Consequently $E(\num m,\num n)\to\bot$ is inhabited when $m\ne n$, and
+$O(\num m,\num n)\to\bot$ is inhabited when $m>n$.
+\end{lemma}
+\begin{proof}
+Put $q=K+2$ and use the fixed-rank selector type
+\[
+ F_q:=\underbrace{\rk1\to\cdots\to\rk1}_{q\text{ arguments}}\to\rk1:\rk1,
+ \qquad e_i:=\lambda Z_0\ldots Z_{q-1}.Z_i.
+\]
+A unary table $h$ and a binary table $b$ have the realizations
+\begin{align*}
+ \widehat h(u)&:=\lambda\vec Z.\ u\,Z_{h(0)}\cdots Z_{h(q-1)},\\
+ \widehat b(u,v)&:=\lambda\vec Z.\
+ u\,(v\,Z_{b(0,0)}\cdots Z_{b(0,q-1)})\cdots
+       (v\,Z_{b(q-1,0)}\cdots Z_{b(q-1,q-1)}).
+\end{align*}
+Interpret $z$ by $e_0$ and the operations by their tables. For a relation
+with truth table $T_{ij}$, replace $Z_{b(i,j)}$ in the binary formula by
+$B_{ij}$, where $B_{ij}=\bot$ for a true entry and $B_{ij}=\top$ for a false
+one, and omit the outer $\lambda\vec Z$. This defines $R_0,C_0$ with values
+of rank $1$. Their negations have exactly the required truth values:
+$\bot\to\bot$ has its identity proof, whereas $\top\to\bot$ yields
+$\bot$ when applied to $\mathsf{id}:\top$.
+
+Use the domain certificate
+\[
+ \delta_q(u):=\Pi Q:F_q\to\rk3.\
+ Q(e_0)\to\cdots\to Q(e_{q-1})\to Q(u):\rk4.
+\]
+Each selector has its projection certificate. For operation closure, open
+the output $\delta_q$ and eliminate the input certificates into its
+rank-$3$ motive $Q$ composed with the operation. For relation laws, open
+all domain guards and use selector elimination into the remaining goal of
+rank at most $3$, lifted to rank $3$ if necessary. This reduces the proof
+to the finite table checks above. A false relational premise gives $\bot$;
+every relational conclusion is negative, so its proof follows by abstraction.
+There is no assertion that every raw inhabitant of $F_q$ is a selector.
+
+For separation choose $K\geq\max(m,n)$. Both folds are their distinct
+selectors, or occur in strictly reversed order. Specializing a putative
+$E$- or $O$-proof to this closed observation gives $\top\to\bot$; apply it
+to $\mathsf{id}$. For example, the same argument at cutoff $K=n$ refutes
+$O(\num{n+1},\num n)$.
+\end{proof}
+
+\section{One bounded numerical case lemma}
+For each fixed external $n$, define the flat negative disjunction
+\[
+ \Case_n(d):=\Orc\bigl(E(d,\num0),\ldots,E(d,\num n),O(\num{n+1},d)\bigr).
+\]
+It has rank $8$, independent of $n$. The final branch is a \emph{global
+lower bound}, not just an observation that a finite classifier overflowed.
+This eliminates the need for a reconstruction theorem.
+
+\begin{lemma}\label{lem:cases}
+For every external $n\geq0$, the type
+$\Pi d:D.\Good(d)\to\Case_n(d)$ is inhabited.
+\end{lemma}
+\begin{proof}
+Retain the positive domain evidence using the rank-$10$ motive
+\[
+ \Inv_n(d):=\Pi Z:\rk8.\bigl(G(d)\to\Case_n(d)\to Z\bigr)\to Z.
+\]
+We construct its four closure proofs. In each constructor step, open the
+parent's $Z$ and continuation and eliminate the child invariants at that
+\emph{same} $Z$. They provide the positive $G$-proofs and the negative case
+proofs separately. Lemma~\ref{lem:basic} constructs the parent's $G$-proof
+without any case elimination. To construct its case proof, open its branch
+continuations; all remaining branches have answer type $\bot$. The case
+proofs can now be split. The following deductions use only
+Lemma~\ref{lem:basic} and the closed facts~\eqref{eq:ground}.
+
+\emph{Zero and successor.} Zero has its reflexive $E$-proof. A successor of
+an $i$-case is the $(i+1)$-case if $i<n$, and supplies
+$O(\num{n+1},\ssu d)$ if $i=n$. From the last branch use
+$O(\num{n+1},d)$ and $O(d,\ssu d)$.
+
+\emph{Addition.} Two finite cases $i,j$ give equality to $\num{i+j}$.
+If $i+j\leq n$, take that finite branch; otherwise the ground comparison
+$n+1\leq i+j$ gives the final branch. If either child has the final branch,
+use the corresponding bound of that child by the sum.
+
+\emph{Multiplication.} Two finite cases give equality to $\num{ij}$ and are
+handled as above. If either factor is equal to zero, use the appropriate
+zero equation, including $m(u,z)\simeq z$. Otherwise a finite factor has
+index at least one. A factor in the final branch is also at least one,
+because $1\leq n+1$. Thus, if one factor has the final branch and the other
+is not in the zero case, multiplication propagation bounds the product
+below by the large factor. This supplies its final branch. These alternatives
+cover both finite/large cases and the large/large case.
+
+Apply the opened parent continuation to its positive $G$-proof and the
+constructed case proof. This proves closure of $\Inv_n$ without eliminating
+negative cases into a positive type. Now instantiate $\Good(d)$ directly
+at $\Inv_n:D\to\rk{10}$. Project $\Case_n(d)$ by choosing
+$Z=\Case_n(d)$ and continuation $\lambda g\,c.c$.
+\end{proof}
+
+The ranks used in the construction are
+\[
+\begin{array}{c|ccccccc}
+\text{type}&D&\delta_q&\text{algebra certificates}&E,O,G&\Case_n&\Inv_n&\Good\\
+\hline
+\text{rank}&3&4&\leq5&6&8&10&12.
+\end{array}
+\]
+The bound is independent of the numerical values and table sizes; no
+minimality of these ranks is claimed.
+
+\section{Verification of the interpretation}
+Interpret $0,S,+,\cdot$ by $\zz,\ssu,\addD,\mm$, and interpret the atoms
+$t=u$ and $t\leq u$ by $E(t^\dagger,u^\dagger)$ and
+$O(t^\dagger,u^\dagger)$. Use the negative connectives of Section~1 and
+\[
+ (\forall x\,\varphi)^\dagger
+ :=\Pi x:D.\Good(x)\to\varphi^\dagger(x),\qquad
+ (\exists x\,\varphi)^\dagger
+ :=\bigl(\Pi x:D.\Good(x)\to\varphi^\dagger(x)\to\bot\bigr)\to\bot.
+\]
+All translated formulas are stable. Thus the classical first-order rules
+are admissible. Domain closure and Lemma~\ref{lem:basic} supply the equality
+and function obligations. Invariance of $\Good$ on arbitrary raw
+$E$-equivalent presentations is not required: equality substitution is
+proved for admitted arguments.
+
+\begin{theorem}\label{thm:main}
+These fixed definitions interpret classical $\RR$ in $\PTS$. Every
+translated axiom has an effectively constructible closed proof term.
+The interpretation is faithful on ground arithmetic equations and comparisons:
+true instances are inhabited and false instances have internal refutations.
+\end{theorem}
+\begin{proof}
+Schemes (R1) and (R2) are~\eqref{eq:ground}; (R3) is
+Lemma~\ref{lem:finite}.
+
+For (R4), fix external $n$, and assume $d:D$, $g:\Good(d)$ and
+$h:O(d,\num n)$. Apply Lemma~\ref{lem:cases}. A finite branch already gives
+one of $E(d,\num0),\ldots,E(d,\num n)$. The final branch together with $h$
+gives $O(\num{n+1},\num n)$ by transitivity, contradicting
+Lemma~\ref{lem:finite}. The required finite disjunction is stable, so this
+case analysis is valid.
+
+For (R5), use the same cases. In an $i$-branch, the ground fact $i\leq n$
+and congruence give $O(d,\num n)$. In the final branch, compose
+$O(\num n,\num{n+1})$ with $O(\num{n+1},d)$ to obtain $O(\num n,d)$.
+Introduce the appropriate side of the translated disjunction.
+
+Finally, external evaluation of any closed arithmetic expression reduces
+it, in $E$, to its numeral by~\eqref{eq:ground} and congruence. Apply the
+same results and Lemma~\ref{lem:finite} to its equality and order comparisons.
+All external inductions and finite tables produce finite lambda terms;
+the domain, operations, relations, and translation are fixed independently of
+the axiom instance. No conservativity claim for arbitrary first-order
+sentences is made.
+\end{proof}
+
+\section{Nontriviality of the answer type}\label{sec:empty}
+Only the uninhabitation of $\bot$ is needed to ensure that the interpretation
+is nonvacuous. Here is a short relative set-model justification, in external
+$\mathsf{ZFC}+\mathsf{GCH}$; this metatheory adds no axiom to $\PTS$.
+Choose distinct codes $c_\kappa$ for all cardinals below some finite-index
+aleph, and distinct codes $s_j$ for $j\in\mathbb N$. Put
+\[
+ U_i=\{c_\kappa:\kappa\leq\aleph_i\}\cup\{s_j:j\in\mathbb N\},\qquad
+ \operatorname{El}(c_\kappa)=\kappa,\quad
+ \operatorname{El}(s_j)=U_j.
+\]
+Interpret $\rk i$ by $s_i$. Every $U_i$ is countable and $s_i\in U_0$.
+For $a\in U_m$ and $b(x)\in U_n$, the full dependent function set has size
+\[
+ \left|\prod_{x\in\operatorname{El}(a)}\operatorname{El}(b(x))\right|
+ \leq\aleph_n^{\aleph_m}\leq\aleph_{\max(m+1,n)}.
+\]
+Choose its cardinal code and a decoding bijection, once for each actual pair
+$(a,b)$, independently of the typing derivation or rank bound. All eligible
+pairs form a set. Application uses the chosen bijection and abstraction its
+inverse; pointwise reindexing gives substitution and beta soundness. This
+interprets exactly the stated product and sort rules. The product decoding
+$\Pi Z:\rk0.Z$ has an empty factor at $c_0\in U_0$, so is empty. Consequently
+there is no closed proof of $\bot$, as used above.
+
+\begin{thebibliography}{2}\small
+\bibitem{tmr}
+A. Tarski, A. Mostowski, and R. M. Robinson.
+\emph{Undecidable Theories}. North-Holland, 1953.
+\bibitem{kurahashi}
+T. Kurahashi.
+\emph{Incompleteness and undecidability of theories consistent with
+$\mathsf R$}. arXiv:2211.15455v1, 2022, Definition~1.1.
+\url{https://arxiv.org/abs/2211.15455v1}.
+\end{thebibliography}
+\end{document}

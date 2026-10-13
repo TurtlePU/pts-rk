@@ -1,74 +1,67 @@
-# Repository guidance
+<!-- BEGIN DIRECTR CODEX HANDOFF -->
+# DirectR: Rocq proof-development instructions
 
-## Project and layout
+## Read first
 
-This repository studies a pure type system with ranks as sorts (PTS-rk).
-The main formalisation is in Rocq/Coq; it is accompanied by Agda code and
-a LaTeX paper and slides.
+This project continues a long ChatGPT discussion. Do not assume that discussion
+or its sandbox attachments are available in this session. Read, in this order:
+1. `docs/direct-r-handoff/HANDOFF.md`
+2. `docs/direct-r-handoff/LATEST_DECISIONS.md`
+3. `docs/direct-r-handoff/STATE.md`
+4. `docs/direct-r-handoff/MATHEMATICS.md`
+Then read the actual `.v` files and the paper's sections 1–5, available as
+`docs/direct-r-handoff/reference/Direct_interpretation_of_R_in_PTS_rk.tex`.
 
-- `theories/`: Rocq sources, built as the `PTSrk` theory.
-  - `Syntax.v`: finite indices, terms, renaming, and substitution.
-  - `AbstractRewriting.v`, `Congruence.v`, `Reduction.v`, `Confluence.v`,
-    `DefEq.v`: rewriting infrastructure and definitional equality.
-  - `Context.v`, `Typing.v`, `Inversions.v`, `Preservation.v`: contexts,
-    typing, inversion lemmas, and subject reduction.
-  - `SN.v`, `Ranks.v`: strong normalisation infrastructure and the
-    rank-based system's strong normalisation theorem.
-- `rank.agda`: separate Agda development using the Agda standard library;
-  it is not part of the Dune build.
-- `latex/paper.tex`, `latex/slides.tex`, `latex/bibliography.bib`: research
-  text, presentation, and references. The PDFs are tracked.
-- `dune-project`, `theories/dune`: package, dependencies, and explicit
-  Rocq module list.
+The objective is an unconditional, kernel-checked direct interpretation of
+classical Tarski–Mostowski–Robinson arithmetic R in the EXISTING PTS-rk calculus.
+The project calls this goal “Theorem 5”; locate the paper's `thm:main` label,
+not a potentially different printed theorem number.
 
-## Build and validation
+## Proof integrity
 
-Run commands from the repository root unless noted otherwise.
+Use the original `PTSrk.Syntax.Term nat n`, `Typing.typ`, and `Ranks.RankSorts`.
+Do not change the PTS rules, erase lambda annotations, add primitives,
+cumulativity, eta conversion, or strengthen the domain with the result to prove.
+No `Admitted`, `admit`, new axioms, unsafe cast shortcuts, disabling guard or
+universe checking, or replacing a target theorem by hypotheses that assume it.
+Inspect `Print Assumptions` transitively against the upstream baseline.
+Never replace the target `typ` judgment by the lab's bidirectional relation.
+Native Rocq `Prop` arithmetic can prove numerical side conditions, but does
+not itself construct inhabitants of PTS proof types.
+A family of finite tests is not a proof over all axiom indices.
 
-- `dune build`: compile the Rocq development. The project declares Dune
-  language 3.23 and Rocq extension 0.13, and requires Rocq's `Stdlib` and
-  the Equations package (`rocq-equations`). Use a compatible toolchain.
-- `agda rank.agda`: check the Agda development with the standard library
-  installed and configured on Agda's library search path.
-- From `latex/`, run `latexmk paper.tex` or `latexmk slides.tex` to build
-  the corresponding document. The local `.latexmkrc` enables PDF output
-  and directs auxiliary files to `../_build`. The paper uses biblatex
-  with Biber; the slides require Russian language support.
-- `git diff --check`: check patch whitespace before handing off changes.
-- `bash tools/check-local-ci.sh`: validate the GitHub Actions workflow and
-  run its staged builds in the dedicated local opam switch. See
-  `docs/DirectR-CI.md` for setup and diagnostics.
+## Scope and architecture
 
-The DirectR workflow is in `.github/workflows/direct-r.yml`;
-`DirectRTests.v` contains examples and assumption reports. For proof changes,
-successful compilation of the full Rocq theory is the primary validation.
-Validate Agda and LaTeX changes with
-their respective tools. Report missing tools or dependencies explicitly;
-do not describe an unrun check as passing.
+Keep the modular native evaluator/checker design and the original kernel.
+The lab code can be adapted with provenance; do not import its different PTS
+configurations or unfinished metatheoretic contracts as assumptions.
+Retain finite arithmetic observations: they construct internal separation
+proofs needed for R3 and R4. The external set model is OUT OF SCOPE.
+Strong normalization plus preservation and normal-form exclusion can justify
+external Bottom-uninhabitation separately; this is NOT a substitute for internal
+arithmetic refutations or an internal self-consistency theorem.
 
-## Editing proofs
+## Work and verification
 
-- Preserve the existing Unicode notation, identifiers, and local proof
-  style. Keep changes focused; avoid reformatting unrelated proofs.
-- Reuse the existing substitution and renaming lemmas, hint databases,
-  and tactics (such as `syntax_simp`) before introducing new machinery.
-- Follow nearby imports and Equations usage, including dependent
-  elimination and generated signatures where appropriate.
-- Preserve theorem statements and assumptions unless changing them is
-  part of the task. Do not make a proof compile by adding `Admitted`,
-  `admit`, new axioms, or unchecked shortcuts.
-- Add new Rocq modules to the explicit module list in `theories/dune`.
-- Changes to shared syntax, contexts, or reduction can affect most of
-  the theory; check downstream proofs through the full build.
+Inspect the checkout, current diff, toolchain, and logs before changing anything.
+Build pristine upstream first, then DirectR dependencies in order. Use
+`tools/ci-check-direct-r.sh` in its intended Linux/opam environment or the
+smaller local build commands documented in the handoff. Fix and recompile one
+failure at a time. Do not spend the whole task merely restating the plan.
+If compilation is unavailable, state the exact limitation; do not relabel
+unexecuted proof scripts as kernel-checked.
+Keep failures and timeout results visible. Never weaken CI to obtain green.
 
-## Research text and generated files
+## Durable continuity and permissions
 
-- Keep mathematical claims and notation consistent with the formal
-  development. Preserve the language of the document being edited.
-- Do not invent citations or silently fill research placeholders with
-  unsupported claims.
-- Do not hand-edit generated PDFs. Regenerate tracked PDFs only when
-  relevant to the requested document update, and review the resulting
-  diff for unintended artifacts.
-- Keep build output out of source changes. `_build`, `*.synctex.gz`, and
-  `*.agdai` are already ignored.
+Update `docs/direct-r-handoff/STATE.md` after each meaningful milestone and
+before ending a session: actual command, exit code, commit/diff state, theorem
+status, first remaining goal, log paths, and the next exact command.
+Record design changes in `DECISIONS.md`; distinguish facts from proposals.
+Do not rely on the chat transcript as the only record.
+The user cannot install GitHub CLI. Use ordinary Git and the existing browser-CI
+workflow; do not run the archived `publish.sh` or require `gh`.
+Do not overwrite user edits, reset a branch, force-push, publish, or merge without
+explicit authorization. Never record credentials or private tokens in logs/docs.
+
+<!-- END DIRECTR CODEX HANDOFF -->

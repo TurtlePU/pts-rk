@@ -50,6 +50,49 @@ merge. The manual "Run workflow" button needs the workflow on the default branch
 use a new push or the run's "Re-run jobs" menu instead. Fork PR workflow execution
 in the upstream may need maintainer approval; the fork's own push run is separate.
 
+## Local checks
+
+`bash tools/check-local-ci.sh` validates the workflow with actionlint and runs
+the same staged compilation driver used by Actions, including the isolated
+upstream build and the final assumption report. This checks the workflow
+expressions and build stages on the host OS; it does not emulate Ubuntu or the
+checkout, OCaml setup, and artifact-upload actions.
+
+The dedicated local environment lives in
+`${XDG_DATA_HOME:-$HOME/.local/share}/pts-rk-ci`. It contains `bin/opam`,
+`bin/actionlint`, and an opam root with a `pts-rk-ci` switch. It does not require
+shell profile changes. GNU `timeout` must also be on PATH (on macOS, install
+Homebrew `coreutils`). Logs are written to the ignored `_build/local-ci-logs`
+directory. Set `DIRECT_R_LOCAL_HOME`, `DIRECT_R_LOCAL_SWITCH`, or
+`DIRECT_R_LOG_DIR` to override these defaults.
+
+To recreate the switch after installing opam, actionlint, and GMP:
+
+```sh
+export PATH="${XDG_DATA_HOME:-$HOME/.local/share}/pts-rk-ci/bin:$PATH"
+export OPAMROOT="${XDG_DATA_HOME:-$HOME/.local/share}/pts-rk-ci/opam"
+opam init --bare --no-setup --yes default https://opam.ocaml.org
+opam switch create pts-rk-ci ocaml-base-compiler.4.14.2 --yes --jobs=2
+opam repository add --switch=pts-rk-ci rocq-released https://rocq-prover.org/opam/released --yes
+opam install --switch=pts-rk-ci --yes --jobs=2 \
+  dune.3.23.1 rocq-prover.meta.1 rocq-core.9.2.0 \
+  rocq-stdlib.9.1.0 rocq-equations.1.3.2+9.2
+bash tools/check-local-ci.sh
+```
+
+On Apple Silicon, GMP must match the OCaml compiler's architecture. An Intel
+Homebrew GMP installation cannot be linked into a native ARM compiler switch.
+For a separately installed native GMP, set `PKG_CONFIG_PATH` to its
+`lib/pkgconfig` directory while installing the opam packages.
+
+The 2026-10-13 local check passed actionlint and stages 01–06 after repairing
+the evaluator/checker scripts and assembler imports. With
+`DIRECT_R_STAGE_SECONDS=60`, stage 07 (proof families) timed out; stages 08–13
+were not checked. This diagnostic limit does not change the workflow's 1200
+second stage limit or establish a typing rejection. The remaining symbolic
+numeral proof issue and exact recovery commands are recorded in
+`docs/direct-r-handoff/STATE.md`.
+
 ## Interpretation of results
 
 A green run validates the existing scripts and examples, not missing statements.

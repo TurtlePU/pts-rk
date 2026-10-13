@@ -1,0 +1,37 @@
+{
+  "prepared": "2026-10-13",
+  "upstream_base": "723cf2ec61c737ae82ba33d2e7db44f650122b0e",
+  "lab_reference": "7e6282d357c6f42217a9584f6c7493c594ae1aed",
+  "inputs": [
+    {
+      "path": "inputs/DirectR_GitHub_CI.zip",
+      "bytes": 15964,
+      "sha256": "9d6cea5fc0bb78fab1f8fc2a8e612c3ba6aacd94f8c13069c20f25cafa1d1821"
+    },
+    {
+      "path": "inputs/DirectR_restructured_PR_package.zip",
+      "bytes": 143486,
+      "sha256": "8c2c43181c743df3afc76656390e16ff752cf0abae53260b53e8ffd00392037c"
+    },
+    {
+      "path": "reference/DirectR_lab_reuse_review.md",
+      "bytes": 11448,
+      "sha256": "832ce184234b40faab6d1ebf84926507551d8e83c67d74c525fb253cf5341e92"
+    },
+    {
+      "path": "reference/DirectR_no_CLI_instructions.md",
+      "bytes": 9025,
+      "sha256": "a9118839b54eccb5440de41b9251abab4739ea1c5d5d9748eb62ca277227b8a4"
+    },
+    {
+      "path": "reference/DirectR_proof_obligations.md",
+      "bytes": 4244,
+      "sha256": "0d1deea9a452d5dbce292eef144e8b57f65a796ee337b4c87ce2933c27bb34ce"
+    },
+    {
+      "path": "reference/Direct_interpretation_of_R_in_PTS_rk.tex",
+      "bytes": 19352,
+      "sha256": "e9cb55f1a3de519afb98032da3243a4fbfa8beb392bb31168ecf979846a18850"
+    }
+  ]
+}

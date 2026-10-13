@@ -99,6 +99,8 @@ Proof.
   destruct t1; cbn [head_step] in H;
     try discriminate;
     repeat match type of H with
+    | context [option_map _ ?v] =>
+        destruct v eqn:?; cbn in H; try discriminate
     | context [match ?v with Some _ => _ | None => _ end] =>
         destruct v eqn:?; cbn in H; try discriminate
     end;
@@ -118,13 +120,19 @@ Proof.
     + inversion H; subst. apply step_lam_left. now apply IHt1.
     + destruct (normal_step t2) eqn:E2; cbn in H; try discriminate.
       inversion H; subst. apply step_lam_right. now apply IHt2.
-  - destruct t1; cbn [normal_step] in H;
-      repeat match type of H with
-      | context [match ?v with Some _ => _ | None => _ end] =>
-          destruct v eqn:?; cbn in H; try discriminate
-      end;
-      inversion H; subst;
-      eauto using step_beta, step_app_left, step_app_right.
+  - destruct t1; try (inversion H; subst; apply step_beta).
+    all: match goal with
+    | |- app ?f ?a →ᵝ _ =>
+        change (match normal_step f with
+                | Some f' => Some (app f' a)
+                | None => option_map (app f) (normal_step a)
+                end = Some u) in H;
+        destruct (normal_step f) as [f'|] eqn:E1; cbn in H;
+        [ inversion H; subst; apply step_app_left; now apply IHt1
+        | destruct (normal_step a) as [a'|] eqn:E2; cbn in H;
+          try discriminate; inversion H; subst;
+          apply step_app_right; now apply IHt2 ]
+    end.
 Qed.
 
 Inductive eval_result (n : nat) : Type :=
@@ -156,7 +164,7 @@ Proof.
   revert t. induction fuel as [|fuel IH]; intros t;
     cbn [run_steps]; destruct (next t) as [u|] eqn:E;
     cbn [endpoint]; try reflexivity.
-  eapply rtc_step; [now apply next_sound | apply IH].
+  eapply rtc_step; [exact (next_sound t u E) | apply IH].
 Qed.
 
 Definition whnf {n} fuel (t : Term nat n) := run_steps head_step fuel t.
@@ -193,11 +201,11 @@ Theorem convert_equal_sound {n} fuel (A B : Term nat n) :
   convert fuel A B = ConvEqual -> A =ᵝ B.
 Proof.
   unfold convert. destruct (term_eqb A B) eqn:E.
-  - intro _. apply term_eqb_sound in E. subst B. reflexivity.
+  - intros _. apply term_eqb_sound in E. subst B. reflexivity.
   - destruct (normalize fuel A) as [A'|A'] eqn:HA;
       destruct (normalize fuel B) as [B'|B'] eqn:HB; try discriminate.
     destruct (term_eqb A' B') eqn:EC; try discriminate.
-    intro _. apply term_eqb_sound in EC. subst B'.
+    intros _. apply term_eqb_sound in EC. subst B'.
     apply def_equiv_prop. exists A'. split;
       eapply normalize_sound; eassumption.
 Qed.

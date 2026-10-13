@@ -77,7 +77,7 @@ Lemma check_conv_sound {n} fuel (A B : Term nat n) :
   check_conv fuel A B = Accepted tt -> A =ᵝ B.
 Proof.
   unfold check_conv. destruct (convert fuel A B) eqn:E; try discriminate.
-  intro _. eapply convert_equal_sound; exact E.
+  intros _. eapply convert_equal_sound; exact E.
 Qed.
 
 Fixpoint infer (fuel : nat) {n} (G : Ctx nat n) (t : Term nat n)
@@ -155,7 +155,7 @@ Theorem infer_sound (fuel : nat) {n} (t : Term nat n) :
   forall (G : Ctx nat n) A,
     @wf nat RankSorts n G -> infer fuel G t = Accepted A -> Typed G t A.
 Proof.
-  induction t as [r|A IHA B IHB|i|A IHA b IHb|f IHf u IHu];
+  induction t as [n r|n A IHA B IHB|n i|n A IHA b IHb|n f IHf u IHu];
     intros G T W H; cbn [infer] in H.
   - inversion H; subst. apply tU.
   - apply bind_ok in H as [TA [EA H]].
@@ -231,7 +231,7 @@ Theorem run_check_sound {n} fuel (G : Ctx nat n) (t A : Term nat n) :
 Proof.
   unfold run_check. intro H. apply bind_ok in H as [u [HG HC]].
   destruct u. eapply check_sound;
-    [apply check_ctx_sound; exact HG | exact HC].
+    [eapply check_ctx_sound; exact HG | exact HC].
 Qed.
 
 Ltac certify_with fuel :=
