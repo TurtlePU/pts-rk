@@ -8,14 +8,13 @@
     DirectRCheck instead. The remaining indexed proofs should ultimately
     use generic telescope/selector lemmas rather than this assembler. *)
 From Stdlib Require Import Arith.PeanoNat Lia Lists.List Bool.Bool.
-From PTSrk Require Import Syntax AbstractRewriting Congruence Reduction
-  DefEq Context Typing Ranks.
+From PTSrk Require Import Syntax AbstractRewriting Congruence Reduction DefEq Context Typing Ranks.
 Import ListNotations.
 
-From PTSrk Require Import DirectRCodes DirectRKernel.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel.
 
 Module Symbolic.
-Import Codes Core.
+Import CommonCodes Core.
 
 (** A proof-producing beta evaluator.  It constructs an EquivClosure proof;
     it does not assert correctness of an unchecked conversion oracle.

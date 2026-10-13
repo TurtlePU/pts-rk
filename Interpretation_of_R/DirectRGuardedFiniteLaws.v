@@ -2,12 +2,13 @@
     telescope: open every guard first, then eliminate into the low-rank body. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRStructural DirectRLogic DirectRPositive DirectRFiniteTables
-  DirectRFiniteObservations DirectRFiniteLawElimination.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRLogic DirectRPositive DirectRFiniteTables DirectRFiniteObservations
+  DirectRFiniteLawElimination.
 Import ListNotations.
 Module GuardedFiniteLaws.
-Import Codes Core Structural NegativeLogic Positive FiniteTables FiniteObservations.
+Import CommonCodes Core Structural NegativeLogic Positive FiniteTables FiniteObservations.
 
 Lemma rename_table_apply {m n} (f : Fin m -> Fin n) xs P :
   rename f (table_apply P xs) = table_apply (rename f P) (map (rename f) xs).

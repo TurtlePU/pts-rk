@@ -14,18 +14,37 @@ Never put remote URLs containing credentials or secret environment values in log
 
 ## Latest development already installed
 
-Check for `theories/DirectRObligations.v` and the other split modules. Do NOT
+The live sources now reside in `Interpretation_of_R/` (shared infrastructure),
+`Interpretation_of_R/relational/` (completed Theorem 4), and
+`Interpretation_of_R/functional/` (unfinished Theorem 7). The original kernel
+alone remains in `theories/`. The corresponding Rocq libraries are
+`Interpretation_of_R`, `Interpretation_of_R.relational`, and
+`Interpretation_of_R.functional`; both interpretation libraries depend only
+on the shared library and original kernel, not on one another.
+
+Independent assumption audits, from the repository root:
+
+```sh
+dune build @Interpretation_of_R/relational/audit
+dune build @Interpretation_of_R/functional/audit
+```
+
+For fresh output supply a new `--build-dir`; a cached audit need not rerun
+`Print Assumptions`. The archived packages and historical logs retain the old
+flat layout and should not be applied over the current development.
+
+Check for `Interpretation_of_R/functional/DirectRObligations.v` and the other split modules. Do NOT
 reapply the archive on top of them. Use the checked-out files as active code;
 archives are frozen provenance/recovery copies.
 
 In a working Rocq/Equations environment, useful targeted commands are:
 
 ```sh
-dune build theories/DirectRKernel.vo
-dune build theories/DirectREval.vo
-dune build theories/DirectRCheck.vo
-dune build theories/DirectR.vo
-dune build theories/DirectRArithmetic.vo theories/DirectRTests.vo
+dune build Interpretation_of_R/DirectRKernel.vo
+dune build Interpretation_of_R/DirectREval.vo
+dune build Interpretation_of_R/DirectRCheck.vo
+dune build Interpretation_of_R/functional/DirectR.vo
+dune build Interpretation_of_R/functional/DirectRArithmetic.vo Interpretation_of_R/functional/DirectRTests.vo
 ```
 
 `bash tools/check-direct-r.sh` is a smaller staged runner. Its first target

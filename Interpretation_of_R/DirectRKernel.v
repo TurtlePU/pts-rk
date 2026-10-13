@@ -3,8 +3,7 @@
     See docs/DirectR.md and docs/DirectR-obligations.md. *)
 
 From Stdlib Require Import Arith.PeanoNat Lia Lists.List Bool.Bool.
-From PTSrk Require Import Syntax AbstractRewriting Congruence Reduction
-  DefEq Context Typing Ranks.
+From PTSrk Require Import Syntax AbstractRewriting Congruence Reduction DefEq Context Typing Ranks.
 Import ListNotations.
 
 Module Core.

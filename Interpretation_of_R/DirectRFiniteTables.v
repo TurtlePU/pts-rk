@@ -2,12 +2,13 @@
     These are object-language functions, not a native finite-model argument. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting
-  DirectRCodes DirectRKernel DirectRCheck DirectRStructural DirectRLogic.
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRCheck
+  DirectRStructural DirectRLogic.
 Import ListNotations.
 
 Module FiniteTables.
-Import Codes Core Structural NegativeLogic.
+Import CommonCodes Core Structural NegativeLogic.
 
 Fixpoint projection k {n} (i : nat) (args : list (Term nat n)) : Term nat n :=
   match k with

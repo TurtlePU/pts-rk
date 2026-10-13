@@ -7,7 +7,7 @@ set -euo pipefail
 
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
-[[ -f theories/DirectRCheck.v && -f theories/DirectRTests.v ]] || {
+[[ -f Interpretation_of_R/DirectRCheck.v && -f Interpretation_of_R/functional/DirectRTests.v ]] || {
   echo 'Install the restructured DirectR package before running this workflow.' >&2
   exit 2
 }
@@ -127,67 +127,73 @@ git archive "$BASELINE_REF" | tar -x -C "$BASELINE_DIR"
 printf '%s\n' "$BASELINE_REF" > "$LOG_DIR/upstream-commit.txt"
 stage 01-upstream "$BASELINE_DIR" theories/Ranks.vo
 
-stage 02-kernel "$ROOT" theories/DirectRKernel.vo
-stage 03-evaluator "$ROOT" theories/DirectREval.vo
-stage 04-checker "$ROOT" theories/DirectRCheck.vo
-stage 05-codes "$ROOT" theories/DirectRCodes.vo
-stage 06-symbolic "$ROOT" theories/DirectRSymbolic.vo
-stage 06a-structural "$ROOT" theories/DirectRStructural.vo
-stage 06a-negative-logic "$ROOT" theories/DirectRLogic.vo
-stage 06a-finite-tables "$ROOT" theories/DirectRFiniteTables.vo
-stage 06a-positive-telescopes "$ROOT" theories/DirectRPositive.vo
-stage 06a-finite-observations "$ROOT" theories/DirectRFiniteObservations.vo
-stage 06a-binary-tables "$ROOT" theories/DirectRBinaryTables.vo
-stage 06a-binary-observations "$ROOT" theories/DirectRBinaryObservations.vo
-stage 06a-relation-tables "$ROOT" theories/DirectRRelationTables.vo
-stage 06a-finite-law-elimination "$ROOT" theories/DirectRFiniteLawElimination.vo
-stage 06a-functional-finite-laws "$ROOT" theories/DirectRFunctionalFiniteLaws.vo
-stage 06a-guarded-finite-laws "$ROOT" theories/DirectRGuardedFiniteLaws.vo
-stage 06a-finite-transitivity "$ROOT" theories/DirectRFiniteTransitivity.vo
-stage 06a-finite-congruence "$ROOT" theories/DirectRFiniteCongruence.vo
-stage 06a-finite-unary-congruence "$ROOT" theories/DirectRFiniteUnaryCongruence.vo
-stage 06a-finite-binary-congruence "$ROOT" theories/DirectRFiniteBinaryCongruence.vo
-stage 06a-finite-zero-laws "$ROOT" theories/DirectRFiniteZeroLaws.vo
-stage 06a-finite-expressions "$ROOT" theories/DirectRFiniteExpressions.vo
-stage 06a-finite-recursion-laws "$ROOT" theories/DirectRFiniteRecursionLaws.vo
-stage 06a-finite-order-laws "$ROOT" theories/DirectRFiniteOrderLaws.vo
-stage 06a-telescope-arguments "$ROOT" theories/DirectRTelescopeArguments.vo
-stage 06a-finite-data "$ROOT" theories/DirectRFiniteData.vo
-stage 06a-finite-binary-domain "$ROOT" theories/DirectRFiniteBinaryDomain.vo
-stage 06a-finite-domain-prefix "$ROOT" theories/DirectRFiniteDomainPrefix.vo
-stage 06a-finite-specialization "$ROOT" theories/DirectRFiniteSpecialization.vo
-stage 06a-functional-evaluation "$ROOT" theories/DirectRFunctionalEvaluation.vo
-stage 06b-foundations "$ROOT" theories/DirectRFoundations.vo
-stage 06c-unary "$ROOT" theories/DirectRUnary.vo
-stage 06c-finite-up "$ROOT" theories/DirectRFiniteUp.vo
-stage 06c-unary-evaluation "$ROOT" theories/DirectRUnaryEvaluation.vo
-stage 06c-separation "$ROOT" theories/DirectRSeparation.vo
-stage 06c-unary-axioms "$ROOT" theories/DirectRUnaryAxioms.vo
-stage 06c-unary-bounded "$ROOT" theories/DirectRUnaryBounded.vo
-stage 06c-unary-arithmetic "$ROOT" theories/DirectRUnaryArithmetic.vo
-stage 06c-unary-assumptions "$ROOT" theories/DirectRUnaryAudit.vo
-stage 06c-relational-syntax "$ROOT" theories/DirectRRelationalSyntax.vo
-stage 06c-relational-translation "$ROOT" theories/DirectRRelationalTranslation.vo
-stage 06c-relational-equality "$ROOT" theories/DirectRRelationalEquality.vo
-stage 06c-relational-deduction "$ROOT" theories/DirectRRelationalDeduction.vo
-stage 06c-relational-countermodel "$ROOT" theories/DirectRRelationalCountermodel.vo
-stage 06c-relational-ground "$ROOT" theories/DirectRRelationalGround.vo
-stage 06c-relational-axioms "$ROOT" theories/DirectRRelationalAxioms.vo
-stage 06c-theorem4 "$ROOT" theories/DirectRTheorem4.vo
-stage 06c-relational-audit "$ROOT" theories/DirectRRelationalAudit.vo
-stage 06d-source-countermodel "$ROOT" theories/DirectRCountermodel.vo
+stage 02-kernel "$ROOT" Interpretation_of_R/DirectRKernel.vo
+stage 02-common-codes "$ROOT" Interpretation_of_R/DirectRCommonCodes.vo
+stage 03-evaluator "$ROOT" Interpretation_of_R/DirectREval.vo
+stage 04-checker "$ROOT" Interpretation_of_R/DirectRCheck.vo
+stage 05-codes "$ROOT" Interpretation_of_R/functional/DirectRCodes.vo
+stage 06-symbolic "$ROOT" Interpretation_of_R/DirectRSymbolic.vo
+stage 06a-structural "$ROOT" Interpretation_of_R/DirectRStructural.vo
+stage 06a-negative-logic "$ROOT" Interpretation_of_R/DirectRLogic.vo
+stage 06a-finite-tables "$ROOT" Interpretation_of_R/DirectRFiniteTables.vo
+stage 06a-positive-telescopes "$ROOT" Interpretation_of_R/DirectRPositive.vo
+stage 06a-finite-observations "$ROOT" Interpretation_of_R/DirectRFiniteObservations.vo
+stage 06a-binary-tables "$ROOT" Interpretation_of_R/DirectRBinaryTables.vo
+stage 06a-binary-observations "$ROOT" Interpretation_of_R/DirectRBinaryObservations.vo
+stage 06a-relation-tables "$ROOT" Interpretation_of_R/DirectRRelationTables.vo
+stage 06a-finite-law-elimination "$ROOT" Interpretation_of_R/DirectRFiniteLawElimination.vo
+stage 06a-functional-finite-laws "$ROOT" Interpretation_of_R/functional/DirectRFunctionalFiniteLaws.vo
+stage 06a-guarded-finite-laws "$ROOT" Interpretation_of_R/DirectRGuardedFiniteLaws.vo
+stage 06a-finite-transitivity "$ROOT" Interpretation_of_R/functional/DirectRFiniteTransitivity.vo
+stage 06a-finite-congruence "$ROOT" Interpretation_of_R/functional/DirectRFiniteCongruence.vo
+stage 06a-finite-unary-congruence "$ROOT" Interpretation_of_R/functional/DirectRFiniteUnaryCongruence.vo
+stage 06a-finite-binary-congruence "$ROOT" Interpretation_of_R/functional/DirectRFiniteBinaryCongruence.vo
+stage 06a-finite-zero-laws "$ROOT" Interpretation_of_R/functional/DirectRFiniteZeroLaws.vo
+stage 06a-finite-expressions "$ROOT" Interpretation_of_R/functional/DirectRFiniteExpressions.vo
+stage 06a-finite-recursion-laws "$ROOT" Interpretation_of_R/functional/DirectRFiniteRecursionLaws.vo
+stage 06a-finite-order-laws "$ROOT" Interpretation_of_R/functional/DirectRFiniteOrderLaws.vo
+stage 06a-telescope-arguments "$ROOT" Interpretation_of_R/DirectRTelescopeArguments.vo
+stage 06a-finite-data "$ROOT" Interpretation_of_R/functional/DirectRFiniteData.vo
+stage 06a-finite-binary-domain "$ROOT" Interpretation_of_R/functional/DirectRFiniteBinaryDomain.vo
+stage 06a-finite-domain-prefix "$ROOT" Interpretation_of_R/functional/DirectRFiniteDomainPrefix.vo
+stage 06a-finite-specialization "$ROOT" Interpretation_of_R/functional/DirectRFiniteSpecialization.vo
+stage 06a-functional-evaluation "$ROOT" Interpretation_of_R/functional/DirectRFunctionalEvaluation.vo
+stage 06a-functional-separation "$ROOT" Interpretation_of_R/functional/DirectRFunctionalSeparation.vo
+stage 06a-functional-bounded "$ROOT" Interpretation_of_R/functional/DirectRFunctionalBounded.vo
+stage 06a-functional-addition "$ROOT" Interpretation_of_R/functional/DirectRFunctionalAddition.vo
+stage 06b-foundations "$ROOT" Interpretation_of_R/functional/DirectRFoundations.vo
+stage 06c-unary "$ROOT" Interpretation_of_R/relational/DirectRUnary.vo
+stage 06c-finite-up "$ROOT" Interpretation_of_R/DirectRFiniteUp.vo
+stage 06c-finite-certificates "$ROOT" Interpretation_of_R/DirectRFiniteCertificates.vo
+stage 06c-iterations "$ROOT" Interpretation_of_R/DirectRIterations.vo
+stage 06c-unary-evaluation "$ROOT" Interpretation_of_R/relational/DirectRUnaryEvaluation.vo
+stage 06c-separation "$ROOT" Interpretation_of_R/relational/DirectRSeparation.vo
+stage 06c-unary-axioms "$ROOT" Interpretation_of_R/relational/DirectRUnaryAxioms.vo
+stage 06c-unary-bounded "$ROOT" Interpretation_of_R/relational/DirectRUnaryBounded.vo
+stage 06c-unary-arithmetic "$ROOT" Interpretation_of_R/relational/DirectRUnaryArithmetic.vo
+stage 06c-unary-assumptions "$ROOT" Interpretation_of_R/relational/DirectRUnaryAudit.vo
+stage 06c-relational-syntax "$ROOT" Interpretation_of_R/relational/DirectRRelationalSyntax.vo
+stage 06c-relational-translation "$ROOT" Interpretation_of_R/relational/DirectRRelationalTranslation.vo
+stage 06c-relational-equality "$ROOT" Interpretation_of_R/relational/DirectRRelationalEquality.vo
+stage 06c-relational-deduction "$ROOT" Interpretation_of_R/relational/DirectRRelationalDeduction.vo
+stage 06c-relational-countermodel "$ROOT" Interpretation_of_R/relational/DirectRRelationalCountermodel.vo
+stage 06c-relational-ground "$ROOT" Interpretation_of_R/relational/DirectRRelationalGround.vo
+stage 06c-relational-axioms "$ROOT" Interpretation_of_R/relational/DirectRRelationalAxioms.vo
+stage 06c-theorem4 "$ROOT" Interpretation_of_R/relational/DirectRTheorem4.vo
+stage 06c-relational-audit "$ROOT" Interpretation_of_R/relational/DirectRRelationalAudit.vo
+stage 06d-source-countermodel "$ROOT" Interpretation_of_R/DirectRCountermodel.vo
 stage 06e-set-functions "$ROOT" models/SetFunctions.vo
-stage 07-proof-families "$ROOT" theories/DirectRProofs.vo
-stage 08-generators "$ROOT" theories/DirectRGenerated.vo
-stage 09-first-order "$ROOT" theories/DirectRFirstOrder.vo
-stage 09a-functional-terms "$ROOT" theories/DirectRFunctionalTerms.vo
-stage 09a-functional-logic "$ROOT" theories/DirectRFunctionalLogic.vo
-stage 09a-functional-audit "$ROOT" theories/DirectRFunctionalAudit.vo
-stage 10-obligations "$ROOT" theories/DirectRObligations.vo
-stage 11-entry-point "$ROOT" theories/DirectR.vo
-stage 12-arithmetic "$ROOT" theories/DirectRArithmetic.vo
+stage 07-proof-families "$ROOT" Interpretation_of_R/functional/DirectRProofs.vo
+stage 08-generators "$ROOT" Interpretation_of_R/functional/DirectRGenerated.vo
+stage 09-first-order "$ROOT" Interpretation_of_R/functional/DirectRFirstOrder.vo
+stage 09a-functional-terms "$ROOT" Interpretation_of_R/functional/DirectRFunctionalTerms.vo
+stage 09a-functional-logic "$ROOT" Interpretation_of_R/functional/DirectRFunctionalLogic.vo
+stage 09a-functional-audit "$ROOT" Interpretation_of_R/functional/DirectRFunctionalAudit.vo
+stage 10-obligations "$ROOT" Interpretation_of_R/functional/DirectRObligations.vo
+stage 11-entry-point "$ROOT" Interpretation_of_R/functional/DirectR.vo
+stage 12-arithmetic "$ROOT" Interpretation_of_R/functional/DirectRArithmetic.vo
 # On a fresh checkout this compilation also emits the file's Print Assumptions.
-stage 13-examples-and-assumptions "$ROOT" theories/DirectRTests.vo
+stage 13-examples-and-assumptions "$ROOT" Interpretation_of_R/functional/DirectRTests.vo
 CURRENT_STAGE='complete'
 printf '\nAll requested builds passed; inspect the assumption report.\n'
 printf 'The open Theorem 5 contracts have not thereby been discharged.\n'

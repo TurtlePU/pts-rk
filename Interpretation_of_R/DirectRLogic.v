@@ -2,12 +2,12 @@
     arbitrary positive types is used. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRCheck DirectRStructural.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRCheck DirectRStructural.
 Import ListNotations.
 
 Module NegativeLogic.
-Import Codes Core Structural.
+Import CommonCodes Core Structural.
 
 Definition inhabited {n} (Γ : Ctx nat n) (A : Term nat n) :=
   exists p, Typed Γ p A.

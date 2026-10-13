@@ -1,10 +1,17 @@
 # Direct R interpretation
 
+The development is split into three libraries under `Interpretation_of_R/`:
+shared infrastructure at the parent level, the completed relational
+interpretation in `relational/`, and the functional development in `functional/`.
+Neither interpretation imports the other. The original kernel is unchanged in
+`theories/`. See `../Interpretation_of_R/README.md` for imports and independent
+build/audit targets. Functional Theorem 7 is still incomplete.
+
 ## Current checked result — 2026-10-13
 
 The harmonized manuscript's unary relational **Theorem 4** is proved as
-`Theorem4.theorem4` in `theories/DirectRTheorem4.v`. Import it with
-`From PTSrk Require Import DirectRTheorem4.` Its unconditional statement combines
+`Theorem4.theorem4` in `Interpretation_of_R/relational/DirectRTheorem4.v`. Import it with
+`From Interpretation_of_R.relational Require Import DirectRTheorem4.` Its unconditional statement combines
 all relational axiom schemes, preservation of the independently defined
 classical deduction system, ground proofs/internal refutations, and a concrete
 nonfaithfulness witness. It uses the original annotated PTS typing judgment.
@@ -98,9 +105,9 @@ a tested version constraint.
 
 ```sh
 dune build theories/Ranks.vo                  # unchanged upstream baseline
-dune build theories/DirectREval.vo theories/DirectRCheck.vo
-dune build theories/DirectR.vo
-dune build theories/DirectRArithmetic.vo theories/DirectRTests.vo
+dune build Interpretation_of_R/DirectREval.vo Interpretation_of_R/DirectRCheck.vo
+dune build Interpretation_of_R/functional/DirectR.vo
+dune build Interpretation_of_R/functional/DirectRArithmetic.vo Interpretation_of_R/functional/DirectRTests.vo
 ```
 
 Or run `bash tools/check-direct-r.sh` from the repository root. It stops on the

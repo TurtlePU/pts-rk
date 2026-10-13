@@ -1,0 +1,539 @@
+Diagnostic directory: /Users/akuklev/air/pts-rk/_build/local-ci-logs/layout-final
+a63636c47ead46c1f3bc7e11b92d6ff689a6aefe
+3.23.1
+The Rocq Prover, version 9.2
+compiled with OCaml 4.14.2
+4.14.2
+2.6.1
+# Packages matching: installed
+# Name                # Version
+base                  v0.16.5
+base-bigarray         base
+base-threads          base
+base-unix             base
+conf-gmp              5
+conf-pkg-config       5
+coq-core              9.2.0
+csexp                 1.5.2
+dune                  3.23.1
+dune-configurator     3.23.1
+ocaml                 4.14.2
+ocaml-base-compiler   4.14.2
+ocaml-compiler-libs   v0.12.4
+ocaml-config          2
+ocaml-options-vanilla 1
+ocamlfind             1.9.8
+ppx_derivers          1.2.1
+ppx_optcomp           v0.16.0
+ppxlib                0.35.0
+rocq-core             9.2.0
+rocq-equations        1.3.2+9.2
+rocq-prover           meta.1
+rocq-runtime          9.2.0
+rocq-stdlib           9.1.0
+sexplib0              v0.16.0
+stdio                 v0.16.0
+stdlib-shims          0.3.0
+zarith                1.14
+
+=== 01-upstream ===
+        rocq theories/.PTSrk.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+        rocq theories/Congruence.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/SN.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+
+=== 02-kernel ===
+
+=== 02-common-codes ===
+
+=== 03-evaluator ===
+
+=== 04-checker ===
+
+=== 05-codes ===
+
+=== 06-symbolic ===
+
+=== 06a-structural ===
+
+=== 06a-negative-logic ===
+
+=== 06a-finite-tables ===
+
+=== 06a-positive-telescopes ===
+
+=== 06a-finite-observations ===
+
+=== 06a-binary-tables ===
+
+=== 06a-binary-observations ===
+
+=== 06a-relation-tables ===
+
+=== 06a-finite-law-elimination ===
+
+=== 06a-functional-finite-laws ===
+
+=== 06a-guarded-finite-laws ===
+
+=== 06a-finite-transitivity ===
+
+=== 06a-finite-congruence ===
+
+=== 06a-finite-unary-congruence ===
+
+=== 06a-finite-binary-congruence ===
+
+=== 06a-finite-zero-laws ===
+
+=== 06a-finite-expressions ===
+
+=== 06a-finite-recursion-laws ===
+
+=== 06a-finite-order-laws ===
+
+=== 06a-telescope-arguments ===
+
+=== 06a-finite-data ===
+
+=== 06a-finite-binary-domain ===
+
+=== 06a-finite-domain-prefix ===
+
+=== 06a-finite-specialization ===
+
+=== 06a-functional-evaluation ===
+
+=== 06a-functional-separation ===
+
+=== 06a-functional-bounded ===
+
+=== 06a-functional-addition ===
+
+=== 06b-foundations ===
+
+=== 06c-unary ===
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalAxioms exactly matches several files in path
+    (found DirectRRelationalAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalGround exactly matches several files in path
+    (found DirectRRelationalGround.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalEquality exactly matches several files in path
+    (found DirectRRelationalEquality.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalDeduction exactly matches several files in path
+    (found DirectRRelationalDeduction.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalCountermodel exactly matches several files in path
+    (found DirectRRelationalCountermodel.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRTheorem4 exactly matches several files in path
+    (found DirectRTheorem4.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRUnaryBounded exactly matches several files in path
+    (found DirectRUnaryBounded.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRUnaryArithmetic exactly matches several files in path
+    (found DirectRUnaryArithmetic.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRSeparation exactly matches several files in path
+    (found DirectRSeparation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalCountermodel.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalDeduction.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalDeduction.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalDeduction.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalDeduction.v, 
+    required library DirectRRelationalEquality exactly matches several files in path
+    (found DirectRRelationalEquality.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalDeduction.v, 
+    required library DirectRRelationalAxioms exactly matches several files in path
+    (found DirectRRelationalAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalEquality.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalEquality.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalEquality.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalEquality.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalGround.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalGround.v, 
+    required library DirectRSeparation exactly matches several files in path
+    (found DirectRSeparation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalGround.v, 
+    required library DirectRUnaryArithmetic exactly matches several files in path
+    (found DirectRUnaryArithmetic.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalGround.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalGround.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalTranslation.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalTranslation.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalTranslation.v, 
+    required library DirectRUnaryBounded exactly matches several files in path
+    (found DirectRUnaryBounded.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalTranslation.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRSeparation.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRSeparation.v, 
+    required library DirectRUnaryEvaluation exactly matches several files in path
+    (found DirectRUnaryEvaluation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalAxioms exactly matches several files in path
+    (found DirectRRelationalAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalGround exactly matches several files in path
+    (found DirectRRelationalGround.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalDeduction exactly matches several files in path
+    (found DirectRRelationalDeduction.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalCountermodel exactly matches several files in path
+    (found DirectRRelationalCountermodel.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryArithmetic.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryArithmetic.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryArithmetic.v, 
+    required library DirectRUnaryBounded exactly matches several files in path
+    (found DirectRUnaryBounded.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryArithmetic.v, 
+    required library DirectRUnaryEvaluation exactly matches several files in path
+    (found DirectRUnaryEvaluation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryArithmetic.v, 
+    required library DirectRSeparation exactly matches several files in path
+    (found DirectRSeparation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRUnaryEvaluation exactly matches several files in path
+    (found DirectRUnaryEvaluation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRSeparation exactly matches several files in path
+    (found DirectRSeparation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRUnaryBounded exactly matches several files in path
+    (found DirectRUnaryBounded.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRUnaryArithmetic exactly matches several files in path
+    (found DirectRUnaryArithmetic.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAxioms.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryBounded.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryBounded.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryBounded.v, 
+    required library DirectRSeparation exactly matches several files in path
+    (found DirectRSeparation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryEvaluation.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+        rocq Interpretation_of_R/relational/.Interpretation_of_R.theory.d
+        rocq Interpretation_of_R/relational/DirectRUnary.{glob,vo}
+
+=== 06c-finite-up ===
+
+=== 06c-finite-certificates ===
+
+=== 06c-iterations ===
+
+=== 06c-unary-evaluation ===
+        rocq Interpretation_of_R/relational/DirectRUnaryEvaluation.{glob,vo}
+
+=== 06c-separation ===
+        rocq Interpretation_of_R/relational/DirectRSeparation.{glob,vo}
+
+=== 06c-unary-axioms ===
+        rocq Interpretation_of_R/relational/DirectRUnaryAxioms.{glob,vo}
+
+=== 06c-unary-bounded ===
+        rocq Interpretation_of_R/relational/DirectRUnaryBounded.{glob,vo}
+
+=== 06c-unary-arithmetic ===
+        rocq Interpretation_of_R/relational/DirectRUnaryArithmetic.{glob,vo}
+
+=== 06c-unary-assumptions ===
+unary_bounded_cases
+     : forall cutoff : nat,
+       exists p : Term nat 0,
+         ε ⊢ p
+         ⇐ Π Unary.Domain
+             (CommonCodes.Arrow (Unary.admitted CommonCodes.V0)
+                (Unary.Case cutoff CommonCodes.V0))
+Unary.Case =
+fun (n cutoff : nat) (d : Term nat n) =>
+CommonCodes.FlatOr
+  (ListDef.map
+     (fun i : nat => Unary.E d (CommonCodes.lift_closed (Unary.numeral i)))
+     (ListDef.seq 0 (S cutoff)) ++
+   Unary.O (CommonCodes.lift_closed (Unary.numeral (S cutoff))) d :: nil)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments Unary.Case {n}%_nat_scope cutoff%_nat_scope d
+Unary.Inv =
+fun (n cutoff : nat) (d : Term nat n) =>
+NegativeLogic.positive_invariant (Unary.G d) (Unary.Case cutoff d)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments Unary.Inv {n}%_nat_scope cutoff%_nat_scope d
+Unary.ground_order_realized
+     : forall i j : nat,
+       i <= j -> Core.Realizes (Unary.O (Unary.numeral i) (Unary.numeral j))
+Unary.case_successor_realized
+     : forall (Γ : Ctx nat ?n) (cutoff : nat) (d : Term nat ?n),
+       Core.Typed Γ d (CommonCodes.lift_closed Unary.Domain) ->
+       NegativeLogic.inhabited Γ (Unary.G d) ->
+       NegativeLogic.inhabited Γ (Unary.Case cutoff d) ->
+       NegativeLogic.inhabited Γ
+         (Unary.Case cutoff (app (CommonCodes.lift_closed Unary.successor) d))
+where
+?n : [ |- nat]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+unary_comparability
+     : forall cutoff : nat,
+       exists p : Term nat 0,
+         ε ⊢ p
+         ⇐ Π Unary.Domain
+             (CommonCodes.Arrow (Unary.admitted CommonCodes.V0)
+                (UnaryAxioms.Compare cutoff CommonCodes.V0))
+UnaryAxioms.Compare =
+fun (n cutoff : nat) (d : Term nat n) =>
+CommonCodes.FlatOr
+  (Unary.O d (CommonCodes.lift_closed (Unary.numeral cutoff))
+   :: Unary.O (CommonCodes.lift_closed (Unary.numeral cutoff)) d :: nil)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments UnaryAxioms.Compare {n}%_nat_scope cutoff%_nat_scope d
+FiniteTables.table_typed
+     : forall (q : nat) (perm : list nat),
+       length perm = q ->
+       Core.Typed ε (FiniteTables.table q perm)
+         (CommonCodes.Arrow (DirectRStructural.Structural.selector_type q)
+            (DirectRStructural.Structural.selector_type q))
+FiniteTables.table_action
+     : forall (q : nat) (perm : list nat) (i : nat),
+       length perm = q ->
+       i < q ->
+       DefEq.def_equiv nat 0
+         (app (FiniteTables.table q perm) (FiniteTables.point q i))
+         (FiniteTables.point q (ListDef.nth i perm 0))
+FiniteTables.capped_successor_action
+     : forall q i : nat,
+       i < q ->
+       DefEq.def_equiv nat 0
+         (app (FiniteTables.capped_successor q) (FiniteTables.point q i))
+         (FiniteTables.point q (PeanoNat.Nat.min (S i) (PeanoNat.Nat.pred q)))
+FiniteTables.iterate_computation
+     : forall c k : nat,
+       DefEq.def_equiv nat 0 (FiniteTables.iterate (S c) k)
+         (FiniteTables.point (S c) (PeanoNat.Nat.min k c))
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Positive.membership_intro
+     : forall (Γ : Ctx nat ?n) (A : Term nat ?n) (xs : list (Term nat ?n))
+         (u : Term nat ?n),
+       Core.Typed Γ A (𝓤 1) ->
+       ListDef.Forall (fun x : Term nat ?n => Core.Typed Γ x A) xs ->
+       List.In u xs -> NegativeLogic.inhabited Γ (Positive.Membership A xs u)
+where
+?n : [ |- nat]
+Positive.membership_elim
+     : forall (Γ : Ctx nat ?n) (A : Term nat ?n) (xs : list (Term nat ?n))
+         (u Q : Term nat ?n),
+       NegativeLogic.inhabited Γ (Positive.Membership A xs u) ->
+       Core.Typed Γ Q (CommonCodes.Arrow A (𝓤 3)) ->
+       ListDef.Forall
+         (fun x : Term nat ?n => NegativeLogic.inhabited Γ (app Q x)) xs ->
+       NegativeLogic.inhabited Γ (app Q u)
+where
+?n : [ |- nat]
+FiniteObservations.delta_formation
+     : forall (Γ : Ctx nat ?n) (q : nat) (u : Term nat ?n),
+       0 < q ->
+       Core.Typed Γ u (DirectRStructural.Structural.selector_type q) ->
+       Core.Typed Γ (FiniteObservations.delta q u) (𝓤 4)
+where
+?n : [ |- nat]
+FiniteObservations.delta_point
+     : forall (Γ : Ctx nat ?n) (q i : nat),
+       i < q ->
+       NegativeLogic.inhabited Γ
+         (FiniteObservations.delta q
+            (CommonCodes.lift_closed (FiniteTables.point q i)))
+where
+?n : [ |- nat]
+FiniteObservations.delta_step_realized
+     : forall q : nat,
+       0 < q -> Core.Realizes (FiniteObservations.delta_step_type q)
+FiniteObservations.delta_step_type =
+fun q : nat =>
+Π (DirectRStructural.Structural.selector_type q)
+  (CommonCodes.Arrow (FiniteObservations.delta q CommonCodes.V0)
+     (FiniteObservations.delta q
+        (app (CommonCodes.lift_closed (FiniteTables.capped_successor q))
+           CommonCodes.V0)))
+     : nat -> CommonCodes.closed_term
+
+Arguments FiniteObservations.delta_step_type q%_nat_scope
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+FiniteUp.upward_realized
+     : forall c : nat, Core.Realizes (FiniteUp.upward_type c)
+FiniteUp.upward_type =
+fun c : nat =>
+Π (DirectRStructural.Structural.selector_type (S c))
+  (CommonCodes.Arrow (FiniteObservations.delta (S c) CommonCodes.V0)
+     (FiniteUp.Step c CommonCodes.V0))
+     : nat -> CommonCodes.closed_term
+
+Arguments FiniteUp.upward_type c%_nat_scope
+UnaryEvaluation.numeral_evaluation
+     : forall (k n : nat) (X z s : Term nat n),
+       DefEq.def_equiv nat n
+         (UnaryEvaluation.evaluate
+            (CommonCodes.lift_closed (Unary.numeral k)) X z s)
+         (DirectRIterations.Iterations.iterations k z s)
+UnaryEvaluation.finite_numeral_evaluation
+     : forall c k : nat,
+       DefEq.def_equiv nat 0
+         (UnaryEvaluation.evaluate (Unary.numeral k)
+            (DirectRStructural.Structural.selector_type (S c))
+            (FiniteTables.point (S c) 0)
+            (FiniteTables.capped_successor (S c)))
+         (FiniteTables.point (S c) (PeanoNat.Nat.min k c))
+unary_no_back
+     : forall k : nat,
+       exists p : Term nat 0,
+         ε ⊢ p
+         ⇐ CommonCodes.Neg (Unary.O (Unary.numeral (S k)) (Unary.numeral k))
+Separation.ground_order_refutation
+     : forall i j : nat,
+       j < i ->
+       Core.Realizes
+         (CommonCodes.Neg (Unary.O (Unary.numeral i) (Unary.numeral j)))
+unary_numeral_inequality
+     : forall i j : nat,
+       i <> j ->
+       exists p : Term nat 0,
+         ε ⊢ p
+         ⇐ CommonCodes.Neg (Unary.E (Unary.numeral i) (Unary.numeral j))
+Closed under the global context
+Closed under the global context
+Closed under the global context
+File "./Interpretation_of_R/relational/DirectRUnaryAudit.v", line 93, characters 18-48:
+Error: The reference Separation.initial_certificate was not found
+in the current environment. Did you mean Separation.up_certificate?
+
+File "Interpretation_of_R/relational/dune", lines 1-20, characters 0-643:
+ 1 | (rocq.theory
+ 2 |  (name Interpretation_of_R.relational)
+ 3 |  (package pts-rk)
+....
+18 |           DirectRUnaryBounded
+19 |           DirectRUnaryEvaluation)
+20 |  (theories Stdlib Equations PTSrk Interpretation_of_R))
+        rocq Interpretation_of_R/relational/DirectRUnaryAudit.{glob,vo} (exit 1)
+::error title=DirectR stage failed::06c-unary-assumptions failed (exit 1). See the diagnostic artifact.

@@ -1,11 +1,12 @@
 (** Uniform binary selector tables for the arithmetic observation telescope. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting
-  DirectRCodes DirectRKernel DirectRStructural DirectRLogic DirectRFiniteTables.
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRLogic DirectRFiniteTables.
 Import ListNotations.
 Module BinaryTables.
-Import Codes Core Structural NegativeLogic FiniteTables.
+Import CommonCodes Core Structural NegativeLogic FiniteTables.
 
 Definition rows {n} q (b : nat -> nat -> nat) (v : Term nat n) args :=
   map (fun i => table_apply v

@@ -1,12 +1,12 @@
 (** Positive domain closure for arbitrary bounded binary selector tables. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting
-  DirectRCodes DirectRKernel DirectRStructural DirectRLogic DirectRPositive
-  DirectRFiniteTables DirectRBinaryTables DirectRFiniteObservations.
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRLogic DirectRPositive DirectRFiniteTables DirectRBinaryTables DirectRFiniteObservations.
 Import ListNotations.
 Module BinaryObservations.
-Import Codes Core Structural NegativeLogic Positive FiniteTables BinaryTables FiniteObservations.
+Import CommonCodes Core Structural NegativeLogic Positive FiniteTables BinaryTables FiniteObservations.
 
 Lemma binary_in_context {n} (Γ : Ctx nat n) q b :
   Typed Γ (lift_closed (binary_table q b))

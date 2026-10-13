@@ -2,12 +2,12 @@
     PTS inhabitants; unlike negative disjunction, their result is unrestricted. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRStructural DirectRLogic.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural DirectRLogic.
 Import ListNotations.
 
 Module Positive.
-Import Codes Core Structural NegativeLogic.
+Import CommonCodes Core Structural NegativeLogic.
 
 Definition Arrows {n} (xs : list (Term nat n)) (B : Term nat n) :=
   fold_right Arrow B xs.

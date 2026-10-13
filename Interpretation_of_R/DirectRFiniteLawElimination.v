@@ -2,12 +2,12 @@
     negative arithmetic laws. This does not add cumulativity to PTS-rk. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting
-  DirectRCodes DirectRKernel DirectRStructural DirectRLogic DirectRFiniteTables
-  DirectRFiniteObservations DirectRFiniteUp DirectRPositive.
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRLogic DirectRFiniteTables DirectRFiniteObservations DirectRFiniteUp DirectRPositive.
 Import ListNotations.
 Module FiniteLawElimination.
-Import Codes Core Structural NegativeLogic FiniteTables FiniteObservations.
+Import CommonCodes Core Structural NegativeLogic FiniteTables FiniteObservations.
 Import Positive.
 Definition J2 : closed_term := Arrow Top Top.
 Lemma J2_formation : Typed ε J2 (𝓤 2).

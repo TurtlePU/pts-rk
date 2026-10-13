@@ -1,12 +1,13 @@
 (** Positive finite-observation certificates, in the original PTS. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting DirectRCodes DirectRKernel
-  DirectRStructural DirectRLogic DirectRPositive DirectRFiniteTables.
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRLogic DirectRPositive DirectRFiniteTables.
 Import ListNotations.
 
 Module FiniteObservations.
-Import Codes Core Structural NegativeLogic Positive FiniteTables.
+Import CommonCodes Core Structural NegativeLogic Positive FiniteTables.
 
 Definition points q {n} : list (Term nat n) :=
   map (fun i => lift_closed (point q i)) (seq 0 q).

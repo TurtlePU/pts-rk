@@ -1,6 +1,361 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: contextual observation and folds, following 947f08e
+## Current continuation: separate relational and functional libraries
+
+Request: isolate the interpretations in Interpretation_of_R, with relational/
+and functional/ subdirectories. Existing uncommitted proof changes and user
+logs are preserved; no commit or push requested or performed.
+Baseline: `DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/layout-baseline"
+bash tools/check-local-ci.sh` exited 0, including pristine upstream.
+Transcript: /tmp/pts-rk-layout-baseline.log.
+
+The source relocation is implemented. The original kernel remains in theories/.
+Shared builders, structural logic, tables, iteration and selector certificates
+are in Interpretation_of_R; interpretation-specific definitions/proofs are in
+its relational/ and functional/ libraries. Theorem 4 remains the completed
+target; Theorem 7 remains incomplete (multiplication invariant closure first).
+First validation command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer Interpretation_of_R/relational/DirectRRelationalAudit.vo`.
+The first build exited 1: Unary still needed the generic nJ2..nJ9/nj9
+exact-rank encodings. Moving those to CommonCodes fixed it. The second
+relational audit exited 0 (34 closed assumption reports).
+The first functional attempt exited 1 because Dune was already running in
+the same build directory; the second exited 0 (343 closed reports).
+The first fresh full build and first post-refactor CI exited 1 at the old
+UnaryAudit: its qualified certificate names still referred to Separation.
+Updating those to FiniteCertificates also required an explicit import there;
+the intermediate unary-audit attempt exited 1 for that missing import.
+The second clean full build encountered the same missing import before the
+fix was copied into its build tree. All failures remain in the layout logs.
+Final verification:
+- Fresh isolated relational command (documented OPAMROOT/PATH) exited 0:
+  `opam exec --switch=pts-rk-ci -- timeout 180 dune build
+  --build-dir /tmp/pts-rk-relational-isolated.Wq3dhB --display=short --no-buffer
+  @Interpretation_of_R/relational/audit`. Both relational and unary audits ran:
+  94 closed assumption reports; no functional module was compiled.
+- Fresh FULL build exited 0:
+  `opam exec --switch=pts-rk-ci -- timeout 600 dune build
+  --build-dir /tmp/pts-rk-layout-final.kTXJEG --display=short --no-buffer`.
+  451 closed assumption reports, matching the pre-refactor total; no Axioms
+  report. Log: verification/layout-final-full-2026-10-13.log.
+- Both new aliases passed (exit 0, incremental after the fresh full build):
+  `opam exec --switch=pts-rk-ci -- timeout 180 dune build
+  --build-dir /tmp/pts-rk-layout-final.kTXJEG --display=short --no-buffer
+  @Interpretation_of_R/relational/audit @Interpretation_of_R/functional/audit`.
+- Final local CI exited 0, including actionlint, pristine upstream and all
+  relocated stages: `DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/layout-verified"
+  bash tools/check-local-ci.sh`.
+  Log: verification/layout-final-ci-2026-10-13.log. Contribution stages mix
+  fresh and cached output; the separate successful clean build above is the
+  complete fresh assumption audit. `git diff --check` and
+  `bash -n tools/ci-check-direct-r.sh tools/check-direct-r.sh` also exited 0.
+
+Failures and earlier successful checks are retained under verification/ as
+layout-baseline, layout-relational-1/-2, layout-functional-1/-2, layout-full,
+layout-ci, layout-unary-audit-1, layout-full-second-failed, and
+layout-relational-isolated (all suffixed -2026-10-13.log). No timeout occurred.
+There are no cross-interpretation imports, nor parent imports of either child
+library. The kernel .v files and models/ are unchanged. All 1547 distinct named
+declarations from the pre-move development remain present; extraction moved
+some of them into shared modules. Existing working-tree proof edits and logs/
+are preserved at their relocated paths. HEAD remains a63636c; no staging,
+commit, push or remote CI claim is made.
+
+Next mathematical goal remains functional multiplication invariant closure,
+then Good instantiation, bounded cases, R4/R5 and functional deduction
+preservation. Next exact command after editing, with documented OPAMROOT/PATH:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer @Interpretation_of_R/functional/audit`.
+
+## Previous continuation: functional addition closure, following a63636c
+
+Request: proceed proving. All previous uncommitted changes, their index state
+and untracked user logs/ are preserved. No commit or push performed.
+Baseline local CI including pristine upstream exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/functional-addition-baseline"
+bash tools/check-local-ci.sh`; functional-addition-baseline.log.
+
+New checked module DirectRFunctionalAddition:
+- Scoped addition typing, G closure, congruence and both operand-to-sum order
+  bounds apply original closed guarded laws through weakening/substitution.
+- case_of_numeral_equality handles any numeral index: use a finite branch below
+  the cutoff or transport a true ground comparison to the global large branch.
+- addition_finite_case combines congruence with the existing ground_add_typed
+  and equality transitivity. addition_large_left/right use the corresponding
+  sum bound and order transitivity. These are uniform proofs, not finite tests.
+- case_eliminate is a derived negative elimination rule with a stable target
+  and callbacks under actual Positive.extension contexts. addition_case uses
+  it twice for the finite/finite branch and once for either large branch.
+- extension_trans composes actual context extensions without extensionality.
+  invariant_eliminate_pair eliminates BOTH positive invariants at the SAME
+  rank-8 answer type, retaining both G proofs separately from negative cases.
+- addition_invariant now proves closure for arbitrary scoped x,y:
+  `Typed Γ x (lift_closed Domain) -> Typed Γ y (lift_closed Domain) ->
+   inhabited Γ (InvariantAt n x) -> inhabited Γ (InvariantAt n y) ->
+   inhabited Γ (InvariantAt n (addition_at x y))`.
+
+Incremental command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRFunctionalAddition.vo`.
+Logs under _build/local-ci-logs: functional-addition-1 exited 1 (missing closing
+parenthesis in a scoped law type); functional-addition-2 exited 0.
+functional-addition-case-1 and functional-addition-invariant-1 exited 0.
+functional-addition-closed-1.log exited 1 (formation proof inference for the
+second domain binder); supplying the explicit lifted domain-formation proof
+fixed it. The following audit command exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`, functional-addition-audit-1.log.
+All 23 new lemma assumption queries are closed under the global context.
+The unconditional closed witness theorem now checked is:
+`forall n, Realizes (addition_invariant_type n)`, where that type is exactly
+`Π Domain (Π (lift_closed Domain)
+  (Arrow (InvariantAt n (shift V0)) (Arrow (InvariantAt n V0)
+    (InvariantAt n (addition_at (shift V0) V0)))))`.
+No timeout occurred and no rule, assumption or CI limit was changed.
+The module is registered in Dune, local CI and the functional assumption audit.
+Fresh full build and final local CI both exited 0.
+Outputs: _build/local-ci-logs/functional-addition-full.log and functional-addition-ci.log.
+Exact fresh command: `opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-functional-addition.0LiTMb --display=short --no-buffer`.
+Final CI command: `DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/functional-addition-final"
+bash tools/check-local-ci.sh` (documented PATH).
+Durable transcripts: verification/functional-addition-full-2026-10-13.log and
+verification/functional-addition-ci-2026-10-13.log. The fresh build has 451
+closed assumption reports, with no Axioms report. The final local CI uses
+incremental contribution stages; the separate clean build provides the fresh
+audit. No remote CI success is claimed.
+`git diff --check` and `bash -n tools/ci-check-direct-r.sh` exited 0.
+New changes this turn: DirectRFunctionalAddition, Dune/CI/audit registration,
+STATE/DECISIONS and these two verification logs. Earlier changes and user logs/
+remain untouched; HEAD is still a63636c and the work is uncommitted.
+
+Theorem 7 is NOT complete. The first remaining mathematical obligation is
+multiplication invariant closure, including BOTH zero-factor laws and the
+positive-factor premise of each multiplication order bound. Reuse the generic
+case_eliminate and invariant_eliminate_pair machinery for the binary proof.
+Then instantiate Good at invariant_motive and project CaseAt, derive R4/R5,
+and prove independent functional first-order deduction preservation.
+Next exact command after implementing multiplication closure:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+
+## Historical continuation: functional invariant zero/successor, following a63636c
+
+Request: proceed proving. Preserved all earlier uncommitted proof/log changes,
+their index state, and untracked user logs/. No commit or push performed.
+Baseline local CI including pristine upstream exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/functional-bounded-baseline"
+bash tools/check-local-ci.sh` (documented PATH); functional-bounded-baseline.log.
+
+New module DirectRFunctionalBounded, using the original Codes definitions:
+- CaseAt has exact rank 8 and InvariantAt exact rank 10, in every context and
+  uniformly in cutoff. Scoped equality/order/G formation and guarded law
+  application lemmas support these results.
+- invariant_intro, invariant_apply, invariant_case, and invariant_eliminate
+  construct original typ inhabitants. The last uses Positive.extension to
+  expose BOTH positive G evidence and negative cases under actual binders.
+  It eliminates the positive invariant at a rank-8 answer type; it does not
+  extract G from a negative disjunction.
+- zero_case and zero_invariant are uniform in the cutoff.
+- successor_finite_case advances an index below the cutoff; equality at the
+  cutoff gives the global large branch. successor_large_case uses guarded
+  order propagation and transitivity. successor_case eliminates CaseAt only
+  into the stable negative CaseAt target.
+- successor_invariant opens the parent's rank-8 answer type/continuation,
+  eliminates the child at that same answer type, constructs parent G and
+  Case separately, then feeds the parent continuation. The public closed
+  successor_invariant_realized inhabits
+  `Π Domain (Arrow (InvariantAt n V0) (InvariantAt n (successor_at V0)))`.
+- invariant_motive_typed checks the closed `lam Domain (InvariantAt n V0)` at
+  `Arrow Domain (𝓤 10)`; invariant_motive_beta proves its application equation.
+  replace_case/replace_invariant and renaming identities retain annotations.
+
+Incremental command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRFunctionalBounded.vo`.
+Logs under _build/local-ci-logs:
+- functional-bounded-1/-2 exited 1 (map-membership inference; wrong certificate
+  name); functional-bounded-3 exited 0.
+- functional-successor-1 exited 0; -2 exited 1 (rewrite under a mapped list);
+  functional-successor-3 exited 0.
+- functional-invariant-successor-1 exited 1 because rewriting a continuation
+  hypothesis also rewrote its context. -2 exited 0 after proving a separate
+  equality for the hypothesis TYPE, leaving the actual context untouched.
+- functional-invariant-motive-1 exited 0. No timeout or added axiom.
+
+The audit now prints the new public types and checks all 45 new lemmas.
+Audit command: `opam exec --switch=pts-rk-ci -- timeout 180 dune build
+--display=short --no-buffer theories/DirectRFunctionalAudit.vo`;
+_build/local-ci-logs/functional-bounded-audit.log, exit 0 (320 closed reports).
+Fresh full command: `opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-functional-bounded.54mRFW --display=short --no-buffer`;
+_build/local-ci-logs/functional-bounded-full.log, exit 0 (428 closed reports).
+The module is registered in Dune and the unchanged-timeout CI driver.
+Final local CI also exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/functional-bounded-final"
+bash tools/check-local-ci.sh`; _build/local-ci-logs/functional-bounded-ci.log.
+Its contribution stages are incremental; the separate fresh full build provides
+the freshly executed audit, with no Axioms report. No remote CI result is claimed.
+Durable transcripts: verification/functional-bounded-full-2026-10-13.log and
+verification/functional-bounded-ci-2026-10-13.log.
+`git diff --check` and `bash -n tools/ci-check-direct-r.sh` exited 0.
+New diff this turn: DirectRFunctionalBounded, Dune/CI/audit registration,
+STATE/DECISIONS and the two verification transcripts. All pre-existing changes
+and user logs/ are preserved. HEAD remains a63636c; work is uncommitted.
+
+Theorem 7 remains INCOMPLETE. First remaining goal: addition closure of the
+positive invariant for arbitrary scoped x,y with their two InvariantAt proofs,
+NOT just external expression trees. Then multiplication closure (retain both
+zero laws and positive-factor conditions), instantiate Good at invariant_motive,
+and project CaseAt. R4/R5 and independent functional deduction preservation
+remain after that. Internal separation, R3 and negative ground faithfulness
+were completed at the previous milestone and must not be redone.
+Next exact command after adding binary closure:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+
+## Historical continuation: original functional no_back, following a63636c
+
+Request: proceed proving Theorem 7. Preserved the prior uncommitted atomic-suffix
+proofs and verification logs, including their index state, and user logs/.
+Baseline local CI including pristine upstream exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/leat-bridge-baseline"
+bash tools/check-local-ci.sh` (documented PATH); leat-bridge-baseline.log.
+
+New milestone: DirectRFunctionalSeparation.no_back_realized proves, uniformly,
+`forall n, Realizes (Neg (LeAt (numeral (S n)) (numeral n)))` for the ORIGINAL
+functional relation. order_body extracts the literal existing Order body;
+order_reduction proves two beta steps. order_instance_observation identifies
+the entire annotated body with the constructed observation telescope.
+order_observation_formation follows by original subject reduction from the
+existing Order typing theorem, not by a new formation assumption.
+
+Command (documented OPAMROOT/PATH): `opam exec --switch=pts-rk-ci -- timeout 120
+dune build --display=short --no-buffer theories/DirectRFunctionalSeparation.vo`.
+Logs under _build/local-ci-logs: leat-bridge-1 through -5 exited 1 (substitution
+normalization); leat-bridge-6 exited 0. functional-no-back-1 exited 1 (closed
+lifting rewrite); functional-no-back-2 exited 0. No admissions or added axioms.
+Normalization keeps the outer 31 binders intact and solves only suffix renaming
+goals, explicitly reducing assembler eq_rect transports. Whole-goal rewriting
+was slower and did not solve the substitution identity.
+
+Further checked milestones in the same module:
+- numeral_order_refuted: j < i -> Realizes (Neg (LeAt (numeral i) (numeral j))).
+- ground_order_false: value u < value t -> Realizes (Neg (sentence_translation
+  (less_equal t u))), for every closed functional source term t,u.
+- ground_equality_false: value t <> value u -> Realizes (Neg
+  (sentence_translation (equal t u))).
+- R3_realized: forall m n, m <> n -> Realizes (R3 m n).
+These are unconditional apart from the displayed numerical side conditions;
+they do not assume a target inhabitant, formation contract, or model.
+Existing ground_equality_true/ground_order_true complete both directions of
+ground atom proof/refutation construction. External Bottom nontriviality is
+not used or newly proved here.
+
+functional-refutation-1.log and functional-ground-negative-1.log exited 0,
+using the module command above (180 seconds for the latter).
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo` exited 0;
+_build/local-ci-logs/functional-separation-audit.log. All 19 new Print Assumptions
+queries are closed under the global context. The audit prints the five public
+theorem types. Added the new module to Dune and the unchanged-timeout CI driver.
+
+Fresh full verification exited 0 with
+`opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-functional-separation.TuasNl --display=short --no-buffer`,
+output _build/local-ci-logs/functional-separation-full.log.
+Final local CI exited 0 with
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/functional-separation-final"
+bash tools/check-local-ci.sh`, output functional-separation-ci.log.
+Durable transcripts: verification/functional-separation-full-2026-10-13.log
+and verification/functional-separation-ci-2026-10-13.log. The fresh build reports
+383 closed assumption checks and no Axioms report. The final local CI uses
+incremental contribution stages; the separate fresh full build supplies the
+newly executed assumption audit. No remote CI result is claimed.
+`git diff --check` and `bash -n tools/ci-check-direct-r.sh` exited 0.
+Final additions this turn: DirectRFunctionalSeparation, its Dune/CI/audit
+registration, the handoff updates and these two verification transcripts.
+All earlier uncommitted changes and the user's untracked logs/ are preserved.
+
+Theorem 7 is NOT complete. First remaining goal: uniformly construct the four
+constructor closures of `InvariantAt n d`, then realize
+`Π Domain (Arrow (GoodAt V0) (CaseAt n V0))` for every n by instantiating Good.
+Do not weaken this to induction over external expression trees. Derive R4/R5
+from that result, then preserve an independently defined functional deduction
+system. No equality-table bridge is needed for the ground refutations now proved.
+Next exact command after implementing the bounded-invariant layer:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+HEAD remains a63636c; no commit or push performed in this proof-only request.
+
+## Historical continuation: atomic order suffix, following a63636c
+
+Request: proceed proving. Starting HEAD a63636c; only untracked user logs/.
+Those logs remain untouched. No commit or push performed this turn.
+Theorem 7 remains INCOMPLETE; no original LeAt refutation is claimed.
+
+Baseline complete local CI (including pristine upstream) exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/atomic-bridge-baseline"
+bash tools/check-local-ci.sh`, with the documented local PATH.
+Output: _build/local-ci-logs/atomic-bridge-baseline.log.
+
+New checked milestones:
+- TelescopeArguments.telescope_inclusion embeds the original variables through
+  a dependent telescope. arguments_preserve_prefix and arguments_replace_prefix
+  prove that an actual typed argument spine retains their substitution.
+- FiniteSpecialization.contextual_data_observation eliminates all 23 law
+  arguments and returns the eight-data substitution of any suffix that only
+  uses those data. It constructs the law arguments; it does not assume them.
+- data_fold_specialized and order_suffix_specialized compute the actual
+  five-argument functional fold at the finite data. order_numeral_suffix
+  computes its negative Boolean order entry uniformly in cutoff and indices.
+- no_back_suffix uses cutoff S n (table size S (S n)), NOT cutoff n: the latter
+  collapses n and S n. Its conclusion is beta equivalence to Neg Top.
+- no_back_observation_elimination works in every original PTS context and
+  constructs an inhabitant of Bottom from an inhabitant of the expanded
+  backwards-order observation. This is an elimination lemma, not external
+  Bottom nontriviality and not yet Realizes (Neg (LeAt ...)).
+
+Incremental commands, with documented OPAMROOT/PATH:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRTelescopeArguments.vo`, exit 0, atomic-prefix-1.log.
+Same command targeting DirectRFiniteSpecialization.vo, exit 0, atomic-prefix-2.log.
+Suffix attempts atomic-suffix-1/-2 exited 1 (missing equivalence-instance import,
+then an uninferred intermediate beta application); atomic-suffix-3 exited 0.
+Elimination attempts atomic-elimination-1 through -5 exited 1 (wrong module
+qualification, empty-Fin/scoping inference, and an over-unfolded rewrite);
+atomic-elimination-6 exited 0. All logs are in _build/local-ci-logs.
+No timeout occurred, and no kernel rule or assumption was changed.
+
+Fresh full build and final local CI both exited 0.
+Full build directory: /tmp/pts-rk-atomic-suffix.W8f3Xu.
+Commands: `opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-atomic-suffix.W8f3Xu --display=short --no-buffer` and
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/atomic-suffix-final"
+bash tools/check-local-ci.sh`.
+Outputs: _build/local-ci-logs/atomic-suffix-full.log and atomic-suffix-ci.log.
+Durable transcripts: verification/atomic-suffix-full-2026-10-13.log and
+verification/atomic-suffix-ci-2026-10-13.log. The fresh full build contains 364
+closed assumption reports, including all eight newly audited lemmas; no Axioms
+report appears. Local CI contains 257 closed reports (including the additional
+Print command). No remote CI result is claimed. `git diff --check` exited 0.
+Final diff: the telescope/specialization modules, functional audit, STATE,
+DECISIONS and two verification logs. HEAD remains a63636c; changes are uncommitted.
+Untracked user logs/ remains excluded and unchanged.
+
+First remaining goal: prove beta conversion from the ORIGINAL
+`LeAt (numeral (S n)) (numeral n)` to
+`data_observation_type (order_suffix (numeral (S n)) (numeral n))`, including
+the formation needed for conversion. Then apply no_back_observation_elimination
+under the original LeAt binder and abstract to obtain the internal refutation.
+The equality analogue, negative ground faithfulness, four-constructor bounded
+invariant, R3/R4/R5 and independent functional deduction preservation remain.
+Next exact command after implementing the bridge:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+
+## Historical continuation: contextual observation and folds, following 947f08e
 
 Request: proceed proving, then commit and push. Starting HEAD 947f08e, with
 only untracked user logs/, which remains untouched. Theorem 7 is NOT complete.

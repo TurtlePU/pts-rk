@@ -3,11 +3,12 @@
 From Stdlib Require Import Lists.List.
 From Equations Require Import Equations.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRStructural DirectRFiniteTables.
+From PTSrk Require Import Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRFiniteTables.
 Import ListNotations.
 Module TelescopeArguments.
-Import Codes Core Structural FiniteTables.
+Import CommonCodes Core Structural FiniteTables.
 Definition extend {n k} (a : Term nat k) (σ : Fin n -> Term nat k) : Fin (S n) -> Term nat k :=
   fin_match a σ.
 Definition empty {k} : Fin 0 -> Term nat k := fun i => match i with end.
@@ -20,6 +21,27 @@ Inductive arguments {k} (Γ : Ctx nat k) : forall n m,
     arguments Γ (S n) m T (extend a σ) xs τ ->
     arguments Γ n m (tel_cons rank A T) σ (a :: xs) τ.
 Arguments arguments {k} Γ {n m} T σ xs τ.
+Fixpoint telescope_inclusion {n m} (T : telescope n m) : Fin n -> Fin m :=
+  match T with
+  | tel_nil => fun i => i
+  | tel_cons _ _ rest => fun i => telescope_inclusion rest (fsucc i)
+  end.
+Lemma arguments_preserve_prefix {k n m} (Γ : Ctx nat k)
+    (T : telescope n m) σ xs τ :
+  arguments Γ T σ xs τ -> forall i, τ (telescope_inclusion T i) = σ i.
+Proof.
+  intro H. induction H; intro i; cbn [telescope_inclusion].
+  - reflexivity.
+  - rewrite IHarguments. reflexivity.
+Qed.
+Lemma arguments_replace_prefix {k n m} (Γ : Ctx nat k)
+    (T : telescope n m) σ xs τ :
+  arguments Γ T σ xs τ -> forall B,
+  replace τ (rename (telescope_inclusion T) B) = replace σ B.
+Proof.
+  intros H B. rewrite replace_rename. apply replace_ext.
+  apply (arguments_preserve_prefix Γ T σ xs τ H).
+Qed.
 Lemma substitute_transpose {n k} (σ : Fin n -> Term nat k) a (B : Term nat (S n)) :
   subst (replace (transpose σ) B) a = replace (extend a σ) B.
 Proof.

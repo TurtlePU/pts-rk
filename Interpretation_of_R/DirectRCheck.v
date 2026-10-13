@@ -10,8 +10,9 @@
     STATUS: Gallina definitions and proof scripts, not yet Rocq-compiled.
 *)
 From Stdlib Require Import Arith.PeanoNat.
-From PTSrk Require Import Syntax AbstractRewriting Reduction DefEq Context
-  Typing Inversions Preservation Ranks DirectRKernel DirectREval.
+From PTSrk Require Import Syntax AbstractRewriting Reduction DefEq Context Typing Inversions
+  Preservation Ranks.
+From Interpretation_of_R Require Import DirectRKernel DirectREval.
 
 Module RkCheck.
 Unset Implicit Arguments.

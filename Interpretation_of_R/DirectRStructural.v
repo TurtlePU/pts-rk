@@ -1,11 +1,11 @@
 (** Structural infrastructure for the direct interpretation, in the original PTS. *)
 From Stdlib Require Import Lists.List.
 From Equations Require Import Equations.
-From PTSrk Require Import Syntax AbstractRewriting Congruence Reduction
-  DefEq Context Typing Ranks DirectRCodes DirectRKernel.
+From PTSrk Require Import Syntax AbstractRewriting Congruence Reduction DefEq Context Typing Ranks.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel.
 
 Module Structural.
-Import Codes Core.
+Import CommonCodes Core.
 
 (** These structural lemmas use only the source weakening/substitution API. *)
 Lemma lift_closed_zero (t : closed_term) : @lift_closed 0 t = t.
@@ -104,7 +104,7 @@ Proof. apply substitute_shift. Qed.
 (** Normalize only the substitution plumbing. Closed encodings and arbitrary
     object terms remain opaque; every rewrite is a proved syntax equality. *)
 Ltac structural_substitution_in H :=
-  unfold subst, GAt, GoodAt, EqAt, LeAt in H;
+  unfold subst in H;
   repeat first [rewrite replace_lift_closed in H | rewrite replace_shift_substitution in H
     | rewrite replace_shift in H | rewrite replace_arrow in H | rewrite replace_product in H
     | rewrite replace_application in H | rewrite replace_variable in H
@@ -308,21 +308,21 @@ Proof.
 Qed.
 
 (** Bridges to the pre-existing scoped selector API and named carrier code. *)
-Lemma codes_selector_type q n : Codes.selector_type q n = @selector_type q n.
+Lemma codes_selector_type q n : CommonCodes.selector_type q n = @selector_type q n.
 Proof.
-  induction q; cbn [Codes.selector_type selector_type Arrow]; [reflexivity |].
+  induction q; cbn [CommonCodes.selector_type selector_type Arrow]; [reflexivity |].
   rewrite IHq. unfold Arrow, shift. rewrite rename_selector_type. reflexivity.
 Qed.
 Lemma codes_constant_lambdas q {n} (t : Term nat n) :
-  Codes.constant_lambdas q t = selector_constant q t.
+  CommonCodes.constant_lambdas q t = selector_constant q t.
 Proof.
   revert n t. induction q; intros; cbn; [reflexivity | rewrite IHq; reflexivity].
 Qed.
 Lemma codes_selector_typed q (i : Fin q) n (G : Ctx nat n) :
-  Typed G (Codes.selector i n) (Codes.selector_type q n).
+  Typed G (CommonCodes.selector i n) (CommonCodes.selector_type q n).
 Proof.
   rewrite codes_selector_type. revert n G.
-  induction i as [q|q i IH]; intros n G; cbn [Codes.selector selector_type].
+  induction i as [q|q i IH]; intros n G; cbn [CommonCodes.selector selector_type].
   - apply (tLam (tU G 1)). rewrite codes_constant_lambdas.
     apply selector_constant_typed. exact (tV (G & 𝓤 1) fzero).
   - apply (tLam (tU G 1)). apply IH.
@@ -333,5 +333,9 @@ Proof.
   induction q; cbn [nSelectorType nArrow assemble]; [reflexivity |].
   rewrite IHq. cbn. unfold shift. rewrite rename_selector_type. reflexivity.
 Qed.
+
+Lemma arrow_beta {n} (A A' B B' : Term nat n) :
+  A =ᵝ A' -> B =ᵝ B' -> Arrow A B =ᵝ Arrow A' B'.
+Proof. intros HA HB. apply beta_pi; [exact HA | apply rename_equiv; exact HB]. Qed.
 
 End Structural.

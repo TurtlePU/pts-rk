@@ -1,19 +1,19 @@
 (** Upward closure of the finite separating test. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting
-  DirectRCodes DirectRKernel DirectRStructural DirectRLogic DirectRPositive
-  DirectRFiniteTables DirectRFiniteObservations DirectRUnary.
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRLogic DirectRPositive DirectRFiniteTables DirectRFiniteObservations.
 Import ListNotations.
 
 Module FiniteUp.
-Import Codes Core Structural NegativeLogic Positive FiniteTables FiniteObservations.
+Import CommonCodes Core Structural NegativeLogic Positive FiniteTables FiniteObservations.
 
 Lemma inhabited_conversion {n} (Γ : Ctx nat n) A B r :
   inhabited Γ A -> Typed Γ B (𝓤 r) -> A =ᵝ B -> inhabited Γ B.
 Proof. intros [p Hp] HB Heq. exists p. exact (tConv Hp HB Heq). Qed.
 Lemma neg_beta {n} (A B : Term nat n) : A =ᵝ B -> Neg A =ᵝ Neg B.
-Proof. intro H. apply Unary.arrow_beta; [exact H |reflexivity]. Qed.
+Proof. intro H. apply Structural.arrow_beta; [exact H |reflexivity]. Qed.
 Lemma identity_inhabited {n} (Γ : Ctx nat n) A :
   formed Γ A -> inhabited Γ (Arrow A A).
 Proof. intro HA. apply arrow_intro; [exact HA |apply newest]. Qed.
@@ -96,7 +96,7 @@ Proof.
     eapply inhabited_conversion.
     + apply identity_inhabited, neg_formed. exists 1. exact HA.
     + apply step_formation. exact Hu.
-    + apply Unary.arrow_beta; [reflexivity |]. apply neg_beta.
+    + apply Structural.arrow_beta; [reflexivity |]. apply neg_beta.
       symmetry. unfold tested. apply beta_app; [reflexivity |exact Hstep].
 Qed.
 

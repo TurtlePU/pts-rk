@@ -2,12 +2,12 @@
     entries are Bottom, false entries Top; the proof relation is their negation. *)
 From Stdlib Require Import Lists.List Arith.PeanoNat Bool.Bool Lia.
 From PTSrk Require Import -(notations) Syntax.
-From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting
-  DirectRCodes DirectRKernel DirectRStructural DirectRLogic DirectRFiniteTables
-  DirectRBinaryTables DirectRFiniteUp DirectRPositive.
+From PTSrk Require Import Context Typing Ranks DefEq AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel DirectRStructural
+  DirectRLogic DirectRFiniteTables DirectRBinaryTables DirectRFiniteUp DirectRPositive.
 Import ListNotations.
 Module RelationTables.
-Import Codes Core Structural NegativeLogic FiniteTables BinaryTables.
+Import CommonCodes Core Structural NegativeLogic FiniteTables BinaryTables.
 Definition matrix {n} q (entries : nat -> nat -> Term nat n) (u v : Term nat n) :=
   table_apply u (map (fun i => table_apply v (map (entries i) (seq 0 q))) (seq 0 q)).
 Lemma matrix_typed {n} (Γ : Ctx nat n) q entries u v :

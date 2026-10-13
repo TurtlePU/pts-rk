@@ -1,5 +1,83 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — addition closure and two-child invariant elimination
+
+- Generalize finite-branch injection to equality with an arbitrary numeral:
+  below the cutoff choose the finite branch; above it compose ground order
+  with reverse order induced by equality. This remains an internal proof.
+- Prove addition's finite/finite branch using original congruence, the existing
+  ground-addition theorem, and equality transitivity. Either large operand
+  bounds the sum via its original guarded propagation law.
+- Package negative case analysis with stable targets and actual context-
+  extension callbacks. This reduces nested branch bookkeeping while preserving
+  the original PTS typing relation and lambda annotations.
+- Compose Positive.extension derivations constructively. Eliminate both child
+  positive invariants at the SAME rank-8 answer type; carry their positive G
+  evidence and negative cases separately. Feed the parent continuation only
+  after independently constructing its G and Case witnesses.
+- Addition invariant closure is proved for arbitrary scoped objects, not just
+  host expression trees. Multiplication still needs zero/positive-factor cases;
+  no bounded-case theorem or Theorem 7 completion follows yet.
+
+## 2026-10-13 — exact-rank functional invariant and successor closure
+
+- Reuse Codes.CaseAt/InvariantAt and NegativeLogic's positive invariant. In
+  the functional interpretation both equality and order have rank 6; a
+  nonempty flat case list has exact rank 8, independently of cutoff. The
+  invariant/motive have rank 10. No cumulativity is used.
+- Apply original closed guarded laws in arbitrary contexts by weakening and
+  scope-correct substitution. Finite successor branches either advance below
+  the bound or provide the global large branch by equality/order congruence;
+  a large child propagates by successor order and transitivity.
+- Use Positive.extension callbacks when eliminating the invariant under
+  continuations. This keeps positive G evidence separate from negative Case
+  evidence and lets the successor proof return the parent's SAME rank-8
+  answer variable. Negative cases eliminate only into the stable Case target.
+- Rewrite a continuation's type through a separately proved equality, not
+  its entire typing hypothesis: the latter can inadvertently rewrite the
+  context and prevent applying original weakening/extension lemmas.
+- Uniform zero and successor closure, motive typing/beta, and case projection
+  are proved. Addition/multiplication closure and the final Good instantiation
+  remain open; these results alone are not the bounded-case theorem.
+
+## 2026-10-13 — original functional separation and negative ground faithfulness
+
+- Extract the literal two-binder body of Codes.Order, retaining all annotations.
+  Prove its two-step reduction and exact equality with the data/law telescope
+  and order_suffix. Reduce assembler eq_rect transports explicitly, peel the
+  31 product binders and normalize only the remaining closed-substitution goals.
+- Obtain observation formation by original subject reduction from Order's
+  existing typing theorem. No formation/well-formedness hypothesis is added to
+  the public no_back theorem. Lift this closed result under the original LeAt
+  binder and use the constructed finite observation to obtain internal Bottom.
+- Use no_back plus the existing original order-transitivity law to refute
+  every reversed numeral comparison. Partially specialize closed laws to
+  residual arrow types; weakening and ordinary arrow introduction/application
+  then supply contraposition and permutation of proof arguments.
+- Ground order refutation transports the existing term-to-numeral equalities
+  through order congruence. Equality implies order on observed terms, so order
+  refutation and equality symmetry also give false ground equation refutations
+  and uniform R3. A separate equality-table/source bridge is unnecessary here.
+- All these are original typ inhabitants, not native-Prop replacements. The
+  four-constructor bounded invariant, R4/R5 and independent functional deduction
+  preservation remain open; no completion of Theorem 7 is claimed.
+
+## 2026-10-13 — data-only atomic suffix specialization
+
+- Prove telescope prefix preservation from the typed argument-spine relation.
+  Embed data-only suffixes with telescope_inclusion and use replace_rename
+  pointwise; do not unfold the 23 existential law proofs or assume extensionality.
+- The original functional numeral fold in the finite order table reduces to
+  the negative entry at min i c and min j c. Backwards-successor separation
+  requires c = S n, hence S (S n) selectors; c = n would collapse both indices.
+- Export a contextual elimination lemma for the expanded observation. It
+  applies real data/law arguments, converts the result to Neg Top and applies
+  the actual top proof to obtain Bottom. This is internal PTS typing, not an
+  external model argument or a host-Prop arithmetic substitute.
+- The source EqAt/LeAt beta/formation bridge is still missing. Neither this
+  elimination lemma nor its numeral suffix conversion is advertised as the
+  original no_back theorem, negative ground faithfulness, or Theorem 7.
+
 ## 2026-10-13 — contextual observation and functional fold equations
 
 - Lift the closed dependent argument spine through the original weakening
@@ -476,3 +554,29 @@ an architectural change has been verified before compiling it.
 - The paper's coding universes/cardinal bound/coherent bijections and original
   PTS typing soundness remain open. This checkpoint does not claim them, nor
   does it call the generic empty-fiber fact a proof of PTS nontriviality.
+
+## 2026-10-13 — independent interpretation libraries
+
+At the user's request, move the DirectR development out of the original
+theories/ kernel directory into Interpretation_of_R, with relational/ and
+functional/ subdirectories. Each is a separate Dune rocq.theory; the two
+interpretation libraries depend on shared infrastructure and PTSrk, never on
+each other. No compatibility facade is added to PTSrk: that would introduce
+a dependency cycle back from the kernel to its interpretation clients.
+
+Extract CommonCodes (assembler, negative logic, exact-rank lifts, selector
+syntax) from functional Codes, which includes those shared definitions.
+Extract generic iterations/finite_iterations from UnaryEvaluation, finite
+predicate/zero/successor certificates and step_guard from Separation, and
+arrow_beta from Unary into Structural. Relational modules may re-export the
+extracted APIs, but functional modules import their shared owners directly.
+Move functional-specific unfolding out of the shared structural-substitution
+tactic and into its Foundations call sites. All term encodings, typing rules
+and proof obligations are unchanged. Source countermodel machinery is shared;
+the separate external PTS set model stays untouched in models/.
+
+Separate @Interpretation_of_R/relational/audit and
+@Interpretation_of_R/functional/audit targets expose the existing assumption
+audits. Theorem 4 is complete; the functional directory contains checked
+components, NOT a completed Theorem 7. Build evidence and any refactor failures
+are recorded in STATE.md. Historical logs keep their original paths.
