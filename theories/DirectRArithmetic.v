@@ -154,7 +154,7 @@ Proof.
   - destruct Cy as [[j [Hj Ej]] | Hy].
     + apply (case_of_numeral_equality A n (i + j)).
       eapply (oe_trans A).
-      * apply oa_congr; assumption.
+      * exact (oa_congr A x (numeral A i) y (numeral A j) Ei Ej).
       * apply numeral_add.
     + right. eapply (ol_trans A).
       * exact Hy.
@@ -175,7 +175,7 @@ Qed.
 Lemma positive_of_large_case (A : observation) (n : nat) (x : carrier A) :
   ol A (numeral A (S n)) x -> ol A (numeral A 1) x.
 Proof.
-  intro H. eapply (ol_trans A).
+  intro H. eapply (ol_trans A _ (numeral A (S n))).
   - apply numeral_order. lia.
   - exact H.
 Qed.
@@ -187,7 +187,7 @@ Proof.
   intros [[i [Hi Ei]] | Hx] [[j [Hj Ej]] | Hy].
   - apply (case_of_numeral_equality A n (i * j)).
     eapply (oe_trans A).
-    + apply om_congr; assumption.
+    + exact (om_congr A x (numeral A i) y (numeral A j) Ei Ej).
     + apply numeral_mul.
   - destruct i as [|i].
     + apply (case_of_numeral_equality A n 0).
@@ -261,10 +261,10 @@ Proof.
   - apply oe_refl.
   - apply os_congr. exact IH.
   - eapply (oe_trans A).
-    + apply oa_congr; assumption.
+    + exact (oa_congr A _ _ _ _ IHx IHy).
     + apply numeral_add.
   - eapply (oe_trans A).
-    + apply om_congr; assumption.
+    + exact (om_congr A _ _ _ _ IHx IHy).
     + apply numeral_mul.
 Qed.
 
@@ -314,7 +314,7 @@ Proof.
     + left. eapply (order_replace_left A).
       * apply oe_sym. exact Ei.
       * apply numeral_order. exact Hi.
-    + right. eapply (ol_trans A).
+    + right. eapply (ol_trans A _ (numeral A (S n))).
       * apply numeral_order. lia.
       * exact Hlarge.
 Qed.

@@ -23,7 +23,7 @@ Example identity_wrong_annotation :
     (Π (𝓤 1) (𝓤 1)) = RkCheck.Rejected RkCheck.TypeMismatch.
 Proof. vm_compute. reflexivity. Qed.
 Example zero_budget_does_not_contract :
-  RkEval.whnf 0 (app (lam (𝓤 0) (var fzero)) (𝓤 0)) =
+  @RkEval.whnf 0 0 (app (lam (𝓤 0) (var fzero)) (𝓤 0)) =
     RkEval.Exhausted (app (lam (𝓤 0) (var fzero)) (𝓤 0)).
 Proof. reflexivity. Qed.
 

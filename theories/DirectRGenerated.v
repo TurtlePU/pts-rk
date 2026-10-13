@@ -3,7 +3,8 @@
     See docs/DirectR.md and docs/DirectR-obligations.md. *)
 
 From Stdlib Require Import Arith.PeanoNat Lia Lists.List Bool.Bool.
-From PTSrk Require Import Syntax AbstractRewriting Congruence Reduction
+From PTSrk Require Import -(notations) Syntax.
+From PTSrk Require Import AbstractRewriting Congruence Reduction
   DefEq Context Typing Ranks.
 Import ListNotations.
 
@@ -310,7 +311,7 @@ Definition binary_case_branch (is_mul : bool) (n : nat)
       end
   end.
 
-Definition binary_cases is_mul n x y gx gy cx cy : B :=
+Definition binary_cases (is_mul : bool) n x y gx gy cx cy : B :=
   let parent := if is_mul then mm x y else aa x y in
   cases_intro n parent (fun ks =>
     cases_elim n x cx
@@ -320,7 +321,7 @@ Definition binary_cases is_mul n x y gx gy cx cy : B :=
       (fun h => cases_elim n y cy
         (fun j k => binary_case_branch is_mul n x y gx gy None h (Some j) k ks)
         (fun k => binary_case_branch is_mul n x y gx gy None h None k ks))).
-Definition invariant_binary is_mul n : B :=
+Definition invariant_binary (is_mul : bool) n : B :=
   bl dom (fun x => bl dom (fun y =>
   bl (invariant_type n x) (fun ix => bl (invariant_type n y) (fun iy =>
   let parent := if is_mul then mm x y else aa x y in
