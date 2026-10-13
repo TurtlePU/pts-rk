@@ -1,6 +1,97 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: finite recursion equations, following 281a252
+## Current continuation: all finite order laws, following 4deb711
+
+Request: proceed proving, then commit and push. Starting HEAD was
+4deb711baab72f9a75eebb5325b5f0a87600437b on main. Only untracked user logs/
+was present and is preserved. Theorem 7 is NOT complete.
+
+Complete baseline local CI, including pristine upstream, exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/order-laws-baseline"
+bash tools/check-local-ci.sh` with the documented local bin directory on PATH.
+Raw output: _build/local-ci-logs/order-laws-baseline.log.
+
+DirectRFiniteOrderLaws constructs all five remaining finite order certificates
+uniformly for every q>0. With le(u,v)=Neg(C0 u v), s/add/mul the capped tables
+and one=s(point q 0), their expanded closed types are:
+
+```
+Pi u:Fq. delta(u) -> le(u,s u)
+Pi u:Fq. delta(u) -> Pi v:Fq. delta(v) -> le(u,add u v)
+Pi u:Fq. delta(u) -> Pi v:Fq. delta(v) -> le(v,add u v)
+Pi u:Fq. delta(u) -> Pi v:Fq. delta(v) -> le(one,v) -> le(u,mul u v)
+Pi u:Fq. delta(u) -> Pi v:Fq. delta(v) -> le(one,u) -> le(v,mul u v)
+```
+
+Public theorem names: successor_order_realized, addition_order_left_realized,
+addition_order_right_realized, multiplication_order_left_realized and
+multiplication_order_right_realized. Each has only the premise 0<q.
+The generic unary_law_realized/binary_law_realized turn uniformly valid native
+order implications into original PTS inhabitants through the checked finite
+expression reductions and Boolean Horn constructor. Each exported expanded
+type has exact rank five; beta conversion retains all annotations and guards.
+The q=1 multiplication branch is handled explicitly, not excluded.
+
+Incremental command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFiniteOrderLaws.vo`.
+Exit-0 log: _build/local-ci-logs/order-laws-3.log. Earlier compiler failures
+are retained: order-laws-1.log needed a third tactic branch for q=0/1/>1;
+order-laws-2.log needed introduction of the conditional positivity premise
+before applying capped_product_lower. Neither error was bypassed or admitted.
+
+All nineteen relational observation laws now have individual proofs, in
+addition to the four checked positive-domain certificates. This does NOT yet
+constitute typed assembly of the full 31-argument observation telescope.
+Negative ground faithfulness, the four-constructor bounded invariant and
+independent functional deduction preservation remain open. No new axioms,
+admissions, changed PTS rules or native-Prop replacement were introduced.
+
+Exact next goal: construct the closed specialization of the fixed observation
+telescope at q=K+2, supplying all eight finite data terms and all twenty-three
+certificates in their dependent binder order. Prove conversion of each existing
+expanded law type to its specialized telescope binder, then use ordinary PTS
+application typing to obtain a specialization lemma for E/O. Use it to prove
+`Realizes (Arrow (LeAt (numeral (S n)) (numeral n)) Bottom)` uniformly in n;
+LeAt is the existing Codes application of O. The finite folds are
+points n+1 and n at q=n+2 and the reversed comparison yields Top -> Bottom.
+Do not declare the observation complete merely from a native list of proofs.
+
+Next command after adding the assembly module and audit (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+Fresh isolated full build exited 0, including all legacy examples:
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 300 dune build \
+  --build-dir /tmp/pts-rk-order-laws.fq6laF --display=short --no-buffer
+```
+
+All 181 assumption reports are closed (73 in the functional audit). Exact public
+theorem types, expanded definitions and full output are retained in
+verification/order-laws-full-2026-10-13.log; raw output is in
+_build/local-ci-logs/order-laws-full.log. Complete updated local CI also exited 0,
+including pristine upstream and the new finite-order-laws stage:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/order-laws-final"
+bash tools/check-local-ci.sh`. Inventory, stages and result are retained in
+verification/order-laws-ci-2026-10-13.log and _build/local-ci-logs/order-laws-ci.log.
+Shell syntax, actionlint and git diff --check pass. Remote CI has not been
+inspected. This checked progress checkpoint follows 4deb711 and is authorized
+for ordinary commit and push; it does not claim an unconditional Theorem 7.
+
+The checkpoint was committed locally. Two attempts of
+`timeout 45 git push origin HEAD:main` exited 124. The retry remained in
+git-credential-osxkeychain; the remote is reachable but authentication stalls.
+A credential-free ls-remote confirmed origin/main still at 4deb711 after the
+first attempt, and the local tracking ref remained there after the retry.
+No force-push or credential workaround was attempted. The only untracked path
+is the preserved user logs/. Next delivery command, after unlocking/authorizing
+Git's Keychain access: `timeout 45 git push origin HEAD:main` with the local bin
+directory on PATH. Do not report this checkpoint as pushed without verification.
+
+## Historical continuation: finite recursion equations, following 281a252
 
 Request: retry push, proceed proving, commit and push. Starting HEAD was
 281a252cd48a8f7bc43ef1174da29a219e744076 on main. Only untracked user logs/

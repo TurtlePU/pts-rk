@@ -1,5 +1,23 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — all five finite order-propagation laws
+
+- Compile unconditional comparisons and one-premise order implications from
+  finite expressions. Their PTS bodies have exact ranks two and three,
+  respectively. False Boolean premises are handled by the already checked
+  negative Horn constructor, not by general positive ex falso.
+- Provide separate one- and two-object abstraction theorems, each exporting
+  the expanded interleaved domain guards with checked beta conversion and
+  rank-five formation. Successor propagation has no dummy second object.
+- Retain the observed-one lower bound in each multiplication implication.
+  Handle q=1 separately: its sole index is zero. For q>=2 the observed one is
+  the native index one, making the numerical product lower bound valid.
+- All nineteen relational observation laws now have individual closed PTS
+  certificates. This is not yet the complete observation: its eight data and
+  twenty-three certificate arguments still need typed dependent assembly.
+  The bounded invariant and independent functional deduction preservation
+  remain separate unfinished obligations. No interpretation theorem is claimed.
+
 ## 2026-10-13 — finite-table expression evaluation and recursion equations
 
 - Introduce a small two-variable expression syntax solely for composing finite
