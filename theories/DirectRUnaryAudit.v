@@ -2,7 +2,8 @@
     bounded-case milestone. This is not an assertion of Theorem 4. *)
 From PTSrk Require Import -(notations) Syntax.
 From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRFiniteTables.
+  DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRFiniteTables
+  DirectRPositive DirectRFiniteObservations.
 
 Theorem unary_bounded_cases : forall cutoff, exists p,
   @typ nat RankSorts 0 ε p
@@ -54,3 +55,19 @@ Print Assumptions FiniteTables.separating_test_top.
 Print Assumptions FiniteTables.separating_test_bottom.
 Print Assumptions FiniteTables.iterate_typed.
 Print Assumptions FiniteTables.iterate_computation.
+
+Check Positive.membership_intro.
+Check Positive.membership_elim.
+Check FiniteObservations.delta_formation.
+Check FiniteObservations.delta_point.
+Check FiniteObservations.delta_step_realized.
+Print FiniteObservations.delta_step_type.
+Print Assumptions Positive.arrows_intro.
+Print Assumptions Positive.membership_formation.
+Print Assumptions Positive.membership_intro.
+Print Assumptions Positive.membership_elim.
+Print Assumptions FiniteObservations.delta_formation.
+Print Assumptions FiniteObservations.delta_point.
+Print Assumptions FiniteObservations.delta_eliminate.
+Print Assumptions FiniteObservations.delta_successor.
+Print Assumptions FiniteObservations.delta_step_realized.
