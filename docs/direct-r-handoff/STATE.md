@@ -26,7 +26,7 @@ The authoritative new reference is
 ## Checkout and environment
 
 This continuation started at main commit
-`7c10cc1c9cbb948930d2f44729961fa239a95738` (checked unary bounded cases).
+`8b49750cac120f9dab7a30c63e714245ad52c6a3` (checked unary comparability and finite tables).
 Only the existing untracked logs/ directory was present. It was preserved.
 
 Arithmetic progress checkpoint on main: `a16646b`
@@ -44,6 +44,57 @@ Dune 3.23.1, opam 2.6.1, actionlint 1.7.12. GNU timeout is available.
 The pristine upstream requires Rocq 9.2's Create Rewrite HintDb.
 
 ## Actually compiled
+
+### Positive finite-observation certificates, following 8b49750
+
+DirectRPositive now derives finite positive argument telescopes, their
+introduction/application and rank bounds, and positive finite membership
+formation/introduction/elimination. Context-extension transport is proved
+from original PTS weakening; no semantic validity assumption is introduced.
+DirectRFiniteObservations instantiates exactly
+`delta q u = Pi Q:(Fq -> U3). Q e0 -> ... -> Q e(q-1) -> Q u`.
+Checked: rank-4 formation for q>0, every point certificate, arbitrary rank-3
+predicate elimination, and capped-successor preservation. In particular:
+`delta_step_realized : forall q, 0 < q -> Realizes
+ (Pi u:Fq. delta q u -> delta q (capped_successor q u))`.
+This is an actual existential original-PTS term, not a host arithmetic fact.
+No assertion that arbitrary raw selectors are canonical is used.
+
+Incremental builds: `_build/local-ci-logs/positive-arrows-build-2.log`
+and `positive-arrows-build-4.log`, `positive-arrows-build-5.log`,
+`finite-observations-build-1.log`, `finite-observations-build-2.log`,
+`finite-observations-build-5.log`, `finite-observations-build-6.log` exited 0.
+Failed attempts remain in the same directory: folded Arrows rewrite mismatch,
+in_map inference, and two missing scope annotations, all repaired. Final
+incremental command was `opam exec --switch=pts-rk-ci -- dune build
+ --display=short --no-buffer theories/DirectRUnaryAudit.vo`.
+All nine added Print Assumptions queries report Closed under the global context.
+
+Fresh isolated build exited 0, rebuilding original PTS dependencies, unary
+audit, DirectR, countermodel, arithmetic and existing SetFunctions. Command:
+`opam exec --switch=pts-rk-ci -- timeout 300 dune build
+ --build-dir /tmp/pts-rk-positive-check.7cdK7J --display=short --no-buffer
+ theories/DirectRUnaryAudit.vo theories/DirectR.vo
+ theories/DirectRCountermodel.vo theories/DirectRArithmetic.vo models/SetFunctions.vo`.
+Exact transcript, types and assumption output are retained in
+`verification/unary-positive-2026-10-13.log` (42 closed-context reports,
+including the existing set-function queries).
+Shell syntax, actionlint and git diff --check passed.
+The subsequent full build, `opam exec --switch=pts-rk-ci -- timeout 120
+ dune build --build-dir /tmp/pts-rk-positive-check.7cdK7J --display=short
+ --no-buffer`, exited 124 while compiling unchanged DirectRTests. Transcript:
+`verification/unary-positive-full-2026-10-13.log`. No full-build or remote
+CI success is claimed, and no CI timeout or test was weakened.
+
+Exact next proof goal: build Up(separating_test c) using delta elimination
+at the rank-3 motive `Neg(P v) -> Neg(P(s v))`. Finite branches below the cap
+use the inhabited Top; the capped branch is identity on Neg Bottom.
+Then prove unary numeral evaluation in this observation, specialize O at
+these data, and obtain uniform no_back. Remaining Theorem-4 obligations
+include unary R1/R2, R3/R4, ground refutations and independent deduction
+preservation. Theorem 4 remains incomplete.
+Next command: `opam exec --switch=pts-rk-ci -- dune build --display=short
+ --no-buffer theories/DirectRUnaryAudit.vo`.
 
 ### Comparability and finite-table milestone, following 7c10cc1
 
@@ -92,7 +143,7 @@ returned 124 in the unchanged DirectRTests module. No full green CI claim is
 made. Exact output is retained in `_build/local-ci-logs/unary-comparison-full.log`
 and `verification/unary-comparison-full-2026-10-13.log`.
 
-Exact next goal: construct delta_q(u) at rank four for q>=2, its point
+At that checkpoint the next goal was: construct delta_q(u) at rank four for q>=2, its point
 certificates and closure under capped_successor q, then the Up certificate for
 separating_test (q-1). Combine these with unary numeral evaluation to obtain
 the uniform original-PTS no_back witness. The finite-table definitions are
@@ -252,8 +303,9 @@ opam exec --switch=pts-rk-ci -- timeout 120 rocq compile -time \
 ```
 
 Uniform mathematical goals:
-1. Prove named-selector/operation-table/delta bridges and finite observation
-   realization. For unary Theorem 4, only d0, ds, and Up(P) are needed.
+1. Finish finite observation realization: delta formation, d0 and ds are
+   checked in DirectRFiniteObservations; Up(P) and the unary evaluation bridge
+   remain. The unused legacy named-generator bridge is not required here.
 2. Unary Theorem 4's uniform invariant and bounded-case proof are now checked.
    The separate functional Theorem 7's four-constructor invariant remains open.
 3. Prove no_back, then R3/R4 and ground refutations (unary R5 is now checked); add ground-expression

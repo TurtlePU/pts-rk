@@ -1,5 +1,20 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — positive finite observations
+
+- Added positive finite membership with rank-3 predicate parameters rather
+  than reusing negative disjunction to obtain unrestricted positive results.
+- Generic telescope introduction transports actual witnesses only along
+  original context extensions; its transport proof uses PTS weakening.
+- Instantiated the exact finite delta predicate from the harmonized text.
+  All selector certificates and a closed capped-successor certificate are
+  checked uniformly in arity. The only bound is q>0, the nonempty telescope
+  required for rank four; no raw-selector parametricity is assumed.
+- Added transitive assumption audits and dedicated CI stages. No PTS rule,
+  target, axiom, admission, eta principle or annotation-erasing bridge changed.
+- This is a partial Theorem-4 checkpoint: Up(P), no_back, remaining axiom
+  schemes, ground refutations and independent deduction preservation remain.
+
 ## 2026-10-13 — relational comparability and uniform finite tables
 
 - Proved the unary relational comparability scheme for all cutoffs, using the

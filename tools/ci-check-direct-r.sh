@@ -118,6 +118,8 @@ stage 06-symbolic "$ROOT" theories/DirectRSymbolic.vo
 stage 06a-structural "$ROOT" theories/DirectRStructural.vo
 stage 06a-negative-logic "$ROOT" theories/DirectRLogic.vo
 stage 06a-finite-tables "$ROOT" theories/DirectRFiniteTables.vo
+stage 06a-positive-telescopes "$ROOT" theories/DirectRPositive.vo
+stage 06a-finite-observations "$ROOT" theories/DirectRFiniteObservations.vo
 stage 06b-foundations "$ROOT" theories/DirectRFoundations.vo
 stage 06c-unary "$ROOT" theories/DirectRUnary.vo
 stage 06c-unary-axioms "$ROOT" theories/DirectRUnaryAxioms.vo
