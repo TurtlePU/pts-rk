@@ -2,5 +2,8 @@
   (name PTSrk)
   (package pts-rk)
   (modules Syntax AbstractRewriting Congruence Reduction Confluence DefEq
-           Context Typing Inversions Preservation SN Ranks)
+           Context Typing Inversions Preservation SN Ranks
+           DirectRCodes DirectRKernel DirectREval DirectRCheck DirectRSymbolic
+           DirectRProofs DirectRGenerated DirectRFirstOrder DirectRObligations
+           DirectRArithmetic DirectRTests DirectR)
   (theories Stdlib Equations))

@@ -1,0 +1,97 @@
+name: DirectR / Rocq
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# No repository write access and no user-provided secrets are needed.
+# In particular, do NOT replace pull_request with pull_request_target.
+permissions:
+  contents: read
+
+concurrency:
+  group: direct-r-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Compile PTS-rk and DirectR
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    defaults:
+      run:
+        shell: bash
+    env:
+      OPAMYES: "true"
+      OPAMJOBS: "2"
+      DIRECT_R_JOBS: "2"
+      DIRECT_R_STAGE_SECONDS: "1200"
+      DIRECT_R_BASELINE_REF: "723cf2ec61c737ae82ba33d2e7db44f650122b0e"
+
+    steps:
+      - name: Check out the branch or PR merge commit
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Initialize diagnostic files
+        env:
+          DIRECT_R_LOG_DIR: ${{ runner.temp }}/direct-r-logs
+        run: |
+          set -euo pipefail
+          printf 'DIRECT_R_LOG_DIR=%s\n' "$DIRECT_R_LOG_DIR" >> "$GITHUB_ENV"
+          mkdir -p "$DIRECT_R_LOG_DIR"
+          {
+            printf 'Event: %s\n' "$GITHUB_EVENT_NAME"
+            printf 'GitHub SHA: %s\n' "$GITHUB_SHA"
+            printf 'Checked-out commit: '
+            git rev-parse HEAD
+            printf 'Baseline: %s\n' "$DIRECT_R_BASELINE_REF"
+            printf '\nThis run checks the supplied source; a green run does not fill the open Theorem 5 contracts.\n'
+          } > "$DIRECT_R_LOG_DIR/source.txt"
+
+      - name: Install system build dependencies
+        run: |
+          set -euo pipefail
+          {
+            sudo apt-get update
+            sudo apt-get install -y build-essential bubblewrap pkg-config libgmp-dev
+          } 2>&1 | tee "$DIRECT_R_LOG_DIR/system-packages.log"
+
+      - name: Set up OCaml and opam on the GitHub runner
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: "4.14.2"
+          opam-pin: false
+          opam-repositories: |
+            rocq-released: https://rocq-prover.org/opam/released
+            default: https://opam.ocaml.org
+
+      - name: Install the pinned Rocq toolchain
+        run: |
+          set -euo pipefail
+          opam update 2>&1 | tee "$DIRECT_R_LOG_DIR/opam-update.log"
+          # The pristine upstream uses Create Rewrite HintDb (Rocq >= 9.2).
+          # rocq-prover is a metapackage; pin the core and its compatible
+          # Stdlib and Equations packages, which have separate versions.
+          opam install --yes --jobs=2 \
+            "dune=3.23.1" \
+            "rocq-prover=meta.1" \
+            "rocq-core=9.2.0" \
+            "rocq-stdlib=9.1.0" \
+            "rocq-equations=1.3.2+9.2" \
+            2>&1 | tee "$DIRECT_R_LOG_DIR/toolchain-install.log"
+
+      - name: Compile the pristine upstream and then each DirectR module
+        run: opam exec -- bash tools/ci-check-direct-r.sh
+
+      - name: Upload diagnostics even when installation or compilation fails
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: direct-r-logs-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/direct-r-logs/
+          if-no-files-found: warn
+          retention-days: 14
