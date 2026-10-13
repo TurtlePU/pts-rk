@@ -49,10 +49,13 @@ Exact output: verification/successor-prefix-ci-2026-10-13.log.
 `git diff --check` exited 0. No new remote CI result is claimed.
 
 Commit checkpoint: `Extend finite observation specialization through congruence`,
-parent a0e095b; includes the symmetry/transitivity and successor-congruence
-proofs, audit, handoff and verification logs. A normal push to origin/main is
-authorized and will be attempted after committing. Earlier credential-helper
-timeouts remain historical evidence, not a claim about this push's result.
+parent a0e095b, commit aa25111b4945cb34d6b82fae722a413f2fddd4d8; includes the
+symmetry/transitivity and successor-congruence proofs, audit, handoff and logs.
+`GIT_TERMINAL_PROMPT=0 timeout 45 git push origin main` exited 0 and reported
+`e959029..aa25111 main -> main`. The prior credential-helper blocker did not
+recur. This confirms delivery, not remote CI success. After the proof commit,
+the only worktree entry was untracked user logs/. This delivery note is a
+separate documentation-only follow-up; no proof source changed after validation.
 
 ## Historical continuation: equality equivalence laws, following a0e095b
 
