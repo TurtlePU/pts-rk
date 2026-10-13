@@ -1,0 +1,37 @@
+(rocq.theory
+ (name Interpretation_of_R.functional)
+ (package pts-rk)
+ (modules DirectR
+          DirectRArithmetic
+          DirectRCodes
+          DirectRFiniteBinaryCongruence
+          DirectRFiniteBinaryDomain
+          DirectRFiniteCongruence
+          DirectRFiniteData
+          DirectRFiniteDomainPrefix
+          DirectRFiniteExpressions
+          DirectRFiniteOrderLaws
+          DirectRFiniteRecursionLaws
+          DirectRFiniteSpecialization
+          DirectRFiniteTransitivity
+          DirectRFiniteUnaryCongruence
+          DirectRFiniteZeroLaws
+          DirectRFirstOrder
+          DirectRFoundations
+          DirectRFunctionalAddition
+          DirectRFunctionalAudit
+          DirectRFunctionalBounded
+          DirectRFunctionalEvaluation
+          DirectRFunctionalFiniteLaws
+          DirectRFunctionalLogic
+          DirectRFunctionalSeparation
+          DirectRFunctionalTerms
+          DirectRGenerated
+          DirectRObligations
+          DirectRProofs
+          DirectRTests)
+ (theories Stdlib Equations PTSrk Interpretation_of_R))
+
+(alias
+ (name audit)
+ (deps DirectRFunctionalAudit.vo))
