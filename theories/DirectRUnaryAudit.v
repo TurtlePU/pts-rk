@@ -3,7 +3,8 @@
 From PTSrk Require Import -(notations) Syntax.
 From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
   DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRFiniteTables
-  DirectRPositive DirectRFiniteObservations DirectRFiniteUp DirectRUnaryEvaluation DirectRSeparation.
+  DirectRPositive DirectRFiniteObservations DirectRFiniteUp DirectRUnaryEvaluation DirectRSeparation
+  DirectRUnaryBounded DirectRUnaryArithmetic.
 
 Theorem unary_bounded_cases : forall cutoff, exists p,
   @typ nat RankSorts 0 ε p
@@ -97,3 +98,37 @@ Print Assumptions Separation.finite_specialization.
 Print Assumptions unary_no_back.
 Print Assumptions Separation.ground_order_refutation.
 Print Assumptions unary_numeral_inequality.
+
+Theorem unary_relational_axioms : forall a, exists p,
+  @typ nat RankSorts 0 ε p (UnaryArithmetic.axiom_translation a).
+Proof. exact UnaryArithmetic.all_axioms_realized. Qed.
+
+Check UnaryBounded.R4_realized.
+Print UnaryBounded.R4.
+Print UnaryBounded.BoundEquivalence.
+Print UnaryBounded.Equivalence.
+Check UnaryEvaluation.addition_numerals.
+Check UnaryEvaluation.multiplication_numerals.
+Print UnaryArithmetic.R1.
+Print UnaryArithmetic.R2.
+Print UnaryArithmetic.equation_scheme.
+Print UnaryArithmetic.GraphEquivalence.
+Check UnaryArithmetic.ground_addition_true.
+Check UnaryArithmetic.ground_addition_false.
+Check UnaryArithmetic.ground_multiplication_true.
+Check UnaryArithmetic.ground_multiplication_false.
+Check unary_relational_axioms.
+Print UnaryArithmetic.axiom_translation.
+Print Assumptions UnaryBounded.order_to_bounded.
+Print Assumptions UnaryBounded.bounded_to_order.
+Print Assumptions UnaryBounded.R4_realized.
+Print Assumptions UnaryEvaluation.numeral_normal_form.
+Print Assumptions UnaryEvaluation.addition_numerals.
+Print Assumptions UnaryEvaluation.multiplication_numerals.
+Print Assumptions UnaryArithmetic.R1_realized.
+Print Assumptions UnaryArithmetic.R2_realized.
+Print Assumptions UnaryArithmetic.ground_addition_true.
+Print Assumptions UnaryArithmetic.ground_addition_false.
+Print Assumptions UnaryArithmetic.ground_multiplication_true.
+Print Assumptions UnaryArithmetic.ground_multiplication_false.
+Print Assumptions unary_relational_axioms.

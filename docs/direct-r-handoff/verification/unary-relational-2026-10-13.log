@@ -1,0 +1,441 @@
+Fresh isolated build; exit 0.
+Command: opam exec --switch=pts-rk-ci -- timeout 300 dune build --build-dir /tmp/pts-rk-relational-check.8oST6u --display=short --no-buffer theories/DirectRUnaryAudit.vo theories/DirectR.vo theories/DirectRCountermodel.vo theories/DirectRArithmetic.vo models/SetFunctions.vo
+OPAMROOT=$HOME/.local/share/pts-rk-ci/opam
+PATH=$HOME/.local/share/pts-rk-ci/bin:$PATH
+
+        rocq models/.PTSrkModel.theory.d
+        rocq theories/.PTSrk.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/DirectRCountermodel.{glob,vo}
+        rocq vendor/zfc/.ZFC.theory.d
+File "./vendor/zfc/Sets.v", line 111, characters 0-40:
+Warning: Implicitly declaring hint databases is deprecated. Please explicitly
+create "zfc"
+[implicit-create-hint-db,deprecated-since-9.2,deprecated,default]
+        rocq vendor/zfc/Sets.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+        rocq theories/Congruence.{glob,vo}
+        rocq vendor/zfc/Axioms.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+        rocq vendor/zfc/Cartesian.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq models/SetFunctions.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+        rocq theories/SN.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+        rocq theories/DirectREval.{glob,vo}
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+File "./theories/DirectRKernel.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRKernel.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRKernel.{glob,vo}
+        rocq theories/DirectRCheck.{glob,vo}
+        rocq theories/DirectRCodes.{glob,vo}
+File "./theories/DirectRArithmetic.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRArithmetic.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRSymbolic.v", line 13, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRSymbolic.v", line 13, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRSymbolic.{glob,vo}
+        rocq theories/DirectRStructural.{glob,vo}
+        rocq theories/DirectRArithmetic.{glob,vo}
+File "./theories/DirectRFoundations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRFoundations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRLogic.{glob,vo}
+        rocq theories/DirectRPositive.{glob,vo}
+        rocq theories/DirectRFiniteTables.{glob,vo}
+        rocq theories/DirectRFiniteObservations.{glob,vo}
+        rocq theories/DirectRUnary.{glob,vo}
+        rocq theories/DirectRUnaryAxioms.{glob,vo}
+        rocq theories/DirectRFiniteUp.{glob,vo}
+        rocq theories/DirectRUnaryEvaluation.{glob,vo}
+        rocq theories/DirectRSeparation.{glob,vo}
+        rocq theories/DirectRUnaryBounded.{glob,vo}
+        rocq theories/DirectRUnaryArithmetic.{glob,vo}
+unary_bounded_cases
+     : forall cutoff : nat,
+       exists p : Term nat 0,
+         ε ⊢ p
+         ⇐ Π Unary.Domain
+             (Codes.Arrow (Unary.admitted Codes.V0)
+                (Unary.Case cutoff Codes.V0))
+Unary.Case =
+fun (n cutoff : nat) (d : Term nat n) =>
+Codes.FlatOr
+  (ListDef.map
+     (fun i : nat => Unary.E d (Codes.lift_closed (Unary.numeral i)))
+     (ListDef.seq 0 (S cutoff)) ++
+   Unary.O (Codes.lift_closed (Unary.numeral (S cutoff))) d :: nil)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments Unary.Case {n}%_nat_scope cutoff%_nat_scope d
+Unary.Inv =
+fun (n cutoff : nat) (d : Term nat n) =>
+NegativeLogic.positive_invariant (Unary.G d) (Unary.Case cutoff d)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments Unary.Inv {n}%_nat_scope cutoff%_nat_scope d
+Unary.ground_order_realized
+     : forall i j : nat,
+       i <= j -> Core.Realizes (Unary.O (Unary.numeral i) (Unary.numeral j))
+Unary.case_successor_realized
+     : forall (Γ : Ctx nat ?n) (cutoff : nat) (d : Term nat ?n),
+       Core.Typed Γ d (Codes.lift_closed Unary.Domain) ->
+       NegativeLogic.inhabited Γ (Unary.G d) ->
+       NegativeLogic.inhabited Γ (Unary.Case cutoff d) ->
+       NegativeLogic.inhabited Γ
+         (Unary.Case cutoff (app (Codes.lift_closed Unary.successor) d))
+where
+?n : [ |- nat]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+unary_comparability
+     : forall cutoff : nat,
+       exists p : Term nat 0,
+         ε ⊢ p
+         ⇐ Π Unary.Domain
+             (Codes.Arrow (Unary.admitted Codes.V0)
+                (UnaryAxioms.Compare cutoff Codes.V0))
+UnaryAxioms.Compare =
+fun (n cutoff : nat) (d : Term nat n) =>
+Codes.FlatOr
+  (Unary.O d (Codes.lift_closed (Unary.numeral cutoff))
+   :: Unary.O (Codes.lift_closed (Unary.numeral cutoff)) d :: nil)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments UnaryAxioms.Compare {n}%_nat_scope cutoff%_nat_scope d
+FiniteTables.table_typed
+     : forall (q : nat) (perm : list nat),
+       length perm = q ->
+       Core.Typed ε (FiniteTables.table q perm)
+         (Codes.Arrow (DirectRStructural.Structural.selector_type q)
+            (DirectRStructural.Structural.selector_type q))
+FiniteTables.table_action
+     : forall (q : nat) (perm : list nat) (i : nat),
+       length perm = q ->
+       i < q ->
+       DefEq.def_equiv nat 0
+         (app (FiniteTables.table q perm) (FiniteTables.point q i))
+         (FiniteTables.point q (ListDef.nth i perm 0))
+FiniteTables.capped_successor_action
+     : forall q i : nat,
+       i < q ->
+       DefEq.def_equiv nat 0
+         (app (FiniteTables.capped_successor q) (FiniteTables.point q i))
+         (FiniteTables.point q (PeanoNat.Nat.min (S i) (PeanoNat.Nat.pred q)))
+FiniteTables.iterate_computation
+     : forall c k : nat,
+       DefEq.def_equiv nat 0 (FiniteTables.iterate (S c) k)
+         (FiniteTables.point (S c) (PeanoNat.Nat.min k c))
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Positive.membership_intro
+     : forall (Γ : Ctx nat ?n) (A : Term nat ?n) (xs : list (Term nat ?n))
+         (u : Term nat ?n),
+       Core.Typed Γ A (𝓤 1) ->
+       ListDef.Forall (fun x : Term nat ?n => Core.Typed Γ x A) xs ->
+       List.In u xs -> NegativeLogic.inhabited Γ (Positive.Membership A xs u)
+where
+?n : [ |- nat]
+Positive.membership_elim
+     : forall (Γ : Ctx nat ?n) (A : Term nat ?n) (xs : list (Term nat ?n))
+         (u Q : Term nat ?n),
+       NegativeLogic.inhabited Γ (Positive.Membership A xs u) ->
+       Core.Typed Γ Q (Codes.Arrow A (𝓤 3)) ->
+       ListDef.Forall
+         (fun x : Term nat ?n => NegativeLogic.inhabited Γ (app Q x)) xs ->
+       NegativeLogic.inhabited Γ (app Q u)
+where
+?n : [ |- nat]
+FiniteObservations.delta_formation
+     : forall (Γ : Ctx nat ?n) (q : nat) (u : Term nat ?n),
+       0 < q ->
+       Core.Typed Γ u (DirectRStructural.Structural.selector_type q) ->
+       Core.Typed Γ (FiniteObservations.delta q u) (𝓤 4)
+where
+?n : [ |- nat]
+FiniteObservations.delta_point
+     : forall (Γ : Ctx nat ?n) (q i : nat),
+       i < q ->
+       NegativeLogic.inhabited Γ
+         (FiniteObservations.delta q
+            (Codes.lift_closed (FiniteTables.point q i)))
+where
+?n : [ |- nat]
+FiniteObservations.delta_step_realized
+     : forall q : nat,
+       0 < q -> Core.Realizes (FiniteObservations.delta_step_type q)
+FiniteObservations.delta_step_type =
+fun q : nat =>
+Π (DirectRStructural.Structural.selector_type q)
+  (Codes.Arrow (FiniteObservations.delta q Codes.V0)
+     (FiniteObservations.delta q
+        (app (Codes.lift_closed (FiniteTables.capped_successor q)) Codes.V0)))
+     : nat -> Codes.closed_term
+
+Arguments FiniteObservations.delta_step_type q%_nat_scope
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+FiniteUp.upward_realized
+     : forall c : nat, Core.Realizes (FiniteUp.upward_type c)
+FiniteUp.upward_type =
+fun c : nat =>
+Π (DirectRStructural.Structural.selector_type (S c))
+  (Codes.Arrow (FiniteObservations.delta (S c) Codes.V0)
+     (FiniteUp.Step c Codes.V0))
+     : nat -> Codes.closed_term
+
+Arguments FiniteUp.upward_type c%_nat_scope
+UnaryEvaluation.numeral_evaluation
+     : forall (k n : nat) (X z s : Term nat n),
+       DefEq.def_equiv nat n
+         (UnaryEvaluation.evaluate (Codes.lift_closed (Unary.numeral k)) X z
+            s)
+         (UnaryEvaluation.iterations k z s)
+UnaryEvaluation.finite_numeral_evaluation
+     : forall c k : nat,
+       DefEq.def_equiv nat 0
+         (UnaryEvaluation.evaluate (Unary.numeral k)
+            (DirectRStructural.Structural.selector_type (S c))
+            (FiniteTables.point (S c) 0)
+            (FiniteTables.capped_successor (S c)))
+         (FiniteTables.point (S c) (PeanoNat.Nat.min k c))
+unary_no_back
+     : forall k : nat,
+       exists p : Term nat 0,
+         ε ⊢ p ⇐ Codes.Neg (Unary.O (Unary.numeral (S k)) (Unary.numeral k))
+Separation.ground_order_refutation
+     : forall i j : nat,
+       j < i ->
+       Core.Realizes
+         (Codes.Neg (Unary.O (Unary.numeral i) (Unary.numeral j)))
+unary_numeral_inequality
+     : forall i j : nat,
+       i <> j ->
+       exists p : Term nat 0,
+         ε ⊢ p ⇐ Codes.Neg (Unary.E (Unary.numeral i) (Unary.numeral j))
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+UnaryBounded.R4_realized
+     : forall cutoff : nat, Core.Realizes (UnaryBounded.R4 cutoff)
+UnaryBounded.R4 =
+fun cutoff : nat =>
+Π Unary.Domain
+  (Codes.Arrow (Unary.admitted Codes.V0)
+     (UnaryBounded.BoundEquivalence cutoff Codes.V0))
+     : nat -> Codes.closed_term
+
+Arguments UnaryBounded.R4 cutoff%_nat_scope
+UnaryBounded.BoundEquivalence =
+fun (n cutoff : nat) (d : Term nat n) =>
+UnaryBounded.Equivalence
+  (Unary.O d (Codes.lift_closed (Unary.numeral cutoff)))
+  (UnaryBounded.Bounded cutoff d)
+     : forall {n : nat}, nat -> Term nat n -> Term nat n
+
+Arguments UnaryBounded.BoundEquivalence {n}%_nat_scope cutoff%_nat_scope d
+UnaryBounded.Equivalence =
+fun (n : nat) (A B : Term nat n) =>
+Codes.Conj (Codes.Arrow A B) (Codes.Arrow B A)
+     : forall {n : nat}, Term nat n -> Term nat n -> Term nat n
+
+Arguments UnaryBounded.Equivalence {n}%_nat_scope A B
+UnaryEvaluation.addition_numerals
+     : forall m k : nat,
+       DefEq.def_equiv nat 0
+         (app (app Unary.addition (Unary.numeral m)) (Unary.numeral k))
+         (Unary.numeral (m + k))
+UnaryEvaluation.multiplication_numerals
+     : forall m k : nat,
+       DefEq.def_equiv nat 0
+         (app (app Unary.multiplication (Unary.numeral m)) (Unary.numeral k))
+         (Unary.numeral (m * k))
+UnaryArithmetic.R1 =
+fun m n : nat =>
+UnaryArithmetic.equation_scheme
+  (app (app Unary.addition (Unary.numeral m)) (Unary.numeral n))
+  (Unary.numeral (m + n))
+     : nat -> nat -> Codes.closed_term
+
+Arguments UnaryArithmetic.R1 (m n)%_nat_scope
+UnaryArithmetic.R2 =
+fun m n : nat =>
+UnaryArithmetic.equation_scheme
+  (app (app Unary.multiplication (Unary.numeral m)) (Unary.numeral n))
+  (Unary.numeral (m * n))
+     : nat -> nat -> Codes.closed_term
+
+Arguments UnaryArithmetic.R2 (m n)%_nat_scope
+UnaryArithmetic.equation_scheme =
+fun l r : Codes.closed_term =>
+Π Unary.Domain
+  (Codes.Arrow (Unary.admitted Codes.V0)
+     (UnaryArithmetic.GraphEquivalence l r Codes.V0))
+     : Codes.closed_term -> Codes.closed_term -> Codes.closed_term
+
+Arguments UnaryArithmetic.equation_scheme l r
+UnaryArithmetic.GraphEquivalence =
+fun (n : nat) (l r : Codes.closed_term) (d : Term nat n) =>
+UnaryBounded.Equivalence (Unary.E (Codes.lift_closed l) d)
+  (Unary.E (Codes.lift_closed r) d)
+     : forall {n : nat},
+       Codes.closed_term -> Codes.closed_term -> Term nat n -> Term nat n
+
+Arguments UnaryArithmetic.GraphEquivalence {n}%_nat_scope l r d
+UnaryArithmetic.ground_addition_true
+     : forall m n k : nat,
+       m + n = k -> Core.Realizes (UnaryArithmetic.AddAtom m n k)
+UnaryArithmetic.ground_addition_false
+     : forall m n k : nat,
+       m + n <> k ->
+       Core.Realizes (Codes.Neg (UnaryArithmetic.AddAtom m n k))
+UnaryArithmetic.ground_multiplication_true
+     : forall m n k : nat,
+       m * n = k -> Core.Realizes (UnaryArithmetic.MulAtom m n k)
+UnaryArithmetic.ground_multiplication_false
+     : forall m n k : nat,
+       m * n <> k ->
+       Core.Realizes (Codes.Neg (UnaryArithmetic.MulAtom m n k))
+unary_relational_axioms
+     : forall a : UnaryArithmetic.relational_axiom,
+       exists p : Term nat 0, ε ⊢ p ⇐ UnaryArithmetic.axiom_translation a
+UnaryArithmetic.axiom_translation =
+fun a : UnaryArithmetic.relational_axiom =>
+match a with
+| UnaryArithmetic.ax_add m n => UnaryArithmetic.R1 m n
+| UnaryArithmetic.ax_mul m n => UnaryArithmetic.R2 m n
+| UnaryArithmetic.ax_neq m n _ =>
+    Codes.Neg (Unary.E (Unary.numeral m) (Unary.numeral n))
+| UnaryArithmetic.ax_bound n => UnaryBounded.R4 n
+| UnaryArithmetic.ax_compare n => UnaryAxioms.R5 n
+end
+     : UnaryArithmetic.relational_axiom -> Codes.closed_term
+
+Arguments UnaryArithmetic.axiom_translation a
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/DirectRUnaryAudit.{glob,vo}
+        rocq theories/DirectRFoundations.{glob,vo}
+File "./theories/DirectRProofs.v", line 5, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRProofs.v", line 5, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRProofs.{glob,vo}
+File "./theories/DirectRFirstOrder.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRFirstOrder.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRFirstOrder.{glob,vo}
+        rocq theories/DirectRGenerated.{glob,vo}
+File "./theories/DirectRObligations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRObligations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRObligations.{glob,vo}
+        rocq theories/DirectR.{glob,vo}
