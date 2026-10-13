@@ -84,11 +84,12 @@ under a $\Pi$-former: function types are placed in
 sorts according to their \textit{rank}. Turns out that
 this system has a unique set of characteristics: it has
 similar normalisation behaviour as STLC (so complexity
-of normalisation is in \textsf{TOWER}) while at the
-same time allowing non-uniform representation of
+of normalisation is \textsf{TOWER}-complete) while at
+the same time allowing non-uniform representation of
 arbitrary elementary recursive functions; furthermore,
-it has a nontrivial set-theoretical model in ZF+GCH.
-Base normalisation proof is surprisingly simple (modulo
+it has a nontrivial set-theoretical model in ZF+GCH and
+allows to carry out nontrivial proof developments. Base
+normalisation proof is surprisingly simple (modulo
 general metatheoretical properties of pure type
 systems) and has been fully formalised in vanilla Rocq
 (formerly Coq) without any additional axioms.
@@ -314,17 +315,19 @@ PTS-$rk$; we dug further and discovered that, actually,
 there is an intimate connection between a class of
 elementary recursive functions \cite{kalmar1943,
 rose1984subrecursion} and our system, as seen in
-Section~\ref{complexity}. As a byproduct of our study
-on complexity, we built a sound set-theoretic model for
-PTS-$rk$ (see Section~\ref{rk-model}) which assumes
-\emph{Generalised Continuum Hypothesis}
-\cite{jech2003set,hausdorff1908} which is an unusual
-pick for dependently typed systems where
-\emph{inaccessible cardinals} are a more common
-assumption \cite{werner1997sets,lee2011proof}. We
-provide a closing summary and some pointers on future
-directions of our research and possible extensions of
-the system in Section~\ref{conclusion}.
+Sections~\ref{complexity}-\ref{computational}. As a
+byproduct of our study on complexity, we built a sound
+set-theoretic model for PTS-$rk$ (see
+Section~\ref{rk-model}) which assumes \emph{Generalised
+Continuum Hypothesis} \cite{jech2003set,hausdorff1908}
+which is an unusual pick for dependently typed systems
+where \emph{inaccessible cardinals} are a more common
+assumption \cite{werner1997sets,lee2011proof}. Before
+concluding, we provide a sneak peek into what it is
+like to write proofs in PTS-$rk$ and provide a full
+interpretation of Tarski--Mostowski--Robinson
+arithmetic $R$ in PTS-$rk$
+(Section~\ref{proof-system}).
 
 \subsection{Use of artificial intelligence}
 
@@ -346,14 +349,15 @@ Also, we chatted with Claude Fable 5.1
 \section{Metatheory of pure type systems}
 \label{pts-metatheory}
 
-For ease of presentation of our results, we assume a
-Barendregt convention \cite{barendregt1984lambda} that
-all bound variables are distinct from free variables
-and from each other; furthermore, $\alpha$-equivalence
-(renaming of bound variables) is assumed as a trivial
-equality on terms. Nevertheless, our formalisation
-takes variable treatment seriously; see
-Section~\ref{formalisation} for more details.
+For ease of presentation of our results in this and
+following sections, we assume a Barendregt convention
+\cite{barendregt1984lambda} that all bound variables
+are distinct from free variables and from each other;
+furthermore, $\alpha$-equivalence (renaming of bound
+variables) is assumed as a trivial equality on terms.
+Nevertheless, our formalisation takes variable
+treatment seriously; see Section~\ref{formalisation}
+for more details.
 
 \subsection{PTS as a rewriting system}
 
@@ -1248,10 +1252,14 @@ through.
 PTS-\texorpdfstring{$rk$}{rk}}
 \label{complexity}
 
-(Proofs in the following sections are not formalised in
-Rocq: they are relatively simple, non-technical and
-their formalisation would require many times more
-preliminary work than seems reasonable.)
+In this section we prove that convertibility of closed
+well-typed PTS-$rk$ terms is \textsc{TOWER}-complete.
+
+(Proofs in this and following sections are not
+formalised in Rocq: they are relatively simple,
+non-technical and their formalisation would require
+many times more preliminary work than seems
+reasonable.)
 
 As requested further, LLM confessed that it was largely
 inspired by studies on complexity of normalisation for
@@ -1274,7 +1282,7 @@ disguise. Or something a tad faster:
     PTS-$rk$]
 \label{bounded-sn}
     For each $d$, there is an elementary recursive
-    \cite{rose1984subrecursion} algorithm for finding a
+    algorithm \cite{rose1984subrecursion} for finding a
     normal form of $d$-bounded terms.
 \end{theorem}
 \begin{proof}
@@ -1343,17 +1351,20 @@ $\mathsf{TOWER}$. A little weaker result holds for our
 dependently typed PTS:
 
 \begin{theorem}
-    Normalisation of \textbf{closed} well-typed
+    Convertibility of \textbf{closed} well-typed
     PTS-$rk$ terms is in $\mathsf{TOWER}$.
 \end{theorem}
 \begin{proof}
     By Theorem~\ref{bounded-sn}, it is enough to
     compute some upper bound $B$ on the rank of types
     appearing in abstractions of a term, then run a
-    normaliser for $(B+1)$-bounded terms. Consider the
-    following elementary recursive functions, written
-    in pseudocode and using a suitable encoding of
-    terms, tuples and lists:
+    normaliser for $(B+1)$-bounded terms and compare
+    the results; $B$ has to be bound by an elementary
+    recursive function on the size of input. Consider,
+    then, the following elementary recursive functions
+    to compute such upper bound, written in pseudocode
+    and using a suitable encoding of terms, tuples and
+    lists:
     \begin{minted}{agda}
 maxRankLiteral rkᵣ      = r
 maxRankLiteral Π(x:T).U =
@@ -1417,6 +1428,56 @@ it, we would not know ranks of type variables from
 context and there would be no known bound to the rank
 of redexes.
 
+\begin{theorem}
+    Convertibility of closed well-typed PTS-$rk$ terms
+    is \textsc{TOWER}-hard (hence
+    \textsc{TOWER}-complete).
+\end{theorem}
+\begin{proof}
+    By reduction from convertibility of Curry-style
+    STLC terms, since that problem is
+    \textsc{TOWER}-hard \cite{nguyen2024simply}.
+
+    Just in case, we start from Curry-style STLC terms.
+    We then reduce this task to convertibility of
+    \textbf{closed} Curry-style STLC terms by adding
+    $\lambda$-abstractions to close over free
+    variables; finally, we infer types of variables in
+    an STLC term by a linear unification algorithm
+    referenced in \cite{nguyen2024simply} and settle on
+    \textbf{closed} well-typed \textbf{Church-style}
+    STLC terms. The following translation then yields
+    \textbf{open} well-typed PTS-$rk$ terms:
+    \begin{align*}
+        \llparenthesis x \rrparenthesis &= x \\
+        \llparenthesis \lambda x^\sigma.t
+        \rrparenthesis &= \lambda(x:\sigma).
+            \llparenthesis t \rrparenthesis \\
+        \llparenthesis t\,u \rrparenthesis &=
+        \llparenthesis t \rrparenthesis \,
+        \llparenthesis u \rrparenthesis
+    \end{align*}
+    The problem is that types $\sigma$ might contain
+    type variables $T_1,\ldots,T_n$ which are not
+    bound. However, it is easily fixable by introducing
+    missing types via abstractions:
+    \[ t \leadsto \lambda(T_1:\mathsf{rk}_0)\ldots
+    (T_n:\mathsf{rk}_0).\llparenthesis t \rrparenthesis
+    \]
+    Assigning all type variables rank $\mathsf{rk}_0$
+    preserves well-typedness since values of such types
+    were never treated as functions in original term.
+\end{proof}
+
+\section{PTS-\texorpdfstring{$rk$}{rk} as a
+computational model}
+\label{computational}
+
+In this section we prove that functions representable
+in PTS-$rk$ are, under minor assumptions, precisely
+elementary recursive functions, and provide a bunch of
+other, more specialised, results.
+
 Another consequence of Theorem~\ref{bounded-sn} is a
 natural upper bound for functions \textit{uniformly}
 representable in PTS-$rk$ (this result is also similar
@@ -1429,20 +1490,18 @@ statman1979typed,fortune1983expressiveness}).
     $\mathcal{F}$ is \emph{uniformly} representable in
     PTS-$rk$ if there is an \emph{input natural number
     type} $N_I:\mathsf{rk}_r$ and an \emph{output
-    natural number type} $N_O:\mathsf{rk}_s$,
-    \emph{zeros} $Z_I:N_I$ and $Z_O:N_O$ and
-    \emph{successors} $S_I:N_I\to N_I$ and
-    $S_O:N_O\to N_O$ such that all of them are in
-    normal form and for each
+    natural number type} $N_O:\mathsf{rk}_s$ together
+    with \emph{encodings} $\forall n\in\mathbb{N}.[n]^I
+    :N_I$ and $\forall n.[n]^O:N_O$ such that all of
+    them are in normal form and for each
     $(f:\mathbb{N}^k\to\mathbb{N})\in\mathcal{F}$ there
     is a \emph{representation}
     $F:N_I\to\ldots\to N_I\to N_O$
     which is also in normal form and such that
     \[
         \forall (n_1,\ldots,n_k)\in\mathbb{N}^k:
-        \quad F\,(S_I^{n_1}\,Z_I)\,\ldots\,
-                (S_I^{n_k}\,Z_I)
-        =_\beta S_O^{f(n_1,\,\ldots,\,n_k)}\,Z_O
+        \quad F\,[n_1]^I\,\ldots\,[n_k]^I
+        =_\beta [f(n_1,\,\ldots,\,n_k)]^O
     \]
 \end{definition}
 
@@ -1454,7 +1513,8 @@ statman1979typed,fortune1983expressiveness}).
 
 \begin{theorem}\label{uniform-elementary}
     A family of elementary recursive functions
-    is not uniformly representable in PTS-$rk$.
+    is \textbf{not} uniformly representable in
+    PTS-$rk$.
 \end{theorem}
 \begin{proof}
     By direct diagonalisation argument. Suppose we
@@ -1467,21 +1527,21 @@ statman1979typed,fortune1983expressiveness}).
     elementary recursive as well:
     \[
         h(t) = \begin{cases}
-            1,&\mathcal{SN}_{r+1}(t\,(S_I^{[t]}\,Z_I))
-            =Z_O,\\
+            1,&\mathcal{SN}_{r+1}(t\,[\mathtt{t}]^I)
+            =[0]^O,\\
             0&\text{otherwise}.
         \end{cases}
     \]
-    (Where $[t]\in\mathbb{N}$ is code of a term $t$
-    used in the definition of $h$.)
+    (Where $\mathtt{t}\in\mathbb{N}$ is code of a term
+    $t$ used in the definition of $h$.)
 
     By assumption, it is encodable by $H:N_I\to N_O$.
     Observe the value of $h(H)$:
     \[
         h(H)=1\Leftrightarrow
-        \mathcal{SN}_{r+1}(H\,(S_I^{[H]}\,Z_I))=Z_O
+        \mathcal{SN}_{r+1}(H\,[\mathtt{H}]^I)=[0]^O
         \Leftrightarrow
-        H\,(S_I^{[H]}\,Z_I) =_\beta Z_O
+        H\,[\mathtt{H}]^I =_\beta [0]^O
         \Leftrightarrow
         h(H)=0
     \]
@@ -1555,7 +1615,7 @@ not in the same sense as before.
     By Theorem~\ref{uniform-elementary}, we cannot hope
     to have both remaining operations represented
     uniformly. Indeed, na\"{i}ve import of traditional
-    exponentiation term for Church numerals
+    exponentiation term for untyped Church numerals
     \cite{church1941calculi,rosser1984highlights}
     raises the rank of an exponent:
     \begin{multline*}
@@ -1726,10 +1786,12 @@ not in the same sense as before.
     \end{multline*}
 \end{proof}
 
-Note that the only difference between uniform and
-non-uniform representations is that, in non-uniform
-representations, we are allowed to pick different $N_I$
-and $N_O$ for each function.
+\begin{remark}
+    Note that the only difference between uniform and
+    non-uniform representations is that, in non-uniform
+    representations, we are allowed to pick different
+    $N_I$ and $N_O$ for each function.
+\end{remark}
 
 \begin{corollary}
     Unary functions in $\mathcal{E}^2$ are uniformly
@@ -1760,11 +1822,11 @@ and $N_O$ for each function.
     Therefore, there exist $N_I\coloneqq\mathcal{N}_r$
     and $N_O\coloneqq\mathcal{N}_0$ such that, for each
     unary $f\in\mathcal{E}^2$, there is a term
-    $F\coloneqq E\,\overline{\mathtt{t}}$ such that
+    $F\coloneqq E\,\overline{\mathtt{f}}$ such that
     \[
         \forall n,\quad F\,\overline{n}=_\beta
-        E\,\overline{\mathtt{t}}\,\overline{n}=_\beta
-        \overline{\mathsf{ev}(\mathtt{t},n)}=
+        E\,\overline{\mathtt{f}}\,\overline{n}=_\beta
+        \overline{\mathsf{ev}(\mathtt{f},n)}=
         \overline{f(n)}.
     \]
 \end{proof}
@@ -1780,9 +1842,71 @@ and $N_O$ for each function.
     lowest universe, just like in PTS-$rk$.
 \end{remark}
 
+There is also a boundary result which stems from
+information-theoretical considerations.
+
+\begin{theorem}\label{rep-bound}
+    If a function $f:\mathbb{N}^k\to\mathbb{N}$ is
+    representable in PTS-$rk$, it is asymptotically
+    bounded above by an elementary recursive function
+    of the size of input encoding.
+\end{theorem}
+\begin{proof}
+    Since it is representable, there are
+    $N_I:\mathsf{rk}_r$, $N_O:\mathsf{rk}_s$ and
+    $F:N_I\to\ldots\to N_I\to N_O$ such that $F$
+    represents $f$. Therefore,
+    \[
+        \forall(n_1,\ldots,n_k),\quad
+        F\,[n_1]^I\,\ldots\,[n_k]^I=_\beta
+        [f(n_1,\ldots,n_k)]^O
+    \]
+    Since terms are definitionally equal, they must
+    have the same normal form which is then equal to
+    $[f(n_1,\ldots,n_k)]^O$ as a word. Looking at the
+    proof of Theorem~\ref{bounded-sn}, its length is
+    then bounded above by
+    $\mathcal{O}(c\uparrow\ldots\uparrow c\uparrow
+    i(n_1,\ldots,n_k))$ where $i(n_1,\ldots,n_k)$ is
+    length of $F\,[n_1]^I\,\ldots\,[n_k]^I$ as a word.
+    Height of the tower of exponents depends not on the
+    $n_i$-s, but on the $d$-bound which is equal to
+    $r+1$ so this bound is \textsc{ELEMENTARY}.
+
+    By combinatorial considerations, length of $[x]^O$
+    is $\Omega(\log{x})$ so
+    \begin{multline*}
+        f(n_1,\ldots,n_k)=\mathcal{O}(\log\left(c
+        \uparrow\ldots\uparrow c\uparrow i(n_1,\ldots,
+        n_k)\right))
+        =\\=\mathcal{O}(c\uparrow\ldots\uparrow c
+        \uparrow i(n_1,\ldots,n_k)),
+    \end{multline*}
+    thus bounded by an elementary recursive function of
+    the size of input encoding.
+\end{proof}
+
+In particular case where elementary recursive encoding
+is used, function representable in PTS-$rk$ is bounded
+by elementary recursive function.
+
+\begin{corollary}
+    Functions representable in PTS-$rk$ with elementary
+    recursive bound on input encoding size are
+    precisely elementary recursive functions.
+\end{corollary}
+\begin{proof}
+    Since functions computable under elementary
+    recursive time bound are elementary recursive
+    \cite{CookKapron2017PrimitiveRecursive}, this
+    follows from Theorems~\ref{non-uniform-rep},
+    \ref{rep-bound}.
+\end{proof}
+
 Two questions remain open: a) whether there are
 non-elementary functions which are non-uniformly
-computable in PTS-$rk$ and b) whether there are any
+computable in PTS-$rk$ because of non-elementary input
+encoding and b) whether there are any
 functions which are not in $\mathcal{E}^2$ and are
 uniformly computable in PTS-$rk$.
 
@@ -1904,8 +2028,9 @@ contrast to ZFC + inaccessible cardinals which is not
 \cite{kanamori2003higher,kunen1980set,godel1931formal}
 ).
 
-\section{Proof-theoretic strength of
-PTS-\texorpdfstring{$rk$}{rk}}
+\section{PTS-\texorpdfstring{$rk$}{rk} as a proof
+system}
+\label{proof-system}
 
 To demonstrate ability of PTS-$rk$ to embed nontrivial
 logical theories, we construct a fixed interpretation
@@ -1923,7 +2048,6 @@ GPT 6 Astra.
 
 \subsection
 {Classical arithmetic and the target calculus}
-\label{sec:logic}
 
 Let $\Rt$ be the relational presentation of
 Tarski--Mostowski--Robinson arithmetic in the
@@ -2122,9 +2246,8 @@ by a finite succession of steps.
 
 \subsection{Finite separation}
 
-In this section we show an intermediate result that our
-definition of $O(x,y)$ rules out finite models of our
-presentation of $\Rt$.
+In this section we prove that $\widetilde R3$ also
+holds in our interpretation of $\Rt$.
 
 \begin{lemma}
     For each $n\in\mathbb{N}$, there is a proof of
@@ -2197,7 +2320,9 @@ obtain a paradoxical $O$ and derive a contradiction by
 Lemma~\ref{sep}.
 
 \subsection{Bounded cases}
-Set
+
+Here, we prove a crucial lemma from which remaining
+axioms follow. Set
 \[
     \Case_n(d)\triangleq\bigvee_c
     \bigl(E(d,\overline{0}),\ldots,E(d,\overline{n}),
@@ -2393,7 +2518,48 @@ graphs need not coincide with the original relations
 $A,M$ on arbitrary arguments.
 
 \section{Conclusion}
-\label{conclusion}
+
+To sum it all up, what started as a funny idea (what if
+there actually was a sound pure type system with
+$\mathsf{type}:\mathsf{type}$) led us to stumble on a
+truly unique dependently typed pure type system,
+PTS-$rk$.
+
+First of all, its normalisation proof is suspiciously
+simple and reminds of classic proofs of normalisation
+for STLC where, instead of an established technique by
+reducibility candidates, one patiently tracks
+complexities of arrow types and makes sure that they
+become simpler after sequences of reductions
+(Section~\ref{rk-sn}). To make sure that this approach
+works for our system, we formalised our proof in Rocq
+proof assistant (Section~\ref{formalisation}) and in
+doing so prepared the groundwork for future verified
+interactions with PTS-$rk$.
+
+After noticing that normalisation proof yields a
+primitive recursive normalisation procedure, we found
+tighter bounds and found out that it has the same
+complexity as normalisation of STLC, which was
+previously unheard of for a dependently typed system
+(Section~\ref{complexity}). In contrast with existing
+pure type systems, our system is able to represent
+elementary recursive functions (both in the sense that
+it is stronger than STLC and weaker than more classical
+dependently typed systems) and seems intimately
+connected to it (Section~\ref{computational}). To
+check if constructions inside PTS-$rk$ even make sense,
+we constructed a set-theoretical model for it which
+assumes a Generalised Continuum Hypothesis in order to
+strictify the hierarchy of $\aleph$-s which act as
+interpretations of our function types
+(Section~\ref{rk-model}). Finally, we provide a lower
+bound on proof-theoretical strength of PTS-$rk$ by
+providing a full interpretation of
+Tarski--Mostowski--Robinson arithmetic $R$ inside it;
+we did it partly because we suspect our system to be
+able to prove its own consistency, therefore
+interpretation of $R$ is the natural first step.
 
 \printbibliography
 \end{document}
