@@ -35,10 +35,14 @@ Run commands from the repository root unless noted otherwise.
   and directs auxiliary files to `../_build`. The paper uses biblatex
   with Biber; the slides require Russian language support.
 - `git diff --check`: check patch whitespace before handing off changes.
+- `bash tools/check-local-ci.sh`: validate the GitHub Actions workflow and
+  run its staged builds in the dedicated local opam switch. See
+  `docs/DirectR-CI.md` for setup and diagnostics.
 
-There is no separate test suite or CI configuration in the current
-repository. For proof changes, successful compilation of the full Rocq
-theory is the primary validation. Validate Agda and LaTeX changes with
+The DirectR workflow is in `.github/workflows/direct-r.yml`;
+`DirectRTests.v` contains examples and assumption reports. For proof changes,
+successful compilation of the full Rocq theory is the primary validation.
+Validate Agda and LaTeX changes with
 their respective tools. Report missing tools or dependencies explicitly;
 do not describe an unrun check as passing.
 
