@@ -3,7 +3,8 @@
     See docs/DirectR.md and docs/DirectR-obligations.md. *)
 
 From Stdlib Require Import Arith.PeanoNat Lia Lists.List Bool.Bool.
-From PTSrk Require Import Syntax.
+(* The upstream lambda notation [T] t conflicts with list literals. *)
+From PTSrk Require Import -(notations) Syntax.
 Import ListNotations.
 
 Module Codes.

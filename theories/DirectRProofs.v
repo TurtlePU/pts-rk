@@ -157,7 +157,7 @@ Qed.
 (** Uniform ground calculations.  These are PTS witnesses, not calculations
     in a meta-level arithmetic observation. *)
 Definition apps (f : closed_term) (xs : list closed_term) : closed_term :=
-  fold_left app xs f.
+  fold_left (@app nat 0) xs f.
 Definition dS x := app successor x.
 Definition dA x y := apps addition [x;y].
 Definition dM x y := apps multiplication [x;y].
