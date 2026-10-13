@@ -1,6 +1,92 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: all finite order laws, following 4deb711
+## Current continuation: typed observation prefix, following 371f5bb
+
+Request: proceed proving, then commit and push. Starting HEAD was
+371f5bb3092531abde5e769f180dc26a42ef56a5 on main, with only untracked user logs/.
+That local order-law commit is preserved. Its prior pushes timed out in Keychain;
+the last verified remote was 4deb711. Theorem 7 is NOT complete.
+
+Complete baseline local CI, including pristine upstream, exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/assembly-baseline"
+bash tools/check-local-ci.sh`, with the documented local bin directory on PATH.
+Output: _build/local-ci-logs/assembly-baseline.log.
+
+New checked results:
+- DirectRTelescopeArguments.arguments_application: an actual typed dependent
+  argument spine applied to a telescope-typed term has the exactly substituted
+  suffix type. Each argument is checked against its preceding substitution.
+- DirectRFiniteData.data_specialization supplies all eight finite data terms.
+- initial_specialization additionally supplies the zero-domain proof.
+- step_specialization additionally supplies successor-domain closure, proving
+  actual original PTS typing after all ten applications, with the exact suffix
+  substitution extending by both chosen proof terms.
+- data_prefix_matches_source, initial_prefix_matches_source and
+  step_prefix_matches_source identify these prefixes with the first 8/9/10
+  fields of the EXISTING Codes.observation_fields, for every named suffix.
+
+These are elimination/application theorems with an arbitrary typed input term,
+not yet a closed implementation of the full observation. The eight data terms
+are Fq, point q 0, capped successor/addition/multiplication, the finite membership
+predicate, and the equality/order tables. Theorems are uniform for all q>0.
+No annotation erasure, new axiom, or altered source/PTS rule was introduced.
+
+Incremental command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFiniteData.vo`.
+Exit-0 logs: _build/local-ci-logs/finite-data-5.log (eight arguments),
+finite-data-6.log (nine), finite-data-9.log (ten).
+Earlier numbered failures remain recorded: unavailable notation/fin_case,
+dependent substitution normalization through nested arrows, explicit var scope,
+and shift-versus-lift_closed normalization. All were repaired and recompiled.
+
+All nineteen relational laws remain individually proved, but only the first
+ten of the full thirty-one observation arguments are now connected to the
+source telescope. Negative ground faithfulness, the four-constructor bounded
+invariant and independent functional deduction preservation remain open.
+
+Exact next goal: package BinaryObservations.delta_addition and
+delta_multiplication into the closed interleaved two-object closure certificates.
+Convert their types from delta q u to app (Separation.predicate q) u, prove that
+the next source annotations (fields 102/103) specialize to those types, and
+extend step_specialization through both proof arguments. Then apply the nineteen
+relational certificates, checking their dependent binder types in source order.
+Only after all thirty-one arguments are checked should finite specialization of
+LeAt and the uniform no_back refutation be claimed.
+
+Next command after the binary-domain additions (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+Fresh isolated full build exited 0, including all legacy examples:
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 300 dune build \
+  --build-dir /tmp/pts-rk-finite-data.Ame1i4 --display=short --no-buffer
+```
+
+All 191 assumption reports are closed (83 in the functional audit). Exact public
+theorem types, prefix definitions and full output are retained in
+verification/finite-data-full-2026-10-13.log; raw output is in
+_build/local-ci-logs/finite-data-full.log. Complete updated local CI also exited 0,
+including pristine upstream and both added stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/finite-data-final"
+bash tools/check-local-ci.sh`. Inventory and results are retained in
+verification/finite-data-ci-2026-10-13.log and _build/local-ci-logs/finite-data-ci.log.
+Shell syntax, actionlint and git diff --check pass. Remote CI has not been
+inspected. This checked proof-progress checkpoint follows the preserved local
+371f5bb commit and is authorized for ordinary commit and push.
+
+The checkpoint was committed locally. `timeout 45 git push origin HEAD:main`
+exited 124, again stalled in git-credential-osxkeychain. The local origin/main
+tracking ref remains 4deb711; neither this checkpoint nor 371f5bb should be
+reported as delivered. Unlock/authorize Git's macOS Keychain access, then run
+`timeout 45 git push origin HEAD:main` with the documented local bin directory
+on PATH and verify the remote ref. No force-push or credential workaround was
+attempted. The user's untracked logs/ remains the only unrelated worktree path.
+
+## Historical continuation: all finite order laws, following 4deb711
 
 Request: proceed proving, then commit and push. Starting HEAD was
 4deb711baab72f9a75eebb5325b5f0a87600437b on main. Only untracked user logs/

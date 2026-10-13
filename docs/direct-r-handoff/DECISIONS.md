@@ -1,5 +1,24 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — typed dependent application and ten-argument observation prefix
+
+- Represent an argument spine by original typing judgments at successively
+  substituted annotations. Prove arguments_application using only ordinary
+  tApp and the simultaneous/single substitution identity; do not replace
+  dependent application with a homogeneous list of separately typed terms.
+- Prove the eight-data telescope equals assembly of the first eight fields of
+  Codes.observation_fields for every named suffix. Repeat the source-prefix
+  equality through the zero and successor domain certificate binders.
+- Specialize arbitrary typed suffixes through all eight finite data terms and
+  the first two domain proofs. The remaining codomain is the exact simultaneous
+  substitution, retaining any dependency on the actual proof arguments.
+- Reuse Separation.predicate/initial_certificate/step_certificate, which are
+  generic finite-membership constructions, not the unary interpretation's O.
+  The original functional observation and calculus remain unchanged.
+- This is ten of thirty-one arguments, not the complete observation. Binary
+  domain closure must still be packaged and its binder conversions checked;
+  the nineteen relational proofs must then be applied in their fixed order.
+
 ## 2026-10-13 — all five finite order-propagation laws
 
 - Compile unconditional comparisons and one-premise order implications from

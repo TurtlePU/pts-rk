@@ -151,6 +151,8 @@ stage 06a-finite-zero-laws "$ROOT" theories/DirectRFiniteZeroLaws.vo
 stage 06a-finite-expressions "$ROOT" theories/DirectRFiniteExpressions.vo
 stage 06a-finite-recursion-laws "$ROOT" theories/DirectRFiniteRecursionLaws.vo
 stage 06a-finite-order-laws "$ROOT" theories/DirectRFiniteOrderLaws.vo
+stage 06a-telescope-arguments "$ROOT" theories/DirectRTelescopeArguments.vo
+stage 06a-finite-data "$ROOT" theories/DirectRFiniteData.vo
 stage 06b-foundations "$ROOT" theories/DirectRFoundations.vo
 stage 06c-unary "$ROOT" theories/DirectRUnary.vo
 stage 06c-finite-up "$ROOT" theories/DirectRFiniteUp.vo
