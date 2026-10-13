@@ -26,6 +26,7 @@ mkdir -p "$LOG_DIR"
 LOG_DIR="$(cd "$LOG_DIR" && pwd)"
 BASELINE_DIR=''
 CURRENT_STAGE='toolchain-inventory'
+INTERRUPTED_BY=''
 : > "$LOG_DIR/stages.tsv"
 printf 'Stage\tResult\tExit code\n' > "$LOG_DIR/stages.tsv"
 printf 'Diagnostic directory: %s\n' "$LOG_DIR"
@@ -40,6 +41,13 @@ finish() {
   fi
   {
     printf 'Exit code: %s\nLast stage: %s\n' "$status" "$CURRENT_STAGE"
+    if [[ -n "$INTERRUPTED_BY" ]]; then
+      printf 'Interrupted by signal: %s\n' "$INTERRUPTED_BY"
+    elif [[ "$status" -eq 143 || "$status" -eq 137 ]]; then
+      printf 'A process was terminated by a signal; inspect the runner log.\n'
+    elif [[ "$status" -eq 124 ]]; then
+      printf 'The stage resource limit expired; this is not a compiler diagnostic.\n'
+    fi
     printf '\nGreen means the supplied files compiled. It does NOT assert the missing\n'
     printf 'uniform GeneratorTotal/GeneratorSound or first-order soundness theorems.\n'
   } > "$LOG_DIR/result.txt"
@@ -60,6 +68,15 @@ finish() {
   exit "$status"
 }
 trap finish EXIT
+# Preserve interruption evidence when the runner cancels the shell. SIGKILL or
+# loss of the host cannot be trapped, and artifact upload is then not guaranteed.
+interrupted() {
+  INTERRUPTED_BY="$1"
+  printf '%s\tINTERRUPTED\t%s\n' "$CURRENT_STAGE" "$2" >> "$LOG_DIR/stages.tsv"
+  exit "$2"
+}
+trap 'interrupted TERM 143' TERM
+trap 'interrupted INT 130' INT
 
 {
   git rev-parse HEAD
