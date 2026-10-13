@@ -2,7 +2,7 @@
     bounded-case milestone. This is not an assertion of Theorem 4. *)
 From PTSrk Require Import -(notations) Syntax.
 From PTSrk Require Import Context Typing Ranks DirectRCodes DirectRKernel
-  DirectRLogic DirectRUnary.
+  DirectRLogic DirectRUnary DirectRUnaryAxioms DirectRFiniteTables.
 
 Theorem unary_bounded_cases : forall cutoff, exists p,
   @typ nat RankSorts 0 ε p
@@ -29,3 +29,28 @@ Print Assumptions Unary.case_successor_realized.
 Print Assumptions NegativeLogic.flat_injection.
 Print Assumptions NegativeLogic.flat_eliminate.
 Print Assumptions NegativeLogic.positive_invariant_intro.
+
+Theorem unary_comparability : forall cutoff, exists p,
+  @typ nat RankSorts 0 ε p
+    (Π Unary.Domain (Codes.Arrow (Unary.admitted Codes.V0)
+      (UnaryAxioms.Compare cutoff Codes.V0))).
+Proof. exact UnaryAxioms.R5_realized. Qed.
+
+Check unary_comparability.
+Print UnaryAxioms.Compare.
+Check FiniteTables.table_typed.
+Check FiniteTables.table_action.
+Check FiniteTables.capped_successor_action.
+Check FiniteTables.iterate_computation.
+Print Assumptions unary_comparability.
+Print Assumptions UnaryAxioms.comparison_in_context.
+Print Assumptions FiniteTables.projection_typed.
+Print Assumptions FiniteTables.projection_application.
+Print Assumptions FiniteTables.table_typed.
+Print Assumptions FiniteTables.table_action.
+Print Assumptions FiniteTables.capped_successor_action.
+Print Assumptions FiniteTables.separating_test_typed.
+Print Assumptions FiniteTables.separating_test_top.
+Print Assumptions FiniteTables.separating_test_bottom.
+Print Assumptions FiniteTables.iterate_typed.
+Print Assumptions FiniteTables.iterate_computation.
