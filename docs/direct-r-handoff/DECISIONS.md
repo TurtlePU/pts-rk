@@ -1,5 +1,24 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — independent relational syntax and structural translation
+
+- Defined a scoped source language with only 0/S terms and the four atomic
+  predicates =, <=, A, M. Source derivability is inductive natural deduction,
+  independent of PTS inhabitation, with classical double-negation elimination,
+  universal rules with scoped freshness, and full formula equality replacement.
+- Falsity, implication and universal quantification are primitive. Conjunction,
+  finite disjunction, existential and equivalence are classical abbreviations
+  using the manuscript's negative encodings. No source rule assumes target
+  soundness, and no native classical axiom was imported.
+- Proved structural translation/substitution/renaming and instantiation laws,
+  exact formula ranks, and typed/admitted term translation. Ground source terms
+  translate to their unary numerals, connecting all four kinds of source atoms
+  to genuine PTS proof/refutation inhabitants.
+- Proved preservation of the independently stated source axiom schemes, plus
+  implication and guarded universal elimination. These do not imply arbitrary
+  deduction preservation: stability, equality transport, introduction rules,
+  and the derivation induction remain explicit obligations.
+
 ## 2026-10-13 — all relational axiom schemes and ground arithmetic
 
 - Proved the full guarded R4 biconditional, not just its forward direction.

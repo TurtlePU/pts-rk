@@ -26,7 +26,7 @@ The authoritative new reference is
 ## Checkout and environment
 
 This continuation started at main commit
-`cf105ba252d345650aac9a05de51dd4deda7460b` (checked unary separation and R3).
+`7e2e736ea06970be4682886c12058147d69b4b1a` (checked all relational axiom schemes).
 Only the existing untracked logs/ directory was present. It was preserved.
 
 Arithmetic progress checkpoint on main: `a16646b`
@@ -44,6 +44,68 @@ Dune 3.23.1, opam 2.6.1, actionlint 1.7.12. GNU timeout is available.
 The pristine upstream requires Rocq 9.2's Create Rewrite HintDb.
 
 ## Actually compiled
+
+### Independent relational source and structural translation, following 7e2e736
+
+DirectRRelationalSyntax defines independent scoped terms/formulas and the
+relational arithmetic schemes. Its inductive derives judgment has hypothesis,
+theory, implication introduction/elimination, universal introduction/elimination,
+classical DNE, equality reflexivity and formula equality replacement. Universal
+introduction weakens the entire source context, encoding the freshness condition.
+No target typing/inhabitation occurs in any derivation constructor. Only Fin is
+shared with Syntax. Conjunction/disjunction/existential/iff are classical
+abbreviations over falsity/implication/universal with the paper's fixed encoding.
+
+DirectRRelationalTranslation proves term/formula renaming and substitution,
+including instantiate_translation at binders; exact formula ranks; original
+PTS term typing and Good evidence under typed/admitted environments; closed
+source term translation to unary numerals; implication and guarded universal
+elimination. DirectRRelationalAxioms proves the original typing judgment for
+the structural translation of every independently stated source axiom, in
+arbitrary target contexts. DirectRRelationalGround proves true/false equality,
+order, addition-graph and multiplication-graph source atoms for ALL closed
+source terms, not just a separate family of target-side atom definitions.
+
+Baseline command `opam exec --switch=pts-rk-ci -- dune build --display=short
+ --no-buffer theories/DirectRUnaryAudit.vo` exited 0, log
+_build/local-ci-logs/relational-source-baseline.log. Incremental commands used
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short --no-buffer`
+with targets DirectRRelationalSyntax.vo (relational-syntax-build-3.log),
+DirectRRelationalTranslation.vo (relational-translation-build-2.log and -3.log),
+DirectRRelationalGround.vo (relational-ground-build-1.log),
+DirectRRelationalAxioms.vo (relational-axioms-build-1.log), and both last targets
+(relational-rules-build-1.log): all exit 0. Logs remain in _build/local-ci-logs.
+Earlier failed scripts (source context weakening and an omitted falsity branch
+in a structural induction) remain recorded and were repaired without admissions.
+
+Fresh isolated build exited 0: `opam exec --switch=pts-rk-ci -- timeout 300
+ dune build --build-dir /tmp/pts-rk-source-check.Vath3i --display=short --no-buffer
+ theories/DirectRRelationalAudit.vo theories/DirectRUnaryAudit.vo theories/DirectR.vo
+ theories/DirectRCountermodel.vo theories/DirectRArithmetic.vo models/SetFunctions.vo`.
+All original PTS dependencies and new source/translation modules rebuilt.
+All 21 new Print Assumptions queries are Closed under the global context,
+with 86 closed reports including prior audits. The exact derivation definition,
+public theorem types and compiler transcript are tracked in
+`verification/relational-source-2026-10-13.log`; local copy is
+`_build/local-ci-logs/relational-source-fresh.log`. Whitespace, shell syntax,
+and actionlint checks passed. Five dedicated source/translation CI stages
+were added; no existing stage or timeout was removed or weakened.
+Full build `opam exec --switch=pts-rk-ci -- timeout 120 dune build
+ --build-dir /tmp/pts-rk-source-check.Vath3i --display=short --no-buffer`
+exited 124 in unchanged DirectRTests. Exact output is retained in
+`verification/relational-source-full-2026-10-13.log` and the local
+`_build/local-ci-logs/relational-source-full.log`. No full green build or
+remote CI success is claimed. User logs/ and the TeX were left untouched.
+
+Theorem 4 remains INCOMPLETE. Exact next goal: formula stability and formula
+equality transport for two typed/admitted environments whose corresponding
+terms are E-related. Use these to preserve classical DNE and equality_replace;
+prove introduction rules and induction on Relational.derives. Then prove
+semantic soundness of that independent system in the existing source
+countermodel to establish non-derivability of universal reflexivity. No final
+deduction-preservation theorem or source non-derivability theorem is yet present.
+Next command: `opam exec --switch=pts-rk-ci -- dune build --display=short
+ --no-buffer theories/DirectRRelationalAudit.vo`.
 
 ### All relational axiom schemes, following cf105ba
 
@@ -431,12 +493,12 @@ Uniform mathematical goals:
    named-generator bridge is not required for the unary interpretation.
 2. Unary Theorem 4's uniform invariant and bounded-case proof are now checked.
    The separate functional Theorem 7's four-constructor invariant remains open.
-3. All unary relational axiom schemes and ground numeral atoms are now
-   checked, including both R4 directions and true/false ternary A/M atoms.
-   Connect these to an independent relational source syntax and translation.
-4. Define an independent classical FOL deduction system and prove substitution,
-   guarded equality replacement, stability and deduction preservation. Connect
-   source countermodel soundness to non-derivability of universal reflexivity.
+3. All unary relational axiom schemes and ground atoms are checked and now
+   connected to independent relational syntax via a structural translation.
+4. The independent deduction system and translation/substitution lemmas are
+   checked. Finish guarded equality replacement, formula stability and full
+   deduction preservation. Connect source countermodel soundness to
+   non-derivability of universal reflexivity.
 5. Only claim either main theorem after unconditional final types, a fresh
    successful build and transitive Print Assumptions.
 
