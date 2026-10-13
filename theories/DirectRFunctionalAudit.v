@@ -3,7 +3,8 @@
     preservation remain explicit obligations in the live handoff. *)
 From PTSrk Require Import DirectRFunctionalTerms DirectRFunctionalLogic
   DirectRBinaryTables DirectRBinaryObservations DirectRRelationTables
-  DirectRFiniteLawElimination DirectRFunctionalFiniteLaws.
+  DirectRFiniteLawElimination DirectRFunctionalFiniteLaws DirectRGuardedFiniteLaws
+  DirectRFiniteTransitivity DirectRFiniteCongruence.
 Check FunctionalTerms.term_typed.
 Check FunctionalTerms.term_admitted.
 Check FunctionalTerms.ground_evaluation.
@@ -25,6 +26,16 @@ Check RelationTables.boolean_horn_realized.
 Check FunctionalFiniteLaws.relation_symmetry.
 Check FunctionalFiniteLaws.equality_symmetry_realized.
 Print FunctionalFiniteLaws.symmetry_type.
+Check GuardedFiniteLaws.guarded_typed.
+Check GuardedFiniteLaws.guarded_finite_realized.
+Check FiniteTransitivity.equality_transitivity_realized.
+Check FiniteTransitivity.order_transitivity_realized.
+Check FiniteCongruence.relation_congruence_realized.
+Check FiniteCongruence.order_congruence_realized.
+Print FiniteTransitivity.expanded_type.
+Print FiniteTransitivity.body.
+Print FiniteCongruence.expanded_type.
+Print FiniteCongruence.body.
 Print Assumptions FunctionalTerms.term_typed.
 Print Assumptions FunctionalTerms.term_admitted.
 Print Assumptions FunctionalTerms.term_observed.
@@ -54,3 +65,12 @@ Print Assumptions RelationTables.boolean_horn_typed.
 Print Assumptions RelationTables.boolean_horn_realized.
 Print Assumptions FunctionalFiniteLaws.relation_symmetry.
 Print Assumptions FunctionalFiniteLaws.equality_symmetry_realized.
+Print Assumptions GuardedFiniteLaws.guarded_intro.
+Print Assumptions GuardedFiniteLaws.guarded_typed.
+Print Assumptions GuardedFiniteLaws.guarded_finite_realized.
+Print Assumptions FiniteTransitivity.transitivity_type_beta.
+Print Assumptions FiniteTransitivity.equality_transitivity_realized.
+Print Assumptions FiniteTransitivity.order_transitivity_realized.
+Print Assumptions FiniteCongruence.congruence_type_beta.
+Print Assumptions FiniteCongruence.relation_congruence_realized.
+Print Assumptions FiniteCongruence.order_congruence_realized.
