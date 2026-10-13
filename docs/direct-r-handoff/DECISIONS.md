@@ -99,3 +99,18 @@ an architectural change has been verified before compiling it.
 - User explicitly put the PTS set model in scope as a subsequent task using
   rocq-archive/zfc. Preserve its ZF+GCH premise and audit imported library
   assumptions separately. No model soundness proof has yet been constructed.
+
+## 2026-10-13 — concrete set-function foundations, not model soundness
+
+- Pinned the required Sets/Axioms/Cartesian subset from rocq-archive/zfc at
+  ede7126560844c381c2b021003a8dbcb0668ecad, preserving LGPL license and provenance.
+  Replaced the removed elimtype tactic only. No logical statement changed.
+- Built dependent function sets by separation from a powerset of a Cartesian
+  product. Indexing a set directly by all host functions Ens -> Ens would
+  exceed the library's set-indexing universe; no universe check was disabled.
+- Proved graph introduction, application, uniqueness, beta computation and
+  empty-fiber emptiness with the actual set library. All printed assumptions
+  are closed. No choice or GCH assumption is needed for these foundations.
+- The paper's coding universes/cardinal bound/coherent bijections and original
+  PTS typing soundness remain open. This checkpoint does not claim them, nor
+  does it call the generic empty-fiber fact a proof of PTS nontriviality.

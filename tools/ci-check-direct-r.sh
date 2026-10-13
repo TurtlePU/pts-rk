@@ -119,6 +119,7 @@ stage 06a-structural "$ROOT" theories/DirectRStructural.vo
 stage 06b-foundations "$ROOT" theories/DirectRFoundations.vo
 stage 06c-unary "$ROOT" theories/DirectRUnary.vo
 stage 06d-source-countermodel "$ROOT" theories/DirectRCountermodel.vo
+stage 06e-set-functions "$ROOT" models/SetFunctions.vo
 stage 07-proof-families "$ROOT" theories/DirectRProofs.vo
 stage 08-generators "$ROOT" theories/DirectRGenerated.vo
 stage 09-first-order "$ROOT" theories/DirectRFirstOrder.vo

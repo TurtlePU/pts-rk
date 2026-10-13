@@ -20,10 +20,11 @@ The authoritative new reference is
 
 ## Checkout and environment
 
-Base checkpoint on main: `b6fa20660860258717637426605353e0bf3e38e5`
-(`Repair Rocq infrastructure and add local CI handoff`), previously pushed.
-Current proof changes follow that checkpoint. Inspect git log/status for their
-commit; do not reset. User's new harmonized TeX is preserved, including its
+Arithmetic progress checkpoint on main: `a16646b`
+(`Prove ground arithmetic and add harmonized unary foundations`), pushed.
+It follows `b6fa20660860258717637426605353e0bf3e38e5`.
+Inspect git log/status for subsequent model work; do not reset.
+User's new harmonized TeX is preserved, including its
 pre-existing trailing space at line 287. Downloaded `logs/` remain untouched
 and untracked.
 
@@ -129,7 +130,28 @@ plus Structural.structural_substitution_in avoid that. Eauto with transitivity
 as a global search rule became expensive for multiplication; the successful
 proof supplies the two transitivity steps explicitly.
 
-Set-model stage: only the paper's model section and the requested library's
-README have been inspected. No model or soundness proof, no installed ZFC
-dependency, and no second model commit exist yet. Do not label a record of
-assumed model laws as construction/soundness of the paper's model.
+## Subsequent set-model foundations checkpoint
+
+The requested ZFC dependency was inspected at
+`ede7126560844c381c2b021003a8dbcb0668ecad`. Its full Makefile failed on the
+removed elimtype tactic. A pinned, licensed subset (Sets/Axioms/Cartesian)
+is now vendored; one tactic in Cartesian was translated without changing
+its statement or assumptions. No gh or publish.sh was used.
+
+`models/SetFunctions.v` constructs the ordinary dependent function set as a
+subset of a powerset. Graph abstraction, beta computation, relational
+application, uniqueness and empty-fiber emptiness compile, with all five
+Print Assumptions reports closed under the global context.
+
+Exact successful command:
+`opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer models/SetFunctions.vo`.
+Log: `_build/local-ci-logs/set-functions-build.log`; tracked report under
+`verification/set-functions-2026-10-13.log`. CI has a separate model-foundations
+dependency stage and still checks every original stage.
+
+This is NOT yet the PTS model or its soundness theorem. Next mathematical
+work is the actual countable cardinal/sort-code universes and extensional
+decoding, followed by finite-aleph/GCH bounds, coherent coding bijections,
+substitution/beta semantics and soundness of the original typing judgment.
+See models/README.md. Do not replace those obligations by a record assuming
+model laws, or infer Bottom nontriviality merely from the empty-fiber lemma.
