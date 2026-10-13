@@ -5,8 +5,8 @@
 \addbibresource{bibliography.bib}
 
 \usepackage
-{amsmath,amssymb,hyperref,mathpartir,minted,simplebnf,
-stmaryrd,tikz-cd}
+{amsmath,amssymb,hyperref,mathpartir,mathtools,minted,
+simplebnf,stmaryrd,tikz-cd}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}
@@ -105,18 +105,20 @@ dependent functions $\Pi(x:T).U$ (where $U$ might
 depend on $x$) and \textit{sorts} $s\in\mathcal{S}$
 which act like ``types of types''.
 
-\begin{figure}[h]
-\begin{bnf}
-$x$ : \textsf{Variable} :in: $X$;;
-$s$ : \textsf{Sort} :in: $S$;;
-$T$, $U$, $t$, $u$ : \textsf{Term} ::=
-| $x$ : variable
-| $s$ : sort as type
-| $\Pi(x\colon T).\,U$ : type of dependent functions
-| $\lambda(x\colon T).\,u$ : anonymous function
-| $u\,t$ : function application
-;;
-\end{bnf}
+\begin{figure}[ht]
+    \begin{bnf}
+    $x$ : \textsf{Variable} :in: $X$;;
+    $s$ : \textsf{Sort} :in: $S$;;
+    $T$, $U$, $t$, $u$ : \textsf{Term} ::=
+    | $x$ : variable
+    | $s$ : sort as type
+    | $\Pi(x\colon T).\,U$
+        : type of dependent functions
+    | $\lambda(x\colon T).\,u$ : anonymous function
+    | $u\,t$ : function application
+    ;;
+    \end{bnf}
+    \caption{Grammar of pure type systems}
 \end{figure}
 
 Common syntax conventions to make it more lightweight
@@ -317,7 +319,7 @@ on complexity, we built a sound set-theoretic model for
 PTS-$rk$ (see Section~\ref{rk-model}) which assumes
 \emph{Generalised Continuum Hypothesis}
 \cite{jech2003set,hausdorff1908} which is an unusual
-pick for dependently typed systems, where
+pick for dependently typed systems where
 \emph{inaccessible cardinals} are a more common
 assumption \cite{werner1997sets,lee2011proof}. We
 provide a closing summary and some pointers on future
@@ -885,7 +887,8 @@ already taken care of.
     \end{itemize}
 \end{proof}
 
-\section{Strong normalisation of PTS-$rk$}
+\section{Strong normalisation of
+PTS-\texorpdfstring{$rk$}{rk}}
 \label{rk-sn}
 
 \begin{theorem}[Strong normalisation of PTS-$rk$]
@@ -1047,7 +1050,8 @@ since, informally, sort is kind of a constant which can
 not be converted into a function.
 
 \subsection
-{Formalising normalisation of PTS-$rk$ in Rocq}
+{Formalising normalisation of
+PTS-\texorpdfstring{$rk$}{rk} in Rocq}
 \label{formalisation}
 
 In view of high technicality of the proof for strong
@@ -1240,7 +1244,8 @@ through.
     treatment above.
 \end{proof}
 
-\section{Computational complexity of PTS-$rk$}
+\section{Computational complexity of
+PTS-\texorpdfstring{$rk$}{rk}}
 \label{complexity}
 
 (Proofs in the following sections are not formalised in
@@ -1414,64 +1419,76 @@ of redexes.
 
 Another consequence of Theorem~\ref{bounded-sn} is a
 natural upper bound for functions \textit{uniformly}
-expressible in PTS-$rk$ (this result is also similar to
-the one for STLC \cite{schwichtenberg1976definierbare,
+representable in PTS-$rk$ (this result is also similar
+to the one for STLC
+\cite{schwichtenberg1976definierbare,
 statman1979typed,fortune1983expressiveness}).
 
 \begin{definition}
     A family of functions on natural numbers
-    $\mathcal{F}$ is \emph{uniformly} expressible in
-    PTS-$rk$ if there is a \emph{natural number type}
-    $N:\mathsf{rk}_r$, a \emph{zero} $Z:N$, and a
-    \emph{successor} $S:N\to N$ such that for each
+    $\mathcal{F}$ is \emph{uniformly} representable in
+    PTS-$rk$ if there is an \emph{input natural number
+    type} $N_I:\mathsf{rk}_r$ and an \emph{output
+    natural number type} $N_O:\mathsf{rk}_s$,
+    \emph{zeros} $Z_I:N_I$ and $Z_O:N_O$ and
+    \emph{successors} $S_I:N_I\to N_I$ and
+    $S_O:N_O\to N_O$ such that all of them are in
+    normal form and for each
     $(f:\mathbb{N}^k\to\mathbb{N})\in\mathcal{F}$ there
-    is an \emph{encoding} $F:N\to\ldots\to N\to N$ such
-    that
+    is a \emph{representation}
+    $F:N_I\to\ldots\to N_I\to N_O$
+    which is also in normal form and such that
     \[
         \forall (n_1,\ldots,n_k)\in\mathbb{N}^k:
-        \quad F\,(S^{n_1}\,Z)\,\ldots\,(S^{n_k}\,Z)
-        =_\beta S^{f(n_1,\,\ldots,\,n_k)}\,Z
+        \quad F\,(S_I^{n_1}\,Z_I)\,\ldots\,
+                (S_I^{n_k}\,Z_I)
+        =_\beta S_O^{f(n_1,\,\ldots,\,n_k)}\,Z_O
     \]
 \end{definition}
 
+\begin{remark}
+    Note that requirement for terms to be in normal
+    form is not restrictive: we can always normalise a
+    non-normal term.
+\end{remark}
+
 \begin{theorem}\label{uniform-elementary}
     A family of elementary recursive functions
-    is not uniformly expressible in PTS-$rk$.
+    is not uniformly representable in PTS-$rk$.
 \end{theorem}
 \begin{proof}
     By direct diagonalisation argument. Suppose we
     could encode all elementary recursive functions
-    with $N:\mathsf{rk}_r$, $Z:N$ and $S:N\to N$.
+    with $N_I:\mathsf{rk}_r$ and $N_O:\mathsf{rk}_s$.
 
-    Denote by $z$ and $s$ normal forms of $Z$ and $S$,
-    respectively. By Theorem~\ref{bounded-sn},
-    normalisation of $(r+1)$-bounded terms
-    $\mathcal{SN}_{r+1}$ is elementary recursive, so
-    the following function is elementary recursive as
-    well:
+    By Theorem~\ref{bounded-sn}, normalisation of
+    $(r+1)$-bounded terms $\mathcal{SN}_{r+1}$ is
+    elementary recursive, so the following function is
+    elementary recursive as well:
     \[
         h(t) = \begin{cases}
-            1,&\mathcal{SN}_{r+1}(t\,(s^{[t]}\,z))=z,\\
+            1,&\mathcal{SN}_{r+1}(t\,(S_I^{[t]}\,Z_I))
+            =Z_O,\\
             0&\text{otherwise}.
         \end{cases}
     \]
-    (Where $[t]\in\mathbb{N}$ is code of a term $t$.)
+    (Where $[t]\in\mathbb{N}$ is code of a term $t$
+    used in the definition of $h$.)
 
-    By assumption, it is encodable by
-    $\mathcal{H}:N\to N$; denote by $H$ its normal
-    form. Observe the value of $h(H)$:
+    By assumption, it is encodable by $H:N_I\to N_O$.
+    Observe the value of $h(H)$:
     \[
         h(H)=1\Leftrightarrow
-        \mathcal{SN}_{r+1}(H\,(s^{[H]}\,z))=z
+        \mathcal{SN}_{r+1}(H\,(S_I^{[H]}\,Z_I))=Z_O
         \Leftrightarrow
-        H\,(s^{[H]}\,z) =_\beta z
+        H\,(S_I^{[H]}\,Z_I) =_\beta Z_O
         \Leftrightarrow
         h(H)=0
     \]
     First equivalence is by definition of $h$; second
     is by virtue of expression under $\mathcal{SN}$
     being $(r+1)$-bounded; the last is by definition
-    of $h$ being encoded by $\mathcal{H}$.
+    of $h$ being encoded by $H$.
 \end{proof}
 
 A logical next question is then: which functions are
@@ -1496,10 +1513,11 @@ not in the same sense as before.
 
 \begin{theorem}
     [Non-uniform elementary representability]
+    \label{non-uniform-rep}
     For each elementary recursive function
     $f:\mathbb{N}^n\to\mathbb{N}$, there is a
     \emph{cost} $c_f$ such that for each \emph{base
-    rank} $j$, there is an \emph{encoding} $F_j:
+    rank} $j$, there is a \emph{representation} $F_j:
     \mathcal{N}_{j+c_f}\to\ldots\to\mathcal{N}_{j+c_f}
     \to\mathcal{N}_j$ such that
     \[
@@ -1687,7 +1705,7 @@ not in the same sense as before.
         c^+&\triangleq L,\\
         \rho^+&\triangleq\lambda(t:S^+)(g:X\to X)(a:X).
             \rho\,(ta)\,g\,(ga),&
-        r^+&:=\rho\,(m\,S\,c\,z).
+        r^+&\triangleq\rho\,(m\,S\,c\,z).
     \end{align*}
     A transition term can be written like this:
     \[
@@ -1708,13 +1726,68 @@ not in the same sense as before.
     \end{multline*}
 \end{proof}
 
+Note that the only difference between uniform and
+non-uniform representations is that, in non-uniform
+representations, we are allowed to pick different $N_I$
+and $N_O$ for each function.
+
+\begin{corollary}
+    Unary functions in $\mathcal{E}^2$ are uniformly
+    representable in PTS-$rk$.
+\end{corollary}
+\begin{proof}
+    There is a binary function $\mathsf{ev}:
+    \mathbb{N}^2\to\mathbb{N}$ in $\mathcal{E}^3$ which
+    is universal for unary functions in $\mathcal{E}^2$
+    \cite[Section~5, p.~873, footnote~5]{Skordev2008}.
+    In other words, for each $f:\mathbb{N}\to
+    \mathbb{N}$ in $\mathcal{E}^2$, there is a code
+    $\mathtt{f}\in\mathbb{N}$ such that
+    \[
+        \forall n,\quad\mathsf{ev}(\mathtt{f},n)
+        =f(n).
+    \]
+    And $\mathcal{E}^3$ is precisely elementary
+    recursive functions, so by
+    Theorem~\ref{non-uniform-rep} there is a cost $r$
+    and a term
+    $E:\mathcal{N}_r\to\mathcal{N}_r\to\mathcal{N}_0$
+    such that
+    \[
+        \forall m n,\quad E\,\overline{m}\,\overline{n}
+        =_\beta\overline{\mathsf{ev}(m,n)}
+    \]
+    Therefore, there exist $N_I\coloneqq\mathcal{N}_r$
+    and $N_O\coloneqq\mathcal{N}_0$ such that, for each
+    unary $f\in\mathcal{E}^2$, there is a term
+    $F\coloneqq E\,\overline{\mathtt{t}}$ such that
+    \[
+        \forall n,\quad F\,\overline{n}=_\beta
+        E\,\overline{\mathtt{t}}\,\overline{n}=_\beta
+        \overline{\mathsf{ev}(\mathtt{t},n)}=
+        \overline{f(n)}.
+    \]
+\end{proof}
+
+\begin{remark}
+    While our system appears to be restricted to
+    elementary recursive functions, turns out that
+    there is another dependently typed system in which
+    functions on natural numbers are \emph{primitive}
+    recursive \cite{buchholtz2024primitive}.
+    Interestingly enough, part of their solution is in
+    forbidding function types from appearing in the
+    lowest universe, just like in PTS-$rk$.
+\end{remark}
+
 Two questions remain open: a) whether there are
 non-elementary functions which are non-uniformly
 computable in PTS-$rk$ and b) whether there are any
-non-polynomial functions which are uniformly
-computable in PTS-$rk$.
+functions which are not in $\mathcal{E}^2$ and are
+uniformly computable in PTS-$rk$.
 
-\section{Set-theoretical model of PTS-$rk$}
+\section{Set-theoretical model of
+PTS-\texorpdfstring{$rk$}{rk}}
 \label{rk-model}
 
 Now, studying computational properties of a calculus is
@@ -1734,8 +1807,9 @@ We are going to need an unusual assumption however:
     Produced in discussion with GPT 6 Astra.
 
     Take distinct codes \(c_\kappa\) for every cardinal
-    below \(\aleph_\omega\) and distinct additional
-    codes \(s_j\) for \(j\in\mathbb N\). Define
+    $\kappa$ below \(\aleph_\omega\) and distinct
+    additional codes \(s_j\) for \(j\in\mathbb N\).
+    Define
     \[
         U_i=\{c_\kappa:\kappa\le\aleph_i\}\cup
             \{s_j:j\in\mathbb N\},
@@ -1830,39 +1904,46 @@ contrast to ZFC + inaccessible cardinals which is not
 \cite{kanamori2003higher,kunen1980set,godel1931formal}
 ).
 
-\section{Proof-theoretic strength of PTS-$rk$}
+\section{Proof-theoretic strength of
+PTS-\texorpdfstring{$rk$}{rk}}
 
 To demonstrate ability of PTS-$rk$ to embed nontrivial
 logical theories, we construct a fixed interpretation
 of Tarski--Mostowski--Robinson arithmetic $\R$ in
-$\PTS$. A unary Church domain and certified finite
-observations first interpret its relational form $\Rt$.
-Definable graphs then yield $\R$; a direct
-interpretation with arithmetic operators is also given.
-All constructions use only dependent function types and
-$\beta$-conversion.
+$\PTS$: Church numerals and certified finite
+observations first interpret its relational form $\Rt$;
+definable graphs yield $\R$. Interpretation is split
+into two parts since interpretation of $\Rt$ is simpler
+and already exposes all of the main ideas, while direct
+interpretation of $\R$ would be strictly more
+cumbersome.
+
+The following proof was obtained in discussion with
+GPT 6 Astra.
 
 \subsection
 {Classical arithmetic and the target calculus}
 \label{sec:logic}
 
-We work in classical first-order logic with equality.
 Let $\Rt$ be the relational presentation of
-Tarski--Mostowski--Robinson arithmetic in the language
-$\{0,S,=,\le,A,M\}$, with ternary predicates $A,M$ and
-numerals $\bar n=S^n0$. Its axioms are the universal
-closures of the following schemes, indexed by external
+Tarski--Mostowski--Robinson arithmetic in the
+first-order language with equality $\{0,S,=,\le,A,M\}$,
+with ternary predicates $A,M$ and numerals
+$\bar n=S^n0$. Its axioms are the universal closures of
+the following schemes, indexed by external
 $m,n\in\mathbb N$:
 \begin{align}
- A(\bar m,\bar n,x)&\leftrightarrow \overline{m+n}=x,
+    A(\bar m,\bar n,x)&\leftrightarrow
+    \overline{m+n}=x,
     \tag{$\widetilde R1$}\label{rtilde:add}\\
- M(\bar m,\bar n,x)&\leftrightarrow \overline{mn}=x,
-    \tag{$\widetilde R2$}\label{rtilde:mul}\\
- \bar m&\ne\bar n\quad(m\ne n),
-    \tag{$\widetilde R3$}\label{rtilde:neq}\\
- x\le\bar n&\leftrightarrow\bigvee_{i=0}^{n}x=\bar i,
+    M(\bar m,\bar n,x)&\leftrightarrow \overline{mn}=x,
+    \tag{$\widetilde R2$}\\
+    \bar m&\ne\bar n\quad(m\ne n),
+    \tag{$\widetilde R3$}\\
+    x\le\bar n&\leftrightarrow\bigvee_{i=0}^{n}x=
+    \bar i,
     \tag{$\widetilde R4$}\label{rtilde:bound}\\
- x\le\bar n&\lor\bar n\le x.
+    x\le\bar n&\lor\bar n\le x.
     \tag{$\widetilde R5$}\label{rtilde:compare}
 \end{align}
 Here $m+n$ and $mn$ are calculated externally: the
@@ -1871,19 +1952,22 @@ Section~\ref{sec:nonrelational} relates this theory
 to the original, functional arithmetic
 $\R$~\cite{tarski1953undecidable}.
 
-Put
+Let us start constructing the model inside PTS-$rk$ and
+proving that axioms hold in our model. First, some
+preliminaries on interpretation of first-order logic
+formulas: put
 \[
- \bot:=((Z:\rk0)\to Z):\rk1,\qquad
- \top:=\rk0\to\rk0:\rk1,\qquad
- \mathsf{id}:=\lambda(Z:\rk0).Z:\top.
+    \bot\triangleq(\Pi(Z:\rk0).Z):\rk1,\qquad
+    \top\triangleq\rk0\to\rk0:\rk1,\qquad
+    \mathsf{id}\triangleq\lambda(Z:\rk0).Z:\top.
 \]
 Use the fixed-answer proof types
 \begin{gather*}
- \nc P:=P\to\bot,\qquad
- P\ac Q:=(P\to Q\to\bot)\to\bot,\\
- \bigvee_c(P_0,\ldots,P_k):=
- (P_0\to\bot)\to\cdots\to(P_k\to\bot)\to\bot,\\
- P\iffc Q:=(P\to Q)\ac(Q\to P).
+    \nc P\triangleq P\to\bot,\qquad
+    P\ac Q\triangleq(P\to Q\to\bot)\to\bot,\\
+    \bigvee_c(P_0,\ldots,P_k)\triangleq
+    (P_0\to\bot)\to\cdots\to(P_k\to\bot)\to\bot,\\
+    P\iffc Q\triangleq(P\to Q)\ac(Q\to P).
 \end{gather*}
 A type $P$ is \emph{stable} when $\nc\nc P\to P$ is
 inhabited. Negative types, dependent functions with
@@ -1896,180 +1980,180 @@ $\lambda(k:P\to\bot)(l:(P\to\bot)\to\bot).\,l\,k$.
 We never eliminate $\bot$ into an arbitrary positive
 type.
 
-For a carrier $V$, a domain predicate $\Delta$, and
-fixed stable atomic interpretations, use implication as
-an arrow and translate quantifiers by
+For a carrier $D$, a domain predicate $\Good$, and
+fixed stable atomic interpretations, translate
+quantifiers by
 \begin{align*}
- (\forall x\,\varphi)^*&:=(x:V)\to\Delta(x)\to\varphi^*(x),\\
- (\exists x\,\varphi)^*&:=
- ((x:V)\to\Delta(x)\to\varphi^*(x)\to\bot)\to\bot.
+    (\forall x\,\varphi)^*&\triangleq
+    \Pi(x:D).\,\Good(x)\to\varphi^*(x),\\
+    (\exists x\,\varphi)^*&\triangleq
+    (\Pi(x:D).\,\Good(x)\to\varphi^*(x)\to\bot)
+    \to\bot.
 \end{align*}
 All translated formulas are stable. Once domain closure
 and atomic congruence are proved, the logical rules and
 equality substitution extend structurally to formulas
 on admitted arguments. All interpretations below use
-this one logical encoding. For the relational
-interpretation, Section~\ref{sec:relational}
-establishes completeness of the ground proof/refutation
-construction and failure of faithfulness on arbitrary
-first-order sentences.
+this one logical encoding.
 
-For exact-rank motives, let $J_1=\top$,
-$J_{k+1}=J_k\to J_k$, with $j_1=\mathsf{id}$ and
-$j_{k+1}=\lambda(x:J_k).x$. If $P:\rk a$, $a\le k$, and
-$k\ge2$, then
+For lifting propositions $P:\rk a$ into arbitrary
+higher ranks $k\ge 2$, let
 \[
- L_k(P):=J_{k-1}\to P:\rk k.
+    L_k(P)\triangleq (\Pi(T:\mathsf{rk}_{k-2}).T\to T)
+        \to P:\rk k.
 \]
-Abstraction and evaluation at $j_{k-1}$ give maps
-between $P$ and $L_k(P)$.
+Abstraction gives a map from $P$ to $L_k(P)$;
+application on term $(\lambda\,T\,x.x)$ gives a map in
+the opposite direction.
 
-\subsection{Unary domain and equality}\label{sec:unary}
-Use the Church numeral carrier
+\subsection{Unary domain and equality}
+Use Church numerals with addition and multiplication as
+a carrier: $D\triangleq\mathcal{N}_1$.
+As a reminder, here are two only \emph{constructors} of
+Church numerals, $\z$ and $\suc$:
 \[
- D:=\bigl((X:\rk1)\to X\to(X\to X)\to X\bigr):\rk3,
- \qquad
- \z:=\lambda X\,z\,s.z,\qquad
- \suc d:=\lambda X\,z\,s.s(d\,X\,z\,s).
+    \z\triangleq\lambda(X:\rk 1)(f:X\to X)(x:X).x\quad
+    \suc\triangleq\lambda(n:\mathcal{N}_1)\,X\,f\,x.
+        f\,(n\,X\,f\,x).
 \]
-Write $\nu_n=\suc^n\z$. Define the two auxiliary,
-same-type Church operations
-\begin{align*}
- \Add\,d\,e&:=\lambda X\,z\,s.\ d\,X\,(e\,X\,z\,s)\,s,
-    \\
- \Mul\,d\,e&:=\lambda X\,z\,s.\ d\,X\,z\,(\lambda y:X.
-    e\,X\,y\,s).
-\end{align*}
-Both have type $D\to D\to D$. On canonical numerals
-they compute addition and multiplication by beta
-reduction. No eta equation on arbitrary $d:D$ is used.
 
-The domain predicate is the following
-constructor-closure certificate:
-\[
- \Good(d):=\bigl((Q:D\to\rk{10})\to Q(\z)
- \to((u:D)\to Q(u)\to Q(\suc u))\to Q(d)\bigr):\rk{12}.
-\]
+Even if the theory we interpret and the host type
+system are not strong enough to support induction on
+Church numerals, we still need to prove some properties
+by induction. For this, we introduce a special helper
+proposition as a domain predicate $\Good$. It would
+state for a given $d:V$ that each inductive property
+$Q$ is satisfied for $d$:
+\begin{multline*}
+    \Good(d)\triangleq\bigl(\Pi(Q:D\to\rk{10}).\;
+    Q(\z)\to(\Pi(u:D).\,Q(u)\to Q(\suc u))\to
+    Q(d)\bigr)\\:\rk{12}.
+\end{multline*}
+
 Zero and successor preserve it by abstraction. For
 example,
 \[
- \mathsf{good}_0:=\lambda Q\,q_0\,q_s.\,q_0,\qquad
- \mathsf{good}_s\,d\,g:=\lambda Q\,q_0\,q_s.\,
- q_s\,d\,(g\,Q\,q_0\,q_s).
+    \mathsf{good}_0\triangleq\lambda Q\,q_0\,q_s.
+        \,q_0,\qquad
+    \mathsf{good}_s\,d\,g\triangleq
+        \lambda Q\,q_0\,q_s.\,
+        q_s\,d\,(g\,Q\,q_0\,q_s).
 \]
-Thus the interpreted domain is nonempty and closed
-under the source functions. The auxiliary $\Add,\Mul$
-occur only inside predicates, so no closure of $\Good$
-under them is required.
 
 Define equality by negative tests:
 \[
- \boxed{E(d,e):=\bigl((P:D\to\rk1)\to
-       ((\nc P(d))\iffc(\nc P(e)))\bigr):\rk5.}
+    E(d,e)\triangleq\Pi(P:D\to\rk1).\;
+    (\nc P(d))\iffc(\nc P(e))\quad:\rk5.
 \]
-Its reflexivity, symmetry, and transitivity follow
-pointwise from the corresponding rules for logical
-equivalence. Every $F:D\to D$ respects $E$: to obtain
-$E(Fd,Fe)$ from $h:E(d,e)$, specialize $h$ to $u\mapsto
-P(Fu)$. This applies to successor and to each argument
-of the auxiliary arithmetic operations. Equality
-substitution for $E$ itself follows from symmetry and
-transitivity. Define the arithmetic atoms by
+It is reflexive, symmetric and transitive; every
+$F:D\to D$ respects it. Equality substitution for $E$
+itself follows from symmetry and transitivity. Define
+the arithmetic atoms by
 \[
- A^*(d,e,f):=E(\Add\,d\,e,f),\qquad
- M^*(d,e,f):=E(\Mul\,d\,e,f).
+    A^*(d,e,f)\triangleq E(\Add\,d\,e,f),\qquad
+    M^*(d,e,f)\triangleq E(\Mul\,d\,e,f).
 \]
-They respect $E$ in all arguments. Their ground-input
-defining schemes are immediate from the beta equations,
-including an arbitrary admitted third argument.
+They respect $E$ in all arguments; axioms
+$\widetilde R1$ and $\widetilde R2$ hold
+definitionally.
 
 \subsection{Order from successor-closed unary tests}
-\label{sec:order}
-A certified unary algebra is the fixed telescope
-\[
- \begin{aligned}
- \mathcal U={}&(X:\rk1)\,(z:X)\,(s:X\to X)\,
-     (\delta:X\to\rk4)\\
-             &(d_0:\delta z)\,
-      (d_s:(u:X)\to\delta u\to\delta(su)).
- \end{aligned}
-\]
+
+\begin{definition}
+    A \emph{certified unary algebra} is the fixed
+    telescope
+    \[
+        \begin{aligned}
+            \mathcal U={}&(X:\rk1)\,(z:X)\,
+            (s:X\to X)\,(\delta:X\to\rk4)\\
+            &(d_0:\delta z)\,
+            (d_s:(u:X)\to\delta u\to\delta(su)).
+        \end{aligned}
+    \]
+\end{definition}
+
+Basically, this telescope contains all the necessary
+information to ``reinterpret'' Church numerals into new
+carrier $X$ with a domain predicate $\delta$.
+
 Writing $\mathcal U\to B$ abbreviates the successive
 dependent arrows for these binders; it does not
 introduce a record type. Put $\ev_{\mathcal U}(d)=d\,X
-\,z\,s$ and $G(d):=(\mathcal U\to\delta(\ev_{\mathcal
-U}(d))):\rk6$. For $P:X\to\rk1$, write
+\,z\,s$ and $G(d)\triangleq(\mathcal U\to\delta(\ev_{
+\mathcal U}(d))):\rk6$. For $P:X\to\rk1$, write
 \[
- \Up_{\mathcal U}(P):=
- (u:X)\to\delta u\to\nc P(u)\to\nc P(su).
+    \Up_{\mathcal U}(P)\triangleq
+    \Pi(u:X).\,\delta u\to\nc P(u)\to\nc P(su).
 \]
-Define
+Meaning that, for ``good'' values in new domain $X$, a
+negation of $P$ is upwards closed. Define
 \[
- \boxed{\begin{aligned}
- O(d,e):=\bigl(\mathcal U\to(P:X\to\rk1)\to{}&
-     \Up_{\mathcal U}(P)\to{}\\
- &\nc P(\ev_{\mathcal U}(d))\to\nc P(\ev_{\mathcal U}
-     (e))\bigr):\rk6.
- \end{aligned}}
+    \begin{aligned}
+        O(d,e)\triangleq\bigl(
+        \mathcal U\to\Pi(P:X\to\rk1).\;&
+        \Up_{\mathcal U}(P)\to{}\\
+        &\nc P(\ev_{\mathcal U}(d))\to\nc P(\ev_{
+            \mathcal U}(e))\bigr):\rk6.
+    \end{aligned}
 \]
-This needs only $d_0,d_s$, and an upward-closure
-certificate. Preorder laws and equality compatibility
-are \emph{derived}, not included as certificates.
 
-\begin{lemma}\label{basic}
-    $G(\z)$ and $G(d)\to G(\suc d)$ are inhabited, as
-    is $\Good(d)\to G(d)$. The relation $O$ is
-    reflexive and transitive on all raw $D$-objects.
-    Moreover, $E(d,e)\to O(d,e)$ and $G(d)\to O(d,\suc
-    d)$ are inhabited. Both arguments of $O$ respect
-    $E$.
+With such definition, preorder laws and equality
+compatibility are derivable.
+
+\begin{lemma}\label{r-common}
+    The following holds:
+    \begin{itemize}
+        \item $G(\z)$, $G(d)\to G(\suc d)$ and
+            $\Good(d)\to G(d)$ are inhabited.
+        \item $O$ is reflexive and transitive.
+        \item $E(d,e)\to O(d,e)$ and
+            $G(d)\to O(d,\suc d)$ are inhabited.
+        \item Arguments of $O$ respect $E$.
+    \end{itemize}
 \end{lemma}
 \begin{proof}
-    The two $G$-closure terms use $d_0,d_s$ and the
-    beta fold equations. To obtain $G(d)$ from
-    $\Good(d)$, instantiate its predicate at
-    $u\mapsto L_{10}(G(u))$ and evaluate the result at
-    $j_9$.
-
-    Reflexivity and transitivity of $O$ are identity
-    and composition on each test. Given $E(d,e)$,
-    instantiate its predicate with $u\mapsto P(
-    \ev_{\mathcal U}(u))$ and take the forward
-    implication. The step law is the upward-closure
-    certificate applied to $\ev_{\mathcal U}(d)$ and
-    the supplied $G$-evidence. Finally use
-    $E\Rightarrow O$, symmetry of $E$, and transitivity
-    of $O$ for compatibility.
+    Proof terms for most propositions are constructed
+    in an obvious way. The last proposition holds
+    because $O$ is transitive and $E$ is symmetric.
 \end{proof}
-Consequently, for each external $i\le j$, there is a
-closed proof of $O(\nu_i,\nu_j)$, built by a finite
-succession of steps.
+Consequently, for each external $m\le n$, there is a
+closed proof of $O(\overline{m},\overline{n})$, built
+by a finite succession of steps.
 
-\subsection{Finite separation}\label{sec:separation}
-\begin{lemma}\label{sep}
-    For every external $n$, there is a closed term
-    $\mathsf{no\_back}_n:O(\nu_{n+1},\nu_n)\to\bot$.
-    Consequently distinct standard numerals are
-    internally $E$-unequal, and all reversed ground
-    $O$-comparisons have internal refutations.
+\subsection{Finite separation}
+
+In this section we show an intermediate result that our
+definition of $O(x,y)$ rules out finite models of our
+presentation of $\Rt$.
+
+\begin{lemma}
+    For each $n\in\mathbb{N}$, there is a proof of
+    $O(\overline{n+1},\overline{n})\to\bot$.
 \end{lemma}
 \begin{proof}
-    Put $c=n+1$, $q=c+1$, and use the rank-one
-    selectors
+    By contradiction. Suppose $H:O(\overline{n+1},
+    \overline{n})$;
+    put $c=n+1$, $q=c+1$, and remember already familiar
+    type of selectors
     \[
-        F_q:=\underbrace{\rk1\to\cdots\to\rk1}_{
+        F_q\triangleq\underbrace{
+            \rk1\to\cdots\to\rk1}_{
             q\ \mathrm{arguments}}
         \to\rk1,\qquad
-        e_i:=\lambda Z_0\ldots Z_{q-1}.Z_i.
+        e_i\triangleq\lambda Z_0\ldots Z_{q-1}.Z_i.
     \]
-    Choose $X=F_q$, $z=e_0$, and the unary table
+    We're going to use them as a ``model'' to interpret
+    an assumed $O$ and get a contradiction: set
+    $X=F_q$, $z=e_0$, and use ``saturated addition''
+    as a successor:
     \[
-        s(u):=\lambda Z_0\ldots Z_{q-1}.\
+        s(u)\triangleq\lambda Z_0\ldots Z_{q-1}.\
         u\,Z_{\min(0+1,c)}\cdots Z_{\min(c+1,c)}.
     \]
-    Thus $s(e_i)=_\beta e_{\min(i+1,c)}$. Let
+    Thus $s(e_i)=_\beta e_{\min(i+1,c)}$. Define the
+    domain predicate as
     \[
-        \delta(u):=\bigl((Q:F_q\to\rk3)\to
+        \delta(u)\triangleq\bigl(\Pi(Q:F_q\to\rk3).\;
         Q(e_0)\to\cdots\to Q(e_c)\to Q(u)\bigr):\rk4.
     \]
     Selector projection gives $d_0$. To construct
@@ -2080,50 +2164,58 @@ succession of steps.
 
     Use the unary test
     \[
-        P(u):=u\,\underbrace{\top\cdots\top}_{
+        P(u)\triangleq u\,\underbrace{\top\cdots\top}_{
             c\ \mathrm{entries}}\,\bot.
     \]
     To prove $\Up(P)$, eliminate $\delta(u)$ into the
     rank-three motive $v\mapsto\nc P(v)\to\nc P(sv)$.
     At $e_c$ both tests are $\bot$ and the implication
-    is identity. At $e_i$ with $i<c$, a premise
-    $\top\to\bot$ gives $\bot$ by application to
-    $\mathsf{id}:\top$; abstraction gives the negative
-    conclusion.
+    is identity. At $e_i$ with $i<c$, there is a
+    premise $\top\to\bot$.
 
-    Specializing $h:O(\nu_c,\nu_n)$ to these data
-    yields $(\bot\to\bot)\to(\top\to\bot)$. Apply it to
-    $\mathsf{id}_{\bot}$ and $\mathsf{id}_{\top}$.
-
-    If $m>n$, compose $O(\nu_{n+1},\nu_m)$ with a
-    purported $O(\nu_m,\nu_n)$ and use
-    $\mathsf{no\_back}_n$. A purported $E(\nu_m,\nu_n)$
-    supplies this last order proof by
-    Lemma~\ref{basic}; symmetry handles $m<n$.
+    Specializing $H:O(\overline{c},\overline{n})$ to
+    these data yields $(\bot\to\bot)\to(\top\to\bot)$.
 \end{proof}
-The selectors are certified only through $\delta$; no
-parametricity claim about all raw inhabitants of $F_q$
-is needed. These are finite separating observations,
-not finite models of the entire source theory.
 
-\subsection{Bounded cases}\label{sec:cases}
+\begin{lemma}\label{sep}
+    For each $m>n$, there is a proof of
+    $O(\overline{m},\overline{n})\to\bot$.
+\end{lemma}
+\begin{proof}
+    Suppose $O(\overline{m},\overline{n})$ is
+    inhabited; since $m>n$,
+    $O(\overline{n+1},\overline{m})$ is also inhabited.
+    By transitivity of $O$ it means that
+    $O(\overline{n+1},\overline{n})$ which we know is
+    absurd.
+\end{proof}
+
+Thus, $\widetilde R3$ also holds: if $m\ne n$, then
+either $m>n$ or $m<n$ (these are external natural
+numbers). Assuming $E(\overline{m},\overline{n})$, we
+obtain a paradoxical $O$ and derive a contradiction by
+Lemma~\ref{sep}.
+
+\subsection{Bounded cases}
 Set
 \[
- \Case_n(d):=\bigvee_c\bigl(E(d,\nu_0),\ldots,
- E(d,\nu_n),O(\nu_{n+1},d)\bigr)
-       :\rk8.
+    \Case_n(d)\triangleq\bigvee_c
+    \bigl(E(d,\overline{0}),\ldots,E(d,\overline{n}),
+    O(\overline{n+1},d)\bigr):\rk8.
 \]
 \begin{lemma}\label{case}
-    $(d:D)\to\Good(d)\to\Case_n(d)$ is inhabited for
+    $\Pi(d:D).\;\Good(d)\to\Case_n(d)$ is inhabited for
     every external $n$.
 \end{lemma}
 \begin{proof}
-    Use the rank-ten positive invariant
+    We're going to use the following positive invariant
+    as a $Q$:
     \[
-        \Inv_n(d):=(Z:\rk8)\to(G(d)\to\Case_n(d)\to Z)
-        \to Z.
+        \Inv_n(d)\triangleq\Pi(Z:\rk8).\;(G(d)\to
+        \Case_n(d)\to Z)\to Z\quad:\rk{10}.
     \]
-    At zero, supply $G(\z)$ and the $E(\z,\nu_0)$
+    At zero, supply $G(\z)$ and the
+    $E(\z,\overline{0})$
     branch. At successor, open the target continuation
     and eliminate the child invariant at that same $Z$,
     obtaining $G(d)$ and $\Case_n(d)$. Obtain
@@ -2131,9 +2223,10 @@ Set
     To construct the new negative case proof, all
     branch continuations return $\bot$. An $i<n$ branch
     becomes $i+1$ by successor congruence. The $i=n$
-    branch gives $E(\suc d,\nu_{n+1})$, hence
-    $O(\nu_{n+1},\suc d)$. The large branch is composed
-    with $O(d,\suc d)$. This proves successor closure.
+    branch gives $E(\suc d,\overline{n+1})$, hence
+    $O(\overline{n+1},\suc d)$. The large branch is
+    composed with $O(d,\suc d)$. This proves successor
+    closure.
 
     Instantiate $\Good(d)$ with $\Inv_n$. Project its
     case component by choosing $Z=\Case_n(d)$ and
@@ -2143,7 +2236,6 @@ Set
 \end{proof}
 
 \subsection{The relational interpretation}
-\label{sec:relational}
 
 \begin{theorem}\label{main}
     The carrier $D$, admitted domain $\Good$, closed
@@ -2156,90 +2248,49 @@ Set
     yields a closed $\PTS$ proof term of its
     translation. True ground arithmetic atoms have
     proofs, and false ground atoms have internal
-    refutations. The interpretation is not, however,
-    faithful on arbitrary first-order sentences.
+    refutations.
 \end{theorem}
 \begin{proof}
-    Use Section~\ref{sec:logic}'s translation with
-    $V=D$ and $\Delta=\Good$. Domain closure, atomic
-    stability, and congruence have been established;
-    hence source deductions translate to PTS proofs.
+    Domain closure, atomic stability, and congruence
+    have been established; hence source deductions
+    translate to PTS proofs. We know that
+    $\widetilde R1$-$\widetilde R3$ hold; let us check
+    the remaining axioms.
 
-    For the first two arithmetic schemes,
-    $\Add\,\nu_m\,\nu_n=_\beta\nu_{m+n}$ and
-    $\Mul\,\nu_m\,\nu_n=_\beta\nu_{mn}$, so both sides
-    of each translated biconditional are
-    beta-convertible. Numeral inequality is
-    Lemma~\ref{sep}.
+    For bounded order ($\widetilde R4$), apply
+    Lemma~\ref{case}. Under $O(d,\overline{n})$, a case
+    with $O(\overline{n+1},d)$ contradicts
+    $\nc O(\overline{n+1},\overline{n})$ by
+    transitivity.
+    Conversely, an $E(d,\overline{i})$ branch with
+    $i\le n$ gives $O(d,\overline{n})$ using
+    $E\Rightarrow O$ and the ground comparison.
 
-    For bounded order, apply Lemma~\ref{case}. Under
-    $O(d,\nu_n)$ its large branch contradicts
-    $\mathsf{no\_back}_n$ by transitivity. Conversely,
-    an $E(d,\nu_i)$ branch with $i\le n$ gives
-    $O(d,\nu_n)$ using $E\Rightarrow O$ and the ground
-    comparison. For comparability the finite branches
-    give $O(d,\nu_n)$ and the large branch gives
-    $O(\nu_n,d)$.
+    For comparability ($\widetilde R5$), the finite
+    branches of Lemma~\ref{case} give
+    $O(d,\overline{n})$ and the large branch gives
+    $O(\overline{n},d)$.
 
     The ground proof/refutation claims follow from the
     arithmetic beta equations, reflexivity, ground
     order, and Lemma~\ref{sep}.
 \end{proof}
-\begin{remark}
-    The fixed ranks are $D:3$, $E,A^*,M^*:5$, $G,O:6$,
-    $\delta:4$, $\Case:8$, $\Inv:10$, and $\Good:12$.
-    The proof uses only $d_0,d_s$ and $\Up(P)$ as
-    observation certificates.
-\end{remark}
 
-\paragraph{Completeness on ground arithmetic.}
-Every source axiom instance has a proof, and every
-$\Rt$-derivation translates using the same fixed
-definitions. For ground arithmetic atoms, the
-construction provides proofs of all true instances and
-internal refutations of all false instances. This
-ground completeness is not reflection of arbitrary
-source derivability.
+While this interpretation is full, it, however, is not
+faithful on arbitrary first-order sentences.
 
 \begin{remark}[Failure of faithfulness]
-\label{rem:relational-nonfaithful}
     The interpretation of $\Rt$ is not faithful: the
-    translation of $\rho:=\forall x\,(x\le x)$ is
-    provable in $\PTS$, although $\Rt\nvdash\rho$.
+    translation of $\rho\triangleq\forall x\,(x\le x)$
+    is provable in $\PTS$, although $\Rt\nvdash\rho$.
+\end{remark}
+\begin{proof}
+    We already know that $O$ is reflexive
+    (Lemma~\ref{r-common}) But why is reflexivity not
+    derivable in $\widetilde R$? It follows from
+    model-theoretic considerations: there is a
+    set-theoretic countermodel.
 
-    \emph{An explicit proof of order reflexivity.}
-    Its translation is
-    $\rho^*=(d:D)\to\Good(d)\to O(d,d)$. Expanding
-    every binder in the observation telescope gives the
-    following closed term:
-    \[
-        \begin{aligned}
-            \mathsf{orderRefl}:=
-            {}&\lambda(d:D)(g:\Good(d))\,\\
-            &(X:\rk1)(z:X)(s:X\to X)
-            (\delta:X\to\rk4)\,\\
-            &(d_0:\delta z)(d_s:(u:X)\to\delta u
-            \to\delta(su))\,\\
-            &(P:X\to\rk1)\,\\
-            &(p_{\uparrow}:(u:X)\to\delta u\to
-                (P(u)\to\bot)\to(P(su)\to\bot))\,\\
-            &(h:P(d\,X\,z\,s)\to\bot).\;h.
-        \end{aligned}
-    \]
-    Thus
-    \begin{equation}
-        \mathsf{orderRefl}:(d:D)\to\Good(d)\to O(d,d).
-        \label{eq:order-reflexivity}
-    \end{equation}
-    Indeed, after the binders are opened, the remaining
-    goal is $P(d\,X\,z\,s)\to\bot$, exactly the type of
-    $h$. The term simply returns $h$; it uses neither
-    the domain proof $g$ nor the three observation
-    certificates $d_0,d_s,p_{\uparrow}$. Removing the
-    binder $g$ also gives $(d:D)\to O(d,d)$, so the
-    proof works on every raw presentation.
-
-    \emph{A relational countermodel.}
     Take $N^+=\mathbb N\sqcup\{\omega\}$, where
     $\omega$ is one new element. Interpret $0$ and
     successor as usual on $\mathbb N$, put
@@ -2265,79 +2316,81 @@ source derivability.
     $\Rt$.
 
     However, $\omega\not\le^+\omega$, so $\rho$ is
-    false. By soundness of classical first-order logic,
-    \[
-        \Rt\nvdash\rho,
-        \qquad\text{whereas}\qquad \PTS\vdash
-        \mathsf{orderRefl}:\rho^*.
-    \]
-    Thus the relational interpretation preserves
-    derivability but does not reflect it. The
-    countermodel is a model of the source theory, not a
-    set-theoretic model of $\PTS$. There is no conflict
-    with ground completeness: $\rho$ is universally
-    quantified, and its failure occurs at a non-numeral
-    element.
-\end{remark}
+    false.
+\end{proof}
 
 \subsection{Relation to the original presentation of
 \texorpdfstring{$\R$}{R}}\label{sec:nonrelational}
 The original Tarski--Mostowski--Robinson arithmetic
-$\R$~\cite{tarski1953undecidable} uses $\{0,S,+,\cdot,\le\}$ and the
-following schemes, again with universal closure:
+$\R$~\cite{tarski1953undecidable} uses
+$\{0,S,+,\cdot,\le\}$ and the following schemes, again
+with universal closure:
 \begin{align}
- \bar m+\bar n&=\overline{m+n}, &
- \bar m\cdot\bar n&=\overline{mn},
-     \tag{R1--R2}\label{r:arithmetic}\\
- \bar m&\ne\bar n\quad(m\ne n), &&
-     \tag{R3}\label{r:neq}\\
- x\le\bar n&\longrightarrow\bigvee_{i=0}^{n}x=\bar i, &&
-     \tag{R4}\label{r:bound}\\
- x\le\bar n&\lor\bar n\le x. &&
-     \tag{R5}\label{r:compare}
+    \bar m+\bar n&=\overline{m+n}, &&\tag{R1}\\
+    \bar m\cdot\bar n&=\overline{mn}, &&\tag{R2}\\
+    \bar m&\ne\bar n\quad(m\ne n), &&\tag{R3}\\
+    x\le\bar n&\longrightarrow
+        \bigvee_{i=0}^{n}x=\bar i,
+        &&\tag{R4}\label{r:bound}\\
+    x\le\bar n&\lor\bar n\le x.
+        &&\tag{R5}\label{r:compare}
 \end{align}
-Requiring $A,M$ in $\Rt$ to be total, single-valued graphs makes them
-interchangeable with the function symbols $+,\cdot$. This functional
-strengthening is definitionally equivalent to $\R$. Even without that
-strengthening, the two theories have the same interpretability degree.
+Requiring $A,M$ in $\Rt$ to be total, single-valued
+graphs makes them interchangeable with the function
+symbols $+,\cdot$. This functional strengthening is
+definitionally equivalent to $\R$; even without that
+strengthening, the two theories have the same
+interpretability degree.
 
-\begin{proposition}\label{prop:graphs}
-The classical theories $\Rt$ and $\R$ are mutually interpretable.
-Consequently $\PTS$ interprets $\R$ by definable arithmetic graphs.
+\begin{proposition}
+    The classical theories $\Rt$ and $\R$ are mutually
+    interpretable. Consequently $\PTS$ interprets $\R$
+    by definable arithmetic graphs.
 \end{proposition}
 \begin{proof}
-In $\R$, interpret $A(x,y,z)$ by $x+y=z$ and $M(x,y,z)$ by $xy=z$.
-The ground arithmetic equations give the two graph schemes.
-For $i<j$, an assumption $\bar j\le\bar i$ contradicts
-\eqref{r:bound} and numeral separation; \eqref{r:compare} therefore yields
-$\bar i\le\bar j$. The case $i=j$ follows from \eqref{r:compare} directly.
-Thus $\R$ proves all true ground comparisons, and equality substitution
-supplies the reverse implication in \eqref{rtilde:bound}.
-The remaining relational schemes are immediate.
+    In $\R$, interpret $A(x,y,z)$ by $x+y=z$ and
+    $M(x,y,z)$ by $xy=z$. The ground arithmetic
+    equations give the two graph schemes. For $i<j$, an
+    assumption $\bar j\le\bar i$ contradicts
+    \eqref{r:bound} and numeral separation;
+    \eqref{r:compare} therefore yields
+    $\bar i\le\bar j$. The case $i=j$ follows from
+    \eqref{r:compare} directly. Thus $\R$ proves all
+    true ground comparisons, and equality substitution
+    supplies the reverse implication in
+    \eqref{rtilde:bound}. The remaining relational
+    schemes are immediate.
 
-For the other direction define, in $\Rt$,
-\begin{align*}
- U_A(x,y,z)&:=A(x,y,z)\land
-                \forall w\bigl(A(x,y,w)\to w=z\bigr),\\
- F_A(x,y,z)&:=U_A(x,y,z)\lor
-       \bigl(z=0\land\neg\exists v\,U_A(x,y,v)\bigr).
-\end{align*}
-For fixed $x,y$, either a unique $A$-output exists or it does not. In the
-first case $F_A$ selects that output; in the second it selects zero.
-Hence $F_A$ is provably total and single-valued. At standard inputs,
-\eqref{rtilde:add} forces its value to be $\overline{m+n}$.
-Define $F_M$ identically with $M$ in place of $A$; its standard value is
-$\overline{mn}$. These graphs interpret $+,\cdot$; keep $0,S,=,\le$
-unchanged. All five schemes of $\R$ follow.
+    For the other direction define, in $\Rt$,
+    \begin{align*}
+        U_A(x,y,z)&\triangleq A(x,y,z)\land
+        \forall w\bigl(A(x,y,w)\to w=z\bigr),\\
+        F_A(x,y,z)&\triangleq U_A(x,y,z)\lor
+        \bigl(z=0\land\neg\exists v\,U_A(x,y,v)\bigr).
+    \end{align*}
+    For fixed $x,y$, either a unique $A$-output exists
+    or it does not. In the first case $F_A$ selects
+    that output; in the second it selects zero. Hence
+    $F_A$ is provably total and single-valued. At
+    standard inputs, \eqref{rtilde:add} forces its
+    value to be $\overline{m+n}$. Define $F_M$
+    identically with $M$ in place of $A$; its standard
+    value is $\overline{mn}$. These graphs interpret
+    $+,\cdot$; keep $0,S,=,\le$ unchanged. All five
+    schemes of $\R$ follow.
 
-Composing this graph interpretation with Theorem~\ref{main} gives the
-claimed interpretation in $\PTS$. The composition uses the encoded
-classical quantifiers to express values and uniqueness; it does not
-assert $\Good$-closure of the raw Church operators $\Add,\Mul$.
+    Composing this graph interpretation with
+    Theorem~\ref{main} gives the claimed interpretation
+    in $\PTS$. The composition uses the encoded
+    classical quantifiers to express values and
+    uniqueness; it does not assert $\Good$-closure of
+    the raw Church operators $\Add,\Mul$.
 \end{proof}
-The conclusion is mutual interpretability, not bi-interpretability.
-In particular, the totalized graphs need not coincide with the original
-relations $A,M$ on arbitrary arguments.
+
+The conclusion is mutual interpretability, not
+bi-interpretability. In particular, the totalized
+graphs need not coincide with the original relations
+$A,M$ on arbitrary arguments.
 
 \section{Conclusion}
 \label{conclusion}
