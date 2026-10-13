@@ -1,0 +1,260 @@
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Literals.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Morphisms.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.EstimatorChecks exactly matches several files in path
+    (found EstimatorChecks.v in ../NormalizationComplexity and .; used the latter).
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+        rocq theories/NormalizationComplexity/BoundedNormalization.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+normalizeCosted_correct
+     : forall (k : nat) (t : RankEstimate.Syn ?n),
+       fst (normalizeCosted k t) = normalizeWithin k t
+where
+?n : [ |- nat]
+normalizeCosted_elementary
+     : forall (k : nat) (t : RankEstimate.Syn ?n),
+       snd (normalizeCosted k t) <= tower (S (2 * k)) (nodes t + 5 * k + 2)
+where
+?n : [ |- nat]
+estimatedAttempt_tower_cost
+     : forall t : RankEstimate.Syn 0,
+       snd (estimatedAttempt t) <=
+       tower (4 * encodingSize t + 3) (11 * encodingSize t + 7)
+zero_bound_normal
+     : forall (G : Context.Ctx nat ?n) (t T : Syntax.Term nat ?n),
+       Preservation.wf G ->
+       Typing.typ G t T -> RedexBound G t 0 -> normalb t = true
+where
+?n : [ |- nat]
+exposed_lambda_rank
+     : forall (t : Syntax.Term nat ?n) (G : Context.Ctx nat ?n) (r : nat),
+       Preservation.wf G ->
+       TypeRank G t r ->
+       isLambda t = false ->
+       isLambda (greedy t) = true ->
+       exists s : nat, RedexRank G t s /\ r <= s
+where
+?n : [ |- nat]
+greedy_contracted_head_bound
+     : forall (G : Context.Ctx nat ?n) (f u T : Syntax.Term nat ?n)
+         (d r : nat),
+       Preservation.wf G ->
+       Typing.typ G (Syntax.app f u) T ->
+       RedexBound G (Syntax.app f u) d ->
+       isLambda (greedy f) = true -> TypeRank G (greedy f) r -> r <= d
+where
+?n : [ |- nat]
+redex_bound_substitution
+     : forall (G : Context.Ctx nat ?n) (u U : Syntax.Term nat ?n)
+         (t T : Syntax.Term nat (S ?n)) (d a : nat),
+       Preservation.wf G ->
+       Preservation.wf (Context.cons G U) ->
+       Typing.typ G u U ->
+       Typing.typ (Context.cons G U) t T ->
+       TypeRank G u a ->
+       RedexBound G u d ->
+       RedexBound (Context.cons G U) t d ->
+       RedexBound G (Syntax.subst t u) (PeanoNat.Nat.max d a)
+where
+?n : [ |- nat]
+greedy_strict_descent
+     : forall (G : Context.Ctx nat ?n) (t T : Syntax.Term nat ?n) (d : nat),
+       Preservation.wf G ->
+       Typing.typ G t T -> RedexBound G t (S d) -> RedexBound G (greedy t) d
+where
+?n : [ |- nat]
+bounded_rounds_normal
+     : forall (d : nat) (G : Context.Ctx nat ?n) (t T : Syntax.Term nat ?n),
+       Preservation.wf G ->
+       Typing.typ G t T -> RedexBound G t d -> normalb (rounds d t) = true
+where
+?n : [ |- nat]
+fixed_rank_normalization
+     : forall (d : nat) (G : Context.Ctx nat ?n) (t T : Syntax.Term nat ?n),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       RedexBound G t d ->
+       exists u : RankEstimate.Syn ?n,
+         fst (normalizeCosted d t) = Some u /\
+         Reduction.reduces_to nat ?n t u /\
+         (forall v : Syntax.Term nat ?n, ~ Reduction.step nat ?n u v) /\
+         Typing.typ G u T /\
+         snd (normalizeCosted d t) <= tower (2 * d + 1) (nodes t + 5 * d + 2)
+where
+?n : [ |- nat]
+EstimatorChecks.witness_typed
+     : Typing.typ Context.ε EstimatorChecks.witness (Syntax.𝓤 3)
+EstimatorChecks.estimator_does_not_bound_head_ranks
+     : RankEstimate.estimateRank EstimatorChecks.witness = 0 /\
+       ~
+       RedexBound Context.ε EstimatorChecks.witness
+         (S (RankEstimate.estimateRank EstimatorChecks.witness))
+        rocq theories/NormalizationComplexity/Audit.{glob,vo}

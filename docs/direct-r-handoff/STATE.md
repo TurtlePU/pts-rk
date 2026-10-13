@@ -1,4 +1,201 @@
-# Live proof-development state — 2026-10-13
+# Live proof-development state — 2026-10-14
+
+## Normalization complexity COMPLETE in the documented operation-cost model
+
+Parent HEAD is 95450d34bffd4c4d54ddd73d79f0d0d830837276. All earlier proof
+work is preserved; user-owned logs/ is untouched. The user subsequently
+requested commit and push. This snapshot is prepared for the commit
+`Normalization complexity: prove TOWER and fixed-rank normalization` on main,
+to be pushed normally to origin/main. Original kernel unchanged.
+
+Final public statements (all use original Term/typ/RankSorts and beta steps):
+
+1. `fixed_rank_normalization`: wf G -> typ G t T -> RedexBound G t d ->
+   exists u, fst (normalizeCosted d t) = Some u /\ t ->* u /\ beta_normal u /\
+   typ G u T /\ cost <= tower (2*d+1) (nodes t+5*d+2).
+2. `rank_bound_in_linear_time`: for closed typ empty t T, the executable
+   conservativeRankCosted returns a semantic redex bound <= 2*s+1 at cost
+   <= 7*s, with s = encodingSize t.
+3. `normalization_in_TOWER`: for closed typ empty t T, automaticNormalizer
+   returns Some u, with t ->* u, beta_normal u, typ empty u T, and TOTAL cost
+   <= tower (4*s+3) (18*s+8), including computation of the rank bound.
+
+No semantic estimator, descent, success or termination contract is a premise
+of these results. The fixed-rank theorem naturally takes the paper's semantic
+d-bounded-input premise, not an assumption that a supplied fuel succeeds.
+The cost model is explicit constructor/callback and rank-word operations;
+labels/indices use the documented unary encoding. Counters are ghost accounting,
+not a machine/extraction runtime certificate for Gallina unary counters.
+
+Proof chain: Morphisms -> Safety (including residual substitution/context
+transport) -> Descent -> BoundedNormalization; SortBounds -> AutomaticBound ->
+Normalization connects the conservative bound to the executable reducer.
+Audit.v has 87 Print Assumptions checks, all closed under the global context.
+
+Important mathematical repair: the manuscript/previous handoff's claimed
+`RedexBound empty t (S (estimateRank t))` for closed typed t is FALSE.
+EstimatorChecks proves the counterexample described in the milestone below.
+Keep the original Agda translation unchanged. The final automatic normalizer
+uses `conservativeRank t = 1 + maxRankLiteral t + nodes t` instead. This has a
+proved linear computation cost and yields the requested classification without
+changing head rank, typing rules or the input domain. The sharper Agda-budget
+success theorem is neither proved nor needed; no such claim is made.
+
+Build evidence: targeted Audit.vo command (README environment exports first),
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/NormalizationComplexity/Audit.vo`, exited 0; log
+/tmp/pts-rk-nc-finalize-30.log prints exact public types and all 87 checks.
+Fresh full dependency build (exit 0): same command with
+`--build-dir /tmp/pts-rk-nc-final-fresh.Bm7eZT`; /tmp/pts-rk-nc-final-fresh.log.
+It contains 88 closed reports: 87 audit checks plus one upstream report.
+Final full CI (exit 0):
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/normalization-finalize-final"
+bash tools/check-local-ci.sh`; /tmp/pts-rk-nc-finalize-final-ci.log. All 81
+stages pass, including pristine upstream and the normalization audit.
+
+Independent recursive kernel check (exit 0, no admitted dependency flags):
+`opam exec --switch=pts-rk-ci -- timeout 180 rocq check -silent -o
+-Q /tmp/pts-rk-nc-final-fresh.Bm7eZT/default/theories PTSrk
+PTSrk.NormalizationComplexity.Normalization
+PTSrk.NormalizationComplexity.BoundedNormalization
+PTSrk.NormalizationComplexity.EstimatorChecks`.
+Log /tmp/pts-rk-nc-final-kernel-check.log. Its global loaded-library summary
+lists Stdlib functional_extensionality_dep, separately from theorem dependency
+audits: all 87 local theorem Print Assumptions reports are closed. No new axiom
+was introduced. No unsafe fixpoints, type-in-type or assumed positivity.
+
+After a comment/import cleanup, another empty build directory was allocated:
+/tmp/pts-rk-nc-verified.xg8gFn; command as above with this --build-dir,
+log /tmp/pts-rk-nc-verified.log, exit 0, all 87 local audits closed. Final
+recursive `rocq check -silent -o -Q .../default/theories PTSrk
+PTSrk.NormalizationComplexity.Audit` also exited 0; log
+/tmp/pts-rk-nc-verified-kernel-check.log. Checking PTSrk.Ranks alone produces
+a byte-identical loaded-library context summary (`cmp` exit 0), confirming
+the listed Stdlib axiom was already in the upstream library context.
+Final cleaned-tree CI rerun, exit 0, all 81 stages PASS:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/normalization-verified-final"
+bash tools/check-local-ci.sh`; /tmp/pts-rk-nc-verified-ci.log.
+
+All 30 incremental logs (failures included), baseline, both fresh builds,
+final CI outputs/stage tables and kernel-check outputs are archived under
+verification/normalization-final-2026-10-14/. COMMANDS.md records exact commands,
+per-attempt statuses and toolchain. Source/documentation whitespace checks pass.
+Raw compiler logs are kept verbatim; their compiler-emitted trailing whitespace
+is reported by a whole-worktree diff check, including earlier continuation logs.
+
+No required normalization proof goal remains in this model. Optional future
+work: analyze the sharper original Agda budget, or formalize a concrete machine/
+binary-encoding cost refinement. Those are not hidden premises of the results.
+Next exact verification command (README exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/NormalizationComplexity/Audit.vo`.
+
+The following entries are chronological earlier milestones, superseded by
+this completed status and retained for provenance.
+
+## 2026-10-14 — fixed-rank normalization proved; estimator bridge refuted
+
+In-progress continuation at unchanged HEAD 95450d3; all earlier work preserved.
+Baseline local CI (including pristine upstream) exited 0; log
+/tmp/pts-rk-nc-finalize-baseline.log. Added Morphisms, Safety, Descent,
+BoundedNormalization and EstimatorChecks. Targeted Audit.vo build exited 0,
+/tmp/pts-rk-nc-finalize-16.log. Original kernel/rules unchanged.
+
+New checked results: typed simultaneous substitutions and context transport;
+substitution residual bounds; greedy_strict_descent; bounded_rounds_normal;
+fixed_rank_normalization, which guarantees successful normalization, original
+typing preservation and cost <= tower (2*d+1) (nodes t+5*d+2) for d-bounded
+well-typed terms. No semantic descent hypothesis is assumed.
+
+IMPORTANT: the previous remaining estimator-to-head-rank goal is FALSE.
+EstimatorChecks defines B = Pi _:U0.U0, A = Pi _:B.U0, and the closed type
+Pi x:A. Pi y:B. ((lambda z:U0.x) U0) y. It is typed at U3, estimateRank is 0,
+and the displayed lambda head has rank 2. All three facts and failure of
+RedexBound empty witness (S (estimateRank witness)) compile. This refutes the
+paper's claimed bridge, NOT TOWER normalization or even the success of its
+particular estimator-budget attempt. Do not attempt to prove the false goal.
+
+Repair in progress: retain the faithful Agda estimator and counterexample;
+prove the conservative semantic bound 1 + maxRankLiteral t + nodes t for
+closed typed terms. SortBounds.v is the current new proof layer; no final
+automatic TOWER theorem yet. Next command (README opam exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/NormalizationComplexity/SortBounds.vo`.
+Development logs /tmp/pts-rk-nc-finalize-{1..17}.log retain failed attempts.
+
+## Normalization continuation: cost bounds and semantic rank lemmas checked
+
+Current HEAD is 95450d34bffd4c4d54ddd73d79f0d0d830837276 after the completed
+history reorganization. This continuation is uncommitted. User-owned untracked
+logs/ is untouched. The full normalization complexity proof remains OPEN.
+
+Baseline: `DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/normalization-continuation-baseline"
+bash tools/check-local-ci.sh` exited 0, including pristine upstream.
+Added Literals.v, Runtime.v and RedexRanks.v under theories/NormalizationComplexity;
+updated Audit.v, dune and README. No original kernel/rules/annotations changed.
+
+Checked milestones:
+- Literal maxima cannot increase through original beta reduction.
+- Costed renaming, substitution (including binder shifts), greedy passes,
+  iteration and normal checking project to the original operations.
+- A k-pass bounded attempt costs at most tower (2*k+1) (nodes t+5*k+2).
+  With the estimator budget, its cost is at most
+  tower (4*encodingSize t+3) (11*encodingSize t+7). These are bounded attempts,
+  NOT yet guaranteed successful normalization at those budgets. Counters are
+  ghost accounting in an explicit constructor/callback operation model.
+- Original-typing semantic redex ranks are positive; rank-zero typed terms
+  in well-formed contexts are normal. Type ranks are unique, stable under
+  conversion, and preserved by typed substitution and reduction.
+- Argument rank is strictly below function rank; application result rank
+  is at most function rank. Newly exposed lambdas are bounded by original
+  spine redexes. greedy_contracted_head_bound bounds the heads contracted
+  by the bottom-up application clause, including newly exposed heads.
+
+Targeted build commands used the dedicated opam exports documented in the
+normalization README, then `opam exec --switch=pts-rk-ci -- timeout 180 dune build
+--display=short --no-buffer theories/NormalizationComplexity/RedexRanks.vo`.
+Latest target build: /tmp/pts-rk-nc-cont-25.log, exit 0.
+Earlier continuation logs 1--17 cover Literals/Runtime and zero-rank proofs;
+18--25 cover semantic rank comparisons and head exposure. Failures are retained,
+not counted as successes: 18 implicit sort-inversion scope; 19 suppressed
+notation; 21 context inference; 23 dependent boolean case equation. Corrected
+builds 20, 22, 24 and 25 each exited 0.
+
+Fresh audit command (exit 0):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build
+--build-dir /tmp/pts-rk-nc-resume-fresh.LVufMY --display=short --no-buffer
+theories/NormalizationComplexity/Audit.vo`.
+Log /tmp/pts-rk-nc-resume-fresh.log contains all 54 local Print Assumptions
+reports closed under the global context (plus one upstream report), and exact
+types of cost bounds, zero_bound_normal, exposed_lambda_rank and
+greedy_contracted_head_bound. No added axioms or admitted proofs.
+
+First remaining local goal: a typed substitution residual bound, including
+all binder/annotation positions. For well-formed G, typed u:U and body t:T in
+G&U, TypeRank G u a and bounds d on both u and t should imply
+`RedexBound G (subst t u) (Nat.max d a)`.
+Generalize over binder depth/typed substitutions for its induction. Then
+transport bounds under reduction of context declarations, and combine with
+the checked contracted-head and strict argument-rank lemmas to prove strict
+greedy descent. Estimator semantic soundness is independently still open:
+closed typed t must have RedexBound empty t (S (estimateRank t)). Neither
+missing theorem is postulated, and qualitative SN does not establish either.
+
+Next exact command after implementing the residual lemma:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/NormalizationComplexity/RedexRanks.vo`.
+Use the README's OPAMROOT/PATH exports first. See continuation verification
+logs for failures and the final full-CI result recorded below.
+
+Final full local CI (exit 0):
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/normalization-continuation-final"
+bash tools/check-local-ci.sh`.
+All requested stages passed, including pristine upstream and normalization.
+Durable logs: verification/normalization-continuation/ contains the baseline,
+all 25 targeted development logs (failures included), both fresh audits,
+final CI output, final-stages.tsv and the pristine upstream commit identifier.
+`git diff --check` passed; no forbidden proof escape was found in the
+normalization sources. Changes remain uncommitted; no push performed.
 
 ## NormalizationComplexity: checked groundwork, full classification OPEN
 

@@ -1,5 +1,40 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — checked normalization classification with a repaired bound
+
+The semantic head-rank definition is unchanged: rank of the product TYPE of
+a redex head, not merely its annotated domain. Typed substitutions, renamings,
+and context transport give a structural RankSafe predicate proved equivalent
+to RedexBound on original well-typed inputs. Its substitution residual lemma
+and the exposed-head lemmas prove strict greedy descent. Thus d-bounded
+original-typed terms normalize in d passes; the costed implementation now has
+a success theorem, not only an upper bound for unsuccessful attempts.
+
+The manuscript's bridge from maximum abstraction-domain rank B to semantic
+(B+1)-boundedness is false under product binders. EstimatorChecks.v proves a
+closed witness typed at U3 has estimateRank = 0 and a rank-2 redex head:
+B = Pi _:U0.U0, A = Pi _:B.U0,
+Pi x:A. Pi y:B. ((lambda z:U0.x) U0) y.
+This counterexample does NOT refute TOWER normalization or the success of
+the original sharper estimator budget; it refutes that proposed bridge.
+Retain rank.agda's faithful translation unchanged and retain the checked
+counterexample. Do not silently change the meaning of head rank or input typing.
+
+Use the conservative computed bound 1 + maxRankLiteral t + nodes t for the
+automatic normalizer. SortBounds proves the underlying sort bound uniformly
+over typed simultaneous substitutions and application spines. This covers
+every binder, including products. AutomaticBound proves semantic soundness,
+magnitude <= 2*encodingSize+1, and cost <= 7*encodingSize. Normalization.v
+combines it with the fixed-rank proof and costs the bound computation as well
+as reduction: tower (4*s+3) (18*s+8). All public statements use original typ,
+original beta normality and unchanged result typing; no pending proof contract.
+
+The classification is for the documented explicit constructor/callback and
+word-operation model with unary-label/index encoding. Cost counters are ghost
+accounting, not a claim about running the Gallina unary counters. A separate
+machine/extraction or binary-label analysis is not asserted. The sharper Agda
+budget is optional future research, not needed for these completed results.
+
 ## 2026-10-13 — normalization-complexity library and cost-model separation
 
 - Create independent PTSrk.NormalizationComplexity library under theories,
@@ -709,3 +744,21 @@ Separate @Interpretation_of_R/relational/audit and
 audits. Theorem 4 is complete; the functional directory contains checked
 components, NOT a completed Theorem 7. Build evidence and any refactor failures
 are recorded in STATE.md. Historical logs keep their original paths.
+## 2026-10-13 — normalization cost and semantic rank continuation
+
+Use executable output/cost pairs, with proved projections to the existing
+operations, rather than treating output size as runtime. Charge substitution
+lifting/renaming and final normal checking explicitly. Costs are ghost
+constructor/callback accounting, not the execution cost of unary counters.
+The resulting fixed-pass ELEMENTARY and estimator-budget TOWER envelopes
+are bounds for attempts; they are not claims that the attempts succeed.
+
+Define TypeRank by original typings of a term and its type at a sort. Define
+RedexRank by original product-typed head witnesses and all syntactic occurrence
+positions, including annotations. Do not define rank by a successful fuel
+budget. Conversion independence and substitution/reduction preservation are
+proved using the existing kernel metatheory. A function's argument rank is
+strictly smaller, but its result rank is only non-increasing; keep that
+distinction in the descent proof. The newly exposed lambda/head bound is now
+checked. Substitution residual bounds, context transport, strict descent and
+semantic estimator correctness remain obligations, not assumptions.
