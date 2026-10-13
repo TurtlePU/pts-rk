@@ -1,5 +1,28 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — annotation-preserving STLC reduction for completeness
+
+The updated manuscript claims TOWER-completeness of closed well-typed
+beta-convertibility. Implement the embedding portion in STLCEmbedding.v,
+not an axiom standing for the external lower bound. Independent simple
+typing and beta rules share only the original scoped raw syntax. A single
+ground type suffices; code its arrows as products and close that type
+variable with lambda o:U0. Keep every Church annotation. Normality of type
+codes and shape closure under simultaneous substitution imply reflection
+of original beta reduction; confluence then implies conversion reflection.
+The final theorem packages typing, conversion equivalence and an exact
+pair-size increase of 4. All eight new audited results are closed.
+
+Use the Church-style version of Nguyen's Theorem 1 (LMCS 20(3:21), 2024,
+https://arxiv.org/html/2305.12601v4), avoiding the manuscript's Curry inference
+detour. Linear unification alone does not establish a linear bound for
+writing explicit tree annotations. No source hardness theorem or machine
+complexity model is in this repository. Consequently this milestone is a
+checked reduction supporting the textual completeness proof, NOT a fully
+formalized unconditional machine-level TOWER-completeness theorem. Keep
+that boundary explicit. Existing normalization operation-cost qualifications
+and the conservative-rank repair remain unchanged.
+
 ## 2026-10-14 — checked normalization classification with a repaired bound
 
 The semantic head-rank definition is unchanged: rank of the product TYPE of

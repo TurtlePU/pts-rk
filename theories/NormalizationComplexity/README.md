@@ -1,4 +1,4 @@
-# Normalization complexity — checked normalization and cost bounds
+# Normalization complexity — normalization bounds and STLC reduction
 
 This library uses the original `PTSrk.Syntax.Term nat`, including lambda
 annotations, and the original beta relation. It does not change the calculus.
@@ -29,6 +29,39 @@ has linear tower height and linear bottom argument, not fixed height.
 `automaticNormalizer` is total on raw syntax; its `None` branch is proved
 unreachable on the specified well-typed closed inputs. No input typing
 decision procedure is being timed or claimed complete.
+
+## Completeness: checked reduction, external hardness theorem
+
+The updated paper's lower-bound statement concerns **beta-convertibility of
+closed well-typed terms**, a decision problem. `STLCEmbedding.v` proves
+`ChurchSTLC.church_stlc_reduction`: for two independently simply typed,
+term-closed Church terms of the same simple type, the translation produces
+closed original-PTS inhabitants of the same type, preserves AND reflects
+beta-convertibility, and increases their combined encoding size by exactly 4.
+
+The source shares scoped de Bruijn raw syntax with PTS, but defines its own
+simple types, typing derivations and beta rules. Its only ground type is a
+distinguished variable with no source term binding. Arrow types are encoded
+as products; lambda annotations are retained. The translation adds a single
+`lambda o:U0` around each input. Type-code normality, shape preservation under
+substitution, and original confluence establish reflection; there is no
+annotation-erasing bridge or assumption of target convertibility.
+
+[Nguyen's Theorem 1](https://arxiv.org/html/2305.12601v4) supplies the external
+STLC TOWER-hardness result (under elementary many-one reductions). The paper
+covers Church-style inputs, so this reduction needs neither Curry type
+inference nor a claim that explicit annotations can be reconstructed in
+linear time. Our size measure counts those annotations and unary indices.
+The wrapper constructs one lambda and one sort; its proved size equation is
+not a machine-level time certificate for a serializer.
+
+**Formalization boundary:** Rocq checks this reduction, not Nguyen's hardness
+proof. No Turing-machine complexity classes, external-input encoding theorem,
+or STLC TOWER-hardness theorem have been formalized here, and none has been
+postulated as an axiom. Combining the reduction with that cited theorem gives
+the manuscript's mathematical lower-bound argument; an unconditional Rocq
+theorem of machine-level TOWER-completeness remains outstanding. The existing
+upper bounds retain the operation-cost qualifications below.
 
 ## Implemented and checked
 
@@ -78,7 +111,9 @@ decision procedure is being timed or claimed complete.
 - `BoundedNormalization.v`, `Normalization.v`: the public results above.
 - `EstimatorChecks.v`: checked counterexample to the manuscript's claimed
   `estimateRank+1` semantic head-rank bound (see below).
-- `Audit.v`: 87 transitive `Print Assumptions` reports, all closed under the
+- `STLCEmbedding.v`: independent Church STLC typing and reduction, the
+  annotation-preserving closed embedding and two-way conversion theorem.
+- `Audit.v`: 95 transitive `Print Assumptions` reports, all closed under the
   global context on Rocq 9.2.0. No additional axioms or admitted proofs.
 
 ## Cost and input conventions

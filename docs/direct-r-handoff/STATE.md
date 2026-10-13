@@ -1,5 +1,62 @@
 # Live proof-development state — 2026-10-14
 
+## Completeness update: STLC reduction checked, external hardness outstanding
+
+Current parent HEAD: b61eef6 (updated manuscript merge). This task adds
+STLCEmbedding.v, its dune entry and eight Audit.v checks; updates README,
+DECISIONS and this state. No kernel changes, admits or new axioms. User-owned
+logs/ is untouched. The user subsequently requested commit and push; this
+snapshot is prepared for `Normalization complexity: prove Church STLC reduction`
+on main, to be pushed normally to origin/main.
+
+Exact new public statement, ChurchSTLC.church_stlc_reduction:
+
+    forall (t u : Term nat 1) (A : ChurchSTLC.Ty),
+      has_type emptyEnv fzero t A -> has_type emptyEnv fzero u A ->
+      typ empty (close t) (Pi (U 0) (code A fzero)) /\
+      typ empty (close u) (Pi (U 0) (code A fzero)) /\
+      (convertible t u <-> def_equiv nat 0 (close t) (close u)) /\
+      encodingSize (close t) + encodingSize (close u) =
+        encodingSize t + encodingSize u + 4.
+
+Source has_type and beta are independent Church STLC relations, not PTS
+premises renamed as STLC. The single ground type is closed by lambda o:U0;
+annotations are preserved. Reflection is proved using normal type codes,
+shape preservation, and original confluence. No finite-example argument.
+
+Fresh dependency build exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --build-dir
+/tmp/pts-rk-stlc-fresh.ybfesA --display=short --no-buffer
+theories/NormalizationComplexity/Audit.vo`.
+Log /tmp/pts-rk-stlc-fresh.log contains 96 closed assumption reports
+(95 audit results, one upstream report). All eight new results are closed.
+Rebuild after comment/format cleanup: /tmp/pts-rk-stlc-final-audit.log, exit 0.
+Recursive `rocq check -silent -o -Q
+/tmp/pts-rk-stlc-fresh.ybfesA/default/theories PTSrk
+PTSrk.NormalizationComplexity.Audit` exited 0; /tmp/pts-rk-stlc-kernel.log.
+Repeated after final cleanup: /tmp/pts-rk-stlc-final-kernel.log, exit 0.
+The global loaded-library extensionality entry is unchanged from upstream;
+it is not an assumption of any audited theorem. Baseline full local CI also
+exited 0 (/tmp/pts-rk-tower-hardness-baseline.log).
+Final full local CI exited 0, all 81 stages pass:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/tower-hardness-final"
+bash tools/check-local-ci.sh`; /tmp/pts-rk-stlc-ci.log. Exact commands,
+all five incremental compiler results (including failures), final builds,
+kernel check and CI summaries are retained under
+docs/direct-r-handoff/verification/tower-hardness-2026-10-14/.
+
+Remaining goal: formalize the machine/encoding complexity framework and
+Nguyen's STLC TOWER-hardness theorem, then compose with the checked reduction.
+There is no unconditional machine-level TOWER-completeness theorem in Rocq
+yet. The README identifies the external mathematical input and separates it
+from kernel evidence. No hardness premise has been hidden in the goal.
+Next exact verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/NormalizationComplexity/Audit.vo`.
+
+The following normalization-completion milestone is historical; its scope
+is the operation-cost upper bound, not the new lower-bound claim.
+
 ## Normalization complexity COMPLETE in the documented operation-cost model
 
 Parent HEAD is 95450d34bffd4c4d54ddd73d79f0d0d830837276. All earlier proof

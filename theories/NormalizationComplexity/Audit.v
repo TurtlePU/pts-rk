@@ -113,3 +113,14 @@ Check EstimatorChecks.estimator_does_not_bound_head_ranks.
 Check conservative_rank_sound.
 Check normalization_in_TOWER.
 Check rank_bound_in_linear_time.
+
+Require Import PTSrk.NormalizationComplexity.STLCEmbedding.
+Print Assumptions ChurchSTLC.typing_preserved.
+Print Assumptions ChurchSTLC.step_reflected.
+Print Assumptions ChurchSTLC.conversion_preserved.
+Print Assumptions ChurchSTLC.conversion_reflected.
+Print Assumptions ChurchSTLC.closed_typing.
+Print Assumptions ChurchSTLC.closed_conversion.
+Print Assumptions ChurchSTLC.close_size.
+Print Assumptions ChurchSTLC.church_stlc_reduction.
+Check ChurchSTLC.church_stlc_reduction.

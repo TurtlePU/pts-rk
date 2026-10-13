@@ -2,7 +2,7 @@
  (name PTSrk.NormalizationComplexity)
  (package pts-rk)
  (modules Rank Greedy Bounds Literals Runtime RedexRanks Morphisms Safety Descent
-   BoundedNormalization EstimatorChecks SortBounds AutomaticBound Normalization Audit)
+   BoundedNormalization EstimatorChecks SortBounds AutomaticBound Normalization STLCEmbedding Audit)
  (theories Stdlib Equations PTSrk))
 
 (alias
