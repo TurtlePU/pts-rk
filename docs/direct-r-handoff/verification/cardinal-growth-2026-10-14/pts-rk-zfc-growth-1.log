@@ -1,0 +1,14 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+cantor_no_injection
+     : forall A : Ens, ~ embeds (Power A) A
+iterated_power_strict
+     : forall (A : Ens) (i j : nat),
+       i < j -> ~ embeds (iterated_power A j) (iterated_power A i)
+        rocq ZFC_model/CardinalGrowth.{glob,vo}

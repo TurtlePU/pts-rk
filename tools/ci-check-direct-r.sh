@@ -192,6 +192,9 @@ stage 06g-code-universes "$ROOT" ZFC_model/CodeUniverses.vo
 stage 06h-set-bijections "$ROOT" ZFC_model/SetBijections.vo
 stage 06i-coded-functions "$ROOT" ZFC_model/CodedFunctions.vo
 stage 06j-product-embedding "$ROOT" ZFC_model/ProductEmbedding.vo
+stage 06k-countable-codes "$ROOT" ZFC_model/CountableCodes.vo
+stage 06l-cardinal-growth "$ROOT" ZFC_model/CardinalGrowth.vo
+stage 06m-cardinal-hierarchy "$ROOT" ZFC_model/CardinalHierarchy.vo
 stage 07-proof-families "$ROOT" Interpretation_of_R/functional/DirectRProofs.vo
 stage 08-generators "$ROOT" Interpretation_of_R/functional/DirectRGenerated.vo
 stage 09-first-order "$ROOT" Interpretation_of_R/functional/DirectRFirstOrder.vo

@@ -86,12 +86,45 @@ axiom or premise is needed. All seven new assumption reports are closed.
 This does not choose the fiber injections, build alephs, or prove the GCH
 exponent bound. Those parts of the cardinal argument remain outstanding.
 
+`CountableCodes.v` strengthens countability to an actual set-graph bijection
+between every `U_i` and `omega_codes`, the set of singleton numerals. It
+uses a repetition-free numbering: first the i+1 permitted infinite codes,
+then alternating finite and sort codes. Injectivity, surjectivity, function
+typing, forward evaluation and inverse round trip are proved. Finite
+carriers inject into `omega_codes` as well.
+
+With the rank-zero infinite carrier fixed to this concrete countable set,
+`rank_zero_decoding_bound` proves that **every** code in `U_0` decodes to a
+set injecting into it. Higher carriers are still arbitrary parameters; the
+result is not the all-rank cardinal bound. All ten new assumption reports
+are closed. This countable representative is not asserted to be a von
+Neumann initial ordinal; no uncountable aleph construction is claimed.
+
+`CardinalGrowth.v` proves Cantor's theorem constructively: no set admits an
+injection from its powerset. It also constructs the singleton injection,
+proves transitivity of set injections, and proves strict growth of finite
+powerset iterations. All seven assumption reports are closed.
+
+`CardinalHierarchy.v` instantiates the formerly arbitrary infinite carriers
+with `carrier i = iterated_power omega_codes i`. It proves monotonicity,
+strict growth, and the uniform bound
+`IN a (U i) -> embeds (decode a) (carrier i)` for **all ranks and all codes**.
+The concrete sort axiom and decoded-product emptiness follow as well. All
+seven new assumption reports are closed; there are no carrier assumptions.
+
+These are powerset-iteration representatives, not yet proved to be the
+finite-index alephs. This is not a replacement model in which product
+closure is ignored: the development still has to prove the GCH cardinal
+classification/exponent bound and provide an exact code and coherent
+bijection for each dependent product. In particular, the existence of these
+strictly growing carriers alone does NOT prove PTS soundness.
+
 Build from the repository root:
 
 ```sh
 export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
 export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
-opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/ProductEmbedding.vo ZFC_model/CodedFunctions.vo ZFC_model/CodeUniverses.vo
+opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/CardinalHierarchy.vo ZFC_model/CodedFunctions.vo
 ```
 
 ## Not yet a model or a soundness proof

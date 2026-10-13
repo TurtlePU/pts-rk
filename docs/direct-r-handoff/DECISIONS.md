@@ -1,5 +1,40 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — constructive Cantor theorem and concrete all-rank decoding bound
+
+CardinalGrowth.v proves diagonal non-surjectivity for any extensional map,
+then rules out injections Power A -> A using the previously constructed
+inverse relation on its image. This needs neither excluded middle nor
+choice. Singleton graphs give forward injections, and graph composition
+gives transitivity. Every finite powerset iteration strictly increases size.
+
+CardinalHierarchy.v instantiates the arbitrary infinite carriers with the
+iterated powersets of omega_codes. Exact code membership and the counting
+bijections prove the decoding-size bound uniformly at every rank, with no
+carrier assumptions. This removes a real parameter from the construction,
+but does not identify powerset iterates with alephs or prove exact product
+closure. The GCH classification and exponent bound, coherent cardinal coding
+and PTS interpretation remain required; this is not an alternative model
+silently dropping those obligations. All fourteen new audits are closed.
+
+## 2026-10-14 — explicit counting bijections and rank-zero carrier bound
+
+CountableCodes.v replaces reliance on a possibly repeating enumeration with
+an actual graph bijection U_i -> omega_codes. Number infinite j by j (j<=i),
+finite n by i+1+2n, and sort j by i+2+2j. Elementary arithmetic proves this
+numbering bijective on the permitted codes. The graph's function laws,
+Cartesian bound, injectivity and surjectivity are checked, not assumed.
+Existing inverse constructions give a checked round trip. No choice needed.
+
+omega_codes consists of singleton numerals, not von Neumann ordinals.
+It is a concrete countably infinite representative. Fixing the rank-zero
+infinite carrier to omega_codes proves the decoding bound for all codes
+in U_0: finite carriers inject directly, sort carriers use the counting
+bijections, and the sole permitted infinite carrier is omega_codes itself.
+Higher carriers remain explicit arbitrary parameters; do not claim the
+all-rank bound, initial-ordinal hierarchy or GCH product closure from this
+base result. All ten new audited theorems are closed.
+
 ## 2026-10-14 — dependent-product injection, not assumed cardinal closure
 
 ProductEmbedding.v defines set injections by actual function-set membership

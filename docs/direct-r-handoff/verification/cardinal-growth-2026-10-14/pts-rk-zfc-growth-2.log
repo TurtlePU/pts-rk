@@ -1,0 +1,14 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+decoding_bound
+     : forall (i : nat) (a : Ens),
+       IN a (U i) -> embeds (decode a) (carrier i)
+concrete_sort_axiom
+     : forall i : nat, IN (repr (sort i)) (decode (repr (sort 0)))
+        rocq ZFC_model/CardinalHierarchy.{glob,vo}

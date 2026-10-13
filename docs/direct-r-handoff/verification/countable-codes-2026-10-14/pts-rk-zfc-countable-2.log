@@ -1,0 +1,24 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+counting_bijection
+     : forall i : nat, bijection (U i) omega_codes (counting_graph i)
+counting_roundtrip
+     : forall (i : nat) (x : Ens),
+       IN x (U i) ->
+       EQ
+         (apply_set (inverse (U i) omega_codes (counting_graph i))
+            (apply_set (counting_graph i) x))
+         x
+rank_zero_decoding_bound
+     : forall (higher : nat -> Ens) (a : Ens),
+       IN a (U 0) -> embeds (El (countable_zero higher) a) omega_codes
+        rocq ZFC_model/CountableCodes.{glob,vo}

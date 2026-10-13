@@ -1,5 +1,108 @@
 # Live proof-development state — 2026-10-14
 
+## Concrete growing carriers and all-rank decoding bound checked
+
+Parent HEAD is 91156df3c7fb387f300a83993b4710fd45c81a35. The user subsequently
+requested committing this work; prepared as `ZFC model: prove cardinal growth
+and uniform decoding bounds`, including CountableCodes, CardinalGrowth and
+CardinalHierarchy. No push requested.
+User-owned logs/ is untouched.
+
+CardinalGrowth.v proves Cantor non-surjectivity and no injection Power A -> A,
+constructs singleton injections, and proves strict growth of all finite
+powerset iterates. CardinalHierarchy.v now instantiates the previously
+arbitrary infinite carriers as carrier i = iterated_power omega_codes i.
+The decoding bound is proved uniformly for all ranks, not by finite tests:
+
+    decoding_bound : forall i a, IN a (U i) -> embeds (decode a) (carrier i).
+    carrier_strict : forall i j, i < j -> ~ embeds (carrier j) (carrier i).
+    concrete_sort_axiom : forall i,
+      IN (repr (sort i)) (decode (repr (sort 0))).
+
+All fourteen new Print Assumptions reports are closed. No choice, excluded
+middle, GCH, assumed carrier bounds or PTS model laws were added as axioms.
+These are concrete powerset representatives, NOT yet proved to be alephs.
+Exact cardinal codes for products and the GCH argument are still missing;
+the hierarchy alone is not asserted to form a complete PTS model.
+
+Both incremental builds exited 0. Fresh dependency build exited 0; all 67
+model assumption reports are closed:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --build-dir
+/tmp/pts-rk-zfc-growth-fresh.9Nx7jR --display=short --no-buffer
+ZFC_model/CardinalHierarchy.vo ZFC_model/CodedFunctions.vo`.
+Recursive kernel check exited 0, no axioms:
+`opam exec --switch=pts-rk-ci -- timeout 180 rocq check -silent -o
+-Q /tmp/pts-rk-zfc-growth-fresh.9Nx7jR/default/vendor/zfc ZFC
+-Q /tmp/pts-rk-zfc-growth-fresh.9Nx7jR/default/ZFC_model PTSrkModel
+PTSrkModel.CardinalHierarchy PTSrkModel.CodedFunctions`.
+Full local CI, including pristine upstream, exited 0 with all 89 stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/zfc-growth-final"
+bash tools/check-local-ci.sh`. Commands and exact logs are retained in
+verification/cardinal-growth-2026-10-14/. Raw compiler logs have trailing
+whitespace and are preserved verbatim; source/document checks are separate.
+
+The requested final PTS soundness theorem remains unproved. Next major
+obligations: the GCH cardinal classification and exponent bound that ensure
+each dependent product has an exact represented cardinal, coherent selection
+of its coding bijection, and original PTS context/term interpretation with
+substitution, beta compatibility and typing soundness. Do not replace this
+by a record of assumed model laws or silently drop the GCH/product obligations.
+Next exact verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer ZFC_model/CardinalHierarchy.vo ZFC_model/CodedFunctions.vo`.
+
+## Actual counting bijections and rank-zero decoding bound checked
+
+Committed prior product-embedding work as
+91156df3c7fb387f300a83993b4710fd45c81a35, `ZFC model: prove dependent product
+embedding`, as requested. No push requested/performed. New CountableCodes.v
+work below is uncommitted. User-owned untracked logs/ remains untouched.
+
+CountableCodes.v constructs a concrete graph bijection from each U_i to the
+set omega_codes of singleton numerals. The explicit numbering is bijective
+on permitted codes, unlike the previous possibly repeating enumeration.
+Forward evaluation and inverse round trip are proved. Finite carriers also
+inject into omega_codes. Fixing the rank-zero infinite carrier to this set
+proves the decoding bound for ALL members of U_0, with arbitrary higher
+carriers. This is not an assertion that those higher carriers are alephs.
+
+Exact principal types:
+
+    counting_bijection : forall i,
+      bijection (U i) omega_codes (counting_graph i).
+    rank_zero_decoding_bound : forall higher a,
+      IN a (U 0) -> embeds (El (countable_zero higher) a) omega_codes.
+
+Ten new Print Assumptions reports are closed; no axiom, assumed PTS model
+law, choice premise or unsafe checking change was introduced. No kernel
+rules changed. omega_codes is a countably infinite representative, not a
+formal von Neumann initial ordinal construction.
+
+Both incremental builds exited 0. Fresh dependency build exited 0, with all
+53 assumption reports closed:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --build-dir
+/tmp/pts-rk-zfc-countable-fresh.yqh2JU --display=short --no-buffer
+ZFC_model/CountableCodes.vo ZFC_model/CodedFunctions.vo`.
+Recursive kernel check exited 0, no axioms:
+`opam exec --switch=pts-rk-ci -- timeout 180 rocq check -silent -o
+-Q /tmp/pts-rk-zfc-countable-fresh.yqh2JU/default/vendor/zfc ZFC
+-Q /tmp/pts-rk-zfc-countable-fresh.yqh2JU/default/ZFC_model PTSrkModel
+PTSrkModel.CountableCodes PTSrkModel.CodedFunctions`.
+Full local CI, including pristine upstream, exited 0, all 87 stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/zfc-countable-final"
+bash tools/check-local-ci.sh`. Exact commands and logs are retained in
+verification/countable-codes-2026-10-14/.
+
+The requested finalized PTS model soundness proof remains unproved. Next
+major construction: actual uncountable finite-index aleph carriers, their
+cardinal comparison theory, precise GCH and the product exponent bound.
+Coherent choice of cardinal-coding bijections and the original PTS context/
+term interpretation with substitution and beta compatibility still follow.
+No local counting/base-rank result substitutes for those obligations.
+Next exact verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer ZFC_model/CountableCodes.vo ZFC_model/CodedFunctions.vo`.
+
 ## Product-cardinality first step checked; full soundness NOT finalized
 
 Committed the prior checkpoint as 5c8476ed81316b5ba3cb259ffd4c4d170170705f,
