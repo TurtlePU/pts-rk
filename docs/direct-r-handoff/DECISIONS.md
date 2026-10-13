@@ -1,5 +1,26 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — binary congruence and order-law observation prefix
+
+- Package binary congruence with all four interleaved guards, retaining the
+  original equality-table and binary-operation applications. Specialize the
+  existing typed law separately to capped addition and multiplication.
+- Extend order congruence through the same four-object discipline, then reuse
+  generic reflexivity/transitivity application certificates for Nat.leb.
+- Preserve exact source-prefix equalities and dependent suffix substitutions.
+  Source matching uses direct application of assemble_prefix_congr; this avoids
+  expensive whole-goal reduction/rewriting and changes no source statement.
+- All ten arithmetic arguments are now assembled as well. Their rank-five
+  formation and beta conversion preserve annotations and multiplication's
+  positivity premises. full_observation_specialization reaches the original
+  complete nAllObs source, for every named suffix.
+- Export observation_certificates and observation_arguments independently of
+  any assumed typed observation. This makes the closed finite instance usable
+  for future context lifting and internal separation.
+- This finishes observation assembly, not Theorem 7. Contextual separation,
+  the four-constructor bounded invariant and functional deduction preservation
+  remain substantive obligations.
+
 ## 2026-10-13 — successor-congruence observation argument
 
 - Retain original predicate, equality-table and unary-operation applications

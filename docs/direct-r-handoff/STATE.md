@@ -1,6 +1,83 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: successor congruence, following a0e095b
+## Current continuation: complete finite observation arguments, following aa443af
+
+Request: finish theorem 7, commit and push. Starting HEAD aa443af, with only
+untracked user logs/. Theorem 7 is NOT complete. User logs/ is untouched.
+
+Baseline complete local CI, including pristine upstream, exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/binary-congruence-prefix-baseline"
+bash tools/check-local-ci.sh` (documented local PATH).
+Output: _build/local-ci-logs/binary-congruence-prefix-baseline.log.
+
+New binary-congruence application certificates and the exact original first
+17/18-field source matches compiled, uniformly for q>0. Command:
+`opam exec --switch=pts-rk-ci -- timeout 120 dune build --display=short
+--no-buffer theories/DirectRFiniteDomainPrefix.vo`, exit 0;
+_build/local-ci-logs/binary-congruence-prefix-1.log.
+
+Source-prefix normalization initially was expensive. Local attempts
+order-prefix-1, -5 and -7 reached 180-second timeouts (124). Failed attempts
+-2/-3/-4 exposed reduction/rewrite mismatches. Attempt -6 was stopped (130)
+to profile. Timed profiles -1/-2 were deliberately terminated (143).
+All logs are in _build/local-ci-logs. Timed profile -3 was also terminated (143).
+The existing CI stage budget is 1200 seconds and has not been changed.
+
+The final source-matching proof uses assemble_prefix_congr by direct application,
+not whole-goal rewriting or destructing the full prefix. This solved the
+performance issue: order-prefix-8 exited 0 under the unchanged local 180-second
+limit. No typing rule, annotation or theorem statement was weakened.
+
+All ten arithmetic laws now compile in their actual source positions, including
+the two multiplication order implications with their positivity premises.
+arithmetic-prefix-1 failed on a second unsolved conversion subgoal; -2 exited 0.
+The dependent application chain reaches all 31 arguments.
+
+Public checked results:
+- full_observation_specialization connects that chain to assemble(nAllObs body)
+  for any named suffix, retaining its exact substitution by all 31 terms.
+- observation_certificates constructs all 23 closed law proofs, uniformly for
+  q>0, WITHOUT any assumed typed observation term.
+- observation_arguments packages those proofs as an actual dependent
+  TelescopeArguments.arguments spine over law_telescope (scope 8 to 31).
+  Along with data_arguments_typed this supplies the finite observation.
+
+Full-observation incremental audit: full-observation-audit-3.log exited 0 using
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`. Attempt -2 had a tactic bullet
+focus error in the certificate conjunction and is retained. No admissions or
+new axioms were introduced. The incremental functional audit has 231 closed
+assumption reports.
+
+Fresh isolated full build exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-full-observation.DNp5N1 --display=short --no-buffer`.
+All 339 assumption reports are closed under the global context.
+Tracked exact command/output: verification/full-observation-full-2026-10-13.log.
+Complete unchanged local CI exited 0, including pristine upstream and all
+original stages: `DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/full-observation-final"
+bash tools/check-local-ci.sh`. Tracked output: verification/full-observation-ci-2026-10-13.log.
+Failure/timeout/interrupted-profile history is indexed, with explicitly partial
+error excerpts, in verification/full-observation-history-2026-10-13.log;
+the full raw attempt logs remain at the paths listed there.
+`git diff --check` exited 0. No new remote CI result is claimed.
+
+Commit checkpoint: `Construct all finite observation arguments in the original PTS`,
+parent aa443af. This is partial progress on the requested Theorem 7, not its
+completion. A normal authorized push will follow the commit. User logs/ is
+excluded from the commit and remains untouched.
+
+First remaining goal: lift the closed observation argument spine to an arbitrary
+ambient PTS context, specialize the original E/O bodies, and prove finite fold
+evaluation/no_back for the four-constructor presentation domain. Do not use the
+unary Theorem4 observation as the functional one. Then prove negative ground
+faithfulness, the four-constructor bounded invariant, R3/R4/R5 and independent
+functional deduction preservation. Theorem 7 is NOT complete.
+Next exact command after implementing context lifting/separation:
+`opam exec --switch=pts-rk-ci -- timeout 1200 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+
+## Historical continuation: successor congruence, following a0e095b
 
 Request: proceed proving, then commit and push. Starting HEAD:
 a0e095bd4f3913bc090fe367e2cdcde58c2a44e2. Preserve and include the previous
