@@ -1,6 +1,69 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: complete finite observation arguments, following aa443af
+## Current continuation: contextual observation and folds, following 947f08e
+
+Request: proceed proving, then commit and push. Starting HEAD 947f08e, with
+only untracked user logs/, which remains untouched. Theorem 7 is NOT complete.
+
+Baseline complete local CI, including pristine upstream, exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/context-observation-baseline"
+bash tools/check-local-ci.sh` (documented local PATH).
+Output: _build/local-ci-logs/context-observation-baseline.log.
+
+New checked generic lemmas in DirectRTelescopeArguments:
+- closed_arguments_lift transports a closed dependent argument spine into
+  any original PTS context. The terminal substitutions agree pointwise.
+- closed_arguments_application applies that spine and returns the exact
+  lifted substituted suffix. No functional extensionality is used.
+
+DirectRFiniteSpecialization.contextual_observation supplies the same chosen
+23 closed law terms uniformly in every context, following the eight data terms.
+contextual_source_observation connects this application theorem to the actual
+assemble(nAllObs body) source with its exact suffix assembly and substitution.
+
+DirectRFunctionalEvaluation proves beta fold equations for Codes.zero,
+Codes.successor, Codes.addition and Codes.multiplication at arbitrary scoped
+arguments. numeral_evaluation and finite_numeral_evaluation apply to the
+original five-argument presentation domain. Only the generic iteration helper
+is reused from UnaryEvaluation; no unary carrier/relation replaces the target.
+
+Incremental commands (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRTelescopeArguments.vo`, exit 0, context-arguments-1.log;
+the DirectRFiniteSpecialization.vo target with timeout 180, exit 0,
+context-specialization-1.log; and DirectRFunctionalEvaluation.vo with timeout 90,
+exit 0, functional-evaluation-1.log. All logs are in _build/local-ci-logs.
+Each compiled on its first attempt.
+
+Fresh isolated full build exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-context-observation.xCVh5g --display=short --no-buffer`.
+All 356 assumption reports are closed under the global context; no Axioms
+report appears. Exact output: verification/context-observation-full-2026-10-13.log.
+Updated complete local CI exited 0, including pristine upstream and all original
+stages, using `DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/context-observation-final"
+bash tools/check-local-ci.sh`. Its functional audit has 248 closed reports.
+Exact output: verification/context-observation-ci-2026-10-13.log.
+`git diff --check` and `bash -n tools/ci-check-direct-r.sh` exited 0.
+No new remote CI result is claimed.
+
+Commit checkpoint: `Lift finite observations into contexts and prove functional folds`,
+parent 947f08e. Includes the generic transport lemmas, two new modules, audit,
+module/CI registration, handoff and verification logs. Commit/push are authorized;
+a normal push will follow the commit. User logs/ is excluded and untouched.
+
+First remaining goal: relate the original EqAt/LeAt bodies on closed numerals
+by beta conversion to observation_type with the corresponding fold suffix.
+Use contextual_source_observation plus finite_numeral_evaluation and the false
+order-table entry at cutoff n to construct a closed inhabitant of
+`Neg (LeAt (numeral (S n)) (numeral n))` uniformly in n. Then derive negative
+ground faithfulness. The four-constructor bounded invariant, R3/R4/R5 and
+independent functional deduction preservation remain open.
+Next exact command after implementing that bridge/separation:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+
+## Historical continuation: complete finite observation arguments, following aa443af
 
 Request: finish theorem 7, commit and push. Starting HEAD aa443af, with only
 untracked user logs/. Theorem 7 is NOT complete. User logs/ is untouched.

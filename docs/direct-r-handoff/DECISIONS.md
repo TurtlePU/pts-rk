@@ -1,5 +1,19 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — contextual observation and functional fold equations
+
+- Lift the closed dependent argument spine through the original weakening
+  theorem. Track terminal substitutions pointwise and compare replaced terms
+  with replace_ext; do not assume function extensionality.
+- Choose the finite law terms once, independently of context and the input
+  observation proof. Apply the data and law spines sequentially to preserve
+  their exact dependent suffix. Connect this theorem to the named source.
+- Prove fixed open beta schemas for all four Codes constructors, then
+  instantiate them by scope-correct substitution. Numeral folds use the
+  functional five-argument carrier; the shared iteration helper is merely
+  syntax and does not change the interpretation.
+- These results enable, but do not themselves prove, internal no_back.
+
 ## 2026-10-13 — binary congruence and order-law observation prefix
 
 - Package binary congruence with all four interleaved guards, retaining the

@@ -155,6 +155,8 @@ stage 06a-telescope-arguments "$ROOT" theories/DirectRTelescopeArguments.vo
 stage 06a-finite-data "$ROOT" theories/DirectRFiniteData.vo
 stage 06a-finite-binary-domain "$ROOT" theories/DirectRFiniteBinaryDomain.vo
 stage 06a-finite-domain-prefix "$ROOT" theories/DirectRFiniteDomainPrefix.vo
+stage 06a-finite-specialization "$ROOT" theories/DirectRFiniteSpecialization.vo
+stage 06a-functional-evaluation "$ROOT" theories/DirectRFunctionalEvaluation.vo
 stage 06b-foundations "$ROOT" theories/DirectRFoundations.vo
 stage 06c-unary "$ROOT" theories/DirectRUnary.vo
 stage 06c-finite-up "$ROOT" theories/DirectRFiniteUp.vo
