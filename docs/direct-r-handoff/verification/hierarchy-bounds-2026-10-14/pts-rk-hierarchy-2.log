@@ -1,0 +1,16 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+dependent_product_rank_bound
+     : forall (W A : Ens) (B : Ens -> Ens),
+       transitive_set W ->
+       INC A W ->
+       (forall x : Ens, IN x A -> INC (B x) W) ->
+       IN (dependent_product A B) (iterated_power W 5)
+        rocq ZFC_model/HierarchyBounds.{glob,vo}

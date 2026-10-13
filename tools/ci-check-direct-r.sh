@@ -195,6 +195,15 @@ stage 06j-product-embedding "$ROOT" ZFC_model/ProductEmbedding.vo
 stage 06k-countable-codes "$ROOT" ZFC_model/CountableCodes.vo
 stage 06l-cardinal-growth "$ROOT" ZFC_model/CardinalGrowth.vo
 stage 06m-cardinal-hierarchy "$ROOT" ZFC_model/CardinalHierarchy.vo
+stage 06n-powerset-embedding "$ROOT" ZFC_model/PowersetEmbedding.vo
+stage 06o-subset-functions "$ROOT" ZFC_model/SubsetFunctions.vo
+stage 06p-bounded-formulas "$ROOT" ZFC_model/BoundedFormulas.vo
+stage 06q-bounded-inverse "$ROOT" ZFC_model/BoundedInverse.vo
+stage 06r-hierarchy-bounds "$ROOT" ZFC_model/HierarchyBounds.vo
+stage 06s-bounded-families "$ROOT" ZFC_model/BoundedFamilies.vo
+stage 06t-bounded-products "$ROOT" ZFC_model/BoundedProducts.vo
+stage 06u-code-hierarchy "$ROOT" ZFC_model/CodeHierarchyBounds.vo
+stage 06v-supplied-hierarchy "$ROOT" ZFC_model/SuppliedHierarchy.vo
 stage 07-proof-families "$ROOT" Interpretation_of_R/functional/DirectRProofs.vo
 stage 08-generators "$ROOT" Interpretation_of_R/functional/DirectRGenerated.vo
 stage 09-first-order "$ROOT" Interpretation_of_R/functional/DirectRFirstOrder.vo

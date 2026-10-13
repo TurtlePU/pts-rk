@@ -3,7 +3,57 @@
 Reference: the set-theoretical model section of `latex/paper.tex`.
 Dependency: the pinned LGPL subset of rocq-archive/zfc in `vendor/zfc`.
 
+Current foundation target: reformulate this model in BZC + GCH + existence
+of V_{omega+omega}, bounding constructions in the supplied hierarchy and
+eliminating unbounded separation, then finish its soundness proof. Only
+afterward pursue an interpretation in BZC + GCH without that existence
+assumption. See [FOUNDATIONS.md](FOUNDATIONS.md) for the ordered milestones.
+Neither is established by the current Rocq assumption reports.
+
+The first syntactic foundation audit is implemented in `BoundedFormulas.v`
+and `BoundedInverse.v`: ordered pairs/application have explicit bounded
+first-order formulas, and the inverse graph is proved equal to separation
+by a bounded formula. This checks a specific predicate, not all of BZC
+soundness or the strength of the Ens representation.
+
 ## Checked construction
+
+`SuppliedHierarchy.v` proves closure and containment results for a supplied
+union of finite powerset levels, including the concrete decoding graph.
+Its membership characterization is an explicit premise; existence and
+identification with V_{omega+omega} remain foundation obligations.
+
+`CodeHierarchyBounds.v` connects the concrete code universes to the rank
+bounds. The numeral carrier is transitive; every U_i is a subset of it, and
+every decoded member of U_i is a subset of carrier i. The concrete decoding
+graph is typed into the existing dependent product and has rank at most
+carrier (i+5). These are checked Ens bounds for the current code encoding,
+not a proof that the hierarchy or the graph exists in BZC.
+
+`BoundedProducts.v` reconstructs dependent function spaces for set-coded
+families using a five-variable bounded formula for totality, fiber membership,
+and uniqueness. It proves equality with the existing dependent_product when
+the supplied family graph maps A into P(W). The definition uses only a
+bounded predicate separated from P(A x W), with no indexed family_range or
+arbitrary family function. Four new assumption reports are closed. This
+does not yet provide the family graphs or cardinal-coding bijections needed
+for the model's soundness theorem.
+
+`BoundedFamilies.v` replaces the indexed range constructor for set-coded
+families by separation from a powerset using an explicit bounded formula.
+It proves equivalence with the previous range for typed family graphs, and
+bounds the resulting range and its union. Five new assumption reports are
+closed. Existence of the input family graphs and bounded reconstruction of
+the function-space predicate remain obligations.
+
+`HierarchyBounds.v` proves explicit finite rank overhead for the existing
+encoding over any transitive ambient set W: ordered pairs belong to P^3(W),
+Cartesian products are subsets of P^3(W), family ranges belong to P^2(W),
+graphs to P^4(W), and dependent function spaces to P^5(W), under the stated
+domain/fiber bounds. The function-space bound holds uniformly at level n
+with overhead five. All eight new assumption reports are closed. These
+are bounds on the current Ens constructions, not yet their reconstruction
+by bounded formulas or the existence/assembly of V_{omega+omega}.
 
 `SetFunctions.v` constructs dependent function sets as separated subsets of
 actual powersets of Cartesian products. Graph abstraction, relational
@@ -119,12 +169,26 @@ classification/exponent bound and provide an exact code and coherent
 bijection for each dependent product. In particular, the existence of these
 strictly growing carriers alone does NOT prove PTS soundness.
 
+`PowersetEmbedding.v` constructs direct images and proves that an injection
+A -> B induces an actual graph injection P(A) -> P(B). It also proves
+inclusion gives a set injection and records the graph powerset bound for
+dependent function sets. Six new assumption reports are closed.
+
+`SubsetFunctions.v` encodes a function A -> P(B) by the subset of A x B
+consisting of its membership pairs. It proves extensionality and injectivity
+of this construction. Combined with the fiberwise product embedding, this
+gives an injection of a dependent product into P(A x K) whenever a set graph
+supplies injections of its fibers into P(K). These supplied injections are
+explicit premises, not assumed product bounds. Six new reports are closed.
+Cartesian-product cardinal estimates and exact cardinal-code classification
+are still needed; no GCH or final PTS soundness result is claimed here.
+
 Build from the repository root:
 
 ```sh
 export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
 export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
-opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/CardinalHierarchy.vo ZFC_model/CodedFunctions.vo
+opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/PowersetEmbedding.vo ZFC_model/SubsetFunctions.vo ZFC_model/CardinalHierarchy.vo ZFC_model/CodedFunctions.vo
 ```
 
 ## Not yet a model or a soundness proof

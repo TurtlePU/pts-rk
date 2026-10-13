@@ -1,0 +1,10 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bounded_product_equivalence
+     : forall A W f : Ens,
+       IN f (dependent_product A (fun _ : Ens => Power W)) ->
+       EQ (bounded_product A W f) (dependent_product A (apply_set f))
+        rocq ZFC_model/BoundedProducts.{glob,vo}

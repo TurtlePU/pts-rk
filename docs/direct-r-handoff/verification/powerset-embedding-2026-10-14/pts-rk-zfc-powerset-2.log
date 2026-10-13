@@ -1,0 +1,11 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/SubsetFunctions.v", line 75, characters 30-47:
+Error: Unable to find an instance for the variables A, B.
+
+File "ZFC_model/dune", lines 1-5, characters 0-260:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/SubsetFunctions.{glob,vo} (exit 1)

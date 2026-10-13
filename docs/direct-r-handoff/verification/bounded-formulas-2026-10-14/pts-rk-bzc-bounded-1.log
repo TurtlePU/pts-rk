@@ -1,0 +1,12 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedFormulas.v", line 21, characters 4-13:
+Error: The constructor equal (in type Formula) is expected to be applied to
+3 arguments while it is actually applied to 2 arguments.
+
+File "ZFC_model/dune", lines 1-5, characters 0-276:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/BoundedFormulas.{glob,vo} (exit 1)

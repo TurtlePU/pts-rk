@@ -1,0 +1,33 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+dependent_product_rank_bound
+     : forall (W A : Ens) (B : Ens -> Ens),
+       transitive_set W ->
+       INC A W ->
+       (forall x : Ens, IN x A -> INC (B x) W) ->
+       IN (dependent_product A B) (iterated_power W 5)
+        rocq ZFC_model/HierarchyBounds.{glob,vo}
+File "./ZFC_model/CodeHierarchyBounds.v", line 33, characters 8-29:
+Error: In environment
+i, j : nat
+x : Ens
+Hx : IN x (U i)
+Unable to unify "forall E : Ens, IN E (U ?i) -> IN E omega_codes" with
+ "match carrier 0 with
+  | sup A f => EXType A (fun y : A => EQ x (f y))
+  end".
+
+File "ZFC_model/dune", lines 1-5, characters 0-359:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/CodeHierarchyBounds.{glob,vo} (exit 1)

@@ -1,5 +1,122 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — supplied hierarchy characterization and closure
+
+SuppliedHierarchy uses the membership characterization of a supplied union
+of finite powerset levels. Derive powerset/transitive closure and membership
+of the actual model's code/carrier/graph constructions; do not assume PTS
+model closure as a field. No existence or identification with V_{omega+omega}
+is claimed. Next bound the coding witnesses before using set choice.
+Corrected the preceding handoff's stage/report counts from the raw logs.
+
+## 2026-10-14 — connect concrete code decoding to hierarchy bounds
+
+CodeHierarchyBounds proves the singleton-numeral base is transitive, every
+code universe U_i lies inside it, and decoded members of U_i are subsets of
+the corresponding powerset carrier. The decoding graph is typed and bounded
+at carrier (i+5). This is model-specific progress toward the supplied
+V_{omega+omega} realization. It does not turn Ens.sup into BZC collection,
+does not prove coherent cardinal coding/GCH, and does not establish PTS
+typing soundness. Keep all those obligations explicit.
+
+## 2026-10-14 — bounded reconstruction of dependent function spaces
+
+BoundedProducts defines graph laws with all quantifiers bounded by A, W,
+or a supplied P(W). The five-variable first-order formula has no opaque Prop
+atoms or function symbols. The ambient P(A x W) bounds all graph arguments;
+this is essential for equivalence to the original unrestricted function_laws.
+For a supplied family graph f : A -> P(W), prove equality of the reconstructed
+space with dependent_product A (apply_set f), not merely pointwise analogy.
+No assumption that the desired PTS model exists is introduced. The typing of
+f is an explicit input condition whose model-specific witnesses remain to be
+constructed. Keep this distinction and the missing cardinal coding visible.
+
+## 2026-10-14 — reconstruct family ranges from set-coded families
+
+BoundedFamilies replaces sup-indexed family_range in a new construction by
+bounded separation from Power W, using a syntactic Formula 3 certificate.
+The input is a set graph f rather than a meta-level Ens -> Ens family.
+Proved equality with family_range A (apply_set f) for f : A -> Power W,
+as well as range and union bounds. This supplied typing premise is a normal
+input contract, not evidence that the model's required family graphs exist.
+Nor does it certify function_laws itself as bounded. Those are the next
+reconstruction obligations; do not claim full BZC soundness from this lemma.
+
+## 2026-10-14 — explicit rank bounds for the existing graph representation
+
+HierarchyBounds uses transitive ambient sets and ordinary powerset iteration,
+without assuming closure of a PTS model. The library's ordered pair has an
+extra nesting level: bound it in P^3(W), graphs in P^4(W), and the dependent
+function space in P^5(W). Indexed family ranges are in P^2(W) when all
+fibers are subsets of W. Prove the uniform n+5 estimate, not just samples.
+These results bound the existing sup/Comp constructions but do not license
+their use in BZC. The next reconstruction must replace indexed constructors
+by bounded definitions for set-coded families; an arbitrary Ens -> Ens
+parameter is not itself a first-order set-theoretic function graph.
+No hierarchy-existence theorem, model closure axiom or soundness hypothesis
+was introduced. The immediate target remains the supplied-hierarchy model.
+
+## 2026-10-14 — hierarchy-bounded model first; interpretation afterward
+
+User corrects the foundation goal and sequencing. Reformulate the existing
+model in BZC + GCH + existence of V_{omega+omega}, complete its construction
+and soundness, and only then seek the stronger interpretation in BZC + GCH.
+This supersedes the interpretation-first/two-independent-target wording below.
+Use the supplied hierarchy to bound constructions and eliminate stronger
+collection/separation uses wherever possible. Any remaining separation must
+be explicitly bounded; hierarchy existence alone is not subset comprehension.
+The bounded inverse certificate remains useful but is not the main theorem.
+No proof claim, PTS rule, or source theorem is changed by this correction.
+
+## 2026-10-14 — bounded syntax certificate for graph inversion
+
+The previous goal-registration turn was progress: it recorded the weaker
+targets and an actionable strength audit. This continuation implements the
+first certificate rather than merely repeating that audit. BoundedFormulas
+has only scoped equality/membership atoms and bounded quantifiers; no opaque
+Prop predicates, function symbols or unbounded quantification are admitted
+into the syntax. Ordered-pair auxiliaries are bounded inside the pair itself,
+matching the pinned library's {{x},{empty,{y}}} representation.
+
+BoundedInverse proves the four-parameter bounded separation formula produces
+the same graph as the existing inverse. Ambient Cartesian membership bounds
+the witnesses of reverse_edge. This is a semantic equivalence in Ens and a
+syntactic boundedness result, not yet a formal BZC derivation or a translation
+of all existing Ens constructions into BZC. All nine new audits are closed.
+No original PTS rule or goal changed; the overall goal remains active.
+
+## 2026-10-14 — preferred weaker foundation: BZC + GCH
+
+User adds an explicit goal: if possible, obtain an interpretation in Bounded
+Zermelo with Choice + GCH, and hence a set-sized model after adding existence
+of V_{omega+omega}. “GHZ” is provisionally read as GCH; confirm if corrected.
+Track interpretation and set-model realization as distinct unproved claims.
+The new goal does not permit assuming model laws or changing the PTS.
+
+ZFC_model/FOUNDATIONS.md records the necessary audit. In particular, closed
+Rocq assumption reports for Ens are not proofs of first-order BZC strength.
+Arbitrary sup-indexed families, unrestricted Comp predicates, hierarchy
+collection and bijection selection must be justified by bounded constructions.
+Do not equate external fixed-rank proofs with a uniform internal interpretation.
+Preserve existing results; feasibility remains to be determined. No stronger
+foundation is to be used silently if the preferred target cannot be obtained.
+
+## 2026-10-14 — powerset images and subset-function exponent step
+
+PowersetEmbedding.v constructs direct images via the existing apply_set.
+Set-level extensionality and injection of the original map prove that its
+image map on powersets is injective. SubsetFunctions.v constructs the
+membership-pair relation of a subset-valued function by separation from
+Prod A B. Recovery of every fiber proves the encoding injective. This
+gives the concrete exponent step (P(B))^A -> P(A x B), without GCH or choice.
+Combining with the earlier fiberwise map gives the corresponding dependent
+product bound for supplied fiber injections into P(B).
+
+Do not call this rank-indexed product closure: Cartesian-product estimates,
+coherent selection of fiber injections and GCH exact cardinal classification
+remain unproved. No model law or cardinal bound is added as an axiom.
+All twelve new Print Assumptions reports are closed.
+
 ## 2026-10-14 — constructive Cantor theorem and concrete all-rank decoding bound
 
 CardinalGrowth.v proves diagonal non-surjectivity for any extensional map,

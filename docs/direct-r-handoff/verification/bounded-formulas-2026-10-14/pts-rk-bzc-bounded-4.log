@@ -1,0 +1,17 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedInverse.v", line 62, characters 29-30:
+Error: Cannot infer this placeholder of type
+"forall w1 w2 : Ens,
+ (fun e : Ens => holds reverse_certificate (four_env A B f e)) w1 ->
+ EQ w1 w2 -> (fun e : Ens => holds reverse_certificate (four_env A B f e)) w2"
+in environment:
+A, B, f, e : Ens
+He : IN e (inverse_by_formula A B f)
+
+File "ZFC_model/dune", lines 1-5, characters 0-291:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/BoundedInverse.{glob,vo} (exit 1)

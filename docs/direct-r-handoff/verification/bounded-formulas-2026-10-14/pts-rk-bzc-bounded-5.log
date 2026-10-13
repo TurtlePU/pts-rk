@@ -1,0 +1,10 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+reverse_certificate
+     : Formula 4
+inverse_bounded_separation
+     : forall A B f : Ens, EQ (inverse A B f) (inverse_by_formula A B f)
+        rocq ZFC_model/BoundedInverse.{glob,vo}

@@ -1,5 +1,297 @@
 # Live proof-development state — 2026-10-14
 
+## Supplied hierarchy closure checked; checkpoint commit requested
+
+SuppliedHierarchy.v characterizes a supplied H by membership in some finite
+powerset iterate of a base W. No hierarchy existence axiom or sup-indexed
+collection is introduced. From this characterization and the stated base
+conditions, it proves transitivity, powerset closure, and membership of
+carriers, code universes, decoded carriers, decoding graphs and dependent
+products in H. Identification of W with V_omega and H with V_{omega+omega}
+remains unproved. Cardinal coding and original PTS typing soundness remain
+unproved; the goal is active, with the corrected model-first ordering.
+
+Incremental build, fresh build and recursive kernel check exited 0. Eight
+new reports are closed; fresh dependencies printed 96 closed reports. The
+kernel library-wide summary lists imported functional_extensionality_dep;
+no unsafe settings were reported. Full local CI passed all 98 stages,
+including newly added CodeHierarchyBounds and SuppliedHierarchy stages.
+The preceding code-hierarchy checkpoint actually had 96 stages and nine new
+reports; its inaccurate documentation has been corrected against raw logs.
+Exact commands and logs: verification/supplied-hierarchy-2026-10-14/COMMANDS.md.
+
+User requests committing and then continuing proof. Prepare accumulated ZFC
+model work under `ZFC model: bound constructions in a supplied hierarchy`.
+Parent HEAD is 5872c848ea9d92339107685f3fd9396010d72218; user logs/ excluded.
+Next proof: bound the set of eligible coding bijections inside H so ordinary
+set choice has a concrete witness bound. Cardinal classification/nonemptiness
+must still be proved; a bound does not assert eligible bijections exist.
+Next command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/SuppliedHierarchy.vo`.
+
+## Concrete decoding graph bounds checked
+
+Previous turn proved bounded dependent-product equivalence. This turn adds
+CodeHierarchyBounds.v. It proves omega_codes transitive, U_i subset of the
+base carrier, decoded members of U_i subset of carrier i, and:
+
+    decoding_graph_rank_bound : forall i,
+      IN (decoding_graph i) (carrier (5 + i)).
+
+The decoding graph is typed into the existing dependent product and its beta
+law is checked. All nine new theorem reports are closed. This supplies an
+actual rank bound for the model-specific graph, but not a first-order BZC
+existence proof, coherent cardinal coding, GCH classification, or PTS
+typing/soundness theorem.
+
+Build evidence: incremental CodeHierarchyBounds builds exited 1,1,1,0; the
+failures were argument inference and a level rewrite, all repaired without
+weakening statements. Fresh build exited 0 with 88 closed reports including
+dependencies. Recursive rocq check exited 0; its summary lists imported
+functional_extensionality_dep but no unsafe fixpoints/type-in-type/assumed
+positivity. Full local CI including pristine upstream passed all 96 stages,
+exit 0. Logs and exact commands are in
+verification/code-hierarchy-2026-10-14/COMMANDS.md.
+Correction: that CI run did not yet include a separate CodeHierarchyBounds
+stage; its fresh build and kernel check did cover it. The supplied-hierarchy
+checkpoint adds the missing CI stage.
+HEAD remains 5872c848ea9d92339107685f3fd9396010d72218; all work remains
+uncommitted and user logs/ are preserved.
+
+Next goal: formulate the supplied V_{omega+omega} hierarchy explicitly and
+prove that the finite-rank code and graph bounds fit inside it; then audit the
+remaining cardinal/GCH coding and finally the original PTS typing soundness.
+Do not claim model soundness from these bounds. Next inspection command:
+`rg -n 'Code|El|carrier|decode|Generator|sound' ZFC_model theories`.
+
+## Bounded dependent function spaces checked
+
+Previous turn made progress on family ranges. BoundedProducts.v now gives
+a five-variable bounded formula for totality, fiber membership and uniqueness,
+and proves equality of the resulting space with the original construction:
+
+    bounded_product_equivalence : forall A W f,
+      IN f (dependent_product A (fun _ => Power W)) ->
+      EQ (bounded_product A W f) (dependent_product A (apply_set f)).
+
+bounded_product separates Power (Prod A W) by the explicit formula, with no
+indexed family_range or unrestricted function_laws in its definition. All
+four new theorem assumption reports are closed. The input family graph is
+supplied, not postulated as part of an allegedly completed model.
+
+Both incremental builds exited 0. Fresh build exited 0 with 20 closed reports
+including dependencies. Recursive rocq check exited 0, with imported
+functional_extensionality_dep in its library-wide summary but closed reports
+for the new theorems. No unsafe fixpoints, type-in-type or assumed positivity.
+Full local CI including pristine upstream passed all 96 stages, exit 0.
+Exact commands/raw logs: verification/bounded-products-2026-10-14/COMMANDS.md.
+HEAD remains 5872c848ea9d92339107685f3fd9396010d72218; new and preceding
+work remain uncommitted. User logs/ preserved; no commit or push performed.
+
+Next goal: connect bounded constructions to the actual code/carrier hierarchy.
+First establish concrete bounds for the code universes and decoding-family
+graphs in a supplied V_{omega+omega} hierarchy, without assuming those graphs
+exist or treating Ens.sup as a BZC certificate. Cardinal product classification,
+coherent coding, and original PTS typing soundness still remain. Only after
+that supplied-hierarchy model is sound pursue removing hierarchy existence.
+Next inspection command:
+`sed -n '1,220p' ZFC_model/CodeUniverses.v; cat ZFC_model/CardinalHierarchy.v; cat ZFC_model/HierarchyBounds.v`.
+Next verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedProducts.vo ZFC_model/CardinalHierarchy.vo`.
+
+## Bounded family-range reconstruction checked
+
+Previous turn made progress by proving hierarchy rank bounds. This turn adds
+BoundedFamilies.v: explicit bounded Formula 3, separation-based range of a
+set-coded family, equivalence to the old indexed range, and range/union bounds.
+
+    bounded_family_range_equivalence : forall W A f,
+      IN f (dependent_product A (fun _ => Power W)) ->
+      EQ (bounded_family_range W A f) (family_range A (apply_set f)).
+
+The new definition has no indexed sup. Five new assumption reports are closed.
+The premise types an input family graph; it does not construct the graphs
+needed by model soundness or certify function_laws as a bounded predicate.
+The supplied-hierarchy model remains the immediate goal; full soundness and
+the later interpretation without hierarchy existence are both unfinished.
+
+Incremental builds exited 1,0: missing Ens annotation in range_env was fixed
+without changing any theorem. Fresh build exited 0, printing 21 closed reports
+including dependencies. Recursive rocq check exited 0; its library-wide summary
+lists imported functional_extensionality_dep, while the theorem reports are
+closed. No unsafe fixpoints, type-in-type or assumed positivity reported.
+Full local CI including pristine upstream passed all 95 stages (exit 0).
+Exact commands and raw logs, including failure, are retained in
+verification/bounded-families-2026-10-14/COMMANDS.md.
+
+HEAD remains 5872c848ea9d92339107685f3fd9396010d72218. Prior dirty work and
+user logs/ are preserved. No commit/push performed.
+Next proof goal: replace function_laws for a set-coded family by totality,
+fiber membership and uniqueness quantified only over supplied domain/value
+bounds, then certify it in Bounded.Formula. Ambient Power (Prod A W) supplies
+the graph-element bound; the family graph supplies fiber lookup. Prove
+equivalence before replacing the existing dependent_product construction.
+Next inspection command:
+`sed -n '1,170p' ZFC_model/SetFunctions.v; sed -n '1,150p' ZFC_model/BoundedFamilies.v`.
+Next verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedFamilies.vo`.
+
+## Hierarchy rank bounds checked; bounded reconstruction next
+
+Previous turn was progress: it corrected the foundation ordering and retained
+the bounded-formula build evidence. This turn adds HierarchyBounds.v with
+actual rank bounds for pairs, products, family ranges, graph abstraction and
+dependent function spaces. Uniform theorem:
+
+    dependent_product_level_bound : forall W n A B,
+      transitive_set W -> INC A (iterated_power W n) ->
+      (forall x, IN x A -> INC (B x) (iterated_power W n)) ->
+      IN (dependent_product A B) (iterated_power W (5 + n)).
+
+The domain/fiber bounds are ordinary input bounds, not assumed PTS model
+closure. All eight new Print Assumptions reports are closed. This does NOT
+yet replace arbitrary Ens-indexed families by first-order bounded definitions,
+establish the V_{omega+omega} hierarchy, or prove typing soundness.
+
+Incremental builds both exited 0. Fresh build exited 0 with 42 closed reports
+including dependencies; recursive rocq check exited 0, reporting no axioms or
+unsafe settings. Full local CI, including pristine upstream, passed all 94
+stages, exit 0. Exact commands and raw logs are retained under
+verification/hierarchy-bounds-2026-10-14/COMMANDS.md.
+Fresh command: `opam exec --switch=pts-rk-ci -- timeout 180 dune build
+--build-dir /tmp/pts-rk-hierarchy-fresh.DtcwD8 --display=short --no-buffer
+ZFC_model/HierarchyBounds.vo`.
+
+HEAD remains 5872c848ea9d92339107685f3fd9396010d72218; all previous dirty
+work and user logs/ are preserved. No commit or push performed.
+Next goal: use these bounds to reconstruct family ranges and dependent
+function spaces from set-coded families using bounded formulas. In particular,
+function_laws still has unrestricted x/y/z quantifiers and B : Ens -> Ens;
+do not claim it is a BZC predicate until those are replaced/relativized.
+Then connect the constructions to the explicitly supplied hierarchy and
+complete cardinal coding and original PTS soundness. Removing hierarchy
+existence remains deferred until after soundness.
+Next inspection command:
+`sed -n '1,180p' ZFC_model/BoundedFormulas.v; sed -n '1,170p' ZFC_model/SetFunctions.v`.
+Next build command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/HierarchyBounds.vo ZFC_model/BoundedInverse.vo`.
+
+## Current priority: hierarchy-bounded model and soundness first
+
+The latest user correction supersedes the goal-registration wording below.
+First reformulate the existing model in BZC + GCH + existence of
+V_{omega+omega} and finish soundness for the original PTS. Use the hierarchy
+to bound constructions, replace separation by explicit existence constructions
+where possible, and certify boundedness of any remaining separation. Do not
+assume hierarchy existence supplies arbitrary subset comprehension. Only
+after this model and soundness are finished pursue an interpretation in
+BZC + GCH without the hierarchy-existence assumption. FOUNDATIONS.md and
+DECISIONS.md record this ordering. Neither milestone is proved.
+
+BoundedFormulas.v and BoundedInverse.v now provide scoped bounded syntax,
+correctness for the library's ordered pairs and graph application, and a
+bounded separation formula equal to the existing inverse graph. Nine new
+Print Assumptions reports are closed. These are Ens semantic equivalences,
+not a first-order BZC derivation or completed model soundness.
+
+Verification: incremental builds exited 1,1,0,1,0 (all failures retained).
+A fresh build of BoundedInverse.vo and dependencies exited 0, printing 29
+closed assumption reports. Recursive rocq check exited 0; its library-wide
+summary lists Stdlib functional_extensionality_dep imported through the
+syntax dependencies, unlike the closed theorem-specific reports. No unsafe
+fixpoints, assumed positivity, or type-in-type were reported. Full local CI
+including pristine upstream passed all 93 stages, exit 0. Exact commands and
+raw logs are in verification/bounded-formulas-2026-10-14/COMMANDS.md.
+
+HEAD remains 5872c848ea9d92339107685f3fd9396010d72218. This checkpoint,
+the prior powerset/subset-function work, and foundation documents remain
+uncommitted. Existing user logs/ are preserved; no commit or push performed.
+
+Next goal: specify the supplied V_{omega+omega} hierarchy and show explicit
+rank bounds for the existing code/carrier/graph constructions; audit sup/Comp
+against those bounds. Do not divert into removing hierarchy existence before
+soundness. Product cardinal classification, coherent coding and original PTS
+typing interpretation remain required, not assumed model laws.
+Next exact inspection command:
+`rg -n 'sup|Comp|family_range|iterated_power|Definition U|Definition El' ZFC_model vendor/zfc`.
+Next verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedInverse.vo`.
+
+## New active goal: weaker-foundation interpretation, if possible
+
+Historical registration; ordering superseded by the current priority above.
+
+User requests an interpretation in BZC + GCH, rather than full ZFC + GCH,
+and a set-sized model in BZC + GCH + existence of V_{omega+omega}.
+“GHZ” is provisionally read as GCH. Goal registered as active; neither
+target is proved. Exact obligations and the initial foundation audit are
+recorded in ZFC_model/FOUNDATIONS.md. Existing soundness work remains required.
+
+This update changes documentation only; no proof/build result is claimed.
+Last verified proof baseline remains the 91-stage run below (79 closed
+model assumption reports). Those reports do not certify BZC strength.
+Existing uncommitted powerset/subset-function work and user logs/ are preserved.
+No commit or push requested for this goal-registration turn.
+
+Next task: fix the precise BZC/GCH presentation and audit sup/Comp, hierarchy
+uniformity, witness-selection bounds, and the difference between definable
+interpretation and set-sized realization. In particular, do not assume that
+finite powerset iterations can be collected into a set in the weaker theory.
+Next exact source-inspection command:
+`rg -n 'sup|Comp|family_range|iterated_power|exists x y' ZFC_model vendor/zfc`.
+
+## Powerset embeddings and subset-function exponent step checked
+
+Committed the previous CountableCodes/CardinalGrowth/CardinalHierarchy
+checkpoint as 5872c848ea9d92339107685f3fd9396010d72218,
+`ZFC model: prove cardinal growth and uniform decoding bounds`, as requested.
+No push requested/performed. New PowersetEmbedding.v and SubsetFunctions.v
+work is uncommitted. User-owned logs/ is untouched.
+
+Direct images give an actual injection P(A) -> P(B) from any supplied
+injection A -> B. Membership-pair relations inject functions A -> P(B)
+into P(A x B). Fiber recovery proves this map injective. Combining with
+the previously constructed fiberwise map proves:
+
+    dependent_subset_product_bound : forall A K B enc,
+      (forall x, IN x A -> injection (B x) (Power K) (apply_set enc x)) ->
+      embeds (dependent_product A B) (Power (Prod A K)).
+
+This constructs the product injection; it does not assume the product
+bound. Fiber injections are explicit supplied data, not yet selected for
+the cardinal hierarchy. All twelve new Print Assumptions reports are closed.
+
+Incremental builds exited 0,1,0. The failure was uninferred A/B arguments in
+flatten_injective, repaired explicitly without changing statements. The
+final combined theorem was checked in the fresh build: exit 0, all 79
+model reports closed:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --build-dir
+/tmp/pts-rk-zfc-powerset-fresh.vQKhh9 --display=short --no-buffer
+ZFC_model/PowersetEmbedding.vo ZFC_model/SubsetFunctions.vo
+ZFC_model/CardinalHierarchy.vo ZFC_model/CodedFunctions.vo`.
+Recursive kernel check exited 0, no axioms:
+`opam exec --switch=pts-rk-ci -- timeout 180 rocq check -silent -o
+-Q /tmp/pts-rk-zfc-powerset-fresh.vQKhh9/default/vendor/zfc ZFC
+-Q /tmp/pts-rk-zfc-powerset-fresh.vQKhh9/default/ZFC_model PTSrkModel
+PTSrkModel.PowersetEmbedding PTSrkModel.SubsetFunctions
+PTSrkModel.CardinalHierarchy PTSrkModel.CodedFunctions`.
+Full local CI, including pristine upstream, exited 0 with all 91 stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/zfc-powerset-final"
+bash tools/check-local-ci.sh`. Exact commands/logs, including the failed
+iteration, are in verification/powerset-embedding-2026-10-14/.
+
+Full PTS soundness is still NOT finalized. Next cardinal step: prove the
+Cartesian-product estimates for the countable/powerset carriers and use
+the new subset-function encoding to obtain the rank-indexed exponent bound.
+Stdlib.Arith.Cantor is installed locally and can supply natural pairing for
+the countable base (not yet imported or used). Exact GCH classification,
+coherent selection of cardinal-coding bijections and original PTS typing
+interpretation remain unproved; none is asserted as an axiom or model field.
+Next exact verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer ZFC_model/PowersetEmbedding.vo ZFC_model/SubsetFunctions.vo
+ZFC_model/CardinalHierarchy.vo ZFC_model/CodedFunctions.vo`.
+
 ## Concrete growing carriers and all-rank decoding bound checked
 
 Parent HEAD is 91156df3c7fb387f300a83993b4710fd45c81a35. The user subsequently
