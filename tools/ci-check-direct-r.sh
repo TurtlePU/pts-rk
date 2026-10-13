@@ -126,6 +126,8 @@ stage 06c-finite-up "$ROOT" theories/DirectRFiniteUp.vo
 stage 06c-unary-evaluation "$ROOT" theories/DirectRUnaryEvaluation.vo
 stage 06c-separation "$ROOT" theories/DirectRSeparation.vo
 stage 06c-unary-axioms "$ROOT" theories/DirectRUnaryAxioms.vo
+stage 06c-unary-bounded "$ROOT" theories/DirectRUnaryBounded.vo
+stage 06c-unary-arithmetic "$ROOT" theories/DirectRUnaryArithmetic.vo
 stage 06c-unary-assumptions "$ROOT" theories/DirectRUnaryAudit.vo
 stage 06d-source-countermodel "$ROOT" theories/DirectRCountermodel.vo
 stage 06e-set-functions "$ROOT" models/SetFunctions.vo

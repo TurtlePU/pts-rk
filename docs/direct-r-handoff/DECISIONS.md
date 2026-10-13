@@ -1,5 +1,21 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — all relational axiom schemes and ground arithmetic
+
+- Proved the full guarded R4 biconditional, not just its forward direction.
+  Negative bounded-case elimination uses the checked no_back certificate;
+  its target is stable. No positive domain certificate is extracted from it.
+- Proved actual unary numeral addition and multiplication by beta conversion
+  through fully annotated Church normal forms, with no eta conversion.
+  Finite open schemas are substituted at arbitrary terms; index induction
+  proves the all-index result, not successful finite examples.
+- Used those equations to realize relational R1/R2 with arbitrary admitted
+  third arguments, and both proofs and refutations of all ground ternary atoms.
+- Added an unconditional all-five-schemes realization theorem in original typ.
+  It is explicitly NOT the whole Theorem 4 or the old functional target.
+  Independent source deduction preservation, a structural source translation,
+  and countermodel soundness/non-derivability remain to be connected.
+
 ## 2026-10-13 — uniform unary separation and R3
 
 - Completed the upward separating test with an exact rank-three motive;

@@ -26,7 +26,7 @@ The authoritative new reference is
 ## Checkout and environment
 
 This continuation started at main commit
-`b89cdd2cd2d3c1d56b09500e94f3f5cf31227b7a` (checked positive finite observations).
+`cf105ba252d345650aac9a05de51dd4deda7460b` (checked unary separation and R3).
 Only the existing untracked logs/ directory was present. It was preserved.
 
 Arithmetic progress checkpoint on main: `a16646b`
@@ -44,6 +44,67 @@ Dune 3.23.1, opam 2.6.1, actionlint 1.7.12. GNU timeout is available.
 The pristine upstream requires Rocq 9.2's Create Rewrite HintDb.
 
 ## Actually compiled
+
+### All relational axiom schemes, following cf105ba
+
+- DirectRUnaryBounded proves both directions of bounded order for arbitrary
+  admitted objects, packages the negative biconditional, and proves R4_realized
+  for every cutoff. It retains the Good guard. The converse uses stable O;
+  the forward large branch is refuted by the checked no_back witness.
+- DirectRUnaryEvaluation now proves fully annotated Church normal forms and
+  the all-index beta equations Add nu_m nu_n =beta nu_(m+n), and
+  Mul nu_m nu_n =beta nu_(m*n). No eta equality or altered annotation is used.
+- DirectRUnaryArithmetic proves relational R1/R2 for arbitrary admitted third
+  arguments. Ground addition/multiplication atoms have witnesses when the
+  external numerical equation is true, and internal Neg witnesses when false.
+- all_axioms_realized covers every relational axiom index (R3 carries its
+  specified distinctness side condition). The audit restates it as
+  `forall a, exists p, @typ nat RankSorts 0 epsilon p (axiom_translation a)`.
+  This is axiom realization, NOT preservation of an independent proof system,
+  and NOT the functional Kernel.Theorem5Target.
+
+Baseline: `opam exec --switch=pts-rk-ci -- dune build --display=short
+ --no-buffer theories/DirectRUnaryAudit.vo`, exit 0, r4-baseline.log.
+Meaningful incremental builds (same command with `timeout 90` before dune):
+DirectRUnaryBounded.vo (r4-build-3.log), DirectRUnaryEvaluation.vo
+(unary-arithmetic-build-2.log and unary-arithmetic-build-4.log), and
+DirectRUnaryArithmetic.vo (unary-relational-arithmetic-build-1.log and
+unary-relational-arithmetic-build-2.log), all exit 0. Logs are retained in
+_build/local-ci-logs. Earlier numbered failures were opaque Neg substitution,
+closed-term shift normalization, and a missing parenthesis, all repaired.
+
+Fresh isolated build exited 0: `opam exec --switch=pts-rk-ci -- timeout 300
+ dune build --build-dir /tmp/pts-rk-relational-check.8oST6u --display=short
+ --no-buffer theories/DirectRUnaryAudit.vo theories/DirectR.vo
+ theories/DirectRCountermodel.vo theories/DirectRArithmetic.vo models/SetFunctions.vo`.
+Original PTS dependencies, the new proofs and the existing modules rebuilt
+successfully. All 13 new Print Assumptions queries report Closed under the
+global context; the transcript contains 65 such reports including previous
+and set-function audits. Exact types/output are retained in
+`verification/unary-relational-2026-10-13.log`, with local working copy
+`_build/local-ci-logs/relational-fresh.log`. Whitespace, shell syntax and
+actionlint passed. CI now explicitly checks unary bounded-order and arithmetic
+before the expanded audit; no old stage or timeout was removed or weakened.
+Full build: `opam exec --switch=pts-rk-ci -- timeout 120 dune build
+ --build-dir /tmp/pts-rk-relational-check.8oST6u --display=short --no-buffer`
+exited 124 while compiling unchanged DirectRTests. Exact output is retained
+in `verification/unary-relational-full-2026-10-13.log` and the local
+`_build/local-ci-logs/relational-full.log`. No full green build or remote CI
+success is claimed. Existing user logs/ and the TeX were left untouched.
+
+Theorem 4 remains incomplete. Exact next goal: define an independent scoped
+classical deduction system for the relational signature {0,S,=,<=,A,M}, with
+its own axiom schemes and rules; define its structural guarded negative
+translation and prove substitution, formula stability, admitted equality
+replacement and rule preservation. Do not define source provability as target
+inhabitation. Connect the existing source countermodel to semantic soundness
+of that system to establish non-derivability of universal reflexivity. Ground
+source terms must also be connected structurally to the checked numeral atoms.
+DirectRFirstOrder is the old functional-signature translation (binary + and *
+terms, no ternary A/M formulas); do not mistake it for the relational system
+or silently reuse its distinct Codes.Domain in the unary interpretation.
+Next command: `opam exec --switch=pts-rk-ci -- dune build --display=short
+ --no-buffer theories/DirectRUnaryAudit.vo`.
 
 ### Upward closure and numeral evaluation, following b89cdd2
 
@@ -370,9 +431,9 @@ Uniform mathematical goals:
    named-generator bridge is not required for the unary interpretation.
 2. Unary Theorem 4's uniform invariant and bounded-case proof are now checked.
    The separate functional Theorem 7's four-constructor invariant remains open.
-3. Unary R3/R5 and reversed ground-order refutations are checked. Prove both
-   directions of relational R4 and unary arithmetic R1/R2; add full ground
-   ternary-atom proofs/refutations, not just comparisons of numerals.
+3. All unary relational axiom schemes and ground numeral atoms are now
+   checked, including both R4 directions and true/false ternary A/M atoms.
+   Connect these to an independent relational source syntax and translation.
 4. Define an independent classical FOL deduction system and prove substitution,
    guarded equality replacement, stability and deduction preservation. Connect
    source countermodel soundness to non-derivability of universal reflexivity.
