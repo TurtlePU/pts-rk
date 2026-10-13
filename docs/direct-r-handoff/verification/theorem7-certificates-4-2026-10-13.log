@@ -1,0 +1,13 @@
+        rocq Interpretation_of_R/.Interpretation_of_R.theory.d
+File "./Interpretation_of_R/DirectRDerivationCertificates.v", line 127, characters 74-90:
+Error: Unable to find an instance for the variable c.
+
+File "Interpretation_of_R/dune", lines 1-25, characters 0-729:
+ 1 | (rocq.theory
+ 2 |  (name Interpretation_of_R)
+ 3 |  (package pts-rk)
+....
+23 |           DirectRSymbolic
+24 |           DirectRTelescopeArguments)
+25 |  (theories Stdlib Equations PTSrk))
+        rocq Interpretation_of_R/DirectRDerivationCertificates.{glob,vo} (exit 1)

@@ -1,5 +1,5 @@
-(** Direct R interpretation -- restructured draft, 2026-10-13.
-    Compiler-unchecked. See docs/DirectR.md for the exact verification status. *)
+(** Historical bounded-generator contracts, separate from the completed
+    theorem in DirectRTheorem7 and its exhaustive effective witness search. *)
 
 From Stdlib Require Import Arith.PeanoNat Lia Lists.List Bool.Bool.
 From PTSrk Require Import Syntax AbstractRewriting Congruence Reduction DefEq Context Typing Ranks.
@@ -33,8 +33,8 @@ Proof.
   unfold select_witness. rewrite Hp. exact (sound a p Hp).
 Defined.
 
-(** A proof of arbitrary first-order deduction preservation is additionally
-    needed: FirstOrder currently defines formulas and their translation,
-    but no inductive judgment for source deductions or its soundness proof.
-    That missing judgment is not replaced here by an uninterpreted parameter. *)
+(** Arbitrary deduction preservation is now proved in DirectRFunctionalDeduction
+    for the independently defined DirectRFunctionalSyntax.derives. These legacy
+    contracts describe a different, bounded optional generator, not prerequisites
+    of that theorem or Theorem7.theorem5_target. *)
 End Obligations.

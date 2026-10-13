@@ -1,0 +1,29 @@
+        rocq Interpretation_of_R/.Interpretation_of_R.theory.d
+File "./Interpretation_of_R/DirectRDerivationCertificates.v", line 37, characters 17-27:
+Error:
+In environment
+n : nat
+T, T' : Term nat n
+U : Term nat (S n)
+H : T →ᵝ T'
+IHstep : In T' (steps T)
+Unable to unify
+ "(In ?a (?l ++ ?l') -> In ?a ?l \/ In ?a ?l') /\
+  (In ?a ?l \/ In ?a ?l' -> In ?a (?l ++ ?l'))"
+with
+ "(fix In (a : Term nat n) (l : list (Term nat n)) {struct l} : Prop :=
+     match l with
+     | [] => False
+     | b :: l' => b = a \/ In a l'
+     end)
+    (Π T' U) (map (Π T) (steps U))".
+
+File "Interpretation_of_R/dune", lines 1-25, characters 0-729:
+ 1 | (rocq.theory
+ 2 |  (name Interpretation_of_R)
+ 3 |  (package pts-rk)
+....
+23 |           DirectRSymbolic
+24 |           DirectRTelescopeArguments)
+25 |  (theories Stdlib Equations PTSrk))
+        rocq Interpretation_of_R/DirectRDerivationCertificates.{glob,vo} (exit 1)

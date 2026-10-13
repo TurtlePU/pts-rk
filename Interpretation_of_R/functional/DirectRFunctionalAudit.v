@@ -1,5 +1,5 @@
-(** Checked components of Theorem 7, NOT the completed interpretation theorem.
-    Functional deduction preservation remains an explicit obligation. *)
+(** Completed Theorem 7 and effective interfaces: original PTS typing,
+    independently defined source deduction, transitive assumption audit. *)
 From Interpretation_of_R.functional Require Import DirectRFunctionalTerms DirectRFunctionalLogic
   DirectRFunctionalFiniteLaws DirectRFiniteTransitivity DirectRFiniteCongruence
   DirectRFiniteUnaryCongruence DirectRFiniteBinaryCongruence DirectRFiniteZeroLaws
@@ -8,11 +8,90 @@ From Interpretation_of_R.functional Require Import DirectRFunctionalTerms Direct
   DirectRFunctionalEvaluation DirectRFunctionalSeparation DirectRFunctionalBounded
   DirectRFunctionalAddition DirectRFunctionalMultiplication DirectRFunctionalCases
   DirectRFunctionalAxioms DirectRFunctionalSyntax DirectRFunctionalTranslation
-  DirectRFunctionalFormulaLogic DirectRFunctionalSourceAxioms.
+  DirectRFunctionalFormulaLogic DirectRFunctionalSourceAxioms
+  DirectRFunctionalEquality DirectRFunctionalDeduction DirectRFunctionalCountermodel DirectRTheorem7.
+From Interpretation_of_R Require Import DirectRDerivationCertificates DirectRWitnessSearch.
 From Interpretation_of_R Require Import DirectRBinaryTables DirectRBinaryObservations
   DirectRRelationTables DirectRFiniteLawElimination DirectRGuardedFiniteLaws
   DirectRTelescopeArguments.
 Print FunctionalSyntax.derives.
+Check Theorem7.theorem7.
+Print DirectRProofs.Kernel.Theorem5Target.
+Check Theorem7.theorem5_target.
+Check Theorem7.effective_axiom.
+Check Theorem7.effective_source_axiom.
+Check Theorem7.effective_deduction.
+Check Theorem7.effective_ground_true.
+Check Theorem7.effective_ground_false.
+Print Assumptions DerivationCertificates.steps_sound.
+Print Assumptions DerivationCertificates.steps_complete.
+Print Assumptions DerivationCertificates.run_sound.
+Print Assumptions DerivationCertificates.run_complete.
+Print Assumptions DerivationCertificates.term_eqb_refl.
+Print Assumptions DerivationCertificates.conversion_sound.
+Print Assumptions DerivationCertificates.conversion_complete.
+Print Assumptions DerivationCertificates.index_complete.
+Print Assumptions DerivationCertificates.derive_sound.
+Print Assumptions DerivationCertificates.derive_complete.
+Print Assumptions WitnessSearch.trees_mono.
+Print Assumptions WitnessSearch.node_in_trees.
+Print Assumptions WitnessSearch.trees_complete.
+Print Assumptions WitnessSearch.scan_sound.
+Print Assumptions WitnessSearch.scan_complete.
+Print Assumptions WitnessSearch.search_complete.
+Print Assumptions WitnessSearch.witness.
+Print Assumptions FunctionalCountermodel.eval_ext.
+Print Assumptions FunctionalCountermodel.holds_ext.
+Print Assumptions FunctionalCountermodel.eval_rename.
+Print Assumptions FunctionalCountermodel.eval_subst.
+Print Assumptions FunctionalCountermodel.holds_rename.
+Print Assumptions FunctionalCountermodel.holds_subst.
+Print Assumptions FunctionalCountermodel.holds_instance.
+Print Assumptions FunctionalCountermodel.point_dec.
+Print Assumptions FunctionalCountermodel.order_dec.
+Print Assumptions FunctionalCountermodel.decidable_stable.
+Print Assumptions FunctionalCountermodel.holds_stable.
+Print Assumptions FunctionalCountermodel.eval_numeral.
+Print Assumptions FunctionalCountermodel.disj_intro.
+Print Assumptions FunctionalCountermodel.disj_refute.
+Print Assumptions FunctionalCountermodel.disj_eliminate.
+Print Assumptions FunctionalCountermodel.axiom_sound.
+Print Assumptions FunctionalCountermodel.soundness.
+Print Assumptions FunctionalCountermodel.order_reflexivity_underivable.
+Print Assumptions Theorem7.ground_correctness.
+Print Assumptions Theorem7.order_reflexivity_realized.
+Print Assumptions Theorem7.nonfaithfulness.
+Print Assumptions Theorem7.effective_axiom.
+Print Assumptions Theorem7.theorem5_target.
+Print Assumptions Theorem7.effective_source_axiom.
+Print Assumptions Theorem7.effective_deduction.
+Print Assumptions Theorem7.effective_ground_true.
+Print Assumptions Theorem7.effective_ground_false.
+Print Assumptions Theorem7.theorem7.
+Print FunctionalEquality.transportable.
+Check FunctionalEquality.equality_replacement.
+Check FunctionalDeduction.preservation.
+Check FunctionalDeduction.sentence_preservation.
+Print Assumptions FunctionalDeduction.conjunction_intro.
+Print Assumptions FunctionalDeduction.conjunction_elim.
+Print Assumptions FunctionalDeduction.conjunction_left.
+Print Assumptions FunctionalDeduction.conjunction_right.
+Print Assumptions FunctionalDeduction.preservation.
+Print Assumptions FunctionalDeduction.sentence_preservation.
+Print Assumptions FunctionalEquality.symmetry.
+Print Assumptions FunctionalEquality.term_congruence.
+Print Assumptions FunctionalEquality.equality_transport.
+Print Assumptions FunctionalEquality.admitted_environment_shift.
+Print Assumptions FunctionalEquality.related_shift.
+Print Assumptions FunctionalEquality.related_symmetry.
+Print Assumptions FunctionalEquality.admitted_environment_extend.
+Print Assumptions FunctionalEquality.related_extend.
+Print Assumptions FunctionalEquality.falsity_transportable.
+Print Assumptions FunctionalEquality.implication_transportable.
+Print Assumptions FunctionalEquality.neg_transportable.
+Print Assumptions FunctionalEquality.universal_transportable.
+Print Assumptions FunctionalEquality.formula_transport.
+Print Assumptions FunctionalEquality.equality_replacement.
 Check FunctionalTranslation.instantiate_translation.
 Check FunctionalFormulaLogic.formula_formed.
 Check FunctionalFormulaLogic.formula_stable.

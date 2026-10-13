@@ -23,7 +23,10 @@
           DirectRFunctionalAxioms
           DirectRFunctionalBounded
           DirectRFunctionalCases
+          DirectRFunctionalCountermodel
           DirectRFunctionalEvaluation
+          DirectRFunctionalEquality
+          DirectRFunctionalDeduction
           DirectRFunctionalFiniteLaws
           DirectRFunctionalFormulaLogic
           DirectRFunctionalLogic
@@ -36,7 +39,8 @@
           DirectRGenerated
           DirectRObligations
           DirectRProofs
-          DirectRTests)
+          DirectRTests
+          DirectRTheorem7)
  (theories Stdlib Equations PTSrk Interpretation_of_R))
 
 (alias
