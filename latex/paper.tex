@@ -96,9 +96,10 @@ systems) and has been fully formalised in vanilla Rocq
 
 \section{Introduction}
 Pure type systems (PTSs, introduced independently by
-Berardi [CITE] and Terlouw [CITE]) are a family of
-minimalistic typed $\lambda$-calculi including grammar
-formers for variables $x\in\mathsf{Var}$, abstraction
+Berardi \cite{berardi1988towards} and Terlouw
+\cite{terlouw1989gstt}) are a family of minimalistic
+typed $\lambda$-calculi including grammar formers for
+variables $x\in\mathsf{Var}$, abstraction
 $\lambda(x:T).u$, application $u\,t$, types of
 dependent functions $\Pi(x:T).U$ (where $U$ might
 depend on $x$) and \textit{sorts} $s\in\mathcal{S}$
@@ -182,28 +183,34 @@ A single PTS is determined by two relations:
 \label{typing}
 \end{figure}
 
-Systems from Barendregt's lambda cube [CITE] fit
-naturally into the framework: for example, simply typed
-lambda calculus (STLC) [CITE] can be viewed as a pure
+Systems from Barendregt's lambda cube
+\cite{barendregt1991introduction,barendregt1992lambda} 
+fit naturally into the framework: for example, simply
+typed lambda calculus (STLC)
+\cite{church1940formulation} can be viewed as a pure
 type system with a single sort $*$, no axioms and a
 single rule $(*,*,*)$. In general, however, pure type
 systems are dependently typed since $\Pi$ allows the
 codomain type to depend on the value of an argument ---
-Coquand's Calculus of Constructions (CoC) [CITE] sits
-comfortably at the top of lambda cube and is modeled as
-a pure type system with two sorts $\{*,\square\}$, a
-single axiom $*:\square$ and four rules corresponding
-to simple functions $(*,*,*)$, polymorphic functions
+Coquand's Calculus of Constructions (CoC)
+\cite{coquand1988calculus} sits comfortably at the top
+of lambda cube and is modeled as a pure type system
+with two sorts $\{*,\square\}$, a single axiom
+$*:\square$ and four rules corresponding to simple
+functions $(*,*,*)$, polymorphic functions
 $(\square,*,*)$, type operators
 $(\square,\square,\square)$ and dependent types
 $(*,\square,\square)$.
 
-As is known [CITE] [CITE], both STLC and CoC are
-strongly normalising and sound with respect to their
-set-theoretical semantics. A classical result shows
-that it is not true for arbitrary PTS.
+As is known \cite{tait1967intensional,
+coquand1990kripke,geuvers1991modular}, both STLC and
+CoC are strongly normalising and sound with respect to
+their set-theoretical semantics. A classical result
+shows that it is not true for arbitrary PTS.
 
-\begin{theorem*}[Girard'72 [CITE]]
+\begin{theorem*}[Girard'72
+    \cite{girard1972interpretation,
+    hurkens1995simplification}]
     The following PTS called System U is not
     normalising:
     \[\begin{array}{c}
@@ -227,10 +234,11 @@ intended logical semantics: inhabitedness of
 $\Pi(P:*).P$ would mean that every proposition is
 provable. Thus any system where System U embeds is
 inconsistent, too; in particular, an original version
-[CITE] of Martin-L\"{o}f's Intuitionistic Type Theory
-[CITE] embeds the following PTS known as
-``Type-in-Type'' which is inconsistent due to Girard's
-paradox:
+\cite{martinlof1971theory} of Martin-L\"{o}f's
+Intuitionistic Type Theory
+\cite{martinlof1984intuitionistic} embeds the following
+PTS known as ``Type-in-Type'' which is inconsistent due
+to Girard's paradox:
 \[\mathcal{S}=\{*\},\quad\mathsf{Ax}=\{*:*\},\quad
 \mathsf{Rule}=\{(*,*,*)\}.\]
 For a pure type system with usual set-theoretical
@@ -238,13 +246,15 @@ semantics, it is natural to expect that a sort of
 \textit{small types} $*$ is closed under $\Pi$, thus we
 cannot forbid the rule $(*,*,*)$; then, a circular
 axiom $*:*$ has to go. Long story short, it motivates
-an introduction of a \textit{universe hierarchy} [CITE]
+an introduction of a \textit{universe hierarchy} \cite{
+martinlof1975intuitionistic,harper1991universes}
 $\mathcal{S}=\{\mathcal{U}_k\}_{k\in\mathbb{N}}$ with
 axioms $\mathcal{U}_k:\mathcal{U}_{k+1}$ and rules
 $(\mathcal{U}_k,\mathcal{U}_l,\mathcal{U}_{k\vee l})$
 for each $k,l$; when interpreted in sets,
 $\llbracket \mathcal{U}_k \rrbracket$ is taken to be
-the $k$-th inaccessible cardinal [CITE].
+the $k$-th inaccessible cardinal \cite{werner1997sets,
+aczel1998relating}.
 
 Observing this, we took interest in the following two
 questions:
@@ -288,57 +298,60 @@ Modulo general metatheory of pure type systems laid out
 in Section~\ref{pts-metatheory}, a normalisation proof
 turned out to be suspiciously simple, even more so in
 comparison with normalisation proofs of other
-dependently typed systems [CITE]. To dispel our own
-doubts, we formalised a proof of normalisation in Rocq
-(formerly Coq) without using any additional axioms,
-yielding a fully constructive proof; our journey in
-formalisation is summarised in
+dependently typed systems \cite{geuvers1991modular,
+barras1999autovalidation,abel2018decidability}. To
+dispel our own doubts, we formalised a proof of
+normalisation in Rocq (formerly Coq) without using any
+additional axioms, yielding a fully constructive proof;
+our journey in formalisation is summarised in
 Section~\ref{formalisation}.
 
 Having completed the proof, we noticed that it exposes
 a primitive recursive procedure to normalise terms of
 PTS-$rk$; we dug further and discovered that, actually,
 there is an intimate connection between a class of
-elementary recursive functions [CITE] and our system,
-as seen in Section~\ref{complexity}. As a byproduct of
-our study on complexity, we built a sound set-theoretic
-model for PTS-$rk$ (see Section~\ref{rk-model}) which
-assumes \emph{Generalised Continuum Hypothesis} [CITE]
-which is an unusual pick for dependently typed systems,
-where \emph{inaccessible cardinals} are a more common
-assumption [CITE]. We provide a closing summary and
-some pointers on future directions of our research and
-possible extensions of the system in
-Section~\ref{conclusion}.
+elementary recursive functions \cite{kalmar1943,
+rose1984subrecursion} and our system, as seen in
+Section~\ref{complexity}. As a byproduct of our study
+on complexity, we built a sound set-theoretic model for
+PTS-$rk$ (see Section~\ref{rk-model}) which assumes
+\emph{Generalised Continuum Hypothesis}
+\cite{jech2003set,hausdorff1908} which is an unusual
+pick for dependently typed systems, where
+\emph{inaccessible cardinals} are a more common
+assumption \cite{werner1997sets,lee2011proof}. We
+provide a closing summary and some pointers on future
+directions of our research and possible extensions of
+the system in Section~\ref{conclusion}.
 
 \subsection{Use of artificial intelligence}
 
 At various points in our research, we interacted with
-GPT-6 Astra [CITE] to prove something for us. Sometimes
-it was a rehash of previously established results;
-sometimes it presented something new. In case we used
-the ideas hinted by LLM, we explicitly state so right
-next to the proof; even so, the text is completely
-human written since we wanted to make sure we
-completely understood the results (in addition,
+GPT-6 Astra \cite{gpt6astra2026} to prove something for
+us. Sometimes it was a rehash of previously established
+results; sometimes it presented something new. In case
+we used the ideas hinted by LLM, we explicitly state so
+right next to the proof; even so, the text is
+completely human written since we wanted to make sure
+we completely understood the results (in addition,
 generated proofs always required additional
 explanations or a complete rewrite to make them
 understandable and simpler to read).
 
-Also, we chatted with Claude Fable 5.1 to find better
-points of reference.
+Also, we chatted with Claude Fable 5.1
+\cite{claude_fable} to find better points of reference.
 
 \section{Metatheory of pure type systems}
 \label{pts-metatheory}
 
 For ease of presentation of our results, we assume a
-Barendregt convention [CITE] that all bound variables
-are distinct from free variables and from each other;
-furthermore, $\alpha$-equivalence (renaming of bound
-variables) is assumed as a trivial equality on terms.
-Nevertheless, our formalisation takes variable
-treatment seriously; see Section~\ref{formalisation}
-for more details.
+Barendregt convention \cite{barendregt1984lambda} that
+all bound variables are distinct from free variables
+and from each other; furthermore, $\alpha$-equivalence
+(renaming of bound variables) is assumed as a trivial
+equality on terms. Nevertheless, our formalisation
+takes variable treatment seriously; see
+Section~\ref{formalisation} for more details.
 
 \subsection{PTS as a rewriting system}
 
@@ -378,7 +391,8 @@ freely reduce any subterm.
 
 The following result will be greatly useful in our
 development. It was proven many times over for
-different similar systems [CITE] [CITE]; we briefly
+different similar systems \cite{church1936properties,
+barendregt1992lambda}; we briefly
 revisit the proof since previous presentations usually
 did not allow reductions in the type of argument $T$ in
 $\lambda(x:T).t$.
@@ -408,8 +422,9 @@ $\lambda(x:T).t$.
     can be switched into ``valleys''.
 
     Now, diamond property is proven by standard
-    technique of parallel reduction [CITE] which is
-    defined as the smallest relation satisfying:
+    technique of parallel reduction
+    \cite{martinlof1971theory} which is defined as the
+    smallest relation satisfying:
     \begin{mathpar}
     \inferrule{}{t\rightrightarrows t}
     \and
@@ -472,9 +487,10 @@ given in Fig.~\ref{typing}.
 \subsection{Properties of a typing judgement}
 
 Again, they surely have been proven before for PTS
-[CITE], but we slightly differ in the formulation of
-typing rules in important places so it is better to
-recheck that these hold.
+\cite{barendregt1992lambda,geuvers1991modular}, but we
+slightly differ in the formulation of typing rules in
+important places so it is better to recheck that these
+hold.
 
 \begin{lemma}[Weakening]
     The following rule is admissible:
@@ -506,11 +522,12 @@ recheck that these hold.
 \end{proof}
 
 In addition, a family of so-called \textit{inversion
-lemmas} [CITE] stating that type of well-typed term is
-largely determined by shape of a term are also proven
-by straightforward induction on typing derivation (each
-one is proven separately, no mutual induction
-involved):
+lemmas} \cite{barendregt1992lambda,
+vanbenthemjutting1993typing} stating that type of
+well-typed term is largely determined by shape of a
+term are also proven by straightforward induction on
+typing derivation (each one is proven separately, no
+mutual induction involved):
 
 \begin{lemma}[Inversion lemmas]
 \begin{align}
@@ -662,7 +679,8 @@ implemented.
 Totality is not a strictly necessary requirement ---
 similar true propositions can be stated for non-total
 PTS, for example in CoC typing yields type which is
-either itself typable or equal to $\square$ [CITE]. But
+either itself typable or equal to $\square$
+\cite{barendregt1992lambda,luo1994computation}. But
 PTS-$rk$ is indeed total so the theorem above is enough
 for our purposes.
 
@@ -736,7 +754,9 @@ soundness proof to go through.
 Informally, a term is strongly normalising iff there
 are no infinite reduction chains starting from it.
 In constructive setting and in formalisation, the
-following definition is a bit better [CITE]:
+following definition is a bit better
+\cite{altenkirch1993formalization,
+vanraamsdonk1999perpetual}:
 
 \begin{definition}[Strongly normalising term]
 \label{sn-definition}
@@ -779,8 +799,8 @@ Application, of course, is the only nontrivial case. In
 case of $\beta$-reduction, strong normalisation of both
 $(\lambda(x:T).t)$ and $u$ does not imply anything
 about normalisation behaviour of $t[u/x]$: consider a
-classical example from untyped lambda calculus [CITE],
-$\omega=(\lambda(x:T).x\,x)$ and
+classical example from untyped lambda calculus \cite{
+barendregt1984lambda}, $\omega=(\lambda(x:T).x\,x)$ and
 $\Omega=\omega\,\omega$; while obviously not typable,
 $\omega$ is strongly normalising, while $\Omega$
 decidedly is not.
@@ -828,7 +848,10 @@ the following: if we already know that
 $t[u/x]\in\mathsf{sn}$, then the most tricky case is
 already taken care of.
 
-\begin{lemma}[Weak head expansion [CITE]]
+\begin{lemma}[Weak head expansion
+    \cite{joachimski2003short,
+    vanraamsdonk1995normalisation,
+    altenkirch1993constructions}]
 \label{sn-whe}
     \[\left\{\begin{array}{l}
         t[u/x]u_1\ldots u_n\in\mathsf{sn} \\
@@ -1011,16 +1034,17 @@ intent for such a direct proof to go through; honestly,
 we did not think of that and were eagerly trying to
 adapt well-known approaches for proving normalisation
 of pure type systems employing either saturated sets or
-candidates of reducibility [CITE] [CITE], which did not
-work because our ``hierarchy'' of ranks is not
-well-founded enough because of axioms
-$\mathsf{rk}_n:\mathsf{rk}_0$. This proof, however,
-does not even bother with it which means that we could
-pick \emph{any} relation as $\mathsf{Ax}$.
-Nevertheless, putting all sorts into $\mathsf{rk}_0$
-seems the most sensible approach to us since,
-informally, sort is kind of a constant which cannot be
-converted into a function.
+candidates of reducibility \cite{tait1967intensional,
+girard1972interpretation,girard1989proofs,
+geuvers1991modular}, which did not work because our
+``hierarchy'' of ranks is not well-founded enough
+because of axioms $\mathsf{rk}_n:\mathsf{rk}_0$. This
+proof, however, does not even bother with it which
+means that we could pick \emph{any} relation as
+$\mathsf{Ax}$. Nevertheless, putting all sorts into
+$\mathsf{rk}_0$ seems the most sensible approach to us
+since, informally, sort is kind of a constant which can
+not be converted into a function.
 
 \subsection
 {Formalising normalisation of PTS-$rk$ in Rocq}
@@ -1034,9 +1058,11 @@ was supplied by the probabilistic machine), we decided
 to formalise it so that a sound simple algorithm would
 check it for us. One of the natural choices for
 formalisation of programming languages is Rocq
-(formerly Coq) [CITE], an interactive theorem prover
+(formerly Coq) \cite{rocq2025manual,
+bertot2004interactive}, an interactive theorem prover
 based on Polymorphic, Cumulative Calculus of Inductive
-Constructions [CITE]. As is the case with similar
+Constructions \cite{sozeau2014universe,
+timany2018cumulative}. As is the case with similar
 typed calculi, it is both a programming language and a
 higher-order logic, and correctness of a proof is
 checked by the type checker; in addition to that, Rocq
@@ -1046,15 +1072,16 @@ written in a meta-language which generate terms of the
 target language, greatly simplifying the proofs. While
 set-theoretical semantics of Rocq assume an existence
 of countable hierarchy of inaccessible cardinals
-[CITE], our formalisation never delves into the
-hierarchy and can be formalised in a much more
-restricted theory.
+\cite{werner1997sets,timany2017consistency}, our
+formalisation never delves into the hierarchy and can
+be formalised in a much more restricted theory.
 
 In order to formalise our strong normalisation proof,
 we first need to provide a general metatheory of PTS as
 laid out in Section~\ref{pts-metatheory}. We could
 reuse existing projects on PTS formalisations such as
-[CITE] but we wanted to explore the topic ourselves
+\cite{siles2012pure,adams2006pure,barras1997coqencoq}
+but we wanted to explore the topic ourselves
 which led to a few minor differences discussed
 previously, thus we started from scratch.
 
@@ -1062,7 +1089,9 @@ When one formalises syntax with binders in a proof
 assistant, one of the most important decisions is how
 to represent binders. Here we went with making our
 terms indexed by the number of free variables it uses,
-a standard technique originating from [CITE]:
+a standard technique originating from
+\cite{bellegarde1994substitution,bird1999debruijn,
+altenkirch1999monadic}:
 
 \begin{minted}{coq}
 Inductive Term (L: Type) (n: nat) : Type :=
@@ -1085,16 +1114,19 @@ What is convenient in this representation is that it
 makes it harder to make mistakes when wrangling with
 context, defining substitution etc. --- all of the
 techinical details which make working with syntax with
-binders so hard (even de Bruijn made mistakes in
-METAMATH when first implementing it! [CITE]). Also it
-has a certain category-theoretical feel to it:
-sufficiently generalised operations of renaming and
-substitution give the typal representation of syntax a
-structure of a \emph{relative monad} [CITE]. It is
-really hard to go wrong when implementing these
-operations (and the natural implementation turns
-variables into de Bruijn indices [CITE]); on top of
-them, usual substitution is easily definable.
+binders so hard (authors of first implementation of
+such calculi, AUTOMATH \cite{debruijn1972lambda,
+debruijn1970automath}, remarked it being notoriously
+hard to get right). Also it has a certain
+category-theoretical feel to it: sufficiently
+generalised operations of renaming and substitution
+give the typal representation of syntax a structure of
+a \emph{relative monad} \cite{altenkirch2015monads,
+altenkirch1999monadic}. It is really hard to go wrong
+when implementing these operations (and the natural
+implementation turns variables into de Bruijn indices
+\cite{debruijn1972lambda}); on top of them, usual
+substitution is easily definable.
 
 Most of the proof development in Rocq mirrors what is
 written in Section~\ref{pts-metatheory}; in fact, we
@@ -1218,10 +1250,12 @@ preliminary work than seems reasonable.)
 
 As requested further, LLM confessed that it was largely
 inspired by studies on complexity of normalisation for
-STLC [CITE] [CITE]. And indeed, upon taking a closer
+STLC \cite{statman1979typed,schwichtenberg1991upper,
+beckmann2001exact}. And indeed, upon taking a closer
 look at the proof of Theorem~\ref{normalisation}, one
 cannot help but notice it actually being a primitive
-recursive [CITE] algorithm for term normalisation in
+recursive \cite{kleene1952introduction,
+peter1951rekursive} algorithm for term normalisation in
 disguise. Or something a tad faster:
 
 \begin{definition}[$d$-bounded terms]
@@ -1234,9 +1268,9 @@ disguise. Or something a tad faster:
 [Elementary recursive normalisation of bounded
     PTS-$rk$]
 \label{bounded-sn}
-For each $d$, there is an elementary recursive [CITE]
-algorithm for finding a normal form of $d$-bounded
-terms.
+    For each $d$, there is an elementary recursive
+    \cite{rose1984subrecursion} algorithm for finding a
+    normal form of $d$-bounded terms.
 \end{theorem}
 \begin{proof}
 Consider the following relation of
@@ -1295,7 +1329,8 @@ output $0$ if result of an algorithm contains a
 $\beta$-redex.
 \end{proof}
 
-Similar result was already proven for STLC [TODO] since
+Similar result was already proven for STLC
+\cite{schwichtenberg1991upper,beckmann2001exact} since
 simple types can be classified by ranks as well. And
 since rank is easily computable for simple types,
 normalisation of arbitrary STLC terms is in
@@ -1380,7 +1415,8 @@ of redexes.
 Another consequence of Theorem~\ref{bounded-sn} is a
 natural upper bound for functions \textit{uniformly}
 expressible in PTS-$rk$ (this result is also similar to
-the one for STLC [CITE]).
+the one for STLC \cite{schwichtenberg1976definierbare,
+statman1979typed,fortune1983expressiveness}).
 
 \begin{definition}
     A family of functions on natural numbers
@@ -1474,8 +1510,9 @@ not in the same sense as before.
 \end{theorem}
 \begin{proof}
     As is well-known, simply typed Church numerals
-    admit addition and multiplication [CITE]. It is
-    still true for our rank-refined version:
+    admit addition and multiplication
+    \cite{church1941calculi,barendregt1984lambda}. It
+    is still true for our rank-refined version:
     \[\begin{array}{rcll}
         \mathsf{Add}_j &\triangleq&
         \lambda\,m\,n\,X\,f\,x.
@@ -1488,7 +1525,9 @@ not in the same sense as before.
             \mathcal{N}_j\to\mathcal{N}_j\to
             \mathcal{N}_j
     \end{array}\]
-    By substitution-basis theorem [CITE], it is enough
+    By substitution-basis theorem
+    \cite{mazzanti2002plain,
+    marchenkov2007superpositions}, it is enough
     to additionally provide modulus
     $x\,\mathrm{mod}\,y$ (where $x\,\mathrm{mod}\,0=x$)
     and binary exponentiation $2^x$ since substitution,
@@ -1498,7 +1537,8 @@ not in the same sense as before.
     By Theorem~\ref{uniform-elementary}, we cannot hope
     to have both remaining operations represented
     uniformly. Indeed, na\"{i}ve import of traditional
-    exponentiation term for Church numerals [CITE]
+    exponentiation term for Church numerals
+    \cite{church1941calculi,rosser1984highlights}
     raises the rank of an exponent:
     \begin{multline*}
         \mathsf{Exp}_j \triangleq
@@ -1554,8 +1594,9 @@ not in the same sense as before.
     $\mathrm{mod}\,5$. Notice that there are only $5$
     possible answers: $0$,$1$,$2$,$3$,$4$. As such,
     they can be represented by the type which contains
-    exactly $5$ elements; Church encoding [CITE] yields
-    a type of \emph{selectors}:
+    exactly $5$ elements; Church encoding
+    \cite{bohm1985automatic} yields a type of
+    \emph{selectors}:
     \[V_5 \triangleq \Pi(X:\mathsf{rk}_j).\,
         X\to X\to X\to X\to X\to X
         :\mathsf{rk}_{j+1}
@@ -1748,7 +1789,9 @@ We are going to need an unusual assumption however:
             \]
             The eligible pairs $(\kappa, f)$ form a
             set, so ordinary choice (which holds in
-            ZF+GCH [CITE]) suffices. Make each choice
+            ZF+GCH \cite{sierpinski1947hypothese,
+            specker1954verallgemeinerte}) suffices.
+            Make each choice
             once for each $(a,b)$, independently of a
             typing derivation or rank bound.
         \item Abstraction and application are modeled
@@ -1782,8 +1825,10 @@ would break an assumption that $U_i$ are countable,
 which would falsify axioms
 $\mathsf{rk}_n:\mathsf{rk}_0$. That is not a huge
 problem however since ZF+GCH is interpretable in ZFC
-[CITE] (in contrast to ZFC + inaccessible cardinals
-which is not [CITE]).
+\cite{godel1938consistency,godel1940consistency} (in
+contrast to ZFC + inaccessible cardinals which is not
+\cite{kanamori2003higher,kunen1980set,godel1931formal}
+).
 
 \section{Proof-theoretic strength of PTS-$rk$}
 
