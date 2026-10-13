@@ -53,7 +53,11 @@ rocq-prover meta.1, rocq-core 9.2.0, rocq-stdlib 9.1.0, and
 rocq-equations 1.3.2+9.2. Stdlib has an independent version. The earlier
 9.1.1 candidate cannot parse the upstream `Create Rewrite HintDb` command.
 The current toolchain has built pristine upstream and the infrastructure,
-structural, and foundations modules locally, but NOT the entire development.
+structural, and foundations modules locally. The latest CI-repair continuation
+also obtained a fresh full development build and a successful complete local
+CI driver run, after keeping generated test witnesses compact in Ltac. See
+STATE.md and verification/ci-repaired-full-2026-10-13.log. This does not mean the
+unfinished functional Theorem 7 has been proved or that remote CI has passed.
 `bash tools/check-local-ci.sh` selects the installed native ARM switch and
 runs actionlint plus the same staged driver using the available GNU timeout.
 See STATE.md for exact commands, logs, and the remaining proof bottleneck.

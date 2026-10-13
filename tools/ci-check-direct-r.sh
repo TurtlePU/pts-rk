@@ -137,6 +137,11 @@ stage 06a-negative-logic "$ROOT" theories/DirectRLogic.vo
 stage 06a-finite-tables "$ROOT" theories/DirectRFiniteTables.vo
 stage 06a-positive-telescopes "$ROOT" theories/DirectRPositive.vo
 stage 06a-finite-observations "$ROOT" theories/DirectRFiniteObservations.vo
+stage 06a-binary-tables "$ROOT" theories/DirectRBinaryTables.vo
+stage 06a-binary-observations "$ROOT" theories/DirectRBinaryObservations.vo
+stage 06a-relation-tables "$ROOT" theories/DirectRRelationTables.vo
+stage 06a-finite-law-elimination "$ROOT" theories/DirectRFiniteLawElimination.vo
+stage 06a-functional-finite-laws "$ROOT" theories/DirectRFunctionalFiniteLaws.vo
 stage 06b-foundations "$ROOT" theories/DirectRFoundations.vo
 stage 06c-unary "$ROOT" theories/DirectRUnary.vo
 stage 06c-finite-up "$ROOT" theories/DirectRFiniteUp.vo
@@ -160,6 +165,9 @@ stage 06e-set-functions "$ROOT" models/SetFunctions.vo
 stage 07-proof-families "$ROOT" theories/DirectRProofs.vo
 stage 08-generators "$ROOT" theories/DirectRGenerated.vo
 stage 09-first-order "$ROOT" theories/DirectRFirstOrder.vo
+stage 09a-functional-terms "$ROOT" theories/DirectRFunctionalTerms.vo
+stage 09a-functional-logic "$ROOT" theories/DirectRFunctionalLogic.vo
+stage 09a-functional-audit "$ROOT" theories/DirectRFunctionalAudit.vo
 stage 10-obligations "$ROOT" theories/DirectRObligations.vo
 stage 11-entry-point "$ROOT" theories/DirectR.vo
 stage 12-arithmetic "$ROOT" theories/DirectRArithmetic.vo

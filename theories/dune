@@ -4,7 +4,7 @@
   (modules Syntax AbstractRewriting Congruence Reduction Confluence DefEq
            Context Typing Inversions Preservation SN Ranks
            DirectRCodes DirectRKernel DirectREval DirectRCheck DirectRSymbolic
-           DirectRStructural DirectRLogic DirectRPositive DirectRFiniteTables DirectRFiniteObservations DirectRFoundations DirectRProofs DirectRGenerated
-           DirectRFirstOrder DirectRObligations DirectRUnary DirectRFiniteUp DirectRUnaryEvaluation DirectRSeparation DirectRUnaryAxioms DirectRUnaryAudit DirectRCountermodel
+            DirectRStructural DirectRLogic DirectRPositive DirectRFiniteTables DirectRBinaryTables DirectRFiniteObservations DirectRBinaryObservations DirectRRelationTables DirectRFiniteLawElimination DirectRFoundations DirectRProofs DirectRGenerated
+            DirectRFirstOrder DirectRFunctionalTerms DirectRFunctionalLogic DirectRFunctionalFiniteLaws DirectRFunctionalAudit DirectRObligations DirectRUnary DirectRFiniteUp DirectRUnaryEvaluation DirectRSeparation DirectRUnaryAxioms DirectRUnaryAudit DirectRCountermodel
             DirectRUnaryBounded DirectRUnaryArithmetic DirectRRelationalSyntax DirectRRelationalTranslation DirectRRelationalEquality DirectRRelationalDeduction DirectRRelationalCountermodel DirectRRelationalGround DirectRRelationalAxioms DirectRTheorem4 DirectRRelationalAudit DirectRArithmetic DirectRTests DirectR)
   (theories Stdlib Equations))

@@ -1,11 +1,29 @@
 # Live proof-development state — 2026-10-13
 
+## CI continuation: supplied logs_103946087456
+
+The supplied job reports a runner shutdown, exit 143, not a Rocq diagnostic or
+elapsed workflow/stage limit. See CI-103946087456.md for exact evidence.
+Locally reproduced a separate memory bottleneck in the legacy examples:
+reifying the entire generated syntax in Ltac grew to approximately 19 GB.
+The compact-witness repair preserves the generator, statements and fuel 65536.
+DirectRTests now compiles (exit 0), with all nine assumption reports closed;
+log `_build/local-ci-logs/ci-examples-compact.log`. A fuel-256 experiment timed
+out (124) and was reverted. The original high-memory attempt was manually
+terminated (143). A fresh full build in /tmp/pts-rk-ci-repaired.sh2eTQ exited 0;
+the complete local CI driver also exited 0, including pristine upstream and
+all legacy examples. Exact output is in verification/ci-repaired-full-2026-10-13.log
+and _build/local-ci-logs/ci-repaired-driver.log. CI repair commit 61330e3 was
+pushed to origin/main. No subsequent remote CI outcome has been inspected.
+The driver now records TERM/INT interruptions without weakening any check.
+Signal-injection test, shell syntax and actionlint passed.
+
 ## Current request and exact targets
 
-Active focus (latest user request): proceed with Theorem 4, committing and
-pushing when finished. Theorem 7 and the PTS set model are not being advanced
-in this session. Theorem 4 now has an unconditional kernel-checked theorem,
-Theorem4.theorem4; fresh-build evidence is recorded below.
+Active focus (latest user request): repair CI, commit/push, then continue
+Theorem 7 and separately commit/push the checked proof progress.
+Theorem 7 is NOT complete. Theorem 4 remains proved as Theorem4.theorem4.
+The PTS set model is not being advanced in this continuation.
 
 The authoritative new reference is
 `PTS_rk_interprets_Tarski_Mostowski_Robinson_arithmetic_R_harmonized.tex`.
@@ -26,7 +44,7 @@ The authoritative new reference is
 ## Checkout and environment
 
 This continuation started at main commit
-`a13b0d6f478c235ebea690f675eba562075775f0` (independent relational translation).
+`04cf08bb26def30c100ebb1c6cceca6a4de75138` (complete unary relational Theorem 4).
 Only the existing untracked logs/ directory was present. It was preserved.
 
 Arithmetic progress checkpoint on main: `a16646b`
@@ -44,6 +62,148 @@ Dune 3.23.1, opam 2.6.1, actionlint 1.7.12. GNU timeout is available.
 The pristine upstream requires Rocq 9.2's Create Rewrite HintDb.
 
 ## Actually compiled
+
+### Functional Theorem 7 continuation, following 04cf08b
+
+The target is the harmonized thm:direct-R, using the EXISTING Codes.Domain,
+Good, Equality, Order and four expression constructors, not Unary.Domain or a
+graph interpretation. Its desired closed preservation judgment is
+`exists p, @typ nat RankSorts 0 ε p (FirstOrder.sentence_translation A)` for
+each independent classical functional derivation of A. FirstOrder currently
+has syntax/translation but no complete independent deduction judgment.
+
+New checked modules:
+- DirectRFunctionalTerms: arbitrary open-term typing, Good closure and observed
+  closure; every closed expression has a genuine EqAt proof to its numerical
+  value's numeral. This covers arbitrary nested addition and multiplication.
+  True ground equations and comparisons now have PTS inhabitants for arbitrary
+  closed source terms, not just numeral instances.
+- DirectRFunctionalLogic: fixed, fully annotated equality/order stability
+  certificates over the entire 31-argument arithmetic observation telescope;
+  contextual double-negation elimination for the two atomic relations.
+- DirectRBinaryTables: generic binary selector tables, their typing and uniform
+  beta action; capped addition and multiplication as specializations.
+- DirectRBinaryObservations: positive delta closure for every bounded binary
+  table, by two rank-three motive eliminations, then abstraction over the
+  target membership continuation. Capped addition/multiplication closure are
+  checked corollaries. No selector-canonicity assumption is used.
+- DirectRRelationTables: generic equality/order test matrices, rank-one result
+  typing and point computation, plus PTS proofs of true negative entries and
+  contradiction from false negative entries. The latest continuation also
+  compiles arbitrary Boolean Horn branches to PTS inhabitants, uniformly in
+  the number of premises, and proves their exact rank (two or three).
+- DirectRFiniteLawElimination: exact lifting via J2 -> A, and elimination of
+  arbitrarily many positively admitted selector arguments into a law of rank
+  at most three. The branch premise ranges over all bounded tuples, uniformly
+  in arity. This is derived from original typing, not assumed cumulativity.
+- DirectRFunctionalFiniteLaws: closed guarded equality- and order-reflexivity
+  and equality-symmetry certificates, uniform in every positive selector arity.
+  Symmetry eliminates two positively admitted arguments; its false-premise
+  branch constructs only a negative conclusion. The other 16
+  relational certificates of the functional observation are not yet proved.
+
+Baseline build of DirectR.vo and DirectRRelationalAudit.vo exited 0; log
+_build/local-ci-logs/theorem7-baseline.log. Incremental commands use
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short --no-buffer`
+with the corresponding module target. Exit-0 logs: functional-terms-build-2.log,
+functional-ground-build-2.log, functional-logic-build-1.log,
+binary-tables-build-7.log, binary-observations-build-2.log,
+relation-tables-build-3.log, finite-law-elimination-build-4.log,
+functional-finite-laws-build-1.log. All are under
+_build/local-ci-logs; earlier failed attempts remain available. Fixed actual
+errors in rename/substitution normalization, intermediate beta terms, and
+missing imports; no proof was admitted or assumed.
+
+Exact remaining proof obligations:
+1. Apply the checked relation tables and arbitrary-arity finite-law eliminator
+   to the remaining 16 guarded relational laws. Prove their arithmetic-expression
+   branch computation and assemble all 23 proof arguments of the functional
+   finite observation, then derive functional no_back and unequal-numeral
+   refutations. Reflexivity and symmetry are done; the next law is guarded
+   equality transitivity (then order transitivity using the same construction).
+2. Prove the four-constructor positive invariant with functional CaseAt, using
+   transferred guarded laws. Unary bounded_case is NOT this theorem.
+3. Complete independent functional deduction preservation, formula stability
+   and guarded equality transport. Connect source countermodel soundness and
+   ground negative refutations; assemble an unconditional final Theorem 7.
+Do not substitute Theorem4.theorem4 or the conditional generator record.
+
+Earlier isolated proof build exited 0 (before symmetry/Horn branch additions):
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 300 dune build \
+  --build-dir /tmp/pts-rk-functional-final.ILSavU --display=short --no-buffer \
+  theories/DirectRFunctionalAudit.vo theories/DirectRRelationalAudit.vo \
+  theories/DirectRUnaryAudit.vo theories/DirectR.vo \
+  theories/DirectRArithmetic.vo models/SetFunctions.vo
+```
+
+All 25 new functional Print Assumptions queries are closed under the global
+context; 124 closed reports including the previous audits. Theorem 4 rebuilt
+successfully. Exact public types and output are retained in
+verification/functional-progress-2026-10-13.log, raw log
+_build/local-ci-logs/functional-progress-fresh.log. The earlier isolated build
+in /tmp/pts-rk-functional-check.LbunRw also exited 0 before the last finite-law
+extensions; its raw log is functional-foundations-fresh.log.
+No final unconditional Theorem 7 type exists yet; this audit explicitly says so.
+
+Earlier full-suite command `opam exec --switch=pts-rk-ci -- timeout 120 dune build
+--build-dir /tmp/pts-rk-functional-final.ILSavU --display=short --no-buffer`
+exited 124 in unchanged DirectRTests. Raw log:
+_build/local-ci-logs/functional-progress-full.log; tracked transcript:
+verification/functional-progress-full-2026-10-13.log. This is not a successful
+full-suite build or remote CI run. Whitespace, shell syntax and actionlint checks
+pass. Eight new CI stages cover the added proof
+modules; no stage or timeout was removed or weakened. This earlier timeout is
+superseded by the successful full build after the compact-witness CI repair;
+retain it as historical evidence, not the current result. The functional work
+is a separate progress commit after 61330e3, NOT a completed Theorem 7.
+Existing untracked logs/ is untouched.
+
+Exact next build command, after implementing the next guarded finite law:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short --no-buffer \
+  theories/DirectRFunctionalFiniteLaws.vo theories/DirectRFunctionalAudit.vo
+```
+
+The next exact goal is a closed proof of the telescope
+`Pi u:Fq. delta(u) -> Pi v:Fq. delta(v) -> Pi w:Fq. delta(w) ->
+Neg(R0 u v) -> Neg(R0 v w) -> Neg(R0 u w)` for R0 = equality_test q.
+Use delta_eliminate_arguments at rank three, relation-table point computation,
+and boolean_horn_realized. The analogous order law uses Nat.leb transitivity.
+Do not rely on the unchecked named generator or on a finite successful example.
+
+Latest checked public certificate:
+`forall q, 0 < q -> Realizes (FunctionalFiniteLaws.symmetry_type q Nat.eqb)`.
+Here symmetry_type is the exact interleaved telescope
+`Pi u:Fq. delta(u) -> Pi v:Fq. delta(v) -> Neg(R0 u v) -> Neg(R0 v u)`.
+Realizes means `exists p, @typ nat RankSorts 0 ε p T`, not a checker predicate.
+Incremental symmetry build exited 0 in functional-symmetry-12.log; the extended
+audit (including arbitrary Boolean Horn branches) exited 0 in
+functional-horn-1.log. Earlier numbered failures are retained in
+_build/local-ci-logs and were repaired, not admitted.
+
+Final fresh FULL build of this functional progress checkpoint exited 0:
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 300 dune build \
+  --build-dir /tmp/pts-rk-theorem7-progress.cWBK5u --display=short --no-buffer
+```
+
+All modules, including DirectRTests, compiled. The functional audit has 29
+closed assumption reports; the whole fresh build has 137. Public types and
+full output are retained in verification/theorem7-progress-full-2026-10-13.log
+(raw: _build/local-ci-logs/theorem7-progress-full.log).
+The preceding complete local CI driver's inventory/stages/result are retained
+in verification/ci-repaired-stages-2026-10-13.log; every stage passed, including
+pristine upstream. Shell syntax, actionlint and git diff --check also pass.
+No new assumptions, admissions or checking bypasses were introduced.
+This is verified proof progress, not an unconditional final Theorem 7.
 
 ### Complete unary relational Theorem 4, following a13b0d6
 

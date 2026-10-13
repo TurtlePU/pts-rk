@@ -92,6 +92,9 @@ Proof. intros [p Hp]. exists (shift p). exact (weakening RankSorts _ _ B Hp). Qe
 Lemma arrow_intro {n} (Γ : Ctx nat n) A B :
   formed Γ A -> inhabited (Γ & A) (shift B) -> inhabited Γ (Arrow A B).
 Proof. intros [a HA] [p Hp]. exists (lam A p). exact (tLam HA Hp). Qed.
+Lemma product_intro {n} (Γ : Ctx nat n) A B :
+  formed Γ A -> inhabited (Γ & A) B -> inhabited Γ (Π A B).
+Proof. intros [a HA] [p Hp]. exists (lam A p). exact (tLam HA Hp). Qed.
 Lemma arrow_elim {n} (Γ : Ctx nat n) A B :
   inhabited Γ (Arrow A B) -> inhabited Γ A -> inhabited Γ B.
 Proof. intros [f Hf] [u Hu]. exists (app f u). eapply arrow_application; eassumption. Qed.

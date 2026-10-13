@@ -1,5 +1,40 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — CI interruption and generated-example memory repair
+
+- Distinguish the supplied runner shutdown (143) from a compiler rejection.
+  Neither configured timeout had elapsed; the log does not identify the cause.
+- Keep generated witnesses compact in Ltac. Compute the scope success tag,
+  then kernel-check the selected Gallina expression using the unchanged
+  checker and fuel. This avoids expanding a huge syntax tree into the goal;
+  it does not remove examples or assume the fallback is typed.
+- Preserve signal diagnostics and nonzero exit status. A killed host can still
+  prevent artifact upload; shell traps cannot fix hosted-runner shutdowns.
+
+## 2026-10-13 — functional Theorem 7 continuation (not completed)
+
+- Keep the arithmetic-expression carrier and guarded 31-argument observation
+  telescope fixed. Theorem 4's unary interpretation is not a replacement for
+  this direct functional statement. Source arithmetic operations do not become
+  beta arithmetic on expression presentations.
+- Proved arbitrary closed-expression evaluation by EqAt, composing the checked
+  guarded congruence laws with uniform numeral arithmetic certificates.
+  Open-term Good closure supplies observed evidence where those laws require it.
+- Atomic stability abstracts the actual full observation telescope and its
+  final negative test; fixed certificates are checked in original typ.
+- Added actual binary selector tables and positive finite-membership closure.
+  Eliminate input membership only at rank-three motives after opening the output
+  continuation. Native boundedness is a side condition on indices, not a
+  replacement for PTS inhabitants.
+- Implemented relation tables and exact-rank lifting, then derived arbitrary-
+  arity positive-membership elimination. Guarded equality/order reflexivity
+  and equality symmetry are checked closed certificates. Added a uniform
+  Boolean Horn-branch compiler producing actual negative PTS conclusions;
+  native truth-table validity is only its finite branch side condition.
+  The other 16 relational certificates and
+  the four-constructor invariant are still required; successful point branches
+  alone are not claimed to prove the full observation telescope or Theorem 7.
+
 ## 2026-10-13 — complete unary relational Theorem 4
 
 - Proved translated formula stability structurally, including guarded universal
