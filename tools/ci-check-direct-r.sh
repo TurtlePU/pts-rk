@@ -185,7 +185,7 @@ stage 06c-relational-axioms "$ROOT" Interpretation_of_R/relational/DirectRRelati
 stage 06c-theorem4 "$ROOT" Interpretation_of_R/relational/DirectRTheorem4.vo
 stage 06c-relational-audit "$ROOT" Interpretation_of_R/relational/DirectRRelationalAudit.vo
 stage 06d-source-countermodel "$ROOT" Interpretation_of_R/DirectRCountermodel.vo
-stage 06e-set-functions "$ROOT" models/SetFunctions.vo
+stage 06e-set-functions "$ROOT" ZFC_model/SetFunctions.vo
 stage 07-proof-families "$ROOT" Interpretation_of_R/functional/DirectRProofs.vo
 stage 08-generators "$ROOT" Interpretation_of_R/functional/DirectRGenerated.vo
 stage 09-first-order "$ROOT" Interpretation_of_R/functional/DirectRFirstOrder.vo
@@ -195,6 +195,12 @@ stage 09b-functional-syntax "$ROOT" Interpretation_of_R/functional/DirectRFuncti
 stage 09b-functional-translation "$ROOT" Interpretation_of_R/functional/DirectRFunctionalTranslation.vo
 stage 09b-functional-formula-logic "$ROOT" Interpretation_of_R/functional/DirectRFunctionalFormulaLogic.vo
 stage 09b-functional-source-axioms "$ROOT" Interpretation_of_R/functional/DirectRFunctionalSourceAxioms.vo
+stage 09c-functional-equality "$ROOT" Interpretation_of_R/functional/DirectRFunctionalEquality.vo
+stage 09c-functional-deduction "$ROOT" Interpretation_of_R/functional/DirectRFunctionalDeduction.vo
+stage 09d-derivation-certificates "$ROOT" Interpretation_of_R/DirectRDerivationCertificates.vo
+stage 09d-witness-search "$ROOT" Interpretation_of_R/DirectRWitnessSearch.vo
+stage 09d-functional-countermodel "$ROOT" Interpretation_of_R/functional/DirectRFunctionalCountermodel.vo
+stage 09d-theorem7 "$ROOT" Interpretation_of_R/functional/DirectRTheorem7.vo
 stage 09a-functional-audit "$ROOT" Interpretation_of_R/functional/DirectRFunctionalAudit.vo
 stage 10-obligations "$ROOT" Interpretation_of_R/functional/DirectRObligations.vo
 stage 11-entry-point "$ROOT" Interpretation_of_R/functional/DirectR.vo
@@ -203,4 +209,4 @@ stage 12-arithmetic "$ROOT" Interpretation_of_R/functional/DirectRArithmetic.vo
 stage 13-examples-and-assumptions "$ROOT" Interpretation_of_R/functional/DirectRTests.vo
 CURRENT_STAGE='complete'
 printf '\nAll requested builds passed; inspect the assumption report.\n'
-printf 'The open Theorem 5 contracts have not thereby been discharged.\n'
+printf 'Theorem 7 and its effective target are audited; legacy bounded-generator contracts remain separate.\n'

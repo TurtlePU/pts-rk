@@ -1,4 +1,10 @@
-# What remains before Theorem 5 is proved
+# Historical checklist for the original draft
+
+The functional result is now proved as `Theorem7.theorem7`, with the effective
+target `Theorem7.theorem5_target : Kernel.Theorem5Target`. See the live handoff
+STATE and the functional assumption audit for build evidence. The checklist
+below records the older optional bounded-generator approach; those particular
+generator contracts are not prerequisites of the completed interpretation.
 
 This is an implementation checklist, not a list of new axioms. The lack of a
 compiler and the lack of the following uniform proofs are separate limitations.

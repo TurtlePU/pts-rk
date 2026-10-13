@@ -16,7 +16,7 @@ Never put remote URLs containing credentials or secret environment values in log
 
 The live sources now reside in `Interpretation_of_R/` (shared infrastructure),
 `Interpretation_of_R/relational/` (completed Theorem 4), and
-`Interpretation_of_R/functional/` (unfinished Theorem 7). The original kernel
+`Interpretation_of_R/functional/` (Theorem 7, including effective witnesses). The original kernel
 alone remains in `theories/`. The corresponding Rocq libraries are
 `Interpretation_of_R`, `Interpretation_of_R.relational`, and
 `Interpretation_of_R.functional`; both interpretation libraries depend only
@@ -75,8 +75,9 @@ The current toolchain has built pristine upstream and the infrastructure,
 structural, and foundations modules locally. The latest CI-repair continuation
 also obtained a fresh full development build and a successful complete local
 CI driver run, after keeping generated test witnesses compact in Ltac. See
-STATE.md and verification/ci-repaired-full-2026-10-13.log. This does not mean the
-unfinished functional Theorem 7 has been proved or that remote CI has passed.
+STATE.md and verification/ci-repaired-full-2026-10-13.log for that historical
+checkpoint; the final Theorem 7 evidence is recorded separately in STATE.md.
+No local build result by itself asserts remote CI success.
 `bash tools/check-local-ci.sh` selects the installed native ARM switch and
 runs actionlint plus the same staged driver using the available GNU timeout.
 See STATE.md for exact commands, logs, and the remaining proof bottleneck.

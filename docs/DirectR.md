@@ -5,7 +5,7 @@ shared infrastructure at the parent level, the completed relational
 interpretation in `relational/`, and the functional development in `functional/`.
 Neither interpretation imports the other. The original kernel is unchanged in
 `theories/`. See `../Interpretation_of_R/README.md` for imports and independent
-build/audit targets. Functional Theorem 7 is still incomplete.
+build/audit targets. Functional Theorem 7 is proved in `DirectRTheorem7.v`.
 
 ## Current checked result — 2026-10-13
 
@@ -20,7 +20,13 @@ nonfaithfulness witness. It uses the original annotated PTS typing judgment.
 A fresh isolated build succeeds; all assumption reports are closed. Exact
 commands, logs and the separate legacy full-suite timeout status are in
 `direct-r-handoff/STATE.md` and `direct-r-handoff/verification/`.
-The functional Theorem 7 and PTS set-model soundness remain unfinished.
+The functional result `Theorem7.theorem7` now includes all original functional
+axioms, independent classical deduction preservation, ground correctness and
+nonfaithfulness. Its effective sigma-valued witness functions use exhaustive
+certificates for the unchanged typing rules; constructive search also builds
+`Theorem7.theorem5_target : Kernel.Theorem5Target`. There is no choice axiom.
+The old bounded generator contracts are not used by these results.
+PTS set-model soundness remains unfinished and separate in `ZFC_model/`.
 
 ## Historical modular draft snapshot (superseded status below)
 

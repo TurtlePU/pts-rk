@@ -6,6 +6,7 @@
           DirectRCheck
           DirectRCommonCodes
           DirectRCountermodel
+          DirectRDerivationCertificates
           DirectREval
           DirectRFiniteCertificates
           DirectRFiniteLawElimination
@@ -20,5 +21,6 @@
           DirectRRelationTables
           DirectRStructural
           DirectRSymbolic
-          DirectRTelescopeArguments)
+          DirectRTelescopeArguments
+          DirectRWitnessSearch)
  (theories Stdlib Equations PTSrk))

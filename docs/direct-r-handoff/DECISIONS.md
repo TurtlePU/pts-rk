@@ -589,6 +589,62 @@ an architectural change has been verified before compiling it.
   PTS typing soundness remain open. This checkpoint does not claim them, nor
   does it call the generic empty-fiber fact a proof of PTS nontriviality.
 
+## 2026-10-13 — completed functional theorem and effective witnesses
+
+Use a separate functional source countermodel with the shared arithmetic
+structure to prove nonfaithfulness. Its negative semantics validate all
+independent classical deduction rules constructively. No external PTS set
+model or native classical axiom enters the interpretation theorem.
+
+Close the Prop-to-Type gap by constructive exhaustive search, NOT choice or
+an assumption of generator completeness. DirectRDerivationCertificates
+interprets finite trees as original annotated typing derivations. Soundness
+and completeness are proved against the unchanged Typing.typ/RankSorts rules.
+Beta conversion certificates contain two finite reduction paths to a common
+reduct; completeness uses the existing kernel's confluence theorem. Reductions
+inside annotations are retained. This does not assert normalization of arbitrary
+terms or decidability of typing.
+
+DirectRWitnessSearch enumerates all finite certificates, and Stdlib's
+constructive indefinite ground description on naturals selects a successful
+stage from its proved existence. All assumptions are closed. This provides
+transparent Type-valued witnesses for all axioms and source deductions and
+constructs Kernel.Theorem5Target itself. The algorithm is intentionally slow;
+the efficient native checker and historical bounded generator remain available,
+but their separate totality contracts are not assumed or claimed here.
+
+Theorem7.theorem7 packages all mathematical claims of thm:direct-R. Effective
+interfaces accompany it, rather than misrepresenting Prop existence as a
+Type-valued function. No rules, source axioms, domain, or theorem premises were
+strengthened. Existing relational interpretation remains an independent library.
+
+At the user's request move the existing set-model files from models/ to
+ZFC_model/ without changing PTSrkModel or the pinned vendor/zfc dependency.
+Update the build target but retain its checks. This is only a relocation of
+the incomplete set-model foundations, not a proof of set-model soundness.
+
+## 2026-10-13 — functional equality and deduction preservation
+
+Prove equality transport with two typed Good-admitted environments and internal
+equality witnesses. Keep all functional observation premises, deriving GAt from
+GoodAt before using symmetry/transitivity/constructor congruence. Transportable
+is only a local theorem property, proved for all formulas, never a premise of
+the source deduction system or an addition to the domain.
+
+For primitive conjunction/disjunction/existential, reuse the definitionally
+equal negative encodings in the transport induction. This does not change the
+source syntax or erase any PTS annotation. Preserve the source's actual
+natural-deduction rules separately: conjunction and existential elimination
+use the already proved stability of the translated conclusion. The existential
+eigenvariable case extends the target context by the negated conclusion,
+the domain element, Good admission, and the source premise, with explicit
+source renaming/substitution lemmas throughout.
+
+Full sentence preservation now compiles in the original typ relation. Do not
+equate this Prop-valued constructive existence statement with a Type-valued
+effective proof-term selection API. Nonfaithfulness of the independent
+functional source calculus and the final theorem package remain separate work.
+
 ## 2026-10-13 — independent functional deduction infrastructure
 
 Keep the existing FirstOrder functional syntax and translation, including its

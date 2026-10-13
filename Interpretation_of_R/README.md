@@ -8,7 +8,7 @@ The original `PTSrk` kernel remains unchanged in `theories/`.
 | --- | --- | --- |
 | This directory | `Interpretation_of_R` | Annotated term builders, native checker, structural and negative logic, telescopes, finite tables and selector certificates, shared source countermodel |
 | `relational/` | `Interpretation_of_R.relational` | Unary carrier, relational syntax/translation/deduction, all axiom schemes, ground correctness, nonfaithfulness, completed Theorem 4 |
-| `functional/` | `Interpretation_of_R.functional` | Four-constructor carrier and certified observations, functional interpretation and checked components of unfinished Theorem 7 |
+| `functional/` | `Interpretation_of_R.functional` | Four-constructor carrier, certified observations, completed Theorem 7 and effective original-PTS witnesses |
 
 ## Independent build and assumption audits
 
@@ -24,7 +24,7 @@ original kernel. Use a fresh `--build-dir` to execute `Print Assumptions` again;
 an incremental successful command may reuse previous audit output.
 `bash tools/check-local-ci.sh` also checks pristine upstream and all existing
 development stages. The external set-model development remains separate in
-`models/` and is not a dependency of either interpretation.
+`ZFC_model/` and is not a dependency of either interpretation.
 
 The old `From PTSrk Require Import DirectR...` imports have been replaced by
 the corresponding library imports. Module basenames and theorem names remain

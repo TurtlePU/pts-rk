@@ -1,5 +1,172 @@
 # Live proof-development state — 2026-10-13
 
+## Completed Theorem 7; separate ZFC development relocated
+
+Request: move the set-model development into ZFC_model, finalize Theorem 7,
+commit and push. Starting HEAD 5551117; prior uncommitted equality/deduction
+proofs and verification logs are preserved. User logs/ untouched.
+Baseline local CI including pristine upstream exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/theorem7-baseline"
+bash tools/check-local-ci.sh`; /tmp/pts-rk-theorem7-baseline.log.
+
+Moved models/{SetFunctions.v,dune,README.md} to ZFC_model, preserving the
+PTSrkModel namespace and unchanged proofs. Updated the CI target and live docs.
+The pinned third-party dependency remains vendor/zfc. The set model and its
+typing soundness remain INCOMPLETE, independent of both R interpretations.
+
+New checked results:
+- FunctionalCountermodel.soundness and order_reflexivity_underivable: the
+  shared source arithmetic countermodel extended to ALL functional source
+  deduction rules, using stable negative semantics without a classical axiom.
+- Theorem7.order_reflexivity_realized and nonfaithfulness: original PTS proof
+  of the translated sentence that the independent source system cannot derive.
+- Theorem7.theorem7: all functional source axioms, deduction preservation,
+  ground truth/internal refutation, and nonfaithfulness, unconditionally.
+- DerivationCertificates.derive_sound/derive_complete: a finite certificate
+  interpreter for EXACTLY original Typing.typ at RankSorts. Conversion uses
+  explicit full beta traces (including annotations), justified by existing
+  confluence; no new PTS rules or alternate typing relation.
+- WitnessSearch.witness: forall A, Core.Realizes A ->
+  {p : Term nat 0 | @typ nat RankSorts 0 ε p A}. Exhaustive finite enumeration
+  plus Stdlib's CONSTRUCTIVE natural-number search proves termination from
+  inhabitance, without any choice or typing-decidability assumption. Deliberately
+  inefficient; not a replacement for the fast native checker on concrete terms.
+- Theorem7.theorem5_target : Kernel.Theorem5Target, no arguments/assumptions.
+- Theorem7.effective_axiom a : {p | @typ nat RankSorts 0 ε p (axiom_type a)}.
+- Theorem7.effective_deduction : forall A : FirstOrder.formula 0,
+  FunctionalSyntax.derives [] A ->
+  {p : Term nat 0 | @typ nat RankSorts 0 ε p (FirstOrder.sentence_translation A)}.
+  Effective source-axiom and true/false ground-atom interfaces also constructed.
+These settle the previous Prop-to-Type witness gap using independently proved
+all-index realization/preservation. They do not assert the old bounded optional
+generator's particular totality contracts; those are not used by the theorem.
+
+Commands (documented OPAMROOT/PATH), each with timeout 180 and flags
+`--display=short --no-buffer` after `opam exec --switch=pts-rk-ci -- timeout 180 dune build`:
+- FunctionalCountermodel.vo and ZFC_model/SetFunctions.vo: exit 0 on first build;
+  /tmp/pts-rk-theorem7-countermodel-1.log.
+- Interpretation_of_R/DirectRDerivationCertificates.vo: logs
+  /tmp/pts-rk-theorem7-certificates-{1,2,3,4,5}.log, exits 1,1,1,1,0.
+  Fixed dependent map membership, then explicit existential arguments in
+  nth_error_In and conversion_sound; no mathematical weakening.
+- Interpretation_of_R/DirectRWitnessSearch.vo: exit 0 on first build;
+  /tmp/pts-rk-theorem7-search-1.log.
+- Interpretation_of_R/functional/DirectRTheorem7.vo: logs
+  /tmp/pts-rk-theorem7-package-{1,2}.log, exits 1,0 (extra closing parenthesis).
+- Interpretation_of_R/functional/DirectRFunctionalAudit.vo and DirectR.vo:
+  exit 0; /tmp/pts-rk-theorem7-audit.log; 493 closed assumption reports, including
+  all 45 new queries. Final theorem and effective interface types are printed.
+No Axioms report and no timeout. Final local CI exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/theorem7-final"
+bash tools/check-local-ci.sh`. This includes pristine upstream, the relocated
+ZFC target and all four new stages without weakening checks or timeouts.
+Contribution stages were incremental. A separate fresh FULL build exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-theorem7-full.LaNXNB --display=short --no-buffer`.
+Its 601 assumption reports are all closed, with no Axioms report or timeout.
+Exact transcript: verification/theorem7-full-2026-10-13.log, byte-identical to
+/tmp/pts-rk-theorem7-full.log. The final theorem, effective target and effective
+deduction all appear in the fresh audit output with their unconditional types.
+Exact byte-compared transcripts are retained as
+verification/theorem7-{baseline,countermodel-1,certificates-1,certificates-2,
+certificates-3,certificates-4,certificates-5,search-1,package-1,package-2,audit,ci}
+-2026-10-13.log (each brace entry is one joined filename).
+Source/docs diff checks and shell syntax check passed. Original theories/ and
+vendor/ are unchanged against HEAD; relocated SetFunctions.v and dune are
+byte-identical to their previous versions. Raw compiler logs intentionally
+retain whitespace and failed attempts. No remote CI result is claimed.
+Theorem 7 (thm:direct-R) is COMPLETE, including effective Type-valued interfaces
+and the original Kernel.Theorem5Target. No remaining Theorem 7 proof obligation.
+External PTS Bottom nontriviality and the separate ZFC model's soundness were
+not part of this theorem and remain distinct; no such result is claimed.
+The old bounded optional generator contracts remain separate legacy goals.
+
+Commit handoff: all checked proof work since parent 5551117, the ZFC relocation,
+docs and exact logs are to be committed together as "Complete functional R
+interpretation and isolate ZFC model", then ordinarily pushed as explicitly
+authorized. This entry records the checked pre-commit tree; the containing
+commit's hash is available from Git history. User logs/ remain unstaged.
+Next exact command for a new session is verification, not a missing proof:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/theorem7-recheck"
+bash tools/check-local-ci.sh`.
+
+## Current continuation: equality and deduction preservation
+
+At the user's request, committed the preceding checked milestones as
+555111701490728c9ed594b646465dcbd96620c4, "Realize functional R axioms and
+establish deduction infrastructure", then pushed origin/main successfully.
+User logs/ are untouched. New proof work below is not in that commit.
+Baseline `DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/functional-equality-baseline"
+bash tools/check-local-ci.sh` exited 0, including pristine upstream.
+Log: /tmp/pts-rk-functional-equality-baseline.log.
+
+DirectRFunctionalEquality now compiles: scoped symmetry, term congruence,
+atomic equality transport, typed/admitted/equal environment extension,
+transport for EVERY formula, and equality_replacement for arbitrary source
+substitution. Observation premises are derived from Good, not dropped.
+The transportable helper is a proved property, not a new domain/source axiom.
+Primitive conjunction/disjunction/existential reuse their definitionally equal
+negative translations without changing the source syntax or PTS annotations.
+Command (documented OPAMROOT/PATH): `opam exec --switch=pts-rk-ci -- timeout 180
+dune build --display=short --no-buffer
+Interpretation_of_R/functional/DirectRFunctionalEquality.vo`.
+Logs /tmp/pts-rk-functional-equality-{1,2,3,4,5}.log: exits 1,1,1,1,0.
+Failures: pointwise environment weakening (1/2), an unsolved observation premise
+in replacement (3), and an incorrectly targeted tactic edit (4); all fixed.
+DirectRFunctionalDeduction now compiles, including every constructor of the
+independent FunctionalSyntax.derives: conjunction/disjunction/existential
+introduction and elimination, guarded universal rules, classical elimination,
+equality reflexivity and arbitrary-formula replacement. New unconditional type:
+`forall A : FirstOrder.formula 0, FunctionalSyntax.derives [] A ->
+ exists p, @typ nat RankSorts 0 ε p (FirstOrder.sentence_translation A)`.
+General preservation quantifies over original PTS contexts, typed Good-admitted
+environments, and inhabitants of translated source hypotheses. These are the
+ordinary context premises, not assumptions of deduction preservation itself.
+Exact command:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer Interpretation_of_R/functional/DirectRFunctionalDeduction.vo`.
+Logs /tmp/pts-rk-functional-preservation-{1,2,3,4,5}.log: exits 1,1,1,1,0.
+Failures: implicit conjunction argument (1); existential-elimination context
+placeholder (2), environment matching (3), and rewriting the context as well
+as the conclusion before newest (4). Explicit context/environment normalization
+and rewriting a separate newest witness fixed them. No timeout.
+Twenty new assumption queries and both module CI stages are registered.
+
+Theorem 7 is NOT yet packaged/complete. Next goal is a functional source
+countermodel proving order-reflexivity underivable, alongside the internal
+order-reflexivity inhabitant. Reuse the shared DirectRCountermodel source
+arithmetic structure (NOT a set model of PTS) and adapt the relational source
+soundness proof without importing the relational interpretation. The functional
+primitive connectives require stable negative source semantics to avoid adding
+native classical axioms. Then package axioms, sentence preservation, ground
+correctness and nonfaithfulness, keeping Type-valued effective witness selection
+and legacy generator/Kernel.Theorem5Target contracts explicit rather than
+claiming that Prop existence constructs those interfaces.
+Next exact command after adding/registering the source countermodel module:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer Interpretation_of_R/functional/DirectRFunctionalCountermodel.vo`.
+New proofs are uncommitted after the authorized push; user logs/ untouched.
+Functional audit exited 0: 448 closed assumption reports, including all 20 new
+lemma queries, with no Axioms report. Command (same OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer Interpretation_of_R/functional/DirectRFunctionalAudit.vo`.
+Final local CI exited 0, including pristine upstream and both new stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/functional-preservation-final"
+bash tools/check-local-ci.sh`. Its contribution stages were incremental.
+The separate fresh full build exited 0 with 556 closed assumption reports and
+no Axioms report. Exact command (same OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 600 dune build
+--build-dir /tmp/pts-rk-functional-preservation-full.lcC1g2 --display=short --no-buffer`.
+Durable transcript: verification/functional-preservation-full-2026-10-13.log,
+byte-identical to /tmp/pts-rk-functional-preservation-full.log. No timeout.
+Source/docs `git diff --check` and
+`bash -n tools/ci-check-direct-r.sh` passed. No remote CI result is claimed.
+Exact compiler transcripts are retained under verification/functional-
+equality-{1,2,3,4,5,baseline}-2026-10-13.log and functional-preservation-
+{1,2,3,4,5,audit,ci}-2026-10-13.log (joined filenames without line breaks).
+They match the /tmp originals byte-for-byte, preserving compiler whitespace
+and failed attempts. No Admitted, axioms or disabled checks were added.
+
 ## Current continuation: independent functional deduction infrastructure
 
 Request: proceed proving Theorem 7. Existing uncommitted proof work and index
