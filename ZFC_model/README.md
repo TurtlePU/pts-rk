@@ -76,12 +76,22 @@ expose the ordinary bijection premise and prove the local laws from it;
 they do not assert existence or coherent selection of the manuscript's
 cardinal-coding bijections and are not a replacement for PTS soundness.
 
+`ProductEmbedding.v` proves the first step of the product-cardinality bound.
+Given an extensional family of concrete injections from B(x) into a common
+carrier K, it constructs an injection from the dependent function set into
+the ordinary function set from A to K. Function-graph extensionality proves
+injectivity of the constructed map. A version taking a set graph of fiber
+injections derives extensionality from `apply_set`; no extra extensionality
+axiom or premise is needed. All seven new assumption reports are closed.
+This does not choose the fiber injections, build alephs, or prove the GCH
+exponent bound. Those parts of the cardinal argument remain outstanding.
+
 Build from the repository root:
 
 ```sh
 export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
 export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
-opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/CodedFunctions.vo ZFC_model/CodeUniverses.vo
+opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer ZFC_model/ProductEmbedding.vo ZFC_model/CodedFunctions.vo ZFC_model/CodeUniverses.vo
 ```
 
 ## Not yet a model or a soundness proof

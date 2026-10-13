@@ -1,5 +1,58 @@
 # Live proof-development state — 2026-10-14
 
+## Product-cardinality first step checked; full soundness NOT finalized
+
+Committed the prior checkpoint as 5c8476ed81316b5ba3cb259ffd4c4d170170705f,
+`ZFC model: prove bijection inverses and coded beta`, as requested. No push
+was requested or performed. Continued ProductEmbedding.v work below is
+prepared for the subsequently requested commit
+`ZFC model: prove dependent product embedding`. No push requested.
+User-owned untracked logs/ remains untouched.
+
+New result: actual fiber injections into K induce an explicitly constructed
+set injection from the dependent product into the function set A -> K.
+Neither that injection nor the resulting bound is a hypothesis. The graph
+family variant derives its extensionality from concrete set application.
+
+Exact theorem type:
+
+    dependent_product_injection_from_graph : forall A K B enc,
+      (forall x, IN x A -> injection (B x) K (apply_set enc x)) ->
+      injection (dependent_product A B) (dependent_product A (fun _ => K))
+        (product_injection A B (apply_set enc)).
+
+All seven new Print Assumptions reports are closed. No new axiom, assumed
+model law, choice premise or kernel rule change. The supplied fiber
+injections still need to be constructed/selected in the cardinal proof.
+
+First incremental build exited 0. Fresh build including the graph-family
+variant and all six model modules exited 0; 43 closed reports:
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --build-dir
+/tmp/pts-rk-zfc-product-fresh.leuaTw --display=short --no-buffer
+ZFC_model/ProductEmbedding.vo ZFC_model/CodedFunctions.vo
+ZFC_model/CodeUniverses.vo`.
+Recursive kernel check exited 0, no axioms:
+`opam exec --switch=pts-rk-ci -- timeout 180 rocq check -silent -o
+-Q /tmp/pts-rk-zfc-product-fresh.leuaTw/default/vendor/zfc ZFC
+-Q /tmp/pts-rk-zfc-product-fresh.leuaTw/default/ZFC_model PTSrkModel
+PTSrkModel.ProductEmbedding PTSrkModel.CodedFunctions PTSrkModel.CodeUniverses`.
+Full local CI, including pristine upstream, exited 0 with all 86 stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/zfc-product-final"
+bash tools/check-local-ci.sh`. Commands and exact logs retained in
+verification/product-embedding-2026-10-14/.
+
+The user's requested final soundness theorem is still unproved. The actual
+finite-index aleph hierarchy, precise GCH and exponent bound, coherent
+selection of coding bijections, context/term interpretation, substitution
+and beta compatibility, and original Typing.typ/RankSorts soundness remain.
+The vendored three-file set library supplies none of the missing cardinal
+machinery. Do not equate the checked local coded-beta theorem or today's
+product injection with completion of that model proof.
+Next exact verification command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short
+--no-buffer ZFC_model/ProductEmbedding.vo ZFC_model/CodedFunctions.vo
+ZFC_model/CodeUniverses.vo`.
+
 ## Concrete bijections and coded beta checked
 
 Committed the previous code-universe checkpoint as

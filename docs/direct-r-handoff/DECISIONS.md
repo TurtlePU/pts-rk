@@ -1,5 +1,20 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — dependent-product injection, not assumed cardinal closure
+
+ProductEmbedding.v defines set injections by actual function-set membership
+and relational injectivity. Given an extensional family of fiber injections
+B(x) -> K, construct the map g |-> (x |-> enc(x)(g(x))) as a set graph.
+Prove its typing and injectivity using graph/application extensionality.
+When enc is itself supplied as a set graph, application extensionality
+discharges the family-extensionality obligation without a new hypothesis.
+
+This is the constructive first inequality of the paper's cardinal argument,
+not a renamed premise asserting the dependent-product bound. It still
+requires actual fiber injections; their coherent selection and the aleph/GCH
+exponent bound are separate unproved obligations. No PTS model-law record or
+new axiom has been introduced. All seven new audits are closed.
+
 ## 2026-10-14 — concrete inverses and local coded-function laws
 
 SetBijections.v defines a bijection as a member of the actual function set
