@@ -1,6 +1,117 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: equality reflexivity, following e959029
+## Current continuation: successor congruence, following a0e095b
+
+Request: proceed proving, then commit and push. Starting HEAD:
+a0e095bd4f3913bc090fe367e2cdcde58c2a44e2. Preserve and include the previous
+uncommitted symmetry/transitivity checkpoint. Untracked user logs/ is untouched.
+Theorem 7 is NOT complete.
+
+Baseline complete local CI, including pristine upstream, exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/successor-prefix-baseline"
+bash tools/check-local-ci.sh`, with the documented local bin directory on PATH.
+Output: _build/local-ci-logs/successor-prefix-baseline.log.
+
+DirectRFiniteDomainPrefix now proves successor_application_certificate for
+every q>0, with original predicate/equality-table/operation applications.
+unary_congruence_application_typed and unary_congruence_application_beta
+give exact formation and conversion for any typed unary operation.
+successor_annotation_specialized and successor_prefix_matches_source check
+the original source field 107 and its entire sixteen-field prefix, for every
+dependent named suffix. successor_specialization proves original Typed typing
+after the actual sixteen applications with the exact suffix substitution.
+
+Incremental command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFiniteDomainPrefix.vo`.
+Exit 0 on first attempt: _build/local-ci-logs/successor-prefix-1.log.
+
+First remaining goal: source fields 108/109, addition/multiplication congruence.
+Package their four interleaved object/domain guards and relation/operation
+applications, convert to FiniteBinaryCongruence's checked expanded types,
+then extend the exact dependent application spine. Thirteen further arguments
+follow these two. Full finite observation specialization, separation/negative
+ground faithfulness, the four-constructor bounded invariant, R3/R4/R5 and
+independent functional deduction preservation remain open.
+
+Next command after the next prefix addition:
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+Fresh isolated full build exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 300 dune build
+--build-dir /tmp/pts-rk-successor-prefix.JYfA53 --display=short --no-buffer`.
+All 234 assumption reports are closed under the global context, with no Axioms
+report. Exact output: verification/successor-prefix-full-2026-10-13.log.
+Complete local CI also exited 0, including pristine upstream and every original
+stage, using `DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/successor-prefix-final"
+bash tools/check-local-ci.sh`. Its functional audit has 126 closed reports.
+Exact output: verification/successor-prefix-ci-2026-10-13.log.
+`git diff --check` exited 0. No new remote CI result is claimed.
+
+Commit checkpoint: `Extend finite observation specialization through congruence`,
+parent a0e095b; includes the symmetry/transitivity and successor-congruence
+proofs, audit, handoff and verification logs. A normal push to origin/main is
+authorized and will be attempted after committing. Earlier credential-helper
+timeouts remain historical evidence, not a claim about this push's result.
+
+## Historical continuation: equality equivalence laws, following a0e095b
+
+Request: proceed proving theorem 7. Starting HEAD:
+a0e095bd4f3913bc090fe367e2cdcde58c2a44e2, with only untracked user logs/.
+No commit or push requested this turn. User logs/ remains untouched.
+Theorem 7 is NOT complete.
+
+Baseline complete local CI, including pristine upstream, exited 0:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/symmetry-prefix-baseline"
+bash tools/check-local-ci.sh`, with the documented local bin directory on PATH.
+Output: _build/local-ci-logs/symmetry-prefix-baseline.log.
+
+DirectRFiniteDomainPrefix now proves symmetry_application_certificate and
+transitivity_application_certificate uniformly for q>0 and Boolean relations
+satisfying the corresponding bounded numerical law. Their types retain the
+original predicate and relation-table applications; exact formation is rank 5.
+Specialization to Nat.eqb discharges both numerical laws unconditionally.
+
+symmetry_prefix_matches_source and transitivity_prefix_matches_source identify
+the exact original first 14/15 fields for every named suffix. The corresponding
+specialization theorems prove original Typed judgments after all 14/15 actual
+applications, at the precise substitution retaining every chosen proof term.
+They neither assume a full observation nor change a PTS rule.
+
+Incremental command (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFiniteDomainPrefix.vo`.
+Exit 0 logs: _build/local-ci-logs/symmetry-prefix-1.log and
+_build/local-ci-logs/transitivity-prefix-2.log. The retained failed attempt
+transitivity-prefix-1.log had a missing closing parenthesis in both new types.
+
+First remaining goal: source field 107, successor congruence. Convert its
+predicate/table/operation applications to the existing unary-congruence law,
+prove its source-prefix equality, and extend the exact suffix substitution.
+Then apply the other fifteen arguments. Full finite observation specialization,
+no_back/negative ground faithfulness, the four-constructor bounded invariant,
+R3/R4/R5 and independent functional deduction preservation remain open.
+
+Next command after the next prefix extension:
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+Complete local CI exited 0, including pristine upstream and all original stages:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/equivalence-prefix-final"
+bash tools/check-local-ci.sh`. Its functional audit has 119 closed assumption
+reports and no Axioms report. Command and output are retained in
+verification/equivalence-prefix-ci-2026-10-13.log. The successful incremental
+results and failed parser attempt are retained in
+verification/equivalence-prefix-incremental-2026-10-13.log.
+Fresh isolated full build exited 0:
+`opam exec --switch=pts-rk-ci -- timeout 300 dune build
+--build-dir /tmp/pts-rk-equivalence-prefix.F0jhSA --display=short --no-buffer`.
+All 227 assumption reports are closed under the global context, with no Axioms
+report. Exact command/output: verification/equivalence-prefix-full-2026-10-13.log.
+`git diff --check` exited 0. The proof/audit changes, handoff updates and three
+verification logs remain uncommitted. No push was attempted and no new remote
+CI result is claimed. Untracked user logs/ remains excluded and untouched.
+
+## Historical continuation: equality reflexivity, following e959029
 
 Request: proceed proving then commit (no push requested). Starting HEAD:
 e9590295595b2fc6cf28b71b4860a422f6c39d17. The previous uncommitted four-domain

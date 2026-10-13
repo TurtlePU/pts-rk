@@ -1,5 +1,29 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — successor-congruence observation argument
+
+- Retain original predicate, equality-table and unary-operation applications
+  in the raw interleaved guard. Prove substitution through that guard and
+  exact rank-five formation of its finite specialization.
+- Use the checked unary-congruence theorem via beta conversion, preserving
+  lambda annotations. Specialize the operation to capped_successor uniformly
+  for q>0. No raw selector canonicity is assumed.
+- Match the original first sixteen source fields and perform the sixteenth
+  dependent application. Fifteen observation arguments remain unassembled.
+
+## 2026-10-13 — equality equivalence-law prefix
+
+- Preserve the source's interleaved object/domain guards for symmetry and
+  transitivity, and prove substitution through these raw annotated types.
+- Convert predicate/table applications to the existing finite law types using
+  beta conversion with exact rank-five formation. Generic certificates work
+  for every Boolean symmetric/transitive relation with the stated bounded
+  numerical premises; equality discharges these premises without assumptions.
+- Source-prefix equalities check firstn 14 and firstn 15 for arbitrary suffixes.
+  Actual dependent applications extend the eight-data/four-domain/reflexivity
+  prefix through both chosen proof terms. Sixteen further arguments remain;
+  this is not yet a closed implementation of the entire observation.
+
 ## 2026-10-13 — equality-reflexivity observation application
 
 - Keep the original predicate and relation-table applications in field 104.
