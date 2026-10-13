@@ -1,5 +1,22 @@
 # Decisions and proof-engineering history
 
+## 2026-10-13 — finite successor and binary-operation congruence
+
+- Prove generic unary/binary operation congruence from original PTS typing
+  and positive domain closure on every selector tuple. On true equality
+  branches, native index equality makes the outputs literally identical;
+  guarded relation reflexivity constructs their PTS equality certificate.
+  Existing capped-operation domain closure discharges all generic premises.
+- Generalize Boolean-premise introduction only to negative conclusions of
+  rank-one types. A false premise yields Bottom and the negative conclusion
+  is constructed by abstraction, not by an unavailable general eliminator.
+- Retain the expanded two-/four-object telescopes with interleaved domain
+  guards as public types. Check beta conversion and exact rank formation.
+  Do not infer canonicity of arbitrary selectors or erase binder annotations.
+- These are three more of the nineteen finite relational certificates, not
+  the completed observation or Theorem 7. Ten laws, the bounded invariant and
+  independent functional deduction preservation remain explicit obligations.
+
 ## 2026-10-13 — arbitrary guarded telescopes and finite relational laws
 
 - Factor interleaved selector/domain abstraction into a uniform guarded_intro

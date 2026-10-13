@@ -1,6 +1,80 @@
 # Live proof-development state — 2026-10-13
 
-## Current continuation: finite transitivity and congruence, following 5b8e676
+## Current continuation: operation congruence, following bc5cee0
+
+Request: proceed proving Theorem 7, commit and push. Starting HEAD was
+bc5cee044179b6adbd3ec5ed6415d560886fffd5 on main. The user's untracked logs/
+is preserved and excluded from the commit. Theorem 7 is NOT complete.
+
+The complete baseline local CI driver exited 0, including pristine upstream:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/operation-congruence-baseline"
+bash tools/check-local-ci.sh`, with the documented local bin directory on PATH.
+Raw output: _build/local-ci-logs/operation-congruence-baseline.log.
+
+New checked results: FiniteUnaryCongruence.successor_congruence_realized,
+FiniteBinaryCongruence.addition_congruence_realized and
+FiniteBinaryCongruence.multiplication_congruence_realized, uniformly for q>0.
+Each returns Realizes of the expanded, interleaved domain-guard telescope.
+The unary conclusion is Neg(R0 (s u) (s v)) under Neg(R0 u v).
+The binary conclusion is Neg(R0 (op u v) (op u' v')) under both equality
+premises; all four objects have their own immediately following delta guard.
+R0 is the finite equality relation, s/op the existing capped selector tables.
+Explicit beta equivalences and rank-five formation retain all annotations.
+
+The generic proofs require typed operations and admitted outputs on every
+selector tuple. Existing delta_successor/delta_addition/delta_multiplication
+discharge these premises, without an assumed equality-congruence theorem.
+RelationTables.boolean_premises_realized handles Boolean premises with an
+arbitrary rank-one negative conclusion; it does not assert general ex falso.
+
+Incremental commands (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFiniteUnaryCongruence.vo` and the analogous
+DirectRFiniteBinaryCongruence.vo target. Both compiled; exit-0 output is in
+_build/local-ci-logs/unary-operation-congruence-2.log and
+binary-operation-congruence-2.log. First attempts retained in numbered logs:
+the unary conversion needed lift_closed_zero normalization before conversion;
+the binary operation type needed an explicit closed_term scope annotation.
+Neither failure was bypassed or admitted.
+
+Nine of nineteen relational observation certificates are now proved. Ten
+remain: five arithmetic equations and five order-propagation laws. The entire
+31-argument observation, negative ground faithfulness, four-constructor bounded
+invariant, and independent functional deduction preservation remain unfinished.
+
+Exact next goal: the finite addition-zero certificate, uniformly for q>0:
+`Pi u:Fq. delta(u) -> Neg(R0 (add z u) u)` with z=point q 0 and
+add=capped_addition q. Reduce each admitted selector branch with the checked
+binary table action, prove the bounded native index equality, and construct
+the PTS negative equality inhabitant before closing the guarded telescope.
+
+Next command after implementing that certificate (documented OPAMROOT/PATH):
+`opam exec --switch=pts-rk-ci -- timeout 90 dune build --display=short
+--no-buffer theories/DirectRFunctionalAudit.vo`.
+
+Fresh isolated full build exited 0, including the legacy examples:
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 300 dune build \
+  --build-dir /tmp/pts-rk-operation-congruence.25yLVh --display=short --no-buffer
+```
+
+All 156 assumption reports are closed (48 in the functional audit). Exact
+public theorem types, expanded definitions and output are retained in
+verification/operation-congruence-full-2026-10-13.log. Raw output:
+_build/local-ci-logs/operation-congruence-full.log.
+The complete updated local CI driver also exited 0, including pristine upstream:
+`DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/operation-congruence-final"
+bash tools/check-local-ci.sh`. Output is retained in
+verification/operation-congruence-ci-2026-10-13.log and raw
+_build/local-ci-logs/operation-congruence-ci.log. Shell syntax, actionlint and
+git diff --check pass. Remote CI has not been inspected.
+This checked proof-progress checkpoint follows bc5cee0 and is authorized for
+ordinary commit and push. It does not claim an unconditional Theorem 7.
+
+## Historical continuation: finite transitivity and congruence, following 5b8e676
 
 Request: proceed proving Theorem 7, commit and push. Starting HEAD is
 5b8e676f288aa6c12e0c61d7e6b60cab5692754d on main. Only the user's untracked

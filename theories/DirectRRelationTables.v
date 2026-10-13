@@ -163,4 +163,26 @@ Proof.
       rewrite (Hvalid Hall). apply FiniteUp.identity_inhabited.
       exists 1. apply bottom_in_context.
 Qed.
+(** The conclusion may be an arbitrary negative relation, not just a Boolean
+    entry. Only the all-true branch requires a proof of that conclusion. *)
+Theorem boolean_premises_realized {n} (Γ : Ctx nat n) premises C :
+  Typed Γ C (𝓤 1) ->
+  (Forall (fun b => b = true) premises -> inhabited Γ (Neg C)) ->
+  inhabited Γ (Positive.Arrows (map (fun b => Neg (entry b)) premises) (Neg C)).
+Proof.
+  intros HC Hvalid. apply Positive.arrows_intro.
+  - apply Forall_map, Forall_forall. intros b Hb. exists 2. apply neg_formation, entry_typed.
+  - intros m Δ f Hext Hargs.
+    destruct (in_dec bool_dec false premises) as [Hfalse |Htrue].
+    + unfold Neg. rewrite rename_arrow, rename_lift_closed. apply arrow_intro.
+      * exists 1. exact (Positive.extension_typed _ _ _ _ _ Hext HC).
+      * apply inhabited_shift.
+        pose proof (Hargs (Neg (entry false))
+          (in_map (fun b => Neg (entry b)) premises false Hfalse)) as H.
+        unfold Neg in H. rewrite rename_arrow, rename_entry, rename_lift_closed in H.
+        eapply arrow_elim; [exact H |].
+        exists (lift_closed top_proof). exact (lift_closed_typed Δ _ _ top_inhabited).
+    + apply (Positive.extension_inhabited _ _ _ _ Hext), Hvalid.
+      apply Forall_forall. intros [|] Hb; [reflexivity |exfalso; apply Htrue; exact Hb].
+Qed.
 End RelationTables.
