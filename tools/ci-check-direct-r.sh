@@ -213,6 +213,10 @@ stage 06zb-bounded-comparison "$ROOT" ZFC_model/BoundedComparison.vo
 stage 06zd-finite-classification "$ROOT" ZFC_model/FiniteClassification.vo
 stage 06ze-countable-dichotomy "$ROOT" ZFC_model/CountableDichotomy.vo
 stage 06zc-cardinal-classification "$ROOT" ZFC_model/CardinalClassification.vo
+stage 06zf-product-witnesses "$ROOT" ZFC_model/ProductWitnesses.vo
+stage 06zg-code-witnesses "$ROOT" ZFC_model/CodeWitnesses.vo
+stage 06zh-product-extensionality "$ROOT" ZFC_model/ProductExtensionality.vo
+stage 06zi-selected-codes "$ROOT" ZFC_model/SelectedCodes.vo
 stage 07-proof-families "$ROOT" Interpretation_of_R/functional/DirectRProofs.vo
 stage 08-generators "$ROOT" Interpretation_of_R/functional/DirectRGenerated.vo
 stage 09-first-order "$ROOT" Interpretation_of_R/functional/DirectRFirstOrder.vo

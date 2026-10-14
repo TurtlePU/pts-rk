@@ -18,6 +18,27 @@ soundness or the strength of the Ens representation.
 
 ## Checked construction
 
+`SelectedCodes.v` defines extensional projections of the selected pair and
+proves the selected code is in its universe and its selected graph is the
+required bijection. It proves the coded beta law and fixed-rank congruence
+under equality of decoded domains and extensional fiber families.
+`ProductExtensionality.v` supplies the dependent-product congruence proof.
+These are not yet the original PTS substitution/typing soundness inductions.
+
+`CodeWitnesses.v` retains the code and coding bijection in each witness and
+certifies its predicate in bounded formula syntax. Its witness sets are
+nonempty under the explicit cardinal/choice principles and rank bounded.
+`uniform_product_code_choice` supplies one set-coded selection operation for
+all typed products at fixed ranks m,n. Cross-rank coherence, extensionality
+of the product construction and substitution compatibility are still open.
+
+`ProductWitnesses.v` connects product coding to the bounded eligible-bijection
+sets: they are nonempty under the explicit cardinal/choice premises and lie
+in carrier (13 + max(m+1,n)). Their target family equals a bounded decoding
+range. A generic graph-selection lemma for extensional set-indexed families
+is also proved. This is not yet a coherent choice of product codes or PTS
+soundness; the weak-foundation obligations remain explicit.
+
 `FiniteClassification.v` constructs graph bijections from injective finite
 enumerations, compresses subsets of a finite carrier, and proves that a set
 embedding into finite_carrier n is equinumerous with finite_carrier m for

@@ -1,0 +1,32 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/CodeWitnesses.v", line 25, characters 0-163:
+Error:
+The following term contains unresolved implicit arguments:
+  (fun A U D T F e : ?A =>
+   fin_match A
+     (fin_match U
+        (fin_match D
+           (fin_match T
+              (fin_match F
+                 (fin_match e
+                    (fun i : Fin 0 =>
+                     match
+                       i in Fin n
+                       return match n with
+                              | 0 => ?A
+                              | S _ => IDProp
+                              end
+                     with
+                     | @fzero _ | _ => idProp
+                     end)))))))
+More precisely: 
+- ?A: Cannot infer the implicit parameter A of fin_match whose type is
+  "Type".
+
+File "ZFC_model/dune", lines 1-5, characters 0-570:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/CodeWitnesses.{glob,vo} (exit 1)

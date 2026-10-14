@@ -1,5 +1,36 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — selected-code projections and semantic congruence
+
+Project witnesses with Cartesian graph maps, preserving the pinned library's
+pair encoding. Prove projection beta laws, transport graph/codomain equality
+of bijections, and specialize coded_beta to the selected witness. Prove
+dependent-product congruence for equal domains and pointwise-equal extensional
+fibers, then equality of eligible witness sets and selected outputs at fixed
+ranks. This does not replace the original syntax's substitution induction
+and does not establish cross-rank coherence.
+
+## 2026-10-14 — code-preserving witnesses and fixed-rank uniform choice
+
+Retain (code, bijection) rather than (carrier, bijection), with the decoded
+carrier bounded by Power(carrier k) and related through the decoding graph.
+Certify the full predicate in Bounded.Formula. Choose from all nonempty
+subsets of carrier(13+k), obtaining one set-coded selection operation for
+every product at fixed ranks m,n. This avoids a separate meta-level choice
+for each product and does not collect arbitrary Ens -> Ens families. Do not
+claim cross-rank coherence or substitution compatibility from this theorem.
+
+## 2026-10-14 — nonempty bounded product-witness sets
+
+Use the decoded-carrier range as the target set for eligible_bijections and
+prove it equal to the previously certified bounded decoding range. For rank
+k=max(m+1,n), put the actual product and target carriers inside carrier(5+k).
+Existing graph/witness bounds then put the eligible set in carrier(13+k).
+Use decoded_product_code to prove nonemptiness without assuming it. A generic
+choice pullback constructs a graph for an extensional set-indexed family.
+Choosing a carrier/bijection pair does not yet choose a syntactic universe
+code coherently; retain that obligation rather than identifying the two.
+
 ## 2026-10-14 — dichotomy from set-indexed family choice
 
 Use choice on the family of nonempty subsets of X, a subset of Power X.

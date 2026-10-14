@@ -1,5 +1,108 @@
 # Live proof-development state — 2026-10-14
 
+## Selected-code projections, beta and fixed-rank congruence checked
+
+Previous turn made verified progress on code-preserving witnesses.
+SelectedCodes.v now defines selected_code and selected_bijection using
+Cartesian graph projections, proves their typing, and specializes coded_beta
+to the selected bijection. ProductExtensionality.v proves equality of
+dependent products from equal domains and pointwise-equal extensional fibers.
+selected_codes_congruence propagates that equality to both selected outputs
+at fixed ranks, with the same selection operation. No PTS rules changed.
+
+SelectedCodes incremental builds exited 0,0. ProductExtensionality builds
+exited 1,0 (explicit binders needed for constant-family extensionality).
+Fresh build and recursive kernel check exited 0. Full CI passed all 111
+stages, exit 0. Five SelectedCodes and two ProductExtensionality reports are
+closed; fresh build printed 181 closed reports including dependencies.
+Library-wide kernel summary lists imported functional_extensionality_dep,
+no unsafe settings. Commands/raw logs, including failure, retained under
+verification/selected-codes-2026-10-14/COMMANDS.md.
+
+HEAD remains 62f7381, not pushed. This and the preceding product/code witness
+source/build/docs/evidence changes are uncommitted; user logs/ untouched.
+Full model soundness remains unfinished. Next goal: construct a single
+rank-independent selection using the supplied hierarchy (or prove the
+needed coherence), then define the syntax interpretation and prove its
+substitution/typing soundness. Generic cardinal principles and bounded
+recursion/existence still require first-order BZC+GCH justification. Do not
+identify fixed-rank congruence with the syntax substitution theorem.
+Next exact command:
+
+```sh
+sed -n '1,180p' ZFC_model/SuppliedHierarchy.v
+sed -n '1,220p' ZFC_model/SelectedCodes.v
+```
+
+## Code-preserving witnesses and fixed-rank uniform selection verified
+
+Previous turn made verified progress on product witnesses. CodeWitnesses.v
+now certifies a bounded predicate retaining (code, bijection), proves its
+nonemptiness and rank bound, extracts the actual bijection to decode c, and
+proves uniform_product_code_choice: for every fixed m,n there exists one
+set-coded operation s selecting such witnesses for every typed product.
+Its premises remain classical logic, cardinal_comparability,
+infinite_powerset_gap and family_choice. These are not new global axioms,
+nor proved consequences of a first-order BZC+GCH calculus.
+
+Incremental build exits: 1,1,1,0,1,0 (environment type inference, rank-bound
+arguments, unfolded carrier inference, then a destruct-pattern bracket).
+All fixed without weakening statements. Fresh build and recursive kernel
+check exited 0; full local CI passed 109 stages, exit 0. Six new theorem
+reports are closed; fresh compilation printed 168 closed reports including
+dependencies. Library-wide kernel audit lists imported
+functional_extensionality_dep, no unsafe settings. Exact commands/raw logs
+including failures: verification/code-witnesses-2026-10-14/COMMANDS.md.
+
+HEAD remains 62f7381, not pushed. ProductWitnesses and CodeWitnesses plus
+their source/build/docs/evidence changes are uncommitted. User logs/ preserved.
+Full model soundness is NOT complete. Next goal: define code and bijection
+projections from selected pairs, prove extensionality under equality of the
+product data and establish rank-independent/coherent selection needed for
+substitution. First-order bounded recursion, cardinal-premise derivations,
+hierarchy identification and the original PTS soundness induction remain
+open. Model-first ordering unchanged. Next exact inspection command:
+
+```sh
+sed -n '1,200p' ZFC_model/CodeWitnesses.v
+sed -n '1,180p' ZFC_model/CodedFunctions.v
+```
+
+## Product-witness nonemptiness and hierarchy bound verified
+
+The prior dichotomy/all-product coding checkpoint was committed on request
+as 62f7381 (`ZFC model: prove countable dichotomy and all-product coding`),
+not pushed. This continuation adds ProductWitnesses.v, currently uncommitted.
+User logs/ remain untouched.
+
+product_witnesses_nonempty follows from decoded_product_code, with classical
+logic, cardinal_comparability, infinite_powerset_gap and family_choice all
+explicit. product_witnesses_rank_bound places the eligible set in
+carrier(13 + max(m+1,n)) without those premises. coding_targets_bounded
+identifies the target family with the existing bounded decoding range.
+choose_extensional_family constructs a graph for an extensional set-indexed
+family from ordinary family_choice. No new global axiom or PTS rule change.
+
+Incremental builds exited 0,1,0: the failed target-range equality omitted the
+decoding graph beta law, fixed using that law. Fresh build, recursive kernel
+check and full CI exited 0. Four module reports are closed; fresh build
+printed 162 closed reports with dependencies. Library-wide kernel summary
+lists imported functional_extensionality_dep and no unsafe settings. All
+108 CI stages passed. Commands and raw logs, including failure, retained
+under verification/product-witnesses-2026-10-14/COMMANDS.md.
+
+Next goal: extend eligible witnesses to retain the universe code, not only
+its decoded carrier, and construct a coherent set-indexed choice of coding
+bijections. Arbitrary carrier/bijection choice is not yet a term-level code
+constructor. BZC derivation of the cardinal principles, bounded recursion,
+hierarchy identification and the original PTS soundness induction remain
+open. Preserve model-first ordering. Next exact inspection command:
+
+```sh
+sed -n '1,180p' ZFC_model/ProductWitnesses.v
+sed -n '1,160p' ZFC_model/CodedFunctions.v
+```
+
 ## Finite/countable dichotomy and all-product code theorem checked
 
 Previous turn was verified progress, committed as 8eecf29 (not pushed).

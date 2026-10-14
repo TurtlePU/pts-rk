@@ -1,0 +1,15 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+product_witnesses_nonempty
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       exists e : Ens, IN e (product_witnesses m n a b)
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/ProductWitnesses.{glob,vo}

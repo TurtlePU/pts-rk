@@ -123,8 +123,30 @@ in the bounded formula syntax. Its graph clause excludes arbitrary non-pair
 elements, which functionality alone would not exclude. The separated witness
 set has an exact membership characterization, completeness of the supplied
 graph bound, and an eight-powerset-step rank bound. This supplies the set
-bound needed for ordinary choice. Nonemptiness for the intended cardinal
-targets and coherent selection remain unproved.
+bound needed for ordinary choice. ProductWitnesses.v now proves nonemptiness
+for typed decoded products under the explicit cardinal/choice principles.
+The witness set lies in carrier (13 + max(m+1,n)); the target-carrier family
+is proved equal to the existing bounded range of the decoding graph. Generic
+choice pullback for extensional set-indexed families is proved, but coherent
+product-code selection (including code identity, not just its carrier) and
+first-order BZC derivability remain open.
+
+CodeWitnesses.v advances selection: a bounded formula records a code c,
+its decoding-graph value K and a bijection to K, retaining (c,f) as the
+witness. Nonemptiness follows from classification; every witness set is
+bounded by carrier(13+max(m+1,n)). Family choice on nonempty subsets of that
+single carrier supplies one operation for all products at those fixed ranks.
+The witness extraction theorem transports the bijection to decode c. This
+does not yet establish cross-rank coherence, substitution compatibility, or
+derive the explicit cardinal principles in BZC+GCH.
+
+SelectedCodes.v now projects the selected code and bijection, proves their
+typing and coded beta law, and establishes fixed-rank congruence under equal
+decoded domains and pointwise-equal extensional fibers. ProductExtensionality
+proves the underlying equality of semantic dependent products. This removes
+the local data-extensionality gap, but not rank-independent selection or the
+syntactic substitution/typing soundness induction. Projection graphs use the
+existing Cartesian graph construction and inherit its foundation audit.
 
 CodeHierarchyBounds.v gives the first model-specific hierarchy connection:
 the singleton-numeral carrier is transitive, U_i is included in it, and each

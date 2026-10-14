@@ -1,0 +1,376 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+        rocq vendor/zfc/.ZFC.theory.d
+        rocq theories/.PTSrk.theory.d
+File "./vendor/zfc/Sets.v", line 111, characters 0-40:
+Warning: Implicitly declaring hint databases is deprecated. Please explicitly
+create "zfc"
+[implicit-create-hint-db,deprecated-since-9.2,deprecated,default]
+        rocq vendor/zfc/Sets.{glob,vo}
+        rocq vendor/zfc/Axioms.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+        rocq vendor/zfc/Cartesian.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetFunctions.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetApplication.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetBijections.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/BoundedFormulas.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+dependent_product_injection
+     : forall (A K : Ens) (B enc : Ens -> Ens),
+       family_extensional enc ->
+       (forall x : Ens, IN x A -> injection (B x) K (enc x)) ->
+       injection (dependent_product A B)
+         (dependent_product A (fun _ : Ens => K)) 
+         (product_injection A B enc)
+dependent_product_injection_from_graph
+     : forall (A K : Ens) (B : Ens -> Ens) (enc : Ens),
+       (forall x : Ens, IN x A -> injection (B x) K (apply_set enc x)) ->
+       injection (dependent_product A B)
+         (dependent_product A (fun _ : Ens => K))
+         (product_injection A B (apply_set enc))
+        rocq ZFC_model/ProductEmbedding.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+powerset_injection
+     : forall A B f : Ens,
+       injection A B f -> injection (Power A) (Power B) (powerset_map A f)
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/PowersetEmbedding.{glob,vo}
+        rocq ZFC_model/CartesianMaps.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+cantor_bernstein
+     : (forall P : Prop, P \/ ~ P) ->
+       forall A B : Ens, embeds A B -> embeds B A -> equinumerous A B
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bounded_family_range_equivalence
+     : forall W A f : Ens,
+       IN f (dependent_product A (fun _ : Ens => Power W)) ->
+       EQ (bounded_family_range W A f) (family_range A (apply_set f))
+        rocq ZFC_model/CantorBernstein.{glob,vo}
+        rocq ZFC_model/BoundedFamilies.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+cantor_no_injection
+     : forall A : Ens, ~ embeds (Power A) A
+iterated_power_strict
+     : forall (A : Ens) (i j : nat),
+       i < j -> ~ embeds (iterated_power A j) (iterated_power A i)
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/CardinalGrowth.{glob,vo}
+Closed under the global context
+Closed under the global context
+bounded_product_equivalence
+     : forall A W f : Ens,
+       IN f (dependent_product A (fun _ : Ens => Power W)) ->
+       EQ (bounded_product A W f) (dependent_product A (apply_set f))
+Closed under the global context
+        rocq ZFC_model/BoundedProducts.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+dependent_product_rank_bound
+     : forall (W A : Ens) (B : Ens -> Ens),
+       transitive_set W ->
+       INC A W ->
+       (forall x : Ens, IN x A -> INC (B x) W) ->
+       IN (dependent_product A B) (iterated_power W 5)
+Closed under the global context
+Closed under the global context
+subset_function_injection
+     : forall A B : Ens,
+       injection (dependent_product A (fun _ : Ens => Power B))
+         (Power (Prod A B)) (flatten_graph A B)
+dependent_subset_product_bound
+     : forall (A K : Ens) (B : Ens -> Ens) (enc : Ens),
+       (forall x : Ens, IN x A -> injection (B x) (Power K) (apply_set enc x)) ->
+       embeds (dependent_product A B) (Power (Prod A K))
+        rocq ZFC_model/HierarchyBounds.{glob,vo}
+        rocq ZFC_model/SubsetFunctions.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+universe_enumeration
+     : forall i : nat, EQ (U i) (sup nat (enumerate_universe i))
+decode_repr
+     : forall (infinite_carrier : nat -> Ens) (c : Code),
+       EQ (El infinite_carrier (repr c)) (code_value infinite_carrier c)
+sort_axiom
+     : forall (infinite_carrier : nat -> Ens) (i : nat),
+       IN (repr (sort i)) (El infinite_carrier (repr (sort 0)))
+decoded_sort_product_empty
+     : forall (infinite_carrier : nat -> Ens) (j : nat) (g : Ens),
+       ~
+       IN g
+         (dependent_product (El infinite_carrier (repr (sort j)))
+            (El infinite_carrier))
+        rocq ZFC_model/CodeUniverses.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+finite_embedding_classification
+     : (forall P : Prop, P \/ ~ P) ->
+       forall (n : nat) (X : Ens),
+       embeds X (finite_carrier n) ->
+       exists m : nat, m <= n /\ equinumerous X (finite_carrier m)
+        rocq ZFC_model/FiniteClassification.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+counting_bijection
+     : forall i : nat, bijection (U i) omega_codes (counting_graph i)
+counting_roundtrip
+     : forall (i : nat) (x : Ens),
+       IN x (U i) ->
+       EQ
+         (apply_set (inverse (U i) omega_codes (counting_graph i))
+            (apply_set (counting_graph i) x))
+         x
+rank_zero_decoding_bound
+     : forall (higher : nat -> Ens) (a : Ens),
+       IN a (U 0) -> embeds (El (countable_zero higher) a) omega_codes
+        rocq ZFC_model/CountableCodes.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+countable_pairing_bijection
+     : bijection (Prod omega_codes omega_codes) omega_codes pairing_graph
+        rocq ZFC_model/CountablePairing.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+finite_countable_dichotomy
+     : (forall P : Prop, P \/ ~ P) ->
+       forall X c : Ens,
+       subset_choice X c ->
+       (exists n : nat, equinumerous X (finite_carrier n)) \/
+       embeds omega_codes X
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/CountableDichotomy.{glob,vo}
+Closed under the global context
+decoding_bound
+     : forall (i : nat) (a : Ens),
+       IN a (U i) -> embeds (decode a) (carrier i)
+concrete_sort_axiom
+     : forall i : nat, IN (repr (sort i)) (decode (repr (sort 0)))
+        rocq ZFC_model/CardinalHierarchy.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+decoding_subset_bound
+     : forall (i : nat) (a : Ens), IN a (U i) -> INC (decode a) (carrier i)
+decoding_graph_rank_bound
+     : forall i : nat, IN (decoding_graph i) (carrier (5 + i))
+        rocq ZFC_model/CodeHierarchyBounds.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+envelope_decoding_graph
+     : forall (W H : Ens) (i : nat),
+       INC omega_codes W -> tower_envelope W H -> IN (decoding_graph i) H
+        rocq ZFC_model/SuppliedHierarchy.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+carrier_cartesian_bound
+     : forall i j : nat,
+       embeds (Prod (carrier i) (carrier j)) (carrier (Nat.max i j))
+decoded_dependent_product_bound
+     : forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       embeds (dependent_product (decode a) (fun x : Ens => decode (b x)))
+         (carrier (Nat.max (S m) n))
+        rocq ZFC_model/PowersetSquares.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bijection_formula_correct
+     : forall (r : Fin ?n -> Ens) (A B f : Fin ?n),
+       holds (bijectionF A B f) r <-> bijection (r A) (r B) (r f)
+where
+?n : [ |- nat]
+        rocq ZFC_model/BoundedBijections.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+infinite_bounded_classification
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       forall (i : nat) (X : Ens),
+       embeds omega_codes X ->
+       embeds X (carrier i) ->
+       exists j : nat, j <= i /\ equinumerous X (carrier j)
+infinite_decoded_product_code
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       embeds omega_codes
+         (dependent_product (decode a) (fun x : Ens => decode (b x))) ->
+       exists c : Ens,
+         IN c (U (Nat.max (S m) n)) /\
+         equinumerous
+           (dependent_product (decode a) (fun x : Ens => decode (b x)))
+           (decode c)
+Closed under the global context
+Closed under the global context
+decoded_product_code
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       exists c : Ens,
+         IN c (U (Nat.max (S m) n)) /\
+         equinumerous
+           (dependent_product (decode a) (fun x : Ens => decode (b x)))
+           (decode c)
+        rocq ZFC_model/CardinalClassification.{glob,vo}
+Closed under the global context
+Closed under the global context
+product_witnesses_nonempty
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       exists e : Ens, IN e (product_witnesses m n a b)
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/ProductWitnesses.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+uniform_product_code_choice
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       forall m n : nat,
+       exists s : Ens,
+         forall (a : Ens) (b : Ens -> Ens),
+         IN a (U m) ->
+         (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+         exists c f : Ens,
+           IN c (U (product_code_rank m n)) /\
+           EQ (apply_set s (product_code_witnesses m n a b)) (Couple c f) /\
+           bijection
+             (dependent_product (decode a) (fun x : Ens => decode (b x)))
+             (decode c) f
+        rocq ZFC_model/CodeWitnesses.{glob,vo}
