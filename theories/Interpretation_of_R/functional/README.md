@@ -43,7 +43,7 @@ certificates formerly housed in unary modules are shared directly.
 Build and audit from the repository root:
 
 ```sh
-dune build @Interpretation_of_R/functional/audit
+dune build @theories/Interpretation_of_R/functional/audit
 ```
 
 Example import:
@@ -57,3 +57,7 @@ Print Assumptions Theorem7.theorem7.
 Print Assumptions Theorem7.theorem5_target.
 Print Assumptions Theorem7.effective_deduction.
 ```
+
+See the [shared infrastructure](../README.md) and
+[repository overview](../../../README.md). Physical paths now begin with
+`theories/`; the Rocq import namespace above is unchanged.

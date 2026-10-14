@@ -1,5 +1,60 @@
 # Live proof-development state — 2026-10-14
 
+## Repository reorganization — verified under theories
+
+The latest requested destination is theories/, superseding the interrupted
+models/ request. Interpretation_of_R/ and ZFC_model/ now reside in
+theories/Interpretation_of_R/ and theories/ZFC_model/. All 169 moved .v files
+are byte-for-byte identical to parent b4fb83b; original kernel files, vendor
+sources, and Rocq namespaces are unchanged. Build scripts target the new paths.
+The set model has an audit alias; the same 91 modules are retained. Root and
+subfolder READMEs and the rewritten AGENTS.md describe all projects and their
+actual proof boundaries. Historical raw logs/packages retain their old paths.
+
+The carried-forward BZC audit was committed separately as b4fb83b. This entry
+belongs to the atomic layout/build/documentation commit on that parent,
+message: Reorganize Rocq libraries under theories and refresh documentation.
+Ordinary commit and push to origin/main are authorized by the current task;
+no history rewrite or force-push. Existing user logs/ and generated .lia.cache
+are preserved and excluded. Inspect git log/status for the final commit hash.
+
+Verification, all exit 0 unless explicitly noted below:
+
+- Pre-move bash tools/check-local-ci.sh: actionlint and all 171 stages passed,
+  including pristine upstream.
+- Fresh timeout 1200 dune build --build-dir /tmp/pts-rk-theories-layout-fresh.ifuGK9
+  --display=short --no-buffer -j 2 @all: all developments compiled; 1257
+  closed source-level assumption reports. All four new-path audit aliases pass.
+- Fresh AUDIT.v against that build prints the public theorem types and 12
+  closed transitive Print Assumptions reports. The first CLI invocation exited
+  1 because output PUBLIC_AUDIT.vo did not match source basename AUDIT.v;
+  changing only the output basename to AUDIT.vo passed. Both logs are retained.
+- Recursive rocq check for both arithmetic public theorems, ModelSoundness,
+  Normalization, and STLCEmbedding passed. An independent check of the unchanged
+  core Ranks passed with the identical dependency-context functional
+  extensionality axiom; no type-in-type, unsafe fixpoint, or positivity flags.
+- Post-move bash tools/check-local-ci.sh: actionlint and all 171 stages passed,
+  with unchanged coverage/results. The smaller check-direct-r.sh also passed.
+- Source comparison, bash -n, actionlint, and all 81 current relative Markdown
+  links passed. No proof compiler failure or build timeout occurred.
+
+Exact commands, versions, raw outputs, and stage tables are in
+verification/theories-layout-2026-10-14/. Temporary output is also retained in
+/tmp/pts-rk-theories-layout-*.log and _build/local-ci-logs/theories-layout-*.
+Local success does not claim remote GitHub CI success.
+
+Theorem status is unchanged: Theorems 4/7 and effective Theorem5Target are
+proved; original set-model soundness is proved with explicit supplied
+parameters. Material BZC reduction remains OPEN, as does formalizing the
+external STLC hardness theorem. First remaining foundation goal: a bounded
+denotation-witness formula with original-typed agreement; then material
+cardinal/GCH/hierarchy bridges. Next exact baseline command, with documented
+OPAMROOT/PATH:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer theories/ZFC_model/Denotation.vo theories/ZFC_model/BoundedFormulaSelection.vo theories/ZFC_model/MaterialZermelo.vo
+```
+
 ## BZC foundation audit — collected hierarchy needed; formal reduction OPEN
 
 Source/mathematical audit is in ZFC_model/BZC_AUDIT.md. Under the

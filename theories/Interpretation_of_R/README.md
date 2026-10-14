@@ -2,7 +2,8 @@
 
 The parent directory is shared infrastructure; `relational/` and `functional/`
 are separate Rocq libraries. Neither interpretation imports the other.
-The original `PTSrk` kernel remains unchanged in `theories/`.
+The original `PTSrk` kernel remains unchanged in the parent directory.
+See the [source map](../README.md) and [repository overview](../../README.md).
 
 | Directory | Rocq library | Contents |
 | --- | --- | --- |
@@ -15,20 +16,20 @@ The original `PTSrk` kernel remains unchanged in `theories/`.
 From the repository root, in the configured Rocq/Equations switch:
 
 ```sh
-dune build @Interpretation_of_R/relational/audit
-dune build @Interpretation_of_R/functional/audit
+dune build @theories/Interpretation_of_R/relational/audit
+dune build @theories/Interpretation_of_R/functional/audit
 ```
 
 Each target depends only on its own interpretation, the shared library and the
 original kernel. Use a fresh `--build-dir` to execute `Print Assumptions` again;
 an incremental successful command may reuse previous audit output.
 `bash tools/check-local-ci.sh` also checks pristine upstream and all existing
-development stages. The external set-model development remains separate in
-`ZFC_model/` and is not a dependency of either interpretation.
+development stages. The external [set-model development](../ZFC_model/README.md) remains separate in
+`theories/ZFC_model/` and is not a dependency of either interpretation.
 
 The old `From PTSrk Require Import DirectR...` imports have been replaced by
 the corresponding library imports. Module basenames and theorem names remain
 unchanged, except extracted common definitions now live in `CommonCodes`,
 `Iterations`, `FiniteCertificates`, and `Structural.arrow_beta`.
 Functional `Codes` includes the shared builders; it does not redefine the PTS.
-See the live handoff STATE for exact build evidence and remaining obligations.
+See the [live handoff STATE](../../docs/direct-r-handoff/STATE.md) for exact build evidence and remaining obligations.

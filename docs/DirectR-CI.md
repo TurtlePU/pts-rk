@@ -1,4 +1,4 @@
-# DirectR continuous integration
+# PTS-rk continuous integration
 
 `.github/workflows/direct-r.yml` installs Rocq on a GitHub-hosted Ubuntu runner
 and invokes `tools/ci-check-direct-r.sh`. No local Rocq or GitHub CLI is required
@@ -13,9 +13,9 @@ The pinned configuration is OCaml 4.14.2, Dune 3.23.1,
 Rocq 9.2 is required because the pristine upstream `Syntax.v` uses
 `Create Rewrite HintDb`, introduced in
 [Rocq 9.2](https://rocq-prover.org/doc/V9.2.0/refman/changes.html).
-Run `38328517931`, attempt 1, installed the previous Rocq 9.1.1 toolchain
+Historically, run `38328517931`, attempt 1, installed the Rocq 9.1.1 toolchain
 successfully but failed parsing that command during `01-upstream`; no DirectR
-modules were checked. The updated toolchain still needs a full compilation run.
+modules were checked. Rocq 9.2.0 has since passed the complete local staged build.
 The pristine upstream build distinguishes base/toolchain failures from failures
 in the new modules. `rocq-prover` is a metapackage: pin `rocq-core` and the
 separately versioned Stdlib instead.
@@ -29,15 +29,19 @@ This is not a fully locked dependency graph.
 The driver first archives commit
 `723cf2ec61c737ae82ba33d2e7db44f650122b0e` into a separate directory and builds
 `theories/Ranks.vo` there, using that commit's original Dune file. It then compiles
-the new modules one at a time. The final `DirectRTests.vo` compilation contains
-the source's `Print Assumptions` commands.
+the new modules one at a time, including normalization, both arithmetic
+interpretations, and the set model. Public audit modules and theorem sources
+contain `Print Assumptions` commands. Filesystem targets now live under
+`theories/`; the Rocq import namespaces are unchanged.
 
 A stage failure stops the sequence and remains a failing job. A stage timing out
 is a resource-limit result, not a typing rejection. The runner attempts to upload
 `direct-r-logs-<run-id>-<attempt>` after failure as well as success. Ordinary logs
 and version data are uploaded, not the whole opam switch or credentials.
 
-Inspect Actions > DirectR / Rocq > the commit's run. The artifact contains:
+Inspect Actions > DirectR / Rocq > the commit's run. The legacy workflow/job
+names are retained for compatibility; coverage includes all developments.
+The artifact contains:
 
 - installation output and `versions.log`;
 - `opam-switch.export` with resolved packages;
@@ -85,18 +89,26 @@ Homebrew GMP installation cannot be linked into a native ARM compiler switch.
 For a separately installed native GMP, set `PKG_CONFIG_PATH` to its
 `lib/pkgconfig` directory while installing the opam packages.
 
-The 2026-10-13 local check passed actionlint and stages 01–06 after repairing
-the evaluator/checker scripts and assembler imports. With
-`DIRECT_R_STAGE_SECONDS=60`, stage 07 (proof families) timed out; stages 08–13
-were not checked. This diagnostic limit does not change the workflow's 1200
-second stage limit or establish a typing rejection. The remaining symbolic
-numeral proof issue and exact recovery commands are recorded in
-`docs/direct-r-handoff/STATE.md`.
+Earlier 2026-10-13 partial builds and timeouts remain recorded in the handoff.
+They are historical evidence, not the current theorem status. The
+2026-10-14 pre-reorganization baseline and post-move local CI both passed
+actionlint and all 171 stages. A separate fresh full build, public-interface
+audit, and recursive kernel checks also passed. See
+[STATE.md](direct-r-handoff/STATE.md) for exact dated commands/logs.
+Cached success does not rerun assumption output;
+use a new absolute Dune `--build-dir` for a fresh audit.
 
 ## Interpretation of results
 
-A green run validates the existing scripts and examples, not missing statements.
-`GeneratorTotal`, `GeneratorSound`, and first-order deduction preservation are
-still open in the development. Do not report Theorem 5 as complete just because
-these files compile. Do not hide compilation errors with `continue-on-error`,
-axioms or admissions. No set model or answer-type nontriviality proof is added.
+A green run validates the statements actually supplied, with their explicit
+premises. Theorem 4, Theorem 7, independent first-order deduction preservation,
+and effective `Kernel.Theorem5Target` witnesses are proved and audited. Legacy
+optional bounded-generator contracts are separate, not prerequisites.
+
+Original set-model soundness is proved under explicit supplied hierarchy,
+classical, cardinal, and choice parameters; its material BZC reduction remains
+open. Normalization bounds have an explicit encoding/operation-cost model.
+The STLC reduction is checked, but its cited external hardness theorem and
+machine-level TOWER-completeness are not formalized. See the relevant
+[source-folder READMEs](../theories/README.md). Never hide compiler failures
+with `continue-on-error`, axioms, admissions, or reduced CI coverage.

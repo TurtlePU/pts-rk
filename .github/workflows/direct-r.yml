@@ -49,7 +49,8 @@ jobs:
             printf 'Checked-out commit: '
             git rev-parse HEAD
             printf 'Baseline: %s\n' "$DIRECT_R_BASELINE_REF"
-            printf '\nThis run checks the supplied source; a green run does not fill the open Theorem 5 contracts.\n'
+            printf '\nThis run checks the supplied sources and public theorem audits.\n'
+            printf 'Open material-foundation and external-hardness boundaries are documented in the source-folder READMEs.\n'
           } > "$DIRECT_R_LOG_DIR/source.txt"
 
       - name: Install system build dependencies
@@ -84,7 +85,7 @@ jobs:
             "rocq-equations=1.3.2+9.2" \
             2>&1 | tee "$DIRECT_R_LOG_DIR/toolchain-install.log"
 
-      - name: Compile the pristine upstream and then each DirectR module
+      - name: Compile pristine upstream and all Rocq developments
         run: opam exec -- bash tools/ci-check-direct-r.sh
 
       - name: Upload diagnostics even when installation or compilation fails

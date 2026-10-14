@@ -1,0 +1,217 @@
+Warning:
+/private/tmp/pts-rk-theories-layout-fresh.ifuGK9/default/theories/Interpretation_of_R/relational
+was previously bound to PTSrk.Interpretation_of_R.relational; it is remapped
+to Interpretation_of_R.relational
+[overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-theories-layout-fresh.ifuGK9/default/theories/Interpretation_of_R/functional
+was previously bound to PTSrk.Interpretation_of_R.functional; it is remapped
+to Interpretation_of_R.functional
+[overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-theories-layout-fresh.ifuGK9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-theories-layout-fresh.ifuGK9/default/theories/ZFC_model
+was previously bound to PTSrk.ZFC_model; it is remapped to PTSrkModel
+[overriding-logical-loadpath,filesystem,default]
+Theorem4.theorem4
+     : (forall A : DirectRRelationalSyntax.Relational.formula 0,
+        DirectRRelationalSyntax.Relational.axiom A ->
+        exists p : Syntax.Term nat 0,
+          Typing.typ Context.ε p
+            (DirectRRelationalTranslation.RelationalTranslation.sentence A)) /\
+       (forall A : DirectRRelationalSyntax.Relational.formula 0,
+        DirectRRelationalSyntax.Relational.derives nil A ->
+        exists p : Syntax.Term nat 0,
+          Typing.typ Context.ε p
+            (DirectRRelationalTranslation.RelationalTranslation.sentence A)) /\
+       (forall a : Theorem4.ground_atom,
+        (Theorem4.atom_truth a ->
+         exists p : Syntax.Term nat 0,
+           Typing.typ Context.ε p
+             (DirectRRelationalTranslation.RelationalTranslation.sentence
+                (Theorem4.atom_formula a))) /\
+        (~ Theorem4.atom_truth a ->
+         exists p : Syntax.Term nat 0,
+           Typing.typ Context.ε p
+             (DirectRCommonCodes.CommonCodes.Neg
+                (DirectRRelationalTranslation.RelationalTranslation.sentence
+                   (Theorem4.atom_formula a))))) /\
+       (exists A : DirectRRelationalSyntax.Relational.formula 0,
+          (exists p : Syntax.Term nat 0,
+             Typing.typ Context.ε p
+               (DirectRRelationalTranslation.RelationalTranslation.sentence A)) /\
+          ~ DirectRRelationalSyntax.Relational.derives nil A)
+Closed under the global context
+Theorem7.theorem7
+     : (forall A : DirectRFirstOrder.FirstOrder.formula 0,
+        DirectRFunctionalSyntax.FunctionalSyntax.axiom A ->
+        exists p : Syntax.Term nat 0,
+          Typing.typ Context.ε p
+            (DirectRFirstOrder.FirstOrder.sentence_translation A)) /\
+       (forall A : DirectRFirstOrder.FirstOrder.formula 0,
+        DirectRFunctionalSyntax.FunctionalSyntax.derives nil A ->
+        exists p : Syntax.Term nat 0,
+          Typing.typ Context.ε p
+            (DirectRFirstOrder.FirstOrder.sentence_translation A)) /\
+       (forall a : Theorem7.ground_atom,
+        (Theorem7.atom_truth a ->
+         exists p : Syntax.Term nat 0,
+           Typing.typ Context.ε p
+             (DirectRFirstOrder.FirstOrder.sentence_translation
+                (Theorem7.atom_formula a))) /\
+        (~ Theorem7.atom_truth a ->
+         exists p : Syntax.Term nat 0,
+           Typing.typ Context.ε p
+             (DirectRCodes.Codes.Neg
+                (DirectRFirstOrder.FirstOrder.sentence_translation
+                   (Theorem7.atom_formula a))))) /\
+       (exists A : DirectRFirstOrder.FirstOrder.formula 0,
+          (exists p : Syntax.Term nat 0,
+             Typing.typ Context.ε p
+               (DirectRFirstOrder.FirstOrder.sentence_translation A)) /\
+          ~ DirectRFunctionalSyntax.FunctionalSyntax.derives nil A)
+Closed under the global context
+Theorem7.theorem5_target
+     : DirectRProofs.Kernel.Theorem5Target
+Closed under the global context
+Theorem7.effective_deduction
+     : forall A : DirectRFirstOrder.FirstOrder.formula 0,
+       DirectRFunctionalSyntax.FunctionalSyntax.derives nil A ->
+       {p : Syntax.Term nat 0
+       | Typing.typ Context.ε p
+           (DirectRFirstOrder.FirstOrder.sentence_translation A)}
+Closed under the global context
+RankedNormalization.original_typed_conversion_values
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T u U : Syntax.Term nat n)
+         (v w : Sets.Ens),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       Typing.typ G u U ->
+       InterpretedContexts.valid_valuation H s G rho ->
+       DefEq.def_equiv nat n t u ->
+       RankedNormalization.OD.denotes H s n G rho t v ->
+       RankedNormalization.OD.denotes H s n G rho u w -> Sets.EQ v w
+Closed under the global context
+ModelSoundness.original_typing_sound
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n) (t T : Syntax.Term nat n),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       forall rho : Syntax.Fin n -> Sets.Ens,
+       InterpretedContexts.valid_valuation H s G rho ->
+       InterpretedContexts.realizes H s G rho t T
+Closed under the global context
+ModelSoundness.original_membership_sound
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T : Syntax.Term nat n)
+         (v a : Sets.Ens),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       InterpretedContexts.valid_valuation H s G rho ->
+       Denotation.denotes H s n G rho t v ->
+       Denotation.denotes H s n G rho T a ->
+       Sets.IN v (CardinalHierarchy.decode a)
+Closed under the global context
+ModelSoundness.sound_nontrivial_model_exists
+     : forall W H : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       exists s : Sets.Ens,
+         GlobalOperations.selects_global_witnesses H s /\
+         (forall (n : nat) (G : Context.Ctx nat n) (t T : Syntax.Term nat n),
+          Preservation.wf G ->
+          Typing.typ G t T ->
+          forall rho : Syntax.Fin n -> Sets.Ens,
+          InterpretedContexts.valid_valuation H s G rho ->
+          InterpretedContexts.realizes H s G rho t T) /\
+         (forall v : Sets.Ens,
+          ~
+          Sets.IN v
+            (CardinalHierarchy.decode (ModelSoundness.bottom_code H s)))
+Closed under the global context
+fixed_rank_normalization
+     : forall (d : nat) (G : Context.Ctx nat ?n) (t T : Syntax.Term nat ?n),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       RedexRanks.RedexBound G t d ->
+       exists u : Rank.RankEstimate.Syn ?n,
+         fst (Runtime.normalizeCosted d t) = Some u /\
+         Reduction.reduces_to nat ?n t u /\
+         (forall v : Syntax.Term nat ?n, ~ Reduction.step nat ?n u v) /\
+         Typing.typ G u T /\
+         snd (Runtime.normalizeCosted d t) <=
+         Bounds.tower (2 * d + 1) (Bounds.nodes t + 5 * d + 2)
+where
+?n : [ |- nat]
+Closed under the global context
+rank_bound_in_linear_time
+     : forall t T : Syntax.Term nat 0,
+       Typing.typ Context.ε t T ->
+       RedexRanks.RedexBound Context.ε t
+         (fst (AutomaticBound.conservativeRankCosted t)) /\
+       fst (AutomaticBound.conservativeRankCosted t) <=
+       2 * Bounds.encodingSize t + 1 /\
+       snd (AutomaticBound.conservativeRankCosted t) <=
+       7 * Bounds.encodingSize t
+Closed under the global context
+normalization_in_TOWER
+     : forall t T : Syntax.Term nat 0,
+       Typing.typ Context.ε t T ->
+       exists u : Syntax.Term nat 0,
+         fst (automaticNormalizer t) = Some u /\
+         Reduction.reduces_to nat 0 t u /\
+         (forall v : Syntax.Term nat 0, ~ Reduction.step nat 0 u v) /\
+         Typing.typ Context.ε u T /\
+         snd (automaticNormalizer t) <=
+         Bounds.tower (4 * Bounds.encodingSize t + 3)
+           (18 * Bounds.encodingSize t + 8)
+Closed under the global context
+ChurchSTLC.church_stlc_reduction
+     : forall (t u : Syntax.Term nat 1) (A : ChurchSTLC.Ty),
+       ChurchSTLC.has_type ChurchSTLC.emptyEnv Syntax.fzero t A ->
+       ChurchSTLC.has_type ChurchSTLC.emptyEnv Syntax.fzero u A ->
+       Typing.typ Context.ε (ChurchSTLC.close t)
+         (Syntax.Π (Syntax.𝓤 0) (ChurchSTLC.code A Syntax.fzero)) /\
+       Typing.typ Context.ε (ChurchSTLC.close u)
+         (Syntax.Π (Syntax.𝓤 0) (ChurchSTLC.code A Syntax.fzero)) /\
+       (ChurchSTLC.convertible t u <->
+        DefEq.def_equiv nat 0 (ChurchSTLC.close t) (ChurchSTLC.close u)) /\
+       Bounds.encodingSize (ChurchSTLC.close t) +
+       Bounds.encodingSize (ChurchSTLC.close u) =
+       Bounds.encodingSize t + Bounds.encodingSize u + 4
+Closed under the global context

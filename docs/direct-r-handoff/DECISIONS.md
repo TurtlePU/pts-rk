@@ -1,5 +1,26 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — consolidate physical source layout, preserve logical interfaces
+
+Move Interpretation_of_R and ZFC_model into theories as explicitly requested;
+do not use the superseded models destination. Preserve every .v source and
+all Rocq library names, so downstream imports and theorem types are unchanged.
+The original kernel keeps its existing explicitly enumerated Dune theory.
+
+Update current build scripts, CI descriptions, navigation, and guidance.
+Keep raw historical logs/packages unchanged rather than rewriting their
+recorded commands to imply newer verification. Root and folder READMEs
+separate checked public results from material-foundation and external-hardness
+obligations. Replace the obsolete arithmetic-only AGENTS scope with current
+repo-wide proof integrity, verification, and durable-handoff instructions.
+Keep existing CI coverage, timeouts, failure propagation, and pristine baseline.
+
+Verification completed: fresh full build, both original public interpretation
+interfaces, model/normalization endpoints, recursive kernel checks, all audit
+aliases, and complete 171-stage local CI passed. Record the initial rejected
+audit output-basename command as well as its corrected successful invocation.
+This is a source-layout change, not a new theorem or a weaker-foundation proof.
+
 ## 2026-10-14 — scope the BZC/GCH foundation claim precisely
 
 Audit the actual no-intermediate-cardinal (injection-gap) GCH principle;

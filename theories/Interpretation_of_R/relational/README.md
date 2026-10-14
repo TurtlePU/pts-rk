@@ -21,5 +21,9 @@ dependency. Shared finite-selector machinery is in the parent directory.
 Build and audit from the repository root:
 
 ```sh
-dune build @Interpretation_of_R/relational/audit
+dune build @theories/Interpretation_of_R/relational/audit
 ```
+
+See the [shared infrastructure](../README.md) and
+[repository overview](../../../README.md). Physical paths now begin with
+`theories/`; the Rocq import namespace above is unchanged.

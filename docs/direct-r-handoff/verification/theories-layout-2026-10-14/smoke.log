@@ -1,0 +1,18 @@
+Build logs: /Users/akuklev/air/pts-rk/_build/local-ci-logs/theories-layout-smoke
+3.23.1
+The Rocq Prover, version 9.2
+compiled with OCaml 4.14.2
+
+=== upstream ===
+
+=== native ===
+
+=== interpretation ===
+
+=== arithmetic ===
+
+=== examples-and-assumptions ===
+
+All requested builds succeeded. Review Print Assumptions output.
+This smaller check does not run all theorem audits, normalization, or set-model stages.
+Use bash tools/check-local-ci.sh for the complete staged check.
