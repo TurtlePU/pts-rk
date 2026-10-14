@@ -1,0 +1,12 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+finite_embedding_classification
+     : (forall P : Prop, P \/ ~ P) ->
+       forall (n : nat) (X : Ens),
+       embeds X (finite_carrier n) ->
+       exists m : nat, m <= n /\ equinumerous X (finite_carrier m)
+        rocq ZFC_model/FiniteClassification.{glob,vo}

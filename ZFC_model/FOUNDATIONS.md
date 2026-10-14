@@ -108,6 +108,12 @@ product upper bound. Neither these principles' derivation in BZC+GCH nor
 the finite/countable dichotomy is proved; arbitrary products therefore still
 lack a nonemptiness theorem. Carrier-index uniqueness is unconditional.
 
+FiniteClassification.v closes the finite-embedding case: subsets of finite
+carriers are explicitly enumerated, and an injection's image yields a graph
+bijection to some finite carrier. Classical logic is explicit, with no choice
+or GCH premise. The new range Comp and finite Type-indexed graph require
+bounded-syntax/bounded-existence audits before claiming a BZC derivation.
+
 BoundedBijections.v now certifies bijections and the eligible-witness predicate
 in the bounded formula syntax. Its graph clause excludes arbitrary non-pair
 elements, which functionality alone would not exclude. The separated witness

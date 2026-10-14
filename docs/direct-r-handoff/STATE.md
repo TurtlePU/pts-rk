@@ -1,5 +1,37 @@
 # Live proof-development state — 2026-10-14
 
+## Finite-embedding classification verified
+
+Previous turn made verified progress and committed e9862f3 (not pushed).
+FiniteClassification.v now proves:
+
+    finite_embedding_classification :
+      (forall P : Prop, P \/ ~ P) -> forall n X,
+      embeds X (finite_carrier n) ->
+      exists m, m <= n /\ equinumerous X (finite_carrier m).
+
+The proof constructs the actual enumeration graph and an injection's range
+bijection. Five module assumption reports are closed. The explicit classical
+premise is not erased by these reports. Both incremental builds, fresh build,
+recursive kernel check and full CI exited 0. Fresh build printed 42 closed
+reports including dependencies. Kernel summary has no axioms or unsafe
+settings. All 106 local CI stages passed. Commands/raw logs retained under
+verification/finite-classification-2026-10-14/COMMANDS.md.
+
+Prepare this source/build/docs/evidence checkpoint from parent e9862f3;
+user logs/ preserved, no push. Full model proof is not finished.
+Next goal is the finite/countable dichotomy: obtain a finite embedding or a
+countable injection for arbitrary relevant sets from explicit bounded choice.
+Do not add the dichotomy as a hidden product-coding assumption. Also audit the
+new image separation/finite graph; comparability/gap derivation, coherent
+selection, hierarchy identification and original PTS soundness remain open.
+Next exact command:
+
+```sh
+sed -n '1,240p' ZFC_model/BoundedBijections.v
+sed -n '1,210p' ZFC_model/FiniteClassification.v
+```
+
 ## Conditional infinite classification checked; full model still open
 
 Previous turn was progress on bounded comparison. CardinalClassification.v

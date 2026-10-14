@@ -1,5 +1,15 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — finite-embedding classification by actual graphs
+
+Compress the selected numeral indices by finite induction, then use an
+explicit finite enumeration graph to construct a bijection. For a general
+injection into a finite carrier, separate its image inside that carrier and
+prove the original graph is a bijection onto the image. This derives the
+finite-embedding case with excluded middle explicit, not a cardinality
+contract. The finite/countable dichotomy remains a separate proof obligation;
+new graph/image constructions still need the weak-foundation audit.
+
 ## 2026-10-14 — conditional infinite cardinal classification
 
 Use generic set-cardinal principles, not a code/product-coding contract:
