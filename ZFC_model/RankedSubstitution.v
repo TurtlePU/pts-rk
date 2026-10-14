@@ -39,6 +39,29 @@ Proof.
     apply RT.certificate_shift; exact DT.
 Qed.
 
+(** The syntactic binder transport is independent of whether its semantic
+    domain has any elements. This matters in the hereditary induction. *)
+Lemma typed_substitution_normalized_binder {n m} (G : Ctx nat n) (D : Ctx nat m)
+  sigma A A' k :
+  @wf nat RankSorts m D -> @typ nat RankSorts n G A (𝓤 k) ->
+  typed_substitution G D sigma -> replace sigma A ↠ᵝ A' ->
+  typed_substitution (G & A) (D & A') (transpose sigma).
+Proof.
+  intros HD TA HT RA.
+  assert (TSA : @typ nat RankSorts m D (replace sigma A) (𝓤 k)).
+  { change (@typ nat RankSorts m D (replace sigma A) (replace sigma (𝓤 k))).
+    eapply rank_typing_replace; eassumption. }
+  assert (TA' : @typ nat RankSorts m D A' (𝓤 k)).
+  { eapply subject_reduction'; eassumption. }
+  assert (HM : context_typing_morphism (D & replace sigma A) (D & A')).
+  { apply context_conversion_morphism.
+    - constructor; [apply contexts_convertible_refl |].
+      apply def_equiv_prop; exists A'; split; [exact RA |reflexivity].
+    - eapply wf_cons; eassumption. }
+  intro i; eapply typing_context_transport; [exact HM |].
+  apply typed_substitution_extend; exact HT.
+Qed.
+
 (** Lift through a domain whose substituted syntax was actually normalized.
     Both the typing morphism and the new variable's certificate are proved.
     No global context-validity/conversion principle is assumed. *)
@@ -52,16 +75,7 @@ Theorem normalized_binder_extension {n m} (G : Ctx nat n) (D : Ctx nat m)
   certified_substitution (D & A') (fin_match x rho) (fin_match x rho') (transpose sigma).
 Proof.
   intros HD TA HT HS RA DA Hx; split.
-  - assert (TSA : @typ nat RankSorts m D (replace sigma A) (𝓤 k)).
-    { change (@typ nat RankSorts m D (replace sigma A) (replace sigma (𝓤 k))).
-      eapply rank_typing_replace; eassumption. }
-    assert (HM : context_typing_morphism (D & replace sigma A) (D & A')).
-    { apply context_conversion_morphism.
-      - constructor; [apply contexts_convertible_refl |].
-        apply def_equiv_prop; exists A'; split; [exact RA |reflexivity].
-      - eapply wf_cons; eassumption. }
-    intro i; eapply typing_context_transport; [exact HM |].
-    apply typed_substitution_extend; exact HT.
+  - eapply typed_substitution_normalized_binder; eassumption.
   - eapply certified_substitution_extend; eassumption.
 Qed.
 
@@ -173,6 +187,26 @@ Proof.
     + apply HV.
 Qed.
 
+Lemma certified_single_substitution n (G : Ctx nat n) rho A u x a :
+  certified_variables G rho -> RD.certificate H s n G rho u A x a ->
+  certified_substitution G (fin_match x rho) rho (fin_match u (@var nat n)).
+Proof.
+  intros HV DU i; dependent elimination i; cbn [fin_match].
+  - exists A, a; exact DU.
+  - apply HV.
+Qed.
+
+Lemma bounded_single_substitution n (G : Ctx nat n) A u r :
+  @typ nat RankSorts n G A (𝓤 r) ->
+  NeutralCutRank.bounded_substitution r (G & A) (fin_match u (@var nat n)).
+Proof.
+  intros TA i NV; dependent elimination i as [fzero | fsucc j].
+  - exists r; split; [reflexivity |].
+    change (@typ nat RankSorts _ (G & A) (shift A) (shift (𝓤 r))).
+    apply weakening; exact TA.
+  - exfalso; apply (NV j); reflexivity.
+Qed.
+
 (** The rank-zero case of the GENERAL simultaneous-cut invariant. Normality
     comes from image certificates; nonlambda shape follows from ORIGINAL
     rank-zero typing. No syntactic nonlambda premise remains. *)
@@ -200,9 +234,12 @@ End Substitution.
 End RankedSubstitution.
 
 Print Assumptions RankedSubstitution.certified_substitution_extend.
+Print Assumptions RankedSubstitution.typed_substitution_normalized_binder.
 Print Assumptions RankedSubstitution.normalized_binder_extension.
 Print Assumptions RankedSubstitution.certificate_replace_nonlambda.
 Print Assumptions RankedSubstitution.certificate_single_substitution.
+Print Assumptions RankedSubstitution.certified_single_substitution.
+Print Assumptions RankedSubstitution.bounded_single_substitution.
 Print Assumptions RankedSubstitution.certified_variables_extend.
 Print Assumptions RankedSubstitution.certificate_rank_zero_substitution.
 Check RankedSubstitution.certificate_replace_nonlambda.

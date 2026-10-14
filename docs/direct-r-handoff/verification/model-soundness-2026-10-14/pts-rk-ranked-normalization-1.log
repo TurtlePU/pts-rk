@@ -1,0 +1,5 @@
+File "./ZFC_model/RankedNormalization.v", line 8, characters 0-372:
+Error: Required library RankedHereditary matches several files in path (found
+/private/tmp/pts-rk-hereditary.S3MBci/RankedHereditary.vo and
+/Users/akuklev/air/pts-rk/_build/default/ZFC_model/RankedHereditary.vo).
+

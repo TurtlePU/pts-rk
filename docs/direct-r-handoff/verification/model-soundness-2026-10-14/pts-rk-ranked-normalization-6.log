@@ -1,0 +1,54 @@
+File "./ZFC_model/RankedNormalization.v", line 246, characters 44-46:
+Error:
+In environment
+W, H, s : Ens
+HW : transitive_set W
+HO : INC omega_codes W
+HH : tower_envelope W H
+classical_logic : forall P : Prop, P \/ ~ P
+comparison : cardinal_comparability
+gap : infinite_powerset_gap
+choice : family_choice
+selector : selects_global_witnesses H s
+n : nat
+G : Ctx nat n
+A : Term nat n
+k : nat
+HG : wf G
+TA : G ⊢ A ⇐ 𝓤 k
+IH :
+  forall rho : Fin n -> Ens,
+  valid_valuation H s G rho -> RS.certified_variables H s G rho
+rho : Fin (S n) -> Ens
+HV : valid_valuation H s G (fun i : Fin n => rho (fsucc i))
+a : Ens
+DA : denotes H s n G (fun i : Fin n => rho (fsucc i)) A a
+Hx : IN (rho fzero) (decode a)
+HC : RS.certified_variables H s G (fun i : Fin n => rho (fsucc i))
+HA : certifies G (fun i : Fin n => rho (fsucc i)) A (𝓤 k) a
+A' : Term nat n
+RA : A ↠ᵝ A'
+DA' :
+  RH.RD.certificate H s n G (fun i : Fin n => rho (fsucc i)) A' 
+    (𝓤 k) a (repr (sort k))
+HX :
+  RS.certified_variables H s (G & A)
+    (fin_match (rho fzero) (fun i : Fin n => rho (fsucc i)))
+i : Fin (S n)
+T : Term nat (S n)
+c : Ens
+DC :
+  RS.RD.certificate H s (S n) (G & A)
+    (fin_match (rho fzero) (fun i : Fin n => rho (fsucc i))) 
+    (var i) T (fin_match (rho fzero) (fun i : Fin n => rho (fsucc i)) i) c
+The term "DC" has type
+ "RS.RD.certificate H s (S n) (G & A)
+    (fin_match (rho fzero) (fun i : Fin n => rho (fsucc i))) 
+    (var i) T (fin_match (rho fzero) (fun i : Fin n => rho (fsucc i)) i) c"
+while it is expected to have type
+ "RD.certificate H s (S n) (G & A)
+    (fin_match (rho fzero) (fun i : Fin n => rho (fsucc i))) 
+    (var i) T (rho i) c"
+(cannot unify "fin_match (rho fzero) (fun i : Fin n => rho (fsucc i)) i" and
+"rho i").
+

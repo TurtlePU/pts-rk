@@ -269,6 +269,9 @@ stage 06zzbl-ranked-denotation "$ROOT" ZFC_model/RankedDenotation.vo
 stage 06zzbm-ranked-transport "$ROOT" ZFC_model/RankedTransport.vo
 stage 06zzbn-ranked-substitution "$ROOT" ZFC_model/RankedSubstitution.vo
 stage 06zzbo-ranked-root-beta "$ROOT" ZFC_model/RankedRootBeta.vo
+stage 06zzbp-ranked-hereditary "$ROOT" ZFC_model/RankedHereditary.vo
+stage 06zzbq-ranked-normalization "$ROOT" ZFC_model/RankedNormalization.vo
+stage 06zzbr-model-soundness "$ROOT" ZFC_model/ModelSoundness.vo
 stage 06zzc-root-beta "$ROOT" ZFC_model/RootBeta.vo
 stage 06zzd-regular-typing "$ROOT" ZFC_model/RegularTyping.vo
 stage 06zzda-typed-equality "$ROOT" ZFC_model/TypedEquality.vo

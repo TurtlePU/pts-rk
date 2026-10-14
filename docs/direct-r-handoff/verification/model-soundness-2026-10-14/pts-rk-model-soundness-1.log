@@ -1,0 +1,37 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/ModelSoundness.v", line 42, characters 45-46:
+Error:
+In environment
+W, H, s : Ens
+HW : transitive_set W
+HO : INC omega_codes W
+HH : tower_envelope W H
+classical_logic : forall P : Prop, P \/ ~ P
+comparison : cardinal_comparability
+gap : infinite_powerset_gap
+choice : family_choice
+selector : selects_global_witnesses H s
+n : nat
+G : Ctx nat n
+rho : Fin n -> Ens
+t, T : Term nat n
+v, w : Ens
+The term "s" has type "Ens" while it is expected to have type
+ "forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+    (A B : Term nat n) (m k : nat),
+  wf G ->
+  valid_valuation W H G rho ->
+  G ⊢ A ⇐ 𝓤 m ->
+  G ⊢ B ⇐ 𝓤 k ->
+  A =ᵝ B ->
+  forall a b : Ens,
+  denotes W H n G rho A a ->
+  denotes W H n G rho B b -> EQ (decode a) (decode b)".
+
+File "ZFC_model/dune", lines 1-5, characters 0-1742:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication BoundedGraphs BoundedFiniteCarriers RegularTyping RealizationInduction BoundedPowersets BoundedIteration BoundedFormulaSelection BoundedCodeSelection BoundedRecursion BoundedCodeArithmetic BoundedInfiniteDecoder BoundedUniverses BoundedSortDecoder BoundedDecoder BoundedDecodedSelection BoundedChoiceSequence TypedEquality TypedEqualityRenaming BoundedModelData CanonicalTypeWitnesses CanonicalDenotation CanonicalRenaming CanonicalRealization CanonicalSubstitution CanonicalRootBeta MaterialSetTheory CanonicalContext CanonicalApplication CanonicalHereditary CanonicalValuationTransport MaterialZermelo NeutralCutRank RankedDenotation RankedTransport RankedSubstitution RankedRootBeta RankedHereditary RankedNormalization ModelSoundness)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/ModelSoundness.{glob,vo} (exit 1)

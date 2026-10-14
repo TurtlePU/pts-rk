@@ -1,0 +1,49 @@
+File "./ZFC_model/RankedHereditary.v", line 142, characters 24-48:
+Error:
+In environment
+H, s : Ens
+r, n, q : nat
+G : Ctx nat n
+D : Ctx nat q
+rho : Fin n -> Ens
+rho' : Fin q -> Ens
+sigma : Fin n -> Term nat q
+A : Term nat n
+B : Term nat (S n)
+m, k : nat
+a : Ens
+b : Ens -> Ens
+HG : wf G
+HD : wf D
+HT : typed_substitution G D sigma
+HB : NeutralCutRank.bounded_substitution r G sigma
+HS : RS.certified_substitution H s D rho rho' sigma
+HV : RS.certified_variables H s D rho'
+DA : RD.certificate H s n G rho A (𝓤 m) a (repr (sort m))
+TB : G & A ⊢ B ⇐ 𝓤 k
+IA : substitution_result r G rho A (𝓤 m) a (repr (sort m))
+IB :
+  forall x : Ens,
+  IN x (decode a) ->
+  substitution_result r (G & A) (fin_match x rho) B 
+    (𝓤 k) (b x) (repr (sort k))
+A' : Term nat q
+RA : replace sigma A ↠ᵝ A'
+DA' : RD.certificate H s q D rho' A' (𝓤 m) a (repr (sort m))
+TA : G ⊢ A ⇐ 𝓤 m
+HDa : wf (D & A')
+TBraw : D & A' ⊢ replace (transpose sigma) B ⇐ 𝓤 k
+x : Ens
+Hx : IN x (decode a)
+Unable to unify
+ "exists N C : Term nat (S ?q),
+    replace (transpose ?sigma) ?t ↠ᵝ N /\
+    replace (transpose ?sigma) ?T ↠ᵝ C /\
+    RD.certificate H s (S ?q) (?D & ?A') (fin_match ?x ?rho') N C ?v ?c"
+with
+ "exists N C : Term nat (S q),
+    replace (transpose sigma) B ↠ᵝ N /\
+    𝓤 k ↠ᵝ C /\
+    RD.certificate H s (S q) (D & A') (fin_match x rho') N C 
+      (b x) (repr (sort k))".
+

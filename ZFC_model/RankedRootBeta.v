@@ -27,15 +27,16 @@ Hypothesis gap : infinite_powerset_gap.
 Hypothesis choice : family_choice.
 Hypothesis HS : selects_global_witnesses H s.
 
-Theorem certified_root_beta_nonlambda n (G : Ctx nat n) rho A t u T f c x a v :
+(** Identify the actual body value for ANY certified argument, including a
+    lambda. This lemma does not assert normalization/substitution closure. *)
+Theorem certified_root_body n (G : Ctx nat n) rho A t u T f c x a v :
   RD.certificate H s n G rho (lam A t) T f c ->
-  RD.certificate H s n G rho u A x a -> not_lambda u ->
-  RS.certified_variables H s G rho ->
+  RD.certificate H s n G rho u A x a ->
   CD.denotes H s n G rho (app (lam A t) u) v ->
-  exists B b, T = Π A B /\ app (lam A t) u →ᵝ t ◁ u /\
-    RD.certificate H s n G rho (t ◁ u) (B ◁ u) v b.
+  exists B w b, T = Π A B /\
+    RD.certificate H s (S n) (G & A) (fin_match x rho) t B w b /\ EQ w v.
 Proof.
-  intros DF DU Lu HV Dredex.
+  intros DF DU Dredex.
   destruct (RD.lambda_inversion H s n G rho A t T f c DF)
     as [B [m [k [a0 [b [body HI]]]]]].
   destruct HI as [ET [TB [Tt [NB [Nt [DA [DB [Dt [EB [Ebody [Ef Ec]]]]]]]]]]].
@@ -70,14 +71,30 @@ Proof.
       + exact (proj1 (RD.canonical_denotations H s _ _ _ _ _ _ _ DU)).
     - exact (semantic_beta W H s HW HO HH classical_logic comparison gap choice HS
         m k a0 b body x Ha Hb Ebody Hbody Hx). }
-  exists B, (b x); split; [exact ET |]. split; [apply step_beta |].
-  eapply RD.certificate_equal; [| |apply EQ_refl].
-  - eapply RS.certificate_single_substitution; [eapply RD.original_typing; exact DU |
-      exact Lu |exact HV |exact DUp |apply Dt; exact Hx].
+  exists B, (body x), (b x); split; [exact ET |]. split.
+  - apply Dt; exact Hx.
   - eapply CD.coherent; [exact Dbodyredex |exact Dredex].
+Qed.
+
+Theorem certified_root_beta_nonlambda n (G : Ctx nat n) rho A t u T f c x a v :
+  RD.certificate H s n G rho (lam A t) T f c ->
+  RD.certificate H s n G rho u A x a -> not_lambda u ->
+  RS.certified_variables H s G rho ->
+  CD.denotes H s n G rho (app (lam A t) u) v ->
+  exists B b, T = Π A B /\ app (lam A t) u →ᵝ t ◁ u /\
+    RD.certificate H s n G rho (t ◁ u) (B ◁ u) v b.
+Proof.
+  intros DF DU Lu HV DR.
+  destruct (certified_root_body n G rho A t u T f c x a v DF DU DR)
+    as [B [w [b [ET [DT EV]]]]].
+  exists B, b; split; [exact ET |]. split; [apply step_beta |].
+  eapply RD.certificate_equal; [|exact EV |apply EQ_refl].
+  eapply RS.certificate_single_substitution; [eapply RD.original_typing; exact DU |
+    exact Lu |exact HV |exact DU |exact DT].
 Qed.
 End Beta.
 End RankedRootBeta.
 
 Print Assumptions RankedRootBeta.certified_root_beta_nonlambda.
+Print Assumptions RankedRootBeta.certified_root_body.
 Check RankedRootBeta.certified_root_beta_nonlambda.

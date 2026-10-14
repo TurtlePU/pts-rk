@@ -1,5 +1,148 @@
 # Live proof-development state — 2026-10-14
 
+## Original model soundness — proved and freshly verified
+
+ModelSoundness.original_typing_sound now proves the ORIGINAL typing
+fundamental theorem with NO conversion, coherence, certificate-totality,
+normalization or local-realization premise. The original denotation,
+valid_valuation, annotated terms, PTS rules and target domain are unchanged.
+ModelSoundness.original_membership_sound handles arbitrary original term
+and type denotation witnesses; original_denotation_coherent and
+original_rank_sound are proved too. sound_model_exists constructs an actual
+global selector using ordinary Choice, and sound_nontrivial_model_exists
+also proves its Bottom interpretation empty. closed_bottom_uninhabited is
+an external corollary, not internal arithmetic self-consistency.
+
+The final typing theorem's complete parameter list is:
+
+```coq
+forall W H s : Ens,
+  transitive_set W -> INC omega_codes W -> tower_envelope W H ->
+  (forall P : Prop, P \/ ~ P) -> cardinal_comparability ->
+  infinite_powerset_gap -> family_choice -> selects_global_witnesses H s ->
+  forall n (G : Ctx nat n) (t T : Term nat n),
+  @wf nat RankSorts n G -> @typ nat RankSorts n G t T ->
+  forall rho, valid_valuation H s G rho -> realizes H s G rho t T.
+```
+
+The existence theorem removes the selector premise by constructing s; it
+retains the explicit W/H, classical, cardinal and Choice hypotheses. Those
+are model-construction principles, not assumptions of semantic soundness.
+The FULL types, including original arbitrary-denotation conversion, are
+printed in verification/model-soundness-2026-10-14/pts-rk-soundness-assumptions.log.
+
+Fresh combined Dune build, five source comparisons, recursive kernel check,
+theorem-type/assumption audit and full local CI ALL exited 0. All 171 stages
+passed, including pristine upstream. The selected fresh dependency build
+printed 420 closed reports. All 14 explicit audit reports are closed. The
+recursive kernel summary lists only upstream functional_extensionality_dep,
+and no unsafe settings. No new axiom, admitted proof or PTS change was made.
+No timeout occurred. These are local workflow-driver results, not a hosted
+GitHub Actions result. Exact commands, all failures, raw successful logs,
+AUDIT.v, compiler versions and stage results are retained in
+verification/model-soundness-2026-10-14/COMMANDS.md and adjacent files.
+Fresh build directory: /tmp/pts-rk-soundness-fresh.q3YE9C.
+
+Key proof: RankedHereditary handles every cut rank and both syntactic
+outputs, including empty domains. RankedNormalization preserves actual
+original denotation values, derives certificates from original validity,
+and proves conversion. ModelSoundness supplies that theorem to the earlier
+conditional fundamental theorem. No semantic proof obligation remains for
+this supplied-hierarchy model.
+
+REMAINING FOUNDATION GOAL: justify this SAME construction internally in
+BZC + GCH + existence of V_(omega+omega). Material BZC satisfaction alone
+does not establish this. Define/relate the actual material GCH/hierarchy
+statements and certify bounded definability of the denotation predicates
+used in relation_candidates/paired_relation_choice. Supplying an ambient
+bound is insufficient for an arbitrary Rocq Prop. Only after completing
+this milestone investigate removing hierarchy existence, per user direction.
+
+Parent eb835a2. This continuation is being committed as
+"ZFC model: prove original typing soundness and semantic conversion" and
+ordinarily pushed under the standing authorization. Existing user logs/
+and generated .lia.cache are preserved and excluded. Earlier entries below
+are historical; their open semantic obligations have now been discharged.
+Next exact baseline command, using the documented OPAMROOT/PATH:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/ModelSoundness.vo ZFC_model/MaterialZermelo.vo ZFC_model/BoundedFormulaSelection.vo
+```
+
+## Original semantic conversion — compiled; soundness packaging in progress
+
+RankedNormalization.original_typed_decoded_conversion compiles without a
+conversion or certificate-totality premise. Its environmental premise is
+the ORIGINAL valid_valuation. original_valid_variable_certificates derives
+the required variable certificates by induction on original context
+well-formedness. original_denotation_normalizes preserves every existing
+original denotation value while reducing its term/type to a ranked
+certificate. Consequently original_typed_conversion_values proves equality
+of actual values of originally typed beta-convertible terms. These proofs
+use the existing explicit W/H/selector/classical/cardinal/Choice parameters.
+
+Standalone normalization attempts 1–8 exited 1,1,0,1,0,1,1,0: duplicate
+scratch loadpath, explicit parameters, a missing context argument, variable
+valuation reconstruction, then explicit conversion parameters. All raw logs
+are /tmp/pts-rk-ranked-normalization-N.log. The successful command is:
+opam exec --switch=pts-rk-ci -- timeout 180 rocq c
+-Q _build/default/vendor/zfc ZFC -Q _build/default/theories PTSrk
+-Q _build/default/ZFC_model PTSrkModel
+-Q /tmp/pts-rk-normalization.RhcGEd PTSrkModel
+-o /tmp/pts-rk-normalization.RhcGEd/RankedNormalization.vo
+ZFC_model/RankedNormalization.v > /tmp/pts-rk-ranked-normalization-8.log 2>&1
+All five Print Assumptions reports are closed. No timeout.
+
+Next goal: instantiate original_realization_from_conversion with this proved
+lemma and export original typing soundness, membership, and model existence.
+Fresh combined checking, CI and final audit remain pending. HEAD eb835a2;
+changes uncommitted. Internal BZC + GCH + hierarchy derivations remain OPEN.
+Next command with the standard OPAMROOT/PATH below:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RankedNormalization.vo ZFC_model/RealizationInduction.vo
+```
+
+## All-rank hereditary substitution — compiled; original soundness bridge OPEN
+
+RankedHereditary.hereditary_substitution now compiles for EVERY cut rank.
+It assumes actual source and image certificates, original well-formed
+contexts/typed substitution, bounded nonvariable cuts and target variable
+certificates. It produces reductions of BOTH substituted term and type to
+normal terms with a certificate retaining the SAME semantic values. These
+are explicit inductive invariants, not an assumption of original soundness.
+Empty domains are handled by selecting syntactic normal forms first.
+Only the newly exposed lambda case invokes the smaller-rank induction.
+
+The exact command used the standard OPAMROOT/PATH below and:
+opam exec --switch=pts-rk-ci -- timeout 180 rocq c
+-Q _build/default/vendor/zfc ZFC -Q _build/default/theories PTSrk
+-Q _build/default/ZFC_model PTSrkModel
+-Q /tmp/pts-rk-hereditary.S3MBci PTSrkModel
+-o /tmp/pts-rk-hereditary.S3MBci/RankedHereditary.vo
+ZFC_model/RankedHereditary.v > /tmp/pts-rk-hereditary-7.log 2>&1
+Exit 0; three closed reports, including the general theorem. Earlier
+attempts 1–7 exited 0,1,1,0,1,1,0 as the helper and full theorem grew;
+all raw logs retained in /tmp for later durable archival. No timeout.
+RankedSubstitution helper attempts 1,2 exited 1,0 (dependent Fin index);
+RankedRootBeta certified_root_body attempt 1 exited 0. The latter now
+identifies the actual body value for arbitrary certified arguments.
+
+Pristine-upstream/full local baseline before edits exited 0, 168 stages:
+DIRECT_R_LOG_DIR="$PWD/_build/local-ci-logs/hereditary-baseline"
+bash tools/check-local-ci.sh > /tmp/pts-rk-hereditary-baseline.log 2>&1.
+Integration/fresh final audit for the new theorem is pending. HEAD eb835a2;
+proof work uncommitted. User logs/ and .lia.cache remain untouched.
+Next proof goal: certificate totality from original typing and valid
+valuations, then agreement with arbitrary original denotations. The
+original_realization_from_conversion premise is still OPEN. The internal
+BZC + GCH + supplied-hierarchy justification is independently open.
+Next command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RankedHereditary.vo ZFC_model/RealizationInduction.vo
+```
+
 ## Ranked certificates and material BZC — verified; full soundness OPEN
 
 The integration note below is superseded by this fresh verification:

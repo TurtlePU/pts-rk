@@ -1,5 +1,39 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — discharge original semantic conversion and soundness
+
+Normalize existing ORIGINAL denotation derivations structurally, keeping
+their actual values. Derive the required variable certificates from original
+valid valuations by induction on context well-formedness; do not restrict
+the final model's environments. General certified application uses the
+all-rank hereditary theorem for both the codomain and an exposed lambda body.
+Normal-form uniqueness and canonical coherence then prove equality of actual
+values for originally typed beta-convertible terms. Instantiate the existing
+original fundamental theorem with this proved conversion lemma.
+
+ModelSoundness exports original typing soundness, arbitrary-witness
+membership/coherence/rank, and actual selector existence with soundness.
+Its Bottom code is the original product operation over sort zero and the
+identity fiber; its decoding is empty by the proved coding bijection and
+the empty fiber. This is external model nontriviality, not internal arithmetic
+self-consistency. Keep all hierarchy/classical/cardinal/Choice parameters
+explicit. Full ambient semantic soundness is proved; deriving the same
+construction internally in BZC + GCH + hierarchy existence remains open.
+
+## 2026-10-14 — all-rank joint hereditary substitution
+
+Use well-founded induction on the cut bound and structural induction on the
+full certificate. Choose common syntactic normal forms under binders before
+semantic quantification, so empty domains require no witness or choice.
+Lift original typed substitutions into the normalized binder independently
+of membership. In the neutral-application branch retain the result-type
+child; when the function becomes a lambda, derive its actual body value by
+semantic beta and invoke the smaller cut rank proved by neutral-head descent.
+The resulting theorem normalizes term AND assigned type while retaining both
+actual semantic indices for arbitrary ranks. It compiles without a semantic
+conversion premise. Certificate totality and agreement with unrestricted
+original semantics are still required to obtain original model soundness.
+
 ## 2026-10-14 — structural rank certificates and general cut bounds
 
 Use an inductive certificate indexed by both the normal ORIGINAL term and

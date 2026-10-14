@@ -1,0 +1,32 @@
+(** Final semantic endpoints. Explicit set-theoretic parameters are printed;
+    no conversion/coherence/totality assumption may appear among them. *)
+From PTSrkModel Require Import RankedHereditary RankedNormalization ModelSoundness.
+
+Check RankedHereditary.hereditary_substitution.
+Print Assumptions RankedHereditary.hereditary_substitution.
+Check RankedHereditary.certified_application.
+Print Assumptions RankedHereditary.certified_application.
+Check RankedNormalization.original_valid_variable_certificates.
+Print Assumptions RankedNormalization.original_valid_variable_certificates.
+Check RankedNormalization.original_typed_normalization.
+Print Assumptions RankedNormalization.original_typed_normalization.
+Check RankedNormalization.original_typed_conversion_values.
+Print Assumptions RankedNormalization.original_typed_conversion_values.
+Check RankedNormalization.original_typed_decoded_conversion.
+Print Assumptions RankedNormalization.original_typed_decoded_conversion.
+Check ModelSoundness.original_typing_sound.
+Print Assumptions ModelSoundness.original_typing_sound.
+Check ModelSoundness.original_membership_sound.
+Print Assumptions ModelSoundness.original_membership_sound.
+Check ModelSoundness.original_denotation_coherent.
+Print Assumptions ModelSoundness.original_denotation_coherent.
+Check ModelSoundness.original_rank_sound.
+Print Assumptions ModelSoundness.original_rank_sound.
+Check ModelSoundness.sound_model_exists.
+Print Assumptions ModelSoundness.sound_model_exists.
+Check ModelSoundness.bottom_interpretation_empty.
+Print Assumptions ModelSoundness.bottom_interpretation_empty.
+Check ModelSoundness.closed_bottom_uninhabited.
+Print Assumptions ModelSoundness.closed_bottom_uninhabited.
+Check ModelSoundness.sound_nontrivial_model_exists.
+Print Assumptions ModelSoundness.sound_nontrivial_model_exists.

@@ -1,0 +1,4 @@
+File "./ZFC_model/RankedHereditary.v", line 150, characters 0-4:
+Error:  (in proof normalize_binder_data): Attempt to save an incomplete proof
+(there are remaining open goals).
+

@@ -1,0 +1,63 @@
+1 goal
+  
+  W, H, s : Ens
+  HW : transitive_set W
+  HO : INC omega_codes W
+  HH : tower_envelope W H
+  classical_logic : forall P : Prop, P \/ ~ P
+  comparison : cardinal_comparability
+  gap : infinite_powerset_gap
+  choice : family_choice
+  selector : selects_global_witnesses H s
+  r : nat
+  IHrank : forall m : nat, m < r -> substitution_at H s m
+  n : nat
+  G : Ctx nat n
+  rho : Fin n -> Ens
+  A : Term nat n
+  B : Term nat (S n)
+  m, k : nat
+  a : Ens
+  b : Ens -> Ens
+  TB : G & A ⊢ B ⇐ 𝓤 k
+  NB : beta_normal B
+  DA : RD.certificate H s n G rho A (𝓤 m) a (repr (sort m))
+  DB :
+    forall x : Ens,
+    IN x (decode a) ->
+    RD.certificate H s (S n) (G & A) (fin_match x rho) B 
+      (𝓤 k) (b x) (repr (sort k))
+  IHDB :
+    forall x : Ens,
+    IN x (decode a) ->
+    substitution_result H s r (G & A) (fin_match x rho) B 
+      (𝓤 k) (b x) (repr (sort k))
+  EB : family_extensional (fun x : Ens => decode (b x))
+  IHDA : substitution_result H s r G rho A (𝓤 m) a (repr (sort m))
+  q : nat
+  D : Ctx nat q
+  sigma : Fin n -> Term nat q
+  rho' : Fin q -> Ens
+  HG : wf G
+  HD : wf D
+  HT : typed_substitution G D sigma
+  HB : NeutralCutRank.bounded_substitution r G sigma
+  HS : RS.certified_substitution H s D rho rho' sigma
+  HV : RS.certified_variables H s D rho'
+  A' : Term nat q
+  B' : Term nat (S q)
+  RA : replace sigma A ↠ᵝ A'
+  RB : replace (transpose sigma) B ↠ᵝ B'
+  TB' : D & A' ⊢ B' ⇐ 𝓤 k
+  NB' : beta_normal B'
+  DA' : RD.certificate H s q D rho' A' (𝓤 m) a (repr (sort m))
+  DB' :
+    forall x : Ens,
+    IN x (decode a) ->
+    RD.certificate H s (S q) (D & A') (fin_match x rho') B' 
+      (𝓤 k) (b x) (repr (sort k))
+  ============================
+  Π (replace sigma A) (replace (transpose sigma) B) ↠ᵝ Π A' B'
+File "./ZFC_model/RankedHereditary.v", line 199, characters 22-32:
+Error: No such assumption.
+

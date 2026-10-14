@@ -40,6 +40,15 @@ as a set. Keep these distinctions explicit in the formal statements.
 
 ## Existing Rocq evidence does not settle this goal
 
+ModelSoundness now proves the full ORIGINAL typing/denotation soundness,
+conversion, coherence, and an empty interpretation of Bottom under explicit
+supplied-hierarchy/classical/cardinal/Choice parameters. No semantic
+conversion premise remains. This finishes the ambient Ens semantic proof;
+the outstanding foundation-strength work is to derive this SAME construction
+internally in the specified material theory. The statements below that
+recorded semantic conversion as open are historical and superseded by
+RankedHereditary, RankedNormalization and ModelSoundness.
+
 The current development lives in the pinned ZFC library's Ens encoding in
 Rocq. “Closed under the global context” audits the Rocq theorem dependencies;
 it does NOT establish derivability in the first-order theory BZC.
@@ -104,9 +113,11 @@ contexts with actual same-value canonical declaration witnesses. It does
 not derive those witnesses for arbitrary original converted contexts.
 RankedDenotation retains actual formation and body certificates;
 RankedSubstitution proves their rank-zero simultaneous substitution and
-normalized-binder transport. Full hereditary substitution and certificate
-totality/agreement with original semantics remain open, independently of
-the material BZC audit.
+normalized-binder transport. RankedHereditary now extends this to all ranks.
+RankedNormalization proves agreement with arbitrary original denotations and
+derives variable certificates from original valid valuations. ModelSoundness
+discharges semantic conversion in the original fundamental theorem. The
+material BZC audit remains open.
 
 ## Earlier bounded-formula checkpoint
 
@@ -124,8 +135,8 @@ CanonicalRenaming, CanonicalSubstitution, CanonicalRealization,
 CanonicalRootBeta and CanonicalContext prove same-value transport and local
 realization/root-reduction lemmas without semantic-conversion assumptions.
 Normal nonlambda substitution includes the rank-zero base case. Explicit
-normality and constituent realization premises still delimit these results;
-the higher-rank joint normalization/membership argument remains open.
+normality and constituent realization premises still delimit these individual
+results; the higher-rank argument is now proved by RankedHereditary.
 They do not certify the bounded definability of denotation predicates used
 by ordinary family_choice, nor transport validity across converted contexts.
 
@@ -134,9 +145,9 @@ original strong normalization/preservation. CanonicalDenotation.v is a
 coherent auxiliary subrelation of original denotes, preserving the same
 term, lambda annotations, selector and semantic value. Its coherence proof
 does not assume semantic conversion or a finite height for denotation
-derivations. Totality and beta/type-conversion preservation are still open,
-as is the bounded definability of its denotation predicate. Normal witness
-existence and Rocq coherence do not by themselves yield a BZC interpretation.
+derivations. RankedNormalization and ModelSoundness now prove original
+totality and beta/type conversion. Bounded definability of denotation remains
+open. Rocq coherence alone does not yield a BZC interpretation.
 
 BoundedChoiceSequence.v reconstructs the choice sequence using bounded
 finite-prefix recursion. The new injection is now used by

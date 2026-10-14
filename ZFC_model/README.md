@@ -1,14 +1,25 @@
-# PTS-rk set-model development — incomplete
+# PTS-rk set model — original typing soundness proved
 
 Reference: the set-theoretical model section of `latex/paper.tex`.
 Dependency: the pinned LGPL subset of rocq-archive/zfc in `vendor/zfc`.
+
+`ModelSoundness.original_typing_sound` proves soundness for ALL original
+Typing.typ derivations under original valid valuations. It has no
+semantic-conversion, coherence, certificate-totality or normalization
+hypothesis. `original_membership_sound` covers arbitrary original denotation
+witnesses, and `sound_nontrivial_model_exists` constructs a selector yielding
+soundness and an empty interpretation of Bottom. The parameters remain
+explicit: transitive W containing omega_codes, its supplied tower envelope
+H, classical logic, cardinal comparison, infinite powerset gap and ordinary
+family_choice. The internal BZC interpretation of these parameters and
+constructions is still open; this result does not assert that derivation.
 
 Current foundation target: reformulate this model in BZC + GCH + existence
 of V_{omega+omega}, bounding constructions in the supplied hierarchy and
 eliminating unbounded separation, then finish its soundness proof. Only
 afterward pursue an interpretation in BZC + GCH without that existence
 assumption. See [FOUNDATIONS.md](FOUNDATIONS.md) for the ordered milestones.
-Neither is established by the current Rocq assumption reports.
+Neither weaker-foundation claim is established by Rocq assumption reports.
 
 The first syntactic foundation audit is implemented in `BoundedFormulas.v`
 and `BoundedInverse.v`: ordered pairs/application have explicit bounded
@@ -17,6 +28,22 @@ by a bounded formula. This checks a specific predicate, not all of BZC
 soundness or the strength of the Ens representation.
 
 ## Checked construction
+
+`RankedHereditary.v` proves the simultaneous substitution theorem for every
+cut rank, normalizing BOTH term and assigned type while preserving both
+semantic values. It handles empty interpreted domains using syntactic
+normal forms chosen before semantic quantification. `certified_application`
+constructs the normalized result-type certificate for arbitrary normal
+certified functions and arguments, including lambda arguments.
+`RankedNormalization.v` normalizes unrestricted ORIGINAL denotations with
+their actual values preserved. It derives variable certificates from
+original context validity, then proves equality of actual values of
+originally typed beta-convertible terms. This discharges the former
+conversion premise of RealizationInduction in `ModelSoundness.v`.
+
+The earlier module notes below describe the scope of those individual
+lemmas. Earlier statements that the general semantic theorem was open are
+superseded by ModelSoundness; the material BZC/GCH/hierarchy audit remains open.
 
 `RankedDenotation.v` supplies structural certificates for normal original
 terms AND assigned types, with actual recursive formation/body witnesses.
@@ -29,8 +56,8 @@ domain-rank descent when substitution turns a neutral head into a lambda;
 its bound on nonvariable images survives lifting under arbitrary binders.
 `RankedRootBeta.v` derives body membership from certificate children and
 preserves an arbitrary canonical redex value in the nonlambda-argument case.
-All-rank hereditary substitution, certificate totality, and agreement with
-arbitrary ORIGINAL denotations/valid valuations remain OPEN.
+The general results are now provided by RankedHereditary, RankedNormalization
+and ModelSoundness, with the original denotation and validity unchanged.
 
 `CanonicalValuationTransport.v` proves validity transport between contexts
 whose paired declarations have actual same-value canonical denotations.
@@ -46,8 +73,8 @@ canonical coherence and proves variable, sort, product and normal-codomain
 lambda realization. `CanonicalRootBeta.v` aligns arbitrary canonical redex
 witnesses when the original domain annotation is normal, proves actual
 product-domain rank descent, and obtains canonical root reduction for the
-proved substitution case. Higher-rank hereditary substitution, general
-semantic normalization and the full fundamental theorem remain OPEN.
+proved substitution case. The unrestricted results are exported by
+RankedHereditary, RankedNormalization and ModelSoundness.
 
 `CanonicalApplication.v` proves application realization for a normal inferred
 product and normal nonlambda argument, with a rank-zero corollary. It uses
@@ -67,7 +94,8 @@ theory-satisfaction premise. `MaterialZermelo.v` extends this to the actual
 first-order BZC axioms, including Foundation and von Neumann Infinity, and
 proves their Ens satisfaction under explicit classical logic and ordinary
 family_choice. It does not provide internal BZC derivations of the model's
-constructions, the material GCH/hierarchy theory, or full PTS soundness.
+constructions or the material GCH/hierarchy theory. Full PTS soundness in
+the ambient representation is supplied by ModelSoundness.
 
 `CanonicalTypeWitnesses.v` proves constructive normal-form existence and
 normal inferred type witnesses for originally typed lambdas/applications.
