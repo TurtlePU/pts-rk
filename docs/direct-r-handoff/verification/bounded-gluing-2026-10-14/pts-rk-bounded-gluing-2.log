@@ -1,0 +1,14 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bounded_comparison_bijection
+     : (forall P : Prop, P \/ ~ P) ->
+       forall A B f g : Ens,
+       injection A B f ->
+       injection B A g -> bijection A B (graph_by_formula A B f g)
+        rocq ZFC_model/BoundedComparison.{glob,vo}

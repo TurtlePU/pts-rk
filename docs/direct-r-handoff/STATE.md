@@ -1,5 +1,77 @@
 # Live proof-development state — 2026-10-14
 
+## Conditional infinite classification checked; full model still open
+
+Previous turn was progress on bounded comparison. CardinalClassification.v
+now proves infinite_bounded_classification, infinite_bounded_code and
+infinite_decoded_product_code under explicit classical logic, generic
+cardinal comparability and the infinite-powerset-gap principle. No new global
+axioms are introduced. Those principles are NOT yet derived in BZC+GCH.
+The product theorem also requires an injection of omega_codes into the
+product; it therefore does not cover finite products. Index uniqueness is
+proved without the three principles. This is not final model soundness.
+
+Two incremental builds, fresh isolated compilation, recursive kernel check
+and complete local CI all exited 0. Four new assumption reports are closed;
+the fresh build printed 126 closed reports including dependencies. The
+library-wide kernel summary lists imported functional_extensionality_dep,
+no unsafe settings. All 105 stages passed, including pristine upstream.
+Exact commands and logs: verification/cardinal-classification-2026-10-14/.
+
+Prepare the user-requested commit from parent
+506fe328ee59dda401f038d36031755748d0ac84, including this proof and the prior
+bounded-gluing checkpoint, docs, build wiring and evidence. User logs/ remain
+excluded. No push requested in the latest message.
+
+Next goal: prove the finite/countable dichotomy and finite classification,
+then discharge the generic comparison/gap principles in the stated theory.
+Do not assume the missing product-coding theorem. Coherent bounded witness
+selection, hierarchy identification, first-order BZC derivability and PTS
+soundness remain open, with the model-first ordering unchanged.
+Next exact inspection command:
+
+```sh
+sed -n '110,190p' ZFC_model/CodeUniverses.v
+sed -n '110,165p' ZFC_model/CountableCodes.v
+```
+
+## Comparison separation audit completed for its three local predicates
+
+The previous turn was verified progress: commits 5e08a2c and 506fe32 were
+pushed. HEAD is 506fe328ee59dda401f038d36031755748d0ac84. This continuation
+extends BoundedComparison.v, with source/docs/evidence uncommitted and user
+logs/ preserved.
+
+New proofs: graph_bounded_separation, successor_bounded_separation, and
+
+    bounded_comparison_bijection :
+      (forall P : Prop, P \/ ~ P) -> forall A B f g : Ens,
+      injection A B f -> injection B A g ->
+      bijection A B (graph_by_formula A B f g).
+
+All three Comp predicates local to CantorBernstein.v now have bounded syntax
+certificates and equality proofs. The final theorem retains explicit excluded
+middle. Imported constructions, first-order BZC derivability and the original
+PTS soundness theorem are NOT thereby proved.
+
+Both incremental builds, a fresh isolated build, recursive kernel check and
+full local CI exited 0. Seven module assumption reports (three new) are closed;
+fresh build has 43 closed reports including dependencies. Library-wide kernel
+audit lists imported functional_extensionality_dep and no unsafe settings.
+All 104 CI stages passed. Commands and raw logs are retained in
+verification/bounded-gluing-2026-10-14/COMMANDS.md.
+
+Next goal: formulate independent GCH/cardinal-comparison principles and prove
+the exact cardinal-code classification needed for eligible-witness
+nonemptiness, rather than assuming product coding. Coherent choice,
+hierarchy identification and original PTS soundness remain open. Model-first
+ordering remains in force. Next exact inspection command:
+
+```sh
+sed -n '1,240p' ZFC_model/BoundedBijections.v
+sed -n '1,220p' ZFC_model/CardinalHierarchy.v
+```
+
 ## Bounded comparison region verified; previous checkpoint pushed
 
 Commit 5e08a2c (`ZFC model: prove product bounds and Schroeder-Bernstein`)

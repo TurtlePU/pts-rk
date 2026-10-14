@@ -18,19 +18,30 @@ soundness or the strength of the Ens representation.
 
 ## Checked construction
 
+`CardinalClassification.v` proves the infinite part of cardinal classification
+along the powerset hierarchy, conditionally on explicit generic comparability,
+the infinite-powerset-gap principle and excluded middle. It obtains a code in
+U_i and specializes to dependent products with a supplied countable injection.
+These are theorem premises, not new global axioms or a derivation of them in
+BZC+GCH. The finite/countable dichotomy and finite classification remain open.
+Uniqueness of the infinite carrier index follows without these premises.
+
 `BoundedComparison.v` gives an explicit bounded formula for the least closed
 region in Schroeder--Bernstein and proves that separation by this formula
 produces the existing region. The closure condition uses bounded graph
 applications in place of function symbols. This certificate itself requires
 only the two supplied injections, without excluded middle. The final
-comparison theorem still has its explicit classical-logic premise.
+comparison theorem still has its explicit classical-logic premise. The
+successor subset and glued graph also have bounded-formula certificates and
+extensional equality proofs. `bounded_comparison_bijection` proves that the
+formula-separated graph is a bijection, with excluded middle explicit.
 
 `CantorBernstein.v` constructs a bijection from two opposing graph injections.
 It uses a least closed region defined within A and Power A, avoiding collection
 of a sequence of iterates. The final theorem has classical excluded middle
 as an explicit premise; no global classical or choice axiom is imported.
-The predicates still need certificates in the bounded formula syntax for the
-first-order foundation audit. This proves cardinal comparison infrastructure,
+Its three separation predicates are certified by BoundedComparison; imported
+constructions and first-order derivability still require audit. This proves cardinal comparison infrastructure,
 not the missing GCH classification or PTS soundness theorem.
 
 `CartesianMaps.v` and `PowersetSquares.v` prove Cartesian-square absorption

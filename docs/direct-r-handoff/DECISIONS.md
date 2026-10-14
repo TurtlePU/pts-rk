@@ -1,5 +1,27 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — conditional infinite cardinal classification
+
+Use generic set-cardinal principles, not a code/product-coding contract:
+comparability of graph embeddings, and the disjunction X <= K or Power K <= X
+whenever omega <= K <= X <= Power K. Induct over the finite powerset hierarchy
+to classify countably infinite-or-larger bounded sets, and then exhibit an
+allowed code. Specialize using the proved dependent-product upper bound.
+Keep these principles and classical logic explicit in theorem types. Do not
+claim they have been derived in BZC+GCH or that the finite case is covered.
+Carrier-index uniqueness needs only the already proved strict growth theorem.
+
+## 2026-10-14 — bounded comparison gluing and successor
+
+Complete the syntactic certificates for the three separation predicates in
+CantorBernstein.v. The successor formula existentially quantifies an element
+of the supplied region and its image in B, replacing composed application by
+two graph relations. The glued graph formula bounds its endpoints by A and B
+and expands the ordered-pair predicate. Transport the existing bijection proof
+across extensional equality to the formula-separated graph. The final theorem
+keeps excluded middle explicit; no global axiom is introduced. Certificates
+for these predicates are not a first-order BZC derivation of the model.
+
 ## 2026-10-14 — bounded syntax for the comparison region
 
 After checkpoint 5e08a2c, translate the least-region predicate into a scoped

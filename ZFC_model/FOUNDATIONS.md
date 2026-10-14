@@ -87,7 +87,11 @@ region is separated from A by quantifying over subsets in Power A. Thus its
 construction avoids collecting an omega-sequence of iterates via Replacement.
 BoundedComparison.v now translates its base, closed-subset and least-region
 predicates into Bounded.Formula and proves equality of the separated regions.
-The successor subset and final glued graph still need syntax certificates.
+The successor subset and final glued graph now also have syntax certificates
+and equality proofs. The graph obtained by bounded separation is proved a
+bijection from the two injections and explicit excluded middle. This covers
+the three Comp predicates in CantorBernstein.v, not all imported constructions
+or a derivation in a first-order BZC calculus.
 Closed theorem reports do not erase the explicit classical-logic premise.
 
 The cardinal upper bound has advanced: CartesianMaps/PowersetSquares prove
@@ -96,7 +100,13 @@ decoded dependent-product bound at max(m+1,n). This construction uses actual
 subset bounds of decoded fibers, so no family of chosen fiber injections is
 required. GCH is not used in this upper bound for powerset representatives.
 It remains needed for the intended classification into available cardinal
-codes; no classification/nonemptiness theorem is claimed from the bound.
+codes. CardinalClassification.v now proves classification for sets admitting
+an injection from omega_codes, conditional on explicit generic cardinal
+comparability and infinite-powerset-gap principles (and classical logic).
+It constructs a permitted infinite code and specializes to the decoded
+product upper bound. Neither these principles' derivation in BZC+GCH nor
+the finite/countable dichotomy is proved; arbitrary products therefore still
+lack a nonemptiness theorem. Carrier-index uniqueness is unconditional.
 
 BoundedBijections.v now certifies bijections and the eligible-witness predicate
 in the bounded formula syntax. Its graph clause excludes arbitrary non-pair

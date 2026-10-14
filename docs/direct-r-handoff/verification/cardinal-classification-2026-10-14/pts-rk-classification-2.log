@@ -1,0 +1,28 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+infinite_bounded_classification
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       forall (i : nat) (X : Ens),
+       embeds omega_codes X ->
+       embeds X (carrier i) ->
+       exists j : nat, j <= i /\ equinumerous X (carrier j)
+infinite_decoded_product_code
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       embeds omega_codes
+         (dependent_product (decode a) (fun x : Ens => decode (b x))) ->
+       exists c : Ens,
+         IN c (U (Nat.max (S m) n)) /\
+         equinumerous
+           (dependent_product (decode a) (fun x : Ens => decode (b x)))
+           (decode c)
+        rocq ZFC_model/CardinalClassification.{glob,vo}
