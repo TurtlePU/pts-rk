@@ -79,35 +79,122 @@ formulas. His [Comparing material and structural set theories](https://arxiv.org
 provides the broader comparison with structural theories. These are
 references for the foundation audit, not citations proving this PTS model.
 
-## Checked bounded-formula checkpoint
+## Checked material BZC checkpoint
+
+MaterialZermelo.v defines the actual pure-membership axioms for
+Extensionality, Empty Set, Pairing, Union, Power Set, von Neumann Infinity,
+Foundation, bounded Separation, and Choice. Its choice-function formula has
+an explicit graph/no-junk clause and is proved equivalent to the existing
+set-indexed family_choice. Ens satisfaction and logical soundness for this
+syntactic BZC theory are checked under explicit classical logic and Choice.
+There is no new axiom or implicit assumption of PTS soundness.
+
+This result goes from the ambient Ens representation to satisfaction of BZC.
+The needed foundation-strength result goes the other way: actual internal
+BZC derivations of the supplied hierarchy's constructions and the PTS model.
+In particular, BoundedChoice's arbitrary-predicate Comp still needs bounded
+formulas for its denotation predicates; an ambient set bound alone does not
+provide them. The precise GCH and hierarchy-existence theory, its relation
+to tower_envelope, and uniform syntax/valuation/denotation coding are open.
+The current target retains hierarchy existence; its necessity for every
+possible interpretation has not been established.
+
+CanonicalValuationTransport now transports validity for structurally paired
+contexts with actual same-value canonical declaration witnesses. It does
+not derive those witnesses for arbitrary original converted contexts.
+RankedDenotation retains actual formation and body certificates;
+RankedSubstitution proves their rank-zero simultaneous substitution and
+normalized-binder transport. Full hereditary substitution and certificate
+totality/agreement with original semantics remain open, independently of
+the material BZC audit.
+
+## Earlier bounded-formula checkpoint
+
+MaterialSetTheory.v now supplies an independent first-order language and
+classical deduction system. It embeds bounded formulas with actual guards
+and defines the bounded-separation schema syntactically. Ens satisfaction
+of that schema is proved using Comp restricted to the formula's own
+extensional predicate. Consequently the specialized logical-soundness
+theorem no longer assumes satisfaction of that schema. MaterialZermelo now
+adds BZC satisfaction as described above. The GCH/hierarchy theory and
+weak-foundation interpretation remain open. An Ens satisfaction theorem is
+not a derivation of all the native model constructions in BZC.
+
+CanonicalRenaming, CanonicalSubstitution, CanonicalRealization,
+CanonicalRootBeta and CanonicalContext prove same-value transport and local
+realization/root-reduction lemmas without semantic-conversion assumptions.
+Normal nonlambda substitution includes the rank-zero base case. Explicit
+normality and constituent realization premises still delimit these results;
+the higher-rank joint normalization/membership argument remains open.
+They do not certify the bounded definability of denotation predicates used
+by ordinary family_choice, nor transport validity across converted contexts.
+
+CanonicalTypeWitnesses.v constructs normal inferred typing witnesses using
+original strong normalization/preservation. CanonicalDenotation.v is a
+coherent auxiliary subrelation of original denotes, preserving the same
+term, lambda annotations, selector and semantic value. Its coherence proof
+does not assume semantic conversion or a finite height for denotation
+derivations. Totality and beta/type-conversion preservation are still open,
+as is the bounded definability of its denotation predicate. Normal witness
+existence and Rocq coherence do not by themselves yield a BZC interpretation.
+
+BoundedChoiceSequence.v reconstructs the choice sequence using bounded
+finite-prefix recursion. The new injection is now used by
+CardinalClassification.bounded_cardinal_code and hence product coding;
+the native sup-nat graph remains only a reference for agreement. This
+removes an actual unbounded range construction from that path, without
+claiming first-order justification for all native induction/Ens operations.
+BoundedModelData.v retains the selector's powerset/Cartesian bound and
+shows the global decoder belongs to Power H. It deliberately does not
+assert global model data belong to H. The bounded defining predicate for
+nonempty subset selection is certified too.
+
+TypedEquality.v is a syntactic prerequisite toward semantic conversion:
+native mutual certificates retain original annotations and project to
+original typings and beta equality. Its completeness and semantic soundness
+are still unproved. No first-order BZC proof system is supplied by this module.
+
+BoundedDecoder.v proves full graph agreement with all_decoding_graph.
+Each branch's specification classifies arbitrary accepted inputs by its
+actual tag, so no wrong-tag values can enter the combined graph. The
+formula-defined graph is total on omega_codes (proved equal to all_codes),
+single-valued, and evaluates to decode under the same supplied hierarchy
+premises. BoundedDecodedSelection.v uses it in code-witness selection and
+proves equality of the witness fibers/source domain with the original
+ones. The SAME selector s has the SAME selected values for every admissible
+source; all rank-typed dependent products are covered. This removes native
+all_decoding_graph as an unexplained parameter of the bounded selected
+graph. It does not certify omega_codes/Ens, the hierarchy's existence or
+identification with V_{omega+omega}, Choice/cardinal principles in BZC,
+arbitrary denotation predicates, or the still-open semantic conversion proof.
 
 BoundedUniverses.v constructs the graph of the exact existing U n by
 bounded separation. BoundedSortDecoder.v handles every tag 3*n+2 and proves
 agreement with decode. All individual decoder branches are now covered;
-combination requires off-branch exclusion and a full graph agreement proof.
+BoundedDecoder supplies off-branch exclusion and full graph agreement.
 The first-order Ens/BZC certification and typed semantic conversion remain open.
 
 BoundedInfiniteDecoder.v supplies the infinite-code branch, using the actual
 3*n+1 tags and the bounded carrier graph. Evaluation agrees with existing
 decode at every infinite code under the supplied hierarchy premises.
-Sort-code decoding, combination of branches, and first-order certification
-of the ambient construction remain open.
+First-order certification of the ambient construction remains open.
 
 BoundedRecursion.v supplies uniform bounded iteration from a supplied step
 graph, using finite separators in correctness. BoundedCodeArithmetic.v
 instantiates triple singleton successor and proves the tripling equation
 for every numeral. Its bounded_finite_decoder composes that graph with
 finite_carrier_graph and evaluates repr(finite n) to finite_carrier n for
-all n. Infinite/sort decoding and the first-order Ens audit remain open.
+all n. The remaining branches are now checked; the first-order Ens audit
+remains open.
 
 BoundedCodeSelection.v applies bounded selection to the model's actual
 codeWitnessF, with an admissible source domain also defined by bounded
 separation. Its graph agrees with the existing global witness selector
 using the same s, and every rank-typed dependent function space belongs
 to the domain under the existing model premises. This supplies a bounded
-representation of the actual selection operation; the decoder supplied
-as a parameter, arbitrary denotation predicates, and the first-order
-Ens/BZC interpretation remain open audit obligations.
+representation of the actual selection operation. Its new decoded
+specialization justifies the decoder parameter. Arbitrary denotation
+predicates and the first-order Ens/BZC interpretation remain open obligations.
 
 BoundedFormulaSelection.v constructs an actual selected graph for a total
 bounded-formula relation by separation on Prod A B. Candidate fibers are
@@ -134,7 +221,7 @@ constructed by bounded formula separation, instead of a native sup-indexed
 comparison relation. No set of all separators is required. First-order
 induction and the Ens representation still need justification; do not infer
 full Replacement elimination from this particular construction.
-Code-tag decoding and the uniform sort-universe branch remain open.
+The code-tag and sort-universe modules now use this construction uniformly.
 
 BoundedPowersets.v supplies a bounded formula for powerset equality under
 an explicit adequate subset bound, and a graph formed by separation on
@@ -151,8 +238,8 @@ formula. BoundedGraphs constructs the uniform graph omega_codes ->
 Power omega_codes by separation, and its evaluation is proved equal to
 finite_carrier n for every n. No family_choice premise is used. This does
 not itself recover n from the finite code numeral (3*n); that step is now
-provided by BoundedCodeArithmetic. Infinite/sort codes and existence of
-omega_codes in a first-order BZC calculus remain to be certified.
+provided by BoundedCodeArithmetic. Infinite/sort decoding is also checked;
+existence of omega_codes in a first-order BZC calculus remains to be certified.
 
 BoundedGraphs.v constructs a graph by separation on Prod A B, with a
 syntactically bounded edge formula built from a supplied formula p(x,y).
@@ -162,9 +249,9 @@ is proved; when p is total and uniquely valued in B, the graph is a
 function and apply_set satisfies p. No family_choice premise, native
 function selection, or graph-as-sup occurs in this construction. It agrees
 with graph A f whenever p defines the bounded extensional f. This supplies
-the generic separation step for a definable decoder, not its still-missing
-bounded defining formula or a derivation of the underlying Ens/Prod
-operations in a first-order BZC calculus.
+the generic separation step used by BoundedDecoder's defining formula,
+not a derivation of the underlying Ens/Prod operations in a first-order
+BZC calculus.
 
 BoundedApplication.v now gives a syntactic certificate for the separation
 predicate in SetApplication.value_fiber and proves equality of the existing
@@ -204,10 +291,12 @@ derives the finite/countable dichotomy from family choice by choosing outside
 successive finite prefixes. It uses choice on the set of nonempty subsets
 of X, not global choice. Consequently decoded_product_code constructs a code
 for every typed decoded product, without an infinitude side condition.
-These principles' derivation in first-order BZC+GCH, and the bounded recursion
-translation of the native sequence construction, remain unproved. In
-particular sup nat is not itself a BZC existence certificate. Carrier-index
-uniqueness is unconditional.
+The new BoundedChoiceSequence.v replaces that native sequence graph on the
+actual classification path using bounded recursion and proves agreement.
+These principles' derivation in first-order BZC+GCH and the first-order
+certification of native induction/Ens remain unproved. In particular sup
+nat is not itself a BZC existence certificate. Carrier-index uniqueness is
+unconditional.
 
 FiniteClassification.v closes the finite-embedding case: subsets of finite
 carriers are explicitly enumerated, and an injection's image yields a graph

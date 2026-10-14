@@ -1,0 +1,83 @@
+Chars 477 - 508 [From~Stdlib~Require~Import~Lia.] 0.095 secs (0.074u,0.019s)
+Chars 509 - 545 [From~ZFC~Require~Import~Sets~A...] 0. secs (0.u,0.s)
+Chars 546 - 630 [From~PTSrk~Require~Import~Synt...] 0.02 secs (0.014u,0.005s)
+Chars 631 - 875 [From~PTSrkModel~Require~Import...] 0.007 secs (0.004u,0.002s)
+Chars 876 - 911 [Import~CodeUniverses.CodeUnive...] 0. secs (0.u,0.s)
+Chars 913 - 938 [Module~CanonicalRootBeta.] 0. secs (0.u,0.s)
+Chars 939 - 992 [Module~CD:=~~CanonicalDenotati...] 0.001 secs (0.001u,0.s)
+Chars 994 - 1012 [Section~Alignment.] 0. secs (0.u,0.s)
+Chars 1013 - 1033 [Variables~(H~s~:~Ens).] 0. secs (0.u,0.s)
+Chars 1170 - 1705 [Definition~matched_redex~{n}~(...] 0.001 secs (0.001u,0.s)
+Chars 1995 - 2237 [Theorem~normal_domain_redex_in...] 0. secs (0.u,0.s)
+Chars 2238 - 2244 [Proof.] 0. secs (0.u,0.s)
+Chars 2247 - 2259 [intros~NA~D.] 0. secs (0.u,0.s)
+Chars 2262 - 2364 [destruct~(CD.application_inver...] 0. secs (0.u,0.s)
+Chars 2367 - 2423 [destruct~HR~as~[Tf~[NP~[DA0~[D...] 0. secs (0.u,0.s)
+Chars 2426 - 2507 [destruct~(CD.lambda_inversion~...] 0. secs (0.u,0.s)
+Chars 2510 - 2563 [destruct~HL~as~[Tt~[NB~[DA~[DB...] 0. secs (0.u,0.s)
+Chars 2566 - 2646 [destruct~(λ_inversion~RankSort...] 0.001 secs (0.u,0.s)
+Chars 2649 - 2742 [assert~(Tf'~:~@typ~nat~RankSor...] 0. secs (0.u,0.s)
+Chars 2745 - 2818 [assert~(NP'~:~beta_normal~(Π~A...] 0. secs (0.u,0.s)
+Chars 2821 - 2902 [assert~(EP~:~Π~A0~B0~=~Π~A~B)~...] 0. secs (0.u,0.s)
+Chars 2905 - 2940 [injection~EP~as~E1~E2;~subst~A...] 0.001 secs (0.u,0.s)
+Chars 2943 - 3052 [assert~(EA~:~EQ~(decode~a0)~(d...] 0. secs (0.u,0.s)
+Chars 3055 - 3133 [assert~(EF~:~forall~y,~IN~y~(d...] 0. secs (0.u,0.s)
+Chars 3136 - 3137 [{] 0. secs (0.u,0.s)
+Chars 3138 - 3150 [intros~y~Hy.] 0. secs (0.u,0.s)
+Chars 3151 - 3178 [apply~decoding_extensional.] 0. secs (0.u,0.s)
+Chars 3183 - 3227 [eapply~CD.coherent;~[~apply~DB...] 0. secs (0.u,0.s)
+Chars 3232 - 3277 [apply~DB;~exact~(IN_sound_righ...] 0. secs (0.u,0.s)
+Chars 3278 - 3279 [}] 0. secs (0.u,0.s)
+Chars 3282 - 3309 [exists~l,B,a,b,body,x.] 0.001 secs (0.u,0.s)
+Chars 3310 - 3330 [split;~[~exact~TA~|~~].] 0. secs (0.u,0.s)
+Chars 3333 - 3354 [unfold~matched_redex.] 0. secs (0.u,0.s)
+Chars 3357 - 3377 [split;~[~exact~Tt~|~~].] 0. secs (0.u,0.s)
+Chars 3378 - 3398 [split;~[~exact~NB~|~~].] 0. secs (0.u,0.s)
+Chars 3399 - 3419 [split;~[~exact~DA~|~~].] 0. secs (0.u,0.s)
+Chars 3422 - 3442 [split;~[~exact~DB~|~~].] 0. secs (0.u,0.s)
+Chars 3443 - 3463 [split;~[~exact~Dt~|~~].] 0. secs (0.u,0.s)
+Chars 3464 - 3484 [split;~[~exact~EB~|~~].] 0. secs (0.u,0.s)
+Chars 3487 - 3507 [split;~[~exact~Et~|~~].] 0. secs (0.u,0.s)
+Chars 3508 - 3528 [split;~[~exact~Du~|~~].] 0. secs (0.u,0.s)
+Chars 3531 - 3560 [eapply~EQ_tran;~[~exact~Ev~|~~].] 0. secs (0.u,0.s)
+Chars 3563 - 3686 [exact~~~(semantic_application_...] 0. secs (0.u,0.s)
+Chars 3687 - 3691 [Qed.] 0.022 secs (0.016u,0.003s)
+Chars 3913 - 4373 [Theorem~ranked_normal_domain_r...] 0.001 secs (0.001u,0.s)
+Chars 4374 - 4380 [Proof.] 0. secs (0.u,0.s)
+Chars 4383 - 4405 [intros~HG~NA~TF~TFR~D.] 0. secs (0.u,0.s)
+Chars 4408 - 4512 [destruct~(normal_domain_redex_...] 0.002 secs (0.001u,0.s)
+Chars 4515 - 4625 [assert~(Tf~:~@typ~nat~RankSort...] 0. secs (0.u,0.s)
+Chars 4628 - 4675 [destruct~(type_is_correct~_~_~...] 0. secs (0.u,0.s)
+Chars 4678 - 4699 [assert~(Erq~:~r~=~q).] 0. secs (0.u,0.s)
+Chars 4702 - 4703 [{] 0. secs (0.u,0.s)
+Chars 4704 - 4731 [apply~equiv_𝓤_inversion.] 0. secs (0.u,0.s)
+File "/tmp/pts-rk-canonical-root-beta.SVKjg5/CanonicalRootBeta.v", line 97, characters 10-30:
+Error: Cannot infer the implicit parameter n of equiv_𝓤_inversion whose type
+is "nat" in
+environment:
+H, s : Ens
+n : nat
+G : Ctx nat n
+rho : Fin n -> Ens
+A : Term nat n
+t : Term nat (S n)
+u : Term nat n
+v : Ens
+F : Term nat n
+r : nat
+HG : wf G
+NA : beta_normal A
+TF : G ⊢ [A] t ⇐ F
+TFR : G ⊢ F ⇐ 𝓤 r
+D : CD.denotes H s n G rho ([A] t $ u) v
+l : nat
+B : Term nat (S n)
+a : Ens
+b, body : Ens -> Ens
+x : Ens
+TA : G ⊢ A ⇐ 𝓤 l
+HM : matched_redex G rho A t u v B a b body x
+Tf : G ⊢ [A] t ⇐ Π A B
+q : nat
+TP : G ⊢ Π A B ⇐ 𝓤 q
+

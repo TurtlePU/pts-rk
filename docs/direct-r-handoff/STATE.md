@@ -1,5 +1,305 @@
 # Live proof-development state — 2026-10-14
 
+## Ranked certificates and material BZC — verified; full soundness OPEN
+
+The integration note below is superseded by this fresh verification:
+combined fresh build, seven source comparisons, recursive kernel audit,
+theorem-type/Print Assumptions audit and complete local CI all exited 0.
+All 168 CI stages passed, including pristine upstream. The selected fresh
+dependency build printed 523 closed reports, including 53 in the seven new
+modules. All 12 explicit audit reports are closed. The recursive kernel
+summary lists only existing functional_extensionality_dep and no unsafe
+settings. Original PTS sources/rules are unchanged. Closed assumption reports
+do not discharge explicit theorem premises.
+
+RankedSubstitution attempt 3 also proves normalized-binder lifting,
+extension of certified variables, and the rank-zero case of the GENERAL
+simultaneous bounded-cut invariant. NeutralCutRank attempt 8 proves strict
+actual lambda-domain rank descent for arbitrary typed substitutions. Its
+bound concerns nonvariable images and is stable under arbitrary binders.
+RankedRootBeta attempt 1 derives body membership and ranks from actual
+certificate children and preserves an arbitrary canonical redex value for
+normal nonlambda arguments. All three builds exited 0.
+
+The three main open obligations are all-rank hereditary substitution;
+certificate totality from ORIGINAL typing/valid valuations and agreement
+with arbitrary original denotations; and internal BZC + GCH + hierarchy
+certification of this SAME model. The original_realization_from_conversion
+type still explicitly assumes semantic conversion. MaterialZermelo proves
+Ens satisfaction of syntactic BZC under explicit classical logic and ordinary
+family_choice, not a BZC derivation of the PTS construction. Merely supplying
+the hierarchy does not certify arbitrary denotation predicates as bounded.
+
+Exact next goal: extend certificate_rank_zero_substitution to every r,
+producing normal N,C with replace sigma t ->* N and replace sigma T ->* C,
+and a certificate retaining the SAME semantic indices v,a. Under binders,
+choose syntactic normal forms independently of semantic values (domains can
+be empty), then align pointwise results by uniqueness. For a head that stays
+neutral, use the result-type certificate child: its function rank can exceed
+r. Use bounded_exposed_lambda_domain_rank when the head becomes a lambda.
+
+Raw failed/successful logs, commands, printed theorem types, assumptions,
+versions and CI results: verification/ranked-certificates-2026-10-14/.
+Fresh build directory: /tmp/pts-rk-ranked-fresh.kI0Mjw. No compiler error or
+timeout remains. Parent commit is 3454c9f; accumulated proof work is being
+committed as "ZFC model: certify bounded constructions and ranked semantic substitution"
+with an authorized ordinary push. User logs/ and generated .lia.cache are
+preserved and excluded. Earlier status entries below are historical.
+Next exact baseline command with the standard OPAMROOT/PATH below:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RankedRootBeta.vo ZFC_model/MaterialZermelo.vo ZFC_model/RealizationInduction.vo
+```
+
+### Historical integration note (before final verification)
+
+The resumed continuation has compiled NeutralCutRank (all-rank neutral-spine
+and exposed-lambda domain descent), RankedDenotation (structural normal
+term/type certificates with actual formation/body children),
+CanonicalValuationTransport (validity transport from actual same-value
+declarations), and MaterialZermelo (explicit first-order BZC axioms and Ens
+satisfaction under explicit classical logic and ordinary family_choice).
+None supplies original typing totality or a BZC internal derivation of the
+PTS model. The previous 161-stage verification predates these files.
+
+RankedTransport now compiles in the integrated Dune tree (attempts 1,2,3
+exited 1,1,0). This fixes the isolated .vo dependency mismatch by rebuilding
+dependencies consistently, then explicit rank inference and a missing
+AbstractRewriting import. Renaming, weakening, original context transport
+and normal type/code alignment preserve both semantic indices.
+RankedSubstitution now compiles (attempts 1,2: 1,0), proving substitution
+for the FULL structural certificate with normal nonlambda images, including
+its normalized-result-type child. General lambda-image hereditary
+substitution and the original-denotation/valuation totality bridge remain
+open. The next proof step is the ranked application/substitution induction,
+using NeutralCutRank for active-head descent and RankedTransport for binders.
+
+Commands and raw logs are currently /tmp/pts-rk-ranked-integrated-{1,2,3}.log
+and /tmp/pts-rk-ranked-substitution-{1,2}.log. Each command used the standard
+OPAMROOT/PATH below and timeout 180 dune build --display=short --no-buffer,
+target ZFC_model/RankedTransport.vo or ZFC_model/RankedSubstitution.vo.
+Fresh combined build, recursive audit and complete CI are still pending for
+this continuation. No final success is yet claimed for the combined edits.
+HEAD remains 3454c9f; existing work and user logs/ preserved. User has now
+explicitly authorized commit and push; neither has yet been performed.
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RankedSubstitution.vo ZFC_model/MaterialZermelo.vo ZFC_model/RealizationInduction.vo
+```
+
+## Canonical substitution and material deduction — verified; soundness OPEN
+
+Eight new modules now pass fresh compilation and the recursive kernel audit:
+
+- CanonicalRenaming: arbitrary renaming, normality, same semantic values.
+- CanonicalRealization: local membership/rank from unconditional canonical
+  coherence, variable/sort/product and normal-codomain lambda realization.
+- CanonicalSubstitution: normal nonlambda substitution, including every
+  normal argument whose type has rank zero. No semantic-conversion premise.
+- CanonicalRootBeta: aligns arbitrary canonical redex witnesses with a
+  normal original domain annotation; proves actual product-domain rank
+  descent and same-value root reduction in the proved substitution case.
+- CanonicalContext: same-syntax/same-value transport through original
+  context typing morphisms and converted well-formed contexts. Does NOT
+  assert valuation validity transports across declaration conversion.
+- CanonicalApplication: actual application realization for normal inferred
+  product and normal nonlambda argument, with no coherence premise; rank-zero
+  corollary. Local constituent realizations remain explicit.
+- CanonicalHereditary: normal rank-one application reaches a normal,
+  originally typed term, and its substituted type is normal. The normal
+  lambda branch preserves exact canonical value, membership and code rank.
+  This is the application rank-one -> substitution rank-zero step, NOT the
+  full rank-one substitution theorem, and NOT all-rank soundness.
+- MaterialSetTheory: independent first-order natural deduction, guarded
+  bounded-formula embedding, syntactic bounded-separation schema, actual Ens
+  satisfaction of that schema, and its logical soundness without a theory
+  satisfaction premise. Classical logic remains explicit. General BZC/GCH/
+  hierarchy certification and weak-foundation justification remain open.
+
+Baseline and first integrated build exited 0. Isolated compilation exits:
+renaming 0; realization 0,0; substitution 1,0; root beta 1,1,0,1,0;
+context 0; application 1,1,1,1,0; hereditary 0; material theory 1,0,0,0.
+Failures were inference/import/dependent-pattern issues; no theorem was
+weakened to fix a compiler error. No timeout in this continuation.
+
+Fresh combined build, all eight source comparisons, recursive kernel audit,
+theorem-type/Print Assumptions audit and full local CI ALL exited 0.
+All 161 CI stages passed, including pristine upstream. The selected fresh
+dependency build printed 397 closed reports, including 58 in the eight new
+modules. All nine explicit audit reports are closed; the combined kernel
+summary lists only existing functional_extensionality_dep and no unsafe
+settings. The original PTS sources/rules are unchanged.
+
+Exact commands, raw failed/successful logs, audit source, printed theorem
+types, assumptions, toolchain versions and CI results are retained in
+verification/canonical-substitution-2026-10-14/COMMANDS.md and adjacent files.
+The fresh build directory was /tmp/pts-rk-canonical-substitution-fresh.lltB68.
+
+No compiler error remains. FULL SOUNDNESS IS NOT PROVED: the original
+conversion premise displayed below and in the fresh audit remains unproved.
+The next mathematical goal is joint semantic hereditary substitution for
+higher-rank normal lambda arguments, preserving actual values while
+normalizing substituted terms AND inferred type witnesses. Its invariant
+must retain actual product-domain/codomain rank certificates and pointwise
+body membership; bare realizes loses those decompositions. Do not infer
+body membership from the encoded function's membership or silently assume
+certificate totality. A suitable certificate's totality from ORIGINAL
+typing and the bridge back to the actual model must also be proved.
+Canonical coherence, a fixed rank case, or an NF-based relation alone
+cannot discharge the conversion/fundamental theorem. First-order foundation
+certification is independently still open.
+
+HEAD remains 3454c9f; work uncommitted/unpushed. Prior work and user logs/
+are preserved; the untracked .lia.cache is not part of the proof sources.
+Next exact baseline command for continuing the joint proof:
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/CanonicalHereditary.vo ZFC_model/CanonicalApplication.vo ZFC_model/CanonicalContext.vo ZFC_model/MaterialSetTheory.vo ZFC_model/RealizationInduction.vo
+```
+
+## Canonical denotation coherence — verified; full soundness OPEN
+
+TypedEqualityRenaming.v proves native context regularity and a structural
+embedding theorem, mutually preserving wf, typing and equality. Insertions
+carry actual native declaration typings; synchronous binder extension does
+not assume endpoint regularity or preservation. Ordinary typing/equality
+weakening follow. Isolated compile exits 1,1,0; source comparison, recursive
+kernel check and integrated Dune build exited 0; six closed reports.
+Raw logs are retained with the canonical-coherence verification below.
+
+CanonicalTypeWitnesses.v now compiles (attempt 4, exit 0, ten closed
+reports). It constructs beta-normal typing witnesses for every originally
+typed lambda/application in a well-formed context, preserving the original
+lambda domain. Its normal-form existence argument is constructive and uses
+the original strong-normalization/preservation theorems.
+
+CanonicalDenotation.v proves COHERENCE of an AUXILIARY denotation with
+beta-normal implicit type witnesses. Original typing uniqueness and
+confluence make the witnesses identical, enabling induction on denotation
+without semantic conversion, valuation-validity, Choice or hierarchy
+premises. It preserves all original lambda annotations and the exact model
+operations. Same-value inclusion into original denotes and valuation
+extensionality are proved too. Totality, beta/type-conversion preservation
+and agreement with arbitrary original denotations are NOT established.
+Substitution can create redexes in normal types: the missing semantic
+normalization/substitution argument cannot be inferred from coherence.
+
+Canonical compilation attempts exited 1,1,124,1,0. The 180-second timeout
+is retained (empty raw log); replacing uncontrolled splitting of set-valued
+goals by explicit conjunction steps allowed the next compiler diagnostics
+to finish. A final destruct-bracket fix yields three closed reports, with
+no theorem weakened. Integrated build, isolated fresh build, all seven
+source comparisons, recursive kernel check and full local CI exited 0.
+All 153 CI stages passed. Fresh build: 412 closed reports, including 19 new
+reports (6 native weakening, 10 normal witnesses, 3 canonical denotation).
+Kernel summary: existing functional_extensionality_dep only, no unsafe
+settings. Exact commands, printed theorem types, failure/timeout/success
+logs and CI results are retained in
+verification/canonical-coherence-2026-10-14/COMMANDS.md.
+
+No compiler error remains. The first open mathematical goal is STILL the
+original typed semantic-conversion obligation displayed below. An auxiliary
+canonical route now has coherence and syntactic witness existence, but
+needs totality and beta/type-conversion preservation before it can justify
+original typing soundness. First-order Ens/BZC certification is also open.
+
+HEAD 3454c9f unchanged. Work uncommitted/unpushed; user logs/ untouched.
+Next exact command for continuing the semantic proof:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/CanonicalTypeWitnesses.vo ZFC_model/CanonicalDenotation.vo ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo
+```
+
+## Bounded choice sequence, model-data bounds, native equality — soundness OPEN
+
+BoundedChoiceSequence.v reconstructs the existing finite prefixes and
+countable choice sequence by bounded recursion, proving exact agreement
+and injection for all indices. CardinalClassification.bounded_cardinal_code
+now actually uses this bounded injection, so downstream product coding no
+longer selects the native sup-nat sequence graph on this path. It still
+uses explicit classical logic, ordinary family_choice, cardinal comparison
+and the powerset-gap principle; their first-order derivation is not done.
+
+BoundedModelData.v retains an explicit Cartesian/powerset bound when choosing
+a selector. It proves the decoder is a SUBSET of the supplied envelope
+(hence an element of Power H), and bounds global selector/selection graphs
+using powersets and products over H. It does NOT put global data inside H.
+The same selector's witness values are preserved.
+
+TypedEquality.v defines native mutual context, typing and equality
+certificates over original Term nat n, retaining every lambda annotation.
+No constructor assumes original typing or untyped conversion. Reflexivity
+and projection to original typing (both equality endpoints) are proved.
+The REVERSE completeness theorem and semantic interpretation of these
+certificates remain OPEN. This auxiliary judgment is not a replacement
+target, not a model axiom, and not a solution of semantic conversion.
+
+Incremental model-data and integrated choice/classification builds exited
+0. Isolated typed-equality compile/source comparison/kernel check exited 0.
+Fresh combined build, four source comparisons, recursive kernel check and
+full local CI exited 0; all 150 stages passed. The fresh build printed 393
+closed reports, including 29 new reports (16 choice sequence, 8 model data,
+5 native equality). The kernel summary lists only the existing
+functional_extensionality_dep, no unsafe settings. No timeouts. Exact
+commands and raw success/failure logs are retained in
+verification/semantic-foundation-2026-10-14/COMMANDS.md.
+Full soundness remains open. HEAD 3454c9f unchanged; work uncommitted and
+unpushed, with all prior changes and user logs/ preserved.
+Next proof target: native typed-equality completeness and a non-circular
+semantic coherence argument; the exact original conversion goal is below.
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/TypedEquality.vo ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo
+```
+
+## Combined bounded decoder and selection — verified, soundness OPEN
+
+Starting checkpoint 3454c9f is pushed; only user logs/ were untracked.
+BoundedDecoder.v proves branch specifications for arbitrary inputs, so a
+branch cannot accept another code tag. Its bounded formula combines the
+three graphs. Totality, single-valuedness, evaluation and equality with the
+existing all_decoding_graph are proved under the SAME supplied hierarchy
+premises; no Choice or GCH premise is added. All singleton numeral inputs
+are covered, not merely a finite test family. BoundedDecodedSelection.v
+uses that graph and proves equality of its witness sets/source domain with
+the existing global construction. It preserves the SAME selector s and its
+values. Every rank-typed dependent product is in the source domain; ordinary
+family_choice supplies a selector. Sixteen new closed reports in total.
+
+Baseline command exited 0. Incremental combined-decoder exits 1,1,0,1,0;
+fixed missing imports and a multi-goal tactic dispatch, without weakening
+theorems. Decoded-selection incremental exits 0,0. Fresh isolated build,
+both source comparisons, recursive kernel check and full local CI exited
+0; all 147 stages passed. The fresh dependency build printed 364 closed
+reports. Kernel summary lists only existing functional_extensionality_dep;
+no unsafe settings or timeouts. Exact commands and raw logs are retained in
+verification/combined-decoder-2026-10-14/COMMANDS.md.
+
+The first remaining soundness goal is to DISCHARGE the explicit conversion
+premise in RealizationInduction, not repackage it as a model assumption:
+
+```coq
+forall n (G : Ctx nat n) rho A B m k,
+  @wf nat RankSorts n G -> valid_valuation H s G rho ->
+  @typ nat RankSorts n G A (𝓤 m) ->
+  @typ nat RankSorts n G B (𝓤 k) -> A =ᵝ B ->
+  forall a b, denotes H s n G rho A a -> denotes H s n G rho B b ->
+    EQ (decode a) (decode b).
+```
+
+Its realization/coherence/rank theorems depend on this premise, so using
+them to prove it without a joint well-founded argument would be circular.
+First-order Ens/BZC certification also remains open. Closed reports do not
+discharge explicit premises. HEAD remains 3454c9f, synchronized with
+origin/main at continuation start. Current edits are uncommitted/unpushed;
+user logs/ remain untouched. Next command for continued conversion work:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo ZFC_model/TypeHeadNormalization.vo
+```
+
 ## Exact universes and sort decoder — verified checkpoint, soundness OPEN
 
 BoundedUniverses proves every omega numeral is an actual code and provides

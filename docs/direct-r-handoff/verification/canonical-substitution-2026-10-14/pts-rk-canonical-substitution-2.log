@@ -1,0 +1,19 @@
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+CanonicalSubstitution.denotes_rank_zero_substitution
+     : forall (H s : Ens) (n : nat) (G : Ctx nat n) 
+         (rho : Fin n -> Ens) (A : Term nat n) (t : Term nat (S n))
+         (u : Term nat n) (v x : Ens),
+       wf G ->
+       G ⊢ A ⇐ 𝓤 0 ->
+       G ⊢ u ⇐ A ->
+       beta_normal u ->
+       CanonicalSubstitution.CD.denotes H s (S n) 
+         (G & A) (fin_match x rho) t v ->
+       CanonicalSubstitution.CD.denotes H s n G rho u x ->
+       CanonicalSubstitution.CD.denotes H s n G rho (t ◁ u) v

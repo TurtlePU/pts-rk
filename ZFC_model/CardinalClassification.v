@@ -5,7 +5,7 @@ From Stdlib Require Import Arith.PeanoNat Lia.
 From ZFC Require Import Sets Axioms Cartesian.
 From PTSrkModel Require Import SetFunctions SetBijections ProductEmbedding
   CountableCodes CardinalGrowth CardinalHierarchy CantorBernstein CodeUniverses
-  PowersetSquares CountableDichotomy.
+  PowersetSquares CountableDichotomy BoundedChoiceSequence.
 Import CodeUniverses.CodeUniverses.
 
 Definition cardinal_comparability := forall A B : Ens, embeds A B \/ embeds B A.
@@ -62,12 +62,14 @@ Theorem bounded_cardinal_code (classical_logic : forall P : Prop, P \/ ~ P)
   (choice : family_choice) i X :
   embeds X (carrier i) -> exists a, IN a (U i) /\ equinumerous X (decode a).
 Proof.
-  intro HX. destruct (finite_countable_from_choice classical_logic choice X) as [[n Hn] | Hinf].
+  intro HX. destruct (bounded_finite_countable_from_choice classical_logic choice X)
+    as [[n Hn] | [c [_ Hinf]]].
   - exists (repr (finite n)); split; [apply finite_in_every_universe |].
     eapply equinumerous_trans; [exact Hn |]. apply (cantor_bernstein classical_logic).
     + eapply embeds_equal_domain; [exact (decode_repr carrier (finite n)) | apply embeds_reflexive].
     + eapply embeds_equal_domain; [apply EQ_sym; exact (decode_repr carrier (finite n)) | apply embeds_reflexive].
-  - exact (infinite_bounded_code classical_logic comparison gap i X Hinf HX).
+  - apply (infinite_bounded_code classical_logic comparison gap i X); [| exact HX].
+    exists (bounded_choice_sequence X c); exact Hinf.
 Qed.
 Theorem decoded_product_code (classical_logic : forall P : Prop, P \/ ~ P)
   (comparison : cardinal_comparability) (gap : infinite_powerset_gap)

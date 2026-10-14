@@ -1,0 +1,83 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+logical_soundness
+     : (forall P : Prop, P \/ ~ P) ->
+       forall T : Theory,
+       theory_holds T ->
+       forall (n : nat) (G : list (Formula n)) (p : Formula n),
+       derives T n G p ->
+       forall r : Fin n -> Ens, context_holds G r -> holds p r
+bounded_separation_statement
+     : forall (A : Fin ?n) (p : Bounded.Formula (S ?n)) (r : Fin ?n -> Ens),
+       holds (bounded_separation A p) r <->
+       (exists Y : Ens,
+          forall x : Ens,
+          IN x Y <-> IN x (r A) /\ Bounded.holds p (fin_match x r))
+where
+?n : [ |- nat]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/MaterialSetTheory.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/CanonicalRenaming.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+CanonicalSubstitution.denotes_rank_zero_substitution
+     : forall (H s : Ens) (n : nat) (G : Ctx nat n) 
+         (rho : Fin n -> Ens) (A : Term nat n) (t : Term nat (S n))
+         (u : Term nat n) (v x : Ens),
+       wf G ->
+       G ⊢ A ⇐ 𝓤 0 ->
+       G ⊢ u ⇐ A ->
+       beta_normal u ->
+       CanonicalSubstitution.CD.denotes H s (S n) 
+         (G & A) (fin_match x rho) t v ->
+       CanonicalSubstitution.CD.denotes H s n G rho u x ->
+       CanonicalSubstitution.CD.denotes H s n G rho (t ◁ u) v
+        rocq ZFC_model/CanonicalSubstitution.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/CanonicalRealization.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/CanonicalContext.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/CanonicalRootBeta.{glob,vo}

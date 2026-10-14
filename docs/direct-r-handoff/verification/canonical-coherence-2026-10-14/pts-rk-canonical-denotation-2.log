@@ -1,0 +1,11 @@
+File "/tmp/pts-rk-canonical-denotation.fvg3US/CanonicalDenotation.v", line 49, characters 21-22:
+Error:
+In environment
+H, s : Ens
+n : nat
+G : Ctx nat n
+rho : Fin n -> Ens
+t : Term nat n
+v : Ens
+The term "H" has type "Ens" while it is expected to have type "nat".
+

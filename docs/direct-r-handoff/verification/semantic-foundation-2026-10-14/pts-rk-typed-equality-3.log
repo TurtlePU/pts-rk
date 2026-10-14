@@ -1,0 +1,10 @@
+(Π A B =ᵝ Π A' B')
+([A] t =ᵝ [A'] t')
+(t $ u =ᵝ t' $ u')
+(u =ᵝ t)
+(t =ᵝ v)
+(t =ᵝ u)
+([A] t $ u =ᵝ t ◁ u)
+File "/tmp/pts-rk-typed-equality.XDTjE0/TypedEquality.v", line 66, characters 14-24:
+Error: No such assumption.
+

@@ -1,0 +1,19 @@
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bounded_choice_sequence_injection
+     : (forall P : Prop, P \/ ~ P) ->
+       forall X c : Ens,
+       subset_choice X c ->
+       (forall n : nat, ~ equinumerous X (finite_carrier n)) ->
+       injection omega_codes X (bounded_choice_sequence X c)

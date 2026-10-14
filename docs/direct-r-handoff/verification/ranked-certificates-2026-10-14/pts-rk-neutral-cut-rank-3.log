@@ -1,0 +1,4 @@
+File "./ZFC_model/NeutralCutRank.v", line 10, characters 50-60:
+Error: Unable to locate library
+SortBounds with prefix PTSrk.NormalizationComplexity (while searching for a .vos file).
+

@@ -1,0 +1,7 @@
+Closed under the global context
+Closed under the global context
+Closed under the global context
+File "./ZFC_model/CanonicalTypeWitnesses.v", line 42, characters 0-4:
+Error:  (in proof beta_normal_product): Attempt to save an incomplete proof
+(there are remaining open goals).
+

@@ -18,21 +18,108 @@ soundness or the strength of the Ens representation.
 
 ## Checked construction
 
+`RankedDenotation.v` supplies structural certificates for normal original
+terms AND assigned types, with actual recursive formation/body witnesses.
+Membership and type rank follow from these witnesses. `RankedTransport.v`
+proves same-value renaming, weakening, context transport and normal type/code
+alignment. `RankedSubstitution.v` proves full-certificate nonlambda
+substitution, normalized-binder lifting, and the rank-zero case of general
+simultaneous bounded substitution. `NeutralCutRank.v` proves strict actual
+domain-rank descent when substitution turns a neutral head into a lambda;
+its bound on nonvariable images survives lifting under arbitrary binders.
+`RankedRootBeta.v` derives body membership from certificate children and
+preserves an arbitrary canonical redex value in the nonlambda-argument case.
+All-rank hereditary substitution, certificate totality, and agreement with
+arbitrary ORIGINAL denotations/valid valuations remain OPEN.
+
+`CanonicalValuationTransport.v` proves validity transport between contexts
+whose paired declarations have actual same-value canonical denotations.
+It does not infer that premise merely from original syntactic conversion.
+
+`CanonicalRenaming.v` preserves canonical denotation under arbitrary typed
+renamings. `CanonicalSubstitution.v` proves same-value substitution for
+normal nonlambda images, including all normal arguments of rank-zero type.
+`CanonicalContext.v` transports denotation and realization through original
+context typing morphisms, without asserting valuation validity transports.
+`CanonicalRealization.v` derives local membership/rank from unconditional
+canonical coherence and proves variable, sort, product and normal-codomain
+lambda realization. `CanonicalRootBeta.v` aligns arbitrary canonical redex
+witnesses when the original domain annotation is normal, proves actual
+product-domain rank descent, and obtains canonical root reduction for the
+proved substitution case. Higher-rank hereditary substitution, general
+semantic normalization and the full fundamental theorem remain OPEN.
+
+`CanonicalApplication.v` proves application realization for a normal inferred
+product and normal nonlambda argument, with a rank-zero corollary. It uses
+local realization inputs but no semantic-coherence premise.
+`CanonicalHereditary.v` proves normal-form existence for applications of
+normal operands with normal rank-one product type, and exact-value canonical
+semantic preservation in the normal-lambda branch. This is the application
+step from rank one to the proved rank-zero substitution case, NOT the full
+rank-one substitution lemma or an all-rank soundness theorem.
+
+`MaterialSetTheory.v` supplies independent first-order membership/equality
+syntax and natural deduction, with a proof of logical soundness. The
+bounded-formula embedding uses explicit membership guards. Ens satisfaction
+of the syntactic bounded-separation schema is proved, so the specialized
+logical soundness theorem requires classical logic but not an unproved
+theory-satisfaction premise. `MaterialZermelo.v` extends this to the actual
+first-order BZC axioms, including Foundation and von Neumann Infinity, and
+proves their Ens satisfaction under explicit classical logic and ordinary
+family_choice. It does not provide internal BZC derivations of the model's
+constructions, the material GCH/hierarchy theory, or full PTS soundness.
+
+`CanonicalTypeWitnesses.v` proves constructive normal-form existence and
+normal inferred type witnesses for originally typed lambdas/applications.
+`CanonicalDenotation.v` keeps the same annotated terms and model operations,
+requiring these implicit witnesses to be normal. Its valuation extensionality,
+same-value inclusion into original denotes, and COHERENCE are checked
+without a semantic-conversion premise. This is only an auxiliary subrelation:
+totality, beta/type-conversion preservation and agreement with unrestricted
+denotation remain open. Normal types are not closed under substitution;
+normalizing a substituted witness still needs semantic justification.
+
+`BoundedChoiceSequence.v` constructs the same countable selection sequence
+by bounded recursion, with an injection proof used by cardinal/product
+classification. `BoundedModelData.v` gives actual set bounds for global
+selectors and their graphs; the decoder is a subset of H, not asserted to
+be an element of H. These are still Ens proofs, not a BZC derivation.
+
+`TypedEquality.v` defines a native mutual typed-equality certificate over
+original annotated terms. Reflexivity and projection to original typing
+are checked. `TypedEqualityRenaming.v` proves native context regularity,
+structural renaming and weakening by mutual induction, without assuming
+endpoint regularity or preservation in the embedding definition.
+Original-to-certificate completeness and semantic soundness remain open;
+the existing target and PTS rules are unchanged.
+
+`BoundedDecoder.v` combines all three branches after proving their exact
+input/output specifications, excluding mismatched tags. The resulting
+bounded-separation graph is total on omega_codes, single-valued, evaluates
+to the existing decode, and equals all_decoding_graph. These theorems use
+the existing explicit supplied-hierarchy premises, without Choice or GCH.
+`BoundedDecodedSelection.v` uses that graph and omega_codes in bounded
+coding-witness selection. Its witness sets and source domain equal the
+original ones, and the selected values preserve the SAME selector s.
+Every rank-typed dependent product is in its source domain. Ordinary
+family_choice supplies the selector; no global/class Choice is introduced.
+The first-order Ens/BZC audit and typed semantic conversion remain open.
+
 `BoundedUniverses.v` gives a bounded graph for the exact original universes.
 `BoundedSortDecoder.v` proves decoding agreement at every sort tag 3*n+2.
 Together with the finite and infinite branches, this covers all individual
-code forms. Combining them into one certified graph and completing semantic
-conversion/first-order BZC certification remain open.
+code forms; their combination is now provided by BoundedDecoder.
 
 `BoundedRecursion.v` generalizes bounded iteration; `BoundedCodeArithmetic.v`
 uses it for uniform tripling of singleton numerals. The resulting finite
 decoder uses the actual 3*n tags and is correct for every finite code.
-Infinite/sort decoder branches and full model soundness remain open.
+The infinite/sort branches are also checked; full model soundness remains open.
 
 `BoundedCodeSelection.v` specializes bounded selection to the actual
 coding-witness predicate and proves agreement with the existing global
-selector. Every rank-typed dependent function space is covered. Decoder
-certification and full semantic soundness remain open.
+selector. Every rank-typed dependent function space is covered. The new
+decoded specialization supplies its decoder parameter by bounded separation;
+full semantic soundness remains open.
 
 `BoundedFormulaSelection.v` builds the selected graph for a total bounded
 formula by bounded separation and proves function membership and selection
@@ -42,14 +129,14 @@ predicates are not automatically covered by this theorem.
 `BoundedIteration.v` defines the uniform carrier graph by bounded separation
 using a least-closed-relation formula. It proves function membership and
 evaluation at every numeral. Correctness now uses finite bounded separators,
-not a native infinite comparison relation. A first-order foundation audit,
-full soundness and code-tag decoding remain open.
+not a native infinite comparison relation. A first-order foundation audit
+and full soundness remain open; code-tag decoding is now checked.
 
 `BoundedPowersets.v` certifies the powerset operation by a bounded formula
 and graph separated from the supplied envelope's Cartesian square. Its
 evaluation takes every carrier i to carrier(S i); closure follows from
-existing envelope lemmas. The indexed hierarchy's recursion and the
-first-order BZC interpretation remain unproved.
+existing envelope lemmas. BoundedIteration now supplies uniform recursion;
+the first-order BZC interpretation remains unproved.
 
 `RegularTyping.v` proves an equivalent induction certificate for original
 typing, carrying explicit type-formation subderivations; erasure and the
@@ -66,13 +153,13 @@ nor do they establish conversion itself.
 
 `BoundedFiniteCarriers.v` gives a bounded least-transitive-closure formula
 and uniform function graph for all finite numeral carriers. Code-tag
-arithmetic and the infinite/sort branches of decoding remain separate.
+arithmetic and the other branches are supplied by the decoder modules.
 
 `BoundedGraphs.v` builds formula-defined graphs by bounded separation and
 proves their application law, agreement with bounded extensional native
 functions, and function existence for total uniquely valued formulas.
-There is no Choice premise in these theorems. A bounded defining formula
-for the decoder and the first-order foundation audit remain necessary.
+There is no Choice premise in these theorems. BoundedDecoder now supplies
+the decoder formula; the first-order foundation audit remains necessary.
 
 `BoundedApplication.v` certifies the existing application value-fiber
 separation and gives a bounded formula for equality to its union, without

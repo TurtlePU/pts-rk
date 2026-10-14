@@ -1,5 +1,206 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — structural rank certificates and general cut bounds
+
+Use an inductive certificate indexed by both the normal ORIGINAL term and
+its normal assigned type, and by both actual semantic values. All semantic
+formation/body witnesses are recursive certificates; the neutral application
+constructor also retains its normalized result-type certificate. Retain
+original binder typing and normality when semantic domains may be empty.
+Do not assume certificate totality or replace the original target with it.
+
+Bound the source declaration ranks only for NONVARIABLE substitution images.
+This allows lifting under arbitrarily ranked binders. Neutral-spine typing
+then proves that every newly exposed lambda has actual domain rank strictly
+below the cut bound. The rank-zero simultaneous substitution theorem and
+normalized-binder extension compile; general higher-rank hereditary
+substitution is still an obligation. A head that stays neutral may have
+function rank above the cut bound: use its result-type certificate child.
+
+For root beta with a normal nonlambda argument, derive local body membership
+and ranks from certificate children, then preserve the arbitrary canonical
+redex value by coherence. Do not generalize this result to lambda arguments
+or unrestricted original denotations without the missing proofs.
+Validity transport uses actual same-value paired declaration witnesses,
+not a constructor asserting the desired validity implication.
+
+## 2026-10-14 — material BZC axioms are not internal model derivations
+
+Define the first-order BZC axioms independently of Ens and PTS semantics.
+Include actual von Neumann Infinity and Foundation. The Choice formula has
+a graph/no-junk clause and is equivalent to existing ordinary family_choice.
+Prove Ens satisfaction and the resulting independent logical soundness with
+classical logic and Choice explicit. This does NOT justify constructing
+the PTS model inside BZC: the required implication is in the other direction.
+The GCH/hierarchy theory and bounded definability of arbitrary denotation
+predicates remain open. Follow the user's order: this SAME model first with
+the hierarchy-existence assumption, then investigate eliminating it.
+
+## 2026-10-14 — canonical substitution, context transport and ranked root steps
+
+Preserve beta-normal implicit witnesses under substitutions whose images
+are normal and not lambdas. This is proved for arbitrary substitutions,
+not a finite test suite. In the original PTS a term with type of rank zero
+cannot be a lambda: every product type has positive rank. Consequently
+normal rank-zero arguments give a genuine semantic substitution base case,
+with identical denotation values and unchanged annotations.
+
+For an arbitrary canonical redex denotation with normal original domain,
+align its application and lambda witnesses using original typing uniqueness
+and normal-form uniqueness. Derive actual product-domain rank descent from
+the aligned typing, never from the result term's rank. Root reduction into
+canonical denotation additionally requires the proved substitution case;
+the general matching root lemma only concludes ORIGINAL denotation.
+Local canonical realizations supply actual-witness membership/rank by
+unconditional coherence, without an extra semantic-conversion premise.
+These local premises and normality restrictions remain explicit. They do
+not establish the unrestricted fundamental theorem.
+
+CanonicalApplication removes the old application's explicit coherence
+premises using canonical coherence, while retaining the genuine normal
+product/normal nonlambda argument restrictions. CanonicalHereditary proves
+the rank-one application branch via the actual rank-zero domain. Its normal
+lambda case has normal reduct AND normal substituted codomain, with the
+same semantic value and original typings. This does not establish the
+rank-one SUBSTITUTION case, whose lambda images can expose nested redexes.
+
+Canonical context transport uses original context typing morphisms. Terms,
+annotations and normal witnesses are unchanged; no semantic conversion is
+needed. It does NOT imply validity transports between converted contexts:
+validity additionally compares the semantics of the declaration terms.
+
+Higher-rank hereditary substitution must normalize substituted implicit
+witnesses while preserving their values and joint rank/membership evidence.
+Raw substitution closure cannot be asserted for lambda images. An NF-based
+relation with automatic conversion invariance would still require totality,
+compositionality and agreement with the actual model; defining that relation
+alone would not solve this obligation.
+
+## 2026-10-14 — independent material language and bounded separation
+
+MaterialSetTheory defines pure first-order membership/equality syntax and
+an independent classical natural-deduction system. No deduction constructor
+mentions Ens semantics or PTS soundness. Its general logical soundness
+theorem explicitly requires satisfaction of the syntactic theory. Embed
+the existing bounded formula language with actual membership guards and
+state the bounded-separation schema with a fresh output-set variable.
+
+Ens satisfaction of THIS schema is proved using Comp with the predicate
+of the actual bounded formula, including its extensionality proof. Thus
+the specialized logical soundness theorem discharges theory satisfaction;
+classical logic remains an explicit parameter. This is not a definition
+of all BZC/GCH/hierarchy axioms, not satisfaction of those axioms, and not
+an interpretation of the Ens representation in a weak first-order theory.
+Arbitrary Rocq predicates in other uses of Comp remain unaudited until
+their bounded defining formulas or eliminations are actually supplied.
+
+## 2026-10-14 — canonical implicit witnesses, not erased annotations
+
+Investigate an auxiliary denotation using beta-normal inferred body types
+and application product types. These are type witnesses, NOT new or erased
+source-term annotations. Keep the original term/context and the exact same
+H, selector and semantic operations. Original typing uniqueness and
+Church--Rosser identify normal witnesses syntactically. This permits a
+coherence induction on denotation itself, including its genuinely
+infinitely branching premises, without a finite-height argument.
+
+CanonicalTypeWitnesses proves existence of the required normal typing
+witnesses using original strong normalization and preservation. A direct
+normal-or-step proof makes normal-form existence constructive. Lambda
+domain annotations remain literally unchanged; only inferred typing
+results are normalized. This is syntactic evidence, not a proof that
+normalizing a type preserves its decoded denotation.
+
+The auxiliary relation is NOT a replacement target. Its inclusion into
+original denotes must preserve the same value. Totality, beta/type
+conversion and equivalence with unrestricted denotation remain open.
+In particular substitution can create redexes in a normal type, so do not
+assert closure under substitution or bootstrap full soundness from
+coherence alone. Native typed equality also still needs its own completeness
+and semantic proof; these independent prerequisites do not justify each
+other circularly.
+
+Possible continuation, NOT PROVED: joint membership and semantic hereditary
+substitution for normal terms/type witnesses, following the cut-rank
+ordering used by the original Ranks.SL/AL proofs. Newly exposed applications
+suggest a smaller domain cut rank. The decreasing measure, all dependent
+cases and the semantic theorem must actually be supplied; the syntactic
+reference is not itself a semantic proof or a termination assumption.
+
+## 2026-10-14 — native weakening without assuming endpoint regularity
+
+Use an inductive order-preserving context embedding: empty, insert a
+natively typed target declaration, or lift both contexts through the same
+renamed source declaration. The lift rule needs no typing premise. Prove
+preservation of wf/typ/equal mutually; source wf supplies the formation
+proof precisely when needed. This avoids hiding native equality endpoint
+regularity inside a renaming contract. Context lookup compatibility and
+ordinary typing/equality weakening are derived, not assumed. Native
+substitution, endpoint regularity and reverse completeness remain open.
+
+## 2026-10-14 — bounded countable selection in actual classification
+
+Use BoundedRecursion to define prefixes by S -> S union {c(X minus S)},
+with complement, application and adjoining expressed by bounded formulas.
+Project the prefix through the same selector. Prove agreement with the
+old chosen sequence, and prove injection directly from the bounded graph.
+Route bounded_cardinal_code through the new dichotomy; do not merely add
+an unused replacement theorem. The old native sequence remains a reference
+for correctness, not the graph used by the new infinite embedding.
+Finite-prefix numerical induction and Ens themselves still need a
+first-order foundation audit.
+
+## 2026-10-14 — bounds for global data are allowed above H
+
+Retain the actual graph bound in the set-indexed Choice existence proof.
+An arbitrary subset_choice X s contract does not constrain garbage edges
+of s, so never infer that bound from the contract alone. The existence
+theorem chooses a bounded selector and preserves all original witness
+values. Decoder edges belong to H by envelope pairing closure, so the
+decoder belongs to Power H. Global selector/selection bounds use further
+powersets and Cartesian products over H; no unproved membership in H is
+asserted. This matches a set-sized structure assembled USING the supplied
+hierarchy, rather than incorrectly forcing the whole structure inside it.
+
+## 2026-10-14 — native typed equality as an open conversion prerequisite
+
+The conversion -> realization/coherence -> root-beta route is circular.
+Neither raw-term SN nor an unproved finite height of denotes fixes it:
+implicit type witnesses can exceed term size, dependent denotation branches
+can have no uniform finite witness bound, and substitution can increase
+derivation size. The general difficulty and a typed-equality route are
+documented by [Siles--Herbelin](https://pauillac.inria.fr/~herbelin/articles/lics-SilHer10-pts-typed-conv.pdf).
+The [archived Coq development](https://florisvandoorn.com/ptsf/index.html)
+is a reference, NOT an imported theorem or trusted assumption.
+
+Implement only a native mutual typed-equality certificate over existing
+Term nat n, with original annotation-preserving projections proved. Do not
+silently import an annotation-erasure bridge, change the target calculus,
+or assume original-to-certificate completeness. That reverse direction and
+the semantic coherence/interpretation theorem still have to be proved.
+Projection/reflexivity alone does not break the semantic circularity.
+
+## 2026-10-14 — combine decoder branches with input classification
+
+Before combining branches, prove each application's input is equal to the
+appropriate finite/infinite/sort code, with the corresponding exact output.
+Use bounded application disjunction over the three already bounded graphs,
+separated from Prod omega_codes H. Prove omega_codes equals all_codes and
+the complete graph equals the original all_decoding_graph. Preserve the
+original decoder and selectors, using equality to justify bounded versions;
+do not substitute a new model. The given hierarchy premises are explicit.
+This closes the decoder-graph representation gap, not semantic conversion
+or derivability of the ambient Ens constructions in first-order BZC.
+
+BoundedDecodedSelection now replaces the code-domain/decoding parameters
+by omega_codes/bounded_decoder in the bounded selection graph. Formula
+extensionality proves the witness fibers and source domain unchanged.
+The selected value is proved equal for the SAME s; ordinary family_choice
+still supplies such an s. All typed product sources are covered uniformly.
+The old definitions are preserved and related by proved equality, not
+silently changed. Fresh build, recursive kernel audit and 147-stage local
+CI passed; these are Ens proofs, not first-order BZC soundness certificates.
+
 ## 2026-10-14 — exact bounded universe graph and sort decoding
 
 Express universe membership by bounding only the infinite-code indices.

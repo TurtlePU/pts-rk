@@ -1,0 +1,23 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+decoded_witness_graph_beta
+     : forall W H : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       forall s : Ens,
+       (forall A : Ens,
+        (exists e : Ens, IN e (global_code_witnesses H A)) ->
+        IN (apply_set s (global_code_witnesses H A))
+          (global_code_witnesses H A)) ->
+       forall A : Ens,
+       IN A (decoded_code_sources H) ->
+       EQ (apply_set (decoded_witness_graph H s) A)
+         (apply_set s (global_code_witnesses H A))
+        rocq ZFC_model/BoundedDecodedSelection.{glob,vo}

@@ -1,0 +1,39 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+normal_lambda_witness
+     : forall (G : Ctx nat ?n) (A : Term nat ?n) (t : Term nat (S ?n))
+         (T : Term nat ?n),
+       wf G ->
+       G ⊢ [A] t ⇐ T ->
+       exists B : Term nat (S ?n), beta_normal B /\ G & A ⊢ t ⇐ B
+where
+?n : [ |- nat]
+normal_application_witness
+     : forall (G : Ctx nat ?n) (t u T : Term nat ?n),
+       wf G ->
+       G ⊢ t $ u ⇐ T ->
+       exists (A : Term nat ?n) (B : Term nat (S ?n)),
+         beta_normal A /\
+         beta_normal B /\ G ⊢ t ⇐ Π A B /\ G ⊢ u ⇐ A /\ T =ᵝ B ◁ u
+where
+?n : [ |- nat]
+        rocq ZFC_model/CanonicalTypeWitnesses.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+CanonicalDenotation.coherent
+     : forall (H s : Ens) (n : nat) (G : Ctx nat n) 
+         (rho : Fin n -> Ens) (t : Term nat n) (v : Ens),
+       CanonicalDenotation.denotes H s n G rho t v ->
+       forall v' : Ens,
+       CanonicalDenotation.denotes H s n G rho t v' -> EQ v v'
+        rocq ZFC_model/CanonicalDenotation.{glob,vo}

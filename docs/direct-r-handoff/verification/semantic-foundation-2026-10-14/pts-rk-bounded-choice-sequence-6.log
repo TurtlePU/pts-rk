@@ -1,0 +1,5 @@
+Error: Multiple rules generated for
+_build/default/ZFC_model/BoundedChoiceSequence.glob:
+- ZFC_model/dune:1
+- file present in source tree
+Hint: rm -f ZFC_model/BoundedChoiceSequence.glob
