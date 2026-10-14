@@ -206,6 +206,9 @@ stage 06u-code-hierarchy "$ROOT" ZFC_model/CodeHierarchyBounds.vo
 stage 06v-supplied-hierarchy "$ROOT" ZFC_model/SuppliedHierarchy.vo
 stage 06w-bounded-bijections "$ROOT" ZFC_model/BoundedBijections.vo
 stage 06x-countable-pairing "$ROOT" ZFC_model/CountablePairing.vo
+stage 06y-cartesian-maps "$ROOT" ZFC_model/CartesianMaps.vo
+stage 06z-powerset-squares "$ROOT" ZFC_model/PowersetSquares.vo
+stage 06za-cantor-bernstein "$ROOT" ZFC_model/CantorBernstein.vo
 stage 07-proof-families "$ROOT" Interpretation_of_R/functional/DirectRProofs.vo
 stage 08-generators "$ROOT" Interpretation_of_R/functional/DirectRGenerated.vo
 stage 09-first-order "$ROOT" Interpretation_of_R/functional/DirectRFirstOrder.vo

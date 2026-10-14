@@ -1,0 +1,9 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+cantor_bernstein
+     : (forall P : Prop, P \/ ~ P) ->
+       forall A B : Ens, embeds A B -> embeds B A -> equinumerous A B
+        rocq ZFC_model/CantorBernstein.{glob,vo}

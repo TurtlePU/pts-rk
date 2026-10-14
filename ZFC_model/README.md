@@ -18,6 +18,21 @@ soundness or the strength of the Ens representation.
 
 ## Checked construction
 
+`CantorBernstein.v` constructs a bijection from two opposing graph injections.
+It uses a least closed region defined within A and Power A, avoiding collection
+of a sequence of iterates. The final theorem has classical excluded middle
+as an explicit premise; no global classical or choice axiom is imported.
+The predicates still need certificates in the bounded formula syntax for the
+first-order foundation audit. This proves cardinal comparison infrastructure,
+not the missing GCH classification or PTS soundness theorem.
+
+`CartesianMaps.v` and `PowersetSquares.v` prove Cartesian-square absorption
+at every finite powerset level, using distinct tags to encode two subsets.
+They derive the actual decoded dependent-product bound at max(m+1,n), without
+GCH, choice or supplied fiber injections. These are powerset representatives:
+GCH classification is still needed to find an equinumerous available cardinal
+code, followed by coherent bijection selection and original PTS soundness.
+
 `CountablePairing.v` constructs a set-graph bijection from the Cartesian
 square of omega_codes onto omega_codes, using the checked natural-number
 Cantor pairing and its inverse. This establishes the countable base for

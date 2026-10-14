@@ -1,5 +1,36 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — Schroeder--Bernstein without sequence collection
+
+The pinned ZFC subset and installed Stdlib provided no directly reusable
+Schroeder--Bernstein theorem for these set graphs. Construct a least closed
+region by separation from A, quantifying over Power A. Prove its one-step
+decomposition through another bounded candidate subset, then glue f and the
+inverse relation of g to obtain the bijection. The final theorem explicitly
+takes excluded middle, as appropriate for a classical set-theory development;
+no global axiom is added. Formula-syntax certification, GCH classification
+and model soundness remain separate unfinished obligations.
+
+## 2026-10-14 — all-rank decoded dependent-product upper bound
+
+Build Cartesian graph maps explicitly, encode pairs of subsets by disjoint
+tags, and propagate square absorption through every powerset level. Combine
+with flattening and direct images to get the bound max(m+1,n). For actual
+decoded fibers, use their established subset bounds to include their function
+space in the constant-carrier function space. This avoids requiring chosen
+fiber injections. The result is uniform in m,n,a,b, with no GCH/choice premise.
+It proves an upper bound for powerset representatives, not that the product
+is equinumerous with an available code. GCH classification and coherent coding
+remain required for the original PTS soundness theorem.
+
+## 2026-10-14 — derive the countable subset exponent from Cartesian pairing
+
+After commit 34b85de, combine the explicit flattening injection and powerset
+image injection with the countable square bijection. This proves the
+countable subset-valued exponent bound, plus a generic square-absorption
+lemma and a dependent version with supplied fiber injections. No GCH, choice,
+or global family of injections is assumed by the nondependent theorem.
+
 ## 2026-10-14 — countable Cartesian base as an actual graph bijection
 
 CountablePairing uses Stdlib.Arith.Cantor's checked pairing/inverse to construct

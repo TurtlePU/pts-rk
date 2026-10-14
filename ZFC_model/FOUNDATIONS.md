@@ -81,6 +81,22 @@ references for the foundation audit, not citations proving this PTS model.
 
 ## Checked bounded-formula checkpoint
 
+CantorBernstein.v supplies Schroeder--Bernstein for actual set-graph injections,
+with excluded middle explicitly quantified in the theorem. The least closed
+region is separated from A by quantifying over subsets in Power A. Thus its
+construction avoids collecting an omega-sequence of iterates via Replacement.
+Its full predicates have not yet been translated into Bounded.Formula; the
+bounded-language certificate remains an audit obligation. Closed theorem
+reports do not erase the explicit classical-logic premise.
+
+The cardinal upper bound has advanced: CartesianMaps/PowersetSquares prove
+Cartesian absorption throughout the finite powerset carriers, then the
+decoded dependent-product bound at max(m+1,n). This construction uses actual
+subset bounds of decoded fibers, so no family of chosen fiber injections is
+required. GCH is not used in this upper bound for powerset representatives.
+It remains needed for the intended classification into available cardinal
+codes; no classification/nonemptiness theorem is claimed from the bound.
+
 BoundedBijections.v now certifies bijections and the eligible-witness predicate
 in the bounded formula syntax. Its graph clause excludes arbitrary non-pair
 elements, which functionality alone would not exclude. The separated witness

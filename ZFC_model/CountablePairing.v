@@ -3,7 +3,7 @@
 From Stdlib Require Import Arith.Cantor.
 From ZFC Require Import Sets Axioms Cartesian.
 From PTSrkModel Require Import SetFunctions SetApplication SetBijections
-  ProductEmbedding CodeUniverses CountableCodes.
+  ProductEmbedding CodeUniverses CountableCodes CardinalGrowth PowersetEmbedding SubsetFunctions.
 Import CodeUniverses.CodeUniverses.
 
 Definition pair_repr (p : nat * nat) := Couple (numeral (fst p)) (numeral (snd p)).
@@ -91,6 +91,27 @@ Qed.
 Theorem countable_square_equinumerous : equinumerous (Prod omega_codes omega_codes) omega_codes.
 Proof. exists pairing_graph; apply countable_pairing_bijection. Qed.
 
+Theorem square_absorption_subset_exponent K : embeds (Prod K K) K ->
+  embeds (dependent_product K (fun _ => Power K)) (Power K).
+Proof.
+  intro HK. eapply embeds_transitive; [apply subset_function_embeds |].
+  apply powerset_embeds; exact HK.
+Qed.
+Theorem countable_subset_exponent :
+  embeds (dependent_product omega_codes (fun _ => Power omega_codes)) (Power omega_codes).
+Proof. apply square_absorption_subset_exponent, countable_square_embeds. Qed.
+Theorem countable_dependent_subset_exponent B enc :
+  (forall x, IN x omega_codes -> injection (B x) (Power omega_codes) (apply_set enc x)) ->
+  embeds (dependent_product omega_codes B) (Power omega_codes).
+Proof.
+  intro HB. eapply embeds_transitive.
+  - apply (dependent_subset_product_bound omega_codes omega_codes B enc); exact HB.
+  - apply powerset_embeds, countable_square_embeds.
+Qed.
+
+Print Assumptions square_absorption_subset_exponent.
+Print Assumptions countable_subset_exponent.
+Print Assumptions countable_dependent_subset_exponent.
 Print Assumptions omega_pair_membership.
 Print Assumptions countable_pairing_bijection.
 Print Assumptions countable_square_embeds.

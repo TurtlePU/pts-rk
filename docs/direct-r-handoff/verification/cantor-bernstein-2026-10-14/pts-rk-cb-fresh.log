@@ -1,0 +1,61 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+        rocq vendor/zfc/.ZFC.theory.d
+File "./vendor/zfc/Sets.v", line 111, characters 0-40:
+Warning: Implicitly declaring hint databases is deprecated. Please explicitly
+create "zfc"
+[implicit-create-hint-db,deprecated-since-9.2,deprecated,default]
+        rocq vendor/zfc/Sets.{glob,vo}
+        rocq vendor/zfc/Axioms.{glob,vo}
+        rocq vendor/zfc/Cartesian.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetFunctions.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetApplication.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetBijections.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+dependent_product_injection
+     : forall (A K : Ens) (B enc : Ens -> Ens),
+       family_extensional enc ->
+       (forall x : Ens, IN x A -> injection (B x) K (enc x)) ->
+       injection (dependent_product A B)
+         (dependent_product A (fun _ : Ens => K)) 
+         (product_injection A B enc)
+dependent_product_injection_from_graph
+     : forall (A K : Ens) (B : Ens -> Ens) (enc : Ens),
+       (forall x : Ens, IN x A -> injection (B x) K (apply_set enc x)) ->
+       injection (dependent_product A B)
+         (dependent_product A (fun _ : Ens => K))
+         (product_injection A B (apply_set enc))
+        rocq ZFC_model/ProductEmbedding.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+cantor_bernstein
+     : (forall P : Prop, P \/ ~ P) ->
+       forall A B : Ens, embeds A B -> embeds B A -> equinumerous A B
+        rocq ZFC_model/CantorBernstein.{glob,vo}

@@ -1,5 +1,111 @@
 # Live proof-development state — 2026-10-14
 
+## Commit retry and comparison audit correction
+
+The previous turn was progress: it completed the interrupted CI run (103
+stages). Current permissions allow retrying the already requested commit.
+Audit correction: the earlier record claimed a CantorBernstein kernel check
+without a retained log or observed command. Ran that check now against the
+isolated compiled module: exit 0, no axioms or unsafe settings. Excluded middle
+remains an explicit theorem parameter, despite the closed global assumptions.
+The exact command and log are appended to the comparison verification record.
+Prepare `ZFC model: prove product bounds and Schroeder-Bernstein` from parent
+34b85debaf46290aedc12632245db26717112b26. User logs/ are excluded.
+
+## Cardinal comparison checkpoint verified; commit environment blocked
+
+CantorBernstein.v constructs Schroeder--Bernstein from two set-graph
+injections, with excluded middle an explicit theorem premise. CartesianMaps
+and PowersetSquares supply the all-rank upper bound described below. Targeted
+build/kernel checks passed. A complete rerun of local CI passed all 103
+stages (result retained under verification/cantor-bernstein-2026-10-14/).
+
+The requested commit could not be created: Git failed to create
+.git/index.lock with `Operation not permitted`; `.git/index.lock` does not
+exist, so this is repository permission state rather than a stale lock. Source
+and documentation changes remain in the worktree. Do not claim a commit until
+the index becomes writable.
+
+Next proof goal: use the comparison theorem with the all-rank embedding bound
+to formulate exact GCH/cardinal-code assumptions and prove eligible-witness
+nonemptiness. The theorem currently exposes classical logic explicitly; its
+bounded-formula translation remains outstanding. Original PTS interpretation
+and soundness are still not proved.
+
+## All-rank decoded dependent-product upper bound checked
+
+Previous turn made progress on countable pairing and its exponent bound.
+CartesianMaps.v now builds actual Cartesian graph injections; PowersetSquares.v
+uses disjoint tags to propagate square absorption through every powerset
+carrier. The resulting model-specific theorem is:
+
+    decoded_dependent_product_bound : forall m n a b,
+      IN a (U m) ->
+      (forall x, IN x (decode a) -> IN (b x) (U n)) ->
+      embeds (dependent_product (decode a) (fun x => decode (b x)))
+        (carrier (Nat.max (S m) n)).
+
+This proves the actual upper bound uniformly, without GCH, choice, or supplied
+fiber injections. Two CartesianMaps and nine PowersetSquares reports are
+closed. The theorem does not identify the product with an available code;
+GCH/cardinal classification and coherent bijection selection remain unproved.
+Hierarchy identification/BZC derivability and original PTS typing soundness
+also remain unproved. The goal stays active with model-first ordering.
+
+CartesianMaps incremental build exited 0. PowersetSquares iterations exited
+1,0,0,0: the failure was a tactic branch count in tagged_pair, fixed with
+explicit branches without changing statements. Fresh build exited 0 and
+printed 118 closed reports including dependencies. Recursive kernel check
+exited 0 with imported functional_extensionality_dep in its library-wide
+summary, no unsafe settings. Full local CI including pristine upstream passed
+all 102 stages, exit 0. Commands/raw logs including failure retained under
+verification/powerset-squares-2026-10-14/COMMANDS.md.
+
+HEAD remains 34b85debaf46290aedc12632245db26717112b26. The prior exponent
+lemmas and this turn's code/docs/logs are uncommitted. User logs/ preserved;
+no new commit or push performed.
+
+Next proof goal: obtain exact available cardinal codes from the upper bound.
+Fix a precise GCH statement independently of the PTS target, derive the
+classification of sets embeddable into each finite powerset carrier, and
+prove eligible-witness nonemptiness. This still requires cardinal comparison
+and a finite/countable base classification; do not insert the result as a
+model assumption. Next inspection command:
+`rg -n 'GCH|choice|cardinal|well.order|Schroeder|Bernstein' ZFC_model vendor/zfc docs/direct-r-handoff`.
+Next build command (README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/PowersetSquares.vo`.
+
+## Witness/pairing checkpoint committed; countable exponent bound proved
+
+Committed accumulated work as 34b85debaf46290aedc12632245db26717112b26,
+`ZFC model: construct bounded witnesses and countable pairing`. No push
+requested/performed; user logs/ excluded and preserved.
+
+Continued afterward with three theorems in CountablePairing.v. Any K that
+absorbs its Cartesian square also absorbs the subset-valued function space
+K -> P(K) into P(K). Instantiating the new pairing gives:
+
+    countable_subset_exponent :
+      embeds (dependent_product omega_codes (fun _ => Power omega_codes))
+        (Power omega_codes).
+
+The dependent version accepts explicitly supplied fiber injections. It does
+not assume or construct those injections globally. All three new reports are
+closed. Incremental build and rebuild in the isolated directory exited 0;
+recursive kernel check exited 0, reporting no axioms or unsafe settings.
+The seven module reports are closed; additional dependency reports appear in
+the rebuild log. Exact commands/raw logs appended to the pairing checkpoint.
+Full 100-stage CI covers the committed checkpoint; the later exponent lemmas
+received targeted rebuild/kernel checks. Current source/doc/log changes since
+the commit are uncommitted.
+
+Next proof: propagate Cartesian-square absorption through powersets by
+encoding two subsets with disjoint tags, then derive all-rank Cartesian and
+subset-exponent bounds. GCH classification/nonemptiness, coherent choice,
+hierarchy identification, and original PTS soundness remain open. Next command
+(README environment exports first):
+`opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/CountablePairing.vo`.
+
 ## Countable Cartesian square bijection checked; commit requested
 
 The previous turn constructed bounded eligible-witness sets. This turn adds
