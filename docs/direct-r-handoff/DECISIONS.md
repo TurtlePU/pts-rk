@@ -1,5 +1,25 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — scope the BZC/GCH foundation claim precisely
+
+Audit the actual no-intermediate-cardinal (injection-gap) GCH principle;
+do not add initial-ordinal representatives or successor-cardinal existence
+silently. A relative V_(omega+omega) countermodel shows that this BZC + GCH
+does not itself supply the collected envelope of the current construction.
+Existence of the full hierarchy is a sufficient source of the required
+rank bounds; its minimality among possible extra axioms is not established.
+
+Global decoder/selector data may live in fixed finite powersets above H;
+the set-sized model does not require them to be members of H. This uses
+only the ordinary finite set operations once H is available.
+
+Keep the BZC derivability claim OPEN: denotation_family_choice and
+paired_relation_choice still use arbitrary-predicate separation. A proposed
+bounded material encoding uses a least closed relation over a fixed set J,
+quantifying over Power J, but its rule formula and agreement with original
+typed denotation must be proved before claiming the full foundation reduction.
+The complete audit and exact source references are in ZFC_model/BZC_AUDIT.md.
+
 ## 2026-10-14 — discharge original semantic conversion and soundness
 
 Normalize existing ORIGINAL denotation derivations structurally, keeping

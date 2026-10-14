@@ -1,5 +1,40 @@
 # Live proof-development state — 2026-10-14
 
+## BZC foundation audit — collected hierarchy needed; formal reduction OPEN
+
+Source/mathematical audit is in ZFC_model/BZC_AUDIT.md. Under the
+injection-gap formulation of GCH actually used by this construction,
+BZC + GCH alone does not guarantee its supplied envelope. In an ambient
+ZFC + GCH universe, M = V_(omega+omega) satisfies BZC and injection-gap
+GCH; carrier n has rank omega+n, so no H in M contains every carrier n.
+This is a relative-model argument, not a new Rocq theorem. It concerns
+this collected set-sized construction, not all possible class interpretations.
+Do not silently assume ordinal-cardinal representatives in weak GCH.
+
+Supplying the actual V_(omega+omega) permits W = V_omega and supplies
+the model's finite-level bounds. The global decoder and selector can use
+fixed finite powersets beyond H, available in BZC; no additional collected
+omega-sequence above H is identified. This does NOT certify arbitrary
+Comp predicates. The first remaining formal goal is a bounded formula for
+the original denotation-witness relation used by DenotationChoice and
+PairedChoice, with an agreement theorem on original typed valid valuations.
+The audit records a least-closed-relation construction over a fixed set J
+and Power J as a method to instantiate, not as an already proved certificate.
+Material cardinal comparison/GCH and hierarchy bridges remain unformalized.
+
+HEAD c91f956; proof sources unchanged. This continuation updates audit and
+handoff documentation only; no commit/push was performed for this check.
+User logs/ and generated .lia.cache remain preserved. Targeted baseline
+build exited 0 (cached); newly executed AUDIT.v exited 0 with all 14 closed
+reports and full conditional theorem types. No timeout or compiler failure.
+Exact commands and logs: verification/bzc-foundation-audit-2026-10-14/.
+The proof audit is not a proof of BZC derivability.
+Next exact baseline command, with the documented OPAMROOT/PATH:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/Denotation.vo ZFC_model/BoundedFormulaSelection.vo ZFC_model/MaterialZermelo.vo
+```
+
 ## Original model soundness — proved and freshly verified
 
 ModelSoundness.original_typing_sound now proves the ORIGINAL typing

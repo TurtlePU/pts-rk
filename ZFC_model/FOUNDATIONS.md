@@ -1,5 +1,13 @@
 # Foundation-strength goal — open
 
+The source and mathematical audit of 2026-10-14 is recorded in
+[BZC_AUDIT.md](BZC_AUDIT.md). It exhibits a relative countermodel to obtaining
+the present collected envelope from BZC + injection-gap GCH alone, explains
+the bounds supplied by V_(omega+omega), and identifies the exact remaining
+bounded-denotation certificate. It does not claim the material BZC reduction
+has been proved in Rocq. The distinction between injection-gap GCH and
+additional ordinal-cardinal existence assertions matters in this weak theory.
+
 Revised user direction: first reformulate the model already being developed
 as a set-sized model in **Bounded Zermelo set theory with Choice (BZC) + GCH
 + existence of V_{omega+omega}**, and finish its soundness proof. Only then
