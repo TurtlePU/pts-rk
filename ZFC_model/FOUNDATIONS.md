@@ -81,6 +81,103 @@ references for the foundation audit, not citations proving this PTS model.
 
 ## Checked bounded-formula checkpoint
 
+BoundedUniverses.v constructs the graph of the exact existing U n by
+bounded separation. BoundedSortDecoder.v handles every tag 3*n+2 and proves
+agreement with decode. All individual decoder branches are now covered;
+combination requires off-branch exclusion and a full graph agreement proof.
+The first-order Ens/BZC certification and typed semantic conversion remain open.
+
+BoundedInfiniteDecoder.v supplies the infinite-code branch, using the actual
+3*n+1 tags and the bounded carrier graph. Evaluation agrees with existing
+decode at every infinite code under the supplied hierarchy premises.
+Sort-code decoding, combination of branches, and first-order certification
+of the ambient construction remain open.
+
+BoundedRecursion.v supplies uniform bounded iteration from a supplied step
+graph, using finite separators in correctness. BoundedCodeArithmetic.v
+instantiates triple singleton successor and proves the tripling equation
+for every numeral. Its bounded_finite_decoder composes that graph with
+finite_carrier_graph and evaluates repr(finite n) to finite_carrier n for
+all n. Infinite/sort decoding and the first-order Ens audit remain open.
+
+BoundedCodeSelection.v applies bounded selection to the model's actual
+codeWitnessF, with an admissible source domain also defined by bounded
+separation. Its graph agrees with the existing global witness selector
+using the same s, and every rank-typed dependent function space belongs
+to the domain under the existing model premises. This supplies a bounded
+representation of the actual selection operation; the decoder supplied
+as a parameter, arbitrary denotation predicates, and the first-order
+Ens/BZC interpretation remain open audit obligations.
+
+BoundedFormulaSelection.v constructs an actual selected graph for a total
+bounded-formula relation by separation on Prod A B. Candidate fibers are
+bounded by Power B and selection values are certified with applyValueF.
+Function membership and predicate satisfaction are proved under ordinary
+set-indexed family_choice. This does not provide bounded definitions of
+the denotation predicates or settle the first-order Ens interpretation.
+
+BoundedChoice.bounded_relation_choice now invokes one selector on nonempty
+subsets of the fixed codomain B, rather than collecting a native range of
+candidate sets. bounded_relation_choice_from_selector proves that this
+restricted selector suffices. Denotation and paired witness selection
+inherit this change. Arbitrary P separation and the native selected graph
+still need first-order certification; the formula specialization only
+certifies the candidate predicate. Ordinary family_choice is set-indexed,
+not a declared global/class-choice axiom, but this does not audit all
+constructions feeding its invocations.
+
+BoundedIteration.v constructs the uniform graph numeral n -> carrier n
+by a least-closed-relation formula bounded over Power(Prod omega_codes H).
+The graph is separated from Prod omega_codes H and its evaluation theorem
+holds for all n. Its correctness proof now uses finite separators, each
+constructed by bounded formula separation, instead of a native sup-indexed
+comparison relation. No set of all separators is required. First-order
+induction and the Ens representation still need justification; do not infer
+full Replacement elimination from this particular construction.
+Code-tag decoding and the uniform sort-universe branch remain open.
+
+BoundedPowersets.v supplies a bounded formula for powerset equality under
+an explicit adequate subset bound, and a graph formed by separation on
+Prod H H. Existing supplied-envelope transitivity and powerset closure
+prove this graph is a function H -> H, evaluated correctly on every actual
+carrier index. No new model assumption or Choice premise is needed. This
+certifies the successor operation, not uniform set-coded recursion or
+first-order existence of the supplied hierarchy/Ens representation.
+
+BoundedFiniteCarriers.v proves that finite_carrier n is the least transitive
+set containing the members of the singleton numeral n. Minimality needs
+only quantification over Power omega_codes, yielding a bounded equality
+formula. BoundedGraphs constructs the uniform graph omega_codes ->
+Power omega_codes by separation, and its evaluation is proved equal to
+finite_carrier n for every n. No family_choice premise is used. This does
+not itself recover n from the finite code numeral (3*n); that step is now
+provided by BoundedCodeArithmetic. Infinite/sort codes and existence of
+omega_codes in a first-order BZC calculus remain to be certified.
+
+BoundedGraphs.v constructs a graph by separation on Prod A B, with a
+syntactically bounded edge formula built from a supplied formula p(x,y).
+BoundedFormulaTransport.holds_rename proves the index-renaming step used
+to insert parameters and the edge variable. The graph's application law
+is proved; when p is total and uniquely valued in B, the graph is a
+function and apply_set satisfies p. No family_choice premise, native
+function selection, or graph-as-sup occurs in this construction. It agrees
+with graph A f whenever p defines the bounded extensional f. This supplies
+the generic separation step for a definable decoder, not its still-missing
+bounded defining formula or a derivation of the underlying Ens/Prod
+operations in a first-order BZC calculus.
+
+BoundedApplication.v now gives a syntactic certificate for the separation
+predicate in SetApplication.value_fiber and proves equality of the existing
+application with the union of that formula-defined fiber. applyValueF
+characterizes equality to apply_set using only bounded quantifiers and
+set variables, even for empty or nonfunctional graphs. The universally
+available value_bound (three unions of the graph) supplies its value bound.
+CodeHierarchyBounds.decoding_value_certificate specializes this formula to
+the decoding graph, with values bounded by Power (carrier i). This certifies
+decoding equality GIVEN that graph; it does not justify the graph's sup-based
+construction, code enumeration, finite hierarchy recursion, or the Ens
+representation in first-order BZC.
+
 CantorBernstein.v supplies Schroeder--Bernstein for actual set-graph injections,
 with excluded middle explicitly quantified in the theorem. The least closed
 region is separated from A by quantifying over subsets in Power A. Thus its

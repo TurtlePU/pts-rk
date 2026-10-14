@@ -1,0 +1,66 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedIteration.v", line 35, characters 40-42:
+Error:
+In environment
+n : nat
+r : Fin n -> Ens
+R, O, H, P, z, b : Fin n
+HB : application (r R) (r z) (r b)
+HC :
+  forall x : Ens,
+  IN x (r O) ->
+  forall x0 : Ens,
+  IN x0 (r (eq_rect n Fin H n eq_refl)) ->
+  forall x1 : Ens,
+  IN x1 (fin_match x r (eq_rect (S n) Fin (fsucc O) (S n) eq_refl)) ->
+  forall x2 : Ens,
+  IN x2
+    (fin_match x0 (fin_match x r)
+       (eq_rect (S (S n)) Fin (fsucc (fsucc H)) (S (S n)) eq_refl)) ->
+  application
+    (fin_match x1 (fin_match x0 (fin_match x r))
+       (eq_rect (S (S (S n))) Fin (fsucc (fsucc (fsucc R))) 
+          (S (S (S n))) eq_refl))
+    (fin_match x1 (fin_match x0 (fin_match x r))
+       (eq_rect (S (S (S n))) Fin (fsucc (fsucc fzero)) (S (S (S n))) eq_refl))
+    (fin_match x1 (fin_match x0 (fin_match x r))
+       (eq_rect (S (S (S n))) Fin (fsucc fzero) (S (S (S n))) eq_refl)) /\
+  EQ
+    (fin_match x1 (fin_match x0 (fin_match x r))
+       (eq_rect (S (S (S n))) Fin fzero (S (S (S n))) eq_refl))
+    (Sing
+       (fin_match x1 (fin_match x0 (fin_match x r))
+          (eq_rect (S (S (S n))) Fin (fsucc (fsucc fzero)) 
+             (S (S (S n))) eq_refl))) /\
+  application
+    (fin_match x1 (fin_match x0 (fin_match x r))
+       (eq_rect (S (S (S n))) Fin (fsucc (fsucc (fsucc P))) 
+          (S (S (S n))) eq_refl))
+    (fin_match x1 (fin_match x0 (fin_match x r))
+       (eq_rect (S (S (S n))) Fin (fsucc fzero) (S (S (S n))) eq_refl))
+    x2 ->
+  application
+    (fin_match x1 (fin_match x0 (fin_match x r))
+       (eq_rect (S (S (S n))) Fin (fsucc (fsucc (fsucc R))) 
+          (S (S (S n))) eq_refl))
+    (fin_match x1 (fin_match x0 (fin_match x r))
+       (eq_rect (S (S (S n))) Fin fzero (S (S (S n))) eq_refl))
+    x2
+i, x, j, y : Ens
+Hi : IN i (r O)
+Hx : IN x (r H)
+Hj : IN j (r O)
+Hy : IN y (r H)
+HR : application (r R) i x
+ES : EQ j (Sing i)
+HP : application (r P) x y
+The term "HR" has type "application (r R) i x"
+while it is expected to have type "Formula ?n".
+
+File "ZFC_model/dune", lines 1-5, characters 0-1109:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication BoundedGraphs BoundedFiniteCarriers RegularTyping RealizationInduction BoundedPowersets BoundedIteration)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/BoundedIteration.{glob,vo} (exit 1)

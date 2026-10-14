@@ -3,7 +3,7 @@
 From Equations Require Import Equations.
 From ZFC Require Import Sets Axioms.
 From PTSrk Require Import Syntax Context Typing Ranks Preservation DefEq AbstractRewriting.
-From PTSrkModel Require Import SyntaxSubstitution Denotation.
+From PTSrkModel Require Import SyntaxSubstitution Denotation InterpretedContexts.
 
 Definition context_typing_morphism {n} (G D : Ctx nat n) :=
   forall i, @typ nat RankSorts n D (var i) (G !! i).
@@ -112,3 +112,29 @@ Proof.
   - eapply wf_cons; eauto.
 Qed.
 Print Assumptions denotes_binder_context_conversion.
+
+(** Realization transports at a fixed valuation without assuming preservation
+    of validity of that valuation. The latter also changes declaration terms
+    and must not be inferred from syntactic context conversion alone. *)
+Theorem realizes_context_transport H s n (G D : Ctx nat n) rho t T :
+  context_typing_morphism G D -> realizes H s G rho t T ->
+  realizes H s D rho t T.
+Proof.
+  intros HM [v [a [Dt [DT Hv]]]]. exists v, a. split.
+  - eapply denotes_context_transport; eassumption.
+  - split; [eapply denotes_context_transport; eassumption | exact Hv].
+Qed.
+
+Theorem realizes_context_conversion H s n (G D : Ctx nat n) rho t T :
+  contexts_convertible n G D -> @wf nat RankSorts n G -> @wf nat RankSorts n D ->
+  (realizes H s G rho t T <-> realizes H s D rho t T).
+Proof.
+  intros HC HG HD. split; apply realizes_context_transport;
+    apply context_conversion_morphism.
+  - exact HC.
+  - exact HG.
+  - apply contexts_convertible_sym; exact HC.
+  - exact HD.
+Qed.
+Print Assumptions realizes_context_transport.
+Print Assumptions realizes_context_conversion.

@@ -18,6 +18,109 @@ soundness or the strength of the Ens representation.
 
 ## Checked construction
 
+`BoundedUniverses.v` gives a bounded graph for the exact original universes.
+`BoundedSortDecoder.v` proves decoding agreement at every sort tag 3*n+2.
+Together with the finite and infinite branches, this covers all individual
+code forms. Combining them into one certified graph and completing semantic
+conversion/first-order BZC certification remain open.
+
+`BoundedRecursion.v` generalizes bounded iteration; `BoundedCodeArithmetic.v`
+uses it for uniform tripling of singleton numerals. The resulting finite
+decoder uses the actual 3*n tags and is correct for every finite code.
+Infinite/sort decoder branches and full model soundness remain open.
+
+`BoundedCodeSelection.v` specializes bounded selection to the actual
+coding-witness predicate and proves agreement with the existing global
+selector. Every rank-typed dependent function space is covered. Decoder
+certification and full semantic soundness remain open.
+
+`BoundedFormulaSelection.v` builds the selected graph for a total bounded
+formula by bounded separation and proves function membership and selection
+correctness. Ordinary set-indexed Choice is explicit; arbitrary denotation
+predicates are not automatically covered by this theorem.
+
+`BoundedIteration.v` defines the uniform carrier graph by bounded separation
+using a least-closed-relation formula. It proves function membership and
+evaluation at every numeral. Correctness now uses finite bounded separators,
+not a native infinite comparison relation. A first-order foundation audit,
+full soundness and code-tag decoding remain open.
+
+`BoundedPowersets.v` certifies the powerset operation by a bounded formula
+and graph separated from the supplied envelope's Cartesian square. Its
+evaluation takes every carrier i to carrier(S i); closure follows from
+existing envelope lemmas. The indexed hierarchy's recursion and the
+first-order BZC interpretation remain unproved.
+
+`RegularTyping.v` proves an equivalent induction certificate for original
+typing, carrying explicit type-formation subderivations; erasure and the
+original-typing embedding are both checked. `RealizationInduction.v` uses
+it to derive realization for every original typing, CONDITIONAL on typed
+decoded conversion. Component realization and rank obligations are now
+derived in that induction, not separate model premises. The conversion
+premise is still unproved; this is not unconditional soundness.
+
+The same module now derives coherence of arbitrary typed denotations,
+membership in any denotation of their type, and universe-rank membership
+from that SAME conversion premise. These are not independent assumptions,
+nor do they establish conversion itself.
+
+`BoundedFiniteCarriers.v` gives a bounded least-transitive-closure formula
+and uniform function graph for all finite numeral carriers. Code-tag
+arithmetic and the infinite/sort branches of decoding remain separate.
+
+`BoundedGraphs.v` builds formula-defined graphs by bounded separation and
+proves their application law, agreement with bounded extensional native
+functions, and function existence for total uniquely valued formulas.
+There is no Choice premise in these theorems. A bounded defining formula
+for the decoder and the first-order foundation audit remain necessary.
+
+`BoundedApplication.v` certifies the existing application value-fiber
+separation and gives a bounded formula for equality to its union, without
+assuming graph functionality. `decoding_value_certificate` specializes it
+to the decoding graph with an explicit powerset bound. The graph's own
+first-order construction remains an open foundation obligation.
+
+`RootBeta.realized_root_beta` now compares an arbitrary redex denotation
+with the shared ranked witness. It derives lambda/application coherence
+from body/argument coherence and local conversion of typing witnesses;
+redex coherence itself is not a premise. The reduct denotes the original
+value, with membership in a ranked denotation of its substituted type.
+This route removes universal rank/membership premises but still requires
+constituent realization and conversion facts from the fundamental proof.
+
+`DenotationInversion.lambda_product_body` proves from original typing alone
+that every product witness for a lambda has a domain convertible to its
+annotation and a codomain that types the body in the annotated context.
+The beta proof now uses this fact and binder transport to derive its
+application-fiber conversion obligation from body-type conversion. Its
+remaining domain conversion compares typed domains to the annotation;
+there are no separate application product-witness conversion premises.
+
+`DenotationBeta.realized_beta` constructs a shared, semantically typed
+value for a redex and its actual substituted reduct from constituent
+realizations and decoded type coherence. It also supplies a ranked code
+for the substituted result type. This is an existence theorem under local
+induction premises, not coherence of all alternative denotations.
+
+The new `lambda_realization_from_induction` and
+`application_realization_from_induction` lemmas use ordinary existential
+realizations and decoded type coherence to select ranked witnesses.
+They do not require a universal rank bound on every possible denotation.
+Product coherence likewise requires only equality of decoded components.
+General realization/coherence and conversion remain unproved.
+
+`RootBeta.v` inverts arbitrary redex/lambda denotations, derives syntactic
+product-witness equalities and type correctness, and transports the
+codomain into the lambda context. Its root-beta conclusion still requires
+local typed semantic conversion, rank and membership induction facts;
+those are not yet established by a general fundamental theorem.
+
+`TypeHeadNormalization.v` proves, without semantic hypotheses, that typed
+types reduce to sorts, products or variable-headed application spines.
+Convertible typed types have a common such head and equal sort ranks.
+The result uses original normalization/confluence/preservation, keeps all
+annotations, and does not yet prove denotation preservation along reduction.
+
 `BetaWitnessTransport.v` derives argument typing from the original redex
 typing and transports beta across semantically equal product witnesses.
 It reaches the actual substituted body, but domain/fiber equality, rank
@@ -36,12 +139,22 @@ variable-typing morphisms, original context reduction, and beta-equivalent
 well-formed context declarations. The binder-context corollary needs only
 original typing and syntactic beta equivalence, not semantic coherence.
 This is context transport, not yet general term-conversion soundness.
+Realizations now transport along the same context morphisms/conversions,
+and along pointwise set-equal valuations. These results retain the selected
+value/type code; they do not assume or establish preservation of valuation
+validity when the context's declaration terms change.
 
 `DenotationInversion.v` proves product inversion through equality closure,
 variable-value uniqueness, and the product coherence step from subterm
-coherence. `ApplicationRealization.v` reuses the function's actual semantic
-product witness. Domain coherence and rank validity remain explicit local
-premises, not proved general properties or a final soundness theorem.
+coherence. Its lambda coherence step uses original typing uniqueness for
+the two body-result types; decoded result-type conversion remains an
+explicit obligation, alongside domain/body subterm coherence.
+The application coherence step likewise uses typing uniqueness and proved
+binder-context transport to compare the two product witnesses; semantic
+conversion of their domains/fibers remains open.
+`ApplicationRealization.v` offers both reuse of the function's product with
+explicit rank facts and ranked selection from type realizations with
+decoded coherence. Neither is a final soundness theorem.
 
 `PairedChoice.v` selects related witness pairs with typed extensional
 projections. `LambdaRealization.v` selects type codes and body values jointly

@@ -1,0 +1,16 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+decoding_subset_bound
+     : forall (i : nat) (a : Ens), IN a (U i) -> INC (decode a) (carrier i)
+decoding_graph_rank_bound
+     : forall i : nat, IN (decoding_graph i) (carrier (5 + i))
+        rocq ZFC_model/CodeHierarchyBounds.{glob,vo}

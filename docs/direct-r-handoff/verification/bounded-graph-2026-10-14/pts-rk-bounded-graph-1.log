@@ -1,0 +1,13 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+File "./ZFC_model/BoundedFormulaTransport.v", line 42, characters 4-13:
+Error: The constructor equal (in type Formula) is expected to be applied to
+3 arguments while it is actually applied to 2 arguments.
+
+File "ZFC_model/dune", lines 1-5, characters 0-1004:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/BoundedFormulaTransport.{glob,vo} (exit 1)

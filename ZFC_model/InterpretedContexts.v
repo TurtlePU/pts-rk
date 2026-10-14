@@ -56,6 +56,14 @@ Qed.
 Definition realizes {n} (G : Ctx nat n) rho (t T : Term nat n) :=
   exists v a, denotes H s n G rho t v /\ denotes H s n G rho T a /\ IN v (decode a).
 
+Theorem realizes_valuation_extensional n (G : Ctx nat n) rho rho' t T :
+  valuation_eq rho rho' -> realizes G rho t T -> realizes G rho' t T.
+Proof.
+  intros E [v [a [Dt [DT Hv]]]]. exists v, a. split.
+  - eapply denotes_valuation_extensional; eassumption.
+  - split; [eapply denotes_valuation_extensional; eassumption | exact Hv].
+Qed.
+
 Theorem variable_realization n (G : Ctx nat n) rho i :
   valid_valuation G rho -> realizes G rho (var i) (G !! i).
 Proof.
@@ -73,3 +81,4 @@ Print Assumptions valid_valuation_extensional.
 Print Assumptions valid_valuation_lookup.
 Print Assumptions variable_realization.
 Print Assumptions sort_realization.
+Print Assumptions realizes_valuation_extensional.

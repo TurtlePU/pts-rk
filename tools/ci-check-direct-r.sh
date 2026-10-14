@@ -198,6 +198,7 @@ stage 06m-cardinal-hierarchy "$ROOT" ZFC_model/CardinalHierarchy.vo
 stage 06n-powerset-embedding "$ROOT" ZFC_model/PowersetEmbedding.vo
 stage 06o-subset-functions "$ROOT" ZFC_model/SubsetFunctions.vo
 stage 06p-bounded-formulas "$ROOT" ZFC_model/BoundedFormulas.vo
+stage 06pa-bounded-application "$ROOT" ZFC_model/BoundedApplication.vo
 stage 06q-bounded-inverse "$ROOT" ZFC_model/BoundedInverse.vo
 stage 06r-hierarchy-bounds "$ROOT" ZFC_model/HierarchyBounds.vo
 stage 06s-bounded-families "$ROOT" ZFC_model/BoundedFamilies.vo
@@ -226,7 +227,18 @@ stage 06zo-denotation-beta "$ROOT" ZFC_model/DenotationBeta.vo
 stage 06zp-interpreted-contexts "$ROOT" ZFC_model/InterpretedContexts.vo
 stage 06zq-rule-realization "$ROOT" ZFC_model/RuleRealization.vo
 stage 06zr-bounded-formula-transport "$ROOT" ZFC_model/BoundedFormulaTransport.vo
+stage 06zra-bounded-graphs "$ROOT" ZFC_model/BoundedGraphs.vo
+stage 06zrb-bounded-finite-carriers "$ROOT" ZFC_model/BoundedFiniteCarriers.vo
+stage 06zrc-bounded-powersets "$ROOT" ZFC_model/BoundedPowersets.vo
+stage 06zrd-bounded-iteration "$ROOT" ZFC_model/BoundedIteration.vo
+stage 06zre-bounded-recursion "$ROOT" ZFC_model/BoundedRecursion.vo
+stage 06zrf-bounded-code-arithmetic "$ROOT" ZFC_model/BoundedCodeArithmetic.vo
+stage 06zrg-bounded-infinite-decoder "$ROOT" ZFC_model/BoundedInfiniteDecoder.vo
+stage 06zrh-bounded-universes "$ROOT" ZFC_model/BoundedUniverses.vo
+stage 06zri-bounded-sort-decoder "$ROOT" ZFC_model/BoundedSortDecoder.vo
 stage 06zs-bounded-choice "$ROOT" ZFC_model/BoundedChoice.vo
+stage 06zsa-bounded-formula-selection "$ROOT" ZFC_model/BoundedFormulaSelection.vo
+stage 06zsb-bounded-code-selection "$ROOT" ZFC_model/BoundedCodeSelection.vo
 stage 06zt-denotation-choice "$ROOT" ZFC_model/DenotationChoice.vo
 stage 06zu-paired-choice "$ROOT" ZFC_model/PairedChoice.vo
 stage 06zv-lambda-realization "$ROOT" ZFC_model/LambdaRealization.vo
@@ -235,6 +247,10 @@ stage 06zx-application-realization "$ROOT" ZFC_model/ApplicationRealization.vo
 stage 06zy-context-transport "$ROOT" ZFC_model/ContextTransport.vo
 stage 06zz-denotation-congruence "$ROOT" ZFC_model/DenotationCongruence.vo
 stage 06zza-beta-witness-transport "$ROOT" ZFC_model/BetaWitnessTransport.vo
+stage 06zzb-type-head-normalization "$ROOT" ZFC_model/TypeHeadNormalization.vo
+stage 06zzc-root-beta "$ROOT" ZFC_model/RootBeta.vo
+stage 06zzd-regular-typing "$ROOT" ZFC_model/RegularTyping.vo
+stage 06zze-realization-induction "$ROOT" ZFC_model/RealizationInduction.vo
 stage 07-proof-families "$ROOT" Interpretation_of_R/functional/DirectRProofs.vo
 stage 08-generators "$ROOT" Interpretation_of_R/functional/DirectRGenerated.vo
 stage 09-first-order "$ROOT" Interpretation_of_R/functional/DirectRFirstOrder.vo

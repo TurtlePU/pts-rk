@@ -1,5 +1,287 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — exact bounded universe graph and sort decoding
+
+Express universe membership by bounding only the infinite-code indices.
+Prove all singleton numerals have an actual Code representative; for each
+infinite tag test its recovered index against numeral n or finite_carrier n.
+This yields exactly U n, retaining all finite and sort codes. Define the
+universe graph by bounded separation, then decode 3*n+2 by two singleton
+inversions and bounded tripling. Prove agreement with existing decode for
+all sort indices. These are individual branches; their union still needs
+off-branch exclusion and full decoder agreement. Semantic conversion and
+first-order BZC certification remain unproved. Commit/push is now explicitly
+authorized; publish a truthful checkpoint without describing soundness as done.
+
+## 2026-10-14 — infinite decoder uses actual successor tags
+
+Recover the index of repr(infinite n) by one singleton inversion followed
+by the uniform tripling graph. Compose with bounded_carrier_graph under
+the same supplied hierarchy premises. Prove application, evaluation and
+agreement with existing decode for every infinite code. This establishes
+the second branch; sort universes and branch combination are still needed
+before any claim of a complete bounded decoder. Full soundness remains open.
+
+## 2026-10-14 — uniform code tripling and finite decoding
+
+Generalize bounded iteration to an arbitrary supplied step graph with a
+bounded reference family, proved step behavior and uniqueness. Correctness
+uses finite separators, not a native graph of the family. Instantiate with
+the bounded triple-singleton step on omega_codes; native arithmetic is used
+only to verify its uniform numeral(3*n) equation. Combine tripling with the
+finite-carrier graph by bounded existential quantification over omega_codes.
+The resulting finite decoder handles all indices and the actual 3*n tags.
+Do not identify it with the complete decoder: infinite/sort branches and
+first-order justification of the Ens framework remain separate obligations.
+
+## 2026-10-14 — certify the existing global coding-witness selector
+
+Specialize bounded formula selection to codeWitnessF and prove its fiber
+equals code_witnesses. Define the admissible source domain by bounded
+existence of a witness inside the already supplied Cartesian bound. The
+resulting graph agrees pointwise with apply_set s (global_code_witnesses H A)
+for the SAME s. Prove every typed product's dependent function space is
+in that domain under the original cardinal/hierarchy premises. This avoids
+changing rank-independent choices and gives the actual model a bounded
+graph representation for selection. It does not certify the still-native
+decoder or establish semantic conversion/first-order BZC soundness.
+
+## 2026-10-14 — a formula-defined selected graph
+
+For a bounded formula p(x,y), bound its candidate fiber by Power B and
+characterize that fiber with the two inclusions. Combine this with the
+bounded applyValueF certificate for a selector c. This yields an actual
+selection graph by bounded_formula_graph, with function membership and
+selection correctness under ordinary set-indexed Choice. Do not extend
+the claim to arbitrary semantic predicates: their own bounded definitions
+are not supplied by this generic theorem. Denotation coherence/conversion
+and first-order BZC proof-system interpretation remain independent gaps.
+
+## 2026-10-14 — choose on a fixed powerset instead of collecting candidates
+
+Refactor bounded_relation_choice through a selector on nonempty subsets
+of B. Every candidate set is already a subset of B, so no native
+family_range of candidate sets is needed for this use of Choice. The
+generic choose_extensional_family theorem remains unchanged elsewhere;
+do not infer its arbitrary native-family collection is BZC-justified.
+The selected graph still uses native graph, and arbitrary P still needs
+its formula specialization to justify candidate separation. This change
+narrows an actual dependency of denotation/paired witness selection but
+does not complete the first-order foundation or semantic-conversion proof.
+
+## 2026-10-14 — remove native infinite comparison from carrier correctness
+
+Replace carrier_relation in the certificate's correctness proof by a
+finite separator built inductively by bounded formula separation. At
+index zero restrict the initial value; at each successor retain previous
+restrictions and restrict the new value. Prove every separator is closed
+under the same successor/powerset operation and forces the correct value
+at its index. The proof needs no set of all separators and no native
+infinite comparison graph. Keep the earlier comparison lemmas as legacy
+facts, but do not use them in carrier_iteration_certificate_correct.
+This removes that particular audit concern; it is not a derivation of
+the entire Ens construction in first-order BZC or full model soundness.
+
+## 2026-10-14 — uniform carrier graph as least closed relation
+
+Use the least relation containing (zero,omega_codes) and closed under
+singleton successor and the certified powerset graph. Candidate relations
+are bounded by Power(Prod omega_codes H), so the defining formula has no
+unbounded quantifiers. Separation constructs bounded_carrier_graph and
+its evaluation is proved equal to carrier n for every numeral. Native
+carrier_relation (a sup) is used only as a comparison in the correctness
+proof, not as the defined graph. This still leaves a first-order proof
+audit: replacing a definition does not automatically eliminate the strength
+of auxiliary objects in its proof. No full BZC or soundness claim follows.
+
+## 2026-10-14 — bounded powerset graph using the supplied hierarchy
+
+A bounded powerset formula must carry a bound containing ALL subsets of
+its argument; quantifying over an arbitrary ambient set is insufficient.
+Prove that adequacy explicitly, then use bounded_formula_graph on Prod W W
+for transitive powerset-closed W. Instantiate with the existing supplied
+envelope H using envelope_transitive/envelope_power_closed, rather than
+adding a new closure premise to the model. The graph evaluates to the
+next actual carrier at every index. This certifies the hierarchy's step
+operation, not a set-coded recursion collecting all indexed values, and
+not the first-order BZC status of Ens or the complete soundness theorem.
+
+## 2026-10-14 — derive arbitrary-denotation regularity from the same conversion premise
+
+Extend RealizationInduction with structural coherence for every typed term,
+then membership of every denotation in every denotation of its type, and
+universe membership for sort-typed terms. Application coherence transports
+codomain typing to the common binder context using original typing
+uniqueness/product inversion. All results retain the existing explicit
+typed decoded conversion premise; no universal coherence/rank assumptions
+are introduced. These are conditional consequences, not a proof of that
+premise. In particular they cannot be used circularly to discharge it.
+The paper's assertion that the rules are respected supplies no missing
+well-founded semantic conversion argument. Full soundness and the BZC
+foundation audit remain open.
+
+## 2026-10-14 — assemble realization induction without assuming semantic regularity
+
+RegularTyping is a syntactic induction certificate carrying redundant
+type-formation subderivations for lambda, application and conversion.
+Proved renaming, substitution, regularity, original-typing embedding and
+erasure, and equivalence on original well-formed contexts. No PTS rules
+were changed and no semantic assumptions enter the equivalence proof.
+This supplies the previously missing induction hypotheses for domain and
+codomain realizations. RealizationInduction now proves realization for
+ALL original typings under the explicit typed-decoded-conversion premise
+and the existing set-construction premises. It assumes no universal rank
+bound or component realization beyond what the induction proves.
+The conversion premise is not declared as an axiom or hidden in a model
+record: it is printed in the theorem type and remains an unproved target.
+This is NOT unconditional soundness. Do not use its closed Print Assumptions
+report to claim either that premise or first-order BZC derivability.
+
+Before the user's soundness refocus, BoundedFiniteCarriers was completed:
+finite_carrier n is the least transitive set containing numeral n as a
+subset. A bounded formula quantifies over Power omega_codes; separation
+constructs a uniform graph with verified evaluation at every numeral.
+It does not yet implement the finite-code tag 3*n or other decoder branches.
+
+## 2026-10-14 — formula-defined function graphs without a Choice premise
+
+Use separation on Prod A B rather than graph A f (whose implementation is
+sup-indexed) to construct a graph from a bounded formula p(x,y). Add and
+verify general bounded-formula renaming so p is embedded in the edge
+certificate without arbitrary Prop atoms. Prove its exact application law,
+agreement with graph A f for bounded extensional f, and function membership
+and evaluation from totality/uniqueness of p. No family_choice or selected
+Ens->Ens function is required. This discharges a generic construction step,
+not the bounded definition of the decoder, hierarchy recursion, or the
+first-order interpretation of Ens/Prod. Full semantic soundness remains open.
+
+## 2026-10-14 — certify the actual union-of-fiber application
+
+BoundedApplication.applyValueF expresses both inclusions between a proposed
+value and the union of the graph's value fiber, using only bounded Formula
+constructors. Its correctness does not assume functionality or totality;
+the triple-union value_bound supplies a bound for any graph. The original
+value_fiber separation is proved equal to separation by applicationF, and
+apply_set to the union of that formula-defined fiber. Decoding equality
+then has a bounded certificate using the existing decoding graph and its
+proved Power(carrier i) value bound. Do not infer bounded first-order graph
+existence from this certificate: graph construction, recursion and the
+Ens encoding still require the foundation audit. This does not discharge
+the open semantic-conversion/fundamental theorem obligations.
+
+## 2026-10-14 — remove redundant beta product-witness premises
+
+Proved lambda_product_body without semantic premises: lambda/product
+inversion, original type correctness, and binder typing transport show
+that any assigned product's codomain types the lambda body in its annotated
+context. Use this in realized_root_beta to transport both fiber denotations
+to that context and invoke the existing body-type conversion obligation.
+Application domain comparison factors through a denotation of the annotated
+domain supplied by its realization. Thus the separate PA/PB premises were
+removed, with CA reformulated as conversion of typed domains to the actual
+annotation. CA/CB and constituent realization/coherence remain unproved
+general facts; this refinement is not a replacement for their joint proof.
+
+Also proved realization transport along context typing morphisms and
+well-formed context conversion, and under pointwise set-equal valuations.
+These use already proved denotation transport and retain the same value
+and type code. They do not imply validity transport when declarations
+change: that requires semantic comparison of the declarations, still open.
+
+## 2026-10-14 — arbitrary beta values via derived coherence
+
+RootBeta.realized_root_beta combines the selected shared beta witness with
+lambda and application coherence. Lambda coherence needs equality of
+decoded domains, not equality of domain codes; generalized its premise
+accordingly. Body/argument coherence and local conversion of actual typing
+witnesses derive redex coherence, rather than assuming it. Set equality
+then transports reduct denotation and result-type membership to any given
+redex value. The result type code remains in U k. Universal rank and
+membership premises for arbitrary denotations are absent from this route.
+The constituent realization/coherence/conversion obligations remain open;
+this is not the joint fundamental theorem or a first-order BZC proof.
+
+## 2026-10-14 — construct a shared beta value from realizations
+
+DenotationBeta.realized_beta selects the domain code from its sort
+realization and jointly selects ranked body/type witnesses over that
+domain. Decoded domain coherence transports argument membership; decoded
+codomain coherence supplies ranked pairs from ordinary realizations.
+The checked matching-witness beta law and original substitution then give
+one value for both redex and reduct, in the actual substituted result type,
+whose code lies in U k. No universal rank bound on arbitrary denotations
+or assumed redex-coherence premise is used. Realization/coherence of the
+constituents still need the joint fundamental proof; this existence result
+does not prove arbitrary-denotation preservation by itself.
+
+## 2026-10-14 — ranked witnesses from realizations, not universal rank premises
+
+For lambda, combine a body realization with a realization of its type at
+the required sort. Choose the latter's already ranked code and transport
+body membership using equality of decoded sets. No code equality or
+assertion that every denotation is ranked is needed for this construction.
+For application, select a ranked domain/fiber family from their type
+realizations, then transport the function's membership to that product.
+Generalize product coherence to decoded component equality, which already
+suffices for semantic_product_congruence. This removes universal rank
+premises from the new application_realization_from_induction theorem.
+The required type realizations and decoded coherence remain actual
+fundamental-proof obligations; no final soundness theorem is claimed.
+
+## 2026-10-14 — extract arbitrary root-beta witnesses
+
+RootBeta.denotes_root_beta inverts an arbitrary redex denotation and its
+function's lambda denotation. Derive the product-witness equalities using
+original lambda typing and typing uniqueness, not semantic assumptions.
+Original type correctness supplies domain/codomain sorts. Transport both
+typing and denotation of the application codomain into the lambda's binder
+context before using the local semantic conversion premise. This avoids
+requiring conversion for untyped terms or mismatched contexts.
+The remaining local domain/codomain conversion, rank bounds, body membership
+and argument membership are still obligations of the joint fundamental
+proof. They are not added to the model as axioms, nor is a global beta or
+soundness contract assumed. This theorem is the root constructor step,
+not final unrestricted reduction preservation.
+
+## 2026-10-14 — unconditional type-head normalization
+
+Use the original SN/SNx/WHR_SN machinery to obtain a head form; do not
+assume a semantic normalization contract. Original typing rules exclude
+sort/product-headed applications and exclude a lambda at a sort type.
+Thus well-typed types reduce to sorts, products or variable-headed spines.
+Confluence, preservation and typing uniqueness then give a common such
+head and equal sort ranks for two convertible well-typed types.
+This is only head classification: annotations, product bodies and neutral
+arguments need not be fully normal. It does not itself transport denotation
+or discharge the joint semantic conversion/rank invariant.
+
+## 2026-10-14 — application coherence transports the binder context
+
+For two application denotations, use original uniqueness_of_typing on the
+two product types of the same function, followed by product injectivity.
+Derive domain well-typedness from original type correctness and product
+inversion; no extra domain-typing contract is needed. The proved binder
+context conversion transports the second fiber denotation into the first
+context. Semantic application congruence then reduces equality to subterm
+coherence and decoded conversion of those particular domains and fibers.
+The latter remain local proof obligations, not axioms or a completed
+semantic conversion theorem. Do not infer equal decoded fibers merely from
+equality of product codes: coding can identify equipotent sets.
+
+## 2026-10-14 — compare lambda result witnesses by original typing uniqueness
+
+DenotationInversion.denotes_lambda_coherence uses original
+uniqueness_of_typing to relate the two body-result types. Domain and body
+coherence are restricted to the lambda's actual subterms and binder-domain
+extensions. The remaining conversion premise concerns only decoded values
+of the two body-result types, not equality of the lambda being proved.
+Semantic lambda congruence then discharges the constructor case. This is an
+induction-step lemma, not a global coherence or soundness theorem; the
+conversion premise must still be established in the fundamental proof.
+The existing product-coherence lemma now likewise restricts its fiber
+coherence premise to members of an actually denoted domain. No caller
+depended on the unnecessarily stronger arbitrary-valuation version.
+
 ## 2026-10-14 — beta across different product witnesses
 
 Use semantic application congruence before the coded beta law, allowing

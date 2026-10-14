@@ -1,0 +1,19 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedGraphs.v", line 42, characters 72-73:
+Error: Cannot infer this placeholder of type
+"forall i : Fin (S (S (S n))), EQ (?r i) (graph_env r A B e' i)" in
+environment:
+n : nat
+p : Formula (S (S n))
+r : Fin n -> Ens
+A, B, e, e' : Ens
+H : holds (graph_certificate p) (graph_env r A B e)
+E : EQ e e'
+
+File "ZFC_model/dune", lines 1-5, characters 0-1018:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication BoundedGraphs)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/BoundedGraphs.{glob,vo} (exit 1)

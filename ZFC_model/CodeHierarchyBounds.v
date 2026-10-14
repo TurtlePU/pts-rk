@@ -3,7 +3,8 @@
 From Stdlib Require Import Arith.PeanoNat Lia.
 From ZFC Require Import Sets Axioms Cartesian.
 From PTSrkModel Require Import SetFunctions SetApplication CodeUniverses
-  CountableCodes CardinalGrowth CardinalHierarchy HierarchyBounds BoundedFamilies.
+  CountableCodes CardinalGrowth CardinalHierarchy HierarchyBounds BoundedFamilies
+  BoundedApplication BoundedFormulas.
 Import CodeUniverses.CodeUniverses.
 
 Theorem omega_codes_transitive : transitive_set omega_codes.
@@ -77,6 +78,26 @@ Theorem decoding_bounded_range i :
      (family_range (U i) (apply_set (decoding_graph i))).
 Proof. apply bounded_family_range_equivalence, decoding_graph_typed. Qed.
 
+(** The already supplied decoding graph can be used in a bounded formula
+    for decoding equality. This does not certify construction of that graph
+    or of the code hierarchy from first-order BZC axioms. *)
+Theorem decoding_value_certificate i a y : IN a (U i) ->
+  (Bounded.holds apply_value_certificate
+    (apply_value_env (Power (carrier i)) (decoding_graph i) a y) <->
+   EQ y (decode a)).
+Proof.
+  intro Ha.
+  assert (HF : Bounded.holds apply_value_certificate
+    (apply_value_env (Power (carrier i)) (decoding_graph i) a y) <->
+    EQ y (apply_set (decoding_graph i) a)).
+  { apply apply_value_formula_correct. intros v Hv.
+    destruct (dependent_product_elimination _ _ _ (decoding_graph_typed i))
+      as [_ [HT _]]. exact (proj2 (HT a v Hv)). }
+  rewrite HF. pose proof (decoding_graph_beta i a Ha) as E. split; intro Hy.
+  - eapply EQ_tran; eassumption.
+  - eapply EQ_tran; [exact Hy | apply EQ_sym; exact E].
+Qed.
+
 Print Assumptions omega_codes_transitive.
 Print Assumptions carrier_inclusion.
 Print Assumptions universe_level_bound.
@@ -86,5 +107,6 @@ Print Assumptions decoding_graph_beta.
 Print Assumptions decoding_graph_rank_bound.
 Print Assumptions decoded_product_rank_bound.
 Print Assumptions decoding_bounded_range.
+Print Assumptions decoding_value_certificate.
 Check decoding_subset_bound.
 Check decoding_graph_rank_bound.

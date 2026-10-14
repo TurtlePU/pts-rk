@@ -36,3 +36,35 @@ Proof.
     + apply (proj2 (IHp _ _ (formula_environment_extend x r r' E))); exact HP.
 Qed.
 Print Assumptions holds_extensional.
+
+Fixpoint rename_formula {n m} (f : Fin n -> Fin m) (p : Formula n) : Formula m :=
+  match p in Formula k return (Fin k -> Fin m) -> Formula m with
+  | @equal _ x y => fun f => equal (f x) (f y)
+  | @member _ x y => fun f => member (f x) (f y)
+  | @falsum _ => fun _ => falsum
+  | @conj _ p q => fun f => conj (rename_formula f p) (rename_formula f q)
+  | @disj _ p q => fun f => disj (rename_formula f p) (rename_formula f q)
+  | @impl _ p q => fun f => impl (rename_formula f p) (rename_formula f q)
+  | @all _ b p => fun f => all (f b) (rename_formula (weak f) p)
+  | @ex _ b p => fun f => ex (f b) (rename_formula (weak f) p)
+  end f.
+
+Theorem holds_rename {n} (p : Formula n) : forall m (f : Fin n -> Fin m) r,
+  holds (rename_formula f p) r <-> holds p (fun i => r (f i)).
+Proof.
+  induction p; intros m f r; cbn [rename_formula holds]; try reflexivity.
+  - rewrite IHp1, IHp2; reflexivity.
+  - rewrite IHp1, IHp2; reflexivity.
+  - rewrite IHp1, IHp2; reflexivity.
+  - assert (E : forall x, holds (rename_formula (weak f) p) (fin_match x r) <->
+        holds p (fin_match x (fun i => r (f i)))).
+    { intro x. rewrite IHp. apply holds_extensional.
+      intro i; dependent elimination i; apply EQ_refl. }
+    setoid_rewrite E; reflexivity.
+  - assert (E : forall x, holds (rename_formula (weak f) p) (fin_match x r) <->
+        holds p (fin_match x (fun i => r (f i)))).
+    { intro x. rewrite IHp. apply holds_extensional.
+      intro i; dependent elimination i; apply EQ_refl. }
+    setoid_rewrite E; reflexivity.
+Qed.
+Print Assumptions holds_rename.

@@ -27,6 +27,22 @@ Proof.
   eapply IN_sound_right; [apply decoding_extensional; exact (denotes_sort_value H s n G rho k a Da) | exact Hv].
 Qed.
 
+(** Choose the already ranked type witness, transporting body membership.
+    Equality of decoded sets suffices; equality of the codes is unnecessary. *)
+Theorem ranked_realization_witness H s n (G : Ctx nat n) rho t T k :
+  realizes H s G rho t T -> realizes H s G rho T (𝓤 k) ->
+  (forall a a', denotes H s n G rho T a -> denotes H s n G rho T a' ->
+    EQ (decode a) (decode a')) ->
+  exists c v, IN c (U k) /\ denotes H s n G rho T c /\
+    denotes H s n G rho t v /\ IN v (decode c).
+Proof.
+  intros [v [a [Dt [DT Hv]]]] RT CT.
+  destruct (realizes_sort_witness H s n G rho T k RT) as [c [Hc DC]].
+  exists c, v; split; [exact Hc |]. split; [exact DC |]. split; [exact Dt |].
+  eapply IN_sound_right; [apply CT; [exact DT | exact DC] | exact Hv].
+Qed.
+Print Assumptions ranked_realization_witness.
+
 Lemma denotation_relation_extensional H s n (G : Ctx nat n) rho A t :
   relation_extensional (fun x y => denotes H s (S n) (G & A) (fin_match x rho) t y).
 Proof.

@@ -4,7 +4,7 @@ From Equations Require Import Equations.
 From ZFC Require Import Sets Axioms.
 From PTSrk Require Import Syntax.
 From PTSrkModel Require Import SetFunctions SetApplication CountableDichotomy
-  ProductWitnesses BoundedFormulas BoundedFormulaTransport.
+  BoundedFormulas BoundedFormulaTransport.
 Import Bounded.
 
 Definition relation_extensional (P : Ens -> Ens -> Prop) :=
@@ -31,25 +31,39 @@ Proof.
   - apply (proj2 (EP x x' y y E (EQ_refl y))); exact HP.
 Qed.
 
+Theorem bounded_relation_choice_from_selector A B P c :
+  subset_choice B c ->
+  relation_extensional P -> (forall x, IN x A -> exists y, IN y B /\ P x y) ->
+  exists f : Ens -> Ens, family_extensional f /\
+    IN (graph A f) (dependent_product A (fun _ => B)) /\
+    (forall x, IN x A -> IN (f x) B /\ P x (f x)).
+Proof.
+  intros HC EP HT.
+  set (f := fun x => apply_set c (relation_candidates B P x)).
+  assert (EF : family_extensional f).
+  { intros x y E. apply apply_set_extensional; [apply EQ_refl |].
+    apply relation_candidates_extensional; assumption. }
+  assert (HF : forall x, IN x A -> IN (f x) B /\ P x (f x)).
+  { intros x Hx. apply (relation_candidates_spec B P EP). apply HC.
+    - apply INC_IN_Power, Comp_INC.
+    - destruct (HT x Hx) as [y Hy]. exists y.
+      apply (relation_candidates_spec B P EP); exact Hy. }
+  exists f; split; [exact EF |]. split.
+  - apply dependent_product_introduction; [exact EF | intros x Hx; exact (proj1 (HF x Hx))].
+  - exact HF.
+Qed.
+
+(** One choice operation on subsets of B suffices. No range of the native
+    candidate family is collected to invoke choice. Arbitrary P still
+    requires the formula specialization below for bounded separation. *)
 Theorem bounded_relation_choice (AC : family_choice) A B P :
   relation_extensional P -> (forall x, IN x A -> exists y, IN y B /\ P x y) ->
   exists f : Ens -> Ens, family_extensional f /\
     IN (graph A f) (dependent_product A (fun _ => B)) /\
     (forall x, IN x A -> IN (f x) B /\ P x (f x)).
 Proof.
-  intros EP HT.
-  destruct (choose_extensional_family AC A (relation_candidates B P)) as [g Hg].
-  - apply relation_candidates_extensional; exact EP.
-  - intros x Hx. destruct (HT x Hx) as [y Hy]. exists y.
-    apply (relation_candidates_spec B P EP); exact Hy.
-  - assert (EF : family_extensional (apply_set g)).
-    { intros x y E; apply apply_set_extensional; [apply EQ_refl | exact E]. }
-    assert (HF : forall x, IN x A -> IN (apply_set g x) B /\ P x (apply_set g x)).
-    { intros x Hx. apply (relation_candidates_spec B P EP).
-      exact (apply_set_typed A (relation_candidates B P) g x Hg Hx). }
-    exists (apply_set g); split; [exact EF |]. split.
-    + apply dependent_product_introduction; [exact EF | intros x Hx; exact (proj1 (HF x Hx))].
-    + exact HF.
+  destruct (subset_choice_from_family_choice AC B) as [c HC].
+  exact (bounded_relation_choice_from_selector A B P c HC).
 Qed.
 
 Definition formula_relation {n} (p : Formula (S (S n))) (r : Fin n -> Ens) x y :=
@@ -68,4 +82,5 @@ Theorem bounded_formula_choice (AC : family_choice) {n} p (r : Fin n -> Ens) A B
     (forall x, IN x A -> IN (f x) B /\ formula_relation p r x (f x)).
 Proof. apply (bounded_relation_choice AC A B); apply formula_relation_extensional. Qed.
 Print Assumptions bounded_relation_choice.
+Print Assumptions bounded_relation_choice_from_selector.
 Print Assumptions bounded_formula_choice.

@@ -1,0 +1,36 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedUniverses.v", line 69, characters 48-50:
+Error:
+In environment
+n : nat
+r : Fin n -> Ens
+O, T, C, i, x : Fin n
+EO : r O = omega_codes
+ET : r T = numeral_tripling_graph
+HC :
+  forall x0 : Ens,
+  IN x0 omega_codes ->
+  forall x1 : Ens,
+  IN x1 (r (eq_rect n Fin O n eq_refl)) ->
+  application (fin_match x0 r (eq_rect (S n) Fin (fsucc T) (S n) eq_refl))
+    (fin_match x0 r (eq_rect (S n) Fin fzero (S n) eq_refl)) x1 /\
+  EQ (fin_match x0 r (eq_rect (S n) Fin (fsucc x) (S n) eq_refl)) (Sing x1) ->
+  EQ (fin_match x0 r (eq_rect (S n) Fin fzero (S n) eq_refl))
+    (fin_match x0 r (eq_rect (S n) Fin (fsucc i) (S n) eq_refl)) \/
+  IN (fin_match x0 r (eq_rect (S n) Fin fzero (S n) eq_refl))
+    (fin_match x0 r (eq_rect (S n) Fin (fsucc C) (S n) eq_refl))
+q, z : Ens
+Hq : IN q omega_codes
+Hz : IN z omega_codes
+HT : application numeral_tripling_graph q z
+EX : EQ (r x) (Sing z)
+The term "Hz" has type "IN z omega_codes" while it is expected to have type
+ "IN z (r (eq_rect n Fin O n eq_refl))".
+
+File "ZFC_model/dune", lines 1-5, characters 0-1233:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication BoundedGraphs BoundedFiniteCarriers RegularTyping RealizationInduction BoundedPowersets BoundedIteration BoundedFormulaSelection BoundedCodeSelection BoundedRecursion BoundedCodeArithmetic BoundedInfiniteDecoder BoundedUniverses)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/BoundedUniverses.{glob,vo} (exit 1)

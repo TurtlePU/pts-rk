@@ -1,5 +1,667 @@
 # Live proof-development state — 2026-10-14
 
+## Exact universes and sort decoder — verified checkpoint, soundness OPEN
+
+BoundedUniverses proves every omega numeral is an actual code and provides
+a bounded membership test for the exact original U n. The bounded universe
+graph evaluates numeral n to U n. BoundedSortDecoder recovers n from 3*n+2,
+evaluates that graph, and proves agreement with the existing decode for
+every sort code. All three decoder branches now have individual correctness
+proofs. A combined graph with off-branch exclusion and full agreement is
+still needed. Typed semantic conversion and first-order Ens/BZC proof-system
+certification remain open; full soundness is NOT established.
+
+Incremental exits: universe 1,1,0,1,1,1,1,0; sort decoder 0. Twelve new closed
+reports. Fixed dependent transport simplification, explicit environments,
+missing imports and folding the environment for rewriting; no weakened
+statements. Fresh downstream build, both source comparisons, recursive
+kernel check and full CI exited 0; all 145 stages passed. The fresh build
+printed 353 closed reports. Kernel audit lists only the existing imported
+functional_extensionality_dep, with no unsafe settings. No timeouts.
+Exact commands, failures and successful logs are retained in
+verification/sort-decoder-2026-10-14/COMMANDS.md.
+The user explicitly authorized commit and push. HEAD before checkpoint is
+33d05ab; origin/main is five commits behind, none ahead. User logs/ excluded.
+This work is being committed as "ZFC model: certify bounded decoding and
+conditional realization". It is a verified intermediate checkpoint, not
+a completed soundness proof. The first remaining decoder goal is off-branch
+exclusion followed by agreement of a combined graph with existing decode.
+Next proof command after verification:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedSortDecoder.vo ZFC_model/BoundedInfiniteDecoder.vo ZFC_model/RealizationInduction.vo
+```
+
+## Infinite decoder branch — verified, soundness OPEN
+
+BoundedInfiniteDecoder recovers n from the actual singleton-numeral tag
+3*n+1 using the bounded tripling graph and evaluates bounded_carrier_graph.
+Its bounded separation graph is proved to evaluate repr(infinite n) to
+carrier n for every n and to agree with the existing decode at those codes.
+The supplied hierarchy premises remain explicit. Four closed reports;
+incremental exits 1,0 (one extra bracket in a destruct pattern corrected).
+Fresh isolated build, source comparison, recursive kernel check and full
+CI exited 0; all 143 stages passed. Fresh dependency build printed 153
+closed reports. Kernel summary lists existing functional_extensionality_dep;
+no unsafe settings or timeouts. Commands and raw logs are retained in
+verification/infinite-decoder-2026-10-14/COMMANDS.md.
+
+Remaining decoder work: construct the sort-universe graph, handle 3*n+2,
+then combine branches and prove the full decoder graph agreement. Semantic
+conversion and first-order Ens/BZC justification remain open independently.
+HEAD 33d05ab unchanged; work uncommitted/unpushed; user edits preserved.
+Next exact command when implementing the remaining sort branch:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedInfiniteDecoder.vo ZFC_model/BoundedCodeArithmetic.vo
+```
+
+## Uniform tag arithmetic and finite decoder — verified, soundness OPEN
+
+BoundedRecursion generalizes least-closed iteration using finite bounded
+separators, without collecting a native reference-family range. Its graph
+definition depends on the supplied step graph, bound and initial value,
+not on the reference family used to prove correctness.
+BoundedCodeArithmetic instantiates it with three singleton successors to
+construct the graph numeral n -> numeral(3*n). Composing its bounded
+application predicate with finite_carrier_graph yields bounded_finite_decoder.
+Evaluation at repr(finite n) equals finite_carrier n for EVERY n, including
+zero. This is the finite branch only, not a complete decoder or soundness.
+
+Incremental exits: recursion 0; arithmetic 0,0. Twelve new closed reports.
+Fresh isolated build, both source comparisons, recursive kernel check and
+full CI exited 0; all 142 stages passed. Fresh dependency build printed
+149 closed reports. Kernel summary lists existing functional_extensionality_dep;
+no unsafe settings or timeouts. Exact commands and logs are retained in
+verification/code-arithmetic-2026-10-14/COMMANDS.md. Infinite and sort decoder branches,
+semantic conversion and first-order Ens/BZC certification remain open.
+HEAD 33d05ab unchanged; work uncommitted/unpushed; user changes preserved.
+Next exact command when adding the remaining decoder branches:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedCodeArithmetic.vo ZFC_model/BoundedIteration.vo
+```
+
+## Bounded representation of actual global witness selection — soundness OPEN
+
+BoundedCodeSelection specializes formula selection to codeWitnessF.
+The admissible source set and selected graph are both bounded-formula
+separations. Proved pointwise agreement with the SAME existing selector's
+global_code_witnesses values, and function membership on the admissible
+sources. Ordinary family_choice supplies such a selector. For ALL m,n,a,b
+satisfying the model's rank conditions, the actual dependent function
+space is an admissible source (using existing cardinal/hierarchy premises).
+No PTS or semantic-operation definitions changed; this is a verified
+bounded representation of their selection, not a replacement model.
+
+Incremental exits 1,0,0,0; nine closed reports. First error was dependent
+Fin elimination, corrected without statement changes. Fresh build, source
+comparison, recursive kernel check and full CI exited 0; all 140 stages
+passed. Fresh dependency build printed 219 closed reports. Kernel summary
+lists existing functional_extensionality_dep, no unsafe settings. No
+timeouts. Commands and raw logs: verification/code-selection-2026-10-14/COMMANDS.md.
+Full decoder/Ens first-order justification and typed semantic
+conversion remain open; no unconditional soundness claim follows.
+HEAD 33d05ab unchanged; work uncommitted/unpushed; user edits preserved.
+Next exact command for continued conversion/decoder development:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedCodeSelection.vo ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo
+```
+
+## Bounded formula-selection graph — verified, soundness OPEN
+
+BoundedFormulaSelection gives a bounded formula identifying the candidate
+fiber and the value selected from it. Candidate sets are quantified inside
+Power B; equality to apply_set uses its previously certified value bound.
+formula_selection_graph is separated from Prod A B, not defined by native
+graph. Proved graph typing/evaluation and bounded_formula_set_choice for
+every total bounded-formula relation, with ordinary family_choice explicit.
+Six closed assumption reports; incremental exits 0,0. Fresh build, source
+comparison, recursive kernel check and full CI exited 0; all 139 stages
+passed. Fresh dependency build printed 84 closed reports. Kernel summary
+lists existing functional_extensionality_dep; no unsafe settings or timeouts.
+Commands/logs: verification/formula-selection-2026-10-14/COMMANDS.md.
+No new axioms or admissions.
+
+This closes generic formula-based graph selection, not the separate task
+of expressing arbitrary denotation predicates as bounded formulas. Native
+generic relation choice remains for those predicates. Semantic conversion,
+full soundness and the first-order Ens/BZC interpretation remain open.
+HEAD 33d05ab unchanged; work uncommitted/unpushed; existing edits preserved.
+Next exact command for continued conversion/foundation development:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedFormulaSelection.vo ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo
+```
+
+## Bounded selection without candidate-family collection — soundness OPEN
+
+BoundedChoice.bounded_relation_choice now chooses once on nonempty subsets
+of the fixed codomain B. The new bounded_relation_choice_from_selector
+requires only a selector on those subsets. Candidate selection no longer
+uses choose_extensional_family or collects family_range A candidates.
+The ProductWitnesses import was removed. Downstream denotation and paired
+choice use the unchanged theorem interface and compile incrementally.
+
+Incremental exits 0,0; one new closed assumption report. Fresh downstream
+build, source comparison, recursive kernel check and full CI exited 0;
+all 138 stages passed. Fresh build printed 274 closed reports including
+dependencies. Kernel summary lists existing functional_extensionality_dep;
+no unsafe settings or timeouts. Exact commands and raw logs are retained
+in verification/bounded-selector-2026-10-14/COMMANDS.md. This removes one
+native family-range construction, not all arbitrary-predicate separation:
+only formula-specialized candidate predicates have bounded certificates.
+Native selected graph construction and first-order foundation justification
+remain audit obligations, alongside semantic conversion/full soundness.
+HEAD 33d05ab unchanged; work uncommitted/unpushed; user changes preserved.
+Next exact command when continuing the open semantic-conversion proof:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo
+```
+
+## Remove infinite comparison from carrier correctness — soundness OPEN
+
+carrier_iteration_certificate_correct now uses carrier_separator_laws,
+not the native sup-indexed carrier_relation. Each separator is obtained
+from the preceding one by a bounded slice-filter formula; the base filters
+Prod omega_codes H. An induction proves closure and uniqueness at its
+index. No set collecting all separators is defined or required. The old
+native comparison lemmas are retained but no longer feed correctness.
+
+Incremental exits 1,0: corrected elimination of the pinned library's empty
+type F (not native False). Two new closed reports, ten total in the module.
+Fresh isolated build, source comparison, recursive kernel validation and
+full local CI exited 0; all 138 stages passed. Fresh dependency build
+printed 137 closed reports. Kernel summary lists the existing imported
+functional_extensionality_dep; no unsafe settings. No timeouts. Commands
+and logs are retained in verification/finite-separators-2026-10-14/COMMANDS.md.
+The earlier comparison-relation audit concern is superseded by this proof,
+but first-order induction/Ens, decoding tags, sort universes and semantic
+conversion remain open. HEAD 33d05ab unchanged; work uncommitted/unpushed.
+Next exact command when continuing the open conversion/foundation work:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedIteration.vo ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo
+```
+
+## Uniform bounded carrier graph — verified, soundness OPEN
+
+BoundedIteration defines a least-closed-relation Formula, quantifying over
+Power(Prod omega_codes H). The resulting bounded_carrier_graph is defined
+by bounded_formula_graph (separation), not a native indexed sup. It is a
+function omega_codes -> H and evaluates to carrier n for EVERY n. This
+closes the uniform infinite-carrier indexing step at the Ens translation
+level; decoding code tags and sort universes remains separate.
+
+Important audit limitation: the correctness proof uses the native
+carrier_relation sup as a comparison relation. This does not by itself
+derive that comparison's existence or the proof in first-order BZC. No
+claim of eliminating Replacement from the whole proof is made. Semantic
+conversion and full soundness remain open.
+
+Incremental exits 1,1,1,0,0. Eight closed reports; no new assumptions.
+Fresh isolated module build, source comparison, recursive kernel check,
+and full CI exited 0; all 138 stages passed. Fresh dependency build printed
+135 closed reports. Kernel summary lists existing imported
+functional_extensionality_dep; no unsafe settings. No timeouts. Commands
+and raw logs are in verification/bounded-iteration-2026-10-14/COMMANDS.md.
+HEAD 33d05ab unchanged; all work uncommitted/unpushed, earlier work and
+user logs/ preserved. Full proof remains open: typed decoded conversion
+(exact judgment below), code-tag/sort decoding, and first-order foundation
+justification. Next exact command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedIteration.vo ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo
+```
+
+## Bounded powerset graph — verified, soundness OPEN
+
+BoundedPowersets certifies powerset equality by a bounded formula when its
+ambient bound contains all subsets of the argument. Separation on Prod W W
+constructs the powerset graph in a transitive powerset-closed W; its typing
+and evaluation are proved. Existing supplied-envelope lemmas discharge
+these closure premises for H, yielding the actual carrier i -> carrier(S i)
+step uniformly. No replacement/choice premise is used by the new graph.
+This is not yet a bounded definition of the full recursively indexed
+decoder, a first-order BZC interpretation, or semantic conversion.
+
+Incremental exits 1,0,1,0: corrected a missing Ens parameter annotation and
+an explicit argument to envelope_power_closed. Seven closed reports.
+Fresh isolated module build, source comparison, recursive kernel check
+and full CI exited 0; all 137 stages passed. Fresh dependency build printed
+127 closed reports. Kernel summary lists imported functional_extensionality_dep
+and no unsafe settings. No timeouts. Exact commands and all logs are in
+verification/bounded-powersets-2026-10-14/COMMANDS.md.
+HEAD 33d05ab unchanged; work uncommitted/unpushed and user logs/ preserved.
+The user's full soundness request remains open: prove typed decoded
+conversion as stated below, without using the conditional realization
+theorems circularly. Foundation work also still needs the uniform indexed
+decoder and a first-order audit. Next exact command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo ZFC_model/BoundedPowersets.vo
+```
+
+## Typed denotation coherence and membership — CONDITIONAL, soundness OPEN
+
+RealizationInduction now also proves typed_coherence_from_conversion,
+typed_membership_from_conversion and typed_rank_from_conversion. Structural
+term induction handles coherence, transporting application codomain typing
+between convertible binder contexts. Membership follows by comparing an
+arbitrary denotation with the realization witness; rank specializes this
+to a sort. All three retain the SAME explicit, unproved typed decoded
+conversion premise below. No new semantic hypotheses or axioms were added.
+This does not discharge conversion or first-order BZC certification.
+
+Incremental build exits 1,0: corrected decode_sort's explicit carrier
+argument. Fresh isolated build, source comparison, recursive kernel check
+and full local CI all exited 0; all 136 CI stages passed. The fresh build
+printed 298 closed assumption reports including dependencies. Three new
+conditional theorem reports are closed; their conversion premise remains
+visible in the printed membership theorem type. Library-wide kernel
+summary lists imported functional_extensionality_dep; no unsafe settings.
+No timeouts. Commands and raw logs (including failure) are retained in
+verification/semantic-regularity-2026-10-14/COMMANDS.md.
+HEAD 33d05ab unchanged; work uncommitted/unpushed, prior changes and user
+logs/ preserved. Exact remaining goal is the typed decoded conversion
+judgment printed below. Next command when continuing its proof:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo ZFC_model/TypeHeadNormalization.vo
+```
+
+## Original-typing realization induction — CONDITIONAL, soundness OPEN
+
+User refocused on finalizing soundness. RegularTyping now supplies a proved
+equivalent syntactic induction certificate with redundant type-formation
+subderivations. Renaming/substitution/regularity, original embedding and
+erasure are checked; no PTS rule or semantic domain changed. Using this,
+RealizationInduction proves realization for ALL original typings from one
+explicit typed-decoded-conversion premise, in addition to the existing
+set-construction premises. Separate semantic regularity/component
+realization/rank assumptions are no longer needed in that induction.
+
+THIS IS NOT FINAL SOUNDNESS. The first remaining semantic goal is:
+
+```text
+forall n G rho A B m k,
+  wf G -> valid_valuation H s G rho ->
+  typ G A (sort m) -> typ G B (sort k) -> A =beta B ->
+  forall a b, denotes H s n G rho A a -> denotes H s n G rho B b ->
+  EQ (decode a) (decode b).
+```
+
+It is quantified explicitly as conversion, not declared as an axiom or
+proved constant. Do not pass it to the theorem and call the result
+unconditional. A joint well-founded conversion/coherence argument remains
+necessary; existing conditional beta lemmas do not discharge it by
+themselves. First-order BZC foundation certification also remains open.
+
+Before the refocus, BoundedFiniteCarriers was completed: bounded closure
+formula and uniform graph, evaluated at every numeral, for finite_carrier.
+Its finite-code 3*n tagging and other decoding branches remain open.
+Incremental exits: finite carriers 0; regular typing 1,1,1,0;
+realization induction 0. Seventeen new closed reports, including two
+CONDITIONAL realization theorems. Commands, failures and final verification
+are retained in verification/realization-induction-2026-10-14/COMMANDS.md.
+Fresh isolated build, all three source comparisons, recursive kernel check
+and full local CI exited 0. Fresh build printed 295 closed reports including
+dependencies; all 136 CI stages passed. Library-wide kernel summary lists
+imported functional_extensionality_dep and no unsafe settings. No timeouts.
+HEAD 33d05ab unchanged; all work uncommitted/unpushed; prior edits and user
+logs/ preserved. Next exact command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RealizationInduction.vo ZFC_model/RootBeta.vo ZFC_model/TypeHeadNormalization.vo
+```
+
+## Formula-defined bounded graphs — verified, full target OPEN
+
+Added general formula renaming and its semantic correctness to
+BoundedFormulaTransport. BoundedGraphs builds an edge certificate from
+p(x,y) and constructs its graph by separation on Prod A B. Its exact
+application law and agreement with graph A f for a bounded extensional
+f are proved. Totality and unique values of p directly give function
+membership and evaluation satisfying p, with no family_choice premise or
+prior selected native function. Dune and CI include the new module.
+
+Incremental exits 1,0,1,0,0; seven new closed assumption reports. Retained
+errors about dependent constructor indices and proof-placeholder inference;
+both corrected without weakening statements. Fresh isolated build, source
+comparisons, recursive kernel check and full CI exited 0. Fresh build
+printed 278 closed reports including dependencies; all 133 stages passed.
+Library-wide kernel summary lists imported functional_extensionality_dep,
+no unsafe settings. No timeouts. Commands and all raw logs are recorded in
+verification/bounded-graph-2026-10-14/COMMANDS.md.
+
+Next obligation remains a bounded formula defining the actual decoder
+uniformly from supplied hierarchy data. The new graph theorem can then
+construct its graph by separation; it does not supply that formula or
+justify Ens/Prod in first-order BZC. General semantic conversion and the
+fundamental soundness theorem remain open too. HEAD 33d05ab unchanged;
+work uncommitted/unpushed; user logs/ and prior edits preserved.
+Next exact command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedGraphs.vo ZFC_model/CodeHierarchyBounds.vo ZFC_model/RootBeta.vo
+```
+
+## Bounded application/decoding predicates — verified, full target OPEN
+
+BoundedApplication.v certifies the separation predicate of value_fiber,
+its union apply_set, and equality to that value via a syntactically bounded
+Formula. Correctness holds for arbitrary graphs, including empty and
+nonfunctional ones; value_bound supplies the graph-value bound. Added
+CodeHierarchyBounds.decoding_value_certificate using the existing decoding
+graph and Power(carrier i) as its value bound. This only certifies decoding
+equality GIVEN the graph, not the graph's first-order construction. Added
+the module to Dune and CI (06pa-bounded-application); did not weaken checks.
+
+Incremental compiler exits 1,0,1,0: fixed an environment type annotation
+and an explicit import; retained both failures. Six new closed assumption
+reports. Fresh isolated build, both source comparisons, recursive kernel
+check and full local CI exited 0. Fresh build printed 271 closed reports
+including dependencies; all 132 CI stages passed. Library-wide kernel
+summary lists imported functional_extensionality_dep, no unsafe settings.
+No timeouts. Commands and complete raw logs are retained in
+verification/bounded-application-2026-10-14/COMMANDS.md.
+
+Next foundation obligation: give a bounded first-order construction of the
+decoding graph from supplied hierarchy data, rather than relying on its
+current sup-based definition. General semantic conversion/realization and
+validity transport remain open in parallel; these predicate certificates
+do not prove the fundamental theorem. The full Ens/BZC foundation audit and
+hierarchy identification also remain open. HEAD 33d05ab unchanged; work
+uncommitted/unpushed; all existing edits and user logs/ preserved.
+Next exact command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedApplication.vo ZFC_model/CodeHierarchyBounds.vo ZFC_model/RootBeta.vo
+```
+
+## Lambda witnesses and realization transport — verified, soundness OPEN
+
+Proved DenotationInversion.lambda_product_body from original typing alone:
+every product witness for a lambda has domain convertible to its annotation
+and codomain typing the body in the annotated binder context. Refined
+RootBeta.realized_root_beta to derive its former PA/PB application-witness
+conversion premises from typed domain-to-annotation conversion and body-type
+conversion. Both fiber denotations transport into the annotated context.
+CA/CB, constituent realization/coherence and semantic regularity still need
+the general joint proof; no unconditional model soundness is claimed.
+
+Also proved realizes_context_transport, realizes_context_conversion and
+realizes_valuation_extensional. These retain the value and type code under
+context morphisms or pointwise equal valuations. They do not establish
+preservation of valuation validity when declaration terms change; that
+requires the still-open semantic declaration conversion argument.
+
+Incremental exits 1,0,1,1,1,0,0. All failures were corrected and raw logs
+retained (missing symmetry instance import, quantified argument introduction,
+EQ_tran binder name, ambiguous tactic witness selection). No timeouts.
+First isolated build/kernel/CI passed (262 closed reports, 131 stages).
+Final isolated rebuild, source comparisons, recursive kernel check and
+final CI also exited 0, including the three later transport lemmas:
+265 closed reports with dependencies and 131 passing stages. The kernel
+library summary lists imported functional_extensionality_dep, no unsafe
+settings. Commands, full types, and all failure/success logs are recorded in
+verification/beta-witness-refinement-2026-10-14/COMMANDS.md.
+
+Next goal: discharge CA/CB via a well-founded joint semantic conversion,
+coherence and realization argument, including validity transport for
+converted declarations. Syntactic common-head normalization alone does
+not supply denotation preservation. First-order BZC bounded-denotation and
+foundation certification also remain open. HEAD 33d05ab unchanged; work
+uncommitted/unpushed; user logs/ preserved. Next exact build command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RootBeta.vo ZFC_model/ContextTransport.vo ZFC_model/TypeHeadNormalization.vo
+```
+
+## Arbitrary beta values via derived coherence — verified, soundness OPEN
+
+Added RootBeta.realized_root_beta. It derives redex coherence by composing
+lambda/application coherence from strict constituent coherence and local
+conversion of actual typing witnesses. The shared ranked beta witness then
+transports to any given redex denotation: the actual substituted reduct
+denotes that same value, which belongs to a decoded result code in U k.
+No redex-coherence premise or universal rank/membership premise is used.
+Lambda coherence now only requires decoded domain equality, not code
+equality. All other existing changes and user logs/ were preserved.
+
+Incremental build, fresh isolated build, both source comparisons, recursive
+kernel check and full local CI exited 0. One new closed Print Assumptions
+report; fresh build prints 261 including dependencies; all 131 CI stages
+passed. Kernel library-wide summary lists the existing imported
+functional_extensionality_dep, with no unsafe settings. No failed runs or
+timeouts. Exact commands, complete theorem type and raw logs are retained
+in verification/beta-coherence-2026-10-14/COMMANDS.md.
+
+Full soundness is NOT proved. First remaining goal: derive decoded semantic
+conversion for well-typed beta-equivalent domain/codomain terms under valid
+valuations, jointly with constituent realization/coherence and semantic
+regularity. The local PA/PB/CB premises in realized_root_beta remain proof
+obligations, not model axioms. No unconditional fundamental theorem exists
+yet. First-order bounded denotation and BZC foundation certification also
+remain open; closed Rocq assumption reports do not settle them.
+HEAD 33d05ab unchanged; work uncommitted and unpushed. Next exact check:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RootBeta.vo ZFC_model/DenotationCongruence.vo ZFC_model/TypeHeadNormalization.vo
+```
+
+## Shared typed beta value from realizations — verified, soundness OPEN
+
+Previous turn made verified progress on ranked rule witnesses. Added
+DenotationBeta.realized_beta. From domain/argument realizations and
+body/type realizations in valid binder valuations, plus decoded domain/
+codomain coherence, it chooses ranked witnesses and constructs one value
+denoted by both redex and actual substituted reduct. It also gives the
+denotation of the substituted result type, membership of the common value
+in its decoding, and membership of that result code in U k. No universal
+rank premise on arbitrary denotations or assumed redex-coherence premise
+is used. DenotationBeta now imports the already checked paired-selection
+and ranked-realization machinery.
+
+Incremental build exited 0; one new closed Print Assumptions report.
+Fresh isolated build, source cmp, recursive kernel check and full local
+CI exited 0. Fresh build printed 260 closed reports with dependencies;
+all 131 CI stages passed. Kernel library-wide summary lists imported
+functional_extensionality_dep, no unsafe settings. No failed builds or
+timeouts. Exact commands, full printed theorem type and raw logs:
+verification/realized-beta-2026-10-14/COMMANDS.md.
+
+The full proof is NOT finished. Next compare arbitrary redex denotations
+with this constructed value using the lambda/application coherence steps,
+deriving that comparison from local constituent facts rather than assuming
+redex coherence. The general joint realization/semantic-regularity/
+conversion argument remains open, as does the first-order BZC foundation
+audit. A shared existential beta value alone is not arbitrary-denotation
+preservation. HEAD 33d05ab unchanged; newer work uncommitted/unpushed;
+user logs/ preserved. Next exact command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/DenotationBeta.vo ZFC_model/RootBeta.vo ZFC_model/DenotationInversion.vo
+```
+
+## Ranked rule witnesses from realizations — verified, soundness OPEN
+
+Previous turn made verified progress on root beta. The existing syntactic
+rank uniqueness/descent results in NormalizationComplexity/RedexRanks.v
+already cover typing-witness independence, so no duplicate was introduced.
+Instead added ranked_realization_witness to DenotationChoice.v: choose
+the already ranked code from the type's realization and transport the
+body's membership using decoded type coherence. LambdaRealization now
+derives its ranked-witness premise from body/type realizations plus that
+coherence. ApplicationRealization now selects a ranked domain/fiber family
+from type realizations, constructs its product witness, and transports the
+function/argument membership. The new application rule no longer needs a
+universal rank bound on all denotations. Product coherence was generalized
+to decoded component equality, which suffices for product congruence.
+
+Incremental exits 0,0. Three new closed assumption reports. Fresh isolated
+build, source comparisons, recursive kernel check and final full local CI
+exited 0. Fresh build printed 259 closed reports including dependencies;
+all 131 stages passed. Kernel summary lists imported
+functional_extensionality_dep, no unsafe settings. No failures/timeouts.
+Exact commands, printed types and raw logs:
+verification/ranked-realization-2026-10-14/COMMANDS.md.
+
+Full proof still OPEN: these rule lemmas require semantic realization of
+types and decoded coherence; neither follows merely from the constructors.
+The joint fundamental argument must include semantic regularity (the
+required domain/codomain type realizations) and conversion, not assume it
+as an extra model axiom. The arbitrary-denotation root-beta theorem retains
+its stronger local rank/membership obligations. First-order bounded
+denotation and the BZC hierarchy/cardinal audit remain open afterward.
+HEAD 33d05ab unchanged; newer work uncommitted/unpushed; user logs/ untouched.
+Next exact command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/ApplicationRealization.vo ZFC_model/LambdaRealization.vo ZFC_model/RootBeta.vo ZFC_model/TypeHeadNormalization.vo
+```
+
+## Root-beta constructor — arbitrary witnesses extracted, soundness OPEN
+
+Previous turn made verified progress on unconditional type-head
+normalization. RootBeta.v now proves denotes_root_beta for an arbitrary
+redex denotation, extracting application/lambda witnesses. It derives the
+syntactic product-type equalities, well-typed domains/codomains, and the
+argument typing from original typing alone. Original context conversion
+transports the application codomain's typing and denotation into the
+lambda context. The existing cross-product beta/substitution theorem then
+proves the reduct has the same value.
+
+IMPORTANT: the remaining local semantic premises are still explicit:
+typed domain/codomain conversion, domain/codomain rank bounds, body
+membership and argument membership. They are not proved general facts.
+The result is a constructor step for the joint fundamental proof, not a
+global beta-preservation or full soundness theorem. Initial versions were
+refined to avoid requiring conversion for untyped terms or across different
+contexts. No model contract assumes the final result.
+
+Incremental exits 0,0,0. One new closed assumption report. Fresh isolated
+build, source cmp, recursive kernel check and full local CI exited 0.
+Fresh build printed 256 closed reports with dependencies; all 131 CI stages
+passed. Kernel library-wide summary lists imported functional_extensionality_dep,
+no unsafe settings. No failed builds/timeouts. Exact commands, printed
+theorem type and raw logs: verification/root-beta-2026-10-14/COMMANDS.md.
+
+Next goal remains the joint typed semantic conversion/rank/membership
+invariant, using common-head classification and these constructor steps.
+Do not assume that invariant, full beta preservation or final typing
+soundness to close the proof. After it, complete the first-order bounded
+denotation and BZC hierarchy/cardinal audit. HEAD 33d05ab unchanged; newer
+work uncommitted/unpushed; user logs/ intact. Next exact command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/RootBeta.vo ZFC_model/TypeHeadNormalization.vo ZFC_model/DenotationCongruence.vo ZFC_model/ApplicationRealization.vo
+```
+
+## Common typed head — unconditional syntactic theorem checked
+
+Previous turn made verified progress on application coherence. Added
+TypeHeadNormalization.v: original strong normalization gives a head form;
+typing inversion excludes sort/product-headed applications and lambdas at
+sort types. Every well-typed type reduces to a sort, product or
+variable-headed spine. Convertible well-typed types reduce to a common
+such head and have equal sort ranks. These theorems have no semantic
+premises. They preserve original syntax/annotations/rules. Head
+classification does not assert full normality or semantic preservation.
+
+Incremental exits 0,1,0: fixed an uninferred context-length parameter in
+sort injectivity. Five module Print Assumptions reports closed. Initial
+local CI passed, but isolated build failed (exit 1): the SortBounds import
+needed an explicit PTSrk.NormalizationComplexity theory dependency. Initial
+kernel check failed (exit 1) because the new proof object was missing.
+Fixed the dune declaration. Isolated rebuild, final full CI and recursive
+kernel check exited 0; all 130 CI stages passed. Rebuild printed 254 closed
+reports with dependencies. Kernel summary lists imported
+functional_extensionality_dep, no unsafe settings. Source cmp exited 0;
+cmp of the non-copied dune manifest exited 2. No timeouts. All commands,
+including failed runs, are retained in verification/type-head-2026-10-14.
+
+Full model soundness remains OPEN. Next use the common-head classification
+in the joint semantic conversion/ranked-membership argument. Still prove
+denotation preservation along the two reduction paths; do not assume this
+as a global contract or confuse syntactic rank equality with semantic
+membership. First-order bounded denotation and BZC hierarchy/cardinal
+justification remain open. HEAD 33d05ab unchanged; subsequent proof work
+is uncommitted/unpushed; user logs/ untouched. Next exact command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/TypeHeadNormalization.vo ZFC_model/DenotationInversion.vo ZFC_model/BetaWitnessTransport.vo ZFC_model/ApplicationRealization.vo
+```
+
+## Application coherence step — verified, full proof still OPEN
+
+Previous turn made verified progress on lambda coherence. Added
+typed_product_domain and denotes_application_coherence to
+DenotationInversion.v. Original type correctness proves well-typedness of
+the product-witness domains. Original typing uniqueness and product
+injectivity compare the two products, and the proved binder-context
+conversion aligns fiber denotations. Semantic application congruence then
+reduces the constructor to function/argument coherence and decoded
+conversion of the actual domains/fibers. Those semantic premises remain
+open; this is not a global soundness theorem or an axiom supplying one.
+
+Incremental build exited 0; two new Print Assumptions reports closed.
+Fresh isolated build exited 0 with 250 closed reports including dependencies.
+Source cmp, recursive kernel check and full local CI exited 0; all 129
+stages passed. Library-wide kernel summary lists imported
+functional_extensionality_dep and no unsafe settings. No failed builds or
+timeouts. Exact commands/logs retained in
+verification/application-coherence-2026-10-14/COMMANDS.md.
+
+Next concrete obligation: for beta-equivalent well-typed types T,T' in a
+well-formed context and a valid valuation, prove equality of decoded values
+of their denotations, together with ranked membership. In schematic form:
+wf G; valid_valuation H s G rho; G |- T : sort i; G |- T' : sort j;
+T =beta T'; denotes H s G rho T a; denotes H s G rho T' a'
+must imply EQ (decode a) (decode a'). No such theorem is currently proved.
+It must be established jointly with the typing/rank invariant needed by
+root beta, without assuming final soundness or a global conversion contract.
+The bounded first-order denotation and BZC hierarchy/cardinal audit also
+remain open. HEAD 33d05ab unchanged; lambda/application steps uncommitted
+and unpushed; user logs/ preserved. Next exact baseline command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/DenotationInversion.vo ZFC_model/BetaWitnessTransport.vo ZFC_model/ApplicationRealization.vo ZFC_model/DenotationCongruence.vo
+```
+
+## Lambda coherence step — verified, full proof still OPEN
+
+Previous turn made verified progress and committed it as 33d05ab. Added
+denotes_lambda_coherence to DenotationInversion.v. It derives beta
+equivalence of the two body-result types by original uniqueness_of_typing,
+then uses semantic lambda congruence. Domain/body coherence and decoded
+conversion of those result types remain explicit local premises. Product
+coherence now restricts its binder premise to actual denoted-domain
+members, as required for a valid-context induction.
+
+Incremental builds exited 0,0. The new theorem's Print Assumptions is
+closed. Fresh build exited 0 (248 closed reports including dependencies);
+refresh after the product-premise refinement exited 0 (13 reports). Source
+cmp, recursive kernel check and final full local CI exited 0; all 129
+stages passed. Kernel library-wide summary lists imported
+functional_extensionality_dep, no unsafe settings. No failures/timeouts.
+Exact commands and raw logs:
+verification/lambda-coherence-2026-10-14/COMMANDS.md.
+
+The full proof is NOT finished: establish decoded conversion/coherence and
+ranked semantic membership from original typing, not as assumptions of the
+final theorem. Lambda's result-type conversion is the next concrete
+obligation, followed by arbitrary root-beta and the full fundamental
+typing theorem. First-order bounded denotation and BZC hierarchy/cardinal
+justifications remain open afterward. HEAD 33d05ab unchanged; this step is
+uncommitted/unpushed. User logs/ preserved. Next exact baseline command:
+
+```sh
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/DenotationInversion.vo ZFC_model/BetaWitnessTransport.vo ZFC_model/ApplicationRealization.vo ZFC_model/DenotationCongruence.vo
+```
+
 ## Beta witness transport — checked commit checkpoint, soundness OPEN
 
 BetaWitnessTransport.v proves beta_argument_typing using only original

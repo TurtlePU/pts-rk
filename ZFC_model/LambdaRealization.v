@@ -1,6 +1,7 @@
-(** Joint bounded selection for lambda witnesses. No preselected codomain
-    family or coherence premise is used; pointwise ranked witnesses remain
-    an explicit induction obligation, not a claimed full soundness theorem. *)
+(** Joint bounded selection for lambda witnesses. The ranked-witness version
+    needs no preselected family or coherence; the realization version derives
+    ranked witnesses from body/type realizations and decoded type coherence.
+    Neither is a claimed full soundness theorem. *)
 From ZFC Require Import Sets Axioms.
 From PTSrk Require Import Syntax Context Typing Ranks.
 From PTSrkModel Require Import SetFunctions CodeUniverses CountableCodes
@@ -90,8 +91,23 @@ Proof.
   apply (lambda_realization_from_ranked_witnesses n G rho A B t a m k Tt DA Ha).
   intros x Hx; apply HT; eapply valid_valuation_extend; eauto.
 Qed.
+Theorem lambda_realization_from_induction n (G : Ctx nat n) A B t m k :
+  @typ nat RankSorts (S n) (G & A) t B ->
+  (forall rho, valid_valuation H s G rho -> realizes H s G rho A (𝓤 m)) ->
+  (forall rho, valid_valuation H s (G & A) rho -> realizes H s (G & A) rho t B) ->
+  (forall rho, valid_valuation H s (G & A) rho -> realizes H s (G & A) rho B (𝓤 k)) ->
+  (forall rho, valid_valuation H s (G & A) rho -> forall c c',
+    denotes H s (S n) (G & A) rho B c -> denotes H s (S n) (G & A) rho B c' ->
+    EQ (decode c) (decode c')) ->
+  forall rho, valid_valuation H s G rho -> realizes H s G rho (lam A t) (Π A B).
+Proof.
+  intros Tt HA Ht HB CB. eapply lambda_realization_in_context; [exact Tt | exact HA |].
+  intros rho HV. eapply ranked_realization_witness; [apply Ht | apply HB | apply CB]; exact HV.
+Qed.
 End Lambda.
 Print Assumptions typed_denotation_pair_choice.
 Print Assumptions lambda_realization_from_ranked_witnesses.
 Print Assumptions lambda_realization_in_context.
+Print Assumptions lambda_realization_from_induction.
 Check lambda_realization_in_context.
+Check lambda_realization_from_induction.

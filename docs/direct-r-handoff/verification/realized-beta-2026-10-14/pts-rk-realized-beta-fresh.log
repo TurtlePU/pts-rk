@@ -1,0 +1,1058 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+        rocq vendor/zfc/.ZFC.theory.d
+        rocq theories/.PTSrk.theory.d
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Literals.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Morphisms.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.SortBounds exactly matches several files in path
+    (found SortBounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.AutomaticBound exactly matches several files in path
+    (found AutomaticBound.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file STLCEmbedding.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file STLCEmbedding.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.EstimatorChecks exactly matches several files in path
+    (found EstimatorChecks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.SortBounds exactly matches several files in path
+    (found SortBounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.AutomaticBound exactly matches several files in path
+    (found AutomaticBound.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Normalization exactly matches several files in path
+    (found Normalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.STLCEmbedding exactly matches several files in path
+    (found STLCEmbedding.v in ../NormalizationComplexity and .; used the latter).
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+File "./vendor/zfc/Sets.v", line 111, characters 0-40:
+Warning: Implicitly declaring hint databases is deprecated. Please explicitly
+create "zfc"
+[implicit-create-hint-db,deprecated-since-9.2,deprecated,default]
+        rocq vendor/zfc/Sets.{glob,vo}
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq vendor/zfc/Axioms.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+        rocq vendor/zfc/Cartesian.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetFunctions.{glob,vo}
+        rocq theories/Congruence.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetApplication.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/SetBijections.{glob,vo}
+        rocq theories/NormalizationComplexity/Rank.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+dependent_product_injection
+     : forall (A K : Ens) (B enc : Ens -> Ens),
+       family_extensional enc ->
+       (forall x : Ens, IN x A -> injection (B x) K (enc x)) ->
+       injection (dependent_product A B)
+         (dependent_product A (fun _ : Ens => K)) 
+         (product_injection A B enc)
+dependent_product_injection_from_graph
+     : forall (A K : Ens) (B : Ens -> Ens) (enc : Ens),
+       (forall x : Ens, IN x A -> injection (B x) K (apply_set enc x)) ->
+       injection (dependent_product A B)
+         (dependent_product A (fun _ : Ens => K))
+         (product_injection A B (apply_set enc))
+Closed under the global context
+Closed under the global context
+Closed under the global context
+coded_beta
+     : forall (A : Ens) (B : Ens -> Ens) (K f : Ens) 
+         (body : Ens -> Ens) (x : Ens),
+       bijection (dependent_product A B) K f ->
+       family_extensional body ->
+       (forall y : Ens, IN y A -> IN (body y) (B y)) ->
+       IN x A ->
+       EQ (coded_application A B K f (encode_function f A body) x) (body x)
+empty_fiber_forces_empty_code
+     : forall (A : Ens) (B : Ens -> Ens) (K f x : Ens),
+       bijection (dependent_product A B) K f ->
+       IN x A -> EQ (B x) Vide -> EQ K Vide
+Closed under the global context
+        rocq ZFC_model/ProductEmbedding.{glob,vo}
+Closed under the global context
+        rocq ZFC_model/CodedFunctions.{glob,vo}
+        rocq ZFC_model/BoundedFormulas.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+powerset_injection
+     : forall A B f : Ens,
+       injection A B f -> injection (Power A) (Power B) (powerset_map A f)
+        rocq ZFC_model/CartesianMaps.{glob,vo}
+        rocq ZFC_model/PowersetEmbedding.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/NormalizationComplexity/Literals.{glob,vo}
+cantor_bernstein
+     : (forall P : Prop, P \/ ~ P) ->
+       forall A B : Ens, embeds A B -> embeds B A -> equinumerous A B
+Closed under the global context
+        rocq ZFC_model/CantorBernstein.{glob,vo}
+        rocq ZFC_model/BoundedFormulaTransport.{glob,vo}
+        rocq theories/NormalizationComplexity/Greedy.{glob,vo}
+        rocq theories/Context.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/ProductExtensionality.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bounded_family_range_equivalence
+     : forall W A f : Ens,
+       IN f (dependent_product A (fun _ : Ens => Power W)) ->
+       EQ (bounded_family_range W A f) (family_range A (apply_set f))
+        rocq ZFC_model/BoundedFamilies.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+cantor_no_injection
+     : forall A : Ens, ~ embeds (Power A) A
+iterated_power_strict
+     : forall (A : Ens) (i j : nat),
+       i < j -> ~ embeds (iterated_power A j) (iterated_power A i)
+        rocq ZFC_model/CardinalGrowth.{glob,vo}
+Closed under the global context
+        rocq theories/Confluence.{glob,vo}
+Closed under the global context
+Closed under the global context
+        rocq theories/SN.{glob,vo}
+Closed under the global context
+Closed under the global context
+bounded_product_equivalence
+     : forall A W f : Ens,
+       IN f (dependent_product A (fun _ : Ens => Power W)) ->
+       EQ (bounded_product A W f) (dependent_product A (apply_set f))
+        rocq ZFC_model/BoundedProducts.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+subset_function_injection
+     : forall A B : Ens,
+       injection (dependent_product A (fun _ : Ens => Power B))
+         (Power (Prod A B)) (flatten_graph A B)
+dependent_subset_product_bound
+     : forall (A K : Ens) (B : Ens -> Ens) (enc : Ens),
+       (forall x : Ens, IN x A -> injection (B x) (Power K) (apply_set enc x)) ->
+       embeds (dependent_product A B) (Power (Prod A K))
+Closed under the global context
+        rocq ZFC_model/SubsetFunctions.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+dependent_product_rank_bound
+     : forall (W A : Ens) (B : Ens -> Ens),
+       transitive_set W ->
+       INC A W ->
+       (forall x : Ens, IN x A -> INC (B x) W) ->
+       IN (dependent_product A B) (iterated_power W 5)
+        rocq ZFC_model/HierarchyBounds.{glob,vo}
+        rocq theories/NormalizationComplexity/Bounds.{glob,vo}
+Closed under the global context
+Closed under the global context
+        rocq theories/Typing.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+universe_enumeration
+     : forall i : nat, EQ (U i) (sup nat (enumerate_universe i))
+decode_repr
+     : forall (infinite_carrier : nat -> Ens) (c : Code),
+       EQ (El infinite_carrier (repr c)) (code_value infinite_carrier c)
+sort_axiom
+     : forall (infinite_carrier : nat -> Ens) (i : nat),
+       IN (repr (sort i)) (El infinite_carrier (repr (sort 0)))
+decoded_sort_product_empty
+     : forall (infinite_carrier : nat -> Ens) (j : nat) (g : Ens),
+       ~
+       IN g
+         (dependent_product (El infinite_carrier (repr (sort j)))
+            (El infinite_carrier))
+        rocq ZFC_model/CodeUniverses.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+Closed under the global context
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+Closed under the global context
+Closed under the global context
+finite_embedding_classification
+     : (forall P : Prop, P \/ ~ P) ->
+       forall (n : nat) (X : Ens),
+       embeds X (finite_carrier n) ->
+       exists m : nat, m <= n /\ equinumerous X (finite_carrier m)
+        rocq ZFC_model/FiniteClassification.{glob,vo}
+Closed under the global context
+        rocq ZFC_model/SyntaxSubstitution.{glob,vo}
+Closed under the global context
+        rocq ZFC_model/SyntaxRenaming.{glob,vo}
+Closed under the global context
+        rocq theories/NormalizationComplexity/RedexRanks.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/NormalizationComplexity/Morphisms.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+counting_bijection
+     : forall i : nat, bijection (U i) omega_codes (counting_graph i)
+counting_roundtrip
+     : forall (i : nat) (x : Ens),
+       IN x (U i) ->
+       EQ
+         (apply_set (inverse (U i) omega_codes (counting_graph i))
+            (apply_set (counting_graph i) x))
+         x
+rank_zero_decoding_bound
+     : forall (higher : nat -> Ens) (a : Ens),
+       IN a (U 0) -> embeds (El (countable_zero higher) a) omega_codes
+        rocq ZFC_model/CountableCodes.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+countable_pairing_bijection
+     : bijection (Prod omega_codes omega_codes) omega_codes pairing_graph
+        rocq ZFC_model/CountablePairing.{glob,vo}
+        rocq theories/NormalizationComplexity/SortBounds.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/TypeHeadNormalization.{glob,vo}
+Closed under the global context
+Closed under the global context
+finite_countable_dichotomy
+     : (forall P : Prop, P \/ ~ P) ->
+       forall X c : Ens,
+       subset_choice X c ->
+       (exists n : nat, equinumerous X (finite_carrier n)) \/
+       embeds omega_codes X
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/CountableDichotomy.{glob,vo}
+Closed under the global context
+decoding_bound
+     : forall (i : nat) (a : Ens),
+       IN a (U i) -> embeds (decode a) (carrier i)
+concrete_sort_axiom
+     : forall i : nat, IN (repr (sort i)) (decode (repr (sort 0)))
+        rocq ZFC_model/CardinalHierarchy.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+decoding_subset_bound
+     : forall (i : nat) (a : Ens), IN a (U i) -> INC (decode a) (carrier i)
+decoding_graph_rank_bound
+     : forall i : nat, IN (decoding_graph i) (carrier (5 + i))
+        rocq ZFC_model/CodeHierarchyBounds.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+envelope_decoding_graph
+     : forall (W H : Ens) (i : nat),
+       INC omega_codes W -> tower_envelope W H -> IN (decoding_graph i) H
+        rocq ZFC_model/SuppliedHierarchy.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+carrier_cartesian_bound
+     : forall i j : nat,
+       embeds (Prod (carrier i) (carrier j)) (carrier (Nat.max i j))
+decoded_dependent_product_bound
+     : forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       embeds (dependent_product (decode a) (fun x : Ens => decode (b x)))
+         (carrier (Nat.max (S m) n))
+        rocq ZFC_model/PowersetSquares.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bijection_formula_correct
+     : forall (r : Fin ?n -> Ens) (A B f : Fin ?n),
+       holds (bijectionF A B f) r <-> bijection (r A) (r B) (r f)
+where
+?n : [ |- nat]
+        rocq ZFC_model/BoundedBijections.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+infinite_bounded_classification
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       forall (i : nat) (X : Ens),
+       embeds omega_codes X ->
+       embeds X (carrier i) ->
+       exists j : nat, j <= i /\ equinumerous X (carrier j)
+infinite_decoded_product_code
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       embeds omega_codes
+         (dependent_product (decode a) (fun x : Ens => decode (b x))) ->
+       exists c : Ens,
+         IN c (U (Nat.max (S m) n)) /\
+         equinumerous
+           (dependent_product (decode a) (fun x : Ens => decode (b x)))
+           (decode c)
+Closed under the global context
+Closed under the global context
+decoded_product_code
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       exists c : Ens,
+         IN c (U (Nat.max (S m) n)) /\
+         equinumerous
+           (dependent_product (decode a) (fun x : Ens => decode (b x)))
+           (decode c)
+        rocq ZFC_model/CardinalClassification.{glob,vo}
+Closed under the global context
+Closed under the global context
+product_witnesses_nonempty
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       exists e : Ens, IN e (product_witnesses m n a b)
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/ProductWitnesses.{glob,vo}
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/BoundedChoice.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+uniform_product_code_choice
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       forall m n : nat,
+       exists s : Ens,
+         forall (a : Ens) (b : Ens -> Ens),
+         IN a (U m) ->
+         (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+         exists c f : Ens,
+           IN c (U (product_code_rank m n)) /\
+           EQ (apply_set s (product_code_witnesses m n a b)) (Couple c f) /\
+           bijection
+             (dependent_product (decode a) (fun x : Ens => decode (b x)))
+             (decode c) f
+        rocq ZFC_model/CodeWitnesses.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+uniform_selected_codes
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       forall m n : nat,
+       exists s : Ens,
+         forall (a : Ens) (b : Ens -> Ens),
+         IN a (U m) ->
+         (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+         IN (selected_code s m n a b) (U (product_code_rank m n)) /\
+         bijection
+           (dependent_product (decode a) (fun x : Ens => decode (b x)))
+           (decode (selected_code s m n a b)) (selected_bijection s m n a b)
+Closed under the global context
+        rocq ZFC_model/SelectedCodes.{glob,vo}
+Closed under the global context
+        rocq ZFC_model/PairedChoice.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+rank_independent_code_choice
+     : forall W H : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       exists s : Ens,
+         forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+         IN a (U m) ->
+         (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+         exists c f : Ens,
+           IN c (U (product_code_rank m n)) /\
+           EQ
+             (apply_set s
+                (global_code_witnesses H
+                   (dependent_product (decode a)
+                      (fun x : Ens => decode (b x)))))
+             (Couple c f) /\
+           bijection
+             (dependent_product (decode a) (fun x : Ens => decode (b x)))
+             (decode c) f
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/GlobalCodeChoice.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+semantic_beta
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (m n : nat) (a : Ens) (b body : Ens -> Ens) (x : Ens),
+       IN a (U m) ->
+       (forall y : Ens, IN y (decode a) -> IN (b y) (U n)) ->
+       family_extensional body ->
+       (forall y : Ens, IN y (decode a) -> IN (body y) (decode (b y))) ->
+       IN x (decode a) ->
+       EQ (semantic_application H s a b (semantic_lambda H s a b body) x)
+         (body x)
+        rocq ZFC_model/GlobalOperations.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+denotes_valuation_extensional
+     : forall (H s : Ens) (n : nat) (G : Ctx nat n) 
+         (rho : Fin n -> Ens) (t : Term nat n) (v : Ens),
+       denotes H s n G rho t v ->
+       forall rho' : Fin n -> Ens,
+       valuation_eq rho rho' -> denotes H s n G rho' t v
+        rocq ZFC_model/Denotation.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+denotes_context_conversion
+     : forall (H s : Ens) (n : nat) (G D : Ctx nat n) 
+         (rho : Fin n -> Ens) (t : Term nat n) (v : Ens),
+       contexts_convertible n G D ->
+       wf G -> wf D -> denotes H s n G rho t v <-> denotes H s n D rho t v
+Closed under the global context
+        rocq ZFC_model/ContextTransport.{glob,vo}
+Closed under the global context
+        rocq ZFC_model/InterpretedContexts.{glob,vo}
+Closed under the global context
+Closed under the global context
+denotes_beta_across_products
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (t : Term nat (S n)) (u T : Term nat n)
+         (a a' : Ens) (b b' body : Ens -> Ens) (f x v : Ens) 
+         (m k : nat),
+       G ⊢ [A] t $ u ⇐ T ->
+       (forall y : Ens,
+        IN y (decode a') ->
+        denotes H s (S n) (G & A) (fin_match y rho) t (body y)) ->
+       denotes H s n G rho u x ->
+       EQ v (semantic_application H s a b f x) ->
+       EQ (decode a) (decode a') ->
+       family_extensional (fun y : Ens => decode (b y)) ->
+       family_extensional (fun y : Ens => decode (b' y)) ->
+       (forall y : Ens, IN y (decode a) -> EQ (decode (b y)) (decode (b' y))) ->
+       EQ f (semantic_lambda H s a' b' body) ->
+       IN a' (U m) ->
+       (forall y : Ens, IN y (decode a') -> IN (b' y) (U k)) ->
+       family_extensional body ->
+       (forall y : Ens, IN y (decode a') -> IN (body y) (decode (b' y))) ->
+       IN x (decode a') -> denotes H s n G rho (t ◁ u) v
+Closed under the global context
+        rocq ZFC_model/BetaWitnessTransport.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/DenotationInversion.{glob,vo}
+Closed under the global context
+Closed under the global context
+application_realization
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B : Term nat (S n)) (t u : Term nat n) 
+         (a : Ens) (b : Ens -> Ens) (f x : Ens) (m k : nat),
+       G ⊢ t ⇐ Π A B ->
+       G ⊢ u ⇐ A ->
+       denotes H s n G rho A a ->
+       (forall y : Ens,
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) B (b y)) ->
+       family_extensional (fun y : Ens => decode (b y)) ->
+       denotes H s n G rho t f ->
+       denotes H s n G rho u x ->
+       IN a (U m) ->
+       (forall y : Ens, IN y (decode a) -> IN (b y) (U k)) ->
+       IN f (decode (semantic_product H s a b)) ->
+       IN x (decode a) -> realizes H s G rho (t $ u) (B ◁ u)
+        rocq ZFC_model/RuleRealization.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/DenotationCongruence.{glob,vo}
+Closed under the global context
+denotes_root_beta
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (t : Term nat (S n)) (u T : Term nat n),
+       wf G ->
+       G ⊢ [A] t $ u ⇐ T ->
+       (forall (U : Term nat n) (l : nat) (a a' : Ens),
+        G ⊢ U ⇐ 𝓤 l ->
+        U =ᵝ A ->
+        denotes H s n G rho U a ->
+        denotes H s n G rho A a' -> EQ (decode a) (decode a')) ->
+       (forall (B C : Term nat (S n)) (j k : nat) (a y b c : Ens),
+        G & A ⊢ B ⇐ 𝓤 j ->
+        G & A ⊢ C ⇐ 𝓤 k ->
+        B =ᵝ C ->
+        denotes H s n G rho A a ->
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) B b ->
+        denotes H s (S n) (G & A) (fin_match y rho) C c ->
+        EQ (decode b) (decode c)) ->
+       (forall (l : nat) (a : Ens),
+        G ⊢ A ⇐ 𝓤 l -> denotes H s n G rho A a -> IN a (U l)) ->
+       (forall (C : Term nat (S n)) (k : nat) (a y c : Ens),
+        G & A ⊢ C ⇐ 𝓤 k ->
+        denotes H s n G rho A a ->
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) C c -> IN c (U k)) ->
+       (forall (C : Term nat (S n)) (a y c v : Ens),
+        G & A ⊢ t ⇐ C ->
+        denotes H s n G rho A a ->
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) C c ->
+        denotes H s (S n) (G & A) (fin_match y rho) t v -> IN v (decode c)) ->
+       (forall a x : Ens,
+        G ⊢ u ⇐ A ->
+        denotes H s n G rho A a -> denotes H s n G rho u x -> IN x (decode a)) ->
+       forall v : Ens,
+       denotes H s n G rho ([A] t $ u) v -> denotes H s n G rho (t ◁ u) v
+        rocq ZFC_model/RootBeta.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+product_realization_from_pointwise
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B : Term nat (S n)) (a : Ens) 
+         (m k : nat),
+       denotes H s n G rho A a ->
+       IN a (U m) ->
+       (forall x : Ens,
+        IN x (decode a) ->
+        exists b : Ens,
+          IN b (U k) /\ denotes H s (S n) (G & A) (fin_match x rho) B b) ->
+       realizes H s G rho (Π A B) (𝓤 (Nat.max (S m) k))
+        rocq ZFC_model/DenotationChoice.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+application_realization_from_inversion
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B : Term nat (S n)) (t u : Term nat n) 
+         (m k : nat),
+       G ⊢ t ⇐ Π A B ->
+       G ⊢ u ⇐ A ->
+       realizes H s G rho t (Π A B) ->
+       realizes H s G rho u A ->
+       (forall a a' : Ens,
+        denotes H s n G rho A a ->
+        denotes H s n G rho A a' -> EQ (decode a) (decode a')) ->
+       (forall a : Ens, denotes H s n G rho A a -> IN a (U m)) ->
+       (forall a x b : Ens,
+        denotes H s n G rho A a ->
+        IN x (decode a) ->
+        denotes H s (S n) (G & A) (fin_match x rho) B b -> IN b (U k)) ->
+       realizes H s G rho (t $ u) (B ◁ u)
+application_realization_from_induction
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B : Term nat (S n)) (t u : Term nat n) 
+         (m k : nat),
+       G ⊢ t ⇐ Π A B ->
+       G ⊢ u ⇐ A ->
+       valid_valuation H s G rho ->
+       realizes H s G rho t (Π A B) ->
+       realizes H s G rho u A ->
+       realizes H s G rho A (𝓤 m) ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' -> realizes H s (G & A) rho' B (𝓤 k)) ->
+       (forall a a' : Ens,
+        denotes H s n G rho A a ->
+        denotes H s n G rho A a' -> EQ (decode a) (decode a')) ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' ->
+        forall b b' : Ens,
+        denotes H s (S n) (G & A) rho' B b ->
+        denotes H s (S n) (G & A) rho' B b' -> EQ (decode b) (decode b')) ->
+       realizes H s G rho (t $ u) (B ◁ u)
+        rocq ZFC_model/ApplicationRealization.{glob,vo}
+Closed under the global context
+Closed under the global context
+lambda_realization_in_context
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (A : Term nat n)
+         (B t : Term nat (S n)) (m k : nat),
+       G & A ⊢ t ⇐ B ->
+       (forall rho : Fin n -> Ens,
+        valid_valuation H s G rho -> realizes H s G rho A (𝓤 m)) ->
+       (forall rho : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho ->
+        exists c v : Ens,
+          IN c (U k) /\
+          denotes H s (S n) (G & A) rho B c /\
+          denotes H s (S n) (G & A) rho t v /\ IN v (decode c)) ->
+       forall rho : Fin n -> Ens,
+       valid_valuation H s G rho -> realizes H s G rho ([A] t) (Π A B)
+lambda_realization_from_induction
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (A : Term nat n)
+         (B t : Term nat (S n)) (m k : nat),
+       G & A ⊢ t ⇐ B ->
+       (forall rho : Fin n -> Ens,
+        valid_valuation H s G rho -> realizes H s G rho A (𝓤 m)) ->
+       (forall rho : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho -> realizes H s (G & A) rho t B) ->
+       (forall rho : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho -> realizes H s (G & A) rho B (𝓤 k)) ->
+       (forall rho : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho ->
+        forall c c' : Ens,
+        denotes H s (S n) (G & A) rho B c ->
+        denotes H s (S n) (G & A) rho B c' -> EQ (decode c) (decode c')) ->
+       forall rho : Fin n -> Ens,
+       valid_valuation H s G rho -> realizes H s G rho ([A] t) (Π A B)
+        rocq ZFC_model/LambdaRealization.{glob,vo}
+Closed under the global context
+Closed under the global context
+denotes_matched_beta
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B t : Term nat (S n)) (u : Term nat n) 
+         (a : Ens) (b body : Ens -> Ens) (x : Ens) 
+         (l m k : nat),
+       G ⊢ A ⇐ 𝓤 l ->
+       G & A ⊢ t ⇐ B ->
+       G ⊢ u ⇐ A ->
+       denotes H s n G rho A a ->
+       (forall y : Ens,
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) B (b y)) ->
+       (forall y : Ens,
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) t (body y)) ->
+       denotes H s n G rho u x ->
+       family_extensional (fun y : Ens => decode (b y)) ->
+       family_extensional body ->
+       IN a (U m) ->
+       (forall y : Ens, IN y (decode a) -> IN (b y) (U k)) ->
+       (forall y : Ens, IN y (decode a) -> IN (body y) (decode (b y))) ->
+       IN x (decode a) ->
+       denotes H s n G rho ([A] t $ u) (body x) /\
+       denotes H s n G rho (t ◁ u) (body x)
+realized_beta
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B t : Term nat (S n)) (u : Term nat n) 
+         (m k : nat),
+       G ⊢ A ⇐ 𝓤 m ->
+       G & A ⊢ t ⇐ B ->
+       G ⊢ u ⇐ A ->
+       valid_valuation H s G rho ->
+       realizes H s G rho A (𝓤 m) ->
+       realizes H s G rho u A ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' -> realizes H s (G & A) rho' t B) ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' -> realizes H s (G & A) rho' B (𝓤 k)) ->
+       (forall a a' : Ens,
+        denotes H s n G rho A a ->
+        denotes H s n G rho A a' -> EQ (decode a) (decode a')) ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' ->
+        forall b b' : Ens,
+        denotes H s (S n) (G & A) rho' B b ->
+        denotes H s (S n) (G & A) rho' B b' -> EQ (decode b) (decode b')) ->
+       exists v c : Ens,
+         denotes H s n G rho ([A] t $ u) v /\
+         denotes H s n G rho (t ◁ u) v /\
+         denotes H s n G rho (B ◁ u) c /\ IN v (decode c) /\ IN c (U k)
+        rocq ZFC_model/DenotationBeta.{glob,vo}

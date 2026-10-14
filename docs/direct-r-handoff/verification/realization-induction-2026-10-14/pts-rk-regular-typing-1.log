@@ -1,0 +1,21 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/RegularTyping.v", line 63, characters 10-21:
+Error:
+In environment
+n0, m : nat
+G : Ctx nat n0
+D : Ctx nat m
+sigma : Fin n0 -> Term nat m
+A : Term nat n0
+HS : regular_substitution G D sigma
+Unable to unify "regular_typ ?G (var ?i) (?G !! ?i)" with
+ "regular_typ (D & replace sigma A) (var fzero)
+    (shift (replace sigma (ctx_top (G & A))))".
+
+File "ZFC_model/dune", lines 1-5, characters 0-1054:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication BoundedGraphs BoundedFiniteCarriers RegularTyping)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/RegularTyping.{glob,vo} (exit 1)
