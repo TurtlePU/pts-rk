@@ -148,6 +148,25 @@ the local data-extensionality gap, but not rank-independent selection or the
 syntactic substitution/typing soundness induction. Projection graphs use the
 existing Cartesian graph construction and inherit its foundation audit.
 
+GlobalCodeChoice.v now removes rank dependence of selection, given a
+transitive base W containing omega_codes and a supplied tower envelope H.
+All codes and one decoding graph define the same candidate set for a given
+semantic source A at every rank; graphs are bounded by Power(Prod H H).
+Ordinary choice on nonempty subsets of Prod all_codes (Power(Prod H H))
+supplies a single selector. Cardinal strictness proves a code equinumerous
+to A cannot exceed any known carrier bound for A. Global projections are
+therefore typed and extensional without a rank parameter. This is conditional
+on the supplied hierarchy and explicit cardinal/choice principles. The
+native all-code set/decoding graph still need their first-order bounded
+construction audit; no identification of H with V_{omega+omega} is proved.
+
+GlobalOperations.v proves typing, beta and congruence for rank-independent
+typed semantic operations. Its selector premise is the property supplied by
+global_selector_exists, not an assumed soundness theorem. Application needs
+the product's semantic data, which raw Syntax.app does not carry; the next
+layer must justify a typed interpretation and conversion/derivation coherence.
+No annotated replacement calculus or erasure bridge has been introduced.
+
 CodeHierarchyBounds.v gives the first model-specific hierarchy connection:
 the singleton-numeral carrier is transitive, U_i is included in it, and each
 decoded code in U_i is a subset of carrier i. The decoding graph is typed by

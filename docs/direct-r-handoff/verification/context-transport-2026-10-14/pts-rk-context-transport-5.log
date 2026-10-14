@@ -1,0 +1,14 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+denotes_context_conversion
+     : forall (H s : Ens) (n : nat) (G D : Ctx nat n) 
+         (rho : Fin n -> Ens) (t : Term nat n) (v : Ens),
+       contexts_convertible n G D ->
+       wf G -> wf D -> denotes H s n G rho t v <-> denotes H s n D rho t v
+Closed under the global context
+        rocq ZFC_model/ContextTransport.{glob,vo}

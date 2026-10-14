@@ -1,0 +1,35 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+denotes_beta_across_products
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (t : Term nat (S n)) (u T : Term nat n)
+         (a a' : Ens) (b b' body : Ens -> Ens) (f x v : Ens) 
+         (m k : nat),
+       G ⊢ [A] t $ u ⇐ T ->
+       (forall y : Ens,
+        IN y (decode a') ->
+        denotes H s (S n) (G & A) (fin_match y rho) t (body y)) ->
+       denotes H s n G rho u x ->
+       EQ v (semantic_application H s a b f x) ->
+       EQ (decode a) (decode a') ->
+       family_extensional (fun y : Ens => decode (b y)) ->
+       family_extensional (fun y : Ens => decode (b' y)) ->
+       (forall y : Ens, IN y (decode a) -> EQ (decode (b y)) (decode (b' y))) ->
+       EQ f (semantic_lambda H s a' b' body) ->
+       IN a' (U m) ->
+       (forall y : Ens, IN y (decode a') -> IN (b' y) (U k)) ->
+       family_extensional body ->
+       (forall y : Ens, IN y (decode a') -> IN (body y) (decode (b' y))) ->
+       IN x (decode a') -> denotes H s n G rho (t ◁ u) v
+        rocq ZFC_model/BetaWitnessTransport.{glob,vo}

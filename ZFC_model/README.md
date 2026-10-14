@@ -18,6 +18,78 @@ soundness or the strength of the Ens representation.
 
 ## Checked construction
 
+`BetaWitnessTransport.v` derives argument typing from the original redex
+typing and transports beta across semantically equal product witnesses.
+It reaches the actual substituted body, but domain/fiber equality, rank
+bounds and membership remain explicit premises. These are not yet proved
+for arbitrary typed denotations, so this is not full beta soundness.
+
+`DenotationCongruence.v` handles all six compound-term reduction cases,
+given preservation of the immediate reduced subterm, using original
+subject/context reduction for typing witnesses. Lambda/application
+inversion is proved in `DenotationInversion.v`. The arbitrary root beta
+case and general conversion soundness remain open; matched beta alone is
+not a substitute for them.
+
+`ContextTransport.v` proves original typing/denotation transport from
+variable-typing morphisms, original context reduction, and beta-equivalent
+well-formed context declarations. The binder-context corollary needs only
+original typing and syntactic beta equivalence, not semantic coherence.
+This is context transport, not yet general term-conversion soundness.
+
+`DenotationInversion.v` proves product inversion through equality closure,
+variable-value uniqueness, and the product coherence step from subterm
+coherence. `ApplicationRealization.v` reuses the function's actual semantic
+product witness. Domain coherence and rank validity remain explicit local
+premises, not proved general properties or a final soundness theorem.
+
+`PairedChoice.v` selects related witness pairs with typed extensional
+projections. `LambdaRealization.v` selects type codes and body values jointly
+in U k × carrier k, preserving membership. Lambda realization now requires
+pointwise ranked body witnesses but no preselected codomain family. Uniform
+ranked realization, application compatibility and conversion remain open.
+
+`BoundedFormulaTransport.v` proves extensionality of all bounded formulas.
+`BoundedChoice.v` selects a set-graph-backed extensional family from bounded
+relational candidates; its formula instance certifies the separation
+predicate. `DenotationChoice.v` assembles type/body witnesses from pointwise
+existence. The product rule now follows from domain/codomain realization in
+valid contexts, without an externally supplied extensional fiber family.
+Native denotation has not yet been translated to a bounded formula, and
+general conversion/coherence and full typing soundness remain open.
+
+`InterpretedContexts.v` defines context validity structurally and proves
+valuation extensionality, context lookup, and sort/variable realization.
+`RuleRealization.v` composes explicit semantic witnesses for the product,
+lambda and application rules; application uses the original substituted
+codomain. This is not yet the full typing induction: existence/coherence of
+the witnesses and semantic preservation of syntactic conversion are open.
+
+`SyntaxRenaming.v` and `SyntaxSubstitution.v` prove transport of original
+Typing.typ derivations. `Denotation.v` defines a type-directed relation over
+the unchanged syntax and proves valuation extensionality, renaming,
+simultaneous substitution and single-variable substitution. `DenotationBeta.v`
+connects a matching-witness redex and its actual syntactic reduct to the same
+semantic value, with semantic typing premises explicit. Denotation totality,
+coherence, general conversion and typing soundness remain open; the relation
+does not assume semantic membership as part of its definition.
+
+`GlobalOperations.v` defines rank-independent typed product, abstraction and
+application operations. It proves their typing, beta law and congruence under
+equal semantic domains/fibers/arguments. The global selector requirement has
+an existence theorem from family choice; the construction is not a model
+record assuming soundness. Since application syntax is unannotated, a typed
+syntax relation now exists; its totality and conversion/coherence proof are
+still needed.
+
+`GlobalCodeChoice.v` uses a supplied transitive tower envelope to bound one
+candidate set independent of typing ranks. One set-coded selector works for
+all ranks; strict cardinal growth proves each selected code belongs to every
+universe justified by the source cardinal bound. Global code/bijection
+projections are extensional in the semantic source set. This removes the
+rank dependence of the earlier fixed-rank selectors. Hierarchy existence,
+the first-order construction audit and original PTS soundness remain open.
+
 `SelectedCodes.v` defines extensional projections of the selected pair and
 proves the selected code is in its universe and its selected graph is the
 required bijection. It proves the coded beta law and fixed-rank congruence
@@ -29,8 +101,9 @@ These are not yet the original PTS substitution/typing soundness inductions.
 certifies its predicate in bounded formula syntax. Its witness sets are
 nonempty under the explicit cardinal/choice principles and rank bounded.
 `uniform_product_code_choice` supplies one set-coded selection operation for
-all typed products at fixed ranks m,n. Cross-rank coherence, extensionality
-of the product construction and substitution compatibility are still open.
+all typed products at fixed ranks m,n. GlobalCodeChoice and SelectedCodes
+now supply rank independence and semantic extensionality respectively;
+syntactic substitution compatibility remains open.
 
 `ProductWitnesses.v` connects product coding to the bounded eligible-bijection
 sets: they are nonempty under the explicit cardinal/choice premises and lie

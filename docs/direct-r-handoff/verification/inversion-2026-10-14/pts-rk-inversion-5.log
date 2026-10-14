@@ -1,0 +1,51 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+File "./ZFC_model/DenotationInversion.v", line 43, characters 16-67:
+Error:
+In environment
+H, s : Ens
+n : nat
+G : Ctx nat n
+rho : Fin n -> Ens
+A : Term nat n
+B : Term nat (S n)
+CA :
+  forall a a' : Ens,
+  denotes H s n G rho A a -> denotes H s n G rho A a' -> EQ a a'
+CB :
+  forall x b b' : Ens,
+  denotes H s (S n) (G & A) (fin_match x rho) B b ->
+  denotes H s (S n) (G & A) (fin_match x rho) B b' -> EQ b b'
+v, v' : Ens
+D : denotes H s n G rho (Π A B) v
+D' : denotes H s n G rho (Π A B) v'
+a : Ens
+b : Ens -> Ens
+DA : denotes H s n G rho A a
+DB :
+  forall x : Ens,
+  IN x (decode a) -> denotes H s (S n) (G & A) (fin_match x rho) B (b x)
+EB : family_extensional (fun x : Ens => decode (b x))
+E : EQ v (semantic_product H s a b)
+a' : Ens
+b' : Ens -> Ens
+DA' : denotes H s n G rho A a'
+DB' :
+  forall x : Ens,
+  IN x (decode a') -> denotes H s (S n) (G & A) (fin_match x rho) B (b' x)
+EB' : family_extensional (fun x : Ens => decode (b' x))
+E' : EQ v' (semantic_product H s a' b')
+EA : EQ (decode a) (decode a')
+The term "semantic_product_congruence H s a a' b b' EA EB EB'" has type
+ "(forall x : Ens, IN x (decode a) -> EQ (decode (b x)) (decode (b' x))) ->
+  EQ (semantic_product H s a b) (semantic_product H s a' b') /\
+  EQ (semantic_bijection H s a b) (semantic_bijection H s a' b')"
+while it is expected to have type "?A /\ ?B".
+
+File "ZFC_model/dune", lines 1-5, characters 0-842:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/DenotationInversion.{glob,vo} (exit 1)

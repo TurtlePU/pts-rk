@@ -1,5 +1,141 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — beta across different product witnesses
+
+Use semantic application congruence before the coded beta law, allowing
+the application and lambda witnesses to differ when their decoded domains
+and fibers agree. Derive argument typing at the lambda annotation directly
+from original redex typing using app/lambda inversion, product injectivity
+and typ_conv. Then apply the proved original-syntax substitution theorem.
+Do not silently assume the equalities or membership/rank facts: they remain
+visible premises of denotes_beta_across_products and obligations of the
+future general soundness proof. No global beta/coherence axiom is added.
+
+## 2026-10-14 — lift preservation through original constructors
+
+Prove the six compatible reduction cases directly by denotation inversion,
+keeping semantic values/families unchanged and transporting original typing
+witnesses with subject/context reduction. Root beta remains separate: do not
+add it as an assumed contract and claim a final preservation theorem.
+Lambda/application inversion includes EQ closure. Local Opaque for semantic
+operations prevents expensive dependent-inversion unfolding only; all
+definitions and kernel/guard/universe checking remain intact. Explicit
+conjunction splits avoid accidentally descending into set equality proofs.
+Binder-body induction hypotheses are restricted to extensions by elements
+of an actually denoted domain. Requiring preservation at every valuation
+would be too strong for the intended valid-context induction.
+
+## 2026-10-14 — context conversion from original variable typings
+
+Transport denotation with identity simultaneous substitution, once original
+variable typings transport. Define structural context convertibility using
+only original beta equivalence of corresponding declarations. Prove the
+required variable typings from source well-formedness by induction, using
+original typ_conv and weakening; then transport denotation both ways when
+both contexts are well formed. This is a proved syntactic context-conversion
+principle, not an assumed semantic conversion contract. In particular,
+context denotation transport does not prove term conversion or transport
+valid_valuation across beta-equivalent declarations by itself.
+
+## 2026-10-14 — recover the function's actual product witness
+
+Invert the denotation of the original product syntax, including its EQ
+closure, to recover its domain and fiber family. Application must reuse
+that family, not choose an independent product witness. Transport function
+membership through product equality and argument membership through domain
+coherence, then invoke original-syntax substitution for the result type.
+The local coherence/rank premises remain unproved induction obligations;
+application_realization_from_inversion is not the final soundness theorem.
+Product coherence is proved from its two subterm-coherence hypotheses, not
+asserted globally. No PTS rule, syntax, conversion or annotation is changed.
+
+## 2026-10-14 — joint selection preserves body/type compatibility
+
+Do not select a body's type code independently from its value and then
+assume they are compatible. Select pairs in the explicit Cartesian bound
+Prod (U k) (carrier k), using the existing relational-choice theorem. Prove
+projection typing and extensionality and preserve the joint predicate
+denotes B c /\ denotes t v /\ IN v (decode c). This removes the preselected
+codomain-family premise of lambda realization. Pointwise ranked body
+witnesses remain a lower-level induction obligation, not an axiom or a
+replacement for the final original-typing theorem. This native selection
+still requires a first-order bounded predicate certificate.
+
+## 2026-10-14 — bounded witness selection, no class-choice shortcut
+
+Prove extensionality of holds for every syntactically bounded Formula.
+Select relational witnesses from Comp B (P x), using a set-indexed family
+and ordinary family_choice. The resulting family is apply_set of a set graph
+and is EQ-extensional; no meta-level or global choice axiom is added.
+Distinguish the general native relational lemma from bounded_formula_choice:
+only the latter certifies the candidate predicate as a bounded formula.
+
+For denotation, prove the relation extensional in its binder valuation and
+result. Select codomain codes in U k and body values in carrier k. This
+discharges product family assembly from the two actual semantic induction
+hypotheses in valid contexts. Lambda body assembly still presupposes a
+compatible codomain family; proving such compatibility is not replaced by
+a premise of a claimed final soundness theorem. Comp of native denotation
+is NOT yet certified bounded: its first-order translation remains open.
+
+## 2026-10-14 — structural context validity, explicit rule composition
+
+Define valid_valuation by recursion on context declarations. Each extension
+requires a denotation of its declared type and membership of the new value;
+it does not quantify over all well-typed terms or assume their soundness.
+Prove lookup via denotation weakening and valuation extensionality. Define
+realizes as existence of term/type denotations with membership, then prove
+sort/variable realization and composition for product/lambda/application.
+Application must interpret the original substituted codomain using the
+proved denotes_subst, not replace it by an unconnected semantic codomain.
+
+Keep family existence and witness coherence explicit as unsolved induction
+obligations. The equality-transport lemma only takes actual set equality;
+it is not named or reported as a proof of syntactic conversion. The native
+context relation remains subject to the first-order bounded-foundation audit.
+
+## 2026-10-14 — relational denotation and original-syntax substitution
+
+Use a type-directed inductive denotation over unchanged Term nat n. Lambda
+and application constructors carry original Typing.typ witnesses to supply
+their product type; they are not new typing rules or added annotations.
+Do not build semantic membership into the denotation relation as a way of
+assuming typing soundness. Prove valuation extensionality, renaming and
+simultaneous substitution by induction on denotation. Transport the typing
+witnesses with proved original-typing renaming/substitution lemmas.
+
+Single-variable substitution then connects the semantic beta operation to
+the original syntactic beta redex and reduct, for matching witnesses and
+explicit semantic typing premises. This is deliberately named
+denotes_matched_beta: it does not imply arbitrary-denotation coherence,
+conversion soundness, or totality. Those remain proof obligations, not
+record fields or hypotheses of a claimed final soundness theorem. The
+native relation is not yet a first-order BZC interpretation certificate.
+
+## 2026-10-14 — typed global operations before syntax interpretation
+
+Inspection of Syntax.v/Typing.v and paper.tex section rk-model confirms that
+application has no type annotation, while the coding inverse depends on its
+product type. Do not invent a value-only raw-term evaluator or erase lambda
+annotations. Define rank-independent typed semantic operations with product
+data explicit, then prove typing, beta and semantic congruence for use in a
+typed syntax interpretation. Upstream Inversions.uniqueness_of_typing gives
+only syntactic beta-equivalence; semantic conversion and substitution must
+still be proved, not assumed from that theorem. The original rules and
+syntax remain unchanged.
+
+## 2026-10-14 — rank-independent code selection in the supplied hierarchy
+
+Define candidates from the semantic source set alone, using all universe
+codes, their decoding graph, and a common Power(Prod H H) graph bound. Choose
+once over nonempty subsets of the bounded candidate space. Do not choose
+independently at different ranks. Prove rank admissibility afterward: if a
+selected infinite code exceeded a source carrier bound, its coding bijection
+would contradict strict powerset growth. Global projections then depend only
+on the source set and respect EQ. The supplied hierarchy is explicit and
+its identification/existence and first-order bounded construction remain
+foundation obligations.
+
 ## 2026-10-14 — selected-code projections and semantic congruence
 
 Project witnesses with Cartesian graph maps, preserving the pinned library's

@@ -1,0 +1,33 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/GlobalCodeChoice.v", line 72, characters 34-35:
+Error: Cannot infer this placeholder of type "Ens" in
+environment:
+W, H : Ens
+HW : transitive_set W
+HO : INC omega_codes W
+HH : tower_envelope W H
+classical_logic : forall P : Prop, P \/ ~ P
+comparison : cardinal_comparability
+gap : infinite_powerset_gap
+choice : family_choice
+m, n : nat
+a : Ens
+b : Ens -> Ens
+Ha : IN a (U m)
+Hb : forall x : Ens, IN x (decode a) -> IN (b x) (U n)
+c : Ens
+Hc : IN c (U (Nat.max (S m) n))
+f : Ens
+Hf :
+  bijection (dependent_product (decode a) (fun x : Ens => decode (b x)))
+    (decode c) f
+e : Ens
+He : IN e f
+
+File "ZFC_model/dune", lines 1-5, characters 0-623:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/GlobalCodeChoice.{glob,vo} (exit 1)
