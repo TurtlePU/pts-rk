@@ -100,13 +100,17 @@ decoded dependent-product bound at max(m+1,n). This construction uses actual
 subset bounds of decoded fibers, so no family of chosen fiber injections is
 required. GCH is not used in this upper bound for powerset representatives.
 It remains needed for the intended classification into available cardinal
-codes. CardinalClassification.v now proves classification for sets admitting
-an injection from omega_codes, conditional on explicit generic cardinal
-comparability and infinite-powerset-gap principles (and classical logic).
-It constructs a permitted infinite code and specializes to the decoded
-product upper bound. Neither these principles' derivation in BZC+GCH nor
-the finite/countable dichotomy is proved; arbitrary products therefore still
-lack a nonemptiness theorem. Carrier-index uniqueness is unconditional.
+codes. CardinalClassification.v now proves classification of all sets bounded
+by a carrier, conditional on explicit family choice, cardinal comparability,
+the infinite-powerset-gap principle and classical logic. CountableDichotomy.v
+derives the finite/countable dichotomy from family choice by choosing outside
+successive finite prefixes. It uses choice on the set of nonempty subsets
+of X, not global choice. Consequently decoded_product_code constructs a code
+for every typed decoded product, without an infinitude side condition.
+These principles' derivation in first-order BZC+GCH, and the bounded recursion
+translation of the native sequence construction, remain unproved. In
+particular sup nat is not itself a BZC existence certificate. Carrier-index
+uniqueness is unconditional.
 
 FiniteClassification.v closes the finite-embedding case: subsets of finite
 carriers are explicitly enumerated, and an injection's image yields a graph

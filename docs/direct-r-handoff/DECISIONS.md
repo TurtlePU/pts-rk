@@ -1,5 +1,16 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — dichotomy from set-indexed family choice
+
+Use choice on the family of nonempty subsets of X, a subset of Power X.
+Native recursion chooses outside each finite prefix. If a remainder is empty,
+the prefix enumeration constructs a finite bijection; otherwise the choices
+construct an injective countable graph. Family choice is an explicit generic
+principle, not a product-coding assumption or global axiom. Combine this with
+the powerset hierarchy classification to remove the infinitude side condition
+from decoded_product_code. First-order bounded recursion/separation audits
+and derivation of cardinal principles in BZC+GCH remain open.
+
 ## 2026-10-14 — finite-embedding classification by actual graphs
 
 Compress the selected numeral indices by finite induction, then use an

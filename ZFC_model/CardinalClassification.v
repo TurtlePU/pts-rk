@@ -5,7 +5,7 @@ From Stdlib Require Import Arith.PeanoNat Lia.
 From ZFC Require Import Sets Axioms Cartesian.
 From PTSrkModel Require Import SetFunctions SetBijections ProductEmbedding
   CountableCodes CardinalGrowth CardinalHierarchy CantorBernstein CodeUniverses
-  PowersetSquares.
+  PowersetSquares CountableDichotomy.
 Import CodeUniverses.CodeUniverses.
 
 Definition cardinal_comparability := forall A B : Ens, embeds A B \/ embeds B A.
@@ -57,6 +57,29 @@ Proof.
 Qed.
 End Classification.
 
+Theorem bounded_cardinal_code (classical_logic : forall P : Prop, P \/ ~ P)
+  (comparison : cardinal_comparability) (gap : infinite_powerset_gap)
+  (choice : family_choice) i X :
+  embeds X (carrier i) -> exists a, IN a (U i) /\ equinumerous X (decode a).
+Proof.
+  intro HX. destruct (finite_countable_from_choice classical_logic choice X) as [[n Hn] | Hinf].
+  - exists (repr (finite n)); split; [apply finite_in_every_universe |].
+    eapply equinumerous_trans; [exact Hn |]. apply (cantor_bernstein classical_logic).
+    + eapply embeds_equal_domain; [exact (decode_repr carrier (finite n)) | apply embeds_reflexive].
+    + eapply embeds_equal_domain; [apply EQ_sym; exact (decode_repr carrier (finite n)) | apply embeds_reflexive].
+  - exact (infinite_bounded_code classical_logic comparison gap i X Hinf HX).
+Qed.
+Theorem decoded_product_code (classical_logic : forall P : Prop, P \/ ~ P)
+  (comparison : cardinal_comparability) (gap : infinite_powerset_gap)
+  (choice : family_choice) m n a b :
+  IN a (U m) -> (forall x, IN x (decode a) -> IN (b x) (U n)) ->
+  exists c, IN c (U (Nat.max (S m) n)) /\
+    equinumerous (dependent_product (decode a) (fun x => decode (b x))) (decode c).
+Proof.
+  intros Ha Hb. apply (bounded_cardinal_code classical_logic comparison gap choice).
+  apply decoded_dependent_product_bound; assumption.
+Qed.
+
 (** Uniqueness needs neither GCH nor cardinal comparison. *)
 Theorem carrier_classification_unique X i j :
   equinumerous X (carrier i) -> equinumerous X (carrier j) -> i = j.
@@ -77,3 +100,6 @@ Print Assumptions infinite_bounded_code.
 Print Assumptions infinite_decoded_product_code.
 Check infinite_bounded_classification.
 Check infinite_decoded_product_code.
+Print Assumptions bounded_cardinal_code.
+Print Assumptions decoded_product_code.
+Check decoded_product_code.

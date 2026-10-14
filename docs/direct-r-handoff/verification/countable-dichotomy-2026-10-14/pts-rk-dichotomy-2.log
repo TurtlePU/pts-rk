@@ -1,0 +1,11 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+finite_countable_dichotomy
+     : (forall P : Prop, P \/ ~ P) ->
+       forall X c : Ens,
+       subset_choice X c ->
+       (exists n : nat, equinumerous X (finite_carrier n)) \/
+       embeds omega_codes X
+        rocq ZFC_model/CountableDichotomy.{glob,vo}

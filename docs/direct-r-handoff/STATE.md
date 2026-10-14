@@ -1,5 +1,51 @@
 # Live proof-development state — 2026-10-14
 
+## Finite/countable dichotomy and all-product code theorem checked
+
+Previous turn was verified progress, committed as 8eecf29 (not pushed).
+CountableDichotomy.v constructs a countable graph by choosing outside finite
+prefixes, or exhibits a finite bijection when a prefix covers the set.
+Choice is supplied on nonempty subsets of X, obtained from the explicit
+generic family_choice principle. The theorem does not assume the dichotomy.
+
+CardinalClassification.v now proves:
+
+    decoded_product_code :
+      (forall P : Prop, P \/ ~ P) -> cardinal_comparability ->
+      infinite_powerset_gap -> family_choice -> forall m n a b,
+      IN a (U m) -> (forall x, IN x (decode a) -> IN (b x) (U n)) ->
+      exists c, IN c (U (Nat.max (S m) n)) /\
+        equinumerous (dependent_product (decode a) (fun x => decode (b x)))
+          (decode c).
+
+No countable-injection side condition remains. This is still conditional on
+independent cardinal/choice principles, NOT a full BZC+GCH model proof.
+Native recursion and sup nat used for the sequence must be replaced or
+justified by bounded first-order constructions. Coherent selection and the
+original PTS soundness induction remain open.
+
+Incremental builds exited 1,0,1,0: missing Prop annotation, then explicit
+finite decode parameters, fixed without weakening statements. Fresh build,
+recursive kernel check and full local CI exited 0. Five dichotomy and two
+additional classification assumption reports are closed; fresh build printed
+138 closed reports including dependencies. Library-wide kernel audit lists
+imported functional_extensionality_dep, no unsafe settings. All 107 stages
+passed. Exact commands/raw logs including failures retained in
+verification/countable-dichotomy-2026-10-14/COMMANDS.md.
+
+Current source/build/docs/evidence changes are uncommitted atop 8eecf29;
+user logs/ untouched. Next goal: connect decoded_product_code to the bounded
+eligible-witness sets and prove their nonemptiness, then choose coherent
+coding bijections from a set-indexed family. In parallel to that mathematical
+work, generic comparison/gap principles and sequence construction still need
+derivation in the precise BZC+GCH theory. Model-first ordering is unchanged.
+Next exact command:
+
+```sh
+sed -n '75,240p' ZFC_model/BoundedBijections.v
+sed -n '1,210p' ZFC_model/CodedFunctions.v
+```
+
 ## Finite-embedding classification verified
 
 Previous turn made verified progress and committed e9862f3 (not pushed).

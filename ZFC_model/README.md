@@ -23,16 +23,19 @@ enumerations, compresses subsets of a finite carrier, and proves that a set
 embedding into finite_carrier n is equinumerous with finite_carrier m for
 some m <= n. The subset/embedding classifications take excluded middle
 explicitly; no GCH or choice premise is used. This does not yet prove the
-finite/countable dichotomy for arbitrary sets. The image separation and
+finite/countable dichotomy on its own. The image separation and
 Type-indexed finite graph still require the first-order foundation audit.
 
-`CardinalClassification.v` proves the infinite part of cardinal classification
-along the powerset hierarchy, conditionally on explicit generic comparability,
-the infinite-powerset-gap principle and excluded middle. It obtains a code in
-U_i and specializes to dependent products with a supplied countable injection.
-These are theorem premises, not new global axioms or a derivation of them in
-BZC+GCH. The finite/countable dichotomy remains open; the finite-embedding
-case is supplied by FiniteClassification.
+`CountableDichotomy.v` constructs the finite/countable dichotomy from explicit
+family choice and excluded middle, choosing from nonempty subsets of X.
+The countable injection is an actual set graph. Its native recursion and
+sup nat construction still need a first-order bounded-existence proof.
+
+`CardinalClassification.v` combines this dichotomy with classification along
+the powerset hierarchy. `decoded_product_code` obtains a code for every typed
+decoded product under explicit family choice, generic comparability, the
+infinite-powerset-gap principle and excluded middle. These are theorem
+premises, not new global axioms or a derivation of them in BZC+GCH.
 Uniqueness of the infinite carrier index follows without these premises.
 
 `BoundedComparison.v` gives an explicit bounded formula for the least closed
