@@ -1,0 +1,186 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedComparison.v", line 84, characters 48-49:
+Error:
+In environment
+A, B, f, g : Ens
+Hf : injection A B f
+Hg : injection B A g
+x, y : Ens
+H :
+  (fix holds (n : nat) (p : Formula n) {struct p} : (Fin n -> Ens) -> Prop :=
+     match p in Formula n0 return (Fin n0 -> Ens) -> Prop with
+     | @equal n0 x y => fun r : Fin n0 -> Ens => EQ (r x) (r y)
+     | @member n0 x y => fun r : Fin n0 -> Ens => IN (r x) (r y)
+     | @falsum n0 => fun _ : Fin n0 -> Ens => False
+     | @conj n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r /\ holds n0 q r
+     | @disj n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r \/ holds n0 q r
+     | @impl n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r -> holds n0 q r
+     | @all n0 b p0 =>
+         fun r : Fin n0 -> Ens =>
+         forall x : Ens, IN x (r b) -> holds (S n0) p0 (fin_match x r)
+     | @ex n0 b p0 =>
+         fun r : Fin n0 -> Ens =>
+         exists x : Ens, IN x (r b) /\ holds (S n0) p0 (fin_match x r)
+     end)
+    7
+    (closedF (fsucc (fsucc fzero)) (fsucc (fsucc (fsucc fzero)))
+       (fsucc (fsucc (fsucc (fsucc fzero))))
+       (fsucc (fsucc (fsucc (fsucc (fsucc fzero))))) fzero)
+    (fin_match
+       (fin_match
+          match A with
+          | sup A f =>
+              sup (A -> Prop)
+                (fun P : A -> Prop =>
+                 sup (depprod A (fun a : A => P a))
+                   (fun c : depprod A (fun a : A => P a) =>
+                    match c with
+                    | @dep_i _ _ a _ => f a
+                    end))
+          end (comparison_env (Power A) A B f g x)
+          (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
+       (comparison_env (Power A) A B f g x)) ->
+  IN
+    (fin_match
+       (fin_match
+          match A with
+          | sup A f =>
+              sup (A -> Prop)
+                (fun P : A -> Prop =>
+                 sup (depprod A (fun a : A => P a))
+                   (fun c : depprod A (fun a : A => P a) =>
+                    match c with
+                    | @dep_i _ _ a _ => f a
+                    end))
+          end (comparison_env (Power A) A B f g x)
+          (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
+       (comparison_env (Power A) A B f g x)
+       (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
+    (fin_match
+       (fin_match
+          match A with
+          | sup A f =>
+              sup (A -> Prop)
+                (fun P : A -> Prop =>
+                 sup (depprod A (fun a : A => P a))
+                   (fun c : depprod A (fun a : A => P a) =>
+                    match c with
+                    | @dep_i _ _ a _ => f a
+                    end))
+          end (comparison_env (Power A) A B f g x)
+          (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
+       (comparison_env (Power A) A B f g x) fzero)
+E : EQ x y
+The term "H" has type
+ "(fix holds (n : nat) (p : Formula n) {struct p} : (Fin n -> Ens) -> Prop :=
+     match p in Formula n0 return (Fin n0 -> Ens) -> Prop with
+     | @equal n0 x y => fun r : Fin n0 -> Ens => EQ (r x) (r y)
+     | @member n0 x y => fun r : Fin n0 -> Ens => IN (r x) (r y)
+     | @falsum n0 => fun _ : Fin n0 -> Ens => False
+     | @conj n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r /\ holds n0 q r
+     | @disj n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r \/ holds n0 q r
+     | @impl n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r -> holds n0 q r
+     | @all n0 b p0 =>
+         fun r : Fin n0 -> Ens =>
+         forall x : Ens, IN x (r b) -> holds (S n0) p0 (fin_match x r)
+     | @ex n0 b p0 =>
+         fun r : Fin n0 -> Ens =>
+         exists x : Ens, IN x (r b) /\ holds (S n0) p0 (fin_match x r)
+     end)
+    7
+    (closedF (fsucc (fsucc fzero)) (fsucc (fsucc (fsucc fzero)))
+       (fsucc (fsucc (fsucc (fsucc fzero))))
+       (fsucc (fsucc (fsucc (fsucc (fsucc fzero))))) fzero)
+    (fin_match
+       (fin_match
+          match A with
+          | sup A f =>
+              sup (A -> Prop)
+                (fun P : A -> Prop =>
+                 sup (depprod A (fun a : A => P a))
+                   (fun c : depprod A (fun a : A => P a) =>
+                    match c with
+                    | @dep_i _ _ a _ => f a
+                    end))
+          end (comparison_env (Power A) A B f g x)
+          (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
+       (comparison_env (Power A) A B f g x)) ->
+  IN
+    (fin_match
+       (fin_match
+          match A with
+          | sup A f =>
+              sup (A -> Prop)
+                (fun P : A -> Prop =>
+                 sup (depprod A (fun a : A => P a))
+                   (fun c : depprod A (fun a : A => P a) =>
+                    match c with
+                    | @dep_i _ _ a _ => f a
+                    end))
+          end (comparison_env (Power A) A B f g x)
+          (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
+       (comparison_env (Power A) A B f g x)
+       (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
+    (fin_match
+       (fin_match
+          match A with
+          | sup A f =>
+              sup (A -> Prop)
+                (fun P : A -> Prop =>
+                 sup (depprod A (fun a : A => P a))
+                   (fun c : depprod A (fun a : A => P a) =>
+                    match c with
+                    | @dep_i _ _ a _ => f a
+                    end))
+          end (comparison_env (Power A) A B f g x)
+          (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
+       (comparison_env (Power A) A B f g x) fzero)"
+while it is expected to have type "cb_predicate A B f g x"
+(cannot unify "Ens" and
+"(fix holds (n : nat) (p : Formula n) {struct p} : (Fin n -> Ens) -> Prop :=
+    match p in Formula n0 return (Fin n0 -> Ens) -> Prop with
+    | @equal n0 x y => fun r : Fin n0 -> Ens => EQ (r x) (r y)
+    | @member n0 x y => fun r : Fin n0 -> Ens => IN (r x) (r y)
+    | @falsum n0 => fun _ : Fin n0 -> Ens => False
+    | @conj n0 p0 q => fun r : Fin n0 -> Ens => holds n0 p0 r /\ holds n0 q r
+    | @disj n0 p0 q => fun r : Fin n0 -> Ens => holds n0 p0 r \/ holds n0 q r
+    | @impl n0 p0 q => fun r : Fin n0 -> Ens => holds n0 p0 r -> holds n0 q r
+    | @all n0 b p0 =>
+        fun r : Fin n0 -> Ens =>
+        forall x : Ens, IN x (r b) -> holds (S n0) p0 (fin_match x r)
+    | @ex n0 b p0 =>
+        fun r : Fin n0 -> Ens =>
+        exists x : Ens, IN x (r b) /\ holds (S n0) p0 (fin_match x r)
+    end)
+   7
+   (closedF (fsucc (fsucc fzero)) (fsucc (fsucc (fsucc fzero)))
+      (fsucc (fsucc (fsucc (fsucc fzero))))
+      (fsucc (fsucc (fsucc (fsucc (fsucc fzero))))) fzero)
+   (fin_match
+      (fin_match
+         match A with
+         | sup A f =>
+             sup (A -> Prop)
+               (fun P : A -> Prop =>
+                sup (depprod A (fun a : A => P a))
+                  (fun c : depprod A (fun a : A => P a) =>
+                   match c with
+                   | @dep_i _ _ a _ => f a
+                   end))
+         end (comparison_env (Power A) A B f g x)
+         (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
+      (comparison_env (Power A) A B f g x))").
+
+File "ZFC_model/dune", lines 1-5, characters 0-476:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/BoundedComparison.{glob,vo} (exit 1)

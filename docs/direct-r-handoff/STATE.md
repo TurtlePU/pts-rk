@@ -1,5 +1,44 @@
 # Live proof-development state — 2026-10-14
 
+## Bounded comparison region verified; previous checkpoint pushed
+
+Commit 5e08a2c (`ZFC model: prove product bounds and Schroeder-Bernstein`)
+was created and pushed to origin/main successfully. No index lock existed;
+no lock removal was necessary. Historical permission failures below are resolved.
+
+BoundedComparison.v now gives scoped bounded formulas for the base, closed
+subsets, and least comparison region, and proves that separation with the
+region formula is extensionally equal to the region in CantorBernstein.v.
+Its four Print Assumptions reports are closed. The comparison theorem itself
+still takes excluded middle explicitly. These certificates do not establish
+first-order BZC derivability or full model soundness.
+
+Incremental builds exited 1,1,0,1,0 (syntax, binder inference, then an iff
+direction error, all fixed without weakening statements). Fresh isolated build
+and recursive kernel check exited 0. Fresh build printed 40 closed reports
+including dependencies; library-wide kernel audit lists imported
+functional_extensionality_dep, with no unsafe settings. Local CI passed all
+104 stages, including pristine upstream, exit 0. Exact commands and raw logs:
+verification/bounded-comparison-2026-10-14/COMMANDS.md.
+
+Current checkpoint adds only the bounded-comparison source, build/CI wiring,
+documentation and verification evidence; user logs/ remain untouched. Commit
+message: `ZFC model: certify bounded separation for the comparison region`.
+
+Next foundation goal: bounded certificates for the successor subset and
+glued comparison graph. Next mathematical goal: exact cardinal-code
+classification under independently stated GCH/choice principles, hence
+eligible-witness nonemptiness. Coherent selection, hierarchy identification,
+BZC derivability and original PTS typing soundness remain open. Preserve the
+model-first ordering from FOUNDATIONS.md.
+Next exact check after extending the certificates:
+
+```sh
+export OPAMROOT="$HOME/.local/share/pts-rk-ci/opam"
+export PATH="$HOME/.local/share/pts-rk-ci/bin:$PATH"
+opam exec --switch=pts-rk-ci -- timeout 180 dune build --display=short --no-buffer ZFC_model/BoundedComparison.vo
+```
+
 ## Commit retry and comparison audit correction
 
 The previous turn was progress: it completed the interrupted CI run (103

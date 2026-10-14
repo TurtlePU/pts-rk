@@ -18,6 +18,13 @@ soundness or the strength of the Ens representation.
 
 ## Checked construction
 
+`BoundedComparison.v` gives an explicit bounded formula for the least closed
+region in Schroeder--Bernstein and proves that separation by this formula
+produces the existing region. The closure condition uses bounded graph
+applications in place of function symbols. This certificate itself requires
+only the two supplied injections, without excluded middle. The final
+comparison theorem still has its explicit classical-logic premise.
+
 `CantorBernstein.v` constructs a bijection from two opposing graph injections.
 It uses a least closed region defined within A and Power A, avoiding collection
 of a sequence of iterates. The final theorem has classical excluded middle

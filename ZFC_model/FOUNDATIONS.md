@@ -85,9 +85,10 @@ CantorBernstein.v supplies Schroeder--Bernstein for actual set-graph injections,
 with excluded middle explicitly quantified in the theorem. The least closed
 region is separated from A by quantifying over subsets in Power A. Thus its
 construction avoids collecting an omega-sequence of iterates via Replacement.
-Its full predicates have not yet been translated into Bounded.Formula; the
-bounded-language certificate remains an audit obligation. Closed theorem
-reports do not erase the explicit classical-logic premise.
+BoundedComparison.v now translates its base, closed-subset and least-region
+predicates into Bounded.Formula and proves equality of the separated regions.
+The successor subset and final glued graph still need syntax certificates.
+Closed theorem reports do not erase the explicit classical-logic premise.
 
 The cardinal upper bound has advanced: CartesianMaps/PowersetSquares prove
 Cartesian absorption throughout the finite powerset carriers, then the

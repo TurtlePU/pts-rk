@@ -1,5 +1,14 @@
 # Decisions and proof-engineering history
 
+## 2026-10-14 — bounded syntax for the comparison region
+
+After checkpoint 5e08a2c, translate the least-region predicate into a scoped
+six-variable bounded formula. Quantify over supplied Power A, A and B, and
+replace the composed application term by bounded graph relations. Prove
+equivalence under the input injection contracts and equality of the separated
+sets. This closes the region's syntactic boundedness audit; successor/gluing
+certificates and the full BZC interpretation remain outstanding.
+
 ## 2026-10-14 — Schroeder--Bernstein without sequence collection
 
 The pinned ZFC subset and installed Stdlib provided no directly reusable

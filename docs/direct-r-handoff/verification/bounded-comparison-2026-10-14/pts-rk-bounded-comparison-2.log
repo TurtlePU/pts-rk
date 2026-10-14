@@ -1,0 +1,30 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedComparison.v", line 57, characters 69-71:
+Error:
+In environment
+n : nat
+r : Fin n -> Ens
+P, A, B, f, g, x : Fin n
+EP : EQ (r P) (Power (r A))
+Hf : injection (r A) (r B) (r f)
+Hg : injection (r B) (r A) (r g)
+H :
+  forall x0 : Ens,
+  IN x0 (r P) ->
+  holds (closedF (fsucc A) (fsucc B) (fsucc f) (fsucc g) fzero)
+    (fin_match x0 r) ->
+  IN (fin_match x0 r (fsucc x)) (fin_match x0 r fzero)
+X : Ens
+HX : IN X (Power (r A))
+HC : cb_closed (r A) (r B) (r f) (r g) X
+The term "Hf" has type "injection (r A) (r B) (r f)"
+while it is expected to have type
+ "injection (fin_match X r ?A0) (fin_match X r ?B0) (fin_match X r ?f)".
+
+File "ZFC_model/dune", lines 1-5, characters 0-476:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/BoundedComparison.{glob,vo} (exit 1)
