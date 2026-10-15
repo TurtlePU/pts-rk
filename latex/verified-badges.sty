@@ -1,0 +1,49 @@
+% verified-badges.sty — Inline badges for formally verified theorems
+% https://github.com/YOURNAME/verified-badges
+%
+% Usage:
+%   \usepackage{verified-badges}
+%   \begin{theorem}[Confluence \leanproof{https://github.com/you/repo/Confluence.lean}]
+%
+% Each command takes one argument: the URL to the proof source.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{verified-badges}[2025/02/12 Inline badges for formally verified theorems]
+
+\RequirePackage{hyperref}
+\RequirePackage{graphicx}
+
+% ---------------------------------------------------------------
+% Badge height and vertical offset (tweak to taste)
+% ---------------------------------------------------------------
+\newlength{\badgeheight}
+\setlength{\badgeheight}{1.2em}
+
+\newlength{\badgeraise}
+\setlength{\badgeraise}{-2pt}
+
+% ---------------------------------------------------------------
+% Generic command: \verifiedproof[badge-file]{url}
+% ---------------------------------------------------------------
+\newcommand{\verifiedproof}[2][rocq]{%
+  \href{#2}{\raisebox{\badgeraise}{\includegraphics[height=\badgeheight]{badges/#1}}}%
+}
+
+% ---------------------------------------------------------------
+% Generic command: \formalisedstmt[badge-file]{url}
+% For definitions, lemmas, and theorems whose statements are formalised
+% but whose proofs are not (yet).
+% ---------------------------------------------------------------
+\newcommand{\formalisedstmt}[2][rocq-formalised]{%
+  \href{#2}{\raisebox{\badgeraise}{\includegraphics[height=\badgeheight]{badges/#1}}}%
+}
+
+% ---------------------------------------------------------------
+% Prover-specific shorthands  (verified — full proof)
+% ---------------------------------------------------------------
+\newcommand{\rocqproof}[1]{\verifiedproof[rocq]{#1}}
+
+% ---------------------------------------------------------------
+% Prover-specific shorthands  (formalised — statement only)
+% ---------------------------------------------------------------
+\newcommand{\rocqformalised}[1]{\formalisedstmt[rocq-formalised]{#1}}

@@ -6,7 +6,7 @@
 
 \usepackage
 {amsmath,amssymb,hyperref,mathpartir,mathtools,minted,
-simplebnf,stmaryrd,tikz-cd}
+simplebnf,stmaryrd,tikz-cd,verified-badges}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}
@@ -60,14 +60,18 @@ simplebnf,stmaryrd,tikz-cd}
 \newcommand{\Inva}{\mathsf{Inv}^{a}}
 \newcommand{\nua}[1]{\nu^{a}_{#1}}
 
+\usepackage{orcidlink}
+
 \title{A sound pure type system with ranks as sorts and
        Type-in-Type}
 \author{
-    Pavel Sokolov \\ HSE University, Laboratory of
-    Theoretical Computer Science
+    Pavel Sokolov\,\orcidlink{0009-0001-6922-2870} \\
+    HSE University, Laboratory of Theoretical Computer
+    Science \\ \textit{ppsokolov@hse.ru}
     \and
-    Alexander Kuklev \\ Radboud Univ. Nijmegen,
-    Department of Software Science
+    Alexander Kuklev\,\orcidlink{0009-0004-1019-4205}
+    \\ Radboud Univ. Nijmegen, Department of Software
+    Science \\ \textit{a@kuklev.com}
 }
 \date{\today}
 
@@ -321,9 +325,10 @@ Sections~\ref{complexity}-\ref{computational}. As a
 byproduct of our study on complexity, we built a sound
 set-theoretic model for PTS-$rk$ (see
 Section~\ref{rk-model}) which assumes \emph{Generalised
-Continuum Hypothesis} \cite{jech2003set,hausdorff1908}
-which is an unusual pick for dependently typed systems
-where \emph{inaccessible cardinals} are a more common
+Continuum Hypothesis} \cite{jech2003set,hausdorff1908,
+godel1938consistency,godel1940consistency} which is an
+unusual pick for dependently typed systems where
+\emph{inaccessible cardinals} are a more common
 assumption \cite{werner1997sets,lee2011proof}. Before
 concluding, we provide a sneak peek into what it is
 like to write proofs in PTS-$rk$ and provide a full
@@ -347,6 +352,23 @@ understandable and simpler to read).
 
 Also, we chatted with Claude Fable 5.1
 \cite{claude_fable} to find better points of reference.
+
+\subsection{Formalisation status}
+
+Every result up to the proof of strong normalisation
+for PTS-$rk$ was formally verified in Rocq using
+handwritten proofs. Such results are marked with a
+\rocqproof{https://github.com/TurtlePU/pts-rk}; each
+icon is a hyperlink to the statement and proof in Rocq
+with version pinned at the moment of submission.
+
+Main results after that were formalised in Rocq as
+well, albeit not by us but rather by GPT-6 Astra. Such
+results are marked with
+\rocqformalised{https://github.com/TurtlePU/pts-rk/pull/1};
+just as with handwritten results, each icon is a
+hyperlink to the statement and proof in Rocq with
+version pinned at the moment of submission.
 
 \section{Metatheory of pure type systems}
 \label{pts-metatheory}
@@ -405,7 +427,8 @@ revisit the proof since previous presentations usually
 did not allow reductions in the type of argument $T$ in
 $\lambda(x:T).t$.
 
-\begin{theorem}[Characterisation of $(=_\beta)$]
+\begin{theorem}[Characterisation of $(=_\beta)$
+    \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/DefEq.v\#L9}]
     In arbitrary PTS,
     \[
         t =_\beta u \quad\Leftrightarrow\quad
@@ -500,7 +523,7 @@ slightly differ in the formulation of typing rules in
 important places so it is better to recheck that these
 hold.
 
-\begin{lemma}[Weakening]
+\begin{lemma}[Weakening \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Typing.v\#L50}]
     The following rule is admissible:
     \[\dfrac{\Gamma,\Delta\vdash t:T}
             {\Gamma,x:U,\Delta\vdash t:T}.\]
@@ -509,7 +532,7 @@ hold.
     By structural induction on the typing derivation.
 \end{proof}
 
-\begin{lemma}[Substitution]
+\begin{lemma}[Substitution \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Typing.v\#L78}]
     The following rule is admissible:
     \[\dfrac{
         \Gamma,x:U,\Delta\vdash t:T\quad
@@ -537,7 +560,7 @@ term are also proven by straightforward induction on
 typing derivation (each one is proven separately, no
 mutual induction involved):
 
-\begin{lemma}[Inversion lemmas]
+\begin{lemma}[Inversion lemmas \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Inversions.v}]\label{inversion}
 \begin{align}
     \Gamma\vdash s:T &\Rightarrow
     \exists s'. (s,s')\in\mathsf{Ax} \land T =_\beta s'
@@ -595,7 +618,7 @@ assumptions on the PTS we have in question.
     \]
 \end{definition}
 
-\begin{theorem}[Uniqueness of typing]
+\begin{theorem}[Uniqueness of typing \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Inversions.v\#L84}]
     In a functional PTS, the following rule is
     admissible:
     \[\dfrac{\Gamma\vdash t:T \quad \Gamma\vdash t:T'}
@@ -660,7 +683,7 @@ $(\vdash\_)$ and $(\_\vdash\_:\_)$), this is closer to
 how decision procedures for typing judgements are
 implemented.
 
-\begin{theorem}[Typing yields correct type]
+\begin{theorem}[Typing yields correct type \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Preservation.v\#L65}]
 \label{type-is-correct}
     In a total PTS, if $\Gamma\vdash t:T$ and
     $\vdash\Gamma$, then there exists $s\in\mathcal{S}$
@@ -692,7 +715,7 @@ either itself typable or equal to $\square$
 PTS-$rk$ is indeed total so the theorem above is enough
 for our purposes.
 
-\begin{theorem}[Subject reduction]
+\begin{theorem}[Subject reduction \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Preservation.v\#L92}]
     In a total PTS, the following rule is admissible:
     \[\dfrac{
         \Gamma\vdash t:T \quad \vdash\Gamma
@@ -790,7 +813,8 @@ definition of $\mathsf{sn}$ and by structural induction
 on available derivations of $\mathsf{sn}$ for terms in
 question:
 
-\begin{lemma}[Structural properties of $\mathsf{sn}$]
+\begin{lemma}[Structural properties of $\mathsf{sn}$
+    \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/SN.v}]
 \label{sn-props}
 \begin{mathpar}
     \inferrule{}{x,s\in\mathsf{sn}}\and
@@ -835,7 +859,7 @@ normalisation survives application:
 \begin{lemma}
 \label{sn-atomic}
     If $t,u\in\mathsf{sn}$ and $t$ is atomic, then
-    $t\,u\in\mathsf{sn}$.
+    $t\,u\in\mathsf{sn}$.\;\rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/SN.v\#L78}
 \end{lemma}
 \begin{proof}
     By induction on derivations of $\mathsf{sn}$ for
@@ -859,7 +883,7 @@ already taken care of.
 \begin{lemma}[Weak head expansion
     \cite{joachimski2003short,
     vanraamsdonk1995normalisation,
-    altenkirch1993constructions}]
+    altenkirch1993constructions}\;\rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/SN.v\#L167}]
 \label{sn-whe}
     \[\left\{\begin{array}{l}
         t[u/x]u_1\ldots u_n\in\mathsf{sn} \\
@@ -897,7 +921,7 @@ already taken care of.
 PTS-\texorpdfstring{$rk$}{rk}}
 \label{rk-sn}
 
-\begin{theorem}[Strong normalisation of PTS-$rk$]
+\begin{theorem}[Strong normalisation of PTS-$rk$\;\rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Ranks.v\#L217}]
 \label{normalisation}
     \[ \Gamma\vdash t:T\,\land\vdash\Gamma
     \Rightarrow t \in\mathsf{sn}. \]
@@ -1090,10 +1114,10 @@ In order to formalise our strong normalisation proof,
 we first need to provide a general metatheory of PTS as
 laid out in Section~\ref{pts-metatheory}. We could
 reuse existing projects on PTS formalisations such as
-\cite{siles2012pure,adams2006pure,barras1997coqencoq}
-but we wanted to explore the topic ourselves
-which led to a few minor differences discussed
-previously, thus we started from scratch.
+\cite{siles2012pure,adams2006pure,barras1997coqencoq,
+felicissimo2024generic} but we wanted to explore the
+topic ourselves which led to a few minor differences
+discussed previously, thus we started from scratch.
 
 When one formalises syntax with binders in a proof
 assistant, one of the most important decisions is how
@@ -1111,6 +1135,9 @@ Inductive Term (L: Type) (n: nat) : Type :=
 | lam: Term L n -> Term L (S n) -> Term L n
 | app: Term L n -> Term L n -> Term L n.
 \end{minted}
+
+(Inside our formalisation project, this definition is
+located here: \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Syntax.v\#L7})
 
 Here, $L$ is a type of sorts ($L$ comes from
 \emph{level} which is a name used for it in universe
@@ -1151,7 +1178,7 @@ characterisation of the set of strongly normalising
 terms introduced in \cite{Joachimski2003Short}:
 
 \begin{definition}[Syntax-directed characterisation
-    of strong normalisation]
+    of strong normalisation \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/SN.v\#L175}]
     Sets of terms $\mathsf{SN}$ (strongly normalising),
     $\mathsf{SNx}$ (strongly normalising neutral) and a
     relation $\to_\mathsf{WHR}$ (weak head reduction)
@@ -1195,7 +1222,7 @@ inductive definition is not problematic.
 One can prove that set $\mathsf{SN}$ is equal to
 $\mathsf{sn}$; we, however, need only the following:
 
-\begin{lemma}[Soundness of $\mathsf{SN}$]
+\begin{lemma}[Soundness of $\mathsf{SN}$ \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/SN.v\#L222}]
     $\mathsf{SN}\subseteq\mathsf{sn}$.
 \end{lemma}
 \begin{proof}
@@ -1227,8 +1254,8 @@ Lemma in terms of $\mathsf{SN}$, and the proof goes
 through.
 
 \begin{lemma}
-    Application Lemma for all $s\le r$ implies
-    Substitution Lemma for $r$.
+    $\mathrm{AL}_s$ for all $s\le r$ implies
+    $\mathrm{SL}_r$ \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Ranks.v\#L74}.
 \end{lemma}
 \begin{proof}
     We have to prove that $\mathsf{SN}\,t$ and
@@ -1266,12 +1293,13 @@ reasonable.)
 As requested further, LLM confessed that it was largely
 inspired by studies on complexity of normalisation for
 STLC \cite{statman1979typed,schwichtenberg1991upper,
-beckmann2001exact}. And indeed, upon taking a closer
-look at the proof of Theorem~\ref{normalisation}, one
-cannot help but notice it actually being a primitive
-recursive \cite{kleene1952introduction,
-peter1951rekursive} algorithm for term normalisation in
-disguise. Or something a tad faster:
+beckmann2001exact,nguyen2024simply}. And indeed, upon
+taking a closer look at the proof of
+Theorem~\ref{normalisation}, one cannot help but notice
+it actually being a primitive recursive algorithm
+\cite{skolem1923,kleene1952introduction,
+peter1951rekursive} for term normalisation in disguise.
+Or something a tad faster:
 
 \begin{definition}[$d$-bounded terms]
     A PTS-$rk$ term is $d$-bounded if it is well-typed
@@ -1606,8 +1634,7 @@ not in the same sense as before.
             \mathcal{N}_j
     \end{array}\]
     By substitution-basis theorem
-    \cite{mazzanti2002plain,
-    marchenkov2007superpositions}, it is enough
+    \cite{prunescu2026minimal}, it is enough
     to additionally provide modulus
     $x\,\mathrm{mod}\,y$ (where $x\,\mathrm{mod}\,0=x$)
     and binary exponentiation $2^x$ since substitution,
@@ -2007,7 +2034,7 @@ A few corollaries:
 
 \begin{itemize}
     \item Indeed, the product interpreting
-        \(\Pi Z:\mathsf{rk}_0.Z\) ranges over \(U_0\),
+        \(\Pi(Z:\mathsf{rk}_0).Z\) ranges over \(U_0\),
         which contains \(c_0\), whose decoding is
         $\varnothing$. That product is therefore empty.
     \item A system with rank cumulativity
@@ -2024,7 +2051,7 @@ ZFC using $\beth$-s instead of $\aleph$-s, but that
 would break an assumption that $U_i$ are countable,
 which would falsify axioms
 $\mathsf{rk}_n:\mathsf{rk}_0$. That is not a huge
-problem however since ZF+GCH is interpretable in ZFC
+problem however since ZF+GCH is interpretable in ZF
 \cite{godel1938consistency,godel1940consistency} (in
 contrast to ZFC + inaccessible cardinals which is not
 \cite{kanamori2003higher,kunen1980set,godel1931formal}
@@ -2043,7 +2070,8 @@ definable graphs yield $\R$. Interpretation is split
 into two parts since interpretation of $\Rt$ is simpler
 and already exposes all of the main ideas, while direct
 interpretation of $\R$ would be strictly more
-cumbersome.
+cumbersome. Nonetheless, a direct translation is
+available in supplementary formalised materials.
 
 The following proof was obtained in discussion with
 GPT 6 Astra.
@@ -2245,6 +2273,12 @@ compatibility are derivable.
 Consequently, for each external $m\le n$, there is a
 closed proof of $O(\overline{m},\overline{n})$, built
 by a finite succession of steps.
+\begin{remark}
+    Actually, it is possible to prove inside PTS-$rk$
+    that $D$ satisfies axioms of an \emph{ordered
+    commutative unital semiring}. A generated formal
+    proof is available in supplementary materials.
+\end{remark}
 
 \subsection{Finite separation}
 
@@ -2362,6 +2396,13 @@ axioms follow. Set
     $G$-evidence.
 \end{proof}
 
+\begin{remark}
+    This construction applies to arbitrary
+    Church-encoded inductive types showing constructor
+    disjointness and injectivity: this is a simpler
+    analog of inversion lemmas (Lemma~\ref{inversion}).
+\end{remark}
+
 \subsection{The relational interpretation}
 
 \begin{theorem}\label{main}
@@ -2402,6 +2443,12 @@ axioms follow. Set
     arithmetic beta equations, reflexivity, ground
     order, and Lemma~\ref{sep}.
 \end{proof}
+
+\begin{remark}
+    This construction applies to arbitrary
+    Church-encoded inductive types, listing possible
+    subordinate elements for any fixed element.
+\end{remark}
 
 While this interpretation is full, it, however, is not
 faithful on arbitrary first-order sentences.
@@ -2560,8 +2607,10 @@ bound on proof-theoretical strength of PTS-$rk$ by
 providing a full interpretation of
 Tarski--Mostowski--Robinson arithmetic $R$ inside it;
 we did it partly because we suspect our system to be
-able to prove its own consistency, therefore
-interpretation of $R$ is the natural first step.
+able to prove its own consistency in the sense Pakhomov
+finitistic set theory does \cite{Pakhomov2019AWeakSet},
+therefore interpretation of $R$ is the natural first
+step.
 
 \printbibliography
 \end{document}
