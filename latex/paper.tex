@@ -357,18 +357,21 @@ Also, we chatted with Claude Fable 5.1
 
 Every result up to the proof of strong normalisation
 for PTS-$rk$ was formally verified in Rocq using
-handwritten proofs. Such results are marked with a
+handwritten proofs. Such proofs are marked with a
 \rocqproof{https://github.com/TurtlePU/pts-rk}; each
 icon is a hyperlink to the statement and proof in Rocq
 with version pinned at the moment of submission.
 
-Main results after that were formalised in Rocq as
-well, albeit not by us but rather by GPT-6 Astra. Such
+Results after that were formalised in Rocq as well,
+albeit not by us but rather by GPT-6 Astra. Such
 results are marked with
 \rocqformalised{https://github.com/TurtlePU/pts-rk/pull/1};
 just as with handwritten results, each icon is a
 hyperlink to the statement and proof in Rocq with
-version pinned at the moment of submission.
+version pinned at the moment of submission. Where only
+a component of a paper claim is checked, a note
+explaining what exactly is formalised accompanies the
+badge.
 
 \section{Metatheory of pure type systems}
 \label{pts-metatheory}
@@ -1255,7 +1258,8 @@ through.
 
 \begin{lemma}
     $\mathrm{AL}_s$ for all $s\le r$ implies
-    $\mathrm{SL}_r$ \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Ranks.v\#L74}.
+    $\mathrm{SL}_r$.
+    \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Ranks.v\#L74}
 \end{lemma}
 \begin{proof}
     We have to prove that $\mathsf{SN}\,t$ and
@@ -1284,11 +1288,12 @@ PTS-\texorpdfstring{$rk$}{rk}}
 In this section we prove that convertibility of closed
 well-typed PTS-$rk$ terms is \textsc{TOWER}-complete.
 
-(Proofs in this and following sections are not
-formalised in Rocq: they are relatively simple,
-non-technical and their formalisation would require
-many times more preliminary work than seems
-reasonable.)
+(Proofs in this and following sections were not
+verified in Rocq by any of the authors, but there is a
+formalisation of some results by GPT-6 Astra. Informal
+proofs, however, are relatively simple, non-technical
+and their formalisation requires many times more
+preliminary work than seems reasonable.)
 
 As requested further, LLM confessed that it was largely
 inspired by studies on complexity of normalisation for
@@ -1308,8 +1313,9 @@ Or something a tad faster:
 \end{definition}
 
 \begin{theorem}
-[Elementary recursive normalisation of bounded
-    PTS-$rk$]
+    [Elementary recursive normalisation of bounded
+    PTS-$rk$
+    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/BoundedNormalization.v\#L19}]
 \label{bounded-sn}
     For each $d$, there is an elementary recursive
     algorithm \cite{rose1984subrecursion} for finding a
@@ -1380,7 +1386,7 @@ normalisation of arbitrary STLC terms is in
 $\mathsf{TOWER}$. A little weaker result holds for our
 dependently typed PTS:
 
-\begin{theorem}
+\begin{theorem}\label{tower-convertibility}
     Convertibility of \textbf{closed} well-typed
     PTS-$rk$ terms is in $\mathsf{TOWER}$.
 \end{theorem}
@@ -1462,6 +1468,12 @@ of redexes.
     Convertibility of closed well-typed PTS-$rk$ terms
     is \textsc{TOWER}-hard (hence
     \textsc{TOWER}-complete).
+    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/STLCEmbedding.v\#L198}
+    \footnote{The badge certifies the
+    annotation-preserving reduction from closed
+    Church-style STLC, including typing, preservation
+    and reflection of conversion, and the exact
+    additive encoding-size bound.}
 \end{theorem}
 \begin{proof}
     By reduction from convertibility of Curry-style
@@ -1497,6 +1509,74 @@ of redexes.
     Assigning all type variables rank $\mathsf{rk}_0$
     preserves well-typedness since values of such types
     were never treated as functions in original term.
+\end{proof}
+
+\begin{corollary}
+    Type checking for closed PTS-$rk$ terms is
+    \textsc{TOWER}-complete.
+\end{corollary}
+\begin{proof}
+    The following term demonstrates that convertibility
+    of closed well-typed terms $t,t':T$ reduces to type
+    checking:
+    \[
+        \lambda(P:T\to\mathsf{rk}_0)(x:P\,t).
+        (\lambda(y:P\,t').y)\,x
+    \]
+    This term is well-typed iff $P\,t=_\beta P_t'$
+    which holds iff $t=_\beta t'$.
+
+    Then, we only have to prove that type checking for
+    PTS-$rk$ is in \textsc{TOWER}. Take a look at the
+    following syntax-directed type synthesis rules:
+    \begin{mathpar}
+        \inferrule[Ax']{ }
+        {\Gamma\vdash\mathsf{rk}_r
+        \Rightarrow\mathsf{rk}_0}
+        \and
+        \inferrule[Rule']{
+            \Gamma\vdash T\Rightarrow\mathsf{rk}_r \\
+            \Gamma,x:T\vdash U\Rightarrow\mathsf{rk}_s
+        }{\Gamma\vdash\Pi(x:T).\,U\Rightarrow
+        \mathsf{rk}_{\max(r+1,s)}}
+        \\
+        \inferrule[Var']{ }
+        {\Gamma\vdash x\Rightarrow T}x:T\in\Gamma
+        \and
+        \inferrule[Abs']{
+            \Gamma\vdash T\Rightarrow\mathsf{rk}_r \\
+            \Gamma,x:T\vdash u\Rightarrow U
+        }{\Gamma\vdash\lambda(x:T).u
+        \Rightarrow\Pi(x:T).U}
+        \and
+        \inferrule[App']{
+            \Gamma\vdash u\Rightarrow\Pi(x:T).U \\
+            \Gamma\vdash t\Rightarrow T'\\
+            T=_\beta T'
+        }{\Gamma\vdash u\,t\Rightarrow U[t/x]}
+    \end{mathpar}
+    This relation is functional (in the sense that if
+    $\Gamma\vdash t:T$ and $\Gamma\vdash t:T'$, then
+    $T=T'$ as words) and the corresponding partial
+    function is realised by an algorithm in
+    \textsc{TOWER}: this algorithm recurses on the term
+    $t$, matches on the inferred types as needed and
+    collects equalities on types it has to check. Then,
+    it can na\"ively check all equalities in bulk:
+    there is at most $\mathcal{O}(|t|)$ such equalities
+    on terms of size $\mathcal{O}(|t|)$, so this runs
+    in \textsc{TOWER} by
+    Theorem~\ref{tower-convertibility}.
+    To finish the proof, it is enough to notice that
+    \[
+        \Gamma\vdash t:T\quad\Longleftrightarrow\quad
+        \exists T',r.\;(\Gamma\vdash T:r)
+        \land (T=_\beta T') \land
+        (\Gamma\vdash t\Rightarrow T').
+    \]
+    So the main algorithm infers the type of $T$,
+    checks that it is $\mathsf{rk}_r$ for some $r$,
+    infers the type of $t$ and compares it with $T$.
 \end{proof}
 
 \section{PTS-\texorpdfstring{$rk$}{rk} as a
@@ -1955,6 +2035,7 @@ We are going to need an unusual assumption however:
 
 \begin{theorem}
     PTS-$rk$ has a sound model in ZF+GCH.
+    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/ZFC_model/ModelSoundness.v\#L133}
 \end{theorem}
 \begin{proof}
     Produced in discussion with GPT 6 Astra.
@@ -2066,12 +2147,12 @@ logical theories, we construct a fixed interpretation
 of Tarski--Mostowski--Robinson arithmetic $\R$ in
 $\PTS$: Church numerals and certified finite
 observations first interpret its relational form $\Rt$;
-definable graphs yield $\R$. Interpretation is split
-into two parts since interpretation of $\Rt$ is simpler
-and already exposes all of the main ideas, while direct
-interpretation of $\R$ would be strictly more
-cumbersome. Nonetheless, a direct translation is
-available in supplementary formalised materials.
+definable graphs yield $\R$. We do so because
+interpretation of $\Rt$ is much simpler than direct
+interpretation of $\R$ and already exposes all of the
+main ideas. Direct translation is available in
+supplementary formalised materials
+\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/functional/DirectRTheorem7.v\#L75}.
 
 The following proof was obtained in discussion with
 GPT 6 Astra.
@@ -2221,7 +2302,7 @@ definitionally.
             \mathcal U={}&(X:\rk1)\,(z:X)\,
             (s:X\to X)\,(\delta:X\to\rk4)\\
             &(d_0:\delta z)\,
-            (d_s:(u:X)\to\delta u\to\delta(su)).
+            (d_s:\Pi(u:X).\,\delta u\to\delta(su)).
         \end{aligned}
     \]
 \end{definition}
@@ -2254,7 +2335,9 @@ negation of $P$ is upwards closed. Define
 With such definition, preorder laws and equality
 compatibility are derivable.
 
-\begin{lemma}\label{r-common}
+\begin{lemma}
+    [\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v}]
+    \label{r-common}
     The following holds:
     \begin{itemize}
         \item $G(\z)$, $G(d)\to G(\suc d)$ and
@@ -2280,12 +2363,13 @@ by a finite succession of steps.
     proof is available in supplementary materials.
 \end{remark}
 
-\subsection{Finite separation}
+\subsection{Finite separation}\label{finite-separation}
 
 In this section we prove that $\widetilde R3$ also
 holds in our interpretation of $\Rt$.
 
 \begin{lemma}
+    [\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRSeparation.v\#L143}]
     For each $n\in\mathbb{N}$, there is a proof of
     $O(\overline{n+1},\overline{n})\to\bot$.
 \end{lemma}
@@ -2301,10 +2385,10 @@ holds in our interpretation of $\Rt$.
         \to\rk1,\qquad
         e_i\triangleq\lambda Z_0\ldots Z_{q-1}.Z_i.
     \]
-    We're going to use them as a ``model'' to interpret
-    an assumed $O$ and get a contradiction: set
-    $X=F_q$, $z=e_0$, and use ``saturated addition''
-    as a successor:
+    We are going to use them as a ``model'' to
+    interpret an assumed $O$ and get a contradiction:
+    set $X=F_q$, $z=e_0$, and use ``saturated
+    addition'' as a successor:
     \[
         s(u)\triangleq\lambda Z_0\ldots Z_{q-1}.\
         u\,Z_{\min(0+1,c)}\cdots Z_{\min(c+1,c)}.
@@ -2317,7 +2401,7 @@ holds in our interpretation of $\Rt$.
     \]
     Selector projection gives $d_0$. To construct
     $d_s$, open the output $\delta(su)$ at $Q$ and its
-    branch proofs, and specialize the input certificate
+    branch proofs, and specialise the input certificate
     to $v\mapsto Q(sv)$. Its branches are the supplied
     proofs for the appropriate successor selectors.
 
@@ -2332,11 +2416,13 @@ holds in our interpretation of $\Rt$.
     is identity. At $e_i$ with $i<c$, there is a
     premise $\top\to\bot$.
 
-    Specializing $H:O(\overline{c},\overline{n})$ to
+    Specialising $H:O(\overline{c},\overline{n})$ to
     these data yields $(\bot\to\bot)\to(\top\to\bot)$.
 \end{proof}
 
-\begin{lemma}\label{sep}
+\begin{lemma}
+    [\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRSeparation.v\#L193}]
+    \label{sep}
     For each $m>n$, there is a proof of
     $O(\overline{m},\overline{n})\to\bot$.
 \end{lemma}
@@ -2355,7 +2441,7 @@ numbers). Assuming $E(\overline{m},\overline{n})$, we
 obtain a paradoxical $O$ and derive a contradiction by
 Lemma~\ref{sep}.
 
-\subsection{Bounded cases}
+\subsection{Bounded cases}\label{bounded-cases}
 
 Here, we prove a crucial lemma from which remaining
 axioms follow. Set
@@ -2364,13 +2450,15 @@ axioms follow. Set
     \bigl(E(d,\overline{0}),\ldots,E(d,\overline{n}),
     O(\overline{n+1},d)\bigr):\rk8.
 \]
-\begin{lemma}\label{case}
+\begin{lemma}
+    [\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L808}]
+    \label{case}
     $\Pi(d:D).\;\Good(d)\to\Case_n(d)$ is inhabited for
-    every external $n$.
+    external $n$.
 \end{lemma}
 \begin{proof}
-    We're going to use the following positive invariant
-    as a $Q$:
+    We are going to use the following positive
+    invariant as a $Q$:
     \[
         \Inv_n(d)\triangleq\Pi(Z:\rk8).\;(G(d)\to
         \Case_n(d)\to Z)\to Z\quad:\rk{10}.
@@ -2396,16 +2484,16 @@ axioms follow. Set
     $G$-evidence.
 \end{proof}
 
-\begin{remark}
-    This construction applies to arbitrary
-    Church-encoded inductive types showing constructor
-    disjointness and injectivity: this is a simpler
-    analog of inversion lemmas (Lemma~\ref{inversion}).
-\end{remark}
-
 \subsection{The relational interpretation}
 
-\begin{theorem}\label{main}
+\begin{theorem}
+    [\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRTheorem4.v\#L57}
+    \footnote{The linked theorem gives original-PTS
+    inhabitants for all axiom instances and all source
+    derivations. The generic constructive witness
+    search turns each such existence proof into a proof
+    term together with its typing derivation.}]
+    \label{main}
     The carrier $D$, admitted domain $\Good$, closed
     operations $\z,\suc$, and relations $E,O,A^*,M^*$
     interpret the classical relational theory $\Rt$ in
@@ -2445,22 +2533,29 @@ axioms follow. Set
 \end{proof}
 
 \begin{remark}
-    This construction applies to arbitrary
-    Church-encoded inductive types, listing possible
-    subordinate elements for any fixed element.
+    Constructions from Sections~\ref{finite-separation}
+    and~\ref{bounded-cases} generalise to arbitrary
+    Church-encoded inductive types providing
+    constructor disjointness and injectivity, as well
+    as finite case analysis for subtrees of fixed
+    constructor trees. These results can be seen as
+    internal inversion lemmas.
 \end{remark}
 
 While this interpretation is full, it, however, is not
 faithful on arbitrary first-order sentences.
 
-\begin{remark}[Failure of faithfulness]
-    The interpretation of $\Rt$ is not faithful: the
-    translation of $\rho\triangleq\forall x\,(x\le x)$
-    is provable in $\PTS$, although $\Rt\nvdash\rho$.
+\begin{remark}[Failure of faithfulness
+    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRTheorem4.v\#L47}]
+    The interpretation of $\Rt$ is not faithful.
 \end{remark}
 \begin{proof}
+    The translation of
+    $\rho\triangleq\forall x\,(x\le x)$ is provable in
+    $\PTS$, although $\Rt\nvdash\rho$.
+
     We already know that $O$ is reflexive
-    (Lemma~\ref{r-common}) But why is reflexivity not
+    (Lemma~\ref{r-common}). But why is reflexivity not
     derivable in $\widetilde R$? It follows from
     model-theoretic considerations: there is a
     set-theoretic countermodel.
@@ -2518,8 +2613,10 @@ interpretability degree.
 
 \begin{proposition}
     The classical theories $\Rt$ and $\R$ are mutually
-    interpretable. Consequently $\PTS$ interprets $\R$
-    by definable arithmetic graphs.
+    interpretable \footnote{Mutual interpretability
+    does not imply bi-interpretability. In particular,
+    the totalised graphs need not coincide with the
+    original relations $A,M$ on arbitrary arguments.}.
 \end{proposition}
 \begin{proof}
     In $\R$, interpret $A(x,y,z)$ by $x+y=z$ and
@@ -2561,10 +2658,10 @@ interpretability degree.
     the raw Church operators $\Add,\Mul$.
 \end{proof}
 
-The conclusion is mutual interpretability, not
-bi-interpretability. In particular, the totalized
-graphs need not coincide with the original relations
-$A,M$ on arbitrary arguments.
+\begin{corollary}
+    $\PTS$ interprets $\R$
+    by definable arithmetic graphs.
+\end{corollary}
 
 \section{Conclusion}
 
@@ -2604,13 +2701,13 @@ strictify the hierarchy of $\aleph$-s which act as
 interpretations of our function types
 (Section~\ref{rk-model}). Finally, we provide a lower
 bound on proof-theoretical strength of PTS-$rk$ by
-providing a full interpretation of
-Tarski--Mostowski--Robinson arithmetic $R$ inside it;
-we did it partly because we suspect our system to be
-able to prove its own consistency in the sense Pakhomov
-finitistic set theory does \cite{Pakhomov2019AWeakSet},
-therefore interpretation of $R$ is the natural first
-step.
+providing a full interpretation of a relational version
+of Tarski--Mostowski--Robinson arithmetic $R$ inside it
+(Section~\ref{proof-system}); we did it partly because
+we suspect our system to be able to prove its own
+consistency in the sense Pakhomov finitistic set theory
+does \cite{Pakhomov2019AWeakSet}, therefore
+interpretation of $R$ is the natural first step.
 
 \printbibliography
 \end{document}
