@@ -1,5 +1,38 @@
 # Live proof-development state — 2026-10-14
 
+## Markdown runtime, dated title and Figure 2 ready for publication
+
+Added authorsonlines=true (default false) to the locally vendored class and
+enabled it for the paper; explicit YAML date 16 October 2026 renders below
+authors/affiliations. Four fresh metadata regression fixtures pass (true,
+default, false, scalar/empty date). Tests also exposed/fixed external-preamble
+catcode restoration and fragile email URL handling in authblk arguments.
+
+Figure 2 had an empty display paragraph and display skips inside its float.
+The figure-local mathpar binding now uses the same public mathpartir line/
+rule bindings in a vbox without the $$ wrapper. It preserves external float
+and caption spacing. An isolated test measures 42.944pt versus 21.944pt,
+removing 21pt internal padding. Title/Figure 2 visually checked. More Unicode
+aliases include leadsto, double parentheses/brackets, logical constants,
+arrows and large operators, all mapped to the original TeX glyphs. Copied the
+existing traditional paper's full TOWER-hardness badge disclaimer into Markdown.
+
+Fresh final command: bash tools/build-markdown-paper.sh; exit 0, 40 pages,
+1037340 bytes. Directory /tmp/pts-rk-markdown-paper.PBYDVw. All 72031 canonical
+body characters and 818 ordered math fragments match; 32 labels, 103 citations
+and byte-identical BBL match the traditional baseline. Final pass has no missing
+glyphs/undefined references. Metadata tests: bash tools/check-markdown-class.sh,
+exit 0, /tmp/pts-rk-markdown-class.rx9TmK. Exact logs, commands and limitations:
+verification/paper-title-figure-2026-10-16/. Traditional paper.tex/pdf untouched.
+
+User requests commit/push. Commit only the Markdown runtime/class/tests and
+paper/build/docs/evidence; exclude existing dirty Rocq work and unrelated CI,
+cache and proof logs. Publish using ordinary origin/main push, no force/merge.
+No new Rocq proof/build claimed. Material-BZC next goal is unchanged: original
+typing input bounds, then internal semantic totality. Next paper checks:
+bash tools/check-markdown-class.sh and bash tools/build-markdown-paper.sh.
+
+
 ## Repository reorganization — verified under theories
 
 The latest requested destination is theories/, superseding the interrupted

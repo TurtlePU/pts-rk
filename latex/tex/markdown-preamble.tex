@@ -1,0 +1,169 @@
+\documentclass{article}
+
+\usepackage{parskip}
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{bibliography.bib}
+
+\usepackage
+{amsmath,amssymb,hyperref,mathpartir,mathtools,minted,
+simplebnf,stmaryrd,tikz-cd,verified-badges}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage{newunicodechar}
+\newunicodechar{Γ}{\ensuremath{\Gamma}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Π}{\ensuremath{\Pi}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{ᵀ}{\textsuperscript{T}}
+\newunicodechar{ᵁ}{\textsuperscript{U}}
+\newunicodechar{ᵗ}{\textsuperscript{t}}
+\newunicodechar{ᵘ}{\textsuperscript{u}}
+\newunicodechar{ᵣ}{\textsubscript{r}}
+\newunicodechar{⊔}{\ensuremath{\sqcup}}
+% Native Unicode spelling, with the original article's math glyphs/fonts.
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{ℵ}{\ensuremath{\aleph}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{→}{\ensuremath{\to}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{↦}{\ensuremath{\mapsto}}
+\newunicodechar{⊢}{\ensuremath{\vdash}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∉}{\ensuremath{\notin}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∃}{\ensuremath{\exists}}
+\newunicodechar{≤}{\ensuremath{\le}}
+\newunicodechar{≥}{\ensuremath{\ge}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+\newunicodechar{⊂}{\ensuremath{\subset}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{∩}{\ensuremath{\cap}}
+\newunicodechar{∧}{\ensuremath{\land}}
+\newunicodechar{∨}{\ensuremath{\lor}}
+\newunicodechar{¬}{\ensuremath{\neg}}
+\newunicodechar{⋅}{\ensuremath{\cdot}}
+\newunicodechar{≜}{\ensuremath{\triangleq}}
+\newunicodechar{⇉}{\ensuremath{\rightrightarrows}}
+\newunicodechar{⇔}{\ensuremath{\Leftrightarrow}}
+\newunicodechar{□}{\ensuremath{\square}}
+\newunicodechar{△}{\ensuremath{\triangle}}
+\newunicodechar{“}{``}
+\newunicodechar{”}{''}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{≡}{\ensuremath{\equiv}}
+\newunicodechar{ℓ}{\ensuremath{\ell}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{∗}{\ensuremath{*}}
+\newunicodechar{ℕ}{\ensuremath{\mathbb{N}}}
+\newunicodechar{ℤ}{\ensuremath{\mathbb{Z}}}
+\newunicodechar{ℚ}{\ensuremath{\mathbb{Q}}}
+\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}
+\newunicodechar{↝}{\ensuremath{\leadsto}}
+\newunicodechar{⦇}{\ensuremath{\llparenthesis}}
+\newunicodechar{⦈}{\ensuremath{\rrparenthesis}}
+\newunicodechar{⟦}{\ensuremath{\llbracket}}
+\newunicodechar{⟧}{\ensuremath{\rrbracket}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{⊥}{\ensuremath{\bot}}
+\newunicodechar{⊤}{\ensuremath{\top}}
+\newunicodechar{∘}{\ensuremath{\circ}}
+\newunicodechar{∅}{\ensuremath{\varnothing}}
+\newunicodechar{≔}{\ensuremath{\coloneqq}}
+\newunicodechar{↑}{\ensuremath{\uparrow}}
+\newunicodechar{⟶}{\ensuremath{\longrightarrow}}
+\newunicodechar{⟺}{\ensuremath{\Longleftrightarrow}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newunicodechar{⊬}{\ensuremath{\nvdash}}
+\newunicodechar{⋯}{\ensuremath{\cdots}}
+\newunicodechar{…}{\ensuremath{\ldots}}
+\newunicodechar{∏}{\ensuremath{\prod}}
+\newunicodechar{⋁}{\ensuremath{\bigvee}}
+
+\DeclareRobustCommand{\PTSrk}{\textnormal{PTS-}\ensuremath{rk}}
+\pdfstringdefDisableCommands{\def\PTSrk{PTS-rk}}
+
+% Standalone offside %tikzcd blocks already supply their own math mode.
+\BeforeBeginEnvironment{tikzcd}{\begin{center}}
+\AfterEndEnvironment{tikzcd}{\end{center}}
+
+% A float already supplies external spacing and a caption gap. Use mathpartir's
+% paragraph layout inside figures, not a second $$ display with an empty line
+% and display skips above/below the rules. This binding is local to each float.
+\newenvironment{figuremathpar}[1][]{%
+  \par\noindent\vbox\bgroup
+  \parskip=0pt\hsize=\linewidth\centering
+  \MathparLineskip #1\noindent$\displaystyle\MathparBindings
+}{\unskip$\par\egroup\par}
+\AtBeginEnvironment{figure}{%
+  \let\mathpar\figuremathpar
+  \let\endmathpar\endfiguremathpar
+}
+
+\newcommand{\rk}[1]{\mathsf{rk}_{#1}}
+\newcommand{\PTS}{\mathsf{PTS}_{rk}}
+\newcommand{\Rt}{\widetilde{\mathsf R}}
+\newcommand{\R}{\mathsf R}
+\newcommand{\Good}{\mathsf{Good}}
+\newcommand{\Case}{\mathsf{Case}}
+\newcommand{\Inv}{\mathsf{Inv}}
+\newcommand{\ev}{\operatorname{ev}}
+\newcommand{\Add}{\mathsf{Add}}
+\newcommand{\Mul}{\mathsf{Mul}}
+\newcommand{\z}{\mathsf z}
+\newcommand{\suc}{\mathsf s}
+\newcommand{\nc}{\mathop{\neg}\nolimits_c}
+\newcommand{\ac}{\mathbin{\wedge_c}}
+\newcommand{\oc}{\mathbin{\vee_c}}
+\newcommand{\iffc}{\mathbin{\leftrightarrow_c}}
+\newcommand{\Up}{\mathsf{Up}}
+\newcommand{\Da}{D_{\!a}}
+\newcommand{\za}{\mathsf z_a}
+\newcommand{\sa}{\mathsf s_a}
+\newcommand{\adda}{\mathsf a_a}
+\newcommand{\ma}{\mathsf m_a}
+\newcommand{\Ga}{G_a}
+\newcommand{\Ea}{E_a}
+\newcommand{\Oa}{O_a}
+\newcommand{\Gooda}{\mathsf{Good}_a}
+\newcommand{\Casea}{\mathsf{Case}^{a}}
+\newcommand{\Inva}{\mathsf{Inv}^{a}}
+\newcommand{\nua}[1]{\nu^{a}_{#1}}
+
+\usepackage{orcidlink}
+
+
+% Keep the original article's body typography and all mathematics packages.
+% Only title/author layout is delegated to the MLTT-S metadata class.
+\usepackage{titling,authblk}
+\usepackage[
+  smartHybrid, fencedEnvs, headerAttributes, rawAttribute,
+  inlineCodeAttributes, fencedCode, inlineNotes,
+  citations, relativeReferences,
+  % Avoid underscore-emphasis scanning across several native math subscripts.
+  % Prose emphasis uses *...*, as in the manuscript.
+  underscores=false,
+  texMathDollars, texMathSingleBackslash
+]{markdown}

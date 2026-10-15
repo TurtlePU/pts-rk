@@ -1,5 +1,23 @@
 # Decisions and proof-engineering history
 
+## 2026-10-16 — dated title, optional author lines and float-local math layout
+
+Keep authorsonlines opt-in and default false. Apply protected line-break
+separators to structured authblk metadata before emitting authors, retaining
+email/ORCID/affiliation association. Explicit YAML dates use the existing
+metadata mechanism after the entire author block. Test class defaults as
+well as true/false, scalar authors and empty dates; restore internal catcodes
+after external preambles and protect moving email URLs.
+
+Within figures only, typeset mathpar using its public line-spacing/binding
+macros inside a vbox, without the display wrapper. Keep normal external float
+and caption skips; do not tighten every display or use arbitrary negative
+vspace. The isolated actual-preamble regression measures 21pt less padding.
+Expand Unicode source aliases without font/semantic changes; retain all TeX
+macros needed for formatting, binding and scalable delimiters. Commit the
+pinned runtime with its local changes/provenance, not a dependency on MLTT-S.
+
+
 ## 2026-10-14 — consolidate physical source layout, preserve logical interfaces
 
 Move Interpretation_of_R and ZFC_model into theories as explicitly requested;

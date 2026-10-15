@@ -7,6 +7,9 @@ Run these scripts from the repository root. None requires GitHub CLI.
 | `check-local-ci.sh` | Select the dedicated local opam switch, validate the workflow with actionlint, run the complete CI driver |
 | `ci-check-direct-r.sh` | Build an isolated pristine upstream snapshot, then normalization, arithmetic, and set-model modules; stop at the first failure |
 | `check-direct-r.sh` | Smaller functional smoke check in an already activated Rocq/Equations environment; not the complete audit |
+| `build-markdown-paper.sh` | Fresh LuaLaTeX/Biber paper build, source/rendered checks, copy successful review PDF |
+| `check-markdown-paper.py` | Compare Markdown/traditional paper body and ordered mathematics; optionally inspect parser output |
+| `check-markdown-class.sh` | Compile four date/author-layout metadata regression fixtures using the local class/runtime |
 
 See [DirectR-CI.md](../docs/DirectR-CI.md) for pinned versions and setup.
 The script names and `DIRECT_R_*` environment variables are retained for
