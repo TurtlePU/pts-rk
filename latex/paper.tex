@@ -1564,7 +1564,8 @@ of redexes.
     collects equalities on types it has to check. Then,
     it can na\"ively check all equalities in bulk:
     there is at most $\mathcal{O}(|t|)$ such equalities
-    on terms of size $\mathcal{O}(|t|)$, so this runs
+    on terms of size
+    $\mathcal{O}(2^{\mathrm{poly}(|t|)})$, so this runs
     in \textsc{TOWER} by
     Theorem~\ref{tower-convertibility}.
     To finish the proof, it is enough to notice that
