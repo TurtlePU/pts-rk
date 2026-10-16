@@ -36,17 +36,19 @@ developments.
 Base normalization proof is surprisingly simple
 (modulo general metatheoretical properties of pure
 type systems) and has been fully formalized in
-vanilla Rocq without any additional
+vanilla Rocq without additional
 axioms.
 :::
 
 # Introduction
 
-Pure type systems (PTS [@berardi1988towards; @terlouw1989gstt])
-are minimalistic typed $λ$-calculi that
-include only abstraction $λ(x : T).u$,
-application $u\,t$, function types
-$Π(x : T).U$ where $U$ might depend on $x$, and
+Pure type systems (PTS) are a family of minimalistic
+typed $λ$-calculi introduced independently by
+Berardi [@berardi1988towards] and Terlouw [@terlouw1989gstt].
+Their abstract grammar includes only variables
+$x ∈ \mathsf{Var}$, abstraction $λ(x : T).u$,
+application $u\,t$, dependent function types
+$Π(x : T).U$ (where $U$ might depend on $x$) and
 *sorts* $s ∈ \mathcal{S}$ that act as “types of
 types”.
 
@@ -145,9 +147,10 @@ polymorphic functions $(□, ∗, ∗)$,
 type operators $(□, □, □)$ and dependent types
 $(∗, □, □)$.
 
-All lambda cube PTSs are strongly normalizing and sound
-with respect to their set-theoretical semantics [@tait1967intensional; @coquand1990kripke; @geuvers1991modular],
-but it is not hold in general.
+Both STLC and CoC are strongly normalizing and
+sound with respect to their set-theoretical
+semantics [@tait1967intensional; @coquand1990kripke; @geuvers1991modular],
+but it is not true for arbitrary PTS.
 
 %newpage
 
@@ -202,7 +205,7 @@ for each $k, l$; when interpreted in sets,
 $⟦ \mathcal{U}_k ⟧$ is taken to be the $k$-th
 inaccessible cardinal [@werner1997sets; @aczel1998relating].
 
-Observing this, we took interest in the following
+Observing this, we took an interest in the following
 two questions:
 
 - If we were to drop the rule $(∗, ∗, ∗)$ and keep
@@ -251,7 +254,7 @@ To dispel our own doubts, we formalized a proof of
 normalization in Rocq (formerly Coq) without using
 any additional axioms, yielding a fully
 constructive proof; our journey in formalization
-is summarized in Section <#formalisation> and the
+is summarized in Section <#formalization> and the
 whole development is available at <https://github.com/TurtlePU/pts-rk>.
 
 Having completed the proof, we noticed that it
@@ -291,8 +294,8 @@ generated proofs always required additional
 explanations or a complete rewrite to make them
 understandable and simpler to read).
 
-Also, we chatted with Claude Fable 5.1 [@claude_fable]
-to find better points of reference.
+We also chatted with Claude Fable 5.1 [@claude_fable]
+to identify more suitable points of reference.
 
 ## Formalization status
 
@@ -324,7 +327,7 @@ from each other; furthermore,
 $α$-equivalence (renaming of bound variables) is
 assumed as a trivial equality on terms.
 Nevertheless, our formalization takes variable
-treatment seriously; see Section <#formalisation>
+treatment seriously; see Section <#formalization>
 for more details.
 
 ## PTS as a rewriting system
@@ -362,7 +365,7 @@ smallest relation satisfying the following rules:
 :::
 
 In essence, actual reduction happens only in rule
-%textsc{Beta}; other rules simply state the we can
+%textsc{Beta}; other rules simply state that we can
 freely reduce any subterm.
 
 The following result will be greatly useful in our
@@ -399,8 +402,8 @@ $t_2 →_β^∗ t'$:
     t_2 \arrow[r, dashed] \&
     t'
 
-Then, any “mountains” in the path $t =_β u$ can be
-switched into “valleys”.
+Then, any ‘mountains’ in the path $t =_β u$ can be
+switched into ‘valleys’.
 
 Now, diamond property is proven by the standard
 technique of parallel reduction [@martinlof1971theory]
@@ -465,10 +468,11 @@ of a typing judgement given in Fig.
 
 ## Properties of a typing judgement
 
-Again, they surely have been proven before for PTS [@barendregt1992lambda; @geuvers1991modular],
-but we slightly differ in the formulation of
-the typing rules in important places, so it is better
-to recheck that these hold.
+These properties have certainly been proven before
+for PTS [@barendregt1992lambda; @geuvers1991modular],
+but our formulation of the typing rules slightly
+differs in important places, so it is better to
+recheck that these properties hold.
 
 :::Lemma[Weakening \proof{rocq:Typing.v\#L50}]
 The following rule is admissible:
@@ -506,11 +510,12 @@ substitution (thanks to characterization of
 $( =_β )$).
 :::
 
-In addition, a family of so-called *inversion
-lemmas* [@barendregt1992lambda; @vanbenthemjutting1993typing]
+In addition, there is a family of so-called
+*inversion lemmas* [@barendregt1992lambda; @vanbenthemjutting1993typing]
 stating that a type of well-typed term is largely
-determined by the shape of a term are also proven by
-straightforward induction on typing derivation
+determined by the shape of a term.
+They are also proven by straightforward induction
+on typing derivation
 (each one is proven separately,
 no mutual induction involved):
 
@@ -542,7 +547,7 @@ no mutual induction involved):
 :::
 
 To progress further, we need to make certain
-assumptions on the PTS we have in question.
+assumptions about the PTS in question.
 
 :::Definition[Functional PTS]
 A pure type system is called *functional* if
@@ -593,7 +598,7 @@ the given typing derivations.
   Then what is needed holds by the functionality of
   $\mathsf{Rule}$.
 
-- The case for $t = x ∈ \mathsf{Var}$ holds trivially.
+- The case for $t = x ∈ \mathsf{Var}$ is trivial.
 
 - $t = (λ (x : T).u)$: by induction hypotheses and
   by congruence of $( =_β )$.
@@ -613,7 +618,8 @@ derivation for $t : T$, then $T$ is itself
 typeable with some sort.
 However, it does not hold in our current
 formulation of typing rules: in $Γ ⊢ x : T$,
-nothing prevents a context $Γ$ to contain an entry
+nothing prevents a context $Γ$ from containing
+an entry
 $(x : T')$ where $T'$ is not typeable.
 Thus, we need an additional assumption.
 
@@ -628,7 +634,7 @@ set closed by the following rules:
   \dfrac{⊢ Γ \quad Γ ⊢ T : s}
         {⊢ Γ, x : T}
 
-(where $⋅$ denotes an empty context.)
+(where $⋅$ denotes an empty context).
 :::
 
 Usually, when presenting a dependently typed
@@ -700,7 +706,7 @@ Crucially, it requires the type we convert into to
 be typable by a sort, so that is where we use
 Theorem <#type-is-correct>.
 
-The only tricky case are reductions of a domain
+The only tricky cases are reductions of a domain
 type in $Π (x : T).U$ and $λ (x : T).t$.
 Let us consider the case of the following
 reduction:
@@ -708,7 +714,7 @@ reduction:
 %mathpar
   λ (x : T).t →_β λ (x : T').t.
 
-In order to complete this case, we have to prove
+To complete this case, we have to prove
 that $Γ, x : T' ⊢ t : U$ given that
 $Γ, x : T ⊢ t : U$.
 By appropriately strengthening the statement,
@@ -819,17 +825,17 @@ anything about normalization behaviour of
 $t[u/x]$: consider a classical example from
 untyped lambda calculus [@barendregt1984lambda],
 $ω = (λ (x : T).x\,x)$ and $Ω = ω \,ω$;
-while obviously not typable, $ω$ is strongly
+while not typable, $ω$ is strongly
 normalizing, while $Ω$ decidedly is not.
 
 The situation changes when the head of the application is
 not an abstraction at all.
-Thus, we arrive at the definition of an *atomic
+This leads us to the definition of an *atomic
 term*.
 
 :::Definition[Atomic term]
-The set of atomic terms is the smallest set satisfying
-the following conditions:
+The set of atomic terms is the smallest set
+that satisfies the following conditions:
 
 1. $s$, $Π (x : S).T$ and $y$ are atomic for all
    variables $x$,$y$, sort $s$ and types $S$,$T$;
@@ -888,7 +894,7 @@ By induction on $n$.
   reductions.
 
 - $n → (n + 1)$.
-  By the induction hypothesis, it is enough to show
+  By the induction hypothesis, it is sufficient to show
   the following:
 
   \[
@@ -904,7 +910,7 @@ By induction on $n$.
 
 # Strong normalization of %PTSrk{} {#rk-sn}
 
-:::Theorem[Strong normalization of \PTSrk{}\;\proof{rocq:Ranks.v\#L217}] {#normalisation}
+:::Theorem[Strong normalization of \PTSrk{}\;\proof{rocq:Ranks.v\#L217}] {#normalization}
 %mathpar
   Γ ⊢ t : T\, ∧ ⊢ Γ ⇒ t ∈ \mathsf{sn}.
 :::
@@ -963,8 +969,8 @@ This calls for another lemma,
   \end{array}\right. ⇒ u[t/x] ∈ \mathsf{sn}\text{”}
 
 A proof of $\mathrm{AL}_r$ for all $r$ (which is
-what we are after) is done by complete mutual
-induction with $\mathrm{SL}_r$.
+what we are after) is achieved through complete
+mutual induction with $\mathrm{SL}_r$.
 Thus, there are two main parts:
 
 - $(∀ s < r.\;\mathrm{SL}_s) ⇒ \mathrm{AL}_r$:
@@ -1026,7 +1032,7 @@ Thus, there are two main parts:
 :::
 %vspace{-.5em}
 This is a retelling of a proof that our friend
-Aleksandr Levin got after half-jokingly inputting
+Aleksandr Levin got after half-jokingly entering
 the following prompt into GPT-6 Pro:
 
 > ```text
@@ -1060,13 +1066,13 @@ seems the most sensible approach to us since,
 informally, sort is kind of a constant which can
 not be converted into a function.
 
-## Formalizing normalization of %PTSrk{} in Rocq {#formalisation}
+## Formalizing normalization of %PTSrk{} in Rocq {#formalization}
 
-In view of the high technicality of the proof for
+Given the high technicality of the proof for
 strong normalization which involves wrangling of
 unusual definition for strong normalization and
-complex induction patterns (and in view of the
-fact that proof was supplied by the probabilistic
+complex induction patterns (and given
+that proof was supplied by the probabilistic
 machine), we decided to formalize it so that a
 sound simple algorithm would check it for us.
 One of the natural choices for formalization of
@@ -1090,14 +1096,14 @@ our formalization never delves into the hierarchy
 and can be formalized in a much more restricted
 theory.
 
-In order to formalize our strong normalization
+To formalize our strong normalization
 proof, we first need to provide a general
 metatheory of PTS as laid out in Section <#pts-metatheory>.
 We could reuse existing projects on PTS
 formalizations such as [@siles2012pure; @adams2006pure; @barras1997coqencoq; @felicissimo2024generic]
 but we wanted to explore the topic ourselves, which
 led to a few minor differences discussed
-previously, thus we started from scratch.
+previously; thus we started from scratch.
 
 When one formalizes syntax with binders in a proof
 assistant, one of the most important decisions is
@@ -1130,7 +1136,7 @@ $\mathtt{Fin}$ type.
 
 What is convenient in this representation is that
 it makes it harder to make mistakes when wrangling
-with context, defining substitution etc. — all of
+with context, defining substitution etc. — all
 the technical details which make working with
 syntax with binders so hard (authors of the first
 implementation of such calculi, AUTOMATH [@debruijn1972lambda; @debruijn1970automath],
@@ -1152,8 +1158,8 @@ we first wrote a proof in Rocq and then retold it
 in written English here, omitting tedious
 technicalities.
 The only considerable difference is in the handling of
-the set of strongly normalizing terms since,
-obviously, the proof of Substitution lemma given
+the set of strongly normalizing terms since
+the proof of Substitution lemma given
 above does not follow the structure of inductive
 definition <#sn-definition>.
 Instead, we use a syntax-directed characterization
@@ -1258,14 +1264,15 @@ $\mathsf{SNx}$ and WHR:
 
 - $(t →_\mathsf {WHR}t') ⇒ (t[u/x] →_\mathsf {WHR}t'[u/x]) ∧ (\mathsf{SN}\,(t'[u/x]) ⇒ \mathsf{SN}\,(t[u/x]))$.
 
-The proof then follows as written in a non-formal
-treatment above.
+The proof then follows the non-formal treatment
+given above.
 :::
 
 # Computational complexity of %PTSrk{} {#complexity}
 
-In this section, we prove that the convertibility of
-closed, well-typed %PTSrk{} terms is
+In this section, we prove that the convertibility
+and the type checking of closed, well-typed
+%PTSrk{} terms is
 %textsc{TOWER}-complete.
 
 (Proofs in this and following sections were not
@@ -1280,7 +1287,7 @@ As requested further, LLM confessed that it was
 largely inspired by studies on the complexity of
 normalization for STLC [@statman1979typed; @schwichtenberg1991upper; @beckmann2001exact; @nguyen2024simply].
 And indeed, upon taking a closer look at the proof
-of Theorem <#normalisation>, one cannot help but
+of Theorem <#normalization>, one cannot help but
 notice it actually being a primitive recursive
 algorithm [@skolem1923; @kleene1952introduction; @peter1951rekursive]
 for term normalization in disguise.
@@ -1520,9 +1527,9 @@ $t, t' : T$ reduces to type checking:
 This term is well-typed iff $P\,t =_β P_t'$ which
 holds iff $t =_β t'$.
 
-Then, we only have to prove that type checking for
-%PTSrk{} is in %textsc{TOWER}.
-Take a look at the following syntax-directed type
+Therefore, we only need to prove that type checking
+for %PTSrk{} is in %textsc{TOWER}.
+Consider the following syntax-directed type
 synthesis rules:
 
 %mathpar
@@ -1552,7 +1559,7 @@ partial function is realized by an algorithm in
 term $t$, matches on the inferred types as needed
 and collects equalities on types it has to check.
 Then, it can naïvely check all equalities in bulk:
-there is at most $\mathcal{O}(|t|)$ such
+there are at most $\mathcal{O}(|t|)$ such
 equalities on terms of size
 $\mathcal{O}(2^{\mathrm{poly}(|t|)})$,
 so this runs in %textsc{TOWER} by Theorem <#tower-convertibility>.
@@ -1614,8 +1621,9 @@ functions with $N_I : \rk{r}$ and $N_O : \rk{s}$.
 
 By Theorem <#bounded-sn>, the normalization of
 $(r + 1)$-bounded terms $\mathcal{SN}_{r + 1}$ is
-elementary recursive, so the following function is
-elementary recursive as well:
+elementary recursive.
+Therefore, the following function is also
+elementary recursive:
 
 %mathpar
   h(t) =
@@ -1640,7 +1648,7 @@ the last is by definition of $h$ being encoded by
 $H$.
 :::
 
-A logical next question is then:
+The next logical question is:
 which functions are computable?
 Elementary recursive!
 Though, of course, not in the same sense as
@@ -1792,13 +1800,13 @@ All that is left is to read the numeral back:
   ρ ≜ λ \,s\,X\,f\,x.\,s\,X\,
       (f^0\,x)\,(f^1\,x)\,(f^2\,x)\,(f^3\,x)\,(f^4\,x) : V_5 → ℕ_j
 
-Now, in order to model $m\,\mathrm{mod}\,n$ in
+Now, to model $m\,\mathrm{mod}\,n$ in
 this vein, we need to *generate* $V_n$
 dynamically.
 Lucky for us, %PTSrk{} is dependently typed so
 there is hope.
 
-And indeed, the following construction was
+Indeed, the following construction was
 produced in a discussion with GPT-6 Astra.
 
 We are going to produce a combinator
@@ -1856,7 +1864,7 @@ $m\,\mathrm{mod}\,0 = m$:
 Pack them into $p_0 ≜ ⟨…⟩$.
 
 Then, given a structure for $q$,
-the structure for $q + 1$ is:
+the structure for $q + 1$ is as follows:
 
 %align*
   S^+ & ≜ X → S, \\
@@ -1877,7 +1885,7 @@ A transition term can be written like this:
       h\,S^+\,K^+\,z^+\,L^+\,c^+\,ρ^+\,r^+) : P_X → P_X
 
 Therefore, the following term computes the modulus
-with the expected behaviour:
+with the expected behaviour.
 
 %multline*
   \mathsf{Mod}_j ≜ λ
@@ -1931,15 +1939,15 @@ $F ≔ E\,\overline{\mathtt{f}}$ such that
 :::Remark
 While our system appears to be restricted to
 elementary recursive functions,
-turns out that there is another dependently typed
-system in which functions on natural numbers are
+it turns out that there is another dependently
+typed system in which functions on natural numbers are
 *primitive* recursive [@buchholtz2024primitive].
 Interestingly enough, part of their solution is in
 forbidding function types from appearing in the
 lowest universe, just like in %PTSrk{}.
 :::
 
-There is also a boundary result which stems from
+There is also a boundary result stemming from
 information-theoretical considerations.
 
 :::Theorem {#rep-bound}
@@ -1976,9 +1984,9 @@ By combinatorial considerations,
 length of $[x]^O$ is $Ω(\log{x})$ so
 
 %multline*
-  f(n_1, …, n_k) = \mathcal{O}(\log\left(c
+  f(n_1, …, n_k) = \mathcal{O}(e ↑ \left(c
   ↑ … ↑ c ↑ i(n_1, …,
-           n_k)\right)) = \\ = \mathcal{O}(c ↑ … ↑ c
+           n_k)\right)) = \\ = \mathcal{O}(e ↑ c ↑ … ↑ c
   ↑ i(n_1, …, n_k)),
 
 thus bounded by an elementary recursive function
@@ -2021,8 +2029,7 @@ with respect to which it is sound,
 and where $⟦Π (X : \rk{j}).X⟧$ is going to be an
 empty set, as expected.
 
-We are going to need an unusual assumption
-however:
+However, we are going to need an unusual assumption:
 
 :::Theorem
 %PTSrk{} has a sound model in ZF+GCH. %formalized{rocq-ai:ZFC_model/ModelSoundness.v\#L133}
@@ -2061,8 +2068,8 @@ since all $U_i$ are countable.)
 
 Interpretation then goes as follows:
 
-- Interpret $\rk{i}$ by $s_i$.
-  The sort axiom holds since
+- Interpret $\rk{i}$ as $s_i$.
+  The sort axiom holds because
   $s_i ∈ U_0 = \operatorname{El}(s_0)$.
 
 - If $a ∈ U_m$ and $b(x) ∈ U_n$ for every
@@ -2101,7 +2108,7 @@ Interpretation then goes as follows:
 - Contexts are interpreted by valuations.
 
 It is easy to check that the typing rules are
-respected by such interpretation,
+respected by this interpretation,
 making it a sound model.
 :::
 
@@ -2141,7 +2148,7 @@ relational form $\Rt$; definable graphs yield
 $\R$.
 We do so because interpretation of $\Rt$ is much
 simpler than direct interpretation of $\R$ and
-already exposes all of the main ideas.
+already exposes all the main ideas.
 Direct translation is available in supplementary
 formalized materials %formalized{rocq-ai:Interpretation_of_R/functional/DirectRTheorem7.v\#L75}.
 
@@ -2176,11 +2183,11 @@ symbols.
 Section <#sec:nonrelational> relates this theory
 to the original, functional arithmetic $\R$ [@tarski1953undecidable].
 
-Let us start constructing the model inside
+We now begin constructing the model inside
 %PTSrk{} and proving that the axioms hold in our
 model.
-First, some preliminaries on the interpretation of
-first-order logic formulas: put
+First, here are some preliminaries on the
+interpretation of first-order logic formulas:
 
 %mathpar
   ⊥ ≜ (Π (Z : \rk{0}).Z) : \rk{1}, \qquad
@@ -2224,7 +2231,7 @@ admitted arguments.
 All interpretations below use this one logical
 encoding.
 
-For lifting propositions $P : \rk{a}$ into
+To lift propositions $P : \rk{a}$ to
 arbitrary higher ranks $k ≥ 2$,
 let
 
@@ -2315,8 +2322,8 @@ For $P : X → \rk{1}$, write
 %mathpar
   \Up_{\mathcal U}(P) ≜ Π (u : X).\,δ u → \nc P(u) → \nc P(su).
 
-Meaning that, for “good” values in the new domain $X$,
-a negation of $P$ is upwards closed.
+This proposition asserts that a negation of $P$ is
+upwards closed for ‘good’ values in the new domain $X$.
 Define
 
 %align*
@@ -2325,8 +2332,8 @@ Define
   \Up_{\mathcal U}(P) → {}\\
   & \nc P(\ev_{\mathcal U}(d)) → \nc P(\ev_{\mathcal U}(e))\bigr) : \rk{6}.
 
-With such definition, preorder laws and equality
-compatibility are derivable.
+With this definition, preorder laws and equality
+compatibility can be derived.
 
 :::Lemma[\formalized{rocq-ai:Interpretation_of_R/relational/DirectRUnary.v}] {#r-common}
 The following holds:
@@ -2416,8 +2423,8 @@ At $e_c$ both tests are $⊥$ and the implication is
 identity.
 At $e_i$ with $i < c$, there is a premise $⊤ → ⊥$.
 
-Specialising $H : O(\overline{c}, \overline{n})$
-to these data yields $(⊥ → ⊥) → (⊤ → ⊥)$.
+Specializing $H : O(\overline{c}, \overline{n})$
+with these data yields $(⊥ → ⊥) → (⊤ → ⊥)$.
 :::
 
 :::Lemma[\formalized{rocq-ai:Interpretation_of_R/relational/DirectRSeparation.v\#L193}] {#sep}
@@ -2460,7 +2467,7 @@ for external $n$.
 
 :::Proof
 We are going to use the following positive
-invariant as a $Q$:
+invariant for $Q$:
 
 %mathpar
   \Inv_n(d) ≜ Π (Z : \rk{8}).\;(G(d) → \Case_n(d) → Z) → Z \quad : \rk{10}.
@@ -2520,12 +2527,12 @@ let us check the remaining axioms.
 
 For bounded order ($\widetilde R4$),
 apply Lemma <#case>.
-Under $O(d, \overline{n})$, a case with
+Under $O(d, \overline{n})$, a case involving
 $O(\overline{n + 1}, d)$ contradicts
 $\nc O(\overline{n + 1}, \overline{n})$ by
 transitivity.
 Conversely, a $E(d, \overline{i})$ branch with
-$i ≤ n$ gives $O(d, \overline{n})$ using $E ⇒ O$
+$i ≤ n$ yields $O(d, \overline{n})$ via $E ⇒ O$
 and ground comparison.
 
 For comparability ($\widetilde R5$),
@@ -2695,7 +2702,7 @@ they become simpler after sequences of reductions
 (Section <#rk-sn>).
 To make sure that this approach works for our
 system, we formalized our proof in Rocq proof
-assistant (Section <#formalisation>) and in doing
+assistant (Section <#formalization>) and in doing
 so prepared the groundwork for future verified
 interactions with %PTSrk{}.
 
@@ -2714,7 +2721,7 @@ connected to it (Section <#computational>).
 To check if constructions inside %PTSrk{} even
 make sense, we constructed a set-theoretical model
 for it which assumes a Generalized Continuum
-Hypothesis in order to strictify the hierarchy of
+Hypothesis to strictify the hierarchy of
 $ℵ$-s which act as interpretations of our function
 types (Section <#rk-model>).
 Finally, we provide a lower bound on

@@ -6,10 +6,13 @@
 - [paper-markdown.tex](paper-markdown.tex): MLTT-S-style Markdown–TeX version,
   with metadata, Markdown headings and fenced theorem/proof environments.
 - [paper-markdown.pdf](paper-markdown.pdf): compiled version for visual review.
-- [WORDING_SUGGESTIONS.md](WORDING_SUGGESTIONS.md): unapplied Grazie/DeepL
-  suggestions in source-aligned CriticMarkup, with source locations.
+- [WORDING_SUGGESTIONS.md](WORDING_SUGGESTIONS.md): Grazie/DeepL suggestions
+  with implementation checkboxes and current passage locations; CriticMarkup
+  retains the original proposals, with author variants noted.
   The saved [review workflow](../tools/prose-review/README.md) requires a
   proper-name and technical-terminology audit before report publication.
+- [COAUTHOR_CHANGES.md](COAUTHOR_CHANGES.md): changes synchronized from the
+  coauthor's two pinned upstream revisions, including the exponent correction.
 - [slides.tex](slides.tex) and [slides.pdf](slides.pdf): presentation sources
   and checked-in slides.
 - [MINOR_CORRECTIONS.md](MINOR_CORRECTIONS.md): checked comma/article edits

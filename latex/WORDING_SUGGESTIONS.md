@@ -1,10 +1,15 @@
 # Wording suggestions
 
-For discussion; no edits applied from this report. Comma/article-only edits are recorded as implemented in MINOR_CORRECTIONS.md.
+Checked entries are implemented in the coauthor’s last two upstream commits
+(`a3fbee5`, `f06c6f2`) and synchronized into paper-markdown.tex.
+Author variants and partial implementations are noted. Unchecked entries
+remain pending. Line ranges point to the current passage; CriticMarkup
+preserves the original proposal. Comma/article-only edits are recorded
+in MINOR_CORRECTIONS.md.
 
 [CriticMarkup](https://fletcher.github.io/MultiMarkdown-6/syntax/critic.html).
 
-## paper-markdown.tex:45-51 · G-L43 · Suggested by Grazie
+## paper-markdown.tex:45-53 · G-L43 · Suggested by Grazie
 
 - [x] Pure type systems (PTS [@berardi1988towards; @terlouw1989gstt])
 are minimalistic typed $λ$-calculi that
@@ -14,12 +19,16 @@ $Π(x : T).U$ (where $U$ might depend on $x$) and
 *sorts* $s ∈ \mathcal{S}$ that act as “types of
 types”.`{>>Consider splitting this long sentence.<<}`
 
-## paper-markdown.tex:202-203 · D04-L204 · Suggested by DeepL Write
+Implemented by the author’s two-sentence introduction.
+
+## paper-markdown.tex:208-209 · D04-L204 · Suggested by DeepL Write
 
 - [ ] `{~~Observing~>Upon observing~~}` this, we `{~~took interest~>became interested~~}` in the following
 two questions:
 
-## paper-markdown.tex:209-213 · D04-L211 · Suggested by DeepL Write
+Author instead added “an” before “interest”; this rewrite remains pending.
+
+## paper-markdown.tex:215-219 · D04-L211 · Suggested by DeepL Write
 
 - [ ] - `{~~Is~>Secondly, is~~}` there a consistent pure type system with
   total relations $\mathsf{Ax}$ and
@@ -27,31 +36,33 @@ two questions:
   semantics do not involve the assumption of
   inaccessible cardinals?
 
-## paper-markdown.tex:291-292 · D07-L293 · Suggested by DeepL Write
+## paper-markdown.tex:297-298 · D07-L293 · Suggested by DeepL Write
 
-- [ ] `{~~Also, we~>We also~~}` chatted with Claude Fable 5.1 [@claude_fable]
+- [x] `{~~Also, we~>We also~~}` chatted with Claude Fable 5.1 [@claude_fable]
 to `{~~find better~>identify more suitable~~}` points of reference.
 
-## paper-markdown.tex:362-363 · L367-S1-P1 · Suggested by Grazie
+## paper-markdown.tex:368-369 · L367-S1-P1 · Suggested by Grazie
 
-- [ ] %textsc{Beta}; other rules simply state `{~~the~>that~~}` we can
+- [x] %textsc{Beta}; other rules simply state `{~~the~>that~~}` we can
 freely reduce any subterm.
 
-## paper-markdown.tex:399-400 · D08-L401 · Suggested by DeepL Write
+## paper-markdown.tex:405-406 · D08-L401 · Suggested by DeepL Write
 
-- [ ] Then, any `{~~“mountains”~>'mountains'~~}` in the path $t =_β u$ can be
+- [x] Then, any `{~~“mountains”~>'mountains'~~}` in the path $t =_β u$ can be
 switched into `{~~“valleys”.~>'valleys'.~~}`
 
-## paper-markdown.tex:465-468 · D09-L467 · Suggested by DeepL Write
+## paper-markdown.tex:471-475 · D09-L467 · Suggested by DeepL Write
 
-- [ ] `{~~Again, they surely~>These properties~~}` have `{++certainly ++}`been proven before for PTS [@barendregt1992lambda; @geuvers1991modular],
+- [x] `{~~Again, they surely~>These properties~~}` have `{++certainly ++}`been proven before for PTS [@barendregt1992lambda; @geuvers1991modular],
 but `{~~we slightly differ in the~>our~~}` formulation of
 the typing rules `{++differs slightly ++}`in important places, so it is better
 to recheck that these `{++properties ++}`hold.
 
-## paper-markdown.tex:506-512 · G-L508 · Suggested by Grazie
+Author variant: “slightly differs”.
 
-- [ ] In addition, a family of so-called *inversion
+## paper-markdown.tex:513-520 · G-L508 · Suggested by Grazie
+
+- [x] In addition, a family of so-called *inversion
 lemmas* [@barendregt1992lambda; @vanbenthemjutting1993typing]
 stating that a type of well-typed term is largely
 determined by the shape of a term are also proven by
@@ -59,9 +70,9 @@ straightforward induction on typing derivation
 (each one is proven separately,
 no mutual induction involved):`{>>Consider splitting this long sentence.<<}`
 
-## paper-markdown.tex:506-512 · L511-S1-P1 · Suggested by Grazie
+## paper-markdown.tex:513-520 · L511-S1-P1 · Suggested by Grazie
 
-- [ ] In addition, a family of so-called *inversion
+- [x] In addition, a family of so-called *inversion
 lemmas* [@barendregt1992lambda; @vanbenthemjutting1993typing]
 stating that a type of well-typed term is largely
 determined by the shape of a term `{~~are~>is~~}` also proven by
@@ -69,18 +80,20 @@ straightforward induction on typing derivation
 (each one is proven separately,
 no mutual induction involved):
 
-## paper-markdown.tex:541-542 · D10-L543 · Suggested by DeepL Write
+Resolved by the two-sentence rewrite: “there is a family … They are …”.
 
-- [ ] To progress further, we need to make certain
+## paper-markdown.tex:549-550 · D10-L543 · Suggested by DeepL Write
+
+- [x] To progress further, we need to make certain
 assumptions `{~~on~>about~~}` the PTS `{--we have--}` in question.
 
-## paper-markdown.tex:593-593 · D11-L595 · Suggested by DeepL Write
+## paper-markdown.tex:601-601 · D11-L595 · Suggested by DeepL Write
 
-- [ ] - The case for $t = x ∈ \mathsf{Var}$ `{~~holds trivially.~>is trivial.~~}`
+- [x] - The case for $t = x ∈ \mathsf{Var}$ `{~~holds trivially.~>is trivial.~~}`
 
-## paper-markdown.tex:607-615 · L612-S2-P1 · Suggested by Grazie
+## paper-markdown.tex:615-624 · L612-S2-P1 · Suggested by Grazie
 
-- [ ] In our proof of normalization, we are going to
+- [x] In our proof of normalization, we are going to
 rely on yet another property: if there is a
 derivation for $t : T$, then $T$ is itself
 typeable with some sort.
@@ -90,33 +103,35 @@ nothing prevents a context $Γ$ `{~~to contain~>from containing~~}` an entry
 $(x : T')$ where $T'$ is not typeable.
 Thus, we need an additional assumption.
 
-## paper-markdown.tex:628-628 · D11-L630 · Suggested by DeepL Write
+## paper-markdown.tex:637-637 · D11-L630 · Suggested by DeepL Write
 
-- [ ] (where $⋅$ denotes an empty `{~~context.)~>context).~~}`
+- [x] (where $⋅$ denotes an empty `{~~context.)~>context).~~}`
 
-## paper-markdown.tex:651-651 · D12-L653 · Suggested by DeepL Write
+## paper-markdown.tex:660-660 · D12-L653 · Suggested by DeepL Write
 
 - [ ] `{~~By~>This is proven by~~}` structural induction on the typing derivation.
 
-## paper-markdown.tex:700-703 · L705-S1-P1 · Suggested by Grazie
+## paper-markdown.tex:709-712 · L705-S1-P1 · Suggested by Grazie
 
-- [ ] The only tricky case `{~~are~>is~~}` reductions of a domain
+- [x] The only tricky case `{~~are~>is~~}` reductions of a domain
 type in $Π (x : T).U$ and $λ (x : T).t$.
 Let us consider the case of the following
 reduction:
 
-## paper-markdown.tex:708-713 · L713-S1-P1 · Suggested by Grazie
+Author variant: “cases are”.
 
-- [ ] `{~~In order to~>To~~}` complete this case, we have to prove
+## paper-markdown.tex:717-722 · L713-S1-P1 · Suggested by Grazie
+
+- [x] `{~~In order to~>To~~}` complete this case, we have to prove
 that $Γ, x : T' ⊢ t : U$ given that
 $Γ, x : T ⊢ t : U$.
 By appropriately strengthening the statement,
 we get that it is enough to prove admissibility of
 the following rule called *context reduction*:
 
-## paper-markdown.tex:811-820 · L816-S2-P1 · Suggested by Grazie
+## paper-markdown.tex:820-829 · L816-S2-P1 · Suggested by Grazie
 
-- [ ] Application, of course, is the only nontrivial
+- [x] Application, of course, is the only nontrivial
 case.
 In the case of $β$-reduction, strong normalization of
 both $(λ (x : T).t)$ and $u$ does not imply
@@ -127,44 +142,44 @@ $ω = (λ (x : T).x\,x)$ and $Ω = ω \,ω$;
 while `{--obviously--}` not typable, $ω$ is strongly
 normalizing, while $Ω$ decidedly is not.
 
-## paper-markdown.tex:822-825 · D15-L824 · Suggested by DeepL Write
+## paper-markdown.tex:831-834 · D15-L824 · Suggested by DeepL Write
 
-- [ ] The situation changes when the head of the application is
+- [x] The situation changes when the head of the application is
 not an abstraction at all.
 `{~~Thus, we arrive at~>This leads us to~~}` the definition of an *atomic
 term*.
 
-## paper-markdown.tex:828-829 · D15-L830 · Suggested by DeepL Write
+## paper-markdown.tex:837-838 · D15-L830 · Suggested by DeepL Write
 
-- [ ] The set of atomic terms is the smallest set `{~~satisfying~>that satisfies~~}`
+- [x] The set of atomic terms is the smallest set `{~~satisfying~>that satisfies~~}`
 the following conditions:
 
-## paper-markdown.tex:887-889 · D16-L889 · Suggested by DeepL Write
+## paper-markdown.tex:896-898 · D16-L889 · Suggested by DeepL Write
 
-- [ ] - $n → (n + 1)$.
+- [x] - $n → (n + 1)$.
   By the induction hypothesis, it is `{~~enough~>sufficient~~}` to show
   the following:
 
-## paper-markdown.tex:962-965 · D17-L964 · Suggested by DeepL Write
+## paper-markdown.tex:971-974 · D17-L964 · Suggested by DeepL Write
 
-- [ ] A proof of $\mathrm{AL}_r$ for all $r$ (which is
+- [x] A proof of $\mathrm{AL}_r$ for all $r$ (which is
 what we are after) is `{~~done by~>achieved through~~}` complete mutual
 induction with $\mathrm{SL}_r$.
 Thus, there are two main parts:
 
-## paper-markdown.tex:999-999 · D18-L1001 · Suggested by DeepL Write
+## paper-markdown.tex:1008-1008 · D18-L1001 · Suggested by DeepL Write
 
 - [ ]   - $u_1[t/x]$ is atomic `{~~—~>and is~~}` handled by Lemma <#sn-props>.
 
-## paper-markdown.tex:1025-1027 · D18-L1027 · Suggested by DeepL Write
+## paper-markdown.tex:1034-1036 · D18-L1027 · Suggested by DeepL Write
 
-- [ ] This is a retelling of a proof that our friend
+- [x] This is a retelling of a proof that our friend
 Aleksandr Levin got after half-jokingly `{~~inputting~>entering~~}`
 the following prompt into GPT-6 Pro:
 
-## paper-markdown.tex:1062-1088 · L1067-S1-P1 · Suggested by Grazie
+## paper-markdown.tex:1069-1097 · L1067-S1-P1 · Suggested by Grazie
 
-- [ ] `{~~In view of~>Given~~}` the high technicality of the proof for
+- [x] `{~~In view of~>Given~~}` the high technicality of the proof for
 strong normalization which involves wrangling of
 unusual definition for strong normalization and
 complex induction patterns (and `{~~in view of the
@@ -192,9 +207,9 @@ our formalization never delves into the hierarchy
 and can be formalized in a much more restricted
 theory.
 
-## paper-markdown.tex:1090-1097 · L1095-S1-P1 · Suggested by Grazie
+## paper-markdown.tex:1099-1106 · L1095-S1-P1 · Suggested by Grazie
 
-- [ ] `{~~In order to~>To~~}` formalize our strong normalization
+- [x] `{~~In order to~>To~~}` formalize our strong normalization
 proof, we first need to provide a general
 metatheory of PTS as laid out in Section <#pts-metatheory>.
 We could reuse existing projects on PTS
@@ -203,9 +218,9 @@ but we wanted to explore the topic ourselves, which
 led to a few minor differences discussed
 `{~~previously,~>previously;~~}` thus we started from scratch.
 
-## paper-markdown.tex:1128-1144 · IDE-style-L1130 · Suggested by Grazie
+## paper-markdown.tex:1137-1153 · IDE-style-L1130 · Suggested by Grazie
 
-- [ ] What is convenient in this representation is that
+- [x] What is convenient in this representation is that
 it makes it harder to make mistakes when wrangling
 with context, defining substitution etc. — all `{--of--}`
 the technical details which make working with
@@ -223,9 +238,9 @@ turns variables into de Bruijn indices [@debruijn1972lambda]);
 on top of them, the usual substitution is easily
 definable.
 
-## paper-markdown.tex:1146-1158 · L1151-S2-P1 · Suggested by Grazie
+## paper-markdown.tex:1155-1167 · L1151-S2-P1 · Suggested by Grazie
 
-- [ ] Most of the proof development in Rocq mirrors what
+- [x] Most of the proof development in Rocq mirrors what
 is written in Section <#pts-metatheory>; in fact,
 we first wrote a proof in Rocq and then retold it
 in written English here, omitting tedious
@@ -239,19 +254,21 @@ Instead, we use a syntax-directed characterization
 of the set of strongly normalizing terms
 introduced in [@Joachimski2003Short]:
 
-## paper-markdown.tex:1258-1259 · D24-L1260 · Suggested by DeepL Write
+## paper-markdown.tex:1267-1268 · D24-L1260 · Suggested by DeepL Write
 
-- [ ] The proof then follows `{~~as written in a~>the~~}` non-formal
+- [x] The proof then follows `{~~as written in a~>the~~}` non-formal
 treatment `{++written ++}`above.
 
-## paper-markdown.tex:1523-1526 · D29-L1525 · Suggested by DeepL Write
+Author variant: “given above”.
 
-- [ ] `{~~Then,~>Therefore,~~}` we only `{~~have~>need~~}` to prove that type checking for
+## paper-markdown.tex:1530-1533 · D29-L1525 · Suggested by DeepL Write
+
+- [x] `{~~Then,~>Therefore,~~}` we only `{~~have~>need~~}` to prove that type checking for
 %PTSrk{} is in %textsc{TOWER}.
 `{~~Take a look at~>Consider~~}` the following syntax-directed type
 synthesis rules:
 
-## paper-markdown.tex:1551-1559 · L1556-S2-P1 · Suggested by Grazie
+## paper-markdown.tex:1558-1566 · L1556-S2-P1 · Suggested by Grazie
 
 - [ ] %textsc{TOWER}: this algorithm recurses on the
 term $t$, matches on the inferred types as needed
@@ -263,7 +280,9 @@ $\mathcal{O}(2^{\mathrm{poly}(|t|)})$,
 so this runs in %textsc{TOWER} by Theorem <#tower-convertibility>.
 To finish the proof, it is enough to notice that
 
-## paper-markdown.tex:1584-1593 · G-L1586 · Suggested by Grazie
+Partly implemented: “is” → “are”; “on” → “in” remains pending.
+
+## paper-markdown.tex:1591-1600 · G-L1586 · Suggested by Grazie
 
 - [ ] A family of functions on natural numbers
 $\mathcal{F}$ is *uniformly* representable in
@@ -276,41 +295,41 @@ $(f : ℕ^k → ℕ) ∈ \mathcal{F}$ there is a
 *representation* $F : N_I → … → N_I → N_O$ which
 is also in normal form and such that`{>>Consider splitting this long sentence.<<}`
 
-## paper-markdown.tex:1600-1602 · D30-L1602 · Suggested by DeepL Write
+## paper-markdown.tex:1607-1609 · D30-L1602 · Suggested by DeepL Write
 
 - [ ] Note that the requirement for terms to be in normal
 form is not `{~~restrictive:~>restrictive;~~}` we can always normalize a
 non-normal term.
 
-## paper-markdown.tex:1615-1618 · D30-L1617 · Suggested by DeepL Write
+## paper-markdown.tex:1622-1626 · D30-L1617 · Suggested by DeepL Write
 
-- [ ] By Theorem <#bounded-sn>, the normalization of
+- [x] By Theorem <#bounded-sn>, the normalization of
 $(r + 1)$-bounded terms $\mathcal{SN}_{r + 1}$ is
 elementary `{~~recursive, so~>recursive. Therefore,~~}` the following function is
 `{++also ++}`elementary `{~~recursive as well:~>recursive:~~}`
 
-## paper-markdown.tex:1643-1647 · D30-L1645 · Suggested by DeepL Write
+## paper-markdown.tex:1651-1655 · D30-L1645 · Suggested by DeepL Write
 
-- [ ] `{~~A~>The next~~}` logical `{--next--}` question `{~~is then:~>is:~~}`
+- [x] `{~~A~>The next~~}` logical `{--next--}` question `{~~is then:~>is:~~}`
 which functions are computable?
 Elementary recursive!
 Though, of course, not in the same sense as
 before.
 
-## paper-markdown.tex:1795-1799 · L1800-S1-P1 · Suggested by Grazie
+## paper-markdown.tex:1803-1807 · L1800-S1-P1 · Suggested by Grazie
 
-- [ ] Now, `{--in order--}` to model $m\,\mathrm{mod}\,n$ in
+- [x] Now, `{--in order--}` to model $m\,\mathrm{mod}\,n$ in
 this vein, we need to *generate* $V_n$
 dynamically.
 Lucky for us, %PTSrk{} is dependently typed so
 there is hope.
 
-## paper-markdown.tex:1801-1802 · D33-L1803 · Suggested by DeepL Write
+## paper-markdown.tex:1809-1810 · D33-L1803 · Suggested by DeepL Write
 
-- [ ] `{~~And indeed,~>Indeed,~~}` the following construction was
+- [x] `{~~And indeed,~>Indeed,~~}` the following construction was
 produced in a discussion with GPT-6 Astra.
 
-## paper-markdown.tex:1817-1825 · G-L1819 · Suggested by Grazie
+## paper-markdown.tex:1825-1833 · G-L1819 · Suggested by Grazie
 
 - [ ] Intention is that $S$ is simply-typed $V_q$ for
 $X$, $z$ is its “zero”, $K$ is a “zero” for
@@ -322,19 +341,19 @@ structure from the previous step (this is similar
 to the trick used to define a predecessor
 function).`{>>Consider splitting this long sentence.<<}`
 
-## paper-markdown.tex:1858-1859 · D34-L1860 · Suggested by DeepL Write
+## paper-markdown.tex:1866-1867 · D34-L1860 · Suggested by DeepL Write
 
-- [ ] Then, given a structure for $q$,
+- [x] Then, given a structure for $q$,
 the structure for $q + 1$ `{~~is:~>is as follows:~~}`
 
-## paper-markdown.tex:1879-1880 · D34-L1881 · Suggested by DeepL Write
+## paper-markdown.tex:1887-1888 · D34-L1881 · Suggested by DeepL Write
 
-- [ ] Therefore, the following term computes the modulus
+- [x] Therefore, the following term computes the modulus
 with the expected `{~~behaviour:~>behaviour.~~}`
 
-## paper-markdown.tex:1932-1939 · L1937-S1-P1 · Suggested by Grazie
+## paper-markdown.tex:1940-1947 · L1937-S1-P1 · Suggested by Grazie
 
-- [ ] While our system appears to be restricted to
+- [x] While our system appears to be restricted to
 elementary recursive functions,
 `{++it ++}`turns out that there is another dependently typed
 system in which functions on natural numbers are
@@ -343,38 +362,40 @@ Interestingly enough, part of their solution is in
 forbidding function types from appearing in the
 lowest universe, just like in %PTSrk{}.
 
-## paper-markdown.tex:1942-1943 · D35-L1944 · Suggested by DeepL Write
+## paper-markdown.tex:1950-1951 · D35-L1944 · Suggested by DeepL Write
 
-- [ ] There is also a boundary result `{~~which stems~>stemming~~}` from
+- [x] There is also a boundary result `{~~which stems~>stemming~~}` from
 information-theoretical considerations.
 
-## paper-markdown.tex:1946-1949 · D35-L1948 · Suggested by DeepL Write
+## paper-markdown.tex:1954-1957 · D35-L1948 · Suggested by DeepL Write
 
 - [ ] If a function $f : ℕ^k → ℕ$ is representable in
 %PTSrk{}, `{++then ++}`it is asymptotically bounded above by an
 elementary recursive function of the size of the input
 encoding.
 
-## paper-markdown.tex:2024-2025 · D37-L2026 · Suggested by DeepL Write
+## paper-markdown.tex:2032-2032 · D37-L2026 · Suggested by DeepL Write
 
-- [ ] `{~~We~>However, we~~}` are going to need an unusual `{~~assumption
+- [x] `{~~We~>However, we~~}` are going to need an unusual `{~~assumption
 however:~>assumption:~~}`
 
-## paper-markdown.tex:2064-2066 · D37-L2066 · Suggested by DeepL Write
+## paper-markdown.tex:2071-2073 · D37-L2066 · Suggested by DeepL Write
 
-- [ ] - Interpret $\rk{i}$ `{~~by~>as~~}` $s_i$.
+- [x] - Interpret $\rk{i}$ `{~~by~>as~~}` $s_i$.
   The sort axiom holds `{~~since~>for~~}`
   $s_i ∈ U_0 = \operatorname{El}(s_0)$.
 
-## paper-markdown.tex:2103-2105 · D37-L2105 · Suggested by DeepL Write
+Author variant: “because”.
 
-- [ ] It is easy to check that the typing rules are
+## paper-markdown.tex:2110-2112 · D37-L2105 · Suggested by DeepL Write
+
+- [x] It is easy to check that the typing rules are
 respected by `{~~such~>this~~}` interpretation,
 making it a sound model.
 
-## paper-markdown.tex:2135-2146 · IDE-style-L2137 · Suggested by Grazie
+## paper-markdown.tex:2142-2153 · IDE-style-L2137 · Suggested by Grazie
 
-- [ ] To demonstrate the ability of %PTSrk{} to embed
+- [x] To demonstrate the ability of %PTSrk{} to embed
 nontrivial logical theories, we construct a fixed
 interpretation of Tarski–Mostowski–Robinson
 arithmetic $\R$ in %PTSrk{}: Church numerals and
@@ -387,51 +408,57 @@ already exposes all `{--of--}` the main ideas.
 Direct translation is available in supplementary
 formalized materials %formalized{rocq-ai:Interpretation_of_R/functional/DirectRTheorem7.v\#L75}.
 
-## paper-markdown.tex:2179-2183 · D39-L2181 · Suggested by DeepL Write
+## paper-markdown.tex:2186-2192 · D39-L2181 · Suggested by DeepL Write
 
-- [ ] `{~~Let us start~>We will begin by~~}` constructing the model inside
+- [x] `{~~Let us start~>We will begin by~~}` constructing the model inside
 %PTSrk{} and proving that the axioms hold in our
 model.
 First, `{++here are ++}`some preliminaries on the interpretation of
 first-order logic formulas: `{--put--}`
 
-## paper-markdown.tex:2227-2229 · D40-L2229 · Suggested by DeepL Write
+Author variant: “We now begin”.
+
+## paper-markdown.tex:2234-2236 · D40-L2229 · Suggested by DeepL Write
 
 - [ ] `{~~For lifting~>To lift~~}` propositions $P : \rk{a}$ `{~~into~>to~~}`
 arbitrary higher ranks $k ≥ 2$,
 `{--let--}`
 
-## paper-markdown.tex:2318-2320 · D41-L2320 · Suggested by DeepL Write
+Partly implemented: “To lift … to”; deletion of “let” remains pending.
 
-- [ ] `{~~Meaning that,~>This means that~~}` for `{~~“good”~>'good'~~}` values in the new domain $X$,
+## paper-markdown.tex:2325-2327 · D41-L2320 · Suggested by DeepL Write
+
+- [x] `{~~Meaning that,~>This means that~~}` for `{~~“good”~>'good'~~}` values in the new domain $X$,
 a negation of $P$ is upwards closed.
 Define
 
-## paper-markdown.tex:2328-2329 · D41-L2330 · Suggested by DeepL Write
+Author variant: “This proposition asserts …”, with single quotation marks.
 
-- [ ] With `{~~such~>this~~}` definition, preorder laws and equality
+## paper-markdown.tex:2335-2336 · D41-L2330 · Suggested by DeepL Write
+
+- [x] With `{~~such~>this~~}` definition, preorder laws and equality
 compatibility `{~~are derivable.~>can be derived.~~}`
 
-## paper-markdown.tex:2346-2349 · L2351-S1-P1 · Suggested by Grazie
+## paper-markdown.tex:2353-2356 · L2351-S1-P1 · Suggested by Grazie
 
 - [ ] Proof terms for most propositions are constructed
 `{~~in an obvious way.~>obviously.~~}`
 The last proposition holds because $O$ is
 transitive and $E$ is symmetric.
 
-## paper-markdown.tex:2419-2420 · D42-L2421 · Suggested by DeepL Write
+## paper-markdown.tex:2426-2427 · D42-L2421 · Suggested by DeepL Write
 
-- [ ] Specialising $H : O(\overline{c}, \overline{n})$
+- [x] Specialising $H : O(\overline{c}, \overline{n})$
 `{~~to~>with~~}` these data yields $(⊥ → ⊥) → (⊤ → ⊥)$.
 
-## paper-markdown.tex:2462-2463 · D43-L2464 · Suggested by DeepL Write
+## paper-markdown.tex:2469-2470 · D43-L2464 · Suggested by DeepL Write
 
-- [ ] We are going to use the following positive
+- [x] We are going to use the following positive
 invariant `{~~as a~>for~~}` $Q$:
 
-## paper-markdown.tex:2521-2529 · D44-L2523 · Suggested by DeepL Write
+## paper-markdown.tex:2528-2536 · D44-L2523 · Suggested by DeepL Write
 
-- [ ] For bounded order ($\widetilde R4$),
+- [x] For bounded order ($\widetilde R4$),
 apply Lemma <#case>.
 Under $O(d, \overline{n})$, a case `{~~with~>involving~~}`
 $O(\overline{n + 1}, d)$ contradicts
@@ -441,18 +468,18 @@ Conversely, a $E(d, \overline{i})$ branch with
 $i ≤ n$ `{~~gives~>yields~~}` $O(d, \overline{n})$ `{~~using~>via~~}` $E ⇒ O$
 and ground comparison.
 
-## paper-markdown.tex:2557-2557 · D45-L2559 · Suggested by DeepL Write
+## paper-markdown.tex:2564-2564 · D45-L2559 · Suggested by DeepL Write
 
 - [ ] The interpretation of $\Rt$ is `{++also ++}`not faithful.
 
-## paper-markdown.tex:2676-2677 · D47-L2678 · Suggested by DeepL Write
+## paper-markdown.tex:2683-2684 · D47-L2678 · Suggested by DeepL Write
 
 - [ ] %PTSrk{} interprets $\R$ `{~~by~>using~~}` definable arithmetic
 graphs.
 
-## paper-markdown.tex:2702-2729 · L2707-S3-P1 · Suggested by Grazie
+## paper-markdown.tex:2709-2736 · L2707-S3-P1 · Suggested by Grazie
 
-- [ ] After noticing that normalization proof yields a
+- [x] After noticing that normalization proof yields a
 primitive recursive normalization procedure,
 we found tighter bounds and found out that it has
 the same complexity as normalization of STLC,
