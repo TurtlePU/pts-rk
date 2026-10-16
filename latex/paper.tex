@@ -103,9 +103,9 @@ without additional axioms.
 \end{abstract}
 
 \section{Introduction}
-Pure type systems (PTS) are a family of minimalistic typed
-$\lambda$-calculi introduced independently by Berardi
-\cite{berardi1988towards} and Terlouw
+Pure type systems (PTS) are a family of minimalistic
+typed $\lambda$-calculi introduced independently by
+Berardi \cite{berardi1988towards} and Terlouw
 \cite{terlouw1989gstt}. Their abstract grammar includes
 only variables $x\in\mathsf{Var}$, abstraction
 $\lambda(x:T).u$, application $u\,t$, dependent
@@ -1138,7 +1138,7 @@ a standard technique originating from
 altenkirch1999monadic}:
 
 \begin{minted}{coq}
-Inductive Term (L: Type) (n: nat): Type:=
+Inductive Term (L: Type) (n: nat): Type :=
 | sort: L -> Term L n
 | Π: Term L n -> Term L (S n) -> Term L n
 | var: Fin n -> Term L n
@@ -1404,10 +1404,11 @@ dependently typed PTS:
     appearing in abstractions of a term, then run a
     normalizer for $(B+1)$-bounded terms and compare
     the results; $B$ has to be bound by an elementary
-    recursive function on the size of input.
-    In Fig.~\ref{rank-bound-algorithm} we present
-    such a function: $\mathtt{maxRankLiteral}\;t$ computes
-    the maximal rank contained as a subterm of $t$.
+    recursive function on the size of input. In
+    Fig.~\ref{rank-bound-algorithm} we present
+    such a function: $\mathtt{estimateRank}\;t$
+    provides an upper bound on ranks of redex arguments
+    in $t$.
 
     \begin{figure}[ht]
     \begin{minted}{agda}
@@ -1444,7 +1445,9 @@ estimateRank t =
     \label{rank-bound-algorithm}
     \end{figure}
 
-    The workhorse of this algorithm,
+    Function $\mathtt{maxRankLiteral}\;t$ computes
+    maximal rank which is contained as a subterm in the
+    term $t$. The workhorse of this algorithm,
     $\mathtt{traversal}\;\Gamma\;t\;d$, accepts the
     list $\Gamma$ of ranks in context of a term $t$ and
     a ``default rank'' $d$, and outputs the triple
