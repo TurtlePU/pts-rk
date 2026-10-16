@@ -30,11 +30,11 @@
 }
 
 % ---------------------------------------------------------------
-% Generic command: \formalisedstmt[badge-file]{url}
-% For definitions, lemmas, and theorems whose statements are formalised
+% Generic command: \formalizedstmt[badge-file]{url}
+% For definitions, lemmas, and theorems whose statements are formalized
 % but whose proofs are not (yet).
 % ---------------------------------------------------------------
-\newcommand{\formalisedstmt}[2][rocq-formalised]{%
+\newcommand{\formalizedstmt}[2][rocq-formalized]{%
   \href{#2}{\raisebox{\badgeraise}{\includegraphics[height=\badgeheight]{badges/#1}}}%
 }
 
@@ -44,6 +44,6 @@
 \newcommand{\rocqproof}[1]{\verifiedproof[rocq]{#1}}
 
 % ---------------------------------------------------------------
-% Prover-specific shorthands  (formalised — statement only)
+% Prover-specific shorthands  (formalized — statement only)
 % ---------------------------------------------------------------
-\newcommand{\rocqformalised}[1]{\formalisedstmt[rocq-formalised]{#1}}
+\newcommand{\rocqformalized}[1]{\formalizedstmt[rocq-formalized]{#1}}
