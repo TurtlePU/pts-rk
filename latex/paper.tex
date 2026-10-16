@@ -85,9 +85,9 @@ Software Science}
 \begin{abstract}
 We present a dependently typed pure type system that
 contains a circular axiom $s:s$ for a certain sort $s$
-and is nonetheless strongly normalizing. Girard's
+and is nonetheless normalizing. Girard's
 paradox is avoided because our sorts are not closed
-under a $\Pi$-former: function types are placed in
+under $\Pi$-former: function types are placed in
 sorts according to their \textit{rank}. Turns out that
 this system has a unique set of characteristics: it has
 similar normalization behaviour as STLC (so complexity
@@ -333,7 +333,7 @@ byproduct of our study on complexity, we built a sound
 set-theoretic model for PTS-$rk$ (see
 Section~\ref{rk-model}) which assumes \emph{Generalized
 Continuum Hypothesis} \cite{jech2003set,hausdorff1908,
-godel1938consistency,godel1940consistency} which is an
+godel1938consistency} which is an
 unusual pick for dependently typed systems where
 \emph{inaccessible cardinals} are a more common
 assumption \cite{werner1997sets,lee2011proof}. Before
@@ -1421,23 +1421,23 @@ maxRankLiteral λ(x:T).t =
 maxRankLiteral (t u)    =
     maxRankLiteral t ⊔ maxRankLiteral u
 
-traversal _ rkᵣ      _ = (r , 0 , 0)
+traversal _ rkᵣ      _ = (r, 0, 0)
 traversal Γ Π(x:T).U d =
-    let (vᵀ , rᵀ , aᵀ) = traversal Γ T d
-        (vᵁ , rᵁ , aᵁ) = traversal (x := vᵀ, Γ) U d
-     in (vᵁ , suc rᵀ ⊔ rᵁ , aᵀ ⊔ aᵁ)
-traversal Γ x        d = (d , Γ[x] , 0)
+    let (vᵀ, rᵀ, aᵀ) = traversal Γ T d
+        (vᵁ, rᵁ, aᵁ) = traversal (x:= vᵀ, Γ) U d
+     in (vᵁ, suc rᵀ ⊔ rᵁ, aᵀ ⊔ aᵁ)
+traversal Γ x        d = (d, Γ[x], 0)
 traversal Γ λ(x:T).t d =
-    let (vᵀ , rᵀ , aᵀ) = traversal Γ T d
-        (vᵗ , rᵗ , aᵗ) = traversal (x := vᵀ, Γ) t d
-     in (vᵗ , rᵗ , rᵀ ⊔ aᵀ ⊔ aᵗ)
+    let (vᵀ, rᵀ, aᵀ) = traversal Γ T d
+        (vᵗ, rᵗ, aᵗ) = traversal (x:= vᵀ, Γ) t d
+     in (vᵗ, rᵗ, rᵀ ⊔ aᵀ ⊔ aᵗ)
 traversal Γ (t u)    d =
-    let (vᵗ , rᵗ , aᵗ) = traversal Γ t d
-        (_  , _  , aᵘ) = traversal Γ u d
-     in (vᵗ , rᵗ , aᵗ ⊔ aᵘ)
+    let (vᵗ, rᵗ, aᵗ) = traversal Γ t d
+        (_, _, aᵘ) = traversal Γ u d
+     in (vᵗ, rᵗ, aᵗ ⊔ aᵘ)
 
 estimateRank t =
-    let (vᵗ , rᵗ , aᵗ) =
+    let (vᵗ, rᵗ, aᵗ) =
         traversal [] t (maxRankLiteral t)
      in aᵗ
     \end{minted}
