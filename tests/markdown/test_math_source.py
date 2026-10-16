@@ -30,7 +30,7 @@ class MathSourceTests(unittest.TestCase):
 
     def test_notation(self):
         self.assertEqual(normalize_notation(r'\mathsf{rk}_r+\rk0+\mathcal{N}_{j+1}'),
-                         r'\rk{r}+\rk{0}+\chNat{j+1}')
+                         r'\rk{r}+\rk{0}+ℕ_{j+1}')
         self.assertEqual(normalize_notation(r'\mathsf{rk}_{\max(r+1,s)}'),
                          r'\rk{\max(r+1,s)}')
 
@@ -64,6 +64,15 @@ class MathSourceTests(unittest.TestCase):
     def test_short_fraction_numerator(self):
         source = '\\dfrac\n  {Γ, Δ ⊢ t : T}\n  {Γ, x : U, Δ ⊢ t : T}.'
         expected = '\\dfrac{Γ, Δ ⊢ t : T}\n      {Γ, x : U, Δ ⊢ t : T}.'
+        self.assertEqual(math_layout(source), expected)
+        self.assertEqual(math_layout(expected), expected)
+
+    def test_long_fraction_premise_breaks(self):
+        source = r"\dfrac{Γ, x : U, Δ ⊢ t : T \quad ⊢ Γ, x : U, Δ \quad U →_β U'}{Γ, x : U', Δ ⊢ t : T}"
+        expected = ("\\dfrac{Γ, x : U, Δ ⊢ t : T \\quad\n"
+                    "       ⊢ Γ, x : U, Δ \\quad\n"
+                    "       U →_β U'}\n"
+                    "      {Γ, x : U', Δ ⊢ t : T}")
         self.assertEqual(math_layout(source), expected)
         self.assertEqual(math_layout(expected), expected)
 

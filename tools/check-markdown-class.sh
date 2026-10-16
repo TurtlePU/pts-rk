@@ -4,17 +4,50 @@ set -euo pipefail
 project_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 test_dir=$(mktemp -d /tmp/pts-rk-markdown-class.XXXXXX)
 printf 'Test directory: %s\n' "$test_dir"
-for input in markdown.cls markdown.sty markdown; do
+for input in markdown.cls markdown.sty markdown verified-badges.sty; do
   ln -s "$project_dir/latex/$input" "$test_dir/$input"
 done
 cp "$project_dir/tests/markdown/"*.tex "$test_dir/"
 cd "$test_dir"
-for fixture in authors-lines authors-lines-bare authors-default authors-false empty-date; do
+for fixture in authors-lines authors-lines-bare authors-default authors-false empty-date formalization; do
   lualatex -interaction=nonstopmode -halt-on-error "$fixture.tex" \
     > "$fixture.build.log" 2>&1
 done
+for fixture in formalization-unknown formalization-unknown-in-proof formalization-duplicate formalization-invalid; do
+  if lualatex -interaction=nonstopmode -halt-on-error "$fixture.tex" \
+      > "$fixture.build.log" 2>&1; then
+    printf 'Expected failure: %s\n' "$fixture" >&2
+    exit 1
+  fi
+done
+if [[ $(uname -s) == Darwin ]] && command -v swift >/dev/null; then
+  swift "$project_dir/tests/markdown/check_pdf_links.swift" formalization.pdf
+else
+  printf 'PDFKit URL/proof-text check skipped (requires macOS + Swift).\n'
+fi
 python3 - <<'PY'
 from pathlib import Path
+for name, diagnostic in (
+    ('unknown', 'Unknown formalization root'),
+    ('unknown-in-proof', 'Unknown formalization root'),
+    ('duplicate', 'duplicate formalization root'),
+    ('invalid', 'invalid formalization root'),
+):
+    assert diagnostic in Path('formalization-' + name + '.log').read_text(), name
+    print('formalization-' + name + ': expected error PASS')
+log = Path('formalization.log').read_text()
+for target in (
+    r'https://example.org/rocq/theories/ZFC_model/ModelSoundness.v\#L133',
+    r'https://example.org/old/theories/Syntax.v\#L7',
+    'https://example.org/lean/Main.lean',
+    'https://example.org/agda/Main.agda',
+    'https://example.org/repo',
+    r'https://example.org/rocq/theories/Typing.v\#L50',
+    'https://example.org/rocq/theories/Proof.v',
+):
+    assert 'TEST-LINK: ' + target in log.replace('\n', ''), target
+assert 'Undefined control sequence' not in log
+print('formalization: PASS')
 for name in ('authors-lines', 'authors-lines-bare', 'authors-default', 'authors-false', 'empty-date'):
     log = Path(name + '.log').read_text()
     assert 'Unused global option' not in log, name

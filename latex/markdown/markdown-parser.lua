@@ -8782,10 +8782,6 @@ M.extensions.smart_hybrid = function()
           + parsers.check_optional_indent) / function() return end)
         * parsers.spacechar^0
 
-      local raw_env_interrupt
-        = parsers.percent
-        * parsers.letter
-
       local RawEnvironment
         = raw_env_start
         * Cs((raw_env_blank_line^0
@@ -8794,6 +8790,10 @@ M.extensions.smart_hybrid = function()
             + parsers.nonindentspace * parsers.colon^3
               * parsers.optionalspace * (parsers.newline + parsers.eof))
         / writer.rawEnvironment
+
+      -- Inline percent macros on a continuation line are not block starts.
+      -- Only a complete raw environment may interrupt the paragraph.
+      local raw_env_interrupt = #RawEnvironment
 
       local TightRawEnvironment
         = (#(parsers.newline

@@ -47,3 +47,71 @@
 % Prover-specific shorthands  (formalised — statement only)
 % ---------------------------------------------------------------
 \newcommand{\rocqformalised}[1]{\formalisedstmt[rocq-formalised]{#1}}
+
+% Named roots also allow two pinned revisions of the same assistant:
+% \DeclareFormalizationRoot[rocq]{rocq-ai}{https://.../theories/}
+% Missing assistant artwork gets a labelled textual badge, never a Rocq icon.
+\ExplSyntaxOn
+\prop_new:N \g_formalization_roots_prop
+\prop_new:N \g_formalization_assistants_prop
+\tl_new:N \l_formalization_assistant_tl
+\tl_const:Nx \c_formalization_colon_tl {\char_generate:nn{58}{12}}
+\cs_generate_variant:Nn \seq_use:Nn {NV}
+\NewDocumentCommand \DeclareFormalizationRoot { O{} m m }
+  {
+    \prop_gput:Nnn \g_formalization_roots_prop {#2} {#3}
+    \tl_if_blank:nTF {#1}
+      { \prop_gput:Nnn \g_formalization_assistants_prop {#2} {#2} }
+      { \prop_gput:Nnn \g_formalization_assistants_prop {#2} {#1} }
+  }
+\cs_new_protected:Npn \formalization_badge:nn #1#2
+  {
+    \group_begin:
+    \exp_args:NNx \seq_set_split:Nnn \l_tmpa_seq {\char_generate:nn{58}{12}} {#2}
+    \seq_pop_left:NN \l_tmpa_seq \l_tmpa_tl
+    \prop_get:NVNTF \g_formalization_roots_prop \l_tmpa_tl \l_tmpb_tl
+      {
+        \prop_get:NVN \g_formalization_assistants_prop \l_tmpa_tl \l_formalization_assistant_tl
+        \tl_set:Nx \l_tmpa_tl {\seq_use:NV \l_tmpa_seq \c_formalization_colon_tl}
+        \tl_if_empty:NTF \l_tmpa_tl
+          { \PackageError{verified-badges}{Empty~formalization~path}{Supply~a~path~after~the~colon.} }
+          {
+            \regex_match:nVTF {\A https?://} \l_tmpa_tl
+              { \tl_clear:N \l_tmpb_tl }
+              { }
+            \tl_put_right:NV \l_tmpb_tl \l_tmpa_tl
+            \tl_set_eq:NN \l_tmpa_tl \l_formalization_assistant_tl
+            \str_if_eq:nnT {#1}{statement}
+              { \tl_put_right:Nn \l_tmpa_tl {-formalised} }
+            \file_if_exist:nTF {badges/\l_tmpa_tl.pdf}
+              { \href{\l_tmpb_tl}{\raisebox{\badgeraise}{\includegraphics[height=\badgeheight]{badges/\l_tmpa_tl}}} }
+              { \href{\l_tmpb_tl}{\mbox{\scriptsize\textsf{\l_formalization_assistant_tl\space(#1)}}} }
+          }
+      }
+      { \PackageError{verified-badges}{Unknown~formalization~root~`\tl_to_str:V\l_tmpa_tl'}
+          {Declare~it~in~the~formalization~header~or~with~DeclareFormalizationRoot.} }
+    \group_end:
+  }
+\cs_generate_variant:Nn \regex_match:nnTF {nV}
+\DeclareRobustCommand \formalized [1] {\formalization_badge:nn {statement}{#1}}
+\cs_new_protected:Npn \formalizationProofBadge #1
+  { \formalization_badge:nn {proof}{#1} }
+\ExplSyntaxOff
+
+% amsthm may be loaded after this package. Save its environment entry only
+% once the entire preamble is loaded. Optional proof titles still pass through.
+% The environment hook distinguishes entry from a badge INSIDE a proof, so
+% no lookahead consumes or guesses the meaning of grouped opening text.
+\newif\ifformalization@proofentry
+\AddToHook{env/proof/begin}{\formalization@proofentrytrue}
+\AtBeginDocument{%
+  \let\formalizationEnvironmentProof\proof
+  \DeclareRobustCommand{\proof}{%
+    \ifformalization@proofentry
+      \formalization@proofentryfalse
+      \expandafter\formalizationEnvironmentProof
+    \else
+      \expandafter\formalizationProofBadge
+    \fi
+  }%
+}

@@ -30,6 +30,12 @@ and can spend excessive time backtracking through the document. The closing
 fence is only looked ahead at, not consumed by the raw-environment parser.
 
 The package files retain their copyright, MIT and/or LPPL 1.3-or-later notices.
+Local continuation fix (2026-10-16): only a complete raw environment may
+interrupt a paragraph, not any line starting with `%` and a letter. Inline
+percent macros retain normal Markdown soft-continuation behaviour, explicit
+two-space hard breaks and blank-line paragraph boundaries. The executable
+regression is `texlua tests/markdown/percent-continuations.lua` from the root.
+
 No license is stated in the reference's `markdown.cls`; it was copied from
 the user-specified template, with the following local changes (2026-10-16):
 
@@ -42,6 +48,11 @@ the user-specified template, with the following local changes (2026-10-16):
   legitimately use `\makeatother`.
 - Protect email `\url` when authblk builds its moving author arguments, so
   the class works with the plain url package as well as hyperref.
+- Parse a `formalization` map and register assistant/revision URL roots for
+  `verified-badges.sty`'s generic `\formalized` and `\proof` commands. Preserve
+  legacy full-URL macros and amsthm proof environments. The reusable class
+  and badge package are mirrored in the sibling Markdown checkout's
+  `addons/document-class`; artwork remains manuscript-specific.
 
 Explicit YAML dates use the existing metadata path and are displayed after
 the author/affiliation section. Five compiled regression fixtures cover the

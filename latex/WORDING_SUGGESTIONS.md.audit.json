@@ -1,0 +1,31 @@
+{
+  "source_sha256": "0332ecb7ca2036fcd82b2f60f2d93a50c8f3d3433344afc36e7d0f7af8e10ac6",
+  "service_source_sha256": "3908d913e140548591c407d727254c8597c259db42d88ed6cb152955d25b71f3",
+  "pre_implementation_filter_counts": {
+    "technical-terminology": 88,
+    "technical-edit-span": 123,
+    "protected-content": 23,
+    "no-safe-prose-edits": 34,
+    "retained": 147,
+    "ambiguous-source-edit": 8,
+    "proper-name": 6,
+    "retained-note": 4,
+    "duplicates-collapsed": 3,
+    "excluded-word": 10,
+    "protected-source-span": 1,
+    "independent-edits-combined": 25
+  },
+  "report_counts": {
+    "pending_wording_passages": 57,
+    "implemented_minor_passages": 80,
+    "implemented_minor_edits": 109,
+    "conflicting_article_alternatives_resolved": 2,
+    "implemented_spelling_groups": 26,
+    "minor_edits_superseded_by_author_rewrite": 2
+  },
+  "note": "No new service pass: remaining suggestions rebased to the source after checked minor edits. Presentation updated: indexed Church naturals use ℕ; report labels normalize Grazie attribution while raw evidence preserves engines. Author-requested prose edits supersede one minor passage; no new service pass.",
+  "omitted_batches": [
+    2,
+    36
+  ]
+}

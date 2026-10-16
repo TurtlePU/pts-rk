@@ -1,0 +1,34 @@
+# People, institutions and named systems; keep identities, not service guesses.
+Aleksandr
+Alexander
+Pavel
+Sokolov
+Kuklev
+Levin
+Barendregt
+Berardi
+Terlouw
+Girard
+Coquand
+Cook
+Church
+Curry
+de Bruijn
+Pakhomov
+Skordev
+Tarski
+Mostowski
+Robinson
+Zermelo
+Fraenkel
+Radboud
+Nijmegen
+JetBrains
+Claude
+Fable
+Astra
+AUTOMATH
+Rocq
+Coq
+Agda
+Lean

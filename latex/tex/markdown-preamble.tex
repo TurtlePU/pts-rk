@@ -1,6 +1,13 @@
 \documentclass{article}
 
 \usepackage{parskip}
+% Preserve article's smaller abstract text and margins, without its indent.
+\patchcmd{\abstract}{\quotation}{\quote}{}{%
+  \PackageError{paper}{Cannot remove abstract indentation}{}%
+}
+\patchcmd{\endabstract}{\endquotation}{\endquote}{}{%
+  \PackageError{paper}{Cannot remove abstract indentation}{}%
+}
 
 \usepackage[backend=biber]{biblatex}
 \addbibresource{bibliography.bib}
@@ -123,7 +130,6 @@ simplebnf,stmaryrd,tikz-cd,verified-badges}
 }
 
 \newcommand{\rk}[1]{\mathsf{rk}_{#1}}
-\newcommand{\chNat}[1]{\mathcal{N}_{#1}}
 \newcommand{\PTS}{\mathsf{PTS}_{rk}}
 \newcommand{\Rt}{\widetilde{\mathsf R}}
 \newcommand{\R}{\mathsf R}
@@ -159,6 +165,8 @@ simplebnf,stmaryrd,tikz-cd,verified-badges}
 % Keep the original article's body typography and all mathematics packages.
 % Only title/author layout is delegated to the MLTT-S metadata class.
 \usepackage{titling,authblk}
+\setlength{\droptitle}{-1em}
+\predate{\begin{center}\normalsize}
 \usepackage[
   smartHybrid, fencedEnvs, headerAttributes, rawAttribute,
   inlineCodeAttributes, fencedCode, inlineNotes,

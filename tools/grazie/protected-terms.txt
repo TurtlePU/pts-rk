@@ -1,0 +1,55 @@
+# Additional technical vocabulary for the PTS-rk paper wording review.
+definitionally
+admitted
+greedy
+parallel reduction
+subterm
+Church
+Curry
+saturated
+well-founded
+upwards closed
+associates to
+reduce
+iff
+such that
+typeable with
+typable with
+typed by
+that is,
+least
+greatest
+exactly
+upper bound
+weakening lemma
+substitution lemma
+strictify
+soundness
+faithfulness
+nonfaithfulness
+uniformly
+greedily
+yes-s
+typed
+typable
+typeable
+lemma
+lemmas
+theorem
+theorems
+corollary
+definition
+numeral
+numerals
+predicate
+predicates
+preorder
+constructor
+constructors
+reduction
+preservation
+simply-typed
+simply typed
+many-argument
+callback
+records

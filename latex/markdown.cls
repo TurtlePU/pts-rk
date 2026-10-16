@@ -391,11 +391,30 @@ local function parse_metadata(front_matter)
     has_orcid = false,
     has_email = false,
     has_empty_date = false,
+    formalization = {},
   }
   local current_author = nil
   local in_affiliations = false
+  local in_formalization = false
 
   for line in (front_matter .. "\n"):gmatch("([^\n]*)\n") do
+    if line:match("^formalization:%s*$") then
+      in_formalization = true
+      in_affiliations = false
+    elseif in_formalization and line:match("^%s+") then
+      local key, url = line:match("^%s+([a-z][a-z0-9%-]*):%s*(.-)%s*$")
+      url = strip_quotes(url)
+      if not key or not url or not url:match("^https?://")
+          or url:find("[\\{}%%#%s]") then
+        error("markdown class: invalid formalization root: " .. line)
+      end
+      if metadata.formalization[key] then
+        error("markdown class: duplicate formalization root: " .. key)
+      end
+      metadata.formalization[key] = url
+    else
+      in_formalization = false
+    end
     local title = line:match("^title:%s*(.*)$")
     local date = line:match("^date:%s*(.*)$")
     local scalar_author = line:match("^author:%s*(.+)$")
@@ -555,6 +574,17 @@ local function emit_metadata_requirements(metadata)
 end
 
 local function emit_metadata(metadata)
+  if next(metadata.formalization) then
+    tex.sprint("\\RequirePackage{verified-badges}")
+    local keys = {}
+    for key in pairs(metadata.formalization) do table.insert(keys, key) end
+    table.sort(keys)
+    for _, key in ipairs(keys) do
+      local assistant = key:match("^([a-z]+)")
+      tex.sprint("\\DeclareFormalizationRoot[" .. assistant .. "]{" .. key ..
+        "}{\\detokenize{" .. metadata.formalization[key] .. "}}")
+    end
+  end
   emit_title(metadata)
 
   if metadata.scalar_author then

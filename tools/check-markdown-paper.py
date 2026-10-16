@@ -10,7 +10,42 @@ from pathlib import Path
 import difflib
 import re
 import argparse
+import json
+import sys
 from paper_math import normalize_notation
+sys.path.insert(0,str(Path(__file__).resolve().parent/'prose-review/scripts'))
+from split_minor import restore_minor
+
+
+def expand_formalization_links(source):
+    """Resolve badge links, preserving their assistant and pinned URL."""
+    header, body = source.split(":::Abstract", 1)
+    roots = {}
+    in_roots = False
+    for line in header.splitlines():
+        if line == 'formalization:':
+            in_roots = True
+        elif in_roots and line.startswith(' '):
+            match = re.fullmatch(r'\s+([a-z][a-z0-9-]*):\s*(https?://\S+)', line)
+            if not match or match[1] in roots:
+                raise ValueError('Invalid or duplicate formalization root: ' + line)
+            roots[match[1]] = match[2]
+        else:
+            in_roots = False
+
+    def resolve(match):
+        command, key, path = match.groups()
+        if key not in roots or not path:
+            raise ValueError('Unknown formalization root or empty path: ' + match[0])
+        url = path if re.match(r'https?://', path) else roots[key] + path
+        assistant = key.split('-')[0]
+        legacy = assistant + ('formalised' if command == 'formalized' else 'proof')
+        return '\\' + legacy + '{' + url + '}'
+
+    body = re.sub(r'\\(formalized|proof)\{([^:{}]+):([^{}]*)\}', resolve, body)
+    if re.search(r'\\(?:formalized|proof)\{', body):
+        raise ValueError('Malformed formalization badge')
+    return body
 
 
 def native_tex(text):
@@ -124,6 +159,7 @@ def unwrap_markdown(text):
 
 def body_stream(text):
     text = re.sub(r"(?<!\\)%[^\n]*", "", text)
+    text = re.sub(r"\\vspace\*?\{[-+]?(?:\d+(?:\.\d+)?|\.\d+)(?:em|ex|pt)\}", "", text)
     text = re.sub(
         r"\\(?:begin|end)\{(?:abstract|theorem\*?|lemma|definition|"
         r"proposition|corollary|remark|proof)\}", "", text,
@@ -156,6 +192,23 @@ def mathematics(text):
     return [canonical_math(m[0]) for m in pattern.finditer(text)]
 
 
+def approved_math_baseline(fragments, edits):
+    """Apply only explicitly recorded author changes to the expected formulas."""
+    fragments = list(fragments)
+    for edit in edits:
+        if not edit.get('math_change'):
+            continue
+        before, after = [mathematics(normalize_spelling(value))
+                         for value in (edit['before'], edit['after'])]
+        positions = [i for i in range(len(fragments) - len(before) + 1)
+                     if fragments[i:i + len(before)] == before]
+        if not before or len(positions) != 1:
+            raise ValueError('Missing/ambiguous approved mathematical baseline')
+        i = positions[0]
+        fragments[i:i + len(before)] = after
+    return fragments
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--rendered-dir", type=Path,
@@ -166,7 +219,19 @@ def main():
     original = original.split(r"\begin{abstract}", 1)[1]
     original = original.rsplit(r"\end{document}", 1)[0]
     markdown = (root / "paper-markdown.tex").read_text()
-    markdown = unwrap_markdown(native_tex(markdown.split(":::Abstract", 1)[1]))
+    actual_markdown = normalize_spelling(unwrap_markdown(expand_formalization_links(native_tex(markdown))))
+    minor_report = root / 'MINOR_CORRECTIONS.md'
+    if minor_report.exists():
+        markdown = restore_minor(markdown,minor_report.read_text())
+        print('Checked comma/article corrections: exact baseline restored for prose comparison')
+    # Exact user-approved prose differences, not a general wording exemption.
+    edits = json.loads((root / 'PROSE_EDITS.json').read_text())
+    for edit in edits:
+        if markdown.count(edit['after']) != 1:
+            raise ValueError('Missing/ambiguous approved prose edit: ' + edit['after'])
+        markdown = markdown.replace(edit['after'], edit['before'], 1)
+    markdown = expand_formalization_links(native_tex(markdown))
+    markdown = unwrap_markdown(markdown)
     original, markdown = map(normalize_spelling, (original, markdown))
     left, right = map(body_stream, (original, markdown))
     print("Canonical body characters:", len(left), len(right), "equal:", left == right)
@@ -175,7 +240,9 @@ def main():
             if tag != "equal":
                 print(tag, repr(left[max(0, i-40):j+40]),
                       "=>", repr(right[max(0, k-40):l+40]))
-    a, b = map(mathematics, (original, markdown))
+    # Always compare ACTUAL mathematics, never the prose-restored version.
+    a, b = map(mathematics, (original, actual_markdown))
+    a = approved_math_baseline(a, edits)
     print("Ordered math fragments:", len(a), len(b), "equal:", a == b)
     for i, (x, y) in enumerate(zip(a, b)):
         if x != y:
@@ -193,6 +260,10 @@ def main():
         )
         for file in files:
             rendered = file.read_text()
+            for display in re.finditer(r"\\begin\{mathpar\}[\s\S]*?\\end\{mathpar\}", rendered):
+                if 'This is true by structural induction' in display[0]:
+                    print('Proof prose swallowed by mathpar:', file)
+                    rendered_ok = False
             if re.search(
                 r"\\markdownRenderer(?:Interblock|Paragraph)Separator\s*\{\}"
                 r"\\begin\{(?:mathpar|align\*?|gather\*?|multline\*?|equation\*?)\}",

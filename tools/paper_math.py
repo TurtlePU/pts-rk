@@ -34,14 +34,16 @@ def argument(s, i):
 
 
 def normalize_notation(s):
-    pattern = re.compile(r'\\mathsf\{rk\}\s*_|\\mathcal\{N\}\s*_|\\rk(?![A-Za-z])|\\chNat(?![A-Za-z])')
+    pattern = re.compile(r'\\mathsf\{rk\}\s*_|\\mathcal\{N\}\s*_|ℕ\s*_|\\rk(?![A-Za-z])|\\chNat(?![A-Za-z])')
     out, end = [], 0
     for m in pattern.finditer(s):
         if m.start() < end:
             continue
         value, stop, _ = argument(s, m.end())
-        name = 'chNat' if 'N' in m[0] else 'rk'
-        out.extend((s[end:m.start()], '\\' + name + '{' + normalize_notation(value) + '}'))
+        value = normalize_notation(value)
+        notation = ('ℕ_' + (value if len(value) == 1 else '{' + value + '}')
+                    if 'N' in m[0] or 'ℕ' in m[0] else '\\rk{' + value + '}')
+        out.extend((s[end:m.start()], notation))
         end = stop
     out.append(s[end:])
     return ''.join(out)
@@ -145,8 +147,13 @@ def math_layout(s):
             continue
         first, mid, _ = argument(s, m.end())
         second, end, _ = argument(s, mid)
-        if '\n' not in s[m.start():end]:
+        inline = re.sub(r'\s+', ' ', s[m.start():end])
+        long = len(inline) > 80
+        if '\n' not in s[m.start():end] and not long:
             continue
+        if long:
+            first = re.sub(r'\\quad(?![A-Za-z])\s*',
+                           lambda _: '\\quad\n', first)
         indent = re.match(r' *', s[s.rfind('\n', 0, m.start()) + 1:])[0]
         args = []
         for value in (first, second):
