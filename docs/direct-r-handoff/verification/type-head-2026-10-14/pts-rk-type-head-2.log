@@ -1,0 +1,35 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+File "./ZFC_model/TypeHeadNormalization.v", line 83, characters 8-28:
+Error: Cannot infer the implicit parameter n of equiv_𝓤_inversion whose type
+is "nat" in
+environment:
+n : nat
+G : Ctx nat n
+T, T' : Term nat n
+i, j : nat
+HG : wf G
+HT : G ⊢ T ⇐ 𝓤 i
+HT' : G ⊢ T' ⇐ 𝓤 j
+W : Term nat n
+R : T ↠ᵝ W
+R' : T' ↠ᵝ W
+TW : G ⊢ W ⇐ 𝓤 i
+N : Term nat n
+RN : W ↠ᵝ N
+TN : G ⊢ N ⇐ 𝓤 i
+HN : type_head N
+RT : T ↠ᵝ N
+RT' : T' ↠ᵝ N
+TN' : G ⊢ N ⇐ 𝓤 j
+
+File "ZFC_model/dune", lines 1-5, characters 0-945:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 | (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/TypeHeadNormalization.{glob,vo} (exit 1)

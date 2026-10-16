@@ -1,0 +1,9 @@
+\documentclass{article}
+\usepackage{titling,hyperref}
+% Deliberately load badges first, as in the actual paper.
+\usepackage{verified-badges,amsthm}
+\newtheorem{theorem}{Theorem}
+\usepackage[smartHybrid,fencedEnvs,rawAttribute,inlineCodeAttributes,fencedCode]{markdown}
+% No artwork in this fixture: exercise the labelled assistant fallback too.
+\let\testOriginalHref\href
+\renewcommand\href[2]{\typeout{TEST-LINK: #1}\testOriginalHref{#1}{#2}}

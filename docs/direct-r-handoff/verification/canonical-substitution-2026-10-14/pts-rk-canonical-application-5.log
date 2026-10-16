@@ -1,0 +1,56 @@
+Closed under the global context
+Closed under the global context
+Closed under the global context
+CanonicalApplication.application_realization_from_induction
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B : Term nat (S n)) (t u : Term nat n) 
+         (m k : nat),
+       G ⊢ t ⇐ Π A B ->
+       G ⊢ u ⇐ A ->
+       beta_normal (Π A B) ->
+       beta_normal u ->
+       not_lambda u ->
+       CanonicalApplication.CR.valid_valuation H s G rho ->
+       CanonicalApplication.CR.realizes H s G rho t (Π A B) ->
+       CanonicalApplication.CR.realizes H s G rho u A ->
+       CanonicalApplication.CR.realizes H s G rho A (𝓤 m) ->
+       (forall rho' : Fin (S n) -> Ens,
+        CanonicalApplication.CR.valid_valuation H s (G & A) rho' ->
+        CanonicalApplication.CR.realizes H s (G & A) rho' B (𝓤 k)) ->
+       CanonicalApplication.CR.realizes H s G rho (t $ u) (B ◁ u)
+CanonicalApplication.rank_zero_application_realization
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B : Term nat (S n)) (t u : Term nat n) 
+         (k : nat),
+       wf G ->
+       G ⊢ A ⇐ 𝓤 0 ->
+       G ⊢ t ⇐ Π A B ->
+       G ⊢ u ⇐ A ->
+       beta_normal (Π A B) ->
+       beta_normal u ->
+       CanonicalApplication.CR.valid_valuation H s G rho ->
+       CanonicalApplication.CR.realizes H s G rho t (Π A B) ->
+       CanonicalApplication.CR.realizes H s G rho u A ->
+       CanonicalApplication.CR.realizes H s G rho A (𝓤 0) ->
+       (forall rho' : Fin (S n) -> Ens,
+        CanonicalApplication.CR.valid_valuation H s (G & A) rho' ->
+        CanonicalApplication.CR.realizes H s (G & A) rho' B (𝓤 k)) ->
+       CanonicalApplication.CR.realizes H s G rho (t $ u) (B ◁ u)

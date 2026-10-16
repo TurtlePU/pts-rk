@@ -1,0 +1,21 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+uniform_selected_codes
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       forall m n : nat,
+       exists s : Ens,
+         forall (a : Ens) (b : Ens -> Ens),
+         IN a (U m) ->
+         (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+         IN (selected_code s m n a b) (U (product_code_rank m n)) /\
+         bijection
+           (dependent_product (decode a) (fun x : Ens => decode (b x)))
+           (decode (selected_code s m n a b)) (selected_bijection s m n a b)
+Closed under the global context
+        rocq ZFC_model/SelectedCodes.{glob,vo}

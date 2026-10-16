@@ -1,0 +1,28 @@
+Chars 731 - 773 [From~Stdlib~Require~Import~Ari...] 0.033 secs (0.026u,0.006s)
+Chars 774 - 814 [From~Equations~Require~Import~...] 0.022 secs (0.016u,0.005s)
+Chars 815 - 851 [From~ZFC~Require~Import~Sets~A...] 0. secs (0.u,0.s)
+Chars 852 - 912 [From~PTSrk~Require~Import~Synt...] 0.003 secs (0.002u,0.001s)
+Chars 913 - 1164 [From~PTSrkModel~Require~Import...] 0.054 secs (0.041u,0.012s)
+Chars 1165 - 1200 [Import~CodeUniverses.CodeUnive...] 0. secs (0.u,0.s)
+Chars 1202 - 1226 [Module~RankedDenotation.] 0. secs (0.u,0.s)
+Chars 1227 - 1280 [Module~CD:=~~CanonicalDenotati...] 0.001 secs (0.001u,0.s)
+Chars 1281 - 1302 [Section~Certificates.] 0. secs (0.u,0.s)
+Chars 1303 - 1323 [Variables~(H~s~:~Ens).] 0. secs (0.u,0.s)
+Chars 1325 - 3690 [Inductive~certificate~:~forall...] 0.003 secs (0.002u,0.s)
+File "/tmp/pts-rk-ranked-denotation.iW07Rj/RankedDenotation.v", line 34, characters 9-17:
+Error:
+In environment
+H, s : Ens
+certificate :
+  forall n : nat,
+  Ctx nat n ->
+  (Fin n -> Ens) -> Term nat n -> Term nat n -> Ens -> Ens -> Prop
+n : nat
+G : Ctx nat n
+rho : Fin n -> Ens
+i : Term nat n
+C : Term nat n
+k : nat
+a : Ens
+The term "i =ᵝ C" has type "Prop" while it is expected to have type "Fin n".
+

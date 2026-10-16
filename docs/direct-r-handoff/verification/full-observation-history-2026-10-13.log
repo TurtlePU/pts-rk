@@ -1,0 +1,123 @@
+# Compilation history, 2026-10-13
+# Commands use the documented OPAMROOT/PATH and pts-rk-ci switch.
+# Raw logs remain in _build/local-ci-logs; the excerpts below are explicitly partial.
+# Module command: opam exec --switch=pts-rk-ci -- timeout N dune build --display=short --no-buffer theories/DirectRFiniteDomainPrefix.vo
+# Audit command: same, with theories/DirectRFunctionalAudit.vo
+# Timed command (from _build/default): opam exec --switch=pts-rk-ci -- timeout N rocq compile -time -R theories PTSrk theories/DirectRFiniteDomainPrefix.v
+
+# binary-congruence-prefix-1.log: timeout 120, exit 0
+# order-prefix-1.log: timeout 180, exit 124
+        rocq theories/.PTSrk.theory.d
+
+
+**************************************************************
+* Press Control+C again quickly to perform an emergency exit *
+**************************************************************
+
+
+# order-prefix-timed.log: timeout 180, exit 143
+Chars 79 - 136 [From~Stdlib~Require~Import~Lis...] 0.141 secs (0.076u,0.026s)
+Chars 137 - 183 [From~PTSrk~Require~Import-(not...] 0.028 secs (0.013u,0.006s)
+Chars 184 - 664 [From~PTSrk~Require~Import~Cont...] 0.026 secs (0.009u,0.004s)
+Chars 665 - 686 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 687 - 713 [Module~FiniteDomainPrefix.] 0. secs (0.u,0.s)
+Chars 714 - 813 [Import~Codes~Core~Structural~N...] 0. secs (0.u,0.s)
+Chars 814 - 1030 [Definition~binary_guard~{n}~(X...] 0. secs (0.u,0.s)
+
+# order-prefix-2.log: timeout 180, exit 1
+        rocq theories/.PTSrk.theory.d
+File "./theories/DirectRFiniteDomainPrefix.v", line 51, characters 62-73:
+Error:
+In environment
+body : named
+t : Term nat (length [103; 102; 101; 100; 7; 6; 5; 4; 3; 2; 1; 0])
+Unable to unify
+
+# order-prefix-3.log: timeout 180, exit 1
+        rocq theories/.PTSrk.theory.d
+File "./theories/DirectRFiniteDomainPrefix.v", line 51, characters 30-43:
+Error: Found no subterm matching
+"(fix Ffix (x : named) (x0 : list nat) {struct x} :
+      option
+        (Term nat
+           ((fix Ffix0 (x1 : list nat) : nat :=
+
+# order-prefix-4.log: timeout 180, exit 1
+        rocq theories/.PTSrk.theory.d
+File "./theories/DirectRFiniteDomainPrefix.v", line 18, characters 43-52:
+Error: Found no subterm matching "assemble A env" in the current goal.
+
+File "theories/dune", lines 1-10, characters 0-1458:
+ 1 | (rocq.theory
+ 2 |   (name PTSrk)
+
+# order-prefix-5.log: timeout 180, exit 124
+        rocq theories/.PTSrk.theory.d
+
+
+**************************************************************
+* Press Control+C again quickly to perform an emergency exit *
+**************************************************************
+
+
+# order-prefix-6.log: timeout 180, exit 130
+        rocq theories/.PTSrk.theory.d
+
+
+**************************************************************
+* Press Control+C again quickly to perform an emergency exit *
+**************************************************************
+
+
+# order-prefix-timed-2.log: timeout 180, exit 143
+Chars 79 - 136 [From~Stdlib~Require~Import~Lis...] 0.095 secs (0.073u,0.021s)
+Chars 137 - 183 [From~PTSrk~Require~Import-(not...] 0.018 secs (0.013u,0.005s)
+Chars 184 - 664 [From~PTSrk~Require~Import~Cont...] 0.01 secs (0.007u,0.002s)
+Chars 665 - 686 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 687 - 713 [Module~FiniteDomainPrefix.] 0. secs (0.u,0.s)
+Chars 714 - 813 [Import~Codes~Core~Structural~N...] 0. secs (0.u,0.s)
+Chars 814 - 1038 [Lemma~assemble_prefix_step~nam...] 0.001 secs (0.u,0.s)
+
+# order-prefix-7.log: timeout 180, exit 124
+        rocq theories/.PTSrk.theory.d
+
+
+**************************************************************
+* Press Control+C again quickly to perform an emergency exit *
+**************************************************************
+
+
+# order-prefix-timed-3.log: timeout 600, exit 143
+Chars 79 - 136 [From~Stdlib~Require~Import~Lis...] 0.141 secs (0.075u,0.025s)
+Chars 137 - 183 [From~PTSrk~Require~Import-(not...] 0.028 secs (0.013u,0.005s)
+Chars 184 - 664 [From~PTSrk~Require~Import~Cont...] 0.022 secs (0.009u,0.003s)
+Chars 665 - 686 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 687 - 713 [Module~FiniteDomainPrefix.] 0. secs (0.u,0.s)
+Chars 714 - 813 [Import~Codes~Core~Structural~N...] 0. secs (0.u,0.s)
+Chars 814 - 950 [Lemma~prefix_option_map_compos...] 0. secs (0.u,0.s)
+
+# order-prefix-8.log: timeout 180, exit 0
+# arithmetic-prefix-1.log: timeout 180, exit 1
+        rocq theories/.PTSrk.theory.d
+File "./theories/DirectRFiniteDomainPrefix.v", line 1663, characters 0-4:
+Error:
+ (in proof multiplication_order_left_application_beta): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+File "theories/dune", lines 1-10, characters 0-1458:
+
+# arithmetic-prefix-2.log: timeout 180, exit 0
+# full-observation-audit.log: timeout 180, exit 0
+# full-observation-audit-2.log: timeout 180, exit 1
+        rocq theories/.PTSrk.theory.d
+File "./theories/DirectRFiniteDomainPrefix.v", line 1886, characters 2-8:
+Error: No such goal. Focus next goal with bullet -.
+
+File "theories/dune", lines 1-10, characters 0-1458:
+ 1 | (rocq.theory
+ 2 |   (name PTSrk)
+
+# full-observation-audit-3.log: timeout 180, exit 0
+# Profile runs with exit 143 and order-prefix-6 were deliberately stopped for revised diagnostics.
+# The eventual direct assemble_prefix_congr application proof compiled under 180s.
+# Final independent full build and unchanged local CI both exited 0 (separate full logs).

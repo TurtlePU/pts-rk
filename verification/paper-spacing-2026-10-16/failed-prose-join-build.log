@@ -1,0 +1,1017 @@
+Rc files read (in order):
+  NONE
+Latexmk: This is Latexmk, John Collins, 9 March 2026. Version 4.88.
+No existing .aux file, so I'll make a simple one, and require run of *latex.
+Latexmk: applying rule 'lualatex'...
+Rule 'lualatex':  Reasons for rerun
+Category 'other':
+  Rerun of 'lualatex' forced or previously required:
+    Reason or flag: 'Initial setup'
+
+------------
+Run number 1 of rule 'lualatex'
+------------
+------------
+Running 'lualatex  -interaction=nonstopmode -halt-on-error -recorder  "paper-markdown.tex"'
+------------
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
+ restricted system commands enabled.
+(./paper-markdown.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ (./markdown.cls
+Document Class: markdown 2026/06/25 Lua Markdown document class
+(/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/lualatex/luacode/luacode.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifluatex.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
+(/usr/local/texlive/2026/texmf-dist/tex/luatex/ctablestack/ctablestack.sty)))
+markdown class: extracted base class `article' with options `' from tex/markdow
+n-preamble.tex (/usr/local/texlive/2026/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/size10.clo))
+(./paper-markdown.markdown.preamble.tex
+(/usr/local/texlive/2026/texmf-dist/tex/latex/parskip/parskip.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/biblatex.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/logreq/logreq.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/logreq/logreq.def))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/blx-dm.def)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/blx-unicode.def)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/blx-compat.def)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/biblatex.def)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/bbx/numeric.bbx
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/bbx/standard.bbx))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/cbx/numeric.cbx)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/biblatex.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-luatex.def))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty)) (/usr/local/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hluatex.def
+(/usr/local/texlive/2026/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2026/texmf-dist/tex/latex/mathpartir/mathpartir.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/minted/minted.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/catchfile/catchfile.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/etexcmds/etexcmds.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fvextra/fvextra.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/upquote/upquote.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/textcomp.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/lineno/lineno.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/latex2pydata/latex2pydata.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
+tered.code.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgfopts/pgfopts.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tools/shellesc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/float/float.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/simplebnf/simplebnf.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tabularray/tabularray.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+) (/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-def/luatex.def)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luatex.d
+ef
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex)) (/usr/local/texlive/2026/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/ninecolors/ninecolors.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex)
+) (/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex))
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarymatrix.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryquotes.code.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+meta.code.tex))) (./verified-badges.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/newunicodechar/newunicodechar.sty
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/orcidlink/orcidlink.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarysvg.path.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/libraries/pgflibrarysvg.pat
+h.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/modules/pgfmoduleparser.cod
+e.tex)))) (/usr/local/texlive/2026/texmf-dist/tex/latex/titling/titling.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/preprint/authblk.sty))
+(./markdown.sty (./markdown/markdown.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/lt3luabridge/lt3luabridge.tex))
+) (./markdown/markdownthemewitiko_markdown_defaults.sty
+(./markdown/markdownthemewitiko_markdown_defaults.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/paralist/paralist.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/csvsimple/csvsimple.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/csvsimple/csvsimple-legacy.sty))
+markdown class: prepared Markdown body from paper-markdown.tex to paper-markdow
+n.markdown.body.md) (./paper-markdown.aux)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/biblatex/lbx/english.lbx)
+No file paper-markdown.bbl.
+(/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+(./_markdown_paper-markdown/ed0a516142de8eda85506d89075455e4.md.tex
+
+LaTeX Warning: Citation 'berardi1988towards' on page 1 undefined on input line 
+22.
+
+
+LaTeX Warning: Citation 'terlouw1989gstt' on page 1 undefined on input line 23.
+
+
+
+Overfull \hbox (32.56198pt too wide) in paragraph at lines 21--29
+\TU/lmr/m/n/10 Pure type sys-tems (PTSs, in-tro-duced in-de-pen-dently by Be-ra
+rdi [[]]
+[1{/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.1'
+
+]
+
+LaTeX Warning: Citation 'barendregt1991introduction' on page 2 undefined on inp
+ut line 98.
+
+
+LaTeX Warning: Citation 'barendregt1992lambda' on page 2 undefined on input lin
+e 98.
+
+
+LaTeX Warning: Citation 'church1940formulation' on page 2 undefined on input li
+ne 101.
+
+
+LaTeX Warning: Citation 'coquand1988calculus' on page 2 undefined on input line
+ 107.
+
+
+Overfull \hbox (95.57204pt too wide) in paragraph at lines 97--114
+[]\TU/lmr/m/n/10 Sys-tems from Baren-dregt’s lambda cube [[], []]
+
+LaTeX Warning: Citation 'tait1967intensional' on page 2 undefined on input line
+ 115.
+
+
+LaTeX Warning: Citation 'coquand1990kripke' on page 2 undefined on input line 1
+15.
+
+
+LaTeX Warning: Citation 'geuvers1991modular' on page 2 undefined on input line 
+115.
+
+
+Overfull \hbox (20.78404pt too wide) in paragraph at lines 115--118
+[]\TU/lmr/m/n/10 As is known [[], [], []],
+[2
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.2'
+
+]
+
+LaTeX Warning: Citation 'girard1972interpretation' on page 3 undefined on input
+ line 119.
+
+
+LaTeX Warning: Citation 'hurkens1995simplification' on page 3 undefined on inpu
+t line 119.
+
+
+Overfull \hbox (20.85536pt too wide) in paragraph at lines 119--121
+[]\TU/lmr/bx/n/10 The-o-rem \TU/lmr/m/n/10 (Gi-rard’72 [[], []])\TU/lmr/bx/n/
+10 .
+
+LaTeX Warning: Citation 'martinlof1971theory' on page 3 undefined on input line
+ 140.
+
+
+LaTeX Warning: Citation 'martinlof1984intuitionistic' on page 3 undefined on in
+put line 142.
+
+
+Overfull \hbox (9.17401pt too wide) in paragraph at lines 134--145
+\TU/lmr/m/n/10 beds is in-con-sis-tent, too; in par-tic-u-lar, an orig-i-nal ve
+r-sion [[]]
+
+LaTeX Warning: Citation 'martinlof1975intuitionistic' on page 3 undefined on in
+put line 153.
+
+
+LaTeX Warning: Citation 'harper1991universes' on page 3 undefined on input line
+ 153.
+
+
+LaTeX Warning: Citation 'werner1997sets' on page 3 undefined on input line 159.
+
+
+
+LaTeX Warning: Citation 'aczel1998relating' on page 3 undefined on input line 1
+59.
+
+
+Overfull \hbox (16.18677pt too wide) in paragraph at lines 148--159
+[]\TU/lmr/m/n/10 ] $\OMS/cmsy/m/n/10 S \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 fU[]g
+[]$ \TU/lmr/m/n/10 with ax-ioms $\OMS/cmsy/m/n/10 U[] \OT1/cmr/m/n/10 : \OMS/cm
+sy/m/n/10 U[]$ \TU/lmr/m/n/10 and rules $\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 U[]\
+OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 U[]\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 U[]\O
+T1/cmr/m/n/10 )$
+
+LaTeX Warning: Reference `rk-sn' on page 3 undefined on input line 189.
+
+
+LaTeX Warning: Reference `pts-metatheory' on page 3 undefined on input line 193
+.
+
+
+LaTeX Warning: Citation 'geuvers1991modular' on page 3 undefined on input line 
+196.
+
+
+LaTeX Warning: Citation 'barras1999autovalidation' on page 3 undefined on input
+ line 196.
+
+
+LaTeX Warning: Citation 'abel2018decidability' on page 3 undefined on input lin
+e 196.
+
+
+LaTeX Warning: Reference `formalisation' on page 3 undefined on input line 201.
+
+
+
+Overfull \hbox (3.97403pt too wide) in paragraph at lines 185--203
+\TU/lmr/m/n/10 [[], [], []].
+[3<./badges/rocq-formalised.pdf>]
+
+LaTeX Warning: Citation 'kalmar1943' on page 4 undefined on input line 207.
+
+
+LaTeX Warning: Citation 'rose1984subrecursion' on page 4 undefined on input lin
+e 207.
+
+
+LaTeX Warning: Reference `complexity' on page 4 undefined on input line 208.
+
+
+LaTeX Warning: Reference `computational' on page 4 undefined on input line 208.
+
+
+
+LaTeX Warning: Reference `rk-model' on page 4 undefined on input line 211.
+
+
+LaTeX Warning: Citation 'jech2003set' on page 4 undefined on input line 212.
+
+
+LaTeX Warning: Citation 'hausdorff1908' on page 4 undefined on input line 212.
+
+
+LaTeX Warning: Citation 'godel1938consistency' on page 4 undefined on input lin
+e 212.
+
+
+LaTeX Warning: Citation 'godel1940consistency' on page 4 undefined on input lin
+e 212.
+
+
+LaTeX Warning: Citation 'werner1997sets' on page 4 undefined on input line 215.
+
+
+
+LaTeX Warning: Citation 'lee2011proof' on page 4 undefined on input line 215.
+
+
+LaTeX Warning: Reference `proof-system' on page 4 undefined on input line 220.
+
+
+Overfull \hbox (17.73676pt too wide) in paragraph at lines 204--220
+\TU/lmr/m/n/10 tems where \TU/lmr/m/it/10 in-ac-ces-si-ble car-di-nals \TU/lmr/
+m/n/10 are a more com-mon as-sump-tion [[],
+
+LaTeX Warning: Citation 'gpt6astra2026' on page 4 undefined on input line 224.
+
+
+Overfull \hbox (14.162pt too wide) in paragraph at lines 223--233
+\TU/lmr/m/n/10 At var-i-ous points in our re-search, we in-ter-acted with GPT-6
+ As-tra [[]]
+
+LaTeX Warning: Citation 'claude_fable' on page 4 undefined on input line 235.
+
+[4<./badges/rocq.pdf>]
+
+LaTeX Warning: Citation 'barendregt1984lambda' on page 5 undefined on input lin
+e 264.
+
+
+LaTeX Warning: Reference `formalisation' on page 5 undefined on input line 269.
+
+
+
+LaTeX Warning: Reference `typing' on page 5 undefined on input line 273.
+
+
+LaTeX Warning: Citation 'church1936properties' on page 5 undefined on input lin
+e 302.
+
+
+LaTeX Warning: Citation 'barendregt1992lambda' on page 5 undefined on input lin
+e 302.
+
+
+Overfull \hbox (82.83203pt too wide) in paragraph at lines 300--305
+\TU/lmr/m/n/10 many times over for dif-fer-ent sim-i-lar sys-tems [[], []];
+[5]
+
+LaTeX Warning: Citation 'martinlof1971theory' on page 6 undefined on input line
+ 327.
+
+
+LaTeX Warning: Reference `typing' on page 6 undefined on input line 376.
+
+
+LaTeX Warning: Citation 'barendregt1992lambda' on page 6 undefined on input lin
+e 381.
+
+
+LaTeX Warning: Citation 'geuvers1991modular' on page 6 undefined on input line 
+381.
+
+[6]
+
+LaTeX Warning: Citation 'barendregt1992lambda' on page 7 undefined on input lin
+e 406.
+
+
+LaTeX Warning: Citation 'vanbenthemjutting1993typing' on page 7 undefined on in
+put line 406.
+
+
+Overfull \hbox (2.63pt too wide) in paragraph at lines 405--410
+[]\TU/lmr/m/n/10 ] stat-ing that type of well-typed term is largely
+[7] [8]
+
+LaTeX Warning: Citation 'barendregt1992lambda' on page 9 undefined on input lin
+e 522.
+
+
+LaTeX Warning: Citation 'luo1994computation' on page 9 undefined on input line 
+522.
+
+
+Overfull \hbox (19.81981pt too wide) in paragraph at lines 518--523
+\TU/lmr/m/n/10 ther it-self ty-pable or equal to $\U/msa/m/n/10 ^^C$ \TU/lmr/m/
+n/10 [[], []].
+
+LaTeX Warning: Reference `type-is-correct' on page 9 undefined on input line 53
+7.
+
+[9]
+
+LaTeX Warning: Citation 'altenkirch1993formalization' on page 10 undefined on i
+nput line 585.
+
+
+LaTeX Warning: Citation 'vanraamsdonk1999perpetual' on page 10 undefined on inp
+ut line 585.
+
+
+Overfull \hbox (69.25203pt too wide) in paragraph at lines 581--585
+\TU/lmr/m/n/10 ing def-i-ni-tion is a bit bet-ter [[], []]: 
+
+LaTeX Warning: Citation 'barendregt1984lambda' on page 10 undefined on input li
+ne 617.
+
+[10]
+
+LaTeX Warning: Citation 'joachimski2003short' on page 11 undefined on input lin
+e 652.
+
+
+LaTeX Warning: Citation 'vanraamsdonk1995normalisation' on page 11 undefined on
+ input line 652.
+
+
+LaTeX Warning: Citation 'altenkirch1993constructions' on page 11 undefined on i
+nput line 652.
+
+
+Overfull \hbox (76.87865pt too wide) in paragraph at lines 653--653
+[][]\TU/lmr/bx/n/10 Lemma 6 \TU/lmr/m/n/10 (Weak head ex-pan-sion [[], [],
+[11]
+
+LaTeX Warning: Reference `sn-props' on page 12 undefined on input line 688.
+
+[12]
+
+LaTeX Warning: Reference `sn-props' on page 13 undefined on input line 755.
+
+
+LaTeX Warning: Reference `sn-props' on page 13 undefined on input line 763.
+
+(./_0796705CC2849BBE7537FCA31C0B0C27.config.minted)
+
+LaTeX Warning: Citation 'tait1967intensional' on page 13 undefined on input lin
+e 800.
+
+
+LaTeX Warning: Citation 'girard1972interpretation' on page 13 undefined on inpu
+t line 800.
+
+
+LaTeX Warning: Citation 'girard1989proofs' on page 13 undefined on input line 8
+00.
+
+
+LaTeX Warning: Citation 'geuvers1991modular' on page 13 undefined on input line
+ 800.
+
+
+LaTeX Warning: Citation 'rocq2025manual' on page 13 undefined on input line 820
+.
+
+
+LaTeX Warning: Citation 'bertot2004interactive' on page 13 undefined on input l
+ine 820.
+
+
+LaTeX Warning: Citation 'sozeau2014universe' on page 13 undefined on input line
+ 822.
+
+
+LaTeX Warning: Citation 'timany2018cumulative' on page 13 undefined on input li
+ne 822.
+
+
+LaTeX Warning: Citation 'werner1997sets' on page 13 undefined on input line 832
+.
+
+
+LaTeX Warning: Citation 'timany2017consistency' on page 13 undefined on input l
+ine 832.
+
+[13]
+
+LaTeX Warning: Reference `pts-metatheory' on page 14 undefined on input line 83
+7.
+
+
+LaTeX Warning: Citation 'siles2012pure' on page 14 undefined on input line 839.
+
+
+
+LaTeX Warning: Citation 'adams2006pure' on page 14 undefined on input line 839.
+
+
+
+LaTeX Warning: Citation 'barras1997coqencoq' on page 14 undefined on input line
+ 839.
+
+
+LaTeX Warning: Citation 'felicissimo2024generic' on page 14 undefined on input 
+line 839.
+
+
+LaTeX Warning: Citation 'bellegarde1994substitution' on page 14 undefined on in
+put line 847.
+
+
+LaTeX Warning: Citation 'bird1999debruijn' on page 14 undefined on input line 8
+47.
+
+
+LaTeX Warning: Citation 'altenkirch1999monadic' on page 14 undefined on input l
+ine 847.
+
+
+Overfull \hbox (61.94403pt too wide) in paragraph at lines 842--847
+\TU/lmr/m/n/10 nat-ing from [[], [], []]: 
+
+LaTeX Warning: Citation 'debruijn1972lambda' on page 14 undefined on input line
+ 863.
+
+
+LaTeX Warning: Citation 'debruijn1970automath' on page 14 undefined on input li
+ne 863.
+
+
+LaTeX Warning: Citation 'altenkirch2015monads' on page 14 undefined on input li
+ne 868.
+
+
+LaTeX Warning: Citation 'altenkirch1999monadic' on page 14 undefined on input l
+ine 868.
+
+
+LaTeX Warning: Citation 'debruijn1972lambda' on page 14 undefined on input line
+ 871.
+
+
+Overfull \hbox (20.25871pt too wide) in paragraph at lines 858--872
+\TU/lmr/m/n/10 struc-ture of a \TU/lmr/m/it/10 rel-a-tive monad \TU/lmr/m/n/10 
+[[], []].
+
+Overfull \hbox (12.16998pt too wide) in paragraph at lines 858--872
+\TU/lmr/m/n/10 ral im-ple-men-ta-tion turns vari-ables into de Bruijn in-dices 
+[[]]);
+[14]
+
+LaTeX Warning: Reference `pts-metatheory' on page 15 undefined on input line 87
+4.
+
+
+LaTeX Warning: Reference `sn-definition' on page 15 undefined on input line 881
+.
+
+
+LaTeX Warning: Citation 'Joachimski2003Short' on page 15 undefined on input lin
+e 883.
+
+
+LaTeX Warning: Reference `sn-props' on page 15 undefined on input line 936.
+
+
+LaTeX Warning: Reference `sn-atomic' on page 15 undefined on input line 936.
+
+
+LaTeX Warning: Reference `sn-whe' on page 15 undefined on input line 936.
+
+
+LaTeX Warning: Reference `sn-atomic' on page 15 undefined on input line 939.
+
+[15]
+
+LaTeX Warning: Citation 'statman1979typed' on page 16 undefined on input line 9
+75.
+
+
+LaTeX Warning: Citation 'schwichtenberg1991upper' on page 16 undefined on input
+ line 975.
+
+
+LaTeX Warning: Citation 'beckmann2001exact' on page 16 undefined on input line 
+975.
+
+
+LaTeX Warning: Citation 'nguyen2024simply' on page 16 undefined on input line 9
+75.
+
+
+LaTeX Warning: Reference `normalisation' on page 16 undefined on input line 977
+.
+
+
+LaTeX Warning: Citation 'skolem1923' on page 16 undefined on input line 979.
+
+
+LaTeX Warning: Citation 'kleene1952introduction' on page 16 undefined on input 
+line 979.
+
+
+LaTeX Warning: Citation 'peter1951rekursive' on page 16 undefined on input line
+ 979.
+
+
+Overfull \hbox (50.97089pt too wide) in paragraph at lines 973--980
+\TU/lmr/m/n/10 com-plex-ity of nor-mal-i-sa-tion for STLC [[], [],
+
+Overfull \hbox (2.10402pt too wide) in paragraph at lines 973--980
+[]\TU/lmr/m/n/10 , []]. And in-deed, upon tak-ing a closer
+
+LaTeX Warning: Citation 'rose1984subrecursion' on page 16 undefined on input li
+ne 985.
+
+
+Overfull \hbox (12.792pt too wide) in paragraph at lines 987--992
+[]\TU/lmr/m/n/10 The linked the-o-rem as-sumes the orig-i-nal typ-ing judge-men
+t, con-text well-formedness
+[16]
+
+LaTeX Warning: Citation 'schwichtenberg1991upper' on page 17 undefined on input
+ line 1047.
+
+
+LaTeX Warning: Citation 'beckmann2001exact' on page 17 undefined on input line 
+1047.
+
+
+Overfull \hbox (81.1309pt too wide) in paragraph at lines 1046--1052
+[]\TU/lmr/m/n/10 Sim-i-lar re-sult was al-ready proven for STLC [[], []]
+
+LaTeX Warning: Reference `bounded-sn' on page 17 undefined on input line 1054.
+
+[17]
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 1113.
+
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 1113.
+
+
+LaTeX Warning: Citation 'nguyen2024simply' on page 18 undefined on input line 1
+123.
+
+
+LaTeX Warning: Citation 'nguyen2024simply' on page 18 undefined on input line 1
+130.
+
+[18]
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 1151.
+
+
+LaTeX Warning: Reference `tower-convertibility' on page 19 undefined on input l
+ine 1195.
+
+[19]
+
+LaTeX Warning: Reference `bounded-sn' on page 20 undefined on input line 1214.
+
+
+LaTeX Warning: Citation 'schwichtenberg1976definierbare' on page 20 undefined o
+n input line 1218.
+
+
+LaTeX Warning: Citation 'statman1979typed' on page 20 undefined on input line 1
+218.
+
+
+LaTeX Warning: Citation 'fortune1983expressiveness' on page 20 undefined on inp
+ut line 1218.
+
+
+Overfull \hbox (59.854pt too wide) in paragraph at lines 1214--1218
+\TU/lmr/m/n/10 [[], [], []]). 
+
+LaTeX Warning: Reference `bounded-sn' on page 20 undefined on input line 1239.
+
+[20]
+
+LaTeX Warning: Citation 'church1941calculi' on page 21 undefined on input line 
+1281.
+
+
+LaTeX Warning: Citation 'barendregt1984lambda' on page 21 undefined on input li
+ne 1281.
+
+
+LaTeX Warning: Citation 'prunescu2026minimal' on page 21 undefined on input lin
+e 1293.
+
+
+LaTeX Warning: Reference `uniform-elementary' on page 21 undefined on input lin
+e 1299.
+
+
+LaTeX Warning: Citation 'church1941calculi' on page 21 undefined on input line 
+1303.
+
+
+LaTeX Warning: Citation 'rosser1984highlights' on page 21 undefined on input li
+ne 1303.
+
+[21]
+
+LaTeX Warning: Citation 'bohm1985automatic' on page 22 undefined on input line 
+1351.
+
+[22]
+
+LaTeX Warning: Citation 'Skordev2008' on page 23 undefined on input line 1452.
+
+[23]
+
+LaTeX Warning: Reference `non-uniform-rep' on page 24 undefined on input line 1
+459.
+
+
+LaTeX Warning: Citation 'buchholtz2024primitive' on page 24 undefined on input 
+line 1475.
+
+
+LaTeX Warning: Reference `bounded-sn' on page 24 undefined on input line 1495.
+
+[24]
+
+LaTeX Warning: Citation 'CookKapron2017PrimitiveRecursive' on page 25 undefined
+ on input line 1519.
+
+
+LaTeX Warning: Reference `non-uniform-rep' on page 25 undefined on input line 1
+520.
+
+
+LaTeX Warning: Reference `rep-bound' on page 25 undefined on input line 1521.
+
+[25]
+
+LaTeX Warning: Citation 'sierpinski1947hypothese' on page 26 undefined on input
+ line 1589.
+
+
+LaTeX Warning: Citation 'specker1954verallgemeinerte' on page 26 undefined on i
+nput line 1589.
+
+
+Overfull \hbox (3.93097pt too wide) in paragraph at lines 1587--1593
+\TU/lmr/m/n/10 ZF+GCH [[], []])
+
+LaTeX Warning: Reference `bounded-sn' on page 26 undefined on input line 1610.
+
+[26]
+
+LaTeX Warning: Citation 'godel1938consistency' on page 27 undefined on input li
+ne 1619.
+
+
+LaTeX Warning: Citation 'godel1940consistency' on page 27 undefined on input li
+ne 1619.
+
+
+LaTeX Warning: Citation 'kanamori2003higher' on page 27 undefined on input line
+ 1621.
+
+
+LaTeX Warning: Citation 'kunen1980set' on page 27 undefined on input line 1621.
+
+
+
+LaTeX Warning: Citation 'godel1931formal' on page 27 undefined on input line 16
+21.
+
+
+LaTeX Warning: Reference `sec:nonrelational' on page 27 undefined on input line
+ 1660.
+
+
+LaTeX Warning: Citation 'tarski1953undecidable' on page 27 undefined on input l
+ine 1662.
+
+[27] [28] [29] [30]
+
+LaTeX Warning: Reference `sep' on page 31 undefined on input line 1859.
+
+[31]
+
+LaTeX Warning: Reference `case' on page 32 undefined on input line 1918.
+
+
+Overfull \hbox (7.01625pt too wide) in paragraph at lines 1917--1924
+[]\TU/lmr/m/n/10 For bounded or-der ($[]\OT1/cmr/m/n/10 4$\TU/lmr/m/n/10 ), ap-
+ply Lemma []. Un-der $\OML/cmm/m/it/10 O\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 d; [
+]\OT1/cmr/m/n/10 )$\TU/lmr/m/n/10 , a case with $\OML/cmm/m/it/10 O\OT1/cmr/m/n
+/10 ([]\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 )$
+
+LaTeX Warning: Reference `case' on page 32 undefined on input line 1926.
+
+
+LaTeX Warning: Reference `sep' on page 32 undefined on input line 1931.
+
+
+LaTeX Warning: Reference `finite-separation' on page 32 undefined on input line
+ 1932.
+
+
+LaTeX Warning: Reference `bounded-cases' on page 32 undefined on input line 193
+3.
+
+
+Overfull \hbox (1.04997pt too wide) in paragraph at lines 1932--1938
+[]\TU/lmr/m/it/10 Re-mark. []\TU/lmr/m/n/10 Con-struc-tions from Sec-tions [] 
+and [] gen-er-alise to ar-bi-trary Church-
+
+LaTeX Warning: Reference `r-common' on page 32 undefined on input line 1945.
+
+
+LaTeX Warning: Reference `rtilde:bound' on page 32 undefined on input line 1967
+.
+
+
+LaTeX Warning: Reference `rtilde:compare' on page 32 undefined on input line 19
+69.
+
+
+LaTeX Warning: Citation 'tarski1953undecidable' on page 32 undefined on input l
+ine 1978.
+
+
+Overfull \hbox (11.14836pt too wide) in paragraph at lines 1977--1980
+\TU/lmr/m/n/10 The orig-i-nal Tarski--Mostowski--Robinson arith-metic $\OT1/cms
+s/m/n/10 R$\TU/lmr/m/n/10  [[]]
+[32]
+
+LaTeX Warning: Reference `r:bound' on page 33 undefined on input line 2005.
+
+
+LaTeX Warning: Reference `r:compare' on page 33 undefined on input line 2006.
+
+
+LaTeX Warning: Reference `r:compare' on page 33 undefined on input line 2008.
+
+
+LaTeX Warning: Reference `rtilde:bound' on page 33 undefined on input line 2011
+.
+
+
+LaTeX Warning: Reference `rtilde:add' on page 33 undefined on input line 2021.
+
+
+LaTeX Warning: Reference `main' on page 33 undefined on input line 2028.
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2033 {}\begin{corollary}\caption
+                                  {\PTSrk{} interprets \markdownRendererInli...
+
+ 26622 words of node memory still in use:
+   286 hlist, 45 vlist, 29 rule, 1 ins, 161 disc, 9 local_par, 1 dir, 131 math,
+ 529 glue, 200 kern, 68 penalty, 4 sub_mlist, 1886 glyph, 1 page_insert, 459 at
+tribute, 94 glue_spec, 459 attribute_list, 1 if_stack, 5 write, 1 pdf_start_lin
+k, 1 pdf_end_link, 8 pdf_dest, 1 pdf_action, 6 pdf_colorstack nodes
+   avail lists: 1:2,2:1068,3:586,4:103,5:328,6:174,7:6109,8:85,9:1353,10:11,11:
+403
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on paper-markdown.log.
+Latexmk: Getting log file 'paper-markdown.log'
+Latexmk: Examining 'paper-markdown.fls'
+Latexmk: Examining 'paper-markdown.log'
+Latexmk: Missing bbl file 'paper-markdown.bbl' in following:
+ No file paper-markdown.bbl.
+Latexmk: Using biber to make bibliography file(s).
+Latexmk: Incomplete (and hence corrupt) bcf file 'paper-markdown.bcf'
+Latexmk: Bibliography file(s) from .bcf file:
+  bibliography.bib
+Sources for biber
+  bibliography.bib
+  paper-markdown.bcf
+Latexmk: ========== Incomplete .bcf file 'paper-markdown.bcf'.
+  I'll rename the file to 'paper-markdown.bcf-SAVE-ERROR'.
+  I'll rename the bbl file to 'paper-markdown.bbl-SAVE-ERROR',
+  in case the incomplete bcf file was a result of error in
+  'lualatex' caused by an error in the bbl file.
+Latexmk: Summary of warnings from last run of *latex:
+  Latex failed to resolve 61 reference(s)
+  Latex failed to resolve 113 citation(s)
+Latexmk: ====Problematic refs and citations with line #s in .tex file:
+  Citation 'berardi1988towards' on page 1 undefined on input line 22
+  Citation 'terlouw1989gstt' on page 1 undefined on input line 23
+  Citation 'terlouw1989gstt' on page 1 undefined on input line 23
+  Citation 'barendregt1991introduction' on page 2 undefined on input line 98
+  Citation 'barendregt1992lambda' on page 2 undefined on input line 98
+  Citation 'church1940formulation' on page 2 undefined on input line 101
+  Citation 'coquand1988calculus' on page 2 undefined on input line 107
+ And 167 more --- see log file 'paper-markdown.log'
+Latexmk: Errors, so I did not complete making targets
+Collected error summary (may duplicate other messages):
+  lualatex: Command for 'lualatex' gave return code 1
+      Refer to 'paper-markdown.log' and/or above output for details
+
+Latexmk: Sometimes, the -f option can be used to get latexmk
+  to try to force complete processing.
+  But normally, you will need to correct the file(s) that caused the
+  error, and then rerun latexmk.
+  In some cases, it is best to clean out generated files before rerunning
+  latexmk after you've corrected the files.

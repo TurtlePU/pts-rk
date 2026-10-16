@@ -1,0 +1,11 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedBijections.v", line 139, characters 8-33:
+Error: Unable to find an instance for the variable A.
+
+File "ZFC_model/dune", lines 1-5, characters 0-395:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/BoundedBijections.{glob,vo} (exit 1)

@@ -1,0 +1,197 @@
+NeutralCutRank.bounded_exposed_lambda_domain_rank
+     : forall (G : Context.Ctx nat ?n) (D : Context.Ctx nat ?m)
+         (sigma : Syntax.Fin ?n -> Syntax.Term nat ?m)
+         (f F : Syntax.Term nat ?n) (C : Syntax.Term nat ?m)
+         (t : Syntax.Term nat (S ?m)) (r : nat),
+       Preservation.wf G ->
+       Preservation.wf D ->
+       SyntaxSubstitution.typed_substitution G D sigma ->
+       NeutralCutRank.bounded_substitution r G sigma ->
+       Typing.typ G f F ->
+       (exists (A : Syntax.Term nat ?n) (B : Syntax.Term nat (S ?n)),
+          F = Syntax.Π A B) ->
+       CanonicalTypeWitnesses.beta_normal f ->
+       CanonicalRenaming.not_lambda f ->
+       Reduction.reduces_to nat ?m (Syntax.replace sigma f) (Syntax.lam C t) ->
+       exists (a b : nat) (B : Syntax.Term nat (S ?m)),
+         a < r /\
+         b <= r /\
+         Typing.typ D C (Syntax.𝓤 a) /\
+         Typing.typ (Context.cons D C) B (Syntax.𝓤 b) /\
+         Typing.typ (Context.cons D C) t B
+where
+?n : [ |- nat]
+?m : [ |- nat]
+Closed under the global context
+RankedDenotation.type_certificate
+     : forall (H s : Sets.Ens) (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T : Syntax.Term nat n)
+         (v a : Sets.Ens),
+       RankedDenotation.certificate H s n G rho t T v a ->
+       exists k : nat,
+         RankedDenotation.certificate H s n G rho T 
+           (Syntax.𝓤 k) a
+           (CodeUniverses.CodeUniverses.repr
+              (CodeUniverses.CodeUniverses.sort k))
+Closed under the global context
+RankedDenotation.membership
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T : Syntax.Term nat n)
+         (v a : Sets.Ens),
+       RankedDenotation.certificate H s n G rho t T v a ->
+       Sets.IN v (CardinalHierarchy.decode a)
+Closed under the global context
+RankedTransport.certificate_type_alignment
+     : forall (H s : Sets.Ens) (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T C : Syntax.Term nat n)
+         (v a b : Sets.Ens),
+       RankedTransport.RD.certificate H s n G rho t T v a ->
+       Typing.typ G t C ->
+       CanonicalTypeWitnesses.beta_normal C ->
+       RankedTransport.CD.denotes H s n G rho C b ->
+       RankedTransport.RD.certificate H s n G rho t C v b
+Closed under the global context
+RankedSubstitution.normalized_binder_extension
+     : forall (H s : Sets.Ens) (n m : nat) (G : Context.Ctx nat n)
+         (D : Context.Ctx nat m) (rho : Syntax.Fin n -> Sets.Ens)
+         (rho' : Syntax.Fin m -> Sets.Ens)
+         (sigma : Syntax.Fin n -> Syntax.Term nat m) 
+         (A : Syntax.Term nat n) (A' : Syntax.Term nat m) 
+         (k : nat) (a x : Sets.Ens),
+       Preservation.wf D ->
+       Typing.typ G A (Syntax.𝓤 k) ->
+       SyntaxSubstitution.typed_substitution G D sigma ->
+       RankedSubstitution.certified_substitution H s D rho rho' sigma ->
+       Reduction.reduces_to nat m (Syntax.replace sigma A) A' ->
+       RankedSubstitution.RD.certificate H s m D rho' A' 
+         (Syntax.𝓤 k) a
+         (CodeUniverses.CodeUniverses.repr
+            (CodeUniverses.CodeUniverses.sort k)) ->
+       Sets.IN x (CardinalHierarchy.decode a) ->
+       SyntaxSubstitution.typed_substitution (Context.cons G A)
+         (Context.cons D A') (Syntax.transpose sigma) /\
+       RankedSubstitution.certified_substitution H s 
+         (Context.cons D A') (Syntax.fin_match x rho)
+         (Syntax.fin_match x rho') (Syntax.transpose sigma)
+Closed under the global context
+RankedSubstitution.certificate_replace_nonlambda
+     : forall (H s : Sets.Ens) (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T : Syntax.Term nat n)
+         (v a : Sets.Ens),
+       RankedSubstitution.RD.certificate H s n G rho t T v a ->
+       forall (m : nat) (D : Context.Ctx nat m)
+         (sigma : Syntax.Fin n -> Syntax.Term nat m)
+         (rho' : Syntax.Fin m -> Sets.Ens),
+       SyntaxSubstitution.typed_substitution G D sigma ->
+       CanonicalSubstitution.normal_nonlambda_substitution sigma ->
+       RankedSubstitution.certified_substitution H s D rho rho' sigma ->
+       RankedSubstitution.RD.certificate H s m D rho'
+         (Syntax.replace sigma t) (Syntax.replace sigma T) v a
+Closed under the global context
+RankedSubstitution.certificate_rank_zero_substitution
+     : forall (H s : Sets.Ens) (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T : Syntax.Term nat n)
+         (v a : Sets.Ens),
+       RankedSubstitution.RD.certificate H s n G rho t T v a ->
+       forall (m : nat) (D : Context.Ctx nat m)
+         (sigma : Syntax.Fin n -> Syntax.Term nat m)
+         (rho' : Syntax.Fin m -> Sets.Ens),
+       Preservation.wf D ->
+       SyntaxSubstitution.typed_substitution G D sigma ->
+       NeutralCutRank.bounded_substitution 0 G sigma ->
+       RankedSubstitution.certified_substitution H s D rho rho' sigma ->
+       RankedSubstitution.RD.certificate H s m D rho'
+         (Syntax.replace sigma t) (Syntax.replace sigma T) v a
+Closed under the global context
+RankedRootBeta.certified_root_beta_nonlambda
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (A : Syntax.Term nat n)
+         (t : Syntax.Term nat (S n)) (u T : Syntax.Term nat n)
+         (f c x a v : Sets.Ens),
+       RankedRootBeta.RD.certificate H s n G rho (Syntax.lam A t) T f c ->
+       RankedRootBeta.RD.certificate H s n G rho u A x a ->
+       CanonicalRenaming.not_lambda u ->
+       RankedRootBeta.RS.certified_variables H s G rho ->
+       RankedRootBeta.CD.denotes H s n G rho (Syntax.app (Syntax.lam A t) u)
+         v ->
+       exists (B : Syntax.Term nat (S n)) (b : Sets.Ens),
+         T = Syntax.Π A B /\
+         Reduction.step nat n (Syntax.app (Syntax.lam A t) u)
+           (Syntax.subst t u) /\
+         RankedRootBeta.RD.certificate H s n G rho 
+           (Syntax.subst t u) (Syntax.subst B u) v b
+Closed under the global context
+CanonicalValuationTransport.corresponding_environment_transport
+     : forall (H s : Sets.Ens) (n : nat) (G D : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t : Syntax.Term nat n)
+         (v : Sets.Ens),
+       CanonicalValuationTransport.corresponding_contexts H s n G D ->
+       ContextTransport.context_typing_morphism G D ->
+       CanonicalValuationTransport.CR.valid_valuation H s G rho ->
+       CanonicalValuationTransport.CD.denotes H s n G rho t v ->
+       CanonicalValuationTransport.CR.valid_valuation H s D rho /\
+       CanonicalValuationTransport.CD.denotes H s n D rho t v
+Closed under the global context
+MaterialZermelo.bzc_satisfied
+     : (forall P : Prop, P \/ ~ P) ->
+       CountableDichotomy.family_choice ->
+       MaterialSetTheory.MaterialSetTheory.theory_holds MaterialZermelo.BZC
+Closed under the global context
+MaterialZermelo.bzc_logical_soundness
+     : (forall P : Prop, P \/ ~ P) ->
+       CountableDichotomy.family_choice ->
+       forall (n : nat)
+         (G : list (MaterialSetTheory.MaterialSetTheory.Formula n))
+         (p : MaterialSetTheory.MaterialSetTheory.Formula n),
+       MaterialSetTheory.MaterialSetTheory.derives MaterialZermelo.BZC n G p ->
+       forall r : Syntax.Fin n -> Sets.Ens,
+       MaterialSetTheory.MaterialSetTheory.context_holds G r ->
+       MaterialSetTheory.MaterialSetTheory.holds p r
+Closed under the global context
+original_realization_from_conversion
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       (forall (n : nat) (G : Context.Ctx nat n)
+          (rho : Syntax.Fin n -> Sets.Ens) (A B : Syntax.Term nat n)
+          (m k : nat),
+        Preservation.wf G ->
+        InterpretedContexts.valid_valuation H s G rho ->
+        Typing.typ G A (Syntax.𝓤 m) ->
+        Typing.typ G B (Syntax.𝓤 k) ->
+        DefEq.def_equiv nat n A B ->
+        forall a b : Sets.Ens,
+        Denotation.denotes H s n G rho A a ->
+        Denotation.denotes H s n G rho B b ->
+        Sets.EQ (CardinalHierarchy.decode a) (CardinalHierarchy.decode b)) ->
+       forall (n : nat) (G : Context.Ctx nat n) (t T : Syntax.Term nat n),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       forall rho : Syntax.Fin n -> Sets.Ens,
+       InterpretedContexts.valid_valuation H s G rho ->
+       InterpretedContexts.realizes H s G rho t T
+Closed under the global context

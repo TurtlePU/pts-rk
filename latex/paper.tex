@@ -82,20 +82,20 @@ simplebnf,stmaryrd,tikz-cd,verified-badges}
 \begin{abstract}
 We present a dependently typed pure type system which
 contains a circular axiom $s:s$ for a certain sort $s$
-and is nonetheless strongly normalising. Girard's
+and is nonetheless strongly normalizing. Girard's
 paradox is avoided because our sorts are not closed
 under a $\Pi$-former: function types are placed in
 sorts according to their \textit{rank}. Turns out that
 this system has a unique set of characteristics: it has
-similar normalisation behaviour as STLC (so complexity
-of normalisation is \textsf{TOWER}-complete) while at
+similar normalization behaviour as STLC (so complexity
+of normalization is \textsf{TOWER}-complete) while at
 the same time allowing non-uniform representation of
 arbitrary elementary recursive functions; furthermore,
 it has a nontrivial set-theoretical model in ZF+GCH and
 allows to carry out nontrivial proof developments. Base
-normalisation proof is surprisingly simple (modulo
+normalization proof is surprisingly simple (modulo
 general metatheoretical properties of pure type
-systems) and has been fully formalised in vanilla Rocq
+systems) and has been fully formalized in vanilla Rocq
 (formerly Coq) without any additional axioms.
 \end{abstract}
 
@@ -201,7 +201,7 @@ systems are dependently typed since $\Pi$ allows the
 codomain type to depend on the value of an argument ---
 Coquand's Calculus of Constructions (CoC)
 \cite{coquand1988calculus} sits comfortably at the top
-of lambda cube and is modeled as a pure type system
+of lambda cube and is modelled as a pure type system
 with two sorts $\{*,\square\}$, a single axiom
 $*:\square$ and four rules corresponding to simple
 functions $(*,*,*)$, polymorphic functions
@@ -211,7 +211,7 @@ $(*,\square,\square)$.
 
 As is known \cite{tait1967intensional,
 coquand1990kripke,geuvers1991modular}, both STLC and
-CoC are strongly normalising and sound with respect to
+CoC are strongly normalizing and sound with respect to
 their set-theoretical semantics. A classical result
 shows that it is not true for arbitrary PTS.
 
@@ -219,7 +219,7 @@ shows that it is not true for arbitrary PTS.
     \cite{girard1972interpretation,
     hurkens1995simplification}]
     The following PTS called System U is not
-    normalising:
+    normalizing:
     \[\begin{array}{c}
         \mathcal{S}=\{*,\square,\triangle\},
         \quad\mathsf{Ax}=\{
@@ -231,7 +231,7 @@ shows that it is not true for arbitrary PTS.
             (\triangle,\square,\square)
         \}
     \end{array}\]
-    Futhermore, the offending term has type
+    Furthermore, the offending term has type
     $\Pi(P:*).P$.
 \end{theorem*}
 
@@ -299,24 +299,24 @@ $\mathsf{rk}_0:\mathsf{rk}_0$, and System U is not
 embeddable since $\mathsf{rk}_r$ is not closed
 under $\Pi$ for any $r$. Also, as we will see in
 Section~\ref{rk-sn}, our PTS-$rk$ is strongly
-normalising despite an intuition that
+normalizing despite an intuition that
 $\mathsf{rk}_r:\mathsf{rk}_0$ might ``feel wrong''.
 Modulo general metatheory of pure type systems laid out
-in Section~\ref{pts-metatheory}, a normalisation proof
+in Section~\ref{pts-metatheory}, a normalization proof
 turned out to be suspiciously simple, even more so in
-comparison with normalisation proofs of other
+comparison with normalization proofs of other
 dependently typed systems \cite{geuvers1991modular,
 barras1999autovalidation,abel2018decidability}. To
-dispel our own doubts, we formalised a proof of
-normalisation in Rocq (formerly Coq) without using any
+dispel our own doubts, we formalized a proof of
+normalization in Rocq (formerly Coq) without using any
 additional axioms, yielding a fully constructive proof;
-our journey in formalisation is summarised in
+our journey in formalization is summarized in
 Section~\ref{formalisation} and the whole development
 is available at
 \url{https://github.com/TurtlePU/pts-rk}.
 
 Having completed the proof, we noticed that it exposes
-a primitive recursive procedure to normalise terms of
+a primitive recursive procedure to normalize terms of
 PTS-$rk$; we dug further and discovered that, actually,
 there is an intimate connection between a class of
 elementary recursive functions \cite{kalmar1943,
@@ -324,7 +324,7 @@ rose1984subrecursion} and our system, as seen in
 Sections~\ref{complexity}-\ref{computational}. As a
 byproduct of our study on complexity, we built a sound
 set-theoretic model for PTS-$rk$ (see
-Section~\ref{rk-model}) which assumes \emph{Generalised
+Section~\ref{rk-model}) which assumes \emph{Generalized
 Continuum Hypothesis} \cite{jech2003set,hausdorff1908,
 godel1938consistency,godel1940consistency} which is an
 unusual pick for dependently typed systems where
@@ -353,16 +353,16 @@ understandable and simpler to read).
 Also, we chatted with Claude Fable 5.1
 \cite{claude_fable} to find better points of reference.
 
-\subsection{Formalisation status}
+\subsection{Formalization status}
 
-Every result up to the proof of strong normalisation
+Every result up to the proof of strong normalization
 for PTS-$rk$ was formally verified in Rocq using
 handwritten proofs. Such proofs are marked with a
 \rocqproof{https://github.com/TurtlePU/pts-rk}; each
 icon is a hyperlink to the statement and proof in Rocq
 with version pinned at the moment of submission.
 
-Results after that were formalised in Rocq as well,
+Results after that were formalized in Rocq as well,
 albeit not by us but rather by GPT-6 Astra. Such
 results are marked with
 \rocqformalised{https://github.com/TurtlePU/pts-rk/pull/1};
@@ -370,7 +370,7 @@ just as with handwritten results, each icon is a
 hyperlink to the statement and proof in Rocq with
 version pinned at the moment of submission. Where only
 a component of a paper claim is checked, a note
-explaining what exactly is formalised accompanies the
+explaining what exactly is formalized accompanies the
 badge.
 
 \section{Metatheory of pure type systems}
@@ -382,7 +382,7 @@ following sections, we assume a Barendregt convention
 are distinct from free variables and from each other;
 furthermore, $\alpha$-equivalence (renaming of bound
 variables) is assumed as a trivial equality on terms.
-Nevertheless, our formalisation takes variable
+Nevertheless, our formalization takes variable
 treatment seriously; see Section~\ref{formalisation}
 for more details.
 
@@ -430,7 +430,7 @@ revisit the proof since previous presentations usually
 did not allow reductions in the type of argument $T$ in
 $\lambda(x:T).t$.
 
-\begin{theorem}[Characterisation of $(=_\beta)$
+\begin{theorem}[Characterization of $(=_\beta)$
     \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/DefEq.v\#L9}]
     In arbitrary PTS,
     \[
@@ -495,7 +495,7 @@ $\lambda(x:T).t$.
     enough to prove diamond property of
     $(\rightrightarrows^*)$. Diamond property is
     preserved under reflexive transitive closure, so it
-    is enough to prove diamond propery of
+    is enough to prove diamond property of
     $(\rightrightarrows)$, which holds by tedious case
     analysis.
 \end{proof}
@@ -552,7 +552,7 @@ hold.
     exactly $|\Delta|$ times. In the case of
     \textsc{Conv} it is important that definitional
     equality of types is preserved by substitution
-    (thanks to characterisation of $(=_\beta)$).
+    (thanks to characterization of $(=_\beta)$).
 \end{proof}
 
 In addition, a family of so-called \textit{inversion
@@ -653,7 +653,7 @@ assumptions on the PTS we have in question.
     \end{itemize}
 \end{proof}
 
-In our proof of normalisation, we are going to rely on
+In our proof of normalization, we are going to rely on
 yet another property: if there is a derivation for
 $t:T$, then $T$ is itself typeable with some sort.
 However, it does not hold in our current formulation of
@@ -762,10 +762,10 @@ for our purposes.
     though, so we did not state it as a separate lemma.
 \end{proof}
 
-Characterisation of definitional equality, uniqueness
+Characterization of definitional equality, uniqueness
 of typing and subject reduction together imply the
 following corollary we are going to use a few times in
-our normalisation proof:
+our normalization proof:
 
 \begin{corollary}[Type stability]
     In a total functional PTS, the following holds:
@@ -778,36 +778,36 @@ our normalisation proof:
     T=_\beta T'.\]
 \end{corollary}
 
-\subsection{Properties of strongly normalising terms}
+\subsection{Properties of strongly normalizing terms}
 
 We are almost done with classical results! What is left
-now is to state which terms are strongly normalising
+now is to state which terms are strongly normalizing
 and collect properties of s.n. terms which allow our
 soundness proof to go through.
 
-Informally, a term is strongly normalising iff there
+Informally, a term is strongly normalizing iff there
 are no infinite reduction chains starting from it.
-In constructive setting and in formalisation, the
+In constructive setting and in formalization, the
 following definition is a bit better
 \cite{altenkirch1993formalization,
 vanraamsdonk1999perpetual}:
 
-\begin{definition}[Strongly normalising term]
+\begin{definition}[Strongly normalizing term]
 \label{sn-definition}
     Set of s.n. terms is the smallest set $\mathsf{sn}$
     in which the following rule is valid:
     \[\dfrac{\forall t',(t\to_\beta t')\Rightarrow
         t'\in\mathsf{sn}}{t\in\mathsf{sn}}.\]
-    In other words, a term is strongly normalising iff
+    In other words, a term is strongly normalizing iff
     all possible reductions from it are strongly
-    normalising.
+    normalizing.
 \end{definition}
 
 Thus, terms which cannot be reduced further (also known
 as terms \emph{in normal form}) are strongly
-normalising; then, terms which directly reduce into
-normal forms are also strongly normalising; and so on.
-Therefore, by this definition, strongly normalising
+normalizing; then, terms which directly reduce into
+normal forms are also strongly normalizing; and so on.
+Therefore, by this definition, strongly normalizing
 terms are those that every reduction chain starting
 from them is finite.
 
@@ -831,13 +831,13 @@ question:
 \end{lemma}
 
 Application, of course, is the only nontrivial case. In
-case of $\beta$-reduction, strong normalisation of both
+case of $\beta$-reduction, strong normalization of both
 $(\lambda(x:T).t)$ and $u$ does not imply anything
-about normalisation behaviour of $t[u/x]$: consider a
+about normalization behaviour of $t[u/x]$: consider a
 classical example from untyped lambda calculus \cite{
 barendregt1984lambda}, $\omega=(\lambda(x:T).x\,x)$ and
 $\Omega=\omega\,\omega$; while obviously not typable,
-$\omega$ is strongly normalising, while $\Omega$
+$\omega$ is strongly normalizing, while $\Omega$
 decidedly is not.
 
 Situation changes when a head of application is not an
@@ -857,7 +857,7 @@ an \textit{atomic term}.
 \end{definition}
 
 Atomic terms are useful precisely because their strong
-normalisation survives application:
+normalization survives application:
 
 \begin{lemma}
 \label{sn-atomic}
@@ -878,7 +878,7 @@ normalisation survives application:
     for $t$.
 \end{proof}
 
-A dual view on strong normalisation of application is
+A dual view on strong normalization of application is
 the following: if we already know that
 $t[u/x]\in\mathsf{sn}$, then the most tricky case is
 already taken care of.
@@ -920,11 +920,11 @@ already taken care of.
     \end{itemize}
 \end{proof}
 
-\section{Strong normalisation of
+\section{Strong normalization of
 PTS-\texorpdfstring{$rk$}{rk}}
 \label{rk-sn}
 
-\begin{theorem}[Strong normalisation of PTS-$rk$\;\rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Ranks.v\#L217}]
+\begin{theorem}[Strong normalization of PTS-$rk$\;\rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Ranks.v\#L217}]
 \label{normalisation}
     \[ \Gamma\vdash t:T\,\land\vdash\Gamma
     \Rightarrow t \in\mathsf{sn}. \]
@@ -964,7 +964,7 @@ PTS-\texorpdfstring{$rk$}{rk}}
     \]
     What indexing by $r$ bought us is that now we can
     try proving this lemma by induction on $r$. Again,
-    as it always is with strong normalisation of
+    as it always is with strong normalization of
     application, the problem is in case where
     application head is a lambda and a
     $\beta$-reduction takes place. This calls for
@@ -990,7 +990,7 @@ PTS-\texorpdfstring{$rk$}{rk}}
             Consider possible reductions of $u\,t$:
             most of them happen either in $u$ or in
             $t$, so that results of reductions from
-            $u\,t$ are strongly normalising by
+            $u\,t$ are strongly normalizing by
             inductive hypotheses. The only problematic
             case is when $u=\lambda(x:T').v$ and the
             reduction is $\beta$-reduction. By
@@ -1068,7 +1068,7 @@ which we retold above. Looking at it in retrospect, it
 seems as if we stratified functions by ranks with
 intent for such a direct proof to go through; honestly,
 we did not think of that and were eagerly trying to
-adapt well-known approaches for proving normalisation
+adapt well-known approaches for proving normalization
 of pure type systems employing either saturated sets or
 candidates of reducibility \cite{tait1967intensional,
 girard1972interpretation,girard1989proofs,
@@ -1083,18 +1083,18 @@ since, informally, sort is kind of a constant which can
 not be converted into a function.
 
 \subsection
-{Formalising normalisation of
+{Formalizing normalization of
 PTS-\texorpdfstring{$rk$}{rk} in Rocq}
 \label{formalisation}
 
 In view of high technicality of the proof for strong
-normalisation which involves wrangling of unusual
-definition for strong normalisation and complex
+normalization which involves wrangling of unusual
+definition for strong normalization and complex
 induction patterns (and in view of the fact that proof
 was supplied by the probabilistic machine), we decided
-to formalise it so that a sound simple algorithm would
+to formalize it so that a sound simple algorithm would
 check it for us. One of the natural choices for
-formalisation of programming languages is Rocq
+formalization of programming languages is Rocq
 (formerly Coq) \cite{rocq2025manual,
 bertot2004interactive}, an interactive theorem prover
 based on Polymorphic, Cumulative Calculus of Inductive
@@ -1110,19 +1110,19 @@ target language, greatly simplifying the proofs. While
 set-theoretical semantics of Rocq assume an existence
 of countable hierarchy of inaccessible cardinals
 \cite{werner1997sets,timany2017consistency}, our
-formalisation never delves into the hierarchy and can
-be formalised in a much more restricted theory.
+formalization never delves into the hierarchy and can
+be formalized in a much more restricted theory.
 
-In order to formalise our strong normalisation proof,
+In order to formalize our strong normalization proof,
 we first need to provide a general metatheory of PTS as
 laid out in Section~\ref{pts-metatheory}. We could
-reuse existing projects on PTS formalisations such as
+reuse existing projects on PTS formalizations such as
 \cite{siles2012pure,adams2006pure,barras1997coqencoq,
 felicissimo2024generic} but we wanted to explore the
 topic ourselves which led to a few minor differences
 discussed previously, thus we started from scratch.
 
-When one formalises syntax with binders in a proof
+When one formalizes syntax with binders in a proof
 assistant, one of the most important decisions is how
 to represent binders. Here we went with making our
 terms indexed by the number of free variables it uses,
@@ -1139,7 +1139,7 @@ Inductive Term (L: Type) (n: nat) : Type :=
 | app: Term L n -> Term L n -> Term L n.
 \end{minted}
 
-(Inside our formalisation project, this definition is
+(Inside our formalization project, this definition is
 located here: \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/Syntax.v\#L7})
 
 Here, $L$ is a type of sorts ($L$ comes from
@@ -1153,13 +1153,13 @@ usually represented by a $\mathtt{Fin}$ type.
 What is convenient in this representation is that it
 makes it harder to make mistakes when wrangling with
 context, defining substitution etc. --- all of the
-techinical details which make working with syntax with
+technical details which make working with syntax with
 binders so hard (authors of first implementation of
 such calculi, AUTOMATH \cite{debruijn1972lambda,
 debruijn1970automath}, remarked it being notoriously
 hard to get right). Also it has a certain
 category-theoretical feel to it: sufficiently
-generalised operations of renaming and substitution
+generalized operations of renaming and substitution
 give the typal representation of syntax a structure of
 a \emph{relative monad} \cite{altenkirch2015monads,
 altenkirch1999monadic}. It is really hard to go wrong
@@ -1173,17 +1173,17 @@ written in Section~\ref{pts-metatheory}; in fact, we
 first wrote a proof in Rocq and then retold it in
 written English here, omitting tedious technicalities.
 The only considerable difference is in handling of the
-set of strongly normalising terms since, obviously, the
+set of strongly normalizing terms since, obviously, the
 proof of Substitution lemma given above does not
 follow the structure of inductive definition
 \ref{sn-definition}. Instead, we use a syntax-directed
-characterisation of the set of strongly normalising
+characterization of the set of strongly normalizing
 terms introduced in \cite{Joachimski2003Short}:
 
-\begin{definition}[Syntax-directed characterisation
-    of strong normalisation \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/SN.v\#L175}]
-    Sets of terms $\mathsf{SN}$ (strongly normalising),
-    $\mathsf{SNx}$ (strongly normalising neutral) and a
+\begin{definition}[Syntax-directed characterization
+    of strong normalization \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/SN.v\#L175}]
+    Sets of terms $\mathsf{SN}$ (strongly normalizing),
+    $\mathsf{SNx}$ (strongly normalizing neutral) and a
     relation $\to_\mathsf{WHR}$ (weak head reduction)
     are the least sets where the following rules are
     valid:
@@ -1216,7 +1216,7 @@ terms introduced in \cite{Joachimski2003Short}:
 \end{definition}
 
 In a sense, $\mathsf{SNx}$ is a description of atomic
-strongly normalising terms; $\mathsf{SN}$ adds a case
+strongly normalizing terms; $\mathsf{SN}$ adds a case
 for lambdas and for weak head expansion, covering all
 possible cases. Existence of such sets is by virtue of
 them being subsets of the set of terms, so such mutual
@@ -1250,7 +1250,7 @@ $\mathsf{sn}$; we, however, need only the following:
     \ref{sn-atomic} applies in the relevant case.
 \end{proof}
 
-Then, to prove strong normalisation, it is enough to
+Then, to prove strong normalization, it is enough to
 prove that if term is typable, it is $\mathsf{SN}$; we
 only have to state Application Lemma and Substitution
 Lemma in terms of $\mathsf{SN}$, and the proof goes
@@ -1290,20 +1290,20 @@ well-typed PTS-$rk$ terms is \textsc{TOWER}-complete.
 
 (Proofs in this and following sections were not
 verified in Rocq by any of the authors, but there is a
-formalisation of some results by GPT-6 Astra. Informal
+formalization of some results by GPT-6 Astra. Informal
 proofs, however, are relatively simple, non-technical
-and their formalisation requires many times more
+and their formalization requires many times more
 preliminary work than seems reasonable.)
 
 As requested further, LLM confessed that it was largely
-inspired by studies on complexity of normalisation for
+inspired by studies on complexity of normalization for
 STLC \cite{statman1979typed,schwichtenberg1991upper,
 beckmann2001exact,nguyen2024simply}. And indeed, upon
 taking a closer look at the proof of
 Theorem~\ref{normalisation}, one cannot help but notice
 it actually being a primitive recursive algorithm
 \cite{skolem1923,kleene1952introduction,
-peter1951rekursive} for term normalisation in disguise.
+peter1951rekursive} for term normalization in disguise.
 Or something a tad faster:
 
 \begin{definition}[$d$-bounded terms]
@@ -1313,7 +1313,7 @@ Or something a tad faster:
 \end{definition}
 
 \begin{theorem}
-    [Elementary recursive normalisation of bounded
+    [Elementary recursive normalization of bounded
     PTS-$rk$
     \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/BoundedNormalization.v\#L19}]
 \label{bounded-sn}
@@ -1350,7 +1350,7 @@ This relation has the following properties:
     \item $(\Rightarrow)\subseteq(\to_\beta^*)$, so
         it is several usual reductions baked into one.
     \item This relation is total and functional.
-    \item This relation can be realised with an
+    \item This relation can be realized with an
         elementary recursive algorithm $\mathcal{A}$:
         traverse the term bottom-up, immediately
         applying every $\beta$-redex which is formed
@@ -1368,7 +1368,7 @@ This relation has the following properties:
         substitutions happened.
 \end{itemize}
 Because of the last property, it is enough to run
-$\mathcal{A}$ for $d$ times in total to normalise a
+$\mathcal{A}$ for $d$ times in total to normalize a
 $d$-bounded term; since input size on $k$-th run is
 bounded by $k$-th tower of exponents, the whole
 algorithm is elementary recursive.
@@ -1382,7 +1382,7 @@ Similar result was already proven for STLC
 \cite{schwichtenberg1991upper,beckmann2001exact} since
 simple types can be classified by ranks as well. And
 since rank is easily computable for simple types,
-normalisation of arbitrary STLC terms is in
+normalization of arbitrary STLC terms is in
 $\mathsf{TOWER}$. A little weaker result holds for our
 dependently typed PTS:
 
@@ -1394,7 +1394,7 @@ dependently typed PTS:
     By Theorem~\ref{bounded-sn}, it is enough to
     compute some upper bound $B$ on the rank of types
     appearing in abstractions of a term, then run a
-    normaliser for $(B+1)$-bounded terms and compare
+    normalizer for $(B+1)$-bounded terms and compare
     the results; $B$ has to be bound by an elementary
     recursive function on the size of input. Consider,
     then, the following elementary recursive functions
@@ -1446,7 +1446,7 @@ estimateRank t =
     $\mathtt{traversal}\,\Gamma\,x\,d$ where we output
     $d$ (the ``default'' rank) as a value of $x$:
     could we compute value of $x$ instead, if present?
-    Regrettably, this would require normalisation of a
+    Regrettably, this would require normalization of a
     term corresponding to $x$, which is too long;
     instead we notice that $\mathsf{rk}_r$ can be
     reduced only from terms which already contain it as
@@ -1558,7 +1558,7 @@ of redexes.
     This relation is functional (in the sense that if
     $\Gamma\vdash t:T$ and $\Gamma\vdash t:T'$, then
     $T=T'$ as words) and the corresponding partial
-    function is realised by an algorithm in
+    function is realized by an algorithm in
     \textsc{TOWER}: this algorithm recurses on the term
     $t$, matches on the inferred types as needed and
     collects equalities on types it has to check. Then,
@@ -1587,7 +1587,7 @@ computational model}
 In this section we prove that functions representable
 in PTS-$rk$ are, under minor assumptions, precisely
 elementary recursive functions, and provide a bunch of
-other, more specialised, results.
+other, more specialized, results.
 
 Another consequence of Theorem~\ref{bounded-sn} is a
 natural upper bound for functions \textit{uniformly}
@@ -1618,7 +1618,7 @@ statman1979typed,fortune1983expressiveness}).
 
 \begin{remark}
     Note that requirement for terms to be in normal
-    form is not restrictive: we can always normalise a
+    form is not restrictive: we can always normalize a
     non-normal term.
 \end{remark}
 
@@ -1628,11 +1628,11 @@ statman1979typed,fortune1983expressiveness}).
     PTS-$rk$.
 \end{theorem}
 \begin{proof}
-    By direct diagonalisation argument. Suppose we
+    By direct diagonalization argument. Suppose we
     could encode all elementary recursive functions
     with $N_I:\mathsf{rk}_r$ and $N_O:\mathsf{rk}_s$.
 
-    By Theorem~\ref{bounded-sn}, normalisation of
+    By Theorem~\ref{bounded-sn}, normalization of
     $(r+1)$-bounded terms $\mathcal{SN}_{r+1}$ is
     elementary recursive, so the following function is
     elementary recursive as well:
@@ -2039,7 +2039,7 @@ We are going to need an unusual assumption however:
     \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/ZFC_model/ModelSoundness.v\#L133}
 \end{theorem}
 \begin{proof}
-    Produced in discussion with GPT 6 Astra.
+    Produced in discussion with GPT-6 Astra.
 
     Take distinct codes \(c_\kappa\) for every cardinal
     $\kappa$ below \(\aleph_\omega\) and distinct
@@ -2103,7 +2103,7 @@ We are going to need an unusual assumption however:
             Make each choice
             once for each $(a,b)$, independently of a
             typing derivation or rank bound.
-        \item Abstraction and application are modeled
+        \item Abstraction and application are modelled
             by $f$ and $f^{-1}$ respectively, as
             defined above.
         \item Contexts are interpreted by valuations.
@@ -2122,7 +2122,7 @@ A few corollaries:
     \item A system with rank cumulativity
         $t:\mathrm{rk}_j\Rightarrow
         t:\mathrm{rk}_{j+1}$ is sound with respect to
-        this model; normalisation of bounded terms
+        this model; normalization of bounded terms
         remains elementary as in
         Theorem~\ref{bounded-sn}.
 \end{itemize}
@@ -2152,11 +2152,11 @@ definable graphs yield $\R$. We do so because
 interpretation of $\Rt$ is much simpler than direct
 interpretation of $\R$ and already exposes all of the
 main ideas. Direct translation is available in
-supplementary formalised materials
+supplementary formalized materials
 \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/functional/DirectRTheorem7.v\#L75}.
 
 The following proof was obtained in discussion with
-GPT 6 Astra.
+GPT-6 Astra.
 
 \subsection
 {Classical arithmetic and the target calculus}
@@ -2315,7 +2315,7 @@ carrier $X$ with a domain predicate $\delta$.
 Writing $\mathcal U\to B$ abbreviates the successive
 dependent arrows for these binders; it does not
 introduce a record type. Put $\ev_{\mathcal U}(d)=d\,X
-\,z\,s$ and $G(d)\triangleq(\mathcal U\to\delta(\ev_{
+\,s\,z$ and $G(d)\triangleq(\mathcal U\to\delta(\ev_{
 \mathcal U}(d))):\rk6$. For $P:X\to\rk1$, write
 \[
     \Up_{\mathcal U}(P)\triangleq
@@ -2402,7 +2402,7 @@ holds in our interpretation of $\Rt$.
     \]
     Selector projection gives $d_0$. To construct
     $d_s$, open the output $\delta(su)$ at $Q$ and its
-    branch proofs, and specialise the input certificate
+    branch proofs, and specialize the input certificate
     to $v\mapsto Q(sv)$. Its branches are the supplied
     proofs for the appropriate successor selectors.
 
@@ -2616,7 +2616,7 @@ interpretability degree.
     The classical theories $\Rt$ and $\R$ are mutually
     interpretable \footnote{Mutual interpretability
     does not imply bi-interpretability. In particular,
-    the totalised graphs need not coincide with the
+    the totalized graphs need not coincide with the
     original relations $A,M$ on arbitrary arguments.}.
 \end{proposition}
 \begin{proof}
@@ -2672,22 +2672,22 @@ $\mathsf{type}:\mathsf{type}$) led us to stumble on a
 truly unique dependently typed pure type system,
 PTS-$rk$.
 
-First of all, its normalisation proof is suspiciously
-simple and reminds of classic proofs of normalisation
+First of all, its normalization proof is suspiciously
+simple and reminds of classic proofs of normalization
 for STLC where, instead of an established technique by
 reducibility candidates, one patiently tracks
 complexities of arrow types and makes sure that they
 become simpler after sequences of reductions
 (Section~\ref{rk-sn}). To make sure that this approach
-works for our system, we formalised our proof in Rocq
+works for our system, we formalized our proof in Rocq
 proof assistant (Section~\ref{formalisation}) and in
 doing so prepared the groundwork for future verified
 interactions with PTS-$rk$.
 
-After noticing that normalisation proof yields a
-primitive recursive normalisation procedure, we found
+After noticing that normalization proof yields a
+primitive recursive normalization procedure, we found
 tighter bounds and found out that it has the same
-complexity as normalisation of STLC, which was
+complexity as normalization of STLC, which was
 previously unheard of for a dependently typed system
 (Section~\ref{complexity}). In contrast with existing
 pure type systems, our system is able to represent
@@ -2697,7 +2697,7 @@ dependently typed systems) and seems intimately
 connected to it (Section~\ref{computational}). To
 check if constructions inside PTS-$rk$ even make sense,
 we constructed a set-theoretical model for it which
-assumes a Generalised Continuum Hypothesis in order to
+assumes a Generalized Continuum Hypothesis in order to
 strictify the hierarchy of $\aleph$-s which act as
 interpretations of our function types
 (Section~\ref{rk-model}). Finally, we provide a lower

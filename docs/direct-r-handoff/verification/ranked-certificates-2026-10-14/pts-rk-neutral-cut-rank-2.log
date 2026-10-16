@@ -1,0 +1,30 @@
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+NeutralCutRank.headed_type_rank
+     : forall (i : Fin ?n) (t : Term nat ?n),
+       NeutralCutRank.headed_by i t ->
+       forall (G : Ctx nat ?n) (T : Term nat ?n) (r : nat),
+       wf G ->
+       G ⊢ t ⇐ T -> G ⊢ G !! i ⇐ 𝓤 r -> exists k : nat, k <= r /\ G ⊢ T ⇐ 𝓤 k
+where
+?n : [ |- nat]
+NeutralCutRank.headed_substituted_product_rank
+     : forall (i : Fin ?n) (f : Term nat ?n),
+       NeutralCutRank.headed_by i f ->
+       forall (G : Ctx nat ?n) (T : Term nat ?n) (r m : nat) 
+         (D : Ctx nat m) (sigma : Fin ?n -> Term nat m) 
+         (A : Term nat m) (B : Term nat (S m)),
+       wf G ->
+       wf D ->
+       G ⊢ f ⇐ T ->
+       G ⊢ G !! i ⇐ 𝓤 r ->
+       typed_substitution G D sigma ->
+       D ⊢ replace sigma f ⇐ Π A B ->
+       exists a b : nat, a < r /\ b <= r /\ D ⊢ A ⇐ 𝓤 a /\ D & A ⊢ B ⇐ 𝓤 b
+where
+?n : [ |- nat]

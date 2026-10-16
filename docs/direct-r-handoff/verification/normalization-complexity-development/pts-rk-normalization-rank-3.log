@@ -1,0 +1,2 @@
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+        rocq theories/NormalizationComplexity/Rank.{glob,vo}

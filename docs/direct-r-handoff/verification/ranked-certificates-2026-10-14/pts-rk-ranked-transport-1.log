@@ -1,0 +1,4 @@
+File "./ZFC_model/RankedTransport.v", line 8, characters 0-205:
+Error:
+Compiled library PTSrkModel.RankedDenotation (in file /private/tmp/pts-rk-ranked-denotation.iW07Rj/RankedDenotation.vo) makes inconsistent assumptions over library PTSrkModel.CanonicalRenaming
+

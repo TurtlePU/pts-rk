@@ -1,0 +1,3 @@
+# Keep compiler artifacts local; record a concise verified summary in STATE.md.
+logs/
+*.tmp

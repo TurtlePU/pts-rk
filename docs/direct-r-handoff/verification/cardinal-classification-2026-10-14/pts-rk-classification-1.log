@@ -1,0 +1,12 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+infinite_bounded_classification
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       forall (i : nat) (X : Ens),
+       embeds omega_codes X ->
+       embeds X (carrier i) ->
+       exists j : nat, j <= i /\ equinumerous X (carrier j)
+        rocq ZFC_model/CardinalClassification.{glob,vo}

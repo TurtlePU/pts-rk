@@ -1,0 +1,25 @@
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bounded_zermelo_satisfied
+     : (forall P : Prop, P \/ ~ P) -> theory_holds BoundedZermelo
+bzc_satisfied
+     : (forall P : Prop, P \/ ~ P) -> family_choice -> theory_holds BZC
+bzc_logical_soundness
+     : (forall P : Prop, P \/ ~ P) ->
+       family_choice ->
+       forall (n : nat) (G : list (Formula n)) (p : Formula n),
+       derives BZC n G p ->
+       forall r : Fin n -> Ens, context_holds G r -> holds p r

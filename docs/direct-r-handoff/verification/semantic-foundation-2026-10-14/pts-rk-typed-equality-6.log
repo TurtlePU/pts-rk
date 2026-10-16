@@ -1,0 +1,4 @@
+File "/tmp/pts-rk-typed-equality.XDTjE0/TypedEquality.v", line 13, characters 0-48:
+Error:
+Compiled library PTSrkModel.ProductWitnesses (in file /Users/akuklev/air/pts-rk/_build/default/ZFC_model/ProductWitnesses.vo) makes inconsistent assumptions over library PTSrkModel.CardinalClassification
+

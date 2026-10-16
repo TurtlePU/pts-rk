@@ -1,0 +1,5 @@
+File "/tmp/pts-rk-canonical-denotation.fvg3US/CanonicalDenotation.v", line 13, characters 0-129:
+Error:
+The file /private/tmp/pts-rk-canonical-types.4h21H9/CanonicalTypeWitnesses.vo contains library
+CanonicalTypeWitnesses and not library PTSrkModel.CanonicalTypeWitnesses.
+

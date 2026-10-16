@@ -1,0 +1,96 @@
+Chars 731 - 773 [From~Stdlib~Require~Import~Ari...] 0.033 secs (0.027u,0.005s)
+Chars 774 - 814 [From~Equations~Require~Import~...] 0.022 secs (0.017u,0.004s)
+Chars 815 - 851 [From~ZFC~Require~Import~Sets~A...] 0. secs (0.u,0.s)
+Chars 852 - 912 [From~PTSrk~Require~Import~Synt...] 0.003 secs (0.002u,0.s)
+Chars 913 - 1164 [From~PTSrkModel~Require~Import...] 0.052 secs (0.042u,0.01s)
+Chars 1165 - 1200 [Import~CodeUniverses.CodeUnive...] 0. secs (0.u,0.s)
+Chars 1202 - 1226 [Module~RankedDenotation.] 0. secs (0.u,0.s)
+Chars 1227 - 1280 [Module~CD:=~~CanonicalDenotati...] 0.001 secs (0.001u,0.s)
+Chars 1281 - 1302 [Section~Certificates.] 0. secs (0.u,0.s)
+Chars 1303 - 1323 [Variables~(H~s~:~Ens).] 0. secs (0.u,0.s)
+Chars 1325 - 3692 [Inductive~certificate~:~forall...] 0.03 secs (0.025u,0.005s)
+Chars 3694 - 3796 [Theorem~original_typing~n~G~rh...] 0. secs (0.u,0.s)
+Chars 3797 - 3803 [Proof.] 0. secs (0.u,0.s)
+Chars 3806 - 3827 [intro~D;~induction~D.] 0.001 secs (0.001u,0.s)
+Chars 3830 - 3831 [-] 0. secs (0.u,0.s)
+Chars 3832 - 3860 [apply~typ_𝓤;~reflexivity.] 0. secs (0.u,0.s)
+Chars 3863 - 3864 [-] 0. secs (0.u,0.s)
+Chars 3865 - 3923 [eapply~typ_conv;~[~apply~typ_v...] 0.026 secs (0.024u,0.002s)
+Chars 3926 - 3927 [-] 0. secs (0.u,0.s)
+Chars 3928 - 3983 [eapply~typ_Π;~[~exact~IHD~|~ea...] 0. secs (0.u,0.s)
+Chars 3986 - 3987 [-] 0. secs (0.u,0.s)
+Chars 3988 - 4029 [eapply~typ_λ;~[~exact~IHD~|~ea...] 0. secs (0.u,0.s)
+Chars 4032 - 4033 [-] 0. secs (0.u,0.s)
+Chars 4034 - 4107 [eapply~typ_conv;~[~eapply~typ_...] 0. secs (0.u,0.s)
+Chars 4110 - 4111 [-] 0. secs (0.u,0.s)
+Chars 4112 - 4122 [exact~IHD.] 0. secs (0.u,0.s)
+Chars 4123 - 4127 [Qed.] 0.001 secs (0.001u,0.s)
+Chars 4129 - 4229 [Theorem~normality~n~G~rho~t~T~...] 0. secs (0.u,0.s)
+Chars 4230 - 4236 [Proof.] 0. secs (0.u,0.s)
+Chars 4239 - 4260 [intro~D;~induction~D.] 0.001 secs (0.001u,0.s)
+Chars 4263 - 4264 [-] 0. secs (0.u,0.s)
+Chars 4265 - 4296 [split;~intros~z~R;~inversion~R.] 0.002 secs (0.002u,0.s)
+Chars 4299 - 4300 [-] 0. secs (0.u,0.s)
+Chars 4301 - 4354 [split;~[~intros~z~R;~inversion...] 0.001 secs (0.001u,0.s)
+Chars 4357 - 4358 [-] 0. secs (0.u,0.s)
+Chars 4359 - 4437 [split;~~[~apply~beta_normal_pr...] 0. secs (0.u,0.s)
+Chars 4442 - 4466 [intros~z~R;~inversion~R.] 0.001 secs (0.001u,0.s)
+Chars 4469 - 4470 [-] 0. secs (0.u,0.s)
+Chars 4471 - 4477 [split.] 0. secs (0.u,0.s)
+Chars 4482 - 4483 [+] 0. secs (0.u,0.s)
+Chars 4484 - 4543 [apply~beta_normal_lambda;~[~ex...] 0. secs (0.u,0.s)
+Chars 4548 - 4549 [+] 0. secs (0.u,0.s)
+Chars 4550 - 4617 [apply~beta_normal_product;~spl...] 0. secs (0.u,0.s)
+Chars 4620 - 4621 [-] 0. secs (0.u,0.s)
+Chars 4622 - 4628 [split.] 0. secs (0.u,0.s)
+Chars 4633 - 4634 [+] 0. secs (0.u,0.s)
+Chars 4635 - 4696 [apply~beta_normal_application;...] 0. secs (0.u,0.s)
+Chars 4703 - 4744 [split;~[~exact~(proj1~IHD3)~|~...] 0. secs (0.u,0.s)
+Chars 4749 - 4750 [+] 0. secs (0.u,0.s)
+Chars 4751 - 4770 [exact~(proj1~IHD4).] 0. secs (0.u,0.s)
+Chars 4773 - 4774 [-] 0. secs (0.u,0.s)
+Chars 4775 - 4785 [exact~IHD.] 0. secs (0.u,0.s)
+Chars 4786 - 4790 [Qed.] 0.004 secs (0.004u,0.s)
+Chars 4870 - 5008 [Theorem~canonical_denotations~...] 0. secs (0.u,0.s)
+Chars 5009 - 5015 [Proof.] 0. secs (0.u,0.s)
+Chars 5018 - 5039 [intro~D;~induction~D.] 0.001 secs (0.001u,0.s)
+Chars 5042 - 5043 [-] 0. secs (0.u,0.s)
+Chars 5044 - 5073 [split;~apply~CD.denotes_sort.] 0. secs (0.u,0.s)
+Chars 5076 - 5077 [-] 0. secs (0.u,0.s)
+Chars 5078 - 5128 [split;~[~apply~CD.denotes_var~...] 0. secs (0.u,0.s)
+Chars 5131 - 5132 [-] 0. secs (0.u,0.s)
+Chars 5133 - 5166 [split;~[~~|~apply~CD.denotes_s...] 0. secs (0.u,0.s)
+Chars 5171 - 5233 [eapply~CD.denotes_product;~[~e...] 0. secs (0.u,0.s)
+Chars 5238 - 5275 [intros~x~Hx;~exact~(proj1~(H1~...] 0. secs (0.u,0.s)
+File "/tmp/pts-rk-ranked-denotation.iW07Rj/RankedDenotation.v", line 108, characters 34-35:
+Error:
+In environment
+H, s : Ens
+n : nat
+G : Ctx nat n
+rho : Fin n -> Ens
+A : Term nat n
+B : Term nat (S n)
+m, k : nat
+a : Ens
+b : Ens -> Ens
+H0 : G & A ⊢ B ⇐ 𝓤 k
+H1 : beta_normal B
+D : certificate n G rho A (𝓤 m) a (repr (sort m))
+H2 :
+  forall x : Ens,
+  IN x (decode a) ->
+  certificate (S n) (G & A) (fin_match x rho) B (𝓤 k) (b x) (repr (sort k))
+H3 :
+  forall x : Ens,
+  IN x (decode a) ->
+  CD.denotes H s (S n) (G & A) (fin_match x rho) B (b x) /\
+  CD.denotes H s (S n) (G & A) (fin_match x rho) (𝓤 k) (repr (sort k))
+H4 : family_extensional (fun x : Ens => decode (b x))
+IHD :
+  CD.denotes H s n G rho A a /\ CD.denotes H s n G rho (𝓤 m) (repr (sort m))
+x : Ens
+Hx : IN x (decode a)
+The term "x" has type "Ens" while it is expected to have type
+ "Term nat (S n)".
+

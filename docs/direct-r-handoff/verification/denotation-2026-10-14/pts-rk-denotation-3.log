@@ -1,0 +1,10 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+denotes_valuation_extensional
+     : forall (H s : Ens) (n : nat) (G : Ctx nat n) 
+         (rho : Fin n -> Ens) (t : Term nat n) (v : Ens),
+       denotes H s n G rho t v ->
+       forall rho' : Fin n -> Ens,
+       valuation_eq rho rho' -> denotes H s n G rho' t v
+        rocq ZFC_model/Denotation.{glob,vo}

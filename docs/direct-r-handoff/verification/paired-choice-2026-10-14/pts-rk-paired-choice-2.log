@@ -1,0 +1,28 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+lambda_realization_in_context
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (A : Term nat n)
+         (B t : Term nat (S n)) (m k : nat),
+       G & A ⊢ t ⇐ B ->
+       (forall rho : Fin n -> Ens,
+        valid_valuation H s G rho -> realizes H s G rho A (𝓤 m)) ->
+       (forall rho : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho ->
+        exists c v : Ens,
+          IN c (U k) /\
+          denotes H s (S n) (G & A) rho B c /\
+          denotes H s (S n) (G & A) rho t v /\ IN v (decode c)) ->
+       forall rho : Fin n -> Ens,
+       valid_valuation H s G rho -> realizes H s G rho ([A] t) (Π A B)
+        rocq ZFC_model/LambdaRealization.{glob,vo}

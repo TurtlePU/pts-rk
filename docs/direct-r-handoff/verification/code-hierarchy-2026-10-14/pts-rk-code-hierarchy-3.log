@@ -1,0 +1,12 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/CodeHierarchyBounds.v", line 60, characters 34-85:
+Error: Found no subterm matching "iterated_power omega_codes (4 + S i)"
+in the current goal.
+
+File "ZFC_model/dune", lines 1-5, characters 0-359:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/CodeHierarchyBounds.{glob,vo} (exit 1)

@@ -1,0 +1,67 @@
+File "./ZFC_model/MaterialZermelo.v", line 20, characters 6-14:
+Warning: Use of "Notation" keyword for abbreviations is deprecated, use
+"Abbreviation" instead.
+[notation-for-abbreviation,deprecated-since-9.2,deprecated,default]
+File "./ZFC_model/MaterialZermelo.v", line 21, characters 6-14:
+Warning: Use of "Notation" keyword for abbreviations is deprecated, use
+"Abbreviation" instead.
+[notation-for-abbreviation,deprecated-since-9.2,deprecated,default]
+File "./ZFC_model/MaterialZermelo.v", line 22, characters 6-14:
+Warning: Use of "Notation" keyword for abbreviations is deprecated, use
+"Abbreviation" instead.
+[notation-for-abbreviation,deprecated-since-9.2,deprecated,default]
+File "./ZFC_model/MaterialZermelo.v", line 23, characters 6-14:
+Warning: Use of "Notation" keyword for abbreviations is deprecated, use
+"Abbreviation" instead.
+[notation-for-abbreviation,deprecated-since-9.2,deprecated,default]
+File "./ZFC_model/MaterialZermelo.v", line 24, characters 6-14:
+Warning: Use of "Notation" keyword for abbreviations is deprecated, use
+"Abbreviation" instead.
+[notation-for-abbreviation,deprecated-since-9.2,deprecated,default]
+File "./ZFC_model/MaterialZermelo.v", line 89, characters 10-18:
+Error: In environment
+n : nat
+r : Fin n -> Ens
+x, y, z : Ens
+Unable to unify "EQ ?A ?E \/ EQ ?A ?E'" with
+ "(fix holds (n : nat) (p : Formula n) {struct p} : (Fin n -> Ens) -> Prop :=
+     match p in Formula n0 return (Fin n0 -> Ens) -> Prop with
+     | @equal n0 x y => fun r : Fin n0 -> Ens => EQ (r x) (r y)
+     | @member n0 x y => fun r : Fin n0 -> Ens => IN (r x) (r y)
+     | @falsum n0 => fun _ : Fin n0 -> Ens => False
+     | @conj n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r /\ holds n0 q r
+     | @disj n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r \/ holds n0 q r
+     | @impl n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r -> holds n0 q r
+     | @all n0 p0 =>
+         fun r : Fin n0 -> Ens =>
+         forall x : Ens, holds (S n0) p0 (fin_match x r)
+     | @ex n0 p0 =>
+         fun r : Fin n0 -> Ens =>
+         exists x : Ens, holds (S n0) p0 (fin_match x r)
+     end)
+    (S (S (S (S n)))) (member v0 v1)
+    (fin_match z (fin_match (Paire x y) (fin_match y (fin_match x r)))) ->
+  (fix holds (n : nat) (p : Formula n) {struct p} : (Fin n -> Ens) -> Prop :=
+     match p in Formula n0 return (Fin n0 -> Ens) -> Prop with
+     | @equal n0 x y => fun r : Fin n0 -> Ens => EQ (r x) (r y)
+     | @member n0 x y => fun r : Fin n0 -> Ens => IN (r x) (r y)
+     | @falsum n0 => fun _ : Fin n0 -> Ens => False
+     | @conj n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r /\ holds n0 q r
+     | @disj n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r \/ holds n0 q r
+     | @impl n0 p0 q =>
+         fun r : Fin n0 -> Ens => holds n0 p0 r -> holds n0 q r
+     | @all n0 p0 =>
+         fun r : Fin n0 -> Ens =>
+         forall x : Ens, holds (S n0) p0 (fin_match x r)
+     | @ex n0 p0 =>
+         fun r : Fin n0 -> Ens =>
+         exists x : Ens, holds (S n0) p0 (fin_match x r)
+     end)
+    (S (S (S (S n)))) (disj (equal v0 v3) (equal v0 v2))
+    (fin_match z (fin_match (Paire x y) (fin_match y (fin_match x r))))".
+

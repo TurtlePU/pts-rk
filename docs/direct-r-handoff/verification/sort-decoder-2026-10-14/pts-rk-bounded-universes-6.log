@@ -1,0 +1,54 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedUniverses.v", line 130, characters 11-94:
+Error:
+In environment
+n : nat
+Y, C : Ens
+HC : IN C (Power omega_codes)
+HF : EQ C (finite_carrier n)
+HB :
+  holds
+    (universeBodyF (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))
+       (fsucc (fsucc (fsucc (fsucc fzero)))) fzero 
+       (fsucc (fsucc fzero)) (fsucc fzero))
+    (fin_match (finite_carrier n) (universe_env (numeral n) Y))
+ER :
+  forall j : Fin 7,
+  EQ (fin_match C (universe_env (numeral n) Y) j)
+    (fin_match (finite_carrier n) (universe_env (numeral n) Y) j)
+Unable to unify
+ "(fix F (e : Ens) : (fun _ : Ens => Ens -> Prop) e :=
+     match e as e0 return (fun _ : Ens => Ens -> Prop) e0 with
+     | sup A e0 =>
+         (fun (A0 : Type) (_ : A0 -> Ens) (eq1 : A0 -> Ens -> Prop)
+            (X0 : Ens) =>
+          Ens_rect (fun _ : Ens => Prop)
+            (fun (B : Type) (g : B -> Ens) (_ : B -> Prop) =>
+             (forall x : A0, EXType B (fun y : B => eq1 x (g y))) /\
+             (forall y : B, EXType A0 (fun x : A0 => eq1 x (g y))))
+            X0)
+           A e0 (fun H : A => F (e0 H))
+     end)
+    (?r ?Y) (U n)"
+with
+ "(fix F (e : Ens) : (fun _ : Ens => Ens -> Prop) e :=
+     match e as e0 return (fun _ : Ens => Ens -> Prop) e0 with
+     | sup A e0 =>
+         (fun (A0 : Type) (_ : A0 -> Ens) (eq1 : A0 -> Ens -> Prop)
+            (X0 : Ens) =>
+          Ens_rect (fun _ : Ens => Prop)
+            (fun (B : Type) (g : B -> Ens) (_ : B -> Prop) =>
+             (forall x : A0, EXType B (fun y : B => eq1 x (g y))) /\
+             (forall y : B, EXType A0 (fun x : A0 => eq1 x (g y))))
+            X0)
+           A e0 (fun H : A => F (e0 H))
+     end)
+    Y (U n)".
+
+File "ZFC_model/dune", lines 1-5, characters 0-1233:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication BoundedGraphs BoundedFiniteCarriers RegularTyping RealizationInduction BoundedPowersets BoundedIteration BoundedFormulaSelection BoundedCodeSelection BoundedRecursion BoundedCodeArithmetic BoundedInfiniteDecoder BoundedUniverses)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/BoundedUniverses.{glob,vo} (exit 1)

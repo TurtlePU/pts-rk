@@ -1,0 +1,5 @@
+Exit code: 0
+Last stage: complete
+
+Green means the supplied files compiled. It does NOT assert the missing
+uniform GeneratorTotal/GeneratorSound or first-order soundness theorems.

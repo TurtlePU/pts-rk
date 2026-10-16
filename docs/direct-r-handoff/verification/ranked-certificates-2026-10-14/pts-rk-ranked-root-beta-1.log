@@ -1,0 +1,25 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+RankedRootBeta.certified_root_beta_nonlambda
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (t : Term nat (S n)) (u T : Term nat n)
+         (f c x a v : Ens),
+       RankedRootBeta.RD.certificate H s n G rho ([A] t) T f c ->
+       RankedRootBeta.RD.certificate H s n G rho u A x a ->
+       not_lambda u ->
+       RankedRootBeta.RS.certified_variables H s G rho ->
+       RankedRootBeta.CD.denotes H s n G rho ([A] t $ u) v ->
+       exists (B : Term nat (S n)) (b : Ens),
+         T = Π A B /\
+         [A] t $ u →ᵝ t ◁ u /\
+         RankedRootBeta.RD.certificate H s n G rho (t ◁ u) (B ◁ u) v b
+        rocq ZFC_model/RankedRootBeta.{glob,vo}

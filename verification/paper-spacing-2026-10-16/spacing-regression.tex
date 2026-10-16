@@ -1,0 +1,19 @@
+\documentclass{article}
+\usepackage{parskip,mathpartir}
+\begin{document}
+% Isolate the separator emitted by Markdown, not a manually chosen vskip.
+\setbox0=\vbox{%
+  Text before formula.\par{}\begin{mathpar}a=b\end{mathpar}%
+}
+\setbox1=\vbox{%
+  Text before formula.\begin{mathpar}a=b\end{mathpar}%
+}
+\dimen0=\ht0 \advance\dimen0 by \dp0
+\dimen1=\ht1 \advance\dimen1 by \dp1
+\typeout{WITH-PAR-SEPARATOR: \the\dimen0}
+\typeout{WITHOUT-PAR-SEPARATOR: \the\dimen1}
+\advance\dimen0 by -\dimen1
+\typeout{EXCESS-HEIGHT: \the\dimen0}
+\ifdim\dimen0>0pt\else\errmessage{Expected excess display height}\fi
+\box0\bigskip\box1
+\end{document}

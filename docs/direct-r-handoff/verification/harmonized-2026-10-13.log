@@ -1,0 +1,164 @@
+Checkpoint verification, 2026-10-13
+NOT a proof of Theorems 4 or 7; NOT a green complete test run.
+
+Environment:
+OPAMROOT=$HOME/.local/share/pts-rk-ci/opam
+PATH=$HOME/.local/share/pts-rk-ci/bin:$PATH
+
+Command (exit 0):
+opam exec --switch=pts-rk-ci -- timeout 120 dune build --display=short --no-buffer theories/DirectR.vo theories/DirectRUnary.vo theories/DirectRCountermodel.vo theories/DirectRArithmetic.vo
+
+        rocq theories/.PTSrk.theory.d
+        rocq theories/DirectRStructural.{glob,vo}
+File "./theories/DirectRFoundations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRFoundations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRFoundations.{glob,vo}
+File "./theories/DirectRProofs.v", line 5, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRProofs.v", line 5, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRProofs.{glob,vo}
+File "./theories/DirectRFirstOrder.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRFirstOrder.v", line 8, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRFirstOrder.{glob,vo}
+        rocq theories/DirectRGenerated.{glob,vo}
+File "./theories/DirectRObligations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/DirectRObligations.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/DirectRObligations.{glob,vo}
+        rocq theories/DirectR.{glob,vo}
+
+Assumption/type query command (exit 0; no Error in transcript):
+opam exec --switch=pts-rk-ci -- rocq repl -quiet -R _build/default/theories PTSrk
+Input: Check and Print Assumptions on the corresponding names shown below,
+in the displayed order. The 22 assumption results correspond, in order, to:
+Kernel.R1_realized, Kernel.R2_realized, Kernel.ground_order_typed,
+Structural.telescope_formation, Structural.telescope_abstraction,
+Structural.telescope_projection, Structural.codes_selector_typed,
+Structural.assemble_selector_type, Structural.table_apply_typed,
+Structural.selector_table, Unary.domain_formation, Unary.good_successor_typed,
+Unary.equality_formation, Unary.order_formation, Unary.rho_realized,
+Kernel.rho_realized, SourceCountermodel.ground_add_graph,
+SourceCountermodel.ground_mul_graph, SourceCountermodel.distinct,
+SourceCountermodel.bounded, SourceCountermodel.comparable,
+SourceCountermodel.failure_of_order_reflexivity.
+
+
+Rocq < 
+Rocq < Kernel.R1_realized
+     : forall m n : nat, Kernel.Realizes (DirectRCodes.Codes.R1 m n)
+
+Rocq < Kernel.R2_realized
+     : forall m n : nat, Kernel.Realizes (DirectRCodes.Codes.R2 m n)
+
+Rocq < Kernel.ground_order_typed
+     : forall i j : nat,
+       i <= j ->
+       Kernel.Typed Context.ε (Kernel.ground_order_proof i j)
+         (DirectRCodes.Codes.LeAt (DirectRCodes.Codes.numeral i)
+            (DirectRCodes.Codes.numeral j))
+
+Rocq < Structural.codes_selector_typed
+     : forall (q : nat) (i : Syntax.Fin q) (n : nat) (G : Context.Ctx nat n),
+       DirectRKernel.Core.Typed G (DirectRCodes.Codes.selector i n)
+         (DirectRCodes.Codes.selector_type q n)
+
+Rocq < Structural.selector_table
+     : forall (q : nat) (i : Syntax.Fin q)
+         (entries : list DirectRCodes.Codes.closed_term)
+         (default : DirectRCodes.Codes.closed_term),
+       length entries = q ->
+       DefEq.def_equiv nat 0
+         (Structural.table_apply (Structural.selector q i) entries)
+         (ListDef.nth (Structural.fin_number i) entries default)
+
+Rocq < Unary.rho_realized
+     : DirectRKernel.Core.Typed Context.ε Unary.admitted_order_reflexivity
+         Unary.rho_translation
+
+Rocq < Kernel.rho_realized
+     : Kernel.Typed Context.ε Kernel.admitted_order_reflexivity
+         Kernel.rho_translation
+
+Rocq < SourceCountermodel.bounded
+     : forall (n : nat) (x : SourceCountermodel.point),
+       SourceCountermodel.order x (SourceCountermodel.numeral n) <->
+       (exists i : nat, i <= n /\ x = SourceCountermodel.numeral i)
+
+Rocq < SourceCountermodel.failure_of_order_reflexivity
+     : ~ (forall x : SourceCountermodel.point, SourceCountermodel.order x x)
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq <

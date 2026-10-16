@@ -1,0 +1,10 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+carrier_cartesian_bound
+     : forall i j : nat,
+       embeds (Prod (carrier i) (carrier j)) (carrier (Nat.max i j))
+        rocq ZFC_model/PowersetSquares.{glob,vo}

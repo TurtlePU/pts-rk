@@ -1,0 +1,29 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+application_realization_from_inversion
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B : Term nat (S n)) (t u : Term nat n) 
+         (m k : nat),
+       G ⊢ t ⇐ Π A B ->
+       G ⊢ u ⇐ A ->
+       realizes H s G rho t (Π A B) ->
+       realizes H s G rho u A ->
+       (forall a a' : Ens,
+        denotes H s n G rho A a ->
+        denotes H s n G rho A a' -> EQ (decode a) (decode a')) ->
+       (forall a : Ens, denotes H s n G rho A a -> IN a (U m)) ->
+       (forall a x b : Ens,
+        denotes H s n G rho A a ->
+        IN x (decode a) ->
+        denotes H s (S n) (G & A) (fin_match x rho) B b -> IN b (U k)) ->
+       realizes H s G rho (t $ u) (B ◁ u)
+        rocq ZFC_model/ApplicationRealization.{glob,vo}

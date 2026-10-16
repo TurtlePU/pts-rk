@@ -1,0 +1,12 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bijection_formula_correct
+     : forall (r : Fin ?n -> Ens) (A B f : Fin ?n),
+       holds (bijectionF A B f) r <-> bijection (r A) (r B) (r f)
+where
+?n : [ |- nat]
+        rocq ZFC_model/BoundedBijections.{glob,vo}

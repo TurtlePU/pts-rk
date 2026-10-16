@@ -1,0 +1,57 @@
+Diagnostic directory: /Users/akuklev/air/pts-rk/_build/local-ci-logs/multiplication-final
+7b6bdab74d1518bf8e830d717c0025de4df485db
+3.23.1
+The Rocq Prover, version 9.2
+compiled with OCaml 4.14.2
+4.14.2
+2.6.1
+# Packages matching: installed
+# Name                # Version
+base                  v0.16.5
+base-bigarray         base
+base-threads          base
+base-unix             base
+conf-gmp              5
+conf-pkg-config       5
+coq-core              9.2.0
+csexp                 1.5.2
+dune                  3.23.1
+dune-configurator     3.23.1
+ocaml                 4.14.2
+ocaml-base-compiler   4.14.2
+ocaml-compiler-libs   v0.12.4
+ocaml-config          2
+ocaml-options-vanilla 1
+ocamlfind             1.9.8
+ppx_derivers          1.2.1
+ppx_optcomp           v0.16.0
+ppxlib                0.35.0
+rocq-core             9.2.0
+rocq-equations        1.3.2+9.2
+rocq-prover           meta.1
+rocq-runtime          9.2.0
+rocq-stdlib           9.1.0
+sexplib0              v0.16.0
+stdio                 v0.16.0
+stdlib-shims          0.3.0
+zarith                1.14
+
+=== 01-upstream ===
+        rocq theories/.PTSrk.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+        rocq theories/Congruence.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/SN.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+
+=== 02-kernel ===
+Error: Another Dune instance is currently running. Aborting...
+::error title=DirectR stage failed::02-kernel failed (exit 1). See the diagnostic artifact.

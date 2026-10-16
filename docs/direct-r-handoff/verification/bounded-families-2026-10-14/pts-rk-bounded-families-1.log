@@ -1,0 +1,28 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedFamilies.v", line 18, characters 0-108:
+Error:
+The following term contains unresolved implicit arguments:
+  (fun A f y : ?A =>
+   fin_match A
+     (fin_match f
+        (fin_match y
+           (fun i : Fin 0 =>
+            match
+              i in Fin n return match n with
+                                | 0 => ?A
+                                | S _ => IDProp
+                                end
+            with
+            | @fzero _ | _ => idProp
+            end))))
+More precisely: 
+- ?A: Cannot infer the implicit parameter A of fin_match whose type is
+  "Type".
+
+File "ZFC_model/dune", lines 1-5, characters 0-323:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/BoundedFamilies.{glob,vo} (exit 1)

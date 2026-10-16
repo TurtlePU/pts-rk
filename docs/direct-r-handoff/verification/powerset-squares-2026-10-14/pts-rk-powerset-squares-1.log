@@ -1,0 +1,11 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/PowersetSquares.v", line 28, characters 4-169:
+Error: Tactic failure: Incorrect number of goals (expected 4 tactics).
+
+File "ZFC_model/dune", lines 1-5, characters 0-442:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/PowersetSquares.{glob,vo} (exit 1)

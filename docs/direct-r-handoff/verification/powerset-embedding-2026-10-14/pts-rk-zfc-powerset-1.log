@@ -1,0 +1,11 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+powerset_injection
+     : forall A B f : Ens,
+       injection A B f -> injection (Power A) (Power B) (powerset_map A f)
+        rocq ZFC_model/PowersetEmbedding.{glob,vo}

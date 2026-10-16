@@ -1,0 +1,18 @@
+% Run from latex/, with output in a fresh absolute directory.
+\input{tex/markdown-preamble.tex}
+\begin{document}
+\setbox0=\vbox{\begin{mathpar}
+  \inferrule[Ax]{}{\Gamma \vdash s:s'}
+\end{mathpar}}
+\setbox1=\vbox{\begin{figuremathpar}
+  \inferrule[Ax]{}{\Gamma \vdash s:s'}
+\end{figuremathpar}}
+\dimen0=\ht0 \advance\dimen0 by \dp0
+\dimen1=\ht1 \advance\dimen1 by \dp1
+\typeout{ORIGINAL-FIGURE-MATH: \the\dimen0}
+\typeout{COMPACT-FIGURE-MATH: \the\dimen1}
+\advance\dimen0 by -\dimen1
+\typeout{REMOVED-FIGURE-PADDING: \the\dimen0}
+\ifdim\dimen0>0pt\else\errmessage{Expected reduced figure padding}\fi
+\box0\bigskip\box1
+\end{document}

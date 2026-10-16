@@ -1,0 +1,18 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/ProductWitnesses.v", line 15, characters 48-49:
+Error:
+In environment
+i : nat
+K : Ens
+j : pi1 (U i)
+E : EQ K (apply_set (decoding_graph i) (pi2 (U i) j))
+The term "E" has type "EQ K (apply_set (decoding_graph i) (pi2 (U i) j))"
+while it is expected to have type "EQ K (decode (pi2 (U i) j))".
+
+File "ZFC_model/dune", lines 1-5, characters 0-556:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/ProductWitnesses.{glob,vo} (exit 1)

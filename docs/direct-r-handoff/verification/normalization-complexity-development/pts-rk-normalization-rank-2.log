@@ -1,0 +1,12 @@
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+File "./theories/NormalizationComplexity/Rank.v", line 132, characters 83-87:
+Error:  (in proof lookup_cache): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+File "theories/NormalizationComplexity/dune", lines 1-5, characters 0-120:
+1 | (rocq.theory
+2 |  (name PTSrk.NormalizationComplexity)
+3 |  (package pts-rk)
+4 |  (modules Rank)
+5 |  (theories Stdlib Equations PTSrk))
+        rocq theories/NormalizationComplexity/Rank.{glob,vo} (exit 1)

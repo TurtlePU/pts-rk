@@ -1,0 +1,15 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+dependent_product_injection
+     : forall (A K : Ens) (B enc : Ens -> Ens),
+       family_extensional enc ->
+       (forall x : Ens, IN x A -> injection (B x) K (enc x)) ->
+       injection (dependent_product A B)
+         (dependent_product A (fun _ : Ens => K)) 
+         (product_injection A B enc)
+        rocq ZFC_model/ProductEmbedding.{glob,vo}

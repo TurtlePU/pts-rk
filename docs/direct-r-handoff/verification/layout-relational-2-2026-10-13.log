@@ -1,0 +1,215 @@
+        rocq Interpretation_of_R/.Interpretation_of_R.theory.d
+        rocq Interpretation_of_R/DirectRCommonCodes.{glob,vo}
+File "./Interpretation_of_R/DirectRSymbolic.v", line 12, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./Interpretation_of_R/DirectRSymbolic.v", line 12, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq Interpretation_of_R/DirectRSymbolic.{glob,vo}
+        rocq Interpretation_of_R/DirectRStructural.{glob,vo}
+        rocq Interpretation_of_R/DirectRLogic.{glob,vo}
+        rocq Interpretation_of_R/DirectRPositive.{glob,vo}
+        rocq Interpretation_of_R/DirectRFiniteTables.{glob,vo}
+        rocq Interpretation_of_R/DirectRIterations.{glob,vo}
+        rocq Interpretation_of_R/DirectRFiniteObservations.{glob,vo}
+        rocq Interpretation_of_R/DirectRFiniteUp.{glob,vo}
+        rocq Interpretation_of_R/DirectRFiniteCertificates.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRUnary.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRUnaryAxioms.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRUnaryEvaluation.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRSeparation.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRUnaryBounded.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRUnaryArithmetic.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRRelationalTranslation.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRRelationalGround.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRRelationalAxioms.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRRelationalEquality.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRRelationalDeduction.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRTheorem4.{glob,vo}
+relational_axiom_preservation
+     : forall (k n : nat) (Γ : Ctx nat n) (env : Fin k -> Term nat n)
+         (A : Relational.formula k),
+       Relational.axiom A ->
+       exists p : Term nat n, Γ ⊢ p ⇐ RelationalTranslation.formula A env
+Theorem4.theorem4
+     : (forall A : Relational.formula 0,
+        Relational.axiom A ->
+        exists p : Term nat 0, ε ⊢ p ⇐ RelationalTranslation.sentence A) /\
+       (forall A : Relational.formula 0,
+        Relational.derives nil A ->
+        exists p : Term nat 0, ε ⊢ p ⇐ RelationalTranslation.sentence A) /\
+       (forall a : Theorem4.ground_atom,
+        (Theorem4.atom_truth a ->
+         exists p : Term nat 0,
+           ε ⊢ p ⇐ RelationalTranslation.sentence (Theorem4.atom_formula a)) /\
+        (~ Theorem4.atom_truth a ->
+         exists p : Term nat 0,
+           ε ⊢ p
+           ⇐ CommonCodes.Neg
+               (RelationalTranslation.sentence (Theorem4.atom_formula a)))) /\
+       (exists A : Relational.formula 0,
+          (exists p : Term nat 0, ε ⊢ p ⇐ RelationalTranslation.sentence A) /\
+          ~ Relational.derives nil A)
+RelationalDeduction.sentence_preservation
+     : forall A : Relational.formula 0,
+       Relational.derives nil A ->
+       exists p : Term nat 0, ε ⊢ p ⇐ RelationalTranslation.sentence A
+Theorem4.nonfaithfulness
+     : exists A : Relational.formula 0,
+         Core.Realizes (RelationalTranslation.sentence A) /\
+         ~ Relational.derives nil A
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Inductive
+derives
+    : forall n : nat,
+      list (Relational.formula n) -> Relational.formula n -> Prop :=
+    hypothesis : forall (n : nat) (Γ : list (Relational.formula n))
+                   (A : Relational.formula n),
+                 List.In A Γ -> Relational.derives Γ A
+  | theory : forall (n : nat) (Γ : list (Relational.formula n))
+               (A : Relational.formula n),
+             Relational.axiom A -> Relational.derives Γ A
+  | implication_intro : forall (n : nat) (Γ : list (Relational.formula n))
+                          (A B : Relational.formula n),
+                        Relational.derives (A :: Γ) B ->
+                        Relational.derives Γ (Relational.implies A B)
+  | implication_elim : forall (n : nat) (Γ : list (Relational.formula n))
+                         (A B : Relational.formula n),
+                       Relational.derives Γ (Relational.implies A B) ->
+                       Relational.derives Γ A -> Relational.derives Γ B
+  | universal_intro : forall (n : nat) (Γ : list (Relational.formula n))
+                        (A : Relational.formula (S n)),
+                      Relational.derives
+                        (ListDef.map (Relational.frename fsucc) Γ) A ->
+                      Relational.derives Γ (Relational.all A)
+  | universal_elim : forall (n : nat) (Γ : list (Relational.formula n))
+                       (A : Relational.formula (S n)) 
+                       (t : Relational.term n),
+                     Relational.derives Γ (Relational.all A) ->
+                     Relational.derives Γ (Relational.instantiate A t)
+  | classical : forall (n : nat) (Γ : list (Relational.formula n))
+                  (A : Relational.formula n),
+                Relational.derives Γ (Relational.neg (Relational.neg A)) ->
+                Relational.derives Γ A
+  | equality_refl : forall (n : nat) (Γ : list (Relational.formula n))
+                      (t : Relational.term n),
+                    Relational.derives Γ (Relational.equal t t)
+  | equality_replace : forall (n : nat) (Γ : list (Relational.formula n))
+                         (A : Relational.formula (S n))
+                         (t u : Relational.term n),
+                       Relational.derives Γ (Relational.equal t u) ->
+                       Relational.derives Γ (Relational.instantiate A t) ->
+                       Relational.derives Γ (Relational.instantiate A u).
+
+Arguments Relational.derives {n}%_nat_scope Γ%_list_scope A
+  (where some original arguments have been renamed)
+Arguments Relational.hypothesis n%_nat_scope Γ%_list_scope A _
+Arguments Relational.theory n%_nat_scope Γ%_list_scope A _
+Arguments Relational.implication_intro n%_nat_scope Γ%_list_scope A B _
+Arguments Relational.implication_elim n%_nat_scope Γ%_list_scope A B _ _
+Arguments Relational.universal_intro n%_nat_scope Γ%_list_scope A _
+Arguments Relational.universal_elim n%_nat_scope Γ%_list_scope A t _
+Arguments Relational.classical n%_nat_scope Γ%_list_scope A _
+Arguments Relational.equality_refl n%_nat_scope Γ%_list_scope t
+Arguments Relational.equality_replace n%_nat_scope Γ%_list_scope A t u _ _
+RelationalTranslation.formula_typed
+     : forall (A : Relational.formula ?k) (n : nat) 
+         (Γ : Ctx nat n) (env : Fin ?k -> Term nat n),
+       (forall i : Fin ?k,
+        Core.Typed Γ (env i)
+          (CommonCodes.lift_closed DirectRUnary.Unary.Domain)) ->
+       Core.Typed Γ (RelationalTranslation.formula A env)
+         (𝓤 (RelationalTranslation.formula_rank A))
+where
+?k : [ |- nat]
+RelationalTranslation.term_admitted
+     : forall (Γ : Ctx nat ?n) (env : Fin ?k -> Term nat ?n)
+         (t : Relational.term ?k),
+       (forall i : Fin ?k,
+        Core.Typed Γ (env i)
+          (CommonCodes.lift_closed DirectRUnary.Unary.Domain)) ->
+       (forall i : Fin ?k,
+        DirectRLogic.NegativeLogic.inhabited Γ
+          (DirectRUnary.Unary.admitted (env i))) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (DirectRUnary.Unary.admitted (RelationalTranslation.term env t))
+where
+?k : [ |- nat]
+?n : [ |- nat]
+RelationalTranslation.instantiate_translation
+     : forall (A : Relational.formula (S ?k)) (t : Relational.term ?k)
+         (env : Fin ?k -> Term nat ?n),
+       RelationalTranslation.formula (Relational.instantiate A t) env =
+       subst (RelationalTranslation.formula A (transpose env))
+         (RelationalTranslation.term env t)
+where
+?k : [ |- nat]
+?n : [ |- nat]
+RelationalTranslation.universal_elimination
+     : forall (Γ : Ctx nat ?n) (env : Fin ?k -> Term nat ?n)
+         (A : Relational.formula (S ?k)) (t : Relational.term ?k),
+       (forall i : Fin ?k,
+        Core.Typed Γ (env i)
+          (CommonCodes.lift_closed DirectRUnary.Unary.Domain)) ->
+       (forall i : Fin ?k,
+        DirectRLogic.NegativeLogic.inhabited Γ
+          (DirectRUnary.Unary.admitted (env i))) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (RelationalTranslation.formula (Relational.all A) env) ->
+       DirectRLogic.NegativeLogic.inhabited Γ
+         (RelationalTranslation.formula (Relational.instantiate A t) env)
+where
+?k : [ |- nat]
+?n : [ |- nat]
+RelationalGround.addition_true
+     : forall t u v : Relational.term 0,
+       RelationalTranslation.value t + RelationalTranslation.value u =
+       RelationalTranslation.value v ->
+       Core.Realizes
+         (RelationalTranslation.sentence (Relational.add_graph t u v))
+RelationalGround.addition_false
+     : forall t u v : Relational.term 0,
+       RelationalTranslation.value t + RelationalTranslation.value u <>
+       RelationalTranslation.value v ->
+       Core.Realizes
+         (CommonCodes.Neg
+            (RelationalTranslation.sentence (Relational.add_graph t u v)))
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq Interpretation_of_R/relational/DirectRRelationalAudit.{glob,vo}

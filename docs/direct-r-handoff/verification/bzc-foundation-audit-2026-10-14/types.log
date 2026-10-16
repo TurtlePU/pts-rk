@@ -1,0 +1,282 @@
+RankedHereditary.hereditary_substitution
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall r : nat, RankedHereditary.substitution_at H s r
+Closed under the global context
+RankedHereditary.certified_application
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (A : Syntax.Term nat n)
+         (B : Syntax.Term nat (S n)) (t u : Syntax.Term nat n) 
+         (m k : nat) (a : Sets.Ens) (b : Sets.Ens -> Sets.Ens)
+         (f x : Sets.Ens),
+       Preservation.wf G ->
+       RankedHereditary.RS.certified_variables H s G rho ->
+       Typing.typ (Context.cons G A) B (Syntax.𝓤 k) ->
+       CanonicalTypeWitnesses.beta_normal B ->
+       RankedHereditary.RD.certificate H s n G rho A 
+         (Syntax.𝓤 m) a
+         (CodeUniverses.CodeUniverses.repr
+            (CodeUniverses.CodeUniverses.sort m)) ->
+       (forall y : Sets.Ens,
+        Sets.IN y (CardinalHierarchy.decode a) ->
+        RankedHereditary.RD.certificate H s (S n) 
+          (Context.cons G A) (Syntax.fin_match y rho) B 
+          (Syntax.𝓤 k) (b y)
+          (CodeUniverses.CodeUniverses.repr
+             (CodeUniverses.CodeUniverses.sort k))) ->
+       RankedHereditary.RD.certificate H s n G rho t 
+         (Syntax.Π A B) f (GlobalOperations.semantic_product H s a b) ->
+       RankedHereditary.RD.certificate H s n G rho u A x a ->
+       SetFunctions.family_extensional
+         (fun y : Sets.Ens => CardinalHierarchy.decode (b y)) ->
+       RankedHereditary.normalizes H s G rho (Syntax.app t u)
+         (Syntax.subst B u)
+         (GlobalOperations.semantic_application H s a b f x) 
+         (b x)
+Closed under the global context
+RankedNormalization.original_valid_variable_certificates
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n),
+       Preservation.wf G ->
+       forall rho : Syntax.Fin n -> Sets.Ens,
+       InterpretedContexts.valid_valuation H s G rho ->
+       RankedNormalization.RS.certified_variables H s G rho
+Closed under the global context
+RankedNormalization.original_typed_normalization
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T : Syntax.Term nat n)
+         (v : Sets.Ens),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       InterpretedContexts.valid_valuation H s G rho ->
+       RankedNormalization.OD.denotes H s n G rho t v ->
+       RankedNormalization.certifies H s G rho t T v
+Closed under the global context
+RankedNormalization.original_typed_conversion_values
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T u U : Syntax.Term nat n)
+         (v w : Sets.Ens),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       Typing.typ G u U ->
+       InterpretedContexts.valid_valuation H s G rho ->
+       DefEq.def_equiv nat n t u ->
+       RankedNormalization.OD.denotes H s n G rho t v ->
+       RankedNormalization.OD.denotes H s n G rho u w -> Sets.EQ v w
+Closed under the global context
+RankedNormalization.original_typed_decoded_conversion
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (A B : Syntax.Term nat n)
+         (m k : nat),
+       Preservation.wf G ->
+       InterpretedContexts.valid_valuation H s G rho ->
+       Typing.typ G A (Syntax.𝓤 m) ->
+       Typing.typ G B (Syntax.𝓤 k) ->
+       DefEq.def_equiv nat n A B ->
+       forall a b : Sets.Ens,
+       RankedNormalization.OD.denotes H s n G rho A a ->
+       RankedNormalization.OD.denotes H s n G rho B b ->
+       Sets.EQ (CardinalHierarchy.decode a) (CardinalHierarchy.decode b)
+Closed under the global context
+ModelSoundness.original_typing_sound
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n) (t T : Syntax.Term nat n),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       forall rho : Syntax.Fin n -> Sets.Ens,
+       InterpretedContexts.valid_valuation H s G rho ->
+       InterpretedContexts.realizes H s G rho t T
+Closed under the global context
+ModelSoundness.original_membership_sound
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T : Syntax.Term nat n)
+         (v a : Sets.Ens),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       InterpretedContexts.valid_valuation H s G rho ->
+       Denotation.denotes H s n G rho t v ->
+       Denotation.denotes H s n G rho T a ->
+       Sets.IN v (CardinalHierarchy.decode a)
+Closed under the global context
+ModelSoundness.original_denotation_coherent
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t T : Syntax.Term nat n)
+         (v w : Sets.Ens),
+       Preservation.wf G ->
+       Typing.typ G t T ->
+       InterpretedContexts.valid_valuation H s G rho ->
+       Denotation.denotes H s n G rho t v ->
+       Denotation.denotes H s n G rho t w -> Sets.EQ v w
+Closed under the global context
+ModelSoundness.original_rank_sound
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall (n : nat) (G : Context.Ctx nat n)
+         (rho : Syntax.Fin n -> Sets.Ens) (t : Syntax.Term nat n) 
+         (k : nat) (v : Sets.Ens),
+       Preservation.wf G ->
+       Typing.typ G t (Syntax.𝓤 k) ->
+       InterpretedContexts.valid_valuation H s G rho ->
+       Denotation.denotes H s n G rho t v ->
+       Sets.IN v (CodeUniverses.CodeUniverses.U k)
+Closed under the global context
+ModelSoundness.sound_model_exists
+     : forall W H : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       exists s : Sets.Ens,
+         GlobalOperations.selects_global_witnesses H s /\
+         (forall (n : nat) (G : Context.Ctx nat n) (t T : Syntax.Term nat n),
+          Preservation.wf G ->
+          Typing.typ G t T ->
+          forall rho : Syntax.Fin n -> Sets.Ens,
+          InterpretedContexts.valid_valuation H s G rho ->
+          InterpretedContexts.realizes H s G rho t T) /\
+         (forall (n : nat) (G : Context.Ctx nat n)
+            (rho : Syntax.Fin n -> Sets.Ens) (t T : Syntax.Term nat n)
+            (v a : Sets.Ens),
+          Preservation.wf G ->
+          Typing.typ G t T ->
+          InterpretedContexts.valid_valuation H s G rho ->
+          Denotation.denotes H s n G rho t v ->
+          Denotation.denotes H s n G rho T a ->
+          Sets.IN v (CardinalHierarchy.decode a))
+Closed under the global context
+ModelSoundness.bottom_interpretation_empty
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall v : Sets.Ens,
+       ~
+       Sets.IN v (CardinalHierarchy.decode (ModelSoundness.bottom_code H s))
+Closed under the global context
+ModelSoundness.closed_bottom_uninhabited
+     : forall W H s : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       GlobalOperations.selects_global_witnesses H s ->
+       forall t : Syntax.Term nat 0,
+       ~ Typing.typ Context.ε t ModelSoundness.bottom
+Closed under the global context
+ModelSoundness.sound_nontrivial_model_exists
+     : forall W H : Sets.Ens,
+       HierarchyBounds.transitive_set W ->
+       Sets.INC CountableCodes.omega_codes W ->
+       SuppliedHierarchy.tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       CardinalClassification.cardinal_comparability ->
+       CardinalClassification.infinite_powerset_gap ->
+       CountableDichotomy.family_choice ->
+       exists s : Sets.Ens,
+         GlobalOperations.selects_global_witnesses H s /\
+         (forall (n : nat) (G : Context.Ctx nat n) (t T : Syntax.Term nat n),
+          Preservation.wf G ->
+          Typing.typ G t T ->
+          forall rho : Syntax.Fin n -> Sets.Ens,
+          InterpretedContexts.valid_valuation H s G rho ->
+          InterpretedContexts.realizes H s G rho t T) /\
+         (forall v : Sets.Ens,
+          ~
+          Sets.IN v
+            (CardinalHierarchy.decode (ModelSoundness.bottom_code H s)))
+Closed under the global context

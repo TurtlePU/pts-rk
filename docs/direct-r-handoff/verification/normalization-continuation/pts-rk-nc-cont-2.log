@@ -1,0 +1,57 @@
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Literals.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+File "./theories/NormalizationComplexity/Runtime.v", line 43, characters 72-83:
+Error:
+In environment
+n1 : nat
+t1 : Term nat n1
+t2 : Term nat (S n1)
+n' : nat
+rho : Fin n1 -> Fin n' * nat
+a : Syn n'
+ca : nat
+Ha : renameCosted t1 rho = (a, ca)
+IHt1 : a = rename (fun i : Fin n1 => fst (rho i)) t1
+b : Syn (S n')
+cb : nat
+Hb : renameCosted t2 (liftRename rho) = (b, cb)
+IHt2 : b = rename (fun i : Fin (S n1) => fst (liftRename rho i)) t2
+i : Fin n1
+f : Fin n'
+n : nat
+Unable to unify "fsucc (fst (rho (eq_rect n1 Fin i n1 eq_refl)))" with
+ "fst (let '(k, c) := rho (eq_rect n1 Fin i n1 eq_refl) in (fsucc k, S c))".
+
+File "theories/NormalizationComplexity/dune", lines 1-5, characters 0-157:
+1 | (rocq.theory
+2 |  (name PTSrk.NormalizationComplexity)
+3 |  (package pts-rk)
+4 |  (modules Rank Greedy Bounds Literals Runtime Audit)
+5 |  (theories Stdlib Equations PTSrk))
+        rocq theories/NormalizationComplexity/Runtime.{glob,vo} (exit 1)

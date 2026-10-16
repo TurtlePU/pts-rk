@@ -1,0 +1,24 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+uniform_product_code_choice
+     : (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       forall m n : nat,
+       exists s : Ens,
+         forall (a : Ens) (b : Ens -> Ens),
+         IN a (U m) ->
+         (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+         exists c f : Ens,
+           IN c (U (product_code_rank m n)) /\
+           EQ (apply_set s (product_code_witnesses m n a b)) (Couple c f) /\
+           bijection
+             (dependent_product (decode a) (fun x : Ens => decode (b x)))
+             (decode c) f
+        rocq ZFC_model/CodeWitnesses.{glob,vo}

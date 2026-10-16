@@ -1,0 +1,54 @@
+File "./ZFC_model/RankedNormalization.v", line 200, characters 71-72:
+Error:
+In environment
+W, H, s : Ens
+HW : transitive_set W
+HO : INC omega_codes W
+HH : tower_envelope W H
+classical_logic : forall P : Prop, P \/ ~ P
+comparison : cardinal_comparability
+gap : infinite_powerset_gap
+choice : family_choice
+selector : selects_global_witnesses H s
+n : nat
+G : Ctx nat n
+rho : Fin n -> Ens
+A : Term nat n
+B : Term nat (S n)
+t, u : Term nat n
+a : Ens
+b : Ens -> Ens
+f, x : Ens
+Tf : G ⊢ t ⇐ Π A B
+DA : OD.denotes H s n G rho A a
+DB :
+  forall y : Ens,
+  IN y (decode a) -> OD.denotes H s (S n) (G & A) (fin_match y rho) B (b y)
+IHDB :
+  forall y : Ens,
+  IN y (decode a) -> normalization_result (G & A) (fin_match y rho) B (b y)
+EB : family_extensional (fun y : Ens => decode (b y))
+Df : OD.denotes H s n G rho t f
+Du : OD.denotes H s n G rho u x
+IHDA : normalization_result G rho A a
+IHDf : normalization_result G rho t f
+IHDu : normalization_result G rho u x
+T : Term nat n
+HG : wf G
+HT : G ⊢ t $ u ⇐ T
+HV : RS.certified_variables H s G rho
+q : nat
+TP : G ⊢ Π A B ⇐ 𝓤 q
+m, k, l : nat
+R : rule m k l
+TA : G ⊢ A ⇐ 𝓤 m
+TB : G & A ⊢ B ⇐ 𝓤 k
+EP : 𝓤 q =ᵝ 𝓤 l
+A0 : Term nat n
+B0 : Term nat (S n)
+Tf0 : G ⊢ t ⇐ Π A0 B0
+Tu0 : G ⊢ u ⇐ A0
+ET : T =ᵝ B0 ◁ u
+The term "t" has type "Term nat n" while it is expected to have type
+ "Ctx ?L ?n".
+

@@ -1,0 +1,11 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bounded_family_range_equivalence
+     : forall W A f : Ens,
+       IN f (dependent_product A (fun _ : Ens => Power W)) ->
+       EQ (bounded_family_range W A f) (family_range A (apply_set f))
+        rocq ZFC_model/BoundedFamilies.{glob,vo}

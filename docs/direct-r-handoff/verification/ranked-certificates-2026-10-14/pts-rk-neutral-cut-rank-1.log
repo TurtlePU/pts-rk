@@ -1,0 +1,13 @@
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+NeutralCutRank.headed_type_rank
+     : forall (i : Fin ?n) (t : Term nat ?n),
+       NeutralCutRank.headed_by i t ->
+       forall (G : Ctx nat ?n) (T : Term nat ?n) (r : nat),
+       wf G ->
+       G ⊢ t ⇐ T -> G ⊢ G !! i ⇐ 𝓤 r -> exists k : nat, k <= r /\ G ⊢ T ⇐ 𝓤 k
+where
+?n : [ |- nat]

@@ -1,0 +1,13 @@
+\documentclass{article}
+\usepackage{titling,authblk,url}
+\usepackage[smartHybrid,fencedEnvs]{markdown}
+\makeatletter
+\AtBeginDocument{%
+  \typeout{TEST-AUTHSEP: \meaning\Authsep}%
+  \typeout{TEST-AUTHAND: \meaning\Authand}%
+  \typeout{TEST-AUTHANDS: \meaning\Authands}%
+  \typeout{TEST-DATE: \meaning\@date}%
+  \typeout{TEST-AFFILSEP: \the\affilsep}%
+  \typeout{TEST-DATESKIP: \the\markdownclass@dateskip}%
+}
+\makeatother

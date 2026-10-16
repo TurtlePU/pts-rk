@@ -1,0 +1,22 @@
+-- Run with texlua from the repository root; exercises the actual LPeg parser.
+kpse.set_program_name("luatex")
+package.path = "latex/markdown/?.lua;" .. package.path
+package.loaded["markdown-unicode-data"] = dofile("latex/markdown/markdown-unicode-data.lua")
+local parser = dofile("latex/markdown/markdown-parser.lua")
+local function render(source)
+  return parser.new({smartHybrid = true})(source)
+end
+local soft = render("It is hard (hence\n%textsc{TOWER}-complete).\n")
+assert(soft:find("\\textsc{TOWER}", 1, true), soft)
+assert(not soft:find("Separator", 1, true), soft)
+assert(not soft:find("HardLineBreak", 1, true), soft)
+assert(soft:find("SoftLineBreak", 1, true), soft)
+local hard = render("It is hard  \n%textsc{TOWER}-complete.\n")
+assert(hard:find("HardLineBreak", 1, true), hard)
+local blank = render("First paragraph.\n\n%textsc{TOWER}-hard.\n")
+assert(blank:find("Separator", 1, true), blank)
+local start = render("%textsc{TOWER}-hard.\n")
+assert(start:find("\\textsc{TOWER}", 1, true), start)
+local display = render("A display:\n%mathpar\n  x = y\n\n")
+assert(display:find("\\begin{mathpar}", 1, true), display)
+print("Percent continuation, hard break, paragraph, block-start and display: PASS")

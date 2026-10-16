@@ -1,0 +1,228 @@
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalAxioms exactly matches several files in path
+    (found DirectRRelationalAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalGround exactly matches several files in path
+    (found DirectRRelationalGround.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalEquality exactly matches several files in path
+    (found DirectRRelationalEquality.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalDeduction exactly matches several files in path
+    (found DirectRRelationalDeduction.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRRelationalCountermodel exactly matches several files in path
+    (found DirectRRelationalCountermodel.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAudit.v, 
+    required library DirectRTheorem4 exactly matches several files in path
+    (found DirectRTheorem4.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRUnaryBounded exactly matches several files in path
+    (found DirectRUnaryBounded.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRUnaryArithmetic exactly matches several files in path
+    (found DirectRUnaryArithmetic.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRSeparation exactly matches several files in path
+    (found DirectRSeparation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalAxioms.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalCountermodel.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalDeduction.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalDeduction.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalDeduction.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalDeduction.v, 
+    required library DirectRRelationalEquality exactly matches several files in path
+    (found DirectRRelationalEquality.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalDeduction.v, 
+    required library DirectRRelationalAxioms exactly matches several files in path
+    (found DirectRRelationalAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalEquality.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalEquality.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalEquality.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalEquality.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalGround.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalGround.v, 
+    required library DirectRSeparation exactly matches several files in path
+    (found DirectRSeparation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalGround.v, 
+    required library DirectRUnaryArithmetic exactly matches several files in path
+    (found DirectRUnaryArithmetic.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalGround.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalGround.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalTranslation.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalTranslation.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalTranslation.v, 
+    required library DirectRUnaryBounded exactly matches several files in path
+    (found DirectRUnaryBounded.v in ../relational and .; used the latter).
+*** Warning: in file DirectRRelationalTranslation.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRSeparation.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRSeparation.v, 
+    required library DirectRUnaryEvaluation exactly matches several files in path
+    (found DirectRUnaryEvaluation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalSyntax exactly matches several files in path
+    (found DirectRRelationalSyntax.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalTranslation exactly matches several files in path
+    (found DirectRRelationalTranslation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalAxioms exactly matches several files in path
+    (found DirectRRelationalAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalGround exactly matches several files in path
+    (found DirectRRelationalGround.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalDeduction exactly matches several files in path
+    (found DirectRRelationalDeduction.v in ../relational and .; used the latter).
+*** Warning: in file DirectRTheorem4.v, 
+    required library DirectRRelationalCountermodel exactly matches several files in path
+    (found DirectRRelationalCountermodel.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryArithmetic.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryArithmetic.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryArithmetic.v, 
+    required library DirectRUnaryBounded exactly matches several files in path
+    (found DirectRUnaryBounded.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryArithmetic.v, 
+    required library DirectRUnaryEvaluation exactly matches several files in path
+    (found DirectRUnaryEvaluation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryArithmetic.v, 
+    required library DirectRSeparation exactly matches several files in path
+    (found DirectRSeparation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRUnaryEvaluation exactly matches several files in path
+    (found DirectRUnaryEvaluation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRSeparation exactly matches several files in path
+    (found DirectRSeparation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRUnaryBounded exactly matches several files in path
+    (found DirectRUnaryBounded.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAudit.v, 
+    required library DirectRUnaryArithmetic exactly matches several files in path
+    (found DirectRUnaryArithmetic.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryAxioms.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryBounded.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryBounded.v, 
+    required library DirectRUnaryAxioms exactly matches several files in path
+    (found DirectRUnaryAxioms.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryBounded.v, 
+    required library DirectRSeparation exactly matches several files in path
+    (found DirectRSeparation.v in ../relational and .; used the latter).
+*** Warning: in file DirectRUnaryEvaluation.v, 
+    required library DirectRUnary exactly matches several files in path
+    (found DirectRUnary.v in ../relational and .; used the latter).
+        rocq Interpretation_of_R/relational/.Interpretation_of_R.theory.d
+        rocq theories/.PTSrk.theory.d
+        rocq Interpretation_of_R/.Interpretation_of_R.theory.d
+        rocq Interpretation_of_R/relational/DirectRRelationalSyntax.{glob,vo}
+        rocq Interpretation_of_R/DirectRCountermodel.{glob,vo}
+File "./Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq Interpretation_of_R/DirectRKernel.{glob,vo}
+        rocq Interpretation_of_R/DirectRCommonCodes.{glob,vo}
+        rocq Interpretation_of_R/DirectREval.{glob,vo}
+File "./Interpretation_of_R/DirectRSymbolic.v", line 12, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./Interpretation_of_R/DirectRSymbolic.v", line 12, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq Interpretation_of_R/DirectRSymbolic.{glob,vo}
+        rocq Interpretation_of_R/relational/DirectRRelationalCountermodel.{glob,vo}
+        rocq Interpretation_of_R/DirectRCheck.{glob,vo}
+        rocq Interpretation_of_R/DirectRStructural.{glob,vo}
+        rocq Interpretation_of_R/DirectRLogic.{glob,vo}
+        rocq Interpretation_of_R/DirectRPositive.{glob,vo}
+        rocq Interpretation_of_R/DirectRFiniteTables.{glob,vo}
+        rocq Interpretation_of_R/DirectRIterations.{glob,vo}
+File "./Interpretation_of_R/relational/DirectRUnary.v", line 159, characters 39-42:
+Error: The reference nJ9 was not found in the current environment.
+
+File "Interpretation_of_R/relational/dune", lines 1-20, characters 0-643:
+ 1 | (rocq.theory
+ 2 |  (name Interpretation_of_R.relational)
+ 3 |  (package pts-rk)
+....
+18 |           DirectRUnaryBounded
+19 |           DirectRUnaryEvaluation)
+20 |  (theories Stdlib Equations PTSrk Interpretation_of_R))
+        rocq Interpretation_of_R/relational/DirectRUnary.{glob,vo} (exit 1)
+        rocq Interpretation_of_R/DirectRFiniteObservations.{glob,vo}
+        rocq Interpretation_of_R/DirectRFiniteUp.{glob,vo}
+        rocq Interpretation_of_R/DirectRFiniteCertificates.{glob,vo}

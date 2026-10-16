@@ -1,0 +1,11 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+countable_pairing_bijection
+     : bijection (Prod omega_codes omega_codes) omega_codes pairing_graph
+        rocq ZFC_model/CountablePairing.{glob,vo}

@@ -1,0 +1,22 @@
+Warning:
+/private/tmp/pts-rk-theories-layout-fresh.ifuGK9/default/theories/Interpretation_of_R/relational
+was previously bound to PTSrk.Interpretation_of_R.relational; it is remapped
+to Interpretation_of_R.relational
+[overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-theories-layout-fresh.ifuGK9/default/theories/Interpretation_of_R/functional
+was previously bound to PTSrk.Interpretation_of_R.functional; it is remapped
+to Interpretation_of_R.functional
+[overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-theories-layout-fresh.ifuGK9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-theories-layout-fresh.ifuGK9/default/theories/ZFC_model
+was previously bound to PTSrk.ZFC_model; it is remapped to PTSrkModel
+[overriding-logical-loadpath,filesystem,default]
+Error:
+Source and target file names must coincide, directories can differ
+Source: AUDIT
+Target: PUBLIC_AUDIT

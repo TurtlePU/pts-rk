@@ -1,0 +1,24 @@
+const assert = require('assert/strict');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const {options, profileDirectory} = require('../scripts/grazie-session.cjs');
+const temporary = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), 'prose-session-test-'));
+assert.throws(() => options(['init', '--profile-dir', 'relative', '--browser', '/chrome']), /absolute/);
+assert.throws(() => options(['start', '--profile-dir', temporary, '--browser', '/chrome', '--port', '0']), /port/);
+const profile = path.join(temporary, 'private');
+assert.equal(profileDirectory(profile, true), profile);
+assert.equal(profileDirectory(profile, false), profile);
+assert.throws(() => profileDirectory(profile, true), /empty directory/);
+assert.throws(() => profileDirectory(path.join(temporary, 'missing'), false), /init first/);
+const repository = path.join(temporary, 'repo');
+fs.mkdirSync(repository); fs.mkdirSync(path.join(repository, '.git'));
+assert.throws(() => profileDirectory(path.join(repository, 'browser'), true), /outside Git/);
+const link = path.join(temporary, 'repo-link');
+fs.symlinkSync(repository, link);
+assert.throws(() => profileDirectory(path.join(link, 'browser'), true), /outside Git/);
+fs.chmodSync(profile, 0o755);
+assert.throws(() => profileDirectory(profile, false), /mode 700/);
+// Only this test's own empty/fake profiles; never real browser credentials.
+fs.rmSync(temporary, {recursive: true});
+console.log('Dedicated session path/ownership/permissions guards: PASS (no browser or network)');

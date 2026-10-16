@@ -1,0 +1,15 @@
+Closed under the global context
+RankedNormalization.original_denotation_normalizes
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (t : Term nat n) (v : Ens),
+       RankedNormalization.OD.denotes H s n G rho t v ->
+       RankedNormalization.normalization_result H s G rho t v

@@ -1,0 +1,61 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+finite_countable_dichotomy
+     : (forall P : Prop, P \/ ~ P) ->
+       forall X c : Ens,
+       subset_choice X c ->
+       (exists n : nat, equinumerous X (finite_carrier n)) \/
+       embeds omega_codes X
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/CountableDichotomy.{glob,vo}
+File "./ZFC_model/CardinalClassification.v", line 68, characters 41-52:
+Error:
+In environment
+classical_logic : forall P : Prop, P \/ ~ P
+comparison : cardinal_comparability
+gap : infinite_powerset_gap
+choice : family_choice
+i : nat
+X : Ens
+HX : embeds X (carrier i)
+n : nat
+Hn : equinumerous X (finite_carrier n)
+Unable to unify
+ "(fix F (e : Ens) : (fun _ : Ens => Ens -> Prop) e :=
+     match e as e0 return (fun _ : Ens => Ens -> Prop) e0 with
+     | sup A e0 =>
+         (fun (A0 : Type) (_ : A0 -> Ens) (eq1 : A0 -> Ens -> Prop)
+            (X0 : Ens) =>
+          Ens_rect (fun _ : Ens => Prop)
+            (fun (B : Type) (g : B -> Ens) (_ : B -> Prop) =>
+             (forall x : A0, EXType B (fun y : B => eq1 x (g y))) /\
+             (forall y : B, EXType A0 (fun x : A0 => eq1 x (g y))))
+            X0)
+           A e0 (fun H : A => F (e0 H))
+     end)
+    (El ?infinite_carrier (repr ?c)) (code_value ?infinite_carrier ?c)"
+with
+ "(fix F (e : Ens) : (fun _ : Ens => Ens -> Prop) e :=
+     match e as e0 return (fun _ : Ens => Ens -> Prop) e0 with
+     | sup A e0 =>
+         (fun (A0 : Type) (_ : A0 -> Ens) (eq1 : A0 -> Ens -> Prop)
+            (X0 : Ens) =>
+          Ens_rect (fun _ : Ens => Prop)
+            (fun (B : Type) (g : B -> Ens) (_ : B -> Prop) =>
+             (forall x : A0, EXType B (fun y : B => eq1 x (g y))) /\
+             (forall y : B, EXType A0 (fun x : A0 => eq1 x (g y))))
+            X0)
+           A e0 (fun H : A => F (e0 H))
+     end)
+    ?A (finite_carrier n)".
+
+File "ZFC_model/dune", lines 1-5, characters 0-539:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/CardinalClassification.{glob,vo} (exit 1)

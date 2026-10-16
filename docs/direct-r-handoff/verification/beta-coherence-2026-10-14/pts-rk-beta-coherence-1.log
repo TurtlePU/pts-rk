@@ -1,0 +1,125 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/DenotationInversion.{glob,vo}
+Closed under the global context
+denotes_root_beta
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (t : Term nat (S n)) (u T : Term nat n),
+       wf G ->
+       G ⊢ [A] t $ u ⇐ T ->
+       (forall (U : Term nat n) (l : nat) (a a' : Ens),
+        G ⊢ U ⇐ 𝓤 l ->
+        U =ᵝ A ->
+        denotes H s n G rho U a ->
+        denotes H s n G rho A a' -> EQ (decode a) (decode a')) ->
+       (forall (B C : Term nat (S n)) (j k : nat) (a y b c : Ens),
+        G & A ⊢ B ⇐ 𝓤 j ->
+        G & A ⊢ C ⇐ 𝓤 k ->
+        B =ᵝ C ->
+        denotes H s n G rho A a ->
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) B b ->
+        denotes H s (S n) (G & A) (fin_match y rho) C c ->
+        EQ (decode b) (decode c)) ->
+       (forall (l : nat) (a : Ens),
+        G ⊢ A ⇐ 𝓤 l -> denotes H s n G rho A a -> IN a (U l)) ->
+       (forall (C : Term nat (S n)) (k : nat) (a y c : Ens),
+        G & A ⊢ C ⇐ 𝓤 k ->
+        denotes H s n G rho A a ->
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) C c -> IN c (U k)) ->
+       (forall (C : Term nat (S n)) (a y c v : Ens),
+        G & A ⊢ t ⇐ C ->
+        denotes H s n G rho A a ->
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) C c ->
+        denotes H s (S n) (G & A) (fin_match y rho) t v -> IN v (decode c)) ->
+       (forall a x : Ens,
+        G ⊢ u ⇐ A ->
+        denotes H s n G rho A a -> denotes H s n G rho u x -> IN x (decode a)) ->
+       forall v : Ens,
+       denotes H s n G rho ([A] t $ u) v -> denotes H s n G rho (t ◁ u) v
+Closed under the global context
+realized_root_beta
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B t : Term nat (S n)) (u : Term nat n) 
+         (m k : nat),
+       wf G ->
+       G ⊢ A ⇐ 𝓤 m ->
+       G & A ⊢ t ⇐ B ->
+       G ⊢ u ⇐ A ->
+       valid_valuation H s G rho ->
+       realizes H s G rho A (𝓤 m) ->
+       realizes H s G rho u A ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' -> realizes H s (G & A) rho' t B) ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' -> realizes H s (G & A) rho' B (𝓤 k)) ->
+       (forall a a' : Ens,
+        denotes H s n G rho A a ->
+        denotes H s n G rho A a' -> EQ (decode a) (decode a')) ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' ->
+        forall v v' : Ens,
+        denotes H s (S n) (G & A) rho' t v ->
+        denotes H s (S n) (G & A) rho' t v' -> EQ v v') ->
+       (forall x x' : Ens,
+        denotes H s n G rho u x -> denotes H s n G rho u x' -> EQ x x') ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' ->
+        forall C C' : Term nat (S n),
+        G & A ⊢ t ⇐ C ->
+        G & A ⊢ t ⇐ C' ->
+        C =ᵝ C' ->
+        forall c c' : Ens,
+        denotes H s (S n) (G & A) rho' C c ->
+        denotes H s (S n) (G & A) rho' C' c' -> EQ (decode c) (decode c')) ->
+       (forall (A0 A1 : Term nat n) (B0 B1 : Term nat (S n)),
+        G ⊢ [A] t ⇐ Π A0 B0 ->
+        G ⊢ [A] t ⇐ Π A1 B1 ->
+        A0 =ᵝ A1 ->
+        forall a a' : Ens,
+        denotes H s n G rho A0 a ->
+        denotes H s n G rho A1 a' -> EQ (decode a) (decode a')) ->
+       (forall (A0 A1 : Term nat n) (B0 B1 : Term nat (S n)),
+        G ⊢ [A] t ⇐ Π A0 B0 ->
+        G ⊢ [A] t ⇐ Π A1 B1 ->
+        B0 =ᵝ B1 ->
+        forall a y : Ens,
+        denotes H s n G rho A0 a ->
+        IN y (decode a) ->
+        forall b b' : Ens,
+        denotes H s (S n) (G & A0) (fin_match y rho) B0 b ->
+        denotes H s (S n) (G & A0) (fin_match y rho) B1 b' ->
+        EQ (decode b) (decode b')) ->
+       forall v : Ens,
+       denotes H s n G rho ([A] t $ u) v ->
+       exists c : Ens,
+         denotes H s n G rho (t ◁ u) v /\
+         denotes H s n G rho (B ◁ u) c /\ IN v (decode c) /\ IN c (U k)
+        rocq ZFC_model/RootBeta.{glob,vo}

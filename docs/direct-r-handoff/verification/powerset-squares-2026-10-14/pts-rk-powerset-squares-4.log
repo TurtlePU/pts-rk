@@ -1,0 +1,20 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+carrier_cartesian_bound
+     : forall i j : nat,
+       embeds (Prod (carrier i) (carrier j)) (carrier (Nat.max i j))
+decoded_dependent_product_bound
+     : forall (m n : nat) (a : Ens) (b : Ens -> Ens),
+       IN a (U m) ->
+       (forall x : Ens, IN x (decode a) -> IN (b x) (U n)) ->
+       embeds (dependent_product (decode a) (fun x : Ens => decode (b x)))
+         (carrier (Nat.max (S m) n))
+        rocq ZFC_model/PowersetSquares.{glob,vo}

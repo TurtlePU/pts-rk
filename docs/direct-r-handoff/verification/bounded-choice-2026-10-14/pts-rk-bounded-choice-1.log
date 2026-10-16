@@ -1,0 +1,22 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+        rocq ZFC_model/BoundedFormulaTransport.{glob,vo}
+File "./ZFC_model/BoundedChoice.v", line 69, characters 44-72:
+Error:
+In environment
+AC : family_choice
+n : nat
+p : Formula (S (S n))
+r : Fin n -> Ens
+A, B : Ens
+x : Ens
+Unable to unify "Ens" with
+ "forall Y : Ens, IN Y x -> exists y : Ens, IN y Y".
+
+File "ZFC_model/dune", lines 1-5, characters 0-774:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/BoundedChoice.{glob,vo} (exit 1)

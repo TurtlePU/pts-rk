@@ -1,0 +1,26 @@
+(rocq.theory
+ (name Interpretation_of_R)
+ (package pts-rk)
+ (modules DirectRBinaryObservations
+          DirectRBinaryTables
+          DirectRCheck
+          DirectRCommonCodes
+          DirectRCountermodel
+          DirectRDerivationCertificates
+          DirectREval
+          DirectRFiniteCertificates
+          DirectRFiniteLawElimination
+          DirectRFiniteObservations
+          DirectRFiniteTables
+          DirectRFiniteUp
+          DirectRGuardedFiniteLaws
+          DirectRIterations
+          DirectRKernel
+          DirectRLogic
+          DirectRPositive
+          DirectRRelationTables
+          DirectRStructural
+          DirectRSymbolic
+          DirectRTelescopeArguments
+          DirectRWitnessSearch)
+ (theories Stdlib Equations PTSrk))

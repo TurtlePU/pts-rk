@@ -1,0 +1,34 @@
+\documentclass[preamble=formalization-preamble.tex]{markdown}
+title: Formalization link regression
+date: October 16, 2026
+author: Alice Example
+formalization:
+  rocq-ai: https://example.org/rocq/theories/
+  rocq: https://example.org/old/theories/
+  lean: https://example.org/lean/
+  agda: https://example.org/agda/
+
+Statement %formalized{rocq-ai:ZFC_model/ModelSoundness.v\#L133}.
+Proof %proof{rocq:Syntax.v\#L7}.
+Other assistants: %formalized{lean:Main.lean}, %proof{agda:Main.agda}.
+Absolute override: %proof{rocq-ai:https://example.org/repo}.
+
+:::Theorem[Moving title \proof{rocq-ai:Typing.v\#L50}]
+A statement.
+:::
+
+:::Proof
+An ordinary proof. Inline badge: %proof{rocq-ai:Proof.v}.
+:::
+
+```{=tex}
+\begin{proof}[Named proof]
+{Grouped opening text.} The optional title still works.
+\end{proof}
+\begin{proof}
+{An opening group with $x : T$.} Another ordinary proof.
+\end{proof}
+\begin{proof}
+{rocq-ai: is literal grouped opening text, not a badge.}
+\end{proof}
+```

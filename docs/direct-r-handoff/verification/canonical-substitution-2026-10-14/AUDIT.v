@@ -1,0 +1,26 @@
+(** Reproducible theorem-type and transitive-assumption audit.
+    These are partial results. No command below certifies full soundness. *)
+From PTSrkModel Require Import CanonicalRenaming CanonicalRealization
+  CanonicalSubstitution CanonicalRootBeta CanonicalContext
+  CanonicalApplication CanonicalHereditary MaterialSetTheory RealizationInduction.
+
+Check CanonicalSubstitution.denotes_rank_zero_substitution.
+Print Assumptions CanonicalSubstitution.denotes_rank_zero_substitution.
+Check CanonicalContext.denotes_context_conversion.
+Print Assumptions CanonicalContext.denotes_context_conversion.
+Check CanonicalApplication.application_realization_from_induction.
+Print Assumptions CanonicalApplication.application_realization_from_induction.
+Check CanonicalRootBeta.rank_zero_normal_domain_root_beta.
+Print Assumptions CanonicalRootBeta.rank_zero_normal_domain_root_beta.
+Check CanonicalHereditary.rank_one_normal_application.
+Print Assumptions CanonicalHereditary.rank_one_normal_application.
+Check CanonicalHereditary.rank_one_normal_lambda_application.
+Print Assumptions CanonicalHereditary.rank_one_normal_lambda_application.
+Check MaterialSetTheory.bounded_separation_theory_satisfied.
+Print Assumptions MaterialSetTheory.bounded_separation_theory_satisfied.
+Check MaterialSetTheory.bounded_theory_logical_soundness.
+Print Assumptions MaterialSetTheory.bounded_theory_logical_soundness.
+
+(** The unproved conversion premise must remain visible in this type. *)
+Check original_realization_from_conversion.
+Print Assumptions original_realization_from_conversion.

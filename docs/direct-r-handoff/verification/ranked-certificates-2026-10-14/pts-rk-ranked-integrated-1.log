@@ -1,0 +1,104 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+bounded_zermelo_satisfied
+     : (forall P : Prop, P \/ ~ P) -> theory_holds BoundedZermelo
+bzc_satisfied
+     : (forall P : Prop, P \/ ~ P) -> family_choice -> theory_holds BZC
+bzc_logical_soundness
+     : (forall P : Prop, P \/ ~ P) ->
+       family_choice ->
+       forall (n : nat) (G : list (Formula n)) (p : Formula n),
+       derives BZC n G p ->
+       forall r : Fin n -> Ens, context_holds G r -> holds p r
+        rocq ZFC_model/MaterialZermelo.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/CanonicalValuationTransport.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+NeutralCutRank.headed_type_rank
+     : forall (i : Fin ?n) (t : Term nat ?n),
+       NeutralCutRank.headed_by i t ->
+       forall (G : Ctx nat ?n) (T : Term nat ?n) (r : nat),
+       wf G ->
+       G ⊢ t ⇐ T -> G ⊢ G !! i ⇐ 𝓤 r -> exists k : nat, k <= r /\ G ⊢ T ⇐ 𝓤 k
+where
+?n : [ |- nat]
+NeutralCutRank.headed_substituted_product_rank
+     : forall (i : Fin ?n) (f : Term nat ?n),
+       NeutralCutRank.headed_by i f ->
+       forall (G : Ctx nat ?n) (T : Term nat ?n) (r m : nat) 
+         (D : Ctx nat m) (sigma : Fin ?n -> Term nat m) 
+         (A : Term nat m) (B : Term nat (S m)),
+       wf G ->
+       wf D ->
+       G ⊢ f ⇐ T ->
+       G ⊢ G !! i ⇐ 𝓤 r ->
+       typed_substitution G D sigma ->
+       D ⊢ replace sigma f ⇐ Π A B ->
+       exists a b : nat, a < r /\ b <= r /\ D ⊢ A ⇐ 𝓤 a /\ D & A ⊢ B ⇐ 𝓤 b
+where
+?n : [ |- nat]
+NeutralCutRank.exposed_lambda_domain_rank
+     : forall (G : Ctx nat ?n) (A : Term nat ?n) (f F : Term nat (S ?n))
+         (u C : Term nat ?n) (t : Term nat (S ?n)) 
+         (r : nat),
+       wf G ->
+       G ⊢ A ⇐ 𝓤 r ->
+       G & A ⊢ f ⇐ F ->
+       (exists (D : Term nat (S ?n)) (E : Term nat (S (S ?n))), F = Π D E) ->
+       beta_normal f ->
+       not_lambda f ->
+       G ⊢ u ⇐ A ->
+       f ◁ u ↠ᵝ [C] t ->
+       exists (m k : nat) (B : Term nat (S ?n)),
+         m < r /\ k <= r /\ G ⊢ C ⇐ 𝓤 m /\ G & C ⊢ B ⇐ 𝓤 k /\ G & C ⊢ t ⇐ B
+where
+?n : [ |- nat]
+        rocq ZFC_model/NeutralCutRank.{glob,vo}
+Closed under the global context
+        rocq ZFC_model/RankedDenotation.{glob,vo}
+File "./ZFC_model/RankedTransport.v", line 41, characters 6-111:
+Error: Not convertible.
+
+File "ZFC_model/dune", lines 1-5, characters 0-1656:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication BoundedGraphs BoundedFiniteCarriers RegularTyping RealizationInduction BoundedPowersets BoundedIteration BoundedFormulaSelection BoundedCodeSelection BoundedRecursion BoundedCodeArithmetic BoundedInfiniteDecoder BoundedUniverses BoundedSortDecoder BoundedDecoder BoundedDecodedSelection BoundedChoiceSequence TypedEquality TypedEqualityRenaming BoundedModelData CanonicalTypeWitnesses CanonicalDenotation CanonicalRenaming CanonicalRealization CanonicalSubstitution CanonicalRootBeta MaterialSetTheory CanonicalContext CanonicalApplication CanonicalHereditary CanonicalValuationTransport MaterialZermelo NeutralCutRank RankedDenotation RankedTransport)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/RankedTransport.{glob,vo} (exit 1)

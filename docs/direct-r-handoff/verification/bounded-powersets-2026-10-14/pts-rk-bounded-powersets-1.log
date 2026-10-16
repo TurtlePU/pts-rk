@@ -1,0 +1,24 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/BoundedPowersets.v", line 34, characters 0-86:
+Error:
+The following term contains unresolved implicit arguments:
+  (fun W : ?T =>
+   fin_match W
+     (fun i : Fin 0 =>
+      match i in Fin n return match n with
+                              | 0 => ?T
+                              | S _ => IDProp
+                              end with
+      | @fzero _ | _ => idProp
+      end))
+More precisely: 
+- ?T: Cannot infer ?T in the partial instance "?T" found for the implicit
+  parameter A of fin_match whose type is "Type".
+
+File "ZFC_model/dune", lines 1-5, characters 0-1092:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication BoundedGraphs BoundedFiniteCarriers RegularTyping RealizationInduction BoundedPowersets)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/BoundedPowersets.{glob,vo} (exit 1)

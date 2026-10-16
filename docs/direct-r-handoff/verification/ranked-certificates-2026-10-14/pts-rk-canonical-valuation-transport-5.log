@@ -1,0 +1,35 @@
+1 goal
+  
+  H, s : Ens
+  n0 : nat
+  G, G0 : Ctx nat n0
+  A, A0 : Term nat n0
+  HC : corresponding_contexts n0 G G0
+  HD :
+    forall rho : Fin n0 -> Ens,
+    CR.valid_valuation H s G rho ->
+    exists a : Ens,
+      CD.denotes H s n0 G rho A a /\ CD.denotes H s n0 G0 rho A0 a
+  IH :
+    forall E : Ctx nat n0,
+    corresponding_contexts n0 G0 E -> corresponding_contexts n0 G E
+  D0 : Ctx nat n0
+  B0 : Term nat n0
+  c : corresponding_contexts n0 G0 D0
+  e :
+    forall rho : Fin n0 -> Ens,
+    CR.valid_valuation H s G0 rho ->
+    exists a : Ens,
+      CD.denotes H s n0 G0 rho A0 a /\ CD.denotes H s n0 D0 rho B0 a
+  rho : Fin n0 -> Ens
+  HV : CR.valid_valuation H s G rho
+  a : Ens
+  DA : CD.denotes H s n0 G rho A a
+  DB : CD.denotes H s n0 G0 rho A0 a
+  VD : CR.valid_valuation H s G0 rho
+  ============================
+  exists a0 : Ens,
+    CD.denotes H s n0 G rho A a0 /\ CD.denotes H s n0 D0 rho B0 a0
+File "/tmp/pts-rk-canonical-valuation-transport.fzbnir/CanonicalValuationTransport.v", line 99, characters 6-255:
+Error: No matching clauses for match.
+

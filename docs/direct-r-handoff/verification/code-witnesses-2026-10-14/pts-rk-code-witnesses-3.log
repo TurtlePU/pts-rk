@@ -1,0 +1,24 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/CodeWitnesses.v", line 87, characters 12-32:
+Error:
+In environment
+m, n : nat
+a : Ens
+b : Ens -> Ens
+e, c : Ens
+Hc : IN c (U (product_code_rank m n))
+f : Ens
+Hf : IN f (iterated_power (witness_ambient m n) 4)
+E : EQ e (Couple c f)
+Unable to unify "forall E0 : Ens, IN E0 (U ?i) -> IN E0 (carrier ?j)" with
+ "match iterated_power (witness_ambient m n) 0 with
+  | sup A f => EXType A (fun y : A => EQ c (f y))
+  end".
+
+File "ZFC_model/dune", lines 1-5, characters 0-570:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/CodeWitnesses.{glob,vo} (exit 1)

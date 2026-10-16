@@ -1,0 +1,14 @@
+*** Warning: in file Bounds.v, 
+    required library Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+File "./theories/NormalizationComplexity/Greedy.v", line 19, characters 24-35:
+Error: No applicable tactic.
+
+File "theories/NormalizationComplexity/dune", lines 1-5, characters 0-134:
+1 | (rocq.theory
+2 |  (name PTSrk.NormalizationComplexity)
+3 |  (package pts-rk)
+4 |  (modules Rank Greedy Bounds)
+5 |  (theories Stdlib Equations PTSrk))
+        rocq theories/NormalizationComplexity/Greedy.{glob,vo} (exit 1)

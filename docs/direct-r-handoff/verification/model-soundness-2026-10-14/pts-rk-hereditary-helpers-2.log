@@ -1,0 +1,22 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+RankedSubstitution.certificate_replace_nonlambda
+     : forall (H s : Ens) (n : nat) (G : Ctx nat n) 
+         (rho : Fin n -> Ens) (t T : Term nat n) (v a : Ens),
+       RankedSubstitution.RD.certificate H s n G rho t T v a ->
+       forall (m : nat) (D : Ctx nat m) (sigma : Fin n -> Term nat m)
+         (rho' : Fin m -> Ens),
+       typed_substitution G D sigma ->
+       normal_nonlambda_substitution sigma ->
+       RankedSubstitution.certified_substitution H s D rho rho' sigma ->
+       RankedSubstitution.RD.certificate H s m D rho' 
+         (replace sigma t) (replace sigma T) v a
+        rocq ZFC_model/RankedSubstitution.{glob,vo}

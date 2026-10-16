@@ -1,0 +1,11 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/RankedSubstitution.v", line 32, characters 6-119:
+Error: Not convertible.
+
+File "ZFC_model/dune", lines 1-5, characters 0-1675:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication BoundedGraphs BoundedFiniteCarriers RegularTyping RealizationInduction BoundedPowersets BoundedIteration BoundedFormulaSelection BoundedCodeSelection BoundedRecursion BoundedCodeArithmetic BoundedInfiniteDecoder BoundedUniverses BoundedSortDecoder BoundedDecoder BoundedDecodedSelection BoundedChoiceSequence TypedEquality TypedEqualityRenaming BoundedModelData CanonicalTypeWitnesses CanonicalDenotation CanonicalRenaming CanonicalRealization CanonicalSubstitution CanonicalRootBeta MaterialSetTheory CanonicalContext CanonicalApplication CanonicalHereditary CanonicalValuationTransport MaterialZermelo NeutralCutRank RankedDenotation RankedTransport RankedSubstitution)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/RankedSubstitution.{glob,vo} (exit 1)

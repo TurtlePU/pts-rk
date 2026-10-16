@@ -1,0 +1,206 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/BoundedChoice.{glob,vo}
+Closed under the global context
+Closed under the global context
+        rocq ZFC_model/PairedChoice.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+product_realization_from_pointwise
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B : Term nat (S n)) (a : Ens) 
+         (m k : nat),
+       denotes H s n G rho A a ->
+       IN a (U m) ->
+       (forall x : Ens,
+        IN x (decode a) ->
+        exists b : Ens,
+          IN b (U k) /\ denotes H s (S n) (G & A) (fin_match x rho) B b) ->
+       realizes H s G rho (Π A B) (𝓤 (Nat.max (S m) k))
+        rocq ZFC_model/DenotationChoice.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+application_realization_from_inversion
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B : Term nat (S n)) (t u : Term nat n) 
+         (m k : nat),
+       G ⊢ t ⇐ Π A B ->
+       G ⊢ u ⇐ A ->
+       realizes H s G rho t (Π A B) ->
+       realizes H s G rho u A ->
+       (forall a a' : Ens,
+        denotes H s n G rho A a ->
+        denotes H s n G rho A a' -> EQ (decode a) (decode a')) ->
+       (forall a : Ens, denotes H s n G rho A a -> IN a (U m)) ->
+       (forall a x b : Ens,
+        denotes H s n G rho A a ->
+        IN x (decode a) ->
+        denotes H s (S n) (G & A) (fin_match x rho) B b -> IN b (U k)) ->
+       realizes H s G rho (t $ u) (B ◁ u)
+application_realization_from_induction
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B : Term nat (S n)) (t u : Term nat n) 
+         (m k : nat),
+       G ⊢ t ⇐ Π A B ->
+       G ⊢ u ⇐ A ->
+       valid_valuation H s G rho ->
+       realizes H s G rho t (Π A B) ->
+       realizes H s G rho u A ->
+       realizes H s G rho A (𝓤 m) ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' -> realizes H s (G & A) rho' B (𝓤 k)) ->
+       (forall a a' : Ens,
+        denotes H s n G rho A a ->
+        denotes H s n G rho A a' -> EQ (decode a) (decode a')) ->
+       (forall rho' : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho' ->
+        forall b b' : Ens,
+        denotes H s (S n) (G & A) rho' B b ->
+        denotes H s (S n) (G & A) rho' B b' -> EQ (decode b) (decode b')) ->
+       realizes H s G rho (t $ u) (B ◁ u)
+        rocq ZFC_model/ApplicationRealization.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+lambda_realization_in_context
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (A : Term nat n)
+         (B t : Term nat (S n)) (m k : nat),
+       G & A ⊢ t ⇐ B ->
+       (forall rho : Fin n -> Ens,
+        valid_valuation H s G rho -> realizes H s G rho A (𝓤 m)) ->
+       (forall rho : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho ->
+        exists c v : Ens,
+          IN c (U k) /\
+          denotes H s (S n) (G & A) rho B c /\
+          denotes H s (S n) (G & A) rho t v /\ IN v (decode c)) ->
+       forall rho : Fin n -> Ens,
+       valid_valuation H s G rho -> realizes H s G rho ([A] t) (Π A B)
+lambda_realization_from_induction
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (A : Term nat n)
+         (B t : Term nat (S n)) (m k : nat),
+       G & A ⊢ t ⇐ B ->
+       (forall rho : Fin n -> Ens,
+        valid_valuation H s G rho -> realizes H s G rho A (𝓤 m)) ->
+       (forall rho : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho -> realizes H s (G & A) rho t B) ->
+       (forall rho : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho -> realizes H s (G & A) rho B (𝓤 k)) ->
+       (forall rho : Fin (S n) -> Ens,
+        valid_valuation H s (G & A) rho ->
+        forall c c' : Ens,
+        denotes H s (S n) (G & A) rho B c ->
+        denotes H s (S n) (G & A) rho B c' -> EQ (decode c) (decode c')) ->
+       forall rho : Fin n -> Ens,
+       valid_valuation H s G rho -> realizes H s G rho ([A] t) (Π A B)
+        rocq ZFC_model/LambdaRealization.{glob,vo}
+Closed under the global context
+Closed under the global context
+original_realization_from_conversion
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       (forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens)
+          (A B : Term nat n) (m k : nat),
+        wf G ->
+        valid_valuation H s G rho ->
+        G ⊢ A ⇐ 𝓤 m ->
+        G ⊢ B ⇐ 𝓤 k ->
+        A =ᵝ B ->
+        forall a b : Ens,
+        denotes H s n G rho A a ->
+        denotes H s n G rho B b -> EQ (decode a) (decode b)) ->
+       forall (n : nat) (G : Ctx nat n) (t T : Term nat n),
+       wf G ->
+       G ⊢ t ⇐ T ->
+       forall rho : Fin n -> Ens,
+       valid_valuation H s G rho -> realizes H s G rho t T
+Closed under the global context
+Closed under the global context
+Closed under the global context
+typed_membership_from_conversion
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       (forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens)
+          (A B : Term nat n) (m k : nat),
+        wf G ->
+        valid_valuation H s G rho ->
+        G ⊢ A ⇐ 𝓤 m ->
+        G ⊢ B ⇐ 𝓤 k ->
+        A =ᵝ B ->
+        forall a b : Ens,
+        denotes H s n G rho A a ->
+        denotes H s n G rho B b -> EQ (decode a) (decode b)) ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens)
+         (t T : Term nat n) (v a : Ens),
+       wf G ->
+       G ⊢ t ⇐ T ->
+       valid_valuation H s G rho ->
+       denotes H s n G rho t v -> denotes H s n G rho T a -> IN v (decode a)
+        rocq ZFC_model/RealizationInduction.{glob,vo}

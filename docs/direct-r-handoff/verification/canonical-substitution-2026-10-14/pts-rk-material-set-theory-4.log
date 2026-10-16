@@ -1,0 +1,33 @@
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+logical_soundness
+     : (forall P : Prop, P \/ ~ P) ->
+       forall T : Theory,
+       theory_holds T ->
+       forall (n : nat) (G : list (Formula n)) (p : Formula n),
+       derives T n G p ->
+       forall r : Fin n -> Ens, context_holds G r -> holds p r
+bounded_separation_statement
+     : forall (A : Fin ?n) (p : Bounded.Formula (S ?n)) (r : Fin ?n -> Ens),
+       holds (bounded_separation A p) r <->
+       (exists Y : Ens,
+          forall x : Ens,
+          IN x Y <-> IN x (r A) /\ Bounded.holds p (fin_match x r))
+where
+?n : [ |- nat]
+bounded_separation_theory_satisfied
+     : theory_holds BoundedSeparation
+bounded_theory_logical_soundness
+     : (forall P : Prop, P \/ ~ P) ->
+       forall (n : nat) (G : list (Formula n)) (p : Formula n),
+       derives BoundedSeparation n G p ->
+       forall r : Fin n -> Ens, context_holds G r -> holds p r

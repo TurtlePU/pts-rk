@@ -1,0 +1,36 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+denotes_matched_beta
+     : forall W H s : Ens,
+       transitive_set W ->
+       INC omega_codes W ->
+       tower_envelope W H ->
+       (forall P : Prop, P \/ ~ P) ->
+       cardinal_comparability ->
+       infinite_powerset_gap ->
+       family_choice ->
+       selects_global_witnesses H s ->
+       forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+         (A : Term nat n) (B t : Term nat (S n)) (u : Term nat n) 
+         (a : Ens) (b body : Ens -> Ens) (x : Ens) 
+         (l m k : nat),
+       G ⊢ A ⇐ 𝓤 l ->
+       G & A ⊢ t ⇐ B ->
+       G ⊢ u ⇐ A ->
+       denotes H s n G rho A a ->
+       (forall y : Ens,
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) B (b y)) ->
+       (forall y : Ens,
+        IN y (decode a) ->
+        denotes H s (S n) (G & A) (fin_match y rho) t (body y)) ->
+       denotes H s n G rho u x ->
+       family_extensional (fun y : Ens => decode (b y)) ->
+       family_extensional body ->
+       IN a (U m) ->
+       (forall y : Ens, IN y (decode a) -> IN (b y) (U k)) ->
+       (forall y : Ens, IN y (decode a) -> IN (body y) (decode (b y))) ->
+       IN x (decode a) ->
+       denotes H s n G rho ([A] t $ u) (body x) /\
+       denotes H s n G rho (t ◁ u) (body x)
+        rocq ZFC_model/DenotationBeta.{glob,vo}

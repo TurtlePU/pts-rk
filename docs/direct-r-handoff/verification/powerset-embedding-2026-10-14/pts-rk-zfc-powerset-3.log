@@ -1,0 +1,11 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+subset_function_injection
+     : forall A B : Ens,
+       injection (dependent_product A (fun _ : Ens => Power B))
+         (Power (Prod A B)) (flatten_graph A B)
+        rocq ZFC_model/SubsetFunctions.{glob,vo}

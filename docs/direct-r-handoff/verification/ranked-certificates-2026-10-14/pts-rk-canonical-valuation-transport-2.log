@@ -1,0 +1,12 @@
+File "/tmp/pts-rk-canonical-valuation-transport.fzbnir/CanonicalValuationTransport.v", line 92, characters 19-30:
+Error:
+In environment
+H, s : Ens
+E : Ctx nat 0
+HDE : corresponding_contexts 0 ε E
+H0 :
+  existT (fun x : nat => Ctx nat x) 0 ε =
+  existT (fun x : nat => Ctx nat x) 0 E
+Unable to unify "corresponding_contexts (S ?n) (?G & ?A) (?D & ?B)" with
+ "corresponding_contexts 0 ε E".
+

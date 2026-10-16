@@ -1,0 +1,44 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/RealizationInduction.v", line 167, characters 43-44:
+Error:
+In environment
+W, H, s : Ens
+HW : transitive_set W
+HO : INC omega_codes W
+HH : tower_envelope W H
+classical_logic : forall P : Prop, P \/ ~ P
+comparison : cardinal_comparability
+gap : infinite_powerset_gap
+choice : family_choice
+HS : selects_global_witnesses H s
+conversion :
+  forall (n : nat) (G : Ctx nat n) (rho : Fin n -> Ens) 
+    (A B : Term nat n) (m k : nat),
+  wf G ->
+  valid_valuation H s G rho ->
+  G ⊢ A ⇐ 𝓤 m ->
+  G ⊢ B ⇐ 𝓤 k ->
+  A =ᵝ B ->
+  forall a b : Ens,
+  denotes H s n G rho A a ->
+  denotes H s n G rho B b -> EQ (decode a) (decode b)
+n : nat
+G : Ctx nat n
+rho : Fin n -> Ens
+t : Term nat n
+k : nat
+v : Ens
+HG : wf G
+HT : G ⊢ t ⇐ 𝓤 k
+HV : valid_valuation H s G rho
+Dt : denotes H s n G rho t v
+Hv : IN v (decode (repr (sort k)))
+The term "k" has type "nat" while it is expected to have type "nat -> Ens".
+
+File "ZFC_model/dune", lines 1-5, characters 0-1075:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality GlobalCodeChoice GlobalOperations SyntaxRenaming SyntaxSubstitution Denotation DenotationBeta InterpretedContexts RuleRealization BoundedFormulaTransport BoundedChoice DenotationChoice PairedChoice LambdaRealization DenotationInversion ApplicationRealization ContextTransport DenotationCongruence BetaWitnessTransport TypeHeadNormalization RootBeta BoundedApplication BoundedGraphs BoundedFiniteCarriers RegularTyping RealizationInduction)
+5 |  (theories Stdlib ZFC PTSrk PTSrk.NormalizationComplexity))
+        rocq ZFC_model/RealizationInduction.{glob,vo} (exit 1)

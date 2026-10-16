@@ -1,0 +1,65 @@
+Model foundations verification, 2026-10-13
+NOT a PTS model soundness theorem.
+
+Environment:
+OPAMROOT=$HOME/.local/share/pts-rk-ci/opam
+PATH=$HOME/.local/share/pts-rk-ci/bin:$PATH
+
+Build command (exit 0):
+opam exec --switch=pts-rk-ci -- dune build --display=short --no-buffer models/SetFunctions.vo
+
+        rocq models/.PTSrkModel.theory.d
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq models/SetFunctions.{glob,vo}
+
+Type/assumption query command (exit 0):
+opam exec --switch=pts-rk-ci -- rocq repl -quiet -R _build/default/vendor/zfc ZFC -R _build/default/models PTSrkModel
+Input: From PTSrkModel Require Import SetFunctions.
+Then Check and Print Assumptions for, in order:
+dependent_product_introduction, dependent_product_application, graph_beta,
+graph_application_unique, dependent_product_empty_fiber.
+
+
+Rocq < 
+Rocq < dependent_product_introduction
+     : forall (A : Sets.Ens) (B f : Sets.Ens -> Sets.Ens),
+       family_extensional f ->
+       (forall x : Sets.Ens, Sets.IN x A -> Sets.IN (f x) (B x)) ->
+       Sets.IN (graph A f) (dependent_product A B)
+
+Rocq < dependent_product_application
+     : forall (A : Sets.Ens) (B : Sets.Ens -> Sets.Ens) (g x : Sets.Ens),
+       Sets.IN g (dependent_product A B) ->
+       Sets.IN x A ->
+       exists y : Sets.Ens, application g x y /\ Sets.IN y (B x)
+
+Rocq < graph_beta
+     : forall (A : Sets.Ens) (f : Sets.Ens -> Sets.Ens) (x : Sets.Ens),
+       family_extensional f -> Sets.IN x A -> application (graph A f) x (f x)
+
+Rocq < graph_application_unique
+     : forall (A : Sets.Ens) (f : Sets.Ens -> Sets.Ens) (x y : Sets.Ens),
+       family_extensional f ->
+       Sets.IN x A -> application (graph A f) x y <-> Sets.EQ y (f x)
+
+Rocq < dependent_product_empty_fiber
+     : forall (A : Sets.Ens) (B : Sets.Ens -> Sets.Ens) (x : Sets.Ens),
+       Sets.IN x A ->
+       Sets.EQ (B x) Axioms.Vide ->
+       forall g : Sets.Ens, ~ Sets.IN g (dependent_product A B)
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq < Closed under the global context
+
+Rocq <

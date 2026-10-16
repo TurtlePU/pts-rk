@@ -1,0 +1,5 @@
+Exit code: 0
+Last stage: complete
+
+Green means the supplied sources compiled, including the public theorem audits.
+It does not establish the open material BZC reduction or external STLC hardness theorem.

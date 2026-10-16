@@ -1,0 +1,35 @@
+        rocq ZFC_model/.PTSrkModel.theory.d
+File "./ZFC_model/ProductExtensionality.v", line 49, characters 71-78:
+Error:
+In environment
+A, A', K, f : Ens
+E : EQ A A'
+HT : IN f (dependent_product A (fun _ : Ens => K))
+HB :
+  (forall x x' y : Ens, application f x y -> application f x' y -> EQ x x') /\
+  (forall y : Ens, IN y K -> exists x : Ens, application f x y)
+Unable to unify
+ "(fix F (e : Ens) : (fun _ : Ens => Ens -> Prop) e :=
+     match e as e0 return (fun _ : Ens => Ens -> Prop) e0 with
+     | sup A e0 =>
+         (fun (A0 : Type) (_ : A0 -> Ens) (eq1 : A0 -> Ens -> Prop)
+            (X0 : Ens) =>
+          Ens_rect (fun _ : Ens => Prop)
+            (fun (B : Type) (g : B -> Ens) (_ : B -> Prop) =>
+             (forall x : A0, EXType B (fun y : B => eq1 x (g y))) /\
+             (forall y : B, EXType A0 (fun x : A0 => eq1 x (g y))))
+            X0)
+           A e0 (fun H : A => F (e0 H))
+     end)
+    ?E ?E"
+with
+ "forall x y : Ens,
+  EQ x y -> EQ ((fun _ : Ens => K) x) ((fun _ : Ens => K) y)".
+
+File "ZFC_model/dune", lines 1-5, characters 0-606:
+1 | (rocq.theory
+2 |  (name PTSrkModel)
+3 |  (package pts-rk)
+4 |  (modules SetFunctions SetApplication CodeUniverses SetBijections CodedFunctions ProductEmbedding CountableCodes CardinalGrowth CardinalHierarchy PowersetEmbedding SubsetFunctions BoundedFormulas BoundedInverse HierarchyBounds BoundedFamilies BoundedProducts CodeHierarchyBounds SuppliedHierarchy BoundedBijections CountablePairing CartesianMaps PowersetSquares CantorBernstein BoundedComparison CardinalClassification FiniteClassification CountableDichotomy ProductWitnesses CodeWitnesses SelectedCodes ProductExtensionality)
+5 |  (theories Stdlib ZFC PTSrk))
+        rocq ZFC_model/ProductExtensionality.{glob,vo} (exit 1)
