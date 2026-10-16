@@ -1406,9 +1406,10 @@ dependently typed PTS:
     the results; $B$ has to be bound by an elementary
     recursive function on the size of input. In
     Fig.~\ref{rank-bound-algorithm} we present
-    such a function: $\mathtt{maxRankLiteral}\;t$
-    computes the maximal rank contained as a subterm
-    of $t$.
+    such a function: $\mathtt{estimateRank}\;t$
+    provides an upper bound on ranks of redex arguments
+    in $t$.
+
     \begin{figure}[ht]
     \begin{minted}{agda}
 maxRankLiteral rkᵣ      = r
@@ -1443,6 +1444,7 @@ estimateRank t =
     \caption{Computing rank upper bound}
     \label{rank-bound-algorithm}
     \end{figure}
+
     Function $\mathtt{maxRankLiteral}\;t$ computes
     maximal rank which is contained as a subterm in the
     term $t$. The workhorse of this algorithm,
