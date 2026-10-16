@@ -3,7 +3,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'tools'))
-from paper_math import formula, format_source, normalize_notation
+from paper_math import formula, format_source, normalize_notation, math_layout
 
 
 class MathSourceTests(unittest.TestCase):
@@ -45,6 +45,45 @@ class MathSourceTests(unittest.TestCase):
 
     def test_align_row_break(self):
         self.assertEqual(formula(r'a→\\&b'), r'a → \\ & b')
+
+    def test_environment_alignment(self):
+        source = '\\left\\{\\begin{array}{l}\n        x \\\\\n        y\n    \\end{array}\\right.'
+        expected = '\\left\\{\n\\begin{array}{l}\n  x \\\\\n  y\n\\end{array}\\right.'
+        self.assertEqual(math_layout(source), expected)
+        self.assertEqual(math_layout(expected), expected)
+
+    def test_leading_row_break(self):
+        self.assertEqual(math_layout('  \\\\ x'), '  \\\\\n  x')
+
+    def test_fraction_arguments(self):
+        source = '\\dfrac{x \\quad\n        y}{z}'
+        expected = '\\dfrac{x \\quad\n       y}\n      {z}'
+        self.assertEqual(math_layout(source), expected)
+        self.assertEqual(math_layout(expected), expected)
+
+    def test_short_fraction_numerator(self):
+        source = '\\dfrac\n  {Γ, Δ ⊢ t : T}\n  {Γ, x : U, Δ ⊢ t : T}.'
+        expected = '\\dfrac{Γ, Δ ⊢ t : T}\n      {Γ, x : U, Δ ⊢ t : T}.'
+        self.assertEqual(math_layout(source), expected)
+        self.assertEqual(math_layout(expected), expected)
+
+    def test_multiple_inference_premises(self):
+        source = '\\inferrule[Rule]{A \\\\\n    B}{C}\n      condition'
+        expected = '\\inferrule[Rule]\n  {A \\\\ B}\n  {C}\n      condition'
+        self.assertEqual(math_layout(source), expected)
+        self.assertEqual(math_layout(expected), expected)
+
+    def test_short_inference_rules_unchanged(self):
+        for source in ('\\inferrule{A}{B}', '\\inferrule{A}\n    {B}'):
+            self.assertEqual(math_layout(source), source)
+
+    def test_environment_set_continuations(self):
+        source = '\\begin{array}{c}\n  S = \\{\n    a, b\n  \\}\n\\end{array}'
+        self.assertEqual(math_layout(source), source)
+
+    def test_tikzcd_cells_preserved(self):
+        source = '%tikzcd\n  [ampersand replacement = \\&]\n    a \\&\n    b\n  \\\\\n    c \\&\n    d\n'
+        self.assertEqual(format_source(source), source)
 
 
 if __name__ == '__main__':

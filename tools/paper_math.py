@@ -117,6 +117,83 @@ def formula(s):
     return '\n'.join(line.rstrip() for line in out.split('\n')).strip()
 
 
+def math_layout(s):
+    """Align nested environments and multiline fractions in offside math."""
+    # Keep short rules compact, but put multiple premises and their conclusion
+    # in separate aligned arguments rather than wrapping through both braces.
+    out, stop = [], 0
+    for m in re.finditer(r'\\inferrule(?:\[[^\]]*\])?', s):
+        if m.start() < stop:
+            continue
+        first, mid, _ = argument(s, m.end())
+        second, end, _ = argument(s, mid)
+        if '\\\\' not in first and '\n' not in first:
+            continue
+        indent = re.match(r' *', s[s.rfind('\n', 0, m.start()) + 1:])[0]
+        first = re.sub(r'\s*\\\\\s*', lambda _: ' \\\\ ', first)
+        first = re.sub(r'\s+', ' ', first).strip()
+        second = re.sub(r'\s+', ' ', second).strip()
+        out.extend((s[stop:m.start()], m[0] + '\n' + indent + '  {' +
+                    first + '}\n' + indent + '  {' + second + '}'))
+        stop = end
+    out.append(s[stop:])
+    s = ''.join(out)
+    # Keep the two arguments together visually, with matching opening braces.
+    out, stop = [], 0
+    for m in re.finditer(r'\\dfrac(?![A-Za-z])', s):
+        if m.start() < stop:
+            continue
+        first, mid, _ = argument(s, m.end())
+        second, end, _ = argument(s, mid)
+        if '\n' not in s[m.start():end]:
+            continue
+        indent = re.match(r' *', s[s.rfind('\n', 0, m.start()) + 1:])[0]
+        args = []
+        for value in (first, second):
+            rows = value.strip().splitlines()
+            args.append('{' + ('\n' + indent + '       ').join(row.strip() for row in rows) + '}')
+        out.extend((s[stop:m.start()], '\\dfrac' + args[0] +
+                    '\n' + indent + '      ' + args[1]))
+        stop = end
+    out.append(s[stop:])
+    s = ''.join(out)
+    # Put environment boundaries at the start of a line so their matching
+    # indentation is visible even after an opening delimiter or implication.
+    s = re.sub(r'(?m)^( *)(\S[^\n]*?)(\\begin\{[^}]+\})',
+               lambda m: m[1] + m[2].rstrip() + '\n' + m[1] + m[3], s)
+    rows, stack = [], []
+    for line in s.splitlines():
+        stripped = line.lstrip()
+        closing = re.match(r'\\end\{([^}]+)\}', stripped)
+        if closing:
+            if not stack or stack[-1][0] != closing[1]:
+                raise ValueError('Mismatched math environment: ' + stripped)
+            _, indent, _ = stack.pop()
+            line = ' ' * indent + stripped
+        elif stack:
+            # Escaped set braces can contain several continuation lines.
+            before = 1 if stripped.startswith(r'\}') else 0
+            depth = max(0, stack[-1][2] - before)
+            line = ' ' * (stack[-1][1] + 2 + 2 * depth) + stripped
+            stack[-1][2] = max(0, stack[-1][2] +
+                               len(re.findall(r'\\\{', stripped)) -
+                               len(re.findall(r'\\\}', stripped)))
+        elif re.match(r'\\begin\{', stripped):
+            line = stripped
+        opening = re.match(r'\\begin\{([^}]+)\}', line.lstrip())
+        if opening:
+            stack.append([opening[1], len(line) - len(line.lstrip()), 0])
+        # A leading row break gets its own line, not a new formula after it.
+        leading = re.match(r'^( *)\\\\\s+(\S.*)$', line)
+        if leading:
+            rows.extend((leading[1] + '\\\\', leading[1] + leading[2]))
+        else:
+            rows.append(line)
+    if stack:
+        raise ValueError('Unclosed math environment: ' + stack[-1][0])
+    return '\n'.join(rows)
+
+
 def format_source(s):
     # Keep literal Coq, Agda and quoted prompt listings byte-for-byte.
     parts = re.split(r'(?m)^((?:> )?```[^\n]*\n[\s\S]*?^(?:> )?```[^\n]*$)', s)
@@ -137,7 +214,7 @@ def format_source(s):
             body = []
             while i < len(lines) and (not lines[i].strip() or len(lines[i])-len(lines[i].lstrip()) > base):
                 body.append(lines[i]); i += 1
-            out.append(textwrap.indent(formula(textwrap.dedent(''.join(body))), ' ' * (base + 2)) + '\n')
+            out.append(textwrap.indent(math_layout(formula(textwrap.dedent(''.join(body)))), ' ' * (base + 2)) + '\n')
             if body and not body[-1].strip():
                 out.append('\n')
         parts[n] = ''.join(out)
