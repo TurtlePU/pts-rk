@@ -76,7 +76,7 @@ Theoretical Computer Science}
 \affil[2]{Radboud Univ. Nijmegen, Department of
 Software Science}
 
-\date{\today}
+\date{October 16, 2026}
 
 \begin{document}
 
@@ -103,14 +103,14 @@ without additional axioms.
 \end{abstract}
 
 \section{Introduction}
-Pure type systems are a family of minimalistic typed
-$\lambda$-calculi introduced independently by Berardi
-\cite{berardi1988towards} and Terlouw
+Pure type systems (PTS) are a family of minimalistic
+typed $\lambda$-calculi introduced independently by
+Berardi \cite{berardi1988towards} and Terlouw
 \cite{terlouw1989gstt}. Their abstract grammar includes
 only variables $x\in\mathsf{Var}$, abstraction
 $\lambda(x:T).u$, application $u\,t$, dependent
 function types $\Pi(x:T).U$ (where $U$ might depend on
-$x$) and \textit{sorts} $s\in\mathcal{S}$ that act like
+$x$) and \textit{sorts} $s\in\mathcal{S}$ that act as
 ``types of types''.
 
 \begin{figure}[ht]
@@ -128,6 +128,8 @@ $x$) and \textit{sorts} $s\in\mathcal{S}$ that act like
     \end{bnf}
     \caption{Grammar of pure type systems}
 \end{figure}
+
+\newpage
 
 Common syntax conventions to make it more lightweight
 are the following: application associates to the left,
@@ -217,6 +219,8 @@ with respect to their set-theoretical semantics
 \cite{tait1967intensional,coquand1990kripke,
 geuvers1991modular}, but it is not true for arbitrary
 PTS.
+
+\newpage
 
 \begin{theorem*}[Girard'72
     \cite{girard1972interpretation,
@@ -1050,6 +1054,7 @@ PTS-\texorpdfstring{$rk$}{rk}}
     \end{itemize}
 \end{proof}
 
+\vspace{-.5em}
 This is a retelling of a proof that our friend
 Aleksandr Levin got after half-jokingly entering the
 following prompt into GPT-6 Pro:
@@ -1133,7 +1138,7 @@ a standard technique originating from
 altenkirch1999monadic}:
 
 \begin{minted}{coq}
-Inductive Term (L: Type) (n: nat) : Type :=
+Inductive Term (L: Type) (n: nat): Type :=
 | sort: L -> Term L n
 | Π: Term L n -> Term L (S n) -> Term L n
 | var: Fin n -> Term L n
@@ -1399,11 +1404,12 @@ dependently typed PTS:
     appearing in abstractions of a term, then run a
     normalizer for $(B+1)$-bounded terms and compare
     the results; $B$ has to be bound by an elementary
-    recursive function on the size of input. Consider,
-    then, the following elementary recursive functions
-    to compute such an upper bound, written in
-    pseudocode and using a suitable encoding of terms,
-    tuples and lists:
+    recursive function on the size of input. In
+    Fig.~\ref{rank-bound-algorithm} we present
+    such a function: $\mathtt{maxRankLiteral}\;t$
+    computes the maximal rank contained as a subterm
+    of $t$.
+    \begin{figure}[ht]
     \begin{minted}{agda}
 maxRankLiteral rkᵣ      = r
 maxRankLiteral Π(x:T).U =
@@ -1434,6 +1440,9 @@ estimateRank t =
         traversal [] t (maxRankLiteral t)
      in aᵗ
     \end{minted}
+    \caption{Computing rank upper bound}
+    \label{rank-bound-algorithm}
+    \end{figure}
     Function $\mathtt{maxRankLiteral}\;t$ computes
     maximal rank which is contained as a subterm in the
     term $t$. The workhorse of this algorithm,
@@ -1457,7 +1466,7 @@ estimateRank t =
     rank can only be $\mathsf{rk}_r$ which is already
     present somewhere in the original term. And our
     result is monotone with respect to the value we
-    output here, so it is enoug to provide some upper
+    output here, so it is enough to provide some upper
     bound on it; thus it is enough to output a maximal
     rank which occurs in the original term as a
     subterm.
@@ -2320,8 +2329,9 @@ carrier $X$ with a domain predicate $\delta$.
 
 Writing $\mathcal U\to B$ abbreviates the successive
 dependent arrows for these binders; it does not
-introduce a record type. Put $\ev_{\mathcal U}(d)=d\,X
-\,z\,s$ and $G(d)\triangleq(\mathcal U\to\delta(\ev_{
+introduce a record type. Put
+$\ev_{\mathcal U}(d)=d\,X\,z\,s$ and
+$G(d)\triangleq(\mathcal U\to\delta(\ev_{
 \mathcal U}(d))):\rk6$. For $P:X\to\rk1$, write
 \[
     \Up_{\mathcal U}(P)\triangleq
