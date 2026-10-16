@@ -36,6 +36,6 @@ emits an inspectable patch separating independent comma/article edits from
 remaining wording. It resolves duplicate edits once and leaves non-minor
 rewrites pending, rebased to the edited source. Review conflicting alternatives
 before applying its patch. It refuses to overwrite an existing checked minor
-report. `restore_minor` verifies every checked excerpt and edit category so the
-paper's prose-baseline check can account for precisely those authorized edits;
-the actual mathematics is checked independently and is never restored away.
+report. `restore_minor` verifies every checked excerpt and edit category for
+the splitting workflow. The paper checker compares source content directly
+and does not depend on generated review reports.

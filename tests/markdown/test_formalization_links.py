@@ -11,16 +11,6 @@ spec.loader.exec_module(check)
 
 
 class FormalizationTests(unittest.TestCase):
-    def test_explicit_author_math_change_is_exact_and_unique(self):
-        edit = dict(before='$x$ then $y$', after='$x$', math_change=True)
-        self.assertEqual(check.approved_math_baseline(['$z$', '$x$', '$y$'], [edit]),
-                         ['$z$', '$x$'])
-        self.assertEqual(check.approved_math_baseline(['$x$', '$y$'],
-                         [dict(before='$x$ then $y$', after='$x$')]), ['$x$', '$y$'])
-        for fragments in (['$x$'], ['$x$', '$y$', '$x$', '$y$']):
-            with self.assertRaises(ValueError):
-                check.approved_math_baseline(fragments, [edit])
-
     def test_numeric_vertical_spacing_is_presentation_only(self):
         self.assertEqual(check.body_stream(r'Before\vspace{-1em}After'),
                          check.body_stream('BeforeAfter'))

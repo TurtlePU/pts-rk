@@ -19,17 +19,6 @@ class MinorCorrectionsTests(unittest.TestCase):
     def test_compact_report_attribution_and_checkboxes(self):
         self.assertEqual(review.provider_label(['Grazie cloud', 'Grazie IDE (local)', 'DeepL Write']),
                          'Grazie & DeepL Write')
-        for name in ('MINOR_CORRECTIONS.md', 'WORDING_SUGGESTIONS.md'):
-            report=(root/'latex'/name).read_text()
-            self.assertNotIn('Grazie cloud',report)
-            self.assertNotIn('Grazie local',report)
-            self.assertNotIn('] Review',report)
-            for block in report.split('\n## ')[1:]:
-                self.assertRegex(block,r'^PTS-rk\.tex:\d+-\d+ · .+ · Suggested by ')
-                self.assertRegex(block,r'\n\n- \[[ x]\] [^\n]*\S')
-                for match in review.CRITIC.finditer(block):
-                    self.assertEqual(block[match.start()-1], '`')
-                    self.assertEqual(block[match.end()], '`')
 
     def test_only_commas_and_articles(self):
         for old,new in [('Thus','Thus,'),('','the '),('an','the'),('Situation','The situation'),('Levin,','Levin')]:
@@ -51,15 +40,3 @@ class MinorCorrectionsTests(unittest.TestCase):
         report='# Minor corrections\n\n## Test · lines 1–1\n\n- [x] Implemented\n\n{++the ++}result.\n'
         with self.assertRaises(ValueError):
             minor.restore_minor('result.\n',report)
-
-    def test_pending_excerpts_match_current_source(self):
-        source=(root/'latex/PTS-rk.tex').read_text().splitlines()
-        for header,marked in minor.passages((root/'latex/WORDING_SUGGESTIONS.md').read_text()):
-            a,b=minor.line_range(header)
-            self.assertEqual(review.reject(marked),'\n'.join(source[a-1:b]),header)
-
-    def test_every_minor_passage_checked_and_present(self):
-        source=(root/'latex/PTS-rk.tex').read_text()
-        report=(root/'latex/MINOR_CORRECTIONS.md').read_text()
-        self.assertNotIn('- [ ]',report)
-        self.assertNotEqual(minor.restore_minor(source,report),source)

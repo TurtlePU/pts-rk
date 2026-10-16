@@ -6,23 +6,8 @@
 - [PTS-rk.tex](PTS-rk.tex): MLTT-S-style Markdown–TeX version,
   with metadata, Markdown headings and fenced theorem/proof environments.
 - [PTS-rk.pdf](PTS-rk.pdf): compiled version for visual review.
-- [WORDING_SUGGESTIONS.md](WORDING_SUGGESTIONS.md): Grazie/DeepL suggestions
-  with implementation checkboxes and current passage locations; CriticMarkup
-  retains the original proposals, with author variants noted.
-  The saved [review workflow](../tools/prose-review/README.md) requires a
-  proper-name and technical-terminology audit before report publication.
-- [COAUTHOR_CHANGES.md](COAUTHOR_CHANGES.md): changes synchronized from the
-  coauthor's two pinned upstream revisions, including the exponent correction.
 - [slides.tex](slides.tex) and [slides.pdf](slides.pdf): presentation sources
   and checked-in slides.
-- [MINOR_CORRECTIONS.md](MINOR_CORRECTIONS.md): checked comma/article edits
-  implemented only in the Markdown paper; exact before/after context is kept.
-- [PROSE_EDITS.json](PROSE_EDITS.json): exact user-approved prose differences
-  from the traditional paper. Explicit `math_change` entries also update the
-  expected formula sequence for deliberate author edits; all actual formulas
-  are still compared, and missing/ambiguous baseline matches fail.
-- [SPELLING_CORRECTIONS.md](SPELLING_CORRECTIONS.md): checked spelling and
-  Oxford-variant differences from the pinned upstream traditional paper.
 
 ## Markdown–TeX paper
 
@@ -136,11 +121,12 @@ With `--rendered-dir DIR`, it also checks that the parser did not escape math
 commands/dollars or turn prose into indented code. This is not a pixel or PDF
 equivalence test.
 The two source versions are maintained explicitly, not auto-synchronized.
-The prose check reverses only the checked comma/article edits in
-MINOR_CORRECTIONS.md before comparing the older traditional text. It rejects
-stale excerpts or non-minor replacements in that report. Mathematical
-comparison always uses the actual edited Markdown source, never the restored
-prose baseline. Broader wording changes remain unapplied in the review report.
+The checker compares the actual sources directly, without review-report
+exemptions. Use `--traditional PATH` to compare against another traditional
+source, such as the synchronized paper on the `paper-sync-markdown` branch;
+the local paper.tex may lag behind PTS-rk.tex. The saved
+[review workflow](../tools/prose-review/README.md) remains available for
+future prose reviews.
 Prose now follows Oxford English spelling (Grazie `GB-oxendict`). The local
 [Grazie helper](../tools/grazie/README.md) reports spelling findings and uses
 Grazie sentence boundaries for stable 50-character prose reflow, with local
