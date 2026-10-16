@@ -129,8 +129,6 @@ $x$) and \textit{sorts} $s\in\mathcal{S}$ that act as
     \caption{Grammar of pure type systems}
 \end{figure}
 
-\newpage
-
 Common syntax conventions to make it more lightweight
 are the following: application associates to the left,
 so $a\,b\,c$ is understood as $(a\,b)\,c$; in a
@@ -219,8 +217,6 @@ with respect to their set-theoretical semantics
 \cite{tait1967intensional,coquand1990kripke,
 geuvers1991modular}, but it is not true for arbitrary
 PTS.
-
-\newpage
 
 \begin{theorem*}[Girard'72
     \cite{girard1972interpretation,
@@ -1404,13 +1400,11 @@ dependently typed PTS:
     appearing in abstractions of a term, then run a
     normalizer for $(B+1)$-bounded terms and compare
     the results; $B$ has to be bound by an elementary
-    recursive function on the size of input. In
-    Fig.~\ref{rank-bound-algorithm} we present
-    such a function: $\mathtt{estimateRank}\;t$
-    provides an upper bound on ranks of redex arguments
-    in $t$.
+    recursive function on the size of input. We present
+    such a function below: $\mathtt{estimateRank}\;t$
+    provides a bound on ranks of redex arguments in
+    $t$.
 
-    \begin{figure}[ht]
     \begin{minted}{agda}
 maxRankLiteral rkᵣ      = r
 maxRankLiteral Π(x:T).U =
@@ -1441,9 +1435,6 @@ estimateRank t =
         traversal [] t (maxRankLiteral t)
      in aᵗ
     \end{minted}
-    \caption{Computing rank upper bound}
-    \label{rank-bound-algorithm}
-    \end{figure}
 
     Function $\mathtt{maxRankLiteral}\;t$ computes
     maximal rank which is contained as a subterm in the
