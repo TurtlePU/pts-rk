@@ -1381,12 +1381,11 @@ appearing in abstractions of a term,
 then run a normalizer for $(B + 1)$-bounded terms
 and compare the results; $B$ has to be bound by an
 elementary recursive function on the size of
-input.
-Consider, then, the following elementary recursive
-functions to compute such an upper bound,
-written in pseudocode and using a suitable
-encoding of terms, tuples and lists:
+input. In Fig. <#rank-bound-algorithm> we present
+such a function: $\mathtt{maxRankLiteral}\;t$ computes
+the maximal rank contained as a subterm of $t$.
 
+:::Figure[ht] Computing rank upper bound {#rank-bound-algorithm}
 ```agda
 maxRankLiteral rkᵣ      = r
 maxRankLiteral Π(x:T).U =
@@ -1417,10 +1416,8 @@ estimateRank t =
         traversal [] t (maxRankLiteral t)
      in aᵗ
 ```
+:::
 
-Function $\mathtt{maxRankLiteral}\;t$ computes
-maximal rank which is contained as a subterm in
-the term $t$.
 The workhorse of this algorithm,
 $\mathtt{traversal}\;Γ \;t\;d$,
 accepts the list $Γ$ of ranks in context of a term
