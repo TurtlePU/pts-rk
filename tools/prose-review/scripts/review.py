@@ -370,7 +370,7 @@ def render(source, data, output, terms=(), excluded=(), names=()):
     for record in sorted(compact, key=lambda r: (r['line'],r['end_line'])):
         providers = provider_label(record['providers'])
         marked = record['marked']
-        report += [f"## paper-markdown.tex:{record['line']}-{record['end_line']} · {record['id']} · Suggested by {providers}", '',
+        report += [f"## PTS-rk.tex:{record['line']}-{record['end_line']} · {record['id']} · Suggested by {providers}", '',
                    '- [ ] ' + quote_critic(marked), '']
     Path(output).write_text('\n'.join(report))
     save(str(output)+'.audit.json',dict(source_sha256=data['source_sha256'], counts=audit,

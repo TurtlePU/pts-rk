@@ -31,7 +31,7 @@ class FormalizationTests(unittest.TestCase):
 
     def test_paper_metadata_order(self):
         import re
-        source = (tools.parent / 'latex/paper-markdown.tex').read_text()
+        source = (tools.parent / 'latex/PTS-rk.tex').read_text()
         header = source.split(':::Abstract', 1)[0]
         self.assertEqual(re.findall(r'(?m)^([a-z]+):', header),
                          ['title', 'author', 'formalization', 'date'])
@@ -73,7 +73,7 @@ class FormalizationTests(unittest.TestCase):
         root = tools.parent
         old = (root / 'latex/paper.tex').read_text()
         new = check.expand_formalization_links(check.native_tex(
-            (root / 'latex/paper-markdown.tex').read_text()))
+            (root / 'latex/PTS-rk.tex').read_text()))
         import re
         pattern = r'\\rocq(formalised|proof)\{([^}]+)\}'
         self.assertEqual(re.findall(pattern, old), re.findall(pattern, new))

@@ -62,7 +62,7 @@ Rejecting the markup must reproduce the exact source excerpt.
 For GitHub review, wrap each CriticMarkup token in single backticks. Put the
 checkbox immediately before its source-aligned passage, without a separate
 “Review” or “Implemented” line. Use headings in this order:
-`paper-markdown.tex:214-218 · EDIT-ID · Suggested by Grazie & DeepL Write`.
+`PTS-rk.tex:214-218 · EDIT-ID · Suggested by Grazie & DeepL Write`.
 Display both cloud and IDE engines simply as Grazie; retain precise engine
 and coverage evidence in the audit, not repeated report status lines. List
 both providers when the same edit is independently supported; do not infer

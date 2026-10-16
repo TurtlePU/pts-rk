@@ -3,9 +3,9 @@
 - [paper.tex](paper.tex): PTS-rk calculus, metatheory, set model, normalization
   complexity, and related claims.
 - [paper.pdf](paper.pdf): checked-in paper PDF.
-- [paper-markdown.tex](paper-markdown.tex): MLTT-S-style Markdown–TeX version,
+- [PTS-rk.tex](PTS-rk.tex): MLTT-S-style Markdown–TeX version,
   with metadata, Markdown headings and fenced theorem/proof environments.
-- [paper-markdown.pdf](paper-markdown.pdf): compiled version for visual review.
+- [PTS-rk.pdf](PTS-rk.pdf): compiled version for visual review.
 - [WORDING_SUGGESTIONS.md](WORDING_SUGGESTIONS.md): Grazie/DeepL suggestions
   with implementation checkboxes and current passage locations; CriticMarkup
   retains the original proposals, with author variants noted.

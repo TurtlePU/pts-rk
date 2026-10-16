@@ -128,7 +128,7 @@ Combine independently collected provider files before rendering:
 ```sh
 python3 scripts/review.py merge deepl-results.json grazie-results.json \
   --output combined-results.json
-python3 scripts/review.py render --source paper-markdown.tex \
+python3 scripts/review.py render --source PTS-rk.tex \
   --results combined-results.json --names protected-names.txt \
   --terms protected-terms.txt --output WORDING_SUGGESTIONS.md
 ```

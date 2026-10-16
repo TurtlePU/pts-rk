@@ -28,17 +28,17 @@ def passages(report, checked=False):
 
 
 def line_range(header):
-    match = re.search(r'(?:lines |paper-markdown\.tex:)(\d+)[–-](\d+)', header)
+    match = re.search(r'(?:lines |PTS-rk\.tex:)(\d+)[–-](\d+)', header)
     if not match:
         raise ValueError('Missing source range: ' + header)
     return tuple(map(int, match.groups()))
 
 
 def report_entry(header, marked, checked=False):
-    if not header.startswith('paper-markdown.tex:'):
+    if not header.startswith('PTS-rk.tex:'):
         identifier, providers, _ = header.split(' · ')
         first, last = line_range(header)
-        header = f'paper-markdown.tex:{first}-{last} · {identifier} · Suggested by {review.provider_label(providers.split(" + "))}'
+        header = f'PTS-rk.tex:{first}-{last} · {identifier} · Suggested by {review.provider_label(providers.split(" + "))}'
     return ['## ' + header, '', '- [' + ('x' if checked else ' ') + '] ' + review.quote_critic(marked), '']
 
 
@@ -152,7 +152,7 @@ def main():
     root=Path(__file__).resolve().parents[3]
     if (root/'latex/MINOR_CORRECTIONS.md').exists():
         raise SystemExit('Checked minor report already exists; refusing to overwrite correction history')
-    source=root/'latex/paper-markdown.tex';wording=root/'latex/WORDING_SUGGESTIONS.md'
+    source=root/'latex/PTS-rk.tex';wording=root/'latex/WORDING_SUGGESTIONS.md'
     updated,minor,pending,count,conflicts=split(source.read_text(),wording.read_text())
     files={source:updated,root/'latex/MINOR_CORRECTIONS.md':minor,wording:pending}
     patch=['*** Begin Patch']

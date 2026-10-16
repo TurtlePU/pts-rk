@@ -13,7 +13,7 @@ retained edits. Render BOTH services through the same filtering gate:
 
 ```sh
 python3 tools/prose-review/scripts/review.py render \
-  --source latex/paper-markdown.tex --results COMBINED.json \
+  --source latex/PTS-rk.tex --results COMBINED.json \
   --names tools/grazie/protected-names.txt \
   --terms tools/grazie/protected-terms.txt \
   --output latex/WORDING_SUGGESTIONS.md

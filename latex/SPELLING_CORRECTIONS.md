@@ -1,6 +1,6 @@
 # Spelling corrections
 
-Already implemented in paper-markdown.tex. Compared on October 16, 2026
+Already implemented in PTS-rk.tex. Compared on October 16, 2026
 against [TurtlePU/pts-rk paper.tex](https://github.com/TurtlePU/pts-rk/blob/535d9b4b030d3d294b8e9d47ea6e51b22c793509/latex/paper.tex),
 the pinned snapshot of upstream main. Counts refer to changed occurrences,
 not every occurrence of the replacement word. Oxford spellings are deliberate;

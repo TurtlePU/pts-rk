@@ -7,7 +7,7 @@ from paper_math import format_source
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--check', action='store_true')
 args = parser.parse_args()
-path = Path(__file__).resolve().parents[1] / 'latex/paper-markdown.tex'
+path = Path(__file__).resolve().parents[1] / 'latex/PTS-rk.tex'
 before = path.read_text()
 after = format_source(before)
 if args.check:

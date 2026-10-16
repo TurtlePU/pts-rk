@@ -218,7 +218,7 @@ def main():
     original = (root / "paper.tex").read_text()
     original = original.split(r"\begin{abstract}", 1)[1]
     original = original.rsplit(r"\end{document}", 1)[0]
-    markdown = (root / "paper-markdown.tex").read_text()
+    markdown = (root / "PTS-rk.tex").read_text()
     actual_markdown = normalize_spelling(unwrap_markdown(expand_formalization_links(native_tex(markdown))))
     minor_report = root / 'MINOR_CORRECTIONS.md'
     if minor_report.exists():
