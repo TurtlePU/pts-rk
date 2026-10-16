@@ -24,11 +24,14 @@ preserves the article's math macros, theorem counters and bibliography setup;
 the metadata class changes the title/author header. Paragraphs use `parskip`:
 no first-line indentation, with space between paragraphs.
 
-The paper uses `authorsonlines=true` in its class options. For structured YAML
+The paper uses the bare `authorsonlines` flag (equivalent to
+`authorsonlines=true`) in its class options. For structured YAML
 authors this replaces all author separators with line breaks, without commas
 or “and”; affiliations, ORCID and email remain attached to the same authors.
-The default/`false` preserves the original inline layout. Use the explicit
-key-value form alongside `preamble=...`. YAML `date: 16 October 2026` is
+The default/`false` preserves the original inline layout. Both forms work with
+`preamble=...` or a legacy bare preamble filename. Line mode moves 70% of the
+affiliation skip to before the date, retaining 30% before affiliations.
+YAML `date: October 16, 2026` is
 rendered after authors and affiliations; an omitted/empty date stays hidden.
 
 Native syntax:
@@ -51,7 +54,10 @@ Native syntax:
 Keep badges on their prose line, not on a separate line that the hybrid
 parser interprets as a line break. Space binary operators/relations and colons,
 attach their scripts directly, and put spaces after commas, not before them;
-compact parenthesized expressions and comma-separated lists are allowed.
+this also applies inside parentheses. Use `\rk{r}` and `\chNat{j + 1}` for
+indexed ranks and Church natural-number types. Run
+`python3 tools/format-paper-math.py --check` to check source spacing, or omit
+`--check` to apply it. Literal code listings are preserved.
 Do not pad the inside edges of `:::` fences with blank lines. Raw math
 displays cancel the preceding Markdown paragraph separator, leaving TeX's
 normal display spacing instead of adding an empty line before the formula.
@@ -69,16 +75,16 @@ prose uses asterisks. No mathematical statements are rewritten.
 
 Run `python3 tools/check-markdown-paper.py` from the repository root after
 editing either version. It compares the ordered body character stream after
-removing formatting/whitespace/punctuation and separately compares all 818
+removing formatting/whitespace/punctuation and separately compares all 809
 ordered non-name math fragments, including TeX punctuation and grouping.
 The check normalizes Unicode aliases, whitespace, equivalent multiline
-display wrappers and the requested prose-name macro. The previous count of
-868 included 50 standalone name fragments now expressed through `\PTSrk`.
+display wrappers and the requested prose-name macro. Restoring the second
+author's editorial version reduced the previous count of 818 to 809.
 With `--rendered-dir DIR`, it also checks that the parser did not escape math
 commands/dollars or turn prose into indented code. This is not a pixel or PDF
 equivalence test.
 The two source versions are maintained explicitly, not auto-synchronized.
-Run `bash tools/check-markdown-class.sh` for the four metadata/layout regression
+Run `bash tools/check-markdown-class.sh` for the five metadata/layout regression
 fixtures in [tests/markdown](../tests/markdown/README.md).
 
 The separate [harmonized arithmetic manuscript](../PTS_rk_interprets_Tarski_Mostowski_Robinson_arithmetic_R_harmonized.tex)

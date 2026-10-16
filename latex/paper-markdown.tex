@@ -1,6 +1,6 @@
-\documentclass[preamble=tex/markdown-preamble.tex,authorsonlines=true]{markdown}
+\documentclass[preamble=tex/markdown-preamble.tex,authorsonlines]{markdown}
 title: A sound pure type system with ranks as sorts and Type-in-Type
-date: 16 October 2026
+date: October 16, 2026
 author:
 - Pavel Sokolov:
     orcid: 0009-0001-6922-2870
@@ -40,8 +40,8 @@ Berardi [@berardi1988towards] and Terlouw
 [@terlouw1989gstt]) are a family of minimalistic
 typed $λ$-calculi including grammar formers for
 variables $x ∈ \mathsf{Var}$, abstraction
-$λ (x:T).u$, application $u\,t$, types of
-dependent functions $Π (x:T).U$ (where $U$ might
+$λ (x : T).u$, application $u\,t$, types of
+dependent functions $Π (x : T).U$ (where $U$ might
 depend on $x$) and *sorts* $s ∈ \mathcal{S}$
 which act like “types of types”.
 
@@ -52,9 +52,9 @@ which act like “types of types”.
   $T$, $U$, $t$, $u$ : \textsf{Term} ::=
   | $x$ : variable
   | $s$ : sort as type
-  | $Π (x\colon T).\,U$
+  | $Π (x \colon T).\,U$
       : type of dependent functions
-  | $λ (x\colon T).\,u$ : anonymous function
+  | $λ (x \colon T).\,u$ : anonymous function
   | $u\,t$ : function application
   ;;
 :::
@@ -64,9 +64,9 @@ are the following: application associates to the left,
 so $a\,b\,c$ is understood as $(a\,b)\,c$; in a
 sequence of abstractions, all $λ$ symbols except
 the first can be omitted; $T → U$ is an alias for
-$Π (x:T).U$ (where $U$ does not depend on $x$);
-$(→)$ is right-associative, so $T → U → V$ is
-understood as $T → (U→V)$. In addition, even though
+$Π (x : T).U$ (where $U$ does not depend on $x$);
+$( → )$ is right-associative, so $T → U → V$ is
+understood as $T → (U → V)$. In addition, even though
 abstractions are always annotated with a type of an
 argument, we are going to omit it on paper whenever
 they are clear from the context. Also note that there
@@ -84,38 +84,30 @@ A single PTS is determined by two relations:
   to write simply $s : s'$.
 
 - *rule* relation $\mathsf{Rule} ⊆ \mathcal{S}^2 × \mathcal{S}$ places types of
-  functions $Π (x:T).U$ into sorts accounting for
+  functions $Π (x : T).U$ into sorts accounting for
   the sorts where $T$ and $U$ are situated.
 
 :::Figure[h] Typing rules of pure type systems {#typing}
 %mathpar
-  \inferrule[Ax]{ }{Γ ⊢ s : s'}
+  \inferrule[Ax]{}{Γ ⊢ s : s'}
       (s, s') ∈ \mathsf{Ax}
   \and
-  \inferrule[Rule]{
-      Γ ⊢ T : s_T \\
-      Γ, x : T ⊢ U : s_U
-  }{Γ ⊢ Π (x:T).\, U : s}
+  \inferrule[Rule]{Γ ⊢ T : s_T \\
+      Γ, x : T ⊢ U : s_U}{Γ ⊢ Π (x : T).\, U : s}
   (s_T, s_U, s) ∈ \mathsf{Rule}
   \and
-  \inferrule[Var]{ }{Γ ⊢ x : T}
+  \inferrule[Var]{}{Γ ⊢ x : T}
       x : T ∈ Γ
   \and
-  \inferrule[Abs]{
-      Γ ⊢ T : s_T \\
-      Γ, x : T ⊢ u : U
-  }{Γ ⊢ λ (x:T). u : Π(x:T). U}
+  \inferrule[Abs]{Γ ⊢ T : s_T \\
+      Γ, x : T ⊢ u : U}{Γ ⊢ λ (x : T). u : Π(x : T). U}
   \and
-  \inferrule[App]{
-      Γ ⊢ u : Π(x:T). U \\
-      Γ ⊢ t : T
-  }{Γ ⊢ u\,t : U[t/x]}
+  \inferrule[App]{Γ ⊢ u : Π(x : T). U \\
+      Γ ⊢ t : T}{Γ ⊢ u\,t : U[t/x]}
   \and
-  \inferrule[Conv]{
-      Γ ⊢ t : T \\
+  \inferrule[Conv]{Γ ⊢ t : T \\
       Γ ⊢ U : s \\
-      T =_β U
-  }{Γ ⊢ t : U}
+      T =_β U}{Γ ⊢ t : U}
 :::
 
 Systems from Barendregt's lambda cube
@@ -146,11 +138,10 @@ shows that it is not true for arbitrary PTS.
 The following PTS called System U is not
     normalising:
 
-
 %mathpar
   \begin{array}{c}
           \mathcal{S} = \{ ∗, □, △\},
-          \quad\mathsf{Ax} = \{
+          \quad \mathsf{Ax} = \{
               (∗, □), (□, △)
           \},
           \\ \mathsf{Rule} = \{
@@ -160,13 +151,13 @@ The following PTS called System U is not
           \}
       \end{array}
 
-Futhermore, the offending term has type $Π (P:∗).P$.
+Futhermore, the offending term has type $Π (P : ∗).P$.
 :::
 
 This result is dubbed “Girard's paradox” since it
 renders System U inconsistent with respect to its
 intended logical semantics: inhabitedness of
-$Π (P:∗).P$ would mean that every proposition is
+$Π (P : ∗).P$ would mean that every proposition is
 provable. Thus any system where System U embeds is
 inconsistent, too; in particular, an original version
 [@martinlof1971theory] of Martin-Löf's
@@ -176,7 +167,7 @@ PTS known as “Type-in-Type” which is inconsistent due
 to Girard's paradox:
 
 %mathpar
-  \mathcal{S} = \{ ∗ \}, \quad\mathsf{Ax} = \{ ∗ : ∗ \}, \quad
+  \mathcal{S} = \{ ∗ \}, \quad \mathsf{Ax} = \{ ∗ : ∗ \}, \quad
   \mathsf{Rule} = \{(∗, ∗, ∗)\}.
 
 For a pure type system with usual set-theoretical
@@ -187,7 +178,7 @@ axiom $∗ : ∗$ has to go. Long story short, it motivates
 an introduction of a *universe hierarchy* [@martinlof1975intuitionistic; @harper1991universes]
 $\mathcal{S} = \{\mathcal{U}_k\}_{k ∈ ℕ}$ with
 axioms $\mathcal{U}_k : \mathcal{U}_{k + 1}$ and rules
-$(\mathcal{U}_k, \mathcal{U}_l, \mathcal{U}_{k∨l})$
+$(\mathcal{U}_k, \mathcal{U}_l, \mathcal{U}_{k ∨ l})$
 for each $k, l$; when interpreted in sets,
 $⟦ \mathcal{U}_k ⟧$ is taken to be
 the $k$-th inaccessible cardinal [@werner1997sets; @aczel1998relating].
@@ -206,15 +197,15 @@ questions:
 
 Turns out that, for both questions, answer is “yes”.
 Furthermore, both yes-s are witnessed by a single PTS,
-which we dub %PTSrk{} %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Ranks.v\#L6}:
+which we dub %PTSrk{}:
 
 %mathpar
-  \mathcal{S} = \{\mathsf{rk}_r\}_{r ∈ ℕ}
+  \mathcal{S} = \{\rk{r}\}_{r ∈ ℕ}
   \quad
-  \mathsf{Ax} = \{(\mathsf{rk}_r, \mathsf{rk}_0)\}_{r ∈ ℕ}
+  \mathsf{Ax} = \{(\rk{r}, \rk{0})\}_{r ∈ ℕ}
   \quad
-  \mathsf{Rule} = \{(\mathsf{rk}_r, \mathsf{rk}_s,
-          \mathsf{rk}_{(r+1)∨s})\}_{r, s ∈ ℕ}
+  \mathsf{Rule} = \{(\rk{r}, \rk{s},
+          \rk{(r + 1) ∨ s})\}_{r, s ∈ ℕ}
 
 (Naming “$\mathsf{rk}$” comes from *rank*,
 since rules compute precisely the rank of functions,
@@ -222,12 +213,12 @@ which is the maximal nesting of $Π$ in the domain
 type.)
 
 Indeed, there is a circular axiom
-$\mathsf{rk}_0 : \mathsf{rk}_0$, and System U is not
-embeddable since $\mathsf{rk}_r$ is not closed
+$\rk{0} : \rk{0}$, and System U is not
+embeddable since $\rk{r}$ is not closed
 under $Π$ for any $r$. Also, as we will see in
 Section <#rk-sn>, our %PTSrk{} is strongly
 normalising despite an intuition that
-$\mathsf{rk}_r : \mathsf{rk}_0$ might “feel wrong”.
+$\rk{r} : \rk{0}$ might “feel wrong”.
 Modulo general metatheory of pure type systems laid out
 in Section <#pts-metatheory>, a normalisation proof
 turned out to be suspiciously simple, even more so in
@@ -278,25 +269,21 @@ Also, we chatted with Claude Fable 5.1
 
 ## Formalisation status
 
-The metatheory developed below through strong
-normalisation for %PTSrk{} was formally verified in
-Rocq using handwritten proofs. These proofs are marked with a %rocqproof{https://github.com/TurtlePU/pts-rk}; each
+Every result up to the proof of strong normalisation
+for %PTSrk{} was formally verified in Rocq using
+handwritten proofs. Such proofs are marked with a %rocqproof{https://github.com/TurtlePU/pts-rk}; each
 icon is a hyperlink to the statement and proof in Rocq
 with version pinned at the moment of submission.
 
-Additional formalised definitions and checked results,
-including developments generated with GPT-6 Astra,
-are marked with %rocqformalised{https://github.com/TurtlePU/pts-rk/tree/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories}.
-These links also pin the source version. A badge on a
-definition links its formal encoding; on a result it
-links the checked proof. Where only a component of a
-paper claim is checked, the badge accompanies an
-explicitly delimited formalisation note, not the whole
-claim. In particular, the machine-level complexity
-classification and the derivation of all model
-premises from the stated set theory are not certified
-by these badges. External results cited in the
-introduction are not part of the verified metatheory.
+Results after that were formalised in Rocq as well,
+albeit not by us but rather by GPT-6 Astra. Such
+results are marked with %rocqformalised{https://github.com/TurtlePU/pts-rk/pull/1};
+just as with handwritten results, each icon is a
+hyperlink to the statement and proof in Rocq with
+version pinned at the moment of submission. Where only
+a component of a paper claim is checked, a note
+explaining what exactly is formalised accompanies the
+badge.
 
 # Metatheory of pure type systems {#pts-metatheory}
 
@@ -315,31 +302,31 @@ for more details.
 In Fig. <#typing>, a rule of *conversion*
 (%textsc{Conv}) mentions *definitional equality*
 of types $T =_β U$. It is defined as a reflexive,
-symmetric, transitive closure of a one-step reduction %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/DefEq.v\#L4}.
+symmetric, transitive closure of a one-step reduction.
 
-:::Definition[One-step reduction \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Reduction.v\#L7}]
+:::Definition[One-step reduction]
 Relation of a one-step reduction $t →_β t'$ is the
 smallest relation satisfying the following rules:
 
 %mathpar
   \inferrule{T →_β T'}
-      {Π (x:T).U →_β Π (x:T').U}
+      {Π (x : T).U →_β Π (x : T').U}
   \and
   \inferrule{U →_β U'}
-      {Π (x:T).U →_β Π (x:T).U'}
+      {Π (x : T).U →_β Π (x : T).U'}
   \and
   \inferrule{T →_β T'}
-      {λ (x:T).t →_β λ (x:T').t}
+      {λ (x : T).t →_β λ (x : T').t}
   \and
   \inferrule{t →_β t'}
-      {λ (x:T).t →_β λ (x:T).t'}
+      {λ (x : T).t →_β λ (x : T).t'}
   \and
   \inferrule{t →_β t'}{t\,u →_β t'\,u}
   \and
   \inferrule{u →_β u'}{t\,u →_β t\,u'}
   \and
   \inferrule[Beta]{}
-      {(λ (x:T).t)\,u →_β t[u/x]}
+      {(λ (x : T).t)\,u →_β t[u/x]}
 :::
 
 In essence, actual reduction happens only in rule %textsc{Beta}; other rules simply state the we can
@@ -350,22 +337,22 @@ development. It was proven many times over for
 different similar systems [@church1936properties; @barendregt1992lambda]; we briefly
 revisit the proof since previous presentations usually
 did not allow reductions in the type of argument $T$ in
-$λ (x:T).t$.
+$λ (x : T).t$.
 
-:::Theorem[Characterisation of $(=_\beta)$ \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/DefEq.v\#L9}]
+:::Theorem[Characterisation of $( =_\beta )$ \rocqproof{https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/DefEq.v\#L9}]
 In arbitrary PTS,
 
 %mathpar
   t =_β u \quad ⇔ \quad
   ∃ v.\;t →_β^∗ v ∧ u →_β^∗ v,
 
-where $(→_β^∗)$ is reflexive transitive
-closure of $(→_β)$.
+where $( →_β^∗ )$ is reflexive transitive
+closure of $( →_β )$.
 :::
 
 :::Proof
 Note that it is enough to prove that
-$(→_β^∗)$ has a diamond property — for each
+$( →_β^∗ )$ has a diamond property — for each
 $t_0, t_1, t_2$ such that $t_0 →_β^∗ t_1$ and
 $t_0 →_β^∗ t_2$ there exists a $t'$ such that
 $t_1 →_β^∗ t'$ and $t_2 →_β^∗ t'$:
@@ -387,15 +374,11 @@ smallest relation satisfying:
 %mathpar
   \inferrule{}{t ⇉ t}
   \and
-  \inferrule{
-      T ⇉ T' \\
-      U ⇉ U'
-  }{Π (x:T).U ⇉ Π (x:T').U'}
+  \inferrule{T ⇉ T' \\
+      U ⇉ U'}{Π (x : T).U ⇉ Π (x : T').U'}
   \and
-  \inferrule{
-      T ⇉ T' \\
-      t ⇉ t'
-  }{λ (x:T).t ⇉ λ (x:T').t'}
+  \inferrule{T ⇉ T' \\
+      t ⇉ t'}{λ (x : T).t ⇉ λ (x : T').t'}
   \and
   \inferrule
       {t ⇉ t'\\ u ⇉ u'}
@@ -403,19 +386,19 @@ smallest relation satisfying:
   \and
   \inferrule
       {t ⇉ t'\\ u ⇉ u'}
-      {(λ (x:T).t)\,u ⇉ t'[u'/x]}
+      {(λ (x : T).t)\,u ⇉ t'[u'/x]}
 
-Intuitively, while $(→_β)$ is a single
+Intuitively, while $( →_β )$ is a single
 $β$-reduction somewhere in the term and
-$(→_β)^∗$ is a sequence of reductions,
+$( →_β )^∗$ is a sequence of reductions,
 $( ⇉ )$ is several simultaneous
 reductions immediately available in the term.
-Notice, then, that $(→_β) ⊆ ( ⇉ ) ⊆ (→_β^∗)$; by
+Notice, then, that $( →_β ) ⊆ ( ⇉ ) ⊆ ( →_β^∗ )$; by
 monotonicity of reflexive transitive closure,
-$(→_β^∗) ⊆ ( ⇉ ^∗) ⊆ (→_β^∗)^∗ = (→_β^∗)$, so
-$( ⇉ ^∗) = (→_β^∗)$. Thus it is
+$( →_β^∗ ) ⊆ ( ⇉^∗ ) ⊆ ( →_β^∗ )^∗ = ( →_β^∗ )$, so
+$( ⇉^∗ ) = ( →_β^∗ )$. Thus it is
 enough to prove diamond property of
-$( ⇉ ^∗)$. Diamond property is
+$( ⇉^∗ )$. Diamond property is
 preserved under reflexive transitive closure, so it
 is enough to prove diamond propery of
 $( ⇉ )$, which holds by tedious case
@@ -429,9 +412,9 @@ useful already in our proof development. For example,
 the following “equality inversion” lemmas are direct
 corollaries:
 
-:::Corollary[Equality inversion \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/DefEq.v\#L28}]
+:::Corollary[Equality inversion]
 If $s =_β s'$, then $s = s' ∈ \mathcal{S}$; if
-$Π (x:T).U =_β Π (x:T').U'$, then $T =_β T'$
+$Π (x : T).U =_β Π (x : T').U'$, then $T =_β T'$
 and $U =_β U'$.
 :::
 
@@ -464,10 +447,8 @@ By structural induction on the typing derivation.
 The following rule is admissible:
 
 %mathpar
-  \dfrac{
-          Γ, x : U, Δ ⊢ t : T\quad
-          Γ ⊢ u : U
-      }{Γ, Δ[u/x] ⊢ t[u/x] : T[u/x]}.
+  \dfrac{Γ, x : U, Δ ⊢ t : T \quad
+          Γ ⊢ u : U}{Γ, Δ[u/x] ⊢ t[u/x] : T[u/x]}.
 :::
 
 :::Proof
@@ -479,7 +460,7 @@ places in $t$ where $x$ used to be we need to apply
 weakening lemma to the typing derivation for $u$
 exactly $|Δ|$ times. In the case of %textsc{Conv} it is important that definitional
 equality of types is preserved by substitution
-(thanks to characterisation of $(=_β)$).
+(thanks to characterisation of $( =_β )$).
 :::
 
 In addition, a family of so-called *inversion
@@ -493,7 +474,7 @@ mutual induction involved):
 %align
   Γ ⊢ s : T & ⇒ ∃ s'. (s, s') ∈ \mathsf{Ax} ∧ T =_β s'
   \\
-  Γ ⊢ Π (x:T).U : V & ⇒ ∃ s_T, s_U, s.\left\{\begin{array}{l}
+  Γ ⊢ Π (x : T).U : V & ⇒ ∃ s_T, s_U, s.\left\{\begin{array}{l}
       (s_T, s_U, s) ∈ \mathsf{Rule} \\
       Γ ⊢ T : s_T \\
       Γ, x : T ⊢ U : s_U \\
@@ -501,13 +482,13 @@ mutual induction involved):
   \end{array}\right. \\
   Γ, x : T, Δ ⊢ x : U & ⇒ T =_β U
   \\
-  Γ ⊢ λ (x:T).t : V & ⇒ ∃ s, U.\left\{\begin{array}{l}
+  Γ ⊢ λ (x : T).t : V & ⇒ ∃ s, U.\left\{\begin{array}{l}
       Γ ⊢ T : s \\
       Γ, x : T ⊢ t : U \\
-      V =_β Π (x:T).U
+      V =_β Π (x : T).U
   \end{array}\right. \\
   Γ ⊢ t\,u : V & ⇒ ∃ U, T.\left\{\begin{array}{l}
-      Γ ⊢ t : Π (x:U).T \\
+      Γ ⊢ t : Π (x : U).T \\
       Γ ⊢ u : U \\
       V =_β T[u/x]
   \end{array}\right.
@@ -516,25 +497,25 @@ mutual induction involved):
 To progress further, we need to make certain
 assumptions on the PTS we have in question.
 
-:::Definition[Functional PTS \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Typing.v\#L9}]
+:::Definition[Functional PTS]
 A pure type system is called *functional* if
 $\mathsf{Ax} ⊆ \mathcal{S} × \mathcal{S}$
 and $\mathsf{Rule} ⊆ \mathcal{S}^2 × \mathcal{S}$ are functional relations, that is,
 
 %mathpar
-  (s:s') ∧ (s:s”) ⇒ s' = s”
-  \quad\text{and}\quad
+  (s : s') ∧ (s : s”) ⇒ s' = s”
+  \quad \text{and} \quad
   (s_1, s_2, s) ∈ \mathsf{Rule} ∧ (s_1, s_2, s') ∈ \mathsf{Rule} ⇒ s = s'
 :::
 
-:::Definition[Total PTS \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Typing.v\#L16}]
+:::Definition[Total PTS]
 A pure type system is called *total* if
 $\mathsf{Ax} ⊆ \mathcal{S} × \mathcal{S}$
 and $\mathsf{Rule} ⊆ \mathcal{S}^2 × \mathcal{S}$ are total relations, that is,
 
 %mathpar
   ∀ s.∃ s'.(s, s') ∈ \mathsf{Ax}
-  \quad\text{and}\quad
+  \quad \text{and} \quad
   ∀ s_1, s_2.∃ s.(s_1, s_2, s) ∈ \mathsf{Rule}
 :::
 
@@ -554,7 +535,7 @@ inversion of given typing derivations.
 - $t = s ∈ \mathcal{S}$: by functionality of
   $\mathsf{Ax}$.
 
-- $t = Π (x:T).U$: inversion of typing gives a
+- $t = Π (x : T).U$: inversion of typing gives a
   pair of (possibly different) sorts for $T$ and
   another pair for $U$. By induction we get that
   ranks inside pairs are definitionally equal,
@@ -565,11 +546,11 @@ inversion of given typing derivations.
 - Case for $t = x ∈ \mathsf{Var}$ holds
   trivially.
 
-- $t = (λ (x:T).u)$: by induction hypotheses
-  and by congruence of $(=_β)$.
+- $t = (λ (x : T).u)$: by induction hypotheses
+  and by congruence of $( =_β )$.
 
 - $t = u\,v$: by typing inversion and by
-  induction hypothesis for $u$ we get $u : Π (x:T_1).U_1$ and $Π (x:T_1).U_1 =_β Π (x:T_2).U_2$. We need $U_1[v/x] =_β U_2[v/x]$ which we get from equality inversion
+  induction hypothesis for $u$ we get $u : Π (x : T_1).U_1$ and $Π (x : T_1).U_1 =_β Π (x : T_2).U_2$. We need $U_1[v/x] =_β U_2[v/x]$ which we get from equality inversion
   and preservation of def.eq. under substitution.
 :::
 
@@ -578,20 +559,20 @@ yet another property: if there is a derivation for
 $t : T$, then $T$ is itself typeable with some sort.
 However, it does not hold in our current formulation of
 typing rules: in $Γ ⊢ x : T$, nothing prevents a
-context $Γ$ to contain an entry $(x:T')$ where
+context $Γ$ to contain an entry $(x : T')$ where
 $T'$ is not typeable. Thus we need an additional
 assumption.
 
-:::Definition[Context well-formedness \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Preservation.v\#L5}]
+:::Definition[Context well-formedness]
 Context $Γ$ is *well-formed* (written
 $⊢ Γ$) if every type in it is typed by
 some sort. Formally, set of well-formed contexts is
 the least set closed by the following rules:
 
 %mathpar
-  \dfrac{ }{ ⊢ ⋅ } \quad\text{and}\quad
-  \dfrac{ ⊢ Γ \quadΓ ⊢ T : s}
-        { ⊢ Γ, x : T}
+  \dfrac{}{⊢ ⋅} \quad \text{and} \quad
+  \dfrac{⊢ Γ \quad Γ ⊢ T : s}
+        {⊢ Γ, x : T}
 
 (where $⋅$ denotes an empty context.)
 :::
@@ -602,7 +583,7 @@ rules which would otherwise be premise-free (such as %textsc{Ax} and %textsc{Var
 provide it as an additional assumption only when
 necessary; in addition to leading to simpler metatheory
 (we avoid an otherwise mutually inductive definition of
-$(⊢\_)$ and $(\_⊢\_:\_)$), this is closer to
+$( ⊢ \_)$ and $(\_ ⊢ \_ : \_)$), this is closer to
 how decision procedures for typing judgements are
 implemented.
 
@@ -624,8 +605,8 @@ By structural induction on typing derivation.
 
 - %textsc{App}: $Γ ⊢ t\,u : T[u/x]$.
   From induction hypothesis for $t$ we know that
-  $Γ ⊢ t : Π (x:U).T : s$ for some $s$,
-  then by typing inversion for $Π (x:U).T$ we
+  $Γ ⊢ t : Π (x : U).T : s$ for some $s$,
+  then by typing inversion for $Π (x : U).T$ we
   get that $T$ is typable with some sort. Then
   what is needed follows from substitution lemma.
 
@@ -644,10 +625,8 @@ for our purposes.
 In a total PTS, the following rule is admissible:
 
 %mathpar
-  \dfrac{
-          Γ ⊢ t : T \quad ⊢ Γ
-          \quad t →_β t'
-      }{Γ ⊢ t' : T}
+  \dfrac{Γ ⊢ t : T \quad ⊢ Γ
+          \quad t →_β t'}{Γ ⊢ t' : T}
 :::
 
 :::Proof
@@ -661,11 +640,11 @@ convert into to be typable by a sort, so that is
 where we use Theorem <#type-is-correct>.
 
 The only tricky case are reductions of a domain
-type in $Π (x:T).U$ and $λ (x:T).t$. Let us
+type in $Π (x : T).U$ and $λ (x : T).t$. Let us
 consider the case of the following reduction:
 
 %mathpar
-  λ (x:T).t →_β λ (x:T').t.
+  λ (x : T).t →_β λ (x : T').t.
 
 In order to complete this case, we have to prove
 that $Γ, x : T' ⊢ t : U$ given that
@@ -675,9 +654,7 @@ enough to prove admissibility of the following rule
 called *context reduction*:
 
 %mathpar
-  \dfrac{
-          Γ, x : U, Δ ⊢ t : T\quad ⊢ Γ, x : U, Δ\quad U →_β U'
-      }{Γ, x : U', Δ ⊢ t : T}
+  \dfrac{Γ, x : U, Δ ⊢ t : T \quad ⊢ Γ, x : U, Δ \quad U →_β U'}{Γ, x : U', Δ ⊢ t : T}
 
 The proof is, again, by induction on the typing
 derivation. The only non-trivial case is with %textsc{Var} rule used on $x$; it is taken care of
@@ -696,7 +673,7 @@ of typing and subject reduction together imply the
 following corollary we are going to use a few times in
 our normalisation proof:
 
-:::Corollary[Type stability \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Preservation.v\#L148}]
+:::Corollary[Type stability]
 In a total functional PTS, the following holds:
 
 %mathpar
@@ -704,7 +681,7 @@ In a total functional PTS, the following holds:
           Γ ⊢ t : T\\
           Γ ⊢ t' : T'\\ ⊢ Γ \\
           t =_β t'
-      \end{array}\right.\quad ⇒ \quad
+      \end{array}\right. \quad ⇒ \quad
       T =_β T'.
 :::
 
@@ -721,12 +698,12 @@ In constructive setting and in formalisation, the
 following definition is a bit better
 [@altenkirch1993formalization; @vanraamsdonk1999perpetual]:
 
-:::Definition[Strongly normalising term \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/SN.v\#L20}] {#sn-definition}
+:::Definition[Strongly normalising term] {#sn-definition}
 Set of s.n. terms is the smallest set $\mathsf{sn}$
 in which the following rule is valid:
 
 %mathpar
-  \dfrac{∀ t', (t→_βt') ⇒ t' ∈ \mathsf{sn}}{t ∈ \mathsf{sn}}.
+  \dfrac{∀ t', (t →_β t') ⇒ t' ∈ \mathsf{sn}}{t ∈ \mathsf{sn}}.
 
 In other words, a term is strongly normalising iff
 all possible reductions from it are strongly
@@ -750,18 +727,18 @@ question:
 %mathpar
   \inferrule{}{x, s ∈ \mathsf{sn}}\and
   \inferrule{T ∈ \mathsf{sn}\\ U ∈ \mathsf{sn}}
-      {Π (x:T).U ∈ \mathsf{sn}}\and
+      {Π (x : T).U ∈ \mathsf{sn}}\and
   \inferrule{T ∈ \mathsf{sn}\\ t ∈ \mathsf{sn}}
-      {λ (x:T).t ∈ \mathsf{sn}}\and
+      {λ (x : T).t ∈ \mathsf{sn}}\and
   \inferrule{t\,u ∈ \mathsf{sn}}{t ∈ \mathsf{sn}}\and
   \inferrule{t[u/x] ∈ \mathsf{sn}}{t ∈ \mathsf{sn}}
 :::
 
 Application, of course, is the only nontrivial case. In
 case of $β$-reduction, strong normalisation of both
-$(λ (x:T).t)$ and $u$ does not imply anything
+$(λ (x : T).t)$ and $u$ does not imply anything
 about normalisation behaviour of $t[u/x]$: consider a
-classical example from untyped lambda calculus [@barendregt1984lambda], $ω = (λ (x:T).x\,x)$ and
+classical example from untyped lambda calculus [@barendregt1984lambda], $ω = (λ (x : T).x\,x)$ and
 $Ω = ω \,ω$; while obviously not typable,
 $ω$ is strongly normalising, while $Ω$
 decidedly is not.
@@ -770,11 +747,11 @@ Situation changes when a head of application is not an
 abstraction at all. Thus we arrive at the definition of
 an *atomic term*.
 
-:::Definition[Atomic term \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/SN.v\#L62}]
+:::Definition[Atomic term]
 Set of atomic terms is the smallest set satisfying
 the following conditions:
 
-1. $s$, $Π (x:S).T$ and $y$ are atomic for
+1. $s$, $Π (x : S).T$ and $y$ are atomic for
    all variables $x$,$y$, sort $s$ and types
    $S$,$T$;
 
@@ -814,7 +791,7 @@ already taken care of.
   \left\{\begin{array}{l}
           t[u/x]u_1… u_n ∈ \mathsf{sn} \\
           U, u ∈ \mathsf{sn}
-      \end{array}\right. ⇒ (λ (x:U).t)u u_1… u_n ∈ \mathsf{sn}.
+      \end{array}\right. ⇒ (λ (x : U).t)u u_1… u_n ∈ \mathsf{sn}.
 :::
 
 :::Proof
@@ -822,21 +799,21 @@ By induction on $n$.
 
 - $n = 0$. We need to prove that if
   $t[u/x], u, U ∈ \mathsf{sn}$, then
-  $(λ (x:U).t)u ∈ \mathsf{sn}$.
+  $(λ (x : U).t)u ∈ \mathsf{sn}$.
   Note that $t[u/x] ∈ \mathsf{sn}$ implies
   $t ∈ \mathsf{sn}$; then, by structural
   induction on derivations of $\mathsf{sn}$
   for $t, u, U$ we get what we want by
   considering all possible reductions.
 
-- $n → (n+1)$. By induction hypothesis, it
+- $n → (n + 1)$. By induction hypothesis, it
   is enough to show the following:
 
   %mathpar
     \left\{\begin{array}{l}
-          (λ (x:U).t)u u_1… u_n ∈ \mathsf{sn} \\
+          (λ (x : U).t)u u_1… u_n ∈ \mathsf{sn} \\
           t[u/x]u_1… u_{n + 1} ∈ \mathsf{sn}
-      \end{array}\right. ⇒ (λ (x:U).t)u u_1… u_n u_{n + 1} ∈ \mathsf{sn}.
+      \end{array}\right. ⇒ (λ (x : U).t)u u_1… u_n u_{n + 1} ∈ \mathsf{sn}.
 
   This is true by structural induction on
   available evidence.
@@ -857,7 +834,7 @@ case is application:
 
 %mathpar
   \left\{\begin{array}{l}
-      Γ ⊢ u : Π (x:T).U \\
+      Γ ⊢ u : Π (x : T).U \\
       Γ ⊢ t : T \\ ⊢ Γ \\
       t, u ∈ \mathsf{sn}
   \end{array}\right. ⇒ u\,t ∈ \mathsf{sn}
@@ -865,7 +842,7 @@ case is application:
 Now, here is the part where stratification
 according to ranks comes in useful. As typing
 yields correct type, there is some $r$ such that
-$Γ ⊢ Π (x:T).U : \mathsf{rk}_r$. Let us
+$Γ ⊢ Π (x : T).U : \rk{r}$. Let us
 explicitly add this to the list of premises; we
 will call the following proposition
 *Application Lemma*:
@@ -873,8 +850,8 @@ will call the following proposition
 %mathpar
   \mathrm{AL}_r ≜ \quad
          \text{“}\left\{\begin{array}{l}
-             Γ ⊢ Π (x:T).U : \mathsf{rk}_r\\
-             Γ ⊢ u : Π (x:T).U \\
+             Γ ⊢ Π (x : T).U : \rk{r}\\
+             Γ ⊢ u : Π (x : T).U \\
              Γ ⊢ t : T \\ ⊢ Γ \\
              t, u ∈ \mathsf{sn}
          \end{array}\right. ⇒ u\,t ∈ \mathsf{sn}\text{”}
@@ -891,7 +868,7 @@ another lemma, *Substitution Lemma*:
   \mathrm{SL}_r ≜ \quad
          \text{“}\left\{\begin{array}{l}
              Γ, x : T, Δ ⊢ u : U\\
-             Γ ⊢ T : \mathsf{rk}_r\\
+             Γ ⊢ T : \rk{r}\\
              Γ ⊢ t : T\\ ⊢ Γ \\
              t, u ∈ \mathsf{sn}
          \end{array}\right. ⇒ u[t/x] ∈ \mathsf{sn}\text{”}
@@ -901,25 +878,25 @@ what we are after) is done by complete mutual
 induction with $\mathrm{SL}_r$. Thus there are two
 main parts:
 
-- $(∀ s<r.\;\mathrm{SL}_s) ⇒ \mathrm{AL}_r$: by induction on
+- $(∀ s < r.\;\mathrm{SL}_s) ⇒ \mathrm{AL}_r$: by induction on
   derivations of $u, t ∈ \mathsf{sn}$.
   Consider possible reductions of $u\,t$:
   most of them happen either in $u$ or in
   $t$, so that results of reductions from
   $u\,t$ are strongly normalising by
   inductive hypotheses. The only problematic
-  case is when $u = λ (x:T').v$ and the
+  case is when $u = λ (x : T').v$ and the
   reduction is $β$-reduction. By
   inversion of typing for $u$, it should be
   the case that $T' =_β T$; and by
-  inversion of typing for $Π (x:T).U$, we
-  get that $T : \mathsf{rk}_s$ and
-  $U : \mathsf{rk}_t$ such that
-  $r = \max(s+1, t)$. Then, by type stability,
-  $T' : \mathsf{rk}_s$, and furthermore, $s < r$,
+  inversion of typing for $Π (x : T).U$, we
+  get that $T : \rk{s}$ and
+  $U : \rk{t}$ such that
+  $r = \max(s + 1, t)$. Then, by type stability,
+  $T' : \rk{s}$, and furthermore, $s < r$,
   so we can apply substitution lemma.
 
-- $(∀ s≤r.\;\mathrm{AL}_s) ⇒ \mathrm{SL}_r$. So we need to
+- $(∀ s ≤ r.\;\mathrm{AL}_s) ⇒ \mathrm{SL}_r$. So we need to
   prove $u[t/x] ∈ \mathsf{sn}$. We do it by
   simultaneous induction on derivation of
   $u ∈ \mathsf{sn}$ and structural induction
@@ -938,7 +915,7 @@ main parts:
 
   - $u_1$ is not atomic — by virtue
     of it being well-typed, it means
-    that $u = (λ (x:V).u')v_1 … v_k u_2$. All possible
+    that $u = (λ (x : V).u')v_1 … v_k u_2$. All possible
     reductions from $u[t/x]$ are then
     handled by induction hypotheses.
 
@@ -984,11 +961,11 @@ adapt well-known approaches for proving normalisation
 of pure type systems employing either saturated sets or
 candidates of reducibility [@tait1967intensional; @girard1972interpretation; @girard1989proofs; @geuvers1991modular], which did not work because our
 “hierarchy” of ranks is not well-founded enough
-because of axioms $\mathsf{rk}_n : \mathsf{rk}_0$. This
+because of axioms $\rk{n} : \rk{0}$. This
 proof, however, does not even bother with it which
 means that we could pick *any* relation as
 $\mathsf{Ax}$. Nevertheless, putting all sorts into
-$\mathsf{rk}_0$ seems the most sensible approach to us
+$\rk{0}$ seems the most sensible approach to us
 since, informally, sort is kind of a constant which can
 not be converted into a function.
 
@@ -1034,7 +1011,7 @@ a standard technique originating from
 [@bellegarde1994substitution; @bird1999debruijn; @altenkirch1999monadic]:
 
 ```coq
-Inductive Term (L: Type) (n: nat) : Type :=
+Inductive Term (L: Type) (n: nat): Type:=
 | sort: L -> Term L n
 | Π: Term L n -> Term L (S n) -> Term L n
 | var: Fin n -> Term L n
@@ -1089,12 +1066,12 @@ are the least sets where the following rules are
 valid:
 
 %mathpar
-  \inferrule{ }{\mathsf{SNx}\,s}(s∈\mathcal{S})
+  \inferrule{}{\mathsf{SNx}\,s}(s ∈ \mathcal{S})
   \and
   \inferrule{\mathsf{SN}\,T\\\mathsf{SN}\,U}
-            {\mathsf{SNx}(Π (x:T).U)}
+            {\mathsf{SNx}(Π (x : T).U)}
   \and
-  \inferrule{ }{\mathsf{SNx}\,x}
+  \inferrule{}{\mathsf{SNx}\,x}
   \and
   \inferrule{\mathsf{SNx}\,t\\\mathsf{SN}\,u}
             {\mathsf{SNx}\,(t\,u)}
@@ -1102,13 +1079,13 @@ valid:
   \inferrule{\mathsf{SNx}\,t}{\mathsf{SN}\,t}
   \and
   \inferrule{\mathsf{SN}\,T\\\mathsf{SN}\,t}
-            {\mathsf{SN}\,(λ (x:T).t)}
+            {\mathsf{SN}\,(λ (x : T).t)}
   \and
   \inferrule{t →_\mathsf {WHR}u\\\mathsf{SN}\,u}
             {\mathsf{SN}\,t}
   \and
   \inferrule{\mathsf{SN}\,U\\\mathsf{SN}\,u}
-            {(λ (x:U).t)\,u →_\mathsf {WHR}
+            {(λ (x : U).t)\,u →_\mathsf {WHR}
             t[u/x]}
   \and
   \inferrule{t →_\mathsf {WHR}t'}
@@ -1138,7 +1115,7 @@ terms we are proving for $\mathsf{WHR}$:
 
 - $∀ t, \mathsf{SNx}\,t ⇒ \mathsf{sn}\,t$.
 
-- $∀ t\,t', \,(t→_\mathsf{WHR}t') ⇒ (t→_\mathsf{WHR-sn}t')$ (where
+- $∀ t\,t', \,(t →_\mathsf {WHR}t') ⇒ (t →_\mathsf {WHR - sn}t')$ (where
   the last relation is defined in the same
   way as WHR, but the head contains evidence
   of $\mathsf{sn}$ instead of $\mathsf{SN}$.)
@@ -1168,9 +1145,9 @@ We do so by mutual induction on evidence for $t$
 with the following propositions proven for
 $\mathsf{SNx}$ and WHR:
 
-- $\mathsf{SNx}\,t ∧ Γ ⊢ t : T ⇒ \mathsf{SNx}\,(t[u/x]) ∨ (\mathsf{SN}\,(t[u/x])∧∃ s≤r. \;Γ⊢T:\mathsf{rk}_s)$;
+- $\mathsf{SNx}\,t ∧ Γ ⊢ t : T ⇒ \mathsf{SNx}\,(t[u/x]) ∨ (\mathsf{SN}\,(t[u/x]) ∧ ∃ s ≤ r. \;Γ ⊢ T : \rk{s})$;
 
-- $(t→_\mathsf{WHR}t') ⇒ (t[u/x]→_\mathsf{WHR}t'[u/x]) ∧ (\mathsf{SN}\,(t'[u/x])⇒\mathsf{SN}\,(t[u/x]))$.
+- $(t →_\mathsf {WHR}t') ⇒ (t[u/x] →_\mathsf {WHR}t'[u/x]) ∧ (\mathsf{SN}\,(t'[u/x]) ⇒ \mathsf{SN}\,(t[u/x]))$.
 
 The proof then follows as written in a non-formal
 treatment above.
@@ -1181,14 +1158,12 @@ treatment above.
 In this section we prove that convertibility of closed
 well-typed %PTSrk{} terms is %textsc{TOWER}-complete.
 
-The Rocq development checks fixed-rank normalisation,
-an automatic rank bound and a tower bound on the
-normaliser's cost, as well as a Church-style STLC
-reduction. Costs count the explicitly defined
-operations on annotated syntax, with unary sort and
-variable indices; no machine-level complexity-class
-formalisation is claimed. The representability results
-in the following section are not formalised.
+(Proofs in this and following sections were not
+verified in Rocq by any of the authors, but there is a
+formalisation of some results by GPT-6 Astra. Informal
+proofs, however, are relatively simple, non-technical
+and their formalisation requires many times more
+preliminary work than seems reasonable.)
 
 As requested further, LLM confessed that it was largely
 inspired by studies on complexity of normalisation for
@@ -1199,7 +1174,7 @@ it actually being a primitive recursive algorithm
 [@skolem1923; @kleene1952introduction; @peter1951rekursive] for term normalisation in disguise.
 Or something a tad faster:
 
-:::Definition[$d$-bounded terms \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/RedexRanks.v\#L28}]
+:::Definition[$d$-bounded terms]
 A %PTSrk{} term is $d$-bounded if it is well-typed
 in some well-formed context and heads of all
 redexes in it have rank equal to or below $d$.
@@ -1211,28 +1186,20 @@ algorithm [@rose1984subrecursion] for finding a
 normal form of $d$-bounded terms.
 :::
 
-The linked theorem assumes the original typing
-judgement, context well-formedness and the redex-rank
-bound separately. It gives a normal form of the same
-type and cost at most
-$\operatorname{tower}(2d+1, \operatorname{nodes}(t)+5d+2)$
-in the operation-count model just described.
-
 :::Proof
 Consider the following relation of
-“greedy parallel reduction” (implemented as the
-function $\mathtt{greedy}$) %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/Greedy.v\#L5}:
+“greedy parallel reduction”:
 
 %mathpar
   \inferrule{}{x ⇒ x\\ s ⇒ s}\and
   \inferrule
       {T ⇒ T'\\ U ⇒ U'}
-      {Π (x:T).U ⇒ Π (x:T').U'}\and
+      {Π (x : T).U ⇒ Π (x : T').U'}\and
   \inferrule
       {T ⇒ T'\\ t ⇒ t'}
-      {λ (x:T).t ⇒ λ (x:T').t'}\and
+      {λ (x : T).t ⇒ λ (x : T').t'}\and
   \inferrule
-      {t ⇒ (λ (x:T).t')\\ u ⇒ u'}
+      {t ⇒ (λ (x : T).t')\\ u ⇒ u'}
       {t\,u ⇒ t'[u'/x]}\and
   \inferrule
       {t ⇒ t'\\ t' ≠ λ …
@@ -1242,11 +1209,11 @@ function $\mathtt{greedy}$) %rocqformalised{https://github.com/TurtlePU/pts-rk/b
 It differs from usual parallel reduction since it
 greedily applies every “many-argument” redex
 available in a term. For example,
-$(λ (x:X).λ (y:Y).λ (z:Z).t)\,a\,b\,c$
+$(λ (x : X).λ (y : Y).λ (z : Z).t)\,a\,b\,c$
 gets reduced to $t'[a/x][b/y][c/z]$ in a single step.
 This relation has the following properties:
 
-- $(⇒) ⊆ (→_β^∗)$, so
+- $( ⇒ ) ⊆ ( →_β^∗ )$, so
   it is several usual reductions baked into one.
 
 - This relation is total and functional.
@@ -1259,7 +1226,7 @@ This relation has the following properties:
   application head is a lambda.
 
 - If $t ⇒ t'$, then
-  $|t'| ≤ (2+ε )^{\mathcal{O}(|t|)}$.
+  $|t'| ≤ (2 + ε )^{\mathcal{O}(|t|)}$.
 
 - If redex heads in $t$ have ranks less than
   *or equal to* $d$ and $t ⇒ t'$,
@@ -1297,15 +1264,13 @@ Convertibility of **closed** well-typed %PTSrk{} terms is in $\mathsf{TOWER}$.
 By Theorem <#bounded-sn>, it is enough to
 compute some upper bound $B$ on the rank of types
 appearing in abstractions of a term, then run a
-normaliser for $(B+1)$-bounded terms and compare
+normaliser for $(B + 1)$-bounded terms and compare
 the results; $B$ has to be bound by an elementary
 recursive function on the size of input. Consider,
 then, the following elementary recursive functions
 to compute such upper bound, written in pseudocode
 and using a suitable encoding of terms, tuples and
-lists. The estimator itself is translated to Rocq %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/Rank.v\#L128};
-this definition badge does not assert its semantic
-bound (see the formalisation note below):
+lists:
 
 ```agda
 maxRankLiteral rkᵣ      = r
@@ -1317,23 +1282,23 @@ maxRankLiteral λ(x:T).t =
 maxRankLiteral (t u)    =
     maxRankLiteral t ⊔ maxRankLiteral u
 
-traversal _ rkᵣ      _ = (r , 0 , 0)
+traversal _ rkᵣ      _ = (r, 0, 0)
 traversal Γ Π(x:T).U d =
-    let (vᵀ , rᵀ , aᵀ) = traversal Γ T d
-        (vᵁ , rᵁ , aᵁ) = traversal (x := vᵀ, Γ) U d
-     in (vᵁ , suc rᵀ ⊔ rᵁ , aᵀ ⊔ aᵁ)
-traversal Γ x        d = (d , Γ[x] , 0)
+    let (vᵀ, rᵀ, aᵀ) = traversal Γ T d
+        (vᵁ, rᵁ, aᵁ) = traversal (x:= vᵀ, Γ) U d
+     in (vᵁ, suc rᵀ ⊔ rᵁ, aᵀ ⊔ aᵁ)
+traversal Γ x        d = (d, Γ[x], 0)
 traversal Γ λ(x:T).t d =
-    let (vᵀ , rᵀ , aᵀ) = traversal Γ T d
-        (vᵗ , rᵗ , aᵗ) = traversal (x := vᵀ, Γ) t d
-     in (vᵗ , rᵗ , rᵀ ⊔ aᵀ ⊔ aᵗ)
+    let (vᵀ, rᵀ, aᵀ) = traversal Γ T d
+        (vᵗ, rᵗ, aᵗ) = traversal (x:= vᵀ, Γ) t d
+     in (vᵗ, rᵗ, rᵀ ⊔ aᵀ ⊔ aᵗ)
 traversal Γ (t u)    d =
-    let (vᵗ , rᵗ , aᵗ) = traversal Γ t d
-        (_  , _  , aᵘ) = traversal Γ u d
-     in (vᵗ , rᵗ , aᵗ ⊔ aᵘ)
+    let (vᵗ, rᵗ, aᵗ) = traversal Γ t d
+        (_, _, aᵘ) = traversal Γ u d
+     in (vᵗ, rᵗ, aᵗ ⊔ aᵘ)
 
 estimateRank t =
-    let (vᵗ , rᵗ , aᵗ) =
+    let (vᵗ, rᵗ, aᵗ) =
         traversal [] t (maxRankLiteral t)
      in aᵗ
 ```
@@ -1355,30 +1320,16 @@ $d$ (the “default” rank) as a value of $x$:
 could we compute value of $x$ instead, if present?
 Regrettably, this would require normalisation of a
 term corresponding to $x$, which is too long;
-instead we notice that $\mathsf{rk}_r$ can be
+instead we notice that $\rk{r}$ can be
 reduced only from terms which already contain it as
 a subterm, so value of $x$ as a rank can only be
-$\mathsf{rk}_r$ which is already present somewhere
+$\rk{r}$ which is already present somewhere
 in original term. And our result is monotone with
 respect to the value we output here so it is enough
 to provide some upper bound on it; thus it is
 enough to output a maximal rank which occurs in
 original term as a subterm.
 :::
-
-#### Checked normalisation bound.
-
-The Rocq normaliser has a checked tower upper bound %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/Normalization.v\#L49}.
-Its rank bound is computed in linear operation count %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/Normalization.v\#L70}.
-This proof uses the conservative bound
-$1 + \mathtt{maxRankLiteral}(t) + \operatorname{nodes}(t)$,
-not the displayed $\mathtt{estimateRank}$ argument:
-the development includes a typed counterexample to
-using $\mathtt{estimateRank}(t) + 1$ as a redex-head rank
-bound %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/EstimatorChecks.v\#L46}.
-These badges certify the replacement normalisation
-bound, not the estimator argument above or a
-machine-level convertibility theorem.
 
 Note that closedness condition is unavoidable: without
 it, we would not know ranks of type variables from
@@ -1392,10 +1343,7 @@ is %textsc{TOWER}-hard (hence %textsc{TOWER}-complete). %rocqformalised{https://
 annotation-preserving reduction from closed
 Church-style STLC, including typing, preservation
 and reflection of conversion, and the exact
-additive encoding-size bound. The source TOWER-hardness
-theorem and the Curry-to-Church preprocessing below
-are external to this formalisation; the badge does
-not certify TOWER-completeness itself.]
+additive encoding-size bound.]
 :::
 
 :::Proof
@@ -1416,7 +1364,7 @@ STLC terms. The following translation then yields
 %align*
   ⦇ x ⦈ & = x \\
           ⦇ λ x^σ.t
-          ⦈ & = λ (x:σ).
+          ⦈ & = λ (x : σ).
               ⦇ t ⦈ \\
           ⦇ t\,u ⦈ & = ⦇ t ⦈ \,
           ⦇ u ⦈
@@ -1427,10 +1375,10 @@ bound. However, it is easily fixable by introducing
 missing types via abstractions:
 
 %mathpar
-  t ↝ λ (T_1:\mathsf{rk}_0)…
-     (T_n:\mathsf{rk}_0).⦇ t ⦈
+  t ↝ λ (T_1 : \rk{0})…
+     (T_n : \rk{0}).⦇ t ⦈
 
-Assigning all type variables rank $\mathsf{rk}_0$
+Assigning all type variables rank $\rk{0}$
 preserves well-typedness since values of such types
 were never treated as functions in original term.
 :::
@@ -1445,8 +1393,8 @@ of closed well-typed terms $t, t' : T$ reduces to type
 checking:
 
 %mathpar
-  λ (P:T→\mathsf{rk}_0)(x:P\,t).
-  (λ (y:P\,t').y)\,x
+  λ (P : T → \rk{0})(x : P\,t).
+  (λ (y : P\,t').y)\,x
 
 This term is well-typed iff $P\,t =_β P_t'$
 which holds iff $t =_β t'$.
@@ -1455,27 +1403,21 @@ Then, we only have to prove that type checking for %PTSrk{} is in %textsc{TOWER}
 following syntax-directed type synthesis rules:
 
 %mathpar
-  \inferrule[Ax']{ }
-  {Γ ⊢ \mathsf{rk}_r ⇒ \mathsf{rk}_0}
+  \inferrule[Ax']{}
+  {Γ ⊢ \rk{r} ⇒ \rk{0}}
   \and
-  \inferrule[Rule']{
-      Γ ⊢ T ⇒ \mathsf{rk}_r \\
-      Γ, x : T ⊢ U ⇒ \mathsf{rk}_s
-  }{Γ ⊢ Π (x:T).\,U ⇒ \mathsf{rk}_{\max(r+1, s)}}
+  \inferrule[Rule']{Γ ⊢ T ⇒ \rk{r} \\
+      Γ, x : T ⊢ U ⇒ \rk{s}}{Γ ⊢ Π (x : T).\,U ⇒ \rk{\max(r + 1, s)}}
   \\
-  \inferrule[Var']{ }
+  \inferrule[Var']{}
   {Γ ⊢ x ⇒ T}x : T ∈ Γ
   \and
-  \inferrule[Abs']{
-      Γ ⊢ T ⇒ \mathsf{rk}_r \\
-      Γ, x : T ⊢ u ⇒ U
-  }{Γ ⊢ λ (x:T).u ⇒ Π (x:T).U}
+  \inferrule[Abs']{Γ ⊢ T ⇒ \rk{r} \\
+      Γ, x : T ⊢ u ⇒ U}{Γ ⊢ λ (x : T).u ⇒ Π (x : T).U}
   \and
-  \inferrule[App']{
-      Γ ⊢ u ⇒ Π (x:T).U \\
+  \inferrule[App']{Γ ⊢ u ⇒ Π (x : T).U \\
       Γ ⊢ t ⇒ T'\\
-      T =_β T'
-  }{Γ ⊢ u\,t ⇒ U[t/x]}
+      T =_β T'}{Γ ⊢ u\,t ⇒ U[t/x]}
 
 This relation is functional (in the sense that if
 $Γ ⊢ t : T$ and $Γ ⊢ t : T'$, then
@@ -1492,11 +1434,11 @@ Theorem <#tower-convertibility>.
 To finish the proof, it is enough to notice that
 
 %mathpar
-  Γ ⊢ t : T\quad ⟺ \quad
-  ∃ T', r.\;(Γ⊢T:r) ∧ (T=_βT') ∧ (Γ⊢t⇒T').
+  Γ ⊢ t : T \quad ⟺ \quad
+  ∃ T', r.\;(Γ ⊢ T : r) ∧ (T =_β T') ∧ (Γ ⊢ t ⇒ T').
 
 So the main algorithm infers the type of $T$,
-checks that it is $\mathsf{rk}_r$ for some $r$,
+checks that it is $\rk{r}$ for some $r$,
 infers the type of $t$ and compares it with $T$.
 :::
 
@@ -1516,11 +1458,11 @@ to the one for STLC
 :::Definition
 A family of functions on natural numbers
 $\mathcal{F}$ is *uniformly* representable in %PTSrk{} if there is an *input natural number
-type* $N_I : \mathsf{rk}_r$ and an *output
-natural number type* $N_O : \mathsf{rk}_s$ together
+type* $N_I : \rk{r}$ and an *output
+natural number type* $N_O : \rk{s}$ together
 with *encodings* $∀ n ∈ ℕ.[n]^I : N_I$ and $∀ n.[n]^O : N_O$ such that all of
 them are in normal form and for each
-$(f:ℕ^k→ℕ) ∈ \mathcal{F}$ there
+$(f : ℕ^k → ℕ) ∈ \mathcal{F}$ there
 is a *representation*
 $F : N_I → … → N_I → N_O$
 which is also in normal form and such that
@@ -1543,17 +1485,17 @@ is **not** uniformly representable in %PTSrk{}.
 :::Proof
 By direct diagonalisation argument. Suppose we
 could encode all elementary recursive functions
-with $N_I : \mathsf{rk}_r$ and $N_O : \mathsf{rk}_s$.
+with $N_I : \rk{r}$ and $N_O : \rk{s}$.
 
 By Theorem <#bounded-sn>, normalisation of
-$(r+1)$-bounded terms $\mathcal{SN}_{r + 1}$ is
+$(r + 1)$-bounded terms $\mathcal{SN}_{r + 1}$ is
 elementary recursive, so the following function is
 elementary recursive as well:
 
 %mathpar
   h(t) = \begin{cases}
-      1, &\mathcal{SN}_{r + 1}(t\,[\mathtt{t}]^I) = [0]^O, \\
-      0&\text{otherwise}.
+      1, & \mathcal{SN}_{r + 1}(t\,[\mathtt{t}]^I) = [0]^O, \\
+      0 & \text{otherwise}.
   \end{cases}
 
 (Where $\mathtt{t} ∈ ℕ$ is code of a term
@@ -1567,7 +1509,7 @@ Observe the value of $h(H)$:
 
 First equivalence is by definition of $h$; second
 is by virtue of expression under $\mathcal{SN}$
-being $(r+1)$-bounded; the last is by definition
+being $(r + 1)$-bounded; the last is by definition
 of $h$ being encoded by $H$.
 :::
 
@@ -1580,11 +1522,11 @@ For each fixed $j ≥ 0$, there is a type of
 *polymorphic Church numerals* of rank $j + 2$:
 
 %mathpar
-  \mathcal{N}_j ≜ Π (X:\mathsf{rk}_j).
-         (X→X) → X → X;
+  \chNat{j} ≜ Π (X : \rk{j}).
+         (X → X) → X → X;
 
 and for each fixed $n$, there is a corresponding
-*Church literal* of type $\mathcal{N}_j$:
+*Church literal* of type $\chNat{j}$:
 
 %mathpar
   \overline{n} ≜ λ \,X\,f\,x.f^n\,x.
@@ -1597,7 +1539,7 @@ $f(…(f\,x)…)$.)
 For each elementary recursive function
 $f : ℕ^n → ℕ$, there is a
 *cost* $c_f$ such that for each *base
-rank* $j$, there is a *representation* $F_j : \mathcal{N}_{j + c_f} → … → \mathcal{N}_{j + c_f} → \mathcal{N}_j$ such that
+rank* $j$, there is a *representation* $F_j : \chNat{j + c_f} → … → \chNat{j + c_f} → \chNat{j}$ such that
 
 %mathpar
   ∀ (x_1, …, x_n) ∈ ℕ^n : \quad
@@ -1614,10 +1556,10 @@ is still true for our rank-refined version:
   \begin{array}{rcll}
           \mathsf{Add}_j & ≜ &
           λ \,m\,n\,X\,f\,x.
-              m\,X\,f\,(n\,X\,f\,x) & : \mathcal{N}_j → \mathcal{N}_j → \mathcal{N}_j \\
+              m\,X\,f\,(n\,X\,f\,x) & : \chNat{j} → \chNat{j} → \chNat{j} \\
           \mathsf{Mul}_j & ≜ &
           λ \,m\,n\,X\,f\,x.
-              m\,X\,(n\,X\,f)\,x & : \mathcal{N}_j → \mathcal{N}_j → \mathcal{N}_j
+              m\,X\,(n\,X\,f)\,x & : \chNat{j} → \chNat{j} → \chNat{j}
       \end{array}
 
 By substitution-basis theorem
@@ -1636,11 +1578,11 @@ exponentiation term for untyped Church numerals
 raises the rank of an exponent:
 
 %multline*
-  \mathsf{Exp}_j ≜ λ \,m\,n\,(X:\mathsf{rk}_j)\,f\,x.\,
-          n\,(X→X)\,(λ (h:X→X)(y:X).
+  \mathsf{Exp}_j ≜ λ \,m\,n\,(X : \rk{j})\,f\,x.\,
+          n\,(X → X)\,(λ (h : X → X)(y : X).
               m\,X\,h\,y
           )\,f\,x
-          \\ : \mathcal{N}_j → \mathcal{N}_{j + 1} → \mathcal{N}_j
+          \\ : \chNat{j} → \chNat{j + 1} → \chNat{j}
 
 And that is exactly the reason we allowed input and
 output ranks of Church numerals to differ.
@@ -1650,16 +1592,16 @@ ranks to differ, we lost uniformity of
 substitution. In particular, consider an elementary
 function $x ↦ x + 2^x$. To represent such
 computation using combinators we defined, $x$ has
-to have both type $\mathcal{N}_j$ (as left addend)
-and $\mathcal{N}_{j + 1}$ (as exponentiation power).
+to have both type $\chNat{j}$ (as left addend)
+and $\chNat{j + 1}$ (as exponentiation power).
 Instead of introducing subtyping in the system, we
 make use of the following family of
 *numeral-preserving lowerings*:
 
 %mathpar
   δ_j ≜ λ \,n\,X\,f\,x.\,
-          n\,(X→X)\,(λ \,h\,y.f\,(h\,y))\,
-          (λ \,y.y)\,x : \mathcal{N}_{j + 1} → \mathcal{N}_j
+          n\,(X → X)\,(λ \,h\,y.f\,(h\,y))\,
+          (λ \,y.y)\,x : \chNat{j + 1} → \chNat{j}
 
 As the name implies, the goal of such combinators
 is to lower the rank of a numeral, but preserve its
@@ -1669,7 +1611,7 @@ original combinator for $n$ is used to build an
 $n$-fold composition of $f$ with itself which is
 then applied to $x$.
 
-Thus we can lower ranks arbitrarily: $δ_{b, a} ≜ δ_a ∘ … ∘ δ_{b - 1} : \mathcal{N}_b → \mathcal{N}_a$. This restores
+Thus we can lower ranks arbitrarily: $δ_{b, a} ≜ δ_a ∘ … ∘ δ_{b - 1} : \chNat{b} → \chNat{a}$. This restores
 substitution and allows gluing representation of
 elementary recursive functions together; cost $c_f$
 of a function can be computed from any expression
@@ -1691,8 +1633,8 @@ exactly $5$ elements; Church encoding
 *selectors*:
 
 %mathpar
-  V_5 ≜ Π (X:\mathsf{rk}_j).\,
-          X → X → X → X → X → X : \mathsf{rk}_{j + 1}
+  V_5 ≜ Π (X : \rk{j}).\,
+          X → X → X → X → X → X : \rk{j + 1}
 
 Its $5$ different canonical values simply pick one
 of $5$ inputs, to each their own.
@@ -1711,7 +1653,7 @@ left is to read the numeral back:
 
 %mathpar
   ρ ≜ λ \,s\,X\,f\,x.\,s\,X\,
-      (f^0\,x)\,(f^1\,x)\,(f^2\,x)\,(f^3\,x)\,(f^4\,x) : V_5 → \mathcal{N}_j
+      (f^0\,x)\,(f^1\,x)\,(f^2\,x)\,(f^3\,x)\,(f^4\,x) : V_5 → \chNat{j}
 
 Now, in order to model $m\,\mathrm{mod}\,n$ in this
 vein, we need to *generate* $V_n$ dynamically.
@@ -1721,16 +1663,16 @@ there is hope.
 And indeed, the following construction was produced
 in discussion with GPT-6 Astra.
 
-We are going to produce a combinator $\mathsf{Mod} : \mathcal{N}_{j + 1} → \mathcal{N}_{j + 4} → \mathcal{N}_j$. Fix parameter $X : \mathsf{rk}_j$ and
+We are going to produce a combinator $\mathsf{Mod} : \chNat{j + 1} → \chNat{j + 4} → \chNat{j}$. Fix parameter $X : \rk{j}$ and
 consider the following signature for abstract
-$S : \mathsf{rk}_{j + 1}$:
+$S : \rk{j + 1}$:
 
 %mathpar
   \begin{array}{ll}
-          K : X → S, &z : S, \\
-          L : (X→S) → X → S, &c : S → S, \\
-          ρ : S → (X→X) → X → X,
-          &r : (X→X) → (X→X).
+          K : X → S, & z : S, \\
+          L : (X → S) → X → S, & c : S → S, \\
+          ρ : S → (X → X) → X → X,
+          & r : (X → X) → (X → X).
       \end{array}
 
 Intention is that $S$ is simply-typed $V_q$ for
@@ -1746,12 +1688,12 @@ A callback accepting such structure and returning
 $X$ has the following type:
 
 %align*
-  H_X ≜ \;&Π (S:\mathsf{rk}_{j+1}).\;
-          (X→S) → S → ((X→S)→X→S) → (S→S) → \\&(S→(X→X)→X→X) → ((X→X)→X→X) → X
-          \quad : \mathsf{rk}_{j + 3}
+  H_X ≜ \; & Π (S : \rk{j + 1}).\;
+          (X → S) → S → ((X → S) → X → S) → (S → S) → \\ & (S → (X → X) → X → X) → ((X → X) → X → X) → X
+          \quad : \rk{j + 3}
 
 A type of “records” is thus
-$P_X ≜ H_X → X : \mathsf{rk}_{j + 4}$, with a
+$P_X ≜ H_X → X : \rk{j + 4}$, with a
 constructor
 
 %mathpar
@@ -1762,14 +1704,14 @@ $V_1$ and an $r$ which behaves like
 $m\,\mathrm{mod}\,0 = m$:
 
 %align*
-  S_0& ≜ X → X, \\
-          K_0& ≜ λ (a:X)(b:X).a, &
-          z_0& ≜ λ (a:X).a, \\
-          L_0& ≜ λ (t:X→S_0)(a:X)(b:X).
+  S_0 & ≜ X → X, \\
+          K_0 & ≜ λ (a : X)(b : X).a, &
+          z_0 & ≜ λ (a : X).a, \\
+          L_0 & ≜ λ (t : X → S_0)(a : X)(b : X).
               t\,b\,a, &
-          c_0& ≜ λ (s:S_0).s, \\
-          ρ_0& ≜ λ (s:S_0)(g:X→X)(a:X).s\,a, &
-          r_0& ≜ δ_j\,m\,X.
+          c_0 & ≜ λ (s : S_0).s, \\
+          ρ_0 & ≜ λ (s : S_0)(g : X → X)(a : X).s\,a, &
+          r_0 & ≜ δ_j\,m\,X.
 
 Pack them into $p_0 ≜ ⟨…⟩$.
 
@@ -1778,19 +1720,19 @@ $q + 1$ is:
 
 %align*
   S^+ & ≜ X → S, \\
-          K^+ & ≜ λ (a:X)(b:X).Ka, &
+          K^+ & ≜ λ (a : X)(b : X).Ka, &
           z^+ & ≜ K, \\
-          L^+ & ≜ λ (t:X→S^+)(a:X)(b:X).
+          L^+ & ≜ λ (t : X → S^+)(a : X)(b : X).
               L\,(t\,b)\,a, &
           c^+ & ≜ L, \\
-          ρ^+ & ≜ λ (t:S^+)(g:X→X)(a:X).
+          ρ^+ & ≜ λ (t : S^+)(g : X → X)(a : X).
               ρ \,(ta)\,g\,(ga), &
           r^+ & ≜ ρ \,(m\,S\,c\,z).
 
 A transition term can be written like this:
 
 %mathpar
-  T ≜ λ (p:P_X)(h:H_X).
+  T ≜ λ (p : P_X)(h : H_X).
       p\,(λ \,S\,K\,z\,L\,c\,ρ \,r.\,
       h\,S^+\,K^+\,z^+\,L^+\,c^+\,ρ^+\,r^+) : P_X → P_X
 
@@ -1799,8 +1741,8 @@ expected behaviour:
 
 %multline*
   \mathsf{Mod}_j ≜ λ
-          (m:\mathcal{N}_{j+1})(n:\mathcal{N}_{j+4})
-          (X:\mathsf{rk}_j)(f:X→X)(x:X).\\
+          (m : \chNat{j + 1})(n : \chNat{j + 4})
+          (X : \rk{j})(f : X → X)(x : X).\\
               n\,P_X\,T\,p_0\,
               (λ \,\_\,\_\,\_\,\_\,\_\,\_\,r.
                   r\,X\,f\,x).
@@ -1826,20 +1768,20 @@ In other words, for each $f : ℕ → ℕ$ in $\mathcal{E}^2$, there is a code
 $\mathtt{f} ∈ ℕ$ such that
 
 %mathpar
-  ∀ n, \quad\mathsf{ev}(\mathtt{f}, n) = f(n).
+  ∀ n, \quad \mathsf{ev}(\mathtt{f}, n) = f(n).
 
 And $\mathcal{E}^3$ is precisely elementary
 recursive functions, so by
 Theorem <#non-uniform-rep> there is a cost $r$
 and a term
-$E : \mathcal{N}_r → \mathcal{N}_r → \mathcal{N}_0$
+$E : \chNat{r} → \chNat{r} → \chNat{0}$
 such that
 
 %mathpar
   ∀ m n, \quad E\,\overline{m}\,\overline{n} =_β \overline{\mathsf{ev}(m, n)}
 
-Therefore, there exist $N_I ≔ \mathcal{N}_r$
-and $N_O ≔ \mathcal{N}_0$ such that, for each
+Therefore, there exist $N_I ≔ \chNat{r}$
+and $N_O ≔ \chNat{0}$ such that, for each
 unary $f ∈ \mathcal{E}^2$, there is a term
 $F ≔ E\,\overline{\mathtt{f}}$ such that
 
@@ -1870,7 +1812,7 @@ of the size of input encoding.
 
 :::Proof
 Since it is representable, there are
-$N_I : \mathsf{rk}_r$, $N_O : \mathsf{rk}_s$ and
+$N_I : \rk{r}$, $N_O : \rk{s}$ and
 $F : N_I → … → N_I → N_O$ such that $F$
 represents $f$. Therefore,
 
@@ -1894,9 +1836,9 @@ is $Ω(\log{x})$ so
 
 %multline*
   f(n_1, …, n_k) = \mathcal{O}(\log\left(c
- ↑ … ↑ c ↑ i(n_1, …,
-          n_k)\right)) = \\ = \mathcal{O}(c ↑ … ↑ c
- ↑ i(n_1, …, n_k)),
+  ↑ … ↑ c ↑ i(n_1, …,
+           n_k)\right)) = \\ = \mathcal{O}(c ↑ … ↑ c
+  ↑ i(n_1, …, n_k)),
 
 thus bounded by an elementary recursive function of
 the size of input encoding.
@@ -1933,7 +1875,7 @@ Now, studying computational properties of a calculus is
 great, but a logic is only useful when it can tell
 right from wrong. In this section, we are going to
 provide a nontrivial set-theoretical semantics for %PTSrk{} with respect to which it is sound, and where
-$⟦Π (X:\mathsf{rk}_j).X⟧$ is going
+$⟦Π (X : \rk{j}).X⟧$ is going
 to be an empty set, as expected.
 
 We are going to need an unusual assumption however:
@@ -1974,7 +1916,7 @@ That is,
 
 Interpretation then goes as follows:
 
-- Interpret $\mathsf{rk}_i$ by $s_i$.
+- Interpret $\rk{i}$ by $s_i$.
   The sort axiom holds since
   $s_i ∈ U_0 = \operatorname{El}(s_0)$.
 
@@ -1985,22 +1927,21 @@ Interpretation then goes as follows:
 
   \[
     \left|∏_{x ∈ \operatorname{El}(a)}
-    \operatorname{El}(b(x))\right| ≤ ℵ_n^{ℵ_m} ≤ ℵ_{\max(m+1, n)}.
+    \operatorname{El}(b(x))\right| ≤ ℵ_n^{ℵ_m} ≤ ℵ_{\max(m + 1, n)}.
   \]
 
   (The last inequality follows from GCH since
   alephs have finite indices.)
 
   Thus, for all such $a, b$ we can choose a
-  cardinal $κ_{Π (x:a).b(x)}$ (whose
-  code lies in $U_{\max(m+1, n)}$) along with
+  cardinal $κ_{Π (x : a).b(x)}$ (whose
+  code lies in $U_{\max(m + 1, n)}$) along with
   a bijection
 
   \[
-    f : \left(∏_{
-        x ∈ \operatorname{El}(a)}
+    f : \left(∏_{x ∈ \operatorname{El}(a)}
     \operatorname{El}(b(x))
-    \right) ≃ κ_{Π (x:a).b(x)}
+    \right) ≃ κ_{Π (x : a).b(x)}
   \]
 
   The eligible pairs $(κ, f)$ form a
@@ -2023,7 +1964,7 @@ by such interpretation, making it a sound model.
 A few corollaries:
 
 - Indeed, the product interpreting
-  $Π (Z:\mathsf{rk}_0).Z$ ranges over $U_0$,
+  $Π (Z : \rk{0}).Z$ ranges over $U_0$,
   which contains $c_0$, whose decoding is
   $∅$. That product is therefore empty.
 
@@ -2038,7 +1979,7 @@ validate the rules. We could try building a model in
 ZFC using $\beth$-s instead of $ℵ$-s, but that
 would break an assumption that $U_i$ are countable,
 which would falsify axioms
-$\mathsf{rk}_n : \mathsf{rk}_0$. That is not a huge
+$\rk{n} : \rk{0}$. That is not a huge
 problem however since ZF+GCH is interpretable in ZF
 [@godel1938consistency; @godel1940consistency] (in
 contrast to ZFC + inaccessible cardinals which is not
@@ -2071,15 +2012,15 @@ the following schemes, indexed by external
 $m, n ∈ ℕ$:
 
 %align
-  A(\bar m, \bar n, x)& ↔ \overline{m + n} = x,
+  A(\bar m, \bar n, x) & ↔ \overline{m + n} = x,
   \tag{$\widetilde R1$}\label{rtilde:add}\\
-  M(\bar m, \bar n, x)& ↔ \overline{mn} = x,
+  M(\bar m, \bar n, x) & ↔ \overline{mn} = x,
   \tag{$\widetilde R2$}\\
-  \bar m& ≠ \bar n\quad(m ≠ n),
+  \bar m & ≠ \bar n \quad (m ≠ n),
   \tag{$\widetilde R3$}\\
-  x ≤ \bar n& ↔ ⋁_{i = 0}^{n}x = \bar i,
+  x ≤ \bar n & ↔ ⋁_{i = 0}^{n}x = \bar i,
   \tag{$\widetilde R4$}\label{rtilde:bound}\\
-  x ≤ \bar n& ∨ \bar n ≤ x.
+  x ≤ \bar n & ∨ \bar n ≤ x.
   \tag{$\widetilde R5$}\label{rtilde:compare}
 
 Here $m + n$ and $mn$ are calculated externally: the
@@ -2091,41 +2032,40 @@ $\R$ [@tarski1953undecidable].
 Let us start constructing the model inside %PTSrk{} and
 proving that axioms hold in our model. First, some
 preliminaries on interpretation of first-order logic
-formulas: put %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/DirectRCommonCodes.v\#L113}
+formulas: put
 
 %mathpar
-  ⊥ ≜ (Π (Z:\rk0).Z) : \rk1, \qquad
-  ⊤ ≜ \rk0 → \rk0 : \rk1, \qquad
-  \mathsf{id} ≜ λ (Z:\rk0).Z : ⊤.
+  ⊥ ≜ (Π (Z : \rk{0}).Z) : \rk{1}, \qquad
+  ⊤ ≜ \rk{0} → \rk{0} : \rk{1}, \qquad
+  \mathsf{id} ≜ λ (Z : \rk{0}).Z : ⊤.
 
-Use the fixed-answer proof types %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/DirectRCommonCodes.v\#L134}
+Use the fixed-answer proof types
 
 %gather*
   \nc P ≜ P → ⊥, \qquad
-      P \ac Q ≜ (P→Q→⊥) → ⊥, \\
-      ⋁_c(P_0, …, P_k) ≜ (P_0→⊥) → ⋯ → (P_k→⊥) → ⊥, \\
-      P \iffc Q ≜ (P→Q) \ac (Q→P).
+      P \ac Q ≜ (P → Q → ⊥) → ⊥, \\
+      ⋁_c(P_0, …, P_k) ≜ (P_0 → ⊥) → ⋯ → (P_k → ⊥) → ⊥, \\
+      P \iffc Q ≜ (P → Q) \ac (Q → P).
 
 A type $P$ is *stable* when $\nc\nc P → P$ is
-inhabited %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/DirectRLogic.v\#L111}.
+inhabited.
 Negative types, dependent functions with
 stable codomain, and these encoded conjunctions and
 disjunctions are stable. They support the classical
 logical rules on stable proof types; case elimination
 is into stable targets. In particular, $P \oc \nc P$ has
 the proof
-$λ (k:P→⊥)(l:(P→⊥)→⊥).\,l\,k$.
+$λ (k : P → ⊥)(l : (P → ⊥) → ⊥).\,l\,k$.
 We never eliminate $⊥$ into an arbitrary positive
 type.
 
 For a carrier $D$, a domain predicate $\Good$, and
 fixed stable atomic interpretations, translate
-quantifiers by (with existential quantification
-abbreviating $¬ ∀ ¬$) %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRRelationalTranslation.v\#L17}
+quantifiers by
 
 %align*
-  (∀ x\,φ)^∗ & ≜ Π (x:D).\,\Good(x) → φ^∗ (x), \\
-      (∃ x\,φ)^∗ & ≜ (Π (x:D).\,\Good(x)→φ^∗(x)→⊥) → ⊥.
+  (∀ x\,φ)^∗ & ≜ Π (x : D).\,\Good(x) → φ^∗ (x), \\
+      (∃ x\,φ)^∗ & ≜ (Π (x : D).\,\Good(x) → φ^∗(x) → ⊥) → ⊥.
 
 All translated formulas are stable. Once domain closure
 and atomic congruence are proved, the logical rules and
@@ -2133,11 +2073,11 @@ equality substitution extend structurally to formulas
 on admitted arguments. All interpretations below use
 this one logical encoding.
 
-For lifting propositions $P : \rk a$ into arbitrary
+For lifting propositions $P : \rk{a}$ into arbitrary
 higher ranks $k ≥ 2$, let
 
 %mathpar
-  L_k(P) ≜ (Π (T:\mathsf{rk}_{k-2}).T→T) → P : \rk k.
+  L_k(P) ≜ (Π (T : \rk{k - 2}).T → T) → P : \rk{k}.
 
 Abstraction gives a map from $P$ to $L_k(P)$;
 application on term $(λ \,T\,x.x)$ gives a map in
@@ -2145,22 +2085,14 @@ the opposite direction.
 
 ## Unary domain and equality
 
-For this interpretation, use the argument order
-$X, z, s$ for Church numerals, as in the Rocq development %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L18}.
-Thus $D ≜ Π (X:\rk1).X → (X→X) → X$
-is the argument-permuted version of $\mathcal{N}_1$.
-Its two *constructors* are
+Use Church numerals with addition and multiplication as
+a carrier: $D ≜ \chNat{1}$.
+As a reminder, here are two only *constructors* of
+Church numerals, $\z$ and $\suc$:
 
 %mathpar
-  \z ≜ λ (X:\rk1)(z:X)(s:X→X).z,
-  \qquad
-  \suc\,d ≜ λ X\,z\,s.s(d\,X\,z\,s).
-
-Use the same order for the auxiliary operations:
-$\Add\,d\,e ≜ λ X\,z\,s.d\,X\,(e\,X\,z\,s)\,s$
-and
-$\Mul\,d\,e ≜ λ X\,z\,s.d\,X\,z\,(λ y:X.e\,X\,y\,s)$.
-Both have type $D → D → D$.
+  \z ≜ λ (X : \rk{1})(f : X → X)(x : X).x \quad
+  \suc ≜ λ (n : \chNat{1})\,X\,f\,x.f\,(n\,X\,f\,x).
 
 Even if the theory we interpret and the host type
 system are not strong enough to support induction on
@@ -2168,11 +2100,11 @@ Church numerals, we still need to prove some properties
 by induction. For this, we introduce a special helper
 proposition as a domain predicate $\Good$. It would
 state for a given $d : V$ that each inductive property
-$Q$ is satisfied for $d$ %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L37}:
+$Q$ is satisfied for $d$:
 
 %multline*
-  \Good(d) ≜ \bigl(Π (Q:D→\rk{10}).\;
-      Q(\z)→(Π (u:D).\,Q(u)→Q(\suc u))→Q(d)\bigr)\\ : \rk{12}.
+  \Good(d) ≜ \bigl(Π (Q : D → \rk{10}).\;
+      Q(\z) → (Π (u : D).\,Q(u) → Q(\suc u)) → Q(d)\bigr)\\ : \rk{12}.
 
 Zero and successor preserve it by abstraction. For
 example,
@@ -2183,11 +2115,11 @@ example,
   \mathsf{good}_s\,d\,g ≜ λ Q\,q_0\,q_s.\,
       q_s\,d\,(g\,Q\,q_0\,q_s).
 
-Define equality by negative tests %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L44}:
+Define equality by negative tests:
 
 %mathpar
-  E(d, e) ≜ Π (P:D→\rk1).\;
-  (\nc P(d)) \iffc (\nc P(e))\quad : \rk5.
+  E(d, e) ≜ Π (P : D → \rk{1}).\;
+  (\nc P(d)) \iffc (\nc P(e)) \quad : \rk{5}.
 
 It is reflexive, symmetric and transitive; every
 $F : D → D$ respects it. Equality substitution for $E$
@@ -2204,15 +2136,15 @@ definitionally.
 
 ## Order from successor-closed unary tests
 
-:::Definition[\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L48}]
+:::Definition
 A *certified unary algebra* is the fixed
 telescope
 
 %align*
-  \mathcal U = {}&(X:\rk1)\,(z:X)\,
-  (s:X→X)\,(δ:X→\rk4)\\
-  &(d_0:δ z)\,
-  (d_s:Π (u:X).\,δ u→δ (su)).
+  \mathcal U = {} & (X : \rk{1})\,(z : X)\,
+  (s : X → X)\,(δ : X → \rk{4})\\
+  & (d_0 : δ z)\,
+  (d_s : Π (u : X).\,δ u → δ (su)).
 :::
 
 Basically, this telescope contains all the necessary
@@ -2221,21 +2153,20 @@ carrier $X$ with a domain predicate $δ$.
 
 Writing $\mathcal U → B$ abbreviates the successive
 dependent arrows for these binders; it does not
-introduce a record type. Put %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L53}
-$\ev_{\mathcal U}(d) = d\,X \,z\,s$ and $G(d) ≜ (\mathcal U→δ (\ev_{ \mathcal U}(d))) : \rk6$. For $P : X → \rk1$, write
+introduce a record type. Put
+$\ev_{\mathcal U}(d) = d\,X\,s\,z$ and $G(d) ≜ (\mathcal U → δ (\ev_{\mathcal U}(d))) : \rk{6}$. For $P : X → \rk{1}$, write
 
 %mathpar
-  \Up_{\mathcal U}(P) ≜ Π (u:X).\,δ u → \nc P(u) → \nc P(su).
+  \Up_{\mathcal U}(P) ≜ Π (u : X).\,δ u → \nc P(u) → \nc P(su).
 
 Meaning that, for “good” values in new domain $X$, a
-negation of $P$ is upwards closed. Define %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L59}
+negation of $P$ is upwards closed. Define
 
 %align*
   O(d, e) ≜ \bigl(
-  \mathcal U→Π (P:X→\rk1).\;&
-  \Up_{\mathcal U}(P)→{}\\
-  &\nc P(\ev_{\mathcal U}(d))→\nc P(\ev_{
-      \mathcal U}(e))\bigr) : \rk6.
+  \mathcal U → Π (P : X → \rk{1}).\; &
+  \Up_{\mathcal U}(P) → {}\\
+  & \nc P(\ev_{\mathcal U}(d)) → \nc P(\ev_{\mathcal U}(e))\bigr) : \rk{6}.
 
 With such definition, preorder laws and equality
 compatibility are derivable.
@@ -2278,18 +2209,16 @@ holds in our interpretation of $\Rt$.
 
 :::Lemma[\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRSeparation.v\#L143}]
 For each $n ∈ ℕ$, there is a proof of
-$O(\overline{n+1}, \overline{n}) → ⊥$.
+$O(\overline{n + 1}, \overline{n}) → ⊥$.
 :::
 
 :::Proof
-By contradiction. Suppose $H : O(\overline{n+1}, \overline{n})$;
+By contradiction. Suppose $H : O(\overline{n + 1}, \overline{n})$;
 put $c = n + 1$, $q = c + 1$, and remember already familiar
 type of selectors
 
 %mathpar
-  F_q ≜ \underbrace{
-      \rk1 → ⋯ → \rk1}_{
-      q\ \mathrm{arguments}} → \rk1, \qquad
+  F_q ≜ \underbrace{\rk{1} → ⋯ → \rk{1}}_{q\ \mathrm{arguments}} → \rk{1}, \qquad
   e_i ≜ λ Z_0… Z_{q - 1}.Z_i.
 
 We are going to use them as a “model” to
@@ -2299,14 +2228,14 @@ addition” as a successor:
 
 %mathpar
   s(u) ≜ λ Z_0… Z_{q - 1}.\
-  u\,Z_{\min(0+1, c)}⋯ Z_{\min(c+1, c)}.
+  u\,Z_{\min(0 + 1, c)}⋯ Z_{\min(c + 1, c)}.
 
-Thus $s(e_i) =_β e_{\min(i+1, c)}$. Define the
+Thus $s(e_i) =_β e_{\min(i + 1, c)}$. Define the
 domain predicate as
 
 %mathpar
-  δ (u) ≜ \bigl(Π (Q:F_q→\rk3).\;
-  Q(e_0)→⋯→Q(e_c)→Q(u)\bigr) : \rk4.
+  δ (u) ≜ \bigl(Π (Q : F_q → \rk{3}).\;
+  Q(e_0) → ⋯ → Q(e_c) → Q(u)\bigr) : \rk{4}.
 
 Selector projection gives $d_0$. To construct
 $d_s$, open the output $δ (su)$ at $Q$ and its
@@ -2317,8 +2246,7 @@ proofs for the appropriate successor selectors.
 Use the unary test
 
 %mathpar
-  P(u) ≜ u\,\underbrace{⊤⋯⊤}_{
-      c\ \mathrm{entries}}\,⊥.
+  P(u) ≜ u\,\underbrace{⊤⋯⊤}_{c\ \mathrm{entries}}\,⊥.
 
 To prove $\Up(P)$, eliminate $δ (u)$ into the
 rank-three motive $v ↦ \nc P(v) → \nc P(sv)$.
@@ -2327,7 +2255,7 @@ is identity. At $e_i$ with $i < c$, there is a
 premise $⊤ → ⊥$.
 
 Specialising $H : O(\overline{c}, \overline{n})$ to
-these data yields $(⊥→⊥) → (⊤→⊥)$.
+these data yields $(⊥ → ⊥) → (⊤ → ⊥)$.
 :::
 
 :::Lemma[\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRSeparation.v\#L193}] {#sep}
@@ -2338,9 +2266,9 @@ $O(\overline{m}, \overline{n}) → ⊥$.
 :::Proof
 Suppose $O(\overline{m}, \overline{n})$ is
 inhabited; since $m > n$,
-$O(\overline{n+1}, \overline{m})$ is also inhabited.
+$O(\overline{n + 1}, \overline{m})$ is also inhabited.
 By transitivity of $O$ it means that
-$O(\overline{n+1}, \overline{n})$ which we know is
+$O(\overline{n + 1}, \overline{n})$ which we know is
 absurd.
 :::
 
@@ -2353,24 +2281,24 @@ Lemma <#sep>.
 ## Bounded cases {#bounded-cases}
 
 Here, we prove a crucial lemma from which remaining
-axioms follow. Set %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L532}
+axioms follow. Set
 
 %mathpar
   \Case_n(d) ≜ ⋁_c
   \bigl(E(d, \overline{0}), …, E(d, \overline{n}),
-  O(\overline{n+1}, d)\bigr) : \rk8.
+  O(\overline{n + 1}, d)\bigr) : \rk{8}.
 
 :::Lemma[\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L808}] {#case}
-$Π (d:D).\;\Good(d) → \Case_n(d)$ is inhabited for
+$Π (d : D).\;\Good(d) → \Case_n(d)$ is inhabited for
 external $n$.
 :::
 
 :::Proof
 We are going to use the following positive invariant
-as a $Q$ %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L535}:
+as a $Q$:
 
 %mathpar
-  \Inv_n(d) ≜ Π (Z:\rk8).\;(G(d)→\Case_n(d)→Z) → Z\quad : \rk{10}.
+  \Inv_n(d) ≜ Π (Z : \rk{8}).\;(G(d) → \Case_n(d) → Z) → Z \quad : \rk{10}.
 
 At zero, supply $G(\z)$ and the
 $E(\z, \overline{0})$
@@ -2381,8 +2309,8 @@ $G(\suc d)$ independently.
 To construct the new negative case proof, all
 branch continuations return $⊥$. An $i < n$ branch
 becomes $i + 1$ by successor congruence. The $i = n$
-branch gives $E(\suc d, \overline{n+1})$, hence
-$O(\overline{n+1}, \suc d)$. The large branch is
+branch gives $E(\suc d, \overline{n + 1})$, hence
+$O(\overline{n + 1}, \suc d)$. The large branch is
 composed with $O(d, \suc d)$. This proves successor
 closure.
 
@@ -2396,6 +2324,11 @@ $G$-evidence.
 ## The relational interpretation
 
 :::Theorem[\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRTheorem4.v\#L57}] {#main}
+^[The linked theorem gives original-PTS inhabitants for
+all axiom instances and all source derivations. The
+generic constructive witness search turns each such
+existence proof into a proof term together with its
+typing derivation.]
 The carrier $D$, admitted domain $\Good$, closed
 operations $\z, \suc$, and relations $E, O, A^∗, M^∗$
 interpret the classical relational theory $\Rt$ in %PTSrk{}. Every translated axiom has an effectively
@@ -2408,12 +2341,6 @@ proofs, and false ground atoms have internal
 refutations.
 :::
 
-The linked theorem gives original-PTS inhabitants for
-all axiom instances and all source derivations. The
-generic constructive witness search turns each such
-existence proof into a proof term together with its
-typing derivation %rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/DirectRWitnessSearch.v\#L76}.
-
 :::Proof
 Domain closure, atomic stability, and congruence
 have been established; hence source deductions
@@ -2423,8 +2350,8 @@ the remaining axioms.
 
 For bounded order ($\widetilde R4$), apply
 Lemma <#case>. Under $O(d, \overline{n})$, a case
-with $O(\overline{n+1}, d)$ contradicts
-$\nc O(\overline{n+1}, \overline{n})$ by
+with $O(\overline{n + 1}, d)$ contradicts
+$\nc O(\overline{n + 1}, \overline{n})$ by
 transitivity.
 Conversely, an $E(d, \overline{i})$ branch with
 $i ≤ n$ gives $O(d, \overline{n})$ using
@@ -2459,7 +2386,7 @@ The interpretation of $\Rt$ is not faithful.
 
 :::Proof
 The translation of
-$ρ ≜ ∀ x\,(x≤x)$ is provable in %PTSrk{}, although $\Rt ⊬ ρ$.
+$ρ ≜ ∀ x\,(x ≤ x)$ is provable in %PTSrk{}, although $\Rt ⊬ ρ$.
 
 We already know that $O$ is reflexive
 (Lemma <#r-common>). But why is reflexivity not
@@ -2477,11 +2404,11 @@ $z = xy$. When at least one of $x, y$ is $ω$, let
 each predicate hold exactly when $z = 0$. Define
 
 %mathpar
-  x ≤^+ y\quad ⟺ \quad
-  \bigl(x, y∈ℕ\ \text{and}
-  \ x≤_{ℕ}y\bigr)
-  \ \text{or}\ \bigl(x∈ℕ\ \text{and}
-  \ y=ω \bigr).
+  x ≤^+ y \quad ⟺ \quad
+  \bigl(x, y ∈ ℕ\ \text{and}
+  \ x ≤_{ℕ} y\bigr)
+  \ \text{or}\ \bigl(x ∈ ℕ\ \text{and}
+  \ y = ω \bigr).
 
 The ground graph schemes hold for every third
 argument, and distinct numerals are unequal. For
@@ -2499,18 +2426,18 @@ false.
 ## Relation to the original presentation of %texorpdfstring{$\R$}{R} {#sec:nonrelational}
 The original Tarski--Mostowski--Robinson arithmetic
 $\R$ [@tarski1953undecidable] uses
-$\{0, S, +, ⋅, ≤ \}$ and the following schemes, again
+$\{0, S,+, ⋅, ≤ \}$ and the following schemes, again
 with universal closure:
 
 %align
-  \bar m + \bar n& = \overline{m + n}, &&\tag{R1}\\
-  \bar m ⋅ \bar n& = \overline{mn}, &&\tag{R2}\\
-  \bar m& ≠ \bar n\quad(m ≠ n), &&\tag{R3}\\
-  x ≤ \bar n& ⟶
+  \bar m + \bar n & = \overline{m + n}, & & \tag{R1}\\
+  \bar m ⋅ \bar n & = \overline{mn}, & & \tag{R2}\\
+  \bar m & ≠ \bar n \quad (m ≠ n), & & \tag{R3}\\
+  x ≤ \bar n & ⟶
       ⋁_{i = 0}^{n}x = \bar i,
-      &&\tag{R4}\label{r:bound}\\
-  x ≤ \bar n& ∨ \bar n ≤ x.
-      &&\tag{R5}\label{r:compare}
+      & & \tag{R4}\label{r:bound}\\
+  x ≤ \bar n & ∨ \bar n ≤ x.
+      & & \tag{R5}\label{r:compare}
 
 Requiring $A, M$ in $\Rt$ to be total, single-valued
 graphs makes them interchangeable with the function
@@ -2544,8 +2471,8 @@ schemes are immediate.
 For the other direction define, in $\Rt$,
 
 %align*
-  U_A(x, y, z)& ≜ A(x, y, z) ∧ ∀ w\bigl(A(x, y, w)→w=z\bigr), \\
-          F_A(x, y, z)& ≜ U_A(x, y, z) ∨ \bigl(z=0∧¬ ∃ v\,U_A(x, y, v)\bigr).
+  U_A(x, y, z) & ≜ A(x, y, z) ∧ ∀ w\bigl(A(x, y, w) → w = z\bigr), \\
+          F_A(x, y, z) & ≜ U_A(x, y, z) ∨ \bigl(z = 0 ∧ ¬ ∃ v\,U_A(x, y, v)\bigr).
 
 For fixed $x, y$, either a unique $A$-output exists
 or it does not. In the first case $F_A$ selects

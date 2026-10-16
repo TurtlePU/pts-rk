@@ -33,15 +33,18 @@ The package files retain their copyright, MIT and/or LPPL 1.3-or-later notices.
 No license is stated in the reference's `markdown.cls`; it was copied from
 the user-specified template, with the following local changes (2026-10-16):
 
-- Boolean `authorsonlines=true` option (default false) replaces authblk's
+- Boolean `authorsonlines` / `authorsonlines=true` option (default false) replaces authblk's
   author-list separators with protected line breaks before emitting metadata.
+- In line mode, move 70% of the configured affiliation skip to before the
+  date, leaving 30% before affiliations; default/false layout is unchanged.
+  Recognize the bare flag in the legacy preamble-option parser as well.
 - Restore `\makeatletter` after the external preamble, which may itself
   legitimately use `\makeatother`.
 - Protect email `\url` when authblk builds its moving author arguments, so
   the class works with the plain url package as well as hyperref.
 
 Explicit YAML dates use the existing metadata path and are displayed after
-the author/affiliation section. Four compiled regression fixtures cover the
+the author/affiliation section. Five compiled regression fixtures cover the
 option's true/default/false settings, explicit/empty dates and email handling.
 The PTS-rk article's packages and theorem setup remain in
 `../tex/markdown-preamble.tex`.

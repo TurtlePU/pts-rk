@@ -1,5 +1,12 @@
 # Rocq reference coverage
 
+Editorial status (2026-10-16): the paper sources now follow the reference and
+wording choices in the supplied `paper (13).pdf` (committed source 535d9b4).
+Deliberately removed badges and commentary have not been restored. The
+inventory below is a historical technical coverage audit, not a list of the
+badges currently printed in the paper or permission to reinsert them. Its
+original descriptions of the legend and added links describe the audit version.
+
 Audited 2026-10-15 after fast-forwarding `main` to
 `8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce`. This inventory covers every
 theorem, lemma, proposition, corollary and definition environment in

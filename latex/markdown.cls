@@ -10,6 +10,8 @@
 
 \DeclareStringOption{preamble}
 \DeclareBoolOption[false]{authorsonlines}
+% Recognize this boolean in the legacy bare-preamble option pass too.
+\DeclareOption{authorsonlines}{\markdownclass@authorsonlinestrue}
 
 % A storage macro for a single bare option such as:
 %   \documentclass[preamble.tex]{markdown}
@@ -520,7 +522,7 @@ end
 
 local function emit_date(metadata)
   if metadata.date and metadata.date ~= "" then
-    tex.sprint("\\date{" .. tex_escape_metadata(metadata.date) .. "}")
+    tex.sprint("\\date{\\markdownclass@dateprefix " .. tex_escape_metadata(metadata.date) .. "}")
   else
     tex.sprint("\\predate{}\\date{}\\postdate{}")
   end
@@ -641,6 +643,8 @@ end
 \newif\ifmarkdownclassNeedsTitling
 \newif\ifmarkdownclassNeedsOrcidlink
 \newif\ifmarkdownclassNeedsUrl
+\let\markdownclass@dateprefix\@empty
+\newdimen\markdownclass@dateskip
 
 % Extract metadata and the Markdown body from the real main source file.
 \directlua{
@@ -662,6 +666,11 @@ end
     \renewcommand\Authsep{\protect\\}%
     \renewcommand\Authand{\protect\\}%
     \renewcommand\Authands{\protect\\}%
+    % Move the larger gap from before affiliations to before the date.
+    % Preserve the total title spacing and the user's configured scale.
+    \markdownclass@dateskip=.7\affilsep
+    \affilsep=.3\affilsep
+    \def\markdownclass@dateprefix{\par\vspace{\markdownclass@dateskip}}%
   \fi
 \fi
 

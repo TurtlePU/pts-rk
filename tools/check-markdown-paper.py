@@ -10,6 +10,7 @@ from pathlib import Path
 import difflib
 import re
 import argparse
+from paper_math import normalize_notation
 
 
 def native_tex(text):
@@ -55,6 +56,7 @@ def citation_tex(text):
 
 
 def normalize_spelling(text):
+    text = normalize_notation(text)
     # Expand only the newly requested prose name, not mathematical \PTS terms.
     text = text.replace(r"PTS-\texorpdfstring{$rk$}{rk}", "PTSrkNAME")
     text = text.replace("PTS-$rk$", "PTSrkNAME")
@@ -88,7 +90,9 @@ def normalize_spelling(text):
     text = re.sub(r"\\([A-Za-z]+)", lambda m: "\\"+aliases.get(m[1],m[1]), text)
     text = text.replace(r"\eqref{", r"\ref{")
     text = text.replace(r"\(", "$").replace(r"\)", "$")
-    text = re.sub(r"\[ampersand replacement\s*=\s*\\&\]", "", text).replace(r"\&", "&")
+    text = re.sub(r"\[ampersand replacement\s*=\s*\\&\]", "", text)
+    # A literal \& in tikzcd is not the tail of the row break \\& in align.
+    text = re.sub(r"(?<!\\)\\&", "&", text)
     text = text.replace('“', '``').replace('”', "''")
     # mathpar and standalone tikzcd provide their own display math wrapper.
     text = re.sub(r"\\begin\{mathpar\}([\s\S]*?)\\end\{mathpar\}",
@@ -147,7 +151,7 @@ def mathematics(text):
         for original, inner in [('align','aligned'), ('gather','gathered'), ('multline','multlined')]:
             s = re.sub(r"\\\[\s*\\begin\{"+inner+r"\}([\s\S]*)\\end\{"+inner+r"\}\s*\\\]",
                        lambda m: r"\begin{"+original+"*}"+m[1]+r"\end{"+original+"*}", s)
-        s = s.replace(r"[ampersand replacement=\&]", "").replace(r"\&", "&")
+        s = re.sub(r"(?<!\\)\\&", "&", s.replace(r"[ampersand replacement=\&]", ""))
         return re.sub(r"\s+", "", s)
     return [canonical_math(m[0]) for m in pattern.finditer(text)]
 

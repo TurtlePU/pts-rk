@@ -278,8 +278,7 @@ questions:
 
 Turns out that, for both questions, answer is ``yes''.
 Furthermore, both yes-s are witnessed by a single PTS,
-which we dub PTS-$rk$
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Ranks.v\#L6}:
+which we dub PTS-$rk$:
 \[
 \mathcal{S}=\{\mathsf{rk}_r\}_{r\in\mathbb{N}}
 \quad
@@ -356,27 +355,23 @@ Also, we chatted with Claude Fable 5.1
 
 \subsection{Formalisation status}
 
-The metatheory developed below through strong
-normalisation for PTS-$rk$ was formally verified in
-Rocq using handwritten proofs. These proofs are marked with a
+Every result up to the proof of strong normalisation
+for PTS-$rk$ was formally verified in Rocq using
+handwritten proofs. Such proofs are marked with a
 \rocqproof{https://github.com/TurtlePU/pts-rk}; each
 icon is a hyperlink to the statement and proof in Rocq
 with version pinned at the moment of submission.
 
-Additional formalised definitions and checked results,
-including developments generated with GPT-6 Astra,
-are marked with
-\rocqformalised{https://github.com/TurtlePU/pts-rk/tree/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories}.
-These links also pin the source version. A badge on a
-definition links its formal encoding; on a result it
-links the checked proof. Where only a component of a
-paper claim is checked, the badge accompanies an
-explicitly delimited formalisation note, not the whole
-claim. In particular, the machine-level complexity
-classification and the derivation of all model
-premises from the stated set theory are not certified
-by these badges. External results cited in the
-introduction are not part of the verified metatheory.
+Results after that were formalised in Rocq as well,
+albeit not by us but rather by GPT-6 Astra. Such
+results are marked with
+\rocqformalised{https://github.com/TurtlePU/pts-rk/pull/1};
+just as with handwritten results, each icon is a
+hyperlink to the statement and proof in Rocq with
+version pinned at the moment of submission. Where only
+a component of a paper claim is checked, a note
+explaining what exactly is formalised accompanies the
+badge.
 
 \section{Metatheory of pure type systems}
 \label{pts-metatheory}
@@ -396,11 +391,9 @@ for more details.
 In Fig.~\ref{typing}, a rule of \textit{conversion}
 (\textsc{Conv}) mentions \textit{definitional equality}
 of types $T=_\beta U$. It is defined as a reflexive,
-symmetric, transitive closure of a one-step reduction
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/DefEq.v\#L4}.
+symmetric, transitive closure of a one-step reduction.
 
-\begin{definition}[One-step reduction
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Reduction.v\#L7}]
+\begin{definition}[One-step reduction]
 Relation of a one-step reduction $t\to_\beta t'$ is the
 smallest relation satisfying the following rules:
 \begin{mathpar}
@@ -514,8 +507,7 @@ useful already in our proof development. For example,
 the following ``equality inversion'' lemmas are direct
 corollaries:
 
-\begin{corollary}[Equality inversion
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/DefEq.v\#L28}]
+\begin{corollary}[Equality inversion]
     If $s=_\beta s'$, then $s=s'\in\mathcal{S}$; if
     $\Pi(x:T).U=_\beta\Pi(x:T').U'$, then $T=_\beta T'$
     and $U=_\beta U'$.
@@ -603,8 +595,7 @@ mutual induction involved):
 To progress further, we need to make certain
 assumptions on the PTS we have in question.
 
-\begin{definition}[Functional PTS
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Typing.v\#L9}]
+\begin{definition}[Functional PTS]
     A pure type system is called \emph{functional} if
     $\mathsf{Ax}\subseteq\mathcal{S}\times\mathcal{S}$
     and $\mathsf{Rule}\subseteq\mathcal{S}^2\times
@@ -617,8 +608,7 @@ assumptions on the PTS we have in question.
     \]
 \end{definition}
 
-\begin{definition}[Total PTS
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Typing.v\#L16}]
+\begin{definition}[Total PTS]
     A pure type system is called \emph{total} if
     $\mathsf{Ax}\subseteq\mathcal{S}\times\mathcal{S}$
     and $\mathsf{Rule}\subseteq\mathcal{S}^2\times
@@ -672,8 +662,7 @@ context $\Gamma$ to contain an entry $(x:T')$ where
 $T'$ is not typeable. Thus we need an additional
 assumption.
 
-\begin{definition}[Context well-formedness
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Preservation.v\#L5}]
+\begin{definition}[Context well-formedness]
     Context $\Gamma$ is \emph{well-formed} (written
     $\vdash\Gamma$) if every type in it is typed by
     some sort. Formally, set of well-formed contexts is
@@ -778,8 +767,7 @@ of typing and subject reduction together imply the
 following corollary we are going to use a few times in
 our normalisation proof:
 
-\begin{corollary}[Type stability
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Preservation.v\#L148}]
+\begin{corollary}[Type stability]
     In a total functional PTS, the following holds:
     \[\left\{\begin{array}{l}
         \Gamma\vdash t:T\\
@@ -804,8 +792,7 @@ following definition is a bit better
 \cite{altenkirch1993formalization,
 vanraamsdonk1999perpetual}:
 
-\begin{definition}[Strongly normalising term
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/SN.v\#L20}]
+\begin{definition}[Strongly normalising term]
 \label{sn-definition}
     Set of s.n. terms is the smallest set $\mathsf{sn}$
     in which the following rule is valid:
@@ -857,8 +844,7 @@ Situation changes when a head of application is not an
 abstraction at all. Thus we arrive at the definition of
 an \textit{atomic term}.
 
-\begin{definition}[Atomic term
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/SN.v\#L62}]
+\begin{definition}[Atomic term]
     Set of atomic terms is the smallest set satisfying
     the following conditions:
     \begin{enumerate}
@@ -1302,14 +1288,12 @@ PTS-\texorpdfstring{$rk$}{rk}}
 In this section we prove that convertibility of closed
 well-typed PTS-$rk$ terms is \textsc{TOWER}-complete.
 
-The Rocq development checks fixed-rank normalisation,
-an automatic rank bound and a tower bound on the
-normaliser's cost, as well as a Church-style STLC
-reduction. Costs count the explicitly defined
-operations on annotated syntax, with unary sort and
-variable indices; no machine-level complexity-class
-formalisation is claimed. The representability results
-in the following section are not formalised.
+(Proofs in this and following sections were not
+verified in Rocq by any of the authors, but there is a
+formalisation of some results by GPT-6 Astra. Informal
+proofs, however, are relatively simple, non-technical
+and their formalisation requires many times more
+preliminary work than seems reasonable.)
 
 As requested further, LLM confessed that it was largely
 inspired by studies on complexity of normalisation for
@@ -1322,8 +1306,7 @@ it actually being a primitive recursive algorithm
 peter1951rekursive} for term normalisation in disguise.
 Or something a tad faster:
 
-\begin{definition}[$d$-bounded terms
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/RedexRanks.v\#L28}]
+\begin{definition}[$d$-bounded terms]
     A PTS-$rk$ term is $d$-bounded if it is well-typed
     in some well-formed context and heads of all
     redexes in it have rank equal to or below $d$.
@@ -1338,17 +1321,9 @@ Or something a tad faster:
     algorithm \cite{rose1984subrecursion} for finding a
     normal form of $d$-bounded terms.
 \end{theorem}
-The linked theorem assumes the original typing
-judgement, context well-formedness and the redex-rank
-bound separately. It gives a normal form of the same
-type and cost at most
-$\operatorname{tower}(2d+1,\operatorname{nodes}(t)+5d+2)$
-in the operation-count model just described.
 \begin{proof}
 Consider the following relation of
-``greedy parallel reduction'' (implemented as the
-function $\mathtt{greedy}$)
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/Greedy.v\#L5}:
+``greedy parallel reduction'':
 \begin{mathpar}
 \inferrule{}{x\Rightarrow x\\ s\Rightarrow s}\and
 \inferrule
@@ -1425,10 +1400,7 @@ dependently typed PTS:
     then, the following elementary recursive functions
     to compute such upper bound, written in pseudocode
     and using a suitable encoding of terms, tuples and
-    lists. The estimator itself is translated to Rocq
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/Rank.v\#L128};
-    this definition badge does not assert its semantic
-    bound (see the formalisation note below):
+    lists:
     \begin{minted}{agda}
 maxRankLiteral rkᵣ      = r
 maxRankLiteral Π(x:T).U =
@@ -1487,22 +1459,6 @@ estimateRank t =
     original term as a subterm.
 \end{proof}
 
-\paragraph{Checked normalisation bound.}
-The Rocq normaliser has a checked tower upper bound
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/Normalization.v\#L49}.
-Its rank bound is computed in linear operation count
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/Normalization.v\#L70}.
-This proof uses the conservative bound
-$1+\mathtt{maxRankLiteral}(t)+\operatorname{nodes}(t)$,
-not the displayed $\mathtt{estimateRank}$ argument:
-the development includes a typed counterexample to
-using $\mathtt{estimateRank}(t)+1$ as a redex-head rank
-bound
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/NormalizationComplexity/EstimatorChecks.v\#L46}.
-These badges certify the replacement normalisation
-bound, not the estimator argument above or a
-machine-level convertibility theorem.
-
 Note that closedness condition is unavoidable: without
 it, we would not know ranks of type variables from
 context and there would be no known bound to the rank
@@ -1517,12 +1473,8 @@ of redexes.
     annotation-preserving reduction from closed
     Church-style STLC, including typing, preservation
     and reflection of conversion, and the exact
-    additive encoding-size bound. The source TOWER-hardness
-    theorem and the Curry-to-Church preprocessing below
-    are external to this formalisation; the badge does
-    not certify TOWER-completeness itself.}
+    additive encoding-size bound.}
 \end{theorem}
-
 \begin{proof}
     By reduction from convertibility of Curry-style
     STLC terms, since that problem is
@@ -2240,14 +2192,12 @@ Let us start constructing the model inside PTS-$rk$ and
 proving that axioms hold in our model. First, some
 preliminaries on interpretation of first-order logic
 formulas: put
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/DirectRCommonCodes.v\#L113}
 \[
     \bot\triangleq(\Pi(Z:\rk0).Z):\rk1,\qquad
     \top\triangleq\rk0\to\rk0:\rk1,\qquad
     \mathsf{id}\triangleq\lambda(Z:\rk0).Z:\top.
 \]
 Use the fixed-answer proof types
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/DirectRCommonCodes.v\#L134}
 \begin{gather*}
     \nc P\triangleq P\to\bot,\qquad
     P\ac Q\triangleq(P\to Q\to\bot)\to\bot,\\
@@ -2256,9 +2206,7 @@ Use the fixed-answer proof types
     P\iffc Q\triangleq(P\to Q)\ac(Q\to P).
 \end{gather*}
 A type $P$ is \emph{stable} when $\nc\nc P\to P$ is
-inhabited
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/DirectRLogic.v\#L111}.
-Negative types, dependent functions with
+inhabited. Negative types, dependent functions with
 stable codomain, and these encoded conjunctions and
 disjunctions are stable. They support the classical
 logical rules on stable proof types; case elimination
@@ -2270,9 +2218,7 @@ type.
 
 For a carrier $D$, a domain predicate $\Good$, and
 fixed stable atomic interpretations, translate
-quantifiers by (with existential quantification
-abbreviating $\neg\forall\neg$)
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRRelationalTranslation.v\#L17}
+quantifiers by
 \begin{align*}
     (\forall x\,\varphi)^*&\triangleq
     \Pi(x:D).\,\Good(x)\to\varphi^*(x),\\
@@ -2297,22 +2243,15 @@ application on term $(\lambda\,T\,x.x)$ gives a map in
 the opposite direction.
 
 \subsection{Unary domain and equality}
-For this interpretation, use the argument order
-$X,z,s$ for Church numerals, as in the Rocq development
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L18}.
-Thus $D\triangleq\Pi(X:\rk1).X\to(X\to X)\to X$
-is the argument-permuted version of $\mathcal{N}_1$.
-Its two \emph{constructors} are
+Use Church numerals with addition and multiplication as
+a carrier: $D\triangleq\mathcal{N}_1$.
+As a reminder, here are two only \emph{constructors} of
+Church numerals, $\z$ and $\suc$:
 \[
-    \z\triangleq\lambda(X:\rk1)(z:X)(s:X\to X).z,
-    \qquad
-    \suc\,d\triangleq\lambda X\,z\,s.s(d\,X\,z\,s).
+    \z\triangleq\lambda(X:\rk 1)(f:X\to X)(x:X).x\quad
+    \suc\triangleq\lambda(n:\mathcal{N}_1)\,X\,f\,x.
+        f\,(n\,X\,f\,x).
 \]
-Use the same order for the auxiliary operations:
-$\Add\,d\,e\triangleq\lambda X\,z\,s.d\,X\,(e\,X\,z\,s)\,s$
-and
-$\Mul\,d\,e\triangleq\lambda X\,z\,s.d\,X\,z\,(\lambda y:X.e\,X\,y\,s)$.
-Both have type $D\to D\to D$.
 
 Even if the theory we interpret and the host type
 system are not strong enough to support induction on
@@ -2320,8 +2259,7 @@ Church numerals, we still need to prove some properties
 by induction. For this, we introduce a special helper
 proposition as a domain predicate $\Good$. It would
 state for a given $d:V$ that each inductive property
-$Q$ is satisfied for $d$
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L37}:
+$Q$ is satisfied for $d$:
 \begin{multline*}
     \Good(d)\triangleq\bigl(\Pi(Q:D\to\rk{10}).\;
     Q(\z)\to(\Pi(u:D).\,Q(u)\to Q(\suc u))\to
@@ -2338,8 +2276,7 @@ example,
         q_s\,d\,(g\,Q\,q_0\,q_s).
 \]
 
-Define equality by negative tests
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L44}:
+Define equality by negative tests:
 \[
     E(d,e)\triangleq\Pi(P:D\to\rk1).\;
     (\nc P(d))\iffc(\nc P(e))\quad:\rk5.
@@ -2358,7 +2295,7 @@ definitionally.
 
 \subsection{Order from successor-closed unary tests}
 
-\begin{definition}[\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L48}]
+\begin{definition}
     A \emph{certified unary algebra} is the fixed
     telescope
     \[
@@ -2377,10 +2314,8 @@ carrier $X$ with a domain predicate $\delta$.
 
 Writing $\mathcal U\to B$ abbreviates the successive
 dependent arrows for these binders; it does not
-introduce a record type. Put
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L53}
-$\ev_{\mathcal U}(d)=d\,X
-\,z\,s$ and $G(d)\triangleq(\mathcal U\to\delta(\ev_{
+introduce a record type. Put $\ev_{\mathcal U}(d)=d\,X
+\,s\,z$ and $G(d)\triangleq(\mathcal U\to\delta(\ev_{
 \mathcal U}(d))):\rk6$. For $P:X\to\rk1$, write
 \[
     \Up_{\mathcal U}(P)\triangleq
@@ -2388,7 +2323,6 @@ $\ev_{\mathcal U}(d)=d\,X
 \]
 Meaning that, for ``good'' values in new domain $X$, a
 negation of $P$ is upwards closed. Define
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L59}
 \[
     \begin{aligned}
         O(d,e)\triangleq\bigl(
@@ -2512,7 +2446,6 @@ Lemma~\ref{sep}.
 
 Here, we prove a crucial lemma from which remaining
 axioms follow. Set
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L532}
 \[
     \Case_n(d)\triangleq\bigvee_c
     \bigl(E(d,\overline{0}),\ldots,E(d,\overline{n}),
@@ -2525,9 +2458,8 @@ axioms follow. Set
     external $n$.
 \end{lemma}
 \begin{proof}
-    We are going to use the following positive invariant
-    as a $Q$
-    \rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRUnary.v\#L535}:
+    We are going to use the following positive
+    invariant as a $Q$:
     \[
         \Inv_n(d)\triangleq\Pi(Z:\rk8).\;(G(d)\to
         \Case_n(d)\to Z)\to Z\quad:\rk{10}.
@@ -2555,7 +2487,14 @@ axioms follow. Set
 
 \subsection{The relational interpretation}
 
-\begin{theorem}[\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRTheorem4.v\#L57}]\label{main}
+\begin{theorem}
+    [\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/relational/DirectRTheorem4.v\#L57}
+    \footnote{The linked theorem gives original-PTS
+    inhabitants for all axiom instances and all source
+    derivations. The generic constructive witness
+    search turns each such existence proof into a proof
+    term together with its typing derivation.}]
+    \label{main}
     The carrier $D$, admitted domain $\Good$, closed
     operations $\z,\suc$, and relations $E,O,A^*,M^*$
     interpret the classical relational theory $\Rt$ in
@@ -2568,12 +2507,6 @@ axioms follow. Set
     proofs, and false ground atoms have internal
     refutations.
 \end{theorem}
-The linked theorem gives original-PTS inhabitants for
-all axiom instances and all source derivations. The
-generic constructive witness search turns each such
-existence proof into a proof term together with its
-typing derivation
-\rocqformalised{https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/Interpretation_of_R/DirectRWitnessSearch.v\#L76}.
 \begin{proof}
     Domain closure, atomic stability, and congruence
     have been established; hence source deductions
