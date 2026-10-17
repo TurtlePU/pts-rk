@@ -1,15 +1,27 @@
-\documentclass{article}
+\documentclass[a4paper]{amsproc}
 
 \usepackage{parskip}
 % Preserve article's smaller abstract text and margins, without its indent.
+% AMS classes use a different abstract implementation (not quotation).
+\makeatletter
+\@ifclassloaded{article}{%
 \patchcmd{\abstract}{\quotation}{\quote}{}{%
   \PackageError{paper}{Cannot remove abstract indentation}{}%
 }
 \patchcmd{\endabstract}{\endquotation}{\endquote}{}{%
   \PackageError{paper}{Cannot remove abstract indentation}{}%
 }
+}{}
+% The Markdown metadata title precedes the abstract.  Unlike the native AMS
+% title routine, titling does not flush the collected abstract box.
+\@ifclassloaded{amsproc}{%
+  \apptocmd{\endabstract}{\@setabstract}{}{%
+    \PackageError{paper}{Cannot display the AMS abstract after the title}{}%
+  }%
+}{}
+\makeatother
 
-\usepackage[backend=biber]{biblatex}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
 \addbibresource{bibliography.bib}
 
 \usepackage
@@ -17,6 +29,22 @@
 simplebnf,stmaryrd,tikz-cd,verified-badges}
 
 \usepackage{amsthm}
+% Use amsart's theorem typography while retaining the amsproc page layout.
+% Unlike generic amsthm, AMS classes use half-baseline theorem spacing,
+% including for remarks. Keep existing environment names and counters.
+\newtheoremstyle{plain}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {\itshape}{0pt}{\bfseries}{.}{5pt plus 1pt minus 1pt}{}
+\newtheoremstyle{definition}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {\normalfont}{0pt}{\bfseries}{.}{5pt plus 1pt minus 1pt}{}
+\newtheoremstyle{remark}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {\normalfont}{0pt}{\itshape}{.}{5pt plus 1pt minus 1pt}{}
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{lemma}{Lemma}
@@ -71,6 +99,9 @@ simplebnf,stmaryrd,tikz-cd,verified-badges}
 \newunicodechar{⇔}{\ensuremath{\Leftrightarrow}}
 \newunicodechar{□}{\ensuremath{\square}}
 \newunicodechar{△}{\ensuremath{\triangle}}
+% TeX does not automatically break compound names at a Unicode en dash.
+% Keep the printed dash, allowing a line break immediately after it.
+\newunicodechar{–}{\textendash\allowbreak}
 \newunicodechar{“}{``}
 \newunicodechar{”}{''}
 \newunicodechar{∞}{\ensuremath{\infty}}
@@ -165,8 +196,46 @@ simplebnf,stmaryrd,tikz-cd,verified-badges}
 % Keep the original article's body typography and all mathematics packages.
 % Only title/author layout is delegated to the MLTT-S metadata class.
 \usepackage{titling,authblk}
+% Restore amsart's administrative-footnote order after titling's title.
+\makeatletter
+\@ifclassloaded{amsproc}{%
+  % This is a manuscript date, not a journal's editorial receipt date.
+  \renewcommand{\datename}{\textit{Date}:}%
+  \apptocmd{\maketitle}{%
+    \begingroup
+    \let\thefootnote\@empty
+    \let\markdownclass@dateprefix\@empty
+    \ifx\@date\@empty\else
+      \footnotetext{\@setdate}%
+    \fi
+    \ifx\@subjclass\@empty\else
+      \footnotetext{\@setsubjclass}%
+    \fi
+    \endgroup
+  }{}{\PackageError{paper}{Cannot display the AMS date/classification footnotes}{}}%
+}{}
+\makeatother
 \setlength{\droptitle}{-1em}
 \predate{\begin{center}\normalsize}
+\makeatletter
+\@ifclassloaded{amsproc}{%
+  % Retain AMS body margins, but avoid the oversized first-page title gap.
+  \setlength{\droptitle}{-2.5em}%
+  % Avoid stacking titling's center-list and end-of-title skips on top of
+  % the AMS abstract's own 20pt baseline-based separation.
+  \postauthor{\end{tabular}\par\end{center}\removelastskip}%
+  % amsproc stores the date but does not print it in its native title routine.
+  \patchcmd{\@maketitle}
+    {{\@bspredate \@date \@bspostdate}}{}{}{%
+      \PackageError{paper}{Cannot suppress the non-AMS title date}{}%
+    }%
+  \patchcmd{\@maketitle}{\vskip 1.5em}{}{}{%
+    \PackageError{paper}{Cannot remove extra titling space before AMS abstract}{}%
+  }%
+  % The metadata class sets this after loading the external preamble.
+  \AtBeginDocument{\markdownclass@dateskip\z@}%
+}{}
+\makeatother
 \usepackage[
   smartHybrid, fencedEnvs, headerAttributes, rawAttribute,
   inlineCodeAttributes, fencedCode, inlineNotes,

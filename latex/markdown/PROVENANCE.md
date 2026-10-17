@@ -58,4 +58,4 @@ Explicit YAML dates use the existing metadata path and are displayed after
 the author/affiliation section. Five compiled regression fixtures cover the
 option's true/default/false settings, explicit/empty dates and email handling.
 The PTS-rk article's packages and theorem setup remain in
-`../tex/markdown-preamble.tex`.
+`../tex/preamble.tex`.

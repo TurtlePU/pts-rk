@@ -11,6 +11,23 @@
 
 ## Markdown–TeX paper
 
+For an arXiv submission, run `python3 tools/package-arxiv.py` from the
+repository root. It rebuilds the current manuscript and creates
+`latex/PTS-rk-arxiv.zip`, containing the exported `PTS-rk_precompiled.tex`,
+its dependencies, precompiled `PTS-rk_precompiled.bbl` and frozen minted cache,
+plus the exact editable `PTS-rk.tex` at the archive root with its dependencies.
+The included `00README.json` selects only `PTS-rk_precompiled.tex` for XeLaTeX
+compilation and retains the original source for readers. This file is optional:
+the same settings can be chosen in arXiv's Review Files interface, which
+generates it automatically. It avoids ambiguity between the two entry points.
+The editable Markdown source
+is not replaced. The submission copy uses pre-rendered
+Markdown and XeLaTeX, since arXiv does not offer LuaLaTeX. Select XeLaTeX
+when uploading. The tool tests a clean extraction with three
+`xelatex -no-shell-escape` passes, without Biber or the minted executable.
+Build logs and a manifest are retained in a temporary directory printed by
+the tool. This is a local test, not a run on arXiv's own TeX Live image.
+
 Build from the repository root with `bash tools/build-markdown-paper.sh`.
 This requires LuaLaTeX, latexmk, Biber and the original article's packages
 (including minted) and Python 3 for the content checks. The script uses a fresh
@@ -19,7 +36,7 @@ output, and copies only a successful PDF into this directory. It does not
 overwrite the traditional paper source or PDF.
 
 The local [Markdown runtime provenance](markdown/PROVENANCE.md) pins the
-user-specified MLTT-S template. The [preamble](tex/markdown-preamble.tex)
+user-specified MLTT-S template. The [preamble](tex/preamble.tex)
 preserves the article's math macros, theorem counters and bibliography setup;
 the metadata class changes the title/author header. Paragraphs use `parskip`:
 no first-line indentation, with space between paragraphs.
@@ -31,10 +48,23 @@ or “and”; affiliations, ORCID and email remain attached to the same authors.
 The default/`false` preserves the original inline layout. Both forms work with
 `preamble=...` or a legacy bare preamble filename. Line mode moves 70% of the
 affiliation skip to before the date, retaining 30% before affiliations.
+For this paper's `amsproc` setup, the preamble disables that extra pre-date
+skip and titling's extra title/date list spacing; the abstract retains its
+native AMS separation.
 YAML `date: October 16, 2026` is
 rendered after authors and affiliations; an omitted/empty date stays hidden.
-This paper uses normal-sized date text and raises the title block by 1 em
-through the preamble's `\predate` and `\droptitle` settings.
+Optional `msc2020: 03B38, 03D15, 03B70, 03B40, 68N18` metadata calls
+`\subjclass[2020]{...}` when the loaded class or a package defines that command;
+otherwise it is ignored. The paper's AMS/titling setup prints it as an
+unnumbered classification footnote.
+With `amsproc`, the paper adopts `amsart`'s unnumbered first-page footnotes:
+the date (labelled “Date:”) immediately precedes the MSC classification.
+Theorems use `amsart` typography: flush-left bold headings, italic theorem
+bodies, upright definition bodies, italic remark headings with upright bodies,
+and half-baseline spacing. Existing numbering and labels are preserved.
+The paper sets `\droptitle` to -2.5 em to reduce the
+first-page top gap, without changing the body margins. Article mode retains
+the normal-sized date and -1 em title adjustment.
 
 Native syntax:
 

@@ -417,6 +417,7 @@ local function parse_metadata(front_matter)
     end
     local title = line:match("^title:%s*(.*)$")
     local date = line:match("^date:%s*(.*)$")
+    local msc2020 = line:match("^msc2020:%s*(.*)$")
     local scalar_author = line:match("^author:%s*(.+)$")
     local name = line:match("^%-%s+name:%s*(.*)$")
     local author_name = line:match("^%-%s+([^:]+):%s*$")
@@ -430,6 +431,9 @@ local function parse_metadata(front_matter)
       in_affiliations = false
     elseif date then
       metadata.date = strip_quotes(date)
+      in_affiliations = false
+    elseif msc2020 then
+      metadata.msc2020 = strip_quotes(msc2020)
       in_affiliations = false
     elseif scalar_author then
       metadata.scalar_author = strip_quotes(scalar_author)
@@ -593,6 +597,10 @@ local function emit_metadata(metadata)
     emit_structured_authors(metadata)
   end
 
+  if metadata.msc2020 and metadata.msc2020 ~= "" then
+    tex.sprint("\\ifdefined\\subjclass\\subjclass[2020]{" ..
+      tex_escape_metadata(metadata.msc2020) .. "}\\fi")
+  end
   emit_date(metadata)
 end
 

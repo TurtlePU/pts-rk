@@ -9,7 +9,7 @@ for input in markdown.cls markdown.sty markdown verified-badges.sty; do
 done
 cp "$project_dir/tests/markdown/"*.tex "$test_dir/"
 cd "$test_dir"
-for fixture in authors-lines authors-lines-bare authors-default authors-false empty-date formalization; do
+for fixture in authors-lines authors-lines-bare authors-default authors-false empty-date formalization msc2020 msc2020-unavailable; do
   lualatex -interaction=nonstopmode -halt-on-error "$fixture.tex" \
     > "$fixture.build.log" 2>&1
 done
@@ -27,6 +27,10 @@ else
 fi
 python3 - <<'PY'
 from pathlib import Path
+msc = Path('msc2020.log').read_text()
+assert 'TEST-MSC: 2020: 03B38, 03D15, 03B70, 03B40, 68N18' in msc
+assert 'Undefined control sequence' not in Path('msc2020-unavailable.log').read_text()
+print('msc2020: supported and unavailable command PASS')
 for name, diagnostic in (
     ('unknown', 'Unknown formalization root'),
     ('unknown-in-proof', 'Unknown formalization root'),

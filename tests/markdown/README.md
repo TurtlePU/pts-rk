@@ -11,6 +11,8 @@ The script retains a fresh temporary directory with all input/output and logs.
 - `authors-default.tex`: original inline separators and legacy bare preamble.
 - `authors-false.tex`: explicit false preserves the default inline separators.
 - `empty-date.tex`: scalar author, empty date, no authblk layout override.
+- `msc2020.tex` and `msc2020-unavailable.tex`: classification forwarded with
+  version 2020 when supported, safely ignored when no command is defined.
 - `formalization.tex`: multiple assistants, revision aliases, escaped line
   anchors, absolute overrides, moving theorem titles and ordinary/named proof
   environments. PDFKit checks actual annotation URLs and proof text on macOS.
@@ -24,6 +26,8 @@ author separator definitions, affiliation/date skips, date values, glyph
 warnings and unused options.
 The full paper build and visual PDF inspection additionally check actual
 title-page layout and the placement of the date after affiliations.
+For the AMS-styled paper, run `swift tests/markdown/check_amsart_paper.swift
+latex/PTS-rk.pdf` to check the first-page date/classification footnote order.
 
 Run `python3 -m unittest discover -s tests/markdown -p 'test_*.py'` for math
 formatting, prose protection and formalization link regression tests, including

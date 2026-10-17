@@ -1,4 +1,4 @@
-\documentclass[preamble=tex/markdown-preamble.tex,authorsonlines]{markdown}
+\documentclass[preamble=tex/preamble.tex,authorsonlines]{markdown}
 title: A sound pure type system with ranks as sorts and Type-in-Type
 author:
 - Pavel Sokolov:
@@ -14,14 +14,16 @@ author:
 formalization:
   rocq-ai: https://github.com/TurtlePU/pts-rk/blob/8e3a7b67b571f6ab3fb7cc67e9dc7c0a214351ce/theories/
   rocq: https://github.com/TurtlePU/pts-rk/blob/d22053fa22d6070c8a14af4da679e439dd012825/theories/
+msc2020: 03B38, 03D15, 03B70, 03B40, 68N18
 date: October 16, 2026
 
 :::Abstract
 We present a dependently typed pure type system
 that contains a circular axiom $s : s$ for a
-certain sort $s$ and is nonetheless normalizing.
+certain sort $s$ and is nonetheless strongly
+normalizing.
 Girard's paradox is avoided because our sorts are
-not closed under $Π$-former:
+not closed under a $Π$-former:
 function types are placed in sorts according to
 their *rank*.
 Turns out that this system has a unique set of
@@ -36,7 +38,7 @@ developments.
 Base normalization proof is surprisingly simple
 (modulo general metatheoretical properties of pure
 type systems) and has been fully formalized in
-vanilla Rocq without additional
+vanilla Rocq (formerly Coq) without additional
 axioms.
 :::
 
@@ -65,8 +67,6 @@ types”.
   | $u\,t$ : function application
   ;;
 :::
-
-%newpage
 
 Common syntax conventions to make it more
 lightweight are the following:
@@ -151,8 +151,6 @@ Both STLC and CoC are strongly normalizing and
 sound with respect to their set-theoretical
 semantics [@tait1967intensional; @coquand1990kripke; @geuvers1991modular],
 but it is not true for arbitrary PTS.
-
-%newpage
 
 :::theorem[Girard'72 \cite{girard1972interpretation, hurkens1995simplification}]
 The following PTS called System U is not
@@ -267,15 +265,14 @@ our system, as seen in Sections <#complexity>-<#computational>.
 As a byproduct of our study on complexity,
 we built a sound set-theoretic model for %PTSrk{}
 (see Section <#rk-model>) which assumes
-*Generalized Continuum Hypothesis* [@jech2003set; @hausdorff1908; @godel1938consistency]
+*Generalized Continuum Hypothesis* [@jech2003set; @hausdorff1908; @godel1938consistency; @godel1940consistency]
 which is an unusual pick for dependently typed
 systems where *inaccessible cardinals* are a more
 common assumption [@werner1997sets; @lee2011proof].
 Before concluding, we provide a sneak peek into
 what it is like to write proofs in %PTSrk{} and
 provide a full interpretation of
-Tarski–Mostowski–Robinson arithmetic $R$ in
-%PTSrk{} (Section <#proof-system>).
+Tarski–Mostowski–Robinson arithmetic $R$ (Section <#proof-system>).
 
 ## Use of artificial intelligence
 
@@ -292,10 +289,9 @@ since we wanted to make sure we completely
 understood the results (in addition,
 generated proofs always required additional
 explanations or a complete rewrite to make them
-understandable and simpler to read).
-
-We also chatted with Claude Fable 5.1 [@claude_fable]
-to identify more suitable points of reference.
+understandable and simpler to read).c
+We also used Claude Fable 5.1 [@claude_fable]
+to identify additional points of reference.
 
 ## Formalization status
 
@@ -393,6 +389,7 @@ has a diamond property — for each $t_0, t_1, t_2$
 such that $t_0 →_β^∗ t_1$ and $t_0 →_β^∗ t_2$
 there exists a $t'$ such that $t_1 →_β^∗ t'$ and
 $t_2 →_β^∗ t'$:
+%vspace{-1em}
 
 %tikzcd
   [ampersand replacement = \&]
@@ -401,7 +398,6 @@ $t_2 →_β^∗ t'$:
   \\
     t_2 \arrow[r, dashed] \&
     t'
-
 Then, any ‘mountains’ in the path $t =_β u$ can be
 switched into ‘valleys’.
 
@@ -1035,15 +1031,14 @@ This is a retelling of a proof that our friend
 Aleksandr Levin got after half-jokingly entering
 the following prompt into GPT-6 Pro:
 
-> ```text
 > Consider the following pure type system:
->
+> ```text
 > S = { rk_n | n natural }
 > Axiom = { (rk_n, rk_0) | n natural }
 > Rule = { (rk_m, rk_n, rk_max(m+1,n)) | m, n natural }
->
-> Is it strongly normalizing or not?
 > ```
+
+> Is it strongly normalizing or not?
 
 After approximately 20 minutes,
 LLM outputted the proof which we retold above.
@@ -1113,7 +1108,7 @@ number of free variables it uses,
 a standard technique originating from [@bellegarde1994substitution; @bird1999debruijn; @altenkirch1999monadic]:
 
 ```coq
-Inductive Term (L: Type) (n: nat): Type:=
+Inductive Term (L: Type) (n: nat): Type :=
 | sort: L -> Term L n
 | Π: Term L n -> Term L (S n) -> Term L n
 | var: Fin n -> Term L n
@@ -1163,8 +1158,7 @@ the proof of Substitution lemma given
 above does not follow the structure of inductive
 definition <#sn-definition>.
 Instead, we use a syntax-directed characterization
-of the set of strongly normalizing terms
-introduced in [@Joachimski2003Short]:
+of the set of strongly normalizing terms [@Joachimski2003Short]:
 
 :::Definition[Syntax-directed characterization of strong normalization \proof{rocq:SN.v\#L175}]
 Sets of terms $\mathsf{SN}$ (strongly
@@ -1241,7 +1235,6 @@ $\mathsf{SNx}$, it is atomic,
 so lemma <#sn-atomic> applies in the relevant
 case.
 :::
-
 Then, to prove strong normalization,
 it is enough to prove that if a term is typable,
 it is $\mathsf{SN}$; we only have to state
@@ -1388,11 +1381,12 @@ appearing in abstractions of a term,
 then run a normalizer for $(B + 1)$-bounded terms
 and compare the results; $B$ has to be bound by an
 elementary recursive function on the size of
-input. In Fig. <#rank-bound-algorithm> we present
-such a function: $\mathtt{maxRankLiteral}\;t$ computes
-the maximal rank contained as a subterm of $t$.
+input. We present such a function in
+Figure <#rank-bound-algorithm>:
+$\mathtt{estimateRank}\;t$ provides a bound on
+ranks of redex arguments in $t$.
 
-:::Figure[ht] Computing rank upper bound {#rank-bound-algorithm}
+:::Figure[htb] Computing a bound on ranks of redex arguments {#rank-bound-algorithm}
 ```agda
 maxRankLiteral rkᵣ      = r
 maxRankLiteral Π(x:T).U =
@@ -1403,28 +1397,30 @@ maxRankLiteral λ(x:T).t =
 maxRankLiteral (t u)    =
     maxRankLiteral t ⊔ maxRankLiteral u
 
-traversal _ rkᵣ      _ = (r, 0, 0)
+traversal _ rkᵣ      _ = (r , 0 , 0)
 traversal Γ Π(x:T).U d =
-    let (vᵀ, rᵀ, aᵀ) = traversal Γ T d
-        (vᵁ, rᵁ, aᵁ) = traversal (x:= vᵀ, Γ) U d
-     in (vᵁ, suc rᵀ ⊔ rᵁ, aᵀ ⊔ aᵁ)
-traversal Γ x        d = (d, Γ[x], 0)
+    let (vᵀ , rᵀ , aᵀ) = traversal Γ T d
+        (vᵁ , rᵁ , aᵁ) = traversal (x := vᵀ, Γ) U d
+     in (vᵁ , suc rᵀ ⊔ rᵁ , aᵀ ⊔ aᵁ)
+traversal Γ x        d = (d , Γ[x] , 0)
 traversal Γ λ(x:T).t d =
-    let (vᵀ, rᵀ, aᵀ) = traversal Γ T d
-        (vᵗ, rᵗ, aᵗ) = traversal (x:= vᵀ, Γ) t d
-     in (vᵗ, rᵗ, rᵀ ⊔ aᵀ ⊔ aᵗ)
+    let (vᵀ , rᵀ , aᵀ) = traversal Γ T d
+        (vᵗ , rᵗ , aᵗ) = traversal (x := vᵀ, Γ) t d
+     in (vᵗ , rᵗ , rᵀ ⊔ aᵀ ⊔ aᵗ)
 traversal Γ (t u)    d =
-    let (vᵗ, rᵗ, aᵗ) = traversal Γ t d
-        (_, _, aᵘ) = traversal Γ u d
-     in (vᵗ, rᵗ, aᵗ ⊔ aᵘ)
+    let (vᵗ , rᵗ , aᵗ) = traversal Γ t d
+        (_  , _  , aᵘ) = traversal Γ u d
+     in (vᵗ , rᵗ , aᵗ ⊔ aᵘ)
 
 estimateRank t =
-    let (vᵗ, rᵗ, aᵗ) =
+    let (vᵗ , rᵗ , aᵗ) =
         traversal [] t (maxRankLiteral t)
      in aᵗ
 ```
 :::
-
+The function $\mathtt{maxRankLiteral}\;t$ computes
+maximal rank which is contained as a subterm in
+the term $t$.
 The workhorse of this algorithm,
 $\mathtt{traversal}\;Γ \;t\;d$,
 accepts the list $Γ$ of ranks in context of a term
@@ -1453,7 +1449,6 @@ some upper bound on it; thus it is enough to
 output a maximal rank which occurs in the original
 term as a subterm.
 :::
-
 Closedness is essential: without the context,
 we cannot determine the ranks of free type
 variables and hence cannot bound
@@ -1992,7 +1987,6 @@ length of $[x]^O$ is $Ω(\log{x})$ so
 thus bounded by an elementary recursive function
 of the size of input encoding.
 :::
-
 In a particular case where elementary recursive
 encoding is used, function representable in
 %PTSrk{} is bounded by elementary recursive
@@ -2111,14 +2105,11 @@ It is easy to check that the typing rules are
 respected by this interpretation,
 making it a sound model.
 :::
-
 A few corollaries:
-
 - Indeed, the product interpreting
   $Π (Z : \rk{0}).Z$ ranges over $U_0$,
   which contains $c_0$, whose decoding is $∅$.
   That product is therefore empty.
-
 - A system with rank cumulativity
   $t : \mathrm{rk}_j ⇒ t : \mathrm{rk}_{j + 1}$ is
   sound with respect to this model;
@@ -2133,9 +2124,8 @@ an assumption that $U_i$ are countable,
 which would falsify axioms $\rk{n} : \rk{0}$.
 That is not a huge problem, however, since ZF+GCH is
 interpretable in ZF [@godel1938consistency; @godel1940consistency]
-(in contrast to ZFC + inaccessible cardinals which
-is not [@kanamori2003higher; @kunen1980set; @godel1931formal]
-).
+(in contrast to ZF + inaccessible cardinals which
+is not [@kanamori2003higher; @kunen1980set; @godel1931formal]).
 
 # %PTSrk{} as a proof system {#proof-system}
 
@@ -2361,14 +2351,6 @@ there is a closed proof of
 $O(\overline{m}, \overline{n})$, built by a finite
 succession of steps.
 
-:::Remark
-Actually, it is possible to prove inside %PTSrk{}
-that $D$ satisfies axioms of an *ordered
-commutative unital semiring*.
-A generated formal proof is available in
-supplementary materials.
-:::
-
 ## Finite separation {#finite-separation}
 
 In this section, we prove that $\widetilde R3$ also
@@ -2566,7 +2548,7 @@ The interpretation of $\Rt$ is not faithful.
 
 :::Proof
 The translation of $ρ ≜ ∀ x\,(x ≤ x)$ is provable
-in %PTSrk{}, although $\Rt ⊬ ρ$.
+in %PTSrk{}, but $\Rt ⊬ ρ$.
 
 We already know that $O$ is reflexive (Lemma <#r-common>).
 But why is reflexivity not derivable in
@@ -2603,6 +2585,13 @@ Hence, this is a model of $\Rt$.
 
 However, $ω \not ≤^+ ω$, so $ρ$ is false.
 :::
+
+Actually, it is possible to prove inside %PTSrk{}
+that $\Good$ Church numerals form a *strict ordered
+commutative unital semiring*.
+A generated proof is available in
+supplementary materials.
+
 
 ## Relation to the original presentation of %texorpdfstring{$\R$}{R} {#sec:nonrelational}
 The original Tarski–Mostowski–Robinson
