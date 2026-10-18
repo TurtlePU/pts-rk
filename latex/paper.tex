@@ -99,6 +99,7 @@ allows to carry out nontrivial proof developments. Base
 normalization proof is surprisingly simple (modulo
 general metatheoretical properties of pure type
 systems) and has been fully formalized in vanilla Rocq
+(formerly Coq)
 without additional axioms.
 \end{abstract}
 
@@ -336,7 +337,7 @@ assumption \cite{werner1997sets,lee2011proof}. Before
 concluding, we provide a sneak peek into what it is
 like to write proofs in PTS-$rk$ and provide a full
 interpretation of Tarski--Mostowski--Robinson
-arithmetic $R$ in PTS-$rk$
+arithmetic $R$
 (Section~\ref{proof-system}).
 
 \subsection{Use of artificial intelligence}
@@ -353,8 +354,8 @@ generated proofs always required additional
 explanations or a complete rewrite to make them
 understandable and simpler to read).
 
-We also chatted with Claude Fable 5.1
-\cite{claude_fable} to identify more suitable points of
+We also used Claude Fable 5.1
+\cite{claude_fable} to identify additional points of
 reference.
 
 \subsection{Formalization status}
@@ -1180,7 +1181,7 @@ the set of strongly normalizing terms since the proof
 of Substitution lemma given above does not follow the
 structure of inductive definition \ref{sn-definition}.
 Instead, we use a syntax-directed characterization of
-the set of strongly normalizing terms introduced in
+the set of strongly normalizing terms
 \cite{Joachimski2003Short}:
 
 \begin{definition}[Syntax-directed characterization
@@ -1436,7 +1437,7 @@ estimateRank t =
      in aᵗ
     \end{minted}
 
-    Function $\mathtt{maxRankLiteral}\;t$ computes
+    The function $\mathtt{maxRankLiteral}\;t$ computes
     maximal rank which is contained as a subterm in the
     term $t$. The workhorse of this algorithm,
     $\mathtt{traversal}\;\Gamma\;t\;d$, accepts the
@@ -1529,7 +1530,7 @@ cannot bound redex ranks.
         \lambda(P:T\to\mathsf{rk}_0)(x:P\,t).
         (\lambda(y:P\,t').y)\,x
     \]
-    This term is well-typed iff $P\,t=_\beta P_t'$
+    This term is well-typed iff $P\,t=_\beta P\,t'$
     which holds iff $t=_\beta t'$.
 
     Therefore, we only need to prove that type checking
@@ -2143,7 +2144,7 @@ which would falsify axioms
 $\mathsf{rk}_n:\mathsf{rk}_0$. That is not a huge
 problem, however, since ZF+GCH is interpretable in ZF
 \cite{godel1938consistency,godel1940consistency} (in
-contrast to ZFC + inaccessible cardinals which is not
+contrast to ZF + inaccessible cardinals which is not
 \cite{kanamori2003higher,kunen1980set,godel1931formal}
 ).
 
@@ -2367,12 +2368,6 @@ compatibility can be derived.
 Consequently, for each external $m\le n$, there is a
 closed proof of $O(\overline{m},\overline{n})$, built
 by a finite succession of steps.
-\begin{remark}
-    Actually, it is possible to prove inside PTS-$rk$
-    that $D$ satisfies axioms of an \emph{ordered
-    commutative unital semiring}. A generated formal
-    proof is available in supplementary materials.
-\end{remark}
 
 \subsection{Finite separation}\label{finite-separation}
 
@@ -2563,7 +2558,7 @@ faithful on arbitrary first-order sentences.
 \begin{proof}
     The translation of
     $\rho\triangleq\forall x\,(x\le x)$ is provable in
-    $\PTS$, although $\Rt\nvdash\rho$.
+    $\PTS$, but $\Rt\nvdash\rho$.
 
     We already know that $O$ is reflexive
     (Lemma~\ref{r-common}). But why is reflexivity not
@@ -2598,6 +2593,13 @@ faithful on arbitrary first-order sentences.
     However, $\omega\not\le^+\omega$, so $\rho$ is
     false.
 \end{proof}
+
+\begin{remark}
+    Actually, it is possible to prove inside PTS-$rk$
+    that $\Good$ Church numerals form a \emph{strictly ordered
+    commutative unital semiring}.
+    A generated proof is available in supplementary materials.
+\end{remark}
 
 \subsection{Relation to the original presentation of
 \texorpdfstring{$\R$}{R}}\label{sec:nonrelational}
