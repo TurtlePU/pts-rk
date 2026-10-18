@@ -1529,7 +1529,7 @@ cannot bound redex ranks.
         \lambda(P:T\to\mathsf{rk}_0)(x:P\,t).
         (\lambda(y:P\,t').y)\,x
     \]
-    This term is well-typed iff $P\,t=_\beta P_t'$
+    This term is well-typed iff $P\,t=_\beta P\,t'$
     which holds iff $t=_\beta t'$.
 
     Therefore, we only need to prove that type checking
@@ -1631,7 +1631,8 @@ statman1979typed,fortune1983expressiveness}).
 \begin{theorem}\label{uniform-elementary}
     A family of elementary recursive functions
     is \textbf{not} uniformly representable in
-    PTS-$rk$.
+    PTS-$rk$ with elementary recursive natural
+    number encodings.
 \end{theorem}
 \begin{proof}
     By a direct diagonalization argument. Suppose we
@@ -2021,10 +2022,10 @@ bounded by elementary recursive function.
 \end{proof}
 
 Two questions remain open: a) whether there are
-non-elementary functions which are non-uniformly
-computable in PTS-$rk$ because of non-elementary input
-encoding and b) whether there are any
-functions which are not in $\mathcal{E}^2$ and are
+non-elementary functions which are computable in
+PTS-$rk$ because of non-elementary input encoding and
+b) whether there are other interesting families of
+functions besides unary $\mathcal{E}^2$ which are
 uniformly computable in PTS-$rk$.
 
 \section{Set-theoretical model of
@@ -2075,7 +2076,12 @@ However, we are going to need an unusual assumption:
     (Note that $x\in U_i\Rightarrow|\mathrm{El}(x)|\le
     \aleph_i$ since all $U_i$ are countable.)
 
-    Interpretation then goes as follows:
+    We build an interpretation $\llbracket\_\rrbracket$
+    such that, if $\cdot\vdash t:T$, then
+    $\llbracket t\rrbracket\in\mathrm{El}(\llbracket T
+    \rrbracket)$.
+
+    It goes as follows:
     \begin{itemize}
         \item Interpret \(\mathsf{rk}_i\) as \(s_i\).
             The sort axiom holds because
