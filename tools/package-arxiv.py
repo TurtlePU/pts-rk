@@ -74,6 +74,19 @@ if not class_match:
 base_class = class_match.group()
 export_preamble = preamble[class_match.end():].replace(
     "cachedir=minted-cache", "frozencache=true,cachedir=minted-cache", 1)
+# Alphabetic uses the standard data model; its optional alphabetic.dbx probe
+# is nevertheless classified as a missing file by arXiv's log scanner.
+# Select an explicit, empty extension rather than changing bibliography data.
+biblatex_options = r"\usepackage[backend=biber,style=alphabetic]{biblatex}"
+if biblatex_options not in export_preamble:
+    raise SystemExit("Cannot locate expected biblatex setup")
+export_preamble = export_preamble.replace(
+    biblatex_options,
+    r"\usepackage[backend=biber,style=alphabetic,datamodel=arxiv-default]{biblatex}", 1)
+(PACKAGE / "arxiv-default.dbx").write_text(
+    "% No extensions: use biblatex's standard blx-dm.def data model.\n"
+    "% Explicitly selected to avoid the optional absent alphabetic.dbx probe.\n"
+    "\\endinput\n")
 copy_preamble = PACKAGE / "tex/preamble_precompiled.tex"
 copy_preamble.parent.mkdir()
 copy_preamble.write_text(export_preamble)
@@ -120,9 +133,9 @@ style = style.replace("\\directlua{", "\\ifdefined\\directlua\n\\directlua{", 1)
 style = style.replace("\\input markdown/markdown", "\\fi\n\\input markdown/markdown", 1)
 style_path.write_text(style)
 # Freeze the minted/cache protocol too: installed minted 3.8 requires the
-# 2026 latex2pydata helper, which arXiv's TeX Live 2025 does not contain.
-# Both files carry their original redistribution/license headers.
-for name in ("minted.sty", "latex2pydata.sty"):
+# 2026 fvextra and latex2pydata helpers, absent from arXiv's TeX Live 2025.
+# All three files carry their original redistribution/license headers.
+for name in ("minted.sty", "fvextra.sty", "latex2pydata.sty"):
     installed = subprocess.check_output(["kpsewhich", name], text=True).strip()
     copy(Path(installed), PACKAGE / name)
 # Rendering macros are needed, but not the Lua parser or metadata class.
@@ -190,6 +203,17 @@ for attempt in range(1, 4):
     run(["xelatex", "-no-shell-escape", "-interaction=nonstopmode", "-halt-on-error",
          "-recorder", "PTS-rk_precompiled.tex"], verify, f"frozen-build-{attempt}.log")
 log = (verify / "PTS-rk_precompiled.log").read_text(errors="replace")
+inputs = (verify / "PTS-rk_precompiled.fls").read_text().splitlines()
+# A local TeX Live 2026 build would silently mask an omitted helper. Require
+# the extracted archive's copies, not matching host-installed packages.
+for name in ("minted.sty", "fvextra.sty", "latex2pydata.sty", "arxiv-default.dbx",
+             "PTS-rk_precompiled.bbl"):
+    candidates = [line[6:] for line in inputs if line.startswith("INPUT ")]
+    if not any((verify / path).resolve() == (verify / name).resolve()
+               for path in candidates):
+        raise SystemExit(f"Frozen build did not read bundled {name}")
+if "file 'alphabetic.dbx' not found" in log:
+    raise SystemExit("Unexpected optional data-model probe in submission build")
 if any(message in log for message in ("There were undefined references", "undefined on input line",
                                       "Please (re)run Biber", "Rerun to get cross-references right")):
     raise SystemExit("Frozen build has unresolved references; inspect verification logs")

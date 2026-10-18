@@ -25,6 +25,10 @@ is not replaced. The submission copy uses pre-rendered
 Markdown and XeLaTeX, since arXiv does not offer LuaLaTeX. Select XeLaTeX
 when uploading. The tool tests a clean extraction with three
 `xelatex -no-shell-escape` passes, without Biber or the minted executable.
+The archive pins minted together with its required fvextra and latex2pydata
+helpers; verification checks that the bundled copies, rather than host
+versions, are loaded. An explicit empty `arxiv-default.dbx` extension selects
+the standard bibliography data model without an absent `alphabetic.dbx` probe.
 Build logs and a manifest are retained in a temporary directory printed by
 the tool. This is a local test, not a run on arXiv's own TeX Live image.
 
@@ -62,7 +66,7 @@ the date (labelled “Date:”) immediately precedes the MSC classification.
 Theorems use `amsart` typography: flush-left bold headings, italic theorem
 bodies, upright definition bodies, italic remark headings with upright bodies,
 and half-baseline spacing. Existing numbering and labels are preserved.
-The paper sets `\droptitle` to -2.5 em to reduce the
+The paper sets `\droptitle` to -2 em to reduce the
 first-page top gap, without changing the body margins. Article mode retains
 the normal-sized date and -1 em title adjustment.
 

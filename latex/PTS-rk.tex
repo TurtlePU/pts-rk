@@ -106,7 +106,7 @@ A single PTS is determined by two relations:
 
 :::Figure[h] Typing rules of pure type systems {#typing}
 %mathpar
-  \inferrule[Ax]{}{Γ ⊢ s : s'}
+  \inferrule[Ax]{ }{Γ ⊢ s : s'}
       (s, s') ∈ \mathsf{Ax}
   \and
   \inferrule[Rule]
@@ -114,7 +114,7 @@ A single PTS is determined by two relations:
     {Γ ⊢ Π (x : T).\, U : s}
         (s_T, s_U, s) ∈ \mathsf{Rule}
   \and
-  \inferrule[Var]{}{Γ ⊢ x : T}
+  \inferrule[Var]{ }{Γ ⊢ x : T}
       x : T ∈ Γ
   \and
   \inferrule[Abs]
@@ -289,7 +289,7 @@ since we wanted to make sure we completely
 understood the results (in addition,
 generated proofs always required additional
 explanations or a complete rewrite to make them
-understandable and simpler to read).c
+understandable and simpler to read).
 We also used Claude Fable 5.1 [@claude_fable]
 to identify additional points of reference.
 
@@ -356,7 +356,7 @@ smallest relation satisfying the following rules:
   \and
   \inferrule{u →_β u'}{t\,u →_β t\,u'}
   \and
-  \inferrule[Beta]{}
+  \inferrule[Beta]{ }
       {(λ (x : T).t)\,u →_β t[u/x]}
 :::
 
@@ -407,7 +407,7 @@ which is defined as the smallest relation
 satisfying:
 
 %mathpar
-  \inferrule{}{t ⇉ t}
+  \inferrule{ }{t ⇉ t}
   \and
   \inferrule
     {T ⇉ T' \\ U ⇉ U'}
@@ -802,7 +802,7 @@ $\mathsf{sn}$ for terms in question:
 
 :::Lemma[Structural properties of $\mathsf{sn}$ \proof{rocq:SN.v}] {#sn-props}
 %mathpar
-  \inferrule{}{x, s ∈ \mathsf{sn}}\and
+  \inferrule{ }{x, s ∈ \mathsf{sn}}\and
   \inferrule
     {T ∈ \mathsf{sn} \\ U ∈ \mathsf{sn}}
     {Π (x : T).U ∈ \mathsf{sn}}\and
@@ -1168,13 +1168,13 @@ head reduction) are the least sets where the
 following rules are valid:
 
 %mathpar
-  \inferrule{}{\mathsf{SNx}\,s}(s ∈ \mathcal{S})
+  \inferrule{ }{\mathsf{SNx}\,s}(s ∈ \mathcal{S})
   \and
   \inferrule
     {\mathsf{SN}\,T \\ \mathsf{SN}\,U}
     {\mathsf{SNx}(Π (x : T).U)}
   \and
-  \inferrule{}{\mathsf{SNx}\,x}
+  \inferrule{ }{\mathsf{SNx}\,x}
   \and
   \inferrule
     {\mathsf{SNx}\,t \\ \mathsf{SN}\,u}
@@ -1303,7 +1303,7 @@ Consider the following relation of “greedy
 parallel reduction”:
 
 %mathpar
-  \inferrule{}{x ⇒ x\\ s ⇒ s}\and
+  \inferrule{ }{x ⇒ x\\ s ⇒ s}\and
   \inferrule
     {T ⇒ T' \\ U ⇒ U'}
     {Π (x : T).U ⇒ Π (x : T').U'}\and
@@ -1519,7 +1519,7 @@ $t, t' : T$ reduces to type checking:
   λ (P : T → \rk{0})(x : P\,t).
   (λ (y : P\,t').y)\,x
 
-This term is well-typed iff $P\,t =_β P_t'$ which
+This term is well-typed iff $P\,t =_β P\,t'$ which
 holds iff $t =_β t'$.
 
 Therefore, we only need to prove that type checking
@@ -1528,14 +1528,14 @@ Consider the following syntax-directed type
 synthesis rules:
 
 %mathpar
-  \inferrule[Ax']{}
+  \inferrule[Ax']{ }
   {Γ ⊢ \rk{r} ⇒ \rk{0}}
   \and
   \inferrule[Rule']
     {Γ ⊢ T ⇒ \rk{r} \\ Γ, x : T ⊢ U ⇒ \rk{s}}
     {Γ ⊢ Π (x : T).\,U ⇒ \rk{\max(r + 1, s)}}
   \\
-  \inferrule[Var']{}
+  \inferrule[Var']{ }
   {Γ ⊢ x ⇒ T}x : T ∈ Γ
   \and
   \inferrule[Abs']
@@ -2587,7 +2587,7 @@ However, $ω \not ≤^+ ω$, so $ρ$ is false.
 :::
 
 Actually, it is possible to prove inside %PTSrk{}
-that $\Good$ Church numerals form a *strict ordered
+that $\Good$ Church numerals form a *strictly ordered
 commutative unital semiring*.
 A generated proof is available in
 supplementary materials.
