@@ -24,6 +24,7 @@ These kernel files are unchanged by the directory reorganization.
 | [functional](Interpretation_of_R/functional/README.md) | `Interpretation_of_R.functional` | `@theories/Interpretation_of_R/functional/audit` |
 | [ZFC_model](ZFC_model/README.md) | `PTSrkModel` | `@theories/ZFC_model/audit` |
 | [NormalizationComplexity](NormalizationComplexity/README.md) | `PTSrk.NormalizationComplexity` | `@theories/NormalizationComplexity/audit` |
+| [self_interpreter](self_interpreter/README.md) | `PTSrk.SelfInterpreter` | `@theories/self_interpreter/audit` |
 
 Each folder has its own Dune theory stanza. Both arithmetic interpretations
 depend on the shared arithmetic library and kernel, not on one another or

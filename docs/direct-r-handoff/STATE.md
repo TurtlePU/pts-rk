@@ -1,4 +1,83 @@
-# Live proof-development state — 2026-10-14
+# Live proof-development state — 2026-10-20
+
+## Finite indexed PHOAS, strong closed STLC decoding and dependent boundary
+
+Latest self-interpreter milestone: the finite closed PHOAS package is now
+constructed for independent Church-STLC. PHOASPackage closes actual original
+annotated syntax over one ground binder, k+2 interpretation families and
+2*(k+1)^2 polymorphic handlers. PHOASAlgebra/PHOASFaithful prove original
+typing, full normality and exact annotated-source injectivity, including
+comparison by target conversion. PHOASTelescope/PHOASRecovery discharge
+actual finite substitution and sequential application, without subject
+expansion or an infinite context. Every independent term-closed source
+derivation has a sufficient computed budget. No normal source value is
+precomputed and stored in these codes.
+
+PHOASDecoder.closed_phoas_interpretation provides the ACTUAL closed decoder
+and its original typing: applying it to the normal quote reduces to the
+original, unreduced lambda o:U_0.t. The outer ground abstraction is part of
+the decoder. Its external indices are budget k AND the FULL simple type A,
+not just the order of A. At fixed (k,A) the decoder is independent of source
+program size and derivation. A computed budget-one regression has a reducible
+source, normal code, and strong recovery. No closed-form numeric sort bound
+for this new package/decoder is claimed: universe witnesses are proved.
+
+DependentPHOAS proves genuinely dependent local Abs/App handler formation,
+actual typed identity interpretations and beta recovery, plus a candidate
+universe decoder. It does not recursively translate an arbitrary dependent
+family from A to abstract F_a(A). PHOASConversion proves a LIMITED obstruction:
+a normal syntax-injective code cannot also preserve source conversion as a
+semantic type index, even up to pointwise beta agreement with a second map.
+Its witnesses already fit fixed small independent bounds. Genuinely distinct
+syntax and semantic indices escape this obstruction. Full dependent indexed
+PHOAS is neither constructed nor ruled out; substitution/conversion coherence
+remains the central missing theorem. No parametricity/no-junk axiom is used.
+
+Earlier components remain: faithful raw HOAS for every original annotated
+term, fixed-head/single-family/literal-generation obstructions, full-PTS
+normalization to canonical codes, and a full closed WEAK semantic-payload
+interpretation. The weak decoder projects an externally precomputed normal
+value; it is not an internal pure-HOAS evaluator. The manuscript's elementary
+representability argument motivates numeric self-reduction conditionally;
+no generic elementary compiler is assumed or formalized by these modules.
+
+Before publication, the original development worktree passed a fresh
+aggregate build in /tmp/pts-rk-self-phoas-final.t8AzBr with 264 closed
+assumption reports. Recursive kernel checking, byte-identical pristine core
+inventory comparison, unchanged frozen ZFC/original core and source-stability
+checks pass. No new axioms or unsafe checks. Pinned versions: Rocq 9.2.0,
+Stdlib 9.1.0, Equations 1.3.2+9.2, OCaml 4.14.2, Dune 3.23.1.
+Independent contract review passes. The original worktree's full local CI
+passed actionlint and 226/226 stages, including unrelated unpublished
+development stages. This does not yet certify the isolated publication tree:
+its committed baseline plus self-interpreter stage has 172 stages and must
+be checked separately. No committed CI stage has been removed or weakened.
+
+Updated native LaTeX–Markdown note/PDF: 18 pages, build exit 0 in
+/tmp/pts-rk-self-note.545XF9. No overfull boxes, missing glyphs or unresolved
+references; three mild underfull boxes. All-page text and new theorem,
+dependent-handler, obstruction and closing pages were visually inspected.
+Exact commands, failures, versions, source/PDF hashes and limits:
+verification/self-interpreter-phoas-2026-10-20/COMMANDS.md.
+Historical reports retain their original paths. Bulky raw logs are retained
+locally, not added to this publication; tracked concise reports distinguish
+their local evidence from source artifacts.
+
+Publication preparation starts from 73c4303dca2228bb6b3a8ec6ba5099a86da00bb0
+in an isolated checkout, preserving the original dirty worktree and unrelated
+changes. Only self-interpreter sources, note/PDF, concise evidence and scoped
+navigation/CI/handoff changes belong to this proof snapshot. Commit, requested
+documentation-branch merge, clean-tree verification and push are recorded by
+the publication checkpoint when completed; they are not asserted here.
+
+First remaining PHOAS goal: construct compatible dependent context/type/term
+translations with distinct semantic indices and syntax codes, proving actual
+substitution and conversion coherence rather than supplying it as a premise.
+Separately, internalize the STLC decoder's full-A interpretation argument.
+The elementary compiler/numeric normalization route remains independent and
+open. Next exact full publication check in the pinned environment:
+bash tools/check-local-ci.sh
+Use a fresh absolute Dune build directory for new assumption reports.
 
 ## Markdown runtime, dated title and Figure 2 ready for publication
 

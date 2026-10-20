@@ -1,5 +1,51 @@
 # Decisions and proof-engineering history
 
+## 2026-10-20 — finite indexed PHOAS and explicit dependent coherence boundary
+
+Close the independent STLC prequotation over a finite actual original PTS
+telescope. Use one ground variable, families F_0 through F_(k+1), and Abs/App
+handlers for all a,b <= k. The extra family is needed for the unused boundary
+pairs whose arrow rank is k+1. Polymorphic handlers cover infinitely many
+source type shapes without an infinite context. Define an executable quote
+from independent Type-valued derivations and prove coverage from the separate
+source relation. Do not replace original typing by that relation.
+
+Realize the finite identity substitution by an actual closed PTS decoder,
+with its ground-type abstraction inside its body. Prove direct typing of
+all sequential applications from original typed substitutions, not by subject
+expansion. Strong recovery returns the unreduced source, including annotations;
+no normalized semantic payload is attached. Retain normality and syntax-level
+injectivity of the code separately, including comparison by beta conversion.
+The decoder indices are k AND the full external simple type A. State this
+explicitly rather than calling it rank-only. Code/decoder sort existence is
+checked, but do not advertise an unproved exact numeric sort formula.
+
+Construct genuinely dependent local handlers independently. Their codomain
+family is B:F_a(A)->U_b, not an untranslated B_0:A->U_b. Original typing and
+identity recovery of these operations do not solve recursive translation of
+that family. Under the candidate literal-sort convention, bind a separate
+El_b:F_0(U_b)->U_b; prove its formation and identity instance, but never assume
+the abstract operation has the definitional conversion laws a quoter needs.
+
+Record a precise, limited no-go theorem: a normal syntax-injective map cannot
+also preserve source beta conversion on a domain containing the two explicit
+small convertible types. A second conversion-preserving index map does not
+help if it is required to agree pointwise up to beta with the syntax code.
+This is NOT an impossibility theorem for arbitrary dependent indexed PHOAS.
+Distinct semantic indices and faithful syntax codes remain a live direction.
+Do not conflate Church-style algebra-parametric object syntax with a native
+Rocq PHOAS datatype or assume parametricity/no-junk for arbitrary inhabitants.
+
+Keep all proofs in the separate SelfInterpreter library. Preserve raw-HOAS
+fidelity and the separate full-PTS weak semantic-payload construction without
+presenting either as strong dependent unquotation. State the numeric
+complexity-to-self-reduction argument conditionally on the manuscript's
+unformalized elementary compiler; it is not an added axiom or typed reifier.
+Original rules and existing libraries are unchanged. The sole new committed
+CI stage audits SelfInterpreter; unrelated unpublished stages and bulky raw
+logs remain outside this scoped publication. Retain concise command reports,
+hashes and explicit historical evidence boundaries.
+
 ## 2026-10-16 — dated title, optional author lines and float-local math layout
 
 Keep authorsonlines opt-in and default false. Apply protected line-break

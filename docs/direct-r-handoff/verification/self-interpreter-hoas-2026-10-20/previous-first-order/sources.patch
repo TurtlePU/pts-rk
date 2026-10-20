@@ -1,0 +1,436 @@
+diff --git a/theories/self_interpreter/ChurchSyntax.v b/theories/self_interpreter/ChurchSyntax.v
+new file mode 100644
+index 0000000..3b3954b
+--- /dev/null
++++ b/theories/self_interpreter/ChurchSyntax.v
+@@ -0,0 +1,195 @@
++From Stdlib Require Import Arith.PeanoNat Bool.Bool Lia.
++From PTSrk Require Import Syntax Context Typing Ranks.
++From PTSrk.NormalizationComplexity Require Import Greedy.
++Import Context.
++
++Module ChurchSyntax.
++
++Definition arrow {n} (X Y : Term nat n) : Term nat n := Π X (shift Y).
++Definition unary {n} (X : Term nat n) : Term nat n := arrow X X.
++Definition binary {n} (X : Term nat n) : Term nat n := arrow X (unary X).
++
++Fixpoint fin_index {n} (i : Fin n) : nat :=
++  match i with fzero => 0 | fsucc j => S (fin_index j) end.
++
++Fixpoint nat_fold {n} (z s : Term nat n) (k : nat) : Term nat n :=
++  match k with 0 => z | S j => app s (nat_fold z s j) end.
++
++(** The original annotated syntax is one grammar for programs AND types.
++    Binders are represented as raw nodes; indices encode binding explicitly.
++    All natural sort labels are data, independent of the carrier rank r. *)
++Fixpoint ast_fold {m n} (z s u v p l a : Term nat n) (t : Term nat m) : Term nat n :=
++  match t with
++  | 𝓤 k => app u (nat_fold z s k)
++  | Π T U => app (app p (ast_fold z s u v p l a T)) (ast_fold z s u v p l a U)
++  | var i => app v (nat_fold z s (fin_index i))
++  | lam T b => app (app l (ast_fold z s u v p l a T)) (ast_fold z s u v p l a b)
++  | app f x => app (app a (ast_fold z s u v p l a f)) (ast_fold z s u v p l a x)
++  end.
++
++Definition body {m} (t : Term nat m) : Term nat 8 :=
++  ast_fold (var (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
++    (var (fsucc (fsucc (fsucc (fsucc (fsucc fzero))))))
++    (var (fsucc (fsucc (fsucc (fsucc fzero)))))
++    (var (fsucc (fsucc (fsucc fzero))))
++    (var (fsucc (fsucc fzero))) (var (fsucc fzero)) (var fzero) t.
++
++Definition quote (r : nat) {m} (t : Term nat m) : Term nat 0 :=
++  lam (𝓤 r)
++  (lam (var fzero)
++  (lam (unary (var (fsucc fzero)))
++  (lam (unary (var (fsucc (fsucc fzero))))
++  (lam (unary (var (fsucc (fsucc (fsucc fzero)))))
++  (lam (binary (var (fsucc (fsucc (fsucc (fsucc fzero))))))
++  (lam (binary (var (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
++  (lam (binary (var (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero))))))))
++    (body t)))))))).
++
++Definition code_type (r : nat) : Term nat 0 :=
++  Π (𝓤 r)
++  (Π (var fzero)
++  (Π (unary (var (fsucc fzero)))
++  (Π (unary (var (fsucc (fsucc fzero))))
++  (Π (unary (var (fsucc (fsucc (fsucc fzero)))))
++  (Π (binary (var (fsucc (fsucc (fsucc (fsucc fzero))))))
++  (Π (binary (var (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
++  (Π (binary (var (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero))))))))
++    (var (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero))))))))))))))).
++
++Lemma nat_fold_variables_normal n (z s : Fin n) k :
++  normalb (nat_fold (var z) (var s) k) = true.
++Proof. induction k; cbn [nat_fold normalb isLambda]; [reflexivity | rewrite IHk; reflexivity]. Qed.
++
++Lemma ast_fold_variables_normal m n (z s u v p l a : Fin n) (t : Term nat m) :
++  normalb (ast_fold (var z) (var s) (var u) (var v) (var p) (var l) (var a) t) = true.
++Proof.
++  induction t; cbn [ast_fold normalb isLambda].
++  - rewrite nat_fold_variables_normal; reflexivity.
++  - rewrite IHt1, IHt2; reflexivity.
++  - rewrite nat_fold_variables_normal; reflexivity.
++  - rewrite IHt1, IHt2; reflexivity.
++  - rewrite IHt1, IHt2; reflexivity.
++Qed.
++
++Theorem quote_normal r m (t : Term nat m) : normalb (quote r t) = true.
++Proof.
++  unfold quote.
++  cbn [normalb unary binary arrow shift rename weak fin_match isLambda].
++  unfold body. rewrite ast_fold_variables_normal; reflexivity.
++Qed.
++
++Lemma arrow_sort n (G : Ctx nat n) X Y r s :
++  @typ nat RankSorts n G X (𝓤 r) -> @typ nat RankSorts n G Y (𝓤 s) ->
++  @typ nat RankSorts n G (arrow X Y) (𝓤 (Nat.max (S r) s)).
++Proof.
++  intros HX HY. unfold arrow. eapply typ_Π with (ℓₜ := r) (ℓᵤ := s).
++  - exact HX.
++  - change (typ (G & X) (shift Y) (shift (𝓤 s))). apply weakening; exact HY.
++  - reflexivity.
++Qed.
++Lemma unary_sort n (G : Ctx nat n) X r :
++  @typ nat RankSorts n G X (𝓤 r) ->
++  @typ nat RankSorts n G (unary X) (𝓤 (S r)).
++Proof.
++  intro HX. unfold unary.
++  replace (S r) with (Nat.max (S r) r) by (rewrite Nat.max_l; lia).
++  apply arrow_sort; assumption.
++Qed.
++Lemma binary_sort n (G : Ctx nat n) X r :
++  @typ nat RankSorts n G X (𝓤 r) ->
++  @typ nat RankSorts n G (binary X) (𝓤 (S r)).
++Proof.
++  intro HX. unfold binary.
++  replace (S r) with (Nat.max (S r) (S r)) by apply Nat.max_id.
++  apply arrow_sort; [exact HX | apply unary_sort; exact HX].
++Qed.
++
++Lemma arrow_application n (G : Ctx nat n) f x X Y :
++  @typ nat RankSorts n G f (arrow X Y) -> @typ nat RankSorts n G x X ->
++  @typ nat RankSorts n G (app f x) Y.
++Proof.
++  intros Hf Hx. replace Y with (subst (shift Y) x) by syntax_simp.
++  eapply typ_app; eassumption.
++Qed.
++Lemma binary_application n (G : Ctx nat n) f x y X :
++  @typ nat RankSorts n G f (binary X) ->
++  @typ nat RankSorts n G x X -> @typ nat RankSorts n G y X ->
++  @typ nat RankSorts n G (app (app f x) y) X.
++Proof.
++  intros Hf Hx Hy. apply arrow_application with (X := X); [|exact Hy].
++  apply arrow_application with (X := X); assumption.
++Qed.
++
++Theorem nat_fold_typed n (G : Ctx nat n) z s X k :
++  @typ nat RankSorts n G z X -> @typ nat RankSorts n G s (unary X) ->
++  @typ nat RankSorts n G (nat_fold z s k) X.
++Proof.
++  intros Hz Hs. induction k; cbn [nat_fold]; [exact Hz |].
++  apply arrow_application with (X := X); assumption.
++Qed.
++
++Theorem ast_fold_typed m n (G : Ctx nat n) z s u v p l a X (t : Term nat m) :
++  @typ nat RankSorts n G z X ->
++  @typ nat RankSorts n G s (unary X) ->
++  @typ nat RankSorts n G u (unary X) ->
++  @typ nat RankSorts n G v (unary X) ->
++  @typ nat RankSorts n G p (binary X) ->
++  @typ nat RankSorts n G l (binary X) ->
++  @typ nat RankSorts n G a (binary X) ->
++  @typ nat RankSorts n G (ast_fold z s u v p l a t) X.
++Proof.
++  intros Hz Hs Hu Hv Hp Hl Ha. induction t; cbn [ast_fold].
++  - apply arrow_application with (X := X); [exact Hu | apply nat_fold_typed; assumption].
++  - apply binary_application; assumption.
++  - apply arrow_application with (X := X); [exact Hv | apply nat_fold_typed; assumption].
++  - apply binary_application; assumption.
++  - apply binary_application; assumption.
++Qed.
++
++Theorem quote_typing r m (t : Term nat m) :
++  @typ nat RankSorts 0 ε (quote r t) (code_type r).
++Proof.
++  unfold quote, code_type.
++  eapply typ_λ with (ℓ := 0); [constructor; reflexivity |].
++  eapply typ_λ with (ℓ := r); [constructor |].
++  do 3 (eapply typ_λ with (ℓ := S r); [apply unary_sort; constructor |]).
++  do 3 (eapply typ_λ with (ℓ := S r); [apply binary_sort; constructor |]).
++  unfold body. apply ast_fold_typed; constructor.
++Qed.
++
++Theorem code_type_sort r : @typ nat RankSorts 0 ε (code_type r) (𝓤 (S (S r))).
++Proof.
++  unfold code_type.
++  eapply typ_Π with (ℓₜ := 0) (ℓᵤ := S (S r)).
++  - constructor; reflexivity.
++  - eapply typ_Π with (ℓₜ := r) (ℓᵤ := S (S r)).
++    + constructor.
++    + do 3 (eapply typ_Π with (ℓₜ := S r) (ℓᵤ := S (S r));
++        [apply unary_sort; constructor | | change (S (S r) = Nat.max (S (S r)) (S (S r))); rewrite Nat.max_id; reflexivity]).
++      do 2 (eapply typ_Π with (ℓₜ := S r) (ℓᵤ := S (S r));
++        [apply binary_sort; constructor | | change (S (S r) = Nat.max (S (S r)) (S (S r))); rewrite Nat.max_id; reflexivity]).
++      eapply typ_Π with (ℓₜ := S r) (ℓᵤ := r).
++      * apply binary_sort; constructor.
++      * constructor.
++      * change (S (S r) = Nat.max (S (S r)) r). rewrite Nat.max_l; lia.
++    + change (S (S r) = Nat.max (S r) (S (S r))). rewrite Nat.max_r; lia.
++  - change (S (S r) = Nat.max 1 (S (S r))). rewrite Nat.max_r; lia.
++Qed.
++
++(** No source typing, source rank bound, normalization, or finite syntax
++    bound is a premise.  This is exact deep raw-syntax representation only;
++    it does NOT evaluate the represented term at its dependent source type. *)
++Theorem every_original_term_has_church_code r m (t : Term nat m) :
++  normalb (quote r t) = true /\
++  @typ nat RankSorts 0 ε (quote r t) (code_type r) /\
++  @typ nat RankSorts 0 ε (code_type r) (𝓤 (S (S r))).
++Proof. repeat split; [apply quote_normal | apply quote_typing | apply code_type_sort]. Qed.
++
++Print Assumptions quote_normal.
++Print Assumptions nat_fold_typed.
++Print Assumptions ast_fold_typed.
++Print Assumptions quote_typing.
++Print Assumptions code_type_sort.
++Print Assumptions every_original_term_has_church_code.
++
++End ChurchSyntax.
+diff --git a/theories/self_interpreter/ChurchSyntaxFaithful.v b/theories/self_interpreter/ChurchSyntaxFaithful.v
+new file mode 100644
+index 0000000..5fe4216
+--- /dev/null
++++ b/theories/self_interpreter/ChurchSyntaxFaithful.v
+@@ -0,0 +1,107 @@
++From Stdlib Require Import Arith.PeanoNat.
++From Equations Require Import Equations.
++From PTSrk Require Import Syntax DefEq Reduction AbstractRewriting.
++From PTSrk.NormalizationComplexity Require Import Greedy.
++From PTSrk.SelfInterpreter Require Import ChurchSyntax.
++Import ChurchSyntax.ChurchSyntax.
++
++(** Faithfulness is stated at a fixed original source scope.  The ambient
++    scope itself is not part of the encoded tree: an unused outer variable
++    does not change a raw tree of constructor tags and de Bruijn indices. *)
++
++Lemma fin_index_injective n (i : Fin n) :
++  forall j, fin_index i = fin_index j -> i = j.
++Proof.
++  induction i; intros j H; dependent elimination j;
++    cbn [fin_index] in H; try discriminate.
++  - reflexivity.
++  - f_equal. apply IHi. now injection H.
++Qed.
++
++Definition numeral (k : nat) : Term nat 8 :=
++  nat_fold (var (fsucc (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))))
++    (var (fsucc (fsucc (fsucc (fsucc (fsucc fzero)))))) k.
++
++Lemma numeral_injective k : forall j, numeral k = numeral j -> k = j.
++Proof.
++  induction k; intros j H; destruct j; cbn [numeral nat_fold] in H;
++    try discriminate.
++  - reflexivity.
++  - f_equal. apply IHk. now injection H.
++Qed.
++
++(** Each source constructor has a different neutral constructor head.
++    Both subtrees of products and annotated lambdas are retained. *)
++Theorem body_injective n (t : Term nat n) :
++  forall u : Term nat n, body t = body u -> t = u.
++Proof.
++  induction t; intros u H; dependent elimination u;
++    cbn [body ast_fold] in H; try discriminate.
++  - injection H as Hlabel. apply numeral_injective in Hlabel.
++    now subst.
++  - injection H as Hleft Hright. f_equal.
++    + apply IHt1; exact Hleft.
++    + apply IHt2; exact Hright.
++  - injection H as Hindex. apply numeral_injective in Hindex.
++    f_equal. apply fin_index_injective; exact Hindex.
++  - injection H as Hleft Hright. f_equal.
++    + apply IHt1; exact Hleft.
++    + apply IHt2; exact Hright.
++  - injection H as Hleft Hright. f_equal.
++    + apply IHt1; exact Hleft.
++    + apply IHt2; exact Hright.
++Qed.
++
++Theorem quote_injective r n (t u : Term nat n) :
++  quote r t = quote r u -> t = u.
++Proof.
++  intro H. apply body_injective. unfold quote in H. now injection H.
++Qed.
++
++Theorem quote_indices_injective r s n (t u : Term nat n) :
++  quote r t = quote s u -> r = s /\ t = u.
++Proof.
++  intro H. assert (Hr : r = s).
++  { unfold quote in H. injection H as Hr Hbody. exact Hr. }
++  subst s. split; [reflexivity | apply (quote_injective r n t u H)].
++Qed.
++
++Lemma normal_reduction_identity n (t u : Term nat n) :
++  normalb t = true -> reduces_to nat n t u -> t = u.
++Proof.
++  intros Hnormal Hreduce. inversion Hreduce; subst; [reflexivity |].
++  exfalso. eapply normalb_sound; eassumption.
++Qed.
++
++Lemma normal_conversion_identity n (t u : Term nat n) :
++  normalb t = true -> normalb u = true -> def_equiv nat n t u -> t = u.
++Proof.
++  intros Ht Hu Hconv. apply def_equiv_prop in Hconv as [v [Htv Huv]].
++  transitivity v.
++  - eapply normal_reduction_identity; eassumption.
++  - symmetry. eapply normal_reduction_identity; eassumption.
++Qed.
++
++(** Faithfulness survives the ORIGINAL beta conversion, which reduces
++    lambda annotations as well.  This compares source syntax exactly;
++    it does not identify beta-convertible but syntactically different inputs. *)
++Theorem quote_conversion_injective r s n (t u : Term nat n) :
++  def_equiv nat 0 (quote r t) (quote s u) -> r = s /\ t = u.
++Proof.
++  intro H. apply quote_indices_injective.
++  eapply normal_conversion_identity;
++    [apply quote_normal | apply quote_normal | exact H].
++Qed.
++
++Theorem quote_conversion_iff r s n (t u : Term nat n) :
++  def_equiv nat 0 (quote r t) (quote s u) <-> r = s /\ t = u.
++Proof.
++  split; [apply quote_conversion_injective |].
++  intros [Hr Ht]; subst s; subst u; reflexivity.
++Qed.
++
++Print Assumptions body_injective.
++Print Assumptions quote_injective.
++Print Assumptions quote_indices_injective.
++Print Assumptions quote_conversion_injective.
++Print Assumptions quote_conversion_iff.
+diff --git a/theories/self_interpreter/ChurchSyntaxFold.v b/theories/self_interpreter/ChurchSyntaxFold.v
+new file mode 100644
+index 0000000..afe700f
+--- /dev/null
++++ b/theories/self_interpreter/ChurchSyntaxFold.v
+@@ -0,0 +1,116 @@
++From PTSrk Require Import Syntax Context Typing Ranks Reduction AbstractRewriting.
++From PTSrk.NormalizationComplexity Require Import Morphisms.
++From PTSrk.SelfInterpreter Require Import ChurchSyntax.
++Import ChurchSyntax.ChurchSyntax.
++Import Context.
++
++(** An actual object-language application to an arbitrary carrier and algebra.
++    This is a fold of RAW syntax, not dependent typed unquotation. *)
++Module ChurchSyntaxFold.
++
++Lemma nat_fold_rename m n (rho : Fin m -> Fin n) z s k :
++  rename rho (nat_fold z s k) = nat_fold (rename rho z) (rename rho s) k.
++Proof. induction k; cbn [nat_fold rename]; congruence. Qed.
++
++Lemma ast_fold_rename m n p (rho : Fin n -> Fin p) z s u v pr l a
++  (t : Term nat m) :
++  rename rho (ast_fold z s u v pr l a t) =
++  ast_fold (rename rho z) (rename rho s) (rename rho u) (rename rho v)
++    (rename rho pr) (rename rho l) (rename rho a) t.
++Proof.
++  induction t; cbn [ast_fold rename]; rewrite ?nat_fold_rename;
++    congruence.
++Qed.
++
++Lemma nat_fold_replace m n (sigma : Fin m -> Term nat n) z s k :
++  replace sigma (nat_fold z s k) =
++  nat_fold (replace sigma z) (replace sigma s) k.
++Proof. induction k; cbn [nat_fold replace]; congruence. Qed.
++
++Lemma ast_fold_replace m n p (sigma : Fin n -> Term nat p) z s u v pr l a
++  (t : Term nat m) :
++  replace sigma (ast_fold z s u v pr l a t) =
++  ast_fold (replace sigma z) (replace sigma s) (replace sigma u)
++    (replace sigma v) (replace sigma pr) (replace sigma l) (replace sigma a) t.
++Proof.
++  induction t; cbn [ast_fold replace]; rewrite ?nat_fold_replace;
++    congruence.
++Qed.
++
++Definition run {m n} r (t : Term nat m) (X z s u v pr l a : Term nat n) :=
++  app (app (app (app (app (app (app (app
++    (rename (fun i : Fin 0 => match i with end) (quote r t)) X)
++    z) s) u) v) pr) l) a.
++
++Ltac fold_beta_cleanup :=
++  unfold subst; cbn [replace]; rewrite ast_fold_replace;
++  simpl; unfold shift; autorewrite with syntax; simpl.
++
++Theorem run_fold m n r (t : Term nat m) (X z s u v pr l a : Term nat n) :
++  reduces_to nat n (run r t X z s u v pr l a) (ast_fold z s u v pr l a t).
++Proof.
++  unfold run, quote, body; cbn [rename]. rewrite ast_fold_rename.
++  simpl.
++  eapply rtc_step; [do 7 apply step_app_left; apply step_beta |].
++  fold_beta_cleanup.
++  eapply rtc_step; [do 6 apply step_app_left; apply step_beta |].
++  fold_beta_cleanup.
++  eapply rtc_step; [do 5 apply step_app_left; apply step_beta |].
++  fold_beta_cleanup.
++  eapply rtc_step; [do 4 apply step_app_left; apply step_beta |].
++  fold_beta_cleanup.
++  eapply rtc_step; [do 3 apply step_app_left; apply step_beta |].
++  fold_beta_cleanup.
++  eapply rtc_step; [do 2 apply step_app_left; apply step_beta |].
++  fold_beta_cleanup.
++  eapply rtc_step; [apply step_app_left, step_beta |].
++  fold_beta_cleanup.
++  eapply rtc_step; [apply step_beta |].
++  fold_beta_cleanup. reflexivity.
++Qed.
++
++Definition algebra_type {n} (X : Term nat n) : Term nat n :=
++  arrow X (arrow (unary X) (arrow (unary X) (arrow (unary X)
++    (arrow (binary X) (arrow (binary X) (arrow (binary X) X)))))).
++
++Lemma instantiate_typing n (G : Ctx nat n) r q X :
++  @typ nat RankSorts n G q
++    (rename (fun i : Fin 0 => match i with end) (code_type r)) ->
++  @typ nat RankSorts n G X (𝓤 r) ->
++  @typ nat RankSorts n G (app q X) (algebra_type X).
++Proof.
++  intros Hq HX. unfold code_type in Hq; cbn [rename] in Hq.
++  pose proof (typ_app (𝓤 r) Hq HX) as H.
++  match type of H with
++  | @typ _ _ _ _ _ ?T => replace (algebra_type X) with T; [exact H |]
++  end.
++  unfold algebra_type, unary, binary, arrow; syntax_simp; syntax_simp.
++Qed.
++
++Theorem run_typing m n r (G : Ctx nat n) (t : Term nat m) X z s u v pr l a :
++  @typ nat RankSorts n G X (𝓤 r) ->
++  @typ nat RankSorts n G z X ->
++  @typ nat RankSorts n G s (unary X) ->
++  @typ nat RankSorts n G u (unary X) ->
++  @typ nat RankSorts n G v (unary X) ->
++  @typ nat RankSorts n G pr (binary X) ->
++  @typ nat RankSorts n G l (binary X) ->
++  @typ nat RankSorts n G a (binary X) ->
++  @typ nat RankSorts n G (run r t X z s u v pr l a) X.
++Proof.
++  intros HX Hz Hs Hu Hv Hp Hl Ha. unfold run.
++  eapply arrow_application with (X := binary X); [|exact Ha].
++  eapply arrow_application with (X := binary X); [|exact Hl].
++  eapply arrow_application with (X := binary X); [|exact Hp].
++  eapply arrow_application with (X := unary X); [|exact Hv].
++  eapply arrow_application with (X := unary X); [|exact Hu].
++  eapply arrow_application with (X := unary X); [|exact Hs].
++  eapply arrow_application with (X := X); [|exact Hz].
++  apply instantiate_typing with (r := r); [|exact HX].
++  apply typing_rename with (G := ε); [intros i; inversion i |apply quote_typing].
++Qed.
++
++Print Assumptions run_fold.
++Print Assumptions run_typing.
++
++End ChurchSyntaxFold.

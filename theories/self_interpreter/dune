@@ -1,0 +1,14 @@
+(rocq.theory
+ (name PTSrk.SelfInterpreter)
+ (package pts-rk)
+ (modules RankObstruction RankedDecoder RankedQuotation TelescopeDecoder ClosedDecoder
+   ChurchSyntax ChurchSyntaxFaithful ChurchSyntaxFold ExecutableQuotation
+    BrownPalsberg TypedHOAS TypedHOASFaithful TypedHOASAlgebra
+    RankedNormalization LiteralObstruction WeakFullInterpretation
+    DependentPHOAS PHOASTelescope PHOASConversion
+    PHOASAlgebra PHOASFaithful PHOASRecovery PHOASPackage PHOASDecoder Audit)
+ (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity))
+
+(alias
+ (name audit)
+ (deps Audit.vo))

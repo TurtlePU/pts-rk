@@ -1,5 +1,21 @@
 # Build, logs, and recovery
 
+Latest self-interpreter checkpoint: finite closed indexed PHOAS for independent
+Church-STLC, with normal syntax-injective quotes and an actual closed strong
+decoder indexed by budget AND full simple type. No semantic payload is
+precomputed. Genuinely dependent local handlers and a limited shared-map
+conversion obstruction are also checked; full dependent indexed PHOAS remains
+open, not ruled out. The original development worktree's fresh aggregate audit
+has 264 closed reports; recursive kernel, pristine core comparison and frozen
+ZFC/original-core checks pass. Its actionlint and 226-stage CI passed, including
+unrelated unpublished stages. The isolated publication instead contains the
+171 committed baseline stages plus the self-interpreter audit; its separate
+172-stage verification must be recorded before claiming publication success.
+Updated note/PDF: 18 pages. Exact commands, failures, versions, hashes and limits:
+[finite PHOAS checkpoint](verification/self-interpreter-phoas-2026-10-20/COMMANDS.md).
+Historical raw-log paths refer to locally retained evidence, not additional
+committed source files. Concise reports and selected provenance are published.
+
 ## Inspect and preserve
 
 From the repository root inspect git status, branch, recent commits, actual
@@ -20,6 +36,9 @@ All project Rocq sources are under theories:
   BZC foundation reduction.
 - theories/NormalizationComplexity/: costed normalization bounds and STLC
   conversion reduction.
+- theories/self_interpreter/: faithful raw HOAS, full-PTS weak interpretation,
+  finite closed indexed STLC PHOAS with strong unquotation, genuinely dependent
+  local handlers and precise obstructions; full dependent interpretation open.
 
 See [theories/README.md](../../theories/README.md). Rocq library names are
 unchanged by the physical moves. Both arithmetic libraries depend on shared
@@ -60,6 +79,7 @@ dune build @theories/Interpretation_of_R/relational/audit
 dune build @theories/Interpretation_of_R/functional/audit
 dune build @theories/ZFC_model/audit
 dune build @theories/NormalizationComplexity/audit
+dune build @theories/self_interpreter/audit
 ```
 
 Use a NEW absolute --build-dir for fresh compilation and assumption output.

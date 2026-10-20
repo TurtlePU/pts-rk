@@ -3,18 +3,116 @@ title: Self-interpretation in PTS-rk: a rank obstruction and an indexed approach
 date: October 20, 2026
 
 :::Abstract
-We investigate whether the self-interpreter of Matt Brown and Jens Palsberg
-for System $F_\omega$ can be adapted to the original annotated calculus
-PTS-rk. A direct uniform adaptation is impossible for the fixed-program
-application interface: application cannot increase the rank of a term's
-type, whereas closed inhabitants have unbounded type ranks. We prove this
-obstruction in Rocq. It motivates a family of interpreters indexed externally
-by rank budgets. Explicit shallow decoders are definable in PTS-rk, and a
-structural quotation construction works for the independently specified
-simply typed fragment. Extending it to dependent conversion is an open
-problem. We separate established theorems, the positive fragment, and the
-remaining requirements for a full dependent construction.
+Fixed-rank elementary normalization, together with non-uniform elementary
+representability, gives a constructive reason to seek rank-indexed
+self-interpretation of the original annotated PTS-rk. We distinguish the
+checked normalization theorem from the manuscript-level representability
+argument, and numeric self-reduction from typed unquotation. Rocq now
+connects full-PTS normalization to faithful HOAS syntax, and supports a
+normalization-assisted weak interpretation carrying both syntax and a
+normal semantic value. Its decoder returns the source normal form, not the
+unreduced source. Separate rank, single-family and literal-generation
+obstructions constrain stronger interfaces without excluding sufficiently
+indexed constructions. A finite closed source-type-indexed PHOAS representation
+with strong unquotation is now checked for the independent simply typed
+fragment. Genuinely dependent indexed handlers are also constructed; a
+separate theorem excludes conflating faithful syntax with semantic type indices.
+A full dependent interpreter evaluating HOAS or PHOAS syntax internally,
+rather than projecting a precomputed value, remains open.
 :::
+
+# Why the complexity bounds suggest an indexed interpreter
+
+There is positive computational evidence for a non-uniform self-interpreter.
+The checked normalization development covers the **full original annotated
+PTS**, not just a simply typed sublanguage. For a well-typed $d$-bounded
+term $t$ in a well-formed context, $d$ bottom-up greedy passes produce its
+normal form at the same original type. Writing $N$ for its node count and
+$\operatorname{tower}_0(x)=x$,
+$\operatorname{tower}_{h+1}(x)=2^{\operatorname{tower}_h(x)}$, the proved
+operation-cost bound is
+
+$$
+\operatorname{cost}(\mathsf{normalize}_d(t))
+ \leq \operatorname{tower}_{2d+1}(N+5d+2).
+$$
+
+Thus normalization is elementary for each fixed external $d$. Moreover,
+every **closed, originally well-typed** term has the computable sufficient
+bound
+
+$$
+d(t)=1+\mathsf{maxRankLiteral}(t)+\mathsf{nodes}(t).
+$$
+
+For the documented encoding size $s$, this bound is at most $2s+1$ and
+its traversal costs at most $7s$. These are the public Rocq results
+`fixed_rank_normalization` and `rank_bound_in_linear_time`.
+The uniform automatic normalizer has an input-dependent tower-height bound;
+this does not provide a uniform fixed-height elementary bound on all inputs.
+The numerical rank bound here is a bound on redex heads, not merely the
+rank of the final result type.
+
+The manuscript's computational-model section, theorem label
+`non-uniform-rep`, supplies the other half of the proposed argument:
+for each elementary function $f$ there is a rank cost $c_f$ and, at each
+base rank $j$, a numeral realizer
+
+$$
+F_j:\mathcal N_{j+c_f}\to\cdots\to\mathcal N_{j+c_f}\to\mathcal N_j,
+\qquad
+\mathcal N_j=\Pi X:\Ur j.(X\to X)\to X\to X,
+$$
+
+computing $f$ on canonical Church numerals. The rank cost is computed
+from an explicit elementary program, using numeral-preserving rank
+lowerings and composition. It is not a rank inferred from arbitrary
+extensional black-box knowledge of $f$. The cited
+[elementary substitution-basis theorem](https://arxiv.org/abs/2505.23787)
+gives the relevant arithmetic basis. A constructive compilation of the
+fixed-$d$ normalization algorithm would therefore yield an effective
+external rank budget depending on $d$, its elementary program and the
+chosen serialization; no numerical formula for that compiler budget is
+currently kernel-checked here.
+
+:::Proposition[The complexity-to-self-reduction argument]
+Assume the manuscript's non-uniform elementary representability theorem
+and elementary encoding/decoding of annotated syntax as numbers. For each
+fixed $d$ and base rank $j$, there is an original PTS numeral program
+$S_{d,j}:\mathcal N_{j+c_d}\to\mathcal N_j$ which, on the numerical
+code of any originally typed $d$-bounded term, returns the numerical code
+of its full beta-normal form.
+:::
+
+:::Proof
+On arbitrary numerical input, parse a raw annotated syntax tree, returning
+a fixed default for malformed input. Perform $d$ greedy passes and encode
+the result. For fixed $d$, the structural operations, serialization and
+fixed-height bounds give an elementary total function; no type-checker
+or unbounded search is needed in this algorithm. Apply non-uniform
+representability to that function. On the independently specified typed,
+$d$-bounded domain, the checked normalization theorem supplies correctness.
+The program is fixed for $d,j$, not chosen anew for each input term.
+:::
+
+This is a genuine route to an **indexed numeric self-reducer**. Its
+non-uniformity avoids the fixed-head rank obstruction.
+However, a number coding a normal form is not an inhabitant of the
+represented dependent type. A HOAS/PHOAS interpreter still needs actual
+typed adapters and reification, including context and conversion coherence.
+Further, normalization yields $\mathsf{nf}(t)=_\beta t$, not reduction
+back to the original unreduced $t$. These distinctions determine what the
+complexity argument proves and what remains to construct.
+
+**Verification boundary.** Normalization and its stated operation costs
+are checked. The generic elementary-function compiler is not formalized;
+`latex/ROCQ_REFERENCES.md` explicitly records this boundary. The displayed
+modulus construction in the manuscript also needs the local callback
+correction $r\,f\,x$ in place of $r\,X\,f\,x$, because that record field
+is already specialized to $X$. We do not silently treat the uncorrected
+display as a checked inhabitant. The numerical proposition above is a
+mathematical conditional, not a new Rocq axiom or a completed internal
+HOAS interpreter.
 
 # Question and source
 
@@ -189,7 +287,701 @@ also inhabit $\Ur s$. Increasing an
 external index is therefore a real change of program, not the paper's
 self-application of one polymorphic interpreter.
 
-# A structural quotation route for the simply typed fragment
+# HOAS replacement for the complete annotated syntax
+
+Terms and types share the original syntax. The former first-order Church
+AST is now replaced by a higher-order encoding: source variables become
+target variables, and source binding becomes actual target lambda binding.
+Original product domains and lambda annotations remain explicit data.
+This represents every raw annotated source tree, not only well-typed ones.
+
+Fix a carrier rank $r$ and an external source scope size $n$. Write
+$X^n\to X$ for $n$ curried arguments of type $X$, with $X^0\to X=X$, and put
+
+$$
+\begin{aligned}
+H(X)&=X\to(X\to X)\to X,\\
+\mathsf{HOAS}_{r,n}
+ &=\Pi X:\Ur r.\,
+ X\to(X\to X)\to(X\to X)\\
+ &\hspace{8mm}\to H(X)\to H(X)\to(X\to X\to X)\to(X^n\to X).
+\end{aligned}
+$$
+
+The six handlers are numeral zero $z$, numeral successor $s$, sort $u$,
+product $p$, lambda $l$, and application $a$. There is no variable
+constructor. For an environment $\rho$ assigning carrier terms to source
+variables, the executable fold is
+
+$$
+\begin{aligned}
+F_\rho(\Ur k)&=u\,(s^kz),&
+F_\rho(x)&=\rho(x),\\
+F_\rho(\Pi x:A.B)&=p\,(F_\rho(A))\,
+  (\lambda x:X.F_{\rho,x}(B)),\\
+F_\rho(\lambda x:A.b)&=l\,(F_\rho(A))\,
+  (\lambda x:X.F_{\rho,x}(b)),\\
+F_\rho(f\,t)&=a\,(F_\rho(f))\,(F_\rho(t)).
+\end{aligned}
+$$
+
+The binder clauses shift every handler and outer environment entry and
+map the newly bound source variable to the new target variable. This is
+HOAS inside the original PTS syntax, not a Rocq function hidden in an
+abstract syntax constructor. The closed quote $C_{r,n}(t)$ abstracts over
+$X,z,s,u,p,l,a$, then over the $n$ carrier variables needed to close its
+source environment. For example, at source scope zero,
+
+$$
+\begin{aligned}
+C_{r,0}(\lambda x:\Ur k.x)
+={}&\lambda X:\Ur r.\lambda z:X.\lambda s:X\to X.\\
+ &\lambda u:X\to X.\lambda p:H(X).\lambda l:H(X).\\
+ &\lambda a:X\to X\to X.\ l\,(u\,(s^kz))\,(\lambda x:X.x).
+\end{aligned}
+$$
+
+:::Proposition[Normal, faithfully encoded raw HOAS]
+For every original $t:\mathsf{Term}\ \mathbb N\ n$ and every external $r$,
+the original rules derive
+$\vdash C_{r,n}(t):\mathsf{HOAS}_{r,n}$ and
+$\vdash\mathsf{HOAS}_{r,n}:\Ur{r+3}$. The quotation is fully beta-normal.
+At each fixed source scope $n$,
+
+$$
+C_{r,n}(t)\bconv C_{s,n}(t')
+\quad\Longleftrightarrow\quad r=s\ \text{and}\ t=t'
+$$
+
+as literal annotated source syntax.
+:::
+
+The binder handler $H(X)$ has rank $r+2$, so accepting this handler raises
+the code type to rank $r+3$. This is one higher than the replaced
+first-order representation. Additional carrier-variable arguments do not
+raise that bound. The existence endpoint in `ChurchSyntax` is
+`every_original_term_has_church_code`. The fidelity theorem is
+`ChurchSyntaxFaithful.quote_conversion_iff`. Normality includes the
+generated lambda annotations. Injectivity is proved by structural
+inversion under an injective variable environment, not inferred from
+evaluation correctness. It therefore retains distinctions between a
+reducible source annotation and its contractum.
+
+Applying a quotation to its carrier and six handlers performs seven
+administrative beta steps:
+
+$$
+C_{r,n}(t)\,X\,z\,s\,u\,p\,l\,a
+ \bto \lambda x_1:X.\cdots\lambda x_n:X.F_{\vec x}(t).
+$$
+
+`ChurchSyntaxFold.run_fold` establishes this reduction, and `run_typing`
+derives the original typing of the actual application with result type
+$X^n\to X$. No subject expansion is used. With $n=0$ the result is
+the unwrapped fold. Source sort labels remain numeral data; no lower
+bound on $r$ is imposed by their magnitude.
+
+**Terminological boundary.** This is a PTS-typed encoding of raw syntax.
+Its carrier does not depend on the source term's type. In the terminology
+of the paper it is an *untyped source representation*, despite its actual
+target typing theorem. It is not the source-type-indexed construction
+discussed next. No claim is made that every inhabitant of its code type
+arises from source syntax, or that its arbitrary algebras perform typed
+unquotation. Instantiating its carrier by another code type requires
+$r=s+3$, without cumulativity or an internal rank quantifier.
+
+# Which indices a raw-HOAS decoder must retain
+
+There are three different quantities: a redex bound $d$, the exact rank $s$
+of the result type, and the largest literal sort label $\ell$ in the source.
+The conservative bound $d(t)$ in the introduction includes literal labels.
+An arbitrary sufficient redex bound need not do so: every $\Ur k$ is
+already normal, has redex bound zero, and has type $\Ur0$, of rank zero,
+regardless of $k$.
+
+The raw HOAS quote deliberately turns these labels into numeral data.
+In fact, `LiteralObstruction.quote_literal_exact` proves
+
+$$
+\mathsf{maxRankLiteral}(C_{r,n}(t))=r.
+$$
+
+:::Theorem[Literal-generation obstruction]
+For any fixed closed raw term $E$ and carrier index $r$, if
+$E\,C_{r,0}(\Ur k)\bconv\Ur k$, then
+
+$$
+k\leq\max\{\mathsf{maxRankLiteral}(E),r\}.
+$$
+
+Consequently no such $E$ unquotes all normal sorts from these codes,
+even when the source redex bound and result-type rank are both zero.
+:::
+
+:::Proof
+Original beta reduction never creates a larger literal sort label.
+Conversion to the normal sort $\Ur k$ implies reduction to it by the
+common-reduct theorem. The applied code contains only the literal labels
+of $E$ and the single carrier label $r$. Taking $k$ one greater than their
+maximum gives a counterexample. No typing premise on $E$ is needed.
+:::
+
+The theorem `no_fixed_type_argument_unquoter` also permits the ordinary
+type argument $\Ur0$ before the raw code. This argument supplies none of
+the missing $k$. Thus indexing an interpreter by **only** redex bound and
+result-type rank does not solve raw-code unquotation. A family whose
+generated syntax additionally depends on a literal ceiling $\ell$, or on
+the conservative bound which includes it, is not excluded. Neither is a
+representation carrying additional literal-bearing semantic data. The
+obstruction does not concern numeric code-to-code self-reduction: an output
+code can represent $k$ by data without generating the literal $\Ur k$.
+
+# Full-PTS normalization connected to HOAS
+
+The executable metalevel construction in `RankedNormalization` is
+
+$$
+\mathsf{NQ}_{r,d}(t)=C_{r,n}(\mathsf{rounds}_d(t)).
+$$
+
+For every original typed, $d$-bounded term in a well-formed context,
+the source of this quotation is its full normal form, reachable by
+original reduction and retaining its original type. The resulting closed
+HOAS code is normal and has type $\mathsf{HOAS}_{r,n}$. For two such
+sources in the same context, possibly with different sufficient budgets
+and types, the checked theorem gives
+
+$$
+\mathsf{NQ}_{r,d}(t)\bconv\mathsf{NQ}_{r',e}(u)
+\quad\Longleftrightarrow\quad
+r=r'\ \text{and}\ t\bconv u.
+$$
+
+The automatic variant uses $d(t)$ and covers every closed original typed
+term without a supplied bound or normalization-success hypothesis.
+It identifies beta-convertible sources, unlike the raw quotation, which
+retains exact syntax. In particular, canonicalization is not being mistaken
+for syntax-level injectivity.
+
+The normalization stage inherits the operation cost from the introduction.
+The additional checked output-size bound, for
+$L=\mathsf{maxRankLiteral}(t)$ and $N=\mathsf{nodes}(t)$, is
+
+$$
+\mathsf{nodes}(\mathsf{NQ}_{r,d}(t))
+ \leq 34+2n+(2L+5)\operatorname{tower}_{d}(N).
+$$
+
+The factor involving $L$ accounts for unary label data in this HOAS
+representation. This is an output-size theorem, not a charged runtime for
+HOAS construction or numeric serialization. The canonicalizer is an
+executable Rocq function on the original syntax; it is not yet a PTS term
+implementing the conditional numerical program from the introduction.
+
+## A full dependent weak interpretation with faithful syntax
+
+There is nevertheless an actual closed indexed PTS decoder for a weaker
+representation. Normalize both the source and its type **during external
+quotation**, and retain the original raw HOAS tag to preserve syntax.
+Put $C_r=\mathsf{HOAS}_{r,0}$ and, for $A:\Ur s$, define
+
+$$
+\begin{aligned}
+W_r(A)&=(A\to C_r\to A)\to A,\\
+\mathsf{pack}_r(A,u,c)&=\lambda h:A\to C_r\to A.\,h\,u\,c,\\
+\mathsf{select}_r(A)&=\lambda x:A.\lambda c:C_r.x,\\
+\mathsf{WDec}_{r,s}&=\lambda A:\Ur s.\lambda q:W_r(A).\,
+ q\,(\mathsf{select}_r(A)).
+\end{aligned}
+$$
+
+Its exact original typings are
+
+$$
+\begin{aligned}
+W_r(A)&:\Ur{\max(s+2,r+5)},\\
+\mathsf{WDec}_{r,s}&:\Pi A:\Ur s.\,W_r(A)\to A,\\
+(\Pi A:\Ur s.\,W_r(A)\to A)&:\Ur{\max(s+3,r+6)}.
+\end{aligned}
+$$
+
+For a closed original judgment $t:A$, let
+$\mathsf{nf}(v)=\mathsf{rounds}_{d(v)}(v)$ and define
+
+$$
+Q_r(t:A)=\mathsf{pack}_r
+  (\mathsf{nf}(A),\mathsf{nf}(t),C_{r,0}(t)).
+$$
+
+:::Theorem[Full closed weak interpretation]
+Every original closed derivation $\vdash t:A$ has a sort witness
+$\vdash A:\Ur s$. The computed $Q_r(t:A)$ is fully normal, has original
+type $W_r(\mathsf{nf}(A))$, and satisfies
+
+$$
+\mathsf{WDec}_{r,s}\,\mathsf{nf}(A)\,Q_r(t:A)
+ \bto\mathsf{nf}(t)\bconv t.
+$$
+
+The applied decoder has original type $A$. Moreover, conversion between
+two such normal packages, even with different supplied source types,
+implies equality of their carrier indices and literal equality of their
+annotated source terms.
+:::
+
+:::Proof
+Original type validity supplies $s$; normalization and preservation give
+$\mathsf{nf}(A):\Ur s$ and $\mathsf{nf}(t):A$. Original conversion then
+types the payload at $\mathsf{nf}(A)$. Both payload and type are normal;
+the raw HOAS tag is normal independently of source reducibility.
+The package body is headed by its bound variable, so the whole quotation,
+including its annotation, is normal. The decoder performs five
+administrative beta steps to the payload. Its result can be converted
+back to type $A$. Conversion between normal packages implies their literal
+equality; extracting their tags and applying raw-HOAS fidelity recovers
+the exact source syntax.
+:::
+
+`WeakFullInterpretation.full_closed_weak_interpretation` proves coverage
+from original closed typing alone. `quote_conversion_injective` proves
+the separate fidelity claim. The supplied source type or derivation is
+not asserted injectively recoverable: only the annotated term is tagged.
+The quote is a total external syntax computation; its normality theorem
+has the original typing premise. The decoder's $s$ is an **exact** sort
+rank, obtained propositionally by type validity, not a larger bound used
+via nonexistent cumulativity.
+
+This construction includes dependent products, sort terms, reducible
+annotations and all other original closed typed syntax. It requires no
+elementary-representability assumption. But its computation occurs in the
+external quoter, and its decoder ignores the HOAS tag. It is therefore a
+normal, faithful **weak semantic-payload interpretation**, not an internal
+interpreter of pure HOAS and not Brown--Palsberg strong unquotation of the
+unreduced source. The literal obstruction is avoided because the normal
+payload can itself contain the source's literal labels. The computational
+challenge left by the introduction is to move normalization and typed
+reification into the object program instead of supplying this payload.
+
+# Independent Brown--Palsberg PHOAS investigation
+
+The paper's Figure 3 abstracts a type interpretation $F:*\to *$.
+For the arrow fragment its pretranslation uses
+$\widehat{A\to B}=F\widehat A\to F\widehat B$, while the representation
+of a term of type $A$ has carrier $F\widehat A$. Its abstraction and
+application handlers therefore involve $F(F A\to F B)$.
+Unquotation specializes this same $F$ to the type identity.
+
+:::Theorem[Obstruction to the literal single-family interface]
+Let $F:\Pi A:\Ur a.\Ur b$. If $A,B:\Ur a$ and
+$F(F A\to F B)$ has any original PTS type, then $a=b+1$.
+If the same family type admits the identity
+$\lambda A:\Ur a.A$, then $a=b$. Thus these requirements cannot hold
+simultaneously, even when different input and output ranks are allowed.
+:::
+
+:::Proof
+Application inversion and uniqueness of typing force the argument
+$F A\to F B$ to inhabit $\Ur a$. Both $F A$ and $F B$ inhabit
+$\Ur b$, so the original product rule places that arrow in $\Ur{b+1}$.
+Uniqueness of sort ranks gives $a=b+1$; conversion cannot change it.
+The literal identity already has type $\Pi A:\Ur a.\Ur a$.
+Uniqueness of typing followed by product and sort conversion inversion
+therefore gives $a=b$. The two equations contradict each other.
+:::
+
+`BrownPalsberg.no_single_family_identity_interface` proves this statement
+from actual original typing judgments, including arbitrary alternative
+types used in application derivations. `no_literal_interface` specializes
+the arguments to the explicitly constructed closed type $A_a:\Ur a$,
+so the obstruction is not a vacuous lack of source types.
+This is independent of the fixed-head evaluator theorem. It excludes the
+literal common-family interface, not every possible PHOAS encoding.
+
+## A rank-indexed repair of the type interpretation
+
+For the independent simply typed source, replace the one family by external
+parameters $F_i:\Pi A:\Ur i.\Ur i$ and a ground carrier $o:\Ur0$. Define
+
+$$
+\begin{aligned}
+\widehat o&=o,\\
+\widehat{A\to B}
+ &=F_a\widehat A\to F_b\widehat B,
+ &a&=\operatorname{ord}(A),\quad b=\operatorname{ord}(B),\\
+\mathcal I_F(A)
+ &=F_{\operatorname{ord}(A)}\widehat A.
+\end{aligned}
+$$
+
+Both $\widehat A$ and $\mathcal I_F(A)$ inhabit precisely
+$\Ur{\operatorname{ord}(A)}$. The executable `pretype` and
+`interpreted_type` have original typing proofs, strong recovery to the
+ordinary source type code under $F_i=\lambda A:\Ur i.A$, and proved finite
+dependence on indices at most $\operatorname{ord}(A)$.
+These are syntactic functions generating PTS terms; the index $i$ is
+external, not a new PTS sort variable.
+
+With $c=\max(a+1,b)$, the corresponding polymorphic handlers are
+
+$$
+\begin{aligned}
+\mathsf{Abs}_{a,b}
+ &=\Pi A:\Ur a.\Pi B:\Ur b.\,
+  (F_a A\to F_b B)\to F_c(F_a A\to F_b B),\\
+\mathsf{App}_{a,b}
+ &=\Pi A:\Ur a.\Pi B:\Ur b.\,
+  F_c(F_a A\to F_b B)\to F_a A\to F_b B.
+\end{aligned}
+$$
+
+Both handler types inhabit $\Ur{c+1}$; `indexed_handler_type_sorts`
+proves their formation. When the families are identities, the actual
+original lambda terms
+
+$$
+\begin{aligned}
+\mathsf{abs}^{\mathrm{id}}_{a,b}
+ &=\lambda A:\Ur a.\lambda B:\Ur b.\lambda f:A\to B.f,\\
+\mathsf{app}^{\mathrm{id}}_{a,b}
+ &=\lambda A:\Ur a.\lambda B:\Ur b.
+   \lambda f:A\to B.\lambda x:A.f\,x
+\end{aligned}
+$$
+
+inhabit these exact interpreted handler types by conversion.
+
+`indexed_identity_handlers_typing` proves their original typing.
+The two strong beta equations are `indexed_abs_recovers` and
+`indexed_app_recovers`. Each is a closed original term at its external pair
+$(a,b)$. This genuinely repairs the local single-family rank conflict:
+the outer arrow uses $F_c$, not $F_a$ or a universal $F$.
+It does not by itself supply a closed quotation package or a dependent
+conversion theorem.
+
+## Source-type-indexed HOAS term prequotation
+
+The new `TypedHOAS` construction uses the independent computational source
+derivations described below. Unlike the raw-AST representation, its result
+type records the source type. Write $I(A)=\mathcal I_F(A)$ and suppose
+specialized operations are supplied with types
+
+$$
+\mathsf{abs}_{A,B}:(I(A)\to I(B))\to I(A\to B),
+\qquad
+\mathsf{app}_{A,B}:I(A\to B)\to I(A)\to I(B).
+$$
+
+The executable derivation-directed prequotation is
+
+$$
+\begin{aligned}
+q(x)&=\rho(x),\\
+q(\lambda x:|A|.t)&=\mathsf{abs}_{A,B}
+  (\lambda x:I(A).q(t)),\\
+q(f\,u)&=\mathsf{app}_{A,B}\,q(f)\,q(u),
+\end{aligned}
+$$
+
+where the source derivation supplies $A,B$ and all binder lifts are explicit
+in the original scoped syntax. The theorem `prequote_typed` derives
+$q(t):I(C)$ from independent source evidence $t:C$, a correctly interpreted
+source-variable environment, and the stated family and operation typings.
+The premises type the algebra, not its recursively constructed output.
+
+The bounded variant uses the computable budget
+$K(D)=\max(\operatorname{ord}(C),b(D))$ for a derivation $D:t:C$, where
+$b(D)$ is the application budget defined below. The theorem
+`prequote_bounded_typed` requires family laws only at $i\leq K(D)$ and
+case laws only when $\operatorname{ord}(A\to B)\leq K(D)$.
+Including the result order matters: a high-order identity lambda can have
+application budget zero. Bounded case laws still quantify over source
+types, not merely a finite list of monomorphic variables. The finite
+implementation below specializes the rank-pair-polymorphic handlers above.
+
+Specializing the families to the type identities and the operations to
+the actual closed Brown--Palsberg handlers gives strong recovery of the
+original annotated term (`identity_interpretation_recovers`). This is
+also related to actual replacement of already generated syntax:
+`prequote_substitution` proves that simultaneous substitution commutes
+with prequotation, provided it sends the embedded source variables to
+the stated new variables. The theorem `substitution_identity_recovers`
+then reduces that substituted prequote to the source under the new
+renaming, assuming the substitution actually supplies the specified
+identity families and handlers. It does not assume that the quotation
+itself recovers, nor assert existence of the missing finite substitution
+telescope. Annotation recovery is part of the original reduction proof.
+
+`TypedHOASAlgebra` proves original typing of the actual two-application
+specializations of the closed identity handlers. Its theorem
+`typed_identity_interpretation` combines original typing at the ordinary
+source type with strong recovery, for every independent source derivation
+in an originally typed source environment. This concrete identity
+interpretation is not asserted normal: normal prequotation and subsequent
+identity interpretation are different phases.
+
+In `TypedHOASFaithful`, neutral variable families and handlers give full
+annotation normality (`prequote_normal`). A structural eraser separately
+strips interpreted type applications and the two constructor patterns;
+`erase_prequote` yields exactly $\operatorname{rename}(\rho,t)$.
+Consequently `prequote_injective` recovers literal annotated source syntax
+when $\rho$ is injective, even when the two derivations, result types and
+handler palettes differ. `prequote_conversion_injective` strengthens this
+to comparison by original beta conversion of the neutral prequotes.
+This is not proof irrelevance for derivation evidence.
+
+These earlier results concern parameterized prequotation. The generic
+typing theorem and the variable-palette normality theorem cannot be combined
+by silently assuming infinitely many differently typed variables in one
+finite context. The following construction discharges that obligation with
+an actual finite context and actual typed parameter substitutions.
+Nor is every neutral interpretation family impossible in a finite context:
+one $h:\Id_0$ already gives $F_r=h\,\Ur r$, because $\Ur r:\Ur0$.
+The construction below uses separate variable families, not this alternative.
+
+## Closing the finite rank-indexed PHOAS representation
+
+For each external $k$, bind $o:\Ur0$, the $k+2$ families
+$F_0,\ldots,F_{k+1}$, and two polymorphic handlers
+$\mathsf{Abs}_{a,b},\mathsf{App}_{a,b}$ for each $0\leq a,b\leq k$.
+The handler types are the indexed types displayed above. This deliberately
+includes some unused pairs. Their arrow rank can be $k+1$, which explains
+the extra family $F_{k+1}$. The finite parameter context $\Delta_k$ has
+
+$$
+1+(k+2)+2(k+1)^2
+$$
+
+binders. Its original well-formedness, all annotation normality, and the
+actual ground, family and handler lookup typings are proved. It depends
+on $k$, not on the number of source type shapes or the syntax of a
+particular program. There are infinitely many simple types at fixed order;
+the handlers cover them by ordinary PTS type application, not by adding
+one variable for each type.
+
+Specialize a handler at the two pretypes:
+
+$$
+\mathsf{abs}_{A,B}
+ =\mathsf{Abs}_{a,b}\,\widehat A\,\widehat B,
+\qquad
+\mathsf{app}_{A,B}
+ =\mathsf{App}_{a,b}\,\widehat A\,\widehat B,
+\qquad a=\operatorname{ord}(A),\ b=\operatorname{ord}(B).
+$$
+
+These applied handlers remain neutral. `PHOASAlgebra` proves their actual
+original typing and that of the resulting derivation-directed prequotation.
+`PHOASFaithful` accounts for the two extra type arguments in a new eraser;
+it proves full normality and literal annotated-source injectivity, also
+when comparing quotes by beta conversion. No disjointness of handler and
+family variable names is assumed by the generic eraser theorem.
+
+For a term-closed independent source derivation $D:t:A$ whose sole free
+parameter is $o$, and $K(D)\leq k$, put
+
+$$
+\begin{aligned}
+\mathsf{PCode}_{k,A}&=\Pi\Delta_k.\,\mathcal I_F(A),\\
+\mathsf{PQuote}_k(D)&=\lambda\Delta_k.\,q_F(D).
+\end{aligned}
+$$
+
+Here $\Pi\Delta_k$ and $\lambda\Delta_k$ are notation for finite lists of
+**original** products and annotated lambdas; they are not added syntax.
+`PHOASTelescope` implements their closure and actual sequential application.
+Its application-typing theorem uses a typed substitution for the supplied
+arguments, not subject expansion from a known reduct. `PHOASPackage`
+constructs the concrete context and code. The computed quote is closed,
+normal, and originally typed at $\mathsf{PCode}_{k,A}$. At fixed $k$,
+conversion of quotes implies literal equality of their annotated sources,
+even for different source derivations and result types.
+
+`PHOASRecovery` proves that replacing the used families by their type
+identities and the handlers by their actual closed identity interpretations
+reduces the prequote to the original source. Its hypotheses concern only
+the ranks and rank pairs within $K(D)$; no correctness property is required
+of fallback entries outside the finite palette. This is a theorem about
+actual replacement of generated syntax, not about separately generating a
+second term with different parameters.
+
+The parameter substitution is itself realized by an actual closed decoder.
+Writing $\boldsymbol\iota_k$ for the finite list of type identities and
+identity Abs/App handlers in the telescope's binder order, put
+
+$$
+\mathsf{PDec}_{k,A}
+ =\lambda q:\mathsf{PCode}_{k,A}.\lambda o:\Ur0.
+     q\,o\,\boldsymbol\iota_k.
+$$
+
+:::Theorem[Closed finite PHOAS unquotation]
+For every independent term-closed Church-STLC derivation $D:t:A$ and
+$k\geq K(D)$, the actual original closed terms satisfy
+
+$$
+\begin{aligned}
+\mathsf{PQuote}_k(D)&:\mathsf{PCode}_{k,A},\\
+\mathsf{PDec}_{k,A}&:
+ \mathsf{PCode}_{k,A}\to(\Pi o:\Ur0.|A|),\\
+\mathsf{PDec}_{k,A}\,\mathsf{PQuote}_k(D)
+ &\bto\lambda o:\Ur0.t.
+\end{aligned}
+$$
+
+The quote is normal and injective on original annotated source syntax
+at fixed $k$, even under comparison by target beta conversion.
+:::
+
+`PHOASDecoder.closed_phoas_interpretation` proves the typing and strong
+recovery claims; the separate package theorem proves fidelity. The ground
+abstraction is inside the decoder, not an external operation appended to
+evaluation. All finite parameter-typing and substitution premises are
+discharged by the constructed context and identity arguments. Code-type
+formation is proved independently of source inhabitation. The current sort
+theorems provide a universe witness, not a separately verified closed-form
+rank formula.
+
+This decoder is indexed by **both $k$ and the full simple type $A$**,
+not by $k$ and $\operatorname{ord}(A)$ alone. At fixed $(k,A)$ it is the
+same raw PTS program for every source derivation within budget, independent
+of program size; it is not chosen per source term. Internalizing the type
+interpretation as an additional argument, to remove the full-$A$ external
+index, remains a further task.
+
+The executable regression quotes
+$\lambda x:o.(\lambda y:o.y)x$ with computed budget one. Its actual closed
+PHOAS package computes to a normal term, while its decoder strongly
+recovers the original still-reducible source, including the outer ground
+abstraction. No normal form or semantic value is precomputed and stored
+in this quotation. This completes the finite PHOAS construction for the
+independent STLC source, not for all original dependent PTS syntax.
+
+This is a Church-style, algebra-parametric typed HOAS construction inside
+PTS-rk. The term PHOAS here emphasizes that the representation abstracts
+its interpretation families and operations. It should not be confused with
+adding a native Rocq inductive datatype and calling that an internal PTS
+representation. In [Chlipala's PHOAS](https://adam.chlipala.net/papers/PhoasICFP08/),
+the variable family is likewise an explicit parameter, but that work's
+metatheoretic treatment is not a theorem about all inhabitants of these
+PTS code types. Our proofs concern the actual quoted outputs; they assume
+no parametricity axiom or no-junk theorem for arbitrary code inhabitants.
+
+## Genuinely dependent indexed handlers
+
+The local rank-indexed repair is not limited to constant codomains. Let
+$F_i:\Ur i\to\Ur i$, $A:\Ur a$ and
+$B:(F_a A)\to\Ur b$, and set $c=\max(a+1,b)$ and
+
+$$
+D_F(A,B)=\Pi x:F_a A.\,F_b(B\,x).
+$$
+
+The actual original product rule gives $D_F(A,B):\Ur c$. Consequently
+the two dependent constructor interfaces are
+
+$$
+\begin{aligned}
+\mathsf{DAbs}_{a,b}
+ &=\Pi A:\Ur a.\Pi B:(F_a A\to\Ur b).\,
+     D_F(A,B)\to F_c(D_F(A,B)),\\
+\mathsf{DApp}_{a,b}
+ &=\Pi A:\Ur a.\Pi B:(F_a A\to\Ur b).\,
+     F_c(D_F(A,B))\to D_F(A,B).
+\end{aligned}
+$$
+
+Both inhabit exactly $\Ur{c+1}$. In particular, the codomain of an
+applied constructor $h_{\mathrm{app}}:\mathsf{DApp}_{a,b}$ really depends
+on the represented argument:
+
+$$
+h_{\mathrm{app}}\,A\,B\,q_f\,q_u
+ : F_b(B\,q_u).
+$$
+
+At identity families, the closed original handlers
+
+$$
+\begin{aligned}
+\mathsf{dabs}_{a,b}
+ &=\lambda A:\Ur a.\lambda B:A\to\Ur b.
+   \lambda f:(\Pi x:A.Bx).f,\\
+\mathsf{dapp}_{a,b}
+ &=\lambda A:\Ur a.\lambda B:A\to\Ur b.
+   \lambda f:(\Pi x:A.Bx).\lambda x:A.f\,x
+\end{aligned}
+$$
+
+inhabit these exact interpreted interfaces by proved beta conversion.
+Their applications reduce to $f$ and $f\,u$, respectively.
+`DependentPHOAS` proves formation, operation typing, identity specialization
+and these reduction equations. It also derives the original type $B\,u$
+of the actual applied identity App handler directly, before reducing it.
+No eta conversion is used.
+
+This is positive dependent infrastructure, but the supplied family
+$B:(F_a A)\to\Ur b$ has not yet been constructed recursively from every
+source dependent family $B_0:A\to\Ur b$. The domains differ while $F_a$
+is abstract. Treating this input as already translated would assume away
+the central coherence obligation.
+
+For the candidate convention that interprets sort literals by themselves,
+a source type $T:\Ur b$, regarded as a source term, has representation
+carrier $F_0(\Ur b)$. Using that representation as an annotation requires
+a separate operation
+
+$$
+\mathsf{El}_b:F_0(\Ur b)\to\Ur b.
+$$
+
+Its type inhabits $\Ur1$, and the type identity at rank $b$ is an actual
+inhabitant at identity families. Both facts and its beta equation are
+checked. Merely binding an abstract $\mathsf{El}_b$ does not give it the
+definitional conversion laws required by a dependent quoter.
+
+## A precise coherence obstruction, not a PHOAS impossibility
+
+:::Theorem[Faithful normal syntax cannot also be a semantic type index]
+Let a fixed externally indexed domain contain the two closed original types
+
+$$
+T_1=(\lambda X:\Ur0.X)\,\Ur0,
+\qquad T_0=\Ur0.
+$$
+
+No one map $Q$ on that domain can simultaneously have normal outputs,
+be injective on literal syntax, and preserve original beta conversion.
+The same holds if a separate conversion-preserving index map $J$ is
+required to satisfy $Q(T)\bconv J(T)$ pointwise.
+:::
+
+:::Proof
+Both types inhabit $\Ur0$, and $T_1\bto T_0$ while $T_1\ne T_0$.
+Conversion preservation makes their normal images convertible, hence equal
+by original confluence. Injectivity gives the contradictory source equality.
+For the two-map variant, pointwise conversion transfers conversion preservation
+from $J$ to $Q$.
+:::
+
+`PHOASConversion` proves the statement at any target scope and external
+index. Its two witnesses already fit one independently specified domain:
+type rank zero, literal ceiling zero, at most five nodes, and sufficient
+redex bound six. Increasing those indices cannot repair the three
+simultaneous requirements once both witnesses occur at the same index.
+The argument does **not** force two genuinely different maps to agree.
+Canonical semantic indices plus faithful syntax codes, or another explicit
+coherence mechanism, lie outside the obstruction.
+
+There is also a concrete source regression: the neutral PHOAS quotes of
+$\lambda x:o.(\lambda y:o.y)x$ and $\lambda x:o.x$ are provably not
+convertible, although the sources differ by one beta step. This is expected
+of faithful quotation, not a defect in its interpretation theorem.
+For dependent syntax, a quotation map therefore cannot simply be reused
+unchanged as the map interpreting type conversion. This is the precise
+obstruction established here; arbitrary indexed dependent PHOAS has not
+been ruled out.
+
+# Executable structural quotation for the simply typed fragment
 
 The existing independent source `ChurchSTLC` has a distinguished ground
 type variable $o:\Ur0$, simple types $\sigma$, and annotated lambda
@@ -248,13 +1040,52 @@ blocker pattern. Recovery up to beta conversion alone would not establish
 injectivity, since distinct source terms may be beta-convertible.
 
 The Rocq module `RankedQuotation` implements these claims for arbitrary
-bounded derivations and explicitly typed blocker contexts. Its existence
-theorem is relational, in Rocq `Prop`; it is not an extracted executable
-quoter. The structural clauses nevertheless give the intended external
-algorithm. The theorem `finite_budget_quotation` supplies the actual
+bounded derivations and explicitly typed blocker contexts. Its original
+existence theorem is relational, in Rocq `Prop`.
+The theorem `finite_budget_quotation` supplies the actual
 finite blocker context, and `finite_package_injective` proves injectivity
 of the resulting packages. `every_source_has_normal_representation`
 covers every independent STLC derivation at some budget.
+
+The new `ExecutableQuotation` module supplies an executable external
+algorithm. Its source derivation is an inductive datatype in Rocq `Type`,
+with the independent variable, lambda, and application rules, indexed by
+the original annotated source term and its simple type. No constructor
+assumes target PTS typing, quotation, or recovery. The theorem
+`source_derivation` relates its inhabitation to the earlier independent
+`ChurchSTLC.has_type` judgment. This is not an illicit elimination from
+a proof in `Prop` into computational data: the executable function consumes
+the derivation data explicitly. The coverage theorem remains a proposition;
+it is not a source type-inference algorithm.
+
+Structural recursion computes both prequotation and a sufficient budget:
+
+$$
+\begin{aligned}
+b(D_{\mathrm{var}})&=0, &
+b(D_{\mathrm{lam}})&=b(D_{\mathrm{body}}),\\
+b(D_{\mathrm{app}})&=
+\max\{\operatorname{ord}(\sigma\to\tau),b(D_f),b(D_u)\}.
+\end{aligned}
+$$
+
+The executable prequotation follows exactly the displayed structural
+clauses. Its relationship to the existing relation is two-way: a related
+prequote exists exactly when some computational source derivation produces
+that prequote with budget at most $d$. Conversely, each supplied derivation
+produces a related prequote at every sufficient budget. Thus executable
+normality, original PTS typing, and strong recovery reuse the proved
+relational construction, without assuming its output as an input witness.
+After packing the computed blocker telescope, equality of executable
+packages at any fixed sufficient budget implies exact equality of the
+original annotated source terms. This injectivity statement does not
+identify beta-convertible but syntactically different sources.
+The implementation includes a reducible source
+$\lambda x:o.(\lambda y:o.y)\,x$: its budget computes to $1$,
+its closed quote computes to a normal term, and the closed decoder
+recovers the original, still reducible source. A separate computation
+checks subsequent normalization. These examples test the executable path;
+the coverage and correctness theorems quantify over all source derivations.
 
 The finite-telescope interface abstracts those blockers in descending order:
 
@@ -352,15 +1183,26 @@ The separate library is `PTSrk.SelfInterpreter`, physically in
 normalization infrastructure; neither arithmetic interpretation nor either
 set-model library is a dependency. The reference ZFC development is unchanged.
 
-The formalized obstruction is
-`RankObstruction.no_universal_fixed_head_evaluator`. Explicit inhabitants at
-every type rank are `rank_type_sort` and `rank_value_typing`.
-The decoder family and its exact rank are `RankedDecoder.decoder_typing`
-and `decoder_type_sort`; `typed_ranked_retraction` states its restricted
-positive contract. `RankedQuotation` supplies the separate STLC quotation
-development, and `TelescopeDecoder` and `ClosedDecoder` make its interpreters
-actual object-language programs. The development README records the exact
-public endpoints and proof boundary.
+The `ChurchSyntax` modules implement raw HOAS, fidelity and folds.
+`BrownPalsberg` proves the single-family obstruction and indexed type
+interpretation. The three `TypedHOAS` modules provide source-indexed
+prequotation, syntax fidelity and the actual typed identity interpretation.
+The new `PHOASAlgebra`, `PHOASFaithful`, `PHOASTelescope`, `PHOASRecovery`,
+`PHOASPackage` and `PHOASDecoder` modules close that construction over a
+finite rank-indexed palette and supply an actual strongly recovering closed
+decoder for each budget and simple source type. `DependentPHOAS` constructs
+genuinely dependent local handlers and a candidate universe decoder;
+`PHOASConversion` proves the limited shared-map coherence obstruction.
+The earlier `RankedQuotation` and `ExecutableQuotation` modules retain
+the independent shallow STLC quotation, with actual closed decoders in
+`TelescopeDecoder` and `ClosedDecoder`. `RankedNormalization` connects full
+PTS normalization to canonical HOAS codes; `LiteralObstruction` distinguishes
+redex/type-rank indices from the needed literal ceiling.
+`WeakFullInterpretation` supplies the full closed weak semantic-payload
+construction, including normality and exact source fidelity. None of these
+modules assumes the manuscript's unformalized elementary compiler.
+Public endpoints and their precise
+boundaries are recorded in the development README and checked by `Audit`.
 
 The development uses the pinned Rocq 9.2.0, Stdlib 9.1.0,
 Equations 1.3.2+9.2, OCaml 4.14.2, and Dune 3.23.1 environment.
@@ -371,20 +1213,30 @@ Verification commands and failures are recorded separately from theorem claims.
 
 The remaining research programme is:
 
-1. Make derivation-directed quotation executable, prove its relationship
-   to the relational construction, and retain syntax-level injectivity.
-2. Define an independently specified bounded dependent source fragment and
+1. Formalize the non-uniform elementary compiler, including the corrected
+   modulus construction, and instantiate it with fixed-budget normalization
+   and elementary serialization. Prove original numeral-program typings
+   and beta equations; a native arithmetic computation is not that proof.
+2. Construct actual typed HOAS-to-numeric adapters and normal-form reification
+   with sufficient rank and literal indices. The latter must return an
+   inhabitant of the represented dependent type, not just another code.
+   This would strengthen the full-PTS weak construction by eliminating
+   its externally supplied normal semantic payload.
+3. Internalize the finite PHOAS decoder's full simple-type interpretation
+   as an explicit object argument, instead of its current external $A$
+   index. Preserve normality, literal fidelity and direct original typing.
+4. Define an independently specified bounded dependent source fragment and
    solve its substitution and conversion coherence obligations.
-3. Prove all five required contracts for that dependent fragment: original typing, full normality,
+5. Prove all five required contracts for that dependent fragment: original typing, full normality,
    injectivity under a stated annotation equality, strong recovery, and
    coverage of every intended source derivation at some finite external budget.
-4. Investigate representations supporting additional operations such as
-   syntax inspection. A shallow recovery theorem alone is not a deep encoding.
 
-No full dependent self-interpreter or all-rank single program is claimed.
-The positive result is an indexed fragment construction, alongside a precise
-obstruction explaining why external rank indices are necessary for the
-fixed-head interface.
+The checked full-PTS result is the weak semantic-payload construction;
+the strong shallow and now finite closed PHOAS unquotation results remain
+for the independent STLC fragment.
+No full dependent pure-HOAS/PHOAS evaluator or all-rank single program is
+claimed. The complexity argument gives a positive conditional route to
+numeric self-reduction, not a proof that the remaining typed reifier exists.
 
 To rebuild this note, run `bash tools/build-self-interpreter-note.sh`.
 To compile the development in the pinned environment, run

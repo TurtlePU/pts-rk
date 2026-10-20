@@ -20,6 +20,7 @@ directory names and Rocq library names are deliberately independent.
 | [functional](theories/Interpretation_of_R/functional/README.md) | `Interpretation_of_R.functional` | Theorem 7 and effective original-PTS witnesses, including `Kernel.Theorem5Target` |
 | [ZFC_model](theories/ZFC_model/README.md) | `PTSrkModel` | Original typing soundness with explicit set-theoretic parameters; material BZC reduction remains open |
 | [NormalizationComplexity](theories/NormalizationComplexity/README.md) | `PTSrk.NormalizationComplexity` | Costed TOWER upper bound, fixed-rank ELEMENTARY bound, linear rank-bound traversal, STLC reduction preserving and reflecting conversion |
+| [self_interpreter](theories/self_interpreter/README.md) | `PTSrk.SelfInterpreter` | Faithful raw HOAS; full-PTS weak interpretation; finite closed indexed STLC PHOAS with strong unquotation; dependent handlers and precise rank/literal/coherence obstructions; full dependent interpretation open |
 
 The checked STLC reduction supports the paper's lower-bound argument using an
 external hardness theorem; that theorem and machine-level TOWER-completeness
@@ -39,6 +40,7 @@ dune build @theories/Interpretation_of_R/relational/audit
 dune build @theories/Interpretation_of_R/functional/audit
 dune build @theories/ZFC_model/audit
 dune build @theories/NormalizationComplexity/audit
+dune build @theories/self_interpreter/audit
 ```
 
 Audits print public theorem types and/or transitive assumptions on compilation.
@@ -61,6 +63,8 @@ retained by the driver. See [tools](tools/README.md) for smaller checks.
   and the estimator prototype [rank.agda](rank.agda).
 - [Documentation index](docs/README.md), [live state](docs/direct-r-handoff/STATE.md),
   and [decisions](docs/direct-r-handoff/DECISIONS.md).
+- [Self-interpretation research note](PTS-rk_self_interpreter.tex) and
+  [compiled PDF](PTS-rk_self_interpreter.pdf).
 - [AGENTS.md](AGENTS.md) for proof integrity, verification, and continuity rules.
 - [Vendored dependencies](vendor/README.md), with their own license/provenance.
 
