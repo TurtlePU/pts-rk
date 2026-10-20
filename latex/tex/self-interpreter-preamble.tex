@@ -1,0 +1,29 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{titling,authblk,parskip}
+\author{}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Ur}[1]{\mathcal U_{#1}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\Id}{\mathsf I}
+\newcommand{\id}{\mathsf{id}}
+\newcommand{\Code}{\mathsf{Code}}
+\newcommand{\Dec}{\mathsf{D}}
+\newcommand{\bto}{\longrightarrow_\beta^{*}}
+\newcommand{\bconv}{\mathrel{=_{\beta}}}
+\newcommand{\quoteof}[1]{\ulcorner #1\urcorner}
+\setlength{\droptitle}{-2em}
+\setlength{\emergencystretch}{3em}
+\usepackage[
+  smartHybrid,fencedEnvs,headerAttributes,relativeReferences,
+  fencedCode,underscores=false,texMathDollars,texMathSingleBackslash
+]{markdown}
+\renewcommand{\markdownRendererCodeSpan}[1]{\texttt{\small #1}}
