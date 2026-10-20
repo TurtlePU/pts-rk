@@ -16,6 +16,16 @@ Updated note/PDF: 18 pages. Exact commands, failures, versions, hashes and limit
 Historical raw-log paths refer to locally retained evidence, not additional
 committed source files. Concise reports and selected provenance are published.
 
+Finished-development documentation: `bash tools/build-development-docs.sh`
+rebuilds the five README.tex/PDF pairs indexed by docs/developments/README.md.
+The final build gives 38 pages and passes log, PDF text and visual checks.
+A fresh audit of every finished library passes with 1,127 closed reports
+and recursive kernel checking. Full local CI in the shared checkout at that
+documentation checkpoint stopped at a concurrent self-interpreter error;
+that observation does not describe this isolated publication checkout.
+Exact commands, failures, local logs and cleanup recovery details are in
+[the documentation checkpoint](verification/development-docs-2026-10-20/COMMANDS.md).
+
 ## Inspect and preserve
 
 From the repository root inspect git status, branch, recent commits, actual

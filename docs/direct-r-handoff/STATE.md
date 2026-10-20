@@ -79,6 +79,66 @@ open. Next exact full publication check in the pinned environment:
 bash tools/check-local-ci.sh
 Use a fresh absolute Dune build directory for new assumption reports.
 
+## Finished-development expositions and repository hygiene
+
+Publication update: the user subsequently requested commit and push.
+Prepared the documentation-only branch docs/finished-developments from
+origin/main at ffa7131 in an isolated checkout. This excludes the separate
+unpushed self-interpreter note at 73c4303 as well as all concurrent proof
+work. The shared checkout/index remains with its active agent. Navigation
+uses committed reference-model audits, without links into excluded sources.
+The isolated PDF rebuild exits 0 in /tmp/pts-rk-development-docs.2eouKv;
+all five documents retain their 38-page total. DOCUMENTS.sha256 records
+these publication outputs. Commands and scope are in the same checkpoint.
+The following audit and cleanup paragraphs describe the earlier shared
+checkout snapshot; they do not assert a failure in this isolated branch.
+
+Completed documentation for all five finished AI-assisted development groups:
+shared arithmetic, relational arithmetic, functional arithmetic, normalization
+complexity and the reference set model. Each has a substantive native
+LaTeX–Markdown README.tex and compiled README.pdf, indexed by
+docs/developments/README.md. Lengths are 6, 7, 9, 9 and 7 pages (38 total).
+The set-model exposition is at docs/developments/ZFC_model so the entire
+theories/ZFC_model directory remains byte-identical to PR #1 ffa7131.
+The original handwritten kernel and ongoing BZC/self-interpreter work are
+excluded. No Rocq source, Dune theory or proof statement was changed.
+
+Original audit build: bash tools/build-development-docs.sh, exit 0, fresh directory
+/tmp/pts-rk-development-docs.yJpNLU. All logs are free of overfull boxes,
+missing glyphs and unresolved references. All-page PDFKit text scans and
+representative visual inspection pass, including a corrected silent math
+parse issue. Exact failures/commands and source/PDF hashes are recorded in
+verification/development-docs-2026-10-20/COMMANDS.md and DOCUMENTS.sha256.
+
+Fresh finished-development audit in /tmp/pts-rk-finished-audit.WOMXfC:
+exit 0, 1,127 closed assumption reports. Recursive kernel check exits 0;
+only unchanged upstream functional_extensionality_dep in the loaded global
+context, no unsafe checks. Fresh core inventory matches retained pristine
+upstream byte-for-byte. Pinned Rocq 9.2.0/Stdlib 9.1.0/Equations 1.3.2+9.2,
+OCaml 4.14.2, Dune 3.23.1. Frozen ZFC and finished proof-source comparisons,
+scoped whitespace, shell syntax and documentation-link checks pass.
+
+Complete local CI was attempted, not green: actionlint and pristine upstream
+pass, followed by normalization; the excluded, concurrently edited
+self-interpreter failed in ChurchSyntaxFold.v at line 72 (congruence failed).
+Later stages were not run. This is the observed concurrent snapshot, not
+a claim about later self-interpreter edits. No excluded proof was edited and
+no CI stage was weakened. Raw audit, kernel, PDF and failed-CI logs remain
+local in _build/development-docs-audit.Pyd9JH; no remote success is claimed.
+
+Moved 17 disposable artifacts (14 Python bytecode caches, .lia.cache,
+and two generated Markdown–TeX sidecars) to the ignored recovery directory
+_build/obsolete-generated.713zwP; removed their intent-to-add cache entries
+and added ignore rules. Tests, provenance packages, dated verification logs
+and unrelated user work are preserved. At that authoring checkpoint there
+was no staged diff, commit or push, and shared HEAD was 73c4303.
+Existing large dirty proof work remains intact.
+
+This documentation task is complete; no theorem status changed. The first
+unrelated CI issue to recheck is the concurrent self-interpreter stage.
+Material BZC and dependent-unquotation goals remain with their ongoing owners.
+Next exact documentation command: bash tools/build-development-docs.sh
+
 ## Markdown runtime, dated title and Figure 2 ready for publication
 
 Added authorsonlines=true (default false) to the locally vendored class and
