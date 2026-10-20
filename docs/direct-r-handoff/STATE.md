@@ -1,5 +1,48 @@
 # Live proof-development state — 2026-10-20
 
+## Scoped publication merged, pushed and independently verified
+
+Self-interpreter proof snapshot 3411f31f007caecfe5251dacb276583edbd4bba9
+and finished-development documentation 6820469a75acf5a1adda248c193930a9b22daa6a
+are joined by actual merge 64864e36b4d748cf117f830cdc4438d4d4054a2f.
+Read-only git ls-remote after verification confirms that exact origin/main tip.
+Publication uses an isolated checkout; unrelated dirty development sources
+and bulky local raw logs are excluded, with the original worktree preserved.
+
+Clean publication CI passes actionlint and ALL 172/172 stages, exit 0,
+10:31:23--10:40:39 UTC. This independently checks the published scope rather
+than borrowing the older 226-stage dirty-worktree result. The baseline's 171
+stages are retained and only the self-interpreter audit is added. There was
+no failure, timeout or weakened stage. This is local CI, not remote CI.
+
+A separate fresh absolute build in
+/tmp/pts-rk-self-publication-build.GMOcrx passes with 264 closed assumption
+reports. Recursive kernel checking passes; the original-core inventory is
+byte-identical to pristine upstream. Original kernel, frozen reference ZFC
+and normalization sources are unchanged. All 27 self-interpreter source,
+Dune and README hashes match the reviewed snapshot and remain stable.
+No new axioms, unsafe checks or changes to original PTS rules.
+
+The published note TeX retains hash 2f9550a4c4c78e44754b2ab7544809b5b86b57a1b5433bc50ea98adc2f0df62e.
+Its actual PDF is 262401 bytes, SHA-256
+73c94e7dcc5e4113ebb828bf9a194c31d22a2d27d6a21dff0c5120878cb1f04e.
+This differs from the earlier recorded build output; the earlier PDF build
+and visual-check claims remain tied to their historical hash, not silently
+transferred to this file. Current inspection is recorded by the parent.
+
+Exact commands, timestamps, versions, source identities, PDF distinction and
+theorem limits: verification/self-interpreter-publish-2026-10-20/COMMANDS.md.
+Raw evidence is retained locally in /tmp/pts-rk-self-publication.KX9EQK.
+This verification report/handoff update is separate from the already
+published source merge and awaits its own evidence commit by the parent.
+
+First remaining mathematical goal is unchanged: compatible dependent
+context/type/term translation with distinct syntax and semantic indices,
+proved substitution/conversion coherence and all intended source derivations.
+Full dependent PHOAS remains open, not ruled out. Next exact smoke command:
+opam exec -- dune build @theories/self_interpreter/audit
+Use a new absolute build directory when fresh assumptions are required.
+
 ## Finite indexed PHOAS, strong closed STLC decoding and dependent boundary
 
 Latest self-interpreter milestone: the finite closed PHOAS package is now
@@ -49,9 +92,9 @@ checks pass. No new axioms or unsafe checks. Pinned versions: Rocq 9.2.0,
 Stdlib 9.1.0, Equations 1.3.2+9.2, OCaml 4.14.2, Dune 3.23.1.
 Independent contract review passes. The original worktree's full local CI
 passed actionlint and 226/226 stages, including unrelated unpublished
-development stages. This does not yet certify the isolated publication tree:
-its committed baseline plus self-interpreter stage has 172 stages and must
-be checked separately. No committed CI stage has been removed or weakened.
+development stages. Those results alone did not certify the isolated
+publication tree; its separate 172-stage check is recorded above.
+No committed CI stage has been removed or weakened.
 
 Updated native LaTeX–Markdown note/PDF: 18 pages, build exit 0 in
 /tmp/pts-rk-self-note.545XF9. No overfull boxes, missing glyphs or unresolved
@@ -66,9 +109,9 @@ their local evidence from source artifacts.
 Publication preparation starts from 73c4303dca2228bb6b3a8ec6ba5099a86da00bb0
 in an isolated checkout, preserving the original dirty worktree and unrelated
 changes. Only self-interpreter sources, note/PDF, concise evidence and scoped
-navigation/CI/handoff changes belong to this proof snapshot. Commit, requested
-documentation-branch merge, clean-tree verification and push are recorded by
-the publication checkpoint when completed; they are not asserted here.
+navigation/CI/handoff changes belong to this proof snapshot. The subsequent
+commit, requested documentation-branch merge, clean-tree verification and push
+are recorded in the newer publication checkpoint above.
 
 First remaining PHOAS goal: construct compatible dependent context/type/term
 translations with distinct semantic indices and syntax codes, proving actual

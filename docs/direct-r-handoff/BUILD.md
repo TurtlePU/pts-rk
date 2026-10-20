@@ -1,5 +1,17 @@
 # Build, logs, and recovery
 
+Publication verification: merge 64864e36b4d748cf117f830cdc4438d4d4054a2f,
+confirmed on origin/main, passes the complete clean 172-stage local CI plus
+actionlint. A separate fresh absolute self-interpreter build prints 264 closed
+assumption reports; recursive kernel checks, byte-identical pristine-core
+inventory comparison, frozen-library comparisons and source-hash checks pass.
+No failed or timed-out stage, no weakened check and no remote CI claim.
+Commands, versions, timestamps and current-versus-historical PDF hashes:
+[publication checkpoint](verification/self-interpreter-publish-2026-10-20/COMMANDS.md).
+Raw logs remain local in /tmp/pts-rk-self-publication.KX9EQK; the fresh build is
+/tmp/pts-rk-self-publication-build.GMOcrx. The source merge was published by the
+parent; this later evidence/handoff update awaits its separate evidence commit.
+
 Latest self-interpreter checkpoint: finite closed indexed PHOAS for independent
 Church-STLC, with normal syntax-injective quotes and an actual closed strong
 decoder indexed by budget AND full simple type. No semantic payload is
@@ -9,8 +21,8 @@ open, not ruled out. The original development worktree's fresh aggregate audit
 has 264 closed reports; recursive kernel, pristine core comparison and frozen
 ZFC/original-core checks pass. Its actionlint and 226-stage CI passed, including
 unrelated unpublished stages. The isolated publication instead contains the
-171 committed baseline stages plus the self-interpreter audit; its separate
-172-stage verification must be recorded before claiming publication success.
+171 committed baseline stages plus the self-interpreter audit; its successful
+separate 172-stage verification is recorded in the publication checkpoint above.
 Updated note/PDF: 18 pages. Exact commands, failures, versions, hashes and limits:
 [finite PHOAS checkpoint](verification/self-interpreter-phoas-2026-10-20/COMMANDS.md).
 Historical raw-log paths refer to locally retained evidence, not additional
