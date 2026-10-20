@@ -1,5 +1,13 @@
 # Build, logs, and recovery
 
+Latest self-interpreter milestone: full-PTS open-context normalization,
+hereditary typed substitution and canonical contexts/type indices. Original
+kernel, normalization sources and frozen ZFC remain unchanged. Fresh prior
+audit: 326 closed reports; recursive/pristine checks and all 226 current-root
+CI stages pass. The object-language dependent PHOAS step remains open.
+See [canonical proof checkpoint](verification/self-interpreter-canonical-2026-10-20/COMMANDS.md)
+and [scoped publication](verification/self-interpreter-canonical-publish-2026-10-20/COMMANDS.md).
+
 Publication verification: merge 64864e36b4d748cf117f830cdc4438d4d4054a2f,
 confirmed on origin/main, passes the complete clean 172-stage local CI plus
 actionlint. A separate fresh absolute self-interpreter build prints 264 closed

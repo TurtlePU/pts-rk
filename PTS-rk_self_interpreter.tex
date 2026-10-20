@@ -17,6 +17,9 @@ indexed constructions. A finite closed source-type-indexed PHOAS representation
 with strong unquotation is now checked for the independent simply typed
 fragment. Genuinely dependent indexed handlers are also constructed; a
 separate theorem excludes conflating faithful syntax with semantic type indices.
+For the full dependent calculus, executable canonicalization now extends to
+open contexts, with bidirectional original typing transport, hereditary
+substitution and separate conversion-canonical HOAS type codes.
 A full dependent interpreter evaluating HOAS or PHOAS syntax internally,
 rather than projecting a precomputed value, remains open.
 :::
@@ -52,6 +55,8 @@ The uniform automatic normalizer has an input-dependent tower-height bound;
 this does not provide a uniform fixed-height elementary bound on all inputs.
 The numerical rank bound here is a bound on redex heads, not merely the
 rank of the final result type.
+The open-context extension below computes a sufficient bound from both the
+term and its context declarations; it requires no normalization-success oracle.
 
 The manuscript's computational-model section, theorem label
 `non-uniform-rep`, supplies the other half of the proposed argument:
@@ -477,6 +482,148 @@ representation. This is an output-size theorem, not a charged runtime for
 HOAS construction or numeric serialization. The canonicalizer is an
 executable Rocq function on the original syntax; it is not yet a PTS term
 implementing the conditional numerical program from the introduction.
+
+## Open contexts, canonical types and hereditary substitution
+
+The canonicalizer now covers **every original well-typed open term**.
+Let $L(\Gamma)$ and $S(\Gamma)$ be the maximum literal label and maximum
+node count among the declarations of $\Gamma$, with empty maxima zero.
+Define executable metalevel functions
+
+$$
+\begin{aligned}
+d(\Gamma,t)
+ &=1+\max\{L(\Gamma),\mathsf{maxRankLiteral}(t)\}
+       +\max\{S(\Gamma),\mathsf{nodes}(t)\},\\
+N_\Gamma(t)&=\mathsf{rounds}_{d(\Gamma,t)}(t).
+\end{aligned}
+$$
+
+`OpenCanonical.budget_sound` proves this bound sufficient from original
+well-formedness and typing. `nf_correct` proves full normality, reduction
+from $t$, original type preservation and success of the bounded normalizer.
+The function consumes syntax, not an erased typing proof or a supplied
+normalization certificate. Its correctness requires original well-typedness;
+arbitrary raw input need not be normalized by these finite rounds.
+The normalization-stage cost is the earlier tower bound at $d(\Gamma,t)$;
+no new runtime bound for context scanning or code construction is claimed.
+
+For originally typed terms, possibly in different well-formed contexts of
+the same scope,
+
+$$
+N_\Gamma(t)=N_\Delta(u)\quad\Longleftrightarrow\quad t\bconv u.
+$$
+
+This compares original scoped syntax, not denotations of variables in
+unrelated environments. In particular, changing a valid typing context or
+sufficient normalization budget cannot change a term's normal form.
+
+Let $\sigma:\Gamma\Rightarrow\Delta$ be an **actual original typed
+substitution**: $\Delta\vdash\sigma(i):\sigma(\Gamma!!i)$ for each $i$.
+Set
+
+$$
+\overline\sigma(i)=N_\Delta(\sigma(i)),
+\qquad H_{\Delta,\sigma}(t)=N_\Delta(t[\sigma]).
+$$
+
+:::Theorem[Full-PTS canonical substitution]
+For well-formed original contexts, $\Gamma\vdash t:T$ and original
+typed $\sigma:\Gamma\Rightarrow\Delta$, the normalized substitution
+$\overline\sigma$ is again originally typed, and
+
+$$
+\begin{aligned}
+N_\Delta(t[\sigma])
+ &=N_\Delta\bigl(N_\Gamma(t)[\overline\sigma]\bigr),\\
+\Delta&\vdash H_{\Delta,\sigma}(t):H_{\Delta,\sigma}(T).
+\end{aligned}
+$$
+
+For original typed $\tau:\Delta\Rightarrow\Theta$, composition gives
+
+$$
+H_{\Theta,\tau}\bigl(H_{\Delta,\sigma}(t)\bigr)
+ =H_{\Theta,\rho}(t),
+\qquad \rho(i)=H_{\Theta,\tau}(\sigma(i)).
+$$
+
+Identity substitution returns $N_\Gamma(t)$.
+:::
+
+:::Proof
+Reduction commutes with simultaneous substitution in both the term and its
+entries. Normalizing an entry also reduces its dependent lookup type;
+original validity, preservation and conversion establish `TypedSub` for
+the normalized entries. The substituted terms are originally typed and
+convertible, so normal-form uniqueness yields literal equality. Validity
+supplies the exact sort needed to normalize the result type too, without
+cumulativity. Composition follows from ordinary substitution composition
+and these normalization equations.
+:::
+
+`CanonicalSubstitution` proves these statements for the **full original
+calculus**, including dependent products, sorts, conversion and annotations.
+The outer normalization cannot be dropped. A checked regression uses
+
+$$
+\Gamma=(f:\Pi X:\Ur0.\Ur0),\quad A=f\,\Ur0,
+\quad\sigma(f)=\lambda X:\Ur0.X.
+$$
+
+The source type and substitution entry are both normal and originally
+typed, but $A[\sigma]=(\lambda X:\Ur0.X)\,\Ur0$ is a redex with normal
+form $\Ur0$. Normalizing entries alone does not make ordinary substitution
+canonical.
+
+Contexts can also be normalized without changing the term being typed:
+
+$$
+\mathsf{NC}(\varnothing)=\varnothing,
+\qquad
+\mathsf{NC}(\Gamma,A)=\mathsf{NC}(\Gamma),N_\Gamma(A).
+$$
+
+`CanonicalContexts` constructs original well-formedness and actual identity
+substitutions in **both directions**. For well-formed $\Gamma$,
+
+$$
+\Gamma\vdash t:T
+\quad\Longleftrightarrow\quad
+\mathsf{NC}(\Gamma)\vdash t:T.
+$$
+
+The terms $t,T$, including annotations, are literally unchanged.
+The declarations become normal; context normalization is idempotent and
+reachable by original context reduction. Computing $N(t)$ in either context
+gives the same result. Formation ranks come from the original `Type`-valued
+well-formedness witness, not elimination of an existential `Prop` proof.
+
+We therefore obtain concrete **distinct** syntax and type-index maps:
+
+$$
+C_{r,n}(t),\qquad J_{r,\Gamma}(A)=C_{r,n}(N_\Gamma(A)).
+$$
+
+`CanonicalTypeIndex` proves that the former retains literal annotated
+syntax, whereas equality of the latter, on originally typed inputs at
+fixed $r$, is exactly original beta conversion. Canonical indices satisfy
+the hereditary substitution and composition equations after quotation.
+On the convertible types $(\lambda X:\Ur0.X)\,\Ur0$ and $\Ur0$, faithful
+codes differ while canonical indices agree; the faithful code of the first
+is not even convertible to its own canonical index. These maps genuinely
+avoid the shared-map obstruction.
+
+Both maps produce closed inhabitants of the **homogeneous HOAS code type**;
+$J(A)$ is not itself a source type at the universe of $A$. Hereditary
+substitution here acts on original syntax before quotation, not by running
+an object-language program on a code. This completes a full-PTS canonical
+context/index algebra, but not an internal operation
+$\mathsf{El}(J(A))\bconv A$ or a translation of every dependent family to
+abstract represented arguments. These remain object-language obligations,
+not consequences to assume from normalization. No general PHOAS impossibility
+follows.
 
 ## A full dependent weak interpretation with faithful syntax
 
@@ -1172,6 +1319,9 @@ A deeper indexed construction would need jointly compatible translations
 of contexts, types, terms, substitution, and conversion. An explicit
 interpretation relation or transported representation of equality might
 help, but the required witnesses must be built inside the original PTS.
+The canonical-context, hereditary-substitution and distinct-index results
+above supply this compatibility for metalevel original syntax. Lifting it
+to an object-language dependent representation is a separate step.
 The extensional instantiation functions of Brown--Palsberg suggest a
 direction; their correctness for $F_\omega$ does not supply this dependent
 coherence theorem.
@@ -1193,6 +1343,10 @@ finite rank-indexed palette and supply an actual strongly recovering closed
 decoder for each budget and simple source type. `DependentPHOAS` constructs
 genuinely dependent local handlers and a candidate universe decoder;
 `PHOASConversion` proves the limited shared-map coherence obstruction.
+`OpenCanonical`, `CanonicalSubstitution`, `CanonicalContexts` and
+`CanonicalTypeIndex` provide the full-PTS open-context canonical index
+algebra, with hereditary substitution equations and bidirectional original
+typing transport, separately from an internal evaluator.
 The earlier `RankedQuotation` and `ExecutableQuotation` modules retain
 the independent shallow STLC quotation, with actual closed decoders in
 `TelescopeDecoder` and `ClosedDecoder`. `RankedNormalization` connects full
@@ -1225,13 +1379,15 @@ The remaining research programme is:
 3. Internalize the finite PHOAS decoder's full simple-type interpretation
    as an explicit object argument, instead of its current external $A$
    index. Preserve normality, literal fidelity and direct original typing.
-4. Define an independently specified bounded dependent source fragment and
-   solve its substitution and conversion coherence obligations.
-5. Prove all five required contracts for that dependent fragment: original typing, full normality,
+4. Lift the checked full-PTS canonical context/type-index algebra into
+   object-language dependent quotation. Construct represented dependent
+   families and typed reification with their internal coherence laws;
+   metalevel normal-form equality does not supply these programs.
+5. Prove all five required contracts for the intended dependent source domain: original typing, full normality,
    injectivity under a stated annotation equality, strong recovery, and
    coverage of every intended source derivation at some finite external budget.
 
-The checked full-PTS result is the weak semantic-payload construction;
+The checked full-PTS interpretation result is the weak semantic-payload construction;
 the strong shallow and now finite closed PHOAS unquotation results remain
 for the independent STLC fragment.
 No full dependent pure-HOAS/PHOAS evaluator or all-rank single program is

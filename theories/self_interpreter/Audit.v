@@ -3,12 +3,15 @@ From PTSrk.SelfInterpreter Require Import RankObstruction RankedDecoder
   ChurchSyntaxFold ExecutableQuotation BrownPalsberg TypedHOAS TypedHOASFaithful
   TypedHOASAlgebra RankedNormalization LiteralObstruction WeakFullInterpretation
   DependentPHOAS PHOASConversion PHOASTelescope PHOASAlgebra PHOASFaithful
-  PHOASRecovery PHOASPackage PHOASDecoder.
+  PHOASRecovery PHOASPackage PHOASDecoder OpenCanonical CanonicalSubstitution
+  CanonicalTypeIndex CanonicalContexts.
 
 (** Public theorem types as well as transitive assumptions. Strong unquotation
     retains INDEPENDENT ChurchSTLC source typing. The full-PTS endpoint below
     is WEAK interpretation of a precomputed normal payload plus faithful HOAS
-    tag, not an internal evaluator of pure raw HOAS. *)
+    tag, not an internal evaluator of pure raw HOAS. The canonical-context,
+    hereditary-substitution and type-index results cover full original PTS
+    syntax at the metalevel; they do not supply an object-language reifier. *)
 Set Printing Implicit.
 Check no_universal_fixed_head_evaluator.
 Check typed_ranked_retraction.
@@ -88,6 +91,25 @@ Check PHOASDecoder.PHOASDecoder.decoder_typed.
 Check PHOASDecoder.PHOASDecoder.decoder_type_has_sort.
 Check PHOASDecoder.PHOASDecoder.quote_strong_recovery.
 Check PHOASDecoder.PHOASDecoder.closed_phoas_interpretation.
+Check OpenCanonical.OpenCanonical.budget_sound.
+Check OpenCanonical.OpenCanonical.nf_correct.
+Check OpenCanonical.OpenCanonical.nf_conversion_iff.
+Check OpenCanonical.OpenCanonical.normalization_charge_bound.
+Check CanonicalSubstitution.CanonicalSubstitution.normal_sub_typed.
+Check CanonicalSubstitution.CanonicalSubstitution.hsubst_canonical_typed.
+Check CanonicalSubstitution.CanonicalSubstitution.hereditary_substitution.
+Check CanonicalSubstitution.CanonicalSubstitution.hsubst_composition.
+Check CanonicalContexts.CanonicalContexts.normalize_context_wf.
+Check CanonicalContexts.CanonicalContexts.normalize_typing_iff.
+Check CanonicalContexts.CanonicalContexts.normalize_context_normal.
+Check CanonicalContexts.CanonicalContexts.normalize_context_idempotent.
+Check CanonicalContexts.CanonicalContexts.nf_normalized_context.
+Check CanonicalTypeIndex.CanonicalTypeIndex.codes_typed_normal.
+Check CanonicalTypeIndex.CanonicalTypeIndex.index_conversion_iff.
+Check CanonicalTypeIndex.CanonicalTypeIndex.hereditary_index_substitution.
+Check CanonicalTypeIndex.CanonicalTypeIndex.index_substitution_composition.
+Check CanonicalTypeIndex.CanonicalTypeIndex.syntax_and_index_separate.
+Check CanonicalTypeIndex.CanonicalTypeIndex.normal_substitution_creates_redex.
 
 Print Assumptions no_universal_fixed_head_evaluator.
 Print Assumptions typed_ranked_retraction.
@@ -167,3 +189,22 @@ Print Assumptions PHOASDecoder.PHOASDecoder.decoder_typed.
 Print Assumptions PHOASDecoder.PHOASDecoder.decoder_type_has_sort.
 Print Assumptions PHOASDecoder.PHOASDecoder.quote_strong_recovery.
 Print Assumptions PHOASDecoder.PHOASDecoder.closed_phoas_interpretation.
+Print Assumptions OpenCanonical.OpenCanonical.budget_sound.
+Print Assumptions OpenCanonical.OpenCanonical.nf_correct.
+Print Assumptions OpenCanonical.OpenCanonical.nf_conversion_iff.
+Print Assumptions OpenCanonical.OpenCanonical.normalization_charge_bound.
+Print Assumptions CanonicalSubstitution.CanonicalSubstitution.normal_sub_typed.
+Print Assumptions CanonicalSubstitution.CanonicalSubstitution.hsubst_canonical_typed.
+Print Assumptions CanonicalSubstitution.CanonicalSubstitution.hereditary_substitution.
+Print Assumptions CanonicalSubstitution.CanonicalSubstitution.hsubst_composition.
+Print Assumptions CanonicalContexts.CanonicalContexts.normalize_context_wf.
+Print Assumptions CanonicalContexts.CanonicalContexts.normalize_typing_iff.
+Print Assumptions CanonicalContexts.CanonicalContexts.normalize_context_normal.
+Print Assumptions CanonicalContexts.CanonicalContexts.normalize_context_idempotent.
+Print Assumptions CanonicalContexts.CanonicalContexts.nf_normalized_context.
+Print Assumptions CanonicalTypeIndex.CanonicalTypeIndex.codes_typed_normal.
+Print Assumptions CanonicalTypeIndex.CanonicalTypeIndex.index_conversion_iff.
+Print Assumptions CanonicalTypeIndex.CanonicalTypeIndex.hereditary_index_substitution.
+Print Assumptions CanonicalTypeIndex.CanonicalTypeIndex.index_substitution_composition.
+Print Assumptions CanonicalTypeIndex.CanonicalTypeIndex.syntax_and_index_separate.
+Print Assumptions CanonicalTypeIndex.CanonicalTypeIndex.normal_substitution_creates_redex.

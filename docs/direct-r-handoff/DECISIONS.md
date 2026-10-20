@@ -1,5 +1,23 @@
 # Decisions and proof-engineering history
 
+## 2026-10-20 — full-PTS canonical contexts and hereditary type indices
+
+Separate faithful raw HOAS quotation from quotation of canonical types.
+Extend the automatic rank bound to open contexts by scanning declaration
+literal labels and node counts. Original wf/typing prove the computed bound;
+the executable function consumes no assumed normalization certificate.
+
+Normalize after substitution: normal entries in a normal dependent type can
+create a redex. Prove actual dependent TypedSub for normalized entries, term
+AND result-type preservation, identity/composition and conversion coherence.
+Use original validity's exact sort witnesses, never cumulativity. Normalize
+contexts with identity substitutions in both directions, preserving literal
+term/type syntax and annotations in the typing equivalence.
+
+These full-PTS metalevel operations are not an internal El or dependent
+PHOAS evaluator. Keep that object-language obligation explicit. Publish only
+the requested self-interpreter milestone, preserving unrelated dirty files.
+
 ## 2026-10-20 — finite indexed PHOAS and explicit dependent coherence boundary
 
 Close the independent STLC prequotation over a finite actual original PTS

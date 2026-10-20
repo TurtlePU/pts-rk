@@ -71,6 +71,49 @@ unreduced source. It needs no elementary-representability premise. The
 remaining computational challenge is replacing the supplied value with an
 internal fixed-budget normalizer and a typed dependent reifier.
 
+## Full dependent canonical contexts and hereditary indices
+
+`OpenCanonical.v` extends automatic normalization to every originally typed
+open term. Its computable budget uses the maximum declaration literal/node
+counts together with those of the input. `nf_correct` proves normalization,
+reduction and original typing from original well-formedness and typing alone.
+`nf_conversion_iff` characterizes equality of normal forms by original beta
+conversion, even across valid contexts at the same scope. This is equality
+of scoped syntax, not equality of variable meanings in different contexts.
+
+`CanonicalSubstitution.v` defines `hsubst D sigma t = nf D (replace sigma t)`.
+It proves that pointwise normalization preserves actual original `TypedSub`,
+including the dependent lookup types. `hereditary_substitution` gives
+
+```text
+nf D (replace sigma t) =
+nf D (replace (fun i => nf D (sigma i)) (nf G t)).
+```
+
+Identity/composition and conversion coherence are checked.
+`hsubst_canonical_typed` normalizes both term and dependent result type using
+original validity's exact sort witness, without cumulativity.
+
+`CanonicalContexts.v` normalizes each declaration in its original prefix.
+It constructs original well-formedness and identity typed substitutions in
+both directions. `normalize_typing_iff` retains the literal original term
+and type, including annotations. Declaration normality, idempotence, actual
+context/index reduction and agreement of term normal forms are proved.
+
+`CanonicalTypeIndex.v` separates faithful `quote t` from canonical
+`quote (nf G A)`. Both are normal closed homogeneous HOAS codes. The latter
+identifies exactly original conversion on originally typed inputs and obeys
+the hereditary substitution/composition equations. A checked pair of distinct
+convertible types has different faithful codes but equal canonical indices.
+A typed open regression shows why the outer normalization is essential:
+normal `f U0` with normal substitution `f := lambda X:U0.X` becomes a redex.
+
+These results cover the FULL original dependent calculus, not a simply typed
+source subset. They are executable metalevel syntax operations. They do not
+yet construct a PTS program performing code substitution, an internal typed
+`El` operation, or a dependent PHOAS quoter over abstract represented domains.
+The canonical index is a code for a type, not that source type itself.
+
 ## The uniform obstruction
 
 `RankObstruction.v` proves `no_universal_fixed_head_evaluator`: no one
@@ -327,8 +370,10 @@ Strong unquotation is checked for a fragment; full original closed PTS is
 covered only by the weak semantic-payload construction above. Neither is
 yet a full pure-HOAS/PHOAS interpreter. The strong source fragment does not
 include the decoder's own polymorphic syntax. Full dependent strong
-quotation still needs compatible
-translations of contexts, types, substitution, and conversion. Naively
+quotation still needs compatible object-language
+translations of contexts, types, substitution, and conversion. The canonical
+metalevel layer above is proved for full PTS; lifting it into those programs
+remains open. Naively
 blocking a redex can break conversion in a dependent result type; leaving
 annotations unchanged can violate full quotation normality. No theorem or
 hypothesis here claims those obligations are solved.
@@ -336,10 +381,11 @@ hypothesis here claims those obligations are solved.
 The finite closed strong STLC PHOAS package is now constructed. Next goals
 include internalizing its full-simple-type decoder index, extending the
 dependent handlers with a compatible source-family/term/type translation,
-and proving substitution/conversion coherence. Separately, formalizing the elementary compiler and applying
-it to numerical fixed-budget normalization, then constructing typed HOAS
-adapters and dependent normal-form reification with sufficient rank/literal
-indices remain the complexity route. Raw syntax fidelity and
+and realizing the checked canonical-index coherence inside an object-language
+representation. The independent complexity route still requires a formal
+elementary compiler, its application to fixed-budget numerical normalization,
+and typed HOAS adapters/dependent reification with sufficient rank/literal
+indices. Raw syntax fidelity and
 numerical normalization do not supply that missing typed evaluator.
 
 ## Build and audit
@@ -361,7 +407,9 @@ recorded in `docs/direct-r-handoff/verification/self-interpreter-2026-10-20/`,
 `docs/direct-r-handoff/verification/self-interpreter-church-2026-10-20/`,
 `docs/direct-r-handoff/verification/self-interpreter-hoas-2026-10-20/`,
 `docs/direct-r-handoff/verification/self-interpreter-complexity-2026-10-20/`,
-and `docs/direct-r-handoff/verification/self-interpreter-phoas-2026-10-20/`.
+`docs/direct-r-handoff/verification/self-interpreter-phoas-2026-10-20/`,
+`docs/direct-r-handoff/verification/self-interpreter-publish-2026-10-20/`,
+and `docs/direct-r-handoff/verification/self-interpreter-canonical-2026-10-20/`.
 New bulky raw logs remain in ignored `_build`; the last directory records
 their exact paths, commands and source hashes.
 

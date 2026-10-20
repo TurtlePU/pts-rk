@@ -1,5 +1,29 @@
 # Live proof-development state — 2026-10-20
 
+## Full-PTS canonical contexts and hereditary indices prepared for publication
+
+The user's next publication request includes OpenCanonical,
+CanonicalSubstitution, CanonicalContexts and CanonicalTypeIndex, their
+Audit/Dune integration, research note/PDF and concise verification evidence.
+These cover the FULL original dependent PTS at the metalevel: executable
+open-context normalization, dependent typed hereditary substitution and
+composition, canonical contexts with bidirectional literal typing transport,
+and distinct faithful syntax / conversion-canonical type codes.
+
+The preceding independent fresh audit passes with 326 closed reports,
+recursive kernel checking, pristine inventory and unchanged core/ZFC/source
+checks. All 226 local-root stages pass; unrelated unpublished developments
+are excluded from this isolated publication. Note source hash remains
+f8ea4a625231ad49e1e1e931385d16ea4f7b1e1183ae584dd290c5cca28757b3.
+The PDF was regenerated externally since that checkpoint; its actual
+publication identity and fresh checks are recorded in
+verification/self-interpreter-canonical-publish-2026-10-20/COMMANDS.md.
+
+First remaining goal: originally typed represented dependent families and
+reification with proved coherence. Canonical syntax operations do not yet
+provide an internal El or a full dependent PHOAS evaluator. No impossibility
+claim is made. Historical checkpoint reports retain their original Git state.
+
 ## Scoped publication merged, pushed and independently verified
 
 Self-interpreter proof snapshot 3411f31f007caecfe5251dacb276583edbd4bba9
