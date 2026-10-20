@@ -1,0 +1,12 @@
+(rocq.theory
+ (name OrderedSemiringFunctional)
+ (package pts-rk)
+ (modules Source Translation Equality Deduction AxiomRealization
+          GroundFaithfulness TheoremFunctionalSemiring)
+ (theories Stdlib Equations PTSrk Interpretation_of_R
+           Interpretation_of_R.relational OrderedSemiring))
+
+(alias
+ (name audit)
+ (deps Source.vo Translation.vo Equality.vo Deduction.vo AxiomRealization.vo
+       GroundFaithfulness.vo TheoremFunctionalSemiring.vo))
