@@ -1,0 +1,8 @@
+\documentclass[11pt,a4paper]{article}
+
+% build.sh snapshots the shared preamble with its first class line removed.
+% Keep one bundled Markdown runtime and one typography/Unicode definition set.
+\input{doc/shared-preamble.tex}
+\renewcommand{\OrderedSourceBase}{https://github.com/akuklev/pts-rk/blob/9cf6a1987ce8be33be8f3a178cbe84257788ace1/theories/OrderedSemiringFunctional/}
+\hyperbaseurl{\OrderedSourceBase}
+\newunicodechar{σ}{\ensuremath{\sigma}}
