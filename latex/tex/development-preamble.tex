@@ -1,0 +1,26 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{titling,authblk,parskip,microtype}
+\usepackage{fvextra}
+\author{}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\setlength{\droptitle}{-2em}
+\setlength{\emergencystretch}{3em}
+\usepackage[
+  smartHybrid,fencedEnvs,headerAttributes,relativeReferences,pipeTables,
+  fencedCode,underscores=false,texMathDollars,texMathSingleBackslash
+]{markdown}
+\renewcommand{\markdownRendererCodeSpan}[1]{\texttt{\small #1}}
+\renewcommand{\markdownRendererInputVerbatim}[1]{%
+  \VerbatimInput[breaklines,breakanywhere,fontsize=\small]{#1}}
+\renewcommand{\markdownRendererInputFencedCode}[3]{%
+  \VerbatimInput[breaklines,breakanywhere,fontsize=\small]{#1}}

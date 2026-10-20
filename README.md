@@ -12,6 +12,10 @@ original typing judgment, without adding term constructors or changing rules.
 All project Rocq sources are under [theories](theories/README.md). Physical
 directory names and Rocq library names are deliberately independent.
 
+[Expositions of the finished developments](docs/developments/README.md)
+provide LaTeX–Markdown sources and compiled PDFs explaining their
+infrastructure, theorem statements, key proof arguments and limitations.
+
 | Directory | Rocq library | Main results and boundary |
 | --- | --- | --- |
 | [theories](theories/README.md) | `PTSrk` | Syntax, typing, confluence, preservation, strong normalization |

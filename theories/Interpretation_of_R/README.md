@@ -1,5 +1,10 @@
 # Direct interpretations of arithmetic R
 
+The [LaTeX-Markdown exposition](README.tex) and [compiled PDF](README.pdf)
+describe the shared infrastructure, its theorem contracts, crucial proof
+steps, and verification boundaries. Each child development has its own
+exposition and PDF.
+
 The parent directory is shared infrastructure; `relational/` and `functional/`
 are separate Rocq libraries. Neither interpretation imports the other.
 The original `PTSrk` kernel remains unchanged in the parent directory.

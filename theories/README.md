@@ -17,6 +17,11 @@ These kernel files are unchanged by the directory reorganization.
 
 ## Separate developments
 
+The [development expositions](../docs/developments/README.md) provide
+README.tex sources and compiled PDFs for the finished AI-assisted developments.
+The reference set-model exposition is stored outside its frozen source
+directory; the ongoing BZC and self-interpreter work is excluded.
+
 | Folder | Library | Audit target |
 | --- | --- | --- |
 | [Interpretation_of_R](Interpretation_of_R/README.md) | `Interpretation_of_R` (shared) | Used by both independent interpretation audits |

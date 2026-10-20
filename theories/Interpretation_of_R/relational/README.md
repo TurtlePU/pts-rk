@@ -1,5 +1,10 @@
 # Relational R — Theorem 4
 
+Read the [LaTeX-Markdown exposition](README.tex) or [compiled PDF](README.pdf)
+for the carrier and observation infrastructure, the complete theorem,
+the finite-separation and bounded-case proofs, deduction preservation,
+nonfaithfulness, and verification boundaries.
+
 Entry point:
 
 ```coq

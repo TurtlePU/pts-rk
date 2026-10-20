@@ -1,5 +1,9 @@
 # Functional R — Theorem 7
 
+The [mathematical exposition](README.tex) and [compiled PDF](README.pdf)
+describe the infrastructure, theorem statements, crucial proof steps,
+effective witness interface, and limitations.
+
 `Theorem7.theorem7` proves the harmonized manuscript's `thm:direct-R` with the
 original four-constructor interpretation, not the relational carrier.
 `DirectRFunctionalAudit.v` prints the final types and transitive assumptions.

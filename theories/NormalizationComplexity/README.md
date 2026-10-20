@@ -6,6 +6,10 @@ annotations, and the original beta relation. It does not change the calculus.
 See the [source map](../README.md) and [repository overview](../../README.md).
 This directory is a separate `PTSrk.NormalizationComplexity` Rocq library.
 
+The [development exposition](README.tex) and its [compiled PDF](README.pdf)
+explain the infrastructure, semantic descent argument, executable cost model,
+conservative rank repair, and two-way STLC conversion reduction.
+
 The three requested results are proved in the explicit operation-cost model
 described below. There are no assumed semantic rank, descent or termination
 contracts. The automatic bound is a conservative repair of a false bridge in

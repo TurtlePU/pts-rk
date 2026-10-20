@@ -1,5 +1,29 @@
 # Decisions and proof-engineering history
 
+## 2026-10-20 — expositions for completed development groups
+
+Provide one native LaTeX–Markdown exposition per finished AI-assisted
+development group, including shared arithmetic infrastructure. Retain useful
+Markdown navigation READMEs and link source/PDF. The handwritten kernel and
+ongoing BZC/self-interpreter research are not newly finished work. Preserve
+the entire frozen PR #1 ZFC_model directory: its new exposition lives at
+docs/developments/ZFC_model. No Rocq proof sources or rules are changed.
+
+Use a shared minimal development preamble and the existing Markdown runtime.
+Build all five documents in fresh temporary directories, validate every log,
+and publish PDFs only after all pass. Compilation cannot detect every
+malformed math fence: inspect PDF text and representative pages too.
+Describe actual public statements and explicit premise boundaries, especially
+effective witness search, supplied-model soundness and external STLC hardness.
+
+Cleanup removes only disposable bytecode, solver cache and parser sidecars,
+with an ignored local recovery copy and ignore rules for regeneration.
+Preserve tests, historical proof evidence, provenance archives and unrelated
+user work. New bulky raw logs stay under _build; a concise tracked command
+report and hashes provide continuity. Record the concurrent excluded
+self-interpreter CI failure separately from successful finished-library audits.
+
+
 ## 2026-10-16 — dated title, optional author lines and float-local math layout
 
 Keep authorsonlines opt-in and default false. Apply protected line-break

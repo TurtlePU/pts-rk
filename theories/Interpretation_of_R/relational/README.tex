@@ -1,0 +1,469 @@
+\documentclass[preamble=development-preamble.tex]{markdown}
+title: The unary relational interpretation of arithmetic R
+date: October 20, 2026
+
+:::Abstract
+The library `Interpretation_of_R.relational` gives a fixed interpretation
+of the relational presentation of Tarski--Mostowski--Robinson arithmetic
+in the original rank-based pure type system. The public theorem
+`Theorem4.theorem4` combines realization of every axiom instance,
+preservation of an independently defined classical deduction system,
+proofs and internal refutations for all ground atoms, and a concrete
+failure of reflection for arbitrary sentences. The construction uses a
+unary Church carrier, negative equality tests, successor-closed
+observations, and uniformly certified finite selectors. This exposition
+follows the checked source declarations, including the fixed-rank
+invariant behind the quantified axiom schemes.
+:::
+
+# The theorem and its source language
+
+The source theory, written $\widetilde R$, has zero, successor, equality,
+order, and ternary addition and multiplication relations $A,M$. Its
+terms are variables, zero, and iterated successor; addition and
+multiplication are predicates rather than source term constructors.
+For external natural numbers $m,n$, its axiom schemes are
+
+$$
+\begin{aligned}
+ A(\bar m,\bar n,x)&\leftrightarrow \overline{m+n}=x,\\
+ M(\bar m,\bar n,x)&\leftrightarrow \overline{mn}=x,\\
+ \bar m&\ne\bar n\quad(m\ne n),\\
+ x\leq\bar n&\leftrightarrow\bigvee_{i=0}^{n}x=\bar i,\\
+ x\leq\bar n&\lor\bar n\leq x.
+\end{aligned}
+$$
+
+Free $x$ is universally quantified. Both directions of the bounded-order
+biconditional are part of this relational presentation.
+`DirectRRelationalSyntax.v` defines the scoped source syntax and these
+five axiom constructors. Primitive logical syntax consists of falsity,
+implication, and universal quantification; negation, conjunction,
+biconditional, finite disjunction, and existential quantification are
+defined encodings. The inductive judgment `Relational.derives` has
+hypothesis and theory rules, implication and universal rules, classical
+double-negation elimination, equality reflexivity, and equality
+replacement. Its definition contains no target typing or inhabitation
+premise.
+
+Write $A^*$ for the fixed translation of a source sentence. The target
+judgment below is exactly `PTSrk.Typing.typ` at `Ranks.RankSorts`, using
+the original annotated `Syntax.Term nat n`.
+
+:::Theorem[The relational interpretation]
+The theorem `Theorem4.theorem4` packages the following four conclusions.
+
+1. Every closed source axiom $A$ has a closed original PTS inhabitant
+   $p:A^*$.
+2. If `Relational.derives [] A`, there is a closed original PTS inhabitant
+   $p:A^*$.
+3. Every true ground equality, comparison, addition atom, or multiplication
+   atom has a proof of its translation; every false ground atom has an
+   internal refutation of type $A^*\to\bot$.
+4. Some source sentence has an inhabited translation but no derivation in
+   the independently defined source calculus.
+:::
+
+This is the theorem labeled `main` in the harmonized manuscript. Its
+number is Theorem 4 there; it is distinct from the functional theorem and
+from the functional `Kernel.Theorem5Target` interface. The conjunction
+above has no assumed certificate package, all-axiom premise, or deduction
+preservation premise. The subsidiary files establish these facts before
+the final theorem assembles them.
+
+# The fixed carrier, domain, and logical translation
+
+The PTS has sorts $U_i:U_0$, and products have rank
+$\max(a+1,b)$ when their domain and codomain have ranks $a,b$.
+There is no cumulativity or eta conversion. Define the unary Church carrier
+
+$$
+ D:=\Pi X:U_1.X\to(X\to X)\to X:U_3,
+ \qquad z:=\lambda X\,x\,s.x,
+ \qquad S d:=\lambda X\,x\,s.s(d\,X\,x\,s).
+$$
+
+Displayed lambdas abbreviate fully annotated original terms. Let
+$\nu_n=S^n z$. The module `Unary` also defines two auxiliary operations
+
+$$
+\begin{aligned}
+ \operatorname{Add}(d,e)&:=\lambda X\,x\,s.d\,X\,(e\,X\,x\,s)\,s,\\
+ \operatorname{Mul}(d,e)&:=\lambda X\,x\,s.
+ d\,X\,x\,(\lambda y:X.e\,X\,y\,s).
+\end{aligned}
+$$
+
+Both have type $D\to D\to D$. They appear inside translated relations;
+they do not extend the source term syntax. The theorems
+`UnaryEvaluation.addition_numerals` and `multiplication_numerals` prove
+their ground beta equations. No equation identifying an arbitrary Church
+presentation with its eta expansion is needed.
+
+The admitted domain is a constructor-closure certificate:
+
+$$
+ \operatorname{Good}(d):=
+ \Pi Q:D\to U_{10}.Q(z)\to
+ (\Pi u:D.Q(u)\to Q(Su))\to Q(d):U_{12}.
+$$
+
+`Unary.good_zero_typed` and `good_successor_typed` certify its zero and
+successor constructors. `admitted_numeral_typed` produces the certificates
+for all external numeral indices. This definition supplies the precise
+bounded-rank induction needed later; it is not an induction rule for
+every raw $D$-inhabitant and does not assume the desired arithmetic axioms.
+
+The fixed answer type is $\bot:=\Pi Z:U_0.Z$, and
+$\top:=U_0\to U_0$ has its identity proof. Negation is $P\to\bot$,
+conjunction is $(P\to Q\to\bot)\to\bot$, and a finite disjunction is
+the flat continuation type
+
+$$
+ \bigvee_c(P_0,\ldots,P_k):=
+ (P_0\to\bot)\to\cdots\to(P_k\to\bot)\to\bot.
+$$
+
+A proof type is stable when its double negation implies it.
+The translation preserves implication and interprets universal
+quantification by
+
+$$
+ (\forall x.B)^*:=\Pi d:D.\operatorname{Good}(d)\to B^*(d).
+$$
+
+Existential quantification follows from its source encoding and hence has
+a negative, guarded translation. `RelationalTranslation.formula_stable`
+proves stability for every translated formula. Classical elimination is
+therefore realized by PTS terms; no elimination from $\bot$ into arbitrary
+positive types is postulated.
+
+# Equality and order through observations
+
+## Negative equality tests
+
+For each $P:D\to U_1$, compare the negative tests $P(d)\to\bot$ and
+$P(e)\to\bot$. With the encoded stable biconditional, define
+
+$$
+ E(d,e):=\Pi P:D\to U_1.
+       \bigl(\neg_c P(d)\leftrightarrow_c\neg_c P(e)\bigr):U_5.
+$$
+
+Equality reflexivity, symmetry, and transitivity follow pointwise by
+identity, reversal, and composition of implications. Every typed
+$F:D\to D$ respects $E$: a test on $F(d)$ is pulled back to the test
+$u\mapsto P(F(u))$ on $d$. `Unary.equality_congruence_typed` implements
+that argument. It yields congruence for successor and both arguments of
+the auxiliary arithmetic operations.
+
+Consequently the arithmetic predicates are
+
+$$
+ A^*(d,e,f):=E(\operatorname{Add}(d,e),f),
+ \qquad M^*(d,e,f):=E(\operatorname{Mul}(d,e),f).
+$$
+
+Their equality compatibility follows from operation congruence and the
+equivalence laws. Equality is thus a definable logical relation; it is
+not asserted to coincide with target beta conversion.
+
+## Successor-closed observation tests
+
+A unary observation consists of the dependent telescope
+
+$$
+ \mathcal U=(X:U_1)(x_0:X)(s:X\to X)(\delta:X\to U_4)
+ (d_0:\delta(x_0))
+ (d_s:\Pi u:X.\delta(u)\to\delta(su)).
+$$
+
+For $d:D$, its observation is
+$\operatorname{ev}_{\mathcal U}(d)=d\,X\,x_0\,s$.
+Define the positive predicate
+
+$$
+ G(d):=\Pi\mathcal U.\delta(\operatorname{ev}_{\mathcal U}(d)):U_6.
+$$
+
+For a test $P:X\to U_1$, its upward certificate says
+
+$$
+ \operatorname{Up}(P):=
+ \Pi u:X.\delta(u)\to\neg_c P(u)\to\neg_c P(su).
+$$
+
+Order transports a negative test through every certified observation:
+
+$$
+ O(d,e):=\Pi\mathcal U.\Pi P:X\to U_1.
+ \operatorname{Up}(P)\to
+ \neg_c P(\operatorname{ev}_{\mathcal U}(d))\to
+ \neg_c P(\operatorname{ev}_{\mathcal U}(e)):U_6.
+$$
+
+The observation quantifies only the displayed initial, successor, and
+upward certificates. Reflexivity and transitivity of $O$ are derived by
+identity and composition; they are not extra observation premises.
+Specializing equality to the pulled-back test
+$u\mapsto P(\operatorname{ev}_{\mathcal U}(u))$ proves $E(d,e)\to O(d,e)$.
+Symmetry of $E$ and transitivity then give congruence of order.
+
+The beta fold equations establish zero and successor closure of $G$.
+To derive `Unary.good_observed_typed`, use the rank-ten motive
+$u\mapsto J_9\to G(u)$ in the `Good` certificate and evaluate at the
+canonical inhabitant of $J_9$. This explicit rank raising replaces an
+unavailable cumulativity step. Finally $G(d)$ supplies the guard required
+to derive $O(d,Sd)$ from the upward certificate. Repeating this step gives
+`Unary.ground_order_realized` for every external $i\leq j$.
+
+# Finite separation: turning a wrong comparison into Bottom
+
+:::Theorem[No backward numeral step]
+For every external $n$, there is an original inhabitant of
+$O(\nu_{n+1},\nu_n)\to\bot$. The declaration is `no_back_realized`
+in the `Separation` module.
+:::
+
+:::Proof
+Set $c=n+1$ and $q=c+1$. Use the selector carrier
+$F_q=U_1\to\cdots\to U_1\to U_1$ with selectors $e_0,\ldots,e_c$,
+zero $e_0$, and the capped successor table
+$s(e_i)=_\beta e_{\min(i+1,c)}$. The shared table-action and iteration
+theorems prove that the numeral $\nu_k$ evaluates to
+$e_{\min(k,c)}$ in this observation.
+
+Its positive domain predicate is
+
+$$
+ \delta_q(u):=\Pi Q:F_q\to U_3.
+ Q(e_0)\to\cdots\to Q(e_c)\to Q(u):U_4.
+$$
+
+Selector projection supplies the initial certificate. For successor
+closure, specialize an input certificate to $v\mapsto Q(sv)$ after
+opening the desired output predicate $Q$. Each resulting branch reduces
+to a selector branch already supplied by the continuation.
+
+Take the separating test
+
+$$
+ P(u):=u\,\underbrace{\top\cdots\top}_{c\text{ entries}}\,\bot.
+$$
+
+The upward law is proved by membership elimination at the rank-three
+motive $v\mapsto\neg_c P(v)\to\neg_c P(sv)$. At the cap it is identity.
+Below the cap its premise is $\top\to\bot$, which yields $\bot$ when
+applied to the known truth inhabitant; abstraction supplies the negative
+conclusion. These branches construct the required upward certificate.
+
+Now specialize a purported $O(\nu_c,\nu_n)$ proof to this complete,
+closed observation. It gives
+$(\bot\to\bot)\to(\top\to\bot)$. Applying the two available identity
+proofs yields $\bot$.
+:::
+
+`Separation.ground_order_refutation` extends this result to every reversed
+ground comparison, using a forward comparison from $n+1$ to the larger
+index. `Separation.R3_realized` refutes equality of any two distinct
+numerals by $E\Rightarrow O$ and, when necessary, symmetry of $E$.
+These finite observations have internal positive certificates; no
+parametricity principle claiming that all raw selectors are canonical is
+used. They are separating observations, not finite models of every
+source axiom.
+
+# Bounded cases and the quantified schemes
+
+The key all-index theorem classifies an admitted presentation with a
+global order alternative:
+
+$$
+ \operatorname{Case}_n(d):=
+ \bigvee_c\bigl(E(d,\nu_0),\ldots,E(d,\nu_n),O(\nu_{n+1},d)\bigr):U_8.
+$$
+
+The last alternative is an actual global lower bound. Merely observing
+overflow in one finite algebra would not provide it.
+
+:::Theorem[Bounded cases]
+For every external cutoff $n$, `Unary.bounded_case_realized` constructs a
+closed original proof of
+$\Pi d:D.\operatorname{Good}(d)\to\operatorname{Case}_n(d)$.
+:::
+
+:::Proof
+Use the positive rank-ten invariant
+
+$$
+ \operatorname{Inv}_n(d):=
+ \Pi Z:U_8.(G(d)\to\operatorname{Case}_n(d)\to Z)\to Z.
+$$
+
+At zero, supply its positive observation certificate and the reflexive
+equality branch. At successor, open the parent's continuation and
+eliminate the child invariant at that same $Z$. This supplies both
+$G(d)$ and the child case proof. Construct $G(Sd)$ from $G(d)$
+independently. To construct the new negative case proof, open all branch
+continuations, so that the remaining answer type is $\bot$.
+
+An equality branch with index $i<n$ moves to $i+1$ by successor
+congruence. At $i=n$, successor congruence and equality-to-order give
+$O(\nu_{n+1},Sd)$. The already-large branch composes its lower bound
+with $O(d,Sd)$, whose positive guard is the retained $G(d)$.
+This proves successor closure of the invariant without extracting
+positive evidence from a negative disjunction.
+
+Apply the original `Good` certificate to this exact rank-ten invariant.
+Project its case component by taking $Z=\operatorname{Case}_n(d)$ and
+the continuation $\lambda g\,c.c$. The source proves formation of the
+entire quantified case type at rank thirteen as well.
+:::
+
+The bounded-order scheme now follows in both directions.
+Under $O(d,\nu_n)$, a finite branch gives the desired finite equality
+disjunction. The large branch composes to $O(\nu_{n+1},\nu_n)$,
+contradicting separation. Conversely, an $i\leq n$ equality branch gives
+$O(d,\nu_n)$ through equality-to-order and the ground comparison.
+`UnaryBounded.R4_realized` assembles the biconditional.
+
+For comparability, a finite branch gives $O(d,\nu_n)$, while a large
+branch composed with $O(\nu_n,\nu_{n+1})$ gives $O(\nu_n,d)$.
+`UnaryAxioms.R5_realized` supplies the resulting disjunction. The first
+two graph schemes follow from the auxiliary arithmetic beta equations
+for arbitrary admitted third arguments. Numeral inequality is the
+separation result. `UnaryArithmetic.all_axioms_realized` and
+`RelationalAxioms.source_axiom_realized` connect these constructions to
+the literal source axiom syntax.
+
+# Preserving deductions and characterizing ground truth
+
+The translation uses an environment from source variables to original
+PTS terms. `term_typed` and `term_admitted` prove that source terms remain
+in the admitted carrier when their environment entries do. Source
+renaming and substitution commute with translation; in particular,
+`instantiate_translation` identifies the translated universal instance
+with target substitution.
+
+`RelationalEquality.formula_transport` extends atomic congruence to all
+formulas and `equality_replacement` realizes the source replacement rule.
+The important restriction is that source variables range over admitted
+arguments. The proof does not assume or require that `Good` is invariant
+under equality between arbitrary raw presentations.
+
+`RelationalDeduction.preservation` is proved by induction on the
+independent source derivation. Its open-context premises say that
+environment entries are typed and admitted and that translated source
+hypotheses are inhabited. Universal introduction extends the target
+context with both a carrier variable and its domain proof. Universal
+elimination uses term admission and the substitution identity. Classical
+elimination uses formula stability, and equality replacement uses the
+transport theorem. The closed specialization is
+`RelationalDeduction.sentence_preservation`.
+
+For ground truth, a closed source term has a natural-number value and
+translates to the corresponding unary numeral up to beta conversion.
+Equality and order are then handled by reflexivity, forward comparisons,
+and separation. Addition and multiplication atoms also use the two
+arithmetic beta equations. `DirectRRelationalGround.v` proves each true
+and false case, and `Theorem4.ground_correctness` packages all four atom
+forms. These are proofs and internal refutations for every ground atom,
+not a finite regression sample and not reflection of arbitrary sentences.
+
+# Why the interpretation is not faithful
+
+Consider $\rho:=\forall x.(x\leq x)$. Its translation is inhabited by
+`Unary.admitted_order_reflexivity`: after opening the domain and
+observation binders, the proof returns its negative-test argument
+unchanged. Order is reflexive even on raw presentations, so the domain
+proof is not needed by this term.
+
+For source non-derivability, the shared module `SourceCountermodel` uses
+$\mathbb N\sqcup\{\omega\}$. Successor fixes $\omega$; the arithmetic
+graphs have the usual values on natural inputs and value zero when an
+input is $\omega$. Order is usual on naturals, each natural is below
+$\omega$, and $\omega$ is below no point. Thus every standard numeral
+has exactly its expected finite downset, and every point is comparable
+with a standard numeral, but $\omega\not\leq\omega$.
+
+`RelationalCountermodel` defines evaluation and satisfaction for the
+independent source syntax, proves each axiom, and proves deduction
+soundness. Satisfaction is stable by structural induction: atomic
+relations in this model are decidable, and implication and universal
+quantification preserve stability. This justifies the classical source
+rule constructively, without a native excluded-middle axiom.
+`order_reflexivity_underivable` therefore gives
+
+$$
+ \widetilde R\nvdash\rho,
+ \qquad\text{while}\qquad
+ \vdash\operatorname{orderRefl}:\rho^*.
+$$
+
+`Theorem4.nonfaithfulness` packages this witness. The countermodel is a
+model of the source arithmetic, not a set-theoretic model of the PTS.
+Its exceptional point also explains why nonfaithfulness does not conflict
+with the complete ground proof/refutation construction.
+
+# Reading map, verification, and limits
+
+`DirectRUnary.v` contains the fixed terms, rank and typing certificates,
+basic equality/order laws, and bounded-case invariant. The evaluation,
+separation, bounded, arithmetic, and unary-axiom modules build the five
+schemes. The `DirectRRelational*` modules then supply independent syntax,
+structural translation, formula transport, deduction preservation,
+ground results, and countermodel soundness. `DirectRTheorem4.v` is the
+public endpoint. Shared logic, selectors, and certificate construction
+are documented by the parent development's exposition.
+
+The central ranks do not depend on an axiom's numeral indices or a
+finite observation's size:
+
+| Construction | Rank |
+| --- | --- |
+| Unary carrier $D$ | $3$ |
+| Finite domain certificate $\delta_q$ | $4$ |
+| Equality and arithmetic graph atoms | $5$ |
+| Positive observations $G$ and order $O$ | $6$ |
+| Bounded cases | $8$ |
+| Positive invariant | $10$ |
+| Admitted domain predicate | $12$ |
+
+These are checked sufficient ranks; no optimality theorem is claimed.
+The construction provides neither induction for all raw carrier terms nor
+reflection of arbitrary source derivability. Internal refutations have
+type $A\to\bot$; external uninhabitability of $\bot$ is a separate
+metatheoretic assertion, not a conjunct of Theorem 4.
+
+The library name remains `Interpretation_of_R.relational`. To inspect its
+public endpoint in Rocq:
+
+```coq
+From Interpretation_of_R.relational Require Import DirectRTheorem4.
+Check Theorem4.theorem4.
+Print Assumptions Theorem4.theorem4.
+```
+
+With the pinned environment described in `docs/DirectR-CI.md`, build from
+the repository root:
+
+```sh
+dune build @theories/Interpretation_of_R/relational/audit
+```
+
+The alias includes the unary and relational audit modules and depends
+only on this interpretation, the shared library, and the original
+kernel. It uses OCaml 4.14.2, Dune 3.23.1, Rocq 9.2.0, Stdlib 9.1.0, and
+Equations 1.3.2+9.2. Use a fresh absolute Dune build directory when fresh
+assumption output is required.
+
+The retained 14 October layout audit prints the exact public theorem
+above followed by “Closed under the global context”, and records
+successful fresh compilation and recursive kernel checking. Its
+`COMMANDS.md` and `types.log` are under
+`docs/direct-r-handoff/verification/theories-layout-2026-10-14`.
+The loaded-context inventory's unchanged upstream functional
+extensionality is distinct from the theorem's closed transitive
+assumption report. More recent verification is recorded in the live
+handoff. `bash tools/check-local-ci.sh` runs the complete staged local
+audit, including pristine upstream; compiling this exposition alone is
+not a fresh Rocq audit.

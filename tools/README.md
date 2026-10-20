@@ -8,6 +8,7 @@ Run these scripts from the repository root. None requires GitHub CLI.
 | `ci-check-direct-r.sh` | Build an isolated pristine upstream snapshot, then normalization, arithmetic, and set-model modules; stop at the first failure |
 | `check-direct-r.sh` | Smaller functional smoke check in an already activated Rocq/Equations environment; not the complete audit |
 | `build-markdown-paper.sh` | Fresh LuaLaTeX/Biber paper build, source/rendered checks, copy successful review PDF |
+| `build-development-docs.sh` | Fresh LuaLaTeX builds of all five finished-development expositions; publish PDFs only after all pass reference, glyph and overflow checks |
 | `check-markdown-paper.py` | Compare Markdown/traditional paper body and ordered mathematics; optionally inspect parser output |
 | `check-markdown-class.sh` | Compile four date/author-layout metadata regression fixtures using the local class/runtime |
 

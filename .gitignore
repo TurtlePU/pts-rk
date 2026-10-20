@@ -1,3 +1,9 @@
 _build
 *.synctex.gz
 *.agdai
+__pycache__/
+*.py[cod]
+.lia.cache
+.nia.cache
+*.markdown.body.md
+*.markdown.preamble.tex
