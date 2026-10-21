@@ -1,5 +1,42 @@
 # Live proof-development state — 2026-10-21
 
+## Self-interpreter exposition streamlined — final construction first
+
+The research note now presents the completed interpreter directly: motivation,
+original calculus and main theorem, finite dependent code interface, checked
+equality repairs, faithful packaging/evaluator, structural quotation proof,
+Brown--Palsberg comparison, CPS feasibility and a short formalization guide.
+The source shrank from 17,474 to 3,929 whitespace-delimited words and the PDF
+from 42 to 11 pages. Intermediate weak/shallow interpreters, standalone STLC
+quotation, canonicalization detours, detailed auxiliary-law developments and
+the module-by-module inventory were removed from the exposition. Their proof
+sources and historical records remain intact.
+
+Retained boundaries: original annotated typing/reduction, ordinary represented
+type argument, numerical plans beyond ranks, literal term/type recovery,
+syntax fidelity, open-context closure, limited fixed-head obstruction, and
+the distinction between the proved interpreter and paper-level CPS analysis.
+The explicit faithful evaluator was checked against FaithfulProgramDecoder;
+the theorem and recursion summary were checked against FullDependentInterpreter
+and RecursiveQuotation. No theorem contract or proof source changed.
+
+Four fresh note builds exit 0. Final build /tmp/pts-rk-self-note.0KH9o2;
+PDFKit extraction/rendering exits 0, 11 pages, visually reviewed. Final TeX
+log has no overfull/underfull boxes, LaTeX warnings or missing glyphs.
+Raw logs: _build/self-interpreter-exposition.aNUfvF. Exact commands, versions,
+scope review and hashes: verification/self-interpreter-exposition-2026-10-21/COMMANDS.md.
+No new Rocq/CI run is claimed for this editorial change.
+
+The user requested commit and push. The enclosing publication commit is based
+on 2da7627ede1e78fc7bdf1a3d48068b2acac1e07b and contains the note/PDF,
+exposition evidence and only the new scoped handoff entries. Unrelated local
+changes are preserved. Publish with git push origin main and confirm using
+git ls-remote origin refs/heads/main.
+The editorial request is complete. The next mathematical question remains
+an internal dependent CPS handler with a realized contextual equality law;
+rank-only uniformity also remains open. Next exact review command:
+git diff -- PTS-rk_self_interpreter.tex.
+
 ## Brown--Palsberg comparison and CPS feasibility — discussion completed
 
 The requested discussion is now Section 12 of the research note. It compares

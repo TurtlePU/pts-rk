@@ -1,5 +1,19 @@
 # Decisions and proof-engineering history
 
+## 2026-10-21 — present the final interpreter without development history
+
+The research note is an exposition of the completed numerical-plan family,
+not a chronological proof log. State the full theorem early and explain only
+the code interface, equality repairs, syntax tag, evaluator and six-rule
+quotation argument needed for it. Retain the complexity motivation briefly,
+the fixed-head obstruction with its exact scope, and the substantive
+Brown--Palsberg/CPS comparison. Intermediate encodings, canonicalization and
+auxiliary-law investigations remain available in source/history and the
+development README; they need not be reproduced in the paper. Preserve
+annotation normality, independent source data, original typing, numerical-plan
+non-uniformity and the boundary between proved interpretation and open CPS.
+No formalization change accompanies the editorial reorganization.
+
 ## 2026-10-21 — distinguish indexed unquotation from the deep CPS benchmark
 
 Call the completed result a Brown--Palsberg-style numerical-plan-indexed

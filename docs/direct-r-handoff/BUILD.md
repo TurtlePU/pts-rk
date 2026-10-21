@@ -1,5 +1,14 @@
 # Build, logs, and recovery
 
+Latest editorial check: the streamlined self-interpreter note compiles to
+11 pages (formerly 42). All four fresh note builds pass; final directory
+/tmp/pts-rk-self-note.0KH9o2. PDFKit text/render checks pass, and the final
+log has no overfull/underfull boxes, LaTeX warnings or missing glyphs.
+Proof sources are unchanged; no new Rocq/CI build is claimed.
+[Exposition evidence](verification/self-interpreter-exposition-2026-10-21/COMMANDS.md)
+records commands, review scope and hashes. The user requested publication;
+the enclosing scoped commit is based on 2da7627.
+
 Latest documentation-only check: the Brown--Palsberg/CPS discussion builds
 successfully in three fresh TeX directories, final
 /tmp/pts-rk-self-note.pVKShq, 42 pages. PDFKit renders discussion pages 35--41;
