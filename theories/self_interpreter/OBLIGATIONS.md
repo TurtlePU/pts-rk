@@ -74,6 +74,38 @@ every possible interpreter's type rank must grow.
 
 ## Execution evidence and remaining work
 
+The fragment-uniformity continuation adds three independent modules.
+`FragmentUniformity.local_request_rank_bound` bounds the actual alignment
+request by `k+2` when local declaration ranks and the motive rank are at most
+`k+1`. Its capped allocator preserves exactly the accepted fields within the
+cap, including normal original-typed realizations, for arbitrarily many layers.
+`CappedInterpreter` supplies executable lookup, normal typed interpreters and
+`rank_uniform`: their type-sort rank is at most `max(k+7,r+6)`, independently
+of all plan lengths and enumeration budgets. This uses the actual base
+signature and cap `k+3`.
+
+The capped quotation port now supplies full-source coverage. Its state invariant
+bounds local binder ranks and is derived recursively, starting from the empty
+local spine. `CappedQuotationState.allocate_local` computes an actual slot from
+original typed endpoints and their filled conversion; `CappedCodeAlignment`
+proves normal typed coercion and literal erasure. `CappedRecursiveQuotation`
+handles all six rules. `CappedDependentInterpreter.every_bounded_original`
+quantifies over a caller-fixed `k`: every closed judgment with independent
+pruned source budget at most `k` has normal codes and literal recovery by an
+interpreter of type-sort rank at most `max(k+7,r+6)`. Cross-budget faithful
+syntax injection, literal type recovery and all original closed/open coverage
+are retained. For open inputs the rank bound uses their annotated closure's
+budget. This discharges the quotation port, not the plan-independent-head
+obligation or the bridge from semantic redex bounds to quotation budgets.
+
+`FiniteCoherenceCatalogue.no_finite_literal_catalogue` rules out finite
+exhaustive lists of concrete fields: rank-2 normal accepted equalities under
+arbitrarily many rank-0 binders have `2*h+11` nodes and literal ceiling zero.
+Finite generic law schemes and ordinary encoded environments are outside
+this obstruction. `conservative_fragment_finite` distinguishes the finite
+syntax fragment obtained by bounding the conservative estimator from true
+rank bounds with unbounded source size.
+
 The extracted actual full-source quoter was tested on a sort, a lambda and
 an application. The sort's raw/type/faithful normality checks pass; both
 non-leaf cases reach the 30-second limit (exit 124), without completing a
@@ -98,11 +130,15 @@ The remaining non-CPS research obligations are:
    `CanonicalSource` only canonicalizes conversion paths in supplied data.
    Neither produces derivation-independent quotation. The detour theorem
    shows why literal-reflexivity pruning alone cannot finish this task.
-3. Find a different rank-only interface, or prove an impossibility theorem
-   for an explicitly specified class. The present fixed-head obstruction,
-   raw-HOAS literal obstruction, and allocation counterexamples have narrower
-   scopes. None establishes impossibility for all conservative-rank-indexed
-   dependent PHOAS representations.
+3. Replace signature-specific application with a fixed typed interface for
+   varying equality environments, or supply generic coherence schemes.
+   Full coverage at a common interpreter-rank bound is proved for every
+   quotation-budget fragment; one interpreter term per whole fragment remains open.
+   The bound `k` is the existing formation/literal quotation budget. Relating
+   it to a fragment specified only by semantic normalization redex ranks
+   (with any required literal/type ceilings) is a further source-side bridge.
+   The finite-catalogue obstruction rules out an exhaustive fixed list of all
+   accepted concrete fields, not every rank-indexed dependent PHOAS representation.
 4. Prove end-to-end quotation/evaluator operation costs under a stated cost
    model. The new cardinality and allocation counts are components of that
    analysis; the contextual layer sizes and typechecking costs remain.

@@ -1,5 +1,37 @@
 # Build, logs, and recovery
 
+Capped-quotation continuation: all eight new modules and the incremental
+aggregate compile. Fresh aggregate compilation in
+/tmp/pts-rk-capped-audit.lpDpbN exits 0 (10:09:50--10:19:47 UTC), with
+2549 own closed reports plus one unchanged upstream normalization report.
+The core recursive kernel check exits 0 and matches pristine upstream.
+The aggregate recursive kernel check exits 0 (10:19:54--10:28:56 UTC).
+Own endpoints are closed; only unchanged upstream functional extensionality
+appears in the loaded inventory, with no unsafe entries. Original proof
+comparisons, all 123 source/Dune stability checks and FINAL-CHECKS pass.
+Full local CI/actionlint passes all 226 stages, exit 0, on retry after an
+initial Dune concurrency-lock failure. The unchanged driver and all failed
+attempt logs are retained. The note builds to 13 pages without layout,
+reference or glyph warnings in /tmp/pts-rk-self-note.KAJfjK; PDFKit inspection
+passes and changed pages are visually checked. Raw output:
+_build/self-interpreter-capped-quotation-2026-10-21.
+Exact commands, failures and source/publication boundaries:
+[capped quotation evidence](verification/self-interpreter-capped-quotation-2026-10-21/COMMANDS.md).
+
+Fragment-uniformity continuation: all three new proof modules compile
+incrementally with closed assumption reports. Fresh aggregate compilation in
+/tmp/pts-rk-fragment-audit.umlOaP exits 0: 2347 own closed reports plus one
+upstream report. Both recursive kernel checks, pristine inventory comparison,
+original proof comparisons and 115-entry source stability checks pass.
+Own assumptions are closed; no new or unsafe kernel inventory entries.
+Full local CI exits 0, all 226 stages PASS.
+The note builds to 12 pages without TeX layout/reference/glyph warnings;
+final TeX directory /tmp/pts-rk-self-note.k3lPRz. PDF text/render inspection
+passes; changed pages visually checked. Raw logs:
+_build/self-interpreter-fragment-uniformity-2026-10-21.
+Exact commands, failures and current verification status are in
+[fragment evidence](verification/self-interpreter-fragment-uniformity-2026-10-21/COMMANDS.md).
+
 Latest self-interpreter improvement check: all modified targets compile and
 full local CI passes all 226 stages, exit 0. Fresh aggregate audit in
 /tmp/pts-rk-self-improvements-audit.vjkEgS passes with 2287 own closed reports

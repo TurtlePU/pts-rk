@@ -1,5 +1,50 @@
 # Decisions and proof-engineering history
 
+## 2026-10-21 — port full quotation at a caller-fixed budget
+
+Keep the verified uncapped quoter/cost and extraction endpoints unchanged.
+The capped port reuses the original local state, independent derivation data,
+typed views/substitution and package theorems; separate plan/alignment/recursion
+modules instantiate actual capped allocation. The bound on local binder ranks
+is an execution invariant discharged by initial state, renaming and bounded
+source-domain pushes, never a target-quotation premise.
+
+State fragment coverage with k fixed before choosing the source. Membership
+requires independent original derivation data whose pruned formation/literal
+quotation budget is <=k; it does not mention target programs. quote_at runs
+at that supplied k, and every_bounded_original combines full recovery/fidelity
+with the common rank bound. Do not substitute each term's computed budget for
+the fragment parameter in a purported uniformity theorem. Open coverage uses
+annotated closure and its budget. Do not identify this budget with a semantic
+redex bound, or bounded actual sort indices with cumulativity or one fixed head.
+
+Large exported Rocq module aliases duplicate compiled environments. Expand
+aliases into qualified references in the new fragment/capped modules; retain
+the mathematical definitions and proof contracts. No CPS work in this port.
+
+## 2026-10-21 — distinguish bounded interpreter ranks from one fixed head
+
+Investigate genuine bounded-rank fragments with unbounded syntax size. A bound
+on conservativeRank includes node count and therefore reduces to finite syntax;
+that observation does not solve the intended problem. Nor does encoding a plan
+as one natural-number index supply uniformity.
+
+Keep the published full-source quoter unchanged while developing the capped
+allocator independently. Its exact acceptance predicate adds a formation-rank
+guard; it preserves original realized equalities within that cap. Local alignment
+carriers have rank zero, so actual requests under bounded source-directed
+telescopes have a size-independent field-rank bound. Prove the actual base bound,
+arbitrary capped-layer preservation, typed normal interpreters and a common
+type-sort bound. Do not claim source coverage before porting recursive quotation,
+or use cumulativity to equate distinct actual sort indices.
+
+Scope the negative result to finite LITERAL catalogues of fields. Arbitrarily
+long rank-zero telescopes already produce infinitely many accepted normal
+rank-two fields. Finite polymorphic coherence schemes, ordinary represented
+environments and other rank-uniform interpretations remain possible routes.
+The next mathematical interface must address varying signatures, not only rank
+arithmetic. No CPS translation is part of this work.
+
 ## 2026-10-21 — optimize enumeration and distinguish plan bounds from uniformity
 
 Preserve the full original-source theorem while improving its executable inputs

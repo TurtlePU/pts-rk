@@ -13,8 +13,10 @@ preserves annotated syntax injectively. The construction uses dependent
 type codes, explicit equality transports and a finite signature whose
 identity interpretation is constructed inside the original calculus.
 
-The family depends on ranks and a numerical plan for equality repairs;
-uniformity over an entire rank-bounded fragment remains open. We explain
+The family depends on ranks and a numerical plan for equality repairs.
+Rank-capped quotation covers every source in a fixed quotation-budget fragment
+with a common interpreter-rank bound; one interpreter term for that entire
+fragment remains open. We explain
 the construction, compare its strong unquotation theorem with
 Brown--Palsberg's interpreter for $F_\omega$, and assess whether the
 representation supports a continuation-passing interpretation.
@@ -516,8 +518,9 @@ quotation and recover the unreduced source. Our ordinary type argument
 therefore matches a central part of their interface. The varying
 $(k,p,s)$, however, changes the interpreter term itself. The fixed-head
 obstruction proves that a direct all-rank copy of their application
-interface is unavailable in PTS-rk. Whether our plan can be replaced by
-one rank index for each whole bounded fragment remains open.
+interface is unavailable in PTS-rk. Replacing the plan by one interpreter
+per bounded fragment remains open. The rank-capped construction below
+separates a common target-rank bound from this stronger requirement.
 
 The positive theorem covers dependent products, conversion in types and
 all original PTS-rk universes. Its normality includes annotations.
@@ -733,6 +736,9 @@ The corresponding injectivity theorems retain annotated source syntax.
 `RecursiveQuotation` implements the six-rule induction.
 The development README gives the module map and verification commands.
 
+The capped variant, `CappedDependentInterpreter`, retains these contracts.
+Its fragment-coverage theorem fixes the quotation budget before the source.
+
 The interpreter theorem has fresh closed assumption reports and
 recursive kernel checks against pristine upstream. No new axiom,
 admission, unsafe cast or altered typing rule is used.
@@ -760,7 +766,7 @@ derivations with $m$ conversion detours through
 $(\lambda x:\Ur0.x)\,\Ur0$; these survive literal-reflexivity pruning
 and produce $7m$ layers. Both facts are checked against the actual quoter.
 Thus neither rank-only plan bounds nor full derivation independence follow
-from the current construction. A rank-uniform interpreter or a canonical
+from the current construction. A plan-independent interpreter or a canonical
 source elaborator would require an additional construction; neither is
 ruled out by these counterexamples.
 
@@ -769,3 +775,89 @@ open, as does the independent elementary-compiler/numeric-reification route.
 The [obligation ledger](theories/self_interpreter/OBLIGATIONS.md) distinguishes
 these extensions from obligations already discharged by full dependent
 quotation. Dependent CPS remains a separate, unformalized question.
+
+## Toward fragment uniformity
+
+There are two different goals: bounding every interpreter's rank by a
+function of the source bound, and constructing the *same interpreter term*
+for all sources at that bound. Encoding a numerical plan by one natural
+number accomplishes neither. The intended fragment bounds literal labels
+and the formation ranks needed by original source derivations, while
+allowing unbounded syntax size. Here $k$ is the source-quotation budget;
+relating it to the normalization redex bound $d$ is a separate obligation.
+Bounding only the conservative estimator
+$1+\mathsf{maxRankLiteral}(t)+\mathsf{nodes}(t)$ instead yields a finite
+syntax vocabulary; uniformity for that finite set would not settle the
+unbounded-size question.
+
+The equality interface admits a useful bound independent of size. For a
+telescope with declaration ranks $a_1,\ldots,a_m$, closing a type of rank
+$b$ gives rank
+
+$$
+\max(b,a_1+1,\ldots,a_m+1).
+$$
+
+In an actual code-alignment request, the equality carrier has rank zero.
+The Leibniz equality at motive rank $s$ has rank $\max(2,s+1)$. Consequently,
+if $s\leq k+1$ and the local declaration ranks are at most $k+1$, the
+entire requested field has rank at most $k+2$, regardless of telescope
+length, endpoint size or previous repairs. The capped quoter maintains this
+local rank invariant through binder introduction and global insertion;
+the caller supplies only independent source data and its budget bound.
+
+A separate executable allocator keeps precisely the accepted fields whose
+formation ranks are at most a supplied cap. It preserves coverage within
+that cap, original typing, normal signatures and the normal identity
+fillings. The actual base signature has declaration ranks at most $k+3$.
+Starting there and using cap $k+3$, any number of these layers therefore
+gives a normal, originally typed interpreter whose type has sort rank at
+most
+
+$$
+R(k,r)=\max(k+7,r+6), \qquad s\leq k+1.
+$$
+
+For fixed tag rank zero this is $k+7$. No bound on plan length or enumeration
+budgets is required; this bounds actual sort indices without using cumulativity.
+`FragmentUniformity` proves the allocation bounds, and
+`CappedRecursiveQuotation` constructs quotation through all six original
+rules using this allocator. Its two application repairs and conversion
+repairs retain original typing, annotation normality and literal erasure.
+
+:::Theorem[Quotation-budget fragment coverage]
+Fix $k$ and the tag rank $r$. Let $\mathcal F_k$ consist of closed judgments
+having an independent original derivation whose pruned quotation budget
+is at most $k$. Every $\vdash t:T$ in $\mathcal F_k$ has normal programs
+$P,Q$ and a normal, originally typed $I_{r,k,p,s}$, with $s\leq k+1$, such that
+$I_{r,k,p,s}\,P\,Q\bto t$ at the original type $T$. Its type-sort index is
+at most $R(k,r)$, independently of the plan $p$. Type recovery is literal,
+and faithful programs remain syntax-injective across plans and budgets,
+even when compared by beta-conversion.
+:::
+
+`CappedDependentInterpreter.every_bounded_original` proves this theorem
+by running the executable quoter at the *supplied* $k$, not merely the
+source's minimal computed budget. Fragment membership mentions no target
+program or quotation premise. The fragments cover all original closed
+judgments; closure and reopening also retain full open-source coverage.
+For an open source, the stated numerical bound uses its closed derivation's
+quotation budget. None of these results removes the finite signature from
+the interpreter's index.
+
+Nor can one fix a finite catalogue containing every concrete equality
+field at a rank bound. The normal fields
+
+$$
+F_m=\Pi x_1:\Ur0.\;\cdots\;\Pi x_m:\Ur0.\;
+       \mathsf{Eq}_0(\Ur0,\Ur0,\Ur0)
+$$
+
+all have formation rank $2$, literal ceiling zero and accepted identity
+fillings, but have $2m+11$ syntax nodes. `FiniteCoherenceCatalogue` proves
+that every finite list misses one. This excludes exhaustive *literal*
+catalogues, not finite polymorphic law schemes or computed environments.
+The remaining step is to replace signature-specific application by a fixed typed interface for
+varying equality environments, or supply reusable coherence laws. The
+common rank bound removes one obstacle; it does not yet prove or refute
+a single-head Brown--Palsberg interpreter for each whole fragment.

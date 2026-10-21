@@ -24,7 +24,7 @@ all previously accepted fields remain covered.
 `QuotationCost` proves the actual plan length from the six source rules.
 `PlanNonuniformity` shows unbounded plan length at fixed result/redex/literal
 bounds, and even for the identical final judgment under conversion detours.
-These limit the present algorithm; general rank-only interpretation and
+These limit the present algorithm; plan-independent interpretation and
 canonical source elaboration remain open. Extracted abstraction/application
 probes time out at 30 seconds, so practical non-leaf execution is not yet
 established. See the ledger for precise theorem names and evidence.
@@ -33,6 +33,37 @@ The positive construction covers the full original dependent calculus in
 well-formed contexts. Its interpreter is indexed by ranks and a finite plan
 of numeric equality-layer budgets; the represented type and term are ordinary
 object-language arguments. Rank-only uniformity is a separate open question.
+
+`FragmentUniformity` proves a size-independent bound `k+2` for actual
+code-alignment fields under an explicit local profile bound. Its separate
+rank-capped allocator preserves accepted-field coverage within the cap,
+original typing and normal identity fillings. `CappedInterpreter` constructs
+actual normal typed interpreters over arbitrary capped plans, with type-sort
+rank at most `max(k+7,r+6)`. `CappedRecursiveQuotation` now ports all six
+original rules to this allocator, maintaining the local rank invariant.
+`CappedDependentInterpreter.every_bounded_original` fixes `k` before choosing
+the source and proves full closed-fragment coverage at that common bound.
+`quote_at` is executable on independent source data; the ordinary closed/open
+coverage, normality, literal term/type recovery and cross-budget syntax
+injectivity contracts are retained. Fragment membership bounds the pruned
+source quotation budget, not source size or target existence. Open coverage
+uses the budget of the original annotated closure. The relation to a fragment
+specified only by normalization redex ranks remains open. A common rank bound
+is not one common interpreter term: the numerical plan still selects its
+signature and filling.
+`FiniteCoherenceCatalogue` rules out exhaustive finite literal field lists
+even at formation rank 2, without excluding generic law schemes. It also
+shows why bounding the size-dependent conservative estimator is a different,
+finite-syntax question. See the note's “Toward fragment uniformity” section.
+
+The capped port is separate from the existing uncapped quoter:
+`CappedQuotationState` supplies bounded state insertion and executable slots;
+`CappedLayerAlignment` and `CappedCodeAlignment` prove actual typed normal
+transport and literal erasure; `CappedFullQuotation` threads numeric plans;
+`CappedApplicationQuotation` performs the two application repairs;
+`CappedProgramInterpreter` packages the resulting codes. The uncapped cost
+theorems and extraction evidence are unchanged; they are not new execution
+measurements of the capped port.
 
 The final public endpoints are in `FullDependentInterpreter`:
 

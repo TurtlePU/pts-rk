@@ -1,5 +1,127 @@
 # Live proof-development state — 2026-10-21
 
+## Scoped publication and completed-cache cleanup
+
+The user requested commit/push of the two capped-fragment milestones below.
+The enclosing publication commit includes only self-interpreter work and its
+handoff/evidence; unrelated BZC, CI and documentation edits are excluded.
+Proof and PDF bytes are unchanged from the retained verification manifests.
+Publication-time FINAL-CHECKS revalidated source hashes and kernel/CI evidence,
+then stopped at git diff --check: an extra EOF blank line in
+CappedCodeAlignment.v. This whitespace warning is retained to preserve the
+audited source hashes; no fresh kernel or complete CI rerun is claimed.
+Completed external Dune caches were cleaned after checking their .db/default
+markers and that no Rocq/Dune processes remained. Sources, pinned toolchain,
+working build and all retained raw verification logs were preserved.
+Available space rose from 398964 to 2807888 KiB (about 2.3 GiB reclaimed).
+Exact targets and publication/check commands:
+verification/self-interpreter-capped-publish-2026-10-21/COMMANDS.md.
+The next mathematical goal remains the common interpreter term described below.
+
+## Capped quotation — full-source coverage at a common rank bound
+
+The capped port now compiles through CappedDependentInterpreter. All six
+original source rules are handled by CappedRecursiveQuotation, maintaining
+the local binder-rank invariant from the empty initial state. Equality slots
+are computed from independent original endpoint evidence and the proved
+formation bound, with actual normal typed transport and literal erasure.
+CappedFullQuotation and CappedApplicationQuotation thread numeric plans;
+CappedProgramInterpreter packages the resulting programs and proves the same
+plan-independent type-sort bound max(k+7,r+6).
+
+CappedDependentInterpreter.quote_at accepts a caller-fixed k and independent
+source data with pruned quotation budget <=k. every_bounded_original covers
+every closed judgment in that fragment, with original typing, normal P/Q/I,
+literal recovery and the common rank bound. The fragments cover every original
+closed judgment. Literal type recovery, pruning/padding invariance, full open
+coverage by annotated closure/reopening, and syntax injection across budgets
+and derivations (including beta-conversion comparison) are retained.
+Open-source rank statements use the budget of the annotated closure.
+
+The uncapped public quoter and cost/extraction evidence remain unchanged.
+No CPS formalization, source-rule change, axiom or admission. Plan-specific
+signatures/fillings still select different interpreter TERMS. A single head
+per whole fragment and the source-side bridge from normalization redex bounds
+to quotation budgets remain open; do not infer either from this rank theorem.
+
+Incremental aggregate and fresh aggregate compilation pass, with 2549 own
+closed reports plus one unchanged upstream report; 1034 public Check/Print
+pairs and 123 source/Dune manifest entries. Fresh directory:
+/tmp/pts-rk-capped-audit.lpDpbN. Both recursive kernel checks and pristine
+inventory comparison pass. Aggregate kernel checking ran
+10:19:54--10:28:56 UTC, exit 0. All own endpoint reports are closed;
+the loaded inventory contains only unchanged upstream functional extensionality,
+with no unsafe/type-in-type/assumed-positivity entries. Original proof comparisons,
+all 123 source/Dune stability checks and FINAL-CHECKS pass.
+Full local CI passes 226/226 stages on retry after a Dune concurrency-lock
+failure; no proof or CI driver was weakened. The updated 13-page note builds
+without TeX layout/reference/glyph warnings in /tmp/pts-rk-self-note.KAJfjK,
+with PDFKit extraction/render inspection and changed pages visually checked.
+Raw logs: _build/self-interpreter-capped-quotation-2026-10-21.
+The old successful /tmp/pts-rk-fragment-audit.umlOaP regenerable cache was
+cleaned after checking its success records; raw prior evidence remains.
+An attempted copy of its nonexistent `log` failed; no copied trace is claimed.
+New module aliases were expanded into qualified references to avoid duplicating
+large compiled environments. The first state build and first incremental audit
+were intentionally interrupted (130) during this resource correction.
+
+HEAD remains 1d1f2462b1d5dff9f94f8f1f3247f40d34769a90, index empty; this and
+the previous fragment milestone are uncommitted. Preserve unrelated dirty
+documentation/BZC/CI edits. Exact evidence:
+verification/self-interpreter-capped-quotation-2026-10-21/COMMANDS.md.
+First remaining goal: replace signature-specific application by one fixed
+originally typed interface for varying capped environments (or generic coherence
+schemes), retaining normal codes and literal recovery. Do not merely re-encode
+the plan as a number or equate a common rank bound with a common term.
+The normalization-redex/source-budget bridge remains independently open.
+Next exact focused command, under the pinned environment:
+opam exec -- dune build theories/self_interpreter/CappedDependentInterpreter.vo
+
+## Fragment uniformity — capped ranks, varying signatures
+
+The previous improvements were committed/pushed as
+1d1f2462b1d5dff9f94f8f1f3247f40d34769a90, confirmed against origin/main.
+The user's subsequent request concerns one interpreter per whole rank-bounded
+fragment, with no CPS formalization.
+
+Three new independent modules compile. FragmentUniformity proves an actual
+LocalCodeAlignment.request has formation rank <=k+2 under its explicit local
+profile bound, and builds a capped allocator preserving original typing,
+normal signatures/fillings and arbitrary-layer declaration bounds. The actual
+base signature has bound k+3. CappedInterpreter supplies executable lookup,
+inherited realization, normal typed interpreters and rank_uniform: type-sort
+indices <=max(k+7,r+6), independent of plan lengths and numerical budgets.
+FiniteCoherenceCatalogue proves that even at formation rank 2 and literal
+ceiling zero no finite literal catalogue covers every accepted field; its
+telescope family has 2*h+11 nodes. Generic law schemes are not excluded.
+Bounding conservativeRank instead yields a finite syntax vocabulary.
+
+Full-source quotation into the new capped family is NOT yet proved, and the
+interpreter syntax still varies with its signature. The published quoter and
+its full dependent coverage/fidelity endpoints are unchanged. The local rank
+invariant must be threaded through recursive quotation, then a fixed typed
+interface for varying environments or reusable coherence laws constructed.
+There is no general impossibility theorem for fragment-uniform PHOAS.
+The k bound is the formation/literal quotation budget; identifying it with
+the normalization redex bound d is a separate, unproved source-side bridge.
+
+Fresh aggregate in /tmp/pts-rk-fragment-audit.umlOaP exits 0 with 2347 own
+closed reports plus one upstream report. Both recursive kernel checks exit 0;
+pristine inventories and original proof/Dune comparisons pass. The 115-entry
+source manifest is stable; own assumptions are closed and the loaded inventory
+has only unchanged upstream functional extensionality, with no unsafe entries.
+Complete local CI exits 0, all 226 stages PASS. FINAL-CHECKS exits 0.
+Incremental new-module checks exit 0.
+The updated note compiles warning-free to 12 pages (final TeX build
+/tmp/pts-rk-self-note.k3lPRz), with final PDF text/render inspection. Exact commands,
+attempts and final results:
+verification/self-interpreter-fragment-uniformity-2026-10-21/COMMANDS.md.
+The continuation is uncommitted; the index is empty and unrelated edits remain.
+First remaining implementation step: parameterize equality allocation so
+RecursiveQuotation can use the capped family while preserving source recovery.
+Next exact command for a focused check:
+opam exec -- dune build theories/self_interpreter/CappedInterpreter.vo.
+
 ## Self-interpreter improvements — allocation, pruning and uniformity limits
 
 The requested non-CPS continuation reconciles all six committed paper versions
