@@ -1,22 +1,471 @@
 # Decisions and proof-engineering history
 
+## 2026-10-21 — full-source numerical-plan interpretation constructed
+
+The completed structural source quoter, not a general no-go, is the positive
+outcome. RecursiveQuotation handles every original rule without a target
+quotation/coherence hypothesis. Its decisive separation is the literal typed
+constructor view from a possibly coerced root cache. Actual application repairs
+both independently recovered roots with exactly two complete checked numeric
+layers, then structurally substitutes the codomain view. Conversion quotes its
+already supplied formation child, not arbitrary untyped zigzag intermediates.
+Terminal sort-to-code repair is nonrecursive, avoiding the U0:U0 cycle.
+
+FullDependentInterpreter computes the initial budget and state from independent
+Type-valued derivation data. Original Prop typing is used only to prove inhabited
+data/coverage in Prop, never as a computational source. All-source theorem
+contracts include original typing, full normality (annotations included),
+literal source/type recovery and faithful program injection across derivation
+choices/signatures. SourceClosure covers open inputs by original annotated
+closure and ordinary variable application; open fidelity has a common source
+scope. Arbitrary originally typed contexts require original wf, as before.
+
+The external family indices are tag rank, source-interface budget, finite
+numeric plan and result rank. The represented type is ordinary P; the term
+program is ordinary Q. No source type, syntax or typing derivation is an
+interpreter-family parameter. Numeric plans contain only length/node/literal
+budgets, and their actual signatures enumerate all independently accepted
+equality fields at those budgets. Nevertheless the plan may grow with source
+syntax: do NOT call this rank-only fragment uniformity or assert efficient
+enumeration. Each typed family member is itself within closed source coverage
+at some possibly different numerical index, not necessarily its own index.
+
+Proof-erased OCaml execution of the ACTUAL closed U0 path succeeded, including
+the plan and normal raw/closed type/faithful programs. It is one leaf regression,
+not all-source experimental evidence or a direct Rocq vm_compute guarantee.
+Standard extraction's opaque-body warnings and dependent erasure are retained
+in evidence; no new Rocq source axiom/unsafe cast was introduced. Final fresh
+audit and full CI now pass:2229closed self-interpreter reports plus unchanged
+upstream normalization, recursive kernel/pristine/frozen-source checks,
+110stable manifest entries and226/226CI stages. The completed positive result
+does not settle rank-only uniformity. The user subsequently authorized commit
+and push; the newest STATE entry records the selected publication scope.
+
+## 2026-10-21 — faithful actual programs and literal local scopes
+
+FaithfulProgramDecoder packages the actual dependent PHOAS program together
+with a normal raw HOAS annotation tag. The interpreter selects the PHOAS
+program and then executes it using the original dependent decoder; it never
+selects a precomputed semantic source value. This differs materially from
+the earlier weak full interpretation. Generic selector/package lemmas are
+reused, not its normalization-based payload construction. The tag proves
+literal annotated syntax injectivity even across different signatures;
+normality gives conversion injectivity. It does not supply source coverage.
+
+LocalQuotationSpine uses snoc scopes n+base, so a local binder has literally
+the original source scope S n. Growing the global signature preserves the
+same literal source context, not its normalized or filled approximation.
+The existing cons telescope is an allocation adapter only. LocalSpineNaturality
+compares closed Pi syntax to prove its renaming agreement; proof-only scope
+casts never become object-language primitives.
+
+SourceQuotationBudget traverses the supplied Type-valued original derivation
+and context data, bounding every recursive child and explicit/literal rank.
+Original Prop typing has coverage, not forbidden elimination to executable
+data. FullQuotation's numeric plan is idle/request/compose, evaluated with
+literal intermediate realized signatures. Flattening recovers a vector of
+numeric budgets. This avoids equality casts between dependent list-fold
+states. No rank-only quotation-family or elementary cost bound is claimed.
+
+Practical proof engineering: exported module aliases duplicate large Rocq
+environments. Mechanical expansion of qualified names is permitted after
+checking no consumers use the nested alias API; refresh hashes and checks.
+This changes no original theorem or proof obligation. FullQuotation's first
+successful alias-free artifact is21KiB, versus184MiB for the earlier aliased
+QuotationJudgment environment. Local Module is rejected by Rocq9.2, so is not
+a supported alternative. Completed caches may be cleaned only with exact
+validated paths and separately retained verification logs.
+
+## 2026-10-21 — executable quotation views and equality-only realized layers
+
+The active user request is to reach a full dependent PHOAS interpreter or a
+genuine impossibility result. Neither is proved. Existing uniform-head,
+literal-ceiling and homomorphic-conversion obstructions remain restricted.
+
+Arbitrary open-body recovery and concrete uniform-field application now use
+literal source annotations and independent original typing. Their forward
+recovery and guarded normality are separate. SourceValidity computes actual
+result-type formation from supplied original derivation/context data, but a
+quoter must NOT recurse naively on its generated result-type derivation:
+application substitution can enlarge it, and U0:U0 gives a terminal-sort
+cycle unless sorts are handled directly.
+
+Retain literal source constructor views separately from target caches.
+QuotationTree performs actual dual-scope substitution: a variable hit takes
+the replacement tree's source shape but preserves the literal substitution
+of the old target cache. Its Pi view gives children, NOT an equation between
+the cache and their product code. NormalNeutralSubstitution proves exact
+full-normality preservation by normal non-lambda replacements, annotations
+included. Typed child/view compatibility is now constructed by QuotationCache,
+QuotationViewRenaming and QuotationViewSubstitution. A term shape retains
+Pi children independently of whether the root is used as a type. Variable
+substitution may expose a Pi; original sort uniqueness aligns its rank with
+the independently substituted cache. Direct codomain instantiation returns
+literal B[u] and literal cache Bc[q], without quotation re-entry.
+
+Investigate an acyclic equality-only signature extension as an alternative
+to generating all coherence from a small fixed vocabulary. An equality may
+be allocated only AFTER both endpoints have independently proved original
+typing and their actual identity fillings are already convertible. Never
+allocate an arbitrary semantic-value field. RealizedEquality constructs a
+normal reflexivity realizer; ContextualEqualityRealizer closes it over a
+dependent telescope and normalizes only this eraser program. A proved
+lambda-spine invariant shows that full application returns the literal
+payload unchanged, even with nonnormal domain annotations. This is not
+external normalization of the quoted semantic payload. The global allocator
+abstracts local dependencies back to the preceding closed signature.
+
+Uniformization must enumerate independently checkable bounded syntax, not
+"fields which make the desired quotation succeed." OriginalTypecheck is a
+total metalevel computation with soundness AND completeness for unchanged
+Typing.typ in original well-formed contexts; it does not replace that
+judgment. BoundedSyntaxEnumeration enumerates original annotated terms with
+explicit node/literal bounds. A layer may refer only to its preceding base
+context, enabling an acyclic finite-DAG embedding. Thread a single realized
+signature sequentially through source recursion: each repair appends the
+WHOLE checked layer at computed numeric length/node/literal budgets. An
+external finite vector of those numeric triples determines the signature;
+no source syntax or derivation occurs in that index. This avoids merging
+separately constructed signatures. The effective recursive coverage theorem
+remains to prove. This candidate introduces
+syntax/layer bounds; it is NOT yet a decoder uniform on a rank-only fragment.
+
+The ordinary dependent P/Q decoder is now implemented in
+DependentProgramDecoder, using TelescopeInstantiation to retain ambient
+P/Q variables beneath the filled signature. It is originally typed at
+Pi P:TyProg. TmProg(P)->Result(P), with a computed exact formation rank,
+normality from normal signature/fill guards and literal closure recovery.
+Its represented type is an ordinary argument; the external signature's C/E
+must still be selected uniformly by the numerical family. This generic
+packaging theorem is not an all-source quoter and does not hide one in its
+premises. Fixed-signature closure injectivity does not prove full quotation
+injectivity; that must track the finite source-constructor tree separately.
+
+For the eventual closed interface, prefer an ordinary represented-type
+program parameter P : Pi Sig.C_s and term program Q : Pi Sig.El_s(P Sig).
+The fixed indexed decoder applies the actual identity fill to Q; its result
+type El_id(P id) recovers the original source type. This avoids silently
+indexing the decoder by a full source derivation or assuming that all
+derivation-specific type caches coincide. P must itself be constructed as
+a normal code program, not supplied as an unquoted semantic type/value.
+
+These decisions do not assert global quotation, injectivity or full original
+coverage. Original calculus, frozen libraries and prior results are unchanged.
+
+## 2026-10-21 — contextual beta families with syntax-free finite indices
+
+Realize the SPECIFIC cast-beta equation over an entire dependent telescope,
+not a rule lifting arbitrary pointwise equality. ContextualTelescope retains
+literal annotated lambdas/products and independent original formation.
+ContextualBeta forms equality of the complete lambda closures. Its identity
+witness is independently typed reflexivity; only its TYPE is converted using
+proved endpoint reductions. No subject expansion, eta, cumulativity or
+function-extensionality assumption is introduced.
+
+TelescopeBetaFamily quantifies A, B, f and u over any supplied telescope.
+Its identity program uses plain reduced annotations, with direct typing and
+full normality proved separately. An extra abstraction over actual normal
+domain-family parameters makes UniformContextualBeta depend externally only
+on the rank vector and a,b,d. Do not index the finite field list by concrete
+domain syntax. UniformTelescope generates neutral domains Xi applied to the
+previous variables, with actual original formation, normality and exact
+substitution naturality. UniformTelescopeRecovery computes lambda-closed
+parameter values from every independently formed concrete telescope and
+proves their TypedSub plus annotation-wise recovery. The exact exported
+closure corollary ends in U_s; arbitrary open-body/lambda transport through
+the accumulated scope remains a separate integration task.
+
+Keep LENGTH and RANK bounds distinct. ContextualBudgets proves that closure
+rank1 permits arbitrarily long zero-rank vectors. Enumerate all vectors of
+length <=L and entries <=k, then triples a,b,d<=k. TelescopeBetaSignature adds
+exactly (sum j=0..L (k+1)^j)*(k+1)^3 genuinely polymorphic fields over the
+unchanged finite local-beta signature. Original wf/normality, exact lookup,
+actual closed normal identity values, TypedSub and closed package/run are
+proved, with declaration formation rank <=k+3. This numerical upper bound
+does not assert a cumulative typing rule or a sufficient translated-source
+budget. Descriptor coverage is not full source quotation coverage.
+
+Retain the explicit one-binder ContextualBetaFamily/Signature specialization
+and its local input-syntax/conversion injectivity. RealizedSignature separately
+packages independently supplied closed typed implementations, without
+assuming the desired source quoter. The global context/type/term translation,
+source-substitution/conversion coherence and strong full-PTS quotation remain
+open; existing raw-HOAS/STLC fidelity is unchanged.
+
+## 2026-10-21 — predicative graph evidence and restricted binder congruence
+
+Keep equality predicate levels explicit. IndexedEqualityLevels lowers/reverses
+Eq_(max(a+2,d+1)) on A:U_a to Eq_d using originally typed equality motives;
+join lowers one forward witness and reverses the other. For type equality
+on U_c, the carrier sort is ZERO, giving input c+2 and output c+1. These
+constructions are not cumulativity, arbitrary-level lowering or same-level
+symmetry. Guarded normality must retain non-lambda evidence hypotheses.
+
+Use synchronized graph equality for dependent application: quantify over
+P : Pi x:A. B x -> U_d and relate P u y to P v z. Its original sort is
+max(a+2,b+2,d+1), and dependent congruence needs input equality at the SAME
+predicate level d. This does not establish equality with an independently
+chosen transport. TarskiGraphBeta uses the actual finite beta field through
+fixed-fiber congruence. The decoded-family beta reduction converts the
+predicate application's type; no endpoint typing is extracted from Eq.
+Actual identity filling recovers literal graph reflexivity, retaining the
+substituted domain and lambda-valued fiber. Do not eta-contract that fiber
+or assert normality of its graph certificate.
+
+BinderCongruence deliberately uses a single common map and an equality
+outside the binder. The map body may depend on both parameters, but its
+binder domain/codomain are fixed with respect to the outer parameter.
+Product-code congruence uses the actual constructor and keeps annotations.
+This supplies a useful restricted case, not arbitrary lifting of pointwise
+evidence to function equality; its administrative beta redexes are not hidden.
+
+SourceSubstitution transforms supplied Type-valued derivations by structural
+replacement and renaming, including annotations and exact result types.
+Variable evidence is independently supplied derivation data. Its equivalence
+with original TypedSub is propositional inhabitation, not Prop-to-Type
+extraction. It constructs literal beta-contractum derivations without a new
+wf restriction; arbitrary-step computational inversion/preservation and
+target quotation-substitution coherence remain separate obligations.
+
+For the next binder step, investigate the SPECIFIC cast-beta equation under
+a full dependent telescope, rather than assuming arbitrary function
+extensionality. Literal identity endpoints suggest reflexivity as a candidate
+implementation. This is a proposal only: prove original formation, annotation
+normality, contextual closure and sufficient telescope-length/rank-vector
+budgets before advertising a finite interface. Rank alone has not been shown
+to suffice. Full dependent quotation/recovery/fidelity remain open. No original
+kernel, NormalizationComplexity or frozen ZFC source was changed; this
+continuation performs no commit/push/index mutation.
+
+## 2026-10-21 — executable source joins and finite internal beta fields
+
+Keep source evidence separate from target quotation. FullSource gives
+Type-valued data for EXACT original steps, forward reductions, unrestricted
+conversion zigzags and all six typing rules. Its inhabitation iff original
+relations is propositional, including typing in arbitrary original contexts;
+do not extract data from opaque Prop proofs. Literal/rule ceilings are
+computable but do not yet bound every inferred semantic rank or establish
+an adequate target palette.
+
+Do not attempt to translate arbitrary untyped zigzag intermediates.
+FullConversion computes structural forward traces for the existing greedy
+normalizer and compares annotated endpoints. Success is always sound;
+normality/completeness and every-stage original typing use original wf and
+typed endpoints. CanonicalSource traverses SUPPLIED derivation data, replacing
+conversion fields by computed forward joins without changing literal source
+indices or annotations. Its failure branch uses original validity only to
+derive False, never to select computational ranks from Prop. Certification
+is an output theorem, not a strengthened source-domain premise. Every original
+typing in a well-formed context has certified canonical data. This still does
+not generate internal equality evidence or a target quotation.
+
+ScopedTarski lifts smart Abs/App, dependent binders, sort quotation and
+code/term views to arbitrary independently typed signature embeddings. For
+concrete spines, extend_code constructs the child context/environment and
+lifted identity fill; nested_binder_typed uses precisely this child. Original
+typing, normality, exact renaming/weakening and local fidelity are retained.
+Literal substituted-annotation recovery and a separate decoder-contraction
+corollary remain distinct. These interfaces now compose at arbitrary depth,
+but represented domain/family/body inputs are still independently supplied.
+
+Add finite beta-law ARGUMENTS, not a new conversion rule. TarskiBeta's
+four-argument field states Eq_d(El_b(Bu),App_e(Abs_e f,u),fu) with the actual
+old casts. Its formation rank is max(c+1,max(b+2,d+1)), c=max(a+1,b).
+Construct the closed normal identity witness independently and prove typing
+at the literal specialized field type and four-application reflexivity
+recovery. The old product law alone is not claimed to produce this evidence.
+TarskiBetaSignature adds (k+1)^3 declarations to the unchanged TS signature;
+wf/normal context, bounded lookups and actual TypedSub are constructed.
+Its inherited environment admits scoped smart typing/normality. Its own
+fill equations do not automatically instantiate concrete-spine recovery.
+
+Next prove INTERNAL reduction/substitution coherence under dependent binders,
+not merely local beta at applications. Pointwise family evidence is not
+function equality; neutral casts still do not beta-cancel, and there is no
+eta or cumulativity. Preserve existing raw-HOAS/STLC syntax injectivity and
+prove a separate full translated-source fidelity theorem when the translation
+exists. No original kernel, normalization or frozen ZFC source was changed.
+No commit/push/index mutation is part of this continuation.
+
+## 2026-10-20 — smart dependent binders and an explicit cast boundary
+
+Keep universe codes and represented terms distinct. The finite universe law
+points from El0(u_r) to C_r; code-to-term uses its backward cast and term-to-code
+its forward cast. In particular, representing the original U_r:U0 uses law ZERO
+on u_r:C0. TarskiSorts proves actual normal closed sort quotations, direct
+identity-application typing and literal recovery, uniformly over bounded labels.
+
+Carry the finite signature through independent original dependent extensions
+using a typed variable renaming. TarskiContext's concrete spine computes both
+the instantiated context and the actual identity substitution, lifted at every
+binder to retain fresh variables. It derives wf and TypedSub; neither is a
+target premise. Generic operations accept arbitrary terms in the new scope,
+not just renamed signature-scope inputs. Abstract declaration normality is
+separate, and identity specialization need not preserve context normality.
+
+Repair the local annotation problem by smart application to the fresh variable:
+bound_apply(lambda D.b)=b, otherwise bound_apply(B)=(shift B) var0. This is
+actual beta contraction, not eta or annotation erasure. TarskiBinders proves
+normality, exact renaming and ONE-WAY substitution reduction. Do not assert
+literal substitution naturality: replacement may turn a variable into a lambda.
+The smart decoded product reuses the same actual finite law field by original
+conversion. Abs/App typing and normality no longer require a separately normal
+decoded annotation. Identity recovery eliminates the whole cast, so it does
+not depend on the false literal smart-substitution law.
+
+The concrete lambda-family binder takes independently typed family/body inputs
+in the original extended context. Its local typing, full normality and recovery
+are checked. The recovery endpoint retains the literal substituted decoded
+domain annotation. Fixed-index local input/conversion injectivity follows
+because the full family remains in the neutral law application. Do not extend
+this to an unconstructed full source-derivation quoter.
+
+TarskiRoundtrip proves a precise boundary for every external c: in an actual
+wf context S,T:Uc,e:Eq_(c+1)(Uc,S,T),x:S, the neutral cast roundtrip and x
+are typed, normal, distinct and nonconvertible. Adding K:S->U0 gives the same
+failure at actual dependent type indices. Reflexivity-specialized roundtrips
+still recover x. This refutes silent beta-cancellation of these casts, NOT
+all object equality witnesses or full dependent PHOAS. A future finite beta-law
+extension must independently construct its identity witnesses and still solve
+binder/family congruence; merely raising predicate ranks does not add cumulativity.
+
+The four modules pass the fresh 646-report aggregate, recursive kernel/pristine
+checks and all 226 full local CI stages. Continue with generated source conversion
+and substitution coherence; the smart local binder resolves one normality gap,
+not the full derivation-directed translation. Preserve existing raw-HOAS and
+STLC source-syntax injectivity. Keep this continuation uncommitted absent a new
+publication request; no index, commit, remote or unrelated development was changed.
+
+## 2026-10-20 — finite dependent signature with actual typed identity fill
+
+Assemble six finite original context layers: carriers, decoders, universe
+codes, universe laws, product constructors, product-law families. Each
+layer's signatures live at a fixed EARLIER base scope; generic block/fill
+helpers perform explicit weakening and typed instantiation. This avoids
+postulating an algebra record or infinitely many fields. Use r<=k+1 for
+carriers and a,b<=k for product pairs; c=max(a+1,b)<=k+1 then suffices.
+Do not require closure under products for every available carrier rank.
+Row-major pair enumeration gives exact width 4(k+2)+2(k+1)^2. Keep an
+independent sufficient literal ceiling for intended source universes.
+
+One law family Pi A:Ca.Pi B:(El_a A->Cb).product_law A B covers all
+represented families for that rank pair. Its sort is c+2, absorbed after
+the two binders. Construct its actual closed normal identity inhabitant
+as lambda A:Ua.lambda B:A->Ub.reflexivity at Pi x:A.Bx, using proved
+original conversion to the abstract-signature instance. Prove fill_typed
+by actual field inhabitants, not a premise that the desired substitution
+exists. This is now checked, including all inherited universe fields.
+
+Applied operations obtain evidence from their finite law field rather than
+a new law premise at each use. Actual identity substitution beta-recovers
+literal replaced inputs and preserves existing redexes. For normality,
+retain the NORMAL DECODED ANNOTATION premise: normal B alone need not make
+B x normal. Generic telescope close/run preserves typing/normality/syntax
+and provides administrative computation, not a quotation for every source.
+
+IndexedCoherence supplies homogeneous composition and ordinary NONDEPENDENT
+map congruence without raising predicate rank. Reflexivity equations are
+literal beta reductions; arbitrary-evidence identities hold after motive
+and argument application, not eta contraction. Do not mistake these laws
+for dependent function extensionality or generated source-conversion
+coherence. The latter, particularly under binders, is the next construction.
+
+The five new modules pass a fresh 527-report aggregate and full 226-stage
+CI, with unchanged upstream inventory/core/ZFC and no unsafe checks. Keep
+this continuation and the preceding local Tarski milestone uncommitted
+unless publication is requested; no new Git mutation is authorized here.
+
+## 2026-10-20 — actual Tarski identity laws and closed transport programs
+
+The proposed local route is now implemented, not assumed. Keep semantic code
+carriers C_a:U0 and El_a:C_a->U_a separate from faithful homogeneous HOAS
+syntax. The product interface Pi A:C_a.(El_a A->C_b)->C_c has rank a+2;
+the decoded dependent product has rank c=max(a+1,b). Use an actual Leibniz
+law Eq_(c+1)(U_c,X,Y):U_(c+2). Both arrow motives X->T and T->X have the
+required rank, and id_X constructs forward/backward casts directly. Close
+these into normal original PTS programs with type sort c+3. Never infer
+application typing by subject expansion.
+
+Construct the identity law itself as reflexivity at the common product
+reduct, using proved original beta conversion. The identity constructor and
+universe witnesses are originally typed normal terms at every external rank.
+Specialized Abs/App return the LITERAL f/f u; this avoids an eta-expanded
+result without introducing eta conversion. Generic laws remain explicitly
+typed inputs; their independent identity realization is not a global
+quotation-coherence assumption. No semantic payload or assumed normalizer
+is smuggled into these operations.
+
+Retain the precise limitation: local normality of neutral casts assumes
+normal annotations and does not normalize every represented dependent
+family. Arbitrary proof-headed casts do not definitionally cancel. The
+checked EtaBoundary shows pointwise beta agreement need not give beta
+conversion even at dependent indices in a valid context; it is not a
+general nonexistence result for internal equality witnesses or PHOAS.
+Next assemble a finite palette and derive actual coherence from source
+derivations, preserving separate raw syntax injectivity. The local milestone
+is verified with 418 closed reports and full 226-stage CI, not a completed
+full-dependent evaluator. Its seven sources are frozen during the audit.
+
+The pending ordinary publication completed at e822cd6 before proof edits
+resumed; local and origin/main agree. Keep this subsequent continuation
+uncommitted unless publication is separately requested. Preserve all
+unrelated existing changes and historical evidence.
+
+## 2026-10-20 — next PHOAS direction: Tarski codes and explicit transport
+
+Following canonical publication, investigate finite rank-indexed code carriers
+C_a:U0, El_a:C_a->U_a, universe codes and dependent product codes. Supply
+actual object-language Leibniz transport laws, with closed identity-specialized
+inhabitants, rather than assuming definitional equations for arbitrary abstract
+families. Product constructor type has rank a+2; its decoded product rank is
+c=max(a+1,b). A product equality at predicate level c+1 supports both cast
+directions using arrow motives and id, with law-type rank c+2.
+
+Predicative same-level Leibniz symmetry is not silently available. Likewise,
+pointwise propositional equality of family outputs is not host-function
+equality, and generic casts do not definitionally cancel. These are remaining
+global coherence questions, not local operation impossibility. No eta,
+extensionality axiom, semantic-payload projection or assumed quotation theorem
+may be introduced to solve them. Implement the actual local terms and identity
+beta laws first. Source implementation waits for the user's requested push;
+at this checkpoint it is blocked in macOS Keychain, with no new proof edits.
+
 ## 2026-10-20 — full-PTS canonical contexts and hereditary type indices
 
-Separate faithful raw HOAS quotation from quotation of canonical types.
-Extend the automatic rank bound to open contexts by scanning declaration
-literal labels and node counts. Original wf/typing prove the computed bound;
-the executable function consumes no assumed normalization certificate.
+Use full-PTS normalization constructively to separate faithful syntax from
+conversion-canonical type codes. Extend the automatic bound to open contexts
+by scanning maximum declaration literal labels and node counts. The resulting
+normalizer consumes syntax only; original wf/typing prove correctness rather
+than being strengthened with a promised normalization result. Instantiate the
+existing normalization-stage cost account without inventing scan/code costs.
 
-Normalize after substitution: normal entries in a normal dependent type can
-create a redex. Prove actual dependent TypedSub for normalized entries, term
-AND result-type preservation, identity/composition and conversion coherence.
-Use original validity's exact sort witnesses, never cumulativity. Normalize
-contexts with identity substitutions in both directions, preserving literal
-term/type syntax and annotations in the typing equivalence.
+Use HEREDITARY substitution: normalize after replacing variables. Ordinary
+substitution of normal entries into a normal source type can create a redex;
+the concrete f U0 / f:=lambda X:U0.X regression is checked. Prove normalized
+entries remain actual original TypedSub, converting their dependent lookup
+types as well. Derive identity/composition and normalized term/result-type
+typing using original validity's exact sort, never cumulativity.
 
-These full-PTS metalevel operations are not an internal El or dependent
-PHOAS evaluator. Keep that object-language obligation explicit. Publish only
-the requested self-interpreter milestone, preserving unrelated dirty files.
+Normalize original context declarations while retaining literal term/type
+syntax in the typing-transport theorem. Construct original wf and identity
+TypedSub in both directions from the Type-valued original wf witness, rather
+than extracting computational ranks from Prop. Prove normal declarations,
+idempotence and actual original context/index reductions.
+
+CanonicalTypeIndex produces closed homogeneous HOAS C(nf A), not a source type
+or an internal El operation. Its equality is scoped-syntax beta conversion,
+not denotational equality across arbitrary environments. Keep faithful C(t)
+separate: concrete convertible types have distinct C and identical J, and C
+need not be convertible to J. This evades the limited shared-map obstruction
+but does not provide an object dependent interpreter by itself. The remaining
+step is actual typed reification and represented-family construction/coherence
+inside PTS. Do not claim full strong PHOAS from metalevel canonicalization.
+
+Publish the prior snapshot and requested finished-doc merge in an isolated
+checkout, excluding unrelated BZC sources/logs. Real merge 64864e3 and verified
+publication b6c81d1 are pushed to main. Preserve the dirty original worktree
+byte-for-byte when synchronizing branch/index; do not stash/reset its files.
+Keep the new canonical continuation uncommitted unless separately requested.
 
 ## 2026-10-20 — finite indexed PHOAS and explicit dependent coherence boundary
 
@@ -54,15 +503,54 @@ Distinct semantic indices and faithful syntax codes remain a live direction.
 Do not conflate Church-style algebra-parametric object syntax with a native
 Rocq PHOAS datatype or assume parametricity/no-junk for arbitrary inhabitants.
 
-Keep all proofs in the separate SelfInterpreter library. Preserve raw-HOAS
-fidelity and the separate full-PTS weak semantic-payload construction without
-presenting either as strong dependent unquotation. State the numeric
-complexity-to-self-reduction argument conditionally on the manuscript's
-unformalized elementary compiler; it is not an added axiom or typed reifier.
-Original rules and existing libraries are unchanged. The sole new committed
-CI stage audits SelfInterpreter; unrelated unpublished stages and bulky raw
-logs remain outside this scoped publication. Retain concise command reports,
-hashes and explicit historical evidence boundaries.
+Keep all changes in the separate SelfInterpreter library and exposition.
+Original PTS rules, normalization infrastructure, arithmetic/set models and
+CI stages need no change. Complete the finite STLC result and report the
+remaining full-dependent obligation honestly; preserve the separate full-PTS
+weak semantic-payload construction without presenting it as pure evaluation.
+
+## 2026-10-20 — complexity route and full-PTS weak interpretation
+
+Make the user's positive complexity argument the introduction of the
+self-interpreter note. The checked fixed-redex-bound normalizer is elementary
+for each external budget and covers all original typed syntax; the automatic
+closed bound includes literal labels and node count. The manuscript's
+non-uniform elementary representability theorem is not yet a checked Rocq
+compiler. State numeric self-reduction conditionally on that theorem and
+elementary serialization, without adding an axiom. Its rank cost comes from
+an explicit elementary program, not merely extensional classification. Record
+the manuscript modulus callback correction r f x (not r X f x); do not
+silently certify the rest of the displayed informal construction.
+
+Implement full-PTS normalization-to-HOAS externally first. Canonical codes
+identify beta conversion, not literal source syntax; preserve the raw-HOAS
+quoter and its exact fidelity independently. Normalization-stage cost and
+HOAS output-size bounds are different measures, not a complete serialization
+runtime. A native syntax transformation is not an object-language program.
+
+Prove the independent literal-generation obstruction: raw quote r t has
+maximum literal r, beta cannot manufacture larger sort labels, and all U_k
+are normal of redex bound/type rank zero. Thus those two indices alone
+cannot support unquotation of current raw codes. A source literal ceiling,
+the conservative bound containing it, or literal-bearing semantic arguments
+are outside the obstruction; their sufficiency is not thereby proved.
+
+Construct a full closed WEAK interpretation by pairing nf(t) with the
+faithful raw HOAS tag in a normal Church-style packet, at normalized type
+nf(A). The actual indexed closed decoder projects the payload in five beta
+steps. Original validity supplies the exact A:U_s; no cumulativity or
+elimination of an erased Prop witness into a computable rank is asserted.
+Normalizing the type is essential to full annotation normality. Retain
+syntax-level injectivity by the original tag, even across differing supplied
+source types; do not claim fidelity of those supplied types/derivations.
+
+This endpoint covers every closed original dependent typing derivation but
+does NOT evaluate the HOAS tag and recovers only nf(t), convertible to t.
+Describe it as normalization-assisted weak semantic-payload interpretation,
+not Brown--Palsberg strong unquotation or pure HOAS evaluation. Internal
+elementary compilation, typed adapters and dependent reification remain
+open, as does the separate finite closed source-indexed PHOAS package.
+No core PTS rule, arithmetic/set development or CI stage changes are needed.
 
 ## 2026-10-20 — expositions for completed development groups
 

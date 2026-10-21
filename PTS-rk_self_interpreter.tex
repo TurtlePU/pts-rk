@@ -1,27 +1,35 @@
 \documentclass[preamble=self-interpreter-preamble.tex]{markdown}
 title: Self-interpretation in PTS-rk: a rank obstruction and an indexed approach
-date: October 20, 2026
+date: October 21, 2026
 
 :::Abstract
-Fixed-rank elementary normalization, together with non-uniform elementary
-representability, gives a constructive reason to seek rank-indexed
-self-interpretation of the original annotated PTS-rk. We distinguish the
-checked normalization theorem from the manuscript-level representability
-argument, and numeric self-reduction from typed unquotation. Rocq now
-connects full-PTS normalization to faithful HOAS syntax, and supports a
-normalization-assisted weak interpretation carrying both syntax and a
-normal semantic value. Its decoder returns the source normal form, not the
-unreduced source. Separate rank, single-family and literal-generation
-obstructions constrain stronger interfaces without excluding sufficiently
-indexed constructions. A finite closed source-type-indexed PHOAS representation
-with strong unquotation is now checked for the independent simply typed
-fragment. Genuinely dependent indexed handlers are also constructed; a
-separate theorem excludes conflating faithful syntax with semantic type indices.
-For the full dependent calculus, executable canonicalization now extends to
-open contexts, with bidirectional original typing transport, hereditary
-substitution and separate conversion-canonical HOAS type codes.
-A full dependent interpreter evaluating HOAS or PHOAS syntax internally,
-rather than projecting a precomputed value, remains open.
+The full original annotated PTS-rk admits a dependent indexed PHOAS
+self-interpreter. The Rocq construction gives a finite numerical allocation
+plan for every original typing derivation in a well-formed context, normal represented type and term
+programs, and a normal originally typed interpreter whose application reduces
+to the literal unreduced source term. The represented type is an ordinary
+object-language argument, not an external source-type index. A faithful raw
+HOAS tag preserves annotated syntax independently of conversion repairs;
+equality or beta conversion of normal quoted programs implies literal
+source equality at a fixed source scope, even across different signatures and derivations.
+Open terms are covered by literal dependent closure and reopening.
+
+The construction combines a finite rank-indexed Tarski interface with
+independently enumerated and checked equality-only signature layers.
+Every repair has independently typed endpoints and an actual normal
+identity realizer. Structural quotation follows all six original typing
+rules, including dependent application and conversion, without recursively
+quoting synthesized validity derivations. The interpreter runs the represented
+PHOAS program; it does not project a precomputed semantic source value.
+No PTS rule, primitive, eta conversion or cumulativity is added.
+
+The indices include a finite plan of telescope-length, syntax-node and literal
+bounds as well as ranks. Coverage by a rank-only family and a practical
+quotation-cost bound are not established. Fixed-rank elementary normalization
+and non-uniform elementary representability motivated this investigation,
+but the construction does not assume the manuscript-level elementary compiler.
+Restricted rank, literal-generation and shared-index obstructions remain
+valid; they do not contradict this sufficiently indexed positive result.
 :::
 
 # Why the complexity bounds suggest an indexed interpreter
@@ -993,7 +1001,8 @@ not by $k$ and $\operatorname{ord}(A)$ alone. At fixed $(k,A)$ it is the
 same raw PTS program for every source derivation within budget, independent
 of program size; it is not chosen per source term. Internalizing the type
 interpretation as an additional argument, to remove the full-$A$ external
-index, remains a further task.
+index, is not provided by this earlier decoder. The later dependent program
+decoder supplies an ordinary represented-type argument instead.
 
 The executable regression quotes
 $\lambda x:o.(\lambda y:o.y)x$ with computed budget one. Its actual closed
@@ -1066,8 +1075,8 @@ and these reduction equations. It also derives the original type $B\,u$
 of the actual applied identity App handler directly, before reducing it.
 No eta conversion is used.
 
-This is positive dependent infrastructure, but the supplied family
-$B:(F_a A)\to\Ur b$ has not yet been constructed recursively from every
+These local handlers alone do not construct the supplied family
+$B:(F_a A)\to\Ur b$ recursively from every
 source dependent family $B_0:A\to\Ur b$. The domains differ while $F_a$
 is abstract. Treating this input as already translated would assume away
 the central coherence obligation.
@@ -1127,6 +1136,1149 @@ For dependent syntax, a quotation map therefore cannot simply be reused
 unchanged as the map interpreting type conversion. This is the precise
 obstruction established here; arbitrary indexed dependent PHOAS has not
 been ruled out.
+
+# Object-language Tarski codes and dependent transport
+
+The canonical metalevel algebra suggests keeping semantic type indices
+separate from faithful syntax. A constructive next step is to make the
+necessary local transports **actual original PTS terms**. This section
+records the local operations used by the full construction later in the note.
+
+## Rank-indexed equality and two-way casts
+
+For $A:\Ur a$ and $u,v:A$, define the Leibniz transport type
+
+$$
+\mathsf{Eq}_b(A,u,v)
+ =\Pi P:(A\to\Ur b).P\,u\to P\,v,
+\qquad
+\mathsf{refl}_b(A,u)
+ =\lambda P:(A\to\Ur b).\lambda z:P\,u.z.
+$$
+
+`IndexedEquality` constructs these original annotated terms and proves
+
+$$
+\mathsf{Eq}_b(A,u,v):\Ur{\max(a+2,b+1)},
+\qquad
+\mathsf{refl}_b(A,u):\mathsf{Eq}_b(A,u,u).
+$$
+
+The explicit transport $e\,P\,z$ has type $P\,v$ when
+$z:P\,u$, and reflexivity transport reduces to the literal $z$.
+There are also closed polymorphic reflexivity programs, exact substitution
+laws and normality results. These are not new equality primitives.
+
+Predicate ranks matter. The familiar impredicative proof of symmetry
+cannot simply instantiate $P$ with this equality type at the same level:
+the equality type itself has a larger sort. For the casts needed here,
+use $S,T:\Ur c$ and a witness
+
+$$
+e:\mathsf{Eq}_{c+1}(\Ur c,S,T).
+$$
+
+Its type has sort $\Ur{c+2}$. Both arrow motives below have values
+of sort $\Ur{c+1}$, so the following are well-typed:
+
+$$
+\begin{aligned}
+\mathsf{cast}^{+}_{c,S}(e)
+ &=e\,(\lambda X:\Ur c.S\to X)\,(\lambda x:S.x):S\to T,\\
+\mathsf{cast}^{-}_{c,S}(e)
+ &=e\,(\lambda X:\Ur c.X\to S)\,(\lambda x:S.x):T\to S.
+\end{aligned}
+$$
+
+`TarskiCasts.casts_typed` proves these application typings directly.
+For reflexivity evidence both functions reduce to $\lambda x:S.x$;
+applied casts therefore return the original argument, without eta.
+Abstract neutral evidence instead blocks computation. If the type,
+evidence and argument are normal and the evidence is not lambda-headed,
+the applied casts are normal. This is a **local** normality theorem;
+normality of every generated dependent annotation is not being assumed.
+
+`ClosedTarskiCasts` closes these operations over $S$, $T$ and $e$.
+For each external $c$ the actual closed programs are normal, their types
+have sort $\Ur{c+3}$, and their application typings and beta specialization
+are proved. Thus transport is an internal program component, not merely
+an external proof that two source types have the same normal form.
+
+## Dependent product and universe codes
+
+For each needed external rank $a$, consider object parameters
+
+$$
+C_a:\Ur0,\qquad \mathsf{El}_a:C_a\to\Ur a.
+$$
+
+These are semantic type-code carriers, not the faithful homogeneous
+raw-HOAS carrier. An arbitrary inhabitant is not asserted to be generated
+syntax. For $c=\max(a+1,b)$, the product-code operation has type
+
+$$
+p_{a,b}:\Pi A:C_a.(\mathsf{El}_a A\to C_b)\to C_c.
+$$
+
+`TarskiProducts` proves that this operation type inhabits $\Ur{a+2}$.
+For $A:C_a$ and $B:\mathsf{El}_a A\to C_b$, set
+
+$$
+X=\Pi x:\mathsf{El}_a A.\mathsf{El}_b(Bx),
+\qquad Y=\mathsf{El}_c(p_{a,b}\,A\,B).
+$$
+
+Both $X$ and $Y$ inhabit $\Ur c$. An explicit object witness
+$e:\mathsf{Eq}_{c+1}(\Ur c,X,Y)$ gives dependent operations
+
+$$
+\mathsf{Abs}_e(f)=\mathsf{cast}^{+}_{c,X}(e)\,f:Y,
+\qquad
+\mathsf{App}_e(g,u)=\mathsf{cast}^{-}_{c,X}(e)\,g\,u:
+\mathsf{El}_b(Bu),
+$$
+
+where $f:X$, $g:Y$ and $u:\mathsf{El}_a A$.
+The family $B$ is genuinely dependent. Original typing of both operations
+and the exact product-law rank $c+2$ are proved. The law is an ordinary
+typed argument, not a metatheoretic assertion that arbitrary decoders
+commute definitionally with products.
+
+Universe codes similarly have $u_a:C_0$ and a law
+
+$$
+\mathsf{Eq}_1(\Ur0,\mathsf{El}_0(u_a),C_a):\Ur2.
+$$
+
+The two casts connect the decoded universe with its code carrier.
+`TarskiUniverses` proves formation and substitution naturality, as well
+as actual identity witnesses for **every external rank**, not merely
+finitely many computed examples.
+
+:::Theorem[Identity realization of the local Tarski operations]
+Specialize
+
+$$
+C_a=\Ur a,\qquad
+\mathsf{El}_a=\lambda X:\Ur a.X,\qquad u_a=\Ur a,
+$$
+
+and
+
+$$
+p_{a,b}=\lambda A:\Ur a.\lambda B:(A\to\Ur b).\Pi x:A.Bx.
+$$
+
+These are actual originally typed terms. Universe laws are inhabited by
+reflexivity using proved beta conversion. For each originally typed
+$A:\Ur a$, $B:A\to\Ur b$, $f:\Pi x:A.Bx$ and $u:A$,
+both sides of the product law reduce to $\Pi x:A.Bx$; reflexivity at that
+common product has the required law type by original conversion.
+The specialized casted abstraction and application are originally typed
+at $\Pi x:A.Bx$ and $B\,u$, respectively, and reduce to the literal
+$f$ and $f\,u$.
+:::
+
+`TarskiIdentity` proves the theorem by direct typing and actual beta
+reductions. It neither assumes the product law nor projects a precomputed
+normal semantic value. The closed identity product constructor and the
+closed universe-law witnesses are normal; specializing abstract decoded
+types may introduce administrative redexes, which are handled by proved
+conversion rather than subject expansion.
+
+## A finite dependent signature and its actual identity instantiation
+
+The local declarations can now be assembled into an actual finite original
+context. Fix $k$. Use carriers through rank $k+1$, but product operations
+only for $a,b\leq k$. Then $c=\max(a+1,b)\leq k+1$ for every included
+pair. Requiring closure under products at **every** available carrier rank
+would instead keep demanding a further rank; the finite interface makes
+no such requirement. A sufficient literal ceiling is also still needed
+for a source containing $\Ur r$: its result type $\Ur0$ alone does not
+bound $r$.
+
+The context is built in six dependent layers. Within each layer, every
+declaration refers only to the earlier layers; explicit weakening places
+it at its actual original de Bruijn scope.
+
+$$
+\begin{array}{lccc}
+\text{Fields} & \text{External indices} & \text{Number} & \text{Declaration sort}\\
+\hline
+C_r & 0\leq r\leq k+1 & k+2 & 0\\
+\mathsf{El}_r & 0\leq r\leq k+1 & k+2 & 1\\
+u_r & 0\leq r\leq k+1 & k+2 & 0\\
+\text{Universe-law witnesses} & 0\leq r\leq k+1 & k+2 & 2\\
+p_{a,b} & 0\leq a,b\leq k & (k+1)^2 & a+2\\
+\text{Product-law families} & 0\leq a,b\leq k & (k+1)^2 & c+2
+\end{array}
+$$
+
+The last field is a single polymorphic witness for each rank pair:
+
+$$
+\ell_{a,b}:\Pi A:C_a.\Pi B:(\mathsf{El}_a A\to C_b).
+\mathsf{Eq}_{c+1}\bigl(\Ur c,
+  \Pi x:\mathsf{El}_a A.\mathsf{El}_b(Bx),
+  \mathsf{El}_c(p_{a,b}\,A\,B)\bigr).
+$$
+
+Its declaration type has sort $c+2$: this absorbs the two extra binders
+because $c\geq a+1$. Thus infinitely many represented dependent families at a fixed
+rank pair need only one field, not an infinite context.
+`TarskiLawFamily` proves this sort calculation, literal substitution
+naturality and direct typing of the two applications $\ell_{a,b}\,A\,B$.
+Its actual closed normal identity inhabitant is
+
+$$
+\lambda A:\Ur a.\lambda B:(A\to\Ur b).
+\mathsf{refl}_{c+1}(\Ur c,\Pi x:A.Bx).
+$$
+
+Original conversion assigns it the identity-specialized field type;
+its two applications reduce to the literal local reflexivity witness.
+
+:::Theorem[Finite Tarski signature with constructive identity instantiation]
+For every $k$, `TarskiPalette` and `TarskiSignature` compute an original
+well-formed context $\Gamma_k$ of exactly
+$4(k+2)+2(k+1)^2$ declarations. Every declaration is beta-normal, and all
+six kinds of field have their stated original lookup typings within the
+indicated bounds. There is a computed simultaneous substitution $\sigma_k$
+by actual closed identity terms, with a proved original typed-substitution
+judgment and exact equations for every field. No algebra-existence or
+law-inhabitation premise is supplied.
+:::
+
+`TarskiOperations` obtains product evidence by applying the law field;
+an individual equality witness is no longer an extra premise of each
+operation. Its product codes, casted abstraction and casted application
+have original typings in $\Gamma_k$. After actual replacement by
+$\sigma_k$, their computation laws include
+
+$$
+\begin{aligned}
+\sigma_k(p_{a,b}\,A\,B)&\longrightarrow_\beta^*
+   \Pi x:\sigma_k A.(\sigma_k B)x,\\
+\sigma_k(\mathsf{Abs}(A,B,f))&\longrightarrow_\beta^*\sigma_k f,\\
+\sigma_k(\mathsf{App}(A,B,g,u))&\longrightarrow_\beta^*
+   (\sigma_k g)(\sigma_k u).
+\end{aligned}
+$$
+
+The target is the literal substituted input, not an eta expansion or a
+precomputed source normal form. These are local operation equations;
+$f$ and $g$ have the respective decoded and encoded product types.
+The original `TarskiOperations` normality theorem additionally requires a
+normal decoded product annotation: a normal lambda-valued $B$ can create
+a redex in $B\,x$. The smart binder construction below removes this extra
+premise for its local operations. It does not by itself prove global quotation
+normality.
+The existing telescope machinery also closes any originally typed body
+over $\Gamma_k$, preserves normality of a normal body, and types actual
+application to all identity arguments before proving substitution recovery.
+This generic closure theorem does not construct a body representing an
+arbitrary source derivation.
+
+## Sort quotations and scope-correct dependent extensions
+
+Write $w_r$ for the universe-law field from
+$\mathsf{El}_0(u_r)$ to $C_r$. `TarskiSorts` constructs the two views
+
+$$
+\begin{aligned}
+\mathsf{codeToTerm}_r(A)
+ &=\mathsf{cast}^{-}_{0,\mathsf{El}_0(u_r)}(w_r)\,A
+   :\mathsf{El}_0(u_r) &&(A:C_r),\\
+\mathsf{termToCode}_r(t)
+ &=\mathsf{cast}^{+}_{0,\mathsf{El}_0(u_r)}(w_r)\,t
+   :C_r &&(t:\mathsf{El}_0(u_r)).
+\end{aligned}
+$$
+
+For $r\leq k+1$ these are originally typed in $\Gamma_k$.
+They preserve normality of their inputs and, after actual identity
+substitution, reduce to the literal substituted input. These are
+specialization laws, not cancellation laws for abstract neutral casts.
+
+In particular the source axiom $\Ur r:\Ur0$ has the normal quotation
+
+$$
+\mathsf{sortQuote}_{k,r}=\mathsf{codeToTerm}_0(u_r)
+  :\mathsf{El}_0(u_0).
+$$
+
+The cast uses $w_0$, not $w_r$, because $u_r:C_0$.
+Closing this body over the finite signature gives an actual closed normal
+code. Its application to the identity arguments is originally typed at
+$\Ur0$ and reduces to the literal $\Ur r$.
+`closed_sort_run_typed` proves application typing independently of
+recovery, rather than invoking subject expansion. Every literal is covered
+by some finite $k$; this theorem concerns the sort fragment, not arbitrary
+source derivations.
+
+`TarskiContext` extends the same signature by any finite sequence of
+independently sorted original declarations. It constructs the embedding of
+the signature variables, the specialized target context, and the actual
+typed substitution along this sequence. At each new binder the substitution
+is lifted:
+
+$$
+\sigma^{+}(0)=0,\qquad
+\sigma^{+}(i+1)=\mathord{\uparrow}(\sigma(i)).
+$$
+
+Thus fresh variables remain variables; only the inherited signature fields
+receive their identity implementations. Both contexts are well-formed,
+original typing transports by this substitution, and each inherited field
+retains its lookup and identity equation. The signature embedding is
+injective. Normality of the extended abstract context requires normality
+of the added declarations; normality of its identity-specialized context
+is not asserted. Product and cast operations in this module accept arbitrary
+terms in the enlarged scope, including terms mentioning the new dependent
+variables, and retain original typing and identity recovery. These are
+concrete context-extension operations, not yet a translation of every
+original source context.
+
+## A normal local dependent binder
+
+The troublesome family application in a decoded product is always to the
+freshly bound variable. `TarskiBinders.bound_apply` exploits precisely that
+case. In de Bruijn notation define
+
+$$
+\mathsf{fresh}(B)=
+\begin{cases}
+ b,& B=\lambda D.b,\\
+ (\mathord{\uparrow}B)\,0,&\text{otherwise}.
+\end{cases}
+$$
+
+Then $(\mathord{\uparrow}B)\,0\longrightarrow_\beta^*\mathsf{fresh}(B)$,
+and normal $B$ implies normal $\mathsf{fresh}(B)$. The lambda case merely
+removes the administrative fresh-variable application; it performs no
+arbitrary argument substitution. Renaming commutes exactly with this
+operation. Replacement has the correct one-way computation law
+
+$$
+\sigma^{+}(\mathsf{fresh}(B))\longrightarrow_\beta^*
+  \mathsf{fresh}(\sigma(B)),
+$$
+
+not a claimed literal equality: a neutral family may become a lambda.
+
+Replace the decoded product annotation by
+
+$$
+X^{\mathrm{smart}}=
+ \Pi x:\mathsf{El}_a A.
+ (\mathord{\uparrow}\mathsf{El}_b)\,\mathsf{fresh}(B).
+$$
+
+The original decoded product reduces to this one. Original conversion
+therefore gives the existing law field the required equality type; no new
+law witness is assumed. Under the original input typing premises and
+$a,b\leq k$, the resulting smart abstraction and application are originally
+typed. They are normal whenever their respective inputs
+$A,B,f$ or $A,B,g,u$ are normal. In particular there is no separate
+normal-decoded-annotation premise. Their identity specializations recover
+the literal substituted $f$ and $g\,u$.
+
+There is also a genuine local binder introduction. For $a,b\leq k$ and
+$A:C_a$ in $\Gamma_k$, suppose in $\Gamma_k,x:\mathsf{El}_a A$ that
+
+$$
+B_0:C_b,\qquad t:\mathsf{El}_b B_0.
+$$
+
+Here the displayed signature fields are weakened into the extended scope.
+Set $B=\lambda x:\mathsf{El}_a A.B_0$ and
+$f=\lambda x:\mathsf{El}_a A.t$. The smart abstraction of $f$ has
+type $\mathsf{El}_c(p_{a,b}\,A\,B)$ and is normal when $A,B_0,t$ are
+normal. Its checked recovery target is the literal substituted lambda
+
+$$
+\lambda x:\sigma_k(\mathsf{El}_a A).\sigma_k^{+}(t),
+$$
+
+including that substituted decoded annotation, not an already contracted
+annotation $\sigma_k(A)$. For fixed $k,a,b$, equality of two such binder
+terms implies equality of all three supplied inputs $A,B_0,t$. On normal
+inputs this also holds for beta conversion. The supplied family remains
+present in the neutral law application even though the smart annotation
+contracts its administrative application. `binder_inputs_injective` and
+`binder_conversion_injective` establish this **local** fidelity, not
+injectivity of a full source-derivation translation.
+`ScopedTarski` now lifts these smart operations to any independently typed
+variable embedding of the finite signature. In particular, a concrete
+dependent context spine can be extended by $x:\mathsf{El}_a A$; the child
+environment and its lifted identity substitution are computed, not assumed.
+`nested_binder_typed` applies the binder rule at arbitrary depth using this
+actual child environment. Normality, literal identity recovery, exact
+renaming and weakening, and fixed-index local input/conversion injectivity
+are retained. Sort quotations and the code/term views also work in these
+scopes. This resolves the fixed-scope restriction of the earlier local
+interface. It does not yet translate an arbitrary source derivation: the
+represented domain, family and body remain independently supplied inputs.
+
+## Composing internal equality evidence
+
+`IndexedCoherence` constructs two further original terms. For
+$e:\mathsf{Eq}_b(A,u,v)$ and $f:\mathsf{Eq}_b(A,v,w)$, composition is
+
+$$
+\lambda P:(A\to\Ur b).\lambda z:P\,u.f\,P\,(e\,P\,z)
+  :\mathsf{Eq}_b(A,u,w).
+$$
+
+For an ordinary nondependent map $g:A\to B$, congruence is
+
+$$
+\lambda P:(B\to\Ur b).e\,(\lambda x:A.P(gx))
+  :\mathsf{Eq}_b(B,gu,gv).
+$$
+
+Both preserve the predicate level $b$, and commute literally with
+substitution. Composing two reflexivity witnesses or mapping reflexivity
+reduces to literal reflexivity, including the latter's annotation.
+For arbitrary evidence, the identity laws are proved **after application**
+to a motive and an argument; no eta contraction of
+$\lambda P.\lambda z.e\,P\,z$ to $e$ is claimed.
+These witnesses supply composition and nondependent congruence, not an
+extensionality principle for dependent families.
+
+## Predicate levels for reversing and joining evidence
+
+An internal forward join must still reverse its second half. The equality
+encoding does not silently supply symmetry at the same predicate level.
+For $A:\Ur a$ and desired output level $d$, set
+
+$$
+h(a,d)=\max(a+2,d+1).
+$$
+
+This is the formation rank of $\mathsf{Eq}_d(A,u,v)$.
+`IndexedEqualityLevels` constructs the actual original terms
+
+$$
+\begin{aligned}
+\mathsf{lower}_d(e)
+ &=e\,(\lambda x:A.\mathsf{Eq}_d(A,u,x))\,
+       \mathsf{refl}_d(A,u),\\
+\mathsf{reverse}_d(e)
+ &=e\,(\lambda x:A.\mathsf{Eq}_d(A,x,u))\,
+       \mathsf{refl}_d(A,u).
+\end{aligned}
+$$
+
+Given $e:\mathsf{Eq}_{h(a,d)}(A,u,v)$, their respective types are
+$\mathsf{Eq}_d(A,u,v)$ and $\mathsf{Eq}_d(A,v,u)$.
+Both reduce to literal level-$d$ reflexivity when $e$ is reflexivity.
+For $e:u\sim w$ and $f:v\sim w$ at level $h(a,d)$, composing
+$\mathsf{lower}_d(e)$ with $\mathsf{reverse}_d(f)$ gives
+$\mathsf{Eq}_d(A,u,v)$. These constructors commute literally with
+replacement and are normal on normal inputs with non-lambda-headed
+evidence. They are not asserted normal after arbitrary specialization.
+
+For equality between types $X,Y:\Ur c$, the carrier is $\Ur c:\Ur0$.
+Consequently, predicate level $c+2$ suffices to reverse into the level
+$c+1$ used by the casts above. This is explicit rank accounting, not
+cumulativity or a claim that any larger predicate level is interchangeable.
+Since forward composition preserves the predicate level, one can compose
+each forward path before reversing once; this operation does not itself
+require a rank increase at every path step. Generating the input witnesses
+and proving that a chosen finite palette supplies their exact levels remain
+separate obligations.
+
+## Synchronized evidence for dependent application
+
+For $A:\Ur a$ and $B:A\to\Ur b$, define graph equality by
+
+$$
+\mathsf{GEq}_d(A,B,u,y,v,z)=
+ \Pi P:(\Pi x:A.Bx\to\Ur d).P\,u\,y\to P\,v\,z.
+$$
+
+Here $y:Bu$ and $z:Bv$ may live in different fibers. Its exact sort is
+$\Ur{\max(\max(a+2,b+2),d+1)}$. `DependentEquality` constructs
+reflexivity, direct graph transport, and synchronized dependent congruence:
+for $f:\Pi x:A.Bx$ and $e:\mathsf{Eq}_d(A,u,v)$,
+
+$$
+\lambda P.\,e\,(\lambda x:A.P\,x\,(f\,x))
+ :\mathsf{GEq}_d(A,B,u,f\,u,v,f\,v).
+$$
+
+The predicate annotation on $P$ is the one displayed in the definition.
+This preserves level $d$ and needs neither function extensionality nor a
+proof-dependent eliminator. At reflexivity it reduces to literal graph
+reflexivity, including its annotation. For a fixed index, ordinary evidence
+$e:\mathsf{Eq}_d(Bu,y,z)$ also gives
+
+$$
+\lambda P.\,e\,(P\,u):\mathsf{GEq}_d(A,B,u,y,u,z).
+$$
+
+Both constructions commute with replacement. Their normality theorems
+retain the necessary non-lambda-head guards: a normal lambda-valued family
+$B$ still introduces a redex in the predicate annotation $B\,x$.
+This graph evidence does not establish equality in the target fiber between
+$f\,v$ and the result of a separately chosen transport of $f\,u$.
+Nor does it establish function equality from arbitrary pointwise evidence.
+It tracks the dependent index and value together.
+
+## Binder congruence through a common map
+
+There is a useful binder case that needs no pointwise-to-function principle.
+Let $D:\Ur s$, $X:\Ur a$, $C:\Ur c$, and suppose
+$b(z,x):C$ in the independently typed context $z:D,x:X$.
+The type $X$ and codomain $C$ do not depend on $z$, but the body may
+depend on both variables. Define
+
+$$
+H=\lambda z:D.\lambda x:X.b(z,x).
+$$
+
+For an **outer** witness $e:\mathsf{Eq}_d(D,u,v)$, ordinary map
+congruence constructs
+
+$$
+\mathsf{Eq}_d\bigl(X\to C,
+  \lambda x:X.b(u,x),\lambda x:X.b(v,x)\bigr).
+$$
+
+`BinderCongruence` proves this at sort
+$\Ur{\max(\max(a+1,c)+2,d+1)}$, with actual binder-aware substitution,
+replacement naturality and literal reflexivity computation. Taking
+$X=\mathsf{El}_a A$ and $C=C_b$, then mapping by $p_{a,b}\,A$, yields
+internal equality of the corresponding product codes. At the actual
+identity product constructor and reflexive input, its witness reduces to
+literal reflexivity at $\Pi x:A.b(u,x)$, without eta conversion.
+
+This handles families obtained from a common map and one witness outside
+the binder. It does not handle arbitrary $x$-dependent evidence $e_x$.
+The generated proof terms can contain administrative beta redexes;
+full normality is not claimed for this constructor.
+
+## An independently realized beta-law interface
+
+The neutral-cast counterexample does not prevent adding explicit internal
+evidence to a finite algebra, provided its identity interpretation is
+constructed independently. `TarskiBeta` makes this option concrete. Put
+$c=\max(a+1,b)$ and $e=\ell_{a,b}\,A\,B$. For
+$f:\Pi x:\mathsf{El}_a A.\mathsf{El}_b(Bx)$ and
+$u:\mathsf{El}_a A$, the proposed field concludes
+
+$$
+\mathsf{Eq}_d\bigl(\mathsf{El}_b(Bu),
+  \mathsf{App}(\mathsf{Abs}(f),u),f\,u\bigr).
+$$
+
+Here $\mathsf{Abs}$ and $\mathsf{App}$ are the original two casts using
+$e$, not silently cancelling operations. Binding $A,B,f,u$ gives an
+original PTS type of sort
+
+$$
+\Ur{\max(c+1,\max(b+2,d+1))}.
+$$
+
+The declaration is normal when its carrier, decoder and law fields are
+variables. Under the actual identity interpretation it has the closed
+normal inhabitant
+
+$$
+\lambda A:\Ur a.\lambda B:(A\to\Ur b).
+\lambda f:(\Pi x:A.Bx).\lambda u:A.
+  \mathsf{refl}_d(Bu,f\,u).
+$$
+
+Its typing is proved at the literal specialized field type by original
+conversion. Four actual applications reduce to literal reflexivity,
+including its annotation. Formation of this field is not a proof that
+an arbitrary product-law witness already entails it.
+
+`TarskiBetaSignature` adds one such field for each $a,b,d\leq k$ to
+the unchanged six-layer signature. The resulting actual context has
+
+$$
+4(k+2)+2(k+1)^2+(k+1)^3
+$$
+
+declarations. Its original well-formedness, normal declarations, variable
+lookups and constructive typed identity substitution are proved. Applying
+a field to independently typed $A,B,f,u$ yields the displayed internal
+equality; substituting the actual identity fields reduces this application
+to reflexivity on the literal substituted inputs. The inherited signature
+embedding supplies the scoped smart operations' typing and normality
+interface. These finite beta laws neither add a primitive to PTS-rk nor
+prove the full source-conversion theorem. In particular, they do not yet
+supply congruence under dependent binders or a family-level equality from
+pointwise evidence.
+
+`TarskiGraphBeta` connects this actual finite field to graph equality.
+It constructs the decoded fiber
+$F=\lambda x:\mathsf{El}_a A.\mathsf{El}_b(Bx)$ and uses the
+fixed-fiber bridge to obtain
+
+$$
+\mathsf{GEq}_d\bigl(\mathsf{El}_a A,F,
+ u,\mathsf{App}(\mathsf{Abs}(f),u),u,f\,u\bigr).
+$$
+
+Typing uses the real field lookup and original conversion for
+$F\,u\longrightarrow_\beta\mathsf{El}_b(Bu)$; no new equality
+premise replaces the field. Actual identity substitution reduces the
+witness to graph reflexivity at the literal substituted domain, family,
+index and value. In particular the substituted lambda family is retained,
+not eta-contracted to $B$. Its filled witness is originally typed
+directly from the constructed typed substitution. This literal graph
+specialization is not asserted normal: its lambda-valued fiber creates
+the annotation redex just noted.
+
+## Executable full-source derivations and canonical conversion traces
+
+`FullSource` gives computational evidence in Rocq's `Type` for the exact
+original six typing rules, single beta steps, forward reductions and
+bidirectional conversion paths. The terms, contexts and lambda annotations
+are the original syntax. Inhabitation of each datatype is proved equivalent
+to the corresponding original relation; the typing equivalence covers all
+original judgments, without a well-formed-context restriction. Conversion
+paths may have untyped intermediate terms, just as the original relation
+permits. A computable finite ceiling bounds the supplied derivation's
+literal labels, its explicitly recorded rule ranks and every conversion
+intermediate's literals. This is not yet a sufficient target-quoter budget
+or a bound on every inferred semantic rank.
+
+The distinction between supplied data and erased proofs matters. The
+equivalence is propositional: no function extracts a computational
+derivation from an arbitrary original `Prop` proof. Subsequent executable
+operations consume supplied derivation data.
+
+`FullConversion` computes forward traces for every greedy pass and for
+the existing automatic open-context normalizer. It compares the two
+computed endpoints by structural equality of annotated syntax. Success
+returns actual traces
+
+$$
+t\longrightarrow_\beta^* v
+\quad\text{and}\quad
+u\longrightarrow_\beta^* v.
+$$
+
+Success always implies original conversion, even on raw inputs. In a
+well-formed original context, for independently originally typed $t:T$
+and $u:U$, the comparison succeeds exactly when $t=_\beta u$. Its common
+endpoint is normal, and every stage of each forward trace retains its
+starting term's original type, $T$ or $U$ respectively. No claim of
+completeness on arbitrary untyped syntax is made.
+
+`CanonicalSource.canonicalize` recursively transforms a supplied full
+source derivation in a well-formed context. At each conversion rule it
+replaces the supplied zigzag by this computed forward join, leaving
+**all source terms, types, contexts and annotations literally unchanged**.
+The function obtains its data from the executable comparison; validity
+and the supplied conversion proof only exclude the failure branch.
+An independent output theorem certifies normal common endpoints and
+originally typed intermediate stages at every conversion node.
+Every original typing derivation in a well-formed context has such
+certified data. Thus a future translation can traverse typed forward
+paths without interpreting arbitrary untyped conversion intermediates.
+These are metalevel source certificates, not object-language conversion
+witnesses or a target quotation. Literal source preservation leaves the
+existing syntax-injective HOAS coding available, but does not prove
+injectivity of a dependent PHOAS translation by itself.
+
+`SourceSubstitution` now supplies an executable source-data operation needed
+for this induction. A pointwise substitution carries independent `FullSource`
+derivations for its variable images; inhabitation of such data is equivalent
+to the original typed-substitution relation, again only propositionally.
+Structural renaming, weakening, binder lifting and substitution transform
+derivations and their explicit conversion paths. Given body and argument
+derivation data, `beta_contractum_derivation` computes a derivation of the
+literal $b[u/x]:B[u/x]$, including substituted annotations. Supplying the
+domain formation also constructs the typed redex and proves its original
+beta step and contractum typing. This does not infer derivation data from
+the propositional stage typings above, or by itself construct the target
+quotation's substitution witness. Typed constructor-view substitution is
+supplied later.
+
+## Why the local signature alone is insufficient
+
+The finite signature and its identity substitution do not alone construct
+a quotation of every original typing derivation with
+generated substitution and source-conversion coherence. In particular,
+arbitrary proof-headed casts do not definitionally cancel. A pointwise
+Leibniz witness for two families also cannot simply be used as an equality
+of the object-language functions expected by congruence of $p_{a,b}$.
+
+`TarskiRoundtrip` makes the first limitation precise for the existing cast
+definitions. In the actual well-formed original context
+
+$$
+S:\Ur c,\quad T:\Ur c,\quad
+e:\mathsf{Eq}_{c+1}(\Ur c,S,T),\quad x:S,
+$$
+
+both $x$ and
+$\mathsf{cast}^{-}_{c,S}(e)(\mathsf{cast}^{+}_{c,S}(e)\,x)$
+are originally typed at $S$. They are distinct normal terms, hence are not
+beta-convertible. Extending this context by $K:S\to\Ur0$ gives two
+normal, well-typed, nonconvertible type indices by applying $K$ to them.
+At actual reflexivity evidence the same roundtrip instead reduces to $x$.
+This counterexample forbids treating these neutral casts as a definitional
+retraction. It does not exclude internal equality evidence, additional
+independently realized coherence fields, different casts, or full dependent
+PHOAS.
+
+There is a checked beta-only regression. With $D=\Ur0\to\Ur0$, the
+closed normal functions
+
+$$
+F=\lambda f:D.f,\qquad G=\lambda f:D.\lambda x:\Ur0.f\,x
+$$
+
+have the same original type but are not beta-convertible. Nevertheless,
+$F\,f\,x$ and $G\,f\,x$ both reduce to $f\,x$. In an original
+well-formed context containing $f:D$ and $K:D\to\Ur0$, the types
+$K\,f$ and $K\,(\lambda x:\Ur0.f\,x)$ are likewise normal,
+well-typed and nonconvertible. `EtaBoundary` proves these facts from
+normal-form uniqueness. They forbid silently replacing beta conversion
+by pointwise agreement; they do not rule out full dependent PHOAS or
+prove that every possible internal equality witness is absent.
+
+A construction based only on these local laws would need to translate the executable source data
+using the arbitrary-scope sort and smart binder operations, and generate
+the needed internal substitution and conversion witnesses along the
+computed typed forward paths. It must establish their identity computation
+laws, global annotated normality and source-syntax fidelity. The finite
+beta fields and their graph specialization address a local
+application/abstraction law. Common-map binder congruence and synchronized
+dependent application evidence do not give dependent congruence for every
+source reduction. Metalevel canonicalization, raw
+syntax fidelity and the local casts remain separate proved ingredients,
+not substitutes for that induction. The checked equality-layer construction
+below completes full-source coverage by a different repair interface.
+
+## Contextual beta laws and a finite telescope interface
+
+The specific cast-beta equation under a dependent telescope is now
+constructed. This is an independently realized law family, not a rule
+turning arbitrary pointwise equality into function equality.
+Let
+
+$$
+\Delta=(x_1:X_1,\ldots,x_m:X_m),\qquad
+\Gamma,x_1:X_1,\ldots,x_{i-1}:X_{i-1}\vdash X_i:\Ur{r_i}.
+$$
+
+`ContextualTelescope` records these original formation judgments separately
+from any quotation property. Its closures are literal annotated products
+and lambdas. For a body type of rank $b$, product closure has exact rank
+
+$$
+R(\vec r,b)=\max\bigl(b,\max(\{0\}\cup\{r_i+1:1\leq i\leq m\})\bigr).
+$$
+
+The module proves original closure typing, renaming, substitution and
+annotation-sensitive normality. In particular, closing a normal body is
+normal precisely when every retained domain annotation is normal.
+
+For the previously defined cast operations, `ContextualBeta` forms
+
+$$
+\mathsf{Eq}_d\bigl(\Pi\Delta.\mathsf{El}_b(B\,u),
+ \lambda\Delta.\mathsf{castApp}(e,\mathsf{castAbs}(e,f),u),
+ \lambda\Delta.f\,u\bigr).
+$$
+
+Its sort rank is $\max(R(\vec r,b)+2,d+1)$. The typing proof uses
+the supplied original typings of the carriers, decoders, product code,
+law, function and argument. At the actual identity interpretation, the
+two endpoints reduce to the same literal multi-lambda. Reflexivity at
+that term is constructed and typed independently, then assigned the
+abstract equation type by original type conversion. No subject expansion
+of the witness, eta rule or function-extensionality assumption is used.
+
+`TelescopeBetaFamily` additionally binds four object arguments: the
+carrier family $A$, dependent code family $B$, function family $f$, and
+argument family $u$, each abstracted over $\Delta$. Writing $A_\Delta$
+for application to all variables of $\Delta$, the conclusion uses
+$e=\ell\,A_\Delta\,B_\Delta$, $f_\Delta$ and $u_\Delta$.
+The full four-argument family has formation rank
+
+$$
+\max\bigl(\max(\{0\}\cup\{r_i+1\})+2,
+           a+2,b+2,d+1\bigr).
+$$
+
+Its identity implementation uses plain, reduced lambda annotations and
+ends in reflexivity at $\lambda\Delta.f_\Delta\,u_\Delta$.
+Direct original typing, full annotated normality under normal domains,
+substitution and literal four-argument specialization are proved
+separately. The one-binder `ContextualBetaFamily` also quantifies its domain
+$X:\Ur s$ and has exact rank $\max(s+3,a+2,b+2,d+1)$.
+
+Keeping a concrete $\Delta$ in an external field index would not give a
+finite interface. `UniformTelescope` instead generates bound domain
+parameters
+
+$$
+X_1:\Ur{r_1},\quad
+X_2:\Pi x_1:X_1.\Ur{r_2},\quad\ldots,\quad
+X_m:\Pi x_1:X_1.\cdots\Pi x_{m-1}:X_{m-1}\,\vec x_{<m-1}.\Ur{r_m}.
+$$
+
+The generated telescope uses neutral applications $X_i\,\vec x_{<i}$
+as its domain annotations. Its parameter context and its domains have
+original formation and full normality, proved for every rank vector.
+Parameter $X_i$ has declaration-formation rank
+$R((r_1,\ldots,r_{i-1}),0)$, since $\Ur{r_i}:\Ur0$.
+Renaming and substitution commute with the generator exactly.
+
+`UniformTelescopeRecovery.realize` computes actual parameter values from
+any supplied concrete telescope: each declaration is lambda-closed over
+its literal preceding domains. Independent original formation suffices to
+prove the resulting substitution is typed. Instantiated generated domains
+beta-reduce annotation by annotation to the concrete telescope, expressed
+in the generator's accumulated scope order. A further theorem recovers
+the exact original product closure ending in any universe $\Ur s$.
+This is genuine domain-parameter coverage. The subsequent
+`OpenTelescopeRecovery` module also transports arbitrary open bodies and
+literal lambda closures, with original typing in both directions across
+the realized telescope. `ConcreteContextualBeta` applies the actual finite
+field to independently typed open arguments and proves literal identity
+recovery, normality under explicit normality guards, and local input
+injectivity. Integration with recursive quotation is a further obligation.
+
+`UniformContextualBeta` abstracts the four-argument family over these
+domain parameters. Its syntax depends externally only on $\vec r,a,b,d$,
+not on the concrete domain terms. With all these ranks bounded by $k$,
+its declaration has formation rank at most $k+3$. Its actual identity
+value is a closed normal original PTS term; substitution invariance,
+original typing and normality are separate proofs.
+
+Length must be bounded independently. `ContextualBudgets` proves that
+vectors of arbitrarily large length can have closure rank $1$: take
+arbitrarily many zero-ranked declarations. Consequently no bound on this
+rank alone bounds telescope length. It also gives an executable complete
+enumeration of the vectors of length at most $L$ with entries at most $k$,
+of cardinality $\sum_{j=0}^{L}(k+1)^j$.
+`TelescopeBetaSignature` adds exactly
+
+$$
+(k+1)^3\sum_{j=0}^{L}(k+1)^j
+$$
+
+contextual fields to the existing finite beta signature. Executable lookup
+recovers each bounded vector and rank triple. Context formation, full
+annotation normality, field typing, the actual typed identity substitution,
+and closed packaging/application recovery are proved. Every finite vector
+and triple has a computed sufficient budget; this descriptor coverage is
+not yet coverage of translated full source derivations.
+The separate one-binder signature retains local input-syntax and conversion
+injectivity. Existing faithful raw-HOAS and STLC quotations are unchanged.
+
+These results discharge the formation, independent identity-realization,
+and finite-budget obligations for this contextual cast-beta family. They
+do not complete dependent source-reduction coherence: assembling compatible
+context/type/term/substitution translations is a separate obligation, supplied
+by the later checked-layer construction.
+
+## Checked equality layers and finite constructor views
+
+A second construction strategy uses an acyclic sequence of independently
+realized equality-only signature extensions. Suppose a previously formed
+signature $\mathcal S$ has a closed, originally typed identity filling
+$\iota$, and $\Delta$ is an originally formed local dependent telescope.
+An extension may contain the field
+
+$$
+e:\Pi\Delta.\operatorname{Eq}_d(C,u,v)
+$$
+
+only after $C$, $u$ and $v$ are independently typed in the old context,
+all field annotations are normal, and the actual filled endpoints
+$u[\iota]$ and $v[\iota]$ are beta-convertible. These are decidable checks
+on ordinary annotated PTS syntax, not tests for quotation success.
+`OriginalTypecheck` supplies executable inference and checking with
+soundness and completeness for the unchanged original typing judgment in
+well-formed contexts. `BoundedSyntaxEnumeration` enumerates every syntax
+tree within explicit node and literal ceilings, including annotations.
+
+`RealizedEquality` constructs the equality realizer using the common normal
+form of the filled endpoints. `ContextualEqualityRealizer` closes it over
+the local telescope and normalizes this eraser program. This does not
+normalize the represented payload. Its lambda-spine invariant proves that
+application to all telescope arguments, a motive and a payload reduces to
+that literal payload. `ContextualEqualityExtension` and `CodeAlignment`
+therefore provide actual originally typed code alignment, including under
+dependent binders, with normal abstract applications and literal filled
+recovery. No arbitrary semantic-value fields are added.
+
+`CheckedEqualityFields` constructs a complete finite checked layer over a
+fixed preceding context. `CheckedContextualFields` extends its candidate
+syntax to locally dependent telescopes and proves actual field lookup,
+original formation, normality, closed typed filling and literal transport
+erasure. Its coverage theorem bounds telescope length, node counts and
+literal labels separately. The whole interpreter below is indexed by a
+finite vector of these numerical layer budgets; each layer refers only to
+earlier layers. This is a stronger numerical index than rank alone. Neither
+finite candidate coverage nor the existing rank bounds already establish
+coverage of all translated source derivations.
+
+The source recursion must also terminate without re-quoting an ever larger
+generated type derivation. `SourceValidity` computes original result-type
+formation, but naively recursing on that output is unsuitable: substitution
+can enlarge it, and $\Ur0:\Ur0$ creates a terminal-sort cycle.
+`QuotationTree` instead keeps a finite literal source-constructor tree
+separate from its target root cache. A Pi view retains independently typed
+domain and codomain children even when conversion has changed that cache.
+`QuotationCache`, `QuotationViewRenaming` and `QuotationViewSubstitution`
+make this separation typed. Their executable structural substitution keeps
+the root cache literally substituted. If a source variable is replaced by
+a Pi term, it takes the argument's stored constructor shape and checks the
+new root using original typing and uniqueness of sort ranks; it does not
+call quotation on a synthesized source derivation. Under a fresh binder,
+the actual source and target realizations are extended constructively.
+The direct codomain operation produces a view of literal $B[u/x]$ with
+root cache exactly $B^q[q/x]$. Normal neutral substitution preserves full
+normality, including all annotations.
+
+## A dependent decoder with an ordinary represented-type argument
+
+`DependentProgramDecoder` separates the decoder interface from the structural
+all-source quotation construction below. Let $\mathcal S$ be a finite originally
+formed closed signature, with declaration-rank vector $\vec r$, a code
+carrier $C:\Ur0$, a decoder $E:C\to\Ur s$, and an independently typed
+closed filling $\iota$. Define
+
+$$
+\begin{aligned}
+\mathsf{TyProg}&=\Pi\mathcal S.C,\\
+\mathsf{TmProg}(P)&=\Pi\mathcal S.E\,(P\,\mathcal S),\\
+\mathsf{Result}(P)&=E[\iota]\,(P\,\iota),\\
+\mathsf{Dec}&=\lambda P:\mathsf{TyProg}.
+  \lambda Q:\mathsf{TmProg}(P).Q\,\iota.
+\end{aligned}
+$$
+
+Here $P$ is an ordinary object-language argument, not an external source
+type or typing-derivation index. In the numerical family below,
+$\mathcal S,C,E,\iota$ are determined by its numerical signature index and
+result rank. `TelescopeInstantiation` proves the original typed mixed
+substitution that retains $P,Q$ while filling the signature parameters.
+The decoder is directly originally typed; no subject expansion is used.
+Its type has formation rank
+
+$$
+\max\bigl(R(\vec r,0)+1,\ R(\vec r,s)+1,\ s\bigr).
+$$
+
+If the signature annotations, $C$, the neutral $E$, and all filling values
+are normal, the decoder itself is fully normal. Given independently typed
+open codes $A^q:C$ and $t^q:E\,A^q$, their actual lambda closures give
+$P$ and $Q$. The typing of $Q:\mathsf{TmProg}(P)$ uses conversion of its
+type, whose application spine reduces to the original decoded code type;
+the payload is unchanged. Two administrative beta steps and signature
+application yield
+
+$$
+\mathsf{Dec}\,(\lambda\mathcal S.A^q)\,
+ (\lambda\mathcal S.t^q)\ \to^*\ t^q[\iota].
+$$
+
+Thus any subsequently constructed literal recovery of $t^q$ is preserved.
+Likewise, when $E[\iota]$ is the type identity and $A^q[\iota]\to^* A$,
+the result type reduces to $A$. Closure preserves normality and is
+syntactically injective at a fixed signature. These generic decoder
+and packaging theorems do not alone provide full dependent quotation;
+the following structural construction does. Strong recovery alone would not
+prove syntax-level injectivity for distinct beta-convertible sources.
+
+## Faithful packages of actual dependent programs
+
+`FaithfulProgramDecoder` separates evaluation from syntax fidelity. Let
+$\mathsf{Tag}_r$ be the existing closed raw HOAS code type, and write
+$\langle t\rangle_r$ for its normal, annotation-preserving quotation.
+For an actual represented program $Q:V$, define
+
+$$
+\begin{aligned}
+\mathsf{Pack}_r(V)&=(V\to\mathsf{Tag}_r\to V)\to V,\\
+\mathsf{pack}_r(V,Q,t)&=
+ \lambda h:(V\to\mathsf{Tag}_r\to V).h\,Q\,\langle t\rangle_r,\\
+\mathsf{pick}_r(V)&=\lambda q:V.\lambda z:\mathsf{Tag}_r.q.
+\end{aligned}
+$$
+
+The faithful decoder first selects $Q$ and then applies the actual
+signature filling to it. Thus its computational result is $Q\,\iota$,
+not $Q$ itself and not an externally computed normal form of $t$.
+Only generic packaging lemmas are reused from `WeakFullInterpretation`;
+neither its source normalizer nor its precomputed semantic payload is used.
+The normal annotation $V=\Pi\mathcal S.E\,A^q$ is convertible to
+$\mathsf{TmProg}(P)$ for $P=\lambda\mathcal S.A^q$. Conversion changes
+the package's type, not its payload or annotations.
+
+The faithful decoder's type has exactly the checked formation rank
+
+$$
+\max\bigl(R(\vec r,0)+1,
+  \max(R(\vec r,s)+2,r+5)+1,\ s\bigr).
+$$
+
+Normal actual signature annotations and filling values make the decoder
+normal; normal $V,Q$ make the package normal. Equality of two such package
+terms implies literal equality of their annotated source terms, even when
+their signatures, derivations and source types differ. Conversion of normal
+packages has the same consequence by confluence. The tag establishes this
+fidelity independently of any possible noninjectivity of conversion repairs.
+
+`ClosedQuotationPackage` combines these results with an independently
+constructed dependent quotation judgment. It closes the actual signature,
+proves original typings for the type program, faithful term package and
+interpreter, and proves reduction to the literal source term and source
+type. `NormalEqualityFill` derives the required filling normality for the
+actual finite Tarski signature and every checked equality layer; it is not
+an extra condition imposed on source terms. These are closing theorems;
+the structural construction below supplies the required quotation for
+every original derivation.
+
+## Executable rank budgets and literal dependent local scopes
+
+`SourceQuotationBudget` computes a budget from Type-valued original
+derivation and context data. It takes maxima over all recursive premises,
+their result-type ranks, explicit binder ranks and literal sort labels.
+The resulting bound covers the extended contexts in both binder cases
+and both premises of application and conversion. Literal labels cannot
+be replaced by result-type ranks: $\Ur{37}:\Ur0$ has result-type rank zero,
+but its literal ceiling is $37$. This regression is checked explicitly.
+Original proposition-valued typing has a coverage theorem; no typing proof
+is eliminated from `Prop` to compute quotation data.
+
+`LocalQuotationSpine` keeps source binders in snoc order. A state with
+$n$ local binders and $m$ global fields has target scope $n+m$ and literal
+source scope $n$. Pushing a binder therefore has scope $n+1$ without
+normalizing its source declaration. Global equality layers can grow while
+preserving that same literal source context. `LocalSpineNaturality` proves
+that the telescope allocator's presentation commutes with such growth;
+its proof-only scope casts introduce no object-language constructors.
+
+The execution plan has only three constructors: the empty plan, a request
+carrying three numeric bounds, and sequential composition. Its evaluation
+uses the actual intermediate realized signature. Flattening yields the
+same finite vector of numeric layer budgets. This is a source-independent
+index format, not a rank-only uniformity theorem, and no elementary
+quotation-cost bound is asserted. The next construction discharges the
+full structural source-quotation obligation.
+
+## Full dependent interpretation with numerical signature plans
+
+The structural construction is `RecursiveQuotation.quote_derivation`.
+Its inputs are an independent `FullSource.derivation`, original context
+data, an actually realized local state and variable environment, and the
+computed numerical budget. Its result is a finite plan and a quotation
+judgment in the corresponding extended signature. The result judgment
+contains independently checked original typing, full normality, a finite
+typed constructor view, and reduction of the actual filled program to the
+literal annotated source. None of those target properties is an input
+assumption about the source derivation.
+
+The recursion has six cases, matching the original rules.
+
+- Sorts and variables use the actual finite interface and variable environment.
+- Products and lambdas quote the domain, extend by its normal decoded code,
+  and recursively quote the existing body premise under the literal source
+  binder. `FullQuotation` proves that global signature growth commutes with
+  this local extension.
+- Application inverts the stored literal product view, not the possibly
+  converted root cache. `ApplicationQuotation` allocates exactly two checked
+  layers: one aligns the argument's type code, and one aligns the function's
+  root with its constructed product code. Structural substitution of the
+  codomain view then gives the actual dependent result type.
+- Conversion quotes the rule's existing target-formation premise and
+  aligns the original payload with that independently constructed code.
+  Its equality realizer erases to the same literal payload.
+
+Quotation of a term whose type is a literal universe uses a separate
+nonrecursive terminal repair. It does not recursively quote a generated
+validity derivation; in particular, $\Ur0:\Ur0$ creates no recursive cycle.
+No untyped intermediate of a source conversion zigzag needs quotation.
+
+Write $I_{r,k,p,s}$ for the family in `IndexedProgramInterpreter`.
+Here $k$ is the finite source-interface budget, $p$ a pure numerical
+allocation plan, $s$ the result-code rank, and $r$ the raw-tag carrier rank.
+These determine the signature, its identity filling and the interpreter.
+The represented type $P$ and faithful term program $Q$ are ordinary inputs.
+
+:::Theorem[Full closed original-source interpretation]
+For every original judgment $\vdash t:T$ and every tag rank $r$, there
+exist finite numerical indices $k,p,s$ and closed original terms $P,Q$
+such that $s\le k+1$, $P,Q,I_{r,k,p,s}$ are fully beta-normal, and
+
+$$
+\begin{aligned}
+\vdash P&:\mathsf{TyProg}_{k,p,s},\\
+\vdash Q&:\mathsf{Pack}_r(\mathsf{TmProg}_{k,p,s}(P)),\\
+\vdash I_{r,k,p,s}
+ &:\Pi P:\mathsf{TyProg}_{k,p,s}.
+    \mathsf{Pack}_r(\mathsf{TmProg}_{k,p,s}(P))
+       \to\mathsf{Result}_{k,p,s}(P),\\
+\vdash I_{r,k,p,s}\,P\,Q&:T,\\
+I_{r,k,p,s}\,P\,Q&\to^* t.
+\end{aligned}
+$$
+
+The interpreter type has the explicit finite formation rank proved above.
+Applying the type program to the identity filling reduces to the literal
+source type $T$. For the constructed quotation procedure, equality or beta
+conversion of two term programs implies literal equality of their annotated
+source terms, independently of their derivations and numerical plans.
+:::
+
+:::Proof
+For supplied Type-valued derivation data, compute `SourceQuotationBudget`,
+initialize the independently realized empty-source state, and run structural
+quotation. Close its resulting judgment using `ClosedQuotationPackage`.
+Actual signature and filling normality follow from the checked layer
+construction; the faithful envelope supplies syntax injectivity.
+For the propositional coverage theorem, original typing implies inhabitation
+of the independent derivation datatype. This witness is used only inside
+the final proposition, not eliminated from `Prop` to compute a program.
+The endpoints are `FullDependentInterpreter.every_closed_original`,
+`closed_type_recovers`, `closed_injective` and
+`closed_conversion_injective`.
+:::
+
+`SourceClosure` extends coverage to every originally well-formed open
+context $\Gamma$. It computes the literal closure
+$\lambda\Gamma.t$ and its original derivation, quotes this closed term,
+then applies the interpreted closure to the ordinary variables of $\Gamma$.
+`FullDependentInterpreter.every_original` proves original result typing
+and literal recovery. `program_injective` and
+`program_conversion_injective` preserve source syntax at a fixed source
+scope, even across different same-length contexts. This open interface
+uses explicit closure and reopening; it is not a claim that a fixed closed
+head can create arbitrary free variables.
+
+This is a positive **numerical-plan-indexed full-source** result. Plan length
+and syntax bounds may grow with the source derivation. It does not establish
+one decoder for all terms of a fixed rank, a single all-rank interpreter,
+efficient uniform enumeration, or an interpreter for unadorned raw HOAS
+without the dependent PHOAS program. The interpreter evaluates that actual
+program; the raw tag is used only for fidelity. Extraction and direct Rocq
+evaluation are distinct operational claims: proof-only equality transports
+can obstruct direct reduction of dependent records, and no general runtime
+benchmark follows merely from the structural definition.
+
+A proof-erased OCaml smoke test executes the actual closed sort-quotation
+path through this construction and checks an empty allocation plan and
+normal type and term programs. Its successful run checks that leaf path,
+not the performance of dependent application or large equality layers.
+
+Every originally typed member of this interpreter family is itself a closed
+source term, so the coverage theorem applies to it at some finite numerical
+index. That index may be larger or different: this consequence is not a
+same-index fixed-point or a rank-only self-applicability claim.
 
 # Executable structural quotation for the simply typed fragment
 
@@ -1287,7 +2439,7 @@ is an infinite fragment result. The fragment does not include all PTS-rk
 syntax or the decoder's own polymorphic code, and no self-applicability
 claim follows.
 
-# Why dependent quotation is still open
+# Why shallow blocking does not solve dependent quotation
 
 The rank-indexed identities solve a rank-selection problem. They do not
 by themselves solve dependent conversion. Consider the well-formed context
@@ -1315,13 +2467,20 @@ a reducible annotation would prevent full normality of the quote.
 Nor may the typing theorem be replaced by a native Rocq checker judgment,
 or supplied as a premise of the desired quotation theorem.
 
-A deeper indexed construction would need jointly compatible translations
+A deeper indexed construction needs jointly compatible translations
 of contexts, types, terms, substitution, and conversion. An explicit
 interpretation relation or transported representation of equality might
 help, but the required witnesses must be built inside the original PTS.
 The canonical-context, hereditary-substitution and distinct-index results
 above supply this compatibility for metalevel original syntax. Lifting it
-to an object-language dependent representation is a separate step.
+to a full object-language dependent representation is a separate step.
+The Tarski operations above supply actual transport programs in a finite
+normal signature, with typed identity instantiation, normal sort quotations,
+variable-preserving dependent context extensions and normal local binders.
+The smart fresh-variable operation solves its local annotation redex, not
+by itself the global conversion induction or full quotation normality.
+The checked equality-layer construction above supplies the missing repairs
+and the full structural quotation theorem.
 The extensional instantiation functions of Brown--Palsberg suggest a
 direction; their correctness for $F_\omega$ does not supply this dependent
 coherence theorem.
@@ -1347,6 +2506,41 @@ genuinely dependent local handlers and a candidate universe decoder;
 `CanonicalTypeIndex` provide the full-PTS open-context canonical index
 algebra, with hereditary substitution equations and bidirectional original
 typing transport, separately from an internal evaluator.
+`IndexedEquality`, `TarskiProducts`, `TarskiUniverses`, `TarskiCasts`,
+`TarskiIdentity` and `ClosedTarskiCasts` provide the local object-language
+code/transport interface and actual identity realization. `TarskiLawFamily`,
+`TarskiPalette` and `TarskiSignature` assemble its finite normal context and
+typed identity substitution; `TarskiOperations` proves the applied-operation
+typings and substitution recovery. `TarskiSorts` supplies normal closed sort
+quotations with directly typed identity application. `TarskiContext` lifts
+the signature and its typed identity substitution through dependent binders.
+`TarskiBinders` supplies smart local Abs/App, fresh-variable coherence and
+an originally typed normal dependent binder with local input fidelity.
+`ScopedTarski` extends these operations to arbitrary dependent scopes.
+`TarskiBeta` and `TarskiBetaSignature` add a finite internal beta-law block
+with constructive typed identity realization. `FullSource`, `FullConversion`
+and `CanonicalSource` provide exact computational source derivations and
+certified forward conversion joins in well-formed contexts, preserving
+literal source syntax rather than replacing it by normal forms.
+`SourceSubstitution` computes derivations under substitution and of literal
+beta contracta. `IndexedEqualityLevels` supplies predicative reversal and
+joins; `DependentEquality` and `TarskiGraphBeta` connect synchronized
+dependent evidence to the actual finite beta fields. `BinderCongruence`
+constructs the common-map binder and product-code cases without arbitrary
+pointwise-to-function equality.
+`ContextualTelescope`, `ContextualBeta`, `TelescopeBetaFamily` and
+`UniformContextualBeta` construct the contextual cast-beta family and its
+independent identity program. `UniformTelescope` and
+`UniformTelescopeRecovery` supply normal domain parameters and actual
+concrete-telescope instantiation. `ContextualBudgets` and
+`TelescopeBetaSignature` give its finite syntax-free interface;
+`ContextualBetaFamily` and `ContextualBetaSignature` retain the explicit
+one-binder specialization. `RealizedSignature` separately packages any
+finite family whose closed realizations have already been independently typed.
+`IndexedCoherence` constructs equality composition and nondependent
+congruence. `TarskiRoundtrip` checks the precise neutral-cast cancellation
+failure, while `EtaBoundary` checks the limited pointwise-versus-beta
+regression for dependent indices.
 The earlier `RankedQuotation` and `ExecutableQuotation` modules retain
 the independent shallow STLC quotation, with actual closed decoders in
 `TelescopeDecoder` and `ClosedDecoder`. `RankedNormalization` connects full
@@ -1355,8 +2549,7 @@ redex/type-rank indices from the needed literal ceiling.
 `WeakFullInterpretation` supplies the full closed weak semantic-payload
 construction, including normality and exact source fidelity. None of these
 modules assumes the manuscript's unformalized elementary compiler.
-Public endpoints and their precise
-boundaries are recorded in the development README and checked by `Audit`.
+Public endpoints and limits are listed in the development README and checked by `Audit`.
 
 The development uses the pinned Rocq 9.2.0, Stdlib 9.1.0,
 Equations 1.3.2+9.2, OCaml 4.14.2, and Dune 3.23.1 environment.
@@ -1365,7 +2558,15 @@ pristine upstream build. No new axioms, admitted proofs, unsafe casts,
 modified PTS rules, or disabled checks are part of this development.
 Verification commands and failures are recorded separately from theorem claims.
 
-The remaining research programme is:
+The all-source numerical-plan construction establishes original typing,
+full normality, annotated-syntax injectivity, strong recovery and full
+coverage in well-formed original contexts. Its final implementation is
+`FullDependentInterpreter`, based on `RecursiveQuotation`,
+`ApplicationQuotation`, `LocalCodeAlignment` and `IndexedProgramInterpreter`.
+It is independent of the weak semantic-payload construction and of the
+manuscript's unformalized elementary compiler.
+
+The remaining research programme concerns stronger interfaces and costs:
 
 1. Formalize the non-uniform elementary compiler, including the corrected
    modulus construction, and instantiate it with fixed-budget normalization
@@ -1376,25 +2577,19 @@ The remaining research programme is:
    inhabitant of the represented dependent type, not just another code.
    This would strengthen the full-PTS weak construction by eliminating
    its externally supplied normal semantic payload.
-3. Internalize the finite PHOAS decoder's full simple-type interpretation
-   as an explicit object argument, instead of its current external $A$
-   index. Preserve normality, literal fidelity and direct original typing.
-4. Lift the checked full-PTS canonical context/type-index algebra into
-   object-language dependent quotation. Construct represented dependent
-   families and typed reification with their internal coherence laws;
-   metalevel normal-form equality does not supply these programs.
-5. Prove all five required contracts for the intended dependent source domain: original typing, full normality,
-   injectivity under a stated annotation equality, strong recovery, and
-   coverage of every intended source derivation at some finite external budget.
+3. Determine whether the numerical plan can be replaced by a rank-only
+   index with one fixed interpreter covering each whole rank-bounded
+   fragment. The current proof gives a finite plan per derivation, not a
+   rank-only bound on plan length or syntax enumeration.
+4. Replace exhaustive checked equality layers by a smaller uniform
+   coherence interface, preserving original annotations and beta-only
+   computation. Prove the relevant quotation and evaluator operation costs.
+5. Study extracted execution beyond leaf regressions, and distinguish its
+   proof erasure from direct evaluation of dependent records in Rocq.
+   Canonical derivation-independent quotation and a pure raw-HOAS decoder
+   are additional specifications, not consequences of source coverage.
 
-The checked full-PTS interpretation result is the weak semantic-payload construction;
-the strong shallow and now finite closed PHOAS unquotation results remain
-for the independent STLC fragment.
-No full dependent pure-HOAS/PHOAS evaluator or all-rank single program is
-claimed. The complexity argument gives a positive conditional route to
-numeric self-reduction, not a proof that the remaining typed reifier exists.
-
-To rebuild this note, run `bash tools/build-self-interpreter-note.sh`.
-To compile the development in the pinned environment, run
-`dune build @theories/self_interpreter/audit`; use a fresh absolute
-build directory for fresh assumption output.
+Thus a full dependent numerical-plan-indexed PHOAS interpreter is
+constructed. Neither a rank-only family nor an all-rank single program is
+claimed. The original complexity argument remains a separate conditional
+route to numeric self-reduction; it is not used as an assumed typed reifier.

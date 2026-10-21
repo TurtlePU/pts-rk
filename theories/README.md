@@ -20,7 +20,8 @@ These kernel files are unchanged by the directory reorganization.
 The [development expositions](../docs/developments/README.md) provide
 README.tex sources and compiled PDFs for the finished AI-assisted developments.
 The reference set-model exposition is stored outside its frozen source
-directory; the ongoing BZC and self-interpreter work is excluded.
+directory; BZC is ongoing and the self-interpreter has its separate
+[research note](../PTS-rk_self_interpreter.tex).
 
 | Folder | Library | Audit target |
 | --- | --- | --- |

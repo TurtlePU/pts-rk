@@ -7,7 +7,18 @@
     RankedNormalization LiteralObstruction WeakFullInterpretation
     DependentPHOAS PHOASTelescope PHOASConversion
     PHOASAlgebra PHOASFaithful PHOASRecovery PHOASPackage PHOASDecoder
-    OpenCanonical CanonicalContexts CanonicalSubstitution CanonicalTypeIndex Audit)
+    OpenCanonical CanonicalContexts CanonicalSubstitution CanonicalTypeIndex
+    IndexedEquality TarskiProducts TarskiUniverses TarskiCasts TarskiIdentity ClosedTarskiCasts
+    EtaBoundary TarskiLawFamily TarskiPalette IndexedCoherence
+    TarskiSignature TarskiOperations TarskiSorts TarskiContext TarskiBinders
+    TarskiRoundtrip ScopedTarski FullSource TarskiBeta FullConversion
+    TarskiBetaSignature CanonicalSource OriginalTypecheck BoundedSyntaxEnumeration IndexedEqualityLevels BinderCongruence
+    DependentEquality SourceSubstitution SourceValidity SourceClosure SourceQuotationBudget QuotationTree QuotationCache QuotationViewRenaming QuotationViewSubstitution QuotationJudgment FullQuotation ApplicationQuotation RecursiveQuotation IndexedProgramInterpreter FullDependentInterpreter NormalNeutralSubstitution TarskiGraphBeta ContextualTelescope
+    ContextualBeta ContextualBudgets UniformTelescope UniformTelescopeRecovery
+    OpenTelescopeRecovery ContextualTelescopeRun TelescopeInstantiation DependentProgramDecoder FaithfulProgramDecoder ClosedQuotationPackage TelescopeEquality ContextualTransportLaw
+    RealizedSignature RealizedEquality ContextualEqualityRealizer ContextualEqualityExtension CodeAlignment GlobalEqualityInsertion LocalQuotationSpine LocalSpineNaturality LocalInitialState CheckedEqualityFields CheckedContextualFields CheckedEqualityLayers NormalEqualityFill ContextReification LayerCodeAlignment LocalCodeAlignment
+    TelescopeBetaFamily UniformContextualBeta ConcreteContextualBeta
+    ContextualBetaFamily ContextualBetaSignature TelescopeBetaSignature Audit)
  (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity))
 
 (alias

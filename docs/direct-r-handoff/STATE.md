@@ -1,84 +1,741 @@
-# Live proof-development state — 2026-10-20
+# Live proof-development state — 2026-10-21
 
-## Full-PTS canonical contexts and hereditary indices prepared for publication
+## Full dependent PHOAS publication — scoped snapshot
 
-The user's next publication request includes OpenCanonical,
-CanonicalSubstitution, CanonicalContexts and CanonicalTypeIndex, their
-Audit/Dune integration, research note/PDF and concise verification evidence.
-These cover the FULL original dependent PTS at the metalevel: executable
-open-context normalization, dependent typed hereditary substitution and
-composition, canonical contexts with bidirectional literal typing transport,
-and distinct faithful syntax / conversion-canonical type codes.
+The user requested commit and push. The enclosing publication commit contains
+the full self-interpreter sources, Audit/Dune registration, research note and
+37-page PDF, curated verification records for the seven dependent-development
+milestones, and self-interpreter portions of shared documentation. The parent
+is e822cd62df393faf4d5e4ed0c4c8fed173ccba6f; publication targets origin/main.
+Unrelated BZC, paper-editing, tool/CI changes and bulky local logs remain local.
+Shared documentation is staged selectively; its remaining worktree changes
+belong to the excluded work and are preserved.
 
-The preceding independent fresh audit passes with 326 closed reports,
-recursive kernel checking, pristine inventory and unchanged core/ZFC/source
-checks. All 226 local-root stages pass; unrelated unpublished developments
-are excluded from this isolated publication. Note source hash remains
-f8ea4a625231ad49e1e1e931385d16ea4f7b1e1183ae584dd290c5cca28757b3.
-The PDF was regenerated externally since that checkpoint; its actual
-publication identity and fresh checks are recorded in
-verification/self-interpreter-canonical-publish-2026-10-20/COMMANDS.md.
+The published proof sources and Dune file are byte-identical to the successful
+fresh audit:2229closed self-interpreter reports, recursive kernel/pristine
+checks and original-source comparisons all pass. The retained226-stage CI
+run covers the shared workspace, including54unpublished BZC stages; those
+script changes and BZC sources are outside this publication. Original published
+CI already includes the self-interpreter audit. No proof changed for publication.
+Source/PDF hashes match the final note-04 record. git diff --check passes.
+The complete numerical-plan result has no remaining proof obligation;
+rank-only uniformity remains the next research question. Next exact review
+command: git log -1 --oneline. Remote confirmation is obtained with
+git ls-remote origin refs/heads/main after the ordinary push.
 
-First remaining goal: originally typed represented dependent families and
-reification with proved coherence. Canonical syntax operations do not yet
-provide an internal El or a full dependent PHOAS evaluator. No impossibility
-claim is made. Historical checkpoint reports retain their original Git state.
+## Full dependent numerical-plan interpreter — completed and verified
 
-## Scoped publication merged, pushed and independently verified
+The positive full-source endpoint is constructed and independently verified.
+FullDependentInterpreter attempt02
+exits0 with14 own closed reports. every_closed_original covers every ORIGINAL
+closed typing judgment using ranks plus a finite purely numeric allocation
+plan, ordinary type/term arguments, original typings, full normality and
+literal unreduced-source recovery. closed_type_recovers covers the represented
+type. every_original closes/reopens literal annotated open inputs in originally
+well-formed contexts. Syntax/conversion injectivity is independent of derivation
+and signature choices, at fixed source scope for open terms. It is NOT a
+rank-only fragment-uniform family, a single all-rank head, or an efficient
+enumerator. No semantic source value is precomputed by the interpreter.
 
-Self-interpreter proof snapshot 3411f31f007caecfe5251dacb276583edbd4bba9
-and finished-development documentation 6820469a75acf5a1adda248c193930a9b22daa6a
-are joined by actual merge 64864e36b4d748cf117f830cdc4438d4d4054a2f.
-Read-only git ls-remote after verification confirms that exact origin/main tip.
-Publication uses an isolated checkout; unrelated dirty development sources
-and bulky local raw logs are excluded, with the original worktree preserved.
+RecursiveQuotation implements all six source rules and passes scoped recursive
+kernel0. ApplicationQuotation uses exactly two actual checked layers; conversion
+uses independently recovered endpoints. FullDependentInterpreter has independent
+paper/rank/audit reviews PASS. All proof sources, Dune and Audit are frozen for
+final checks. Audit contains885 Check/Print pairs;107 proof modules contain
+2229 Print statements in total. LayerCodeAlignment's final alias-only cleanup
+also passes18closed and kernel0. The actual extracted OCaml closed U0 quotation
+path returns four true checks (empty plan, normal term, normal type program,
+normal faithful program),0.37s under60s cap. Opaque-body warnings retained;
+no direct vm_compute or general application performance claim.
 
-Clean publication CI passes actionlint and ALL 172/172 stages, exit 0,
-10:31:23--10:40:39 UTC. This independently checks the published scope rather
-than borrowing the older 226-stage dirty-worktree result. The baseline's 171
-stages are retained and only the self-interpreter audit is added. There was
-no failure, timeout or weakened stage. This is local CI, not remote CI.
+Full CI:226/226PASS, exit0, raw evidence
+_build/self-interpreter-open-telescope-final-review.d0SH8N. The independent
+fresh aggregate retry also exits0 with2230closed reports:2229self-interpreter
+(885Audit+1344module) plus unchanged upstream Ranks.strong_normalization.
+Retry build /tmp/pts-rk-self-open-telescope-audit-retry.cdzdRH; raw evidence
+_build/self-interpreter-open-telescope-final-review-retry.mfFz4Q. All14 final
+audit stages and FINAL-CHECKS exit0; the audit completed at06:55:34UTC.
+Recursive Audit/core kernel checks pass; the loaded inventory has only
+unchanged upstream functional extensionality and no unsafe/type-in-type/
+assumed-positivity entries. All self-interpreter endpoint assumptions are
+closed. New pristine723cf2 build and kernel check pass, with core inventory
+byte-identical to both new and retained pristine. Frozen original core,
+NormalizationComplexity and PR#1 ZFC comparisons pass. All110 manifest
+entries are hash-stable; initial and retry manifests agree. Pristine path
+/tmp/pts-rk-self-open-telescope-pristine.oGwrNN. Exact commands/results are in
+verification/self-interpreter-open-telescope-2026-10-21/final-review/COMMANDS.md.
 
-A separate fresh absolute build in
-/tmp/pts-rk-self-publication-build.GMOcrx passes with 264 closed assumption
-reports. Recursive kernel checking passes; the original-core inventory is
-byte-identical to pristine upstream. Original kernel, frozen reference ZFC
-and normalization sources are unchanged. All 27 self-interpreter source,
-Dune and README hashes match the reviewed snapshot and remain stable.
-No new axioms, unsafe checks or changes to original PTS rules.
+First fresh audit /tmp/pts-rk-self-open-telescope-audit.DTgliS failed with
+No space left on device (Dune trace writing), not a proof rejection. Its raw
+failure is preserved. Completed scoped caches nr1PlD and QR0a4s were validated
+inactive and cleaned with Dune (cache-clean8/9, both0), recovering about900MiB;
+the inactive failed audit cache was also cleaned. Sources/raw logs remain.
+The successful retry used a new empty directory. Note-04 and PDFKit inspection
+both exit0:37pages, /tmp/pts-rk-self-note.PfjEfO; pages1,31,32,37 visually PASS.
+The note and self README now distinguish earlier module limitations from the
+completed all-source theorem and the remaining rank-only uniformity question.
 
-The published note TeX retains hash 2f9550a4c4c78e44754b2ab7544809b5b86b57a1b5433bc50ea98adc2f0df62e.
-Its actual PDF is 262401 bytes, SHA-256
-73c94e7dcc5e4113ebb828bf9a194c31d22a2d27d6a21dff0c5120878cb1f04e.
-This differs from the earlier recorded build output; the earlier PDF build
-and visual-check claims remain tied to their historical hash, not silently
-transferred to this file. Current inspection is recorded by the parent.
+First remaining research goal beyond the constructed full-source family:
+determine whether a single rank-only index can cover an entire rank-bounded
+fragment, removing per-derivation plan growth. Practical equality-layer
+enumeration and extracted execution beyond leaf regressions are separate
+engineering questions, not assumptions of the source-coverage theorem.
 
-Exact commands, timestamps, versions, source identities, PDF distinction and
-theorem limits: verification/self-interpreter-publish-2026-10-20/COMMANDS.md.
-Raw evidence is retained locally in /tmp/pts-rk-self-publication.KX9EQK.
-This verification report/handoff update is separate from the already
-published source merge and awaits its own evidence commit by the parent.
+HEAD remains e822cd62df393faf4d5e4ed0c4c8fed173ccba6f. No Git/index mutation,
+commit, push or merge; index is empty. This milestone and preceding local
+self-interpreter developments remain uncommitted alongside preserved unrelated
+user changes. git diff --check exits0. The older entries below are provenance,
+not current claims that source coverage remains open. No required proof or
+verification remains for the numerical-plan result. Next exact safe review
+command: git diff --check. Any new fresh build should first check disk space
+(about652MiB free at final audit); do not delete active or unrelated caches.
 
-First remaining mathematical goal is unchanged: compatible dependent
-context/type/term translation with distinct syntax and semantic indices,
-proved substitution/conversion coherence and all intended source derivations.
-Full dependent PHOAS remains open, not ruled out. Next exact smoke command:
-opam exec -- dune build @theories/self_interpreter/audit
-Use a new absolute build directory when fresh assumptions are required.
+## Active continuation: full dependent PHOAS interpreter or a genuine no-go
+
+The user requests persistence to that terminal outcome. Neither outcome is
+established yet; this is an in-progress checkpoint, not a completion claim.
+Do not infer general impossibility from the existing restricted obstructions.
+
+OpenTelescopeRecovery now handles arbitrary open bodies and LITERAL lambda
+closures. It provides executable inverse scope renamings, original typing
+transport in both directions across the realized telescope, and independently
+types concrete closure arguments. Its scoped fresh build and recursive kernel
+check pass (23 closed reports); evidence is in
+verification/self-interpreter-open-telescope-2026-10-21/open-recovery/COMMANDS.md.
+ContextualTelescopeRun compiles (attempt08,12 closed): actual telescope
+applications, original typing, literal beta recovery, substitution/renaming,
+normality, and argument congruence. Raw logs: _build/telescope-run.rwugef;
+fresh build: /tmp/pts-rk-telescope-run.QR0a4s.
+
+ConcreteContextualBeta is frozen at attempt13 (20 closed): actual finite-field
+application to independently typed concrete open A,B,f,u; literal filled
+identity recovery; full guarded normality and syntax/conversion injectivity
+of all four payloads at fixed W/q. SourceValidity is frozen (15 closed),
+TelescopeEquality (15 closed), ContextualTransportLaw (23 closed),
+NormalNeutralSubstitution (10 closed), QuotationTree (11 closed),
+BoundedSyntaxEnumeration (12 closed), ContextualEqualityRealizer (12 closed),
+and ContextualEqualityExtension (17 closed). Scoped evidence is under the
+same open-telescope verification directory; each owner records exact kernel
+status. Root RealizedEquality compiles with eight closed reports.
+OriginalTypecheck is frozen at typecheck-07 with eight closed reports:
+executable inference/sort extraction/checking is sound AND complete for the
+unchanged original typing judgment in valid contexts. Root's four-module
+combined scoped recursive check exits0 in _build/telescope-run.rwugef/kernel-01.log.
+CodeAlignment (11 closed), CheckedEqualityFields (24 closed),
+CheckedContextualFields (31 closed), QuotationCache (13 closed),
+QuotationViewRenaming (9 closed), and QuotationViewSubstitution (7 closed)
+now compile. Owners record their exact scoped kernel results separately.
+TelescopeInstantiation (5 closed) and DependentProgramDecoder (26 closed)
+are frozen with an independent full-source review and recursive kernel0:
+_build/telescope-run.rwugef/program-decoder-kernel-01.log. The latter supplies
+actual ordinary P/Q arguments, direct original typing, exact formation rank,
+normality and literal closure recovery, but NOT source-quotation coverage.
+FaithfulProgramDecoder now supplies normal syntax-faithful packaging of the
+ACTUAL PHOAS program: its interpreter projects and RUNS that program, not a
+precomputed source value. Its scoped build has 12 closed reports and recursive
+kernel0, with independent review. SourceQuotationBudget computes an executable
+budget covering every recursive premise, including large literal sort labels;
+10 closed reports, recursive kernel0 and three independent reviews.
+GlobalEqualityInsertion, CheckedEqualityLayers, QuotationJudgment,
+LocalQuotationSpine, LayerCodeAlignment and NormalEqualityFill now have scoped
+successful builds/kernel checks. Their owners record exact hashes/status in
+the phase directory. FullQuotation's alias-free execution infrastructure
+compiles, but its six-case recursive quotation is still being implemented.
+LocalSpineNaturality's complete same-profile presentation/body/unbody adapter
+compiles (attempt10,6 closed) and passes recursive kernel0 plus independent
+review. ClosedQuotationPackage is frozen (16 closed/kernel0, two reviews),
+LocalInitialState is frozen (12 closed/kernel0). FullQuotation infrastructure
+is frozen at attempt10,16closed: typed Pi/Lam constructors, source-bound
+proofs, state sequencing and literal-code-preserving reframing. The active
+files are RecursiveQuotation (six-case source recursion), ApplicationQuotation
+(two checked-layer repairs), LocalCodeAlignment (local adapter), and root
+IndexedProgramInterpreter (uniform numeric-plan family).
+Latest milestone: RecursiveQuotation attempt02 compiles the COMPLETE
+structural six-case quote_derivation with four closed reports; no target
+quotation/coherence premise. ApplicationQuotation is frozen at attempt05,
+nine closed reports, exactly two real numeric layers. LocalCodeAlignment
+is frozen at attempt13, seven closed reports. Their scoped recursive checks
+are running. IndexedProgramInterpreter is frozen (13 closed), SourceClosure
+is frozen (five closed), and their combined recursive check with refreshed
+LocalSpineNaturality exits0. Root FullDependentInterpreter.v is the final
+closed/open original-source coverage assembly, now being compiled.
+Do not claim completion until that assembly, fresh aggregate and full CI pass.
+New modules are registered in Dune but NOT YET added to aggregate
+Audit. No new aggregate audit or complete CI yet. The note/PDF were updated
+and compiled successfully through note-02 (/tmp/pts-rk-self-note.OSFq1g,
+36pages), including faithful actual-program packaging, source budgets and
+literal local scopes. PDFKit extraction/render exits0; pages1,30–31 reviewed
+visually and pass. Full coverage is still explicitly open in the note.
+
+Practical build finding: redundant exported module aliases cause severe
+environment duplication (QuotationJudgment.vo184MiB, LocalQuotationSpine.vo85MiB).
+FullQuotation's initial mechanically expanded tranche compiled to21KiB. Owners
+have completed alias-only cleanup in QJ/QVS/LS/NF; scoped sources/evidence
+have new hashes, and rebuilds have17/7/26/6 closed reports. LS/NF also pass
+the refreshed recursive kernel. Do not attribute old hashes to rewritten
+sources. Seven exact completed Dune caches were cleaned
+after confirming their logs were retained; only regenerable cache data removed.
+Disk headroom is limited; reuse each owner's current cache, never delete active
+ones. Raw cleanup logs: _build/telescope-run.rwugef/cache-clean-1 through7.
+
+The immediate task is six-case original source quotation using the now
+constructed typed finite views and their structural substitution, plus
+integration of actual global allocation with independently enumerated numeric
+layers. A cache's literal Pi constructor view is kept apart
+from its possibly coerced root code; independently typed realized equality
+aligns those codes without changing the filled payload. The candidate now
+uses syntax/literal/layer budgets, not a claimed rank-only universal fragment.
+See the newest DECISIONS entry. Full recursive coverage and its actual numeric
+allocation remain to prove; the generic closed dependent P/Q interface and
+faithful-envelope injectivity are now constructed.
+No target quoter or semantic lookup table may be
+assumed. Original calculus and prior injectivity remain unchanged.
+
+HEAD remains e822cd62df393faf4d5e4ed0c4c8fed173ccba6f. No Git/index mutation,
+commit, push or merge in this continuation. Existing unrelated changes and
+historical verification logs are preserved. Next local command:
+
+```sh
+PATH=/Users/akuklev/.local/share/pts-rk-ci/bin:$PATH OPAMROOT=/Users/akuklev/.local/share/pts-rk-ci/opam opam exec --switch=pts-rk-ci -- dune build --build-dir=/tmp/pts-rk-telescope-run.QR0a4s --display=short --no-buffer theories/self_interpreter/LocalSpineNaturality.vo
+```
+
+## Contextual beta families and uniform finite telescope signature
+
+The requested three components are constructed in eleven new modules:
+original contextual cast-beta formation under arbitrary dependent telescopes;
+independently typed identity realizations; and full annotation normality with
+a finite syntax-free length/rank-vector interface. ContextualTelescope retains
+literal annotations and independent original formation. ContextualBeta compares
+complete multi-lambda endpoints. TelescopeBetaFamily binds A,B,f,u and its
+plain-annotation identity witness reduces after four applications to literal
+reflexivity. Only the witness TYPE is converted, never subject expansion.
+
+UniformTelescope binds Xi : Pi previous_domains.U_ri and uses neutral Xi
+spines as its generated domains. Formation/normality and replacement
+naturality are proved. UniformTelescopeRecovery.realize computes actual
+lambda-closed declaration values from every originally formed concrete W,
+proving original TypedSub and annotation-wise beta recovery. Its exact final
+closure theorem ends in U_s; arbitrary open-body/lambda-closure transport
+is still a separate obligation, not hidden in the premises.
+
+UniformContextualBeta has an independently typed CLOSED NORMAL identity
+program for every rs,a,b,d. TelescopeBetaSignature adds exactly
+(sum j=0..L (k+1)^j)*(k+1)^3 such fields over the unchanged local-beta
+signature, with executable lookup, computed descriptor budgets, original
+wf/normality, actual identity TypedSub and closed package/run contracts.
+Each added declaration's proved rank is <=k+3. ContextualBudgets proves
+that rank1 permits arbitrarily long zero-rank vectors: length is a separate
+finite-interface index. ContextualBetaFamily/Signature retain the explicit
+one-binder specialization, literal five-argument recovery and local input
+syntax/conversion injectivity. RealizedSignature separately packages actual
+independently typed closed finite realizations. No full quoter is assumed.
+
+All eleven modules compile, with 187 new closed module reports, independent
+mathematical reviews and scoped recursive checks. Fresh aggregate build
+/tmp/pts-rk-self-contextual-beta-audit.tzMxfv exits 0 with 1140 closed reports;
+340 aggregate Check/Print pairs are registered. Original core and aggregate
+recursive kernel checks exit 0; the original inventory matches pristine
+upstream. The loaded inventory retains only unchanged upstream dependent
+functional extensionality, with no unsafe features. Frozen original kernel,
+NormalizationComplexity and PR #1 ZFC comparisons pass; all 68 proof/Dune
+manifest entries stayed byte-identical. Complete local CI/actionlint passes
+226/226 stages, including fresh pristine upstream. No final-audit failure or
+timeout. Audit ran 03:30:55–03:37:31 UTC; CI 03:30:56–03:33:13 UTC.
+Raw final audit:
+_build/self-interpreter-contextual-beta-final-review.nNuNVo.
+
+Note/PDF updated and compiled successfully: 33 pages, 353260 bytes, final
+build /tmp/pts-rk-self-note.dWRjMd. No overfull boxes, missing glyphs or
+undefined references; five mild underfull boxes. All-page text extracted;
+pages1,26–33 visually checked. README and TeX independently reviewed.
+Exact commands, all intermediate failures and hashes:
+verification/self-interpreter-contextual-beta-2026-10-21/COMMANDS.md.
+
+Disk-full interrupted two development builds. Only three exact old temporary
+Dune caches were removed to resume; source, PDF and verification logs were
+preserved. They can be regenerated. Prior raw evidence remains available;
+the historical cache paths are not live verification promises.
+HEAD remains e822cd62df393faf4d5e4ed0c4c8fed173ccba6f; no commit/push/merge
+or Git/index mutation. This and five preceding local Tarski milestones remain
+uncommitted. Unrelated workspace changes are preserved.
+
+First remaining goal: extend UniformTelescopeRecovery from annotation-wise
+and U_s-ending closure recovery to arbitrary OPEN bodies and lambda closures,
+then construct typed applications of the finite uniform contextual beta fields
+to concrete dependent telescopes and payloads. Retain literal annotations,
+normality guards and original typing. Compose that with executable full-source
+derivations and conversion joins to generate internal substitution/reduction
+coherence, then compatible context/type/term translation, global quotation
+normality, strong recovery, source fidelity and full original coverage.
+Neither general function extensionality, neutral cast cancellation, eta,
+cumulativity nor the desired quoter may be assumed. Existing raw-HOAS/STLC
+injectivity is unchanged; full dependent PHOAS remains open, not ruled out.
+Next exact fresh check after that proof continuation:
+
+```sh
+next_build=$(mktemp -d /tmp/pts-rk-self-next.XXXXXX)
+PATH=/Users/akuklev/.local/share/pts-rk-ci/bin:$PATH OPAMROOT=/Users/akuklev/.local/share/pts-rk-ci/opam opam exec --switch=pts-rk-ci -- dune build --build-dir="$next_build" --display=short --no-buffer @theories/self_interpreter/audit
+```
+
+## Internal dependent equality and executable source substitution verified
+
+Five new modules extend the full-PTS PHOAS infrastructure without changing the
+original calculus. IndexedEqualityLevels constructs equality lowering/reversal
+from predicate level max(a+2,d+1) to d, joins forward witnesses, and specializes
+type-law reversal at U_c from c+2 to c+1. Direct original typing, replacement,
+reflexivity computation and guarded normality are checked; this is neither
+cumulativity nor same-level symmetry.
+
+DependentEquality constructs synchronized graph equality of indices and fiber
+values, at sort max(a+2,b+2,d+1). Dependent congruence consumes equality at the
+SAME predicate level d. Fixed-fiber embedding, original typing, substitution
+and literal reflexivity computation are checked. This does not identify its
+evidence with equality after an independently prescribed transport.
+TarskiGraphBeta connects that embedding to the ACTUAL finite beta-law field.
+Constructive identity filling yields graph reflexivity at the literal replaced
+decoded domain and lambda fiber; no eta or subject expansion is used. No
+normality is claimed for the lambda-family graph certificate.
+
+BinderCongruence lifts an OUTER equality through a common map whose body can
+depend on both its parameter and the bound variable, with binder domain and
+codomain independent of the outer parameter. Its actual product-code
+specialization has original typing and literal reflexivity recovery. It is
+not an arbitrary pointwise-to-function equality rule, and administrative beta
+redexes remain. SourceSubstitution transparently replaces/renames supplied
+FullSource derivations and constructs derivations of literal beta contracta.
+Type-valued variable evidence has Prop-valued inhabitation iff original
+TypedSub. No Prop-to-Type extraction, new well-formedness restriction or
+target substitution-coherence assumption is introduced.
+
+Fresh aggregate /tmp/pts-rk-self-coherence-audit.mM2Zir exits 0: 895 closed
+reports (66 new module reports plus 29 new aggregate reports; 282 aggregate
+endpoints total). Recursive core/aggregate kernel, pristine core inventory,
+frozen ZFC/core/NormalizationComplexity and all 57 proof/Dune hash-stability
+checks pass. The loaded inventory retains only unchanged upstream
+extensionality; all new theorem reports are closed, with no unsafe features.
+Full local CI/actionlint passes 226/226 stages, including pristine upstream.
+Independent mathematical and final prose reviews pass. Raw audit/CI:
+_build/self-interpreter-coherence-final-review.qs3wIG.
+
+Updated note/PDF: 31 pages, 342548 bytes; build exit 0 in
+/tmp/pts-rk-self-note.IN9im0. No overfull boxes, missing glyphs or undefined
+references; five mild underfull boxes. All-page text extracted; pages
+1,22–27,31 visually inspected. Exact commands, intermediate compiler failures,
+versions, hashes and contract boundaries:
+verification/self-interpreter-coherence-2026-10-21/COMMANDS.md.
+
+HEAD remains e822cd62df393faf4d5e4ed0c4c8fed173ccba6f. No commit/push/merge
+or index mutation; staged diff empty. This and four preceding local Tarski
+milestones remain uncommitted. Unrelated workspace changes are preserved.
+
+First remaining goal: construct INTERNAL source-reduction coherence under
+dependent binders beyond the restricted common-map construction. A prospective
+generator is the specific cast-beta law under an entire dependent telescope,
+whose identity endpoints should reduce to one literal multi-lambda. This is
+NOT proved: original formation, annotation normality, contextual closure and
+sufficient telescope-length/rank-vector budgets remain to establish. Rank
+alone is not yet shown to bound those indices. Then construct mutually
+compatible translated contexts/families/types/terms, quotation-substitution
+coherence, global normality, strong literal recovery, source fidelity and
+full original coverage. SourceSubstitution is computational source evidence,
+not that target coherence. Do not assume funext, neutral cast cancellation,
+eta, cumulativity or the desired quoter. Existing raw-HOAS/STLC injectivity is
+unchanged; full dependent PHOAS remains open, not ruled out. Next exact command:
+
+```sh
+next_build=$(mktemp -d /tmp/pts-rk-self-next.XXXXXX)
+PATH=/Users/akuklev/.local/share/pts-rk-ci/bin:$PATH OPAMROOT=/Users/akuklev/.local/share/pts-rk-ci/opam opam exec --switch=pts-rk-ci -- dune build --build-dir="$next_build" --display=short --no-buffer @theories/self_interpreter/audit
+```
+
+## Full source conversion certificates and finite beta interface verified
+
+Six new modules advance the dependent PHOAS infrastructure. ScopedTarski
+extends smart binder/Abs/App and sort/code views to arbitrary dependent scopes,
+with exact renaming/weakening, original typing, normality and local fidelity.
+Concrete spines compute each child environment and lifted identity fill;
+nested_binder_typed connects these operations at arbitrary depth. Recovery
+retains literal substituted annotations; a separate corollary contracts the
+identity decoder. This is not yet recursive source quotation.
+
+FullSource supplies Type-valued exact original typing/conversion/step data,
+with propositional inhabitation iff the original relations and computed
+finite literal/explicit-rule ceilings. Original typing coverage includes
+arbitrary contexts; no Prop-to-Type extraction or target-property premise.
+FullConversion computes forward normalization traces and structural endpoint
+comparison. On original wf/typed inputs it decides conversion, returns a
+normal join and preserves original typing at EVERY forward stage. Success
+is sound even on raw syntax; untyped completeness is not claimed.
+CanonicalSource transparently transforms supplied derivations in wf contexts,
+replacing arbitrary zigzags by those joins while preserving every original
+term/type/context/annotation literally. Output certification and full original
+wf coverage are proved. These are metalevel certificates, not internal
+equality witnesses or a full target quoter.
+
+TarskiBeta forms the actual four-argument beta-evidence type, rank
+max(c+1,max(b+2,d+1)) for c=max(a+1,b), and independently constructs its
+closed normal identity inhabitant. TarskiBetaSignature adds (k+1)^3 fields
+to the unchanged TS signature, with actual wf/normal context, bounded lookup
+typing, constructive identity TypedSub and literal reflexivity recovery.
+Its inherited typed environment supports ScopedTarski typing/normality;
+concrete-spine recovery is not automatically instantiated by that bridge.
+The additional field is not derived from arbitrary old product-law evidence.
+Neutral casts still do not beta-cancel, and dependent binder congruence is open.
+
+Fresh aggregate /tmp/pts-rk-self-conversion-audit.SRZ7pU exits 0: 800 closed
+reports (107 new module reports plus 47 new aggregate endpoints; 253 aggregate
+endpoints total). Recursive core/aggregate kernel, pristine core inventory,
+frozen ZFC/core/NormalizationComplexity and all 52 proof/Dune hash-stability
+checks pass. All new theorem reports are closed; the loaded inventory retains
+only unchanged upstream extensionality, with no unsafe features. Full local
+CI/actionlint passes 226/226 stages, including pristine upstream. Independent
+mathematical and prose reviews pass. Raw audit/CI:
+_build/self-interpreter-conversion-final-review.1Axp2t.
+
+Updated note/PDF: 28 pages, 330639 bytes, final build exit 0 in
+/tmp/pts-rk-self-note.nyJwvf. No overfull boxes, missing glyphs or undefined
+references; four pre-existing mild underfull boxes. All-page text extracted;
+final pages 1,21–24,28 visually inspected (earlier build also 20,25).
+Exact commands, all intermediate failures, versions, source/PDF hashes and
+contract boundaries: verification/self-interpreter-conversion-2026-10-21/COMMANDS.md.
+
+HEAD remains e822cd62df393faf4d5e4ed0c4c8fed173ccba6f. No commit/push/merge
+or index mutation; staged diff empty. This and three preceding local Tarski
+milestones remain uncommitted. Unrelated workspace changes are preserved.
+
+First remaining goal: construct compatible represented families/terms/types
+from CanonicalSource data, using arbitrary-scope smart operations; generate
+INTERNAL substitution/reduction coherence along the typed forward traces,
+especially under dependent binders. The finite beta fields solve a local
+law, not that induction. Then prove full normality, strong recovery, faithful
+source syntax and coverage with a sufficient target rank/literal budget.
+Do not assume pointwise-to-function equality, cast cancellation, eta,
+cumulativity or a target-quotation premise. Existing raw-HOAS/STLC injectivity
+is retained; full dependent PHOAS remains open, not ruled out.
+Next exact fresh verification command:
+
+```sh
+next_build=$(mktemp -d /tmp/pts-rk-self-next.XXXXXX)
+PATH=/Users/akuklev/.local/share/pts-rk-ci/bin:$PATH OPAMROOT=/Users/akuklev/.local/share/pts-rk-ci/opam opam exec --switch=pts-rk-ci -- dune build --build-dir="$next_build" --display=short --no-buffer @theories/self_interpreter/audit
+```
+
+## Sort quotations and normal local dependent binders verified
+
+Four new modules extend the finite original Tarski interface. TarskiSorts
+constructs normal closed quotes of U_r:U0 using universe law ZERO, with direct
+identity-application typing and literal U_r recovery. TarskiContext constructs
+arbitrary independently sorted dependent extensions, their actual identity
+contexts/TypedSub and fresh-variable preservation. Its inherited fields and
+generic operations accept arbitrary terms in the new scope and retain original
+typing and literal identity recovery. Instantiated-context normality is not
+asserted.
+
+TarskiBinders contracts only the administrative application of a lambda family
+to the freshly bound variable. Exact renaming and one-way substitution reduction
+are proved. Smart decoded annotations are normal from normal A/B; local Abs/App
+now need no separate decoded-annotation normality premise. Actual dependent
+lambda-family binder introduction, normality, recovery and fixed-index local
+input/conversion injectivity are checked. Its recovery target retains the
+literal substituted decoded domain annotation. These smart operations use the
+fixed signature plus one fresh binder for their bodies; arbitrary-spine smart
+operations and recursive source quotation have NOT yet been composed.
+
+TarskiRoundtrip proves that existing neutral casts do not beta-cancel, in an
+actual wf original context for every external c, including at dependent K-indexed
+types. The compared terms/types are normal, typed and distinct. Actual reflexivity
+specialization still recovers the input. This is a precise limitation of those
+neutral casts, not a PHOAS impossibility theorem or absence of internal equality.
+
+Fresh aggregate /tmp/pts-rk-self-binders-audit.xrjN04 exits 0: 646 closed reports
+(80 new module +39 new aggregate reports; 206 aggregate endpoints total).
+Recursive core/aggregate kernel checks, pristine core inventory comparison and
+frozen ZFC/core/NormalizationComplexity comparisons pass. All 46 proof/Dune files
+are hash-stable; unsafe inventories are empty. The loaded inventory has only
+unchanged upstream extensionality, while all new theorem reports are closed.
+Full local CI/actionlint pass, 226/226 stages including a fresh upstream build.
+Independent mathematical and final prose reviews pass. Raw audit/CI evidence:
+_build/self-interpreter-binders-final-review.r6pl8m.
+
+Updated note/PDF: 26 pages, 322023 bytes; build exit 0 in
+/tmp/pts-rk-self-note.pGxQyu. No overfull boxes, missing glyphs or undefined
+references; four mild underfull boxes retained. All-page text extracted;
+pages 19–23 and 26 visually checked, including new formulas and boundaries.
+Exact commands, all intermediate compiler failures, versions, hashes and
+contract limits: verification/self-interpreter-binders-2026-10-20/COMMANDS.md.
+
+HEAD remains e822cd62df393faf4d5e4ed0c4c8fed173ccba6f. No commit/push/merge
+or index mutation; no staged diff. This continuation and the preceding two
+local Tarski milestones remain uncommitted. Unrelated work is preserved.
+
+First remaining goal: combine the smart binder with arbitrary dependent
+signature environments, then define independent FULL original source derivation
+data and recursive quotation with compatible represented families, terms and
+types. Generate internal source-substitution/conversion witnesses, especially
+under binders; prove global normality, strong source recovery, faithful source
+syntax and coverage. Do not assume neutral cast cancellation, function
+extensionality, literal smart-substitution naturality or the desired quoter.
+Existing raw-HOAS/STLC fidelity is unchanged. Next exact verification command:
+
+```sh
+next_build=$(mktemp -d /tmp/pts-rk-self-next.XXXXXX)
+PATH=/Users/akuklev/.local/share/pts-rk-ci/bin:$PATH OPAMROOT=/Users/akuklev/.local/share/pts-rk-ci/opam opam exec --switch=pts-rk-ci -- dune build --build-dir="$next_build" --display=short --no-buffer @theories/self_interpreter/audit
+```
+
+## Finite dependent Tarski signature and applied operations verified
+
+The local Tarski operations now have an ACTUAL finite normal original
+context and concrete identity TypedSub. New TarskiLawFamily binds A and B
+in one product-law field per pair, sort c+2 for c=max(a+1,b), with a closed
+normal identity inhabitant and literal beta specialization. TarskiPalette
+builds four layers (carriers, decoders, universe codes, universe laws) for
+r<=k+1. TarskiSignature adds product and law fields for a,b<=k, exactly
+4(k+2)+2(k+1)^2 declarations. Original wf, all six field typings, normal
+declarations, constructive fill and exact field equations are checked.
+Telescope closure preserves original typing, normality and syntax; identity
+application is directly typed and reduces to the actual substituted body.
+
+TarskiOperations derives law evidence by applying the finite field, with no
+extra local-law premise. Product/Abs/App typings and actual-fill recovery
+to literal product, law, replaced f and replaced f applied to replaced u are
+proved. Cast normality explicitly requires normal decoded annotations.
+IndexedCoherence constructs homogeneous composition and nondependent map
+congruence at the same predicate rank, with substitution/reflexivity laws;
+arbitrary-evidence identity equations are applied-only, without eta.
+
+Fresh aggregate /tmp/pts-rk-self-signature-audit.qlUK8l exits 0 with 527
+closed reports (68 new module reports +41 new aggregate endpoints; 167
+aggregate endpoints total). Recursive core/aggregate kernel checks, pristine
+core inventory and frozen ZFC/core/NormalizationComplexity comparisons pass.
+All 42 proof/Dune files are hash-stable. Full local CI and actionlint pass,
+226/226 stages including a fresh upstream build. Only unchanged upstream
+extensionality is in the loaded-library inventory; all new reports are
+closed and unsafe inventories empty. Independent math/API/prose reviews pass.
+Raw evidence: _build/self-interpreter-signature-final-review.rFr76B.
+
+Updated note/PDF: 24 pages, 296163 bytes, build exit 0 in
+/tmp/pts-rk-self-note.QLXAnK. No overfull boxes, missing glyphs or unresolved
+references; five mild underfull boxes retained. All-page text extracted;
+table/theorem/equations/boundary/closing pages visually checked. An earlier
+successful build rendered an unsupported pipe table literally; the final
+source uses a correctly rendered mathematical array. Exact commands, all
+attempts/failures, hashes, versions and theorem boundaries:
+verification/self-interpreter-signature-2026-10-20/COMMANDS.md.
+
+HEAD remains e822cd62df393faf4d5e4ed0c4c8fed173ccba6f. No commit, push,
+merge or index mutation in this continuation; no staged diff. Both local
+Tarski milestones remain uncommitted, with unrelated work preserved.
+
+First remaining goal: derivation-directed FULL dependent quotation over the
+finite interface, including represented families and generated internal
+substitution/conversion coherence under binders. Prove full annotation
+normality, identity recovery, faithful source syntax and coverage. Generic
+closure of an independently typed body does not construct that body. The
+budget covers a,b<=k with carriers through k+1, not closure at every available
+carrier rank; literal labels need a sufficient external ceiling as well.
+Neutral casts do not definitionally cancel and pointwise family witnesses
+are not object-function equality. Full dependent PHOAS remains open, not
+ruled out. Existing raw-HOAS/STLC injectivity is unchanged. Next exact check:
+
+```sh
+next_build=$(mktemp -d /tmp/pts-rk-self-next.XXXXXX)
+PATH=/Users/akuklev/.local/share/pts-rk-ci/bin:$PATH OPAMROOT=/Users/akuklev/.local/share/pts-rk-ci/opam opam exec --switch=pts-rk-ci -- dune build --build-dir="$next_build" --display=short --no-buffer @theories/self_interpreter/audit
+```
+
+## Object-language Tarski codes and dependent casts verified
+
+Seven new self-interpreter modules now construct actual original PTS terms:
+IndexedEquality, TarskiProducts, TarskiUniverses, TarskiCasts, TarskiIdentity,
+ClosedTarskiCasts and EtaBoundary. Rank-indexed Leibniz equality supports
+both cast directions using arrow motives at predicate rank c+1, with law
+rank c+2. The genuinely dependent product-code interface has sort a+2 and
+decoded product sort c=max(a+1,b). Universe laws have sort 2 and actual
+identity witnesses for every external rank. Closed casts and their types
+are normal, with exact program-type rank c+3. Direct original typing and
+actual beta recovery are proved: identity-specialized Abs/App return literal
+f/f u, without eta, subject expansion or precomputed semantic payloads.
+
+Fresh aggregate /tmp/pts-rk-self-tarski-audit.OveK1T exits 0 with 418 closed
+reports (63 new module reports and 29 new aggregate endpoints). Recursive
+original/aggregate kernel, byte-identical pristine core inventory and frozen
+ZFC/core/NormalizationComplexity source comparisons pass. All 37 proof/Dune
+files remain hash-stable. All 226 full local CI stages and actionlint pass,
+including a fresh upstream build. New public theorem reports are closed;
+the loaded-library inventory has only the unchanged upstream extensionality
+declaration and no unsafe checks. Independent API/math/prose reviews pass.
+
+Updated note/PDF: 22 pages, 284951 bytes, build exit 0 in
+/tmp/pts-rk-self-note.dAmCLX. No overfull boxes, missing glyphs or unresolved
+references; four mild underfull boxes retained. All-page PDF text extracted;
+new equations/theorem/boundary and closing pages visually inspected. Exact
+commands, tool versions, hashes, every compiler failure and review:
+verification/self-interpreter-tarski-2026-10-20/COMMANDS.md.
+Raw audit/CI: _build/self-interpreter-tarski-final-review.VnAQed.
+
+Publication e822cd62df393faf4d5e4ed0c4c8fed173ccba6f is now confirmed on
+origin/main and local main; the former Keychain pause is resolved. This new
+Tarski continuation is uncommitted, with an empty index. No unrelated work
+was committed or rewritten. Historical pending-publication entries below
+are superseded by the confirmed remote hash.
+
+First remaining goal: close these local operations over a finite dependent
+rank palette and generate internal conversion/substitution coherence from
+independent original typing derivations. Prove identity computation and full
+annotated quotation normality. Local neutral-cast normality does not supply
+that induction; generic casts do not definitionally cancel, and pointwise
+family equality is not host-function equality. EtaBoundary proves this
+beta-only distinction, not impossibility of full dependent PHOAS. Existing
+raw HOAS injectivity and the finite STLC strong decoder are unchanged.
+No full dependent PHOAS interpreter is claimed. Next exact fresh check:
+
+```sh
+next_build=$(mktemp -d /tmp/pts-rk-self-next.XXXXXX)
+PATH=/Users/akuklev/.local/share/pts-rk-ci/bin:$PATH OPAMROOT=/Users/akuklev/.local/share/pts-rk-ci/opam opam exec --switch=pts-rk-ci -- dune build --build-dir="$next_build" --display=short --no-buffer @theories/self_interpreter/audit
+```
+
+## Publication confirmed; object-language PHOAS transport work resumed
+
+User requested continuation after the Keychain pause. Pending push session
+20431 completed with exit 0; git ls-remote origin refs/heads/main independently
+confirms e822cd62df393faf4d5e4ed0c4c8fed173ccba6f, equal to local main.
+No further commit/push is implied by this continuation. Unrelated work remains
+preserved. Source implementation now proceeds in separate self-interpreter
+modules: IndexedEquality, TarskiProducts, TarskiCasts and a limited EtaBoundary
+regression. Construct actual object terms and identity witnesses first;
+global quotation/transport coherence remains an obligation, not a premise.
+
+## Canonical milestone committed; push awaiting macOS Keychain
+
+At the user's new commit/push-then-develop request, scoped commit
+e822cd62df393faf4d5e4ed0c4c8fed173ccba6f contains the four canonical modules,
+Audit/Dune/README, note/PDF, concise evidence and scoped shared handoff entries.
+Root main and the isolated publication branch both point to that commit;
+index is empty. No unrelated BZC/source/log changes were committed. Root
+branch/index synchronization used compare-and-swap and read-tree WITHOUT -u;
+all 3588 pre-existing files passed byte-preservation checks. Backup/index,
+manifest and results: /tmp/pts-rk-canonical-publish.ByVRjo.
+
+Fresh isolated audit /tmp/pts-rk-canonical-publish-build.80zkDC exits 0 with
+326 closed reports. Recursive original/aggregate kernel, pristine inventory,
+frozen ZFC/core/normalization and source-stability checks all pass. The actual
+PDF has been regenerated externally: 20 pages, 274101 bytes, SHA-256
+861d0d4b7e28d0afd216b73412c925c5bb155ad857814cd4ac72d0e8d6a08719.
+Source hash is unchanged; actual PDF text and theorem page were inspected.
+Details: verification/self-interpreter-canonical-publish-2026-10-20/COMMANDS.md.
+
+Ordinary git push origin HEAD:main in the isolated worktree has not returned.
+It is waiting in the configured git-credential-osxkeychain helper. Last
+read-only ls-remote still reports b6c81d1c24404835f5665b8bf4c263379dee5202.
+The push is running in exec session 20431 (git PID 24562, helper PID 24573;
+recheck process identity before any process action). No push exit code exists
+yet, and no push success is claimed. The Air ask-user tool failed with
+Transport closed; a normal user-facing Keychain-approval request was sent.
+Do not extract credentials or bypass the helper. User can approve Keychain
+or push local main through Air. Next exact command: git ls-remote origin
+refs/heads/main, then resume/check the pending session before retrying a push.
+
+To honor the requested ordering, no new proof source was edited before push
+completion. Parallel READ-ONLY research selected a concrete next construction:
+rank-indexed Tarski code carriers C_a:U0 and El_a:C_a->U_a, universe codes,
+and product-code constructors with actual internally encoded transport laws.
+Identity specialization C_a=U_a, El_a=id and p_ab=lambda A B.Pi x:A.B x
+has original typing and genuine beta equations; no eta rule is needed locally.
+Next modules: IndexedEquality (actual Leibniz reflexivity/transport and rank
+accounting), TarskiProducts (code product sort/closed identity operation),
+TarskiCasts (typed dependent Abs/App with reflexivity beta recovery).
+
+For c=max(a+1,b), product constructor type has rank a+2. Use its type-equality
+law at predicate level c+1, whose law type has rank c+2. Motives X->T and
+T->X plus id_X give both cast directions; do NOT assume predicative Leibniz
+symmetry at the same predicate rank. Global source conversion/quotation is
+still open: neutral proof casts do not definitionally cancel, and pointwise
+Leibniz evidence is not automatically equality of host families. Local laws
+must be given actual identity witnesses, not assumed global interpreter laws.
+
+## Full-PTS canonical contexts and hereditary type indices verified
+
+New post-publication milestone: OpenCanonical computes full open-context
+normal forms from context/term syntax, proving its budget sufficient from
+original wf/typing. CanonicalSubstitution proves actual dependent TypedSub
+for normalized entries, hereditary substitution, normalized term/type typing,
+identity, composition and conversion coherence. CanonicalContexts constructs
+normalized original wf contexts and identity TypedSub in both directions;
+the original typing equivalence preserves literal terms/types/annotations.
+It also proves normal declarations, idempotence and original context reduction.
+CanonicalTypeIndex separates faithful raw HOAS syntax from canonical type
+indices identifying exactly source beta conversion, with hereditary laws and
+a checked normal-substitution-creates-redex regression. All apply to the full
+dependent original PTS; they are executable METALEVEL syntax operations.
+
+Fresh aggregate /tmp/pts-rk-self-canonical-audit.JWgIgs passes, exit 0:
+326 closed reports (43 new module reports plus 19 new aggregate endpoints).
+Recursive kernel/pristine inventory checks and unchanged ZFC/core/normalization
+source checks pass. Independent API/prose reviews pass. All 226 stages of
+the full current-root local CI pass, including actionlint and fresh upstream.
+Ignored raw evidence: _build/self-interpreter-canonical-final-review.TPZ60J.
+The separately published snapshot passes all 172 stages; the difference is
+unrelated unpublished developments in this root worktree, not weakened CI.
+
+Updated note/PDF: 20 pages, 270656 bytes, build exit 0 in
+/tmp/pts-rk-self-note.zjmn3r. No overfull boxes, missing glyphs or unresolved
+references; three mild underfull boxes. All-page text extracted and new
+theorem/context/index/closing pages visually checked. Exact commands, all
+compiler failures, tool versions, source/PDF hashes and theorem boundaries:
+verification/self-interpreter-canonical-2026-10-20/COMMANDS.md.
+
+HEAD and origin/main remain b6c81d1c24404835f5665b8bf4c263379dee5202 after
+the completed requested commit/merge/verification-commit/push. Index is empty;
+this new canonical continuation remains uncommitted. Unrelated pre-existing
+changes and logs are preserved. First remaining mathematical goal: realize
+the distinct syntax/canonical-index interface as originally typed internal
+dependent families and a reifier, proving their coherence without assuming
+El or a successful quotation theorem. No full dependent PHOAS evaluator or
+general impossibility result has been claimed. Next verification command in
+the pinned environment: opam exec -- dune build @theories/self_interpreter/audit;
+allocate a fresh absolute --build-dir for new assumption output.
+
+## Scoped publication merged and pushed; full-PTS canonical continuation
+
+At the user's explicit request, committed the self-interpreter snapshot as
+3411f31f007caecfe5251dacb276583edbd4bba9 and merged documentation branch
+docs/finished-developments at 6820469a75acf5a1adda248c193930a9b22daa6a.
+Actual two-parent merge 64864e36b4d748cf117f830cdc4438d4d4054a2f was pushed
+normally to origin/main; git ls-remote confirms that exact tip. Three handoff
+conflicts were resolved by retaining both complete sets of entries.
+
+Publication was prepared in /tmp/pts-rk-phoas-publish.x7qwoT/worktree, without
+unrelated BZC changes or bulky historical logs. Its fresh self-interpreter
+audit gives 264 closed reports and passed recursive kernel/pristine checks.
+The clean cold full CI passes all 172 stages, exit 0, 10:31:23--10:40:39 UTC,
+with raw evidence in /tmp/pts-rk-self-publication.KX9EQK. The separate
+verification commit b6c81d1c24404835f5665b8bf4c263379dee5202 was also pushed
+and confirmed by git ls-remote; original main now has that exact HEAD.
+Concise commands: verification/self-interpreter-publish-2026-10-20/COMMANDS.md.
+The earlier 226-stage audit included unpublished unrelated developments.
+Original main was fast-forwarded by compare-and-swap ref update and read-tree
+WITHOUT -u, after verifying no staged content. All 3576 pre-existing worktree
+files pass the before/after SHA-256 check. The original index is backed up in
+/tmp/pts-rk-phoas-publish.x7qwoT/root-index-before. No worktree file was reset,
+stashed or overwritten; excluded intent-to-add files remain local/untracked.
+
+New proof work now starts from the published snapshot: executable open-context
+canonical normalization, hereditary typed substitution, and separate faithful
+syntax/canonical type codes. These are metalevel original-syntax constructions,
+not yet an internal dependent PHOAS evaluator. Current first goal: compile
+OpenCanonical, CanonicalSubstitution and CanonicalTypeIndex without extra
+assumptions, then fresh audit and document the exact dependent boundary.
+Next pinned command: opam exec -- dune build @theories/self_interpreter/audit.
 
 ## Finite indexed PHOAS, strong closed STLC decoding and dependent boundary
 
-Latest self-interpreter milestone: the finite closed PHOAS package is now
-constructed for independent Church-STLC. PHOASPackage closes actual original
-annotated syntax over one ground binder, k+2 interpretation families and
-2*(k+1)^2 polymorphic handlers. PHOASAlgebra/PHOASFaithful prove original
-typing, full normality and exact annotated-source injectivity, including
-comparison by target conversion. PHOASTelescope/PHOASRecovery discharge
-actual finite substitution and sequential application, without subject
-expansion or an infinite context. Every independent term-closed source
-derivation has a sufficient computed budget. No normal source value is
-precomputed and stored in these codes.
+Latest self-interpreter milestone: the finite closed PHOAS package that was
+open at the preceding checkpoint is now constructed for independent
+Church-STLC. PHOASPackage closes actual original annotated syntax over one
+ground binder, k+2 interpretation families and 2*(k+1)^2 polymorphic handlers.
+PHOASAlgebra/PHOASFaithful prove original typing, full normality and exact
+annotated-source injectivity, including comparison by target conversion.
+PHOASTelescope/PHOASRecovery discharge actual finite substitution and
+sequential application, without subject expansion or an infinite context.
+Every independent term-closed source derivation has a sufficient computed
+budget. No normal source value is precomputed and stored in these codes.
 
 PHOASDecoder.closed_phoas_interpretation provides the ACTUAL closed decoder
 and its original typing: applying it to the normal quote reduces to the
@@ -100,51 +757,107 @@ syntax and semantic indices escape this obstruction. Full dependent indexed
 PHOAS is neither constructed nor ruled out; substitution/conversion coherence
 remains the central missing theorem. No parametricity/no-junk axiom is used.
 
-Earlier components remain: faithful raw HOAS for every original annotated
-term, fixed-head/single-family/literal-generation obstructions, full-PTS
-normalization to canonical codes, and a full closed WEAK semantic-payload
-interpretation. The weak decoder projects an externally precomputed normal
-value; it is not an internal pure-HOAS evaluator. The manuscript's elementary
-representability argument motivates numeric self-reduction conditionally;
-no generic elementary compiler is assumed or formalized by these modules.
-
-Before publication, the original development worktree passed a fresh
-aggregate build in /tmp/pts-rk-self-phoas-final.t8AzBr with 264 closed
-assumption reports. Recursive kernel checking, byte-identical pristine core
-inventory comparison, unchanged frozen ZFC/original core and source-stability
-checks pass. No new axioms or unsafe checks. Pinned versions: Rocq 9.2.0,
-Stdlib 9.1.0, Equations 1.3.2+9.2, OCaml 4.14.2, Dune 3.23.1.
-Independent contract review passes. The original worktree's full local CI
-passed actionlint and 226/226 stages, including unrelated unpublished
-development stages. Those results alone did not certify the isolated
-publication tree; its separate 172-stage check is recorded above.
-No committed CI stage has been removed or weakened.
+Fresh aggregate build /tmp/pts-rk-self-phoas-final.t8AzBr exits 0 with
+264 closed assumption reports. Recursive kernel checking, byte-identical
+pristine core inventory comparison, unchanged frozen ZFC/original core and
+source-stability checks pass. No new axioms or unsafe checks. Pinned versions:
+Rocq 9.2.0, Stdlib 9.1.0, Equations 1.3.2+9.2, OCaml 4.14.2, Dune 3.23.1.
+Independent contract review passes. Full local CI passes actionlint and
+226/226 stages, exit 0; no stage was weakened. Scoped whitespace and shell
+checks pass. This is local worktree verification, not a remote CI result.
 
 Updated native LaTeX–Markdown note/PDF: 18 pages, build exit 0 in
 /tmp/pts-rk-self-note.545XF9. No overfull boxes, missing glyphs or unresolved
 references; three mild underfull boxes. All-page text and new theorem,
-dependent-handler, obstruction and closing pages were visually inspected.
-Exact commands, failures, versions, source/PDF hashes and limits:
+dependent-handler, obstruction and closing pages visually inspected.
+Exact commands, intermediate failures, versions, source/PDF hashes and limits:
 verification/self-interpreter-phoas-2026-10-20/COMMANDS.md.
-Historical reports retain their original paths. Bulky raw logs are retained
-locally, not added to this publication; tracked concise reports distinguish
-their local evidence from source artifacts.
+Ignored raw aggregate logs: _build/self-interpreter-phoas-final.AM5spg;
+full CI: _build/self-interpreter-phoas-ci.v3H6S5. Module attempts are recorded
+in the linked subreports; new bulky raw logs are not source artifacts.
 
-Publication preparation starts from 73c4303dca2228bb6b3a8ec6ba5099a86da00bb0
-in an isolated checkout, preserving the original dirty worktree and unrelated
-changes. Only self-interpreter sources, note/PDF, concise evidence and scoped
-navigation/CI/handoff changes belong to this proof snapshot. The subsequent
-commit, requested documentation-branch merge, clean-tree verification and push
-are recorded in the newer publication checkpoint above.
+HEAD remains 73c4303dca2228bb6b3a8ec6ba5099a86da00bb0. No commit/push
+requested or performed in this continuation; no staged content diff. The
+large existing dirty worktree and unrelated BZC/documentation changes remain
+preserved. Eight new proof modules, Audit/Dune integration, research note/PDF,
+READMEs and handoff are uncommitted. Original rules and frozen ZFC unchanged.
 
 First remaining PHOAS goal: construct compatible dependent context/type/term
 translations with distinct semantic indices and syntax codes, proving actual
 substitution and conversion coherence rather than supplying it as a premise.
 Separately, internalize the STLC decoder's full-A interpretation argument.
 The elementary compiler/numeric normalization route remains independent and
-open. Next exact full publication check in the pinned environment:
-bash tools/check-local-ci.sh
+open. Next exact smoke command in the pinned environment:
+opam exec -- dune build @theories/self_interpreter/audit
 Use a fresh absolute Dune build directory for new assumption reports.
+
+## Full-PTS complexity route, canonical HOAS and weak interpretation
+
+This is the preceding self-interpreter milestone, after the HOAS/PHOAS work
+below. The note now opens with the user's positive non-uniform argument:
+fixed-budget full-PTS normalization is elementary; manuscript non-uniform
+elementary representability would implement its numerical coding. Source
+audit found no Rocq generic elementary compiler, and a concrete manuscript
+modulus callback typo (r f x, not r X f x). The conditional numerical
+proposition is not added as an axiom and does not assert typed unquotation.
+
+RankedNormalization connects the actual executable original normalizer to
+raw HOAS. Its canonical codes identify exactly original beta conversion,
+including annotations. Automatic coverage has only original closed typing
+as premise. Normalization-stage costs and separate code-size bounds are
+proved; no internal PTS normalizer or complete serialization runtime claimed.
+
+LiteralObstruction proves maximum literal r in quote r t and impossibility
+of fixed-head unquotation for all normal sorts U_k from these codes. They
+all have redex bound and result-type rank zero. This does not exclude
+families with a literal ceiling or the conservative rank bound containing it.
+
+WeakFullInterpretation.full_closed_weak_interpretation covers EVERY closed
+original dependent t:A. Its total external quoter constructs a normal packet
+of nf(t), typed at nf(A), plus the faithful raw HOAS tag of t. Original
+validity supplies the exact sort witness A:U_s. The actual closed decoder
+has type rank max(s+3,r+6), returns nf(t) in five beta steps, has original
+result type A and is beta-convertible to t. Separate code conversion
+injectivity retains literal annotated source syntax, not the supplied type
+or derivation. No target inhabitance is assumed. This is a WEAK semantic-
+payload interpretation: the decoder ignores the HOAS tag and normalization
+is EXTERNAL. Pure-HOAS/PHOAS evaluation and strong dependent recovery remain
+open. Earlier independent strong STLC and indexed PHOAS components remain.
+
+Fresh aggregate build /tmp/pts-rk-self-complexity-final.sOJTwD exits 0:
+179 closed assumption reports. Recursive kernel check, byte-identical core
+inventory comparison with pristine upstream, frozen ZFC comparison and
+original core comparison all pass. No new axioms or unsafe checks. Pinned
+Rocq 9.2.0/Stdlib 9.1.0/Equations 1.3.2+9.2/OCaml 4.14.2/Dune 3.23.1.
+Full local CI passes actionlint and all 226 stages. No stage was weakened.
+This is later than the historical documentation-task concurrent Fold failure.
+Independent source/contract review passes. Scoped whitespace and shell checks
+pass; source hashes are unchanged across verification.
+
+The revised LaTeX–Markdown note/PDF compiles to 14 pages, exit 0 in
+/tmp/pts-rk-self-note.W7xAaD. No overfull boxes, missing glyphs or unresolved
+references; three mild underfull boxes. PDF text and representative equations
+visually checked. Full attempts, commands, versions, exact limits and hashes:
+verification/self-interpreter-complexity-2026-10-20/COMMANDS.md.
+Raw aggregate logs: _build/self-interpreter-complexity-final.jKsix8;
+full CI: _build/self-interpreter-complexity-ci.4sCyGR. Module attempt paths
+are in the concise checkpoint; new bulky logs are not source artifacts.
+
+HEAD remains 73c4303dca2228bb6b3a8ec6ba5099a86da00bb0; no new commit/push
+requested or performed in this continuation. No staged content diff.
+Preserved the large existing dirty worktree and unrelated proof/docs work.
+New theorem sources, Audit/Dune integration, research note/PDF, READMEs and
+handoff are uncommitted. Reference ZFC and original PTS rules are unchanged.
+
+First remaining goal on the complexity route: implement the all-rank numeral
+family and a checked compiler for explicit elementary programs, correcting
+the modulus callback, then compile fixed-budget numeric normalization.
+Typed adapters and dependent normal-form reification must still be built;
+the runtime argument alone does not construct them. The independent finite
+closed normal PHOAS package and strong dependent coherence remain open.
+Next exact pinned-environment command:
+opam exec -- dune build @theories/self_interpreter/audit
+Allocate a fresh absolute build directory for new assumption reports.
 
 ## Finished-development expositions and repository hygiene
 

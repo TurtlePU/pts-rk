@@ -4,14 +4,25 @@ From PTSrk.SelfInterpreter Require Import RankObstruction RankedDecoder
   TypedHOASAlgebra RankedNormalization LiteralObstruction WeakFullInterpretation
   DependentPHOAS PHOASConversion PHOASTelescope PHOASAlgebra PHOASFaithful
   PHOASRecovery PHOASPackage PHOASDecoder OpenCanonical CanonicalSubstitution
-  CanonicalTypeIndex CanonicalContexts.
+  CanonicalTypeIndex CanonicalContexts IndexedEquality TarskiProducts TarskiUniverses
+  TarskiCasts TarskiIdentity ClosedTarskiCasts EtaBoundary TarskiLawFamily
+  TarskiPalette IndexedCoherence TarskiSignature TarskiOperations TarskiSorts
+  TarskiContext TarskiBinders TarskiRoundtrip ScopedTarski FullSource
+  FullConversion CanonicalSource TarskiBeta TarskiBetaSignature
+  IndexedEqualityLevels DependentEquality BinderCongruence SourceSubstitution TarskiGraphBeta
+  ContextualTelescope ContextualBeta ContextualBudgets UniformTelescope
+  UniformTelescopeRecovery TelescopeBetaFamily UniformContextualBeta
+  ContextualBetaFamily ContextualBetaSignature RealizedSignature TelescopeBetaSignature.
 
 (** Public theorem types as well as transitive assumptions. Strong unquotation
     retains INDEPENDENT ChurchSTLC source typing. The full-PTS endpoint below
     is WEAK interpretation of a precomputed normal payload plus faithful HOAS
     tag, not an internal evaluator of pure raw HOAS. The canonical-context,
     hereditary-substitution and type-index results cover full original PTS
-    syntax at the metalevel; they do not supply an object-language reifier. *)
+    syntax at the metalevel; they do not supply an object-language reifier.
+    The Tarski modules supply a finite normal original signature with actual
+    typed identity instantiation and LOCAL operation/equality computation,
+    not global dependent quotation or an assumed conversion-coherence law. *)
 Set Printing Implicit.
 Check no_universal_fixed_head_evaluator.
 Check typed_ranked_retraction.
@@ -208,3 +219,1650 @@ Print Assumptions CanonicalTypeIndex.CanonicalTypeIndex.hereditary_index_substit
 Print Assumptions CanonicalTypeIndex.CanonicalTypeIndex.index_substitution_composition.
 Print Assumptions CanonicalTypeIndex.CanonicalTypeIndex.syntax_and_index_separate.
 Print Assumptions CanonicalTypeIndex.CanonicalTypeIndex.normal_substitution_creates_redex.
+
+Check IndexedEquality.IndexedEquality.eq_type_sort.
+Check IndexedEquality.IndexedEquality.refl_typed.
+Check IndexedEquality.IndexedEquality.transport_typed.
+Check IndexedEquality.IndexedEquality.transport_refl.
+Check IndexedEquality.IndexedEquality.eq_type_replace.
+Check TarskiProducts.TarskiProducts.product_type_sort.
+Check TarskiProducts.TarskiProducts.identity_product_typed.
+Check TarskiProducts.TarskiProducts.decoded_product_sort.
+Check TarskiUniverses.TarskiUniverses.every_rank_has_universe_law.
+Check TarskiUniverses.TarskiUniverses.universe_law_sort.
+Check TarskiCasts.TarskiCasts.casts_typed.
+Check TarskiCasts.TarskiCasts.product_law_sort.
+Check TarskiCasts.TarskiCasts.cast_abs_typed.
+Check TarskiCasts.TarskiCasts.cast_app_typed.
+Check TarskiCasts.TarskiCasts.neutral_casts_normal.
+Check TarskiIdentity.TarskiIdentity.identity_law_typed.
+Check TarskiIdentity.TarskiIdentity.identity_abs_typed.
+Check TarskiIdentity.TarskiIdentity.identity_app_typed.
+Check TarskiIdentity.TarskiIdentity.identity_abs_recovers.
+Check TarskiIdentity.TarskiIdentity.identity_app_recovers.
+Check ClosedTarskiCasts.ClosedTarskiCasts.closed_casts_typing.
+Check ClosedTarskiCasts.ClosedTarskiCasts.closed_cast_types_sort.
+Check ClosedTarskiCasts.ClosedTarskiCasts.closed_casts_normal.
+Check ClosedTarskiCasts.ClosedTarskiCasts.run_typed.
+Check ClosedTarskiCasts.ClosedTarskiCasts.closed_casts_reflexivity.
+Check EtaBoundary.EtaBoundary.closed_functions_not_convertible.
+Check EtaBoundary.EtaBoundary.pointwise_recovery.
+Check EtaBoundary.EtaBoundary.dependent_context_wf.
+Check EtaBoundary.EtaBoundary.dependent_indices_not_convertible.
+
+Print Assumptions IndexedEquality.IndexedEquality.eq_type_sort.
+Print Assumptions IndexedEquality.IndexedEquality.refl_typed.
+Print Assumptions IndexedEquality.IndexedEquality.transport_typed.
+Print Assumptions IndexedEquality.IndexedEquality.transport_refl.
+Print Assumptions IndexedEquality.IndexedEquality.eq_type_replace.
+Print Assumptions TarskiProducts.TarskiProducts.product_type_sort.
+Print Assumptions TarskiProducts.TarskiProducts.identity_product_typed.
+Print Assumptions TarskiProducts.TarskiProducts.decoded_product_sort.
+Print Assumptions TarskiUniverses.TarskiUniverses.every_rank_has_universe_law.
+Print Assumptions TarskiUniverses.TarskiUniverses.universe_law_sort.
+Print Assumptions TarskiCasts.TarskiCasts.casts_typed.
+Print Assumptions TarskiCasts.TarskiCasts.product_law_sort.
+Print Assumptions TarskiCasts.TarskiCasts.cast_abs_typed.
+Print Assumptions TarskiCasts.TarskiCasts.cast_app_typed.
+Print Assumptions TarskiCasts.TarskiCasts.neutral_casts_normal.
+Print Assumptions TarskiIdentity.TarskiIdentity.identity_law_typed.
+Print Assumptions TarskiIdentity.TarskiIdentity.identity_abs_typed.
+Print Assumptions TarskiIdentity.TarskiIdentity.identity_app_typed.
+Print Assumptions TarskiIdentity.TarskiIdentity.identity_abs_recovers.
+Print Assumptions TarskiIdentity.TarskiIdentity.identity_app_recovers.
+Print Assumptions ClosedTarskiCasts.ClosedTarskiCasts.closed_casts_typing.
+Print Assumptions ClosedTarskiCasts.ClosedTarskiCasts.closed_cast_types_sort.
+Print Assumptions ClosedTarskiCasts.ClosedTarskiCasts.closed_casts_normal.
+Print Assumptions ClosedTarskiCasts.ClosedTarskiCasts.run_typed.
+Print Assumptions ClosedTarskiCasts.ClosedTarskiCasts.closed_casts_reflexivity.
+Print Assumptions EtaBoundary.EtaBoundary.closed_functions_not_convertible.
+Print Assumptions EtaBoundary.EtaBoundary.pointwise_recovery.
+Print Assumptions EtaBoundary.EtaBoundary.dependent_context_wf.
+Print Assumptions EtaBoundary.EtaBoundary.dependent_indices_not_convertible.
+
+Check TarskiLawFamily.TarskiLawFamily.family_type_sort.
+Check TarskiLawFamily.TarskiLawFamily.family_specialize.
+Check TarskiLawFamily.TarskiLawFamily.identity_family_typed.
+Check TarskiLawFamily.TarskiLawFamily.identity_family_normal.
+Check TarskiLawFamily.TarskiLawFamily.identity_family_specializes.
+Check TarskiPalette.TarskiPalette.context_wf.
+Check TarskiPalette.TarskiPalette.context_normal.
+Check TarskiPalette.TarskiPalette.fill_typed.
+Check TarskiPalette.TarskiPalette.fill_replace.
+Check IndexedCoherence.IndexedCoherence.compose_typed.
+Check IndexedCoherence.IndexedCoherence.map_congruence_typed.
+Check IndexedCoherence.IndexedCoherence.compose_reflexivity.
+Check IndexedCoherence.IndexedCoherence.map_congruence_reflexivity.
+Check IndexedCoherence.IndexedCoherence.compose_left_identity_applies.
+Check IndexedCoherence.IndexedCoherence.compose_right_identity_applies.
+Check TarskiSignature.TarskiSignature.width_exact.
+Check TarskiSignature.TarskiSignature.context_wf.
+Check TarskiSignature.TarskiSignature.context_normal.
+Check TarskiSignature.TarskiSignature.universe_typed.
+Check TarskiSignature.TarskiSignature.universe_law_typed.
+Check TarskiSignature.TarskiSignature.product_typed.
+Check TarskiSignature.TarskiSignature.law_typed.
+Check TarskiSignature.TarskiSignature.fill_typed.
+Check TarskiSignature.TarskiSignature.fill_law.
+Check TarskiSignature.TarskiSignature.fill_replace.
+Check TarskiSignature.TarskiSignature.close_typed.
+Check TarskiSignature.TarskiSignature.close_normal.
+Check TarskiSignature.TarskiSignature.close_injective.
+Check TarskiSignature.TarskiSignature.identity_run_typed.
+Check TarskiSignature.TarskiSignature.identity_run_closed.
+Check TarskiOperations.TarskiOperations.product_code_typed.
+Check TarskiOperations.TarskiOperations.product_evidence_typed.
+Check TarskiOperations.TarskiOperations.product_sorts.
+Check TarskiOperations.TarskiOperations.abstract_term_typed.
+Check TarskiOperations.TarskiOperations.application_term_typed.
+Check TarskiOperations.TarskiOperations.abstract_term_normal.
+Check TarskiOperations.TarskiOperations.application_term_normal.
+Check TarskiOperations.TarskiOperations.product_code_recovers.
+Check TarskiOperations.TarskiOperations.product_evidence_recovers.
+Check TarskiOperations.TarskiOperations.abstract_term_recovers.
+Check TarskiOperations.TarskiOperations.application_term_recovers.
+
+Print Assumptions TarskiLawFamily.TarskiLawFamily.family_type_sort.
+Print Assumptions TarskiLawFamily.TarskiLawFamily.family_specialize.
+Print Assumptions TarskiLawFamily.TarskiLawFamily.identity_family_typed.
+Print Assumptions TarskiLawFamily.TarskiLawFamily.identity_family_normal.
+Print Assumptions TarskiLawFamily.TarskiLawFamily.identity_family_specializes.
+Print Assumptions TarskiPalette.TarskiPalette.context_wf.
+Print Assumptions TarskiPalette.TarskiPalette.context_normal.
+Print Assumptions TarskiPalette.TarskiPalette.fill_typed.
+Print Assumptions TarskiPalette.TarskiPalette.fill_replace.
+Print Assumptions IndexedCoherence.IndexedCoherence.compose_typed.
+Print Assumptions IndexedCoherence.IndexedCoherence.map_congruence_typed.
+Print Assumptions IndexedCoherence.IndexedCoherence.compose_reflexivity.
+Print Assumptions IndexedCoherence.IndexedCoherence.map_congruence_reflexivity.
+Print Assumptions IndexedCoherence.IndexedCoherence.compose_left_identity_applies.
+Print Assumptions IndexedCoherence.IndexedCoherence.compose_right_identity_applies.
+Print Assumptions TarskiSignature.TarskiSignature.width_exact.
+Print Assumptions TarskiSignature.TarskiSignature.context_wf.
+Print Assumptions TarskiSignature.TarskiSignature.context_normal.
+Print Assumptions TarskiSignature.TarskiSignature.universe_typed.
+Print Assumptions TarskiSignature.TarskiSignature.universe_law_typed.
+Print Assumptions TarskiSignature.TarskiSignature.product_typed.
+Print Assumptions TarskiSignature.TarskiSignature.law_typed.
+Print Assumptions TarskiSignature.TarskiSignature.fill_typed.
+Print Assumptions TarskiSignature.TarskiSignature.fill_law.
+Print Assumptions TarskiSignature.TarskiSignature.fill_replace.
+Print Assumptions TarskiSignature.TarskiSignature.close_typed.
+Print Assumptions TarskiSignature.TarskiSignature.close_normal.
+Print Assumptions TarskiSignature.TarskiSignature.close_injective.
+Print Assumptions TarskiSignature.TarskiSignature.identity_run_typed.
+Print Assumptions TarskiSignature.TarskiSignature.identity_run_closed.
+Print Assumptions TarskiOperations.TarskiOperations.product_code_typed.
+Print Assumptions TarskiOperations.TarskiOperations.product_evidence_typed.
+Print Assumptions TarskiOperations.TarskiOperations.product_sorts.
+Print Assumptions TarskiOperations.TarskiOperations.abstract_term_typed.
+Print Assumptions TarskiOperations.TarskiOperations.application_term_typed.
+Print Assumptions TarskiOperations.TarskiOperations.abstract_term_normal.
+Print Assumptions TarskiOperations.TarskiOperations.application_term_normal.
+Print Assumptions TarskiOperations.TarskiOperations.product_code_recovers.
+Print Assumptions TarskiOperations.TarskiOperations.product_evidence_recovers.
+Print Assumptions TarskiOperations.TarskiOperations.abstract_term_recovers.
+Print Assumptions TarskiOperations.TarskiOperations.application_term_recovers.
+
+(** Concrete sort quotation, arbitrary dependent signature extensions,
+    smart local binders and a beta-only neutral-cast boundary. These do not
+    assert derivation-directed quotation of every original source. *)
+Check TarskiSorts.TarskiSorts.code_to_term_typed.
+Check TarskiSorts.TarskiSorts.term_to_code_typed.
+Check TarskiSorts.TarskiSorts.closed_sort_quote_typed.
+Check TarskiSorts.TarskiSorts.closed_sort_quote_normal.
+Check TarskiSorts.TarskiSorts.closed_sort_run_typed.
+Check TarskiSorts.TarskiSorts.closed_sort_quote_recovers.
+Check TarskiContext.TarskiContext.spine_wf.
+Check TarskiContext.TarskiContext.identity_fill_typed.
+Check TarskiContext.TarskiContext.identity_context_wf.
+Check TarskiContext.TarskiContext.identity_fill_new.
+Check TarskiContext.TarskiContext.identity_fill_weakening.
+Check TarskiContext.TarskiContext.spine_embedding_injective.
+Check TarskiContext.TarskiContext.abstract_term_typed.
+Check TarskiContext.TarskiContext.application_term_typed.
+Check TarskiContext.TarskiContext.abstract_term_recovers.
+Check TarskiContext.TarskiContext.application_term_recovers.
+Check TarskiContext.TarskiContext.spine_normal.
+Check TarskiBinders.TarskiBinders.bound_apply_reduces.
+Check TarskiBinders.TarskiBinders.bound_apply_normal.
+Check TarskiBinders.TarskiBinders.bound_apply_rename.
+Check TarskiBinders.TarskiBinders.bound_apply_replace.
+Check TarskiBinders.TarskiBinders.decoded_typed.
+Check TarskiBinders.TarskiBinders.abstract_term_typed.
+Check TarskiBinders.TarskiBinders.application_term_typed.
+Check TarskiBinders.TarskiBinders.abstract_term_normal.
+Check TarskiBinders.TarskiBinders.application_term_normal.
+Check TarskiBinders.TarskiBinders.binder_typed.
+Check TarskiBinders.TarskiBinders.binder_normal.
+Check TarskiBinders.TarskiBinders.binder_recovers.
+Check TarskiBinders.TarskiBinders.binder_inputs_injective.
+Check TarskiBinders.TarskiBinders.binder_conversion_injective.
+Check TarskiRoundtrip.TarskiRoundtrip.context_wf.
+Check TarskiRoundtrip.TarskiRoundtrip.roundtrip_typed.
+Check TarskiRoundtrip.TarskiRoundtrip.roundtrip_normal_distinct.
+Check TarskiRoundtrip.TarskiRoundtrip.roundtrip_not_convertible.
+Check TarskiRoundtrip.TarskiRoundtrip.dependent_context_wf.
+Check TarskiRoundtrip.TarskiRoundtrip.dependent_indices_typed.
+Check TarskiRoundtrip.TarskiRoundtrip.dependent_indices_not_convertible.
+Check TarskiRoundtrip.TarskiRoundtrip.reflexive_roundtrip_recovers.
+
+Print Assumptions TarskiSorts.TarskiSorts.code_to_term_typed.
+Print Assumptions TarskiSorts.TarskiSorts.term_to_code_typed.
+Print Assumptions TarskiSorts.TarskiSorts.closed_sort_quote_typed.
+Print Assumptions TarskiSorts.TarskiSorts.closed_sort_quote_normal.
+Print Assumptions TarskiSorts.TarskiSorts.closed_sort_run_typed.
+Print Assumptions TarskiSorts.TarskiSorts.closed_sort_quote_recovers.
+Print Assumptions TarskiContext.TarskiContext.spine_wf.
+Print Assumptions TarskiContext.TarskiContext.identity_fill_typed.
+Print Assumptions TarskiContext.TarskiContext.identity_context_wf.
+Print Assumptions TarskiContext.TarskiContext.identity_fill_new.
+Print Assumptions TarskiContext.TarskiContext.identity_fill_weakening.
+Print Assumptions TarskiContext.TarskiContext.spine_embedding_injective.
+Print Assumptions TarskiContext.TarskiContext.abstract_term_typed.
+Print Assumptions TarskiContext.TarskiContext.application_term_typed.
+Print Assumptions TarskiContext.TarskiContext.abstract_term_recovers.
+Print Assumptions TarskiContext.TarskiContext.application_term_recovers.
+Print Assumptions TarskiContext.TarskiContext.spine_normal.
+Print Assumptions TarskiBinders.TarskiBinders.bound_apply_reduces.
+Print Assumptions TarskiBinders.TarskiBinders.bound_apply_normal.
+Print Assumptions TarskiBinders.TarskiBinders.bound_apply_rename.
+Print Assumptions TarskiBinders.TarskiBinders.bound_apply_replace.
+Print Assumptions TarskiBinders.TarskiBinders.decoded_typed.
+Print Assumptions TarskiBinders.TarskiBinders.abstract_term_typed.
+Print Assumptions TarskiBinders.TarskiBinders.application_term_typed.
+Print Assumptions TarskiBinders.TarskiBinders.abstract_term_normal.
+Print Assumptions TarskiBinders.TarskiBinders.application_term_normal.
+Print Assumptions TarskiBinders.TarskiBinders.binder_typed.
+Print Assumptions TarskiBinders.TarskiBinders.binder_normal.
+Print Assumptions TarskiBinders.TarskiBinders.binder_recovers.
+Print Assumptions TarskiBinders.TarskiBinders.binder_inputs_injective.
+Print Assumptions TarskiBinders.TarskiBinders.binder_conversion_injective.
+Print Assumptions TarskiRoundtrip.TarskiRoundtrip.context_wf.
+Print Assumptions TarskiRoundtrip.TarskiRoundtrip.roundtrip_typed.
+Print Assumptions TarskiRoundtrip.TarskiRoundtrip.roundtrip_normal_distinct.
+Print Assumptions TarskiRoundtrip.TarskiRoundtrip.roundtrip_not_convertible.
+Print Assumptions TarskiRoundtrip.TarskiRoundtrip.dependent_context_wf.
+Print Assumptions TarskiRoundtrip.TarskiRoundtrip.dependent_indices_typed.
+Print Assumptions TarskiRoundtrip.TarskiRoundtrip.dependent_indices_not_convertible.
+Print Assumptions TarskiRoundtrip.TarskiRoundtrip.reflexive_roundtrip_recovers.
+
+(** Full ORIGINAL source data and typed forward conversion certificates are
+    separate from target quotation. The additional finite beta fields have
+    actual identity inhabitants; neither they nor scoped smart operations
+    claim global dependent source-substitution/conversion coherence. *)
+Check ScopedTarski.ScopedTarski.nested_binder_typed.
+Check ScopedTarski.ScopedTarski.extend_code_identity_context.
+Check ScopedTarski.ScopedTarski.binder_normal.
+Check ScopedTarski.ScopedTarski.binder_recovers.
+Check ScopedTarski.ScopedTarski.binder_annotation_recovers.
+Check ScopedTarski.ScopedTarski.binder_conversion_injective.
+Check ScopedTarski.ScopedTarski.binder_rename.
+Check ScopedTarski.ScopedTarski.binder_weakening.
+Check ScopedTarski.ScopedTarski.sort_quote_typed.
+Check ScopedTarski.ScopedTarski.sort_quote_normal.
+Check ScopedTarski.ScopedTarski.sort_quote_recovers.
+Check ScopedTarski.ScopedTarski.application_term_typed.
+Check ScopedTarski.ScopedTarski.application_term_normal.
+Check FullSource.FullSource.step_iff.
+Check FullSource.FullSource.conversion_iff.
+Check FullSource.FullSource.derivation_iff.
+Check FullSource.FullSource.source_budget_bounds.
+Check FullSource.FullSource.every_original_derivation_has_finite_data.
+Check FullConversion.FullConversion.normalization_trace_correct.
+Check FullConversion.FullConversion.joining_sound.
+Check FullConversion.FullConversion.joining_typed.
+Check FullConversion.FullConversion.join_attempt_complete.
+Check FullConversion.FullConversion.convertibleb_correct.
+Check FullConversion.FullConversion.supplied_conversion_certified.
+Check FullConversion.FullConversion.beta_trace_computes.
+Check FullConversion.FullConversion.distinct_sorts_compute.
+Check CanonicalSource.CanonicalSource.canonicalize.
+Check CanonicalSource.CanonicalSource.canonicalize_certified.
+Check CanonicalSource.CanonicalSource.derivation_iff.
+Check CanonicalSource.CanonicalSource.every_original_typing_has_certified_data.
+Check TarskiBeta.TarskiBeta.family_type_sort.
+Check TarskiBeta.TarskiBeta.family_type_normal.
+Check TarskiBeta.TarskiBeta.family_specialize.
+Check TarskiBeta.TarskiBeta.identity_family_typed.
+Check TarskiBeta.TarskiBeta.identity_family_normal.
+Check TarskiBeta.TarskiBeta.identity_family_specializes.
+Check TarskiBetaSignature.TarskiBetaSignature.width_exact.
+Check TarskiBetaSignature.TarskiBetaSignature.context_wf.
+Check TarskiBetaSignature.TarskiBetaSignature.context_normal.
+Check TarskiBetaSignature.TarskiBetaSignature.environment.
+Check TarskiBetaSignature.TarskiBetaSignature.environment_fill.
+Check TarskiBetaSignature.TarskiBetaSignature.beta_typed.
+Check TarskiBetaSignature.TarskiBetaSignature.fill_typed.
+Check TarskiBetaSignature.TarskiBetaSignature.fill_beta.
+Check TarskiBetaSignature.TarskiBetaSignature.apply_beta_typed.
+Check TarskiBetaSignature.TarskiBetaSignature.apply_beta_normal.
+Check TarskiBetaSignature.TarskiBetaSignature.apply_beta_recovers.
+
+Print Assumptions ScopedTarski.ScopedTarski.nested_binder_typed.
+Print Assumptions ScopedTarski.ScopedTarski.extend_code_identity_context.
+Print Assumptions ScopedTarski.ScopedTarski.binder_normal.
+Print Assumptions ScopedTarski.ScopedTarski.binder_recovers.
+Print Assumptions ScopedTarski.ScopedTarski.binder_annotation_recovers.
+Print Assumptions ScopedTarski.ScopedTarski.binder_conversion_injective.
+Print Assumptions ScopedTarski.ScopedTarski.binder_rename.
+Print Assumptions ScopedTarski.ScopedTarski.binder_weakening.
+Print Assumptions ScopedTarski.ScopedTarski.sort_quote_typed.
+Print Assumptions ScopedTarski.ScopedTarski.sort_quote_normal.
+Print Assumptions ScopedTarski.ScopedTarski.sort_quote_recovers.
+Print Assumptions ScopedTarski.ScopedTarski.application_term_typed.
+Print Assumptions ScopedTarski.ScopedTarski.application_term_normal.
+Print Assumptions FullSource.FullSource.step_iff.
+Print Assumptions FullSource.FullSource.conversion_iff.
+Print Assumptions FullSource.FullSource.derivation_iff.
+Print Assumptions FullSource.FullSource.source_budget_bounds.
+Print Assumptions FullSource.FullSource.every_original_derivation_has_finite_data.
+Print Assumptions FullConversion.FullConversion.normalization_trace_correct.
+Print Assumptions FullConversion.FullConversion.joining_sound.
+Print Assumptions FullConversion.FullConversion.joining_typed.
+Print Assumptions FullConversion.FullConversion.join_attempt_complete.
+Print Assumptions FullConversion.FullConversion.convertibleb_correct.
+Print Assumptions FullConversion.FullConversion.supplied_conversion_certified.
+Print Assumptions FullConversion.FullConversion.beta_trace_computes.
+Print Assumptions FullConversion.FullConversion.distinct_sorts_compute.
+Print Assumptions CanonicalSource.CanonicalSource.canonicalize.
+Print Assumptions CanonicalSource.CanonicalSource.canonicalize_certified.
+Print Assumptions CanonicalSource.CanonicalSource.derivation_iff.
+Print Assumptions CanonicalSource.CanonicalSource.every_original_typing_has_certified_data.
+Print Assumptions TarskiBeta.TarskiBeta.family_type_sort.
+Print Assumptions TarskiBeta.TarskiBeta.family_type_normal.
+Print Assumptions TarskiBeta.TarskiBeta.family_specialize.
+Print Assumptions TarskiBeta.TarskiBeta.identity_family_typed.
+Print Assumptions TarskiBeta.TarskiBeta.identity_family_normal.
+Print Assumptions TarskiBeta.TarskiBeta.identity_family_specializes.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.width_exact.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.context_wf.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.context_normal.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.environment.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.environment_fill.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.beta_typed.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.fill_typed.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.fill_beta.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.apply_beta_typed.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.apply_beta_normal.
+Print Assumptions TarskiBetaSignature.TarskiBetaSignature.apply_beta_recovers.
+
+(** Explicit predicative reversal, synchronized graph evidence and limited
+    common-map binder congruence are internal programs. Source substitution
+    constructs source derivation data, not the missing full target quoter. *)
+Check IndexedEqualityLevels.IndexedEqualityLevels.lower_typed.
+Check IndexedEqualityLevels.IndexedEqualityLevels.reverse_typed.
+Check IndexedEqualityLevels.IndexedEqualityLevels.join_typed.
+Check IndexedEqualityLevels.IndexedEqualityLevels.reverse_type_law_typed.
+Check IndexedEqualityLevels.IndexedEqualityLevels.join_replace.
+Check IndexedEqualityLevels.IndexedEqualityLevels.join_reflexivity.
+Check IndexedEqualityLevels.IndexedEqualityLevels.join_normal.
+Check DependentEquality.DependentEquality.graph_eq_sort.
+Check DependentEquality.DependentEquality.graph_refl_typed.
+Check DependentEquality.DependentEquality.graph_transport_typed.
+Check DependentEquality.DependentEquality.dependent_congruence_typed.
+Check DependentEquality.DependentEquality.dependent_congruence_reflexivity.
+Check DependentEquality.DependentEquality.fiber_congruence_typed.
+Check DependentEquality.DependentEquality.fiber_congruence_reflexivity.
+Check DependentEquality.DependentEquality.dependent_congruence_normal.
+Check DependentEquality.DependentEquality.fiber_congruence_normal.
+Check BinderCongruence.BinderCongruence.binder_congruence_typed.
+Check BinderCongruence.BinderCongruence.binder_congruence_reflexivity.
+Check BinderCongruence.BinderCongruence.product_congruence_typed.
+Check BinderCongruence.BinderCongruence.product_identity_reflexivity.
+Check SourceSubstitution.SourceSubstitution.substitution_data_iff.
+Check SourceSubstitution.SourceSubstitution.derivation_replace.
+Check SourceSubstitution.SourceSubstitution.beta_contractum_derivation.
+Check SourceSubstitution.SourceSubstitution.beta_source_preservation.
+Check TarskiGraphBeta.TarskiGraphBeta.decoded_family_typed.
+Check TarskiGraphBeta.TarskiGraphBeta.fiber_congruence_convertible.
+Check TarskiGraphBeta.TarskiGraphBeta.beta_graph_typed.
+Check TarskiGraphBeta.TarskiGraphBeta.beta_graph_recovers.
+Check TarskiGraphBeta.TarskiGraphBeta.filled_beta_graph_typed.
+
+Print Assumptions IndexedEqualityLevels.IndexedEqualityLevels.lower_typed.
+Print Assumptions IndexedEqualityLevels.IndexedEqualityLevels.reverse_typed.
+Print Assumptions IndexedEqualityLevels.IndexedEqualityLevels.join_typed.
+Print Assumptions IndexedEqualityLevels.IndexedEqualityLevels.reverse_type_law_typed.
+Print Assumptions IndexedEqualityLevels.IndexedEqualityLevels.join_replace.
+Print Assumptions IndexedEqualityLevels.IndexedEqualityLevels.join_reflexivity.
+Print Assumptions IndexedEqualityLevels.IndexedEqualityLevels.join_normal.
+Print Assumptions DependentEquality.DependentEquality.graph_eq_sort.
+Print Assumptions DependentEquality.DependentEquality.graph_refl_typed.
+Print Assumptions DependentEquality.DependentEquality.graph_transport_typed.
+Print Assumptions DependentEquality.DependentEquality.dependent_congruence_typed.
+Print Assumptions DependentEquality.DependentEquality.dependent_congruence_reflexivity.
+Print Assumptions DependentEquality.DependentEquality.fiber_congruence_typed.
+Print Assumptions DependentEquality.DependentEquality.fiber_congruence_reflexivity.
+Print Assumptions DependentEquality.DependentEquality.dependent_congruence_normal.
+Print Assumptions DependentEquality.DependentEquality.fiber_congruence_normal.
+Print Assumptions BinderCongruence.BinderCongruence.binder_congruence_typed.
+Print Assumptions BinderCongruence.BinderCongruence.binder_congruence_reflexivity.
+Print Assumptions BinderCongruence.BinderCongruence.product_congruence_typed.
+Print Assumptions BinderCongruence.BinderCongruence.product_identity_reflexivity.
+Print Assumptions SourceSubstitution.SourceSubstitution.substitution_data_iff.
+Print Assumptions SourceSubstitution.SourceSubstitution.derivation_replace.
+Print Assumptions SourceSubstitution.SourceSubstitution.beta_contractum_derivation.
+Print Assumptions SourceSubstitution.SourceSubstitution.beta_source_preservation.
+Print Assumptions TarskiGraphBeta.TarskiGraphBeta.decoded_family_typed.
+Print Assumptions TarskiGraphBeta.TarskiGraphBeta.fiber_congruence_convertible.
+Print Assumptions TarskiGraphBeta.TarskiGraphBeta.beta_graph_typed.
+Print Assumptions TarskiGraphBeta.TarskiGraphBeta.beta_graph_recovers.
+Print Assumptions TarskiGraphBeta.TarskiGraphBeta.filled_beta_graph_typed.
+
+(** Contextual cast-beta laws: actual telescope formation, independent normal
+    identity realizations and a finite syntax-free rank-vector interface.
+    Domain-parameter recovery is not a recursive full-source quoter. *)
+Check ContextualTelescope.ContextualTelescope.close_typing.
+Check ContextualTelescope.ContextualTelescope.close_type_sort.
+Check ContextualTelescope.ContextualTelescope.context_sub.
+Check ContextualTelescope.ContextualTelescope.close_term_normal_iff.
+Check ContextualTelescope.ContextualTelescope.rank_exact.
+Check ContextualBeta.ContextualBeta.beta_type_sort.
+Check ContextualBeta.ContextualBeta.beta_type_replace.
+Check ContextualBeta.ContextualBeta.beta_type_normal.
+Check ContextualBeta.ContextualBeta.identity_witness_typed.
+Check ContextualBeta.ContextualBeta.identity_type_recovers.
+Check ContextualBeta.ContextualBeta.identity_witness_computes.
+Check ContextualBudgets.ContextualBudgets.vectors_spec.
+Check ContextualBudgets.ContextualBudgets.vectors_length.
+Check ContextualBudgets.ContextualBudgets.every_vector_enumerated.
+Check ContextualBudgets.ContextualBudgets.rank_does_not_bound_length.
+Check UniformTelescope.UniformTelescope.generated_formed.
+Check UniformTelescope.UniformTelescope.generated_normal.
+Check UniformTelescope.UniformTelescope.parameters_rank_bound.
+Check UniformTelescopeRecovery.UniformTelescopeRecovery.parameters_replace.
+Check UniformTelescopeRecovery.UniformTelescopeRecovery.domains_replace.
+Check UniformTelescopeRecovery.UniformTelescopeRecovery.realize_correct.
+Check UniformTelescopeRecovery.UniformTelescopeRecovery.realize_closure_recovers.
+Check TelescopeBetaFamily.TelescopeBetaFamily.family_type_sort.
+Check TelescopeBetaFamily.TelescopeBetaFamily.family_type_normal.
+Check TelescopeBetaFamily.TelescopeBetaFamily.identity_family_plain_typed.
+Check TelescopeBetaFamily.TelescopeBetaFamily.identity_family_typed.
+Check TelescopeBetaFamily.TelescopeBetaFamily.identity_family_normal.
+Check TelescopeBetaFamily.TelescopeBetaFamily.identity_family_specializes.
+Check UniformContextualBeta.UniformContextualBeta.family_type_sort.
+Check UniformContextualBeta.UniformContextualBeta.family_type_normal.
+Check UniformContextualBeta.UniformContextualBeta.identity_family_typed.
+Check UniformContextualBeta.UniformContextualBeta.identity_family_normal.
+Check UniformContextualBeta.UniformContextualBeta.identity_family_replace.
+Check UniformContextualBeta.UniformContextualBeta.rank_bounded.
+Check ContextualBetaFamily.ContextualBetaFamily.family_type_sort.
+Check ContextualBetaFamily.ContextualBetaFamily.identity_family_typed.
+Check ContextualBetaFamily.ContextualBetaFamily.identity_family_specializes.
+Check ContextualBetaSignature.ContextualBetaSignature.context_wf.
+Check ContextualBetaSignature.ContextualBetaSignature.context_normal.
+Check ContextualBetaSignature.ContextualBetaSignature.fill_typed.
+Check ContextualBetaSignature.ContextualBetaSignature.apply_contextual_typed.
+Check ContextualBetaSignature.ContextualBetaSignature.apply_contextual_normal.
+Check ContextualBetaSignature.ContextualBetaSignature.apply_contextual_recovers.
+Check ContextualBetaSignature.ContextualBetaSignature.apply_contextual_conversion_injective.
+Check RealizedSignature.RealizedSignature.fill_typed.
+Check RealizedSignature.RealizedSignature.filled_typing.
+Check RealizedSignature.RealizedSignature.run_closed_recovers.
+Check RealizedSignature.RealizedSignature.run_typed.
+Check TelescopeBetaSignature.TelescopeBetaSignature.every_descriptor_has_finite_index.
+Check TelescopeBetaSignature.TelescopeBetaSignature.width_exact.
+Check TelescopeBetaSignature.TelescopeBetaSignature.context_wf.
+Check TelescopeBetaSignature.TelescopeBetaSignature.context_normal.
+Check TelescopeBetaSignature.TelescopeBetaSignature.contextual_typed.
+Check TelescopeBetaSignature.TelescopeBetaSignature.fill_typed.
+Check TelescopeBetaSignature.TelescopeBetaSignature.fill_contextual.
+Check TelescopeBetaSignature.TelescopeBetaSignature.signature_rank_bounded.
+Check TelescopeBetaSignature.TelescopeBetaSignature.run_closed_recovers.
+Check TelescopeBetaSignature.TelescopeBetaSignature.run_typed.
+
+Print Assumptions ContextualTelescope.ContextualTelescope.close_typing.
+Print Assumptions ContextualTelescope.ContextualTelescope.close_type_sort.
+Print Assumptions ContextualTelescope.ContextualTelescope.context_sub.
+Print Assumptions ContextualTelescope.ContextualTelescope.close_term_normal_iff.
+Print Assumptions ContextualTelescope.ContextualTelescope.rank_exact.
+Print Assumptions ContextualBeta.ContextualBeta.beta_type_sort.
+Print Assumptions ContextualBeta.ContextualBeta.beta_type_replace.
+Print Assumptions ContextualBeta.ContextualBeta.beta_type_normal.
+Print Assumptions ContextualBeta.ContextualBeta.identity_witness_typed.
+Print Assumptions ContextualBeta.ContextualBeta.identity_type_recovers.
+Print Assumptions ContextualBeta.ContextualBeta.identity_witness_computes.
+Print Assumptions ContextualBudgets.ContextualBudgets.vectors_spec.
+Print Assumptions ContextualBudgets.ContextualBudgets.vectors_length.
+Print Assumptions ContextualBudgets.ContextualBudgets.every_vector_enumerated.
+Print Assumptions ContextualBudgets.ContextualBudgets.rank_does_not_bound_length.
+Print Assumptions UniformTelescope.UniformTelescope.generated_formed.
+Print Assumptions UniformTelescope.UniformTelescope.generated_normal.
+Print Assumptions UniformTelescope.UniformTelescope.parameters_rank_bound.
+Print Assumptions UniformTelescopeRecovery.UniformTelescopeRecovery.parameters_replace.
+Print Assumptions UniformTelescopeRecovery.UniformTelescopeRecovery.domains_replace.
+Print Assumptions UniformTelescopeRecovery.UniformTelescopeRecovery.realize_correct.
+Print Assumptions UniformTelescopeRecovery.UniformTelescopeRecovery.realize_closure_recovers.
+Print Assumptions TelescopeBetaFamily.TelescopeBetaFamily.family_type_sort.
+Print Assumptions TelescopeBetaFamily.TelescopeBetaFamily.family_type_normal.
+Print Assumptions TelescopeBetaFamily.TelescopeBetaFamily.identity_family_plain_typed.
+Print Assumptions TelescopeBetaFamily.TelescopeBetaFamily.identity_family_typed.
+Print Assumptions TelescopeBetaFamily.TelescopeBetaFamily.identity_family_normal.
+Print Assumptions TelescopeBetaFamily.TelescopeBetaFamily.identity_family_specializes.
+Print Assumptions UniformContextualBeta.UniformContextualBeta.family_type_sort.
+Print Assumptions UniformContextualBeta.UniformContextualBeta.family_type_normal.
+Print Assumptions UniformContextualBeta.UniformContextualBeta.identity_family_typed.
+Print Assumptions UniformContextualBeta.UniformContextualBeta.identity_family_normal.
+Print Assumptions UniformContextualBeta.UniformContextualBeta.identity_family_replace.
+Print Assumptions UniformContextualBeta.UniformContextualBeta.rank_bounded.
+Print Assumptions ContextualBetaFamily.ContextualBetaFamily.family_type_sort.
+Print Assumptions ContextualBetaFamily.ContextualBetaFamily.identity_family_typed.
+Print Assumptions ContextualBetaFamily.ContextualBetaFamily.identity_family_specializes.
+Print Assumptions ContextualBetaSignature.ContextualBetaSignature.context_wf.
+Print Assumptions ContextualBetaSignature.ContextualBetaSignature.context_normal.
+Print Assumptions ContextualBetaSignature.ContextualBetaSignature.fill_typed.
+Print Assumptions ContextualBetaSignature.ContextualBetaSignature.apply_contextual_typed.
+Print Assumptions ContextualBetaSignature.ContextualBetaSignature.apply_contextual_normal.
+Print Assumptions ContextualBetaSignature.ContextualBetaSignature.apply_contextual_recovers.
+Print Assumptions ContextualBetaSignature.ContextualBetaSignature.apply_contextual_conversion_injective.
+Print Assumptions RealizedSignature.RealizedSignature.fill_typed.
+Print Assumptions RealizedSignature.RealizedSignature.filled_typing.
+Print Assumptions RealizedSignature.RealizedSignature.run_closed_recovers.
+Print Assumptions RealizedSignature.RealizedSignature.run_typed.
+Print Assumptions TelescopeBetaSignature.TelescopeBetaSignature.every_descriptor_has_finite_index.
+Print Assumptions TelescopeBetaSignature.TelescopeBetaSignature.width_exact.
+Print Assumptions TelescopeBetaSignature.TelescopeBetaSignature.context_wf.
+Print Assumptions TelescopeBetaSignature.TelescopeBetaSignature.context_normal.
+Print Assumptions TelescopeBetaSignature.TelescopeBetaSignature.contextual_typed.
+Print Assumptions TelescopeBetaSignature.TelescopeBetaSignature.fill_typed.
+Print Assumptions TelescopeBetaSignature.TelescopeBetaSignature.fill_contextual.
+Print Assumptions TelescopeBetaSignature.TelescopeBetaSignature.signature_rank_bounded.
+Print Assumptions TelescopeBetaSignature.TelescopeBetaSignature.run_closed_recovers.
+Print Assumptions TelescopeBetaSignature.TelescopeBetaSignature.run_typed.
+(** Full-dependent construction: checked constituent contracts. Coverage is
+    added only when RecursiveQuotation is complete; generic packages alone
+    are not a full-source interpreter theorem. *)
+From PTSrk.SelfInterpreter Require Import OpenTelescopeRecovery
+  ContextualTelescopeRun
+  ConcreteContextualBeta
+  SourceValidity
+  SourceClosure
+  SourceQuotationBudget
+  TelescopeEquality
+  ContextualTransportLaw
+  NormalNeutralSubstitution
+  QuotationTree
+  BoundedSyntaxEnumeration
+  ContextualEqualityRealizer
+  ContextualEqualityExtension
+  RealizedEquality
+  OriginalTypecheck
+  CodeAlignment
+  QuotationCache
+  QuotationViewRenaming
+  QuotationViewSubstitution
+  QuotationJudgment
+  CheckedEqualityFields
+  CheckedContextualFields
+  CheckedEqualityLayers
+  ContextReification
+  GlobalEqualityInsertion
+  LocalQuotationSpine
+  LocalSpineNaturality
+  LayerCodeAlignment
+  TelescopeInstantiation
+  DependentProgramDecoder
+  FaithfulProgramDecoder
+  NormalEqualityFill
+  LocalInitialState
+  ClosedQuotationPackage
+  FullQuotation
+  IndexedProgramInterpreter.
+
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.variables_complete.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.terms_sound.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.terms_complete.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.terms_iff.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.computed_budget.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.depth_nodes.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.nodes_budget.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.terms_monotone.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.sized_terms_iff.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.computed_sized_budget.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.binder_annotation_is_counted.
+Check BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.small_beta_redex_is_enumerated.
+Check QuotationTree.QuotationTree.source_rename.
+Check QuotationTree.QuotationTree.source_substitute.
+Check QuotationTree.QuotationTree.cache_substitute.
+Check QuotationTree.QuotationTree.indexed_cache_substitute.
+Check QuotationTree.QuotationTree.pi_view.
+Check QuotationTree.QuotationTree.normal_caches_substitute.
+Check QuotationTree.QuotationTree.substituted_cache_neutral.
+Check QuotationTree.QuotationTree.regression_source.
+Check QuotationTree.QuotationTree.regression_cache.
+Check QuotationTree.QuotationTree.regression_not_constructor_cache.
+Check QuotationTree.QuotationTree.regression_normal.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.eraser_replace.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.eraser_rounds.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.eraser_run.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_eraser.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.witness_type_sort.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.raw_witness_typed.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_typed.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_normal.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_erases.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_run_typed.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_transport_typed.
+Check ContextualEqualityRealizer.ContextualEqualityRealizer.rank_bounded.
+Check CheckedEqualityLayers.CheckedEqualityLayers.extend_typing.
+Check CheckedEqualityLayers.CheckedEqualityLayers.insertion_typed.
+Check CheckedEqualityLayers.CheckedEqualityLayers.insertion_fill.
+Check CheckedEqualityLayers.CheckedEqualityLayers.insertion_injective.
+Check CheckedEqualityLayers.CheckedEqualityLayers.insertion_index.
+Check CheckedEqualityLayers.CheckedEqualityLayers.build_typing.
+Check CheckedEqualityLayers.CheckedEqualityLayers.embedding_typed.
+Check CheckedEqualityLayers.CheckedEqualityLayers.embedding_fill.
+Check CheckedEqualityLayers.CheckedEqualityLayers.embedding_injective.
+Check CheckedEqualityLayers.CheckedEqualityLayers.embedding_index.
+Check CheckedEqualityLayers.CheckedEqualityLayers.filled_embedding.
+Check CheckedEqualityLayers.CheckedEqualityLayers.embedding_normal.
+Check CheckedEqualityLayers.CheckedEqualityLayers.embedding_preserves_recovery.
+Check CheckedEqualityLayers.CheckedEqualityLayers.build_wf.
+Check CheckedEqualityLayers.CheckedEqualityLayers.build_normal.
+Check CheckedEqualityLayers.CheckedEqualityLayers.build_fill_typed.
+Check CheckedEqualityLayers.CheckedEqualityLayers.request_available.
+Check CheckedEqualityLayers.CheckedEqualityLayers.request_typed.
+Check CheckedEqualityLayers.CheckedEqualityLayers.request_fill.
+Check CheckedEqualityLayers.CheckedEqualityLayers.allocate.
+Check CheckedEqualityLayers.CheckedEqualityLayers.allocate_original.
+Check CheckedEqualityLayers.CheckedEqualityLayers.allocated_typed.
+Check CheckedEqualityLayers.CheckedEqualityLayers.allocated_fill.
+Check CheckedContextualFields.CheckedContextualFields.original_telescope_covered.
+Check CheckedContextualFields.CheckedContextualFields.local_apply_typed.
+Check CheckedContextualFields.CheckedContextualFields.local_apply_normal.
+Check CheckedContextualFields.CheckedContextualFields.filled_local_domains.
+Check CheckedContextualFields.CheckedContextualFields.local_transport_erases.
+Check CheckedContextualFields.CheckedContextualFields.accepted_complete.
+Check CheckedContextualFields.CheckedContextualFields.field_pack.
+Check CheckedContextualFields.CheckedContextualFields.pack_accepted.
+Check CheckedContextualFields.CheckedContextualFields.entries_iff.
+Check CheckedContextualFields.CheckedContextualFields.computed_coverage.
+Check CheckedContextualFields.CheckedContextualFields.context_wf.
+Check CheckedContextualFields.CheckedContextualFields.context_normal.
+Check CheckedContextualFields.CheckedContextualFields.fill_typed.
+Check CheckedContextualFields.CheckedContextualFields.entry_value_normal.
+Check CheckedContextualFields.CheckedContextualFields.field_variable_typed.
+Check CheckedContextualFields.CheckedContextualFields.fill_source.
+Check CheckedContextualFields.CheckedContextualFields.fill_field.
+Check CheckedContextualFields.CheckedContextualFields.value_erases.
+Check CheckedContextualFields.CheckedContextualFields.locate_sound.
+Check CheckedContextualFields.CheckedContextualFields.locate_complete.
+Check CheckedContextualFields.CheckedContextualFields.lookup_complete.
+Check CheckedContextualFields.CheckedContextualFields.lookup_typed.
+Check CheckedContextualFields.CheckedContextualFields.lookup_filled.
+Check CheckedContextualFields.CheckedContextualFields.entry_rank_bounded.
+Check CheckedContextualFields.CheckedContextualFields.candidates_iff.
+Check CheckedContextualFields.CheckedContextualFields.accepted_decompose.
+Check CheckedContextualFields.CheckedContextualFields.accepted_recompose.
+Check CheckedContextualFields.CheckedContextualFields.field_sorted.
+Check CheckedContextualFields.CheckedContextualFields.field_normal.
+Check CheckedContextualFields.CheckedContextualFields.value_typed.
+Check CheckedContextualFields.CheckedContextualFields.value_normal.
+Check NormalNeutralSubstitution.NormalNeutralSubstitution.transpose_neutral.
+Check NormalNeutralSubstitution.NormalNeutralSubstitution.transpose_normal.
+Check NormalNeutralSubstitution.NormalNeutralSubstitution.isLambda_replace.
+Check NormalNeutralSubstitution.NormalNeutralSubstitution.normalb_replace.
+Check NormalNeutralSubstitution.NormalNeutralSubstitution.replacement_normal.
+Check NormalNeutralSubstitution.NormalNeutralSubstitution.replacement_neutral.
+Check NormalNeutralSubstitution.NormalNeutralSubstitution.composition_normal.
+Check NormalNeutralSubstitution.NormalNeutralSubstitution.composition_neutral.
+Check NormalNeutralSubstitution.NormalNeutralSubstitution.typed_normal_replacement.
+Check NormalNeutralSubstitution.NormalNeutralSubstitution.substitution_normal.
+Check ContextReification.ContextReification.declaration_rank_correct.
+Check ContextReification.ContextReification.context_snoc.
+Check ContextReification.ContextReification.body_typed.
+Check ContextReification.ContextReification.fill_typed.
+Check ContextReification.ContextReification.filled_body.
+Check ContextReification.ContextReification.body_normal.
+Check ContextReification.ContextReification.fill_normal.
+Check ContextReification.ContextReification.body_injective.
+Check ContextReification.ContextReification.reify_formed.
+Check ContextReification.ContextReification.reify_normal.
+Check FullQuotation.FullQuotation.sequence_type.
+Check FullQuotation.FullQuotation.product_result.
+Check FullQuotation.FullQuotation.lambda_result.
+Check FullQuotation.FullQuotation.judgment_rank_bounded.
+Check FullQuotation.FullQuotation.request_state.
+Check FullQuotation.FullQuotation.reframe_judgment.
+Check FullQuotation.FullQuotation.advance_compose.
+Check FullQuotation.FullQuotation.advance_push.
+Check FullQuotation.FullQuotation.sequence.
+Check FullQuotation.FullQuotation.run_flatten.
+Check FullQuotation.FullQuotation.embedding_typed.
+Check FullQuotation.FullQuotation.embedding_index.
+Check FullQuotation.FullQuotation.embedding_fill.
+Check FullQuotation.FullQuotation.advance.
+Check FullQuotation.FullQuotation.advance_judgment.
+Check FullQuotation.FullQuotation.advance_variables.
+Check ClosedQuotationPackage.ClosedQuotationPackage.type_program_typed.
+Check ClosedQuotationPackage.ClosedQuotationPackage.quote_typed.
+Check ClosedQuotationPackage.ClosedQuotationPackage.interpreter_typed.
+Check ClosedQuotationPackage.ClosedQuotationPackage.interpreter_sort.
+Check ClosedQuotationPackage.ClosedQuotationPackage.run_typed.
+Check ClosedQuotationPackage.ClosedQuotationPackage.run_recovers.
+Check ClosedQuotationPackage.ClosedQuotationPackage.output_recovers.
+Check ClosedQuotationPackage.ClosedQuotationPackage.type_program_recovers.
+Check ClosedQuotationPackage.ClosedQuotationPackage.source_type_sort.
+Check ClosedQuotationPackage.ClosedQuotationPackage.run_original_type.
+Check ClosedQuotationPackage.ClosedQuotationPackage.type_program_normal.
+Check ClosedQuotationPackage.ClosedQuotationPackage.quote_normal.
+Check ClosedQuotationPackage.ClosedQuotationPackage.interpreter_normal.
+Check ClosedQuotationPackage.ClosedQuotationPackage.quote_injective.
+Check ClosedQuotationPackage.ClosedQuotationPackage.quote_conversion_injective.
+Check ClosedQuotationPackage.ClosedQuotationPackage.closed_interpretation.
+Check SourceQuotationBudget.SourceQuotationBudget.source_budget_bounded.
+Check SourceQuotationBudget.SourceQuotationBudget.result_rank_bounded.
+Check SourceQuotationBudget.SourceQuotationBudget.judgment_literals_bounded.
+Check SourceQuotationBudget.SourceQuotationBudget.pi_children.
+Check SourceQuotationBudget.SourceQuotationBudget.lambda_children.
+Check SourceQuotationBudget.SourceQuotationBudget.application_children.
+Check SourceQuotationBudget.SourceQuotationBudget.conversion_children.
+Check SourceQuotationBudget.SourceQuotationBudget.context_children.
+Check SourceQuotationBudget.SourceQuotationBudget.original_coverage.
+Check SourceQuotationBudget.SourceQuotationBudget.literal_rank_zero_regression.
+Check ContextualTransportLaw.ContextualTransportLaw.family_specialize.
+Check ContextualTransportLaw.ContextualTransportLaw.law_specialize.
+Check ContextualTransportLaw.ContextualTransportLaw.identity_transport_recovers.
+Check ContextualTransportLaw.ContextualTransportLaw.identity_family_specializes.
+Check ContextualTransportLaw.ContextualTransportLaw.family_type_normal.
+Check ContextualTransportLaw.ContextualTransportLaw.family_type_replace.
+Check ContextualTransportLaw.ContextualTransportLaw.family_type_rename.
+Check ContextualTransportLaw.ContextualTransportLaw.identity_family_normal.
+Check ContextualTransportLaw.ContextualTransportLaw.identity_family_replace.
+Check ContextualTransportLaw.ContextualTransportLaw.rank_bounded.
+Check ContextualTransportLaw.ContextualTransportLaw.identity_family_plain_typed.
+Check ContextualTransportLaw.ContextualTransportLaw.identity_type_recovers.
+Check ContextualTransportLaw.ContextualTransportLaw.identity_family_typed.
+Check ContextualTransportLaw.ContextualTransportLaw.family_type_sort.
+Check ContextualTransportLaw.ContextualTransportLaw.instance_type_sort.
+Check ContextualTransportLaw.ContextualTransportLaw.identity_instance_type_recovers.
+Check ContextualTransportLaw.ContextualTransportLaw.law_sort.
+Check ContextualTransportLaw.ContextualTransportLaw.law_replace.
+Check ContextualTransportLaw.ContextualTransportLaw.law_reflexivity_reduces.
+Check ContextualTransportLaw.ContextualTransportLaw.reflexivity_typed.
+Check ContextualTransportLaw.ContextualTransportLaw.reflexivity_specializes.
+Check ContextualTransportLaw.ContextualTransportLaw.law_normal.
+Check ContextualTransportLaw.ContextualTransportLaw.reflexivity_normal.
+Check TelescopeEquality.TelescopeEquality.eq_type_sort.
+Check TelescopeEquality.TelescopeEquality.refl_case_typed.
+Check TelescopeEquality.TelescopeEquality.eq_type_replace.
+Check TelescopeEquality.TelescopeEquality.refl_case_replace.
+Check TelescopeEquality.TelescopeEquality.transport_function_typed.
+Check TelescopeEquality.TelescopeEquality.transport_typed.
+Check TelescopeEquality.TelescopeEquality.transport_refl.
+Check TelescopeEquality.TelescopeEquality.eq_type_normal.
+Check TelescopeEquality.TelescopeEquality.refl_case_normal.
+Check TelescopeEquality.TelescopeEquality.motive_typed.
+Check TelescopeEquality.TelescopeEquality.motive_recovers.
+Check TelescopeEquality.TelescopeEquality.map_case_typed.
+Check TelescopeEquality.TelescopeEquality.map_case_refl.
+Check TelescopeEquality.TelescopeEquality.map_case_normal.
+Check TelescopeEquality.TelescopeEquality.rank_bounded.
+Check SourceClosure.SourceClosure.close.
+Check SourceClosure.SourceClosure.close_sound.
+Check SourceClosure.SourceClosure.reopen_recovers.
+Check SourceClosure.SourceClosure.reopen_typed.
+Check SourceClosure.SourceClosure.closure_injective.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.original_realization.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.identity_normal.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.interpreter_typed.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.interpreter_sort.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.interpreter_normal.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.type_program_typed.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.quote_typed.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.type_program_normal.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.quote_normal.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.decode_recovers.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.decode_original_type.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.quote_injective.
+Check IndexedProgramInterpreter.IndexedProgramInterpreter.quote_conversion_injective.
+Check LocalInitialState.LocalInitialState.initial.
+Check LocalInitialState.LocalInitialState.initial_variables.
+Check LocalInitialState.LocalInitialState.after_variables.
+Check LocalInitialState.LocalInitialState.initial_domains.
+Check LocalInitialState.LocalInitialState.after_domains.
+Check LocalInitialState.LocalInitialState.original_wf.
+Check LocalInitialState.LocalInitialState.original_fill.
+Check LocalInitialState.LocalInitialState.signature_normal.
+Check LocalInitialState.LocalInitialState.identity_normal.
+Check LocalInitialState.LocalInitialState.environment_embedding.
+Check LocalInitialState.LocalInitialState.inherited_identity.
+Check LocalInitialState.LocalInitialState.original_realization.
+Check CheckedEqualityFields.CheckedEqualityFields.entry_rank_bounded.
+Check CheckedEqualityFields.CheckedEqualityFields.context_wf.
+Check CheckedEqualityFields.CheckedEqualityFields.context_normal.
+Check CheckedEqualityFields.CheckedEqualityFields.fill_typed.
+Check CheckedEqualityFields.CheckedEqualityFields.entry_value_normal.
+Check CheckedEqualityFields.CheckedEqualityFields.field_variable_typed.
+Check CheckedEqualityFields.CheckedEqualityFields.fill_source.
+Check CheckedEqualityFields.CheckedEqualityFields.fill_field.
+Check CheckedEqualityFields.CheckedEqualityFields.field_application_erases.
+Check CheckedEqualityFields.CheckedEqualityFields.locate_sound.
+Check CheckedEqualityFields.CheckedEqualityFields.locate_complete.
+Check CheckedEqualityFields.CheckedEqualityFields.lookup_complete.
+Check CheckedEqualityFields.CheckedEqualityFields.lookup_typed.
+Check CheckedEqualityFields.CheckedEqualityFields.original_descriptor_covered.
+Check CheckedEqualityFields.CheckedEqualityFields.descriptors_iff.
+Check CheckedEqualityFields.CheckedEqualityFields.accepted_sound.
+Check CheckedEqualityFields.CheckedEqualityFields.accepted_complete.
+Check CheckedEqualityFields.CheckedEqualityFields.field_sorted.
+Check CheckedEqualityFields.CheckedEqualityFields.field_normal.
+Check CheckedEqualityFields.CheckedEqualityFields.value_typed.
+Check CheckedEqualityFields.CheckedEqualityFields.value_normal.
+Check CheckedEqualityFields.CheckedEqualityFields.value_erases.
+Check CheckedEqualityFields.CheckedEqualityFields.entries_iff.
+Check CheckedEqualityFields.CheckedEqualityFields.computed_coverage.
+Check QuotationCache.QuotationCache.substituted_root_certificate.
+Check QuotationCache.QuotationCache.realization_extend.
+Check QuotationCache.QuotationCache.sort_certificate.
+Check QuotationCache.QuotationCache.view_certificate.
+Check QuotationCache.QuotationCache.recache_view.
+Check QuotationCache.QuotationCache.constructed_product_certificate.
+Check QuotationCache.QuotationCache.build_product_view.
+Check QuotationCache.QuotationCache.view_shape.
+Check QuotationCache.QuotationCache.realized_code_sort.
+Check QuotationCache.QuotationCache.view_from_shape.
+Check QuotationCache.QuotationCache.spine_realization.
+Check QuotationCache.QuotationCache.realization_inherited.
+Check QuotationCache.QuotationCache.extend_realization.
+Check DependentProgramDecoder.DependentProgramDecoder.type_program_sort.
+Check DependentProgramDecoder.DependentProgramDecoder.term_program_sort.
+Check DependentProgramDecoder.DependentProgramDecoder.evaluate_typed.
+Check DependentProgramDecoder.DependentProgramDecoder.term_program_replace.
+Check DependentProgramDecoder.DependentProgramDecoder.term_program_rename.
+Check DependentProgramDecoder.DependentProgramDecoder.evaluate_replace.
+Check DependentProgramDecoder.DependentProgramDecoder.result_replace.
+Check DependentProgramDecoder.DependentProgramDecoder.result_rename.
+Check DependentProgramDecoder.DependentProgramDecoder.decoder_typed.
+Check DependentProgramDecoder.DependentProgramDecoder.decoder_first.
+Check DependentProgramDecoder.DependentProgramDecoder.decode_reduces.
+Check DependentProgramDecoder.DependentProgramDecoder.evaluate_closure.
+Check DependentProgramDecoder.DependentProgramDecoder.decode_closure.
+Check DependentProgramDecoder.DependentProgramDecoder.decode_recovers.
+Check DependentProgramDecoder.DependentProgramDecoder.decode_typed.
+Check DependentProgramDecoder.DependentProgramDecoder.quoted_type_reduces.
+Check DependentProgramDecoder.DependentProgramDecoder.package_typed.
+Check DependentProgramDecoder.DependentProgramDecoder.result_recovers.
+Check DependentProgramDecoder.DependentProgramDecoder.evaluated_type_program_typed.
+Check DependentProgramDecoder.DependentProgramDecoder.result_sort.
+Check DependentProgramDecoder.DependentProgramDecoder.decoder_type_sort.
+Check DependentProgramDecoder.DependentProgramDecoder.type_program_normal.
+Check DependentProgramDecoder.DependentProgramDecoder.term_program_normal.
+Check DependentProgramDecoder.DependentProgramDecoder.decoder_normal.
+Check DependentProgramDecoder.DependentProgramDecoder.package_normal.
+Check DependentProgramDecoder.DependentProgramDecoder.close_injective.
+Check QuotationViewRenaming.QuotationViewRenaming.square_lift.
+Check QuotationViewRenaming.QuotationViewRenaming.square_replace.
+Check QuotationViewRenaming.QuotationViewRenaming.compatible_weaken.
+Check QuotationViewRenaming.QuotationViewRenaming.compatible_renaming.
+Check QuotationViewRenaming.QuotationViewRenaming.rename_certificate.
+Check QuotationViewRenaming.QuotationViewRenaming.rename_view.
+Check QuotationViewRenaming.QuotationViewRenaming.rename_shape.
+Check QuotationViewRenaming.QuotationViewRenaming.weaken_view.
+Check QuotationViewRenaming.QuotationViewRenaming.weaken_shape.
+Check ConcreteContextualBeta.ConcreteContextualBeta.instantiate_typed.
+Check ConcreteContextualBeta.ConcreteContextualBeta.instantiate_identity_recovers.
+Check ConcreteContextualBeta.ConcreteContextualBeta.instantiated_identity_typed.
+Check ConcreteContextualBeta.ConcreteContextualBeta.apply_family_typed.
+Check ConcreteContextualBeta.ConcreteContextualBeta.apply_identity_recovers.
+Check ConcreteContextualBeta.ConcreteContextualBeta.concrete_identity_recovers.
+Check ConcreteContextualBeta.ConcreteContextualBeta.carrier_argument_typed.
+Check ConcreteContextualBeta.ConcreteContextualBeta.code_argument_typed.
+Check ConcreteContextualBeta.ConcreteContextualBeta.function_argument_typed.
+Check ConcreteContextualBeta.ConcreteContextualBeta.domain_argument_typed.
+Check ConcreteContextualBeta.ConcreteContextualBeta.concrete_apply_typed.
+Check ConcreteContextualBeta.ConcreteContextualBeta.parameter_values_normal.
+Check ConcreteContextualBeta.ConcreteContextualBeta.realize_normal.
+Check ConcreteContextualBeta.ConcreteContextualBeta.instantiate_normal.
+Check ConcreteContextualBeta.ConcreteContextualBeta.concrete_apply_normal.
+Check ConcreteContextualBeta.ConcreteContextualBeta.field_apply_typed.
+Check ConcreteContextualBeta.ConcreteContextualBeta.field_apply_normal.
+Check ConcreteContextualBeta.ConcreteContextualBeta.field_apply_recovers.
+Check ConcreteContextualBeta.ConcreteContextualBeta.concrete_apply_inputs_injective.
+Check ConcreteContextualBeta.ConcreteContextualBeta.concrete_apply_conversion_injective.
+Check CodeAlignment.CodeAlignment.lifted_typed.
+Check CodeAlignment.CodeAlignment.fill_lifted.
+Check CodeAlignment.CodeAlignment.align_typed.
+Check CodeAlignment.CodeAlignment.align_normal.
+Check CodeAlignment.CodeAlignment.align_neutral.
+Check CodeAlignment.CodeAlignment.align_filled_erases.
+Check CodeAlignment.CodeAlignment.align_preserves_recovery.
+Check CodeAlignment.CodeAlignment.align_filled_typed.
+Check CodeAlignment.CodeAlignment.application_typed.
+Check CodeAlignment.CodeAlignment.application_normal.
+Check CodeAlignment.CodeAlignment.application_filled_erases.
+Check LayerCodeAlignment.LayerCodeAlignment.preserve_realization.
+Check LayerCodeAlignment.LayerCodeAlignment.lifted_decoder.
+Check LayerCodeAlignment.LayerCodeAlignment.allocate_codes.
+Check LayerCodeAlignment.LayerCodeAlignment.align_typed.
+Check LayerCodeAlignment.LayerCodeAlignment.align_normal.
+Check LayerCodeAlignment.LayerCodeAlignment.align_neutral.
+Check LayerCodeAlignment.LayerCodeAlignment.align_erases.
+Check LayerCodeAlignment.LayerCodeAlignment.align_preserves_recovery.
+Check LayerCodeAlignment.LayerCodeAlignment.unpack_pack.
+Check LayerCodeAlignment.LayerCodeAlignment.value_pack.
+Check LayerCodeAlignment.LayerCodeAlignment.field_application_typed.
+Check LayerCodeAlignment.LayerCodeAlignment.field_application_normal.
+Check LayerCodeAlignment.LayerCodeAlignment.filled_new_domains.
+Check LayerCodeAlignment.LayerCodeAlignment.filled_lifted.
+Check LayerCodeAlignment.LayerCodeAlignment.transport_typed.
+Check LayerCodeAlignment.LayerCodeAlignment.transport_normal.
+Check LayerCodeAlignment.LayerCodeAlignment.transport_neutral.
+Check LayerCodeAlignment.LayerCodeAlignment.transport_erases.
+Check TelescopeInstantiation.TelescopeInstantiation.splice_base.
+Check TelescopeInstantiation.TelescopeInstantiation.splice_ren.
+Check TelescopeInstantiation.TelescopeInstantiation.splice_replace.
+Check TelescopeInstantiation.TelescopeInstantiation.splice_typed.
+Check TelescopeInstantiation.TelescopeInstantiation.run_splice.
+Check LocalSpineNaturality.LocalSpineNaturality.presented_close_type.
+Check LocalSpineNaturality.LocalSpineNaturality.close_type_rename.
+Check LocalSpineNaturality.LocalSpineNaturality.presented_telescope_rename.
+Check LocalSpineNaturality.LocalSpineNaturality.renamed_presentation.
+Check LocalSpineNaturality.LocalSpineNaturality.renamed_body.
+Check LocalSpineNaturality.LocalSpineNaturality.renamed_unbody.
+Check QuotationJudgment.QuotationJudgment.universe_view.
+Check QuotationJudgment.QuotationJudgment.code_as_term.
+Check QuotationJudgment.QuotationJudgment.sort_case.
+Check QuotationJudgment.QuotationJudgment.product_case.
+Check QuotationJudgment.QuotationJudgment.rename_judgment.
+Check QuotationJudgment.QuotationJudgment.lambda_case.
+Check QuotationJudgment.QuotationJudgment.variable_case.
+Check QuotationJudgment.QuotationJudgment.term_as_code.
+Check QuotationJudgment.QuotationJudgment.application_case.
+Check QuotationJudgment.QuotationJudgment.realized_ranks_agree.
+Check QuotationJudgment.QuotationJudgment.universe_result_rank.
+Check QuotationJudgment.QuotationJudgment.invert_product.
+Check QuotationJudgment.QuotationJudgment.source_typing.
+Check QuotationJudgment.QuotationJudgment.formation_rank.
+Check QuotationJudgment.QuotationJudgment.empty_environment.
+Check QuotationJudgment.QuotationJudgment.rename_environment.
+Check QuotationJudgment.QuotationJudgment.push_environment.
+Check OriginalTypecheck.OriginalTypecheck.infer_sound.
+Check OriginalTypecheck.OriginalTypecheck.infer_complete.
+Check OriginalTypecheck.OriginalTypecheck.inferred_type_agrees.
+Check OriginalTypecheck.OriginalTypecheck.type_sort_sound.
+Check OriginalTypecheck.OriginalTypecheck.type_sort_complete.
+Check OriginalTypecheck.OriginalTypecheck.check_sound.
+Check OriginalTypecheck.OriginalTypecheck.check_complete.
+Check OriginalTypecheck.OriginalTypecheck.check_iff.
+Check LocalQuotationSpine.LocalQuotationSpine.context_wf.
+Check LocalQuotationSpine.LocalQuotationSpine.context_ren.
+Check LocalQuotationSpine.LocalQuotationSpine.formed_rename.
+Check LocalQuotationSpine.LocalQuotationSpine.normal_rename.
+Check LocalQuotationSpine.LocalQuotationSpine.fill_square.
+Check LocalQuotationSpine.LocalQuotationSpine.filled_rename.
+Check LocalQuotationSpine.LocalQuotationSpine.environment_compatible.
+Check LocalQuotationSpine.LocalQuotationSpine.base_extension_typed.
+Check LocalQuotationSpine.LocalQuotationSpine.initial_state.
+Check LocalQuotationSpine.LocalQuotationSpine.extend_state.
+Check LocalQuotationSpine.LocalQuotationSpine.push_state.
+Check LocalQuotationSpine.LocalQuotationSpine.present.
+Check LocalQuotationSpine.LocalQuotationSpine.body_typed.
+Check LocalQuotationSpine.LocalQuotationSpine.body_normal.
+Check LocalQuotationSpine.LocalQuotationSpine.body_injective.
+Check LocalQuotationSpine.LocalQuotationSpine.body_filled.
+Check LocalQuotationSpine.LocalQuotationSpine.unbody_body.
+Check LocalQuotationSpine.LocalQuotationSpine.body_unbody.
+Check LocalQuotationSpine.LocalQuotationSpine.unbody_typed.
+Check LocalQuotationSpine.LocalQuotationSpine.filled_conversion.
+Check LocalQuotationSpine.LocalQuotationSpine.rename_identity.
+Check LocalQuotationSpine.LocalQuotationSpine.rename_composition.
+Check LocalQuotationSpine.LocalQuotationSpine.build_append.
+Check LocalQuotationSpine.LocalQuotationSpine.extend_square.
+Check LocalQuotationSpine.LocalQuotationSpine.extend_view.
+Check LocalQuotationSpine.LocalQuotationSpine.extended_push_domains.
+Check NormalEqualityFill.NormalEqualityFill.fill_block_normal.
+Check NormalEqualityFill.NormalEqualityFill.palette_normal.
+Check NormalEqualityFill.NormalEqualityFill.signature_normal.
+Check NormalEqualityFill.NormalEqualityFill.layer_normal.
+Check NormalEqualityFill.NormalEqualityFill.build_normal.
+Check NormalEqualityFill.NormalEqualityFill.concrete_normal.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.program_type_sort.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.decoder_typed.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.decoder_application.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.decode_package_runs.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.decode_package_recovers.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.package_typed.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.package_normal.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.package_injective.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.package_conversion_injective.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.decode_typed.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.decoder_type_sort.
+Check FaithfulProgramDecoder.FaithfulProgramDecoder.decoder_normal.
+Check SourceValidity.SourceValidity.context_sound.
+Check SourceValidity.SourceValidity.context_prefix.
+Check SourceValidity.SourceValidity.context_declaration.
+Check SourceValidity.SourceValidity.lookup_formation.
+Check SourceValidity.SourceValidity.product_inversion.
+Check SourceValidity.SourceValidity.result_formation.
+Check SourceValidity.SourceValidity.result_formation_sound.
+Check SourceValidity.SourceValidity.lookup_formation_sound.
+Check SourceValidity.SourceValidity.result_type_rank.
+Check SourceValidity.SourceValidity.result_rank_independent.
+Check SourceValidity.SourceValidity.context_iff.
+Check SourceValidity.SourceValidity.source_data_iff.
+Check SourceValidity.SourceValidity.original_validity_coverage.
+Check SourceValidity.SourceValidity.result_rank_computes.
+Check SourceValidity.SourceValidity.product_inversion_computes.
+Check QuotationViewSubstitution.QuotationViewSubstitution.square_lift.
+Check QuotationViewSubstitution.QuotationViewSubstitution.substitute_certificate.
+Check QuotationViewSubstitution.QuotationViewSubstitution.lift_shapes.
+Check QuotationViewSubstitution.QuotationViewSubstitution.decoded_recovers.
+Check QuotationViewSubstitution.QuotationViewSubstitution.substitute_view.
+Check QuotationViewSubstitution.QuotationViewSubstitution.substitute_shape.
+Check QuotationViewSubstitution.QuotationViewSubstitution.instantiate_codomain.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.accumulate_close_term.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.accumulate_close_type.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realize_term_recovers.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realize_type_recovers.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_spine_recovers.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realize_base.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_base.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_as_rename.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_ren_inverse.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_ren_injective.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_ren_base.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_inverse.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_app.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_injective.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_normal.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.accumulate_typing.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.telescope_identity_substitutions.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_domains_formed.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_identity_substitutions.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_typed.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_type_sorted.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.realized_closure_typed.
+Check OpenTelescopeRecovery.OpenTelescopeRecovery.concrete_argument_typed.
+Check RealizedEquality.RealizedEquality.normal_reflexivity_typed.
+Check RealizedEquality.RealizedEquality.normal_reflexivity_normal.
+Check RealizedEquality.RealizedEquality.normal_reflexivity_erases.
+Check RealizedEquality.RealizedEquality.extension_wf.
+Check RealizedEquality.RealizedEquality.extension_normal.
+Check RealizedEquality.RealizedEquality.extend_fill_typed.
+Check RealizedEquality.RealizedEquality.extend_fill_erases.
+Check RealizedEquality.RealizedEquality.extend_fill_preserves_recovery.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_typing.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_reduces.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_closure.
+Check ContextualTelescopeRun.ContextualTelescopeRun.base_typed.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_ext.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_replace.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_rename.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_apply_under.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_annotations_irrelevant.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_normal.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_neutral.
+Check ContextualTelescopeRun.ContextualTelescopeRun.run_arguments_reduces.
+Check ContextualEqualityExtension.ContextualEqualityExtension.declaration_replace.
+Check ContextualEqualityExtension.ContextualEqualityExtension.declaration_sort.
+Check ContextualEqualityExtension.ContextualEqualityExtension.extension_wf.
+Check ContextualEqualityExtension.ContextualEqualityExtension.declaration_normal.
+Check ContextualEqualityExtension.ContextualEqualityExtension.extension_normal.
+Check ContextualEqualityExtension.ContextualEqualityExtension.value_typed.
+Check ContextualEqualityExtension.ContextualEqualityExtension.value_normal.
+Check ContextualEqualityExtension.ContextualEqualityExtension.fill_typed.
+Check ContextualEqualityExtension.ContextualEqualityExtension.field_apply_typed.
+Check ContextualEqualityExtension.ContextualEqualityExtension.field_apply_normal.
+Check ContextualEqualityExtension.ContextualEqualityExtension.local_context_wf.
+Check ContextualEqualityExtension.ContextualEqualityExtension.field_transport_typed.
+Check ContextualEqualityExtension.ContextualEqualityExtension.field_transport_normal.
+Check ContextualEqualityExtension.ContextualEqualityExtension.filled_shifted_domains.
+Check ContextualEqualityExtension.ContextualEqualityExtension.filled_transport_typed.
+Check ContextualEqualityExtension.ContextualEqualityExtension.filled_transport_erases.
+Check ContextualEqualityExtension.ContextualEqualityExtension.filled_transport_preserves_recovery.
+Check GlobalEqualityInsertion.GlobalEqualityInsertion.context_index_renamed.
+Check GlobalEqualityInsertion.GlobalEqualityInsertion.insertion_cover.
+Check GlobalEqualityInsertion.GlobalEqualityInsertion.insertion_typed.
+Check GlobalEqualityInsertion.GlobalEqualityInsertion.equality_realization.
+Check GlobalEqualityInsertion.GlobalEqualityInsertion.equality_square.
+Check GlobalEqualityInsertion.GlobalEqualityInsertion.lift_view.
+Check GlobalEqualityInsertion.GlobalEqualityInsertion.lift_shape.
+Check GlobalEqualityInsertion.GlobalEqualityInsertion.base_extension_typed.
+Check GlobalEqualityInsertion.GlobalEqualityInsertion.base_extension_realization.
+
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.variables_complete.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.terms_sound.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.terms_complete.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.terms_iff.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.computed_budget.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.depth_nodes.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.nodes_budget.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.terms_monotone.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.sized_terms_iff.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.computed_sized_budget.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.binder_annotation_is_counted.
+Print Assumptions BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.small_beta_redex_is_enumerated.
+Print Assumptions QuotationTree.QuotationTree.source_rename.
+Print Assumptions QuotationTree.QuotationTree.source_substitute.
+Print Assumptions QuotationTree.QuotationTree.cache_substitute.
+Print Assumptions QuotationTree.QuotationTree.indexed_cache_substitute.
+Print Assumptions QuotationTree.QuotationTree.pi_view.
+Print Assumptions QuotationTree.QuotationTree.normal_caches_substitute.
+Print Assumptions QuotationTree.QuotationTree.substituted_cache_neutral.
+Print Assumptions QuotationTree.QuotationTree.regression_source.
+Print Assumptions QuotationTree.QuotationTree.regression_cache.
+Print Assumptions QuotationTree.QuotationTree.regression_not_constructor_cache.
+Print Assumptions QuotationTree.QuotationTree.regression_normal.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.eraser_replace.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.eraser_rounds.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.eraser_run.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_eraser.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.witness_type_sort.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.raw_witness_typed.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_typed.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_normal.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_erases.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_run_typed.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.normal_witness_transport_typed.
+Print Assumptions ContextualEqualityRealizer.ContextualEqualityRealizer.rank_bounded.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.extend_typing.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.insertion_typed.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.insertion_fill.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.insertion_injective.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.insertion_index.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.build_typing.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.embedding_typed.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.embedding_fill.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.embedding_injective.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.embedding_index.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.filled_embedding.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.embedding_normal.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.embedding_preserves_recovery.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.build_wf.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.build_normal.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.build_fill_typed.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.request_available.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.request_typed.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.request_fill.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.allocate.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.allocate_original.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.allocated_typed.
+Print Assumptions CheckedEqualityLayers.CheckedEqualityLayers.allocated_fill.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.original_telescope_covered.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.local_apply_typed.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.local_apply_normal.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.filled_local_domains.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.local_transport_erases.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.accepted_complete.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.field_pack.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.pack_accepted.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.entries_iff.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.computed_coverage.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.context_wf.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.context_normal.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.fill_typed.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.entry_value_normal.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.field_variable_typed.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.fill_source.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.fill_field.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.value_erases.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.locate_sound.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.locate_complete.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.lookup_complete.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.lookup_typed.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.lookup_filled.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.entry_rank_bounded.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.candidates_iff.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.accepted_decompose.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.accepted_recompose.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.field_sorted.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.field_normal.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.value_typed.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.value_normal.
+Print Assumptions NormalNeutralSubstitution.NormalNeutralSubstitution.transpose_neutral.
+Print Assumptions NormalNeutralSubstitution.NormalNeutralSubstitution.transpose_normal.
+Print Assumptions NormalNeutralSubstitution.NormalNeutralSubstitution.isLambda_replace.
+Print Assumptions NormalNeutralSubstitution.NormalNeutralSubstitution.normalb_replace.
+Print Assumptions NormalNeutralSubstitution.NormalNeutralSubstitution.replacement_normal.
+Print Assumptions NormalNeutralSubstitution.NormalNeutralSubstitution.replacement_neutral.
+Print Assumptions NormalNeutralSubstitution.NormalNeutralSubstitution.composition_normal.
+Print Assumptions NormalNeutralSubstitution.NormalNeutralSubstitution.composition_neutral.
+Print Assumptions NormalNeutralSubstitution.NormalNeutralSubstitution.typed_normal_replacement.
+Print Assumptions NormalNeutralSubstitution.NormalNeutralSubstitution.substitution_normal.
+Print Assumptions ContextReification.ContextReification.declaration_rank_correct.
+Print Assumptions ContextReification.ContextReification.context_snoc.
+Print Assumptions ContextReification.ContextReification.body_typed.
+Print Assumptions ContextReification.ContextReification.fill_typed.
+Print Assumptions ContextReification.ContextReification.filled_body.
+Print Assumptions ContextReification.ContextReification.body_normal.
+Print Assumptions ContextReification.ContextReification.fill_normal.
+Print Assumptions ContextReification.ContextReification.body_injective.
+Print Assumptions ContextReification.ContextReification.reify_formed.
+Print Assumptions ContextReification.ContextReification.reify_normal.
+Print Assumptions FullQuotation.FullQuotation.sequence_type.
+Print Assumptions FullQuotation.FullQuotation.product_result.
+Print Assumptions FullQuotation.FullQuotation.lambda_result.
+Print Assumptions FullQuotation.FullQuotation.judgment_rank_bounded.
+Print Assumptions FullQuotation.FullQuotation.request_state.
+Print Assumptions FullQuotation.FullQuotation.reframe_judgment.
+Print Assumptions FullQuotation.FullQuotation.advance_compose.
+Print Assumptions FullQuotation.FullQuotation.advance_push.
+Print Assumptions FullQuotation.FullQuotation.sequence.
+Print Assumptions FullQuotation.FullQuotation.run_flatten.
+Print Assumptions FullQuotation.FullQuotation.embedding_typed.
+Print Assumptions FullQuotation.FullQuotation.embedding_index.
+Print Assumptions FullQuotation.FullQuotation.embedding_fill.
+Print Assumptions FullQuotation.FullQuotation.advance.
+Print Assumptions FullQuotation.FullQuotation.advance_judgment.
+Print Assumptions FullQuotation.FullQuotation.advance_variables.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.type_program_typed.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.quote_typed.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.interpreter_typed.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.interpreter_sort.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.run_typed.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.run_recovers.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.output_recovers.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.type_program_recovers.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.source_type_sort.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.run_original_type.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.type_program_normal.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.quote_normal.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.interpreter_normal.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.quote_injective.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.quote_conversion_injective.
+Print Assumptions ClosedQuotationPackage.ClosedQuotationPackage.closed_interpretation.
+Print Assumptions SourceQuotationBudget.SourceQuotationBudget.source_budget_bounded.
+Print Assumptions SourceQuotationBudget.SourceQuotationBudget.result_rank_bounded.
+Print Assumptions SourceQuotationBudget.SourceQuotationBudget.judgment_literals_bounded.
+Print Assumptions SourceQuotationBudget.SourceQuotationBudget.pi_children.
+Print Assumptions SourceQuotationBudget.SourceQuotationBudget.lambda_children.
+Print Assumptions SourceQuotationBudget.SourceQuotationBudget.application_children.
+Print Assumptions SourceQuotationBudget.SourceQuotationBudget.conversion_children.
+Print Assumptions SourceQuotationBudget.SourceQuotationBudget.context_children.
+Print Assumptions SourceQuotationBudget.SourceQuotationBudget.original_coverage.
+Print Assumptions SourceQuotationBudget.SourceQuotationBudget.literal_rank_zero_regression.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.family_specialize.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.law_specialize.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.identity_transport_recovers.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.identity_family_specializes.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.family_type_normal.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.family_type_replace.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.family_type_rename.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.identity_family_normal.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.identity_family_replace.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.rank_bounded.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.identity_family_plain_typed.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.identity_type_recovers.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.identity_family_typed.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.family_type_sort.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.instance_type_sort.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.identity_instance_type_recovers.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.law_sort.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.law_replace.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.law_reflexivity_reduces.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.reflexivity_typed.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.reflexivity_specializes.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.law_normal.
+Print Assumptions ContextualTransportLaw.ContextualTransportLaw.reflexivity_normal.
+Print Assumptions TelescopeEquality.TelescopeEquality.eq_type_sort.
+Print Assumptions TelescopeEquality.TelescopeEquality.refl_case_typed.
+Print Assumptions TelescopeEquality.TelescopeEquality.eq_type_replace.
+Print Assumptions TelescopeEquality.TelescopeEquality.refl_case_replace.
+Print Assumptions TelescopeEquality.TelescopeEquality.transport_function_typed.
+Print Assumptions TelescopeEquality.TelescopeEquality.transport_typed.
+Print Assumptions TelescopeEquality.TelescopeEquality.transport_refl.
+Print Assumptions TelescopeEquality.TelescopeEquality.eq_type_normal.
+Print Assumptions TelescopeEquality.TelescopeEquality.refl_case_normal.
+Print Assumptions TelescopeEquality.TelescopeEquality.motive_typed.
+Print Assumptions TelescopeEquality.TelescopeEquality.motive_recovers.
+Print Assumptions TelescopeEquality.TelescopeEquality.map_case_typed.
+Print Assumptions TelescopeEquality.TelescopeEquality.map_case_refl.
+Print Assumptions TelescopeEquality.TelescopeEquality.map_case_normal.
+Print Assumptions TelescopeEquality.TelescopeEquality.rank_bounded.
+Print Assumptions SourceClosure.SourceClosure.close.
+Print Assumptions SourceClosure.SourceClosure.close_sound.
+Print Assumptions SourceClosure.SourceClosure.reopen_recovers.
+Print Assumptions SourceClosure.SourceClosure.reopen_typed.
+Print Assumptions SourceClosure.SourceClosure.closure_injective.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.original_realization.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.identity_normal.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.interpreter_typed.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.interpreter_sort.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.interpreter_normal.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.type_program_typed.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.quote_typed.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.type_program_normal.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.quote_normal.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.decode_recovers.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.decode_original_type.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.quote_injective.
+Print Assumptions IndexedProgramInterpreter.IndexedProgramInterpreter.quote_conversion_injective.
+
+(** The actual structural source quoter and its closed/open coverage assembly.
+    Numeric signature plans are external indices; P is an ordinary represented
+    type argument. This does not assert rank-only fragment uniformity. *)
+From PTSrk.SelfInterpreter Require Import LocalCodeAlignment ApplicationQuotation RecursiveQuotation FullDependentInterpreter.
+Check FullDependentInterpreter.FullDependentInterpreter.closed_quote.
+Check FullDependentInterpreter.FullDependentInterpreter.closed_type_recovers.
+Check FullDependentInterpreter.FullDependentInterpreter.closed_recovers.
+Check FullDependentInterpreter.FullDependentInterpreter.closed_original_type.
+Check FullDependentInterpreter.FullDependentInterpreter.closed_normal.
+Check FullDependentInterpreter.FullDependentInterpreter.closed_injective.
+Check FullDependentInterpreter.FullDependentInterpreter.closed_conversion_injective.
+Check FullDependentInterpreter.FullDependentInterpreter.every_closed_original.
+Check FullDependentInterpreter.FullDependentInterpreter.open_recovers.
+Check FullDependentInterpreter.FullDependentInterpreter.open_original_type.
+Check FullDependentInterpreter.FullDependentInterpreter.program_normal.
+Check FullDependentInterpreter.FullDependentInterpreter.program_injective.
+Check FullDependentInterpreter.FullDependentInterpreter.program_conversion_injective.
+Check FullDependentInterpreter.FullDependentInterpreter.every_original.
+Check ApplicationQuotation.ApplicationQuotation.advance_codomain.
+Check ApplicationQuotation.ApplicationQuotation.constructor_renames.
+Check ApplicationQuotation.ApplicationQuotation.advance_program_typed.
+Check ApplicationQuotation.ApplicationQuotation.advance_program_recovers.
+Check ApplicationQuotation.ApplicationQuotation.aligned_judgment.
+Check ApplicationQuotation.ApplicationQuotation.aligned_code.
+Check ApplicationQuotation.ApplicationQuotation.aligned_rank.
+Check ApplicationQuotation.ApplicationQuotation.application_result.
+Check ApplicationQuotation.ApplicationQuotation.exactly_two_layers.
+Check RecursiveQuotation.RecursiveQuotation.advance_inherited.
+Check RecursiveQuotation.RecursiveQuotation.aligned_result.
+Check RecursiveQuotation.RecursiveQuotation.type_of_sort.
+Check RecursiveQuotation.RecursiveQuotation.quote_derivation.
+Check LocalCodeAlignment.LocalCodeAlignment.allocate.
+Check LocalCodeAlignment.LocalCodeAlignment.coerce_typed.
+Check LocalCodeAlignment.LocalCodeAlignment.coerce_normal.
+Check LocalCodeAlignment.LocalCodeAlignment.coerce_neutral.
+Check LocalCodeAlignment.LocalCodeAlignment.coerce_erases.
+Check LocalCodeAlignment.LocalCodeAlignment.extended_shape.
+Check LocalCodeAlignment.LocalCodeAlignment.align_judgment.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.closed_quote.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.closed_type_recovers.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.closed_recovers.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.closed_original_type.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.closed_normal.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.closed_injective.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.closed_conversion_injective.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.every_closed_original.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.open_recovers.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.open_original_type.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.program_normal.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.program_injective.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.program_conversion_injective.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.every_original.
+Print Assumptions ApplicationQuotation.ApplicationQuotation.advance_codomain.
+Print Assumptions ApplicationQuotation.ApplicationQuotation.constructor_renames.
+Print Assumptions ApplicationQuotation.ApplicationQuotation.advance_program_typed.
+Print Assumptions ApplicationQuotation.ApplicationQuotation.advance_program_recovers.
+Print Assumptions ApplicationQuotation.ApplicationQuotation.aligned_judgment.
+Print Assumptions ApplicationQuotation.ApplicationQuotation.aligned_code.
+Print Assumptions ApplicationQuotation.ApplicationQuotation.aligned_rank.
+Print Assumptions ApplicationQuotation.ApplicationQuotation.application_result.
+Print Assumptions ApplicationQuotation.ApplicationQuotation.exactly_two_layers.
+Print Assumptions RecursiveQuotation.RecursiveQuotation.advance_inherited.
+Print Assumptions RecursiveQuotation.RecursiveQuotation.aligned_result.
+Print Assumptions RecursiveQuotation.RecursiveQuotation.type_of_sort.
+Print Assumptions RecursiveQuotation.RecursiveQuotation.quote_derivation.
+Print Assumptions LocalCodeAlignment.LocalCodeAlignment.allocate.
+Print Assumptions LocalCodeAlignment.LocalCodeAlignment.coerce_typed.
+Print Assumptions LocalCodeAlignment.LocalCodeAlignment.coerce_normal.
+Print Assumptions LocalCodeAlignment.LocalCodeAlignment.coerce_neutral.
+Print Assumptions LocalCodeAlignment.LocalCodeAlignment.coerce_erases.
+Print Assumptions LocalCodeAlignment.LocalCodeAlignment.extended_shape.
+Print Assumptions LocalCodeAlignment.LocalCodeAlignment.align_judgment.
+Print Assumptions LocalInitialState.LocalInitialState.initial.
+Print Assumptions LocalInitialState.LocalInitialState.initial_variables.
+Print Assumptions LocalInitialState.LocalInitialState.after_variables.
+Print Assumptions LocalInitialState.LocalInitialState.initial_domains.
+Print Assumptions LocalInitialState.LocalInitialState.after_domains.
+Print Assumptions LocalInitialState.LocalInitialState.original_wf.
+Print Assumptions LocalInitialState.LocalInitialState.original_fill.
+Print Assumptions LocalInitialState.LocalInitialState.signature_normal.
+Print Assumptions LocalInitialState.LocalInitialState.identity_normal.
+Print Assumptions LocalInitialState.LocalInitialState.environment_embedding.
+Print Assumptions LocalInitialState.LocalInitialState.inherited_identity.
+Print Assumptions LocalInitialState.LocalInitialState.original_realization.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.entry_rank_bounded.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.context_wf.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.context_normal.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.fill_typed.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.entry_value_normal.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.field_variable_typed.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.fill_source.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.fill_field.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.field_application_erases.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.locate_sound.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.locate_complete.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.lookup_complete.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.lookup_typed.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.original_descriptor_covered.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.descriptors_iff.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.accepted_sound.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.accepted_complete.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.field_sorted.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.field_normal.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.value_typed.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.value_normal.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.value_erases.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.entries_iff.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.computed_coverage.
+Print Assumptions QuotationCache.QuotationCache.substituted_root_certificate.
+Print Assumptions QuotationCache.QuotationCache.realization_extend.
+Print Assumptions QuotationCache.QuotationCache.sort_certificate.
+Print Assumptions QuotationCache.QuotationCache.view_certificate.
+Print Assumptions QuotationCache.QuotationCache.recache_view.
+Print Assumptions QuotationCache.QuotationCache.constructed_product_certificate.
+Print Assumptions QuotationCache.QuotationCache.build_product_view.
+Print Assumptions QuotationCache.QuotationCache.view_shape.
+Print Assumptions QuotationCache.QuotationCache.realized_code_sort.
+Print Assumptions QuotationCache.QuotationCache.view_from_shape.
+Print Assumptions QuotationCache.QuotationCache.spine_realization.
+Print Assumptions QuotationCache.QuotationCache.realization_inherited.
+Print Assumptions QuotationCache.QuotationCache.extend_realization.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.type_program_sort.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.term_program_sort.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.evaluate_typed.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.term_program_replace.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.term_program_rename.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.evaluate_replace.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.result_replace.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.result_rename.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.decoder_typed.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.decoder_first.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.decode_reduces.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.evaluate_closure.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.decode_closure.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.decode_recovers.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.decode_typed.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.quoted_type_reduces.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.package_typed.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.result_recovers.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.evaluated_type_program_typed.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.result_sort.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.decoder_type_sort.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.type_program_normal.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.term_program_normal.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.decoder_normal.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.package_normal.
+Print Assumptions DependentProgramDecoder.DependentProgramDecoder.close_injective.
+Print Assumptions QuotationViewRenaming.QuotationViewRenaming.square_lift.
+Print Assumptions QuotationViewRenaming.QuotationViewRenaming.square_replace.
+Print Assumptions QuotationViewRenaming.QuotationViewRenaming.compatible_weaken.
+Print Assumptions QuotationViewRenaming.QuotationViewRenaming.compatible_renaming.
+Print Assumptions QuotationViewRenaming.QuotationViewRenaming.rename_certificate.
+Print Assumptions QuotationViewRenaming.QuotationViewRenaming.rename_view.
+Print Assumptions QuotationViewRenaming.QuotationViewRenaming.rename_shape.
+Print Assumptions QuotationViewRenaming.QuotationViewRenaming.weaken_view.
+Print Assumptions QuotationViewRenaming.QuotationViewRenaming.weaken_shape.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.instantiate_typed.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.instantiate_identity_recovers.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.instantiated_identity_typed.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.apply_family_typed.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.apply_identity_recovers.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.concrete_identity_recovers.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.carrier_argument_typed.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.code_argument_typed.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.function_argument_typed.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.domain_argument_typed.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.concrete_apply_typed.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.parameter_values_normal.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.realize_normal.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.instantiate_normal.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.concrete_apply_normal.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.field_apply_typed.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.field_apply_normal.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.field_apply_recovers.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.concrete_apply_inputs_injective.
+Print Assumptions ConcreteContextualBeta.ConcreteContextualBeta.concrete_apply_conversion_injective.
+Print Assumptions CodeAlignment.CodeAlignment.lifted_typed.
+Print Assumptions CodeAlignment.CodeAlignment.fill_lifted.
+Print Assumptions CodeAlignment.CodeAlignment.align_typed.
+Print Assumptions CodeAlignment.CodeAlignment.align_normal.
+Print Assumptions CodeAlignment.CodeAlignment.align_neutral.
+Print Assumptions CodeAlignment.CodeAlignment.align_filled_erases.
+Print Assumptions CodeAlignment.CodeAlignment.align_preserves_recovery.
+Print Assumptions CodeAlignment.CodeAlignment.align_filled_typed.
+Print Assumptions CodeAlignment.CodeAlignment.application_typed.
+Print Assumptions CodeAlignment.CodeAlignment.application_normal.
+Print Assumptions CodeAlignment.CodeAlignment.application_filled_erases.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.preserve_realization.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.lifted_decoder.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.allocate_codes.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.align_typed.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.align_normal.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.align_neutral.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.align_erases.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.align_preserves_recovery.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.unpack_pack.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.value_pack.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.field_application_typed.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.field_application_normal.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.filled_new_domains.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.filled_lifted.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.transport_typed.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.transport_normal.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.transport_neutral.
+Print Assumptions LayerCodeAlignment.LayerCodeAlignment.transport_erases.
+Print Assumptions TelescopeInstantiation.TelescopeInstantiation.splice_base.
+Print Assumptions TelescopeInstantiation.TelescopeInstantiation.splice_ren.
+Print Assumptions TelescopeInstantiation.TelescopeInstantiation.splice_replace.
+Print Assumptions TelescopeInstantiation.TelescopeInstantiation.splice_typed.
+Print Assumptions TelescopeInstantiation.TelescopeInstantiation.run_splice.
+Print Assumptions LocalSpineNaturality.LocalSpineNaturality.presented_close_type.
+Print Assumptions LocalSpineNaturality.LocalSpineNaturality.close_type_rename.
+Print Assumptions LocalSpineNaturality.LocalSpineNaturality.presented_telescope_rename.
+Print Assumptions LocalSpineNaturality.LocalSpineNaturality.renamed_presentation.
+Print Assumptions LocalSpineNaturality.LocalSpineNaturality.renamed_body.
+Print Assumptions LocalSpineNaturality.LocalSpineNaturality.renamed_unbody.
+Print Assumptions QuotationJudgment.QuotationJudgment.universe_view.
+Print Assumptions QuotationJudgment.QuotationJudgment.code_as_term.
+Print Assumptions QuotationJudgment.QuotationJudgment.sort_case.
+Print Assumptions QuotationJudgment.QuotationJudgment.product_case.
+Print Assumptions QuotationJudgment.QuotationJudgment.rename_judgment.
+Print Assumptions QuotationJudgment.QuotationJudgment.lambda_case.
+Print Assumptions QuotationJudgment.QuotationJudgment.variable_case.
+Print Assumptions QuotationJudgment.QuotationJudgment.term_as_code.
+Print Assumptions QuotationJudgment.QuotationJudgment.application_case.
+Print Assumptions QuotationJudgment.QuotationJudgment.realized_ranks_agree.
+Print Assumptions QuotationJudgment.QuotationJudgment.universe_result_rank.
+Print Assumptions QuotationJudgment.QuotationJudgment.invert_product.
+Print Assumptions QuotationJudgment.QuotationJudgment.source_typing.
+Print Assumptions QuotationJudgment.QuotationJudgment.formation_rank.
+Print Assumptions QuotationJudgment.QuotationJudgment.empty_environment.
+Print Assumptions QuotationJudgment.QuotationJudgment.rename_environment.
+Print Assumptions QuotationJudgment.QuotationJudgment.push_environment.
+Print Assumptions OriginalTypecheck.OriginalTypecheck.infer_sound.
+Print Assumptions OriginalTypecheck.OriginalTypecheck.infer_complete.
+Print Assumptions OriginalTypecheck.OriginalTypecheck.inferred_type_agrees.
+Print Assumptions OriginalTypecheck.OriginalTypecheck.type_sort_sound.
+Print Assumptions OriginalTypecheck.OriginalTypecheck.type_sort_complete.
+Print Assumptions OriginalTypecheck.OriginalTypecheck.check_sound.
+Print Assumptions OriginalTypecheck.OriginalTypecheck.check_complete.
+Print Assumptions OriginalTypecheck.OriginalTypecheck.check_iff.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.context_wf.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.context_ren.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.formed_rename.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.normal_rename.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.fill_square.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.filled_rename.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.environment_compatible.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.base_extension_typed.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.initial_state.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.extend_state.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.push_state.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.present.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.body_typed.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.body_normal.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.body_injective.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.body_filled.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.unbody_body.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.body_unbody.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.unbody_typed.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.filled_conversion.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.rename_identity.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.rename_composition.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.build_append.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.extend_square.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.extend_view.
+Print Assumptions LocalQuotationSpine.LocalQuotationSpine.extended_push_domains.
+Print Assumptions NormalEqualityFill.NormalEqualityFill.fill_block_normal.
+Print Assumptions NormalEqualityFill.NormalEqualityFill.palette_normal.
+Print Assumptions NormalEqualityFill.NormalEqualityFill.signature_normal.
+Print Assumptions NormalEqualityFill.NormalEqualityFill.layer_normal.
+Print Assumptions NormalEqualityFill.NormalEqualityFill.build_normal.
+Print Assumptions NormalEqualityFill.NormalEqualityFill.concrete_normal.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.program_type_sort.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.decoder_typed.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.decoder_application.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.decode_package_runs.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.decode_package_recovers.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.package_typed.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.package_normal.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.package_injective.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.package_conversion_injective.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.decode_typed.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.decoder_type_sort.
+Print Assumptions FaithfulProgramDecoder.FaithfulProgramDecoder.decoder_normal.
+Print Assumptions SourceValidity.SourceValidity.context_sound.
+Print Assumptions SourceValidity.SourceValidity.context_prefix.
+Print Assumptions SourceValidity.SourceValidity.context_declaration.
+Print Assumptions SourceValidity.SourceValidity.lookup_formation.
+Print Assumptions SourceValidity.SourceValidity.product_inversion.
+Print Assumptions SourceValidity.SourceValidity.result_formation.
+Print Assumptions SourceValidity.SourceValidity.result_formation_sound.
+Print Assumptions SourceValidity.SourceValidity.lookup_formation_sound.
+Print Assumptions SourceValidity.SourceValidity.result_type_rank.
+Print Assumptions SourceValidity.SourceValidity.result_rank_independent.
+Print Assumptions SourceValidity.SourceValidity.context_iff.
+Print Assumptions SourceValidity.SourceValidity.source_data_iff.
+Print Assumptions SourceValidity.SourceValidity.original_validity_coverage.
+Print Assumptions SourceValidity.SourceValidity.result_rank_computes.
+Print Assumptions SourceValidity.SourceValidity.product_inversion_computes.
+Print Assumptions QuotationViewSubstitution.QuotationViewSubstitution.square_lift.
+Print Assumptions QuotationViewSubstitution.QuotationViewSubstitution.substitute_certificate.
+Print Assumptions QuotationViewSubstitution.QuotationViewSubstitution.lift_shapes.
+Print Assumptions QuotationViewSubstitution.QuotationViewSubstitution.decoded_recovers.
+Print Assumptions QuotationViewSubstitution.QuotationViewSubstitution.substitute_view.
+Print Assumptions QuotationViewSubstitution.QuotationViewSubstitution.substitute_shape.
+Print Assumptions QuotationViewSubstitution.QuotationViewSubstitution.instantiate_codomain.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.accumulate_close_term.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.accumulate_close_type.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realize_term_recovers.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realize_type_recovers.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_spine_recovers.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realize_base.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_base.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_as_rename.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_ren_inverse.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_ren_injective.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_ren_base.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_inverse.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_app.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_injective.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_normal.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.accumulate_typing.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.telescope_identity_substitutions.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_domains_formed.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_identity_substitutions.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_body_typed.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_type_sorted.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.realized_closure_typed.
+Print Assumptions OpenTelescopeRecovery.OpenTelescopeRecovery.concrete_argument_typed.
+Print Assumptions RealizedEquality.RealizedEquality.normal_reflexivity_typed.
+Print Assumptions RealizedEquality.RealizedEquality.normal_reflexivity_normal.
+Print Assumptions RealizedEquality.RealizedEquality.normal_reflexivity_erases.
+Print Assumptions RealizedEquality.RealizedEquality.extension_wf.
+Print Assumptions RealizedEquality.RealizedEquality.extension_normal.
+Print Assumptions RealizedEquality.RealizedEquality.extend_fill_typed.
+Print Assumptions RealizedEquality.RealizedEquality.extend_fill_erases.
+Print Assumptions RealizedEquality.RealizedEquality.extend_fill_preserves_recovery.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_typing.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_reduces.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_closure.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.base_typed.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_ext.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_replace.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_rename.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_apply_under.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_annotations_irrelevant.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_normal.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_neutral.
+Print Assumptions ContextualTelescopeRun.ContextualTelescopeRun.run_arguments_reduces.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.declaration_replace.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.declaration_sort.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.extension_wf.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.declaration_normal.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.extension_normal.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.value_typed.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.value_normal.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.fill_typed.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.field_apply_typed.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.field_apply_normal.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.local_context_wf.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.field_transport_typed.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.field_transport_normal.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.filled_shifted_domains.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.filled_transport_typed.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.filled_transport_erases.
+Print Assumptions ContextualEqualityExtension.ContextualEqualityExtension.filled_transport_preserves_recovery.
+Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.context_index_renamed.
+Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.insertion_cover.
+Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.insertion_typed.
+Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.equality_realization.
+Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.equality_square.
+Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.lift_view.
+Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.lift_shape.
+Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.base_extension_typed.
+Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.base_extension_realization.
