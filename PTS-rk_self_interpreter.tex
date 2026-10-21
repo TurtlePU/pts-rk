@@ -2254,9 +2254,10 @@ context $\Gamma$. It computes the literal closure
 $\lambda\Gamma.t$ and its original derivation, quotes this closed term,
 then applies the interpreted closure to the ordinary variables of $\Gamma$.
 `FullDependentInterpreter.every_original` proves original result typing
-and literal recovery. `program_injective` and
-`program_conversion_injective` preserve source syntax at a fixed source
-scope, even across different same-length contexts. This open interface
+and literal recovery. Syntax fidelity is retained by `program_injective`;
+conversion fidelity is retained by `program_conversion_injective`.
+Both preserve source syntax at a fixed source scope, even across different
+same-length contexts. This open interface
 uses explicit closure and reopening; it is not a claim that a fixed closed
 head can create arbitrary free variables.
 
@@ -2484,6 +2485,402 @@ and the full structural quotation theorem.
 The extensional instantiation functions of Brown--Palsberg suggest a
 direction; their correctness for $F_\omega$ does not supply this dependent
 coherence theorem.
+
+# Discussion: comparison with Brown--Palsberg and CPS
+
+## What the two self-interpretation results actually say
+
+The relevant comparison is with Matt Brown and Jens Palsberg,
+[*Breaking Through the Normalization Barrier: A Self-Interpreter for
+$F_\omega$*](https://doi.org/10.1145/2837614.2837623), POPL 2016,
+especially Sections 3, 5--8 and Figure 4. Their specification combines
+normal quotation, injectivity and recovery of the represented program.
+It does not require quotation itself to be an internal operation:
+their quoter is external, too. Consequently, our use of an executable
+Rocq function on independent typing-derivation data is not, by itself,
+a departure from their notion of self-interpretation.
+
+Their principal result has the schematic shape
+
+$$
+\mathsf{unquote}:\forall\alpha:U.\mathsf{Exp}\,\alpha
+  \to\mathsf{Op}\,\mathsf{Id}\,\alpha,
+\qquad
+\mathsf{unquote}\,\quoteof{T}\,\quoteof{t}\bto t.
+$$
+
+Here $U$ is their universe of represented types, not a PTS-rk sort.
+The represented type is an ordinary type argument, and the **same fixed
+term** $\mathsf{unquote}$ works for every represented source term.
+Theorem 7.4 gives reduction to the unreduced source, not merely to its
+normal form. Our corresponding endpoint is
+
+$$
+\forall(\vdash t:T)\;\exists j,P,Q.\quad
+  \vdash I_j\,P\,Q:T,
+  \qquad I_j\,P\,Q\bto t,
+  \qquad I_j,P,Q\text{ normal},
+$$
+
+with $j=(r,k,p,s)$ comprising the tag rank, interface budget, finite
+numerical equality-layer plan and result rank. The executable construction
+computes these data from an original derivation. The represented type $P$
+and faithful term program $Q$ are ordinary object-language arguments;
+the interpreter does not take the source type or derivation as a hidden
+metalevel argument. Nevertheless, $I_j$ is a **family**, not one term with
+an extra internally supplied natural number. The plan can grow with the
+derivation even when its source rank bound is fixed. This is a genuine
+loss of uniformity relative to Brown--Palsberg, not a notational variation
+on their polymorphic type argument.
+
+There are also substantive gains and qualifications in other directions.
+We cover the full original dependent PTS, including products whose
+codomains depend on terms, conversion in types, universe literals and
+open terms in originally well-formed contexts. All source annotations
+are retained. Our normality property traverses those annotations;
+the term-reduction presentation in their Figure 2 does not reduce inside
+type annotations. Their Definition 6.1 and Theorem 6.3 formulate fidelity
+modulo beta-equivalence of type annotations. Our additional raw HOAS tag
+gives literal annotated-syntax fidelity: equality, or beta conversion,
+of normal faithful programs implies equality of their source terms,
+even across different derivations and signatures, at a fixed source scope.
+This is a stronger retention property, not a proof that different
+derivations of the *same* source produce equal quotations. Such canonical
+derivation-independence is not claimed. Nor does recovery alone prove
+syntax fidelity: it only forces source convertibility when codes coincide.
+
+The proof evidence also differs. Brown--Palsberg give mathematical proofs
+of quotation typing, normality, fidelity and strong unquotation, together
+with an implemented type checker and experiments. Our corresponding
+dependent family has kernel-checked Rocq proofs using the unchanged
+original typing and reduction judgments. That additional verification
+does not remove the difference in uniformity or supply missing operations
+on representations. In particular, the single extracted sort example is
+not performance evidence comparable to a practical implementation of all
+their operations; our complete finite equality enumeration has no practical
+cost claim.
+
+## Is this a Brown--Palsberg interpreter?
+
+**Yes in the qualified sense of a Brown--Palsberg-style indexed strong
+unquoter; no as an instance of their original fixed-interpreter result.**
+The shared core is an external faithful normal quotation and an internally
+typed evaluator recovering the literal source by beta reduction. Source
+binders are represented by target binders, operation parameters keep the
+quote normal, and evaluation instantiates these parameters. Our evaluator
+actually runs the PHOAS program. It does not project an already evaluated
+source term stored alongside a syntax tree. The raw tag is used for
+fidelity, not as a replacement semantic payload.
+
+The fixed-head distinction is essential. The theorem
+`no_universal_fixed_head_evaluator` in `RankObstruction` rules out one
+originally typed PTS-rk term whose typed application spines recover every
+closed originally typed source. Its argument permits arbitrary ordinary
+type/code arguments, so supplying an internal rank numeral does not evade
+it. A fixed head bounds the type rank of every typed application spine;
+there are closed source inhabitants at arbitrarily larger type ranks.
+This refutes the direct all-rank fixed-head analogue of
+$\mathsf{unquote}$, not arbitrary interfaces that wrap the whole result in
+externally generated abstractions, nor a metalevel family of heads.
+
+Their self-application experiments also use the same fixed operation on
+its own representation. Here any originally typed $I_j$ is itself covered
+by the all-source theorem, hence can be quoted and recovered by some
+$I_{j'}$. This is **cross-index self-interpretation**; we have not proved
+that $j'=j$ is possible or that one fixed index contains its own entire
+quotation interface. The safe description of the completed result is
+therefore a *full-dependent, numerical-plan-indexed PHOAS self-interpreter
+in the strong-unquotation tradition of Brown--Palsberg*. The unqualified
+phrases “the Brown--Palsberg interpreter for PTS-rk” and “a rank-only
+self-interpreter” would conceal material differences.
+
+There is a second distinction beyond uniformity. Brown--Palsberg contrast
+their shallow representation, supporting only unquotation, with a deep
+representation supporting several interpretations. Their Church-encoded
+$\mathsf{Exp}$ abstracts over a type operator $F:*\to *$ and four fixed
+handlers: abstraction, application, type abstraction and type application.
+Figure 4's $\mathsf{foldExp}$ replaces these parameters to obtain
+unquotation, an abstraction test, size, a normal-form test, and CPS.
+Our full-dependent representation abstracts over a finite Tarski signature
+and checked equality witnesses. It supports typed instantiation, but the
+completed all-source theorem constructs only its identity interpretation.
+Raw-tag folds and the earlier simply typed PHOAS algebra are additional
+infrastructure; they do not already give these five interpretations of
+the **full dependent** program. Thus HOAS binders, executable unquotation
+and a raw syntax tag are not by themselves the reusable deep fold result
+of the paper.
+
+## The CPS benchmark in the paper
+
+Brown--Palsberg's Figure 4 defines an answer-type-polymorphic continuation
+operator and interprets the same representation under it:
+
+$$
+\mathsf{Ct}\,A=\forall R:*.(A\to R)\to R,
+\qquad
+\mathsf{CPS}=\mathsf{Op}\,\mathsf{Ct},
+$$
+
+$$
+\mathsf{cps}:\forall\alpha:U.\mathsf{Exp}\,\alpha
+  \to\mathsf{CPS}\,\alpha.
+$$
+
+The four continuation handlers recursively transform the represented
+program by a fold. Their displayed transformation is call-by-name; they
+also report an implemented call-by-value variant. Importantly, its output
+is a **CPS program**, not necessarily a new $\mathsf{Exp}$ syntax code.
+An operation returning a new faithful normal quotation of that program
+would be a further, stronger requirement. They explicitly leave the
+semantic correctness proof of CPS open, while reporting its implementation,
+type checking, tests and self-applicability. We should neither attribute
+a proved CPS simulation theorem to them nor claim that merely writing
+$\lambda k.k\,t$ meets their implemented transformation benchmark.
+
+For PTS-rk we must separate three questions: whether continuation types
+and transformations can be expressed at larger ranks; whether the
+**existing** full-dependent code can be instantiated with CPS handlers;
+and whether such an internal transformation has type preservation and
+semantic correctness for every original source. Only the first admits
+the immediate positive calculations below. The latter two remain new
+obligations, not consequences of the interpreter theorem.
+
+## Continuations fit at higher ranks
+
+The following calculations are paper-level derivations from the original
+PTS rules, not newly added Rocq CPS theorems. If $A:\Ur a$ and
+$R:\Ur b$, define
+
+$$
+\mathsf{Cont}_R(A)=(A\to R)\to R,
+\qquad
+h(a,b)=\max(a+2,b+1).
+$$
+
+The two product formations give
+
+$$
+A\to R:\Ur{\max(a+1,b)},
+\qquad
+\mathsf{Cont}_R(A):\Ur{h(a,b)}.
+$$
+
+Answer-type polymorphism at a fixed external answer rank is also legal:
+
+$$
+\mathsf{Ct}_b(A)=\Pi R:\Ur b.(A\to R)\to R
+  :\Ur{h(a,b)}.
+$$
+
+Indeed $\Ur b:\Ur0$, and the outer product has rank
+$\max(1,h(a,b))=h(a,b)$. The computation is finite and effective.
+However, $h(a,b)>a$: this is not an endofamily $\Ur a\to\Ur a$ of
+the kind one would obtain by literally copying $F:*\to *$.
+There is no cumulativity to repair a mismatch silently. Instantiating the
+answer binder with $A$ itself requires $A:\Ur b$, hence the appropriate
+matching rank, not just an inequality between ranks. Finite rank-indexed
+continuation interfaces are plausible; one same-rank $\mathsf{Ct}$
+covering the existing interface is not a drop-in instance.
+
+A concrete positive test is the simply typed fragment. Fix ground and
+answer types $O:\Ur a$, $R:\Ur b$, and define value and computation
+types structurally by
+
+$$
+V(o)=O,\qquad C(A)=\mathsf{Cont}_R(V(A)),\qquad
+V(A\to B)=C(A)\to C(B).
+$$
+
+Their ranks are computed by
+
+$$
+v(o)=a,\qquad c(A)=\max(v(A)+2,b+1),\qquad
+v(A\to B)=\max(c(A)+1,c(B)).
+$$
+
+With $x:A$ translated to $x:C(A)$, a call-by-name translation is
+
+$$
+\begin{aligned}
+\mathcal C(x)&=\lambda k:V(A)\to R.\,x\,k,\\
+\mathcal C(\lambda x:A.t)
+ &=\lambda k:V(A\to B)\to R.\,
+     k\,(\lambda x:C(A).\mathcal C(t)),\\
+\mathcal C(f\,u)
+ &=\lambda k:V(B)\to R.\,
+   \mathcal C(f)\,(\lambda g:C(A)\to C(B).\,
+                          g\,\mathcal C(u)\,k).
+\end{aligned}
+$$
+
+The variable clause explicitly introduces the continuation lambda;
+it does not invoke an eta-conversion rule. A structural typing induction
+assigns each right-hand side $C$ of the source type, using precisely the
+displayed finite ranks. These clauses have the HOAS-friendly form needed
+for abstraction and application handlers. This is evidence that predicative
+rank growth and HOAS are not general obstacles to CPS. It is not a new
+implementation in `PHOASAlgebra`: its current rank-preserving family
+contracts would need a reindexed interface, and the full dependent case
+has additional obligations absent from simple types.
+
+Even this particular translation needs more than a bound on the source
+type's rank. Take $a=b=0$, $A_0=o$ and $A_{n+1}=o\to A_n$.
+Every $A_n$ with $n\geq1$ has source rank $1$, whereas the displayed
+recurrence gives $v(A_n)=2n+1$ and $c(A_n)=2n+3$.
+This follows by induction from $v(A_1)=3$ and
+$v(A_{n+1})=\max(3,v(A_n)+2)$.
+Thus a finite target budget can be computed from the type structure,
+but this recipe is not rank-only uniform. This is a limitation of the
+displayed translation, not a lower bound for every possible CPS encoding.
+
+Even for the full interpreter there is an immediate but much weaker
+operation. With $D=I_j\,P\,Q:T$ and $T:\Ur a$, ordinary original typing
+gives
+
+$$
+\lambda k:T\to R.\,k\,D:\mathsf{Cont}_R(T),
+\qquad
+\lambda k:T\to R.\,k\,D\bto
+\lambda k:T\to R.\,k\,t.
+$$
+
+The represented type can supply the corresponding decoded type expression
+in the generic interface. This is a return wrapper around direct execution,
+not a transformation of internal applications. The all-source quotation
+theorem can subsequently quote such a typed wrapper at a new index, but
+that still does not turn it into a recursive CPS compiler.
+
+## Why CPS is not a substitution into the current full signature
+
+For a fixed signature $\mathcal S$, a raw term program has the shape
+$q:\Pi\mathcal S.\mathsf{El}_s(P\,\mathcal S)$.
+Any originally typed filling $\rho$ of **every** signature field gives
+a typed interpretation $q\,\rho$ by substitution. This is the correct
+entry point for a new fold, but the hypothesis is substantial.
+
+First, the product fields carry the law
+
+$$
+\mathsf{Eq}_{c+1}\bigl(\Ur c,
+  \Pi x:\mathsf{El}_a A.\mathsf{El}_b(Bx),
+  \mathsf{El}_c(p_{a,b}\,A\,B)\bigr),\qquad c=\max(a+1,b).
+$$
+
+If decoding a product code is changed into a continuation-wrapped function
+type, while the left endpoint remains the ordinary dependent product of
+the decoded constituents, these endpoints are no longer definitionally
+the same. The identity filling's reflexivity witness no longer checks.
+Moreover, each decoder field has a fixed target sort $\Ur r$, whereas
+the naive continuation replacement increases that sort. Repairing rank
+budgets alone does not repair the product law. Conversely, merely noting
+non-convertibility does **not** prove that its internal equality type is
+uninhabited: that stronger claim would require a separate argument.
+
+Second, checked equality layers were accepted by testing convertibility
+*after the identity filling*. The decision procedure did not test
+validity under every possible algebra. A CPS instance would need actual
+originally typed witnesses for all these instantiated fields, including
+their dependent local telescopes. The erasure property of an identity
+realizer says nothing about a continuation interpretation of that same
+field. Supplying an arbitrary equality axiom, adding eta conversion, or
+postulating a free theorem would change the problem.
+
+Third, in a dependent application $f:\Pi x:A.B(x)$, $u:A$, the result
+type is $B(u)$. Replacing $u$ by a computation changes not just evaluation
+order but the argument of a type family. A translation must explain how
+its value/computation distinction interacts with type-level substitution
+and source conversion. The Rocq `QuotationTree` and cache data are
+external construction metadata, not data that an internal PTS program
+can automatically recover from $P,Q$. Their availability to our external
+quoter is not an implementation of this missing internal operation.
+
+One small counterexample shows why a *naive call-by-value* replacement
+cannot preserve all source conversions by beta conversion alone. In the
+simply typed source context $g:O\to O$, $v:O$, $y:O$,
+
+$$
+(\lambda x:O.y)\,(g\,v)\bto y.
+$$
+
+Under the standard fixed-answer call-by-value translation, write
+$\widehat g:O\to\mathsf{Cont}_R(O)$ for the translated variable.
+After administrative beta steps the two computation terms are
+
+$$
+\lambda k:O\to R.\,
+  \widehat g\,v\,(\lambda z:O.k\,y),
+\qquad
+\lambda k:O\to R.\,k\,y.
+$$
+
+For neutral variables and normal annotations these are distinct beta-normal
+terms, hence not beta-convertible. They may be identified by a suitable
+observational or parametric semantics, but not by the original conversion
+judgment. Source dependent types may use exactly such unrestricted beta
+conversions. This refutes the direct conversion-preserving CBV recipe,
+not type-preserving CPS with explicit transports or a different indexing
+discipline. It also does not refute call-by-name CPS; the paper's displayed
+transformation is call-by-name, and deserves a separate investigation.
+
+Related positive results do not discharge these obligations automatically.
+[Barthe, Hatcliff and Sørensen (1999)](https://www.cs.ru.nl/~freek/courses/tt-2017/papers/10.1023-A-1010000206149.pdf)
+treat dependent CPS, including routes for annotated pure type systems.
+Their Definition 11 requires a distinguished logical sort with
+$(\mathsf{Prop},\mathsf{Prop},\mathsf{Prop})$ among the product rules.
+PTS-rk has no such sort: $\max(a+1,a)=a+1\ne a$ for every $a$.
+The candidate $\Ur0$ also violates their prohibition on axioms into
+$\mathsf{Prop}$, since every sort has type $\Ur0$. Thus the logical-PTS
+theorem cannot simply be instantiated here; this is a failure of its
+hypotheses, not a no-CPS theorem.
+[Bowman, Cong, Rioux and Ahmed (2018)](https://www.williamjbowman.com/resources/cps-sigma.pdf)
+prove type-preserving call-by-name and call-by-value translations for
+dependent $\Pi$ and $\Sigma$ types using answer-type polymorphism. Their
+target adds a typing rule and an equivalence rule justified through a
+parametric model in extensional Calculus of Constructions. Importing
+those rules into our unchanged beta-only PTS is not authorized by our
+interpreter theorem. Explicit internal evidence would have to replace
+any use of the additional rules.
+
+## Feasibility verdict and a concrete continuation of the project
+
+There is **no established general obstruction to indexed dependent CPS**,
+but there is also **no full-dependent CPS fold on the present internal
+representation**. Higher-rank continuation types and the simple-type
+translation are positive evidence. The unchanged current interface rejects
+the literal Brown--Palsberg continuation substitution, for both rank and
+dependent-law reasons. Full-source normalization or strong unquotation
+alone does not construct an alternative algebra.
+
+Two developments would settle different versions of the question.
+
+1. An external, derivation-directed CPS translation, preferably starting
+   with call-by-name, must translate contexts, types, terms and all six
+   original typing rules, preserve the required substitution/conversion
+   relations, and compute a finite target rank budget. If it supplies an
+   original target derivation, our existing quoter can turn that CPS
+   program into a normal faithful PHOAS code at a new computed index.
+   This would establish a typed source-to-code CPS pipeline, **not** an
+   internal operation on $P,Q$.
+
+2. A Brown--Palsberg-style internal operation must instead construct a
+   continuation interpretation of the signature, with actual witnesses
+   for its laws, or redesign the representation to support one. A
+   potentially useful redesign retains both a direct value for dependent
+   type indices and a continuation computation, with a proved relation
+   between them. It must work under binders and account for each equality
+   repair; merely pairing an arbitrary computation with a direct value
+   does not establish that relation. Its output index bounds must depend
+   on the allowed input interface and any declared budgets, rather than
+   secretly receiving the source derivation.
+
+For the second route the first decisive test is a typed continuation
+product/application handler satisfying the dependent product law and
+one nontrivial contextual equality layer. Only after that test should
+we claim that the full representation supports the paper's deep CPS
+interpretation. A simulation or logical-relations theorem is a further
+correctness goal. None of these CPS obligations is included in the current
+closed Rocq assumption reports. The completed strong unquoter remains
+useful infrastructure for them, but is not their proof.
 
 # Formalization status and next obligations
 

@@ -1,5 +1,28 @@
 # Decisions and proof-engineering history
 
+## 2026-10-21 — distinguish indexed unquotation from the deep CPS benchmark
+
+Call the completed result a Brown--Palsberg-style numerical-plan-indexed
+strong unquoter. Do not identify the varying family head with the paper's
+fixed polymorphic unquote, or cross-index self-interpretation with same-index
+self-application. Raw annotated fidelity is not canonical derivation-independent
+quotation. The full-dependent identity interpretation does not already supply
+the paper's alternative algebras. Its CPS operation returns a CPS program,
+not necessarily a new syntax code, and its semantic correctness is explicitly
+left unproved in the paper despite implementation/type-checking/tests.
+
+CPS feasibility needs original rank calculations AND dependent algebra laws.
+Continuation types inhabit computably higher ranks, and simple-type CBN clauses
+are available on paper; their ranks can grow with arity at fixed source type
+rank. A direct substitution fails the present decoder sorts and product laws.
+Checked equality layers are realized at identity, not universally valid under
+arbitrary interpretations. Non-convertible endpoints alone do not prove their
+internal equality type uninhabited. The displayed CBV example rejects a naive
+beta-conversion-preserving recipe only. Do not turn any of these observations
+into a universal no-CPS theorem. Keep external derivation-directed translation
+plus re-quotation separate from an actual internal PHOAS fold. No proof code or
+PTS rule changes are made for this discussion; new calculations are paper-level.
+
 ## 2026-10-21 — full-source numerical-plan interpretation constructed
 
 The completed structural source quoter, not a general no-go, is the positive

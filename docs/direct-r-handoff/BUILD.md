@@ -1,5 +1,14 @@
 # Build, logs, and recovery
 
+Latest documentation-only check: the Brown--Palsberg/CPS discussion builds
+successfully in three fresh TeX directories, final
+/tmp/pts-rk-self-note.pVKShq, 42 pages. PDFKit renders discussion pages 35--41;
+final build has no overfull boxes, LaTeX warnings or missing glyphs.
+No Rocq/Dune/core source changed, and no new proof/CI result is claimed.
+Exact commands, versions and hashes:
+[discussion evidence](verification/self-interpreter-discussion-2026-10-21/COMMANDS.md).
+The user requested publication; the enclosing scoped commit is based on ade6387.
+
 Publication scope: the enclosing commit contains the verified self-interpreter
 sources and documentation. Its proof sources match the retained fresh audit.
 The226-stage complete CI report was obtained in the shared worktree;54stages

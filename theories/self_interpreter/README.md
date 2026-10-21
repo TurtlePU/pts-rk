@@ -84,6 +84,25 @@ The complete local CI has passed all 226 stages. The fresh build reports
 normalization report. Recursive kernel/pristine comparisons, frozen original
 source checks and all 110 source-manifest stability checks pass.
 
+## Comparison with Brown--Palsberg and CPS
+
+The research note's discussion compares the completed result with the POPL
+2016 paper's strong unquotation, representation fidelity, uniformity, folds
+and self-application. The precise description here is a Brown--Palsberg-style
+numerical-plan-indexed strong unquoter, not their single fixed interpreter or
+their full suite of deep interpretations. Literal annotated fidelity does not
+imply canonical quotation independent of the source derivation.
+
+CPS on the full dependent internal representation remains open. The discussion
+derives finite continuation rank budgets and a simply typed call-by-name
+candidate, and identifies the product/equality laws that block the naive
+continuation substitution into the current signature. A counterexample rejects
+naive call-by-value preservation of all source beta conversions, not CPS in
+general. These are paper-level calculations, not new Rocq CPS theorems.
+External CPS followed by re-quotation and an internal CPS fold are explicitly
+distinguished; the first decisive internal goal is a typed dependent
+continuation product/application handler with a contextual equality instance.
+
 ## Complexity motivation and full-PTS results
 
 For fixed redex bound `d`, the existing full-PTS normalizer has the checked

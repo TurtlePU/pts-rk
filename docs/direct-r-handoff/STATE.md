@@ -1,5 +1,45 @@
 # Live proof-development state — 2026-10-21
 
+## Brown--Palsberg comparison and CPS feasibility — discussion completed
+
+The requested discussion is now Section 12 of the research note. It compares
+the completed full-dependent numerical-plan family with POPL 2016 Sections
+3, 5--8: strong recovery, annotation-sensitive fidelity, external quotation,
+uniformity, deep folds, self-application and proof/experimental evidence.
+The appropriate description is Brown--Palsberg-style indexed strong unquoter,
+not their single fixed interpreter or full deep-operation suite. The existing
+fixed-head rank obstruction remains applicable; it does not refute families.
+
+CPS is assessed, not implemented. New paper-level calculations give exact
+finite continuation ranks, a simply typed CBN translation and an example of
+unbounded translated rank at source type rank 1. The current Tarski product
+and identity-validated equality fields block the naive continuation instance.
+A CBV example refutes beta-only preservation of unrestricted source conversion,
+not all dependent CPS. Related positive papers do not instantiate unchanged
+PTS-rk directly. External CPS plus re-quotation and a genuine internal fold
+are distinct next projects. First substantive remaining CPS goal: construct
+a typed continuation product/application handler and an actual contextual
+equality instance, or establish a precisely scoped obstruction to that interface.
+The general dependent CPS question and rank-only uniformity remain open.
+
+Verification: three fresh note builds exit 0; final PDF has 42 pages. PDFKit
+extraction/rendering exits 0; discussion pages 35--41 visually inspected.
+Final LuaLaTeX log has no overfull boxes, LaTeX warnings or missing glyphs.
+One pre-existing overflow in the endpoint summary was repaired by prose
+reflow. No proof/Dune/core/NormalizationComplexity source changed; endpoint
+hashes still match the published fresh audit. No new Rocq/CI run or CPS kernel
+verification is claimed. Evidence and exact commands:
+verification/self-interpreter-discussion-2026-10-21/COMMANDS.md.
+Raw logs: _build/self-interpreter-discussion.GAMEGX;
+final fresh TeX directory: /tmp/pts-rk-self-note.pVKShq.
+
+HEAD is the already published ade6387531ac460c791e375419ef5724154d2ea0.
+The user subsequently requested commit and push. The enclosing publication
+commit contains this discussion/PDF, the development README, its inspection
+script/evidence and only the new scoped entries in shared handoff documents.
+Unrelated existing worktree changes are preserved. Publication uses ordinary
+git push origin main; confirm with git ls-remote origin refs/heads/main.
+
 ## Full dependent PHOAS publication — scoped snapshot
 
 The user requested commit and push. The enclosing publication commit contains
