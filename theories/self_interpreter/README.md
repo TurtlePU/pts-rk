@@ -13,6 +13,22 @@ either arithmetic interpretation or either set model. No PTS rule changes.
 
 ## Full dependent numerical-plan-indexed interpretation
 
+The [obligation ledger](OBLIGATIONS.md) reconciles the earlier paper versions
+with the completed theorem and records the remaining extensions. The quoter
+now prunes literal-reflexivity conversion nodes, with proved idempotence,
+non-increasing repair count and exact invariance under redundant conversion
+padding. Equality allocation uses direct node-size enumeration and rejects
+ill-typed carriers, operands and binder prefixes before expanding candidates;
+all previously accepted fields remain covered.
+
+`QuotationCost` proves the actual plan length from the six source rules.
+`PlanNonuniformity` shows unbounded plan length at fixed result/redex/literal
+bounds, and even for the identical final judgment under conversion detours.
+These limit the present algorithm; general rank-only interpretation and
+canonical source elaboration remain open. Extracted abstraction/application
+probes time out at 30 seconds, so practical non-leaf execution is not yet
+established. See the ledger for precise theorem names and evidence.
+
 The positive construction covers the full original dependent calculus in
 well-formed contexts. Its interpreter is indexed by ranks and a finite plan
 of numeric equality-layer budgets; the represented type and term are ordinary

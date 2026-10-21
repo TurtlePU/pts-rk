@@ -5,7 +5,7 @@ From PTSrk.NormalizationComplexity Require Import Greedy.
 From PTSrk.SelfInterpreter Require FullSource SourceValidity SourceClosure
   SourceQuotationBudget RecursiveQuotation FullQuotation LocalInitialState
   IndexedProgramInterpreter QuotationJudgment QuotationCache PHOASTelescope
-  ClosedQuotationPackage DependentProgramDecoder.
+  ClosedQuotationPackage DependentProgramDecoder SourcePruning.
 Import Context ListNotations.
 
 (** Final assembly is checked only after the structural quotation module.
@@ -13,10 +13,11 @@ Import Context ListNotations.
 Module FullDependentInterpreter.
 
 Definition closed_budget {t T} (d : FullSource.FullSource.derivation 0 ε t T) :=
-  SourceQuotationBudget.SourceQuotationBudget.budget SourceValidity.SourceValidity.cd_nil d.
+  SourceQuotationBudget.SourceQuotationBudget.budget SourceValidity.SourceValidity.cd_nil
+    (SourcePruning.SourcePruning.prune d).
 Definition closed_quote {t T} (d : FullSource.FullSource.derivation 0 ε t T) :
     FullQuotation.FullQuotation.result (LocalInitialState.LocalInitialState.initial (closed_budget d)) t T :=
-  RecursiveQuotation.RecursiveQuotation.quote_derivation d SourceValidity.SourceValidity.cd_nil (LocalInitialState.LocalInitialState.initial (closed_budget d))
+  RecursiveQuotation.RecursiveQuotation.quote_derivation (SourcePruning.SourcePruning.prune d) SourceValidity.SourceValidity.cd_nil (LocalInitialState.LocalInitialState.initial (closed_budget d))
     (LocalInitialState.LocalInitialState.initial_variables (closed_budget d)) (Nat.le_refl _).
 
 Definition closed_program r {t T} (d : FullSource.FullSource.derivation 0 ε t T) :=
@@ -25,6 +26,21 @@ Definition closed_type_program {t T} (d : FullSource.FullSource.derivation 0 ε 
   IndexedProgramInterpreter.IndexedProgramInterpreter.type_program (closed_quote d).
 Definition closed_decode r {t T} (d : FullSource.FullSource.derivation 0 ε t T) :=
   IndexedProgramInterpreter.IndexedProgramInterpreter.decode r (closed_quote d).
+
+Theorem closed_prune_invariant r t T (d : FullSource.FullSource.derivation 0 ε t T) :
+  closed_program r (SourcePruning.SourcePruning.prune d) = closed_program r d.
+Proof.
+  unfold closed_program, closed_quote, closed_budget.
+  rewrite SourcePruning.SourcePruning.prune_idempotent; reflexivity.
+Qed.
+Theorem closed_padding_invariant h r t T b (d : FullSource.FullSource.derivation 0 ε t T) f :
+  closed_program r (SourcePruning.SourcePruning.pad h b d f) = closed_program r d /\
+  closed_type_program (SourcePruning.SourcePruning.pad h b d f) = closed_type_program d /\
+  closed_decode r (SourcePruning.SourcePruning.pad h b d f) = closed_decode r d.
+Proof.
+  unfold closed_program, closed_type_program, closed_decode, closed_quote, closed_budget.
+  rewrite SourcePruning.SourcePruning.prune_padding; repeat split; reflexivity.
+Qed.
 
 Definition closed_type_decode {t T} (d : FullSource.FullSource.derivation 0 ε t T) :=
   let k := closed_budget d in
@@ -133,6 +149,8 @@ Proof.
 Qed.
 
 Print Assumptions closed_quote.
+Print Assumptions closed_prune_invariant.
+Print Assumptions closed_padding_invariant.
 Print Assumptions closed_type_recovers.
 Print Assumptions closed_recovers.
 Print Assumptions closed_original_type.

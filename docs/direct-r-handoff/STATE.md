@@ -1,5 +1,58 @@
 # Live proof-development state — 2026-10-21
 
+## Self-interpreter improvements — allocation, pruning and uniformity limits
+
+The requested non-CPS continuation reconciles all six committed paper versions
+in theories/self_interpreter/OBLIGATIONS.md. Full dependent coverage/recovery
+obligations were already discharged; the independent elementary compiler,
+numeric dependent reifier, canonical source elaborator, smaller coherence
+interface and general rank-only family remain separate extensions.
+
+SizedSyntaxEnumeration now directly generates exact node sizes, with complete
+membership agreement and exact cardinality recurrence. Both equality allocators
+prefilter original-typed carriers/operands and reject invalid telescope prefixes
+before expansion; iff proofs preserve all reference-accepted fields. SourcePruning
+removes literal-reflexivity conversion nodes and proves original judgment
+preservation, idempotence, non-increasing size/repair count, and arbitrary padding
+invariance. FullDependentInterpreter applies pruning before selecting its budget;
+all original recovery, typing, normality and fidelity endpoints still compile.
+
+QuotationCost proves actual plan length = 2*Pi + lambda + 2*application +
+2*conversion, less than derivation size, after pruning at the final endpoint.
+PlanNonuniformity gives nested identity applications at result rank 0, literal
+ceiling 0 and redex bound 1 with actual length 3*h. Conversion detours for the
+IDENTICAL judgment U0:U0 survive pruning and have actual length 7*h. These refute
+rank-only/source-only bounds on the implemented quoter's plans, not every possible
+rank-indexed interpreter or canonical elaborator. No CPS formalization was added.
+
+All changed proof targets pass incremental compilation. Full unchanged local CI
+exits 0, 226/226 stages PASS, including unrelated unpublished BZC stages. Fresh
+aggregate in /tmp/pts-rk-self-improvements-audit.vjkEgS exits 0 with 2287 closed
+self-interpreter reports plus one unchanged upstream normalization report.
+Core and aggregate recursive kernel checks pass; pristine core inventories
+match. All 112 source/Dune manifest entries remain stable. The original-source
+comparison's initially overbroad Git pathspec was corrected; FINAL-CHECKS exits
+0, including unchanged original core/normalization/ZFC proofs and Dune files.
+Loaded kernel inventory has only unchanged upstream functional extensionality,
+no unsafe/type-in-type/assumed-positivity entries; all own endpoints are closed.
+Extracted actual sort quotation passes three normality checks; lambda/application
+each timeout at 30 seconds (124), so practical non-leaf execution remains open.
+Actual direct-enumeration counts 68/1209 at node bounds 5/7 pass. The paper builds
+to 11 pages, warning-free; changed pages visually inspected. Exact attempts,
+commands and raw-log paths: verification/self-interpreter-improvements-2026-10-21/COMMANDS.md.
+
+The enclosing publication commit is based on published
+f5fdac0c1deeeb43d6138f8de3178224b79d42a4 and contains this verified continuation,
+its note/PDF and evidence. Publication was requested after verification.
+Unrelated changes are preserved. One validated
+completed Dune cache was cleaned to make space; raw audit logs/trace were retained.
+First remaining implementation goal: avoid allocating a complete equality layer
+when type-code alignment is already literal, retaining annotation normality and
+literal recovery. Then pursue canonical computational source elaboration and a
+small uniform coherence interface. CPS stays excluded by the user's instruction.
+Next exact command after reviewing the ledger and pinned environment:
+opam exec -- dune build theories/self_interpreter/RecursiveQuotation.vo.
+
 ## Self-interpreter exposition streamlined — final construction first
 
 The research note now presents the completed interpreter directly: motivation,

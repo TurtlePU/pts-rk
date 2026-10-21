@@ -320,6 +320,14 @@ $(k,p)$, while allowing the plan itself to grow with the derivation.
 No source expression or semantic source value is stored in the external
 index.
 
+Enumeration generates trees directly by exact node count, including binder
+annotations. Its membership predicate is proved equivalent to the original
+depth-enumeration-and-filter specification. Carrier and operand typing is
+checked before forming endpoint triples; ill-typed telescope prefixes are
+rejected before their extensions are generated. These optimizations preserve
+exactly the accepted fields. They reduce rejected candidate work, rather than
+replace the equality signature by a smaller coherence theory.
+
 ## Closing programs and retaining syntax
 
 Let $\mathcal S=\mathcal S_{k,p}$ be the completed signature and $\iota$
@@ -412,6 +420,12 @@ All resulting package and interpreter typings are derived before using
 their reduction equations.
 
 # Constructing quotation
+
+Before quotation, an idempotent pass removes conversion rules whose input
+and output types are literally equal. It preserves the complete source
+judgment and cannot increase the derivation size or repair count.
+Arbitrarily many such conversion wrappers therefore leave the final type
+program, faithful term program and decoding expression identical.
 
 Quotation proceeds structurally through the six original typing rules.
 Its state consists of the realized signature, the translated local
@@ -545,8 +559,9 @@ concrete test.
 Brown--Palsberg support their mathematical proofs with an implementation
 and type-checked experiments. Our quotation and interpretation theorems
 are kernel-checked in Rocq. The exhaustive equality enumeration has no
-practical efficiency bound, and the extracted sort-quotation smoke test
-establishes only that leaf execution path. Proof coverage and practical
+practical efficiency bound. Extracted sort quotation passes, while the
+abstraction and application probes each exceed a 30-second limit.
+Only the leaf path has completed in these runtime probes. Proof coverage and practical
 compiler performance remain distinct claims.
 
 # Can the representation support CPS?
@@ -723,7 +738,34 @@ recursive kernel checks against pristine upstream. No new axiom,
 admission, unsafe cast or altered typing rule is used.
 The CPS analysis above is outside that formalized theorem.
 
-The remaining questions concern a rank-only interface, a smaller and
-efficiently generated collection of equality laws, and a typed dependent
-CPS interpretation. These strengthen the completed finite-plan
-self-interpreter and its strong recovery theorem.
+## Allocation costs and limits of uniformity
+
+Let $d$ be the source derivation after pruning, and let $N_\Pi,N_\lambda,
+N_{\rm app},N_{\rm conv}$ count its four non-leaf rules. The actual output
+plan has exactly
+
+$$
+L(d)=2N_\Pi+N_\lambda+2N_{\rm app}+2N_{\rm conv}<|d|
+$$
+
+layers, where $|d|$ counts every rule occurrence. This is an allocation-count
+theorem, not a runtime bound for enumeration, typechecking or evaluation.
+The direct syntax enumerator also has a proved exact cardinality recurrence.
+
+The plan cannot be bounded by source ranks for this algorithm. Put
+$t_0=\Ur0$ and $t_{m+1}=(\lambda x:\Ur0.x)\,t_m$. Their literal ceiling
+and result type rank are zero, their redex ranks are at most one, and their
+plans have length $3m$. Even the fixed judgment $\Ur0:\Ur0$ admits
+derivations with $m$ conversion detours through
+$(\lambda x:\Ur0.x)\,\Ur0$; these survive literal-reflexivity pruning
+and produce $7m$ layers. Both facts are checked against the actual quoter.
+Thus neither rank-only plan bounds nor full derivation independence follow
+from the current construction. A rank-uniform interpreter or a canonical
+source elaborator would require an additional construction; neither is
+ruled out by these counterexamples.
+
+A smaller coherence interface and practical non-leaf execution remain
+open, as does the independent elementary-compiler/numeric-reification route.
+The [obligation ledger](theories/self_interpreter/OBLIGATIONS.md) distinguishes
+these extensions from obligations already discharged by full dependent
+quotation. Dependent CPS remains a separate, unformalized question.

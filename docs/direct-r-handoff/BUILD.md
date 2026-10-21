@@ -1,5 +1,21 @@
 # Build, logs, and recovery
 
+Latest self-interpreter improvement check: all modified targets compile and
+full local CI passes all 226 stages, exit 0. Fresh aggregate audit in
+/tmp/pts-rk-self-improvements-audit.vjkEgS passes with 2287 own closed reports
+plus one upstream report. Core/aggregate recursive kernel checks, pristine
+inventory and original proof comparisons pass. All 112 manifest entries are
+stable. FINAL-CHECKS exits 0 after correcting an overbroad Git pathspec in the
+audit's original-source comparison. Raw logs:
+_build/self-interpreter-improvements-2026-10-21.
+Extracted sort checks pass; lambda/application each timeout at 30 seconds,
+exit 124. Direct enumeration computes 68/1209 trees at sizes 5/7. The updated
+11-page note builds without TeX layout/reference/glyph warnings; changed pages
+visually checked. Exact commands and all prototype failures:
+[improvement evidence](verification/self-interpreter-improvements-2026-10-21/COMMANDS.md).
+The enclosing scoped publication commit is based on f5fdac0c; publication was
+requested after these checks completed.
+
 Latest editorial check: the streamlined self-interpreter note compiles to
 11 pages (formerly 42). All four fresh note builds pass; final directory
 /tmp/pts-rk-self-note.0KH9o2. PDFKit text/render checks pass, and the final

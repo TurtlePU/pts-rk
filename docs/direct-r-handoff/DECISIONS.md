@@ -1,5 +1,31 @@
 # Decisions and proof-engineering history
 
+## 2026-10-21 — optimize enumeration and distinguish plan bounds from uniformity
+
+Preserve the full original-source theorem while improving its executable inputs
+and allocation. Replace depth-sized syntax followed by node filtering with
+direct exact-node generation; prove complete membership agreement. Reject
+ill-typed carrier/operand/telescope candidates before expanding their Cartesian
+products, while retaining original typing and actual filled-endpoint conversion
+as acceptance criteria. Changed enumeration order may change slot numbers;
+old byte-identical quotes are not a compatibility contract.
+
+Prune conversions only when endpoint types are literally equal. Preserve the
+annotated source judgment and prove idempotence and final quotation invariance
+under arbitrary redundant wrappers. Do not describe this partial normalization
+as full derivation-independent quotation. Prove costs of the ACTUAL output plan,
+not just a free-standing numerical recurrence. Infinite identity-application and
+conversion-detour families show unbounded current plan lengths at fixed ranks
+and even fixed final judgment. Scope those negative results to this algorithm;
+they do not prove impossibility for alternative rank-only interpreters.
+
+Maintain a separate obligation ledger instead of reintroducing the historical
+development narrative into the concise paper. The elementary compiler/numeric
+reifier is an independent route, not an unfinished premise of the completed
+PHOAS theorem. Runtime timeouts are evidence of the implementation's current
+limits, not failures of the kernel-checked existence/recovery theorem. CPS
+formalization is explicitly excluded from this continuation.
+
 ## 2026-10-21 — present the final interpreter without development history
 
 The research note is an exposition of the completed numerical-plan family,

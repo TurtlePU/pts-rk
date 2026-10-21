@@ -14,15 +14,11 @@ From PTSrk.SelfInterpreter Require Import RankObstruction RankedDecoder
   UniformTelescopeRecovery TelescopeBetaFamily UniformContextualBeta
   ContextualBetaFamily ContextualBetaSignature RealizedSignature TelescopeBetaSignature.
 
-(** Public theorem types as well as transitive assumptions. Strong unquotation
-    retains INDEPENDENT ChurchSTLC source typing. The full-PTS endpoint below
-    is WEAK interpretation of a precomputed normal payload plus faithful HOAS
-    tag, not an internal evaluator of pure raw HOAS. The canonical-context,
-    hereditary-substitution and type-index results cover full original PTS
-    syntax at the metalevel; they do not supply an object-language reifier.
-    The Tarski modules supply a finite normal original signature with actual
-    typed identity instantiation and LOCAL operation/equality computation,
-    not global dependent quotation or an assumed conversion-coherence law. *)
+(** Public theorem types and transitive assumptions. The final
+    FullDependentInterpreter endpoints cover full original dependent typing
+    by numerical-plan-indexed strong unquotation. Historical intermediate
+    encodings remain audited independently. The allocation optimizations and
+    precise plan-length limitations below do not assert rank-only uniformity. *)
 Set Printing Implicit.
 Check no_universal_fixed_head_evaluator.
 Check typed_ranked_retraction.
@@ -1866,3 +1862,59 @@ Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.lift_view.
 Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.lift_shape.
 Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.base_extension_typed.
 Print Assumptions GlobalEqualityInsertion.GlobalEqualityInsertion.base_extension_realization.
+
+From PTSrk.SelfInterpreter Require SizedSyntaxEnumeration SourcePruning QuotationCost PlanNonuniformity.
+
+(** Efficient enumeration, source pruning, and exact allocation limits. *)
+Check SizedSyntaxEnumeration.SizedSyntaxEnumeration.exact_sound.
+Print Assumptions SizedSyntaxEnumeration.SizedSyntaxEnumeration.exact_sound.
+Check SizedSyntaxEnumeration.SizedSyntaxEnumeration.exact_complete.
+Print Assumptions SizedSyntaxEnumeration.SizedSyntaxEnumeration.exact_complete.
+Check SizedSyntaxEnumeration.SizedSyntaxEnumeration.old_enumeration_agrees.
+Print Assumptions SizedSyntaxEnumeration.SizedSyntaxEnumeration.old_enumeration_agrees.
+Check SizedSyntaxEnumeration.SizedSyntaxEnumeration.exact_count_correct.
+Print Assumptions SizedSyntaxEnumeration.SizedSyntaxEnumeration.exact_count_correct.
+Check SizedSyntaxEnumeration.SizedSyntaxEnumeration.count_correct.
+Print Assumptions SizedSyntaxEnumeration.SizedSyntaxEnumeration.count_correct.
+Check SourcePruning.SourcePruning.prune_original.
+Print Assumptions SourcePruning.SourcePruning.prune_original.
+Check SourcePruning.SourcePruning.prune_idempotent.
+Print Assumptions SourcePruning.SourcePruning.prune_idempotent.
+Check SourcePruning.SourcePruning.prune_nodes.
+Print Assumptions SourcePruning.SourcePruning.prune_nodes.
+Check SourcePruning.SourcePruning.prune_repairs.
+Print Assumptions SourcePruning.SourcePruning.prune_repairs.
+Check SourcePruning.SourcePruning.prune_padding.
+Print Assumptions SourcePruning.SourcePruning.prune_padding.
+Check CheckedEqualityFields.CheckedEqualityFields.typed_descriptors_iff.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.typed_descriptors_iff.
+Check CheckedEqualityFields.CheckedEqualityFields.entries_reference_agrees.
+Print Assumptions CheckedEqualityFields.CheckedEqualityFields.entries_reference_agrees.
+Check CheckedContextualFields.CheckedContextualFields.accepted_candidates_iff.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.accepted_candidates_iff.
+Check CheckedContextualFields.CheckedContextualFields.entries_reference_agrees.
+Print Assumptions CheckedContextualFields.CheckedContextualFields.entries_reference_agrees.
+Check FullDependentInterpreter.FullDependentInterpreter.closed_prune_invariant.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.closed_prune_invariant.
+Check FullDependentInterpreter.FullDependentInterpreter.closed_padding_invariant.
+Print Assumptions FullDependentInterpreter.FullDependentInterpreter.closed_padding_invariant.
+Check QuotationCost.QuotationCost.plan_length.
+Print Assumptions QuotationCost.QuotationCost.plan_length.
+Check QuotationCost.QuotationCost.plan_length_bound.
+Print Assumptions QuotationCost.QuotationCost.plan_length_bound.
+Check QuotationCost.QuotationCost.closed_plan_length.
+Print Assumptions QuotationCost.QuotationCost.closed_plan_length.
+Check QuotationCost.QuotationCost.fixed_rank_plan_length.
+Print Assumptions QuotationCost.QuotationCost.fixed_rank_plan_length.
+Check QuotationCost.QuotationCost.fixed_judgment_plan_length.
+Print Assumptions QuotationCost.QuotationCost.fixed_judgment_plan_length.
+Check QuotationCost.QuotationCost.no_source_only_plan_bound.
+Print Assumptions QuotationCost.QuotationCost.no_source_only_plan_bound.
+Check PlanNonuniformity.PlanNonuniformity.source_redex_bound.
+Print Assumptions PlanNonuniformity.PlanNonuniformity.source_redex_bound.
+Check PlanNonuniformity.PlanNonuniformity.no_rank_only_repair_bound.
+Print Assumptions PlanNonuniformity.PlanNonuniformity.no_rank_only_repair_bound.
+Check PlanNonuniformity.PlanNonuniformity.detours_pruned.
+Print Assumptions PlanNonuniformity.PlanNonuniformity.detours_pruned.
+Check PlanNonuniformity.PlanNonuniformity.detour_cost.
+Print Assumptions PlanNonuniformity.PlanNonuniformity.detour_cost.

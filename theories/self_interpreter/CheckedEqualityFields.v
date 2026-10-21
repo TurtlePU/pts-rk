@@ -4,7 +4,7 @@ From PTSrk Require Import -(notations) Syntax Context Typing Preservation Ranks
   Reduction AbstractRewriting DefEq.
 From PTSrk.NormalizationComplexity Require Import Rank Bounds Greedy Morphisms.
 From PTSrk.SelfInterpreter Require Import OriginalTypecheck FullConversion
-  BoundedSyntaxEnumeration IndexedEquality RealizedEquality TarskiPalette
+  SizedSyntaxEnumeration IndexedEquality RealizedEquality TarskiPalette
   ChurchSyntax PHOASTelescope.
 Import Context ListNotations RankEstimate.
 
@@ -15,7 +15,7 @@ Import Context ListNotations RankEstimate.
 Module CheckedEqualityFields.
 Module OT := OriginalTypecheck.OriginalTypecheck.
 Module FC := FullConversion.FullConversion.
-Module EN := BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.
+Module EN := SizedSyntaxEnumeration.SizedSyntaxEnumeration.
 Module IE := IndexedEquality.IndexedEquality.
 Module RE := RealizedEquality.RealizedEquality.
 Module PL := TarskiPalette.TarskiPalette.
@@ -149,12 +149,69 @@ Theorem value_erases m n (H : Ctx nat n) (sigma : Fin m -> Term nat n) x P z :
   reduces_to nat n (IE.transport (value H sigma x) P z) z.
 Proof. apply RE.normal_reflexivity_erases. Qed.
 
+Definition carrier_ok {m} (G : Ctx nat m) C :=
+  normalb C && match OT.type_sort G C with Some _ => true | None => false end.
+Definition value_ok {m} (G : Ctx nat m) C u := normalb u && OT.check G u C.
+Definition eligible {m} (G : Ctx nat m) x :=
+  carrier_ok G (carrier x) && value_ok G (carrier x) (left x) &&
+    value_ok G (carrier x) (right x).
+
+(** Reject malformed carriers and operands BEFORE taking the cubic product.
+    The final test still checks the actual filled endpoint conversion. *)
+Definition typed_descriptors s k {m} (G : Ctx nat m) :=
+  let vocabulary := EN.sized_terms s m k in
+  flat_map (fun d => flat_map (fun C =>
+    let operands := filter (value_ok G C) vocabulary in
+    flat_map (fun u => map (fun v => Desc d C u v) operands) operands)
+    (filter (carrier_ok G) vocabulary)) (seq 0 (S k)).
+
+Lemma accepted_eligible m n (G : Ctx nat m) (H : Ctx nat n) sigma x :
+  accepted G H sigma x=true -> eligible G x=true.
+Proof.
+  unfold accepted, eligible, carrier_ok, value_ok.
+  destruct (OT.type_sort G (carrier x)); [|discriminate].
+  repeat rewrite andb_true_iff; tauto.
+Qed.
+Lemma typed_descriptors_iff s k m (G : Ctx nat m) x :
+  In x (typed_descriptors s k G) <->
+  node_budget x<=s /\ literal_budget x<=k /\ eligible G x=true.
+Proof.
+  unfold typed_descriptors; split.
+  - intro HX; apply in_flat_map in HX; destruct HX as [d [HD HX]].
+    apply in_flat_map in HX; destruct HX as [C [HC HX]].
+    apply in_flat_map in HX; destruct HX as [u [HU HV]].
+    apply in_map_iff in HV; destruct HV as [v [E HV]]; subst x.
+    apply filter_In in HC, HU, HV; apply in_seq in HD.
+    destruct HC as [HC HCO], HU as [HU HUO], HV as [HV HVO].
+    apply EN.sized_terms_iff in HC, HU, HV.
+    unfold node_budget, literal_budget, eligible; cbn [carrier left right level].
+    repeat rewrite andb_true_iff; repeat split; try assumption; lia.
+  - destruct x as [d C u v]; unfold node_budget, literal_budget, eligible;
+      cbn [carrier left right level]; repeat rewrite andb_true_iff.
+    intros [HN [HL [[HC HU] HV]]].
+    apply in_flat_map; exists d; split; [apply in_seq; lia|].
+    apply in_flat_map; exists C; split.
+    + apply filter_In; split; [apply EN.sized_terms_iff; lia|exact HC].
+    + apply in_flat_map; exists u; split.
+      * apply filter_In; split; [apply EN.sized_terms_iff; lia|exact HU].
+      * apply in_map, filter_In; split; [apply EN.sized_terms_iff; lia|exact HV].
+Qed.
+
 Definition entries s k {m n} (G : Ctx nat m) (H : Ctx nat n) sigma :=
-  filter (accepted G H sigma) (descriptors s m k).
+  filter (accepted G H sigma) (typed_descriptors s k G).
 Theorem entries_iff s k m n (G : Ctx nat m) (H : Ctx nat n) sigma x :
   In x (entries s k G H sigma) <->
     node_budget x <= s /\ literal_budget x <= k /\ accepted G H sigma x = true.
-Proof. unfold entries; rewrite filter_In, descriptors_iff; tauto. Qed.
+Proof.
+  unfold entries; rewrite filter_In, typed_descriptors_iff.
+  split; [tauto|intros [HN [HL HA]]; repeat split; try assumption;
+    eapply accepted_eligible; exact HA].
+Qed.
+
+Theorem entries_reference_agrees s k m n (G : Ctx nat m) (H : Ctx nat n) sigma x :
+  In x (entries s k G H sigma) <->
+  In x (filter (accepted G H sigma) (descriptors s m k)).
+Proof. rewrite entries_iff, filter_In, descriptors_iff; tauto. Qed.
 Theorem computed_coverage m n (G : Ctx nat m) (H : Ctx nat n) sigma x :
   accepted G H sigma x = true ->
   In x (entries (node_budget x) (literal_budget x) G H sigma).

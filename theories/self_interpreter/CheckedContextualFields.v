@@ -4,7 +4,7 @@ From PTSrk Require Import -(notations) Syntax Context Typing Preservation Ranks
   Reduction AbstractRewriting DefEq.
 From PTSrk.NormalizationComplexity Require Import Rank Bounds Greedy Morphisms.
 From PTSrk.SelfInterpreter Require Import OriginalTypecheck FullConversion
-  BoundedSyntaxEnumeration CheckedEqualityFields IndexedEquality TarskiPalette
+  SizedSyntaxEnumeration CheckedEqualityFields IndexedEquality TarskiPalette
   ChurchSyntax PHOASTelescope ContextualTelescope UniformTelescope
   ContextualTelescopeRun ContextualEqualityRealizer ContextualEqualityExtension UniformTelescopeRecovery.
 Import Context ListNotations RankEstimate.
@@ -15,7 +15,7 @@ Import Context ListNotations RankEstimate.
 Module CheckedContextualFields.
 Module OT := OriginalTypecheck.OriginalTypecheck.
 Module FC := FullConversion.FullConversion.
-Module EN := BoundedSyntaxEnumeration.BoundedSyntaxEnumeration.
+Module EN := SizedSyntaxEnumeration.SizedSyntaxEnumeration.
 Module EF := CheckedEqualityFields.CheckedEqualityFields.
 Module IE := IndexedEquality.IndexedEquality.
 Module PL := TarskiPalette.TarskiPalette.
@@ -213,12 +213,68 @@ Proof.
   apply IHD; try assumption; eapply wf_cons; eassumption.
 Qed.
 
+Fixpoint accepted_candidates h s k m n (G : Ctx nat m) (H : Ctx nat n)
+    (sigma : Fin m -> Term nat n) : list (candidate m) :=
+  map leaf (EF.entries s k G H sigma) ++
+  match h with
+  | 0 => []
+  | S h' => flat_map (fun r => flat_map (fun A =>
+      if OT.check G A (𝓤 r) && normalb A then
+        map (bind r A) (accepted_candidates h' s k (S m) (S n)
+          (G & A) (H & replace sigma A) (transpose sigma))
+      else []) (EN.sized_terms s m k)) (seq 0 (S k))
+  end.
+
+Theorem accepted_candidates_iff h : forall s k m n (G : Ctx nat m) H sigma x,
+  In x (accepted_candidates h s k m n G H sigma) <->
+  depth x<=h /\ node_budget x<=s /\ literal_budget x<=k /\
+    accepted x n G H sigma=true.
+Proof.
+  induction h as [|h IH]; intros s k m n G H sigma x;
+    cbn [accepted_candidates]; rewrite in_app_iff.
+  - destruct x as [m e|m r A y]; cbn [depth node_budget literal_budget accepted]; split.
+    + intros [HX|HX]; [apply in_map_iff in HX; destruct HX as [e' [E HE]];
+        dependent elimination E; apply EF.entries_iff in HE; split; [lia|exact HE]|contradiction].
+    + intros [_ HX]; left; apply in_map, EF.entries_iff; exact HX.
+    + intros [HX|HX]; [apply in_map_iff in HX; destruct HX as [e' [E _]]; discriminate|contradiction].
+    + lia.
+  - destruct x as [m e|m r A y]; cbn [depth node_budget literal_budget accepted]; split.
+    + intros [HX|HX].
+      * apply in_map_iff in HX; destruct HX as [e' [E HE]];
+          dependent elimination E; apply EF.entries_iff in HE; split; [lia|exact HE].
+      * apply in_flat_map in HX; destruct HX as [r [HR HX]].
+        apply in_flat_map in HX; destruct HX as [A [HA HX]].
+        destruct (OT.check G A (𝓤 r) && normalb A); [|contradiction].
+        apply in_map_iff in HX; destruct HX as [y [E _]]; discriminate.
+    + intros [_ HX]; left; apply in_map, EF.entries_iff; exact HX.
+    + intros [HX|HX].
+      * apply in_map_iff in HX; destruct HX as [e' [E _]]; discriminate.
+      * apply in_flat_map in HX; destruct HX as [r' [HR HX]].
+        apply in_flat_map in HX; destruct HX as [A' [HA HX]].
+        destruct (OT.check G A' (𝓤 r') && normalb A') eqn:HG; [|contradiction].
+        apply in_map_iff in HX; destruct HX as [y' [E HY]].
+        dependent elimination E.
+        apply in_seq in HR; apply EN.sized_terms_iff in HA; apply IH in HY.
+        rewrite HG; cbn; destruct HY as [HYD [HYN [HYL HYA]]].
+        repeat split; try assumption; lia.
+    + intros [HD [HN [HL HA]]].
+      apply andb_true_iff in HA; destruct HA as [HG HY].
+      right; apply in_flat_map; exists r; split; [apply in_seq; lia|].
+      apply in_flat_map; exists A; split; [apply EN.sized_terms_iff; lia|].
+      rewrite HG; apply in_map, IH; repeat split; try assumption; lia.
+Qed.
+
 Definition entries h s k {n} (G : Ctx nat n) sigma :=
-  filter (fun x => accepted x 0 G ε sigma) (candidates h s n k).
+  accepted_candidates h s k n 0 G ε sigma.
 Theorem entries_iff h s k n (G : Ctx nat n) sigma x :
   In x (entries h s k G sigma) <-> depth x <= h /\ node_budget x <= s /\
     literal_budget x <= k /\ accepted x 0 G ε sigma = true.
-Proof. unfold entries; rewrite filter_In, candidates_iff; tauto. Qed.
+Proof. apply accepted_candidates_iff. Qed.
+
+Theorem entries_reference_agrees h s k n (G : Ctx nat n) sigma x :
+  In x (entries h s k G sigma) <->
+  In x (filter (fun y => accepted y 0 G ε sigma) (candidates h s n k)).
+Proof. rewrite entries_iff, filter_In, candidates_iff; tauto. Qed.
 Theorem computed_coverage n (G : Ctx nat n) sigma x :
   accepted x 0 G ε sigma = true ->
   In x (entries (depth x) (node_budget x) (literal_budget x) G sigma).
