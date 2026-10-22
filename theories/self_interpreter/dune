@@ -19,9 +19,15 @@
     RealizedSignature RealizedEquality ContextualEqualityRealizer ContextualEqualityExtension CodeAlignment GlobalEqualityInsertion LocalQuotationSpine LocalSpineNaturality LocalInitialState CheckedEqualityFields CheckedContextualFields CheckedEqualityLayers NormalEqualityFill ContextReification LayerCodeAlignment LocalCodeAlignment
     QuotationCost PlanNonuniformity FragmentUniformity FiniteCoherenceCatalogue CappedInterpreter CappedQuotationState CappedLayerAlignment CappedCodeAlignment CappedFullQuotation CappedApplicationQuotation CappedRecursiveQuotation CappedProgramInterpreter CappedDependentInterpreter
     TelescopeBetaFamily UniformContextualBeta ConcreteContextualBeta
-    ContextualBetaFamily ContextualBetaSignature TelescopeBetaSignature Audit)
- (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity))
+    ContextualBetaFamily ContextualBetaSignature TelescopeBetaSignature
+    BudgetInternalization FiniteLiteralBank NumericLiteralBank RankPadding FixedInterface FragmentClosureInterpreter
+    Algebra GenericFold UnifiedAlgebra PHOASFold PHOASCPS CombinatoryFold CombinatoryAlgebra FoldAudit Audit)
+ (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity PTSrk.Combinatory))
 
 (alias
  (name audit)
- (deps Audit.vo))
+ (deps Audit.vo FoldAudit.vo))
+
+(alias
+ (name fold-audit)
+ (deps FoldAudit.vo))

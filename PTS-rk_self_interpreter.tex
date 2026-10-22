@@ -1,25 +1,25 @@
 \documentclass[preamble=self-interpreter-preamble.tex]{markdown}
-title: An indexed PHOAS self-interpreter for PTS-rk
-date: October 21, 2026
+title: Indexed PHOAS interpretation and folds for PTS-rk
+date: October 22, 2026
 
 :::Abstract
-The full annotated PTS-rk admits a family of typed self-interpreters.
-An executable external quoter assigns every typing derivation in a
-well-formed context a finite numerical index and normal representations
-of its type and term. The
-corresponding interpreter is itself a normal PTS-rk term, and its
-application reduces to the literal source term. A separate HOAS tag
-preserves annotated syntax injectively. The construction uses dependent
-type codes, explicit equality transports and a finite signature whose
-identity interpretation is constructed inside the original calculus.
+The full annotated PTS-rk admits normal type and term representations whose
+identity interpretation is originally typed and reduces to the literal,
+possibly reducible source. The interpreter is indexed by a rank budget
+and a finite numerical equality plan. Its common operation is a fold:
+application of a represented program to an originally typed filling of
+a dependent telescope. Types and terms use the same algebra.
+Neither raw syntax tags nor numerical encodings are needed for evaluation.
 
-The family depends on ranks and a numerical plan for equality repairs.
-Rank-capped quotation covers every source in a fixed quotation-budget fragment
-with a common interpreter-rank bound; one interpreter term for that entire
-fragment remains open. We explain
-the construction, compare its strong unquotation theorem with
-Brown--Palsberg's interpreter for $F_\omega$, and assess whether the
-representation supports a continuation-passing interpretation.
+This shared API does not yet give one constructor signature per rank
+fragment. We distinguish strong recovery from intrinsic syntax fidelity,
+and a uniform execution head from a uniform algebra. Checked alternative
+interpretations include a constructor observer on faithful simply typed
+PHOAS and a continuation-passing fold on binder-free trees. The latter
+and a Boolean constructor test consume the same rank-correct code.
+Full dependent alternative algebras, intrinsic fidelity for arbitrary
+dependent payloads, and internal reification of accepted proof codes
+remain precise open obligations.
 :::
 
 # Introduction
@@ -27,69 +27,64 @@ representation supports a continuation-passing interpretation.
 Brown and Palsberg's
 [*Breaking Through the Normalization Barrier: A Self-Interpreter for
 $F_\omega$*](https://doi.org/10.1145/2837614.2837623)
-shows how a strongly normalizing typed language can interpret normal
-representations of its own programs. Their external quoter preserves
-syntax, while an internal unquoter recovers the represented term by beta
-reduction. This combination is stronger than computing a code for the
-term's normal form: evaluation must be able to return the original,
-possibly reducible, program.
+separates external quotation from internal interpretation.
+Normal syntax representations can describe reducible programs; applying
+an interpreter to such a representation recovers the original program.
+This is stronger than returning a code for its normal form.
 
-We establish this form of recovery for the full dependent PTS-rk. Given
-$\vdash t:T$, quotation computes finite numerical indices $j$ and closed
-normal programs $P,Q$ such that
+For PTS-rk, the basic interface is an algebra for a finite dependent
+telescope $\Sigma$. An algebra is a tuple $\sigma$ of ordinary PTS terms
+satisfying the declarations of $\Sigma$. A closed representation has
+the form $\lambda\Sigma.q$, and its fold is ordinary application:
 
 $$
-\vdash I_j\,P\,Q:T,
-\qquad I_j\,P\,Q\bto t.
+\mathsf{fold}_\sigma(Q)=Q\,\sigma,
+\qquad
+\mathsf{fold}_\sigma(\lambda\Sigma.q)\bto q[\sigma].
 $$
 
-The represented type $P$ is an ordinary argument. Each $I_j$ is an
-originally typed, normal PTS-rk program. The representation uses parametric
-higher-order abstract syntax (PHOAS): source binders become target binders,
-and abstract operation parameters keep the representation normal.
-Supplying their identity interpretation runs the represented program.
-The central difficulty is dependent conversion: the types of
-quoted applications can disagree before those parameters are filled.
-We resolve these disagreements with explicit, independently realized
-equality fields.
+The same operation interprets represented types and represented terms.
+It traverses an already constructed object-language representation by
+beta reduction, not by a new Rocq traversal of the source.
+Algebra supplies typing, substitution and conversion laws; GenericFold
+packages specialization as a normal head receiving the algebra fields
+as ordinary arguments.
+UnifiedAlgebra provides full dependent quotation and identity
+interpretation; PHOASFold and CombinatoryAlgebra instantiate this API
+with alternative interpretations. A common operation does not make
+their signatures identical.
 
-The normalization bounds provide a useful computational motivation.
-For fixed redex-rank bound $d$, the checked full-PTS normalizer satisfies
+The normalization bounds explain why a non-uniform construction is
+plausible. For a fixed redex-rank bound $d$, the checked normalizer has
 
 $$
 \operatorname{cost}(\mathsf{normalize}_d(t))
  \leq \operatorname{tower}_{2d+1}(N+5d+2),
+\quad
+\operatorname{tower}_0(x)=x,\quad
+\operatorname{tower}_{h+1}(x)=2^{\operatorname{tower}_h(x)}.
 $$
 
-where $N$ is the node count,
-$\operatorname{tower}_0(x)=x$ and
-$\operatorname{tower}_{h+1}(x)=2^{\operatorname{tower}_h(x)}$.
-Every closed typed term has the computable sufficient bound
-$1+\mathsf{maxRankLiteral}(t)+\mathsf{nodes}(t)$.
-Thus normalization is elementary at each fixed bound. The manuscript's
-non-uniform elementary representability theorem would realize each such
-numeric normalizer at a computable finite rank budget. That generic
-compiler is not yet formalized in Rocq. Moreover, numerical normalization
-does not itself produce an inhabitant of a represented dependent type.
-The interpreter constructed here supplies typed unquotation directly,
-without assuming that compiler.
+Here $N$ counts nodes; every closed typed term has the computable
+sufficient bound $1+\mathsf{maxRankLiteral}(t)+\mathsf{nodes}(t)$.
+Thus each fixed-bound normalizer is elementary. The manuscript's
+elementary representability argument would implement its numerical
+computation at a computable finite rank budget. The generic compiler
+needed for this route is not a Rocq theorem. Nor does numerical
+normalization alone produce an inhabitant of a represented dependent
+type. The interpreter below establishes typed recovery directly,
+without that compiler and without pre-normalizing the source term.
 
-The result is a family indexed by ranks and a finite numerical allocation
-plan. The plan records bounds for equality-field enumeration and can grow
-with the source derivation. This qualification matters both for the
-comparison with Brown--Palsberg and for the possible transformations of
-represented programs.
+# Dependent algebras and full interpretation
 
-# The calculus and the interpretation theorem
-
-Terms and types share the annotated syntax
+Terms and types share the original annotated syntax
 
 $$
-t ::= x\mid\Ur i\mid\Pi x:t.t\mid\lambda x:t.t\mid t\,t.
+t::=x\mid\Ur i\mid\Pi x:t.t\mid\lambda x:t.t\mid t\,t.
 $$
 
-We use the original PTS-rk judgments and beta reduction, including
-reduction inside annotations. The characteristic formation rules are
+We use original typing and beta reduction, including reduction inside
+annotations. The characteristic rules are
 
 $$
 \Gamma\vdash\Ur i:\Ur0,
@@ -98,766 +93,590 @@ $$
      {\Gamma\vdash\Pi x:A.B:\Ur{\max(a+1,b)}}.
 $$
 
-There is no cumulativity or eta conversion. Equality of source syntax
-below means literal equality of the original scoped, annotated terms.
+There is no cumulativity, eta conversion, additional primitive or axiom.
+Literal source equality includes annotations.
 
-An index has the form $j=(r,k,p,s)$: $r$ is the carrier rank of the
-syntax tag, $k$ bounds the finite type-code interface, $p$ is a finite
-plan of numerical equality-layer budgets, and $s\leq k+1$ is the result
-rank. For each such index the construction supplies a dependent interface
+## One fold for types and terms
 
-$$
-I_j:\Pi P:\mathsf{TyProg}_{k,p,s}.
-  \mathsf{Pack}_r(\mathsf{TmProg}_{k,p,s}(P))
-  \to\mathsf{Result}_{k,p,s}(P).
-$$
+For $\Sigma=(x_1:S_1,\ldots,x_m:S_m)$, a filling $\sigma$ is required
+to satisfy each declaration after substitution of the preceding fields.
+This is the original typed-substitution judgment. The Rocq algebra
+record packages that evidence; it does not add an object-language record
+type or assume semantic soundness.
 
-The type program, term program and package types are defined below.
-They depend on the finite interface and the ordinary argument $P$.
-The source term, source type and source derivation are not parameters of
-$I_j$.
-
-:::Theorem[Full dependent indexed interpretation]
-For every original closed judgment $\vdash t:T$ and every tag rank $r$,
-quotation supplies finite $k,p,s$ and closed terms $P,Q$ such that
-$s\leq k+1$, $P,Q,I_{r,k,p,s}$ are beta-normal, and
+The dependent signature supplies code carriers $C_s$ and decoding
+families $\mathsf{El}_s$. Schematically, its two program types are
 
 $$
 \begin{aligned}
-\vdash P&:\mathsf{TyProg}_{k,p,s},\\
-\vdash Q&:\mathsf{Pack}_r(\mathsf{TmProg}_{k,p,s}(P)),\\
-\vdash I_{r,k,p,s}\,P\,Q&:T,\\
-I_{r,k,p,s}\,P\,Q&\bto t.
+\mathsf{TyProg}_{\Sigma,s}
+  &=\Pi\Sigma.C_s,\\
+\mathsf{TmProg}_{\Sigma,s}(P)
+  &=\Pi\Sigma.\mathsf{El}_s(P\,\Sigma).
 \end{aligned}
 $$
 
-Executing $P$ with the interface's identity filling reduces to the
-literal source type $T$. For constructed faithful packages,
-$Q\bconv Q'$ implies equality of their source terms, even when the
-derivations and numerical indices differ.
+Actual annotations use cached normal bodies, so that apparent
+applications of $P$ do not introduce annotation redexes into the
+constructed programs. For any typed algebra $\sigma$, specialization
+gives
+
+$$
+\frac{P:\mathsf{TyProg}_{\Sigma,s}\qquad
+      Q:\mathsf{TmProg}_{\Sigma,s}(P)}
+ {\mathsf{fold}_\sigma(Q):
+  \mathsf{El}_s[\sigma](\mathsf{fold}_\sigma(P))}.
+$$
+
+Algebra proves the closure beta law, compatibility with substitution,
+extensionality of fillings and preservation of conversion.
+UnifiedAlgebra proves the above dependent specialization theorem for
+the generated full-source programs, not just for a separately defined
+host-language evaluator.
+
+GenericFold packages specialization into one originally typed head for
+each signature, with no algebra filling built into it:
+
+$$
+\begin{aligned}
+G_{\Sigma,s}
+ &=\lambda P:\mathsf{TyProg}_{\Sigma,s}.
+  \lambda Q:\mathsf{TmProg}_{\Sigma,s}(P).\lambda\Sigma.Q\,\Sigma,
+\\
+G_{\Sigma,s}\,P\,Q\,\sigma&\bto\mathsf{fold}_\sigma(Q).
+\end{aligned}
+$$
+
+It is normal for the generated normal signature and neutral decoding
+family. If $\rho_\Sigma(u)$ is the telescope's closure rank at result
+rank $u$, its type-sort is
+$\max(\rho_\Sigma(0)+1,\rho_\Sigma(s)+1)$.
+The fields of $\sigma$ are ordinary remaining arguments, not an external
+evaluator parameter. The syntactic composition theorem reduces nested
+invocations to nested folds; it asserts neither semantic fusion nor
+typing compatibility between unrelated signatures. One head per
+signature is not one constructor signature for an entire rank fragment.
+
+:::Theorem[Tag-free full dependent recovery]
+For every original closed judgment $\vdash t:T$, quotation supplies
+finite numerical indices $k,p,s$, with $s\leq k+1$, and closed normal
+programs $P,Q$ over a signature $\Sigma_{k,p}$.
+Its constructed normal identity algebra $\iota$ satisfies
+
+$$
+\begin{aligned}
+\mathsf{fold}_\iota(P)&\bto T,\\
+\vdash\mathsf{fold}_\iota(Q)&:T,\\
+\mathsf{fold}_\iota(Q)&\bto t.
+\end{aligned}
+$$
+
+The corresponding normal, originally typed head $I_{k,p,s}$ takes the
+ordinary arguments $P,Q$ and satisfies $I_{k,p,s}\,P\,Q\bto t$.
+No raw HOAS tag is used in these programs or their interpretation.
 :::
 
-Quotation is executable on independently specified derivation data.
-Every original typing derivation is represented by such data; the
-coverage statement about original propositional typing is proved
-separately. The quoter does not inspect an erased Rocq proposition.
+Quotation is executable on independent six-rule derivation data.
+Coverage of original propositional typing is a separate theorem:
+the quoter does not inspect an erased Rocq proposition.
+The indices describe rank and equality-field allocation, not the source
+syntax or a source term supplied secretly to the interpreter.
+For a well-formed open context, quote the literal dependent closure
+$\lambda\Gamma.t$ and reopen its recovered value at the variables of
+$\Gamma$. Original typing and literal recovery hold in that context.
 
-For a well-formed open context $\Gamma$, the construction first quotes
-the literal dependent closure $\lambda\Gamma.t$, then applies its
-interpreted value to the variables of $\Gamma$. This gives original
-typing and reduction to $t$ in $\Gamma$. Syntax fidelity holds at a fixed
-source scope, including comparisons between different contexts of the
-same length.
+## Recovery and fidelity are different
 
-## Why the interpreter is a family
+For a common algebra, convertible represented programs have convertible
+recovered sources. If those sources are normal, this gives literal
+injection. It does not give literal injection for arbitrary reducible
+sources: distinct beta-equivalent terms can have a common reduct.
 
-The *type rank* of $t:T$ is the unique $a$ such that $T:\Ur a$.
-In a well-formed context it is invariant under conversion, and application
-cannot increase it:
+The simply typed PHOAS codes and the binder-free codes below already
+have intrinsic structural syntax-injectivity proofs.
+For the full dependent payload, literal injection across arbitrary
+repairs and plans is not yet proved. The compatibility interface
+FullDependentInterpreter therefore retains a separate faithful HOAS
+envelope when that stronger contract is needed. Its established
+cross-plan annotated-source injection has not been discarded or
+silently transferred to the tag-free interface.
 
-$$
-\rk_\Gamma(f\,u)\leq\rk_\Gamma(f).
-$$
+Removing this envelope while keeping the same fidelity theorem requires
+a structural decoder for the actual payload, stable under binders,
+repairs and signature insertion. An external quotation tree is useful
+metadata, but is not such a decoder. No impossibility result for this
+stronger intrinsic dependent fidelity is claimed.
 
-Indeed, if $f:\Pi x:A.B$, with $A:\Ur a$ and $B:\Ur b$ under
-the binder, the function has type rank $\max(a+1,b)$ and its application
-has type rank $b$. Hence every typed application spine headed by a fixed
-$E$ has type rank at most $\rk(E)$.
+# Why dependent quotation needs coherence fields
 
-:::Proposition[Fixed-head obstruction]
-No one closed typed PTS-rk term $E$ can recover every closed typed source,
-up to beta conversion, by a typed application spine $E\,a_1\cdots a_m$.
-:::
-
-:::Proof
-Let
-$A_0=\Ur0$, $A_{n+1}=\Pi x:A_n.\Ur0$,
-$v_0=\Ur0$ and $v_{n+1}=\lambda x:A_n.\Ur0$.
-The original rules give $A_n:\Ur n$ and $v_n:A_n$.
-If $E$ has type rank $R$, no typed application spine of $E$ can be
-convertible to $v_{R+1}$.
-:::
-
-The argument allows arbitrary type and code arguments, including an
-internal numeral purporting to select a rank. It concerns this precise
-application interface; externally generated abstractions around the
-result fall outside it. A family of different heads $I_j$ avoids the
-obstruction.
-
-Type rank must also be distinguished from the redex and literal bounds
-used in quotation. For example, $\Ur m:\Ur0$ has type rank zero for every
-$m$, while its representation must retain the literal $m$. The interface
-budget therefore includes source literals and the ranks needed throughout
-the derivation.
-
-# Representation and evaluation
-
-The construction separates three jobs. A finite Tarski signature
-represents dependent types and their inhabitants. Checked equality fields
-repair the mismatches introduced by quotation. A raw HOAS tag records
-source syntax independently of those repairs. Closing over the signature
-produces the normal arguments of the interpreter.
-
-## Dependent codes and their identity interpretation
-
-For each required rank $a$, the signature contains a code carrier and a
-decoder,
+The signature distinguishes type codes from their values:
 
 $$
-C_a:\Ur0,
-\qquad \mathsf{El}_a:C_a\to\Ur a.
+C_a:\Ur0,\qquad
+\mathsf{El}_a:C_a\to\Ur a.
 $$
 
-For $c=\max(a+1,b)$ it also contains a dependent product constructor
+A dependent-product constructor takes a code $A:C_a$ and a family
+$B:\mathsf{El}_a(A)\to C_b$, with result in $C_{\max(a+1,b)}$.
+A quoted binder is a genuine target binder. Universe codes, abstraction
+and application operations complete the basic signature.
+
+To relate product decoding to actual dependent functions, and universe
+decoding to actual universes, the signature also contains equality laws.
+At suitable ranks these use Leibniz equality
 
 $$
-p_{a,b}:\Pi A:C_a.(\mathsf{El}_a A\to C_b)\to C_c.
+\mathsf{Eq}_{A,d}(x,y)
+ =\Pi P:(A\to\Ur d).\,P\,x\to P\,y.
 $$
 
-Thus a code family $B:\mathsf{El}_a A\to C_b$ binds an actual target
-variable of the decoded domain type. This is the dependent HOAS component
-of the representation.
+For $A:\Ur a$, its sort is $\Ur{\max(a+2,d+1)}$.
+Product coherence uses sufficiently high motives to transport in both
+directions. Under the identity interpretation, $C_a$ becomes $\Ur a$,
+$\mathsf{El}_a$ becomes the identity, and the constructors become the
+original PTS operations; the law witnesses reduce to reflexivity.
 
-The decoded product code need not be definitionally equal to the product
-of the decoded constituents. The signature therefore includes a witness
-relating
+Before filling the signature, however, these equality fields are neutral.
+A transport followed by its inverse need not reduce to the original
+term. Consequently, the code family expected by a quoted dependent
+application need not be convertible to the family obtained by quoting
+the source substitution.
+
+The construction resolves this with a finite telescope of contextual
+repairs. A repair is a field $\Pi\Delta.\mathsf{Eq}(u,v)$ whose original
+typing is checked, and whose filled endpoints are independently proved
+convertible. Normalizing a constructed equality witness supplies a
+normal identity filling; it does not normalize the represented source.
+The allocation plan records only numerical scope, node-count,
+literal and rank budgets, not endpoint terms or proof objects.
+
+The executable quotation follows all six original rules:
+
+- Sorts and variables use the universe and variable components.
+- Products and lambdas quote their components under actual binders.
+- Application uses two checked repairs and substitution on finite
+  quotation views, aligning both the function family and the result.
+- Conversion quotes the required formation data and introduces the
+  corresponding checked alignment.
+
+Application does not recursively quote an arbitrarily synthesized
+derivation. This matters because reconstructing formation derivations
+can otherwise create cycles around the rule $\Ur i:\Ur0$.
+The finite view/substitution lemmas and structural recursion on the
+independent input derivation close this gap. Closing the telescope then
+produces the normal type and term programs used above.
+
+These are mathematical coverage and executability results, not a
+performance claim. The extracted sort path has been exercised; lambda
+and application probes reached a 30-second timeout.
+Pruning literal reflexive conversion steps removes avoidable fields,
+but does not establish derivation-independent quotation.
+
+# Alternative PHOAS folds and continuations
+
+## An actual nonidentity interpretation
+
+For the simply typed fragment over a ground type $O:\Ur0$, the existing
+normal PHOAS code abstracts over rank-preserving families
+$F_a:\Ur a\to\Ur a$ and typed abstraction/application handlers.
+PHOASFold applies an already produced code to any such typed filling,
+and proves its exact agreement with Algebra's fold.
+
+A concrete filling observes the outer constructor. Put
 
 $$
-X=\Pi x:\mathsf{El}_a A.\mathsf{El}_b(Bx),
-\qquad Y=\mathsf{El}_c(p_{a,b}\,A\,B).
+D_0=\Ur0,\qquad D_{a+1}=D_a\to\Ur0,\qquad
+F_a(A)=D_a.
 $$
 
-Equality is represented by ordinary PTS syntax. For $D:\Ur a$ and
-$u,v:D$, use the rank-indexed Leibniz type
+For each $a$, choose two closed normal observations
+$o_a^0,o_a^1:D_a$: set $o_0^i=\Ur i$ and
+$o_{a+1}^i=\lambda x:D_a.\Ur i$ for $i=0,1$.
+They are not beta-convertible. The abstraction handler returns
+$o_{\operatorname{ord}(A\to B)}^0$; the application handler returns
+$o_{\operatorname{ord}(B)}^1$. These are exact-rank, originally typed
+handlers. Folding the normal quoted program returns the corresponding
+observation by beta reduction.
+
+This is not the identity interpretation in disguise, a new source
+traversal, or a numeral encoding. Nor are these two observations claimed
+to be an eliminable Church Boolean: their nonconvertibility suffices
+for the theorem.
+
+There is a checked regression at the original source level:
 
 $$
-\mathsf{Eq}_d(D,u,v)
- =\Pi M:(D\to\Ur d).M\,u\to M\,v,
+(\lambda f:O\to O.f)(\lambda x:O.x)
+ \bto \lambda x:O.x.
+$$
+
+The two faithful normal quotations give distinct observer outputs.
+Thus this observer does not preserve all source beta equations.
+PHOASConversion proves the related general obstruction: a shared map
+cannot simultaneously be normal-valued, injective on literal syntax
+and preserve all source conversion. This excludes that conjunction,
+not PHOAS itself, separate syntax and semantic indices, or transports.
+
+## What the continuation construction proves
+
+For $A:\Ur a$ and an answer type $R:\Ur b$, define
+
+$$
+C_R(A)=(A\to R)\to R,
 \qquad
-\mathsf{refl}_d(D,u)
- =\lambda M:(D\to\Ur d).\lambda z:M\,u.z.
+h(a,b)=\max(a+2,b+1).
 $$
 
-Its sort is $\Ur{\max(a+2,d+1)}$. The product-law field has type
-
-$$
-\ell_{a,b}:\Pi A:C_a.\Pi B:(\mathsf{El}_a A\to C_b).
-  \mathsf{Eq}_{c+1}(\Ur c,X,Y).
-$$
-
-A witness $e$ at this equality type gives casts in both directions:
+PHOASCPS proves $C_R(A):\Ur{h(a,b)}$ in the original calculus.
+Its call-by-name local handlers, writing $D=C_R(A)\to C_R(B)$, are
 
 $$
 \begin{aligned}
-\mathsf{cast}^{+}(e)
- &=e\,(\lambda Z:\Ur c.X\to Z)\,(\lambda x:X.x):X\to Y,\\
-\mathsf{cast}^{-}(e)
- &=e\,(\lambda Z:\Ur c.Z\to X)\,(\lambda x:X.x):Y\to X.
+\mathsf{ret}(v)&=\lambda k.k\,v,\\
+\mathsf{abs}_C(f)&=\mathsf{ret}(f),\\
+\mathsf{app}_C(f,x)
+ &=\lambda k.f\,(\lambda g:D.g\,x\,k).
 \end{aligned}
 $$
 
-The predicate rank $c+1$ is sufficient for both arrow motives. Applying
-these casts to a function or an encoded function gives the typed
-abstraction and application operations. Universe codes $u_a:C_0$ have
-the analogous law
-$\mathsf{Eq}_1(\Ur0,\mathsf{El}_0(u_a),C_a)$, connecting a decoded universe
-with the carrier of its type codes.
+Here $f:D$ in the abstraction clause and
+$f:C_R(D),x:C_R(A)$ in the application clause.
+All annotations and rank inequalities are checked.
+The administrative beta theorem gives
 
-All fields have concrete identity interpretations:
+$$
+\mathsf{app}_C(\mathsf{abs}_C(f),x)\,k\bto f\,x\,k,
+$$
+
+and, when $f=\lambda x:C_R(A).u$, the right side reduces to
+$u[x:=x_0]\,k$ for the supplied argument $x_0$.
+No eta conversion is used. These are actual local PTS terms and typing
+theorems, not a complete PHOAS CPS translation.
+
+The structural call-by-name type translation is also originally typed:
+
+$$
+V(O)=O,\qquad V(A\to B)=C_R(V(A))\to C_R(V(B)).
+$$
+
+Its computation translation is $C_R(V(A))$.
+Already for $O,R:\Ur0$, a right-associated chain $A_n$ of $n\geq1$
+ground arrows has source order $1$ but translated computation rank
+$2n+3$. The exact sort theorem and sort uniqueness therefore rule out
+one target rank budget for this particular translation of the whole
+source-order-one fragment. They also rule out using $C_R$ directly as
+the existing same-rank family $F_a$.
+This does not rule out every rank-indexed CPS encoding.
+
+## The full dependent alternative-algebra obligation
+
+A full dependent algebra must fill not only constructors but their
+coherence and repair fields. Replacing $\mathsf{El}$ or the term carrier
+changes those obligations. An arbitrary constructor observer cannot
+simply reuse identity witnesses; nor does nonconvertibility of two
+endpoints by itself prove that an equality type is uninhabited.
+
+Dependence makes the issue substantive: evaluating a term whose type is
+$B(u)$ must track how the transformed argument determines its result
+type. A promising next construction is a semantic-indexed or glued
+algebra, retaining a direct semantic value alongside an observation or
+continuation computation. Its binder, substitution and conversion laws
+must be established before it can fill the existing dependent interface.
+Such an algebra, and a full dependent CPS correctness theorem, remain
+open. Wrapping the identity evaluator in a continuation is not an
+alternative constructor algebra and would not discharge this obligation.
+
+# Binder-free folds and the combinatory connection
+
+The variable-free representation separates applications from a finite
+bank of atoms. For an $m$-entry bank, CombinatoryFold constructs
+
+$$
+\mathsf{TreeCode}_{r,m}
+ =\Pi X:\Ur r.\,(X\to X\to X)\to
+   \underbrace{X\to\cdots\to X}_{m\ \mathrm{leaves}}\to X.
+$$
+
+Its sort is $\Ur{r+2}$. A quoted tree is a closed normal original PTS
+term, and equality of such codes up to beta conversion implies equality
+of their trees. Its own syntax carries the information: no auxiliary
+HOAS tag or conversion to numerals is involved.
+
+For $X:\Ur r$, operation $\circ:X\to X\to X$ and leaf values $a_i:X$,
+the internal operation is simply
+
+$$
+\mathsf{run}(q,X,\circ,\vec a)=q\,X\,\circ\,a_1\cdots a_m.
+$$
+
+Applied to a quoted tree, it reduces to the corresponding expression
+$\mathcal I_{\vec a,\circ}(t)$.
+The external tree fold specifies this result; it is not the internal
+implementation. CombinatoryAlgebra proves that run is exactly the
+shared typed-telescope fold.
+
+## CPS and a constructor test on the same code
+
+The homogeneous tree algebra supports genuine call-by-value CPS.
+For $X:\Ur a$, $R:\Ur b$, set $c=h(a,b)$ and use carrier
+$C_R(X):\Ur c$, leaf values $\mathsf{ret}(a_i)$, and operation
+
+$$
+f\circ_C x
+ =\lambda k.f\,(\lambda v.x\,(\lambda w.k\,(v\circ w))).
+$$
+
+This is an originally typed filling for a code at rank $c$.
+Specializing the already constructed code yields the checked theorem
+
+$$
+\mathsf{cpsFold}(\quoteof t)
+ \bto \lambda k.k\,\mathcal I_{\vec a,\circ}(t).
+$$
+
+Applying this result to $k$ reduces to
+$k\,\mathcal I_{\vec a,\circ}(t)$.
+The theorem is proved by the constructor-fold equations, not by defining
+CPS to be a wrapper around a precomputed evaluation.
+It concerns the interpreted tree expression, not a claim that this
+expression is normalized or that arbitrary dependent source CPS is solved.
+
+A second filling tests whether the tree is a leaf or an application,
+using actual Church selectors. The two interpretations consume the
+same literal code $\mathsf{TreeCode}_{c,m}$: use the Boolean carrier
+
+$$
+\mathsf{Bool}_{c-1}=\Pi Z:\Ur{c-1}.Z\to Z\to Z:\Ur c.
+$$
+
+Since $c=\max(a+2,b+1)\geq2$, this is well-defined with exactly the
+required rank. Neither cumulativity nor re-quotation is used.
+A first-leaf fold supplies a further simple nonidentity interpretation.
+These are homogeneous applicative-tree folds, not yet dependent
+source-type-indexed interpretations.
+
+## What the combinatory bridge supplies
+
+A combinatory source is factored into a finite dictionary of universe
+and scheme atoms and a tree of dictionary references. The expansion
+theorem recovers the literal original combinatory code.
+For a fixed dictionary, conversion-injectivity of tree codes therefore
+implies equality of the expanded syntax; different dictionaries are
+not silently identified.
+
+The bridge applies to the independent Hilbert deduction system, and
+specializes to the concrete sound 65-shape catalogue in
+CombinatoryLogic-rk. From its derivations it obtains an expansion with
+original PTS typing and recovery, together with a normal typed tree
+code. Atoms are actual universe and catalogue instances, not arbitrary
+source terms inserted as opaque atoms.
+
+The dictionary is finite per source, not universal. Soundness of this
+catalogue does not establish completeness for all original PTS
+derivations, general dependent bracket abstraction, or a homogeneous
+algebra evaluating arbitrary dependently typed atoms. Those remain
+separate obligations. Nevertheless, this bridge gives a simpler
+syntax/fold interface for independent proof certificates and a useful
+point of contact with the internal-consistency project.
+
+# Uniformity over rank-bounded fragments
+
+## The obstruction and the positive bounds
+
+The type rank of $t:T$ is the unique $a$ with $T:\Ur a$.
+Application cannot increase it:
+$\rk(f\,u)\leq\rk(f)$.
+Thus no one closed typed application head can recover every closed
+typed term. Indeed, with $D_a$ as above, normal inhabitants
+$d_a:D_a$ exist for every $a$, whereas every spine headed by a fixed
+$E$ has type rank at most $\rk(E)$. Ordinary rank numerals among its
+arguments do not change this obstruction.
+
+For a fixed budget $k$, three different uniformity questions remain:
+
+1. Can all sources share a bound on interpreter rank?
+2. Can they share the same execution head?
+3. Can they share a constructor signature admitting other algebras?
+
+The answer is positive to the first two for the checked quotation-budget
+fragment. The third is open.
+
+The fragment bounds the pruned independent derivation's quotation
+budget, including formation ranks and universe literals, not syntax
+size. Every original source belongs to some such fragment; open terms
+are handled after dependent closure. This is not automatically the
+fragment defined solely by the normalizer's redex-rank parameter.
+
+The capped construction bounds local alignment fields by $k+2$ and
+the base declarations by the $k+3$ cap. Dependent telescope rank uses
+a maximum rather than a sum, so its length need not increase the bound.
+The faithful compatibility interpreter has type-sort bounded by
+
+$$
+R(k,r)=\max(k+7,r+6),
+$$
+
+independently of plan length, where $r$ is the optional syntax-tag
+carrier rank. This theorem does not confer the envelope's stronger
+fidelity on the tag-free payload.
+
+The current allocation plan can have unbounded length at fixed small
+ranks, even for a fixed final judgment with conversion detours.
+An exhaustive finite list of concrete equality fields likewise cannot
+cover all contexts at a fixed rank. These checked obstructions concern
+the current plan and literal catalogues, not finite generic coherence
+schemes or every possible rank-indexed PHOAS algebra.
+
+## A common execution head
+
+FixedInterface uses a typed closure encoding
 
 $$
 \begin{aligned}
-C_a&=\Ur a,&
-\mathsf{El}_a&=\lambda A:\Ur a.A,&
-u_a&=\Ur a,\\
-p_{a,b}
- &=\lambda A:\Ur a.\lambda B:(A\to\Ur b).\Pi x:A.Bx.
+H_a(T)&=\Pi A:\Ur a.\,A\to(A\to T)\to T,\\
+\Code_a(T)&=H_a(T)\to T.
 \end{aligned}
 $$
 
-The laws specialize to reflexivity at beta-convertible endpoints.
-Their inhabitants are constructed and typed in the original PTS.
-At these inhabitants the casts reduce to identity functions, so
-abstraction and application recover the literal function and its
-application.
+A code $\lambda h.h\,A\,q\,f$ hides a program $q:A$ and its runner
+$f:A\to T$. The normal decoder applies it to
+$\lambda A\,x\,f.f\,x$. Its polymorphic head
+$E_{a,s}:\Pi T:\Ur s.\Code_a(T)\to T$
+has type-sort $\max(a+4,s+3)$.
+The checked embedding and decoder give $T\leftrightarrow\Code_a(T)$
+and a beta round trip.
 
-For a budget $k$, carriers through $k+1$ suffice for product operations
-with $a,b\leq k$. This gives a finite, well-formed signature with normal
-declarations and a normal, originally typed identity filling. The same
-properties will hold after the equality extensions used by quotation.
-
-## Equality repairs under binders
-
-Neutral casts keep representations normal, but their round trips do not
-cancel by beta conversion before the identity filling is supplied.
-In a dependent application, such a change of argument can also change its
-result type. The quoter therefore needs more than the basic product law.
-
-It extends an already realized signature $\mathcal S$ with fields of the
-form
+Exact-rank padding avoids cumulativity:
+$\mathsf{Pad}_k(A)=D_k\to A:\Ur{k+1}$ when
+$A:\Ur a$ and $a\leq k+1$.
+Embed a value by a dummy abstraction and force it at $d_k$.
+FragmentClosureInterpreter fixes the head $E_{k+6,k+1}$ before the
+source, with type-sort $k+10$, and obtains
 
 $$
-e:\Pi\Delta.\mathsf{Eq}_d(D,u,v),
+E_{k+6,k+1}\,(\mathsf{Pad}_k(\mathsf{nf}(T)))\,q\,d_k:T
+ \quad\bto\quad t.
 $$
 
-where $\Delta$ is a local dependent telescope. A field is accepted only
-when its components have the required original typings, its declaration
-is normal, and its endpoints become beta-convertible after the existing
-identity filling $\iota$. These are decidable checks on ordinary annotated
-syntax. They do not assume that a source term has a quotation.
+Only the type $T$ is externally normalized, not the source term $t$.
+The final force is typed using the supplied padded function shape;
+it is not an eliminator for arbitrary types in $\Ur{k+1}$.
+Its ordinary type argument is not the literal-recovering type program
+$P$; that separate type-recovery theorem remains available.
 
-The common normal form of the filled endpoints supplies a typed
-reflexivity realizer. Closing over $\Delta$ and normalizing this realizer
-gives a normal field value whose application to the telescope arguments,
-a motive and a payload reduces to that literal payload. Normalization
-here constructs the equality witness; it does not evaluate the represented
-source program.
+This establishes uniform execution for the whole fragment.
+The varying runner and its plan are carried by the code, and the
+compatibility package retains annotated-source injection.
+A common head does not make that hidden runner a common constructor
+algebra, nor does it construct an internal proof-code reifier.
 
-Each layer enumerates all accepted fields within specified bounds on
-telescope length, syntax nodes and sort literals. A finite plan $p$ is
-a sequence of such numerical budgets; later layers refer only to earlier
-ones. The quoter computes a sufficient request whenever it needs an
-alignment. This makes the signature and its filling depend only on
-$(k,p)$, while allowing the plan itself to grow with the derivation.
-No source expression or semantic source value is stored in the external
-index.
+# Numerals and internal consistency
 
-Enumeration generates trees directly by exact node count, including binder
-annotations. Its membership predicate is proved equivalent to the original
-depth-enumeration-and-filter specification. Carrier and operand typing is
-checked before forming endpoint triples; ill-typed telescope prefixes are
-rejected before their extensions are generated. These optimizations preserve
-exactly the accepted fields. They reduce rejected candidate work, rather than
-replace the equality signature by a smaller coherence theory.
+None of the dependent, simply typed or combinatory folds above requires
+converting source syntax into numerals. Finite telescopes and finite
+dictionary choices suffice. Rank bounds and allocation plans are still
+external resources; avoiding numeric payloads does not internalize them.
+FiniteLiteralBank supplies structural selectors for a fixed universe
+bank. NumericLiteralBank is an optional, saturating Church-numeral
+adapter, not part of the evaluation interface.
 
-## Closing programs and retaining syntax
-
-Let $\mathcal S=\mathcal S_{k,p}$ be the completed signature and $\iota$
-its identity filling. The notation $\Pi\mathcal S$ means dependent
-quantification over its fields, and $P\,\mathcal S$ means application to
-those bound variables. Define
+For an internal consistency argument, the crucial additional operation
+has a different input. Fix an independently specified proof-code domain
+$D$, an accepted-certificate predicate $\mathsf{Accepted}_k$, and
+$\mathsf{Bottom}=\Pi X:\Ur0.X$. The desired object-language terms are
 
 $$
-\begin{aligned}
-\mathsf{TyProg}_{k,p,s}
- &=\Pi\mathcal S.C_s,\\
-\mathsf{TmProg}_{k,p,s}(P)
- &=\Pi\mathcal S.\mathsf{El}_s(P\,\mathcal S),\\
-\mathsf{Result}_{k,p,s}(P)
- &=\mathsf{El}_s[\iota]\,(P\,\iota).
-\end{aligned}
-$$
-
-If quotation constructs a type code $T^q:C_s$ and a term
-$t^q:\mathsf{El}_s(T^q)$ under $\mathcal S$, their closures are
-
-$$
-P=\lambda\mathcal S.T^q,
-\qquad q=\lambda\mathcal S.t^q.
-$$
-
-The basic evaluator $\lambda P.\lambda q.q\,\iota$ is directly typed
-at the dependent result interface. Since the filling interprets
-$\mathsf{El}_s$ as identity, recovery of $T^q$ and $t^q$ gives
-$P\,\iota\bto T$ and $q\,\iota\bto t$.
-
-To retain literal syntax, we also use a homogeneous raw HOAS code
-$\langle t\rangle_r:\mathsf{Tag}_r$. This code abstracts over a carrier
-$X:\Ur r$ and handlers
-
-$$
-z:X,\quad s,u:X\to X,\quad
-p,l:X\to(X\to X)\to X,\quad a:X\to X\to X.
-$$
-
-For a variable environment $\rho$, its body is the structural fold
-
-$$
-\begin{aligned}
-F_\rho(\Ur m)&=u(s^m z),&
-F_\rho(x)&=\rho(x),\\
-F_\rho(\Pi x:A.B)&=p(F_\rho(A))(\lambda x:X.F_{\rho,x}(B)),\\
-F_\rho(\lambda x:A.b)&=l(F_\rho(A))(\lambda x:X.F_{\rho,x}(b)),\\
-F_\rho(f\,v)&=a(F_\rho(f))(F_\rho(v)).
-\end{aligned}
-$$
-
-Closing over the carrier and handlers gives the tag; open raw syntax is
-closed over its carrier variables as well. The tag type has sort
-$\Ur{r+3}$. Every constructed tag is normal, and structural inversion recovers the
-exact source tree, including annotations. This tag represents raw syntax;
-the dependent program supplies its typed interpretation.
-
-For a program type $V$, set
-
-$$
-\begin{aligned}
-\mathsf{Pack}_r(V)&=(V\to\mathsf{Tag}_r\to V)\to V,\\
-\mathsf{pack}_r(V,q,t)
- &=\lambda h:(V\to\mathsf{Tag}_r\to V).h\,q\,\langle t\rangle_r.
-\end{aligned}
-$$
-
-The faithful evaluator selects $q$ from this package and runs it with
-$\iota$. Suppressing $(k,p,s)$ on the interface types, it is
-
-$$
-\begin{aligned}
-I_j={}&\lambda P:\mathsf{TyProg}.
-       \lambda Q:\mathsf{Pack}_r(\mathsf{TmProg}(P)).\\
- &\bigl(Q\,(\lambda q:\mathsf{TmProg}(P).
-                  \lambda z:\mathsf{Tag}_r.q)\bigr)\,\iota.
-\end{aligned}
-$$
-
-Its selected payload is the PHOAS program itself. Quotation does not
-have to store the source's normal value.
-
-One annotation detail is essential for full normality. The package uses
-the normal type $V=\Pi\mathcal S.\mathsf{El}_s(T^q)$ in its binder.
-Original conversion then assigns it the interface type
-$\mathsf{Pack}_r(\mathsf{TmProg}(P))$. Writing the reducible expression
-$P\,\mathcal S$ directly into that binder would spoil annotation normality.
-All resulting package and interpreter typings are derived before using
-their reduction equations.
-
-# Constructing quotation
-
-Before quotation, an idempotent pass removes conversion rules whose input
-and output types are literally equal. It preserves the complete source
-judgment and cannot increase the derivation size or repair count.
-Arbitrarily many such conversion wrappers therefore leave the final type
-program, faithful term program and decoding expression identical.
-
-Quotation proceeds structurally through the six original typing rules.
-Its state consists of the realized signature, the translated local
-context and a typed variable environment. Each result records normal
-type and term codes, original typings, and literal recovery after filling.
-The source context and all its annotations remain available throughout.
-
-A finite constructor view records the shape of the source type separately
-from its current target code. This separation is needed because a
-conversion repair can change the code at the root without changing the
-source's product structure. In particular, a product view retains its
-domain and codomain children, so dependent substitution can operate on
-their finite syntax.
-
-The cases are as follows.
-
-- **Sorts and variables.** Use the corresponding universe code or the
-  variable environment, with the universe casts where needed.
-- **Products and abstractions.** Quote the domain, extend the local
-  context by its normal decoded code, and quote the given body premise.
-  Source binding is represented by target binding. The local operations
-  contract administrative redexes in generated annotations and preserve
-  fresh variables literally.
-- **Application.** Inspect the function type's product view. Two checked
-  equality layers align the argument's type code and the function's
-  code with the required product code. Apply the typed operation, then
-  substitute the quoted argument structurally into the codomain view.
-- **Conversion.** Quote the rule's supplied target-formation premise and
-  align the payload with that independently constructed code. The new
-  field erases to identity under the filling.
-
-The numerical budget bounds the ranks and literals needed in every
-recursive premise. Signature growth preserves the local context and
-variable environment. Substitution of the normal neutral argument
-representations preserves full normality, including annotations.
-
-The constructor views also make termination explicit. Application
-substitutes into an existing finite view; it does not recursively quote
-a newly synthesized derivation of the substituted type. Similarly,
-conversion uses its existing formation premise. A nonrecursive repair
-handles a term viewed as a type at a literal universe. Thus the sort
-cycle $\Ur0:\Ur0$ creates no cycle in quotation.
-
-:::Proof[Proof of the interpretation theorem]
-Induct on the independent source derivation, maintaining the typing,
-normality and recovery invariants above. Each requested equality layer
-exists by finite enumeration and is realized by the already proved
-endpoint agreement. This constructs the finite plan and the open
-quotation judgment.
-
-Close the type and term codes over the final signature, and package the
-term program with its raw HOAS tag. The signature and filling are normal,
-so the resulting $P,Q,I_j$ are normal. Original typed substitution gives
-the evaluator's application typing. Selection and signature instantiation
-reduce it to $t^q[\iota]$, which reduces to the literal $t$; the type
-program similarly recovers $T$.
-
-Equality of faithful packages implies equality of their tags, hence of
-their annotated sources. For beta-convertible packages, normality and
-confluence first give literal package equality. Finally, coverage of
-the independent derivation datatype establishes the theorem for every
-original typing judgment.
-:::
-
-# Comparison with Brown--Palsberg
-
-Our result is a **Brown--Palsberg-style indexed strong unquoter**.
-The qualification identifies the main difference: their interpreter is
-one polymorphic term, while ours is an externally generated family.
-There is also a difference in the operations established on the
-representations.
-
-## Recovery, fidelity and dependence
-
-Brown--Palsberg's Theorem 7.4 has the form
-
-$$
-\mathsf{unquote}\,\quoteof T\,\quoteof t\bto t,
+e_k:\Code_k(\mathsf{Bottom})\to\mathsf{Bottom},
 \qquad
-\mathsf{unquote}:
- \forall\alpha:U.\mathsf{Exp}\,\alpha\to\mathsf{Op}\,\mathsf{Id}\,\alpha.
+q_k:\Pi p:D.\mathsf{Accepted}_k(p)\to\Code_k(\mathsf{Bottom}).
 $$
 
-Here $U$ is their universe of represented types. The same fixed
-$\mathsf{unquote}$ accepts each represented type as an argument.
-Our $P$ plays the corresponding role, and both constructions use external
-quotation and recover the unreduced source. Our ordinary type argument
-therefore matches a central part of their interface. The varying
-$(k,p,s)$, however, changes the interpreter term itself. The fixed-head
-obstruction proves that a direct all-rank copy of their application
-interface is unavailable in PTS-rk. Replacing the plan by one interpreter
-per bounded fragment remains open. The rank-capped construction below
-separates a common target-rank bound from this stronger requirement.
+The composite would turn an accepted contradiction certificate into
+Bottom. The predicate must describe independent proof rules, trace
+witnesses and resource bounds, and the theorem must cover arbitrary
+accepted inputs, not just externally generated examples.
+The output must have literal type Bottom, or an internally justified
+equal type.
 
-The positive theorem covers dependent products, conversion in types and
-all original PTS-rk universes. Its normality includes annotations.
-Brown--Palsberg's Figure 2 term reduction does not reduce inside type
-annotations, and their Definition 6.1 and Theorem 6.3 formulate fidelity
-up to beta-equivalence of types. Our tag retains literal annotation
-syntax, so even distinct convertible source terms remain distinguishable.
-This stronger retention property does not imply that two derivations
-of the same source produce identical quotations; canonical
-derivation-independence is a separate property.
+An external Rocq quotation function is not $q_k$.
+Furthermore, $\Code(T)$ is inhabited exactly when $T$ is:
+postulating reification into $\Code(\mathsf{Bottom})$ would assume the
+missing soundness content. The common head supplies execution once
+a code exists, not the accepted-proof theorem.
+A Bottom-specific tag-free interface may be enough; general fidelity
+and CPS are not prerequisites for this use.
 
-Their experiments apply each operation to its own representation using
-the same fixed operation. Our coverage theorem gives self-interpretation
-across potentially different indices. Both results support self-reference,
-but the same-index claim is stronger than what we prove here.
+There is also a checked literal-alphabet limit. Beta reduction cannot
+create a universe literal absent from the original syntax. If fixed
+reifier and evaluator heads consume inputs with a uniformly bounded
+literal alphabet, every recovered normal term has literal maximum
+bounded by the maximum of these fixed bounds.
+Consequently no such numeral-only interface can unquote every
+$\Ur i$, although each $\Ur i$ has type rank zero and redex bound zero.
+This does not obstruct fixed fragments, a finite literal bank, or
+Bottom-specific soundness. The optional numeral adapter selects
+$\Ur{\min(i,k)}$ on the displayed standard numerals; it is neither
+unbounded literal generation nor a general certificate validator.
 
-## Interpretation as a reusable fold
+The summary in theories/self_consistency separates two proof routes:
+an interpretation of $H^\omega_{<\omega}$ followed by explicitly
+unverified claims from Pakhomov's transfer theorem, and a direct
+resource-restricted internal interpretation of proof certificates.
+Shared folds and the combinatory dictionary bridge can simplify the
+representation layer in either route. They do not supply internal
+induction, admissible arithmetic domains, trace soundness, or internal
+budget selection. An external family of results indexed by $k$ is
+not yet one internal proof quantifying over represented budgets.
 
-Their deep Church encoding abstracts over a type operator $F:*\to *$
-and four handlers for term abstraction, term application, type
-abstraction and type application. Replacing these parameters through
-$\mathsf{foldExp}$ yields unquotation, an abstraction test, size, a
-normal-form test and CPS. This ability to change interpretation is their
-distinction between deep and shallow representation.
+# Comparison with Brown--Palsberg and the remaining target
 
-Our dependent program similarly abstracts over an interface, but that
-interface also contains laws. An alternative interpretation must supply
-originally typed inhabitants for every product, universe and checked
-equality field. The completed theorem constructs its identity filling.
-The raw tag admits separate syntax folds; this does not yet supply the
-paper's suite of interpretations of the full dependent program.
+Brown--Palsberg's fold applies a normal PHOAS representation to a type
+constructor and four handlers: term abstraction/application and type
+abstraction/application. Their substitution theorem explains its
+computation on prequotations. The unquoter is one polymorphic term,
+taking an ordinary represented type and term as arguments.
+Our fold uses the same specialization mechanism, and full dependent
+recovery likewise consumes both arguments, but finite rank and
+coherence signatures replace their one polymorphic signature.
 
-Consequently, the construction meets the strong-unquotation part of the
-Brown--Palsberg approach, with a less uniform interface and richer source
-dependence. Calling it their full deep interpreter would also require
-the additional interpretations. The next section examines CPS as a
-concrete test.
+Their deep examples include unquotation, an abstraction test, size,
+a normal-form test and CPS. They prove semantic correctness for the first
+four; the paper explicitly leaves the CPS correctness proof out,
+while presenting and testing the type-checked translation.
+The displayed CPS is call-by-name with an answer-polymorphic carrier;
+our local development fixes $R$. Their call-by-value variant is
+discussed but not displayed. Our local handlers and rank theorems are
+therefore not a substitute for a full PHOAS transformation theorem.
+The binder-free call-by-value fold has its own checked computation
+theorem and same-code constructor test, but covers a smaller domain.
 
-Brown--Palsberg support their mathematical proofs with an implementation
-and type-checked experiments. Our quotation and interpretation theorems
-are kernel-checked in Rocq. The exhaustive equality enumeration has no
-practical efficiency bound. Extracted sort quotation passes, while the
-abstraction and application probes each exceed a 30-second limit.
-Only the leaf path has completed in these runtime probes. Proof coverage and practical
-compiler performance remain distinct claims.
+The fidelity conventions also differ. Their operational presentation
+does not reduce type annotations, and their fidelity statement allows
+beta-equivalent type annotations. Here the original annotated PTS
+reduction does reduce them. The compatibility envelope preserves
+literal annotated syntax; the tag-free full dependent interface currently
+proves the weaker common-algebra conversion-reflection result.
+The simply typed and binder-free codes have intrinsic fidelity without
+that envelope. Derivation independence of the full quotation is another
+question, not a consequence of strong recovery.
 
-# Can the representation support CPS?
+Accordingly, the result is a *Brown--Palsberg-style indexed strong
+unquoter*, with a shared algebra API and genuine alternative folds.
+It is not yet a full dependent counterpart of their deep-embedding
+suite or their same-interface self-application experiments.
+Cross-index self-interpretation of a typed interpreter does not by itself
+give same-index self-application.
 
-Brown--Palsberg's Figure 4 interprets representations under the
-answer-type-polymorphic continuation operator
+The next substantive goals are now sharply separated: construct a
+semantic-indexed dependent alternative algebra and its substitution
+laws; decode the actual dependent payload intrinsically; replace
+plan-specific coherence by a rank-only generic signature if possible;
+and derive reification from an independent accepted-proof predicate.
+For the combinatory route, original-source completeness and a dependent
+interpretation of dictionary atoms remain additional goals.
+None is settled by the fixed-head or conversion obstructions above.
 
-$$
-\mathsf{Ct}\,A=\forall R:*.(A\to R)\to R,
-\qquad
-\mathsf{cps}:\forall\alpha:U.
- \mathsf{Exp}\,\alpha\to\mathsf{Op}\,\mathsf{Ct}\,\alpha.
-$$
-
-Their displayed transformation is call-by-name; a call-by-value variant
-is also reported. The result is a CPS program, not necessarily a fresh
-syntax code. They implement, type-check and test CPS, but explicitly
-leave its semantic correctness proof open.
-
-For our representation, continuation types are expressible at larger
-ranks, while a full dependent CPS interpretation remains open. The
-calculations in this section are mathematical feasibility arguments,
-not additional Rocq CPS theorems.
-
-## Rank budgets and a simply typed test
-
-For $A:\Ur a$ and $R:\Ur b$, the original product rule gives
-
-$$
-\mathsf{Cont}_R(A)=(A\to R)\to R:\Ur{h(a,b)},
-\qquad h(a,b)=\max(a+2,b+1).
-$$
-
-The answer-polymorphic version at external rank $b$ has the same rank:
-
-$$
-\mathsf{Ct}_b(A)=\Pi R:\Ur b.(A\to R)\to R:\Ur{h(a,b)}.
-$$
-
-The outer binder contributes only rank $1$, since $\Ur b:\Ur0$.
-As $h(a,b)>a$, this operator cannot simply replace a family
-$\Ur a\to\Ur a$. Rank-indexed interfaces must account for its growth.
-Instantiating the answer binder with $A$ also requires the matching
-judgment $A:\Ur b$; there is no cumulative inclusion between ranks.
-
-For a concrete simply typed test, fix $O:\Ur a$ and $R:\Ur b$, and set
-
-$$
-V(o)=O,\qquad C(A)=\mathsf{Cont}_R(V(A)),\qquad
-V(A\to B)=C(A)\to C(B).
-$$
-
-A call-by-name translation, with a source variable $x:A$ represented by
-$x:C(A)$, is
-
-$$
-\begin{aligned}
-\mathcal C(x)&=\lambda k:V(A)\to R.\,x\,k,\\
-\mathcal C(\lambda x:A.t)
- &=\lambda k:V(A\to B)\to R.\,
-     k\,(\lambda x:C(A).\mathcal C(t)),\\
-\mathcal C(f\,u)
- &=\lambda k:V(B)\to R.\,
-     \mathcal C(f)\,(\lambda g:C(A)\to C(B).g\,\mathcal C(u)\,k).
-\end{aligned}
-$$
-
-A structural typing induction assigns $\mathcal C(t)$ the type $C(A)$.
-The variable clause introduces its lambda explicitly, using no eta rule.
-Writing $v,c$ for the value and computation ranks gives
-
-$$
-v(o)=a,\quad c(A)=\max(v(A)+2,b+1),\quad
-v(A\to B)=\max(c(A)+1,c(B)).
-$$
-
-These are finite, effective budgets, and the clauses have the form of
-HOAS handlers. Even here the budget can depend on type structure:
-for $a=b=0$, $A_0=o$ and $A_{n+1}=o\to A_n$, every $A_n$ with
-$n\geq1$ has source rank $1$, whereas $c(A_n)=2n+3$.
-This limits the displayed translation's rank uniformity; it is not a
-lower bound for every possible encoding.
-
-## The dependent laws are the main obstacle
-
-A filling $\rho$ of the complete signature would give a typed
-interpretation $q\,\rho$. The naive continuation replacement fails to
-supply such a filling for three connected reasons.
-
-First, its larger output ranks disagree with the declared decoder sorts.
-Second, decoding a product code as a continuation-wrapped function
-changes the right endpoint of the product law, while the left endpoint
-is still the ordinary dependent product of decoded constituents.
-The identity interpretation's reflexivity witness then ceases to type
-check. Non-convertibility alone does not prove that the internal equality
-type is uninhabited; a different realization would need a separate proof.
-Third, the extra equality fields are checked after identity filling.
-Their validity under a continuation filling has not been established.
-
-The underlying dependent issue is that $f:\Pi x:A.B(x)$ applied to $u:A$
-has type $B(u)$. Translating $u$ into a computation changes an argument
-of a type family as well as evaluation order. An interpretation must
-therefore preserve the needed substitution and conversion equations,
-or realize their repairs internally.
-
-For example, naive call-by-value CPS does not preserve all source beta
-conversion. In the context $g:O\to O$, $v:O$, $y:O$,
-
-$$
-(\lambda x:O.y)\,(g\,v)\bto y.
-$$
-
-With translated variable $\widehat g:O\to\mathsf{Cont}_R(O)$,
-the two standard fixed-answer translations reduce administratively to
-
-$$
-\lambda k:O\to R.\widehat g\,v\,(\lambda z:O.k\,y),
-\qquad
-\lambda k:O\to R.k\,y.
-$$
-
-For normal annotations these are distinct beta-normal terms.
-Dependent source types may use the original unrestricted conversion,
-so this recipe cannot preserve it by beta conversion alone.
-The example does not rule out call-by-name CPS or a translation with
-explicit dependent transports.
-
-Existing positive dependent-CPS theorems require care here.
-[Barthe, Hatcliff and Sørensen (1999)](https://www.cs.ru.nl/~freek/courses/tt-2017/papers/10.1023-A-1010000206149.pdf)
-treat annotated pure type systems, but their logical-sort condition
-requires $(\mathsf{Prop},\mathsf{Prop},\mathsf{Prop})$ as a product rule.
-PTS-rk has no such sort, since $\max(a+1,a)=a+1$.
-[Bowman, Cong, Rioux and Ahmed (2018)](https://www.williamjbowman.com/resources/cps-sigma.pdf)
-prove dependent CPS translations using answer-type polymorphism and
-additional target typing and equivalence rules. Those rules are not
-available in our beta-only calculus. Neither result directly supplies
-the required signature filling.
-
-## What would establish feasibility
-
-An external derivation-directed CPS translation could produce an original
-target derivation and then use our quoter to obtain a normal faithful
-code at a new index. An internal CPS fold requires more: it must operate
-on $P,Q$ without access to the external derivation or its constructor-view
-metadata, and supply a typed continuation interpretation of the laws.
-
-A useful first target is a dependent continuation product/application
-handler together with an actual inhabitant for one nontrivial contextual
-equality field. A redesigned representation might retain a direct value
-for dependent type indices alongside a continuation computation, provided
-their relationship is proved under substitution and binders.
-Simply wrapping evaluation in $\lambda k.k\,(I_j\,P\,Q)$ does not
-transform the represented applications.
-
-Thus higher ranks and HOAS permit a concrete simply typed CPS construction,
-but the present full dependent interface has no established CPS filling.
-The outstanding question is dependent coherence, not a general
-impossibility of continuations in PTS-rk.
-
-# Formalization and remaining questions
-
-The construction is in `PTSrk.SelfInterpreter` and uses the original
-`Syntax.Term`, `Typing.typ` and `Ranks.RankSorts`.
-Its main entry point is `FullDependentInterpreter`:
-`closed_quote` is executable quotation;
-`every_closed_original` and `every_original` give closed and open
-coverage; `closed_type_recovers` gives literal type recovery.
-The corresponding injectivity theorems retain annotated source syntax.
-`RecursiveQuotation` implements the six-rule induction.
-The development README gives the module map and verification commands.
-
-The capped variant, `CappedDependentInterpreter`, retains these contracts.
-Its fragment-coverage theorem fixes the quotation budget before the source.
-
-The interpreter theorem has fresh closed assumption reports and
-recursive kernel checks against pristine upstream. No new axiom,
-admission, unsafe cast or altered typing rule is used.
-The CPS analysis above is outside that formalized theorem.
-
-## Allocation costs and limits of uniformity
-
-Let $d$ be the source derivation after pruning, and let $N_\Pi,N_\lambda,
-N_{\rm app},N_{\rm conv}$ count its four non-leaf rules. The actual output
-plan has exactly
-
-$$
-L(d)=2N_\Pi+N_\lambda+2N_{\rm app}+2N_{\rm conv}<|d|
-$$
-
-layers, where $|d|$ counts every rule occurrence. This is an allocation-count
-theorem, not a runtime bound for enumeration, typechecking or evaluation.
-The direct syntax enumerator also has a proved exact cardinality recurrence.
-
-The plan cannot be bounded by source ranks for this algorithm. Put
-$t_0=\Ur0$ and $t_{m+1}=(\lambda x:\Ur0.x)\,t_m$. Their literal ceiling
-and result type rank are zero, their redex ranks are at most one, and their
-plans have length $3m$. Even the fixed judgment $\Ur0:\Ur0$ admits
-derivations with $m$ conversion detours through
-$(\lambda x:\Ur0.x)\,\Ur0$; these survive literal-reflexivity pruning
-and produce $7m$ layers. Both facts are checked against the actual quoter.
-Thus neither rank-only plan bounds nor full derivation independence follow
-from the current construction. A plan-independent interpreter or a canonical
-source elaborator would require an additional construction; neither is
-ruled out by these counterexamples.
-
-A smaller coherence interface and practical non-leaf execution remain
-open, as does the independent elementary-compiler/numeric-reification route.
-The [obligation ledger](theories/self_interpreter/OBLIGATIONS.md) distinguishes
-these extensions from obligations already discharged by full dependent
-quotation. Dependent CPS remains a separate, unformalized question.
-
-## Toward fragment uniformity
-
-There are two different goals: bounding every interpreter's rank by a
-function of the source bound, and constructing the *same interpreter term*
-for all sources at that bound. Encoding a numerical plan by one natural
-number accomplishes neither. The intended fragment bounds literal labels
-and the formation ranks needed by original source derivations, while
-allowing unbounded syntax size. Here $k$ is the source-quotation budget;
-relating it to the normalization redex bound $d$ is a separate obligation.
-Bounding only the conservative estimator
-$1+\mathsf{maxRankLiteral}(t)+\mathsf{nodes}(t)$ instead yields a finite
-syntax vocabulary; uniformity for that finite set would not settle the
-unbounded-size question.
-
-The equality interface admits a useful bound independent of size. For a
-telescope with declaration ranks $a_1,\ldots,a_m$, closing a type of rank
-$b$ gives rank
-
-$$
-\max(b,a_1+1,\ldots,a_m+1).
-$$
-
-In an actual code-alignment request, the equality carrier has rank zero.
-The Leibniz equality at motive rank $s$ has rank $\max(2,s+1)$. Consequently,
-if $s\leq k+1$ and the local declaration ranks are at most $k+1$, the
-entire requested field has rank at most $k+2$, regardless of telescope
-length, endpoint size or previous repairs. The capped quoter maintains this
-local rank invariant through binder introduction and global insertion;
-the caller supplies only independent source data and its budget bound.
-
-A separate executable allocator keeps precisely the accepted fields whose
-formation ranks are at most a supplied cap. It preserves coverage within
-that cap, original typing, normal signatures and the normal identity
-fillings. The actual base signature has declaration ranks at most $k+3$.
-Starting there and using cap $k+3$, any number of these layers therefore
-gives a normal, originally typed interpreter whose type has sort rank at
-most
-
-$$
-R(k,r)=\max(k+7,r+6), \qquad s\leq k+1.
-$$
-
-For fixed tag rank zero this is $k+7$. No bound on plan length or enumeration
-budgets is required; this bounds actual sort indices without using cumulativity.
-`FragmentUniformity` proves the allocation bounds, and
-`CappedRecursiveQuotation` constructs quotation through all six original
-rules using this allocator. Its two application repairs and conversion
-repairs retain original typing, annotation normality and literal erasure.
-
-:::Theorem[Quotation-budget fragment coverage]
-Fix $k$ and the tag rank $r$. Let $\mathcal F_k$ consist of closed judgments
-having an independent original derivation whose pruned quotation budget
-is at most $k$. Every $\vdash t:T$ in $\mathcal F_k$ has normal programs
-$P,Q$ and a normal, originally typed $I_{r,k,p,s}$, with $s\leq k+1$, such that
-$I_{r,k,p,s}\,P\,Q\bto t$ at the original type $T$. Its type-sort index is
-at most $R(k,r)$, independently of the plan $p$. Type recovery is literal,
-and faithful programs remain syntax-injective across plans and budgets,
-even when compared by beta-conversion.
-:::
-
-`CappedDependentInterpreter.every_bounded_original` proves this theorem
-by running the executable quoter at the *supplied* $k$, not merely the
-source's minimal computed budget. Fragment membership mentions no target
-program or quotation premise. The fragments cover all original closed
-judgments; closure and reopening also retain full open-source coverage.
-For an open source, the stated numerical bound uses its closed derivation's
-quotation budget. None of these results removes the finite signature from
-the interpreter's index.
-
-Nor can one fix a finite catalogue containing every concrete equality
-field at a rank bound. The normal fields
-
-$$
-F_m=\Pi x_1:\Ur0.\;\cdots\;\Pi x_m:\Ur0.\;
-       \mathsf{Eq}_0(\Ur0,\Ur0,\Ur0)
-$$
-
-all have formation rank $2$, literal ceiling zero and accepted identity
-fillings, but have $2m+11$ syntax nodes. `FiniteCoherenceCatalogue` proves
-that every finite list misses one. This excludes exhaustive *literal*
-catalogues, not finite polymorphic law schemes or computed environments.
-The remaining step is to replace signature-specific application by a fixed typed interface for
-varying equality environments, or supply reusable coherence laws. The
-common rank bound removes one obstacle; it does not yet prove or refute
-a single-head Brown--Palsberg interpreter for each whole fragment.
+All formal results use the original kernel and typing judgment.
+The development README and obligation ledger give the theorem interfaces;
+the latest handoff and verification records distinguish fresh scoped
+checks from earlier full-repository CI.
