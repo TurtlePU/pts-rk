@@ -1,5 +1,17 @@
 # PTS-rk continuous integration
 
+## Combinatory Hilbert development (22 October 2026)
+
+Stage `01-combinatory` builds `@theories/CombinatoryLogic-rk/audit`, retaining
+the Rocq namespace `PTSrk.Combinatory` after the physical directory rename.
+It covers the indexed core, finite-basis obstruction, the P/I/K/S catalogues,
+independent Hilbert calculus and the equivalent 66/65-shape instances. No existing
+stage is removed. A separate [fresh focused audit](direct-r-handoff/verification/combinatory-gat-2026-10-22/AUDIT.sh)
+regenerates assumption reports and compares recursive kernel inventories
+against freshly built pristine upstream. See the development's
+[evidence](../theories/CombinatoryLogic-rk/EVIDENCE.md) for actual runs;
+successful soundness/extraction checks do not prove full completeness.
+
 `.github/workflows/direct-r.yml` installs Rocq on a GitHub-hosted Ubuntu runner
 and invokes `tools/ci-check-direct-r.sh`. No local Rocq or GitHub CLI is required
 to submit a branch. The workflow uses `push` and `pull_request`, not

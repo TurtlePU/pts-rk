@@ -1,4 +1,787 @@
-# Live proof-development state — 2026-10-21
+# Live proof-development state — 2026-10-22
+
+## Scoped publication — three developments
+
+Committed Combinatory PTS (7a08071), shared self-interpreter folds
+(7854d1d), and the direct consistency roadmap (9531808), including sources,
+notes/PDFs and their scoped verification records. Publication targets
+origin/main by ordinary fast-forward push; unrelated BZC/manuscript changes
+remain uncommitted. The integration checkpoint records only these developments.
+
+Publication checks: scoped source whitespace and four build/check shell
+scripts pass (exit 0). Earlier fresh Rocq/Agda/kernel and PDF checks remain
+the evidence recorded below; no new full CI or consistency proof is claimed.
+Publication smoke check in the pinned environment also exits 0:
+opam exec -- dune build -j 2 @theories/CombinatoryLogic-rk/audit
+@theories/self_interpreter/audit (both targets in the same invocation).
+This working-build check is not a fresh pristine assumption/kernel audit.
+Next formal goal remains native certificate adequacy and rank compression,
+then fixed-interface internal bounded soundness on arbitrary resource codes.
+Next exact command: bash theories/self_consistency/build-note.sh DIRECT_ROADMAP.
+
+## Direct internal-consistency roadmap — documentation checkpoint
+
+Added theories/self_consistency/DIRECT_ROADMAP.tex/PDF (eight pages), with
+the direct route prioritized over interpreting H or constructing EA proofs.
+Target is a SPECIFIED resource-relativized structural consistency sentence.
+Use independent native certificates, complete-certificate rank compression,
+guarded finite induction, one fixed-type resource language, internally
+proved history soundness and terminal separation. Adm(q) packages a resource
+existential at answer universe U1; a single internal BS(q,b) then eliminates
+it directly into Bottom. The final assembly/rank calculation is a paper
+schema, not a new Rocq theorem. All standard raw inputs must be admitted
+independently of acceptance; raw conversion intermediates need not normalize.
+
+Current combinatory model-soundness is external Agda graded SYNTACTIC
+soundness, not internal PTS soundness or fixed finite first-order models.
+General finite models, rank-only dependent PHOAS algebras, raw tags, CPS and
+native Hilbert completeness are not prerequisites of the preferred route.
+Original native certificates differ from the draft's typed-equality T^e;
+identifying internal consistency sentences requires a proved comparison.
+The Gödel/diagonal/derivability-condition audit is an early viability gate.
+
+Final note build 12:01:53–12:01:58 UTC, exit 0,
+/tmp/pts-rk-consistency-note.O8CmUV; PDF inspection 0, eight nonempty pages,
+four links, clean diagnostics, all-page renders and visual review. Earlier
+malformed-tag and renderer failures retained. 244 proof/Dune hashes unchanged;
+no new Rocq/Agda/kernel/CI run or consistency proof. Exact commands/reviews:
+verification/self-consistency-direct-roadmap-2026-10-22/COMMANDS.md.
+Raw logs: _build/self-consistency-direct-roadmap.HYlErI. Broad dirty work
+preserved; HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef; no stage/commit/push.
+
+FIRST NEXT FORMAL GOAL: native certificate interface and rank compression,
+with guarded internal finite-table correctness in parallel. The critical
+later goal is ONE fixed-rank internal bounded-soundness term on arbitrary
+represented budgets, not another externally indexed family.
+Next exact document verification command:
+bash theories/self_consistency/build-note.sh DIRECT_ROADMAP
+
+## Shared PHOAS algebra and numeral-free folds — checked
+
+Seven new modules implement shared typed-telescope Algebra.fold, tag-free
+full-dependent identity interpretation, a concrete STLC constructor observer,
+originally typed CBN local handlers/type-rank obstructions, and intrinsically
+faithful finite-dictionary combinatory folds including actual CBV CPS.
+GenericFold adds an actual normal head per signature, with the algebra fields
+as ordinary arguments; it embeds no selected filling. Explicit expansion
+uses beta only, not eta. Exact STLC/combinatory adapters preserve the codes.
+The same rank-correct combinatory code supports CPS and finite Boolean
+observation. Catalogue extraction/coding is not native PTS completeness.
+
+Fresh dependency build exits 0 at 11:14:37 UTC; 92/92 public reports at
+11:15:07; recursive FoldAudit kernel check at 11:19:55. Entire assumption
+inventory equals independently rebuilt pristine: only unchanged upstream
+functional_extensionality_dep, no unsafe checks. Compatibility audit and
+source stability exit 0 at 11:32:11. Then GenericFold was integrated
+byte-for-byte from its separately compiled source: all prior dependencies
+unchanged, fresh public audit **106/106** at 11:34:46, recursive GenericFold
+kernel/inventory comparison at 11:35:00, working audit and source stability
+at 11:35:31. Two harness failures (warning-prefixed raw logs; BSD sed
+alternation) and all proof attempts are retained with exact corrections.
+No proof checks weakened. Logs: _build/self-interpreter-fold-audit.7pRHdb.
+Exact commands/hashes/failures: verification/self-interpreter-fold-2026-10-22/COMMANDS.md.
+No new full-repository CI run is claimed.
+After verification, removed only this run's two fresh/pristine temporary
+build directories (321 MiB); all raw logs/manifests remain. Rebuild with the
+fresh command below, not the historical extension-resume command.
+
+README reduced from 1086 to 183 lines. Interpreter note reduced from 15 to
+10 pages (682 lines), with current contracts instead of development history.
+Both it and the updated 10-page consistency note build cleanly; all pages
+rendered and changed mathematical passages visually reviewed. Main alias
+retains compatibility Audit and new FoldAudit. No staging/commit/push;
+HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef; prior broad dirty work preserved.
+
+FIRST REMAINING PHOAS GOAL: construct an actual semantic-indexed dependent
+nonidentity algebra and its substitution/coherence laws. Generic correctly
+typed fields are a fold interface, not a realization of those laws. Separate
+goals: rank-only common signature; intrinsic arbitrary-source payload parser;
+full dependent CPS; accepted-certificate internal soundness. Recovery alone
+gives normal-source injection through a common algebra; retain the old
+faithful envelope for its stronger contract. The variable-free bridge fixes
+its dictionary and does not internally unquote heterogeneous expansions.
+Next exact scoped verification command:
+bash docs/direct-r-handoff/verification/self-interpreter-fold-2026-10-22/AUDIT.sh
+
+## Contextual certificate soundness, finite packages and external Void exclusion
+
+Thirteen new Agda modules are integrated. NativeCertificates gives independent
+decidable proof trees for all six original rules, soundness and certificate
+completeness; CertificateContexts checks contexts/valuation images without
+native judgment premises. NativeRankCoverage computes a sufficient redex
+bound, so arbitrary original typed terms normalize without supplied bounds.
+NativeValuations/ContextualNormalization prove comprehension, substitution
+composition, conversion and proof/budget-independent decoded normal values.
+FragmentAlphabet/AlphabetCoverage give injective coherent inclusions and
+exact finite coverage of every native term/context/valuation.
+
+FragmentUniverses/Interpretation/Packages count contexts/types/values and
+both-context substitution packages jointly, with concrete finite injections.
+Every typed valuation has a raw package at computed bounds; no unjustified
+normalization of dependent tuple components. FragmentModelSoundness checks
+raw ModelInput and gives normal subject/type with exact substituted source
+typing, forward reductions and jointly finite packaging. Rejection is only
+for invalid certificates. FragmentModelExamples checks closed identity,
+dependent X↦U₀, nonempty-target X↦Y, recovery and malformed-input rejection.
+NativeCanonicity proves external Void-empty and certificate rejection for
+Void = Π X:U₀.X, not internal PTS self-consistency.
+
+Final fresh safe closure .xZU85m, 11:04:13–11:04:58 UTC, exit 0:
+52 project modules, no warnings, ignored interfaces, isolated config/data,
+stable copied sources. Earlier 51-module .fMhbvK also passed.
+Agda 2.8.0-3d04bac; pinned clean Cubical v0.9 b150186d.
+Final note .5WV08w, 11:06:27–11:06:41 UTC, build/validation0, inspector0:
+25 pages, 3-page MM0 appendix, 23 Rocq / 27 Agda badges, 89 links.
+All pages rendered and changed pages visually reviewed. Exact commands,
+incremental failures, hashes and PDF review:
+verification/combinatory-fragment-soundness-2026-10-22/COMMANDS.md.
+All 24 Rocq sources/Dune and 38 prior Agda modules except Everything match
+prior audited hashes. No new Rocq/MM0/full-CI run. Broad dirty work preserved;
+HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef; no staging/commit/push.
+
+FIRST REMAINING MODEL GOAL: specify the logical fragment/signature and give
+total operations on fixed finite domains, with coherent dependent fibres
+and all selected axioms under every semantic valuation. Current soundness
+is a graded syntactic interpretation, NOT finite first-order model existence.
+Rank-one products at one label already have unbounded normal size, so
+faithful bounded syntax is not closed under all constructors; this does not
+rule out nonfaithful finite models. Internal checker/compiler correspondence,
+reflection, native Hilbert/QIIRT adequacy and binary Church correctness remain
+separate. Package finiteness does not bound proof trees or host allocations.
+Next exact verification command:
+AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh
+
+Older entries below record then-current obligations; the new contextual,
+alphabet/type-carrier and external Void results supersede those gaps.
+
+## Total typed Agda normalizer and graded fragment soundness
+
+applyTypedWithin now returns TypedResult, not Maybe: actual IIR normal output,
+exact original Y[y] typing, bounded forward-beta trace and the existing
+Knuth cardinality bound. NativeTyping's original six rules/ranks unchanged.
+New NativeAlgebra/Substitution/Confluence/Inversion/Preservation/Ranks/Safety/
+Descent/RankPreservation/Normalization establish the necessary metatheory,
+including all annotation reductions. No normalization assumption, postulate,
+replacement checker or unsafe option. Full native normalize also proves
+conversion adequacy, uniqueness, budget independence and idempotence.
+
+New FragmentEmbeddings/Application give finite typed normal fibres,
+injective coherent size embeddings, original conversion, dependent graded
+application, equality of outputs for convertible inputs and reachable-state
+typing/rank invariants. FragmentMachineSoundness proves original typed
+soundness of the existing finite-indexed executor. ApplicationExamples
+checks genuinely dependent application, converted inputs and annotation beta.
+
+Final fresh safe closure .vPyHLe, 10:08:50–10:09:32 UTC, exit 0: 39 modules,
+no warnings, ignored interfaces/isolated config/data/stable source copies.
+Agda 2.8.0-3d04bac; pinned clean Cubical v0.9 b150186d. Final note .FofOTf,
+10:11:02–10:11:16 UTC, build/validation 0, inspector 0: 23 pages, 3-page
+MM0 appendix, 23 Rocq / 20 Agda badges, 77 links. Changed pages visually
+checked, all rendered. Logs/failures/hashes and exact commands:
+verification/combinatory-total-agda-2026-10-22/COMMANDS.md.
+All 24 Rocq sources/Dune match the prior pristine-audited manifest. No new
+Rocq/MM0/full-CI run. Broad dirty work preserved; HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef;
+no staging/commit/push. All parallel proof work finished or integrated by root.
+
+First remaining model goal: explicit bounded type/universe carriers and
+alphabet-extension coherence, then arbitrary-valuation/substitution and
+all-rule interpretation from independent certificates. Closed typed fibres
+and their graded operations are NOT yet full fragment models or internal
+consistency. The alphabet restriction, fixed-type finiteness, graded output
+and distinction from runtime allocations remain. Separate native Hilbert/
+QIIRT adequacy and binary Church compiler correctness are still open.
+Next exact verification command:
+AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh
+
+Older entries below are chronological evidence; their totality gaps are
+superseded by this checked milestone.
+
+## Future-work programme added to the combinatory note
+
+Added three proposed directions before References: objective PTS-rk with
+quadratic type checking (arXiv:2102.00905, Theorem 7); logic-free partial-
+function arithmetic with graph extension, finite basis/core, exists_n,
+induction, finite models for every truncation and quadratic proof checking;
+and an effective interpretation of the former inside the latter. These are
+research goals, not new axioms, proved results or changes to original PTS.
+
+Final note .nY0x2K, 09:30:31–09:30:45 UTC, build/validation exit 0.
+New future-work inspector exits 0: 22 pages, 3-page MM0 appendix,
+23 Rocq / 11 Agda badges, 66 links. All pages rendered in
+/tmp/pts-rk-future-work-review.ni5QCq; pages 17–18 visually checked.
+All 24 Rocq sources/Dune and 25 Agda sources match the previous audited
+manifests. No new proof build/full-CI claim. Commands, hashes and review:
+verification/combinatory-future-work-2026-10-22/COMMANDS.md.
+Existing dirty work preserved; no staging/commit/push. Proof obligations
+in the next entry are unchanged. Next note verification command:
+bash theories/CombinatoryLogic-rk/build-note.sh
+
+## Finite Church programs and explicit internal-consistency boundary
+
+NEW ChurchFinite.v checks original polymorphic finite selectors E_m^r,
+unary table maps and their d-fold compositions: formation rank r+1 for
+nonempty data, r+2 for operator types, and forward beta to canonical outputs.
+Carrier/selector normality and exact annotated size 2m+3 are checked too.
+There are 17 new closed assumption reports. No original PTS rules changed.
+
+NEW FiniteMachine.agda implements total finite-indexed greedy/application
+tables and proves decoded d-pass agreement on source tower-bounded inputs.
+Overflow fallback is unreachable on those runs. NEW ChurchFinite.agda emits
+actual original annotated Term 0 programs: compileMap/compileMap2,
+passProgram/applicationProgram/reductionProgram/applyReductionProgram.
+Agda checks all-index selector typing/normality/size and small map regressions.
+All 25 project modules pass the fresh safe closure without warnings.
+
+IMPORTANT: binary maps' all-index target typing/beta and the Agda–Rocq
+compiler correspondence are not yet formalized. Native unary correctness
+is universal, not just tested. The generated normalizer is code-to-code,
+not a semantic inhabitant of Y[y]. The previous total typed Agda interface
+still needs original subject reduction and rank descent; Maybe is retained.
+Finite-state tables do not bound all host allocations or the generated PTS
+program by the original source N (a selector alone has 2K+3 nodes).
+
+The note gives explicit encodings/programs and a conditional Pakhomov-style
+consistency programme, matching self_consistency/README.tex. Finite runs do
+not yet give fragment models: graded closure, embeddings, internal finite
+case principles, independent certificate soundness and interpretation J
+remain. No internal consistency theorem or Void exclusion is claimed.
+
+Fresh native audit .0ceAEs, 08:59:33–09:00:25 UTC, exit 0, 19/19 stages:
+24 modules, 241 own / 242 aggregate closed reports; recursive assumptions
+match independently rebuilt pristine byte-for-byte, unchanged upstream
+functional_extensionality_dep only. Original kernel unchanged.
+Fresh Agda .4jl4SO, 08:59:00–08:59:34 UTC, exit 0, 25 modules, no warnings.
+Final note .2lG4Vk, 09:03:29–09:03:43 UTC, build/validation 0; inspector 0:
+21 pages, 3-page MM0 appendix, 23 Rocq / 11 Agda badges, 65 links.
+All pages rendered _build/combinatory-church-finite-pdf-final.DKzMEm;
+new pages visually checked. Full commands/hashes/failures are in
+verification/combinatory-church-finite-2026-10-22/COMMANDS.md.
+No new full-CI or MM0 run; MM0 unchanged. Broad dirty work preserved,
+HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef; no stage/commit/push.
+
+Next Church goal: all-index binary-table typing/beta in ChurchFinite.v,
+then explicit generator correspondence. Next typed Agda goal remains
+NativeTyping subject reduction, not adding normalization as an input.
+Next exact native verification command:
+bash docs/direct-r-handoff/verification/combinatory-church-finite-2026-10-22/AUDIT.sh
+
+## Finite IIR normal syntax and bounded Agda reduction
+
+Added thirteen Agda modules; the complete 23-module closure checks safely.
+NormalForms gives genuine Nf/NonLamNf/erase IIR syntax and injective erasure.
+TypedNormalFibres gives exact annotated length N and type-rank bound d using
+the ORIGINAL six-rule typing relation and truncated certificates.
+typed-normal-bound proves an actual injection into Fin((4N+4) ↑↑ (d+3)).
+Fix labels : Fin a → Nat with a≤N: rank/length alone is false (all U_i:U_0).
+
+RawSizeBounds/BoundedTrace prove size for every single-beta intermediate of d
+greedy passes without typing assumptions. FiniteTrace computes the faithful
+finite-indexed path and proves each state's cardinal bound. Whole walks and
+host allocations are NOT bounded. FiniteApplication/TypedApplication implement
+the bounded attempt; successful results are IIR normal forms with bounded
+forward reduction. TypedInputs has legitimate original f/y/product-sort
+premises only. Here d is the exact product sort rank and N=1+|f|+|y|.
+
+IMPORTANT: the requested TOTAL typed Agda normalizer is still OPEN.
+applyTypedWithin : TypedInputs a → Maybe(Result inputs), not TypedResult.
+TypedResult's Y[y] fibre/cardinality is defined/proved, not its inhabitance.
+Next proof target: NativeTyping subject reduction (original weakening,
+substitution, conversion/context lemmas), then typed rank uniqueness/descent
+and normal_application_rank_bound; eliminate Maybe without adding the desired
+theorem as an input. A carrier-only evaluator is a further implementation
+obligation; compiling an already constructed Raw trace to Fin is not that.
+
+Fresh safe closure /tmp/pts-rk-combinatory-agda.7UFFIh, exit 0,
+08:12:27–08:13:03 UTC, all 23 modules, no warnings, stable source copies.
+Agda 2.8.0-3d04bac; clean Cubical v0.9 b150186d.
+Note section 7 now immediately follows QIIRT; literal highlighted excerpts
+and nine Agda proof badges. Final PDF .5X2knp, 08:17:32–08:17:45 UTC,
+build/validation 0; inspector 0: 18 pages, 3-page MM0 appendix, 22 Rocq badges,
+17 Agda links, 58 links. Renders _build/combinatory-finite-pdf.6WaFbZ;
+changed pages visually inspected. Initial glyph failure fixed locally; no
+validator weakened. No new Rocq/MM0/full-CI run: 23 Rocq sources and Dune
+match the prior pristine-audited manifest byte-for-byte. No native source edit.
+
+Exact commands, versions, hashes, failures and remaining goals:
+verification/combinatory-finite-agda-2026-10-22/COMMANDS.md and
+theories/CombinatoryLogic-rk/EVIDENCE.md. Existing broad dirty/intent-to-add
+work preserved; HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef, no stage/commit/push.
+Next exact verification command:
+AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh
+
+## BCKW arithmetic, Knuth bounds and independent safe QIIRT
+
+Current note: section 2 gives BCKW(I) arithmetic, n occurrences of W and
+7n+2 atoms, succ/add/mul with 8/9/1 atoms, type ranks 2/3. The old abstract
+sentence and affine-generator section are removed. B is composition, W is
+duplication; AffineDuplication.v's constructor is corrected. BCKW.v checks
+original annotated typing, counts, arithmetic and unapplied normalization.
+KnuthBounds.v proves the comparison used for all displayed tetration bounds.
+
+The independent 435-line agda/BCKW.agda gives B/C/K/W/I/P literal families,
+guarded laws and structural contraction; note excerpts read this source.
+It passes safe checking without the dependent S module. The full dependent
+Hilbert/MM0 catalogue is RETAINED: simple BCKW substitution macros pass, but
+specific dependent versions fail scoped typing tests. This is not a
+nondefinability theorem or a native adequacy proof. Do not erase annotations
+or rename the missing dependent scheme as BCKW. Old supporting Agda files
+remain checked independently. The prose describes final constructions only.
+
+Fresh focused 23-module audit exits 0, 19/19, 06:36:36–06:37:27 UTC:
+_build/combinatory-bckw-audit.Hukon3. Fresh /tmp/pts-rk-combinatory-bckw.bnSrlP;
+pristine /tmp/pts-rk-combinatory-bckw-pristine.p0tvSU. 224 own/225 aggregate
+closed reports; byte-identical recursive assumptions against new pristine,
+unchanged upstream functional extensionality only; no unsafe/new assumptions.
+Fresh safe ten-module Agda closure exits 0 at /tmp/pts-rk-combinatory-agda.Td8Ru5
+(06:31:13–06:31:36 UTC). MM0 .FNFzjw passes 4/4. Final note .2GZNlI passes
+(06:40:36 UTC), 15 pages, 3 appendix pages, 22 badges, 43 links; inspector/renders
+_build/combinatory-bckw-pdf.RO8PaR. Changed pages visually checked.
+Exact commands, attempts and hashes: theories/CombinatoryLogic-rk/EVIDENCE.md
+and verification/combinatory-bckw-2026-10-22/. No new full-CI claim.
+HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef; no staging/commit/push.
+
+First remaining basis goal: originally typed, annotation-preserving derivation
+of dependent substitution from BCKW numeric families (or an explicit exact
+obstruction). Simple macro failures do not settle general polymorphic schemes.
+Native PTS-to-Hilbert completeness still needs major-chain shortening, typed
+exposure and deduction; QIIRT logical coherence/adequacy and MM0/native
+adequacy are separate. Normal binder-free output size is not proved.
+Next exact audit command:
+bash docs/direct-r-handoff/verification/combinatory-bckw-2026-10-22/AUDIT.sh
+
+Older entries below are provenance, not current notation or proof status.
+
+## Affine numeral fragment and elementary finite normalization
+
+Four new checked modules in CombinatoryLogic-rk: AffineDuplication,
+QuantitativeNormalization, FiniteNormalForms and GroundHorn. Native tagged
+numerals have exactly n B and 2n+1 atoms and reduce forward to Church normal
+forms. The note additionally gives an untyped universal affine J calculation
+with n B and 49n+7 atoms; it is not a checked universal-J compiler. A full
+dependent BJ replacement is NOT claimed, because dependent fibres and original
+annotations need a separate typed compiler. The established Hilbert catalogue,
+MM0 and Agda signatures remain in place. The requested substitution-index
+subsection is removed, not the underlying safe two-index implementation.
+
+For global redex-head bound d (including annotations), deterministic greedy
+sequentialization keeps every single-beta intermediate within tower d N,
+preserves typing and rank bound, and has the existing elementary abstract-cost
+bound. For normal dependent application, d is the function's type rank.
+Outer type rank alone is not this semantic bound. Rank/size alone do not give
+finite normal terms: all U_i:U_0 are normal, rank 0, size 1. Fixing the input
+label alphabet gives a complete raw carrier of capacity tower(d+2)(4N+4).
+Bounds concern syntax states, not arbitrary typing witnesses/external types,
+machine configurations or compiled normal BJ code.
+
+The generic grounded-Horn derivability/consequence equivalence and all-true
+singleton model are checked. Effective grounding gives a mathematical faithful
+GROUND-QUERY reduction in infinite recursive vocabulary. It is not a faithful
+finite syntax model, finite-signature quantified interpretation or MM0/native
+adequacy theorem; it holds independently of the normalization bounds.
+
+Fresh joint audit exit 0, all 19 stages, 05:25:45–05:26:34 UTC:
+_build/combinatory-bj-bounds-audit.4WaD8n. Fresh 21-module build
+/tmp/pts-rk-combinatory-bj-bounds.TgqGUp; independently rebuilt pristine
+/tmp/pts-rk-combinatory-bj-bounds-pristine.de3PBe. 199 own/200 aggregate closed
+reports; recursive inventory identical to new pristine (unchanged functional
+extensionality only), original kernel and old 17 proofs unchanged. No unsafe
+entries or new assumptions. Initial audit .E63DNW failed only on two Agda EOF
+blank lines, removed before the full unchanged audit rerun. No full-CI claim.
+Fresh safe Agda check .LMgEkR passes all 9 modules, 05:28:49–05:29:10 UTC;
+MM0 .asWdz6 passes 4/4 stages. Final PDF build .DRrwv0 passes, 05:31:18 UTC:
+15 pages, 3 appendix pages, 23 badges, 46 links; renders/inspection
+_build/combinatory-bj-bounds-pdf-final.Ge5Gtk. Exact commands/failures/hashes:
+theories/CombinatoryLogic-rk/EVIDENCE.md. HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef;
+no staging, commit or push; unrelated user work preserved.
+
+First remaining BJ goal: original-typed annotation-preserving dependent
+affine/contraction compilation and a normal output size theorem. Existing
+native PTS-to-Hilbert completeness still needs major-chain shortening/typed
+exposure/deduction; Agda logical-guard adequacy and MM0/native adequacy remain
+separate. Next exact command:
+bash docs/direct-r-handoff/verification/combinatory-bj-bounds-2026-10-22/AUDIT.sh
+
+## Linear note and complete safe Cubical signature
+
+The note is reordered as requested: finite-basis obstruction follows the
+calculus; the literal catalogue and MM0 are consecutive subsections of the
+complete Hilbert presentation. History is removed from the exposition.
+The actual Agda sources declare Con/Sub before Ty/Tm, use RankedTy and
+document all four sorts. TargetView checks the source-only ctxOf comparison;
+both round trips hold, but fixed-target projections add equality/transport,
+so the core retains two indices. Exact contains a safe relative QIIRT and
+ordinary representatives, not an original-PTS adequacy theorem.
+
+Pinned Agda 2.8.0-3d04bac with Cubical v0.9 b150186d passes the fresh --safe,
+--ignore-interfaces import-closure check in
+/tmp/pts-rk-combinatory-agda.M1bpnK (exit 0, 04:41:14–04:41:34 UTC).
+All nine modules are covered, with source-copy and final stability checks.
+The four fixed I/K/S/P families and named guarded laws are present. S's literal
+six-binder type uses seven proof-only annotation guards; SCanonical supplies
+them uniformly, and SGuardIrrelevance proves their irrelevance and independence
+of the resulting S atom/type. The public S family has only numeric indices.
+Structural coherence guards and Exact's conditional witness-irrelevance
+lemmas are proved. No postulates, holes, disabled checks or opaque/optimization
+workarounds remain. Earlier three-atom checks are superseded; exact failed
+positivity/expansion attempts, terminations and limits are in EVIDENCE.md.
+
+Final PDF build /tmp/pts-rk-combinatory-note.c58OXY exits 0, 04:43:06 UTC, no
+layout/glyph/reference/highlighting warnings. Inspector output
+_build/combinatory-agda-pdf.QaZM2w: 13 pages, 3 appendix pages, 19 Rocq badges,
+40 links, all pages rendered; changed Agda pages visually inspected.
+Both long Agda excerpts remain unbroken. The note explains the fixed atom
+types/laws and links the canonical S proofs. MM0 recheck
+/tmp/pts-rk-combinatory-mm0.ITdtk4
+passes all 4 stages. All seventeen Rocq files and Dune remain hash-identical
+to the preceding fresh audit. No new Rocq/full-CI audit is claimed.
+HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef; no staging/commit/push.
+Next exact Agda verification command:
+AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh
+First remaining Agda obligation: derive the logical beta/application-
+naturality coherence guards from their intended typing premises. Native
+interpretation and equality reflection remain separate. Original Rocq
+completeness still requires general major-chain shortening, typed exposure
+and deduction; no new source-completeness theorem is claimed.
+
+## MM0 Hilbert specification and three-page source appendix
+
+The new CombinatoryPTS-rk.mm0 independently presents the 65-shape Hilbert
+system as a many-sorted Horn theory: explicit annotated de Bruijn syntax,
+numeric/shift/substitution/reduction graphs, fixed ranked telescope builders
+and six Hilbert rules. Its form relation is syntax-only, used solely by fixed
+P11/I7/K17/S30 catalogue rows; there is no native typing oracle or arbitrary-
+body scheme. The 156-line source is included literally in a highlighted
+three-page appendix (PDF pages 12–14), with exposition/rule excerpt at the
+end of Section 4. The complete PDF has 14 pages, 19 Rocq badges and 35 links.
+
+Official MM0 tools pinned at 0d414c0bfdaaeb7fea571895127abc1fa5a3d956:
+mm0-rs 0.1.0 (isolated Rust 1.99.1), mm0-c (Apple Clang 21.0.0). Four check
+stages pass, exit 0, 03:15:15 UTC, logs /tmp/pts-rk-combinatory-mm0.Bl222O.
+Both declarations and ten actual local .mm1 proof regressions pass the
+independent checker against the same public specification. A deliberately
+capturing substitution is rejected by compiler/checker with exits 1/3.
+Tools, negative artifacts and build provenance: /tmp/pts-rk-mm0.lhphPY/AUDIT.txt.
+No toolchain/global-security configuration changes. No timeout.
+
+The mathematical encoding audit is NOT a machine-checked MM0/Rocq adequacy
+bridge or source-completeness theorem. MM0 axioms specify the requested
+logical theory; no new Rocq axioms. All seventeen Rocq files and Dune match
+the previous fresh audit's hashes; no new assumption audit or full CI run
+is claimed. Shell syntax and scoped whitespace checks pass.
+Final PDF build /tmp/pts-rk-combinatory-note.rwsq7f exits 0, 03:16:56 UTC,
+no layout/glyph/reference/highlighting warnings. New PDF inspector verifies
+excerpt, full-source appendix, links and renders every page; final evidence
+_build/combinatory-mm0-pdf.B8Ovnb. Initial rendered-listing defects were caught
+by text inspection and fixed; exact paths, commands and hashes are in
+theories/CombinatoryLogic-rk/EVIDENCE.md.
+HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef; no staging, commit or push.
+Unrelated changes and IDE intent-to-add entries preserved.
+
+First remaining source-proof goal is still general major-chain shortening
+with a valid sharing measure, then typed product exposure/internal type
+correctness/deduction. An MM0/Rocq adequacy proof is a separate new obligation;
+finite MM0 regression proofs do not discharge either one.
+Next exact MM0 verification command:
+MM0_RS=/tmp/pts-rk-mm0.lhphPY/upstream/mm0-rs/target/release/mm0-rs MM0_C=/tmp/pts-rk-mm0.lhphPY/mm0-c bash theories/CombinatoryLogic-rk/check-mm0.sh
+Next proof-audit command remains:
+bash docs/direct-r-handoff/verification/combinatory-completeness-2026-10-22/AUDIT.sh
+
+## Contextual Hilbert proof steps, external completeness corollary and QIIRT
+
+The note now explicitly proves the literal 66/65 catalogue's mathematical
+completeness by finite symbolic-template inclusion and the EXTERNAL
+Bunder–Dekkers Theorem 9.4. This is not a Rocq theorem or axiom. The requested
+unconditional Rocq direction `typ ε M A -> CatalogueEconomy.Derives M A`
+REMAINS OPEN; do not infer it from the following supporting results.
+
+Six new modules: ContextualHilbert defines independent H+ with no lambda/Pi
+rule and no native typing constructor premise; it proves context validity,
+internal start/variables, convertible application and empty-context 65/66
+equivalence. ContextualSubstitution proves general and single substitution
+with H+-certified images. ProductExposure proves literal subject/type-prefix
+compatibility and forward beta simulation along application spines, preserving
+annotations. CatalogueShapes isolates exactly seven neutral-ended atoms and
+their strict body-application count decrease. HilbertAbstraction proves exact
+I/K and P/S assembly with needed family derivations explicit. HilbertReplay
+uses finite shared-reference application graphs and checks local dependent-S
+six-to-three contraction at the same exact type with original forward beta.
+None proves arbitrary-chain shortening or assumes it as a target hypothesis.
+All eleven preceding proof modules remain byte-identical.
+
+The Agda signature is now natural-model QIIRT: Tm Gamma has no type index,
+tyOf returns a ranked Sigma type, Ford-style guards retain intrinsic typing,
+and recursive clauses handle term paths and set truncation. Ordinary Agda
+retains explicit typed setoids. Weak GAT and exact native-expansion quotient
+stay separate, without lambda, eta or unrestricted quotation. The snippets
+have minted/Pygments Agda highlighting, but are NOT typechecked Agda. Installed
+2.6.0.1 fails the unchanged paper artifact targeting 2.8.0 at Prelude:47;
+no artifact postulates or unchecked eliminators were adopted.
+
+Fresh focused audit passes all 19 stages, exit 0, 02:24:10–02:25:00 UTC:
+159 own closed reports, 160 aggregate; seventeen-module recursive kernel
+inventory byte-identical to freshly built pristine upstream, only unchanged
+functional extensionality and no unsafe entries. Original-source comparison,
+source stability and safety checks pass. Logs
+_build/combinatory-completeness-audit.fG2a7B; fresh build
+/tmp/pts-rk-combinatory-completeness.0GagN7; pristine
+/tmp/pts-rk-combinatory-completeness-pristine.9z34Nq. Full local CI/actionlint
+passes 227/227 stages without retry, exit 0; logs
+_build/combinatory-completeness-full-ci.1noh6m, exit-file 02:24:40 UTC.
+Final highlighted PDF build /tmp/pts-rk-combinatory-note.xQ0lm0 exits 0,
+ten pages, finished 02:30:59 UTC; no layout/glyph/reference/minted warnings.
+PDFKit verification renders all pages and checks nineteen local proof links
+plus eleven references. Text/link/render evidence and the failed Agda-version
+compatibility probe are retained in _build/combinatory-completeness-pdf.mMbycs.
+Changed pages 5–10 were visually inspected; exact commands and source/PDF
+hashes are in theories/CombinatoryLogic-rk/EVIDENCE.md.
+First audit's CatalogueShapes tactic-name failure and all targeted failures
+are retained and summarized in theories/CombinatoryLogic-rk/EVIDENCE.md.
+HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef; no staged content, commit or
+push. Existing unrelated changes and IDE intent-to-add entries preserved.
+
+First remaining formal goal: replay arbitrary major-premise chains with
+interleaved weakening/conversion/reduction and prove a decreasing shared
+measure. Ordinary tree size AND maximum proof height fail for S duplication.
+Then prove length-controlled typed product exposure, internal correctness of
+types and deduction admissibility. Catalogue maps, syntactic exposure and
+local shared S shortening do not alone supply these results. The alternative
+route would formalize symbolic catalogue inclusion AND the external theorem;
+merely citing it must never create a Rocq axiom. Four-core completeness and
+intrinsic equality reflection are separate open goals.
+Next exact verification command:
+bash docs/direct-r-handoff/verification/combinatory-completeness-2026-10-22/AUDIT.sh
+
+## Combinatory GAT/QIIT specification and checked 65-shape economy
+
+The nine-page CombinatoryPTS-rk note now specifies a first-order contextual
+GAT with Con/Ty/Tm/Sub and idealized Agda QIIT syntax, plus a distinct exact
+typed-expansion quotient. The latter explicitly uses original Typing.typ;
+it is not an independent checker or completeness proof. Typed endpoints,
+dependent transport, original universe ranks and set truncation are explicit.
+No lambda, function eta or unrestricted type-to-term quotation is added.
+Neither QIIT pseudocode nor its native interpretation/reflection is claimed
+machine-checked. New QIIT primary references and thirteen proof badges included.
+
+New IdentityCatalogue I7, ConstantCatalogue K18 and SubstitutionCatalogue S30
+uniformly prove original typings, ranks and literal type/exposure maps.
+CatalogueHilbert combines P11/I7/K18/S30, internally derives every declared
+type and catalogue-atom exposure, and proves original soundness/extraction.
+CatalogueEconomy removes redundant local K13 by an independently typed K/P5
+application macro. derives_iff proves EXACT Hilbert judgment equivalence of
+the explicit 65/66 systems; all indices remain numerical. This reconciles
+our economy target, not the paper's unlisted numbering or its shortness proof.
+Original-PTS completeness, general symbolic fresh-sort closure and equality
+reflection remain open. The six preceding proof files are byte-identical.
+
+Fresh audit passes all 19 stages, exit 0, 01:36:23–01:37:09 UTC: 92 own closed
+reports, 93 aggregate including upstream. Fresh original snapshot/build,
+all-eleven-module recursive kernel checks, byte-identical inventory comparison,
+original-source comparison, safety and source-stability checks pass. Only
+unchanged upstream functional extensionality is loaded, no unsafe entries.
+Logs _build/combinatory-gat-audit.FoWhA6; build
+/tmp/pts-rk-combinatory-gat.hDbC80; pristine
+/tmp/pts-rk-combinatory-gat-pristine.bwllE6. Complete local CI/actionlint passes
+227/227 stages without retry, 01:36:24–01:36:53 UTC, exit 0; logs
+_build/combinatory-gat-full-ci.ZhCicn. Existing combinatory stage covers the new
+modules; no CI stage was weakened or removed.
+
+Final TeX build /tmp/pts-rk-combinatory-note.B5iS8i exits 0, nine pages with
+no LaTeX/layout/reference/glyph warnings. Exact QIIT block stays on page 8;
+references on page 9. PDFKit text/link/render checks pass: thirteen proof
+links, eight reference links. Final visual evidence:
+_build/combinatory-gat-pdf-final.wm5Jze. Detailed commands, failed attempts,
+versions, hashes and boundaries: theories/CombinatoryLogic-rk/EVIDENCE.md.
+HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef, no staged content, commit or
+push; existing unrelated work and IDE intent-to-add entries preserved.
+
+First remaining goal: define contextual Hilbert H+ and prove length-controlled
+product exposure for ARBITRARY derived products, not only scheme atoms. This
+must supply internal correctness of types and deduction admissibility; do not
+use native type correctness as a substitute for an internal Hilbert witness.
+The GAT soundness/strong-equality comparison is a separate formalization goal.
+Next exact verification command:
+bash docs/direct-r-handoff/verification/combinatory-gat-2026-10-22/AUDIT.sh
+
+## Combinatory Hilbert continuation — renamed library, note and product catalogue
+
+The physical directory is theories/CombinatoryLogic-rk; the logical library
+remains PTSrk.Combinatory. CombinatoryPTS-rk.tex and its five-page compiled PDF
+give the logical/Hilbert presentation, proofs-as-terms explanation, external
+Bunder–Dekkers completeness theorem and nine local formalization badges.
+All original annotations and beta-only conversion are retained. Core,
+Presentation and FiniteBasis are byte-for-byte unchanged from the preceding
+checkpoint. No primitive, typing rule or external Rocq axiom was added.
+
+ProductCatalogue uniformly types all eleven product schemes, proves their
+exact type ranks and literal declared-type/product-exposure maps. P4/P5
+compile into the existing four-family grammar with independent HasType
+derivations and literal forward-beta recovery. Hilbert independently defines
+scheme/universe axioms and application/conversion/subject/type reduction;
+soundness and typed applicative extraction are proved for separately verified
+catalogues. ProductHilbert discharges the catalogue premise for numerical
+I/K/S plus eleven product schemes, and derives each product atom's type at
+its exact rank INSIDE Hilbert inference. Extracted codes are certified through
+original typing of their expansion, not a full independent code-typing system.
+Full 65-shape completeness and four-family completeness remain unproved.
+
+Fresh audit: exit 0, all 19 stages pass, 00:59:24–01:00:00 UTC. 51 own closed
+reports, 52 aggregate including upstream. Separate pristine upstream build,
+recursive kernel checks of all six modules, byte-identical inventory
+comparison, original-source comparison, source stability and safety checks
+pass. Only unchanged upstream functional extensionality is loaded, no unsafe
+entries. Logs: _build/combinatory-hilbert-audit.H87sn7. Fresh absolute build
+/tmp/pts-rk-combinatory-hilbert.ZBLheh; pristine snapshot
+/tmp/pts-rk-combinatory-pristine.iMsccY. The driver adds stage 01-combinatory;
+complete local CI/actionlint passes all 227 stages, exit 0, no retry,
+00:59:31–01:00:01 UTC; logs _build/combinatory-hilbert-full-ci.OO1Ub7.
+
+Final PDF build /tmp/pts-rk-combinatory-note.Y2Kfbl exits 0, without LaTeX,
+layout/reference/glyph warnings. PDFKit text/link/render checks pass for five
+pages, nine source badges and three reference links; all pages visually
+inspected. Logs/images: _build/combinatory-hilbert-pdf.dyMANc. Exact commands,
+versions, all failed attempts and source hashes: current
+theories/CombinatoryLogic-rk/EVIDENCE.md. Earlier entries below keep historical
+paths and superseded status statements for provenance.
+
+HEAD remains cb76553b03d536743e36c4e2c7e5a1c7c1669bef; no staged content,
+commit or push. Existing unrelated edits were preserved; some older new files
+retain IDE intent-to-add entries. Rename/new work is uncommitted.
+First remaining proof goal: auxiliary I/K/S catalogues, internal type/exposure
+derivations, then original-PTS-to-Hilbert completeness. Compiling all remaining
+auxiliaries into the four-family grammar is a separate smaller-basis question;
+do not assume the dependent abstraction recursion is well-founded.
+Next exact verification command:
+bash docs/direct-r-handoff/verification/combinatory-hilbert-2026-10-22/AUDIT.sh
+
+## Combinatory PTS-rk — finite-basis obstruction and indexed core
+
+New independent library PTSrk.Combinatory uses original annotated Term nat,
+Typing.typ and RankSorts. FiniteBasis.no_finite_typed_basis proves that finitely
+many fixed closed typed atoms, even with EVERY universe atom, cannot beta-
+represent all closed typed terms through originally typable application trees.
+The proof uses type-rank monotonicity along applications and explicit inhabitants
+at every rank; it permits conversion, not merely forward recovery.
+
+Core proves arbitrary-index original typings, exact type-sort ranks and literal
+beta laws for I, ordinary K, dependent S, product P and optional dependent K.
+Presentation supplies binder-free subjects, an independently inductive mixed
+typing relation, original soundness and weak-reduction simulation. Its types
+remain original PTS syntax; equality is beta conversion of expansions. No
+completeness of this four-family core or of the proposed telescope families.
+FORMULATION.md specializes the external supersorted Hilbert completeness theorem
+and records the dependent type-family recursion/equality gaps. No external
+theorem was added as a Rocq axiom and no source rule was changed.
+
+Fresh focused audit exits 0, 00:35:48--00:36:22 UTC, all 17 stages pass.
+32 own reports are closed (33 aggregate including unchanged upstream).
+Separate pristine upstream build, recursive kernel checks and byte-identical
+assumption-inventory comparison pass. Original kernel source comparison and
+source stability pass. Only unchanged upstream functional extensionality is
+loaded; no unsafe entries. Raw logs: _build/combinatory-audit.ZXAnfW.
+Fresh directory /tmp/pts-rk-combinatory-audit.vEp9MB; pristine snapshot
+/tmp/pts-rk-combinatory-upstream.AkuTX9. Duplicate same-source dependency-path
+warnings are retained. This is not a new full staged local-CI result; its
+driver is unchanged. Exact commands/failures/hashes: theories/Combinatory/EVIDENCE.md.
+
+HEAD cb76553b03d536743e36c4e2c7e5a1c7c1669bef, index empty; new work uncommitted.
+No commit/push; existing unrelated edits and running audits preserved.
+First remaining goal: compile the finite auxiliary type-family/product-exposure
+catalogue into the proposed telescope combinators, uniformly in numeric ranks,
+with original typing and annotated beta recovery. Then establish completeness;
+do not assume inferred domain/codomain recursive calls are well-founded.
+Next exact command:
+bash docs/direct-r-handoff/verification/combinatory-2026-10-22/AUDIT.sh
+
+## Uniform closure head and internal-budget boundary
+
+The five new self_consistency files were committed, as requested, in
+cb76553b03d536743e36c4e2c7e5a1c7c1669bef. No push was requested this turn.
+Current self-interpreter continuation changes are not committed.
+
+FixedInterface supplies one original normal decoder for normal closures
+carrying a hidden domain, program and runner; it computes runner(program),
+not a precomputed result. RankPadding realizes exact common sorts without
+cumulativity. FragmentClosureInterpreter.every_bounded_original fixes k
+before independent source fragment membership and proves one head of exact
+type-sort k+10. Its application spine is head(k) (Pad_k(nf T)) code d_k,
+originally typed at T and reducing to literal source t. Normality and
+cross-budget syntax/conversion injection are retained. Only source TYPE is
+normalized; the runner remains plan/type-specific. The final fixed argument
+uses the supplied type's explicit function shape, not an eliminator for
+arbitrary types of the common sort. Underlying capped literal type-program
+recovery remains separate. This is a common closure execution interface,
+not a common PHOAS constructor algebra or internal reifier.
+
+BudgetInternalization proves the precise bounded-literal obstruction for
+fixed reifier/evaluator pairs with arbitrarily many represented inputs.
+It does not obstruct fixed fragments or Bottom-specific internal soundness.
+FiniteLiteralBank proves one normal rank-2 decoder for each finite sort bank,
+using normal literal-zero Church selectors. NumericLiteralBank now proves
+actual Church-numeral selection: a normal original rank-4 head recovers
+U_min(i,k); normal numeral inputs have literal ceiling zero. The monomorphic
+state carrier depends on k; overflow saturates rather than rejecting. This
+does not establish correctness for arbitrary inhabitants/accepted proof codes.
+FixedInterface.inhabited_iff makes the internal reifier's soundness content
+explicit; no independent certificate acceptance theorem is claimed.
+
+All six new proof modules compile in the pinned environment. Fresh aggregate
+compilation in /tmp/pts-rk-self-uniform-audit.ZjpFUy passes: 2706 own closed
+reports plus one unchanged upstream report across the three fresh build stages;
+1112 public Check/Print pairs and 129 source/Dune manifest entries. Both fresh
+recursive kernel checks pass; interpreter check 00:27:42--00:36:42 UTC,
+exit 0. Historical and freshly rebuilt pristine inventories agree; original
+frozen-source comparison, all 129 stability checks and source safety/whitespace
+checks pass. The loaded inventory contains only unchanged upstream functional
+extensionality, with no unsafe/type-in-type/assumed-positivity entries;
+own endpoints are closed.
+Complete local CI/actionlint passes all 226 stages, exit 0, with no retry.
+The expanded note builds warning-free to 15 pages in
+/tmp/pts-rk-self-note.PKoaj6; PDF inspection passes. The consistency note's
+status update builds warning-free to ten pages in
+/tmp/pts-rk-consistency-note.7u3pxt. Exact evidence, hashes and build script:
+verification/self-interpreter-uniform-interface-2026-10-22.
+First remaining mathematical goal: an independently defined certificate
+trace/domain and actual internal accepted-code reification at Bottom, with
+internal resource/budget handling. Full-source numeric literal reification
+at unbounded ranks is ruled out only under the stated bounded-literal premise.
+No CPS translation is formalized. Next exact audit commands: run AUDIT.sh
+pristine, then prebuild, then default mode in the evidence directory above.
+Full-CI mode is ci.
+The completed fresh Dune directory and independent pristine snapshot were
+removed after verification (644064 KiB total); raw logs, working build and
+all sources/PDFs are retained. Re-run pristine/prebuild to recreate caches.
+
+## Internal consistency — research note and two formalization routes
+
+Created theories/self_consistency as a documentation-only future development,
+with README.tex/PDF, README.md, build-note.sh and EVIDENCE.md. The nine-page
+note extracts the supplied Zermelo-revision draft's precise predicate-only
+consistency target and tower-witnessed EA soundness construction. It maps
+existing normalization, original certificates, arithmetic deduction and capped
+PHOAS results to their actual contracts. No new Rocq proof or Dune target.
+
+The requested higher-order H^omega_<omega route is distinguished from the
+draft's first-order H_<omega route: external Pakhomov Lemma 3.11 uses S and
+H^omega; Corollary 5.3 uses 2S and H. Higher-order comprehension and a stable
+rank policy need their own direct interpretation. The second route constructs
+a fixed resource-restricted proof arithmetic and internal checker-to-PHOAS
+reification. Uniform fragment interpreters would simplify that interface,
+but external indices, domain closure and internal soundness remain obligations.
+A consistency-specific evaluator can omit the syntax tag/fidelity layer.
+
+Final document build: /tmp/pts-rk-consistency-note.KlGtoS, exit 0, nine pages,
+no layout/reference/glyph warnings. PDFKit inspection exits 0; pages 1,3,5,7,9
+visually checked. Raw inspection: _build/self-consistency-note-2026-10-22.
+EVIDENCE.md records input hash, exact declarations, all failed layout attempts,
+versions and final hashes. No new Rocq/CI result is claimed. Existing proof
+sources, toolchain and unrelated dirty work are preserved.
+
+The five self_consistency files were subsequently committed in cb76553;
+this entry describes their document-only verification, not a new proof audit.
+First proposed proof task: fix independent T^e rules and binary certificates,
+acceptance-to-original-typing bridge, and a syntactic NormalBottom lemma.
+Do not treat the draft or external Pakhomov transfer as a Rocq axiom.
+Next exact document command: bash theories/self_consistency/build-note.sh.
 
 ## Scoped publication and completed-cache cleanup
 

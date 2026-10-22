@@ -1,5 +1,433 @@
 # Build, logs, and recovery
 
+Direct internal-consistency roadmap (2026-10-22, documentation only):
+
+`bash theories/self_consistency/build-note.sh DIRECT_ROADMAP` final build
+exits 0, 12:01:53–12:01:58 UTC, /tmp/pts-rk-consistency-note.O8CmUV.
+Eight pages, no overflow/underflow, missing glyph or LaTeX warning.
+PDFKit inspector exits 0: eight nonempty pages, four links, required text,
+primary citation, no unrendered TeX; all pages rendered and changed formulas/
+pagination visually reviewed. latexmk 4.88, LuaHBTeX 1.24.0/TeX Live 2026,
+Apple Swift 6.3.3. The optional build argument is limited to README or
+DIRECT_ROADMAP; shell syntax check passes, invalid name exits 2 as intended.
+
+Attempts 01/02 compiled but PDF review caught a malformed equation tag;
+03 exits 12 because the Markdown display renderer does not permit tag.
+Moving the label to prose fixes it; 04/05 compile and inspect successfully.
+No validator weakened. Full attempts/hashes/independent mathematical reviews:
+verification/self-consistency-direct-roadmap-2026-10-22/COMMANDS.md.
+Raw logs: _build/self-consistency-direct-roadmap.HYlErI.
+
+244 original/normalization/self-interpreter/combinatory Rocq/Agda and Dune
+hashes compare unchanged. No proof source or original calculus edited;
+no new Rocq/Agda/CI/kernel run or internal consistency theorem claimed.
+Earlier README.tex/PDF retained. No stage/commit/push; broad user work
+preserved. The direct roadmap supersedes priority, not the old target's
+provenance or the remaining internal soundness/quantification obligations.
+
+Shared PHOAS fold checkpoint (2026-10-22):
+
+`bash docs/direct-r-handoff/verification/self-interpreter-fold-2026-10-22/AUDIT.sh`
+and its documented `--finish` continuation establish the first six modules:
+fresh build 11:09:25–11:14:37 UTC, 92/92 fresh public reports at 11:15:07,
+recursive kernel check 11:15:07–11:19:55, compatibility audit/source
+stability complete 11:32:11. Pristine 723cf2ec61c737ae82ba33d2e7db44f650122b0e
+is independently rebuilt. Exact context inventories match; raw log comparison
+initially failed only on a preceding logical-loadpath warning. Complete
+nonempty CONTEXT SUMMARY extraction fixed the harness without suppressing
+raw diagnostics or weakening a proof check.
+
+`GENERIC-AUDIT.sh` adds GenericFold after that source-stable checkpoint.
+All previous dependency sources match; new module fresh compile exits 0,
+11:34:15–16; 106/106 public reports at 11:34:46; recursive new-module
+kernel/inventory equality at 11:35:00; working compatibility audit and final
+source stability at 11:35:31. Initial BSD sed basic-regex alternation failure
+is retained; portable extended regex fixes the manifest filter. Together
+the unchanged checked closure and new kernel check cover every new module.
+Only unchanged upstream functional_extensionality_dep in either inventory;
+no type-in-type, unsafe fixpoints, or assumed positivity. Rocq 9.2,
+Stdlib 9.1, Equations 1.3.2+9.2, Dune 3.23.1, OCaml 4.14.2.
+The main script now reproduces all 106 endpoints in one fresh run.
+
+Raw commands/status/stdout: _build/self-interpreter-fold-audit.7pRHdb.
+Exact durable commands, incremental failures, source hashes and contracts:
+verification/self-interpreter-fold-2026-10-22/COMMANDS.md and sibling
+ALGEBRA.md, GENERIC.md, COMBINATORY.md, NOTE.md. No new full-CI claim.
+After verification, this run's fresh/pristine temporary directories were
+removed (321 MiB); raw logs/manifests retained. The fresh main script
+recreates them. Scoped final whitespace passes; unrelated historical raw
+combinatory logs explain a separately recorded broader whitespace failure.
+
+`bash tools/build-self-interpreter-note.sh` final build exits 0 in
+/tmp/pts-rk-self-note.a3CRxJ: ten pages versus fifteen, 682 source lines,
+no overflow/underflow, references, glyph or malformed-math diagnostics.
+`bash theories/self_consistency/build-note.sh` exits 0 in
+/tmp/pts-rk-consistency-note.7vQRc9: ten pages, clean diagnostics.
+New PDFKit inspector renders all pages and verifies required text/primary
+citation; changed passages visually checked. No staging/commit/push.
+
+Contextual certificate/finite-package checkpoint (2026-10-22):
+
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`
+exits 0, 11:04:13–11:04:58 UTC, /tmp/pts-rk-combinatory-agda.xZU85m:
+52 project modules, complete safe closure, ignored interfaces, isolated
+config/data, stable source copies, no warnings. Earlier .fMhbvK 51-module
+run also passed, 10:58:56–10:59:40 UTC. Agda 2.8.0-3d04bac; pinned clean
+Cubical v0.9 b150186d. Incremental failures/warnings and structural fixes
+are retained; no unsafe bypass or compiler timeout.
+
+`bash theories/CombinatoryLogic-rk/build-note.sh` exits 0,
+11:06:27–11:06:41 UTC, /tmp/pts-rk-combinatory-note.5WV08w.
+New inspector exits 0: 25 pages, 3-page MM0 appendix, 23 Rocq / 27 Agda
+badges, 89 links. All pages render; changed pages visually checked. Initial
+1.26pt overfull vbox corrected by shortening the Exact introduction;
+stale-PDF and line-break-sensitive inspector failures retained and repaired.
+No validation weakened. Exact note commands and review in PDF-REVIEW.md;
+full proof commands/failures/source hashes in
+verification/combinatory-fragment-soundness-2026-10-22/COMMANDS.md.
+
+All 24 Rocq files/Dune and 38 prior Agda files except import-only Everything
+match prior audited manifests. No new Rocq/MM0/full-CI run. No stage/commit/
+push; unrelated user work preserved. All-six-rule contextual certificate
+soundness and external Void exclusion are proved; fixed finite first-order
+model closure and internal checker/compiler reflection remain open.
+
+Total typed Agda/fragment-soundness checkpoint (2026-10-22):
+
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`
+exits 0, 10:08:50–10:09:32 UTC, /tmp/pts-rk-combinatory-agda.vPyHLe:
+39 project modules, complete safe closure with ignored interfaces, isolated
+config/data, stable source copies and no warnings. Earlier .KZ77Fr 38-module
+run also passed. Agda 2.8.0-3d04bac; pinned clean Cubical v0.9 b150186d.
+Incremental failures and fixed indexed-match warnings are retained, not
+hidden or suppressed; no compiler timeout/unsafe check bypass.
+
+`bash theories/CombinatoryLogic-rk/build-note.sh` exits 0,
+10:11:02–10:11:16 UTC, /tmp/pts-rk-combinatory-note.FofOTf; first .wsHeUv
+build also passed. New inspector exits 0: 23 pages, 3-page MM0 appendix,
+23 Rocq / 20 Agda badges, 77 links. All pages rendered in
+/tmp/pts-rk-total-agda-pdf.Q3NbK2; changed pages 11–16 visually checked
+across initial/final renders. No glyph/overfull/reference/highlighting
+failure; one unchanged underfull MM0 footnote diagnostic remains.
+Commands, logs, hashes and PDF review:
+verification/combinatory-total-agda-2026-10-22/COMMANDS.md.
+
+The 24 Rocq sources and Dune match the previous audited manifest byte-for-byte;
+no new Rocq/MM0/full-CI build claimed. No stage/commit/push; broad user changes
+preserved. Total typed Agda normalization is now complete. Full fragment
+model/certificate interpretation and Church/QIIRT/Hilbert adequacy remain open.
+
+Combinatory future-work note update (2026-10-22):
+
+`bash theories/CombinatoryLogic-rk/build-note.sh` exits 0 in
+/tmp/pts-rk-combinatory-note.nY0x2K, 09:30:31–09:30:45 UTC; all existing
+glyph/layout/reference/highlighting validation passes. New future-work
+inspect.swift exits 0, retaining all previous checks and checking every
+new requirement and the arXiv:2102.00905 link: 22 pages, 3-page appendix,
+23 Rocq / 11 Agda badges, 66 links. All-page renders in
+/tmp/pts-rk-future-work-review.ni5QCq; future-work pages 17–18 visually checked.
+Initial .JxOvX1 build passed; the final edit removed a one-word page widow.
+The first inspector attempt exited 133 only because PDF line-break hyphenation
+split Noncollapsed; extraction now normalizes that break, retaining the test.
+No compiler failure, timeout or disabled check. Previous Rocq/Dune and Agda
+source manifests still match byte-for-byte; no new proof/MM0/full-CI run.
+Exact commands/logs: verification/combinatory-future-work-2026-10-22/COMMANDS.md.
+No staging, commit or push.
+
+Finite Church compilation checkpoint (2026-10-22):
+
+`bash docs/direct-r-handoff/verification/combinatory-church-finite-2026-10-22/AUDIT.sh`
+exits 0, 19/19, 08:59:33–09:00:25 UTC. Logs _build/combinatory-church-finite-audit.0ceAEs;
+fresh /tmp/pts-rk-combinatory-church-finite.aVVCMj; independently rebuilt
+pristine /tmp/pts-rk-combinatory-church-finite-pristine.Yk50Y4.
+24 modules, 241 own / 242 aggregate closed reports, including 17 new ChurchFinite
+reports. Recursive assumptions match pristine byte-for-byte: only unchanged
+upstream functional_extensionality_dep. Original kernel/source stability,
+safety and whitespace pass. Pinned Rocq 9.2 / Stdlib 9.1 / Equations 1.3.2+9.2,
+Dune 3.23.1 / OCaml 4.14.2. No full-CI claim.
+
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`
+exits 0, 08:59:00–08:59:34 UTC, /tmp/pts-rk-combinatory-agda.4jl4SO:
+25 project modules, fresh safe import closure/ignored interfaces, isolated
+configuration/data, stable source copies, no warnings. Agda 2.8.0-3d04bac,
+clean Cubical v0.9 b150186d.
+`bash theories/CombinatoryLogic-rk/build-note.sh`
+exits 0, 09:03:29–09:03:43 UTC, /tmp/pts-rk-combinatory-note.2lG4Vk.
+New church-finite inspect.swift exits 0: 21 pages, 3 appendix pages, 23 Rocq / 11 Agda badges,
+65 links. All pages rendered _build/combinatory-church-finite-pdf-final.DKzMEm;
+new pages 13–16, 18 visually checked. No missing glyphs/overfull/undefined
+references/highlighting failures. One unchanged MM0 footnote underfull box.
+
+First note .rYmbmc failed layout validation on two wide displays; split them.
+Intermediate .NNVuYl/.IKoScA passed build validation; visual inspection found
+literal texttt commands in the latter, fixed with Markdown code spans.
+Final inspector explicitly rejects that defect. No validator weakened.
+The new COMMANDS.md and ChurchFinite-check.txt preserve exact commands,
+incremental failure ledgers and remaining obligations. No timeout/commit/push.
+No new MM0 check (specification unchanged). The code-to-code programs do
+not finish total typed Agda normalization, model soundness or consistency.
+
+Finite IIR Agda and bounded application checkpoint (2026-10-22):
+
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`
+exits 0, 08:12:27–08:13:03 UTC, /tmp/pts-rk-combinatory-agda.7UFFIh:
+23 project modules plus full safe import closure, ignored interfaces,
+isolated data/configuration, stable copied sources, no warnings.
+Agda 2.8.0-3d04bac and clean Cubical v0.9 b150186d.
+`bash theories/CombinatoryLogic-rk/build-note.sh`
+exits 0 in /tmp/pts-rk-combinatory-note.5X2knp, 08:17:32–08:17:45 UTC.
+LuaHBTeX 1.24.0/TeX Live 2026, latexmk 4.88, latexminted 0.7.0, Pygments 2.19.2.
+No glyph/layout/reference/highlighting validation failures.
+New verification/combinatory-finite-agda-2026-10-22/inspect.swift exits 0:
+18 pages, 3-page complete MM0 appendix, 22 Rocq badges, 17 Agda links (9 proof
+badges), 58 links. All-page renders _build/combinatory-finite-pdf.6WaFbZ;
+changed pages visually inspected.
+
+First note .bB5vJG failed glyph validation (exit 1) for inline ≤ and Agda ∥;
+math-mode prose and local Latin Modern Math fallback repaired the defects.
+Intermediate .Nltp4k passed before the final listing-layout adjustment.
+No validator disabled. Incremental Agda attempts, failures and exact commands:
+verification/combinatory-finite-agda-2026-10-22/COMMANDS.md and module check
+records. Final raw logs/source manifests/version reports archived there.
+Scoped whitespace, shell syntax and safety scans pass. Existing 23 Rocq
+sources/Dune match the prior fresh/pristine audit manifest; no new native,
+MM0 or full-CI run claimed. No timeout/staging/commit/push.
+
+The checked finite IIR/typed-fibre injections, raw single-beta peak bounds and
+finite-indexed traces do NOT complete the total typed Agda normalizer.
+Maybe(Result) remains; native preservation/rank descent and carrier-only
+execution remain explicit obligations. No target-shaped premise is added.
+
+Combinatory BCKW arithmetic/QIIRT and Knuth bounds (2026-10-22):
+`bash docs/direct-r-handoff/verification/combinatory-bckw-2026-10-22/AUDIT.sh`
+exits 0, 19/19 stages, 06:36:36–06:37:27 UTC. Logs
+_build/combinatory-bckw-audit.Hukon3; fresh 23-module
+/tmp/pts-rk-combinatory-bckw.bnSrlP; independent pristine
+/tmp/pts-rk-combinatory-bckw-pristine.p0tvSU. 224 own/225 aggregate closed
+reports; recursive assumption inventory identical to pristine, only unchanged
+functional_extensionality_dep, no unsafe/new assumptions. Original kernel,
+source stability, safety and whitespace pass. Pinned Rocq 9.2, OCaml 4.14.2,
+Dune 3.23.1, Stdlib 9.1, Equations 1.3.2+9.2. This is a focused audit, not full CI.
+
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`
+exits 0, 06:31:13–06:31:36 UTC, /tmp/pts-rk-combinatory-agda.Td8Ru5:
+all 10 source modules with fresh safe import closure/stable copies.
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda bash docs/direct-r-handoff/verification/combinatory-bckw-2026-10-22/dependent/CHECK.sh`
+exits 0 at 06:36:04 UTC; required individual exits 0/42/42/42, exact scope
+diagnostics archived. This is not a BCKW nondefinability theorem.
+`MM0_RS=/tmp/pts-rk-mm0.lhphPY/upstream/mm0-rs/target/release/mm0-rs MM0_C=/tmp/pts-rk-mm0.lhphPY/mm0-c bash theories/CombinatoryLogic-rk/check-mm0.sh`
+passes 4/4, /tmp/pts-rk-combinatory-mm0.FNFzjw, 06:39:23–06:39:24 UTC.
+`bash theories/CombinatoryLogic-rk/build-note.sh`
+passes in /tmp/pts-rk-combinatory-note.2GZNlI, 06:40:24–06:40:36 UTC.
+New bckw inspect.swift passes: 15 pages, 3 appendix pages, 22 badges, 43 links,
+all-page renders _build/combinatory-bckw-pdf.RO8PaR; changed pages visually
+checked. No layout/glyph/reference/highlighting warnings.
+
+Initial note .yvUk4c failed layout validation on single-dollar display
+delimiters; restoring double dollars fixed it. Initial inspector exit 133
+was its text expectation “7n+2” instead of extracted “7n + 2”; corrected
+test passes. No validator was disabled. Native incremental failures and final
+checks are archived in verification/combinatory-bckw-2026-10-22/native;
+Knuth and Agda incremental logs are linked from CombinatoryLogic-rk/EVIDENCE.md.
+No timeout, staging, commit or push. Full dependent Hilbert replacement,
+native completeness, QIIRT coherence/adequacy and MM0 adequacy remain open.
+
+Combinatory affine numerals and finite peak bounds (2026-10-22):
+`bash docs/direct-r-handoff/verification/combinatory-bj-bounds-2026-10-22/AUDIT.sh`
+exits 0, all 19 stages, 05:25:45–05:26:34 UTC. Logs
+_build/combinatory-bj-bounds-audit.4WaD8n; fresh 21-module build
+/tmp/pts-rk-combinatory-bj-bounds.TgqGUp; independently rebuilt pristine
+/tmp/pts-rk-combinatory-bj-bounds-pristine.de3PBe. 199 own/200 aggregate closed
+reports; recursive inventory identical to new pristine, only unchanged
+functional_extensionality_dep, no unsafe/new assumptions. Original kernel,
+old 17 proof hashes, source stability and safety pass. Pinned Rocq 9.2.0,
+OCaml 4.14.2, Dune 3.23.1, Stdlib 9.1.0, Equations 1.3.2+9.2. No full-CI run.
+First audit .E63DNW passed proofs but exited 2 at whitespace on two existing
+Agda EOF blank lines. Removed only the blanks and reran the unchanged script.
+No timeout or weakened check. Incremental failure ledgers and recoverable
+generated-artifact relocations are recorded in CombinatoryLogic-rk/EVIDENCE.md.
+
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`
+exits 0, 05:28:49–05:29:10 UTC, logs /tmp/pts-rk-combinatory-agda.LMgEkR:
+all 9 sources, fresh safe import closure, pinned toolchain, stable copies.
+`MM0_RS=/tmp/pts-rk-mm0.lhphPY/upstream/mm0-rs/target/release/mm0-rs MM0_C=/tmp/pts-rk-mm0.lhphPY/mm0-c bash theories/CombinatoryLogic-rk/check-mm0.sh`
+passes 4/4, 05:28:50 UTC, logs /tmp/pts-rk-combinatory-mm0.asWdz6.
+`bash theories/CombinatoryLogic-rk/build-note.sh` exits 0 in
+/tmp/pts-rk-combinatory-note.DRrwv0, 05:31:05–05:31:18 UTC; no layout/glyph/
+reference/highlighting warnings. New bj-bounds inspect.swift exits 0 with
+15 pages, 3 appendix pages, 23 proof badges, 46 links and all-page renders in
+_build/combinatory-bj-bounds-pdf-final.Ge5Gtk. Changed BJ/bounds/Horn pages
+and references visually inspected. Earlier successful drafts retained.
+Shell syntax, scoped whitespace and final proof hashes pass. No staging,
+commit or push. These checks do not establish universal typed BJ compilation,
+native Hilbert completeness, finite-signature interpretation or MM0 adequacy.
+
+Combinatory safe Cubical signature and reordered note (2026-10-22):
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`
+exits 0, 04:41:14–04:41:34 UTC, logs /tmp/pts-rk-combinatory-agda.M1bpnK.
+Agda 2.8.0-3d04bac; Cubical v0.9 b150186d2544e7efeddd31e5d14a8b9ecbb100f7.
+All nine source modules and the complete import closure are checked with
+--safe and --ignore-interfaces, fresh copied sources and isolated data/config.
+Copy/stability hashes pass. S's seven annotation guards and proof irrelevance
+are proved; the public family is numeric. General logical-coherence guard
+admissibility and native adequacy remain open. No unchecked paper modules
+or disabled checks are used. Earlier .ViNmqG/.LsgtLi checks covered I/K/P
+only and are superseded. Toolchain and S failure ledgers are in
+/tmp/pts-rk-agda-2.8.0.MvVO53/TOOLCHAIN.md and S-DEVELOPMENT-LEDGER.md;
+EVIDENCE.md records additional unarchived failures and exits 137/143.
+`bash theories/CombinatoryLogic-rk/build-note.sh` exits 0 in
+/tmp/pts-rk-combinatory-note.c58OXY, 04:42:55–04:43:06 UTC. PDF inspector
+verification/combinatory-agda-2026-10-22/inspect.swift exits 0: 13 pages,
+3 appendix pages, 19 proof badges, 40 links and all-page renders. Evidence
+_build/combinatory-agda-pdf.QaZM2w; Agda blocks are unbroken and Unicode
+highlighting visually checked. No layout/glyph/reference/minted warning.
+Initial font/formula failures and intermediate builds remain documented in
+CombinatoryLogic-rk/EVIDENCE.md. MM0 recheck .ITdtk4 passes 4/4 stages; the
+17 Rocq modules and Dune match the preceding fresh audit. No new full CI or
+Rocq assumption audit is claimed. No staging, commit or push.
+
+Combinatory MM0 presentation (2026-10-22):
+`MM0_RS=/tmp/pts-rk-mm0.lhphPY/upstream/mm0-rs/target/release/mm0-rs MM0_C=/tmp/pts-rk-mm0.lhphPY/mm0-c bash theories/CombinatoryLogic-rk/check-mm0.sh`
+exits 0, 4/4 stages, 03:15:15 UTC. Logs/certificates/source hashes in
+/tmp/pts-rk-combinatory-mm0.Bl222O. Official upstream commit
+0d414c0bfdaaeb7fea571895127abc1fa5a3d956, mm0-rs 0.1.0, isolated Rust 1.99.1,
+mm0-c built with Apple Clang 21.0.0. Specification: 4 sorts, 36 term/def,
+55 axiom rules; companion adds two local definitions and ten proved local
+theorems, no axioms. Both independent checks compare against the same public
+.mm0 source. Negative capture-bug compile/check exits 1/3; exact paths,
+commands, tool versions and repeated-build limitations are in
+/tmp/pts-rk-mm0.lhphPY/AUDIT.txt. No timeout. These checks do NOT prove a
+general MM0/Rocq correspondence, consistency or source completeness.
+`bash theories/CombinatoryLogic-rk/build-note.sh` exits 0 in final
+/tmp/pts-rk-combinatory-note.rwsq7f, finished 03:16:56 UTC. Fourteen pages,
+full source on three appendix pages, highlighted literal Section 4 excerpt,
+no layout/glyph/reference/minted warnings. New inspector
+verification/combinatory-mm0-2026-10-22/inspect.swift exits 0: 19 proof badges,
+35 links, excerpt/source checks and all-page renders. Final evidence
+_build/combinatory-mm0-pdf.B8Ovnb. Initial builds FXOv9p and 3ZS6Of compiled
+but had rendered inclusion defects, caught by text checks and fixed; details
+and hashes in CombinatoryLogic-rk/EVIDENCE.md. The preceding audit's 17 Rocq
+files and Dune hash-check passes; no new assumption audit/full CI is claimed.
+
+Combinatory contextual completeness-support continuation (2026-10-22):
+`bash docs/direct-r-handoff/verification/combinatory-completeness-2026-10-22/AUDIT.sh`
+exits 0, 19/19 stages, 02:24:10–02:25:00 UTC. Fresh seventeen-module build
+/tmp/pts-rk-combinatory-completeness.0GagN7 prints 159 own closed reports plus
+one unchanged upstream report. Separate pristine archive/build
+/tmp/pts-rk-combinatory-completeness-pristine.9z34Nq; recursive checking and
+byte-identical inventory comparison pass, only unchanged upstream functional
+extensionality and no unsafe entries. Original sources, stability, safety and
+whitespace checks pass. Logs _build/combinatory-completeness-audit.fG2a7B.
+Initial audit _build/combinatory-completeness-audit.Ko2LoS exits 1 in fresh-build
+at a CatalogueShapes Ltac name collision, now fixed. Other targeted failures
+and exact commands are retained in the current CombinatoryLogic-rk/EVIDENCE.md.
+All eleven preceding proof modules are byte-identical to the previous audit.
+Full `bash tools/check-local-ci.sh`, with DIRECT_R_LOG_DIR set to
+_build/combinatory-completeness-full-ci.1noh6m, exits 0: actionlint and all
+227 stages pass without retry; exit-file timestamp 02:24:40 UTC. No CI stage
+was weakened. This is full-driver coverage, not new assumption evidence for
+cached unrelated developments. No timeout occurred. The mathematical external
+completeness corollary is not a Rocq theorem; general chain shortening and
+deduction admissibility remain open despite the successful audit.
+`bash theories/CombinatoryLogic-rk/build-note.sh` passes in final
+/tmp/pts-rk-combinatory-note.xQ0lm0, finished 02:30:59 UTC. Ten pages,
+genuine Agda Pygments highlighting, no overfull/glyph/reference/minted warnings.
+The new verification/combinatory-completeness-2026-10-22/inspect.swift passes:
+nineteen local proof links, eleven references, all pages rendered; changed
+pages 5–10 visually inspected. Evidence _build/combinatory-completeness-pdf.mMbycs
+also retains the Agda compatibility probe (exit 1, installed 2.6.0.1 fails
+the paper's unchanged 2.8.0 artifact at Prelude:47). This is not an Agda
+verification claim. Exact commands and final hashes: CombinatoryLogic-rk/EVIDENCE.md.
+
+Combinatory GAT/catalogue continuation (2026-10-22):
+`bash docs/direct-r-handoff/verification/combinatory-gat-2026-10-22/AUDIT.sh`
+exits 0, all 19 stages pass, 01:36:23–01:37:09 UTC. Fresh eleven-module build
+/tmp/pts-rk-combinatory-gat.hDbC80 prints 92 own closed reports plus one
+unchanged upstream report. Separate pristine snapshot
+/tmp/pts-rk-combinatory-gat-pristine.bwllE6, recursive kernel/inventory checks,
+original-source comparison, source stability and safety checks pass; no new
+or unsafe assumptions. Logs _build/combinatory-gat-audit.FoWhA6.
+Complete local CI/actionlint, with DIRECT_R_LOG_DIR set to
+_build/combinatory-gat-full-ci.ZhCicn, exits 0: 227/227 stages, no retry,
+01:36:24–01:36:53 UTC. Cached unrelated targets are not new assumption evidence.
+`bash theories/CombinatoryLogic-rk/build-note.sh` passes in final
+/tmp/pts-rk-combinatory-note.B5iS8i, nine pages, no LaTeX/layout/reference/glyph
+warnings. New inspector verification/combinatory-gat-2026-10-22/inspect.swift
+passes on the final PDF: thirteen local proof links, eight reference links,
+all pages rendered and visually inspected. Final inspection directory
+_build/combinatory-gat-pdf-final.wm5Jze; prior drafts retained separately.
+The exact QIIT signature stays together on page 8 and references on page 9.
+Pseudocode is not kernel verification. Exact commands, versions, failures,
+layout attempts and hashes: theories/CombinatoryLogic-rk/EVIDENCE.md.
+Only proof compiler failure: economy Ltac alias matching, fixed; no timeout.
+
+Combinatory Hilbert continuation (2026-10-22):
+`bash docs/direct-r-handoff/verification/combinatory-hilbert-2026-10-22/AUDIT.sh`
+exits 0, all 19 stages pass, 00:59:24–01:00:00 UTC. Renamed target
+@theories/CombinatoryLogic-rk/audit retains PTSrk.Combinatory. Fresh build
+/tmp/pts-rk-combinatory-hilbert.ZBLheh prints 51 own closed reports plus one
+unchanged upstream report. Separate pristine build
+/tmp/pts-rk-combinatory-pristine.iMsccY, all-six-module recursive kernel checks,
+inventory/source comparisons, source stability and safety checks pass; no new
+or unsafe assumptions. Logs: _build/combinatory-hilbert-audit.H87sn7.
+Complete `bash tools/check-local-ci.sh`, with DIRECT_R_LOG_DIR set to
+_build/combinatory-hilbert-full-ci.OO1Ub7, exits 0: 227/227 stages including
+new 01-combinatory and actionlint, no retry, 00:59:31–01:00:01 UTC. Existing
+targets mostly cached; fresh focused evidence supplies new assumption output.
+`bash theories/CombinatoryLogic-rk/build-note.sh` exits 0 in final
+/tmp/pts-rk-combinatory-note.Y2Kfbl, five pages, no layout/reference/glyph or
+LaTeX warnings. PDFKit text/link/render check exits 0: nine local source links,
+three reference links; all pages visually inspected. Inspection evidence:
+_build/combinatory-hilbert-pdf.dyMANc. Exact commands, toolchain, failed
+attempts and hashes: theories/CombinatoryLogic-rk/EVIDENCE.md. No timeout.
+
+Combinatory formulation (2026-10-22):
+`bash docs/direct-r-handoff/verification/combinatory-2026-10-22/AUDIT.sh`
+exits 0, all 17 focused stages pass, 00:35:48--00:36:22 UTC. Fresh target
+@theories/Combinatory/audit in /tmp/pts-rk-combinatory-audit.vEp9MB prints
+32 own closed reports plus one unchanged upstream report. The separately built
+pristine snapshot /tmp/pts-rk-combinatory-upstream.AkuTX9 and all three new
+modules pass recursive kernel checks with byte-identical assumption inventories;
+only unchanged upstream functional extensionality, no unsafe entries. Original
+kernel source and final source/Dune stability checks pass. Raw logs:
+_build/combinatory-audit.ZXAnfW. Same-source dependency-path warnings retained.
+Exact commands, failed attempts, versions and hashes: theories/Combinatory/EVIDENCE.md.
+No new full staged local-CI result; existing driver and running work preserved.
+
+Uniform closure/numeric-budget continuation (2026-10-22): all six new modules
+and the expanded aggregate compile. Fresh compilation used
+/tmp/pts-rk-self-uniform-audit.ZjpFUy: prebuild 1032 closed reports,
+interface stage 74, final aggregate stage 1601, for 2706 own plus one unchanged
+upstream report. The final aggregate ran 00:18:36--00:27:35 UTC, exit 0;
+1112 public Check/Print pairs and 129 source/Dune manifest entries.
+Both recursive kernel checks pass, with interpreter checking
+00:27:42--00:36:42 UTC, exit 0. Historical and freshly rebuilt pristine
+inventories agree; original frozen-source comparison and all 129 source
+stability checks pass. Own endpoint assumptions are closed. The global loaded
+inventory has only unchanged upstream functional extensionality and no unsafe
+entries. Complete local CI/actionlint passes 226/226 stages, exit 0, without
+retry (00:18:35--00:24:56 UTC). No CI driver was weakened or edited by this work.
+The final self-interpreter note builds warning-free to 15 pages in
+/tmp/pts-rk-self-note.PKoaj6; PDF text/link/render checks pass. The consistency
+note status update builds warning-free to ten pages in
+/tmp/pts-rk-consistency-note.7u3pxt. Raw evidence:
+_build/self-interpreter-uniform-interface-2026-10-22.
+Exact commands, early targeted-log limitations and remaining obligations:
+[uniform interface evidence](verification/self-interpreter-uniform-interface-2026-10-22/COMMANDS.md).
+The completed 627 MiB audit cache and 2 MiB independent pristine snapshot
+were removed after verification; logs and the working build remain. Recreate
+them with the recorded pristine/prebuild commands before a fresh recheck.
+
+Internal-consistency research note (2026-10-22):
+`bash theories/self_consistency/build-note.sh` exits 0; final temporary
+directory /tmp/pts-rk-consistency-note.KlGtoS. Nine-page README.pdf has no
+overfull/underfull boxes, LaTeX warnings or missing glyphs. PDFKit text,
+section/source-link and rendering checks pass; pages 1,3,5,7,9 visually checked.
+Script syntax validation passes. Versions: latexmk 4.88, LuaHBTeX 1.24.0,
+TeX Live 2026. Raw inspection: _build/self-consistency-note-2026-10-22.
+All attempts, source map and hashes: theories/self_consistency/EVIDENCE.md.
+Documentation only: no new Rocq/Dune module or proof/CI audit is claimed.
+
 Capped-quotation continuation: all eight new modules and the incremental
 aggregate compile. Fresh aggregate compilation in
 /tmp/pts-rk-capped-audit.lpDpbN exits 0 (10:09:50--10:19:47 UTC), with

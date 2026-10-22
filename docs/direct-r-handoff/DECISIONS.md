@@ -1,5 +1,488 @@
 # Decisions and proof-engineering history
 
+## 2026-10-22 — direct resource-relativized internal consistency
+
+Prefer proof-local syntactic soundness and normal-Bottom separation to full
+fixed finite logical models. Existing Agda contextual soundness and finite
+packages are external specifications; they are not internal PTS proofs.
+Use the complete native certificate grammar, including annotated raw beta
+witnesses, rather than silently identify it with the draft's typed-equality
+T^e. Put all checker traces into the chosen quantified package or prove
+resource joining explicitly for separate variables.
+
+Fix homogeneous code/resource carriers and independently specified guards.
+Resource validity must not contain acceptance, successful normalization or
+semantic soundness; every standard raw input, including rejected inputs,
+must have admission evidence at the SAME fixed type. Good/finite-case
+guards supply exactly the induction ranks used, not all-code parametricity.
+Distinguish compression of source labels from fixed-rank target uniformity.
+
+Aim for one original PTS term BS(q,b): Res(q,b) -> AccBottom(q) -> Bottom.
+Adm(q) := Pi Z:U1. (Pi b:B. Res(q,b) -> Z) -> Z then allows direct negative
+assembly without choosing budgets or returning normalized outputs inside
+Adm. This is the new relational consistency interpretation, not an
+unproved identification with the old finite-ordinal sentence. No H/EA
+derivation or unverified Pakhomov transfer enters its proposed dependency
+graph. Replay the needed proof-local/relational devices directly instead.
+
+Keep internal history existence, arbitrary conversion witnesses, full proof
+transport costs, normal-head separation and the Gödel-condition audit as
+explicit gates. Do not require full dependent CPS, intrinsic tag-free
+fidelity, rank-only full-PHOAS signature or native combinatory completeness
+unless a chosen alternative actually uses them. The present change is a
+reviewed roadmap only; do not manufacture proof modules or axioms for its
+unproved obligations.
+
+## 2026-10-22 — shared algebra folds without mandatory syntax tags
+
+Use one `Algebra` interface: an ORIGINAL typed finite-telescope filling,
+with one actual object-language application-spine fold for both type and
+term programs. Exact adapters share it with existing STLC PHOAS and new
+finite-dictionary combinatory codes; do not recode their payloads or add
+numeral conversion. `UnifiedAlgebra` exposes all-source dependent programs
+and identity unquotation without the raw envelope. This unifies the API,
+not the varying plan-indexed signatures or their law realizations.
+
+`GenericFold` supplies an actual normal head per signature,
+`lambda P. lambda Q. lambda Sig. Q Sig`. No selected filling occurs in
+the head: fields are ordinary remaining arguments. Explicit expansion
+is not eta conversion. Its composition law is syntactic beta computation,
+not semantic fusion or typing compatibility of unrelated interfaces.
+
+Preserve the old faithful API: generic recovery gives conversion reflection
+through a common algebra and literal injection for normal sources, not
+all unreduced syntax or cross-plan fidelity. A structural parser invariant
+through constructors, casts and signature growth is the next intrinsic
+proof; external QuotationTree metadata is not that parser. Keep the proved
+obstruction to conflating faithful code with a conversion-preserving index.
+
+Require concrete nonidentity fillings, not just a generic fold theorem.
+The STLC observer runs unchanged intrinsically faithful codes; its distinct
+normal sort tokens are not eliminable Booleans. Its typed beta example
+proves non-invariance under source conversion. Local CBN handlers and
+literal CPS-type rank proofs are separate from complete dependent CPS.
+Their rank-one-source/unbounded-target counterexample limits that specific
+translation, not all continuation encodings.
+
+Combinatory codes use a finite external atom dictionary and no binders in
+their represented tree. Their Church implementation has actual PTS binders,
+normal intrinsic tree fidelity and type rank r+2. Same-code CBV continuation
+and finite-selector observation use exact compatible ranks, never cumulativity.
+The concrete 65-shape Hilbert bridge is extraction/coding, not native source
+completeness or internal dependent evaluation of heterogeneous expansions.
+Keep dictionaries fixed when stating fidelity; finitise may vary them.
+
+Numeral adapters are optional interface layers. Removing serialization does
+not remove external resource indices, the literal-alphabet obstruction or
+universal accepted-certificate soundness. Keep the self_consistency target
+and its required arithmetic/structural-code bridge independent of soundness.
+Keep compatibility proofs, streamline the public README/exposition, and
+audit the new surface separately while retaining the full audit alias.
+
+## 2026-10-22 — independent contextual certificates and joint finite carriers
+
+Use an independent raw proof-tree grammar for all six original rules and
+explicit beta steps. Acceptance checks recursive subtrees and syntax equations;
+native Typ, WellFormed and TypedSub are conclusions, not input fields or
+acceptance premises. Prove both soundness and certificate completeness.
+Compute a sufficient semantic redex-rank bound from original typing by
+structural inversion; never equate that bound with the subject's outer rank.
+
+ModelInput contains independent source/target context, environment and
+derivation certificates. Normalize instantiated subject and type together,
+retaining exact substituted source typing by preservation. Output grades
+and finite prefix alphabets are computed; prefix size may exceed nodes and
+must enter the seed. Proof/budget independence concerns decoded normal forms,
+not equality of the entire grade-dependent record.
+
+Count contexts/types/values and both-context substitution packages jointly,
+with propositional semantic fibres and actual finite injections. Cover raw
+valuation images without assuming independent normalization of dependent
+tuple components preserves their exact typing. Prove alphabet and valuation
+composition coherence separately. External Void exclusion follows by normal
+form inversion and computed-bound normalization, not a new axiom.
+
+These results give all-six-rule contextual graded syntactic soundness, NOT
+fixed finite first-order models. Rank-one normal products already have
+unbounded lengths at a single label. A faithful size-bounded type carrier
+cannot be closed under all such constructors; this does not prohibit
+nonfaithful finite models. Next construct total finite semantics for an
+explicitly specified logical fragment, with coherent dependent fibres and
+all axioms under every semantic valuation. Do not confuse this with syntactic
+typed substitutions, internal reflection, or an internal consistency proof.
+
+## 2026-10-22 — total Agda normalization and graded soundness
+
+Prove the original six-rule annotated metatheory rather than adding
+normalization/output typing as API premises. Computed inversion families
+and generic Fin elimination avoid unsupported Cubical indexed matches.
+Parallel reduction gives confluence/product injectivity; typed substitution
+and context conversion then give preservation, enabling semantic rank
+safety and strict greedy descent. The dependency chain is noncircular.
+
+Keep normal input syntax intrinsic and typing certificates propositionally
+truncated. applyTypedWithin returns the exact Y[y] fibre and bounded trace;
+the raw untyped bounded attempt remains separate. Generic normalize takes
+the semantic redex-rank bound, not an insufficient outer-type-rank bound.
+Prove native equality/normalization adequacy and budget coherence explicitly.
+
+Model ingredients are finite fibres per fixed type and fixed alphabet,
+coherent size embeddings, graded application and finite-state typed
+execution. Duplicate labels mean native equality need not imply raw code
+equality. The current application alphabet premise is a≤1+|f|+|y|; extending
+alphabets and bounding type/universe carriers are genuine next obligations.
+No fixed carrier closure, arbitrary-valuation model, accepted-certificate
+soundness or internal consistency follows just from this milestone.
+
+Keep source-derived highlighted excerpts and proof links in the note;
+replace obsolete totality gaps with exact remaining model/compiler gaps.
+
+## 2026-10-22 — future objective type theory and partial-function arithmetic
+
+Record the user's three linked research directions before the references:
+an objective PTS-rk variant with quadratic checking (van den Berg/den Besten,
+arXiv:2102.00905, Theorem 7); a finite-basis logic-free partial-function
+arithmetic using graph-extension judgments, finite core axioms plus exists_n,
+partiality-compatible induction, finite models for every schema truncation,
+and quadratic derivation checking; and an effective interpretation of the
+variant into that arithmetic. These are goals, not established theorems or
+changes to the original kernel. Count all encoded annotations/certificates.
+Preserve the collapse disjunct; distinguish the requested finite satisfiability
+from the stronger noncollapsed-model goal. The schema's intended disjunction
+is to be encoded in the extension calculus, not added as full first-order logic.
+
+## 2026-10-22 — explicit finite Church compilation and consistency boundary
+
+Use nonempty polymorphic finite choice E_m^r = Pi X:U_r. X^m -> X.
+It has original formation rank r+1, and its canonical selectors/types have
+exactly 2m+3 annotated nodes. A map Fin m -> Fin n reindexes continuations
+at the SAME X, so its type has rank r+2 rather than requiring elimination
+at the whole output selector type. The r=0 encodings already suffice for
+all fixed finite carriers; syntax/type size, not these ranks, grows with m.
+
+Compile the single greedy-pass and application-constructor finite tables,
+not precomputed final answers. Clip out-of-budget transitions to the input
+state, proving clipping cannot occur on legitimate tower-bounded runs.
+Emit exactly d nested PTS applications; add no object-language recursion
+primitive. The generated values are literal original annotated Term syntax.
+FiniteMachine proves raw decoded execution; ChurchFinite.v proves original
+typing/beta for arbitrary unary maps/iterations. Keep binary all-index
+correctness and the cross-language Agda/Rocq correspondence explicit gaps.
+Agda's selector typing/normality/size are independent checked proofs.
+
+Do not identify canonical code subsets with all inhabitants, finite execution
+with semantic models, or source node bounds with generated PTS program bounds.
+Keep the fixed alphabet restriction and distinguish source redex rank d from
+the encoding's chosen answer rank r. The prior total typed Agda output remains
+open; code-to-code computation is not a semantic Y[y] inhabitant.
+
+Relate the proposed internal consistency endpoint to the existing predicate-
+only self_consistency plan and Pakhomov's resource-cut transfer, not a blanket
+Goedel objection or an unsupported self-consistency claim. Graded model
+closure/embeddings, independent certificate soundness, internal finite-case
+principles and the exact interpretation J must still be constructed. The
+all-true grounded-Horn models do not exclude Void.
+
+## 2026-10-22 — finite normal representatives and exact Agda proof boundary
+
+Length is not invariant under the QIIRT beta quotient, so measure length on
+explicit annotated normal representatives. Define Nf, NonLamNf and erase
+inductive-inductive-recursively: the head guard uses computed erase.
+Prove erasure injective and complete for normal raw syntax. Exact/bounded
+length fibres use genuine normal representatives, not an opaque raw tag.
+
+Use the original six PTS rules and annotated beta closure, not a checker.
+Count syntax through proposition-valued/truncated typing, rank and reduction
+certificates. Prove AtMost by actual injection into Fin, not only a recurrence
+estimate. Fix a finite label dictionary with a≤N; rank/length alone cannot be
+finite because every U_i:U_0 is a one-node normal term. Count annotations in N.
+A normal family's d bounds its type rank; the typed application API supplies
+the function product's exact sort rank. Its N is 1+|f|+|y|.
+
+Separate unconditional raw size/peak theorems from typed normalization.
+FiniteTrace represents the actual deterministic beta path with Fin states,
+not arbitrary uninterpreted edges; edge evidence is truncated. Whole walks,
+proof objects and host allocations have no claimed cardinal bound.
+applyTypedWithin returns Maybe(Result), while TypedResult names the exact
+Y[y] goal separately. Do not hide missing subject reduction/rank descent in
+inputs, axioms, pragmas, target-shaped certificates, or a replacement typing
+relation. The total typed Agda interface remains open.
+
+Place the finite-normalization section immediately after QIIRT. Extract all
+Agda snippets literally from checked modules with exact marker matching.
+Use a local math-font fallback for the truncation delimiter; keep glyph and
+layout validation enabled. Proof badges distinguish Agda from Rocq.
+
+## 2026-10-22 — conventional BCKW arithmetic and honest basis separation
+
+Use W for contraction and B for composition. Treat I as a counted atom.
+For the fixed carrier U_i use H=C(BB(CB))B, numeral0=KI and
+numeral(n+1)=W(H numeral(n)); this gives exactly n W and 7n+2 atoms.
+Successor=BWH, addition=B(B(BW)(BBC))(BB), multiplication=B.
+Prove arithmetic over original annotated expansions, with fixed simple-type
+index shapes independent of n; do not hide arbitrary type payload in atom size.
+
+Use a separate independent BCKW(I)+P QIIRT, not an alias for dependent S.
+Its structural diagonal is derived from comprehension. Shared-context
+application and type-level substitution are not a binder-elimination theorem.
+Keep the full dependent Hilbert/MM0 catalogue until an annotation-preserving
+BCKW completeness translation is supplied. Positive simple-type macro tests
+and negative dependent scope tests justify this boundary, not impossibility.
+The user made wholesale basis removal conditional on the replacement working.
+
+Use standard Knuth tetration as a convenient upper bound, not as an incorrect
+identity with a seeded binary tower. Add tower_le_knuth; keep the tighter
+executable normalizer bounds unchanged. State closedness in the finite-carrier
+cardinality theorem and keep the input-label restriction.
+
+Put concise BCKW exposition in section 2; remove the affine-generator section,
+redundant independent-core exposition and development-history phrasing.
+Read highlighted QIIRT excerpts from BCKW.agda. Preserve the exact quotient,
+full MM0 source appendix and proof badges, distinguishing verified fragments
+from external completeness and still-open native adequacy.
+
+## 2026-10-22 — contraction/affine numerals and finite computation carriers
+
+Use B for the user's duplication combinator (usual W), distinguishing it
+from composition. Preserve the original annotated calculus. A fixed carrier
+U_i permits checked B/J0/J1 numeral codes with n duplications and 2n+1 atoms.
+Give the universal untyped affine packaging J=lambda z.z C0 C1 K explicitly;
+its J-only trees yield n B and 49n+7 atoms, but do not claim this is an original-
+typed dependent compiler. Retain the established Hilbert basis under the
+user's complexity proviso: splitting S's argument changes dependent fibres,
+and even polymorphic zero duplicates its type variable in annotations.
+
+Reuse original normalization/rank/cost proofs, adding single-beta peak bounds
+and rank preservation. State the parameter as the global redex-head bound,
+not outer type rank; include a checked separation example. Apply this directly
+to normal dependent application, whose only possible redex is at the root.
+Count annotations in size. Distinguish normal original expansions from normal
+binder-free output codes, and operation-cost accounting from bit complexity.
+
+Replace the false rank/length-only finiteness claim by a finite input-label
+alphabet. Prove beta never introduces labels, enumerate bounded raw/normal
+syntax, and bound its capacity by a linear-height tower. Typed normal families
+are predicate fibres, not collections of arbitrary proof witnesses. Do not
+count arbitrary supplied convertible types in a subject-only size theorem.
+
+State local finite satisfiability as an effective GROUND-QUERY Horn reduction
+using countably many nullary predicates. Least-model reflection and all-true
+singleton satisfiability are checked generically; the Hilbert instantiation
+is a mathematical argument with finite conversion certificates. It does not
+use the quantitative bounds and is not a finite-signature interpretation or
+finite faithful syntax semantics. Preserve the separate MM0/native boundary.
+Remove only the requested substitution-index prose, not its checked API/view.
+
+## 2026-10-22 — linear exposition and executable safe Cubical syntax
+
+Order the note as calculus/logical reading, finite-basis obstruction, four
+core schemes, complete Hilbert presentation (literal catalogue followed by
+MM0), independent core, QIIRT and exact relative quotient. Preserve the
+external completeness argument and proof boundary, but remove progress
+history from the exposition. Read highlighted Agda excerpts directly from
+source; use a Unicode-capable local minted font. Keep the full MM0 appendix.
+
+Declare Con/Sub before Ty/Tm, rename AnyTy to RankedTy, and document the
+direction of substitution. Retain Sub Gamma Delta after checking a source-only
+Sigma view with computed ctxOf and both round trips: argument reordering
+makes composition/reindexing guard-free, but fixed extended-target projections
+require equality and transport. A new recursive-target QIIRT would also add
+target-path clauses. The view is a comparison, not a second QIIRT definition.
+
+Use original Agda 2.8.0 and pinned Cubical v0.9 with --safe throughout the
+import closure. Source pragmas select Cubical mode; a global --cubical option
+caused incompatible primitive-module modes. Keep compiler data/configuration
+isolated and recheck copied sources with --ignore-interfaces. Do not import
+the paper artifact's unchecked eliminators or postulated model principles.
+Ford guards and explicit type-path clauses preserve intrinsic typing;
+successful syntax checking is not an interpretation, equality reflection or
+source-completeness theorem. Keep the exact native-data-relative quotient
+separate from the independently presented algebraic syntax.
+
+Construct S's literal six-binder type with a finite bundle of seven annotation
+equalities, not an arbitrary type/body parameter. Store the proofs as nested
+built-in Sigma pairs; fresh dependent record/data bundles caused pathological
+elaboration. Prove their canonical inhabitants and proof irrelevance outside
+the mutual definition, yielding only the three numeric public S indices.
+Keep the fixed-head I/K/S contractions, P decoding law and application
+naturality guarded by their actual type equalities. Uniform annotation-guard
+construction does not prove general logical-coherence guard admissibility.
+No opaque or optimization-flag workaround is retained.
+
+## 2026-10-22 — an explicit first-order MM0 Hilbert theory
+
+Use MM0's own many-sorted Horn declarations, with raw de Bruijn syntax and
+explicit numerical, shift, substitution and annotated-beta graph rules.
+Read these by syntactic derivability, not a first-order categoricity claim.
+Encode the 65-shape catalogue by fixed ranked telescopes and a syntax fold
+with bounded prefix/exposure counts. Its body/type pair is fixed in every
+catalogue row; there is no general fold-to-Hilbert typing axiom. Preserve
+the native rank max(a+1,b), conversion's sorted target, annotations and no eta.
+Distinguish MM0 rule axioms from new assumptions in the Rocq development.
+
+Keep the complete theory in one 156-line .mm0 file. Include it directly as
+a three-page appendix and extract the six Hilbert rules into Section 4.
+Use a local listings language for MM0, whose lexer is absent from installed
+Pygments; preserve minted Agda and restricted shell escape. Do not install
+a custom-lexer security allowlist or duplicate code inside the note.
+
+Compile the theory AND ten actual local .mm1 proofs, checking both against
+the same public .mm0 specification with the independent reference verifier.
+Pin tool provenance, retain a rejected capture bug, and state that examples
+and declaration checks are not adequacy/consistency/completeness proofs.
+No Rocq sources or CI rules change; retain previous fresh assumption evidence
+with byte-identical source checks rather than calling cached builds fresh.
+
+## 2026-10-22 — independent contextual Hilbert proofs and natural-model QIIRT
+
+Keep contextual H+ independent: empty-context axioms, sorted start/weakening,
+application, conversion and reductions; no lambda/product constructor and no
+native typing premise. Derivation data live in Type, with inhabited data as
+the Prop interface. This permits real proof measures without eliminating
+original Prop typing into computational data. Prove internal context/start,
+simultaneous substitution and empty-context 65/66 equivalence first.
+
+Separate syntactic exposure simulation, its exact schema-type prefix, and
+typed arbitrary-derivation exposure. Only the first two are now proved. Exact
+I/K/S/P assembly retains its needed family derivations as honest local inputs,
+not a theorem that assumes general deduction. Classify the seven long-head
+cases, then model shared applications as finite acyclic reference programs.
+The checked S six-to-three step is local. Neither ordinary tree size nor
+maximum proof height supplies the general shared-measure invariant; do not
+relabel it completeness. The note's explicit symbolic-template inclusion plus
+Bunder–Dekkers 9.4 gives an EXTERNAL mathematical corollary for the literal
+catalogue, distinct from an unproved Rocq original-PTS-to-Hilbert theorem.
+
+Recast the intrinsic algebraic signature using unindexed-in-type Tm and a
+recursive tyOf into Sigma Nat (Ty Gamma), retaining rank bookkeeping. Follow
+the CPP 2026 natural-model/Ford pattern: explicit equality guards, interleaved
+recursive clauses for term paths, and set-truncation coherence. Ordinary Agda
+needs explicit typed setoids, not deletion of the quotient. Keep the weak GAT
+and exact native-expansion quotient separate; no lambda, eta, quotation or
+unchecked artifact eliminators. Available Agda 2.6.0.1 cannot validate the
+unchanged 2.8.0 artifact, so label all snippets specifications. Enable actual
+minted/Pygments Agda highlighting only in this note's local preamble/build.
+
+## 2026-10-22 — typed algebraic quotients and an explicit 65-shape economy
+
+Specify a genuinely first-order GAT using contextual families, not meta-level
+functions Tm A -> Ty. Separate the independently specified weak I/K/S/P
+equations from the exact typed-image quotient by original beta equality.
+The relative quotient uses original typing at BOTH endpoints and transports
+over type equality. Untyped quotienting can mix typable/untypable raw terms;
+substituting current HasType for original typing also needs a conversion-
+closure proof. Add neither arbitrary Ty-to-Tm quotation nor function eta.
+QIIT pseudocode is a mathematical specification, not new Rocq axioms or a
+claim of executable Agda. Keep the exact signature together in the PDF.
+
+Check numerical I7/K18/S30 shape catalogues explicitly. Do not omit a closure
+case merely to match Bunder–Dekkers' unlisted K17 count. Instead retain the
+conservative 66-shape catalogue and PROVE an economical 65-shape calculus:
+local K13 is derived by K00 U1 Ua P5(b,c). Substitute its independent Hilbert
+derivation for source leaves to obtain exact judgment equivalence. Use a
+17-constructor constant datatype, not a proof-bearing exclusion filter.
+This reduction does not assert paper numbering or preserve shortness measures.
+
+Catalogue-atom type/exposure closure is now internal and verified. Full
+completeness next needs contextual derivations and length-controlled exposure
+of arbitrary derived products; do not mistake the atom closure result or
+native type correctness for that missing proof. Keep old audits unchanged
+and extend the existing CI alias, with fresh assumption output separately.
+
+## 2026-10-22 — concrete Hilbert inference before full completeness
+
+Rename the physical development to CombinatoryLogic-rk as requested, preserving
+the stable PTSrk.Combinatory library name. Put the concise LaTeX–Markdown note
+and PDF alongside its proofs. Formalization badges use local source links
+while the files are unpublished; external Bunder–Dekkers completeness has no
+badge and is not made a Rocq axiom. Keep the detailed telescope proposal as
+historical research, with a pointer to current status.
+
+Define Hilbert derivations independently of original target typing. Catalogue
+soundness is an explicit metatheorem premise, discharged in the concrete
+numerical I/K/S plus eleven-product instance. Extract only universe/scheme/
+application codes; prove their original typings and forward beta recovery,
+including the dependent application type-conversion step. Do not present this
+as a new independent typing calculus for the whole extracted-code language.
+
+Represent the product catalogue by eleven fixed shapes with numerical
+parameters, not source-term or typing-derivation indices. Verify declared-type
+and product-exposure maps literally. Exposure is not eta conversion; general
+symbolic fresh-sort replacement is not claimed formalized. P4/P5 also compile
+into the existing four-family HasType calculus. Keep complete catalogue
+formalization, completeness and further economy as separate obligations.
+
+Add the renamed audit to staged CI without removing stages. Keep fresh
+assumption/kernel evidence distinct from cached full-driver coverage, and
+preserve historical paths in earlier logs rather than rewriting provenance.
+
+## 2026-10-22 — distinguish an indexed combinatory core from completeness
+
+Use original annotated macro expansions and beta equality. Fixed closed typed
+atoms plus application have a uniform type-rank bound, even with all U_i;
+FiniteBasis now proves the finite-basis obstruction. Index combinator families
+by numbers, with actual type/family syntax passed as ordinary arguments.
+
+The first positive library checks I/K/S/P, a separate optional dependent K,
+and an independent mixed typing relation for binder-free subjects. Keep the
+type-language and expansion-defined equality boundary explicit. Weak saturated
+I/K/S rewriting is only proved sound, not complete or internally type preserving.
+No eta, annotation erasure, new source constants or checker replacement.
+
+Separate the external complete supersorted Hilbert catalogue from the proposed
+smaller telescope basis. A naive application compiler needs representations of
+inferred domain/codomain families that are not guaranteed smaller inputs; do
+not conceal this recursion gap in indices or premises. The next constructive
+route is explicit uniform compilation of the finite auxiliary catalogue.
+The independent library depends on the kernel and normalization rank theory,
+not on arithmetic, self-interpretation or set semantics. Preserve those ongoing
+developments and their CI work; keep focused audit evidence distinct from full CI.
+
+## 2026-10-22 — move varying runners into a fixed closure interface
+
+Distinguish a common execution head from a common PHOAS constructor algebra.
+Package the actual normal faithful program together with its normal executor,
+using an existential-style Church closure. Exact-rank function padding bridges
+the non-cumulative sort bounds. For fragment k the common head has type-sort
+k+10 and takes a padded normal result type, closure code and fixed forcing
+argument. The full spine is originally typed after type instantiation; do not
+claim a forcing eliminator for arbitrary R:U_(k+1). Normalize only source type
+annotations needed by this wrapper, never source t or its execution. Retain
+the underlying capped theorem's separate literal type-program recovery.
+
+Internal certificate reification is not obtained by wrapping the external
+quoter. The closure code type is inhabited iff its result type, by explicit
+original terms with a beta roundtrip. Hence accepted-code reification into
+Code(Bottom) contains soundness, and cannot be taken as its own premise.
+Keep independent code/domain/trace predicates and all admitted witnesses.
+Prove the exact impossibility for unbounded literal recovery from fixed
+bounded-literal numeric data; do not conflate it with Bottom-only internal
+consistency. Use a finite bank of actual sort literals for bounded reification
+leaves. External bank selection and internal numeric selection are distinct.
+
+## 2026-10-22 — specify internal consistency before formalizing it
+
+Keep the self_consistency directory documentation-only until independent
+source calculi and actual proof modules exist. Its target includes the exact
+certificate checker, trace predicate, arithmetic domain and interpretation;
+external PTS normalization is not itself a derivation of that sentence.
+Retain the draft's resource-separation/tagged-active-evaluation route to EA
+bounded soundness, with explicit certificate-size and proof-history bounds.
+
+Distinguish higher-order H^omega interpretation plus external Lemma 3.11
+from the draft's first-order H plus Corollary 5.3. Do not infer a direct
+higher-order interpretation from the existing R interpretation. Keep the
+external transfer boundary visible without new axioms; a concrete transferred
+source proof could instead be checked independently.
+
+For the direct route, admission of codes must be defined independently of
+checker rejection or the desired theorem. Internal reification must connect
+the actual trace predicate to codes decoded at Bottom. A common numerical
+rank bound, one head per fragment, and internal quantification over budgets
+are separate obligations. Consistency needs no raw fidelity tag or whole-source
+literal recovery. Test comprehension and internal reification early, alongside
+the shared certificate/arithmetic work; no CPS formalization is required.
+
 ## 2026-10-21 — port full quotation at a caller-fixed budget
 
 Keep the verified uncapped quoter/cost and extraction endpoints unchanged.
