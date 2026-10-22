@@ -1,0 +1,33 @@
+RawSizeBounds.agda: raw annotated substitution and greedy-pass size bounds
+
+Source: theories/CombinatoryLogic-rk/agda/RawSizeBounds.agda
+SHA-256: 15b64dee57624759322154e9508fb6da992ce5c494b2f9e63ebf119a8b5237ce
+Dependency FiniteBounds.agda SHA-256 after exposing existing helper lemmas:
+  f6fb5a4fef5147e2b0661082747b7a84ea4c42f756472a5fd119fd1aad464246
+
+Compiler: Agda 2.8.0
+Cubical revision: b150186d2544e7efeddd31e5d14a8b9ecbb100f7
+Check directory: /tmp/pts-rk-raw-size.bFdr49
+
+Exact local check command (redirected to the numbered attempt log):
+/tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries \
+  -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical \
+  -i theories/CombinatoryLogic-rk/agda \
+  theories/CombinatoryLogic-rk/agda/RawSizeBounds.agda
+
+attempt-01.log: exit 42, unresolved implicit exponent endpoints in the
+  lambda case of contract-size. Fixed by explicitly supplying a+b and
+  suc(a+b) to power-exponent-monotone; no statement or checks weakened.
+attempt-02.log: exit 0, no warnings.
+
+Public results include nodes-positive, nodes-rename, nodes-replace,
+nodes-substitute, greedy-size and rounds-size. In particular:
+  rounds-size d t : nodes(rounds d t) <= tower d (nodes t)
+This holds for every scoped annotated Raw term, with no typing premise.
+It does not establish native typed normality or preservation. The proof
+bounds completed pass endpoints, not every intermediate machine value.
+
+ExponentialBounds.agda is a separate checked arithmetic dependency; its
+own retained log is /tmp/pts-rk-exponential-bounds.ZgcXN8/attempt-01.log.
+The final fresh import-closure audit is responsible for checking all
+modules together without cached interfaces.

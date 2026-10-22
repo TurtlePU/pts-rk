@@ -1,0 +1,4 @@
+/tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries --ignore-interfaces -i /tmp/pts-rk-bckw-dependent-check.3s6E48/source /tmp/pts-rk-bckw-dependent-check.3s6E48/source/BCKWPositive.agda 
+/tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries --ignore-interfaces -i /tmp/pts-rk-bckw-dependent-check.3s6E48/source /tmp/pts-rk-bckw-dependent-check.3s6E48/source/BCKWNegative.agda 
+/tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries --ignore-interfaces -i /tmp/pts-rk-bckw-dependent-check.3s6E48/source /tmp/pts-rk-bckw-dependent-check.3s6E48/source/BCKWDependentNegative.agda 
+/tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries --ignore-interfaces -i /tmp/pts-rk-bckw-dependent-check.3s6E48/source /tmp/pts-rk-bckw-dependent-check.3s6E48/source/BCKWDependentNegative2.agda

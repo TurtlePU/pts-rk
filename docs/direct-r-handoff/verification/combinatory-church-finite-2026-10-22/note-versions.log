@@ -1,0 +1,19 @@
+Latexmk, John Collins, 9 March 2026. Version 4.88
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)
+Development id: 7724
+
+Execute  'luahbtex --credits'  for credits and version details.
+
+There is NO warranty. Redistribution of this software is covered by
+the terms of the GNU General Public License, version 2 or (at your option)
+any later version. For more information about these matters, see the file
+named COPYING and the LuaTeX source.
+
+LuaTeX is Copyright 2025 Taco Hoekwater and the LuaTeX Team.
+
+latexminted 0.7.0
+Python executable for the LaTeX minted package
+Libraries: latex2pydata 0.5.0, latexrestricted 0.6.2, pygments 2.19.2
+Repository: https://github.com/gpoore/minted
+CTAN: https://ctan.org/pkg/minted
+PyPI: https://pypi.org/project/latexminted

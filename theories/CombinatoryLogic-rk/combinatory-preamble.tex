@@ -1,0 +1,49 @@
+\documentclass[11pt,a4paper]{article}
+% markdown.cls reads this literal declaration before loading the preamble.
+% Reuse all shared settings, suppressing only its repeated class declaration.
+\let\combinatorySavedDocumentClass\documentclass
+\RenewDocumentCommand\documentclass{o m}{}
+\input{development-preamble.tex}
+\let\documentclass\combinatorySavedDocumentClass
+\usepackage{verified-badges}
+% Relative links remain useful beside the checked-in sources and PDF.
+\DeclareFormalizationRoot[rocq]{rocq-local}{}
+\DeclareFormalizationRoot[agda]{agda-local}{agda/}
+% Keep syntax highlighting local to this development.
+\usepackage{minted}
+\usepackage{fontspec}
+\setminted{fontsize=\small,breaklines,breakanywhere,style=friendly}
+% DejaVu's monospaced glyphs cover Agda except a few mathematical delimiters.
+\directlua{luaotfload.add_fallback("agdamath", {"Latin Modern Math:mode=base;"})}
+\newfontfamily\agdaCodeFont[NFSSFamily=AgdaCode,RawFeature={fallback=agdamath}]{DejaVu Sans Mono}
+\setminted[agda]{fontfamily=AgdaCode}
+\renewcommand{\markdownRendererInputFencedCode}[3]{%
+  \begingroup
+  % The Markdown body makes percent ordinary; Pygments style files use comments.
+  \catcode37=14\relax
+  \inputminted{#2}{#1}%
+  \endgroup}
+% MM0 has no bundled Pygments lexer.  Its small lexical grammar is local:
+% declarations, -- comments and $...$ math strings.  No custom-code allowlist
+% or unrestricted shell escape is needed; Agda continues to use minted.
+\usepackage{listings}
+\lstdefinelanguage{MMZero}{%
+  morekeywords={axiom,coercion,def,delimiter,free,infixl,infixr,input,max,%
+    notation,output,prec,prefix,provable,pure,sort,strict,term,theorem},%
+  sensitive=true,morecomment=[l]{--},morestring=[b]$}
+\lstdefinestyle{mmzero}{%
+  language=MMZero,basicstyle=\ttfamily\footnotesize,%
+  keywordstyle=\color{blue!60!black}\bfseries,%
+  commentstyle=\color{black!55}\itshape,stringstyle=\color{green!35!black},%
+  columns=fullflexible,keepspaces=true,showstringspaces=false,%
+  breaklines=true,breakatwhitespace=true,upquote=true}
+\newcommand{\CombinatoryHilbertListing}{%
+  \lstinputlisting[style=mmzero,linerange={BEGINHILBERT-ENDHILBERT},%
+    rangeprefix={--\ },includerangemarker=false]{CombinatoryPTS-rk.mm0}}
+\newcommand{\CombinatoryFullMMZeroListing}{%
+  \lstinputlisting[style=mmzero]{CombinatoryPTS-rk.mm0}}
+% Generated excerpts are literal slices of the separately checked modules.
+\newcommand{\CombinatoryAgdaListing}[1]{%
+  \begingroup\catcode37=14\relax
+  \inputminted{agda}{#1.agda}%
+  \endgroup}

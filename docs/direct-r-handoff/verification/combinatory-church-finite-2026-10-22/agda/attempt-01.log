@@ -1,0 +1,74 @@
+Checking ChurchFinite (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ChurchFinite.agda).
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ChurchFinite.agda:22.6-53: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor suc, which
+        is not yet supported
+
+when checking the definition of .extendedlambda0
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ChurchFinite.agda:94.1-95.30: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor suc, which
+        is not yet supported
+
+when checking the definition of swap-two
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ChurchFinite.agda:99.14-18: error: [UnequalTerms]
+app
+(BoundedReduction.replace
+ (BoundedReduction.liftSubstitution
+  (BoundedReduction.liftSubstitution
+   (BoundedReduction.liftSubstitution
+    (BoundedReduction.single
+     (BoundedReduction.greedy (selector 0 2 fzero))))))
+ (app
+  (app (var (fsuc (fsuc (fsuc fzero))))
+   (BoundedReduction.greedy (var (fsuc (fsuc fzero)))))
+  (BoundedReduction.greedy
+   ((λ { fzero → var (fsuc fzero)
+       ; (fsuc i)
+           → ChurchFinite..extendedlambda0 0 (shift (var fzero))
+             (λ ρ args →
+                applyCases 2
+                (app (var (ρ (fsuc (fsuc fzero)))) (var (ρ (fsuc fzero))))
+                (λ i₁ →
+                   ChurchFinite..extendedlambda0 1 (var fzero)
+                   (λ ρ₁ args₁ →
+                      applyCases 2 (app (var (ρ₁ (fsuc fzero))) (var (ρ₁ fzero)))
+                      (λ i₂ → args₁ (swap-two i₂)))
+                   ρ args (swap-two i₁)))
+             (λ i₁ → i₁) (λ ()) i
+       })
+    (swap-two fzero)))))
+(BoundedReduction.replace
+ (BoundedReduction.liftSubstitution
+  (BoundedReduction.liftSubstitution
+   (BoundedReduction.liftSubstitution
+    (BoundedReduction.single
+     (BoundedReduction.greedy (selector 0 2 fzero))))))
+ (BoundedReduction.greedy
+  ((λ { fzero → var (fsuc fzero)
+      ; (fsuc i)
+          → ChurchFinite..extendedlambda0 0 (shift (var fzero))
+            (λ ρ args →
+               applyCases 2
+               (app (var (ρ (fsuc (fsuc fzero)))) (var (ρ (fsuc fzero))))
+               (λ i₁ →
+                  ChurchFinite..extendedlambda0 1 (var fzero)
+                  (λ ρ₁ args₁ →
+                     applyCases 2 (app (var (ρ₁ (fsuc fzero))) (var (ρ₁ fzero)))
+                     (λ i₂ → args₁ (swap-two i₂)))
+                  ρ args (swap-two i₁)))
+            (λ i₁ → i₁) (λ ()) i
+      })
+   (swap-two (fsuc fzero)))))
+!= var fzero of type Raw Nat 3
+when checking that the expression refl has type
+rounds 1 (app (compileMap 0 swap-two) (selector 0 2 fzero)) ≡
+selector 0 2 (fsuc fzero)

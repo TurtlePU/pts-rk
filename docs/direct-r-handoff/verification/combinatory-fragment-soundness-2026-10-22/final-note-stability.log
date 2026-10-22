@@ -1,0 +1,5 @@
+theories/CombinatoryLogic-rk/CombinatoryPTS-rk.tex: OK
+theories/CombinatoryLogic-rk/CombinatoryPTS-rk.pdf: OK
+theories/CombinatoryLogic-rk/build-note.sh: OK
+theories/CombinatoryLogic-rk/combinatory-preamble.tex: OK
+docs/direct-r-handoff/verification/combinatory-fragment-soundness-2026-10-22/inspect.swift: OK

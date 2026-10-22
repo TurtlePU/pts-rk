@@ -1,0 +1,156 @@
+-- PTS-rk: the 65-shape Hilbert theory (MM0 specification, not a consistency proof).
+-- All judgments mean finite Horn derivability. Variables below are metasyntactic.
+delimiter $ ( ) $;
+strict sort nat;
+strict sort tm;
+strict sort tel;
+strict provable sort judgment;
+term z: nat;
+term s: nat > nat;
+term u: nat > tm;
+term v: nat > tm;
+term app: tm > tm > tm;
+term pi: tm > tm > tm;
+term lam: tm > tm > tm;
+term nil: tel;
+term cons: tm > nat > tel > tel;
+def one: nat = $ s z $;
+def two: nat = $ s one $;
+def three: nat = $ s two $;
+def four: nat = $ s three $;
+def six: nat = $ s (s four) $;
+def v0: tm = $ v z $;
+def v1: tm = $ v one $;
+def v2: tm = $ v two $;
+def v3: tm = $ v three $;
+def v4: tm = $ v four $;
+
+-- Numerical graphs on constructor numerals.
+term le: nat > nat > judgment;
+term lt: nat > nat > judgment;
+term max: nat > nat > nat > judgment;
+axiom le0 (n: nat): $ le z n $;
+axiom les (a b: nat): $ le a b $ > $ le (s a) (s b) $;
+axiom lt0 (n: nat): $ lt z (s n) $;
+axiom lts (a b: nat): $ lt a b $ > $ lt (s a) (s b) $;
+axiom max0 (n: nat): $ max z n n $;
+axiom maxz (n: nat): $ max n z n $;
+axiom maxs (a b c: nat): $ max a b c $ > $ max (s a) (s b) (s c) $;
+
+-- lift k M N increments free indices at least k; sub k X M N removes index k.
+term lift: nat > tm > tm > judgment;
+term sub: nat > tm > tm > tm > judgment;
+axiom lu (k a: nat): $ lift k (u a) (u a) $;
+axiom lvlo (k i: nat): $ lt i k $ > $ lift k (v i) (v i) $;
+axiom lvhi (k i: nat): $ le k i $ > $ lift k (v i) (v (s i)) $;
+axiom la (k: nat) (f g x y: tm):
+  $ lift k f g $ > $ lift k x y $ > $ lift k (app f x) (app g y) $;
+axiom lp (k: nat) (A C B D: tm):
+  $ lift k A C $ > $ lift (s k) B D $ > $ lift k (pi A B) (pi C D) $;
+axiom ll (k: nat) (A C B D: tm):
+  $ lift k A C $ > $ lift (s k) B D $ > $ lift k (lam A B) (lam C D) $;
+axiom su (k a: nat) (X: tm): $ sub k X (u a) (u a) $;
+axiom svlo (k i: nat) (X: tm): $ lt i k $ > $ sub k X (v i) (v i) $;
+axiom sveq (k: nat) (X: tm): $ sub k X (v k) X $;
+axiom svhi (k i: nat) (X: tm): $ le k i $ > $ sub k X (v (s i)) (v i) $;
+axiom sa (k: nat) (X f g x y: tm):
+  $ sub k X f g $ > $ sub k X x y $ > $ sub k X (app f x) (app g y) $;
+axiom sp (k: nat) (X Y A C B D: tm):
+  $ sub k X A C $ > $ lift z X Y $ > $ sub (s k) Y B D $ >
+  $ sub k X (pi A B) (pi C D) $;
+axiom sl (k: nat) (X Y A C B D: tm):
+  $ sub k X A C $ > $ lift z X Y $ > $ sub (s k) Y B D $ >
+  $ sub k X (lam A B) (lam C D) $;
+
+-- Original annotated beta reduction, reflexive-transitive and contextual; no eta.
+term red: tm > tm > judgment;
+axiom rr (M: tm): $ red M M $;
+axiom rt (M N P: tm): $ red M N $ > $ red N P $ > $ red M P $;
+axiom rb (A B X N: tm): $ sub z X B N $ > $ red (app (lam A B) X) N $;
+axiom ra (f g x y: tm): $ red f g $ > $ red x y $ > $ red (app f x) (app g y) $;
+axiom rp (A C B D: tm): $ red A C $ > $ red B D $ > $ red (pi A B) (pi C D) $;
+axiom rl (A C B D: tm): $ red A C $ > $ red B D $ > $ red (lam A B) (lam C D) $;
+
+-- Fixed ranked telescopes; annotations are in their successive binder scopes.
+def t1 (a: nat): tel = $ cons (u a) z nil $;
+def ti (a: nat): tel = $ cons (u a) z (cons v0 a nil) $;
+def tk (a b: nat): tel =
+  $ cons (u a) z (cons (u b) z (cons v1 a (cons v1 b nil))) $;
+def tp (a b: nat): tel = $ cons (u a) z (cons (pi v0 (u b)) (s a) nil) $;
+def tpx (a b: nat): tel =
+  $ cons (u a) z (cons (pi v0 (u b)) (s a) (cons v1 a nil)) $;
+def ts (a b c q r t: nat): tel =
+  $ cons (u a) z (cons (pi v0 (u b)) (s a)
+    (cons (pi v1 (pi (app v1 v0) (u c))) q
+    (cons (pi v2 (pi (app v2 v0) (app (app v2 v1) v0))) r
+    (cons (pi v3 (app v3 v0)) t (cons v4 a nil))))) $;
+term stel: nat > nat > nat > tel > judgment;
+axiom st (a b c q r t: nat):
+  $ max (s a) (s b) q $ > $ max q c r $ > $ max (s a) b t $ >
+  $ stel a b c (ts a b c q r t) $;
+term prefix: nat > tel > tel > judgment;
+axiom p0 (L: tel): $ prefix z L nil $;
+axiom ps (k a: nat) (A: tm) (L R: tel):
+  $ prefix k L R $ > $ prefix (s k) (cons A a L) (cons A a R) $;
+
+-- form e L D E M T folds L over D:E, exposing exactly e initial lambdas.
+-- This is a syntax graph, NOT a typing judgment. Only the fixed rows below use it.
+term form: nat > tel > tm > tm > tm > tm > judgment;
+axiom f0 (D E: tm): $ form z nil D E D E $;
+axiom fp (a b c: nat) (A D E M: tm) (L: tel):
+  $ form z L D E M (u b) $ > $ max (s a) b c $ >
+  $ form z (cons A a L) D E (pi A M) (u c) $;
+axiom fl (e a: nat) (A D E M T: tm) (L: tel):
+  $ form e L D E M T $ > $ form (s e) (cons A a L) D E (lam A M) (pi A T) $;
+
+-- Exactly 65 named shapes (some numerical instances coincide); K13 is omitted.
+term ax: tm > tm > judgment;
+axiom coreI (a: nat) (M T: tm):
+  $ form two (ti a) v0 v1 M T $ > $ ax M T $;
+axiom coreK (a b: nat) (M T: tm):
+  $ form four (tk a b) v1 v3 M T $ > $ ax M T $;
+axiom coreS (a b c: nat) (L: tel) (M T: tm):
+  $ stel a b c L $ >
+  $ form six L (app (app v2 v0) (app v1 v0)) (app (app v3 v0) (app v1 v0)) M T $ >
+  $ ax M T $;
+axiom coreP (a b r: nat) (M T: tm):
+  $ max (s a) b r $ > $ form two (tp a b) (pi v1 (app v1 v0)) (u r) M T $ > $ ax M T $;
+axiom typeI (a e: nat) (M T: tm):
+  $ form e (ti a) v1 (u a) M T $ > $ ax M T $;
+axiom typeK (a b e: nat) (M T: tm):
+  $ form e (tk a b) v3 (u a) M T $ > $ ax M T $;
+axiom typeS (a b c e: nat) (L: tel) (M T: tm):
+  $ stel a b c L $ > $ form e L (app (app v3 v0) (app v1 v0)) (u c) M T $ > $ ax M T $;
+axiom exposeP (a b: nat) (M T: tm):
+  $ form three (tpx a b) (app v1 v0) (u b) M T $ > $ ax M T $;
+axiom sortP1 (a d e: nat) (M T: tm):
+  $ form e (t1 a) (u d) (u z) M T $ > $ ax M T $;
+axiom sortP2 (a b d e: nat) (M T: tm):
+  $ form e (tp a b) (u d) (u z) M T $ > $ ax M T $;
+axiom sortP3 (a b d e: nat) (M T: tm):
+  $ form e (tpx a b) (u d) (u z) M T $ > $ ax M T $;
+axiom sortI (a d e: nat) (M T: tm):
+  $ form e (ti a) (u d) (u z) M T $ > $ ax M T $;
+axiom sortK2p (a b d: nat) (L: tel) (M T: tm):
+  $ prefix two (tk a b) L $ > $ form z L (u d) (u z) M T $ > $ ax M T $;
+axiom sortK2l (a b d: nat) (L: tel) (M T: tm):
+  $ prefix two (tk a b) L $ > $ form two L (u d) (u z) M T $ > $ ax M T $;
+axiom sortK3 (a b d e: nat) (L: tel) (M T: tm):
+  $ prefix three (tk a b) L $ > $ form e L (u d) (u z) M T $ > $ ax M T $;
+axiom sortK4 (a b d e: nat) (M T: tm):
+  $ form e (tk a b) (u d) (u z) M T $ > $ ax M T $;
+axiom sortS (a b c d e k: nat) (L R: tel) (M T: tm):
+  $ stel a b c L $ > $ prefix (s (s (s k))) L R $ >
+  $ form e R (u d) (u z) M T $ > $ ax M T $;
+
+-- BEGINHILBERT
+term h: tm > tm > judgment;
+axiom h_universe (i: nat): $ h (u i) (u z) $;
+axiom h_scheme (M A: tm): $ ax M A $ > $ h M A $;
+axiom h_apply (f x A B T: tm):
+  $ h f (pi A B) $ > $ h x A $ > $ sub z x B T $ > $ h (app f x) T $;
+axiom h_convert (M A B C: tm) (r: nat):
+  $ h M A $ > $ h B (u r) $ > $ red A C $ > $ red B C $ > $ h M B $;
+axiom h_subject (M N A: tm): $ h M A $ > $ red M N $ > $ h N A $;
+axiom h_type (M A B: tm): $ h M A $ > $ red A B $ > $ h M B $;
+-- ENDHILBERT

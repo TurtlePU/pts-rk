@@ -1,0 +1,59 @@
+FiniteBounds.agda: fresh safe arithmetic verification
+
+Source:
+  theories/CombinatoryLogic-rk/agda/FiniteBounds.agda
+SHA-256:
+  6152fbe3953a6283c4faaed8343ef7a8ce702eab0e3f5d076e8502d9f1a6e4b9
+
+Subsequent API-only addition: public seed-bound = tower-seed, exposing the
+already proved n <= tower d n inequality for exact-length normal fibres.
+Updated SHA-256:
+  7fec56bc7cabd30585e69abb76c3c83c1bc1645a40a381c98a28b1992acfeee9
+The subsequent local --safe check returned 0. The fresh standalone check
+below precedes this alias; the final import-closure audit covers the update.
+
+Further API-only exports for RawSizeBounds: product-monotone,
+power-exponent-monotone, power-addition, and tower-monotone. Each aliases
+an already proved private lemma; definitions and theorem statements are
+unchanged. Updated SHA-256:
+  f6fb5a4fef5147e2b0661082747b7a84ea4c42f756472a5fd119fd1aad464246
+The local RawSizeBounds safe check covers these exports and returned 0;
+see RawSizeBounds-check.txt for the exact command and logs.
+
+Compiler: Agda 2.8.0
+Cubical revision: b150186d2544e7efeddd31e5d14a8b9ecbb100f7
+Fresh directory: /tmp/pts-rk-finite-bounds.CV1wrF
+Started: 2026-10-22 07:38:09 UTC
+Successful exit observed before: 2026-10-22 07:38:49 UTC
+Exit code: 0
+Fresh log: /tmp/pts-rk-finite-bounds.CV1wrF/check.log
+Source stability SHA-256 check: exit 0
+Whitespace check: exit 0
+
+Command, after copying the source to the fresh directory:
+env AGDA_DIR=/tmp/pts-rk-finite-bounds.CV1wrF/config \
+  XDG_DATA_HOME=/tmp/pts-rk-finite-bounds.CV1wrF/data \
+  /tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --ignore-interfaces \
+  --no-default-libraries \
+  -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical \
+  -i /tmp/pts-rk-finite-bounds.CV1wrF/source \
+  /tmp/pts-rk-finite-bounds.CV1wrF/source/FiniteBounds.agda
+
+Earlier local development checks used the same compiler with --safe and
+--no-default-libraries, but without --ignore-interfaces. All failed checks
+returned 42. The corrected diagnostics were: an infective --guardedness
+import; NatSolver reflection of exponentiation and local tower expressions;
+insufficiently constrained arithmetic equality endpoints; two implicit
+multiplication parameters. The final local check returned 0, followed by
+the independent fresh check above. The failed local diagnostics were
+displayed in the tool transcript, not retained as separate raw log files.
+
+Public results:
+  depth-cardinality a n s :
+    capacity a n s <= tower 2 (3*s+n+a+4)
+  capacity-knuth a d n : a <= n ->
+    capacity a 0 (tower d n) <= tetration (4*n+4) (d+3)
+
+The module proves arithmetic cardinal bounds for the explicit grammar
+recurrence. It does not assert native PTS typing, rank descent, or total
+typed normalization. Those require separate syntax/typing proofs.

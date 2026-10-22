@@ -1,0 +1,11 @@
+Checking FragmentModelSoundness (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda).
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:152.60-61: error: [UnequalTerms]
+(ContextAccepted (target x)) != Agda.Builtin.Unit.⊤ of type Set
+when checking that the expression h has type
+InputAccepted
+(record
+ { source = source x
+ ; target = empty-context
+ ; environment = _x.environment_753
+ ; derivation = _x.derivation_754
+ })

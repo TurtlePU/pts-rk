@@ -1,0 +1,3 @@
+Checking FragmentMachineSoundness (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentMachineSoundness.agda).
+ Checking FiniteTrace (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FiniteTrace.agda).
+ Checking FiniteMachine (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FiniteMachine.agda).

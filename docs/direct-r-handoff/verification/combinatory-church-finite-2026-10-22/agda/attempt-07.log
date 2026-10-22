@@ -1,0 +1,5 @@
+Checking ChurchFinite (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ChurchFinite.agda).
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ChurchFinite.agda:205.7-14: error: [GenericDocError]
+Don't know what to do with _415 m k i
+when checking that the expression unquote solveℕ! has type
+suc (1 + (2 · k + 1)) ≡ _z_415

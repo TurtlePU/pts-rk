@@ -1,0 +1,19 @@
+File "./theories/CombinatoryLogic-rk/ChurchFinite.v", line 10, characters 0-20:
+Warning: Trying to mask the absolute name "ChurchFinite"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+1 goal
+  
+  k : nat
+  IHk :
+    forall (n : nat) (A : Term nat n) (body : Term nat (scope k n)),
+    nodes (bind k A body) = k * S (nodes A) + nodes body
+  n : nat
+  A : Term nat n
+  body : Term nat (scope (S k) n)
+  ============================
+  S (nodes A + (k * S (nodes A) + nodes body)) =
+  S k * S (nodes A) + nodes body
+File "./theories/CombinatoryLogic-rk/ChurchFinite.v", line 488, characters 0-4:
+Error:  (in proof bind_nodes): Attempt to save an incomplete proof
+(there are remaining open goals).
+

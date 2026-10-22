@@ -1,0 +1,15 @@
+File "./theories/CombinatoryLogic-rk/ChurchFinite.v", line 10, characters 0-20:
+Warning: Trying to mask the absolute name "ChurchFinite"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/CombinatoryLogic-rk/ChurchFinite.v", line 89, characters 49-63:
+Error:
+In environment
+n0 : nat
+IHk :
+  forall (n : nat) (G : Ctx nat n) (A : Term nat n) (i : Fin n0),
+  telescope n0 G A ⊢ branch n0 i ⇐ lift n0 A
+n : nat
+G : Ctx nat n
+A : Term nat n
+Unable to unify "S n" with "n".
+

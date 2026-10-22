@@ -1,0 +1,14 @@
+File "./theories/CombinatoryLogic-rk/ChurchFinite.v", line 10, characters 0-20:
+Warning: Trying to mask the absolute name "ChurchFinite"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/CombinatoryLogic-rk/ChurchFinite.v", line 300, characters 10-32:
+Error:
+In environment
+n, r, k, l : nat
+table : Fin k -> Fin l
+i : Fin k
+C : Term nat n
+values : Fin l -> Term nat n
+i0 : Fin k
+Unable to unify "values i0" with "values (table i0)".
+

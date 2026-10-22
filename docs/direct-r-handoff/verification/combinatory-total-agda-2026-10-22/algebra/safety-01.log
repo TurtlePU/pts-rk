@@ -1,0 +1,80 @@
+Checking NativeSafety (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  _n_393 (t = t) = suc n : Nat (blocked on _n_393)
+  suc n = _n_393 (t = t) : Nat (blocked on _n_393)
+  _n_654 (t = t) = n : Nat (blocked on _n_654)
+  n = _n_654 (t = t) : Nat (blocked on _n_654)
+  Check definition of safe-replace : {m : Nat} {Γ : Context m}
+                                     (t : Term m) {T : Term m} {n : _642 (t = t)}
+                                     {Δ : Context (_n_654 (t = t))}
+                                     {σ : Fin m → Term (_n_654 (t = t))} {d : Nat} →
+                                     WellFormed Γ →
+                                     WellFormed Δ →
+                                     Typ Γ t T →
+                                     TypedSub Γ Δ σ →
+                                     SafeImages Δ σ d → RankSafe Γ t d → RankSafe Δ (replace σ t) d
+    stuck because
+      /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:146.15-18: error: [SortOfSplitVarError]
+      Cannot eliminate fibrant type Term m unless context type
+      _642 (t = m) is also fibrant.
+      when checking that the pattern U i has type Term m
+    (blocked on _641)
+  Check definition of replacement-head-safe : {m : Nat}
+                                              {Γ : Context m} (f : Term m) {T : Term m}
+                                              {n : _591 (f = f)} {Δ : Context (_n_603 (f = f))}
+                                              {σ : Fin m → Term (_n_603 (f = f))} {d : Nat} →
+                                              WellFormed Γ →
+                                              WellFormed Δ →
+                                              Typ Γ f T →
+                                              TypedSub Γ Δ σ →
+                                              SafeImages Δ σ d →
+                                              (IsLambda f → (r : Nat) → TypeRank Γ f r → r ≤ d) →
+                                              IsLambda (replace σ f) →
+                                              (r : Nat) → TypeRank Δ (replace σ f) r → r ≤ d
+    stuck because
+      /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:136.24-27: error: [SortOfSplitVarError]
+      Cannot eliminate fibrant type Term m unless context type
+      _591 (f = m) is also fibrant.
+      when checking that the pattern U i has type Term m
+    (blocked on _590)
+  Check definition of safe-rename : {m : Nat} {Γ : Context m}
+                                    (t : Term m) {T : Term m} {n : _381 (t = t)}
+                                    {Δ : Context (_n_393 (t = t))}
+                                    {ρ : Fin m → Fin (_n_393 (t = t))} {d : Nat} →
+                                    WellFormed Γ →
+                                    WellFormed Δ →
+                                    Typ Γ t T →
+                                    TypedRen Γ Δ ρ → RankSafe Γ t d → RankSafe Δ (rename ρ t) d
+    stuck because
+      /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:90.14-17: error: [SortOfSplitVarError]
+      Cannot eliminate fibrant type Term m unless context type
+      _381 (t = m) is also fibrant.
+      when checking that the pattern U i has type Term m
+    (blocked on _380)
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:87.39-203.54: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:87.39-40
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:88.20-30
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:113.3-16
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:113.3-59
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:113.21-36
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:113.41-56
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:119.25-26
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:120.5-15
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:132.49-50
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:133.20-30
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:143.40-41
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:144.20-30
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:182.3-17
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:182.3-183.41
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:182.22-24
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:182.29-44
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:182.47-75
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:200.6-19
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:200.6-203.54
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:200.39-80
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:200.39-79
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:201.14-203.50
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:201.14-203.49

@@ -1,0 +1,8 @@
+Checking NativeRankCoverage (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeRankCoverage.agda).
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeRankCoverage.agda:17.1-26: error: [NoParseForLHS]
+Could not parse the left-hand side safe-coverage (U i) wf ht
+Problematic expression: (U i)
+Operators used in the grammar:
+  None
+when scope checking the left-hand side safe-coverage (U i) wf ht in
+the definition of safe-coverage

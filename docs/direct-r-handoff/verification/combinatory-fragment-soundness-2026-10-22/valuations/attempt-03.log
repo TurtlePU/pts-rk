@@ -1,0 +1,20 @@
+Checking NativeValuations (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  replace (images σ) (replace (single _u_1847) _b_1846)
+    = replace (images σ) (replace (single y) b)
+    : Raw Nat n
+    (blocked on _b_1846)
+  replace (images σ) _u_1847 = replace (images σ) y : Raw Nat n
+    (blocked on _u_1847)
+  replace (liftSubstitution (images σ)) _b_1846
+    = replace (images (lift σ A)) b
+    : Raw Nat (suc n)
+    (blocked on _b_1846)
+  replace (images σ) _A_1845 = replace (images σ) A : Raw Nat n
+    (blocked on _A_1845)
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:290.27-54: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:290.27-54
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:290.49-53

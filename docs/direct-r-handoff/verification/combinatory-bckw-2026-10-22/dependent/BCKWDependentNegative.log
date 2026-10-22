@@ -1,0 +1,12 @@
+Checking BCKWDependentNegative (/private/tmp/pts-rk-bckw-dependent-check.3s6E48/source/BCKWDependentNegative.agda).
+ Checking BCKWPositive (/private/tmp/pts-rk-bckw-dependent-check.3s6E48/source/BCKWPositive.agda).
+/private/tmp/pts-rk-bckw-dependent-check.3s6E48/source/BCKWDependentNegative.agda:9.14-10.50: error: [MetaCannotDependOn]
+Cannot instantiate the metavariable _D_42 to solution D x
+since it contains the variable x
+which is not in scope of the metavariable
+when checking that the expression
+dependentB (dependentB dependentW)
+(dependentB dependentB dependentC)
+has type
+((x : A) (y : D x) → E x y) →
+(g : (x : A) → D x) (x : A) → E x (g x)

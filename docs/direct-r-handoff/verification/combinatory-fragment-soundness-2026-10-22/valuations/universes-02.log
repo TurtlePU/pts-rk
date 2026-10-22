@@ -1,0 +1,55 @@
+Checking FragmentUniverses (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  _x_1181
+    = replace
+      (decodeValuationCode labels (fst (_1178 (p = p) (σ = σ) (u = u))))
+      u
+    : Raw Nat m
+    (blocked on _x_1181)
+  _x_1181
+    = replace
+      (decodeValuationCode labels (fst (_1176 (p = p) (σ = σ) (u = u))))
+      u
+    : Raw Nat m
+    (blocked on _x_1181)
+  replace (decodeValuationCode labels σ₁)
+  (lookup (_Γ_1177 (p = p) (σ = σ) (u = u)) i)
+    = replace (decodeValuationCode labels σ₁) (lookup Γ i)
+    : Raw Nat m
+    (blocked on _Γ_1177)
+  replace (decodeValuationCode labels σ₁)
+  (lookup (_Γ_1174 (p = p) (σ = σ) (u = u)) i)
+    = replace (decodeValuationCode labels σ₁) (lookup Γ i)
+    : Raw Nat m
+    (blocked on _Γ_1174)
+  replace (decodeValuationCode labels σ₁)
+  (lookup (_Γ_1174 (p = p) (σ = σ) (u = u)) i)
+    = replace (decodeValuationCode labels σ₁)
+      (lookup (_Γ_1173 (p = p) (σ = σ) (u = u)) i)
+    : Raw Nat m
+    (blocked on any(_Γ_1173, _Γ_1174))
+  replace (decodeValuationCode labels σ₁)
+  (lookup (_Γ_1053 (σ = σ)) i)
+    = replace (decodeValuationCode labels σ₁) (lookup Γ i)
+    : Raw Nat m
+    (blocked on _Γ_1053)
+  replace (decodeValuationCode labels σ₁)
+  (lookup (_Γ_1051 (σ = σ)) i)
+    = replace (decodeValuationCode labels σ₁) (lookup Γ i)
+    : Raw Nat m
+    (blocked on _Γ_1051)
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:243.31-254.35: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:243.31-46
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:243.47-48
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:243.53-68
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:243.69-70
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:253.5-20
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:253.22-36
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:253.22-40
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:253.39-40
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:253.46-61
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:253.62-63
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda:254.31-35

@@ -1,0 +1,45 @@
+Finite syntax, IIR normal forms, and actual finite injections
+===========================================================
+Final fresh check completed by 2026-10-22 07:47:34 UTC.
+
+Command (repository root):
+/tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries --ignore-interfaces -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical -i theories/CombinatoryLogic-rk/agda theories/CombinatoryLogic-rk/agda/NormalForms.agda
+
+Exit: 0
+Raw log: /tmp/pts-rk-finite-carriers.xNX3Nu/fresh.log
+Scoped git diff --check: exit 0.
+
+Dependencies include the separately verified FiniteBounds arithmetic and
+BoundedReduction's original annotated raw syntax and normality predicate.
+All safety, termination, positivity and universe checks remain enabled.
+
+Incremental attempts retained in /tmp/pts-rk-finite-carriers.xNX3Nu/:
+attempt-01.log: exit 42; incorrect module names in restricted imports.
+attempt-02.log: exit 42; uninhabEquiv needed its Empty qualification.
+attempt-03.log: exit 42; local eq binder collided with imported constructor.
+attempt-04.log: exit 42; NonLamNf constructor repeated its fixed scope parameter.
+attempt-05.log: exit 0; IIR normal forms, erasure retraction/injection and bound.
+attempt-06.log: exit 0; exact-length normal-form family and corollary added.
+
+Final owned-source hashes:
+115d94a66208521bd9e65b65af0a706e56b8e08abf1e5d09096d72ffc489b5bf  FiniteSyntax.agda
+aa5d83415f42f8d00a70484df13ca0870da02cafe978bafd422394c36bf35b4c  FiniteCarriers.agda
+8de785030a4e4bf8cc1d78e36ec45a8e64d3a7aaa0c02a4dba1d64b9c4d87a4e  NormalForms.agda
+
+Claims established here:
+- The original scoped raw grammar retains product and lambda annotations.
+- Code a n depth is equivalent to Fin (capacity a n depth).
+- Every node-bounded raw term encodes and decodes identically.
+- AtMost contains an actual injection, not a sample enumeration.
+- Nf, NonLamNf and erase form a checked inductive-inductive-recursive
+  definition: the NonLamNf constructor refers to computed erase.
+- Nf erasure is injective, and every Normal raw term has an Nf representative.
+- For a <= N, both closed normal representatives of at most tower d N nodes
+  and exactly N nodes inject into Fin ((4*N+4) tetrated (d+3)).
+- Proposition-valued fibres inherit finite injections without counting
+  arbitrary typing/reduction derivation trees.
+
+No rank-descent, preservation, typed normalization totality, or whole-machine
+finite-state bound is asserted by these modules. Native typing/rank fibres
+and apply-and-normalize are separate integrations. The finite alphabet is
+essential; no rank/length-only finiteness theorem is claimed.

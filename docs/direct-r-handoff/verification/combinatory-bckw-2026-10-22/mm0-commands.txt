@@ -1,0 +1,4 @@
+/tmp/pts-rk-mm0.lhphPY/upstream/mm0-rs/target/release/mm0-rs compile -W /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/CombinatoryPTS-rk.mm0 /tmp/pts-rk-combinatory-mm0.FNFzjw/spec.mmb 
+/tmp/pts-rk-mm0.lhphPY/mm0-c /tmp/pts-rk-combinatory-mm0.FNFzjw/spec.mmb 
+/tmp/pts-rk-mm0.lhphPY/upstream/mm0-rs/target/release/mm0-rs compile -W /Users/akuklev/air/pts-rk/docs/direct-r-handoff/verification/combinatory-mm0-2026-10-22/CombinatoryPTS-rk-examples.mm1 /tmp/pts-rk-combinatory-mm0.FNFzjw/examples.mmb 
+/tmp/pts-rk-mm0.lhphPY/mm0-c /tmp/pts-rk-combinatory-mm0.FNFzjw/examples.mmb

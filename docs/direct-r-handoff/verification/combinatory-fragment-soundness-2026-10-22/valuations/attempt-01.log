@@ -1,0 +1,53 @@
+Checking NativeValuations (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda).
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:59.53-82: warning: -W[no]InversionDepthReached
+Refusing to invert pattern matching of lookup because the maximum
+depth (50) has been reached. Most likely this means you have an
+unsatisfiable constraint, but it could also mean that you need to
+increase the maximum depth using the flag --inversion-max-depth=N
+when checking that the expression typed-lift (images-typed σ) A has
+type
+TypedSub (extend Γ A) (extend Δ (act σ A))
+(liftSubstitution (images σ))
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:59.65-79: warning: -W[no]InversionDepthReached
+Refusing to invert pattern matching of replace because the maximum
+depth (50) has been reached. Most likely this means you have an
+unsatisfiable constraint, but it could also mean that you need to
+increase the maximum depth using the flag --inversion-max-depth=N
+when checking that the expression images-typed σ has type
+TypedSub _Γ_231 Δ (λ z → σ .images z)
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  replace (images σ) _A_1331 = replace (images σ) A : Raw Nat m
+    (blocked on _A_1331)
+  replace (images (compose σ τ)) _A_1331
+    = replace (images (compose σ τ)) A
+    : Raw Nat n
+    (blocked on _A_1331)
+  replace (images σ) _A_1203 = replace (images σ) A : Raw Nat n
+    (blocked on _A_1203)
+  replace (images σ) _A_981 = replace (images σ) A : Raw Nat n
+    (blocked on _A_981)
+  replace (images σ) _A_945 = replace (images σ) A : Raw Nat n
+    (blocked on _A_945)
+  lookup _Γ_231 x = lookup Γ x : Raw Nat m (blocked on _Γ_231)
+  replace (σ .images) (lookup _Γ_231 i)
+    = replace (σ .images) (lookup Γ i)
+    : Raw Nat n
+    (blocked on _Γ_231)
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:59.53-204.50: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:59.53-63
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:59.53-82
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:59.65-79
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:120.23-40
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:160.11-19
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:160.42-44
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:165.5-9
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:165.32-34
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:193.44-60
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:193.65-67
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:202.20-36
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:202.41-43
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda:204.33-50

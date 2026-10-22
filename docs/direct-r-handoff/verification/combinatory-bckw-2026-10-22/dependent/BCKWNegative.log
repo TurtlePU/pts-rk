@@ -1,0 +1,10 @@
+Checking BCKWNegative (/private/tmp/pts-rk-bckw-dependent-check.3s6E48/source/BCKWNegative.agda).
+ Checking BCKWPositive (/private/tmp/pts-rk-bckw-dependent-check.3s6E48/source/BCKWPositive.agda).
+/private/tmp/pts-rk-bckw-dependent-check.3s6E48/source/BCKWNegative.agda:9.17-20: error: [MetaCannotDependOn]
+Cannot instantiate the metavariable _E_27 to solution
+(x : D) → x₁ x (x₂ x) since it contains the variable g
+which is not in scope of the metavariable
+when checking that the inferred type of an application
+  (((x : A) → D x) → _D_26) → ((x : A) → D x) → _E_27
+matches the expected type
+  (((x : A) → D x) → _D_26) → (g : (x : A) → D x) (x : A) → E x (g x)

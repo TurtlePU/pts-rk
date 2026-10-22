@@ -1,0 +1,11 @@
+File "./theories/CombinatoryLogic-rk/ChurchFinite.v", line 10, characters 0-20:
+Warning: Trying to mask the absolute name "ChurchFinite"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/CombinatoryLogic-rk/ChurchFinite.v", line 228, characters 2-98:
+Error: Found no subterm matching
+"replace
+   (filling k (fin_match (values fzero) sigma)
+      (fun i : Fin k => values (fsucc i)))
+   (lift k (shift t))"
+in the current goal.
+

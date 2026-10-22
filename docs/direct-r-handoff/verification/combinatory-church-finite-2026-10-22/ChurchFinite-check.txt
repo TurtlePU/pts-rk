@@ -1,0 +1,50 @@
+Explicit original-PTS Church finite codes and transition compilers
+================================================================
+Fresh check completed by 2026-10-22 08:56:28 UTC.
+
+Command (repository root):
+/tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries --ignore-interfaces -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical -i theories/CombinatoryLogic-rk/agda theories/CombinatoryLogic-rk/agda/ChurchFinite.agda
+
+Exit: 0, no warnings.
+Raw log: /tmp/pts-rk-church-agda.1gXIYX/fresh.log
+Scoped git diff --check: exit 0.
+SHA256:
+eb6c171a0910ca6407866c2974244851654555fd9b02f2411059e6549a94beed  ChurchFinite.agda
+
+The 228-line source generates NativeTyping.Term = Raw Nat, not a host-language
+surrogate for PTS inhabitants. All binder annotations and numerical universe
+labels are present. Its public executable generators are:
+choiceType, selector, compileMap, compileMap2, repeatMap,
+passProgram, applicationProgram, reductionProgram, applyReductionProgram.
+
+passProgram compiles FiniteMachine.greedy-state, a single clipped greedy
+transition, not a table of precomputed normal answers. reductionProgram
+explicitly composes this PTS endomap d times. applyReductionProgram first
+uses the compiled binary application-state table, then the composed reducer.
+FiniteMachine separately proves decode/run agreement on bounded source inputs.
+
+Agda theorems checked:
+- choice-type-typed: E_(k+1)^r has original formation rank r+1.
+- selector-typed: every canonical selector has its original E_k^r type.
+- selector-normal and choice-type-normal, including every annotation.
+- selector-size and choice-type-size: exactly 2*k+3 original syntax nodes.
+- swap-first, swap-second, binary-first: closed generated-beta regressions.
+
+Generic finite-map/map2 native typing and beta-correctness are not claimed as
+Agda theorems in this module; unary maps and their finite iterations
+are checked separately in Rocq. The binary all-index theorem remains open.
+No automatic cross-kernel compiler theorem
+or arbitrary Cubical Agda compilation theorem is claimed. Canonical indexed
+codes are distinguished from the full inhabitant type. Code/table sizes are
+not substituted for the original source node count in normalization bounds.
+
+Incremental attempts in /tmp/pts-rk-church-agda.1gXIYX/:
+attempt-01.log: exit 42; regression needed two greedy passes, not one.
+attempt-02.log: exit 0; two unsupported-indexed-match warnings.
+attempt-03.log: exit 0; four unsupported-indexed-match warnings.
+attempt-04.log: exit 42; an extra parenthesis while replacing fixed-index matches.
+attempt-05.log: exit 0; one unsupported-indexed-match warning.
+attempt-06.log: exit 0, no warnings; generic indexed elimination fixed it.
+attempt-07.log: exit 42; arithmetic solver needed explicit equality endpoints.
+attempt-08.log: exit 0, no warnings; normality and exact size proofs included.
+No warnings/checks were disabled. The final fresh check rechecks imports.

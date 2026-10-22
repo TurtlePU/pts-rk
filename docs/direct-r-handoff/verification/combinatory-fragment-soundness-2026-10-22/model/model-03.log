@@ -1,0 +1,41 @@
+Checking FragmentModelSoundness (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda).
+ Checking FragmentPackages (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  max _a_2448 (max _a_2446 (familyMaxNodes (images σ)))
+    = max (contextMaxNodes Γ)
+      (max (contextMaxNodes Δ) (familyMaxNodes (images σ)))
+    : Nat
+    (blocked on _a_2448)
+  max _a_2439 (max (contextMaxNodes Δ) _b_2438)
+    = max (contextMaxNodes Γ)
+      (max (contextMaxNodes Δ) (familyMaxNodes (images σ)))
+    : Nat
+    (blocked on _a_2439)
+  max _a_2428 (max _a_2426 (valuationBound σ))
+    = max (contextBound Γ) (max (contextBound Δ) (valuationBound σ))
+    : Nat
+    (blocked on _a_2428)
+  max _a_2419 (max (contextBound Δ) _b_2418)
+    = max (contextBound Γ) (max (contextBound Δ) (valuationBound σ))
+    : Nat
+    (blocked on _a_2419)
+when scope checking the declaration
+  open import FragmentPackages
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:309.19-310.99: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:309.19-57
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:309.39-40
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:309.53-54
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:309.60-99
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:309.79-80
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:309.95-96
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:310.19-57
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:310.39-40
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:310.53-54
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:310.60-99
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:310.79-80
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda:310.95-96
+when scope checking the declaration
+  open import FragmentPackages

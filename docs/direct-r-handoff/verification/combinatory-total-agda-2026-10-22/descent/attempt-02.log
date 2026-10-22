@@ -1,0 +1,7 @@
+Checking NativeRanks (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeRanks.agda).
+ Checking NativePreservation (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativePreservation.agda).
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeRanks.agda:79.50-64: error: [NotInScope]
+Not in scope:
+  type-stability
+  at /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeRanks.agda:79.50-64
+when scope checking type-stability

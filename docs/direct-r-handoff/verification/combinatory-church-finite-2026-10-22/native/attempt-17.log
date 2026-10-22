@@ -1,0 +1,38 @@
+File "./theories/CombinatoryLogic-rk/ChurchFinite.v", line 10, characters 0-20:
+Warning: Trying to mask the absolute name "ChurchFinite"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+1 goal
+  
+  n, r, k, l : nat
+  table : Fin k -> Fin l
+  i : Fin k
+  ============================
+  apps k
+    (lift l
+       (shift
+          (fin_match ([𝓤 r] bind k (var fzero) (branch k i))
+             (fun x : Fin n => var x) (eq_rect (S n) Fin fzero (S n) eq_refl))) $
+     lift l (var fzero))
+    (fun i0 : Fin k =>
+     replace
+       (under l
+          (transpose
+             (fin_match ([𝓤 r] bind k (var fzero) (branch k i))
+                (fun x : Fin n => var x))))
+       (branch l (table i0)))
+  ↠ᵝ branch l (table i)
+File "./theories/CombinatoryLogic-rk/ChurchFinite.v", line 367, characters 10-22:
+Error:
+In environment
+n, r, k, l : nat
+table : Fin k -> Fin l
+i : Fin k
+j : Fin k
+Unable to unify "branch l (table j)" with
+ "replace
+    (under l
+       (transpose
+          (fin_match ([𝓤 r] bind k (var fzero) (branch k i))
+             (fun x : Fin n => var x))))
+    (branch l (table j))".
+

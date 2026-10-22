@@ -1,0 +1,15 @@
+Checking TypedApplication (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/TypedApplication.agda).
+  Checking BoundedReduction (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BoundedReduction.agda).
+ Checking NormalForms (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NormalForms.agda).
+ Checking FiniteApplication (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FiniteApplication.agda).
+   Checking RawSizeBounds (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/RawSizeBounds.agda).
+  Checking BoundedTrace (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BoundedTrace.agda).
+ Checking NativeTyping (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeTyping.agda).
+   Checking NativeAlgebra (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeAlgebra.agda).
+    Checking NativeSubstitution (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda).
+    Checking NativeConfluence (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeConfluence.agda).
+    Checking NativeInversion (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeInversion.agda).
+   Checking NativePreservation (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativePreservation.agda).
+   Checking NativeRanks (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeRanks.agda).
+  Checking NativeSafety (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda).
+ Checking NativeDescent (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeDescent.agda).

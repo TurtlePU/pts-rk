@@ -1,0 +1,5 @@
+Checking ContextualNormalization (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ContextualNormalization.agda).
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ContextualNormalization.agda:160.64-170.78: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ContextualNormalization.agda:160.64-79
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ContextualNormalization.agda:170.63-78

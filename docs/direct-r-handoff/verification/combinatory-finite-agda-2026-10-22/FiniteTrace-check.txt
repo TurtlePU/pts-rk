@@ -1,0 +1,36 @@
+FiniteTrace.agda: finite-indexed representations of actual bounded beta paths
+
+Source: theories/CombinatoryLogic-rk/agda/FiniteTrace.agda
+SHA-256: a6161667ced11529ba100ab8921c2f751d4ef5d6a657515a76db84b8721a3160
+Check directory: /tmp/pts-rk-finite-trace.WuXhVl
+Compiler: Agda 2.8.0
+Cubical revision: b150186d2544e7efeddd31e5d14a8b9ecbb100f7
+
+Exact local check command (redirected to the numbered attempt log):
+/tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries \
+  -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical \
+  -i theories/CombinatoryLogic-rk/agda \
+  theories/CombinatoryLogic-rk/agda/FiniteTrace.agda
+
+attempt-01.log: exit 42, unsolved implicit indices because capacity a n s
+  is not injective in a,n,s. Fixed by supplying these parameters explicitly
+  in IndexedStep and decode-state. No proposition or check was weakened.
+attempt-02.log: exit 0, no warnings.
+
+Public interface:
+  State a n s = Fin (capacity a n s)
+  state-bound a d N : a <= N -> AtMost (State a 0 (tower d N))
+    (tetration (4*N+4) (d+3))
+  state-recovery: decoding an encoded bounded raw term recovers that term.
+  compile-bounded: converts each BoundedSteps certificate to FiniteWalk.
+  rounds-trace d t: computes the finite-indexed walk for rounds d t.
+  walk-sound: decoding a walk gives propositionally truncated forward beta
+    reduction, not an arbitrary uninterpreted transition relation.
+
+FiniteWalk constructors contain only finite state indices and proposition-
+valued edge certificates. Each state has the displayed finite bound. The
+whole type of walks is not asserted finite: walks can have arbitrary length.
+The wrapper still constructs the path using Raw internally; it is not a
+bound on all host runtime allocations, and does not establish native typed
+normality or preservation. The final fresh import-closure audit covers the
+complete module dependency closure without cached interfaces.

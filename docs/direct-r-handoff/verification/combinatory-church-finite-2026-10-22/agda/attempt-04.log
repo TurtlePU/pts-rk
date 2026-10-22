@@ -1,0 +1,4 @@
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ChurchFinite.agda:39.45: error: [ParseError]
+)<ERROR> 
+
+caseType : (k : Nat) → Term ...

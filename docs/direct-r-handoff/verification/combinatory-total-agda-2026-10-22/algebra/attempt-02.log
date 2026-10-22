@@ -1,0 +1,6 @@
+Checking NativeSubstitution (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda).
+ Checking NativeAlgebra (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeAlgebra.agda).
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:36.57-58: error: [WrongHidingInLHS]
+Unexpected implicit argument
+when checking that the pattern application {B = B} {y = y} p q has
+type Typ Γ t T

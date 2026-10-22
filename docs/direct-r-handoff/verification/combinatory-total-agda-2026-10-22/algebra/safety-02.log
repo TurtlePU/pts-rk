@@ -1,0 +1,14 @@
+Checking NativeSafety (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  replace σ _A_928 = replace σ A : Raw Nat n (blocked on _A_928)
+  replace σ _A_857 = replace σ A : Raw Nat n (blocked on _A_857)
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:153.6-159.62: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:153.6-29
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:153.6-62
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:153.39-58
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:159.6-29
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:159.6-62
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda:159.39-58

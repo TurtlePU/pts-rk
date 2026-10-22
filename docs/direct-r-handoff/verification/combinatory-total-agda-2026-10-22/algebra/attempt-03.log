@@ -1,0 +1,34 @@
+Checking NativeSubstitution (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  lookup _Γ_476 x = lookup Γ x : Raw Nat m (blocked on _Γ_476)
+  replace σ (lookup _Γ_476 i) = replace σ (lookup Γ i) : Raw Nat n
+    (blocked on _Γ_476)
+  lookup _Γ_446 x = lookup Γ x : Raw Nat m (blocked on _Γ_446)
+  replace σ (lookup _Γ_446 i) = replace σ (lookup Γ i) : Raw Nat n
+    (blocked on _Γ_446)
+  lookup _Γ_186 x = lookup Γ x : Raw Nat m (blocked on _Γ_186)
+  lookup _Δ_187 x = lookup Δ x : Raw Nat n (blocked on _Δ_187)
+  lookup _Δ_187 (ρ i) = lookup Δ (ρ i) : Raw Nat n
+    (blocked on _Δ_187)
+  lookup _Γ_186 i = lookup Γ i : Raw Nat m (blocked on _Γ_186)
+  lookup _Γ_135 x = lookup Γ x : Raw Nat m (blocked on _Γ_135)
+  lookup _Δ_136 x = lookup Δ x : Raw Nat n (blocked on _Δ_136)
+  lookup _Δ_136 (ρ i) = lookup Δ (ρ i) : Raw Nat n
+    (blocked on _Δ_136)
+  lookup _Γ_135 i = lookup Γ i : Raw Nat m (blocked on _Γ_135)
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:31.21-67.33: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:31.21-32
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:31.21-36
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:31.33-34
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:35.21-32
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:35.21-36
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:35.33-34
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:64.19-29
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:64.19-33
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:64.30-31
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:67.19-29
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:67.19-33
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda:67.30-31

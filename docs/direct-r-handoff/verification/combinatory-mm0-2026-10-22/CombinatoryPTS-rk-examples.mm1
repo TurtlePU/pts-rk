@@ -1,0 +1,38 @@
+-- Actual local proofs checked against the unchanged public MM0 specification.
+-- Local definitions and theorems add no axioms and no public declarations.
+import "../../../../theories/CombinatoryLogic-rk/CombinatoryPTS-rk.mm0";
+
+local def identity0: tm = $ lam (u z) (lam v0 v0) $;
+local def identity0_type: tm = $ pi (u z) (pi v0 v1) $;
+
+theorem universe0: $ h (u z) (u z) $ = 'h_universe;
+theorem identity0_axiom: $ ax identity0 identity0_type $ =
+  '(coreI (fl (fl f0)));
+theorem identity0_typed: $ h identity0 identity0_type $ =
+  '(h_scheme identity0_axiom);
+
+-- Substitution must lift its argument under Pi's binder.
+theorem identity0_type_substitution:
+  $ sub z (u z) (pi v0 v1) (pi (u z) (u z)) $ =
+  '(sp sveq lu sveq);
+theorem identity0_first_application:
+  $ h (app identity0 (u z)) (pi (u z) (u z)) $ =
+  '(h_apply identity0_typed universe0 identity0_type_substitution);
+theorem identity0_second_application:
+  $ h (app (app identity0 (u z)) (u z)) (u z) $ =
+  '(h_apply identity0_first_application universe0 su);
+theorem identity0_first_beta:
+  $ red (app identity0 (u z)) (lam (u z) v0) $ =
+  '(rb (sl sveq lu (svlo lt0)));
+theorem identity0_second_beta:
+  $ red (app (app identity0 (u z)) (u z)) (u z) $ =
+  '(rt (ra identity0_first_beta rr) (rb sveq));
+
+-- An open argument must be shifted; the annotation is substituted too.
+theorem lifted_binder_substitution:
+  $ sub z v1 (lam v0 (app v1 v0)) (lam v1 (app v2 v0)) $ =
+  '(sl sveq (lvhi le0) (sa sveq (svlo lt0)));
+theorem lifted_binder_beta:
+  $ red (app (lam (u z) (lam v0 (app v1 v0))) v1)
+        (lam v1 (app v2 v0)) $ =
+  '(rb lifted_binder_substitution);

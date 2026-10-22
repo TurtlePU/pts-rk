@@ -1,0 +1,71 @@
+Checking FragmentModelSoundness (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda).
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:151.3-36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor zero,
+        which is not yet supported
+
+when checking the definition of empty-context-unique
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  labelBound _A_321
+    = labelBound
+      (replace (valuation-images (environment x))
+       (certificate-type (derivation x)))
+    : Nat
+    (blocked on _A_321)
+  max (labelBound _t_320) (labelBound _A_321)
+    = max
+      (labelBound
+       (replace (valuation-images (environment x))
+        (certificate-term (derivation x))))
+      (labelBound
+       (replace (valuation-images (environment x))
+        (certificate-type (derivation x))))
+    : Nat
+    (blocked on _t_320)
+  max (labelBound _t_320) (labelBound _A_321)
+    = max
+      (labelBound
+       (replace (valuation-images (environment x))
+        (certificate-term (derivation x))))
+      (labelBound (instantiated-type x))
+    : Nat
+    (blocked on _t_320)
+  labelBound _t_269
+    = labelBound
+      (replace (valuation-images (environment x))
+       (certificate-term (derivation x)))
+    : Nat
+    (blocked on _t_269)
+  max (labelBound _t_269) (labelBound _A_270)
+    = max
+      (labelBound
+       (replace (valuation-images (environment x))
+        (certificate-term (derivation x))))
+      (labelBound (instantiated-type x))
+    : Nat
+    (blocked on _t_269)
+  replace (valuation-images (environment x)) (lookup _Γ_173 i)
+    = replace (valuation-images (environment x))
+      (lookup (certificate-context (source x)) i)
+    : Raw Nat n
+    (blocked on _Γ_173)
+
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:67.4-84.74: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:67.4-28
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:67.4-64
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:67.46-63
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:80.25-74
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:80.52-69
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:80.52-73
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:80.70-71
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:80.72-73
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:84.25-74
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:84.52-69
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:84.52-73
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:84.70-71
+  /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda:84.72-73

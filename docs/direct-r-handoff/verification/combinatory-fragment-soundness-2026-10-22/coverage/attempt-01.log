@@ -1,0 +1,5 @@
+Checking AlphabetCoverage (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/AlphabetCoverage.agda).
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/AlphabetCoverage.agda:104.59-79: error: [UnequalTerms]
+a₁ != a of type Nat
+when checking that the expression represented-labels t has type
+AllLabelsBelow a (relabel toℕ t)
