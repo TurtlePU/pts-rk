@@ -302,6 +302,15 @@ Moving between these levels requires a proved translation.
   judgments. The numerical allocation plan still determines the interpreter
   term and its signature. A type-sort bound alone is not a bound on every
   redex degree in its implementation.
+- **Fixed fragment execution interface.** The closure wrapper packages the
+  normal program with its normal runner. Its coverage theorem is
+  `every_bounded_original` in `FragmentClosureInterpreter`.
+  One normal head of type-sort $k+10$
+  covers the whole same fragment, with ordinary padded-type/code arguments
+  and one fixed forcing argument. It retains original result typing, literal
+  term recovery and faithful syntax. Only the result type is externally
+  normalized. The varying runner is carried by the code, so this is not
+  one common PHOAS constructor algebra or an internal proof-code reifier.
 - **Internal logical infrastructure.** The arithmetic interpretation provides
   annotated builders, negative classical logic, equality transport, finite
   observations and independent source deduction systems.
@@ -327,8 +336,10 @@ verified in EA; a native Rocq proof cannot be imported as an arithmetic axiom.
 There are three distinct uniformities: a common numerical rank bound; one
 interpreter term and fixed interface for every source in a fragment; and an
 internal operation quantifying over represented proof codes and budgets.
-The capped construction establishes the first. The second is open; the third
-is additional work even if the second succeeds.
+The capped construction establishes the first. The subsequent closure
+wrapper establishes the second in the execution-interface sense just stated.
+The third remains additional work: internally generating its code-carried
+runner from accepted proof codes is not an external-quotation theorem.
 
 For a fixed external $k$, a useful internal interface would be
 
@@ -353,9 +364,10 @@ Quotation from a supplied Rocq derivation
 does not construct this term. A shallow evaluator into a merely represented
 proposition instead requires a separate soundness/falsehood bridge.
 
-Uniform fragment interpreters could remove changing signatures and per-proof
-plans from that interface, simplify its rank accounting, and make a proof of
-internal reification reusable for arbitrarily large syntax. They do not
+The fixed closure interface removes changing signatures and per-proof plans
+from the evaluator's clients, but not from the generated code. It simplifies
+rank accounting and provides one target interface for internal reification
+over arbitrarily large syntax. Uniform interpreters do not
 automatically supply an admissible arithmetic domain or a single term ranging
 over all external $k$. Sort indices are syntax, not internal natural-number
 parameters. An external family of fragment-consistency proofs is not one
@@ -372,6 +384,14 @@ allocation algorithm, and `FiniteCoherenceCatalogue.no_finite_literal_catalogue`
 refutes exhaustive finite lists of concrete fields. Neither rules out
 generic coherence laws or represented environments.
 
+The newer `BudgetInternalization` extends the literal-ceiling obstruction to
+an actual fixed internal reifier followed by an evaluator, with arbitrarily
+many represented numeric arguments. It does not rule out the proposed
+$\bot$-specific soundness theorem. `FixedInterface` proves by original typed
+introduction/evaluation terms that its closure code is inhabited iff the
+result type is. Thus $q_k$ already contains the soundness content; it cannot
+be assumed as a convenient encoding premise.
+
 The most economical direct route may consequently use a resource-relativized
 proof-code evaluator specialized to contradictions, rather than solve general
 fragment-uniform strong unquotation first. The draft's negative target allows
@@ -382,6 +402,23 @@ literal source-term recovery. `DependentProgramDecoder.decoder_typed` and
 `evaluate_typed` already isolate typed evaluation before the faithful tag is
 added. Reusing this smaller interface still requires the internal connection
 between the represented result and $\bot$.
+
+The shared `Algebra` interface now makes that separation explicit:
+`UnifiedAlgebra` constructs normal tag-free type and term programs for every
+original source, with literal recovery under one identity filling. Other
+fillings must inhabit the same dependent laws; the signature still varies
+with its plan. The simply typed constructor observer and finite-dictionary
+combinatory folds, including a typed continuation algebra, demonstrate
+alternative interpretations without raw tags or numeral conversion.
+They do not establish a full dependent observation algebra.
+
+For consistency, finite structural proof codes could likewise avoid an
+intermediate numeral representation. The combinatory catalogue already has
+sound extraction into applicative trees, but native source completeness,
+source-type-indexed internal evaluation and acceptance soundness remain
+separate obligations. Any structural recoding must still be related to the
+specified predicate-only arithmetic sentence on all admitted codes and trace
+witnesses. A simpler representation does not eliminate that bridge.
 
 # Two routes to formalization
 

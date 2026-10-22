@@ -1,5 +1,96 @@
 # Sources, theorem map and verification
 
+## Direct route without H or EA intermediaries
+
+[DIRECT_ROADMAP.tex](DIRECT_ROADMAP.tex) and [its PDF](DIRECT_ROADMAP.pdf)
+give the current recommended direct programme: independent native certificate
+codes, elementary source-rank compression, guarded internal finite reasoning,
+one fixed-type resource interface, internal bounded proof/history soundness,
+terminal separation and negative resource elimination. Neither the guarded
+soundness theorem nor a consistency inhabitant is reported as proved.
+
+The roadmap corrects the starting-point distinction: current combinatory
+soundness is external Agda soundness in graded finite syntactic carriers,
+not yet internal PTS soundness or fixed finite first-order models. It also
+distinguishes the new structural consistency sentence from the earlier
+finite-ordinal target and includes the conditional incompleteness audit.
+Three independent source/mathematical reviews checked these boundaries.
+
+Final command `bash theories/self_consistency/build-note.sh DIRECT_ROADMAP`
+exits 0, 12:01:53–12:01:58 UTC, in
+`/tmp/pts-rk-consistency-note.O8CmUV`: eight pages, clean layout/reference/
+glyph diagnostics. The PDFKit inspector exits 0, checks required text,
+primary reference and mathematical rendering, and renders every page.
+Changed formulas and final pagination were visually reviewed. An earlier
+malformed equation tag was detected and corrected; all failed/successful
+attempts and exact commands are retained in
+[the direct-roadmap verification record](../../docs/direct-r-handoff/verification/self-consistency-direct-roadmap-2026-10-22/COMMANDS.md).
+
+```
+37ee293ca952bac4a7507ad734be6d4f9c50b6266d211ef32e5eaff97bdf6a34  DIRECT_ROADMAP.tex
+37c5618148dc74f12e797e5d21639e87ac6fda2e27c03d2f7d83d58cdb3119a3  DIRECT_ROADMAP.pdf
+```
+
+All 244 inspected proof/Dune sources match their before/after hashes.
+No Rocq/Agda proof sources, original draft, or earlier README.tex/PDF were
+changed in this turn; no new proof build, staging, commit or push. The new
+optional build-script argument preserves the old no-argument behaviour.
+
+## Follow-up: shared tag-free folds and structural codes
+
+The shared-algebra continuation adds a short paragraph to the uniform-PHOAS
+analysis: `UnifiedAlgebra` gives tag-free full-dependent execution, while
+STLC and finite-dictionary combinatory folds supply actual alternative
+interpretations. These results do not supply acceptance soundness, a
+rank-only dependent signature, native combinatory completeness, or an
+internal consistency inhabitant. Structural recoding must still match the
+specified arithmetic sentence on all admitted certificates and traces.
+
+`bash theories/self_consistency/build-note.sh` exits 0 in
+`/tmp/pts-rk-consistency-note.7vQRc9`: ten pages, no overfull/underfull,
+undefined-reference or missing-glyph diagnostics. The new fold-audit
+`inspect.swift` exits 0, renders all ten pages and checks required text;
+page 7's added passage was visually inspected. Raw logs and renders:
+`_build/self-interpreter-fold-audit.7pRHdb/consistency-note.log` and
+`consistency-pdf/`. Current document SHA256:
+
+```
+7c84b193ff70194c326fbed0ecff18c948d0ab2771bf5e15afa0f9cd5c0c7bf5  README.tex
+a6b58a5e04fa80ebcb7cd5cdfb1b9a9d08355774106db49c3a917ab433dedfb6  README.pdf
+```
+
+No self_consistency Rocq library or theorem has been introduced.
+Proof evidence belongs to the separate self-interpreter fold audit.
+
+## Follow-up: fixed fragment execution interface
+
+The original five-file documentation checkpoint below was committed as
+`cb76553b03d536743e36c4e2c7e5a1c7c1669bef`, at the user's subsequent request.
+No push was requested. The note now reflects the new fixed closure interface
+and its precise difference from internal proof-code reification. This changes
+the status of the second uniformity, not the internal consistency target.
+The new proof evidence belongs to
+[the self-interpreter continuation](../../docs/direct-r-handoff/verification/self-interpreter-uniform-interface-2026-10-22/COMMANDS.md),
+not to a self_consistency Rocq library; none has been created here.
+
+Follow-up declarations: `FragmentClosureInterpreter.every_bounded_original`,
+`FixedInterface.inhabited_iff`, and
+`BudgetInternalization.no_unbounded_internal_strong_reification`.
+
+Document attempts: `/tmp/pts-rk-consistency-note.OmKWDX` failed overflow
+validation (exit 1), preserving the preceding PDF; the long qualified theorem
+name was split in prose. `/tmp/pts-rk-consistency-note.L5IDV1` built successfully
+but had one underfull paragraph. `/tmp/pts-rk-consistency-note.7u3pxt` is the
+final successful build: ten pages, no overflow/underflow/reference/glyph
+warnings. PDFKit section/link/text/render validation passes. Inspection output
+is under `_build/self-interpreter-uniform-interface-2026-10-22/consistency-note`.
+Final follow-up SHA-256 values:
+
+```
+cb1b496a89d30d6edb8cc26ba3972ec54a717297acacf5dc5da66ec242e1e73b  README.tex
+f37a83f973a114b6d6aa0c0287027a4c80c12334846b8786d6792ce89b66f149  README.pdf
+```
+
 ## Provenance
 
 This is a documentation-only research checkpoint, 22 October 2026, based on
