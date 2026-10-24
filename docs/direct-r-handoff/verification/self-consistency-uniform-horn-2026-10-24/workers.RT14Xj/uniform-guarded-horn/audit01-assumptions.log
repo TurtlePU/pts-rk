@@ -1,0 +1,216 @@
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 61 [From~PTSrk.SelfConsistency~Req...] 0.111 secs (0.09u,0.02s)
+Chars 62 - 107 [Import~UniformGuardedHorn.Unif...] 0. secs (0.u,0.s)
+handler_sorted
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (handler a g) (handler_type a g)
+Chars 108 - 129 [Check~handler_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 130 - 163 [Print~Assumptions~handler_sorted.] 0.013 secs (0.01u,0.002s)
+family_type_sorted
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (family_type a g) (Syntax.𝓤 3)
+Chars 164 - 189 [Check~family_type_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 190 - 227 [Print~Assumptions~family_type_...] 0.011 secs (0.009u,0.001s)
+family_sorted
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (family a g) (family_type a g)
+Chars 228 - 248 [Check~family_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 249 - 281 [Print~Assumptions~family_sorted.] 0.011 secs (0.009u,0.001s)
+node_type_sorted
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (node_type a g) (Syntax.𝓤 (g + 3))
+Chars 282 - 305 [Check~node_type_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 306 - 341 [Print~Assumptions~node_type_so...] 0.037 secs (0.034u,0.002s)
+node_typed
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (node a g) (node_type a g)
+Chars 342 - 359 [Check~node_typed.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 360 - 389 [Print~Assumptions~node_typed.] 0.009 secs (0.009u,0.s)
+consume_type_sorted
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (consume_type a g)
+         (Syntax.𝓤 (g + 3))
+Chars 390 - 416 [Check~consume_type_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 417 - 455 [Print~Assumptions~consume_type...] 0.009 secs (0.009u,0.s)
+consume_typed
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (consume a g) (consume_type a g)
+Chars 456 - 476 [Check~consume_typed.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 477 - 509 [Print~Assumptions~consume_typed.] 0.016 secs (0.016u,0.s)
+family_application
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n),
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       NB.NamedSpine G (family_fields a g) e xs final ->
+       DirectRKernel.Core.Typed G
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (family a g)) xs)
+         (Syntax.𝓤 (g + 2))
+where
+?n : [ |- nat]
+Chars 510 - 535 [Check~family_application.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 536 - 573 [Print~Assumptions~family_appli...] 0.012 secs (0.011u,0.s)
+family_beta
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       NB.NamedSpine G (family_fields a g) e xs final ->
+       NT.evaluate
+         (Proof (DirectRCommonCodes.CommonCodes.NVar 10)
+            (DirectRCommonCodes.CommonCodes.NVar 13))
+         final =
+       Some r ->
+       DefEq.def_equiv nat ?n
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (family a g)) xs)
+         r
+where
+?n : [ |- nat]
+Chars 574 - 592 [Check~family_beta.] 0.001 secs (0.u,0.s)
+Closed under the global context
+Chars 593 - 623 [Print~Assumptions~family_beta.] 0.003 secs (0.002u,0.s)
+node_application
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       NB.NamedSpine G (node_fields a g) e xs final ->
+       NT.evaluate
+         (Proof (DirectRCommonCodes.CommonCodes.NVar 10)
+            (UH.Head (DirectRCommonCodes.CommonCodes.NVar 10)
+               (DirectRCommonCodes.CommonCodes.NVar 11)))
+         final =
+       Some r ->
+       DirectRKernel.Core.Typed G
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (node a g)) xs)
+         r
+where
+?n : [ |- nat]
+Chars 624 - 647 [Check~node_application.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 648 - 683 [Print~Assumptions~node_applica...] 0.011 secs (0.011u,0.s)
+node_beta
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       NB.NamedSpine G
+         (node_fields a g ++
+          proof_fields (DirectRCommonCodes.CommonCodes.NVar 10))
+         e xs final ->
+       NT.evaluate node_body final = Some r ->
+       DefEq.def_equiv nat ?n
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (node a g)) xs)
+         r
+where
+?n : [ |- nat]
+Chars 684 - 700 [Check~node_beta.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 701 - 729 [Print~Assumptions~node_beta.] 0.002 secs (0.002u,0.s)
+consume_application
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       NB.NamedSpine G (consume_fields a g) e xs final ->
+       NT.evaluate
+         (DirectRCommonCodes.CommonCodes.NApp
+            (DirectRCommonCodes.CommonCodes.NVar 30)
+            (DirectRCommonCodes.CommonCodes.NVar 13))
+         final =
+       Some r ->
+       DirectRKernel.Core.Typed G
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (consume a g)) xs)
+         r
+where
+?n : [ |- nat]
+Chars 730 - 756 [Check~consume_application.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 757 - 795 [Print~Assumptions~consume_appl...] 0.011 secs (0.011u,0.s)
+consume_beta
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       NB.NamedSpine G (consume_fields a g) e xs final ->
+       NT.evaluate consume_body final = Some r ->
+       DefEq.def_equiv nat ?n
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (consume a g)) xs)
+         r
+where
+?n : [ |- nat]
+Chars 796 - 815 [Check~consume_beta.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 816 - 847 [Print~Assumptions~consume_beta.] 0.003 secs (0.002u,0.s)
+node_fold_typed
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (node_fold a g)
+         (node_fold_type a g)
+Chars 848 - 870 [Check~node_fold_typed.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 871 - 905 [Print~Assumptions~node_fold_ty...] 0.01 secs (0.01u,0.s)
+node_fold_result_typed
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (node_fold_result a g)
+         (node_fold_type a g)
+Chars 906 - 935 [Check~node_fold_result_typed.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 936 - 977 [Print~Assumptions~node_fold_re...] 0.009 secs (0.009u,0.s)
+node_fold_beta
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DefEq.def_equiv nat 0 (node_fold a g) (node_fold_result a g)
+Chars 978 - 999 [Check~node_fold_beta.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 1000 - 1033 [Print~Assumptions~node_fold_beta.] 0.009 secs (0.009u,0.s)

@@ -1,0 +1,49 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+Warning:
+/private/tmp/pts-rk-fragments-fresh.d7RHpo/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-fragments-fresh.d7RHpo/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalFiniteDictionaries.{glob,vo}
+Warning:
+/private/tmp/pts-rk-fragments-fresh.d7RHpo/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-fragments-fresh.d7RHpo/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/FiniteDictionaryRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-fragments-fresh.d7RHpo/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-fragments-fresh.d7RHpo/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/DictionaryRejection.v", line 13, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/DictionaryRejection.v", line 13, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/DictionaryRejection.v", line 24, characters 43-44:
+Error: Syntax error: ']' expected after [term level 200] (in [term]).
+
+File "theories/self_consistency/dune", lines 1-21, characters 0-1286:
+ 1 | (rocq.theory
+ 2 |  (name PTSrk.SelfConsistency)
+ 3 |  (package pts-rk)
+....
+19 |    FiniteFragmentAudit Audit)
+20 |  (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity
+21 |    PTSrk.Combinatory Interpretation_of_R))
+        rocq theories/self_consistency/DictionaryRejection.{glob,vo} (exit 1)

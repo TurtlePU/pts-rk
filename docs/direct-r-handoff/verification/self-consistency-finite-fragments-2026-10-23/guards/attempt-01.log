@@ -1,0 +1,18 @@
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 12, characters 0-24:
+Warning: Trying to mask the absolute name "FiniteCaseGuards"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 67, characters 35-38:
+Error:
+In environment
+A : Term nat 0
+a : nat
+HA : Typed ε A (𝓤 a)
+n : nat
+G : Ctx nat n
+Unable to unify "?G ⊢ Π ?A ?B ⇐ 𝓤 (Nat.max (S ?a) ?b)" with
+ "G ⊢ Π (lift_closed A) (shift (𝓤 2)) ⇐ 𝓤 (S a)".
+

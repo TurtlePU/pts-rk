@@ -1,0 +1,267 @@
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+CheckerSourceGraph.source_fields_agreement
+     : forall (p : CheckerSourceGraph.NC.Certificate ?n)
+         (t A : Syntax.Term nat ?n),
+       CheckerSourceGraph.SourceFields p t A ->
+       t = CheckerSourceGraph.NC.subject p /\
+       A = CheckerSourceGraph.NC.type p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.source_fields_coverage
+     : forall p : CheckerSourceGraph.NC.Certificate ?n,
+       CheckerSourceGraph.SourceFields p (CheckerSourceGraph.NC.subject p)
+         (CheckerSourceGraph.NC.type p)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.source_fields_unique
+     : forall (p : CheckerSourceGraph.NC.Certificate ?n)
+         (t A u B : Syntax.Term nat ?n),
+       CheckerSourceGraph.SourceFields p t A ->
+       CheckerSourceGraph.SourceFields p u B -> t = u /\ A = B
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.step_fields_agreement
+     : forall (p : CheckerSourceGraph.NC.StepCode ?n)
+         (t u : Syntax.Term nat ?n),
+       CheckerSourceGraph.StepFields p t u ->
+       t = CheckerSourceGraph.NC.step_source p /\
+       u = CheckerSourceGraph.NC.step_target p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.step_fields_coverage
+     : forall p : CheckerSourceGraph.NC.StepCode ?n,
+       CheckerSourceGraph.StepFields p (CheckerSourceGraph.NC.step_source p)
+         (CheckerSourceGraph.NC.step_target p)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.step_fields_unique
+     : forall (p : CheckerSourceGraph.NC.StepCode ?n)
+         (t u v w : Syntax.Term nat ?n),
+       CheckerSourceGraph.StepFields p t u ->
+       CheckerSourceGraph.StepFields p v w -> t = v /\ u = w
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_fields_agreement
+     : forall (p : CheckerSourceGraph.NC.EqualityCode ?n)
+         (t u : Syntax.Term nat ?n),
+       CheckerSourceGraph.EqualityFields p t u ->
+       t = CheckerSourceGraph.NC.equality_source p /\
+       u = CheckerSourceGraph.NC.equality_target p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_fields_coverage
+     : forall p : CheckerSourceGraph.NC.EqualityCode ?n,
+       CheckerSourceGraph.EqualityFields p
+         (CheckerSourceGraph.NC.equality_source p)
+         (CheckerSourceGraph.NC.equality_target p)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_fields_unique
+     : forall (p : CheckerSourceGraph.NC.EqualityCode ?n)
+         (t u v w : Syntax.Term nat ?n),
+       CheckerSourceGraph.EqualityFields p t u ->
+       CheckerSourceGraph.EqualityFields p v w -> t = v /\ u = w
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.lookup_agreement
+     : forall (G : Context.Ctx nat ?n) (i : Syntax.Fin ?n)
+         (A : Syntax.Term nat ?n),
+       CheckerSourceGraph.Lookup G i A -> A = Context.index G i
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.lookup_coverage
+     : forall (G : Context.Ctx nat ?n) (i : Syntax.Fin ?n),
+       CheckerSourceGraph.Lookup G i (Context.index G i)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.matches_agreement
+     : forall (p : CheckerSourceGraph.NC.Certificate ?n)
+         (t A : Syntax.Term nat ?n) (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.Matches p t A e ->
+       e = CheckerSourceGraph.CC.matches_expression p t A
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.matches_coverage
+     : forall (p : CheckerSourceGraph.NC.Certificate ?n)
+         (t A : Syntax.Term nat ?n),
+       CheckerSourceGraph.Matches p t A
+         (CheckerSourceGraph.CC.matches_expression p t A)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_graph_agreement
+     : forall (p : CheckerSourceGraph.NC.EqualityCode ?n)
+         (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.EqualityGraph p e ->
+       e = CheckerSourceGraph.CC.equality_expression p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_graph_coverage
+     : forall p : CheckerSourceGraph.NC.EqualityCode ?n,
+       CheckerSourceGraph.EqualityGraph p
+         (CheckerSourceGraph.CC.equality_expression p)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_graph_unique
+     : forall (p : CheckerSourceGraph.NC.EqualityCode ?n)
+         (e f : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.EqualityGraph p e ->
+       CheckerSourceGraph.EqualityGraph p f -> e = f
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_graph_output
+     : forall (p : CheckerSourceGraph.NC.EqualityCode ?n)
+         (e : CheckerSourceGraph.CC.Expr) (b : bool),
+       CheckerSourceGraph.EqualityGraph p e ->
+       CheckerSourceGraph.CC.eval e = b <->
+       CheckerSourceGraph.NC.equality_check p = b
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.check_graph_agreement
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerSourceGraph.NC.Certificate ?n)
+         (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.CheckGraph G p e ->
+       e = CheckerSourceGraph.CC.check_expression G p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.check_graph_coverage
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerSourceGraph.NC.Certificate ?n),
+       CheckerSourceGraph.CheckGraph G p
+         (CheckerSourceGraph.CC.check_expression G p)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.check_graph_unique
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerSourceGraph.NC.Certificate ?n)
+         (e f : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.CheckGraph G p e ->
+       CheckerSourceGraph.CheckGraph G p f -> e = f
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.check_graph_output
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerSourceGraph.NC.Certificate ?n)
+         (e : CheckerSourceGraph.CC.Expr) (b : bool),
+       CheckerSourceGraph.CheckGraph G p e ->
+       CheckerSourceGraph.CC.eval e = b <->
+       CheckerSourceGraph.NC.check G p = b
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.context_graph_agreement
+     : forall (c : CheckerSourceGraph.NC.ContextCode ?n)
+         (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.ContextGraph c e ->
+       e = CheckerSourceGraph.CC.context_expression c
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.context_graph_coverage
+     : forall c : CheckerSourceGraph.NC.ContextCode ?n,
+       CheckerSourceGraph.ContextGraph c
+         (CheckerSourceGraph.CC.context_expression c)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.context_graph_unique
+     : forall (c : CheckerSourceGraph.NC.ContextCode ?n)
+         (e f : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.ContextGraph c e ->
+       CheckerSourceGraph.ContextGraph c f -> e = f
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.context_graph_output
+     : forall (c : CheckerSourceGraph.NC.ContextCode ?n)
+         (e : CheckerSourceGraph.CC.Expr) (b : bool),
+       CheckerSourceGraph.ContextGraph c e ->
+       CheckerSourceGraph.CC.eval e = b <->
+       CheckerSourceGraph.NC.context_check c = b
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.raw_graph_agreement
+     : forall (q : StructuralCodes.code) (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.RawGraph q e ->
+       e = CheckerSourceGraph.CC.raw_check_expression q
+Closed under the global context
+CheckerSourceGraph.raw_graph_coverage
+     : forall q : StructuralCodes.code,
+       CheckerSourceGraph.RawGraph q
+         (CheckerSourceGraph.CC.raw_check_expression q)
+Closed under the global context
+CheckerSourceGraph.raw_graph_unique
+     : forall (q : StructuralCodes.code) (e f : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.RawGraph q e ->
+       CheckerSourceGraph.RawGraph q f -> e = f
+Closed under the global context
+CheckerSourceGraph.raw_graph_output
+     : forall (q : StructuralCodes.code) (e : CheckerSourceGraph.CC.Expr)
+         (b : bool),
+       CheckerSourceGraph.RawGraph q e ->
+       CheckerSourceGraph.CC.eval e = b <->
+       CertificateSerialization.raw_check q = b
+Closed under the global context
+CheckerSourceGraph.bottom_graph_agreement
+     : forall (q : StructuralCodes.code) (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.BottomGraph q e ->
+       e = CheckerSourceGraph.CC.raw_bottom_expression q
+Closed under the global context
+CheckerSourceGraph.bottom_graph_coverage
+     : forall q : StructuralCodes.code,
+       CheckerSourceGraph.BottomGraph q
+         (CheckerSourceGraph.CC.raw_bottom_expression q)
+Closed under the global context
+CheckerSourceGraph.bottom_graph_unique
+     : forall (q : StructuralCodes.code) (e f : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.BottomGraph q e ->
+       CheckerSourceGraph.BottomGraph q f -> e = f
+Closed under the global context
+CheckerSourceGraph.bottom_graph_output
+     : forall (q : StructuralCodes.code) (e : CheckerSourceGraph.CC.Expr)
+         (b : bool),
+       CheckerSourceGraph.BottomGraph q e ->
+       CheckerSourceGraph.CC.eval e = b <->
+       CertificateSerialization.raw_bottom_check q = b
+Closed under the global context
+CheckerSourceGraph.rejected_source_self_comparison_excluded
+     : forall q : StructuralCodes.code,
+       CertificateSerialization.raw_check q = false ->
+       ~ CheckerSourceGraph.RawGraph q (CheckerSourceGraph.CC.Compare q q)
+Closed under the global context
+CheckerSourceGraph.scoped_counterexample_excluded
+     : let q :=
+         CertificateSerialization.encode_input
+           CheckerSourceGraph.NC.EmptyContext
+           CheckerSourceGraph.CC.bad_application
+         in
+       ~ CheckerSourceGraph.RawGraph q (CheckerSourceGraph.CC.Compare q q)
+Closed under the global context

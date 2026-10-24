@@ -1,0 +1,12 @@
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/ComputationBoundary.v", line 154, characters 4-59:
+Error:
+ The relation (def_equiv nat 0) is not a declared transitive relation. Maybe you need to require the Corelib.Classes.RelationClasses library
+

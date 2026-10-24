@@ -1,0 +1,37 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 66 [From~PTSrk.SelfConsistency~Req...] 0.122 secs (0.101u,0.019s)
+Closed under the global context
+Chars 67 - 146 [Print~Assumptions~InternalComp...] 0.018 secs (0.014u,0.003s)
+Closed under the global context
+Chars 147 - 231 [Print~Assumptions~InternalComp...] 0.021 secs (0.013u,0.002s)
+Closed under the global context
+Chars 232 - 314 [Print~Assumptions~InternalComp...] 0.037 secs (0.035u,0.001s)
+Closed under the global context
+Chars 315 - 397 [Print~Assumptions~InternalComp...] 0.012 secs (0.01u,0.s)
+Closed under the global context
+Chars 398 - 484 [Print~Assumptions~InternalComp...] 0.011 secs (0.01u,0.s)
+Closed under the global context
+Chars 485 - 568 [Print~Assumptions~InternalComp...] 0.018 secs (0.016u,0.s)
+Closed under the global context
+Chars 569 - 656 [Print~Assumptions~InternalComp...] 0.017 secs (0.014u,0.s)
+Closed under the global context
+Chars 657 - 749 [Print~Assumptions~InternalComp...] 0.017 secs (0.015u,0.s)
+Closed under the global context
+Chars 750 - 836 [Print~Assumptions~InternalComp...] 0.013 secs (0.013u,0.s)
+Closed under the global context
+Chars 837 - 929 [Print~Assumptions~InternalComp...] 0.018 secs (0.018u,0.s)
+Closed under the global context
+Chars 930 - 1020 [Print~Assumptions~InternalComp...] 0.015 secs (0.015u,0.s)
+Closed under the global context
+Chars 1021 - 1114 [Print~Assumptions~InternalComp...] 0.029 secs (0.029u,0.s)
+Closed under the global context
+Chars 1115 - 1213 [Print~Assumptions~InternalComp...] 0.037 secs (0.035u,0.s)
+Closed under the global context
+Chars 1214 - 1312 [Print~Assumptions~InternalComp...] 0.034 secs (0.03u,0.s)

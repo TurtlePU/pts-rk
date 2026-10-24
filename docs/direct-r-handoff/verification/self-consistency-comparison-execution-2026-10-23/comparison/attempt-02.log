@@ -1,0 +1,12 @@
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/InternalCodeComparison.v", line 10, characters 58-73:
+Error: Unable to locate library
+InternalCarrier with prefix PTSrk.SelfConsistency (while searching for a .vos file).
+

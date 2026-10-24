@@ -1,0 +1,31 @@
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 12, characters 0-24:
+Warning: Trying to mask the absolute name "FiniteCaseGuards"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 150, characters 42-44:
+Error:
+In environment
+A, d : Term nat 0
+cs : list (Term nat 0)
+IH :
+  forall (i : nat) (c : Term nat 0) (n : nat) (G : Ctx nat n)
+    (P : Term nat n),
+  Forall (fun c0 : Term nat 0 => Typed ε c0 A) cs ->
+  Typed G P (motive_type A) ->
+  nth_error cs i = Some c ->
+  Typed G (select_case cs i P) (cases_type cs P (point_type P c))
+n : nat
+G : Ctx nat n
+P : Term nat n
+Hcs : Forall (fun c : Term nat 0 => Typed ε c A) (d :: cs)
+HP : Typed G P (motive_type A)
+H1 : Typed ε d A
+H2 : Forall (fun c : Term nat 0 => Typed ε c A) cs
+HP' : Typed (G & point_type P d) (shift P) (motive_type A)
+Unable to unify "?G ⊢ var ?i ⇐ ?G !! ?i" with
+ "G & point_type P d ⊢ var fzero
+  ⇐ rename (fun x : Fin n => fsucc x) (point_type P d)".
+

@@ -1,0 +1,323 @@
+Rc files read (in order):
+  NONE
+Latexmk: This is Latexmk, John Collins, 9 March 2026. Version 4.88.
+No existing .aux file, so I'll make a simple one, and require run of *latex.
+Latexmk: applying rule 'lualatex'...
+Rule 'lualatex':  Reasons for rerun
+Category 'other':
+  Rerun of 'lualatex' forced or previously required:
+    Reason or flag: 'Initial setup'
+
+------------
+Run number 1 of rule 'lualatex'
+------------
+------------
+Running 'lualatex  -interaction=nonstopmode -halt-on-error -recorder  "DIRECT_ROADMAP.tex"'
+------------
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
+ restricted system commands enabled.
+(./DIRECT_ROADMAP.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ (./markdown.cls
+Document Class: markdown 2026/06/25 Lua Markdown document class
+(/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/lualatex/luacode/luacode.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifluatex.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
+(/usr/local/texlive/2026/texmf-dist/tex/luatex/ctablestack/ctablestack.sty)))
+markdown class: extracted base class `article' with options `11pt,a4paper' from
+ development-preamble.tex
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/size11.clo))
+(./DIRECT_ROADMAP.markdown.preamble.tex
+(/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/titling/titling.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/preprint/authblk.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/parskip/parskip.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype-luatex.def)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.cfg))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fvextra/fvextra.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/upquote/upquote.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/textcomp.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/lineno/lineno.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty)) (/usr/local/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hluatex.def
+(/usr/local/texlive/2026/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (./markdown.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-luatex.def))
+(./markdown/markdown.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/lt3luabridge/lt3luabridge.tex))
+) (./markdown/markdownthemewitiko_markdown_defaults.sty
+(./markdown/markdownthemewitiko_markdown_defaults.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/paralist/paralist.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/csvsimple/csvsimple.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/csvsimple/csvsimple-legacy.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+) (/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
+tered.code.tex))) (/usr/local/texlive/2026/texmf-dist/tex/latex/base/ifthen.sty
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/tools/shellesc.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-def/luatex.def)))))
+markdown class: prepared Markdown body from DIRECT_ROADMAP.tex to DIRECT_ROADMA
+P.markdown.body.md) (./DIRECT_ROADMAP.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
+) (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(./_markdown_DIRECT_ROADMAP/3f832d9f5b4b3bb3187bd5d9e0892a95.md.tex
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg) [1{/usr/loc
+al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
+[5] [6] [7]) [8] (./DIRECT_ROADMAP.aux)
+
+Package rerunfilecheck Warning: File `DIRECT_ROADMAP.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+)
+ 667 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 7 glue, 4 kern, 1 glyph, 28 attribute, 64 glue_spe
+c, 28 attribute_list, 1 write nodes
+   avail lists: 1:4,2:410,3:189,4:72,5:461,6:51,7:8763,8:64,9:308,10:12,11:823
+</usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.ot
+f></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman6-regular
+.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman8-regu
+lar.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmmono10-r
+egular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman
+12-bold.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroma
+n10-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lm
+roman10-bold.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/l
+mroman12-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/
+lm/lmroman17-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmss10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symb
+ols/msam10.pfb>
+Output written on DIRECT_ROADMAP.pdf (8 pages, 159222 bytes).
+Transcript written on DIRECT_ROADMAP.log.
+Latexmk: Getting log file 'DIRECT_ROADMAP.log'
+Latexmk: Examining 'DIRECT_ROADMAP.fls'
+Latexmk: Examining 'DIRECT_ROADMAP.log'
+Latexmk: References changed.
+Latexmk: Log file says output to 'DIRECT_ROADMAP.pdf'
+Latexmk: applying rule 'lualatex'...
+Rule 'lualatex':  Reasons for rerun
+Changed files or newly in use/created:
+  DIRECT_ROADMAP.aux
+  DIRECT_ROADMAP.markdown.body.md
+  DIRECT_ROADMAP.markdown.preamble.tex
+  DIRECT_ROADMAP.out
+  _markdown_DIRECT_ROADMAP/3f832d9f5b4b3bb3187bd5d9e0892a95.md.tex
+
+------------
+Run number 2 of rule 'lualatex'
+------------
+------------
+Running 'lualatex  -interaction=nonstopmode -halt-on-error -recorder  "DIRECT_ROADMAP.tex"'
+------------
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
+ restricted system commands enabled.
+(./DIRECT_ROADMAP.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ (./markdown.cls
+Document Class: markdown 2026/06/25 Lua Markdown document class
+(/usr/local/texlive/2026/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/lualatex/luacode/luacode.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifluatex.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
+(/usr/local/texlive/2026/texmf-dist/tex/luatex/ctablestack/ctablestack.sty)))
+markdown class: extracted base class `article' with options `11pt,a4paper' from
+ development-preamble.tex
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/size11.clo))
+(./DIRECT_ROADMAP.markdown.preamble.tex
+(/usr/local/texlive/2026/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/titling/titling.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/preprint/authblk.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/parskip/parskip.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype-luatex.def)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/microtype.cfg))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fvextra/fvextra.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/upquote/upquote.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/base/textcomp.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/lineno/lineno.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty)) (/usr/local/texlive/2026/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/hyperref/hluatex.def
+(/usr/local/texlive/2026/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2026/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (./markdown.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/l3backend/l3backend-luatex.def))
+(./markdown/markdown.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/lt3luabridge/lt3luabridge.tex))
+) (./markdown/markdownthemewitiko_markdown_defaults.sty
+(./markdown/markdownthemewitiko_markdown_defaults.tex)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/paralist/paralist.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/csvsimple/csvsimple.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/csvsimple/csvsimple-legacy.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x)
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+) (/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/local/texlive/2026/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
+tered.code.tex))) (/usr/local/texlive/2026/texmf-dist/tex/latex/base/ifthen.sty
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/tools/shellesc.sty))
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/graphics-def/luatex.def)))))
+markdown class: prepared Markdown body from DIRECT_ROADMAP.tex to DIRECT_ROADMA
+P.markdown.body.md) (./DIRECT_ROADMAP.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
+) (./DIRECT_ROADMAP.out) (./DIRECT_ROADMAP.out)
+(/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2026/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/local/texlive/2026/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+(./_markdown_DIRECT_ROADMAP/3f832d9f5b4b3bb3187bd5d9e0892a95.md.tex
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/microtype/mt-msb.cfg) [1{/usr/loc
+al/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
+[5] [6] [7]) [8] (./DIRECT_ROADMAP.aux))
+ 667 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 7 glue, 4 kern, 1 glyph, 28 attribute, 64 glue_spe
+c, 28 attribute_list, 1 write nodes
+   avail lists: 1:4,2:410,3:189,4:72,5:461,6:51,7:8763,8:64,9:308,10:12,11:823
+</usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.ot
+f></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman6-regular
+.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman8-regu
+lar.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmmono10-r
+egular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroman
+12-bold.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lmroma
+n10-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/lm
+roman10-bold.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/lm/l
+mroman12-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/opentype/public/
+lm/lmroman17-regular.otf></usr/local/texlive/2026/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmss10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symb
+ols/msam10.pfb>
+Output written on DIRECT_ROADMAP.pdf (8 pages, 160551 bytes).
+Transcript written on DIRECT_ROADMAP.log.
+Latexmk: Getting log file 'DIRECT_ROADMAP.log'
+Latexmk: Examining 'DIRECT_ROADMAP.fls'
+Latexmk: Examining 'DIRECT_ROADMAP.log'
+Latexmk: Log file says output to 'DIRECT_ROADMAP.pdf'
+Latexmk: All targets (DIRECT_ROADMAP.pdf) are up-to-date
+

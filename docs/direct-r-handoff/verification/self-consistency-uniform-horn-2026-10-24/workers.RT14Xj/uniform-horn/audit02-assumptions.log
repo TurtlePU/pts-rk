@@ -1,0 +1,248 @@
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 54 [From~PTSrk.SelfConsistency~Req...] 0.113 secs (0.091u,0.022s)
+Chars 55 - 86 [Import~UniformHorn.UniformHorn.] 0. secs (0.u,0.s)
+premise_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (premise atom_rank)
+         (premise_type atom_rank)
+Chars 87 - 108 [Check~premise_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 109 - 142 [Print~Assumptions~premise_sorted.] 0.013 secs (0.011u,0.002s)
+handler_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (handler atom_rank)
+         (handler_type atom_rank)
+Chars 143 - 164 [Check~handler_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 165 - 198 [Print~Assumptions~handler_sorted.] 0.012 secs (0.009u,0.001s)
+family_type_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (family_type atom_rank)
+         (Syntax.𝓤 3)
+Chars 199 - 224 [Check~family_type_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 225 - 262 [Print~Assumptions~family_type_...] 0.014 secs (0.009u,0.001s)
+family_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (family atom_rank)
+         (family_type atom_rank)
+Chars 263 - 283 [Check~family_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 284 - 316 [Print~Assumptions~family_sorted.] 0.037 secs (0.034u,0.002s)
+node_type_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (node_type atom_rank) (Syntax.𝓤 5)
+Chars 317 - 340 [Check~node_type_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 341 - 376 [Print~Assumptions~node_type_so...] 0.009 secs (0.009u,0.s)
+node_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (node atom_rank)
+         (node_type atom_rank)
+Chars 377 - 394 [Check~node_typed.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 395 - 424 [Print~Assumptions~node_typed.] 0.009 secs (0.009u,0.s)
+consume_type_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (consume_type atom_rank)
+         (Syntax.𝓤 5)
+Chars 425 - 451 [Check~consume_type_sorted.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 452 - 490 [Print~Assumptions~consume_type...] 0.016 secs (0.016u,0.s)
+consume_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (consume atom_rank)
+         (consume_type atom_rank)
+Chars 491 - 511 [Check~consume_typed.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 512 - 544 [Print~Assumptions~consume_typed.] 0.009 secs (0.009u,0.s)
+apply_spine_beta
+     : forall (f g : Syntax.Term nat ?n) (xs : list (Syntax.Term nat ?n)),
+       DefEq.def_equiv nat ?n f g ->
+       DefEq.def_equiv nat ?n (NB.apply_spine f xs) (NB.apply_spine g xs)
+where
+?n : [ |- nat]
+Chars 545 - 568 [Check~apply_spine_beta.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 569 - 604 [Print~Assumptions~apply_spine_...] 0. secs (0.u,0.s)
+named_spine_beta
+     : forall (G : Context.Ctx nat ?n)
+         (fields : list (nat * DirectRCommonCodes.CommonCodes.named))
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n),
+       NB.NamedSpine G fields e xs final ->
+       forall (body : DirectRCommonCodes.CommonCodes.named)
+         (f r : Syntax.Term nat ?n),
+       NT.evaluate (DirectRCommonCodes.CommonCodes.nlams fields body) e =
+       Some f ->
+       NT.evaluate body final = Some r ->
+       DefEq.def_equiv nat ?n (NB.apply_spine f xs) r
+where
+?n : [ |- nat]
+Chars 605 - 628 [Check~named_spine_beta.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 629 - 664 [Print~Assumptions~named_spine_...] 0.002 secs (0.001u,0.s)
+family_application
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n),
+       atom_rank = 1 \/ atom_rank = 2 ->
+       NB.NamedSpine G (family_fields atom_rank) e xs final ->
+       DirectRKernel.Core.Typed G
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (family atom_rank))
+            xs)
+         (Syntax.𝓤 4)
+where
+?n : [ |- nat]
+Chars 665 - 690 [Check~family_application.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 691 - 728 [Print~Assumptions~family_appli...] 0.01 secs (0.01u,0.s)
+family_beta
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       NB.NamedSpine G (family_fields atom_rank) e xs final ->
+       NT.evaluate
+         (Proof (DirectRCommonCodes.CommonCodes.NVar 10)
+            (DirectRCommonCodes.CommonCodes.NVar 13))
+         final =
+       Some r ->
+       DefEq.def_equiv nat ?n
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (family atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Chars 729 - 747 [Check~family_beta.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 748 - 778 [Print~Assumptions~family_beta.] 0.002 secs (0.002u,0.s)
+node_application
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       atom_rank = 1 \/ atom_rank = 2 ->
+       NB.NamedSpine G (node_fields atom_rank) e xs final ->
+       NT.evaluate
+         (Proof (DirectRCommonCodes.CommonCodes.NVar 10)
+            (Head (DirectRCommonCodes.CommonCodes.NVar 10)
+               (DirectRCommonCodes.CommonCodes.NVar 11)))
+         final =
+       Some r ->
+       DirectRKernel.Core.Typed G
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (node atom_rank)) xs)
+         r
+where
+?n : [ |- nat]
+Chars 779 - 802 [Check~node_application.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 803 - 838 [Print~Assumptions~node_applica...] 0.011 secs (0.011u,0.s)
+node_beta
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       NB.NamedSpine G
+         (node_fields atom_rank ++
+          proof_fields (DirectRCommonCodes.CommonCodes.NVar 10))
+         e xs final ->
+       NT.evaluate node_body final = Some r ->
+       DefEq.def_equiv nat ?n
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (node atom_rank)) xs)
+         r
+where
+?n : [ |- nat]
+Chars 839 - 855 [Check~node_beta.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 856 - 884 [Print~Assumptions~node_beta.] 0.002 secs (0.002u,0.s)
+consume_application
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       atom_rank = 1 \/ atom_rank = 2 ->
+       NB.NamedSpine G (consume_fields atom_rank) e xs final ->
+       NT.evaluate
+         (DirectRCommonCodes.CommonCodes.NApp
+            (DirectRCommonCodes.CommonCodes.NVar 30)
+            (DirectRCommonCodes.CommonCodes.NVar 13))
+         final =
+       Some r ->
+       DirectRKernel.Core.Typed G
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (consume atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Chars 885 - 911 [Check~consume_application.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 912 - 950 [Print~Assumptions~consume_appl...] 0.011 secs (0.011u,0.s)
+consume_beta
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       NB.NamedSpine G (consume_fields atom_rank) e xs final ->
+       NT.evaluate consume_body final = Some r ->
+       DefEq.def_equiv nat ?n
+         (NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed (consume atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Chars 951 - 970 [Check~consume_beta.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 971 - 1002 [Print~Assumptions~consume_beta.] 0.002 secs (0.002u,0.s)
+node_fold_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (node_fold atom_rank)
+         (node_fold_type atom_rank)
+Chars 1003 - 1025 [Check~node_fold_typed.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 1026 - 1060 [Print~Assumptions~node_fold_ty...] 0.009 secs (0.009u,0.s)
+node_fold_result_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (node_fold_result atom_rank)
+         (node_fold_type atom_rank)
+Chars 1061 - 1090 [Check~node_fold_result_typed.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 1091 - 1132 [Print~Assumptions~node_fold_re...] 0.014 secs (0.014u,0.s)
+node_fold_beta
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DefEq.def_equiv nat 0 (node_fold atom_rank)
+         (node_fold_result atom_rank)
+Chars 1133 - 1154 [Check~node_fold_beta.] 0. secs (0.u,0.s)
+Closed under the global context
+Chars 1155 - 1188 [Print~Assumptions~node_fold_beta.] 0.004 secs (0.004u,0.s)

@@ -1,0 +1,22 @@
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 12, characters 0-24:
+Warning: Trying to mask the absolute name "FiniteCaseGuards"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 99, characters 61-63:
+Error:
+In environment
+A : Term nat 0
+a : nat
+cs : list (Term nat 0)
+n : nat
+G : Ctx nat n
+x : Term nat n
+HA : Typed ε A (𝓤 a)
+Hcs : Forall (fun c : Term nat 0 => Typed ε c A) cs
+Hx : Typed G x (lift_closed A)
+Unable to unify "?G ⊢ var ?i ⇐ ?G !! ?i" with
+ "G & motive_type A ⊢ var fzero ⇐ rename fsucc (motive_type A)".
+

@@ -1,0 +1,323 @@
+A direct route to internal consistency of PTS-rk
+October 23, 2026
+Abstract
+The goal is an actual original-PTS inhabitant of a resource-relativized consistency
+statement, without using H<ω or Elementary Arithmetic as intermediate proof theories.
+The development already supplies faithful certificate codes, source-rank compression, an
+internal rejection proof for every externally bounded raw-code fragment, and fixed internal
+dictionary and comparison operations. Independent local source graphs now prove source-
+to-operation agreement externally, and one fixed internal term proves residual execution
+agreement for arbitrary represented execution witnesses. The combinatory development also
+supplies internal soundness for arbitrary inhabitants of independent finite Horn proof types.
+Its fragment parameters remain external. The missing bridge is an internal translation
+from admitted original-PTS proof codes, with source, endpoint and resource provenance;
+uniform internal source soundness remains open. Reusing the Horn consumer can replace
+a separate internal normalization/preservation argument. It is not a claim of internal
+consistency.
+1 Target and proof obligations
+Use the original annotated syntax, Typing.typ, and Ranks.RankSorts throughout. In particular,
+Ui : U0, rank(Πx : A.B) = max(a + 1, b) (A : Ua, B : Ub), ⊥ = ΠX : U0.X : U1.
+There is no cumulativity, eta rule, new primitive, or assumed soundness principle. A Rocq
+theorem that no native term inhabits ⊥ is an external result; the target here is a closed PTS
+term of a specified consistency type.
+Let D be a fixed carrier of complete proof codes and B a fixed carrier of resources. Codes include
+contexts, annotations, binary ranks, conversion instructions and any supplied computation
+witnesses. Define independently:
+• Acc⊥(q): the source certificate passes its local rule checks and concludes a closed term
+at the literal syntactic type ⊥;
+• Res(q, b): structural generation, envelopes and the operation capacities needed for the
+proof.
+Acceptance must not contain native typing or semantic soundness as a field. Resources must
+not assert rejection, validity of a source model, or existence of a normalizing history. These
+are conclusions to derive. Standard rejected and malformed codes must also receive resources.
+The main remaining theorem is an actual term
+bs : Πq : D.Πb : B. Res(q, b) → Acc⊥(q) → ⊥. (BS)
+All its carriers and quantified types must use one fixed finite collection of ranks, independently
+of represented source ranks, proof lengths and budgets.
+1
+1.1 Final resource elimination
+The following continuation package avoids demanding a uniform budget selector:
+Adm(q) := ΠZ : U1. (Πb : B.Res(q, b) → Z) → Z,
+Consdir := Πq : D.Adm(q) → Acc⊥(q) → ⊥.
+Once (BS) is constructed, the proposed final term is
+λq a h. a ⊥ (λb r.bs q b r h).
+Explicit resources introduce admission by λZ k.k b r. For D : Ud, B : Ue, Res(q, b) : Ur
+and Acc⊥(q) : Us, the calculated formation ranks are max(e + 2, r + 2) for Adm(q) and
+max(d + 1, e + 3, r + 3, s + 1) for Consdir. These final builders and their original formation
+derivations remain obligations, not consequences of the displayed notation.
+Adequacy has three separate requirements: admission of every standard raw code, actual
+internal acceptance witnesses for every accepted standard judgment, and completeness of the
+source certificates for original typing. The third is already proved externally. The first two
+must not be obtained by eliminating the externally impossible Bottom case.
+2 Completed foundations and their exact scope
+The library PTSrk.SelfConsistency imports the original kernel and shared annotated assem-
+bler/checker, not an arithmetic interpretation or set model. Its detailed module inventory is in
+README.md; verification commands and assumptions are in EVIDENCE.md.
+• Certificates and serialization: an independent six-rule checker, original-typing ade-
+quacy and faithful annotated raw codes, proved externally.
+• Rank compression: complete inputs are relabeled; checking and Bottom are preserved;
+labels are bounded by serialized size. This is not internal all-source soundness.
+• Syntactic operations: fixed-rank lookup, histories, scope, renaming and annotated
+substitution relations with standard witnesses. Scope is not dependent typing preserva-
+tion.
+• Finite Bottom rejection: rank-four internal rejection at every external complete-code
+size bound, as an externally generated schema.
+• Dictionaries: one rank-five-type polymorphic consumer for represented lists and inde-
+pendent membership evidence. Rejecting branch packages are still externally supplied.
+• Residual execution: actual structural comparison and conjunction with exact native-
+checker output on compiled standard inputs. Source compilation remains external.
+2.1 Why the finite schema is already a genuine internal result
+For an external bound b, enumerate all raw codes
+Qb = {q | codeSize(q) ≤ b}.
+Admission does not test parsing or acceptance. The size counts complete certificates, including
+annotations, binary fields and conversion witnesses. Decoding this finite family supplies one
+conservative rank, subject-size bound and finite label alphabet. The improved combinatory
+normalization results then cover every state along the chosen normalization of every decoded
+2
+accepted closed subject in a common finite syntactic carrier, retaining the original concluding
+type.
+Those normalization and canonicity arguments are external Rocq proofs. Their rejection
+equations certify a finite table of the unchanged Bottom checker raw_bottom_check. For
+selectors ei : Eb naming all entries and this Bottom-checker table fb, an independent finite-case
+guard is
+Canb(x) = ΠP : Eb → U2. P (e0) → · · · → P (ek−1) → P (x) : U3.
+With Holds(v) = v U1 ⊤ ⊥, each branch of P (x) = Holds(fbx) → ⊥ converts to ⊥ → ⊥. Finite
+elimination gives an actual original-PTS term
+cb : Πx : Eb.Canb(x) → Holds(fbx) → ⊥, type(cb) : U4.
+This handles arbitrary guarded inputs, not just canonical selectors. Quotation remains beta-
+injective at each bound. However, the carrier, table and branch proof are chosen externally
+from b.
+Represented Church dictionaries remove the varying case telescope from the consumer: a
+separate All-package holds branch proofs, while Guard/Fill express independent membership
+and unused-branch filling. One internal eliminator consumes them. It does not construct All
+from an arbitrary represented budget. In particular, the identity cannot inhabit Holds(f x) → ⊥
+for symbolic f, x merely by unfolding a fold. The implemented dictionary parameter is E : U1;
+integration with the raw carrier C : U2 still needs an exact-rank adaptation.
+3 Internal computation and represented resources
+3.1 Comparisons retain their operands
+CheckerComparisons compiles the unchanged checker into
+e ::= Truth(b) | Compare(q, r) | Both(e, e
+′).
+It covers all six rules, contexts, conversion instructions and malformed inputs. Compari-
+son leaves contain full raw operands, not precomputed equality answers. Parsing, context
+lookup and computing endpoints, including substitution, currently occur during this external
+compilation.
+InternalCodeComparison provides an independent traversal Zip(x, y) : U4 over the raw carrier
+C : U2. Its clauses describe an atom versus arbitrary input, a pair versus an atom, and two
+pairs with corresponding child traversals. None contains a Boolean answer or rejection claim.
+One comparator of full-type rank five folds these clauses into actual tag tests and conjunctions.
+Its root test opens the Boolean answer type X : U0 before folding C; it does not treat Bool : U1
+as an admissible U0 fold argument.
+A rank-three conjunction-expression carrier and a fixed evaluator of full-type rank four execute
+those comparisons. On the externally compiled standard input, CheckerExecution proves exact
+forward reduction:
+run(compile(q)) β point(b) ⇐⇒ rawCheck(q) = b.
+3
+The Bottom checker has the analogous theorem. Both Boolean outcomes are retained. Raw
+serialization/quotation is faithful, but residual checking programs need not be: different sort
+certificates can yield the same program.
+3.2 Joint traversal: checked interface and remaining construction
+The new representation records joint alignment as data. Write
+J = ΠX : U2. (C → X)29 → (C → C → X)29 → (X → X → X) → X : U4.
+The exponent abbreviates a finite telescope of case arguments. The first case family records an
+atom on the left and the complete right operand; the second records a left pair and right atom;
+the third combines child traversals. Folding at X= C gives actual projections L, R : J → C.
+The literal carrier, constructors, projections and independent guard GoodJ(j) : U6 have checked
+original formation/typing derivations. The intended next operation is
+buildZip : Πj : J.GoodJ(j) → Zip(L(j), R(j)), type(buildZip) : U7.
+This operation and its standard realization are not yet verified. Its proposed motive is
+j → Zip(Lj, Rj) : U4; the existing Zip constructors suggest a single fold, avoiding a nested fold
+requiring unavailable child generation guards. Large conversion checks exhausted resources
+during the attempted proof; that is a proof-engineering limitation, not a mathematical
+obstruction to the construction.
+Only the verified interface remains in the library. Unverified constructor and realization drafts
+are kept separately as design evidence. Even the proposed operation constructs traversal
+evidence from represented joint data; aligning two independent raw inputs and proving
+source-checker agreement would remain separate obligations.
+3.3 Storage bounds now include full operands
+CheckerResourceBounds records both complete operands at every synchronized comparison
+node. For its raw traversal data T (q, r),
+|T (q, r)| ≤ (3 + |q| + |r|) min(|q|, |r|).
+The residual-data encoding retains every expression constructor and operand; it is injective
+even though the executed program need not be. Exact size accounting and original-PTS
+capacity witnesses cover the source, expression data, every comparison operand and every
+recursive traversal payload. One externally constructed envelope covers a whole complete-code
+size-bounded fragment, including malformed and rejected sources.
+These are storage results, not bounds on emitted PTS terms, reduction costs, or the compiler’s
+intermediate allocations. The envelope itself is still generated externally. It does not assert
+that the stored expression is the checker program belonging to the stored source.
+4
+4 Source provenance and internal execution
+4.1 Independent source graphs
+Resource coverage does not determine a program’s meaning. In ComputationBoundary, a scoped
+rejected source q has actual generation, capacity and traversal witnesses, while Compare(q, q)
+returns true. This refutes the resource-only agreement contract in Rocq, not the whole
+consistency programme or an internally quoted universal sentence.
+CheckerSourceGraph repairs this contract at the native level. Its local inductive clauses
+record source fields, beta/equality endpoints, context lookup, all six typing-rule checks,
+context checks and both raw wrappers. Matching nodes retain the two actual operands and
+conjunction topology. No clause assumes acceptance, native typing or evaluator/checker
+agreement. Induction proves agreement with the unchanged compiler, uniqueness, coverage
+of every raw source, and both Boolean outcomes. Consequently, adding this graph to the
+independently generated storage package excludes the self-comparison counterexample.
+Original substitution, context lookup, encoding and decoding in these clauses are still native
+operations. This graph is a specification with proved standard coverage, not yet its internal
+PTS representation.
+4.2 One internal execution-agreement term
+For the existing expression carrier E : U3 and Bool : U1, InternalExecutionGraph independently
+represents the local clauses
+Run(e, b) Run(f, c)
+Run(leaf(b), b),
+Run(both(e, f ), and(b, c)).
+Here b, c are arbitrary Boolean programs, not necessarily canonical selectors. The clauses
+contain no evaluator equation. A Church fold with exact motive rank three gives Run(e, b) : U5.
+Define
+Same(b, c) := ΠP : Bool → U1. P (b) → P (c) : U3.
+The checked original-PTS term
+agree : Πe : E.Πb : Bool. Run(e, b) → Same(evaluate(e), b)
+has full-type rank six and applies to arbitrary represented execution witnesses. Its
+proof folds the local clauses, using the evaluator’s beta laws and predicate transport through
+conjunction. This is exact-rank Leibniz transport, not arbitrary-rank equality or beta equality.
+Taking P= Holds yields an internal acceptance-transport term and one rank-six-type rejection
+operation
+Πe : E. Run(e, false) → Holds(evaluate(e)) → ⊥.
+False execution must first be derived; it is not resource admission and does not itself establish
+source rejection.
+5
+CheckerGraphRealization constructs execution witnesses by recursion on residual syntax. Their
+outputs are the symbolic conjunctions of actual comparison programs, not precomputed checker
+answers. Applying the single internal agreement term and the native source graph gives exact
+standard realizations for both outputs. Ordinary accepted judgments receive actual inhabitants
+of residual acceptance; false outputs receive conditional rejection inhabitants. No external
+Bottom-emptiness argument is used. Raw quotation remains faithful; neither residual programs
+nor these execution witnesses are claimed to encode sources injectively.
+4.3 Represented operations and the remaining boundary
+Original context lookup now has a separate represented operation graph. Literal contexts
+are encoded by empty and ext(g, A); these are not certificate-context codes, which also store
+declaration proofs and ranks. The native erasure between them is explicit. The lookup clauses
+perform one annotated shift at each crossed extension, including index zero:
+Shiftn,n+1(A, A′)
+Lookup(n + 1, ext(g, A), 0, A′),
+Lookup(n, g, i, A) Shiftn,n+1(A, A′)
+Lookup(n + 1, ext(g, B), i + 1, A′).
+The displayed successors abbreviate explicit represented successor edges. Lookup fibers have
+rank 18; a rank-19-type term derives output scope from an arbitrary lookup witness. Whole-
+context scoping is a separate rank-14 guard: the zero clause need not inspect its prefix.
+Executable standard witnesses follow the original Context.index exactly and retain injective
+context quotation. These facts do not prove arbitrary-output functionality, dependent typing,
+or internal certificate-context erasure.
+For comparison, a proof-indexed relation Trace(x, y, z, b) : U6 retains the actual witness
+z : Zip(x, y). Its local clauses specify the corresponding Zip constructor and symbolic tag test
+or conjunction, not evaluator agreement. Formation and all three local Boolean-agreement
+cases are checked for arbitrary open inputs, with child agreement as induction data. The
+full constructor/induction assembly and its intended agreement term remain unverified. A
+separate executable symbolic-output compiler has the correct beta law for every raw operand
+pair, including malformed trees. Standard beta agreement is not a substitute for the missing
+arbitrary-trace theorem.
+The represented source graph should retain context, certificate, subject, type and expression
+indices, sharing each chosen endpoint across its uses. Most endpoint clauses only assemble
+syntax. The substantive operations are:
+• context lookup’s endpoint law and its connection to certificate-context erasure, beyond
+the proved standard witnesses and output-scope law;
+• annotated substitution for application and beta-contraction endpoints, with the coherence
+needed by their comparison consumers;
+• product-rank computation and complete certificate/context parsing, including malformed
+failures.
+Existing replacement evidence proves arbitrary-output scope preservation and realizes the exact
+standard substitution. It does not prove arbitrary endpoint coherence; its general environment
+can be multivalued. Restrict to the actual single-substitution environment and prove the
+consumer’s needed law, not unconditional global functionality. Term scope alone is not full
+certificate parsing.
+Thus native source agreement and internal residual execution agreement are both established,
+but their internal source-indexed combination is not. A total internal compiler remains
+6
+optional. Independently specified local relational traces suffice only after internal agreement
+and standard coverage are proved; inserting evaluator/checker agreement as a field would still
+assume the missing theorem.
+5 Remaining milestones and acceptance gates
+1. Computation witnesses. Residual execution laws are now internal. Prove the endpoint
+laws actually used by the source bridge. On the current checker route this includes
+arbitrary comparison-trace agreement and lookup/substitution coherence. Neither that
+particular implementation nor the proposed joint Zip builder is an unconditional prereq-
+uisite.
+2. Internal source bridge. Translate independently admitted source proof nodes into the
+guarded Horn proof type, or finish the direct checker relation. Cover all six original typing
+rules, contexts, annotated substitution and supplied conversion instructions. Establish
+internal agreement and standard acceptance without inserting them as fields.
+3. Prove operational resource sufficiency. Extend the checked storage envelopes to
+the actual operations, intermediate states and any proof transport performed. Supply
+standard raw-input admission independently of acceptance. Internal compression is
+needed only if the chosen resource construction uses compressed labels.
+4. Internal finite-fragment soundness. Reuse the checked arbitrary-proof Horn con-
+sumer after the source bridge, with the required fragment and false-query interface.
+Alternatively derive bounded normalization or a sufficient negative continuation and
+exclude Bottom internally. Generate rejecting branches; do not assume an All-package.
+5. Assemble uniform bounded soundness. Integrate the dictionary, checker and
+resource interfaces at fixed exact ranks and construct (BS) for arbitrary represented
+budgets.
+6. Eliminate resources and complete adequacy. Construct Consdir, verify its original
+formation/typing, and discharge admission, acceptance realization and any translation
+to the intended historical sentence.
+Resource work and the logical-scope audit can proceed alongside checker agreement and
+soundness. They are not reasons to postpone the hard local laws.
+5.1 Reuse the fixed-fragment Horn soundness consumer
+The combinatory development has finite total models of all six Hilbert rules and all 55
+guarded MM0 axioms at size N ≥ 5, depth d ≥ 3, with unguarded Void denial. It now goes
+beyond standard satisfaction certificates: HornInternalSoundness.arbitrary_proof_sound and
+MM0GuardedInternalReflection.arbitrary_encoded_proof_sound provide actual original-PTS
+consumers for arbitrary inhabitants of an independent Church Horn proof type. This
+type quantifies one rank-one proposition per finite atom, followed by exactly the positive
+clause handlers; it contains no model or source-typing premise. Proof types have rank at most
+three and soundness-function types at most four. The fixed-MM0 positive model premise is
+discharged by indexed_truth_model.
+Reuse this consumer instead of rebuilding internal dependent preservation when a source-to-
+Horn bridge suffices. The outstanding bridge must handle arbitrary admitted original-PTS
+proof codes, not just externally compiled proofs. Exact union coverage currently concerns the
+independent catalogue; original-PTS-to-catalogue completeness remains open. Fragment, query,
+budgets and truth table are external parameters: a uniform rank bound is not one internally
+parameterized interface. The Void specialization also retains external native canonicity in its
+7
+certification. Thus the fixed-fragment Horn core is checked, but milestone 4 for the original
+raw-source interface and an independent internal consistency proof are not complete.
+If normalization is used instead, scope preservation of Syntax.subst must be strengthened
+to the annotated codomain/conversion coherence its consumer needs. Native normalization
+and NativeCanonicity.normal_void_empty do not supply that internal implication. Avoid a
+same-index motive quantifying over its own higher-rank graph proofs: InvariantObstructions
+rules out that rank pattern. Raw intermediate terms in a valid conversion certificate need not
+be typed or strongly normalizing; an untyped beta-loop is formalized. Normalize the accepted
+subject, not those intermediates; use arbitrary-term confluence or a negative transport law for
+the latter.
+6 Simplifications and logical scope
+The direct route needs neither H<ω nor an EA derivation. It also does not inherently need
+a total budget selector, numerical capacity comparison, global lookup functionality, full
+constructor inversion, complete dependent typing reconstruction after every reduction, or a
+normal-form output in the admitted domain. Prove the weaker local invariant and coherence
+actually required by each consumer. Structural resources can replace numeral conversion.
+The PHOAS self-interpreter’s GenericFold supplies typed composition once an algebra is built;
+it does not prove that algebra’s source-rule soundness. Decoding a code of Bottom is useful
+only after independently obtaining that code. No CPS theorem or rank-only self-interpreter is
+a prerequisite here.
+Retain the supplied Zermelo revision’s useful devices: complete-certificate rank compression,
+independent generation guards, guarded finite elimination, and continuation packaging of
+positive resources. Its proof-transport cost claims must be checked for this representation.
+From Pakhomov’s construction1, retain the proof-local use of finite resources and the distinction
+between possible internal consistency formulations. His transfer theorems are not axioms of
+the present development.
+The weak local finite satisfiability results in the combinatory note2 are probably highly
+relevant to investigating a non-Gödelian interpretation. They do not, by themselves, prove the
+required quantitative internal soundness or a failure of a derivability condition. Investigate
+Willard’s stability framework3 and its deduction-system dependence4 as a separate bridge: his
+self-justifying extensions do not give a proof inside unchanged PTS-rk merely by analogy.
+Run that audit now, not only after assembly. Identify the exact domain, proof predicate, avail-
+able proof-combination operations and applicable diagonal/derivability conditions. Standard-
+instance coverage does not identify two internal consistency sentences; a conventional or
+historical claim needs a uniform internal translation. No escape from an applicable incom-
+pleteness theorem is asserted.
+Check original formation/typing, computation laws and fresh transitive assumption reports;
+compare complete recursive kernel inventories with pristine upstream. The resource-only
+counterexample does not refute the entire programme.
+1https://arxiv.org/pdf/1907.00877v2
+2../CombinatoryLogic-rk/CombinatoryPTS-rk.tex
+3https://arxiv.org/pdf/1108.6330v8
+4https://arxiv.org/pdf/1307.0150v2
+8

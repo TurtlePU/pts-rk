@@ -1,0 +1,16 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 290 - 328 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.031u,0.007s)
+Chars 329 - 375 [From~PTSrk~Require~Import-(not...] 0.02 secs (0.015u,0.004s)
+Chars 376 - 429 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 430 - 536 [From~Interpretation_of_R~Requi...] 0.051 secs (0.041u,0.009s)
+Chars 537 - 688 [From~PTSrk.SelfConsistency~Req...] 0. secs (0.u,0.s)
+File "/Users/akuklev/air/pts-rk/theories/self_consistency/InternalComparisonGraph.v", line 11, characters 62-76:
+Error: Unable to locate library
+NamedTemplates with prefix PTSrk.SelfConsistency (while searching for a .vos file).

@@ -1,0 +1,22 @@
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 12, characters 0-24:
+Warning: Trying to mask the absolute name "FiniteCaseGuards"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 173, characters 53-55:
+Error:
+In environment
+cs : list closed_term
+hs : ?T
+n : nat
+G : Ctx nat n
+P : Term nat n
+R : ?T0
+g : ?T1
+The term "hs" has type "?T" while it is expected to have type
+ "list (Term nat n)"
+(cannot instantiate "?T" because "n" is not in its scope: available arguments
+are "cs").
+

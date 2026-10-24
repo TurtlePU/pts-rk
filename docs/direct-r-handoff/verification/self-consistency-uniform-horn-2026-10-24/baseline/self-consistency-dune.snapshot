@@ -1,0 +1,55 @@
+(rocq.theory
+ (name PTSrk.SelfConsistency)
+ (package pts-rk)
+ (modules NativeProofCodes CertificateAdequacy SortRenaming RankCompression
+   StructuralCodes CertificateSerialization SerializationBounds
+   InternalCarrier GuardedTables FiniteRejection
+   ResourcePaths InternalResources ResourceRealization InternalPaths
+   ResourceSeparation PathRealization PathSubstitution LookupInversion InversionRealization
+   LookupHistory HistoryRealization InternalCapacity CapacityBounds
+   RelationalTransport LookupHomomorphisms OccurrenceSafety SimulationRealization
+   CodeSubstitution InternalBinary BinaryRealization InternalScope ScopeRealization
+   InternalRenamingLookup InternalRenaming RenamingLookupRealization RenamingRealization
+   InternalSubstitutionEnvironment SubstitutionEnvironmentRealization
+   InternalTermLookup TermLookupRealization InternalReplacement ReplacementRealization
+   NamedTemplates InvariantObstructions
+   FiniteCodeFragments FiniteSelectorSeparation FiniteCaseGuards
+   FiniteFragmentNormalization FiniteFragmentTables FiniteFragmentRejection
+   InternalFiniteDictionaries FiniteDictionaryRealization DictionaryRejection
+   InternalCodeComparison CheckerComparisons InternalComparisonFolds
+   CodeComparisonRealization CheckerExecution
+   InternalJointTraversal CheckerResourceBounds ComputationBoundary JointResourceAudit
+   CheckerSourceGraph InternalExecutionGraph CheckerGraphRealization SourceProvenanceAudit
+   NamedBeta BooleanAgreement ContextLookupCodes InternalContextLookup ContextLookupRealization
+   InternalComparisonGraph ComparisonGraphRealization OperationProvenanceAudit
+   FiniteFragmentAudit FiniteDictionaryAudit ComparisonExecutionAudit Audit)
+ (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity
+   PTSrk.Combinatory Interpretation_of_R))
+
+(alias
+ (name audit)
+ (deps Audit.vo))
+
+(alias
+ (name finite-fragment-audit)
+ (deps FiniteFragmentAudit.vo))
+
+(alias
+ (name finite-dictionary-audit)
+ (deps FiniteDictionaryAudit.vo))
+
+(alias
+ (name comparison-execution-audit)
+ (deps ComparisonExecutionAudit.vo))
+
+(alias
+ (name joint-resource-audit)
+ (deps JointResourceAudit.vo))
+
+(alias
+ (name source-provenance-audit)
+ (deps SourceProvenanceAudit.vo))
+
+(alias
+ (name operation-provenance-audit)
+ (deps OperationProvenanceAudit.vo))

@@ -1,0 +1,223 @@
+(** Fresh public endpoint coverage for the uniform Horn/raw decoding checkpoint.
+    Each proof declaration in the five modules has both a Check and a
+    transitive Print Assumptions.  This is not an internal consistency proof. *)
+From PTSrk.SelfConsistency Require Import
+  UniformHorn UniformHornReindex UniformGuardedHorn FiniteRawDecoding FiniteRawTables.
+
+(** UniformHorn: 19 public proof endpoints. *)
+Check UniformHorn.UniformHorn.premise_sorted.
+Print Assumptions UniformHorn.UniformHorn.premise_sorted.
+Check UniformHorn.UniformHorn.handler_sorted.
+Print Assumptions UniformHorn.UniformHorn.handler_sorted.
+Check UniformHorn.UniformHorn.family_type_sorted.
+Print Assumptions UniformHorn.UniformHorn.family_type_sorted.
+Check UniformHorn.UniformHorn.family_sorted.
+Print Assumptions UniformHorn.UniformHorn.family_sorted.
+Check UniformHorn.UniformHorn.node_type_sorted.
+Print Assumptions UniformHorn.UniformHorn.node_type_sorted.
+Check UniformHorn.UniformHorn.node_typed.
+Print Assumptions UniformHorn.UniformHorn.node_typed.
+Check UniformHorn.UniformHorn.consume_type_sorted.
+Print Assumptions UniformHorn.UniformHorn.consume_type_sorted.
+Check UniformHorn.UniformHorn.consume_typed.
+Print Assumptions UniformHorn.UniformHorn.consume_typed.
+Check UniformHorn.UniformHorn.apply_spine_beta.
+Print Assumptions UniformHorn.UniformHorn.apply_spine_beta.
+Check UniformHorn.UniformHorn.named_spine_beta.
+Print Assumptions UniformHorn.UniformHorn.named_spine_beta.
+Check UniformHorn.UniformHorn.family_application.
+Print Assumptions UniformHorn.UniformHorn.family_application.
+Check UniformHorn.UniformHorn.family_beta.
+Print Assumptions UniformHorn.UniformHorn.family_beta.
+Check UniformHorn.UniformHorn.node_application.
+Print Assumptions UniformHorn.UniformHorn.node_application.
+Check UniformHorn.UniformHorn.node_beta.
+Print Assumptions UniformHorn.UniformHorn.node_beta.
+Check UniformHorn.UniformHorn.consume_application.
+Print Assumptions UniformHorn.UniformHorn.consume_application.
+Check UniformHorn.UniformHorn.consume_beta.
+Print Assumptions UniformHorn.UniformHorn.consume_beta.
+Check UniformHorn.UniformHorn.node_fold_typed.
+Print Assumptions UniformHorn.UniformHorn.node_fold_typed.
+Check UniformHorn.UniformHorn.node_fold_result_typed.
+Print Assumptions UniformHorn.UniformHorn.node_fold_result_typed.
+Check UniformHorn.UniformHorn.node_fold_beta.
+Print Assumptions UniformHorn.UniformHorn.node_fold_beta.
+
+(** UniformHornReindex: 16 public proof endpoints. *)
+Check UniformHornReindex.UniformHornReindex.handler_sorted.
+Print Assumptions UniformHornReindex.UniformHornReindex.handler_sorted.
+Check UniformHornReindex.UniformHornReindex.family_type_sorted.
+Print Assumptions UniformHornReindex.UniformHornReindex.family_type_sorted.
+Check UniformHornReindex.UniformHornReindex.family_sorted.
+Print Assumptions UniformHornReindex.UniformHornReindex.family_sorted.
+Check UniformHornReindex.UniformHornReindex.transport_type_sorted.
+Print Assumptions UniformHornReindex.UniformHornReindex.transport_type_sorted.
+Check UniformHornReindex.UniformHornReindex.transport_typed.
+Print Assumptions UniformHornReindex.UniformHornReindex.transport_typed.
+Check UniformHornReindex.UniformHornReindex.family_application.
+Print Assumptions UniformHornReindex.UniformHornReindex.family_application.
+Check UniformHornReindex.UniformHornReindex.family_beta.
+Print Assumptions UniformHornReindex.UniformHornReindex.family_beta.
+Check UniformHornReindex.UniformHornReindex.transport_application.
+Print Assumptions UniformHornReindex.UniformHornReindex.transport_application.
+Check UniformHornReindex.UniformHornReindex.transport_beta.
+Print Assumptions UniformHornReindex.UniformHornReindex.transport_beta.
+Check UniformHornReindex.UniformHornReindex.fold_left_typed.
+Print Assumptions UniformHornReindex.UniformHornReindex.fold_left_typed.
+Check UniformHornReindex.UniformHornReindex.fold_right_typed.
+Print Assumptions UniformHornReindex.UniformHornReindex.fold_right_typed.
+Check UniformHornReindex.UniformHornReindex.fold_beta.
+Print Assumptions UniformHornReindex.UniformHornReindex.fold_beta.
+Check UniformHornReindex.UniformHornReindex.composition_type_sorted.
+Print Assumptions UniformHornReindex.UniformHornReindex.composition_type_sorted.
+Check UniformHornReindex.UniformHornReindex.composition_left_typed.
+Print Assumptions UniformHornReindex.UniformHornReindex.composition_left_typed.
+Check UniformHornReindex.UniformHornReindex.composition_right_typed.
+Print Assumptions UniformHornReindex.UniformHornReindex.composition_right_typed.
+Check UniformHornReindex.UniformHornReindex.composition_beta.
+Print Assumptions UniformHornReindex.UniformHornReindex.composition_beta.
+
+(** UniformGuardedHorn: 16 public proof endpoints. *)
+Check UniformGuardedHorn.UniformGuardedHorn.handler_sorted.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.handler_sorted.
+Check UniformGuardedHorn.UniformGuardedHorn.family_type_sorted.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.family_type_sorted.
+Check UniformGuardedHorn.UniformGuardedHorn.family_sorted.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.family_sorted.
+Check UniformGuardedHorn.UniformGuardedHorn.node_type_sorted.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.node_type_sorted.
+Check UniformGuardedHorn.UniformGuardedHorn.node_typed.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.node_typed.
+Check UniformGuardedHorn.UniformGuardedHorn.consume_type_sorted.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.consume_type_sorted.
+Check UniformGuardedHorn.UniformGuardedHorn.consume_typed.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.consume_typed.
+Check UniformGuardedHorn.UniformGuardedHorn.family_application.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.family_application.
+Check UniformGuardedHorn.UniformGuardedHorn.family_beta.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.family_beta.
+Check UniformGuardedHorn.UniformGuardedHorn.node_application.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.node_application.
+Check UniformGuardedHorn.UniformGuardedHorn.node_beta.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.node_beta.
+Check UniformGuardedHorn.UniformGuardedHorn.consume_application.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.consume_application.
+Check UniformGuardedHorn.UniformGuardedHorn.consume_beta.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.consume_beta.
+Check UniformGuardedHorn.UniformGuardedHorn.node_fold_typed.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.node_fold_typed.
+Check UniformGuardedHorn.UniformGuardedHorn.node_fold_result_typed.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.node_fold_result_typed.
+Check UniformGuardedHorn.UniformGuardedHorn.node_fold_beta.
+Print Assumptions UniformGuardedHorn.UniformGuardedHorn.node_fold_beta.
+
+(** FiniteRawDecoding: 31 public proof endpoints. *)
+Check FiniteRawDecoding.FiniteRawDecoding.filling_lift.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.filling_lift.
+Check FiniteRawDecoding.FiniteRawDecoding.supply_reduces.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.supply_reduces.
+Check FiniteRawDecoding.FiniteRawDecoding.supply_replace.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.supply_replace.
+Check FiniteRawDecoding.FiniteRawDecoding.supply_ext.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.supply_ext.
+Check FiniteRawDecoding.FiniteRawDecoding.supply_bind_beta.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.supply_bind_beta.
+Check FiniteRawDecoding.FiniteRawDecoding.filling_handler.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.filling_handler.
+Check FiniteRawDecoding.FiniteRawDecoding.generated_point_beta.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.generated_point_beta.
+Check FiniteRawDecoding.FiniteRawDecoding.raw_type_replace.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.raw_type_replace.
+Check FiniteRawDecoding.FiniteRawDecoding.quoted_replace.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.quoted_replace.
+Check FiniteRawDecoding.FiniteRawDecoding.motive_replace.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.motive_replace.
+Check FiniteRawDecoding.FiniteRawDecoding.raw_type_sorted.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.raw_type_sorted.
+Check FiniteRawDecoding.FiniteRawDecoding.quoted_typed.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.quoted_typed.
+Check FiniteRawDecoding.FiniteRawDecoding.motive_typed.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.motive_typed.
+Check FiniteRawDecoding.FiniteRawDecoding.motive_beta.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.motive_beta.
+Check FiniteRawDecoding.FiniteRawDecoding.quoted_branch_typed.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.quoted_branch_typed.
+Check FiniteRawDecoding.FiniteRawDecoding.body_replace.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.body_replace.
+Check FiniteRawDecoding.FiniteRawDecoding.body_typed.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.body_typed.
+Check FiniteRawDecoding.FiniteRawDecoding.decoder_typed.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.decoder_typed.
+Check FiniteRawDecoding.FiniteRawDecoding.decoder_type_sorted.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.decoder_type_sorted.
+Check FiniteRawDecoding.FiniteRawDecoding.arbitrary_decode_typed.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.arbitrary_decode_typed.
+Check FiniteRawDecoding.FiniteRawDecoding.decoder_beta.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.decoder_beta.
+Check FiniteRawDecoding.FiniteRawDecoding.canonical_decode_beta.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.canonical_decode_beta.
+Check FiniteRawDecoding.FiniteRawDecoding.canonical_decode_typed.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.canonical_decode_typed.
+Check FiniteRawDecoding.FiniteRawDecoding.fragment_decoder_typed.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.fragment_decoder_typed.
+Check FiniteRawDecoding.FiniteRawDecoding.fragment_decoder_type_rank.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.fragment_decoder_type_rank.
+Check FiniteRawDecoding.FiniteRawDecoding.fragment_decode_beta.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.fragment_decode_beta.
+Check FiniteRawDecoding.FiniteRawDecoding.all_raw_codes_covered.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.all_raw_codes_covered.
+Check FiniteRawDecoding.FiniteRawDecoding.output_quotation_injective.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.output_quotation_injective.
+Check FiniteRawDecoding.FiniteRawDecoding.serialized_input_output_injective.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.serialized_input_output_injective.
+Check FiniteRawDecoding.FiniteRawDecoding.serialized_input_covered.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.serialized_input_covered.
+Check FiniteRawDecoding.FiniteRawDecoding.canonical_raw_admission.
+Print Assumptions FiniteRawDecoding.FiniteRawDecoding.canonical_raw_admission.
+
+(** FiniteRawTables: 22 public proof endpoints. *)
+Check FiniteRawTables.FiniteRawTables.frame_spine.
+Print Assumptions FiniteRawTables.FiniteRawTables.frame_spine.
+Check FiniteRawTables.FiniteRawTables.lifted_application.
+Print Assumptions FiniteRawTables.FiniteRawTables.lifted_application.
+Check FiniteRawTables.FiniteRawTables.abstract_typed.
+Print Assumptions FiniteRawTables.FiniteRawTables.abstract_typed.
+Check FiniteRawTables.FiniteRawTables.expand_replace.
+Print Assumptions FiniteRawTables.FiniteRawTables.expand_replace.
+Check FiniteRawTables.FiniteRawTables.abstract_values_ext.
+Print Assumptions FiniteRawTables.FiniteRawTables.abstract_values_ext.
+Check FiniteRawTables.FiniteRawTables.abstract_replace.
+Print Assumptions FiniteRawTables.FiniteRawTables.abstract_replace.
+Check FiniteRawTables.FiniteRawTables.abstract_selector_beta.
+Print Assumptions FiniteRawTables.FiniteRawTables.abstract_selector_beta.
+Check FiniteRawTables.FiniteRawTables.raw_spine.
+Print Assumptions FiniteRawTables.FiniteRawTables.raw_spine.
+Check FiniteRawTables.FiniteRawTables.raw_frame.
+Print Assumptions FiniteRawTables.FiniteRawTables.raw_frame.
+Check FiniteRawTables.FiniteRawTables.table_typed.
+Print Assumptions FiniteRawTables.FiniteRawTables.table_typed.
+Check FiniteRawTables.FiniteRawTables.table_type_sorted.
+Print Assumptions FiniteRawTables.FiniteRawTables.table_type_sorted.
+Check FiniteRawTables.FiniteRawTables.arbitrary_query_typed.
+Print Assumptions FiniteRawTables.FiniteRawTables.arbitrary_query_typed.
+Check FiniteRawTables.FiniteRawTables.table_beta.
+Print Assumptions FiniteRawTables.FiniteRawTables.table_beta.
+Check FiniteRawTables.FiniteRawTables.canonical_table_beta.
+Print Assumptions FiniteRawTables.FiniteRawTables.canonical_table_beta.
+Check FiniteRawTables.FiniteRawTables.pair_expansion_beta.
+Print Assumptions FiniteRawTables.FiniteRawTables.pair_expansion_beta.
+Check FiniteRawTables.FiniteRawTables.arbitrary_pair_expansion.
+Print Assumptions FiniteRawTables.FiniteRawTables.arbitrary_pair_expansion.
+Check FiniteRawTables.FiniteRawTables.expanded_quote_beta.
+Print Assumptions FiniteRawTables.FiniteRawTables.expanded_quote_beta.
+Check FiniteRawTables.FiniteRawTables.canonical_output_agreement.
+Print Assumptions FiniteRawTables.FiniteRawTables.canonical_output_agreement.
+Check FiniteRawTables.FiniteRawTables.canonical_decoder_agreement.
+Print Assumptions FiniteRawTables.FiniteRawTables.canonical_decoder_agreement.
+Check FiniteRawTables.FiniteRawTables.expand_injective.
+Print Assumptions FiniteRawTables.FiniteRawTables.expand_injective.
+Check FiniteRawTables.FiniteRawTables.expanded_quotation_injective.
+Print Assumptions FiniteRawTables.FiniteRawTables.expanded_quotation_injective.
+Check FiniteRawTables.FiniteRawTables.expanded_serialized_input_injective.
+Print Assumptions FiniteRawTables.FiniteRawTables.expanded_serialized_input_injective.

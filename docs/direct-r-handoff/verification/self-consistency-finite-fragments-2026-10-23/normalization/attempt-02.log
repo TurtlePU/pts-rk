@@ -1,0 +1,10 @@
+File "/tmp/pts-rk-fragment-normalization.mLwZIp/FiniteFragmentNormalization.v", line 161, characters 10-23:
+Error:
+In environment
+p : Certificate 0
+HC : check ε p = true
+HE : type p = Bottom
+HN : normalb (certificate_normal_form p) = true
+HT : ε ⊢ certificate_normal_form p ⇐ Bottom
+Unable to unify "?t →ᵝ ?u" with "Term nat 0".
+

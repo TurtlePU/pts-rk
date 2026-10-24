@@ -1,0 +1,59 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 221 - 267 [From~PTSrk~Require~Import-(not...] 0.061 secs (0.047u,0.013s)
+Chars 268 - 321 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 322 - 428 [From~Interpretation_of_R~Requi...] 0.056 secs (0.045u,0.01s)
+Chars 429 - 508 [From~PTSrk.SelfConsistency~Req...] 0.008 secs (0.007u,0.001s)
+Chars 510 - 534 [Module~BooleanAgreement.] 0. secs (0.u,0.s)
+Chars 535 - 570 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 571 - 630 [Module~EG:=~~InternalExecution...] 0.031 secs (0.027u,0.004s)
+Chars 631 - 672 [Module~GT:=~~GuardedTables.Gua...] 0.007 secs (0.006u,0.001s)
+Chars 674 - 734 [Definition~v1~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 735 - 807 [Definition~v2~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 808 - 892 [Definition~v3~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 894 - 967 [Definition~refl_type~:~closed_...] 0. secs (0.u,0.s)
+Chars 968 - 1023 [Theorem~refl_type_sorted~:~Typ...] 0. secs (0.u,0.s)
+Chars 1024 - 1030 [Proof.] 0. secs (0.u,0.s)
+Chars 1031 - 1056 [RkCheck.certify_with~256.] 0.04 secs (0.036u,0.003s)
+Chars 1057 - 1061 [Qed.] 0. secs (0.u,0.s)
+Chars 1062 - 1115 [Theorem~refl_typed~:~Typed~ε~E...] 0. secs (0.u,0.s)
+Chars 1116 - 1122 [Proof.] 0. secs (0.u,0.s)
+Chars 1125 - 1191 [eapply~tConv;~[~exact~EG.same_...] 0. secs (0.u,0.s)
+Chars 1194 - 1256 [apply~(RkCheck.check_conv_soun...] 0. secs (0.u,0.s)
+Chars 1257 - 1261 [Qed.] 0. secs (0.u,0.s)
+Chars 1263 - 1527 [Definition~and_type~:~closed_t...] 0. secs (0.u,0.s)
+Chars 1528 - 1581 [Theorem~and_type_sorted~:~Type...] 0. secs (0.u,0.s)
+Chars 1582 - 1588 [Proof.] 0. secs (0.u,0.s)
+Chars 1589 - 1614 [RkCheck.certify_with~256.] 0.001 secs (0.u,0.s)
+Chars 1615 - 1619 [Qed.] 0. secs (0.u,0.s)
+Chars 1620 - 1670 [Theorem~and_typed~:~Typed~ε~EG...] 0. secs (0.u,0.s)
+Chars 1671 - 1677 [Proof.] 0. secs (0.u,0.s)
+Chars 1680 - 1744 [eapply~tConv;~[~exact~EG.same_...] 0. secs (0.u,0.s)
+Chars 1747 - 1809 [apply~(RkCheck.check_conv_soun...] 0.001 secs (0.u,0.s)
+Chars 1810 - 1814 [Qed.] 0. secs (0.u,0.s)
+Chars 1816 - 1979 [Lemma~same_application~{n}~(G~...] 0. secs (0.u,0.s)
+Chars 1980 - 1986 [Proof.] 0. secs (0.u,0.s)
+Chars 1989 - 2060 [intros~Hb~Hc;~pose~proof~(lift...] 0. secs (0.u,0.s)
+Chars 2063 - 2186 [change~~~(Typed~G~(lift_closed...] 0. secs (0.u,0.s)
+Chars 2189 - 2246 [unfold~EG.same_at;~eapply~arro...] 0. secs (0.u,0.s)
+Chars 2249 - 2294 [eapply~arrow_application;~[~ex...] 0. secs (0.u,0.s)
+Chars 2295 - 2299 [Qed.] 0. secs (0.u,0.s)
+Chars 2301 - 2455 [Lemma~same_refl_application~{n...] 0. secs (0.u,0.s)
+Chars 2456 - 2462 [Proof.] 0. secs (0.u,0.s)
+Chars 2465 - 2528 [intro~Hb;~pose~proof~(lift_clo...] 0. secs (0.u,0.s)
+Chars 2531 - 2633 [change~~~(Typed~G~(lift_closed...] 0. secs (0.u,0.s)
+Chars 2636 - 2727 [pose~proof~(tApp~H~Hb)~as~K;~u...] 0.002 secs (0.002u,0.s)
+Chars 2728 - 2732 [Qed.] 0.001 secs (0.001u,0.s)
+Chars 2734 - 2933 [Lemma~same_from_beta~{n}~(G~:~...] 0. secs (0.u,0.s)
+Chars 2934 - 2940 [Proof.] 0. secs (0.u,0.s)
+Chars 2943 - 3050 [intros~Hb~Hc~Hbc;~eapply~tConv...] 0. secs (0.u,0.s)
+Chars 3053 - 3112 [unfold~EG.same_at;~apply~beta_...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/BooleanAgreement.v", line 69, characters 38-49:
+Error:
+ The relation (def_equiv nat n) is not a declared reflexive relation. Maybe you need to require the Corelib.Classes.RelationClasses library

@@ -1,0 +1,69 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 304 - 342 [From~Stdlib~Require~Import~Lis...] 0.037 secs (0.031u,0.005s)
+Chars 343 - 383 [From~Equations~Require~Import~...] 0.022 secs (0.017u,0.003s)
+Chars 384 - 430 [From~PTSrk~Require~Import-(not...] 0. secs (0.u,0.s)
+Chars 431 - 478 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 479 - 570 [From~Interpretation_of_R~Requi...] 0.049 secs (0.041u,0.007s)
+Chars 571 - 927 [From~PTSrk.SelfConsistency~Req...] 0.016 secs (0.013u,0.002s)
+Chars 928 - 949 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 951 - 983 [Module~ContextLookupRealization.] 0. secs (0.u,0.s)
+Chars 984 - 1261 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 1262 - 1319 [Module~CL:=~~InternalContextLo...] 0.088 secs (0.078u,0.006s)
+Chars 1320 - 1371 [Module~CD:=~~ContextLookupCode...] 0.001 secs (0.001u,0.s)
+Chars 1372 - 1431 [Module~RL:=~~InternalRenamingL...] 0.005 secs (0.004u,0.s)
+Chars 1432 - 1483 [Module~SG:=~~CheckerSourceGrap...] 0.017 secs (0.017u,0.s)
+Chars 1484 - 1527 [Module~NT:=~~NamedTemplates.Na...] 0.001 secs (0.001u,0.s)
+Chars 1528 - 1561 [Module~NB:=~~NamedBeta.NamedBeta.] 0.001 secs (0.001u,0.s)
+Chars 1563 - 1635 [Definition~CtxConsTerm~{n}~(g~...] 0. secs (0.u,0.s)
+Chars 1636 - 1723 [Definition~ContextGuardTerm~{n...] 0. secs (0.u,0.s)
+Chars 1724 - 1855 [Definition~ContextLookupTerm~{...] 0. secs (0.u,0.s)
+Chars 1856 - 2034 [Definition~ContextShiftTerm~{n...] 0. secs (0.u,0.s)
+Chars 2036 - 2199 [Lemma~ContextGuardTerm_replace...] 0. secs (0.u,0.s)
+Chars 2200 - 2206 [Proof.] 0. secs (0.u,0.s)
+Chars 2207 - 2225 [apply~Rel_replace.] 0.011 secs (0.011u,0.s)
+Chars 2226 - 2230 [Qed.] 0. secs (0.u,0.s)
+Chars 2231 - 2437 [Lemma~ContextLookupTerm_replac...] 0. secs (0.u,0.s)
+Chars 2438 - 2444 [Proof.] 0. secs (0.u,0.s)
+Chars 2445 - 2527 [unfold~ContextLookupTerm;~cbn[...] 0. secs (0.u,0.s)
+Chars 2528 - 2532 [Qed.] 0.015 secs (0.014u,0.s)
+Chars 2533 - 2751 [Lemma~ContextShiftTerm_replace...] 0. secs (0.u,0.s)
+Chars 2752 - 2758 [Proof.] 0. secs (0.u,0.s)
+Chars 2761 - 2873 [unfold~ContextShiftTerm;~~rewr...] 0.001 secs (0.001u,0.s)
+Chars 2874 - 2878 [Qed.] 0.005 secs (0.005u,0.s)
+Chars 2879 - 3526 [Ltac~~context_substitution~H~:...] 0. secs (0.u,0.s)
+Chars 3528 - 3663 [Definition~guard_cons_applicat...] 0. secs (0.u,0.s)
+Chars 3664 - 4005 [Lemma~context_guard_cons_appli...] 0. secs (0.u,0.s)
+Chars 4006 - 4012 [Proof.] 0. secs (0.u,0.s)
+Chars 4015 - 4046 [intros~Hn~Hm~Hg~Ha~Hhn~Hhg~Hha.] 0. secs (0.u,0.s)
+Chars 4049 - 4224 [eapply~~(NB.named_spine_applic...] 0. secs (0.u,0.s)
+Chars 4227 - 4228 [-] 0. secs (0.u,0.s)
+Chars 4229 - 4281 [eapply~NB.named_spine_cons;~[~...] 0.051 secs (0.05u,0.s)
+Chars 4286 - 4338 [eapply~NB.named_spine_cons;~[~...] 0.085 secs (0.083u,0.s)
+Chars 4343 - 4395 [eapply~NB.named_spine_cons;~[~...] 0.087 secs (0.086u,0.s)
+Chars 4400 - 4452 [eapply~NB.named_spine_cons;~[~...] 0.048 secs (0.047u,0.s)
+Chars 4457 - 4510 [eapply~NB.named_spine_cons;~[~...] 0. secs (0.u,0.s)
+Chars 4515 - 4568 [eapply~NB.named_spine_cons;~[~...] 0. secs (0.u,0.s)
+Chars 4573 - 4626 [eapply~NB.named_spine_cons;~[~...] 0. secs (0.u,0.s)
+Chars 4631 - 4643 [constructor.] 0. secs (0.u,0.s)
+Chars 4646 - 4647 [-] 0. secs (0.u,0.s)
+Chars 4648 - 4684 [exact~(NT.close_evaluate~_~eq_...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/ContextLookupRealization.v", line 84, characters 31-38:
+Error:
+In environment
+n, m, g, a, hn, hg, ha : Term nat 0
+Hn : Typed ε n carrier
+Hm : Typed ε m carrier
+Hg : Typed ε g carrier
+Ha : Typed ε a carrier
+Hhn : Typed ε hn (SuccTerm n m)
+Hhg : Typed ε hg (ContextGuardTerm n g)
+Hha : Typed ε ha (ScopeTerm n a)
+The term "eq_refl" has type "closedb ?t = closedb ?t"
+while it is expected to have type "closedb ?t = true".

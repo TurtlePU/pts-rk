@@ -1,0 +1,977 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+        rocq theories/.PTSrk.theory.d
+        rocq theories/Interpretation_of_R/.Interpretation_of_R.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Congruence.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/StructuralCodes.{glob,vo}
+        rocq theories/Interpretation_of_R/DirectRCommonCodes.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/NativeProofCodes.{glob,vo}
+        rocq theories/SN.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectREval.{glob,vo}
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/Interpretation_of_R/DirectRKernel.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateAdequacy.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRCheck.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRStructural.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/SortRenaming.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/GuardedTables.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/RankCompression.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateSerialization.{glob,vo}
+        rocq theories/self_consistency/InternalCarrier.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CheckerComparisons.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalComparisonFolds.{glob,vo}
+        rocq theories/self_consistency/InternalCodeComparison.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CodeComparisonRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CheckerExecution.{glob,vo}
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+InternalCodeComparison.is_atom_typed
+     : forall t : StructuralCodes.tag,
+       DirectRKernel.Core.Typed Context.ε (InternalCodeComparison.is_atom t)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalCodeComparison.IC.carrier
+            InternalCodeComparison.BT.boolean)
+Closed under the global context
+InternalCodeComparison.conjunction_typed
+     : DirectRKernel.Core.Typed Context.ε InternalCodeComparison.conjunction
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalCodeComparison.BT.boolean
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalCodeComparison.BT.boolean
+               InternalCodeComparison.BT.boolean))
+Closed under the global context
+InternalCodeComparison.zip_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalCodeComparison.zip
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalCodeComparison.IC.carrier
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalCodeComparison.IC.carrier (Syntax.𝓤 4)))
+Closed under the global context
+InternalCodeComparison.atom_zip_typed
+     : forall t : StructuralCodes.tag,
+       DirectRKernel.Core.Typed Context.ε (InternalCodeComparison.atom_zip t)
+         (InternalCodeComparison.atom_zip_type t)
+Closed under the global context
+InternalCodeComparison.pair_atom_zip_typed
+     : forall t : StructuralCodes.tag,
+       DirectRKernel.Core.Typed Context.ε
+         (InternalCodeComparison.pair_atom_zip t)
+         (InternalCodeComparison.pair_atom_zip_type t)
+Closed under the global context
+InternalCodeComparison.pair_pair_zip_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalCodeComparison.pair_pair_zip
+         InternalCodeComparison.pair_pair_zip_type
+Closed under the global context
+InternalCodeComparison.compare_type_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalCodeComparison.compare_type
+         (Syntax.𝓤 5)
+Closed under the global context
+InternalCodeComparison.compare_typed
+     : DirectRKernel.Core.Typed Context.ε InternalCodeComparison.compare
+         InternalCodeComparison.compare_type
+Closed under the global context
+InternalCodeComparison.is_atom_atom_beta
+     : forall t u : StructuralCodes.tag,
+       DefEq.def_equiv nat 0
+         (Syntax.app (InternalCodeComparison.is_atom t)
+            (InternalCodeComparison.IC.atom u))
+         (InternalCodeComparison.BT.point
+            (PeanoNat.Nat.eqb (InternalCodeComparison.IC.tag_number t)
+               (InternalCodeComparison.IC.tag_number u)))
+Closed under the global context
+InternalCodeComparison.conjunction_beta
+     : forall b c : bool,
+       DefEq.def_equiv nat 0
+         (InternalCodeComparison.conjunction_at
+            (InternalCodeComparison.BT.point b)
+            (InternalCodeComparison.BT.point c))
+         (InternalCodeComparison.BT.point (b && c))
+Closed under the global context
+InternalCodeComparison.is_atom_pair_schema
+     : forall t : StructuralCodes.tag,
+       DefEq.def_equiv nat 2
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (InternalCodeComparison.is_atom t))
+            (InternalCodeComparison.pair_at
+               (Syntax.var (Syntax.fsucc Syntax.fzero))
+               (Syntax.var Syntax.fzero)))
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            (InternalCodeComparison.BT.point false))
+Closed under the global context
+InternalCodeComparison.compare_atom_schema
+     : forall t : StructuralCodes.tag,
+       DefEq.def_equiv nat 1
+         (InternalCodeComparison.compare_at
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (InternalCodeComparison.IC.atom t))
+            (Syntax.var Syntax.fzero)
+            (Syntax.app
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  (InternalCodeComparison.atom_zip t))
+               (Syntax.var Syntax.fzero)))
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (InternalCodeComparison.is_atom t))
+            (Syntax.var Syntax.fzero))
+Closed under the global context
+InternalCodeComparison.compare_pair_atom_schema
+     : forall t : StructuralCodes.tag,
+       DefEq.def_equiv nat 2
+         (InternalCodeComparison.compare_at
+            (InternalCodeComparison.pair_at
+               (Syntax.var (Syntax.fsucc Syntax.fzero))
+               (Syntax.var Syntax.fzero))
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (InternalCodeComparison.IC.atom t))
+            (Syntax.app
+               (Syntax.app
+                  (DirectRCommonCodes.CommonCodes.lift_closed
+                     (InternalCodeComparison.pair_atom_zip t))
+                  (Syntax.var (Syntax.fsucc Syntax.fzero)))
+               (Syntax.var Syntax.fzero)))
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            (InternalCodeComparison.BT.point false))
+Closed under the global context
+InternalCodeComparison.compare_pair_pair_schema
+     : DefEq.def_equiv nat 6
+         (InternalCodeComparison.compare_at
+            (InternalCodeComparison.pair_at InternalCodeComparison.v5
+               InternalCodeComparison.v4)
+            (InternalCodeComparison.pair_at InternalCodeComparison.v3
+               InternalCodeComparison.v2)
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app
+                        (Syntax.app
+                           (Syntax.app
+                              (DirectRCommonCodes.CommonCodes.lift_closed
+                                 InternalCodeComparison.pair_pair_zip)
+                              InternalCodeComparison.v5)
+                           InternalCodeComparison.v4)
+                        InternalCodeComparison.v3)
+                     InternalCodeComparison.v2)
+                  InternalCodeComparison.v1)
+               InternalCodeComparison.v0))
+         (InternalCodeComparison.conjunction_at
+            (InternalCodeComparison.compare_at InternalCodeComparison.v5
+               InternalCodeComparison.v3 InternalCodeComparison.v1)
+            (InternalCodeComparison.compare_at InternalCodeComparison.v4
+               InternalCodeComparison.v2 InternalCodeComparison.v0))
+Closed under the global context
+CheckerComparisons.tag_eqb_correct
+     : forall x y : StructuralCodes.tag,
+       CheckerComparisons.tag_eqb x y = true <-> x = y
+Closed under the global context
+CheckerComparisons.code_eqb_correct
+     : forall x y : StructuralCodes.code,
+       CheckerComparisons.code_eqb x y = true <-> x = y
+Closed under the global context
+CheckerComparisons.code_eqb_false
+     : forall x y : StructuralCodes.code,
+       CheckerComparisons.code_eqb x y = false <-> x <> y
+Closed under the global context
+CheckerComparisons.code_eqb_reflexive
+     : forall x : StructuralCodes.code,
+       CheckerComparisons.code_eqb x x = true
+Closed under the global context
+CheckerComparisons.code_eqb_encoded_terms
+     : forall t u : Syntax.Term nat ?n,
+       CheckerComparisons.code_eqb (StructuralCodes.encode_term t)
+         (StructuralCodes.encode_term u) =
+       CheckerComparisons.NC.term_eqb t u
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerComparisons.eval_matches_expression
+     : forall (p : CheckerComparisons.NC.Certificate ?n)
+         (t A : Syntax.Term nat ?n),
+       CheckerComparisons.eval (CheckerComparisons.matches_expression p t A) =
+       CheckerComparisons.NC.matchesb p t A
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerComparisons.eval_equality_expression
+     : forall p : CheckerComparisons.NC.EqualityCode ?n,
+       CheckerComparisons.eval (CheckerComparisons.equality_expression p) =
+       CheckerComparisons.NC.equality_check p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerComparisons.eval_check_expression
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerComparisons.NC.Certificate ?n),
+       CheckerComparisons.eval (CheckerComparisons.check_expression G p) =
+       CheckerComparisons.NC.check G p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerComparisons.eval_context_expression
+     : forall c : CheckerComparisons.NC.ContextCode ?n,
+       CheckerComparisons.eval (CheckerComparisons.context_expression c) =
+       CheckerComparisons.NC.context_check c
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerComparisons.eval_raw_check_expression
+     : forall q : StructuralCodes.code,
+       CheckerComparisons.eval (CheckerComparisons.raw_check_expression q) =
+       CertificateSerialization.raw_check q
+Closed under the global context
+CheckerComparisons.eval_raw_bottom_expression
+     : forall q : StructuralCodes.code,
+       CheckerComparisons.eval (CheckerComparisons.raw_bottom_expression q) =
+       CertificateSerialization.raw_bottom_check q
+Closed under the global context
+CheckerComparisons.malformed_input_expression
+     : forall q : StructuralCodes.code,
+       CertificateSerialization.decode_input q = None ->
+       CheckerComparisons.raw_check_expression q =
+       CheckerComparisons.Truth false
+Closed under the global context
+CheckerComparisons.malformed_bottom_expression
+     : forall q : StructuralCodes.code,
+       CertificateSerialization.decode_certificate q 0 = None ->
+       CheckerComparisons.raw_bottom_expression q =
+       CheckerComparisons.Truth false
+Closed under the global context
+CheckerComparisons.comparison_count_bound
+     : forall e : CheckerComparisons.Expr,
+       CheckerComparisons.comparison_count e <
+       CheckerComparisons.expression_size e + 1
+Closed under the global context
+CheckerComparisons.accepted_input
+     : CheckerComparisons.eval
+         (CheckerComparisons.raw_check_expression
+            (CertificateSerialization.encode_input
+               CheckerComparisons.NC.EmptyContext
+               (CheckerComparisons.NC.SortRule 0))) =
+       true
+Closed under the global context
+CheckerComparisons.rejected_scoped_input
+     : CheckerComparisons.eval
+         (CheckerComparisons.raw_check_expression
+            (CertificateSerialization.encode_input
+               CheckerComparisons.NC.EmptyContext
+               CheckerComparisons.bad_application)) =
+       false
+Closed under the global context
+CheckerComparisons.malformed_input
+     : CheckerComparisons.eval
+         (CheckerComparisons.raw_check_expression
+            (StructuralCodes.Atom StructuralCodes.NZero)) =
+       false
+Closed under the global context
+CheckerComparisons.rejected_bottom_input
+     : CheckerComparisons.eval
+         (CheckerComparisons.raw_bottom_expression
+            (CertificateSerialization.encode_certificate
+               (CheckerComparisons.NC.SortRule 0))) =
+       false
+Closed under the global context
+InternalComparisonFolds.expression_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalComparisonFolds.expression
+         (Syntax.𝓤 3)
+Closed under the global context
+InternalComparisonFolds.leaf_typed
+     : DirectRKernel.Core.Typed Context.ε InternalComparisonFolds.leaf
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalComparisonFolds.GT.boolean
+            InternalComparisonFolds.expression)
+Closed under the global context
+InternalComparisonFolds.both_typed
+     : DirectRKernel.Core.Typed Context.ε InternalComparisonFolds.both
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalComparisonFolds.expression
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalComparisonFolds.expression
+               InternalComparisonFolds.expression))
+Closed under the global context
+InternalComparisonFolds.conjunction_typed
+     : DirectRKernel.Core.Typed Context.ε InternalComparisonFolds.conjunction
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalComparisonFolds.GT.boolean
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalComparisonFolds.GT.boolean
+               InternalComparisonFolds.GT.boolean))
+Closed under the global context
+InternalComparisonFolds.identity_typed
+     : DirectRKernel.Core.Typed Context.ε InternalComparisonFolds.identity
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalComparisonFolds.GT.boolean
+            InternalComparisonFolds.GT.boolean)
+Closed under the global context
+InternalComparisonFolds.evaluate_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalComparisonFolds.expression
+            InternalComparisonFolds.GT.boolean)
+         (Syntax.𝓤 4)
+Closed under the global context
+InternalComparisonFolds.evaluate_typed
+     : DirectRKernel.Core.Typed Context.ε InternalComparisonFolds.evaluate
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalComparisonFolds.expression
+            InternalComparisonFolds.GT.boolean)
+Closed under the global context
+InternalComparisonFolds.conjunction_beta
+     : forall a b : bool,
+       DefEq.def_equiv nat 0
+         (Syntax.app
+            (Syntax.app InternalComparisonFolds.conjunction
+               (InternalComparisonFolds.GT.point a))
+            (InternalComparisonFolds.GT.point b))
+         (InternalComparisonFolds.GT.point (a && b))
+Closed under the global context
+InternalComparisonFolds.evaluate_leaf_schema
+     : DefEq.def_equiv nat 1
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               InternalComparisonFolds.evaluate)
+            (Syntax.app
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  InternalComparisonFolds.leaf)
+               DirectRCommonCodes.CommonCodes.V0))
+         DirectRCommonCodes.CommonCodes.V0
+Closed under the global context
+InternalComparisonFolds.evaluate_both_schema
+     : DefEq.def_equiv nat 2
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               InternalComparisonFolds.evaluate)
+            (Syntax.app
+               (Syntax.app
+                  (DirectRCommonCodes.CommonCodes.lift_closed
+                     InternalComparisonFolds.both)
+                  (Syntax.var (Syntax.fsucc Syntax.fzero)))
+               DirectRCommonCodes.CommonCodes.V0))
+         (Syntax.app
+            (Syntax.app
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  InternalComparisonFolds.conjunction)
+               (Syntax.app
+                  (DirectRCommonCodes.CommonCodes.lift_closed
+                     InternalComparisonFolds.evaluate)
+                  (Syntax.var (Syntax.fsucc Syntax.fzero))))
+            (Syntax.app
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  InternalComparisonFolds.evaluate)
+               DirectRCommonCodes.CommonCodes.V0))
+Closed under the global context
+InternalComparisonFolds.evaluate_leaf_beta
+     : forall b : DirectRCommonCodes.CommonCodes.closed_term,
+       DefEq.def_equiv nat 0
+         (Syntax.app InternalComparisonFolds.evaluate
+            (Syntax.app InternalComparisonFolds.leaf b))
+         b
+Closed under the global context
+InternalComparisonFolds.evaluate_both_beta
+     : forall x y : DirectRCommonCodes.CommonCodes.closed_term,
+       DefEq.def_equiv nat 0
+         (Syntax.app InternalComparisonFolds.evaluate
+            (Syntax.app (Syntax.app InternalComparisonFolds.both x) y))
+         (Syntax.app
+            (Syntax.app InternalComparisonFolds.conjunction
+               (Syntax.app InternalComparisonFolds.evaluate x))
+            (Syntax.app InternalComparisonFolds.evaluate y))
+Closed under the global context
+InternalComparisonFolds.quote_with_typed
+     : forall
+         (compare : StructuralCodes.code ->
+                    StructuralCodes.code -> Syntax.Term nat 0)
+         (e : InternalComparisonFolds.CC.Expr),
+       (forall x y : StructuralCodes.code,
+        DirectRKernel.Core.Typed Context.ε (compare x y)
+          InternalComparisonFolds.GT.boolean) ->
+       DirectRKernel.Core.Typed Context.ε
+         (InternalComparisonFolds.quote_with compare e)
+         InternalComparisonFolds.expression
+Closed under the global context
+InternalComparisonFolds.evaluate_with_typed
+     : forall
+         (compare : StructuralCodes.code ->
+                    StructuralCodes.code -> Syntax.Term nat 0)
+         (e : InternalComparisonFolds.CC.Expr),
+       (forall x y : StructuralCodes.code,
+        DirectRKernel.Core.Typed Context.ε (compare x y)
+          InternalComparisonFolds.GT.boolean) ->
+       DirectRKernel.Core.Typed Context.ε
+         (InternalComparisonFolds.evaluate_with compare e)
+         InternalComparisonFolds.GT.boolean
+Closed under the global context
+InternalComparisonFolds.evaluate_quote_typed
+     : forall
+         (compare : StructuralCodes.code ->
+                    StructuralCodes.code -> Syntax.Term nat 0)
+         (e : InternalComparisonFolds.CC.Expr),
+       (forall x y : StructuralCodes.code,
+        DirectRKernel.Core.Typed Context.ε (compare x y)
+          InternalComparisonFolds.GT.boolean) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app InternalComparisonFolds.evaluate
+            (InternalComparisonFolds.quote_with compare e))
+         InternalComparisonFolds.GT.boolean
+Closed under the global context
+InternalComparisonFolds.evaluate_quote_beta
+     : forall
+         (compare : StructuralCodes.code ->
+                    StructuralCodes.code ->
+                    DirectRCommonCodes.CommonCodes.closed_term)
+         (e : InternalComparisonFolds.CC.Expr),
+       DefEq.def_equiv nat 0
+         (Syntax.app InternalComparisonFolds.evaluate
+            (InternalComparisonFolds.quote_with compare e))
+         (InternalComparisonFolds.evaluate_with compare e)
+Closed under the global context
+InternalComparisonFolds.evaluate_with_canonical
+     : forall
+         (compare : StructuralCodes.code ->
+                    StructuralCodes.code -> Syntax.Term nat 0)
+         (e : InternalComparisonFolds.CC.Expr),
+       (forall x y : StructuralCodes.code,
+        DefEq.def_equiv nat 0 (compare x y)
+          (InternalComparisonFolds.GT.point
+             (InternalComparisonFolds.CC.code_eqb x y))) ->
+       DefEq.def_equiv nat 0
+         (InternalComparisonFolds.evaluate_with compare e)
+         (InternalComparisonFolds.GT.point
+            (InternalComparisonFolds.CC.eval e))
+Closed under the global context
+InternalComparisonFolds.evaluate_quote_canonical
+     : forall
+         (compare : StructuralCodes.code ->
+                    StructuralCodes.code -> Syntax.Term nat 0)
+         (e : InternalComparisonFolds.CC.Expr),
+       (forall x y : StructuralCodes.code,
+        DefEq.def_equiv nat 0 (compare x y)
+          (InternalComparisonFolds.GT.point
+             (InternalComparisonFolds.CC.code_eqb x y))) ->
+       DefEq.def_equiv nat 0
+         (Syntax.app InternalComparisonFolds.evaluate
+            (InternalComparisonFolds.quote_with compare e))
+         (InternalComparisonFolds.GT.point
+            (InternalComparisonFolds.CC.eval e))
+Closed under the global context
+InternalComparisonFolds.point_no_step
+     : forall (b : bool) (t : DirectRCommonCodes.CommonCodes.closed_term),
+       ~ Reduction.step nat 0 (InternalComparisonFolds.GT.point b) t
+Closed under the global context
+InternalComparisonFolds.point_reduct_equal
+     : forall (b : bool) (t : DirectRCommonCodes.CommonCodes.closed_term),
+       Reduction.reduces_to nat 0 (InternalComparisonFolds.GT.point b) t ->
+       InternalComparisonFolds.GT.point b = t
+Closed under the global context
+InternalComparisonFolds.equivalent_point_reduces
+     : forall (t : DirectRCommonCodes.CommonCodes.closed_term) (b : bool),
+       DefEq.def_equiv nat 0 t (InternalComparisonFolds.GT.point b) ->
+       Reduction.reduces_to nat 0 t (InternalComparisonFolds.GT.point b)
+Closed under the global context
+InternalComparisonFolds.point_equiv_injective
+     : forall b c : bool,
+       DefEq.def_equiv nat 0 (InternalComparisonFolds.GT.point b)
+         (InternalComparisonFolds.GT.point c) ->
+       b = c
+Closed under the global context
+InternalComparisonFolds.evaluate_quote_reduces
+     : forall
+         (compare : StructuralCodes.code ->
+                    StructuralCodes.code -> Syntax.Term nat 0)
+         (e : InternalComparisonFolds.CC.Expr),
+       (forall x y : StructuralCodes.code,
+        DefEq.def_equiv nat 0 (compare x y)
+          (InternalComparisonFolds.GT.point
+             (InternalComparisonFolds.CC.code_eqb x y))) ->
+       Reduction.reduces_to nat 0
+         (Syntax.app InternalComparisonFolds.evaluate
+            (InternalComparisonFolds.quote_with compare e))
+         (InternalComparisonFolds.GT.point
+            (InternalComparisonFolds.CC.eval e))
+Closed under the global context
+InternalComparisonFolds.evaluate_quote_output_exact
+     : forall
+         (compare : StructuralCodes.code ->
+                    StructuralCodes.code -> Syntax.Term nat 0)
+         (e : InternalComparisonFolds.CC.Expr) (b : bool),
+       (forall x y : StructuralCodes.code,
+        DefEq.def_equiv nat 0 (compare x y)
+          (InternalComparisonFolds.GT.point
+             (InternalComparisonFolds.CC.code_eqb x y))) ->
+       Reduction.reduces_to nat 0
+         (Syntax.app InternalComparisonFolds.evaluate
+            (InternalComparisonFolds.quote_with compare e))
+         (InternalComparisonFolds.GT.point b) <->
+       InternalComparisonFolds.CC.eval e = b
+Closed under the global context
+CodeComparisonRealization.atom_zip_application
+     : forall (t : StructuralCodes.tag) (y : Syntax.Term nat 0),
+       DirectRKernel.Core.Typed Context.ε y
+         CodeComparisonRealization.IC.carrier ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app (CodeComparisonRealization.CC.atom_zip t) y)
+         (CodeComparisonRealization.CC.zip_at
+            (CodeComparisonRealization.IC.atom t) y)
+Closed under the global context
+CodeComparisonRealization.pair_atom_zip_application
+     : forall (t : StructuralCodes.tag) (a b : Syntax.Term nat 0),
+       DirectRKernel.Core.Typed Context.ε a
+         CodeComparisonRealization.IC.carrier ->
+       DirectRKernel.Core.Typed Context.ε b
+         CodeComparisonRealization.IC.carrier ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app (CodeComparisonRealization.CC.pair_atom_zip t) a) b)
+         (CodeComparisonRealization.CC.zip_at
+            (CodeComparisonRealization.CC.pair_at a b)
+            (CodeComparisonRealization.IC.atom t))
+Closed under the global context
+CodeComparisonRealization.pair_pair_zip_application
+     : forall a b c d gac gbd : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε a
+         CodeComparisonRealization.IC.carrier ->
+       DirectRKernel.Core.Typed Context.ε b
+         CodeComparisonRealization.IC.carrier ->
+       DirectRKernel.Core.Typed Context.ε c
+         CodeComparisonRealization.IC.carrier ->
+       DirectRKernel.Core.Typed Context.ε d
+         CodeComparisonRealization.IC.carrier ->
+       DirectRKernel.Core.Typed Context.ε gac
+         (CodeComparisonRealization.CC.zip_at a c) ->
+       DirectRKernel.Core.Typed Context.ε gbd
+         (CodeComparisonRealization.CC.zip_at b d) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app
+                        (Syntax.app
+                           CodeComparisonRealization.CC.pair_pair_zip a)
+                        b)
+                     c)
+                  d)
+               gac)
+            gbd)
+         (CodeComparisonRealization.CC.zip_at
+            (CodeComparisonRealization.CC.pair_at a b)
+            (CodeComparisonRealization.CC.pair_at c d))
+Closed under the global context
+CodeComparisonRealization.compare_application
+     : forall x y g : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε x
+         CodeComparisonRealization.IC.carrier ->
+       DirectRKernel.Core.Typed Context.ε y
+         CodeComparisonRealization.IC.carrier ->
+       DirectRKernel.Core.Typed Context.ε g
+         (CodeComparisonRealization.CC.zip_at x y) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app (Syntax.app CodeComparisonRealization.CC.compare x) y)
+            g)
+         CodeComparisonRealization.BT.boolean
+Closed under the global context
+CodeComparisonRealization.quote_zip_typed
+     : forall x y : StructuralCodes.code,
+       DirectRKernel.Core.Typed Context.ε
+         (CodeComparisonRealization.quote_zip x y)
+         (CodeComparisonRealization.CC.zip_at
+            (CodeComparisonRealization.IC.quote x)
+            (CodeComparisonRealization.IC.quote y))
+Closed under the global context
+CodeComparisonRealization.comparison_typed
+     : forall x y : StructuralCodes.code,
+       DirectRKernel.Core.Typed Context.ε
+         (CodeComparisonRealization.comparison x y)
+         CodeComparisonRealization.BT.boolean
+Closed under the global context
+CodeComparisonRealization.is_atom_pair_beta
+     : forall (t : StructuralCodes.tag)
+         (a b : DirectRCommonCodes.CommonCodes.closed_term),
+       DefEq.def_equiv nat 0
+         (Syntax.app (CodeComparisonRealization.CC.is_atom t)
+            (Syntax.app (Syntax.app CodeComparisonRealization.IC.pair a) b))
+         (CodeComparisonRealization.BT.point false)
+Closed under the global context
+CodeComparisonRealization.compare_atom_beta
+     : forall (t : StructuralCodes.tag)
+         (y : DirectRCommonCodes.CommonCodes.closed_term),
+       DefEq.def_equiv nat 0
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app CodeComparisonRealization.CC.compare
+                  (CodeComparisonRealization.IC.atom t))
+               y)
+            (Syntax.app (CodeComparisonRealization.CC.atom_zip t) y))
+         (Syntax.app (CodeComparisonRealization.CC.is_atom t) y)
+Closed under the global context
+CodeComparisonRealization.compare_pair_atom_beta
+     : forall (t : StructuralCodes.tag)
+         (a b : DirectRCommonCodes.CommonCodes.closed_term),
+       DefEq.def_equiv nat 0
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app CodeComparisonRealization.CC.compare
+                  (Syntax.app
+                     (Syntax.app CodeComparisonRealization.IC.pair a) b))
+               (CodeComparisonRealization.IC.atom t))
+            (Syntax.app
+               (Syntax.app (CodeComparisonRealization.CC.pair_atom_zip t) a)
+               b))
+         (CodeComparisonRealization.BT.point false)
+Closed under the global context
+CodeComparisonRealization.compare_pair_pair_beta
+     : forall a b c d gac gbd : DirectRCommonCodes.CommonCodes.closed_term,
+       DefEq.def_equiv nat 0
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app CodeComparisonRealization.CC.compare
+                  (Syntax.app
+                     (Syntax.app CodeComparisonRealization.IC.pair a) b))
+               (Syntax.app (Syntax.app CodeComparisonRealization.IC.pair c) d))
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app
+                        (Syntax.app
+                           (Syntax.app
+                              CodeComparisonRealization.CC.pair_pair_zip a)
+                           b)
+                        c)
+                     d)
+                  gac)
+               gbd))
+         (Syntax.app
+            (Syntax.app CodeComparisonRealization.CC.conjunction
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app CodeComparisonRealization.CC.compare a) c)
+                  gac))
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app CodeComparisonRealization.CC.compare b) d)
+               gbd))
+Closed under the global context
+CodeComparisonRealization.comparison_beta
+     : forall x y : StructuralCodes.code,
+       DefEq.def_equiv nat 0 (CodeComparisonRealization.comparison x y)
+         (CodeComparisonRealization.BT.point
+            (CodeComparisonRealization.NC.code_eqb x y))
+Closed under the global context
+CodeComparisonRealization.boolean_equiv_injective
+     : forall b c : bool,
+       DefEq.def_equiv nat 0 (CodeComparisonRealization.BT.point b)
+         (CodeComparisonRealization.BT.point c) ->
+       b = c
+Closed under the global context
+CodeComparisonRealization.comparison_output_exact
+     : forall (x y : StructuralCodes.code) (b : bool),
+       DefEq.def_equiv nat 0 (CodeComparisonRealization.comparison x y)
+         (CodeComparisonRealization.BT.point b) <->
+       CodeComparisonRealization.NC.code_eqb x y = b
+Closed under the global context
+CodeComparisonRealization.comparison_true_exact
+     : forall x y : StructuralCodes.code,
+       DefEq.def_equiv nat 0 (CodeComparisonRealization.comparison x y)
+         (CodeComparisonRealization.BT.point true) <->
+       x = y
+Closed under the global context
+CodeComparisonRealization.comparison_false_exact
+     : forall x y : StructuralCodes.code,
+       DefEq.def_equiv nat 0 (CodeComparisonRealization.comparison x y)
+         (CodeComparisonRealization.BT.point false) <->
+       x <> y
+Closed under the global context
+CodeComparisonRealization.term_comparison_beta
+     : forall t u : Syntax.Term nat ?n,
+       DefEq.def_equiv nat 0
+         (CodeComparisonRealization.comparison
+            (StructuralCodes.encode_term t) (StructuralCodes.encode_term u))
+         (CodeComparisonRealization.BT.point
+            (NativeProofCodes.NativeProofCodes.term_eqb t u))
+where
+?n : [ |- nat]
+Closed under the global context
+CodeComparisonRealization.traversal_nodes_bounded
+     : forall x y : StructuralCodes.code,
+       CodeComparisonRealization.traversal_nodes x y <=
+       PeanoNat.Nat.min (StructuralCodes.code_size x)
+         (StructuralCodes.code_size y)
+Closed under the global context
+CheckerExecution.expression_typed
+     : forall e : CheckerExecution.F.CC.Expr,
+       DirectRKernel.Core.Typed Context.ε (CheckerExecution.expression e)
+         CheckerExecution.F.expression
+Closed under the global context
+CheckerExecution.run_typed
+     : forall e : CheckerExecution.F.CC.Expr,
+       DirectRKernel.Core.Typed Context.ε (CheckerExecution.run e)
+         CheckerExecution.B.boolean
+Closed under the global context
+CheckerExecution.run_beta
+     : forall e : CheckerExecution.F.CC.Expr,
+       DefEq.def_equiv nat 0 (CheckerExecution.run e)
+         (CheckerExecution.B.point (CheckerExecution.CC.eval e))
+Closed under the global context
+CheckerExecution.run_reduces
+     : forall e : CheckerExecution.F.CC.Expr,
+       Reduction.reduces_to nat 0 (CheckerExecution.run e)
+         (CheckerExecution.B.point (CheckerExecution.CC.eval e))
+Closed under the global context
+CheckerExecution.run_output_exact
+     : forall (e : CheckerExecution.F.CC.Expr) (b : bool),
+       Reduction.reduces_to nat 0 (CheckerExecution.run e)
+         (CheckerExecution.B.point b) <->
+       CheckerExecution.CC.eval e = b
+Closed under the global context
+CheckerExecution.judgment_program_typed
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerExecution.NC.Certificate ?n),
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerExecution.judgment_program G p) CheckerExecution.B.boolean
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerExecution.judgment_program_exact
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerExecution.NC.Certificate ?n) 
+         (b : bool),
+       Reduction.reduces_to nat 0 (CheckerExecution.judgment_program G p)
+         (CheckerExecution.B.point b) <->
+       CheckerExecution.NC.check G p = b
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerExecution.context_program_exact
+     : forall (c : CheckerExecution.NC.ContextCode ?n) (b : bool),
+       Reduction.reduces_to nat 0 (CheckerExecution.context_program c)
+         (CheckerExecution.B.point b) <->
+       CheckerExecution.NC.context_check c = b
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerExecution.equality_program_exact
+     : forall (e : CheckerExecution.NC.EqualityCode ?n) (b : bool),
+       Reduction.reduces_to nat 0 (CheckerExecution.equality_program e)
+         (CheckerExecution.B.point b) <->
+       CheckerExecution.NC.equality_check e = b
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerExecution.raw_program_typed
+     : forall q : StructuralCodes.code,
+       DirectRKernel.Core.Typed Context.ε (CheckerExecution.raw_program q)
+         CheckerExecution.B.boolean
+Closed under the global context
+CheckerExecution.bottom_program_typed
+     : forall q : StructuralCodes.code,
+       DirectRKernel.Core.Typed Context.ε (CheckerExecution.bottom_program q)
+         CheckerExecution.B.boolean
+Closed under the global context
+CheckerExecution.raw_program_exact
+     : forall (q : StructuralCodes.code) (b : bool),
+       Reduction.reduces_to nat 0 (CheckerExecution.raw_program q)
+         (CheckerExecution.B.point b) <->
+       CertificateSerialization.raw_check q = b
+Closed under the global context
+CheckerExecution.bottom_program_exact
+     : forall (q : StructuralCodes.code) (b : bool),
+       Reduction.reduces_to nat 0 (CheckerExecution.bottom_program q)
+         (CheckerExecution.B.point b) <->
+       CertificateSerialization.raw_bottom_check q = b
+Closed under the global context
+CheckerExecution.raw_program_reduces
+     : forall q : StructuralCodes.code,
+       Reduction.reduces_to nat 0 (CheckerExecution.raw_program q)
+         (CheckerExecution.B.point (CertificateSerialization.raw_check q))
+Closed under the global context
+CheckerExecution.bottom_program_reduces
+     : forall q : StructuralCodes.code,
+       Reduction.reduces_to nat 0 (CheckerExecution.bottom_program q)
+         (CheckerExecution.B.point
+            (CertificateSerialization.raw_bottom_check q))
+Closed under the global context
+CheckerExecution.accepted_program
+     : Reduction.reduces_to nat 0
+         (CheckerExecution.raw_program
+            (CertificateSerialization.encode_input
+               CheckerExecution.NC.EmptyContext
+               (CheckerExecution.NC.SortRule 0)))
+         (CheckerExecution.B.point true)
+Closed under the global context
+CheckerExecution.rejected_scoped_program
+     : Reduction.reduces_to nat 0
+         (CheckerExecution.raw_program
+            (CertificateSerialization.encode_input
+               CheckerExecution.NC.EmptyContext
+               CheckerExecution.CC.bad_application))
+         (CheckerExecution.B.point false)
+Closed under the global context
+CheckerExecution.malformed_program
+     : Reduction.reduces_to nat 0
+         (CheckerExecution.raw_program
+            (StructuralCodes.Atom StructuralCodes.NZero))
+         (CheckerExecution.B.point false)
+Closed under the global context
+CheckerExecution.distinct_sources_same_program
+     : CertificateSerialization.encode_input CheckerExecution.NC.EmptyContext
+         (CheckerExecution.NC.SortRule 0) <>
+       CertificateSerialization.encode_input CheckerExecution.NC.EmptyContext
+         (CheckerExecution.NC.SortRule 1) /\
+       CheckerExecution.raw_program
+         (CertificateSerialization.encode_input
+            CheckerExecution.NC.EmptyContext (CheckerExecution.NC.SortRule 0)) =
+       CheckerExecution.raw_program
+         (CertificateSerialization.encode_input
+            CheckerExecution.NC.EmptyContext (CheckerExecution.NC.SortRule 1))
+Closed under the global context
+        rocq theories/self_consistency/ComparisonExecutionAudit.{glob,vo}

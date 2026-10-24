@@ -1,0 +1,5 @@
+Initial expanded normalization comparison: exit 255.
+readable mismatch: boolean-01.log at -e line 1.
+Cause: JSON reader treated UTF-8 bytes as characters in four new log files.
+Correction: read originals with Perl <:encoding(UTF-8), preserving raw gzip.
+Rerun: exit 0; all 97 raw/readable normalized comparisons pass.

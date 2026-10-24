@@ -1,0 +1,7 @@
+git rev-parse HEAD 
+opam exec -- rocq -v 
+opam exec -- dune --version 
+opam list --installed --columns=name\,version 
+df -h . /tmp 
+source_manifest 
+previous_sources 

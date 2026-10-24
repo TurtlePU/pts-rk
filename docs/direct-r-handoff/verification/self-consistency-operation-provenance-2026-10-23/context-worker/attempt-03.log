@@ -1,0 +1,125 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 829 - 867 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.03u,0.007s)
+Chars 868 - 914 [From~PTSrk~Require~Import-(not...] 0.02 secs (0.015u,0.005s)
+Chars 915 - 962 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 963 - 1069 [From~Interpretation_of_R~Requi...] 0.051 secs (0.04u,0.01s)
+Chars 1070 - 1235 [From~PTSrk.SelfConsistency~Req...] 0.005 secs (0.002u,0.001s)
+Chars 1236 - 1257 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 1259 - 1288 [Module~InternalContextLookup.] 0. secs (0.u,0.s)
+Chars 1289 - 1536 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 1538 - 1578 [Definition~empty_context~:=~at...] 0. secs (0.u,0.s)
+Chars 1579 - 1646 [Definition~CtxCons~g~a~:=~node...] 0. secs (0.u,0.s)
+Chars 1647 - 1743 [Definition~context_cons~:=~~~c...] 0. secs (0.u,0.s)
+Chars 1744 - 1805 [Theorem~empty_context_typed~:~...] 0. secs (0.u,0.s)
+Chars 1806 - 1812 [Proof.] 0. secs (0.u,0.s)
+Chars 1813 - 1830 [apply~atom_typed.] 0. secs (0.u,0.s)
+Chars 1831 - 1835 [Qed.] 0. secs (0.u,0.s)
+Chars 1836 - 1927 [Theorem~context_cons_typed~:~~...] 0. secs (0.u,0.s)
+Chars 1928 - 1934 [Proof.] 0. secs (0.u,0.s)
+Chars 1935 - 1960 [RkCheck.certify_with~512.] 0.014 secs (0.012u,0.001s)
+Chars 1961 - 1965 [Qed.] 0.009 secs (0.008u,0.s)
+Chars 2103 - 2147 [Definition~CG~n~g~:=~napps~(NV...] 0. secs (0.u,0.s)
+Chars 2148 - 2211 [Definition~guard_empty_rule~:=...] 0. secs (0.u,0.s)
+Chars 2212 - 2280 [Definition~guard_cons_codes~:=...] 0. secs (0.u,0.s)
+Chars 2281 - 2437 [Definition~guard_cons_argument...] 0.001 secs (0.u,0.s)
+Chars 2438 - 2541 [Definition~guard_cons_rule~:=~...] 0. secs (0.u,0.s)
+Chars 2542 - 2657 [Definition~guard_fields~:=~~~[...] 0.001 secs (0.u,0.s)
+Chars 2658 - 2770 [Definition~context_guard~:=~~~...] 0.001 secs (0.001u,0.s)
+Chars 2771 - 2839 [Definition~ContextGuard~n~g~:=...] 0. secs (0.u,0.s)
+Chars 2840 - 2938 [Theorem~context_guard_sorted~:...] 0. secs (0.u,0.s)
+Chars 2939 - 2945 [Proof.] 0. secs (0.u,0.s)
+Chars 2946 - 2972 [RkCheck.certify_with~4096.] 0.395 secs (0.38u,0.014s)
+Chars 2973 - 2977 [Qed.] 0.352 secs (0.343u,0.007s)
+Chars 2979 - 3078 [Definition~context_guard_empty...] 0. secs (0.u,0.s)
+Chars 3079 - 3158 [Definition~context_guard_empty...] 0.001 secs (0.u,0.s)
+Chars 3159 - 3245 [Theorem~context_guard_empty_ty...] 0. secs (0.u,0.s)
+Chars 3246 - 3252 [Proof.] 0. secs (0.u,0.s)
+Chars 3253 - 3279 [RkCheck.certify_with~4096.] 0.316 secs (0.307u,0.007s)
+Chars 3280 - 3284 [Qed.] 0.298 secs (0.291u,0.006s)
+Chars 3285 - 3375 [Theorem~context_guard_empty_ty...] 0. secs (0.u,0.s)
+Chars 3376 - 3382 [Proof.] 0. secs (0.u,0.s)
+File "./theories/self_consistency/InternalContextLookup.v", line 64, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 64, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+Chars 3383 - 3409 [RkCheck.certify_with~8192.] 2.757 secs (2.705u,0.047s)
+Chars 3410 - 3414 [Qed.] 2.596 secs (2.555u,0.032s)
+Chars 3416 - 3590 [Definition~context_guard_cons_...] 0.001 secs (0.001u,0.s)
+Chars 3591 - 3736 [Definition~context_guard_cons_...] 0. secs (0.u,0.s)
+Chars 3737 - 3969 [Definition~context_guard_cons~...] 0.002 secs (0.002u,0.s)
+Chars 3970 - 4054 [Theorem~context_guard_cons_typ...] 0. secs (0.u,0.s)
+Chars 4055 - 4061 [Proof.] 0. secs (0.u,0.s)
+File "./theories/self_consistency/InternalContextLookup.v", line 76, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 76, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+Chars 4062 - 4088 [RkCheck.certify_with~8192.] 0.877 secs (0.858u,0.016s)
+Chars 4089 - 4093 [Qed.] 0.811 secs (0.793u,0.016s)
+Chars 4094 - 4181 [Theorem~context_guard_cons_typ...] 0. secs (0.u,0.s)
+Chars 4182 - 4188 [Proof.] 0. secs (0.u,0.s)
+File "./theories/self_consistency/InternalContextLookup.v", line 78, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 78, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+Chars 4189 - 4216 [RkCheck.certify_with~32768.] 16.341 secs (16.006u,0.299s)
+Chars 4217 - 4221 [Qed.] 16.296 secs (15.946u,0.31s)
+Chars 4376 - 4439 [Definition~Shift~n~m~a~b~:=~Re...] 0. secs (0.u,0.s)
+Chars 4440 - 4494 [Definition~LR~n~g~i~a~:=~napps...] 0. secs (0.u,0.s)
+Chars 4495 - 4566 [Definition~zero_codes~:=~[(10,...] 0. secs (0.u,0.s)
+Chars 4567 - 4701 [Definition~zero_arguments~:=~~...] 0. secs (0.u,0.s)
+Chars 4702 - 4808 [Definition~zero_rule~:=~~~npis...] 0. secs (0.u,0.s)
+Chars 4809 - 4909 [Definition~step_codes~:=~~~[(1...] 0. secs (0.u,0.s)
+Chars 4910 - 5058 [Definition~step_edges~:=~~~[(2...] 0. secs (0.u,0.s)
+Chars 5059 - 5238 [Definition~step_rule~:=~~~npis...] 0. secs (0.u,0.s)
+Chars 5239 - 5367 [Definition~lookup_fields~:=~~~...] 0. secs (0.u,0.s)
+Chars 5368 - 5432 [Definition~lookup_arguments~:=...] 0. secs (0.u,0.s)
+Chars 5433 - 5565 [Definition~context_lookup~:=~~...] 0.002 secs (0.002u,0.s)
+Chars 5566 - 5642 [Definition~CtxLookup~n~g~i~a~:...] 0. secs (0.u,0.s)
+Chars 5643 - 5731 [Definition~context_lookup_sort...] 0. secs (0.u,0.s)
+Chars 5732 - 5813 [Theorem~context_lookup_sorted~...] 0. secs (0.u,0.s)
+Chars 5814 - 5820 [Proof.] 0. secs (0.u,0.s)
+File "./theories/self_consistency/InternalContextLookup.v", line 107, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 107, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+Chars 5821 - 5848 [RkCheck.certify_with~16384.] 1.996 secs (1.942u,0.049s)
+Chars 5849 - 5853 [Qed.] 1.719 secs (1.681u,0.034s)
+Chars 5855 - 5999 [Definition~context_lookup_zero...] 0.001 secs (0.001u,0.s)
+Chars 6000 - 6174 [Definition~context_lookup_zero...] 0.003 secs (0.003u,0.s)
+Chars 6175 - 6261 [Theorem~context_lookup_zero_ty...] 0. secs (0.u,0.s)
+Chars 6262 - 6268 [Proof.] 0. secs (0.u,0.s)
+File "./theories/self_consistency/InternalContextLookup.v", line 114, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 114, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+Chars 6269 - 6296 [RkCheck.certify_with~16384.] 2.777 secs (2.729u,0.039s)
+Chars 6297 - 6301 [Qed.] 2.538 secs (2.506u,0.027s)
+Chars 6302 - 6392 [Theorem~context_lookup_zero_ty...] 0. secs (0.u,0.s)
+Chars 6393 - 6399 [Proof.] 0. secs (0.u,0.s)
+File "./theories/self_consistency/InternalContextLookup.v", line 116, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 116, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+Chars 6400 - 6427 [RkCheck.certify_with~65536.] 139.008 secs (136.903u,1.782s)
+Chars 6428 - 6432 [Qed.] 140.326 secs (138.534u,1.489s)
+File "./theories/self_consistency/InternalContextLookup.v", line 116, characters 35-39:
+Error: User interrupt.

@@ -1,0 +1,20 @@
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/CodeComparisonRealization.v", line 96, characters 23-24:
+Error: Cannot infer this placeholder of type "Term nat 0" in
+environment:
+a, b : code
+IHa :
+  forall y : code,
+  Typed ε (quote_zip a y) (CC.zip_at (IC.quote a) (IC.quote y))
+IHb :
+  forall y : code,
+  Typed ε (quote_zip b y) (CC.zip_at (IC.quote b) (IC.quote y))
+t : tag
+

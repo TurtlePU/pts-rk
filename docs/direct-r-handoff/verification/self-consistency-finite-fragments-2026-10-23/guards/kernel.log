@@ -1,0 +1,6 @@
+Warning: /private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/Interpretation_of_R
+         was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+         Interpretation_of_R
+Fatal Error: User error: The file /private/tmp/pts-rk-finite-case-guards.PY8kti/FiniteCaseGuards.vo contains library
+              FiniteCaseGuards and not library
+              PTSrk.SelfConsistency.FiniteCaseGuards

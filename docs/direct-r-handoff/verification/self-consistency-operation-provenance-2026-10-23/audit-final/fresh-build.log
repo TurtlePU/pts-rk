@@ -1,0 +1,1578 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+        rocq theories/.PTSrk.theory.d
+        rocq theories/Interpretation_of_R/.Interpretation_of_R.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Congruence.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/StructuralCodes.{glob,vo}
+        rocq theories/Interpretation_of_R/DirectRCommonCodes.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Reduction.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CodeSubstitution.{glob,vo}
+        rocq theories/self_consistency/ResourcePaths.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/NativeProofCodes.{glob,vo}
+        rocq theories/SN.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/DefEq.{glob,vo}
+        rocq theories/self_consistency/ContextLookupCodes.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Interpretation_of_R/DirectREval.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/Interpretation_of_R/DirectRKernel.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateAdequacy.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRCheck.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRStructural.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/SortRenaming.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/GuardedTables.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/NamedTemplates.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/RankCompression.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/NamedBeta.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateSerialization.{glob,vo}
+        rocq theories/self_consistency/InternalCarrier.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CheckerComparisons.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalResources.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CheckerSourceGraph.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalComparisonFolds.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalBinary.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/ResourceRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalExecutionGraph.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/InternalScope.v", line 158, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalScope.v", line 158, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalScope.v", line 162, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalScope.v", line 162, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalScope.v", line 166, characters 7-51:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalScope.v", line 166, characters 7-51:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalScope.v", line 166, characters 7-51:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalScope.v", line 170, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalScope.v", line 170, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalScope.v", line 203, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalScope.v", line 203, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+        rocq theories/self_consistency/InternalScope.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalCodeComparison.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/BooleanAgreement.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/BinaryRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/InternalRenamingLookup.v", line 85, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenamingLookup.v", line 85, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenamingLookup.v", line 110, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenamingLookup.v", line 110, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+        rocq theories/self_consistency/CodeComparisonRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/InternalRenamingLookup.v", line 153, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenamingLookup.v", line 153, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+        rocq theories/self_consistency/InternalRenamingLookup.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalJointTraversal.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/ScopeRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/ComparisonGraphRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/InternalRenaming.v", line 68, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenaming.v", line 68, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+        rocq theories/self_consistency/InternalComparisonGraph.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/InternalRenaming.v", line 80, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenaming.v", line 80, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenaming.v", line 102, characters 7-52:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenaming.v", line 102, characters 7-52:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenaming.v", line 102, characters 7-52:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+        rocq theories/self_consistency/RenamingLookupRealization.{glob,vo}
+File "./theories/self_consistency/InternalRenaming.v", line 116, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenaming.v", line 116, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenaming.v", line 146, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenaming.v", line 146, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenaming.v", line 148, characters 7-35:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalRenaming.v", line 148, characters 7-35:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+        rocq theories/self_consistency/InternalRenaming.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 87, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 87, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 99, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 99, characters 7-33:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 101, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 101, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 130, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 130, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 137, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 137, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 146, characters 7-70:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 146, characters 7-70:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 149, characters 2-86:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 149, characters 2-86:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 179, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 179, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 188, characters 7-70:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 188, characters 7-70:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 191, characters 2-87:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 191, characters 2-87:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 235, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 235, characters 7-34:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 273, characters 7-70:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 273, characters 7-70:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 276, characters 2-89:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+File "./theories/self_consistency/InternalContextLookup.v", line 276, characters 2-89:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+        rocq theories/self_consistency/InternalContextLookup.{glob,vo}
+        rocq theories/self_consistency/RenamingRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/ContextLookupRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+NamedBeta.apply_spine_typed
+     : forall (G : Context.Ctx nat ?n) (T : Syntax.Term nat ?n)
+         (xs : list (Syntax.Term nat ?n)) (A : Syntax.Term nat ?n),
+       NamedBeta.TypedSpine G T xs A ->
+       forall f : Syntax.Term nat ?n,
+       DirectRKernel.Core.Typed G f T ->
+       DirectRKernel.Core.Typed G (NamedBeta.apply_spine f xs) A
+where
+?n : [ |- nat]
+Closed under the global context
+NamedBeta.apply_spine_append
+     : forall (f : Syntax.Term nat ?n) (xs ys : list (Syntax.Term nat ?n)),
+       NamedBeta.apply_spine f (xs ++ ys) =
+       NamedBeta.apply_spine (NamedBeta.apply_spine f xs) ys
+where
+?n : [ |- nat]
+Closed under the global context
+NamedBeta.update_substitution
+     : forall (e : NamedTemplates.NamedTemplates.environment ?n)
+         (x : nat) (u : Syntax.Term nat ?n) (y : nat),
+       NamedTemplates.NamedTemplates.update e x u y =
+       option_map (fun b : Syntax.Term nat (S ?n) => Syntax.subst b u)
+         (NamedTemplates.NamedTemplates.extend x e y)
+where
+?n : [ |- nat]
+Closed under the global context
+NamedBeta.evaluate_substitution
+     : forall (t : DirectRCommonCodes.CommonCodes.named)
+         (n : nat) (e : NamedTemplates.NamedTemplates.environment n)
+         (x : nat) (u : Syntax.Term nat n),
+       NamedTemplates.NamedTemplates.evaluate t
+         (NamedTemplates.NamedTemplates.update e x u) =
+       option_map (fun b : Syntax.Term nat (S n) => Syntax.subst b u)
+         (NamedTemplates.NamedTemplates.evaluate t
+            (NamedTemplates.NamedTemplates.extend x e))
+Closed under the global context
+NamedBeta.named_spine_typed
+     : forall (G : Context.Ctx nat ?n)
+         (fields : list (nat * DirectRCommonCodes.CommonCodes.named))
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (args : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n),
+       NamedBeta.NamedSpine G fields e args final ->
+       forall (body : DirectRCommonCodes.CommonCodes.named)
+         (F R : Syntax.Term nat ?n),
+       NamedTemplates.NamedTemplates.evaluate
+         (DirectRCommonCodes.CommonCodes.npis fields body) e =
+       Some F ->
+       NamedTemplates.NamedTemplates.evaluate body final = Some R ->
+       NamedBeta.TypedSpine G F args R
+where
+?n : [ |- nat]
+Closed under the global context
+NamedBeta.named_spine_application
+     : forall (G : Context.Ctx nat ?n)
+         (fields : list (nat * DirectRCommonCodes.CommonCodes.named))
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (args : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (body : DirectRCommonCodes.CommonCodes.named)
+         (F R f : Syntax.Term nat ?n),
+       NamedBeta.NamedSpine G fields e args final ->
+       NamedTemplates.NamedTemplates.evaluate
+         (DirectRCommonCodes.CommonCodes.npis fields body) e =
+       Some F ->
+       NamedTemplates.NamedTemplates.evaluate body final = Some R ->
+       DirectRKernel.Core.Typed G f F ->
+       DirectRKernel.Core.Typed G (NamedBeta.apply_spine f args) R
+where
+?n : [ |- nat]
+Closed under the global context
+NamedBeta.named_spine_append
+     : forall (G : Context.Ctx nat ?n)
+         (fields : list (nat * DirectRCommonCodes.CommonCodes.named))
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (args : list (Syntax.Term nat ?n))
+         (middle : NamedTemplates.NamedTemplates.environment ?n),
+       NamedBeta.NamedSpine G fields e args middle ->
+       forall (tail : list (nat * DirectRCommonCodes.CommonCodes.named))
+         (rest : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n),
+       NamedBeta.NamedSpine G tail middle rest final ->
+       NamedBeta.NamedSpine G (fields ++ tail) e (args ++ rest) final
+where
+?n : [ |- nat]
+Closed under the global context
+NamedBeta.evaluated_beta
+     : forall (e : NamedTemplates.NamedTemplates.environment ?n)
+         (x : nat) (body : DirectRCommonCodes.CommonCodes.named)
+         (a : Syntax.Term nat ?n) (b : Syntax.Term nat (S ?n))
+         (u result : Syntax.Term nat ?n),
+       NamedTemplates.NamedTemplates.evaluate body
+         (NamedTemplates.NamedTemplates.extend x e) =
+       Some b ->
+       NamedTemplates.NamedTemplates.evaluate body
+         (NamedTemplates.NamedTemplates.update e x u) =
+       Some result ->
+       DefEq.def_equiv nat ?n (Syntax.app (Syntax.lam a b) u) result
+where
+?n : [ |- nat]
+Closed under the global context
+NamedBeta.named_application_beta
+     : forall (e : NamedTemplates.NamedTemplates.environment ?n)
+         (x : nat) (domain body : DirectRCommonCodes.CommonCodes.named)
+         (f u result : Syntax.Term nat ?n),
+       NamedTemplates.NamedTemplates.evaluate
+         (DirectRCommonCodes.CommonCodes.NLam x domain body) e =
+       Some f ->
+       NamedTemplates.NamedTemplates.evaluate body
+         (NamedTemplates.NamedTemplates.update e x u) =
+       Some result -> DefEq.def_equiv nat ?n (Syntax.app f u) result
+where
+?n : [ |- nat]
+Closed under the global context
+NamedBeta.named_application_result
+     : forall (e : NamedTemplates.NamedTemplates.environment ?n)
+         (x : nat) (domain body : DirectRCommonCodes.CommonCodes.named)
+         (f u : Syntax.Term nat ?n),
+       NamedTemplates.NamedTemplates.evaluate
+         (DirectRCommonCodes.CommonCodes.NLam x domain body) e =
+       Some f ->
+       exists result : Syntax.Term nat ?n,
+         NamedTemplates.NamedTemplates.evaluate body
+           (NamedTemplates.NamedTemplates.update e x u) =
+         Some result /\ DefEq.def_equiv nat ?n (Syntax.app f u) result
+where
+?n : [ |- nat]
+Closed under the global context
+NamedBeta.named_application4_beta
+     : forall (e : NamedTemplates.NamedTemplates.environment ?n)
+         (x0 : nat) (a0 : DirectRCommonCodes.CommonCodes.named)
+         (x1 : nat) (a1 : DirectRCommonCodes.CommonCodes.named)
+         (x2 : nat) (a2 : DirectRCommonCodes.CommonCodes.named)
+         (x3 : nat) (a3 body : DirectRCommonCodes.CommonCodes.named)
+         (f u0 u1 u2 u3 result : Syntax.Term nat ?n),
+       NamedTemplates.NamedTemplates.evaluate
+         (DirectRCommonCodes.CommonCodes.NLam x0 a0
+            (DirectRCommonCodes.CommonCodes.NLam x1 a1
+               (DirectRCommonCodes.CommonCodes.NLam x2 a2
+                  (DirectRCommonCodes.CommonCodes.NLam x3 a3 body))))
+         e =
+       Some f ->
+       NamedTemplates.NamedTemplates.evaluate body
+         (NamedTemplates.NamedTemplates.update
+            (NamedTemplates.NamedTemplates.update
+               (NamedTemplates.NamedTemplates.update
+                  (NamedTemplates.NamedTemplates.update e x0 u0) x1 u1)
+               x2 u2)
+            x3 u3) =
+       Some result ->
+       DefEq.def_equiv nat ?n
+         (Syntax.app (Syntax.app (Syntax.app (Syntax.app f u0) u1) u2) u3)
+         result
+where
+?n : [ |- nat]
+Closed under the global context
+BooleanAgreement.refl_type_sorted
+     : DirectRKernel.Core.Typed Context.ε BooleanAgreement.refl_type
+         (Syntax.𝓤 3)
+Closed under the global context
+BooleanAgreement.refl_typed
+     : DirectRKernel.Core.Typed Context.ε BooleanAgreement.EG.same_refl
+         BooleanAgreement.refl_type
+Closed under the global context
+BooleanAgreement.and_type_sorted
+     : DirectRKernel.Core.Typed Context.ε BooleanAgreement.and_type
+         (Syntax.𝓤 4)
+Closed under the global context
+BooleanAgreement.and_typed
+     : DirectRKernel.Core.Typed Context.ε BooleanAgreement.EG.same_and
+         BooleanAgreement.and_type
+Closed under the global context
+BooleanAgreement.same_application
+     : forall (G : Context.Ctx nat ?n) (b c : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G b
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            BooleanAgreement.GT.boolean) ->
+       DirectRKernel.Core.Typed G c
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            BooleanAgreement.GT.boolean) ->
+       DirectRKernel.Core.Typed G (BooleanAgreement.EG.same_at b c)
+         (Syntax.𝓤 3)
+where
+?n : [ |- nat]
+Closed under the global context
+BooleanAgreement.same_refl_application
+     : forall (G : Context.Ctx nat ?n) (b : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G b
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            BooleanAgreement.GT.boolean) ->
+       DirectRKernel.Core.Typed G
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               BooleanAgreement.EG.same_refl)
+            b)
+         (BooleanAgreement.EG.same_at b b)
+where
+?n : [ |- nat]
+Closed under the global context
+BooleanAgreement.same_from_beta
+     : forall (G : Context.Ctx nat ?n) (b c : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G b
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            BooleanAgreement.GT.boolean) ->
+       DirectRKernel.Core.Typed G c
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            BooleanAgreement.GT.boolean) ->
+       DefEq.def_equiv nat ?n b c ->
+       DirectRKernel.Core.Typed G
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               BooleanAgreement.EG.same_refl)
+            b)
+         (BooleanAgreement.EG.same_at b c)
+where
+?n : [ |- nat]
+Closed under the global context
+BooleanAgreement.same_and_application
+     : forall (G : Context.Ctx nat ?n) (b c d e h k : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G b
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            BooleanAgreement.GT.boolean) ->
+       DirectRKernel.Core.Typed G c
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            BooleanAgreement.GT.boolean) ->
+       DirectRKernel.Core.Typed G d
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            BooleanAgreement.GT.boolean) ->
+       DirectRKernel.Core.Typed G e
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            BooleanAgreement.GT.boolean) ->
+       DirectRKernel.Core.Typed G h (BooleanAgreement.EG.same_at b d) ->
+       DirectRKernel.Core.Typed G k (BooleanAgreement.EG.same_at c e) ->
+       DirectRKernel.Core.Typed G
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app
+                        (Syntax.app
+                           (DirectRCommonCodes.CommonCodes.lift_closed
+                              BooleanAgreement.EG.same_and)
+                           b)
+                        c)
+                     d)
+                  e)
+               h)
+            k)
+         (BooleanAgreement.EG.same_at (BooleanAgreement.EG.and_at b c)
+            (BooleanAgreement.EG.and_at d e))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupCodes.ctx_roundtrip
+     : forall G : Context.Ctx nat ?n,
+       ContextLookupCodes.decode_ctx (ContextLookupCodes.encode_ctx G) ?n =
+       Some G
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupCodes.encode_ctx_injective
+     : forall G H : Context.Ctx nat ?n,
+       ContextLookupCodes.encode_ctx G = ContextLookupCodes.encode_ctx H ->
+       G = H
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupCodes.ctx_decode_encode
+     : forall (g : StructuralCodes.code) (n : nat) (G : Context.Ctx nat n),
+       ContextLookupCodes.decode_ctx g n = Some G ->
+       ContextLookupCodes.encode_ctx G = g
+Closed under the global context
+ContextLookupCodes.lookup_graph_output
+     : forall (g : StructuralCodes.code) (i : nat) (A : StructuralCodes.code),
+       ContextLookupCodes.LookupGraph g i A ->
+       ContextLookupCodes.raw_lookup g i = Some A
+Closed under the global context
+ContextLookupCodes.lookup_graph_complete
+     : forall (g : StructuralCodes.code) (i : nat) (A : StructuralCodes.code),
+       ContextLookupCodes.raw_lookup g i = Some A ->
+       ContextLookupCodes.LookupGraph g i A
+Closed under the global context
+ContextLookupCodes.lookup_graph_unique
+     : forall (g : StructuralCodes.code) (i : nat)
+         (A B : StructuralCodes.code),
+       ContextLookupCodes.LookupGraph g i A ->
+       ContextLookupCodes.LookupGraph g i B -> A = B
+Closed under the global context
+ContextLookupCodes.raw_lookup_encode
+     : forall (G : Context.Ctx nat ?n) (i : Syntax.Fin ?n),
+       ContextLookupCodes.raw_lookup (ContextLookupCodes.encode_ctx G)
+         (StructuralCodes.fin_number i) =
+       Some (StructuralCodes.encode_term (Context.index G i))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupCodes.raw_lookup_code_encode
+     : forall (G : Context.Ctx nat ?n) (i : Syntax.Fin ?n),
+       ContextLookupCodes.raw_lookup_code (ContextLookupCodes.encode_ctx G)
+         (StructuralCodes.encode_nat (StructuralCodes.fin_number i)) =
+       Some (StructuralCodes.encode_term (Context.index G i))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupCodes.decoded_lookup_exact
+     : forall (g : StructuralCodes.code) (n : nat)
+         (G : Context.Ctx nat n) (k : nat) (i : Syntax.Fin n),
+       ContextLookupCodes.decode_ctx g n = Some G ->
+       StructuralCodes.decode_fin n k = Some i ->
+       ContextLookupCodes.raw_lookup g k =
+       Some (StructuralCodes.encode_term (Context.index G i))
+Closed under the global context
+ContextLookupCodes.standard_lookup_graph
+     : forall (G : Context.Ctx nat ?n) (i : Syntax.Fin ?n),
+       ContextLookupCodes.LookupGraph (ContextLookupCodes.encode_ctx G)
+         (StructuralCodes.fin_number i)
+         (StructuralCodes.encode_term (Context.index G i))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupCodes.certificate_context_extend
+     : forall (c : NativeProofCodes.NativeProofCodes.ContextCode ?n)
+         (r : nat) (p : NativeProofCodes.NativeProofCodes.Certificate ?n),
+       ContextLookupCodes.certificate_context
+         (NativeProofCodes.NativeProofCodes.ExtendContext c r p) =
+       ContextLookupCodes.extend_code
+         (ContextLookupCodes.certificate_context c)
+         (StructuralCodes.encode_term
+            (NativeProofCodes.NativeProofCodes.subject p))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupCodes.certificate_context_lookup
+     : forall (c : NativeProofCodes.NativeProofCodes.ContextCode ?n)
+         (i : Syntax.Fin ?n),
+       ContextLookupCodes.raw_lookup
+         (ContextLookupCodes.certificate_context c)
+         (StructuralCodes.fin_number i) =
+       Some
+         (StructuralCodes.encode_term
+            (Context.index (NativeProofCodes.NativeProofCodes.context c) i))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupCodes.empty_lookup_rejected
+     : forall i : nat,
+       ContextLookupCodes.raw_lookup ContextLookupCodes.empty_code i = None
+Closed under the global context
+InternalContextLookup.empty_context_typed
+     : DirectRKernel.Core.Typed Context.ε InternalContextLookup.empty_context
+         InternalCarrier.InternalCarrier.carrier
+Closed under the global context
+InternalContextLookup.context_cons_typed
+     : DirectRKernel.Core.Typed Context.ε InternalContextLookup.context_cons
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalCarrier.InternalCarrier.carrier
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalCarrier.InternalCarrier.carrier
+               InternalCarrier.InternalCarrier.carrier))
+Closed under the global context
+InternalContextLookup.context_guard_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalContextLookup.context_guard
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalCarrier.InternalCarrier.carrier
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalCarrier.InternalCarrier.carrier
+               (Syntax.𝓤 14)))
+Closed under the global context
+InternalContextLookup.context_guard_empty_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_guard_empty_type
+         (Syntax.𝓤 14)
+Closed under the global context
+InternalContextLookup.context_guard_empty_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_guard_empty
+         InternalContextLookup.context_guard_empty_type
+Closed under the global context
+InternalContextLookup.context_guard_cons_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_guard_cons_type
+         (Syntax.𝓤 15)
+Closed under the global context
+InternalContextLookup.context_guard_cons_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_guard_cons
+         InternalContextLookup.context_guard_cons_type
+Closed under the global context
+InternalContextLookup.context_lookup_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup
+         InternalContextLookup.context_lookup_sort_type
+Closed under the global context
+InternalContextLookup.context_lookup_zero_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_zero_type
+         (Syntax.𝓤 18)
+Closed under the global context
+InternalContextLookup.context_lookup_zero_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_zero
+         InternalContextLookup.context_lookup_zero_type
+Closed under the global context
+InternalContextLookup.context_lookup_step_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_step_type
+         (Syntax.𝓤 19)
+Closed under the global context
+InternalContextLookup.context_lookup_step_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_step
+         InternalContextLookup.context_lookup_step_type
+Closed under the global context
+InternalContextLookup.context_lookup_scope_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_scope_type
+         (Syntax.𝓤 19)
+Closed under the global context
+InternalContextLookup.context_lookup_scope_template_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_scope_template
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalRenamingLookup.InternalRenamingLookup.bounded_shift_bound_type
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalRenaming.InternalRenaming.renaming_scope_type
+               InternalContextLookup.context_lookup_scope_type))
+Closed under the global context
+InternalContextLookup.context_lookup_scope_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_scope
+         InternalContextLookup.context_lookup_scope_type
+Closed under the global context
+ContextLookupRealization.ContextGuardTerm_replace
+     : forall (f : Syntax.Fin ?m -> Syntax.Term nat ?n)
+         (bound g : Syntax.Term nat ?m),
+       Syntax.replace f (ContextLookupRealization.ContextGuardTerm bound g) =
+       ContextLookupRealization.ContextGuardTerm (Syntax.replace f bound)
+         (Syntax.replace f g)
+where
+?m : [ |- nat]
+?n : [ |- nat]
+Closed under the global context
+ContextLookupRealization.ContextLookupTerm_replace
+     : forall (f : Syntax.Fin ?m -> Syntax.Term nat ?n)
+         (bound g i a : Syntax.Term nat ?m),
+       Syntax.replace f
+         (ContextLookupRealization.ContextLookupTerm bound g i a) =
+       ContextLookupRealization.ContextLookupTerm
+         (Syntax.replace f bound) (Syntax.replace f g)
+         (Syntax.replace f i) (Syntax.replace f a)
+where
+?m : [ |- nat]
+?n : [ |- nat]
+Closed under the global context
+ContextLookupRealization.ContextShiftTerm_replace
+     : forall (f : Syntax.Fin ?m -> Syntax.Term nat ?n)
+         (bound target a b : Syntax.Term nat ?m),
+       Syntax.replace f
+         (ContextLookupRealization.ContextShiftTerm bound target a b) =
+       ContextLookupRealization.ContextShiftTerm (Syntax.replace f bound)
+         (Syntax.replace f target) (Syntax.replace f a)
+         (Syntax.replace f b)
+where
+?m : [ |- nat]
+?n : [ |- nat]
+Closed under the global context
+ContextLookupRealization.context_guard_cons_application
+     : forall n m g a hn hg ha : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε n
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε m
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε g
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε a
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε hn
+         (BinaryRealization.BinaryRealization.SuccTerm n m) ->
+       DirectRKernel.Core.Typed Context.ε hg
+         (ContextLookupRealization.ContextGuardTerm n g) ->
+       DirectRKernel.Core.Typed Context.ε ha
+         (ScopeRealization.ScopeRealization.ScopeTerm n a) ->
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.guard_cons_application n m g a hn hg ha)
+         (ContextLookupRealization.ContextGuardTerm m
+            (ContextLookupRealization.CtxConsTerm g a))
+Closed under the global context
+ContextLookupRealization.context_lookup_zero_application
+     : forall n m g a b hn hs : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε n
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε m
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε g
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε a
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε b
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε hn
+         (BinaryRealization.BinaryRealization.SuccTerm n m) ->
+       DirectRKernel.Core.Typed Context.ε hs
+         (ContextLookupRealization.ContextShiftTerm n m a b) ->
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.zero_application n m g a b hn hs)
+         (ContextLookupRealization.ContextLookupTerm m
+            (ContextLookupRealization.CtxConsTerm g a)
+            (InternalCarrier.InternalCarrier.atom StructuralCodes.NZero) b)
+Closed under the global context
+ContextLookupRealization.context_lookup_step_application
+     : forall n m g d i j a b h hn hi hs : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε n
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε m
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε g
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε d
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε i
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε j
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε a
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε b
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε h
+         (ContextLookupRealization.ContextLookupTerm n g i a) ->
+       DirectRKernel.Core.Typed Context.ε hn
+         (BinaryRealization.BinaryRealization.SuccTerm n m) ->
+       DirectRKernel.Core.Typed Context.ε hi
+         (BinaryRealization.BinaryRealization.SuccTerm i j) ->
+       DirectRKernel.Core.Typed Context.ε hs
+         (ContextLookupRealization.ContextShiftTerm n m a b) ->
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.step_application n m g d i j a b h hn hi
+            hs)
+         (ContextLookupRealization.ContextLookupTerm m
+            (ContextLookupRealization.CtxConsTerm g d) j b)
+Closed under the global context
+ContextLookupRealization.context_lookup_scope_application
+     : forall n g i a h : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε n
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε g
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε i
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε a
+         InternalCarrier.InternalCarrier.carrier ->
+       DirectRKernel.Core.Typed Context.ε h
+         (ContextLookupRealization.ContextLookupTerm n g i a) ->
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.scope_application n g i a h)
+         (ScopeRealization.ScopeRealization.ScopeTerm n a)
+Closed under the global context
+ContextLookupRealization.guard_witness_typed
+     : forall G : Context.Ctx nat ?n,
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.guard_witness G)
+         (ContextLookupRealization.ContextGuardTerm
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote ?n)
+            (InternalCarrier.InternalCarrier.quote
+               (ContextLookupRealization.CD.encode_ctx G)))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupRealization.shift_graph_realized
+     : forall A : Syntax.Term nat ?n,
+       DirectRKernel.Core.Typed Context.ε
+         (RenamingRealization.RenamingRealization.shift_witness A)
+         (ContextLookupRealization.ContextShiftTerm
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote ?n)
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote
+               (S ?n))
+            (InternalCarrier.InternalCarrier.quote
+               (StructuralCodes.encode_term A))
+            (InternalCarrier.InternalCarrier.quote
+               (StructuralCodes.encode_term (Syntax.shift A))))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupRealization.lookup_witness_typed
+     : forall (G : Context.Ctx nat ?n) (i : Syntax.Fin ?n),
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.lookup_witness G i)
+         (ContextLookupRealization.ContextLookupTerm
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote ?n)
+            (InternalCarrier.InternalCarrier.quote
+               (ContextLookupRealization.CD.encode_ctx G))
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote
+               (DirectRStructural.Structural.fin_number i))
+            (InternalCarrier.InternalCarrier.quote
+               (StructuralCodes.encode_term (Context.index G i))))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupRealization.decoded_lookup_realized
+     : forall (g : StructuralCodes.code) (n : nat)
+         (G : Context.Ctx nat n) (k : nat) (i : Syntax.Fin n),
+       ContextLookupRealization.CD.decode_ctx g n = Some G ->
+       StructuralCodes.decode_fin n k = Some i ->
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.lookup_witness G i)
+         (ContextLookupRealization.ContextLookupTerm
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote n)
+            (InternalCarrier.InternalCarrier.quote g)
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote k)
+            (InternalCarrier.InternalCarrier.quote
+               (StructuralCodes.encode_term (Context.index G i))))
+Closed under the global context
+ContextLookupRealization.raw_lookup_realized
+     : forall (g : StructuralCodes.code) (n : nat)
+         (G : Context.Ctx nat n) (k : nat) (i : Syntax.Fin n)
+         (a : StructuralCodes.code),
+       ContextLookupRealization.CD.decode_ctx g n = Some G ->
+       StructuralCodes.decode_fin n k = Some i ->
+       ContextLookupRealization.CD.raw_lookup g k = Some a ->
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.lookup_witness G i)
+         (ContextLookupRealization.ContextLookupTerm
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote n)
+            (InternalCarrier.InternalCarrier.quote g)
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote k)
+            (InternalCarrier.InternalCarrier.quote a))
+Closed under the global context
+ContextLookupRealization.output_scope_witness_typed
+     : forall (G : Context.Ctx nat ?n) (i : Syntax.Fin ?n),
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.output_scope_witness G i)
+         (ScopeRealization.ScopeRealization.ScopeTerm
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote ?n)
+            (InternalCarrier.InternalCarrier.quote
+               (StructuralCodes.encode_term (Context.index G i))))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupRealization.context_quotation_injective
+     : forall G H : Context.Ctx nat ?n,
+       InternalCarrier.InternalCarrier.quote
+         (ContextLookupRealization.CD.encode_ctx G) =
+       InternalCarrier.InternalCarrier.quote
+         (ContextLookupRealization.CD.encode_ctx H) ->
+       G = H
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupRealization.certificate_context_lookup_realized
+     : forall (c : NativeProofCodes.NativeProofCodes.ContextCode ?n)
+         (i : Syntax.Fin ?n),
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.lookup_witness
+            (NativeProofCodes.NativeProofCodes.context c) i)
+         (ContextLookupRealization.ContextLookupTerm
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote ?n)
+            (InternalCarrier.InternalCarrier.quote
+               (ContextLookupRealization.CD.certificate_context c))
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote
+               (DirectRStructural.Structural.fin_number i))
+            (InternalCarrier.InternalCarrier.quote
+               (StructuralCodes.encode_term
+                  (Context.index
+                     (NativeProofCodes.NativeProofCodes.context c) i))))
+where
+?n : [ |- nat]
+Closed under the global context
+ContextLookupRealization.source_lookup_realized
+     : forall (G : Context.Ctx nat ?n) (i : Syntax.Fin ?n)
+         (A : Syntax.Term nat ?n),
+       ContextLookupRealization.SG.Lookup G i A ->
+       DirectRKernel.Core.Typed Context.ε
+         (ContextLookupRealization.lookup_witness G i)
+         (ContextLookupRealization.ContextLookupTerm
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote ?n)
+            (InternalCarrier.InternalCarrier.quote
+               (ContextLookupRealization.CD.encode_ctx G))
+            (RenamingLookupRealization.RenamingLookupRealization.NatQuote
+               (DirectRStructural.Structural.fin_number i))
+            (InternalCarrier.InternalCarrier.quote
+               (StructuralCodes.encode_term A)))
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.trace_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalComparisonGraph.trace
+         InternalComparisonGraph.trace_type
+Closed under the global context
+InternalComparisonGraph.trace_application
+     : forall (G : Context.Ctx nat ?n) (x y z b : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G x
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G y
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G z (InternalComparisonGraph.CMP.zip_at x y) ->
+       DirectRKernel.Core.Typed G b
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.GT.boolean) ->
+       DirectRKernel.Core.Typed G (InternalComparisonGraph.trace_at x y z b)
+         (Syntax.𝓤 6)
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.trace_head_beta
+     : forall (e : NamedTemplates.NamedTemplates.environment ?n)
+         (x y z b result : Syntax.Term nat ?n),
+       NamedTemplates.NamedTemplates.evaluate
+         (DirectRCommonCodes.CommonCodes.npis InternalComparisonGraph.fields
+            (InternalComparisonGraph.At
+               (DirectRCommonCodes.CommonCodes.NVar 0)
+               (DirectRCommonCodes.CommonCodes.NVar 1)
+               (DirectRCommonCodes.CommonCodes.NVar 2)
+               (DirectRCommonCodes.CommonCodes.NVar 3)))
+         (NamedTemplates.NamedTemplates.update
+            (NamedTemplates.NamedTemplates.update
+               (NamedTemplates.NamedTemplates.update
+                  (NamedTemplates.NamedTemplates.update e 0 x) 1 y)
+               2 z)
+            3 b) =
+       Some result ->
+       DefEq.def_equiv nat ?n (InternalComparisonGraph.trace_at x y z b)
+         result
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.zip_application
+     : forall (G : Context.Ctx nat ?n) (x y : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G x
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G y
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G (InternalComparisonGraph.CMP.zip_at x y)
+         (Syntax.𝓤 4)
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.is_atom_application
+     : forall (G : Context.Ctx nat ?n) (t : StructuralCodes.tag)
+         (y : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G y
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (InternalComparisonGraph.CMP.is_atom t))
+            y)
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.GT.boolean)
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.pair_application
+     : forall (G : Context.Ctx nat ?n) (x y : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G x
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G y
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G (InternalComparisonGraph.CMP.pair_at x y)
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier)
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.atom_zip_application
+     : forall (G : Context.Ctx nat ?n) (t : StructuralCodes.tag)
+         (y : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G y
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (InternalComparisonGraph.CMP.atom_zip t))
+            y)
+         (InternalComparisonGraph.CMP.zip_at
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (InternalComparisonGraph.IC.atom t))
+            y)
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.pair_atom_zip_application
+     : forall (G : Context.Ctx nat ?n) (t : StructuralCodes.tag)
+         (a b : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G a
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G b
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G
+         (Syntax.app
+            (Syntax.app
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  (InternalComparisonGraph.CMP.pair_atom_zip t))
+               a)
+            b)
+         (InternalComparisonGraph.CMP.zip_at
+            (InternalComparisonGraph.CMP.pair_at a b)
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (InternalComparisonGraph.IC.atom t)))
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.compare_application
+     : forall (G : Context.Ctx nat ?n) (x y z : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G x
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G y
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G z (InternalComparisonGraph.CMP.zip_at x y) ->
+       DirectRKernel.Core.Typed G
+         (InternalComparisonGraph.CMP.compare_at x y z)
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.GT.boolean)
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.pair_pair_zip_application
+     : forall (G : Context.Ctx nat ?n) (a b c d z w : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G a
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G b
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G c
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G d
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G z (InternalComparisonGraph.CMP.zip_at a c) ->
+       DirectRKernel.Core.Typed G w (InternalComparisonGraph.CMP.zip_at b d) ->
+       DirectRKernel.Core.Typed G
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app
+                        (Syntax.app
+                           (DirectRCommonCodes.CommonCodes.lift_closed
+                              InternalComparisonGraph.CMP.pair_pair_zip)
+                           a)
+                        b)
+                     c)
+                  d)
+               z)
+            w)
+         (InternalComparisonGraph.CMP.zip_at
+            (InternalComparisonGraph.CMP.pair_at a b)
+            (InternalComparisonGraph.CMP.pair_at c d))
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.conjunction_application
+     : forall (G : Context.Ctx nat ?n) (b c : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G b
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.GT.boolean) ->
+       DirectRKernel.Core.Typed G c
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.GT.boolean) ->
+       DirectRKernel.Core.Typed G
+         (InternalComparisonGraph.CMP.conjunction_at b c)
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.GT.boolean)
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.atom_observation_agreement
+     : forall (G : Context.Ctx nat ?n) (t : StructuralCodes.tag)
+         (y : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G y
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               InternalComparisonGraph.EG.same_refl)
+            (InternalComparisonGraph.CMP.compare_at
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  (InternalComparisonGraph.IC.atom t))
+               y
+               (Syntax.app
+                  (DirectRCommonCodes.CommonCodes.lift_closed
+                     (InternalComparisonGraph.CMP.atom_zip t))
+                  y)))
+         (InternalComparisonGraph.EG.same_at
+            (InternalComparisonGraph.CMP.compare_at
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  (InternalComparisonGraph.IC.atom t))
+               y
+               (Syntax.app
+                  (DirectRCommonCodes.CommonCodes.lift_closed
+                     (InternalComparisonGraph.CMP.atom_zip t))
+                  y))
+            (Syntax.app
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  (InternalComparisonGraph.CMP.is_atom t))
+               y))
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.pair_pair_observation_agreement
+     : forall (G : Context.Ctx nat ?n)
+         (a b c d z w p q h k : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G a
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G b
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G c
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G d
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G z (InternalComparisonGraph.CMP.zip_at a c) ->
+       DirectRKernel.Core.Typed G w (InternalComparisonGraph.CMP.zip_at b d) ->
+       DirectRKernel.Core.Typed G p
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.GT.boolean) ->
+       DirectRKernel.Core.Typed G q
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.GT.boolean) ->
+       DirectRKernel.Core.Typed G h
+         (InternalComparisonGraph.EG.same_at
+            (InternalComparisonGraph.CMP.compare_at a c z) p) ->
+       DirectRKernel.Core.Typed G k
+         (InternalComparisonGraph.EG.same_at
+            (InternalComparisonGraph.CMP.compare_at b d w) q) ->
+       DirectRKernel.Core.Typed G
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app
+                        (Syntax.app
+                           (DirectRCommonCodes.CommonCodes.lift_closed
+                              InternalComparisonGraph.EG.same_and)
+                           (InternalComparisonGraph.CMP.compare_at a c z))
+                        (InternalComparisonGraph.CMP.compare_at b d w))
+                     p)
+                  q)
+               h)
+            k)
+         (InternalComparisonGraph.EG.same_at
+            (InternalComparisonGraph.CMP.compare_at
+               (InternalComparisonGraph.CMP.pair_at a b)
+               (InternalComparisonGraph.CMP.pair_at c d)
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app
+                        (Syntax.app
+                           (Syntax.app
+                              (Syntax.app
+                                 (DirectRCommonCodes.CommonCodes.lift_closed
+                                    InternalComparisonGraph.CMP.pair_pair_zip)
+                                 a)
+                              b)
+                           c)
+                        d)
+                     z)
+                  w))
+            (InternalComparisonGraph.CMP.conjunction_at p q))
+where
+?n : [ |- nat]
+Closed under the global context
+InternalComparisonGraph.pair_atom_observation_agreement
+     : forall (G : Context.Ctx nat ?n) (t : StructuralCodes.tag)
+         (a b : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G a
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G b
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            InternalComparisonGraph.IC.carrier) ->
+       DirectRKernel.Core.Typed G
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               InternalComparisonGraph.EG.same_refl)
+            (InternalComparisonGraph.CMP.compare_at
+               (InternalComparisonGraph.CMP.pair_at a b)
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  (InternalComparisonGraph.IC.atom t))
+               (Syntax.app
+                  (Syntax.app
+                     (DirectRCommonCodes.CommonCodes.lift_closed
+                        (InternalComparisonGraph.CMP.pair_atom_zip t))
+                     a)
+                  b)))
+         (InternalComparisonGraph.EG.same_at
+            (InternalComparisonGraph.CMP.compare_at
+               (InternalComparisonGraph.CMP.pair_at a b)
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  (InternalComparisonGraph.IC.atom t))
+               (Syntax.app
+                  (Syntax.app
+                     (DirectRCommonCodes.CommonCodes.lift_closed
+                        (InternalComparisonGraph.CMP.pair_atom_zip t))
+                     a)
+                  b))
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (InternalComparisonGraph.GT.point false)))
+where
+?n : [ |- nat]
+Closed under the global context
+ComparisonGraphRealization.symbolic_output_typed
+     : forall x y : StructuralCodes.code,
+       DirectRKernel.Core.Typed Context.ε
+         (ComparisonGraphRealization.symbolic_output x y)
+         ComparisonGraphRealization.GT.boolean
+Closed under the global context
+ComparisonGraphRealization.symbolic_output_beta
+     : forall x y : StructuralCodes.code,
+       DefEq.def_equiv nat 0 (ComparisonGraphRealization.symbolic_output x y)
+         (ComparisonGraphRealization.GT.point
+            (ComparisonGraphRealization.NC.code_eqb x y))
+Closed under the global context
+ComparisonGraphRealization.standard_symbolic_agreement
+     : forall x y : StructuralCodes.code,
+       DefEq.def_equiv nat 0 (ComparisonGraphRealization.CR.comparison x y)
+         (ComparisonGraphRealization.symbolic_output x y)
+Closed under the global context
+        rocq theories/self_consistency/OperationProvenanceAudit.{glob,vo}

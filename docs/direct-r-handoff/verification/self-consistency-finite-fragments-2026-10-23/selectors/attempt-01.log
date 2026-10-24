@@ -1,0 +1,4 @@
+File "/tmp/pts-rk-selector-separation.YDI45P/FiniteSelectorSeparation.v", line 47, characters 61-72:
+Error:
+ The relation (def_equiv nat n) is not a declared reflexive relation. Maybe you need to require the Corelib.Classes.RelationClasses library
+

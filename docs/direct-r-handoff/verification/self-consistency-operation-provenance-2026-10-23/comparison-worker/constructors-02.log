@@ -1,0 +1,33 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 38 [From~Stdlib~Require~Import~Lis...] 0.036 secs (0.03u,0.005s)
+Chars 39 - 85 [From~PTSrk~Require~Import-(not...] 0.018 secs (0.014u,0.003s)
+Chars 86 - 152 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 153 - 269 [From~Interpretation_of_R~Requi...] 0.05 secs (0.041u,0.009s)
+Chars 270 - 375 [From~PTSrk.SelfConsistency~Req...] 0.013 secs (0.011u,0.002s)
+Chars 376 - 397 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 398 - 481 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 482 - 541 [Module~JT:=~~InternalJointTrav...] 0.069 secs (0.061u,0.007s)
+Chars 542 - 809 [Fixpoint~lambda_parts~{n}~(t~:...] 0.001 secs (0.001u,0.s)
+Chars 810 - 909 [Definition~assembled_or_sort~e...] 0. secs (0.u,0.s)
+Chars 910 - 1052 [Definition~atom_template~t~:=~...] 8.307 secs (8.193u,0.097s)
+Chars 1053 - 1102 [Definition~atom_env~:=~rev~(ma...] 0. secs (0.u,0.s)
+Chars 1103 - 1216 [Definition~atom_telescope~:~te...] 0.284 secs (0.282u,0.001s)
+Chars 1217 - 1280 [Definition~atom_context~:=~tel...] 0. secs (0.u,0.s)
+Chars 1281 - 1379 [Definition~atom_body~t~:=~~~as...] 0. secs (0.u,0.s)
+Chars 1380 - 1512 [Definition~atom_result~t~:=~~~...] 0. secs (0.u,0.s)
+Chars 1513 - 1570 [Lemma~atom_context_wf~:~@wf~na...] 0. secs (0.u,0.s)
+Chars 1571 - 1577 [Proof.] 0. secs (0.u,0.s)
+Chars 1578 - 1640 [apply~(RkCheck.check_ctx_sound...] 46.026 secs (45.161u,0.762s)
+Chars 1641 - 1645 [Qed.] 42.735 secs (42.12u,0.522s)
+Chars 1646 - 1721 [Lemma~atom_body_typed~t~:~Type...] 0. secs (0.u,0.s)
+Chars 1722 - 1728 [Proof.] 0. secs (0.u,0.s)
+Chars 1729 - 1824 [destruct~t;~apply~(RkCheck.che...] 1.497 secs (1.471u,0.023s)
+File "/tmp/pts-rk-comparison-graph.AaaC94/ConstructorProbe.v", line 31, characters 7-102:
+Error: Tactic failure: Incorrect number of goals (expected 58 tactics).

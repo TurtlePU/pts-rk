@@ -1,0 +1,33 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 38 [From~Stdlib~Require~Import~Lis...] 0.035 secs (0.03u,0.005s)
+Chars 39 - 85 [From~PTSrk~Require~Import-(not...] 0.018 secs (0.014u,0.003s)
+Chars 86 - 152 [From~PTSrk~Require~Import~Cont...] 0.002 secs (0.002u,0.s)
+Chars 153 - 269 [From~Interpretation_of_R~Requi...] 0.05 secs (0.041u,0.007s)
+Chars 270 - 375 [From~PTSrk.SelfConsistency~Req...] 0.012 secs (0.01u,0.001s)
+Chars 376 - 397 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 398 - 481 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 482 - 541 [Module~JT:=~~InternalJointTrav...] 0.069 secs (0.062u,0.006s)
+Chars 542 - 809 [Fixpoint~lambda_parts~{n}~(t~:...] 0.002 secs (0.001u,0.s)
+Chars 810 - 909 [Definition~assembled_or_sort~e...] 0. secs (0.u,0.s)
+Chars 910 - 1052 [Definition~atom_template~t~:=~...] 8.423 secs (8.299u,0.088s)
+Chars 1053 - 1102 [Definition~atom_env~:=~rev~(ma...] 0. secs (0.u,0.s)
+Chars 1103 - 1216 [Definition~atom_telescope~:~te...] 0.294 secs (0.29u,0.002s)
+Chars 1217 - 1280 [Definition~atom_context~:=~tel...] 0. secs (0.u,0.s)
+Chars 1281 - 1363 [Definition~atom_head~t~:=~~~as...] 0. secs (0.u,0.s)
+Chars 1364 - 1436 [Definition~atom_head_type~t~:=...] 0. secs (0.u,0.s)
+Chars 1437 - 1498 [Definition~atom_input~:=~assem...] 0. secs (0.u,0.s)
+Chars 1499 - 1597 [Definition~atom_body~t~:=~~~as...] 0. secs (0.u,0.s)
+Chars 1598 - 1730 [Definition~atom_result~t~:=~~~...] 0. secs (0.u,0.s)
+Chars 1731 - 1809 [Lemma~atom_head_typed~t~:~Type...] 0. secs (0.u,0.s)
+Chars 1810 - 1816 [Proof.] 0. secs (0.u,0.s)
+Chars 1817 - 1838 [destruct~t;~apply~tV.] 1.376 secs (1.355u,0.018s)
+File "/tmp/pts-rk-comparison-graph.AaaC94/NativeConstructorProbe.v", line 32, characters 25-27:
+Error: Unable to unify "?G ⊢ var ?i ⇐ ?G !! ?i" with
+ "atom_context ⊢ atom_head NZero ⇐ atom_head_type NZero".

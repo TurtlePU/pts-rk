@@ -1,0 +1,41 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 38 [From~Stdlib~Require~Import~Lis...] 0.037 secs (0.031u,0.005s)
+Chars 39 - 112 [From~Interpretation_of_R~Requi...] 0.072 secs (0.059u,0.012s)
+Chars 113 - 170 [From~PTSrk.SelfConsistency~Req...] 0.001 secs (0.u,0.s)
+Chars 171 - 209 [Import~ListNotations~CommonCod...] 0. secs (0.u,0.s)
+NamedTemplates.evaluate_close :
+forall (t : named) (ok : closedb t = true) (n : nat)
+  (e : NamedTemplates.environment n),
+NamedTemplates.evaluate t e = Some (lift_closed (close t ok))
+
+Chars 210 - 270 [Print~Implicit~NamedTemplates....] 0. secs (0.u,0.s)
+Chars 271 - 360 [Lemma~probe~(c~:~closed_term)~...] 0.001 secs (0.001u,0.s)
+Chars 361 - 367 [Proof.] 0. secs (0.u,0.s)
+Chars 370 - 509 [pose~proof~~(NamedTemplates.Na...] 0.001 secs (0.u,0.s)
+(NamedTemplates.evaluate (NClosed c) (NamedTemplates.names [99; 98]) =
+ Some (lift_closed (close (NClosed c) eq_refl)))
+Chars 512 - 551 [match~type~of~E~with~|~?T~=>~i...] 0.001 secs (0.u,0.s)
+Chars 554 - 657 [pose~proof~~(eq_trans~~~~~(Nam...] 0.001 secs (0.001u,0.s)
+Chars 660 - 668 [exact~H.] 0.004 secs (0.003u,0.001s)
+File "/tmp/pts-rk-context-lookup.9QUeXr/Probe.v", line 15, characters 8-9:
+Error:
+In environment
+c : closed_term
+E :
+  NamedTemplates.evaluate (NClosed c) (NamedTemplates.names [99; 98]) =
+  Some (lift_closed (close (NClosed c) eq_refl))
+H :
+  assemble (NClosed c) [99; 98] =
+  Some (lift_closed (close (NClosed c) eq_refl))
+The term "H" has type
+ "assemble (NClosed c) [99; 98] =
+  Some (lift_closed (close (NClosed c) eq_refl))"
+while it is expected to have type
+ "assemble (NClosed c) [99; 98] = Some (lift_closed c)".

@@ -1,0 +1,1018 @@
+From PTSrk.SelfConsistency Require Import NativeProofCodes CertificateAdequacy SortRenaming RankCompression.
+From PTSrk.SelfConsistency Require Import NamedTemplates.
+From PTSrk.SelfConsistency Require Import FiniteFragmentAudit.
+From PTSrk.SelfConsistency Require Import FiniteDictionaryAudit.
+From PTSrk.SelfConsistency Require Import ComparisonExecutionAudit.
+From PTSrk.SelfConsistency Require Import JointResourceAudit.
+From PTSrk.SelfConsistency Require Import SourceProvenanceAudit.
+From PTSrk.SelfConsistency Require Import OperationProvenanceAudit.
+From PTSrk.SelfConsistency Require Import UniformHornAudit.
+From PTSrk.SelfConsistency Require Import StructuralCodes CertificateSerialization SerializationBounds.
+From PTSrk.SelfConsistency Require Import InternalCarrier GuardedTables FiniteRejection.
+From PTSrk.SelfConsistency Require Import ResourcePaths InternalResources ResourceRealization.
+From PTSrk.SelfConsistency Require Import InternalPaths ResourceSeparation PathSubstitution PathRealization.
+From PTSrk.SelfConsistency Require Import LookupInversion InversionRealization
+  LookupHistory HistoryRealization InternalCapacity CapacityBounds.
+From PTSrk.SelfConsistency Require Import RelationalTransport LookupHomomorphisms
+  OccurrenceSafety SimulationRealization.
+From PTSrk.SelfConsistency Require Import CodeSubstitution InternalBinary BinaryRealization
+  InternalScope ScopeRealization InternalRenamingLookup InternalRenaming.
+From PTSrk.SelfConsistency Require Import RenamingLookupRealization RenamingRealization
+  InternalSubstitutionEnvironment SubstitutionEnvironmentRealization.
+From PTSrk.SelfConsistency Require Import InternalTermLookup TermLookupRealization
+  InternalReplacement ReplacementRealization InvariantObstructions.
+Check NativeProofCodes.NativeProofCodes.fin_eqb_correct.
+Print Assumptions NativeProofCodes.NativeProofCodes.fin_eqb_correct.
+Check NativeProofCodes.NativeProofCodes.term_eqb_correct.
+Print Assumptions NativeProofCodes.NativeProofCodes.term_eqb_correct.
+Check matchesb_correct.
+Print Assumptions matchesb_correct.
+Check step_code_sound.
+Print Assumptions step_code_sound.
+Check step_code_complete.
+Print Assumptions step_code_complete.
+Check equality_code_sound.
+Print Assumptions equality_code_sound.
+Check equality_code_complete.
+Print Assumptions equality_code_complete.
+Check certificate_sound.
+Print Assumptions certificate_sound.
+Check certificate_complete.
+Print Assumptions certificate_complete.
+Check certificate_adequacy.
+Print Assumptions certificate_adequacy.
+Check context_code_sound.
+Print Assumptions context_code_sound.
+Check context_code_complete.
+Print Assumptions context_code_complete.
+Check bottom_acceptance_sound.
+Print Assumptions bottom_acceptance_sound.
+Check bottom_acceptance_complete.
+Print Assumptions bottom_acceptance_complete.
+Check relabel_rename.
+Print Assumptions relabel_rename.
+Check relabel_replace.
+Print Assumptions relabel_replace.
+Check relabel_subst.
+Print Assumptions relabel_subst.
+Check relabel_index.
+Print Assumptions relabel_index.
+Check relabel_step.
+Print Assumptions relabel_step.
+Check relabel_conversion.
+Print Assumptions relabel_conversion.
+Check relabel_equality_endpoints.
+Print Assumptions relabel_equality_endpoints.
+Check relabel_equality_check.
+Print Assumptions relabel_equality_check.
+Check relabel_certificate_check.
+Print Assumptions relabel_certificate_check.
+Check relabel_context_check.
+Print Assumptions relabel_context_check.
+Check compress_zero.
+Print Assumptions compress_zero.
+Check compress_one.
+Print Assumptions compress_one.
+Check compress_successor.
+Print Assumptions compress_successor.
+Check compress_monotone.
+Print Assumptions compress_monotone.
+Check compress_strict.
+Print Assumptions compress_strict.
+Check compress_product.
+Print Assumptions compress_product.
+Check compress_bound.
+Print Assumptions compress_bound.
+Check compression_respects_products.
+Print Assumptions compression_respects_products.
+Check compressed_certificate_checked.
+Print Assumptions compressed_certificate_checked.
+Check compressed_original_typing.
+Print Assumptions compressed_original_typing.
+Check compressed_label_bound.
+Print Assumptions compressed_label_bound.
+Check compression_fixes_bottom.
+Print Assumptions compression_fixes_bottom.
+Check compression_preserves_bottom_acceptance.
+Print Assumptions compression_preserves_bottom_acceptance.
+Check relabel_preserves_nodes.
+Print Assumptions relabel_preserves_nodes.
+Check compress_injective_on_support.
+Print Assumptions compress_injective_on_support.
+Check compressed_input_checked.
+Print Assumptions compressed_input_checked.
+Check compressed_input_original_typing.
+Print Assumptions compressed_input_original_typing.
+Check input_compressed_label_bound.
+Print Assumptions input_compressed_label_bound.
+Check every_original_judgment_compresses.
+Print Assumptions every_original_judgment_compresses.
+Check positive_roundtrip.
+Print Assumptions positive_roundtrip.
+Check nat_roundtrip.
+Print Assumptions nat_roundtrip.
+Check positive_decode_encode.
+Print Assumptions positive_decode_encode.
+Check nat_decode_encode.
+Print Assumptions nat_decode_encode.
+Check fin_roundtrip.
+Print Assumptions fin_roundtrip.
+Check fin_decode_number.
+Print Assumptions fin_decode_number.
+Check term_roundtrip.
+Print Assumptions term_roundtrip.
+Check encode_term_injective.
+Print Assumptions encode_term_injective.
+Check term_decode_encode.
+Print Assumptions term_decode_encode.
+Check step_roundtrip.
+Print Assumptions step_roundtrip.
+Check equality_roundtrip.
+Print Assumptions equality_roundtrip.
+Check certificate_roundtrip.
+Print Assumptions certificate_roundtrip.
+Check context_roundtrip.
+Print Assumptions context_roundtrip.
+Check input_roundtrip.
+Print Assumptions input_roundtrip.
+Check raw_check_encoding.
+Print Assumptions raw_check_encoding.
+Check raw_check_sound.
+Print Assumptions raw_check_sound.
+Check raw_check_complete.
+Print Assumptions raw_check_complete.
+Check raw_bottom_encoding.
+Print Assumptions raw_bottom_encoding.
+Check raw_bottom_sound.
+Print Assumptions raw_bottom_sound.
+Check raw_bottom_complete.
+Print Assumptions raw_bottom_complete.
+Check step_decode_encode.
+Print Assumptions step_decode_encode.
+Check equality_decode_encode.
+Print Assumptions equality_decode_encode.
+Check certificate_decode_encode.
+Print Assumptions certificate_decode_encode.
+Check context_decode_encode.
+Print Assumptions context_decode_encode.
+Check input_decode_encode.
+Print Assumptions input_decode_encode.
+Check encode_step_injective.
+Print Assumptions encode_step_injective.
+Check encode_equality_injective.
+Print Assumptions encode_equality_injective.
+Check encode_certificate_injective.
+Print Assumptions encode_certificate_injective.
+Check encode_input_injective.
+Print Assumptions encode_input_injective.
+Check raw_compress_encoding.
+Print Assumptions raw_compress_encoding.
+Check raw_compress_domain.
+Print Assumptions raw_compress_domain.
+Check raw_compress_preserves_acceptance.
+Print Assumptions raw_compress_preserves_acceptance.
+Check raw_compress_output_decodes.
+Print Assumptions raw_compress_output_decodes.
+Check binary_encoding_size.
+Print Assumptions binary_encoding_size.
+Check term_labels_encoded_size.
+Print Assumptions term_labels_encoded_size.
+Check step_labels_encoded_size.
+Print Assumptions step_labels_encoded_size.
+Check equality_labels_encoded_size.
+Print Assumptions equality_labels_encoded_size.
+Check certificate_labels_encoded_size.
+Print Assumptions certificate_labels_encoded_size.
+Check context_labels_encoded_size.
+Print Assumptions context_labels_encoded_size.
+Check input_support_encoded_size.
+Print Assumptions input_support_encoded_size.
+Check compressed_label_serialized_bound.
+Print Assumptions compressed_label_serialized_bound.
+Check decoded_label_bound.
+Print Assumptions decoded_label_bound.
+Check InternalCarrier.InternalCarrier.carrier_sorted.
+Print Assumptions InternalCarrier.InternalCarrier.carrier_sorted.
+Check InternalCarrier.InternalCarrier.atom_typed.
+Print Assumptions InternalCarrier.InternalCarrier.atom_typed.
+Check InternalCarrier.InternalCarrier.pair_typed.
+Print Assumptions InternalCarrier.InternalCarrier.pair_typed.
+Check InternalCarrier.InternalCarrier.good_sorted.
+Print Assumptions InternalCarrier.InternalCarrier.good_sorted.
+Check InternalCarrier.InternalCarrier.good_atom_typed.
+Print Assumptions InternalCarrier.InternalCarrier.good_atom_typed.
+Check InternalCarrier.InternalCarrier.good_pair_type_sorted.
+Print Assumptions InternalCarrier.InternalCarrier.good_pair_type_sorted.
+Check InternalCarrier.InternalCarrier.good_pair_typed.
+Print Assumptions InternalCarrier.InternalCarrier.good_pair_typed.
+Check InternalCarrier.InternalCarrier.quote_typed.
+Print Assumptions InternalCarrier.InternalCarrier.quote_typed.
+Check InternalCarrier.InternalCarrier.generation_typed.
+Print Assumptions InternalCarrier.InternalCarrier.generation_typed.
+Check InternalCarrier.InternalCarrier.all_raw_codes_generated.
+Print Assumptions InternalCarrier.InternalCarrier.all_raw_codes_generated.
+Check InternalCarrier.InternalCarrier.quote_injective.
+Print Assumptions InternalCarrier.InternalCarrier.quote_injective.
+Check GuardedTables.GuardedTables.boolean_sorted.
+Print Assumptions GuardedTables.GuardedTables.boolean_sorted.
+Check GuardedTables.GuardedTables.point_typed.
+Print Assumptions GuardedTables.GuardedTables.point_typed.
+Check GuardedTables.GuardedTables.can_one_sorted.
+Print Assumptions GuardedTables.GuardedTables.can_one_sorted.
+Check GuardedTables.GuardedTables.can_two_sorted.
+Print Assumptions GuardedTables.GuardedTables.can_two_sorted.
+Check GuardedTables.GuardedTables.canonical_one_typed.
+Print Assumptions GuardedTables.GuardedTables.canonical_one_typed.
+Check GuardedTables.GuardedTables.canonical_two_typed.
+Print Assumptions GuardedTables.GuardedTables.canonical_two_typed.
+Check GuardedTables.GuardedTables.binary_elimination_sorted.
+Print Assumptions GuardedTables.GuardedTables.binary_elimination_sorted.
+Check GuardedTables.GuardedTables.binary_elimination_typed.
+Print Assumptions GuardedTables.GuardedTables.binary_elimination_typed.
+Check GuardedTables.GuardedTables.closure_type_sorted.
+Print Assumptions GuardedTables.GuardedTables.closure_type_sorted.
+Check GuardedTables.GuardedTables.closure_typed.
+Print Assumptions GuardedTables.GuardedTables.closure_typed.
+Check GuardedTables.GuardedTables.equality_sorted.
+Print Assumptions GuardedTables.GuardedTables.equality_sorted.
+Check GuardedTables.GuardedTables.extensionality_type_sorted.
+Print Assumptions GuardedTables.GuardedTables.extensionality_type_sorted.
+Check GuardedTables.GuardedTables.extensionality_typed.
+Print Assumptions GuardedTables.GuardedTables.extensionality_typed.
+Check GuardedTables.GuardedTables.table_type_sorted.
+Print Assumptions GuardedTables.GuardedTables.table_type_sorted.
+Check GuardedTables.GuardedTables.table_typed.
+Print Assumptions GuardedTables.GuardedTables.table_typed.
+Check GuardedTables.GuardedTables.all_sixteen_tables_typed.
+Print Assumptions GuardedTables.GuardedTables.all_sixteen_tables_typed.
+Check GuardedTables.GuardedTables.expansion_guard_typed.
+Print Assumptions GuardedTables.GuardedTables.expansion_guard_typed.
+Check GuardedTables.GuardedTables.expansion_equal_typed.
+Print Assumptions GuardedTables.GuardedTables.expansion_equal_typed.
+Check GuardedTables.GuardedTables.data_closure_type_sorted.
+Print Assumptions GuardedTables.GuardedTables.data_closure_type_sorted.
+Check GuardedTables.GuardedTables.data_closure_typed.
+Print Assumptions GuardedTables.GuardedTables.data_closure_typed.
+Check GuardedTables.GuardedTables.data_lookup_typed.
+Print Assumptions GuardedTables.GuardedTables.data_lookup_typed.
+Check FiniteRejection.FiniteRejection.fragment_complete.
+Print Assumptions FiniteRejection.FiniteRejection.fragment_complete.
+Check FiniteRejection.FiniteRejection.source_in_fragment.
+Print Assumptions FiniteRejection.FiniteRejection.source_in_fragment.
+Check FiniteRejection.FiniteRejection.source_accepted.
+Print Assumptions FiniteRejection.FiniteRejection.source_accepted.
+Check FiniteRejection.FiniteRejection.source_not_bottom.
+Print Assumptions FiniteRejection.FiniteRejection.source_not_bottom.
+Check FiniteRejection.FiniteRejection.raw_source_not_bottom.
+Print Assumptions FiniteRejection.FiniteRejection.raw_source_not_bottom.
+Check FiniteRejection.FiniteRejection.finite_check_typed.
+Print Assumptions FiniteRejection.FiniteRejection.finite_check_typed.
+Check FiniteRejection.FiniteRejection.finite_check_computes.
+Print Assumptions FiniteRejection.FiniteRejection.finite_check_computes.
+Check FiniteRejection.FiniteRejection.finite_check_covers.
+Print Assumptions FiniteRejection.FiniteRejection.finite_check_covers.
+Check FiniteRejection.FiniteRejection.rejection_type_sorted.
+Print Assumptions FiniteRejection.FiniteRejection.rejection_type_sorted.
+Check FiniteRejection.FiniteRejection.rejection_typed.
+Print Assumptions FiniteRejection.FiniteRejection.rejection_typed.
+Check ResourcePaths.ResourcePaths.path_code_injective.
+Print Assumptions ResourcePaths.ResourcePaths.path_code_injective.
+Check ResourcePaths.ResourcePaths.path_code_size.
+Print Assumptions ResourcePaths.ResourcePaths.path_code_size.
+Check ResourcePaths.ResourcePaths.lookup_app.
+Print Assumptions ResourcePaths.ResourcePaths.lookup_app.
+Check ResourcePaths.ResourcePaths.lookup_functional.
+Print Assumptions ResourcePaths.ResourcePaths.lookup_functional.
+Check ResourcePaths.ResourcePaths.lookup_size_bound.
+Print Assumptions ResourcePaths.ResourcePaths.lookup_size_bound.
+Check ResourcePaths.ResourcePaths.prefix_transitive.
+Print Assumptions ResourcePaths.ResourcePaths.prefix_transitive.
+Check ResourcePaths.ResourcePaths.serialized_lookup_bound.
+Print Assumptions ResourcePaths.ResourcePaths.serialized_lookup_bound.
+Check ResourcePaths.ResourcePaths.extension_transitive.
+Print Assumptions ResourcePaths.ResourcePaths.extension_transitive.
+Check ResourcePaths.ResourcePaths.prefix_extension.
+Print Assumptions ResourcePaths.ResourcePaths.prefix_extension.
+Check ResourcePaths.ResourcePaths.extension_size.
+Print Assumptions ResourcePaths.ResourcePaths.extension_size.
+Check ResourcePaths.ResourcePaths.lookup_extension.
+Print Assumptions ResourcePaths.ResourcePaths.lookup_extension.
+Check ResourcePaths.ResourcePaths.extension_has_path.
+Print Assumptions ResourcePaths.ResourcePaths.extension_has_path.
+Check ResourcePaths.ResourcePaths.join_inclusions.
+Print Assumptions ResourcePaths.ResourcePaths.join_inclusions.
+Check ResourceRealization.ResourceRealization.witness_erasure.
+Print Assumptions ResourceRealization.ResourceRealization.witness_erasure.
+Check ResourceRealization.ResourceRealization.witness_typed.
+Print Assumptions ResourceRealization.ResourceRealization.witness_typed.
+Check ResourceRealization.ResourceRealization.standard_lookup_realized.
+Print Assumptions ResourceRealization.ResourceRealization.standard_lookup_realized.
+Check ResourceRealization.ResourceRealization.standard_extension_realized.
+Print Assumptions ResourceRealization.ResourceRealization.standard_extension_realized.
+Check ResourceRealization.ResourceRealization.standard_prefix_realized.
+Print Assumptions ResourceRealization.ResourceRealization.standard_prefix_realized.
+Check InternalResources.InternalResources.extension_sorted.
+Print Assumptions InternalResources.InternalResources.extension_sorted.
+Check InternalResources.InternalResources.prefix_sorted.
+Print Assumptions InternalResources.InternalResources.prefix_sorted.
+Check InternalResources.InternalResources.extension_refl_typed.
+Print Assumptions InternalResources.InternalResources.extension_refl_typed.
+Check InternalResources.InternalResources.extension_trans_typed.
+Print Assumptions InternalResources.InternalResources.extension_trans_typed.
+Check InternalResources.InternalResources.extension_trans_sorted.
+Print Assumptions InternalResources.InternalResources.extension_trans_sorted.
+Check InternalResources.InternalResources.join_left_typed.
+Print Assumptions InternalResources.InternalResources.join_left_typed.
+Check InternalResources.InternalResources.join_right_typed.
+Print Assumptions InternalResources.InternalResources.join_right_typed.
+Check InternalResources.InternalResources.prefix_refl_typed.
+Print Assumptions InternalResources.InternalResources.prefix_refl_typed.
+Check InternalResources.InternalResources.prefix_step_typed.
+Print Assumptions InternalResources.InternalResources.prefix_step_typed.
+Check InternalResources.InternalResources.prefix_trans_typed.
+Print Assumptions InternalResources.InternalResources.prefix_trans_typed.
+Check InternalResources.InternalResources.prefix_extension_typed.
+Print Assumptions InternalResources.InternalResources.prefix_extension_typed.
+Check InternalResources.InternalResources.extension_generation_typed.
+Print Assumptions InternalResources.InternalResources.extension_generation_typed.
+Check InternalResources.InternalResources.lookup_sorted.
+Print Assumptions InternalResources.InternalResources.lookup_sorted.
+Check InternalResources.InternalResources.lookup_root_typed.
+Print Assumptions InternalResources.InternalResources.lookup_root_typed.
+Check InternalResources.InternalResources.lookup_step_typed.
+Print Assumptions InternalResources.InternalResources.lookup_step_typed.
+Check InternalResources.InternalResources.lookup_step_sorted.
+Print Assumptions InternalResources.InternalResources.lookup_step_sorted.
+Check InternalResources.InternalResources.lookup_guard_typed.
+Print Assumptions InternalResources.InternalResources.lookup_guard_typed.
+Check InternalResources.InternalResources.lookup_guard_sorted.
+Print Assumptions InternalResources.InternalResources.lookup_guard_sorted.
+Check InternalResources.InternalResources.lookup_extension_typed.
+Print Assumptions InternalResources.InternalResources.lookup_extension_typed.
+Check InternalResources.InternalResources.lookup_extension_sorted.
+Print Assumptions InternalResources.InternalResources.lookup_extension_sorted.
+Check InternalResources.InternalResources.prefix_generation_typed.
+Print Assumptions InternalResources.InternalResources.prefix_generation_typed.
+Check InternalPaths.InternalPaths.plug_typed.
+Print Assumptions InternalPaths.InternalPaths.plug_typed.
+Check InternalPaths.InternalPaths.expansion_guard_typed.
+Print Assumptions InternalPaths.InternalPaths.expansion_guard_typed.
+Check InternalPaths.InternalPaths.plug_guard_typed.
+Print Assumptions InternalPaths.InternalPaths.plug_guard_typed.
+Check InternalPaths.InternalPaths.equality_sorted.
+Print Assumptions InternalPaths.InternalPaths.equality_sorted.
+Check InternalPaths.InternalPaths.expansion_equal_typed.
+Print Assumptions InternalPaths.InternalPaths.expansion_equal_typed.
+Check InternalPaths.InternalPaths.plug_unit_typed.
+Print Assumptions InternalPaths.InternalPaths.plug_unit_typed.
+Check InternalPaths.InternalPaths.associative_typed.
+Print Assumptions InternalPaths.InternalPaths.associative_typed.
+Check InternalPaths.InternalPaths.high_lookup_sorted.
+Print Assumptions InternalPaths.InternalPaths.high_lookup_sorted.
+Check InternalPaths.InternalPaths.high_root_typed.
+Print Assumptions InternalPaths.InternalPaths.high_root_typed.
+Check InternalPaths.InternalPaths.high_step_typed.
+Print Assumptions InternalPaths.InternalPaths.high_step_typed.
+Check InternalPaths.InternalPaths.composition_type_sorted.
+Print Assumptions InternalPaths.InternalPaths.composition_type_sorted.
+Check InternalPaths.InternalPaths.composition_typed.
+Print Assumptions InternalPaths.InternalPaths.composition_typed.
+Check ResourceSeparation.ResourceSeparation.root_equation_typed.
+Print Assumptions ResourceSeparation.ResourceSeparation.root_equation_typed.
+Check ResourceSeparation.ResourceSeparation.root_equation_sorted.
+Print Assumptions ResourceSeparation.ResourceSeparation.root_equation_sorted.
+Check ResourceSeparation.ResourceSeparation.root_functional_typed.
+Print Assumptions ResourceSeparation.ResourceSeparation.root_functional_typed.
+Check ResourceSeparation.ResourceSeparation.leaf_path_typed.
+Print Assumptions ResourceSeparation.ResourceSeparation.leaf_path_typed.
+Check ResourceSeparation.ResourceSeparation.leaf_path_sorted.
+Print Assumptions ResourceSeparation.ResourceSeparation.leaf_path_sorted.
+Check ResourceSeparation.ResourceSeparation.leaf_step_rejection_typed.
+Print Assumptions ResourceSeparation.ResourceSeparation.leaf_step_rejection_typed.
+Check PathSubstitution.PathSubstitution.fill_path.
+Print Assumptions PathSubstitution.PathSubstitution.fill_path.
+Check PathSubstitution.PathSubstitution.fill_associative.
+Print Assumptions PathSubstitution.PathSubstitution.fill_associative.
+Check PathSubstitution.PathSubstitution.fill_right_unit.
+Print Assumptions PathSubstitution.PathSubstitution.fill_right_unit.
+Check PathSubstitution.PathSubstitution.plug_quote_beta.
+Print Assumptions PathSubstitution.PathSubstitution.plug_quote_beta.
+Check PathSubstitution.PathSubstitution.plug_path_concatenation.
+Print Assumptions PathSubstitution.PathSubstitution.plug_path_concatenation.
+Check PathRealization.PathRealization.high_witness_erasure.
+Print Assumptions PathRealization.PathRealization.high_witness_erasure.
+Check PathRealization.PathRealization.high_witness_typed.
+Print Assumptions PathRealization.PathRealization.high_witness_typed.
+Check PathRealization.PathRealization.standard_high_lookup_realized.
+Print Assumptions PathRealization.PathRealization.standard_high_lookup_realized.
+Check PathRealization.PathRealization.composition_application.
+Print Assumptions PathRealization.PathRealization.composition_application.
+Check PathRealization.PathRealization.standard_composed_lookup.
+Print Assumptions PathRealization.PathRealization.standard_composed_lookup.
+
+(** functionality_type_sorted is FORMATION ONLY, not a functionality proof. *)
+Check InternalCapacity.InternalCapacity.shape_typed.
+Print Assumptions InternalCapacity.InternalCapacity.shape_typed.
+Check InternalCapacity.InternalCapacity.shape_guard_typed.
+Print Assumptions InternalCapacity.InternalCapacity.shape_guard_typed.
+Check InternalCapacity.InternalCapacity.capacity_sorted.
+Print Assumptions InternalCapacity.InternalCapacity.capacity_sorted.
+Check InternalCapacity.InternalCapacity.reflexivity_typed.
+Print Assumptions InternalCapacity.InternalCapacity.reflexivity_typed.
+Check InternalCapacity.InternalCapacity.transitivity_typed.
+Print Assumptions InternalCapacity.InternalCapacity.transitivity_typed.
+Check InternalCapacity.InternalCapacity.extension_capacity_typed.
+Print Assumptions InternalCapacity.InternalCapacity.extension_capacity_typed.
+Check InternalCapacity.InternalCapacity.join_typed.
+Print Assumptions InternalCapacity.InternalCapacity.join_typed.
+Check InternalCapacity.InternalCapacity.lookup_capacity_typed.
+Print Assumptions InternalCapacity.InternalCapacity.lookup_capacity_typed.
+Check InternalCapacity.InternalCapacity.history_capacity_typed.
+Print Assumptions InternalCapacity.InternalCapacity.history_capacity_typed.
+Check HistoryRealization.HistoryRealization.run_segments_lookup.
+Print Assumptions HistoryRealization.HistoryRealization.run_segments_lookup.
+Check HistoryRealization.HistoryRealization.history_step_application.
+Print Assumptions HistoryRealization.HistoryRealization.history_step_application.
+Check HistoryRealization.HistoryRealization.history_witness_erasure.
+Print Assumptions HistoryRealization.HistoryRealization.history_witness_erasure.
+Check HistoryRealization.HistoryRealization.history_witness_typed.
+Print Assumptions HistoryRealization.HistoryRealization.history_witness_typed.
+Check HistoryRealization.HistoryRealization.standard_history_realized.
+Print Assumptions HistoryRealization.HistoryRealization.standard_history_realized.
+Check HistoryRealization.HistoryRealization.soundness_application.
+Print Assumptions HistoryRealization.HistoryRealization.soundness_application.
+Check HistoryRealization.HistoryRealization.standard_iterated_lookup.
+Print Assumptions HistoryRealization.HistoryRealization.standard_iterated_lookup.
+Check CapacityBounds.CapacityBounds.erase_tags_size.
+Print Assumptions CapacityBounds.CapacityBounds.erase_tags_size.
+Check CapacityBounds.CapacityBounds.erase_tags_idempotent.
+Print Assumptions CapacityBounds.CapacityBounds.erase_tags_idempotent.
+Check CapacityBounds.CapacityBounds.extension_fits.
+Print Assumptions CapacityBounds.CapacityBounds.extension_fits.
+Check CapacityBounds.CapacityBounds.fits_size.
+Print Assumptions CapacityBounds.CapacityBounds.fits_size.
+Check CapacityBounds.CapacityBounds.fits_transitive.
+Print Assumptions CapacityBounds.CapacityBounds.fits_transitive.
+Check CapacityBounds.CapacityBounds.lookup_fits.
+Print Assumptions CapacityBounds.CapacityBounds.lookup_fits.
+Check CapacityBounds.CapacityBounds.pack_contains.
+Print Assumptions CapacityBounds.CapacityBounds.pack_contains.
+Check CapacityBounds.CapacityBounds.pack_size.
+Print Assumptions CapacityBounds.CapacityBounds.pack_size.
+Check CapacityBounds.CapacityBounds.pack_fits.
+Print Assumptions CapacityBounds.CapacityBounds.pack_fits.
+Check CapacityBounds.CapacityBounds.fill_size_exact.
+Print Assumptions CapacityBounds.CapacityBounds.fill_size_exact.
+Check CapacityBounds.CapacityBounds.fill_size_bound.
+Print Assumptions CapacityBounds.CapacityBounds.fill_size_bound.
+Check CapacityBounds.CapacityBounds.history_size_bound.
+Print Assumptions CapacityBounds.CapacityBounds.history_size_bound.
+Check CapacityBounds.CapacityBounds.shape_quote_beta.
+Print Assumptions CapacityBounds.CapacityBounds.shape_quote_beta.
+Check CapacityBounds.CapacityBounds.capacity_quote_beta.
+Print Assumptions CapacityBounds.CapacityBounds.capacity_quote_beta.
+Check CapacityBounds.CapacityBounds.standard_capacity_realized.
+Print Assumptions CapacityBounds.CapacityBounds.standard_capacity_realized.
+Check CapacityBounds.CapacityBounds.finite_family_capacity.
+Print Assumptions CapacityBounds.CapacityBounds.finite_family_capacity.
+Check InversionRealization.InversionRealization.deep_witness_erasure.
+Print Assumptions InversionRealization.InversionRealization.deep_witness_erasure.
+Check InversionRealization.InversionRealization.deep_witness_typed.
+Print Assumptions InversionRealization.InversionRealization.deep_witness_typed.
+Check InversionRealization.InversionRealization.standard_deep_lookup_realized.
+Print Assumptions InversionRealization.InversionRealization.standard_deep_lookup_realized.
+Check LookupHistory.LookupHistory.history_sorted.
+Print Assumptions LookupHistory.LookupHistory.history_sorted.
+Check LookupHistory.LookupHistory.history_root_typed.
+Print Assumptions LookupHistory.LookupHistory.history_root_typed.
+Check LookupHistory.LookupHistory.history_step_typed.
+Print Assumptions LookupHistory.LookupHistory.history_step_typed.
+Check LookupHistory.LookupHistory.history_step_sorted.
+Print Assumptions LookupHistory.LookupHistory.history_step_sorted.
+Check LookupHistory.LookupHistory.soundness_type_sorted.
+Print Assumptions LookupHistory.LookupHistory.soundness_type_sorted.
+Check LookupHistory.LookupHistory.soundness_typed.
+Print Assumptions LookupHistory.LookupHistory.soundness_typed.
+Check LookupInversion.LookupInversion.deep_lookup_sorted.
+Print Assumptions LookupInversion.LookupInversion.deep_lookup_sorted.
+Check LookupInversion.LookupInversion.deep_root_typed.
+Print Assumptions LookupInversion.LookupInversion.deep_root_typed.
+Check LookupInversion.LookupInversion.deep_step_typed.
+Print Assumptions LookupInversion.LookupInversion.deep_step_typed.
+Check LookupInversion.LookupInversion.view_sorted.
+Print Assumptions LookupInversion.LookupInversion.view_sorted.
+Check LookupInversion.LookupInversion.inversion_type_sorted.
+Print Assumptions LookupInversion.LookupInversion.inversion_type_sorted.
+Check LookupInversion.LookupInversion.inversion_typed.
+Print Assumptions LookupInversion.LookupInversion.inversion_typed.
+Check LookupInversion.LookupInversion.functionality_type_sorted.
+Print Assumptions LookupInversion.LookupInversion.functionality_type_sorted.
+Check RelationalTransport.RelationalTransport.lookup_preservation_type_sorted.
+Print Assumptions RelationalTransport.RelationalTransport.lookup_preservation_type_sorted.
+Check RelationalTransport.RelationalTransport.lookup_preservation_typed.
+Print Assumptions RelationalTransport.RelationalTransport.lookup_preservation_typed.
+Check RelationalTransport.RelationalTransport.history_preservation_type_sorted.
+Print Assumptions RelationalTransport.RelationalTransport.history_preservation_type_sorted.
+Check RelationalTransport.RelationalTransport.history_preservation_typed.
+Print Assumptions RelationalTransport.RelationalTransport.history_preservation_typed.
+Check RelationalTransport.RelationalTransport.extension_safety_type_sorted.
+Print Assumptions RelationalTransport.RelationalTransport.extension_safety_type_sorted.
+Check RelationalTransport.RelationalTransport.extension_safety_typed.
+Print Assumptions RelationalTransport.RelationalTransport.extension_safety_typed.
+Check RelationalTransport.RelationalTransport.lookup_safety_type_sorted.
+Print Assumptions RelationalTransport.RelationalTransport.lookup_safety_type_sorted.
+Check RelationalTransport.RelationalTransport.lookup_safety_typed.
+Print Assumptions RelationalTransport.RelationalTransport.lookup_safety_typed.
+Check RelationalTransport.RelationalTransport.history_safety_type_sorted.
+Print Assumptions RelationalTransport.RelationalTransport.history_safety_type_sorted.
+Check RelationalTransport.RelationalTransport.history_safety_typed.
+Print Assumptions RelationalTransport.RelationalTransport.history_safety_typed.
+Check LookupHomomorphisms.LookupHomomorphisms.shape_lookup_type_sorted.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.shape_lookup_type_sorted.
+Check LookupHomomorphisms.LookupHomomorphisms.shape_lookup_typed.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.shape_lookup_typed.
+Check LookupHomomorphisms.LookupHomomorphisms.plug_lookup_type_sorted.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.plug_lookup_type_sorted.
+Check LookupHomomorphisms.LookupHomomorphisms.plug_lookup_typed.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.plug_lookup_typed.
+Check LookupHomomorphisms.LookupHomomorphisms.shape_high_type_sorted.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.shape_high_type_sorted.
+Check LookupHomomorphisms.LookupHomomorphisms.shape_high_typed.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.shape_high_typed.
+Check LookupHomomorphisms.LookupHomomorphisms.plug_high_type_sorted.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.plug_high_type_sorted.
+Check LookupHomomorphisms.LookupHomomorphisms.plug_high_typed.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.plug_high_typed.
+Check LookupHomomorphisms.LookupHomomorphisms.shape_history_type_sorted.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.shape_history_type_sorted.
+Check LookupHomomorphisms.LookupHomomorphisms.shape_history_typed.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.shape_history_typed.
+Check LookupHomomorphisms.LookupHomomorphisms.plug_history_type_sorted.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.plug_history_type_sorted.
+Check LookupHomomorphisms.LookupHomomorphisms.plug_history_typed.
+Print Assumptions LookupHomomorphisms.LookupHomomorphisms.plug_history_typed.
+Check OccurrenceSafety.OccurrenceSafety.absent_sorted.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.absent_sorted.
+Check OccurrenceSafety.OccurrenceSafety.extension_safety_type_sorted.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.extension_safety_type_sorted.
+Check OccurrenceSafety.OccurrenceSafety.extension_safety_typed.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.extension_safety_typed.
+Check OccurrenceSafety.OccurrenceSafety.lookup_safety_type_sorted.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.lookup_safety_type_sorted.
+Check OccurrenceSafety.OccurrenceSafety.lookup_safety_typed.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.lookup_safety_typed.
+Check OccurrenceSafety.OccurrenceSafety.history_safety_type_sorted.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.history_safety_type_sorted.
+Check OccurrenceSafety.OccurrenceSafety.history_safety_typed.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.history_safety_typed.
+Check OccurrenceSafety.OccurrenceSafety.stop_separation_type_sorted.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.stop_separation_type_sorted.
+Check OccurrenceSafety.OccurrenceSafety.stop_separation_typed.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.stop_separation_typed.
+Check OccurrenceSafety.OccurrenceSafety.stop_absence_typed.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.stop_absence_typed.
+Check OccurrenceSafety.OccurrenceSafety.pair_absence_typed.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.pair_absence_typed.
+Check OccurrenceSafety.OccurrenceSafety.nonzero_atom_absence_typed.
+Print Assumptions OccurrenceSafety.OccurrenceSafety.nonzero_atom_absence_typed.
+Check SimulationRealization.SimulationRealization.lookup_shape_commutes.
+Print Assumptions SimulationRealization.SimulationRealization.lookup_shape_commutes.
+Check SimulationRealization.SimulationRealization.lookup_fill_forward.
+Print Assumptions SimulationRealization.SimulationRealization.lookup_fill_forward.
+Check SimulationRealization.SimulationRealization.fill_can_add_lookup.
+Print Assumptions SimulationRealization.SimulationRealization.fill_can_add_lookup.
+Check SimulationRealization.SimulationRealization.shape_lookup_application.
+Print Assumptions SimulationRealization.SimulationRealization.shape_lookup_application.
+Check SimulationRealization.SimulationRealization.plug_lookup_application.
+Print Assumptions SimulationRealization.SimulationRealization.plug_lookup_application.
+Check SimulationRealization.SimulationRealization.standard_shape_lookup.
+Print Assumptions SimulationRealization.SimulationRealization.standard_shape_lookup.
+Check SimulationRealization.SimulationRealization.standard_plug_lookup.
+Print Assumptions SimulationRealization.SimulationRealization.standard_plug_lookup.
+
+Check BinaryRealization.BinaryRealization.encoded_positive.
+Print Assumptions BinaryRealization.BinaryRealization.encoded_positive.
+Check BinaryRealization.BinaryRealization.positive_code_exact.
+Print Assumptions BinaryRealization.BinaryRealization.positive_code_exact.
+Check BinaryRealization.BinaryRealization.encoded_positive_successor.
+Print Assumptions BinaryRealization.BinaryRealization.encoded_positive_successor.
+Check BinaryRealization.BinaryRealization.successor_code_exact.
+Print Assumptions BinaryRealization.BinaryRealization.successor_code_exact.
+Check BinaryRealization.BinaryRealization.encoded_natural_successor.
+Print Assumptions BinaryRealization.BinaryRealization.encoded_natural_successor.
+Check BinaryRealization.BinaryRealization.successor_code_natural_exact.
+Print Assumptions BinaryRealization.BinaryRealization.successor_code_natural_exact.
+Check BinaryRealization.BinaryRealization.positive_witness_typed.
+Print Assumptions BinaryRealization.BinaryRealization.positive_witness_typed.
+Check BinaryRealization.BinaryRealization.natural_witness_typed.
+Print Assumptions BinaryRealization.BinaryRealization.natural_witness_typed.
+Check BinaryRealization.BinaryRealization.positive_successor_witness_typed.
+Print Assumptions BinaryRealization.BinaryRealization.positive_successor_witness_typed.
+Check BinaryRealization.BinaryRealization.natural_successor_witness_typed.
+Print Assumptions BinaryRealization.BinaryRealization.natural_successor_witness_typed.
+Check BinaryRealization.BinaryRealization.standard_successor_realized.
+Print Assumptions BinaryRealization.BinaryRealization.standard_successor_realized.
+Check InternalScope.InternalScope.index_sorted.
+Print Assumptions InternalScope.InternalScope.index_sorted.
+Check InternalScope.InternalScope.index_zero_type_sorted.
+Print Assumptions InternalScope.InternalScope.index_zero_type_sorted.
+Check InternalScope.InternalScope.index_zero_typed.
+Print Assumptions InternalScope.InternalScope.index_zero_typed.
+Check InternalScope.InternalScope.index_step_type_sorted.
+Print Assumptions InternalScope.InternalScope.index_step_type_sorted.
+Check InternalScope.InternalScope.index_step_typed.
+Print Assumptions InternalScope.InternalScope.index_step_typed.
+Check InternalScope.InternalScope.index_guard_type_sorted.
+Print Assumptions InternalScope.InternalScope.index_guard_type_sorted.
+Check InternalScope.InternalScope.index_guard_typed.
+Print Assumptions InternalScope.InternalScope.index_guard_typed.
+Check InternalScope.InternalScope.scope_sorted.
+Print Assumptions InternalScope.InternalScope.scope_sorted.
+Check InternalScope.InternalScope.scope_sort_type_sorted.
+Print Assumptions InternalScope.InternalScope.scope_sort_type_sorted.
+Check InternalScope.InternalScope.scope_sort_typed.
+Print Assumptions InternalScope.InternalScope.scope_sort_typed.
+Check InternalScope.InternalScope.scope_var_type_sorted.
+Print Assumptions InternalScope.InternalScope.scope_var_type_sorted.
+Check InternalScope.InternalScope.scope_var_typed.
+Print Assumptions InternalScope.InternalScope.scope_var_typed.
+Check InternalScope.InternalScope.scope_binder_type_sorted.
+Print Assumptions InternalScope.InternalScope.scope_binder_type_sorted.
+Check InternalScope.InternalScope.scope_binder_typed.
+Print Assumptions InternalScope.InternalScope.scope_binder_typed.
+Check InternalScope.InternalScope.scope_app_type_sorted.
+Print Assumptions InternalScope.InternalScope.scope_app_type_sorted.
+Check InternalScope.InternalScope.scope_app_typed.
+Print Assumptions InternalScope.InternalScope.scope_app_typed.
+Check InternalScope.InternalScope.scope_generation_type_sorted.
+Print Assumptions InternalScope.InternalScope.scope_generation_type_sorted.
+Check InternalScope.InternalScope.scope_generation_typed.
+Print Assumptions InternalScope.InternalScope.scope_generation_typed.
+Check ScopeRealization.ScopeRealization.index_witness_typed.
+Print Assumptions ScopeRealization.ScopeRealization.index_witness_typed.
+Check ScopeRealization.ScopeRealization.scope_witness_typed.
+Print Assumptions ScopeRealization.ScopeRealization.scope_witness_typed.
+Check ScopeRealization.ScopeRealization.decoded_scope_realized.
+Print Assumptions ScopeRealization.ScopeRealization.decoded_scope_realized.
+Check InternalRenamingLookup.InternalRenamingLookup.ren_at_sorted.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.ren_at_sorted.
+Check InternalRenamingLookup.InternalRenamingLookup.ren_at_base_type_sorted.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.ren_at_base_type_sorted.
+Check InternalRenamingLookup.InternalRenamingLookup.ren_at_base_typed.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.ren_at_base_typed.
+Check InternalRenamingLookup.InternalRenamingLookup.ren_at_zero_type_sorted.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.ren_at_zero_type_sorted.
+Check InternalRenamingLookup.InternalRenamingLookup.ren_at_zero_typed.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.ren_at_zero_typed.
+Check InternalRenamingLookup.InternalRenamingLookup.ren_at_step_type_sorted.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.ren_at_step_type_sorted.
+Check InternalRenamingLookup.InternalRenamingLookup.ren_at_step_typed.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.ren_at_step_typed.
+Check InternalRenamingLookup.InternalRenamingLookup.ren_at_bound_type_sorted.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.ren_at_bound_type_sorted.
+Check InternalRenamingLookup.InternalRenamingLookup.ren_at_bound_typed.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.ren_at_bound_typed.
+Check InternalRenamingLookup.InternalRenamingLookup.bounded_shift_sorted.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.bounded_shift_sorted.
+Check InternalRenamingLookup.InternalRenamingLookup.bounded_shift_intro_type_sorted.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.bounded_shift_intro_type_sorted.
+Check InternalRenamingLookup.InternalRenamingLookup.bounded_shift_intro_typed.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.bounded_shift_intro_typed.
+Check InternalRenamingLookup.InternalRenamingLookup.bounded_shift_bound_type_sorted.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.bounded_shift_bound_type_sorted.
+Check InternalRenamingLookup.InternalRenamingLookup.bounded_shift_bound_typed.
+Print Assumptions InternalRenamingLookup.InternalRenamingLookup.bounded_shift_bound_typed.
+
+Check InternalRenaming.InternalRenaming.renaming_sorted.
+Print Assumptions InternalRenaming.InternalRenaming.renaming_sorted.
+Check InternalRenaming.InternalRenaming.rename_sort_type_sorted.
+Print Assumptions InternalRenaming.InternalRenaming.rename_sort_type_sorted.
+Check InternalRenaming.InternalRenaming.rename_sort_typed.
+Print Assumptions InternalRenaming.InternalRenaming.rename_sort_typed.
+Check InternalRenaming.InternalRenaming.rename_var_type_sorted.
+Print Assumptions InternalRenaming.InternalRenaming.rename_var_type_sorted.
+Check InternalRenaming.InternalRenaming.rename_var_typed.
+Print Assumptions InternalRenaming.InternalRenaming.rename_var_typed.
+Check InternalRenaming.InternalRenaming.rename_binder_type_sorted.
+Print Assumptions InternalRenaming.InternalRenaming.rename_binder_type_sorted.
+Check InternalRenaming.InternalRenaming.rename_binder_typed.
+Print Assumptions InternalRenaming.InternalRenaming.rename_binder_typed.
+Check InternalRenaming.InternalRenaming.rename_app_type_sorted.
+Print Assumptions InternalRenaming.InternalRenaming.rename_app_type_sorted.
+Check InternalRenaming.InternalRenaming.rename_app_typed.
+Print Assumptions InternalRenaming.InternalRenaming.rename_app_typed.
+Check InternalRenaming.InternalRenaming.renaming_scope_type_sorted.
+Print Assumptions InternalRenaming.InternalRenaming.renaming_scope_type_sorted.
+Check InternalRenaming.InternalRenaming.renaming_scope_typed.
+Print Assumptions InternalRenaming.InternalRenaming.renaming_scope_typed.
+Check CodeSubstitution.encoded_scoped.
+Print Assumptions CodeSubstitution.encoded_scoped.
+Check CodeSubstitution.scoped_decode.
+Print Assumptions CodeSubstitution.scoped_decode.
+Check CodeSubstitution.scoped_iff_decode.
+Print Assumptions CodeSubstitution.scoped_iff_decode.
+Check CodeSubstitution.scoped_iff_encoding.
+Print Assumptions CodeSubstitution.scoped_iff_encoding.
+Check CodeSubstitution.raw_rename_encode.
+Print Assumptions CodeSubstitution.raw_rename_encode.
+Check CodeSubstitution.raw_shift_encode.
+Print Assumptions CodeSubstitution.raw_shift_encode.
+Check CodeSubstitution.raw_replace_encode.
+Print Assumptions CodeSubstitution.raw_replace_encode.
+Check CodeSubstitution.raw_subst_encode.
+Print Assumptions CodeSubstitution.raw_subst_encode.
+Check CodeSubstitution.raw_rename_scoped.
+Print Assumptions CodeSubstitution.raw_rename_scoped.
+Check CodeSubstitution.raw_rename_preserves_scope.
+Print Assumptions CodeSubstitution.raw_rename_preserves_scope.
+Check CodeSubstitution.raw_replace_preserves_scope.
+Print Assumptions CodeSubstitution.raw_replace_preserves_scope.
+Check CodeSubstitution.raw_replace_total.
+Print Assumptions CodeSubstitution.raw_replace_total.
+Check CodeSubstitution.raw_subst_preserves_scope.
+Print Assumptions CodeSubstitution.raw_subst_preserves_scope.
+Check CodeSubstitution.raw_subst_total.
+Print Assumptions CodeSubstitution.raw_subst_total.
+Check CodeSubstitution.replaced_computes.
+Print Assumptions CodeSubstitution.replaced_computes.
+Check CodeSubstitution.computes_replaced.
+Print Assumptions CodeSubstitution.computes_replaced.
+Check CodeSubstitution.replaced_iff_computes.
+Print Assumptions CodeSubstitution.replaced_iff_computes.
+Check CodeSubstitution.replaced_preserves_scope.
+Print Assumptions CodeSubstitution.replaced_preserves_scope.
+Check CodeSubstitution.substitution_avoids_capture.
+Print Assumptions CodeSubstitution.substitution_avoids_capture.
+Check CodeSubstitution.substitution_transforms_annotations.
+Print Assumptions CodeSubstitution.substitution_transforms_annotations.
+Check CodeSubstitution.malformed_annotation_rejected.
+Print Assumptions CodeSubstitution.malformed_annotation_rejected.
+Check CodeSubstitution.noncanonical_index_rejected.
+Print Assumptions CodeSubstitution.noncanonical_index_rejected.
+Check InternalBinary.InternalBinary.positive_sorted.
+Print Assumptions InternalBinary.InternalBinary.positive_sorted.
+Check InternalBinary.InternalBinary.pos_one_typed.
+Print Assumptions InternalBinary.InternalBinary.pos_one_typed.
+Check InternalBinary.InternalBinary.pos_step_type_sorted.
+Print Assumptions InternalBinary.InternalBinary.pos_step_type_sorted.
+Check InternalBinary.InternalBinary.pos_step_typed.
+Print Assumptions InternalBinary.InternalBinary.pos_step_typed.
+Check InternalBinary.InternalBinary.number_sorted.
+Print Assumptions InternalBinary.InternalBinary.number_sorted.
+Check InternalBinary.InternalBinary.num_zero_typed.
+Print Assumptions InternalBinary.InternalBinary.num_zero_typed.
+Check InternalBinary.InternalBinary.num_positive_type_sorted.
+Print Assumptions InternalBinary.InternalBinary.num_positive_type_sorted.
+Check InternalBinary.InternalBinary.num_positive_typed.
+Print Assumptions InternalBinary.InternalBinary.num_positive_typed.
+Check InternalBinary.InternalBinary.pos_generation_typed.
+Print Assumptions InternalBinary.InternalBinary.pos_generation_typed.
+Check InternalBinary.InternalBinary.num_generation_typed.
+Print Assumptions InternalBinary.InternalBinary.num_generation_typed.
+Check InternalBinary.InternalBinary.successor_sorted.
+Print Assumptions InternalBinary.InternalBinary.successor_sorted.
+Check InternalBinary.InternalBinary.succ_zero_typed.
+Print Assumptions InternalBinary.InternalBinary.succ_zero_typed.
+Check InternalBinary.InternalBinary.succ_one_typed.
+Print Assumptions InternalBinary.InternalBinary.succ_one_typed.
+Check InternalBinary.InternalBinary.succ_even_type_sorted.
+Print Assumptions InternalBinary.InternalBinary.succ_even_type_sorted.
+Check InternalBinary.InternalBinary.succ_even_typed.
+Print Assumptions InternalBinary.InternalBinary.succ_even_typed.
+Check InternalBinary.InternalBinary.succ_odd_type_sorted.
+Print Assumptions InternalBinary.InternalBinary.succ_odd_type_sorted.
+Check InternalBinary.InternalBinary.succ_odd_typed.
+Print Assumptions InternalBinary.InternalBinary.succ_odd_typed.
+Check InternalBinary.InternalBinary.succ_input_type_sorted.
+Print Assumptions InternalBinary.InternalBinary.succ_input_type_sorted.
+Check InternalBinary.InternalBinary.succ_input_typed.
+Print Assumptions InternalBinary.InternalBinary.succ_input_typed.
+Check InternalBinary.InternalBinary.succ_output_positive_type_sorted.
+Print Assumptions InternalBinary.InternalBinary.succ_output_positive_type_sorted.
+Check InternalBinary.InternalBinary.succ_output_positive_typed.
+Print Assumptions InternalBinary.InternalBinary.succ_output_positive_typed.
+Check InternalBinary.InternalBinary.succ_output_type_sorted.
+Print Assumptions InternalBinary.InternalBinary.succ_output_type_sorted.
+Check InternalBinary.InternalBinary.succ_output_typed.
+Print Assumptions InternalBinary.InternalBinary.succ_output_typed.
+Check RenamingLookupRealization.RenamingLookupRealization.NatQuote_typed.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.NatQuote_typed.
+Check RenamingLookupRealization.RenamingLookupRealization.FTypeTerm_replace.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.FTypeTerm_replace.
+Check RenamingLookupRealization.RenamingLookupRealization.RenAtTerm_replace.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.RenAtTerm_replace.
+Check RenamingLookupRealization.RenamingLookupRealization.ShiftFTerm_replace.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.ShiftFTerm_replace.
+Check RenamingLookupRealization.RenamingLookupRealization.FBoundTerm_replace.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.FBoundTerm_replace.
+Check RenamingLookupRealization.RenamingLookupRealization.ren_at_base_application.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.ren_at_base_application.
+Check RenamingLookupRealization.RenamingLookupRealization.ren_at_zero_application.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.ren_at_zero_application.
+Check RenamingLookupRealization.RenamingLookupRealization.ren_at_step_application.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.ren_at_step_application.
+Check RenamingLookupRealization.RenamingLookupRealization.bounded_shift_intro_application.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.bounded_shift_intro_application.
+Check RenamingLookupRealization.RenamingLookupRealization.lift_lookup_family_typed.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.lift_lookup_family_typed.
+Check RenamingLookupRealization.RenamingLookupRealization.shift_environment_typed.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.shift_environment_typed.
+Check RenamingLookupRealization.RenamingLookupRealization.shift_lookup_family_typed.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.shift_lookup_family_typed.
+Check RenamingLookupRealization.RenamingLookupRealization.shift_environment_bound_typed.
+Print Assumptions RenamingLookupRealization.RenamingLookupRealization.shift_environment_bound_typed.
+Check RenamingRealization.RenamingRealization.RenameTerm_replace.
+Print Assumptions RenamingRealization.RenamingRealization.RenameTerm_replace.
+Check RenamingRealization.RenamingRealization.rename_sort_application.
+Print Assumptions RenamingRealization.RenamingRealization.rename_sort_application.
+Check RenamingRealization.RenamingRealization.rename_var_application.
+Print Assumptions RenamingRealization.RenamingRealization.rename_var_application.
+Check RenamingRealization.RenamingRealization.rename_binder_application.
+Print Assumptions RenamingRealization.RenamingRealization.rename_binder_application.
+Check RenamingRealization.RenamingRealization.rename_app_application.
+Print Assumptions RenamingRealization.RenamingRealization.rename_app_application.
+Check RenamingRealization.RenamingRealization.renaming_scope_application.
+Print Assumptions RenamingRealization.RenamingRealization.renaming_scope_application.
+Check RenamingRealization.RenamingRealization.rename_witness_typed.
+Print Assumptions RenamingRealization.RenamingRealization.rename_witness_typed.
+Check RenamingRealization.RenamingRealization.shift_witness_typed.
+Print Assumptions RenamingRealization.RenamingRealization.shift_witness_typed.
+Check RenamingRealization.RenamingRealization.decoded_shift_realized.
+Print Assumptions RenamingRealization.RenamingRealization.decoded_shift_realized.
+Check RenamingRealization.RenamingRealization.raw_shift_realized.
+Print Assumptions RenamingRealization.RenamingRealization.raw_shift_realized.
+Check RenamingRealization.RenamingRealization.shifted_scope_witness_typed.
+Print Assumptions RenamingRealization.RenamingRealization.shifted_scope_witness_typed.
+Check InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_environment_sorted.
+Print Assumptions InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_environment_sorted.
+Check InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_image_type_sorted.
+Print Assumptions InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_image_type_sorted.
+Check InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_image_typed.
+Print Assumptions InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_image_typed.
+Check InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_old_type_sorted.
+Print Assumptions InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_old_type_sorted.
+Check InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_old_typed.
+Print Assumptions InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_old_typed.
+Check InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_bound_type_sorted.
+Print Assumptions InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_bound_type_sorted.
+Check InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_bound_typed.
+Print Assumptions InternalSubstitutionEnvironment.InternalSubstitutionEnvironment.single_bound_typed.
+Check SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.TermFTypeTerm_replace.
+Print Assumptions SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.TermFTypeTerm_replace.
+Check SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.SingleEnvTerm_replace.
+Print Assumptions SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.SingleEnvTerm_replace.
+Check SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.SingleTerm_replace.
+Print Assumptions SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.SingleTerm_replace.
+Check SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.TermFBoundTerm_replace.
+Print Assumptions SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.TermFBoundTerm_replace.
+Check SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.single_image_application.
+Print Assumptions SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.single_image_application.
+Check SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.single_old_application.
+Print Assumptions SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.single_old_application.
+Check SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.single_bound_application.
+Print Assumptions SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.single_bound_application.
+Check SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.standard_environment_typed.
+Print Assumptions SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.standard_environment_typed.
+Check SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.single_environment_points_typed.
+Print Assumptions SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.single_environment_points_typed.
+Check SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.standard_environment_bound_typed.
+Print Assumptions SubstitutionEnvironmentRealization.SubstitutionEnvironmentRealization.standard_environment_bound_typed.
+Check InternalTermLookup.InternalTermLookup.term_at_sorted.
+Print Assumptions InternalTermLookup.InternalTermLookup.term_at_sorted.
+Check InternalTermLookup.InternalTermLookup.term_at_base_type_sorted.
+Print Assumptions InternalTermLookup.InternalTermLookup.term_at_base_type_sorted.
+Check InternalTermLookup.InternalTermLookup.term_at_base_typed.
+Print Assumptions InternalTermLookup.InternalTermLookup.term_at_base_typed.
+Check InternalTermLookup.InternalTermLookup.term_at_zero_type_sorted.
+Print Assumptions InternalTermLookup.InternalTermLookup.term_at_zero_type_sorted.
+Check InternalTermLookup.InternalTermLookup.term_at_zero_typed.
+Print Assumptions InternalTermLookup.InternalTermLookup.term_at_zero_typed.
+Check InternalTermLookup.InternalTermLookup.term_at_step_type_sorted.
+Print Assumptions InternalTermLookup.InternalTermLookup.term_at_step_type_sorted.
+Check InternalTermLookup.InternalTermLookup.term_at_step_typed.
+Print Assumptions InternalTermLookup.InternalTermLookup.term_at_step_typed.
+Check InternalTermLookup.InternalTermLookup.term_at_bound_type_sorted.
+Print Assumptions InternalTermLookup.InternalTermLookup.term_at_bound_type_sorted.
+Check InternalTermLookup.InternalTermLookup.term_at_bound_typed.
+Print Assumptions InternalTermLookup.InternalTermLookup.term_at_bound_typed.
+Check TermLookupRealization.TermLookupRealization.TermAtTerm_replace.
+Print Assumptions TermLookupRealization.TermLookupRealization.TermAtTerm_replace.
+Check TermLookupRealization.TermLookupRealization.ShiftEnvTerm_replace.
+Print Assumptions TermLookupRealization.TermLookupRealization.ShiftEnvTerm_replace.
+Check TermLookupRealization.TermLookupRealization.term_at_base_application.
+Print Assumptions TermLookupRealization.TermLookupRealization.term_at_base_application.
+Check TermLookupRealization.TermLookupRealization.term_at_zero_application.
+Print Assumptions TermLookupRealization.TermLookupRealization.term_at_zero_application.
+Check TermLookupRealization.TermLookupRealization.term_at_step_application.
+Print Assumptions TermLookupRealization.TermLookupRealization.term_at_step_application.
+Check TermLookupRealization.TermLookupRealization.lift_term_lookup_family_typed.
+Print Assumptions TermLookupRealization.TermLookupRealization.lift_term_lookup_family_typed.
+Check TermLookupRealization.TermLookupRealization.single_term_lookup_family_typed.
+Print Assumptions TermLookupRealization.TermLookupRealization.single_term_lookup_family_typed.
+Check InternalReplacement.InternalReplacement.replacement_sorted.
+Print Assumptions InternalReplacement.InternalReplacement.replacement_sorted.
+Check InternalReplacement.InternalReplacement.replace_sort_type_sorted.
+Print Assumptions InternalReplacement.InternalReplacement.replace_sort_type_sorted.
+Check InternalReplacement.InternalReplacement.replace_sort_typed.
+Print Assumptions InternalReplacement.InternalReplacement.replace_sort_typed.
+Check InternalReplacement.InternalReplacement.replace_var_type_sorted.
+Print Assumptions InternalReplacement.InternalReplacement.replace_var_type_sorted.
+Check InternalReplacement.InternalReplacement.replace_var_typed.
+Print Assumptions InternalReplacement.InternalReplacement.replace_var_typed.
+Check InternalReplacement.InternalReplacement.replace_binder_type_sorted.
+Print Assumptions InternalReplacement.InternalReplacement.replace_binder_type_sorted.
+Check InternalReplacement.InternalReplacement.replace_binder_typed.
+Print Assumptions InternalReplacement.InternalReplacement.replace_binder_typed.
+Check InternalReplacement.InternalReplacement.replace_app_type_sorted.
+Print Assumptions InternalReplacement.InternalReplacement.replace_app_type_sorted.
+Check InternalReplacement.InternalReplacement.replace_app_typed.
+Print Assumptions InternalReplacement.InternalReplacement.replace_app_typed.
+Check InternalReplacement.InternalReplacement.replacement_scope_type_sorted.
+Print Assumptions InternalReplacement.InternalReplacement.replacement_scope_type_sorted.
+Check InternalReplacement.InternalReplacement.replacement_scope_template_typed.
+Print Assumptions InternalReplacement.InternalReplacement.replacement_scope_template_typed.
+Check InternalReplacement.InternalReplacement.replacement_scope_typed.
+Print Assumptions InternalReplacement.InternalReplacement.replacement_scope_typed.
+Check ReplacementRealization.ReplacementRealization.ReplaceTerm_replace.
+Print Assumptions ReplacementRealization.ReplacementRealization.ReplaceTerm_replace.
+Check ReplacementRealization.ReplacementRealization.replace_sort_application.
+Print Assumptions ReplacementRealization.ReplacementRealization.replace_sort_application.
+Check ReplacementRealization.ReplacementRealization.replace_var_application.
+Print Assumptions ReplacementRealization.ReplacementRealization.replace_var_application.
+Check ReplacementRealization.ReplacementRealization.replace_binder_application.
+Print Assumptions ReplacementRealization.ReplacementRealization.replace_binder_application.
+Check ReplacementRealization.ReplacementRealization.replace_app_application.
+Print Assumptions ReplacementRealization.ReplacementRealization.replace_app_application.
+Check ReplacementRealization.ReplacementRealization.replacement_scope_application.
+Print Assumptions ReplacementRealization.ReplacementRealization.replacement_scope_application.
+Check ReplacementRealization.ReplacementRealization.replace_witness_typed.
+Print Assumptions ReplacementRealization.ReplacementRealization.replace_witness_typed.
+Check ReplacementRealization.ReplacementRealization.subst_witness_typed.
+Print Assumptions ReplacementRealization.ReplacementRealization.subst_witness_typed.
+Check ReplacementRealization.ReplacementRealization.decoded_subst_realized.
+Print Assumptions ReplacementRealization.ReplacementRealization.decoded_subst_realized.
+Check ReplacementRealization.ReplacementRealization.raw_subst_realized.
+Print Assumptions ReplacementRealization.ReplacementRealization.raw_subst_realized.
+Check ReplacementRealization.ReplacementRealization.substituted_scope_witness_typed.
+Print Assumptions ReplacementRealization.ReplacementRealization.substituted_scope_witness_typed.
+Check InvariantObstructions.InvariantObstructions.implication_sorted.
+Print Assumptions InvariantObstructions.InvariantObstructions.implication_sorted.
+Check InvariantObstructions.InvariantObstructions.sort_unique.
+Print Assumptions InvariantObstructions.InvariantObstructions.sort_unique.
+Check InvariantObstructions.InvariantObstructions.implication_not_below_domain.
+Print Assumptions InvariantObstructions.InvariantObstructions.implication_not_below_domain.
+Check InvariantObstructions.InvariantObstructions.implication_not_same_rank.
+Print Assumptions InvariantObstructions.InvariantObstructions.implication_not_same_rank.
+Check InvariantObstructions.InvariantObstructions.implication_fits_motive_iff.
+Print Assumptions InvariantObstructions.InvariantObstructions.implication_fits_motive_iff.
+Check InvariantObstructions.InvariantObstructions.graph_premise_motive_cycle.
+Print Assumptions InvariantObstructions.InvariantObstructions.graph_premise_motive_cycle.
+Check InvariantObstructions.InvariantObstructions.detour_equality_accepted.
+Print Assumptions InvariantObstructions.InvariantObstructions.detour_equality_accepted.
+Check InvariantObstructions.InvariantObstructions.detour_typing_accepted.
+Print Assumptions InvariantObstructions.InvariantObstructions.detour_typing_accepted.
+Check InvariantObstructions.InvariantObstructions.omega_beta_loop.
+Print Assumptions InvariantObstructions.InvariantObstructions.omega_beta_loop.
+Check InvariantObstructions.InvariantObstructions.detour_middle_beta_loop.
+Print Assumptions InvariantObstructions.InvariantObstructions.detour_middle_beta_loop.
+Check InvariantObstructions.InvariantObstructions.detour_middle_reduces_to_sort.
+Print Assumptions InvariantObstructions.InvariantObstructions.detour_middle_reduces_to_sort.
+Check InvariantObstructions.InvariantObstructions.accessible_irreflexive.
+Print Assumptions InvariantObstructions.InvariantObstructions.accessible_irreflexive.
+Check InvariantObstructions.InvariantObstructions.detour_middle_not_strongly_normalizing.
+Print Assumptions InvariantObstructions.InvariantObstructions.detour_middle_not_strongly_normalizing.
+Check InvariantObstructions.InvariantObstructions.detour_middle_untypable.
+Print Assumptions InvariantObstructions.InvariantObstructions.detour_middle_untypable.
+
+Check NamedTemplates.NamedTemplates.evaluate_ext.
+Print Assumptions NamedTemplates.NamedTemplates.evaluate_ext.
+Check NamedTemplates.NamedTemplates.extend_replace.
+Print Assumptions NamedTemplates.NamedTemplates.extend_replace.
+Check NamedTemplates.NamedTemplates.evaluate_replace.
+Print Assumptions NamedTemplates.NamedTemplates.evaluate_replace.
+Check NamedTemplates.NamedTemplates.names_extend.
+Print Assumptions NamedTemplates.NamedTemplates.names_extend.
+Check NamedTemplates.NamedTemplates.assemble_evaluate.
+Print Assumptions NamedTemplates.NamedTemplates.assemble_evaluate.
+Check NamedTemplates.NamedTemplates.close_evaluate.
+Print Assumptions NamedTemplates.NamedTemplates.close_evaluate.
+Check NamedTemplates.NamedTemplates.evaluate_subst.
+Print Assumptions NamedTemplates.NamedTemplates.evaluate_subst.
+Check NamedTemplates.NamedTemplates.extend_update_same.
+Print Assumptions NamedTemplates.NamedTemplates.extend_update_same.
+Check NamedTemplates.NamedTemplates.extend_update_other.
+Print Assumptions NamedTemplates.NamedTemplates.extend_update_other.
+Check NamedTemplates.NamedTemplates.evaluate_substitute_named.
+Print Assumptions NamedTemplates.NamedTemplates.evaluate_substitute_named.
+Check NamedTemplates.NamedTemplates.assembled_substitution.
+Print Assumptions NamedTemplates.NamedTemplates.assembled_substitution.
+Check NamedTemplates.NamedTemplates.extend_preserves.
+Print Assumptions NamedTemplates.NamedTemplates.extend_preserves.
+Check NamedTemplates.NamedTemplates.evaluate_preserves.
+Print Assumptions NamedTemplates.NamedTemplates.evaluate_preserves.
+Check NamedTemplates.NamedTemplates.evaluate_closed.
+Print Assumptions NamedTemplates.NamedTemplates.evaluate_closed.
+Check NamedTemplates.NamedTemplates.evaluate_close.
+Print Assumptions NamedTemplates.NamedTemplates.evaluate_close.
+Check NamedTemplates.NamedTemplates.plug_congruence.
+Print Assumptions NamedTemplates.NamedTemplates.plug_congruence.

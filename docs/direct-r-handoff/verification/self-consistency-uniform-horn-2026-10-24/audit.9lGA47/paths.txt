@@ -1,0 +1,5 @@
+Logs: /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.WBo9qV
+Build: /tmp/pts-rk-uniform-horn-fresh.UZpzNs
+Pristine: /tmp/pts-rk-uniform-horn-pristine.P40hXA
+Archive: docs/direct-r-handoff/verification/self-consistency-uniform-horn-2026-10-24/audit.9lGA47
+Driver: /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.WBo9qV/driver

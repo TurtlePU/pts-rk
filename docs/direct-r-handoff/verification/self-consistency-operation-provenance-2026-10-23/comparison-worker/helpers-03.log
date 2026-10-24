@@ -1,0 +1,37 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 46 [From~PTSrk~Require~Import-(not...] 0.058 secs (0.047u,0.01s)
+Chars 47 - 100 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 101 - 205 [From~Interpretation_of_R~Requi...] 0.052 secs (0.043u,0.009s)
+Chars 206 - 297 [From~PTSrk.SelfConsistency~Req...] 0.013 secs (0.011u,0.002s)
+Chars 298 - 381 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 382 - 484 [Definition~trace_at~{n}~(x~y~z...] 0. secs (0.u,0.s)
+Chars 485 - 545 [Definition~v1~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 546 - 618 [Definition~v2~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 619 - 703 [Definition~v3~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 704 - 944 [Lemma~trace_application~{n}~(G...] 0. secs (0.u,0.s)
+Chars 945 - 951 [Proof.] 0. secs (0.u,0.s)
+Chars 954 - 973 [intros~Hx~Hy~Hz~Hb.] 0. secs (0.u,0.s)
+Chars 976 - 1031 [pose~proof~(lift_closed_typed~...] 0. secs (0.u,0.s)
+Chars 1034 - 1212 [change~~~(Typed~G~(lift_closed...] 5.128 secs (5.064u,0.04s)
+Chars 1215 - 1244 [pose~proof~(tApp~H~Hx)~as~H1.] 0. secs (0.u,0.s)
+Chars 1247 - 1310 [unfold~CMP.zip_at,~v1,~V0~in~H...] 0.013 secs (0.013u,0.s)
+Chars 1313 - 1374 [pose~proof~(tApp~H1~Hy)~as~H2;...] 0.013 secs (0.012u,0.s)
+Chars 1377 - 1438 [pose~proof~(tApp~H2~Hz)~as~H3;...] 0.002 secs (0.002u,0.s)
+Chars 1441 - 1505 [unfold~trace_at;~eapply~arrow_...] 0. secs (0.u,0.s)
+Chars 1506 - 1510 [Qed.] 4.622 secs (4.561u,0.028s)
+Chars 1511 - 1958 [Lemma~trace_head_beta~{n}~(e~:...] 0. secs (0.u,0.s)
+Chars 1959 - 1965 [Proof.] 0. secs (0.u,0.s)
+Chars 1968 - 1993 [intro~H;~unfold~trace_at.] 0. secs (0.u,0.s)
+Chars 1996 - 2047 [eapply~NamedBeta.NamedBeta.nam...] 0. secs (0.u,0.s)
+Chars 2050 - 2051 [-] 0. secs (0.u,0.s)
+Chars 2052 - 2103 [apply~NamedTemplates.NamedTemp...] 0.145 secs (0.144u,0.001s)
+Chars 2106 - 2107 [-] 0. secs (0.u,0.s)
+Chars 2108 - 2116 [exact~H.] 0. secs (0.u,0.s)
+Chars 2117 - 2121 [Qed.] 0.142 secs (0.141u,0.s)

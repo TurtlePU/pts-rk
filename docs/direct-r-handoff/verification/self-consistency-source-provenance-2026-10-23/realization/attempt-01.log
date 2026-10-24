@@ -1,0 +1,54 @@
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 385 - 431 [From~PTSrk~Require~Import-(not...] 0.056 secs (0.044u,0.011s)
+Chars 432 - 495 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 496 - 569 [From~Interpretation_of_R~Requi...] 0.048 secs (0.039u,0.009s)
+Chars 570 - 843 [From~PTSrk.SelfConsistency~Req...] 0.086 secs (0.064u,0.013s)
+Chars 845 - 876 [Module~CheckerGraphRealization.] 0. secs (0.u,0.s)
+Chars 877 - 901 [Import~CommonCodes~Core.] 0. secs (0.u,0.s)
+Chars 902 - 953 [Module~CC:=~~CheckerComparison...] 0.013 secs (0.009u,0.002s)
+Chars 954 - 1019 [Module~CR:=~~CodeComparisonRea...] 0.117 secs (0.107u,0.007s)
+Chars 1020 - 1080 [Module~F:=~~InternalComparison...] 0.018 secs (0.017u,0.s)
+Chars 1081 - 1128 [Module~CE:=~~CheckerExecution....] 0.108 secs (0.105u,0.002s)
+Chars 1129 - 1180 [Module~SG:=~~CheckerSourceGrap...] 0.069 secs (0.067u,0.001s)
+Chars 1181 - 1240 [Module~EG:=~~InternalExecution...] 0.029 secs (0.028u,0.s)
+Chars 1241 - 1282 [Module~GT:=~~GuardedTables.Gua...] 0.006 secs (0.006u,0.s)
+Chars 1283 - 1340 [Module~RB:=~~CheckerResourceBo...] 0.124 secs (0.121u,0.002s)
+Chars 1341 - 1394 [Module~CB:=~~ComputationBounda...] 0.342 secs (0.338u,0.002s)
+Chars 1469 - 1524 [Definition~result~e~:=~F.evalu...] 0. secs (0.u,0.s)
+Chars 1525 - 1898 [Fixpoint~execution_witness~(e~...] 0. secs (0.u,0.s)
+Chars 1900 - 1956 [Theorem~result_typed~e~:~Typed...] 0. secs (0.u,0.s)
+Chars 1957 - 1963 [Proof.] 0. secs (0.u,0.s)
+Chars 1964 - 2013 [apply~F.evaluate_with_typed,~C...] 0. secs (0.u,0.s)
+Chars 2014 - 2018 [Qed.] 0. secs (0.u,0.s)
+Chars 2019 - 2078 [Theorem~result_beta~e~:~result...] 0. secs (0.u,0.s)
+Chars 2079 - 2085 [Proof.] 0. secs (0.u,0.s)
+Chars 2086 - 2138 [apply~F.evaluate_with_canonica...] 0. secs (0.u,0.s)
+Chars 2139 - 2143 [Qed.] 0. secs (0.u,0.s)
+Chars 2144 - 2254 [Theorem~execution_witness_type...] 0. secs (0.u,0.s)
+Chars 2255 - 2261 [Proof.] 0. secs (0.u,0.s)
+Chars 2264 - 2299 [induction~e~as~[b|~x~y|~e~IHe~...] 0. secs (0.u,0.s)
+Chars 2302 - 2303 [-] 0. secs (0.u,0.s)
+Chars 2304 - 2410 [change~~~(Typed~ε~(app~EG.leaf...] 0. secs (0.u,0.s)
+Chars 2415 - 2461 [apply~EG.leaf_run_application,...] 0. secs (0.u,0.s)
+Chars 2464 - 2465 [-] 0. secs (0.u,0.s)
+Chars 2466 - 2593 [change~~~(Typed~ε~(app~EG.leaf...] 0. secs (0.u,0.s)
+Chars 2598 - 2649 [apply~EG.leaf_run_application,...] 0. secs (0.u,0.s)
+Chars 2652 - 2653 [-] 0. secs (0.u,0.s)
+Chars 2654 - 2815 [change~~~(Typed~ε~(execution_w...] 0.001 secs (0.001u,0.s)
+Chars 2820 - 2896 [apply~EG.both_run_application;...] 0. secs (0.u,0.s)
+Chars 2897 - 2901 [Qed.] 0.001 secs (0.001u,0.s)
+Chars 2903 - 3066 [Lemma~run_output_conversion~e~...] 0. secs (0.u,0.s)
+Chars 3067 - 3073 [Proof.] 0. secs (0.u,0.s)
+Chars 3076 - 3160 [intros~He~Hc~Hh~Hbc;~eapply~tC...] 0. secs (0.u,0.s)
+Chars 3163 - 3221 [unfold~EG.run_at;~apply~beta_a...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/CheckerGraphRealization.v", line 63, characters 37-48:
+Error:
+ The relation (def_equiv nat 0) is not a declared reflexive relation. Maybe you need to require the Corelib.Classes.RelationClasses library
+

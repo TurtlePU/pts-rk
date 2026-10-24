@@ -1,0 +1,98 @@
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 355 - 408 [From~Stdlib~Require~Import~Lis...] 0.037 secs (0.031u,0.006s)
+Chars 409 - 449 [From~Equations~Require~Import~...] 0.02 secs (0.015u,0.004s)
+Chars 450 - 496 [From~PTSrk~Require~Import-(not...] 0.001 secs (0.u,0.s)
+Chars 497 - 589 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 590 - 696 [From~Interpretation_of_R~Requi...] 0.05 secs (0.04u,0.009s)
+Chars 697 - 787 [From~PTSrk.Combinatory~Require...] 0.005 secs (0.004u,0.001s)
+Chars 788 - 880 [From~PTSrk.SelfConsistency~Req...] 0.132 secs (0.12u,0.011s)
+Chars 881 - 902 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 904 - 927 [Module~FiniteRawTables.] 0. secs (0.u,0.s)
+Chars 928 - 958 [Import~CommonCodes~Structural.] 0. secs (0.u,0.s)
+Chars 959 - 993 [Module~Core:=~~DirectRKernel.C...] 0. secs (0.u,0.s)
+Chars 994 - 1033 [Module~CF:=~~ChurchFinite.Chur...] 0.001 secs (0.001u,0.s)
+Chars 1034 - 1086 [Module~I:=~~IndexedHornEncodin...] 0.004 secs (0.004u,0.s)
+Chars 1087 - 1137 [Module~D:=~~FiniteTypeDispatch...] 0.003 secs (0.003u,0.s)
+Chars 1138 - 1182 [Module~C:=~~InternalCarrier.In...] 0.004 secs (0.004u,0.s)
+Chars 1183 - 1231 [Module~R:=~~FiniteRawDecoding....] 0.196 secs (0.192u,0.003s)
+File "./theories/self_consistency/FiniteRawTables.v", line 24, characters 6-14:
+Warning: Use of "Notation" keyword for abbreviations is deprecated, use
+"Abbreviation" instead.
+[notation-for-abbreviation,deprecated-since-9.2,deprecated,default]
+Chars 1232 - 1279 [#[local]~Abbreviation~Typed~:=...] 0. secs (0.u,0.s)
+Chars 1432 - 1640 [Inductive~Frame~{n}~(G~:~Ctx~n...] 0.002 secs (0.001u,0.s)
+Chars 1642 - 1764 [Fixpoint~spine~{n}~j~(T~:~Term...] 0. secs (0.u,0.s)
+Chars 1765 - 1923 [Fixpoint~expand~{n}~j~(T~t~:~T...] 0. secs (0.u,0.s)
+Chars 1924 - 2193 [Fixpoint~abstract~{n}~k~j~(T~q...] 0. secs (0.u,0.s)
+Chars 2194 - 2270 [Lemma~frame_spine~{n}~(G~:~Ctx...] 0. secs (0.u,0.s)
+Chars 2271 - 2277 [Proof.] 0. secs (0.u,0.s)
+Chars 2278 - 2318 [intro~H;~induction~H;~cbn[spin...] 0. secs (0.u,0.s)
+Chars 2319 - 2323 [Qed.] 0. secs (0.u,0.s)
+Chars 2325 - 2446 [Lemma~lifted_application~{n}~(...] 0. secs (0.u,0.s)
+Chars 2447 - 2453 [Proof.] 0. secs (0.u,0.s)
+Chars 2456 - 2521 [intro~HF;~pose~proof~(weakenin...] 0. secs (0.u,0.s)
+Chars 2524 - 2602 [change~(Typed~(G~&~A)~(shift~f...] 0. secs (0.u,0.s)
+Chars 2605 - 2670 [assert~(HV~:~Typed~(G~&~A)~(va...] 0. secs (0.u,0.s)
+Chars 2673 - 2708 [pose~proof~(Core.tApp~HS~HV)~a...] 0. secs (0.u,0.s)
+Chars 2711 - 2760 [unfold~subst~in~HA;~rewrite~re...] 0. secs (0.u,0.s)
+Chars 2763 - 2878 [replace~~~(replace~(fun~x~=>~f...] 0. secs (0.u,0.s)
+Chars 2881 - 2983 [rewrite~<-~(replace_var~B)~~at...] 0.003 secs (0.003u,0.s)
+Chars 2984 - 2988 [Qed.] 0.001 secs (0.001u,0.s)
+Chars 2990 - 3178 [Theorem~abstract_typed~{n}~(G~...] 0. secs (0.u,0.s)
+Chars 3179 - 3185 [Proof.] 0. secs (0.u,0.s)
+Chars 3188 - 3252 [intro~HF;~induction~HF;~intros...] 0. secs (0.u,0.s)
+Chars 3255 - 3256 [-] 0. secs (0.u,0.s)
+Chars 3257 - 3311 [eapply~CF.dispatch_typed;~[~ex...] 0. secs (0.u,0.s)
+Chars 3314 - 3315 [-] 0. secs (0.u,0.s)
+Chars 3316 - 3342 [eapply~typ_λ;~[~exact~H~|~~].] 0. secs (0.u,0.s)
+Chars 3347 - 3358 [apply~IHHF.] 0. secs (0.u,0.s)
+Chars 3363 - 3364 [+] 0. secs (0.u,0.s)
+Chars 3365 - 3435 [rewrite~<-~(@I.code_type_renam...] 0. secs (0.u,0.s)
+Chars 3440 - 3441 [+] 0. secs (0.u,0.s)
+Chars 3442 - 3479 [intro~i;~apply~lifted_applicat...] 0. secs (0.u,0.s)
+Chars 3480 - 3484 [Qed.] 0. secs (0.u,0.s)
+Chars 3486 - 3674 [Lemma~expand_replace~j~:~~~for...] 0. secs (0.u,0.s)
+Chars 3675 - 3681 [Proof.] 0. secs (0.u,0.s)
+Chars 3684 - 3737 [induction~j;~intros~m~n~T~t~si...] 0. secs (0.u,0.s)
+Chars 3740 - 3788 [destruct~T;~cbn[spine]~in~HS;~...] 0. secs (0.u,0.s)
+Chars 3791 - 3837 [cbn[expand~replace];~rewrite~I...] 0. secs (0.u,0.s)
+Chars 3840 - 3904 [cbn[replace~transpose~fin_matc...] 0. secs (0.u,0.s)
+Chars 3905 - 3909 [Qed.] 0. secs (0.u,0.s)
+Chars 3910 - 4074 [Lemma~abstract_values_ext~j~:~...] 0. secs (0.u,0.s)
+Chars 4075 - 4081 [Proof.] 0. secs (0.u,0.s)
+Chars 4084 - 4154 [induction~j;~intros~k~n~T~q~va...] 0. secs (0.u,0.s)
+Chars 4157 - 4246 [destruct~T;~cbn[abstract];~try...] 0.001 secs (0.001u,0.s)
+Chars 4247 - 4251 [Qed.] 0. secs (0.u,0.s)
+Chars 4252 - 4502 [Lemma~abstract_replace~j~:~~~f...] 0. secs (0.u,0.s)
+Chars 4503 - 4509 [Proof.] 0. secs (0.u,0.s)
+Chars 4512 - 4558 [induction~j;~intros~k~m~n~T~q~...] 0. secs (0.u,0.s)
+Chars 4561 - 4562 [-] 0. secs (0.u,0.s)
+Chars 4563 - 4616 [cbn[abstract];~rewrite~CF.apps...] 0. secs (0.u,0.s)
+Chars 4619 - 4620 [-] 0. secs (0.u,0.s)
+Chars 4621 - 4669 [destruct~T;~cbn[spine]~in~HS;~...] 0. secs (0.u,0.s)
+Chars 4674 - 4722 [cbn[abstract~replace];~rewrite...] 0. secs (0.u,0.s)
+Chars 4727 - 4761 [rewrite~CF.replace_shift;~f_eq...] 0. secs (0.u,0.s)
+Chars 4766 - 4801 [apply~abstract_values_ext;~int...] 0. secs (0.u,0.s)
+Chars 4806 - 4850 [cbn[replace];~(now~rewrite~CF....] 0. secs (0.u,0.s)
+Chars 4851 - 4855 [Qed.] 0.001 secs (0.001u,0.s)
+Chars 4856 - 5050 [Theorem~abstract_selector_beta...] 0. secs (0.u,0.s)
+Chars 5051 - 5057 [Proof.] 0. secs (0.u,0.s)
+Chars 5060 - 5098 [induction~j;~intros~k~n~T~valu...] 0. secs (0.u,0.s)
+Chars 5101 - 5102 [-] 0. secs (0.u,0.s)
+Chars 5103 - 5135 [apply~CF.selector_dispatch_beta.] 0. secs (0.u,0.s)
+File "./theories/self_consistency/FiniteRawTables.v", line 110, characters 10-35:
+Error:
+In environment
+k, n : nat
+T : Term nat n
+values : Fin k -> Term nat n
+i : Fin k
+HS : spine 0 T = true
+Unable to unify "expand 0 T" with "values".

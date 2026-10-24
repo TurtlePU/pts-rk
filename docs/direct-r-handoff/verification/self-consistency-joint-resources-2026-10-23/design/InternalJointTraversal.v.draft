@@ -1,0 +1,331 @@
+(** UNVERIFIED DESIGN ARCHIVE. This file does not compile as a completed development.
+    build_zip typing and computation schemas have NOT been certified.
+    Resource-heavy conversion attempts were stopped; see COMMANDS.md. *)
+(** Represented joint traversals, independent of comparison answers.
+    One constructor-generation fold builds the original Zip evidence.  This
+    avoids nested induction requiring unavailable child generation guards.
+    Joint alignment is input DATA, not a Boolean result or rejection premise. *)
+From Stdlib Require Import Lists.List Arith.PeanoNat.
+From Equations Require Import Equations.
+From PTSrk Require Import -(notations) Syntax.
+From PTSrk Require Import Context Typing Ranks DefEq Preservation Reduction AbstractRewriting.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel
+  DirectRCheck DirectREval DirectRStructural.
+From PTSrk.SelfConsistency Require Import StructuralCodes InternalCarrier
+  InternalCodeComparison.
+Import ListNotations.
+
+Module InternalJointTraversal.
+Import CommonCodes Core Structural.
+Module IC := InternalCarrier.InternalCarrier.
+Module CMP := InternalCodeComparison.InternalCodeComparison.
+
+Definition C := NClosed IC.carrier.
+Definition fields := [(90, NSort 2)] ++
+  map (fun t => (100 + IC.tag_number t, nArrow C (NVar 90))) IC.tags ++
+  map (fun t => (200 + IC.tag_number t, nArrow C (nArrow C (NVar 90)))) IC.tags ++
+  [(91, nArrow (NVar 90) (nArrow (NVar 90) (NVar 90)))].
+Definition carrier := close (npis fields (NVar 90)) eq_refl.
+Definition J := NClosed carrier.
+Definition dispatch j := napps j ([NVar 90] ++
+  map (fun t => NVar (100 + IC.tag_number t)) IC.tags ++
+  map (fun t => NVar (200 + IC.tag_number t)) IC.tags ++ [NVar 91]).
+
+Definition atom_left t := close
+  (nlams ([(0, C)] ++ fields) (NApp (NVar (100 + IC.tag_number t)) (NVar 0)))
+  (ltac:(destruct t; reflexivity)).
+Definition pair_atom t := close
+  (nlams ([(0, C); (1, C)] ++ fields)
+    (napps (NVar (200 + IC.tag_number t)) [NVar 0; NVar 1]))
+  (ltac:(destruct t; reflexivity)).
+Definition join := close (nlams ([(0, J); (1, J)] ++ fields)
+  (napps (NVar 91) [dispatch (NVar 0); dispatch (NVar 1)])) eq_refl.
+Definition AtomLeft t y := NApp (NClosed (atom_left t)) y.
+Definition PairAtom t a b := napps (NClosed (pair_atom t)) [a; b].
+Definition Join j k := napps (NClosed join) [j; k].
+
+Theorem carrier_sorted : Typed ε carrier (𝓤 4).
+Proof. RkCheck.certify_with 512. Qed.
+Theorem atom_left_typed t : Typed ε (atom_left t) (Arrow IC.carrier carrier).
+Proof. destruct t; RkCheck.certify_with 512. Qed.
+Theorem pair_atom_typed t : Typed ε (pair_atom t)
+  (Arrow IC.carrier (Arrow IC.carrier carrier)).
+Proof. destruct t; RkCheck.certify_with 512. Qed.
+Theorem join_typed : Typed ε join (Arrow carrier (Arrow carrier carrier)).
+Proof. RkCheck.certify_with 1024. Qed.
+
+(** C:U2 is a legitimate fold argument here, unlike for the original C's
+    own U0-parametric fold.  No cumulative-universe rule is used. *)
+Definition projection (left : bool) := close
+  (NLam 0 J (napps (NVar 0) ([C] ++
+    map (fun t => NLam 201 C (if left then NClosed (IC.atom t) else NVar 201)) IC.tags ++
+    map (fun t => nlams [(201, C); (202, C)]
+      (if left then CMP.Pair (NVar 201) (NVar 202) else NClosed (IC.atom t))) IC.tags ++
+    [NClosed IC.pair]))) (ltac:(destruct left; reflexivity)).
+Definition project_left := projection true.
+Definition project_right := projection false.
+Definition Left j := NApp (NClosed project_left) j.
+Definition Right j := NApp (NClosed project_right) j.
+Theorem projection_typed side : Typed ε (projection side) (Arrow carrier IC.carrier).
+Proof. destruct side; RkCheck.certify_with 1024. Qed.
+
+Definition good_atom_case t := NPi 201 C
+  (NApp (NVar 500) (AtomLeft t (NVar 201))).
+Definition good_pair_atom_case t := npis [(201, C); (202, C)]
+  (NApp (NVar 500) (PairAtom t (NVar 201) (NVar 202))).
+Definition good_join_case := npis [(201, J); (202, J)]
+  (nArrow (NApp (NVar 500) (NVar 201))
+    (nArrow (NApp (NVar 500) (NVar 202))
+      (NApp (NVar 500) (Join (NVar 201) (NVar 202))))).
+Definition good_fields := [(500, nArrow J (NSort 4))] ++
+  map (fun t => (600 + IC.tag_number t, good_atom_case t)) IC.tags ++
+  map (fun t => (700 + IC.tag_number t, good_pair_atom_case t)) IC.tags ++
+  [(501, good_join_case)].
+Definition good := close
+  (NLam 0 J (npis good_fields (NApp (NVar 500) (NVar 0)))) eq_refl.
+Definition Good j := NApp (NClosed good) j.
+Definition dispatch_good g := napps g ([NVar 500] ++
+  map (fun t => NVar (600 + IC.tag_number t)) IC.tags ++
+  map (fun t => NVar (700 + IC.tag_number t)) IC.tags ++ [NVar 501]).
+Theorem good_sorted : Typed ε good (Arrow carrier (𝓤 6)).
+Proof. RkCheck.certify_with 1024. Qed.
+
+Definition good_atom_left_type t := close
+  (NPi 0 C (Good (AtomLeft t (NVar 0)))) (ltac:(destruct t; reflexivity)).
+Definition good_atom_left_template t := close
+  (nlams ([(0, C)] ++ good_fields)
+    (NApp (NVar (600 + IC.tag_number t)) (NVar 0)))
+  (ltac:(destruct t; reflexivity)).
+
+(** Share one checked context across each constructor family.  The telescope
+    abstraction theorem below is derived from ORIGINAL native typing and
+    well-formedness; it does not trust a checker result or skip annotations. *)
+Lemma telescope_context_prefix_wf {n m} (T : telescope n m) (G : Ctx nat n) :
+  @wf nat RankSorts m (telescope_context T G) -> @wf nat RankSorts n G.
+Proof.
+  revert G; induction T; intros G W; cbn in W; [exact W |].
+  specialize (IHT _ W). dependent elimination IHT; assumption.
+Qed.
+Lemma telescope_abstraction_from_context {n m} (T : telescope n m) (G : Ctx nat n) t A :
+  @wf nat RankSorts m (telescope_context T G) ->
+  Typed (telescope_context T G) t A ->
+  Typed G (telescope_abstract T t) (telescope_product T A).
+Proof.
+  revert G; induction T; intros G W H; cbn in *; [exact H |].
+  pose proof (telescope_context_prefix_wf T _ W) as V.
+  dependent elimination V. eapply tLam; [eassumption |].
+  apply IHT; assumption.
+Qed.
+Fixpoint lambda_parts {n} (t : Term nat n) :
+  sigT (fun m : nat => (telescope n m * Term nat m)%type) :=
+  match t with
+  | lam A b => match lambda_parts b with
+    | existT _ m (T, u) => existT _ m (tel_cons 0 A T, u)
+    end
+  | _ => existT _ n (tel_nil, t)
+  end.
+Definition assembled_or_sort env t :=
+  match assemble t env with Some u => u | None => 𝓤 0 end.
+Definition atom_env := rev (map fst good_fields) ++ [0].
+Definition atom_telescope : telescope 0 (length atom_env) :=
+  fst (projT2 (lambda_parts (good_atom_left_template NZero))).
+Definition atom_context := telescope_context atom_telescope ε.
+Definition atom_body t := assembled_or_sort atom_env
+  (NApp (NVar (600 + IC.tag_number t)) (NVar 0)).
+Definition atom_result t := assembled_or_sort atom_env
+  (NApp (NVar 500) (AtomLeft t (NVar 0))).
+Lemma atom_context_wf : @wf nat RankSorts _ atom_context.
+Proof. apply (RkCheck.check_ctx_sound 1024); vm_compute; reflexivity. Qed.
+Lemma atom_body_typed t : Typed atom_context (atom_body t) (atom_result t).
+Proof.
+  destruct t; (apply (RkCheck.check_sound 256);
+    [exact atom_context_wf | vm_compute; reflexivity]).
+Qed.
+Definition good_atom_left t := telescope_abstract atom_telescope (atom_body t).
+Fixpoint product_head_step {n} (t : Term nat n) : option (Term nat n) :=
+  match t with
+  | Π A B => option_map (Π A) (product_head_step B)
+  | _ => RkEval.head_step t
+  end.
+Lemma product_head_step_sound {n} (t u : Term nat n) :
+  product_head_step t = Some u -> t →ᵝ u.
+Proof.
+  revert u; induction t; intros u H; try (exact (RkEval.head_step_sound _ _ H)).
+  cbn [product_head_step] in H.
+  destruct (product_head_step t2) as [b|] eqn:E; [|discriminate].
+  injection H; intro; subst u; apply step_pi_right, IHt2; reflexivity.
+Qed.
+Lemma product_head_step_equiv {n} (t u : Term nat n) :
+  product_head_step t = Some u -> u =ᵝ t.
+Proof. intro H; symmetry; apply eq_in, product_head_step_sound, H. Qed.
+Lemma atom_result_beta t :
+  telescope_product atom_telescope (atom_result t) =ᵝ good_atom_left_type t.
+Proof. destruct t; apply product_head_step_equiv; vm_compute; reflexivity. Qed.
+Lemma lift_arrow {n} (G : Ctx nat n) f A B : Typed ε f (Arrow A B) ->
+  Typed G (lift_closed f) (Arrow (lift_closed A) (lift_closed B)).
+Proof.
+  intro H; pose proof (lift_closed_typed G _ _ H) as K.
+  unfold lift_closed at 2 in K; rewrite rename_arrow in K; exact K.
+Qed.
+Lemma good_application_sorted {n} (G : Ctx nat n) j :
+  Typed G j (lift_closed carrier) ->
+  Typed G (app (lift_closed good) j) (𝓤 6).
+Proof.
+  intro H; eapply arrow_application;
+    [exact (lift_arrow G good carrier (𝓤 6) good_sorted) | exact H].
+Qed.
+Lemma good_atom_left_type_sorted t : Typed ε (good_atom_left_type t) (𝓤 6).
+Proof.
+  change (Typed ε (Π IC.carrier
+    (app (lift_closed good) (app (lift_closed (atom_left t)) (var fzero)))) (𝓤 6)).
+  replace 6 with (Nat.max 3 6) by reflexivity. apply tPi; [exact IC.carrier_sorted |].
+  apply good_application_sorted. eapply arrow_application.
+  - apply lift_arrow; apply atom_left_typed.
+  - change (Typed (ε & IC.carrier) (var fzero) (shift IC.carrier)). apply tV.
+Qed.
+Theorem good_atom_left_typed t : Typed ε (good_atom_left t) (good_atom_left_type t).
+Proof.
+  eapply tConv; [unfold good_atom_left; apply telescope_abstraction_from_context;
+    [exact atom_context_wf | apply atom_body_typed] |
+    apply good_atom_left_type_sorted | apply atom_result_beta].
+Qed.
+
+Definition good_pair_atom_type t := close
+  (npis [(0, C); (1, C)] (Good (PairAtom t (NVar 0) (NVar 1))))
+  (ltac:(destruct t; reflexivity)).
+Definition good_pair_atom_template t := close
+  (nlams ([(0, C); (1, C)] ++ good_fields)
+    (napps (NVar (700 + IC.tag_number t)) [NVar 0; NVar 1]))
+  (ltac:(destruct t; reflexivity)).
+Definition pair_atom_env := rev (map fst good_fields) ++ [1; 0].
+Definition pair_atom_telescope : telescope 0 (length pair_atom_env) :=
+  fst (projT2 (lambda_parts (good_pair_atom_template NZero))).
+Definition pair_atom_context := telescope_context pair_atom_telescope ε.
+Definition pair_atom_body t := assembled_or_sort pair_atom_env
+  (napps (NVar (700 + IC.tag_number t)) [NVar 0; NVar 1]).
+Definition pair_atom_result t := assembled_or_sort pair_atom_env
+  (NApp (NVar 500) (PairAtom t (NVar 0) (NVar 1))).
+Lemma pair_atom_context_wf : @wf nat RankSorts _ pair_atom_context.
+Proof. apply (RkCheck.check_ctx_sound 1024); vm_compute; reflexivity. Qed.
+Lemma pair_atom_body_typed t :
+  Typed pair_atom_context (pair_atom_body t) (pair_atom_result t).
+Proof.
+  destruct t; (apply (RkCheck.check_sound 256);
+    [exact pair_atom_context_wf | vm_compute; reflexivity]).
+Qed.
+Definition good_pair_atom t := telescope_abstract pair_atom_telescope (pair_atom_body t).
+Lemma pair_atom_result_beta t :
+  telescope_product pair_atom_telescope (pair_atom_result t) =ᵝ good_pair_atom_type t.
+Proof. destruct t; apply product_head_step_equiv; vm_compute; reflexivity. Qed.
+Lemma good_pair_atom_type_sorted t : Typed ε (good_pair_atom_type t) (𝓤 6).
+Proof.
+  change (Typed ε (Π IC.carrier (Π (lift_closed IC.carrier)
+    (app (lift_closed good)
+      (app (app (lift_closed (pair_atom t)) (var (fsucc fzero))) (var fzero))))) (𝓤 6)).
+  replace 6 with (Nat.max 3 6) by reflexivity. apply tPi; [exact IC.carrier_sorted |].
+  replace 6 with (Nat.max 3 6) by reflexivity. apply tPi.
+  - exact (lift_closed_typed (ε & IC.carrier) _ _ IC.carrier_sorted).
+  - apply good_application_sorted. eapply arrow_application.
+    + eapply arrow_application.
+      * pose proof (lift_closed_typed ((ε & IC.carrier) & lift_closed IC.carrier)
+          _ _ (pair_atom_typed t)) as H.
+        unfold lift_closed at 2 in H; rewrite !rename_arrow in H; exact H.
+      * change (Typed ((ε & IC.carrier) & lift_closed IC.carrier)
+          (var (fsucc fzero)) (shift (shift IC.carrier))). apply tV.
+    + change (Typed ((ε & IC.carrier) & lift_closed IC.carrier)
+        (var fzero) (shift (lift_closed IC.carrier))). apply tV.
+Qed.
+Theorem good_pair_atom_typed t : Typed ε (good_pair_atom t) (good_pair_atom_type t).
+Proof.
+  eapply tConv; [unfold good_pair_atom; apply telescope_abstraction_from_context;
+    [exact pair_atom_context_wf | apply pair_atom_body_typed] |
+    apply good_pair_atom_type_sorted | apply pair_atom_result_beta].
+Qed.
+
+Definition good_join_fields := [(0, J); (1, J); (2, Good (NVar 0)); (3, Good (NVar 1))].
+Definition good_join_type := close
+  (npis good_join_fields (Good (Join (NVar 0) (NVar 1)))) eq_refl.
+Definition good_join := close (nlams (good_join_fields ++ good_fields)
+  (napps (NVar 501) [NVar 0; NVar 1; dispatch_good (NVar 2); dispatch_good (NVar 3)])) eq_refl.
+Theorem good_join_typed : Typed ε good_join good_join_type.
+Proof. RkCheck.certify_with 2048. Qed.
+
+Definition zip_motive := NLam 201 J (CMP.Zip (Left (NVar 201)) (Right (NVar 201))).
+Definition zip_atom_case t := NLam 201 C
+  (NApp (NClosed (CMP.atom_zip t)) (NVar 201)).
+Definition zip_pair_atom_case t := nlams [(201, C); (202, C)]
+  (napps (NClosed (CMP.pair_atom_zip t)) [NVar 201; NVar 202]).
+Definition zip_join_case := nlams [(201, J); (202, J);
+  (203, CMP.Zip (Left (NVar 201)) (Right (NVar 201)));
+  (204, CMP.Zip (Left (NVar 202)) (Right (NVar 202)))]
+  (napps (NClosed CMP.pair_pair_zip) [Left (NVar 201); Left (NVar 202);
+    Right (NVar 201); Right (NVar 202); NVar 203; NVar 204]).
+Definition zip_arguments := [zip_motive] ++ map zip_atom_case IC.tags ++
+  map zip_pair_atom_case IC.tags ++ [zip_join_case].
+Definition build_zip_type := close (npis [(0, J); (1, Good (NVar 0))]
+  (CMP.Zip (Left (NVar 0)) (Right (NVar 0)))) eq_refl.
+Definition build_zip := close (nlams [(0, J); (1, Good (NVar 0))]
+  (napps (NVar 1) zip_arguments)) eq_refl.
+Theorem build_zip_type_sorted : Typed ε build_zip_type (𝓤 7).
+Proof. RkCheck.certify_with 2048. Qed.
+Theorem build_zip_typed : Typed ε build_zip build_zip_type.
+Proof. RkCheck.certify_with 4096. Qed.
+
+(** Native application helpers preserve exact syntax under replacement. *)
+Definition atom_left_at {n} t (y : Term nat n) := app (lift_closed (atom_left t)) y.
+Definition pair_atom_at {n} t (a b : Term nat n) :=
+  app (app (lift_closed (pair_atom t)) a) b.
+Definition join_at {n} (j k : Term nat n) := app (app (lift_closed join) j) k.
+Definition left_at {n} (j : Term nat n) := app (lift_closed project_left) j.
+Definition right_at {n} (j : Term nat n) := app (lift_closed project_right) j.
+Definition good_at {n} (j : Term nat n) := app (lift_closed good) j.
+Definition build_zip_at {n} (j g : Term nat n) := app (app (lift_closed build_zip) j) g.
+
+(** Open beta schemas, suitable for arbitrary native replacement. *)
+Theorem left_atom_schema t :
+  left_at (atom_left_at t (@var nat 1 fzero)) =ᵝ lift_closed (IC.atom t).
+Proof. destruct t; apply (RkEval.convert_equal_sound 1024); vm_compute; reflexivity. Qed.
+Theorem right_atom_schema t :
+  right_at (atom_left_at t (@var nat 1 fzero)) =ᵝ var fzero.
+Proof. destruct t; apply (RkEval.convert_equal_sound 1024); vm_compute; reflexivity. Qed.
+Theorem left_pair_atom_schema t :
+  left_at (pair_atom_at t (@var nat 2 (fsucc fzero)) (var fzero))
+    =ᵝ CMP.pair_at (var (fsucc fzero)) (var fzero).
+Proof. destruct t; apply (RkEval.convert_equal_sound 1024); vm_compute; reflexivity. Qed.
+Theorem right_pair_atom_schema t :
+  right_at (pair_atom_at t (@var nat 2 (fsucc fzero)) (var fzero))
+    =ᵝ lift_closed (IC.atom t).
+Proof. destruct t; apply (RkEval.convert_equal_sound 1024); vm_compute; reflexivity. Qed.
+Theorem left_join_schema :
+  left_at (join_at (@var nat 2 (fsucc fzero)) (var fzero)) =ᵝ
+    CMP.pair_at (left_at (var (fsucc fzero))) (left_at (var fzero)).
+Proof. apply (RkEval.convert_equal_sound 1024); vm_compute; reflexivity. Qed.
+Theorem right_join_schema :
+  right_at (join_at (@var nat 2 (fsucc fzero)) (var fzero)) =ᵝ
+    CMP.pair_at (right_at (var (fsucc fzero))) (right_at (var fzero)).
+Proof. apply (RkEval.convert_equal_sound 1024); vm_compute; reflexivity. Qed.
+
+Theorem build_zip_atom_schema t :
+  build_zip_at (atom_left_at t (@var nat 1 fzero))
+    (app (lift_closed (good_atom_left t)) (var fzero)) =ᵝ
+    app (lift_closed (CMP.atom_zip t)) (var fzero).
+Proof. destruct t; apply (RkEval.convert_equal_sound 4096); vm_compute; reflexivity. Qed.
+Theorem build_zip_pair_atom_schema t :
+  build_zip_at (pair_atom_at t (@var nat 2 (fsucc fzero)) (var fzero))
+    (app (app (lift_closed (good_pair_atom t)) (var (fsucc fzero))) (var fzero)) =ᵝ
+    app (app (lift_closed (CMP.pair_atom_zip t)) (var (fsucc fzero))) (var fzero).
+Proof. destruct t; apply (RkEval.convert_equal_sound 4096); vm_compute; reflexivity. Qed.
+
+Definition w0 : Term nat 4 := var fzero.
+Definition w1 : Term nat 4 := var (fsucc fzero).
+Definition w2 : Term nat 4 := var (fsucc (fsucc fzero)).
+Definition w3 : Term nat 4 := var (fsucc (fsucc (fsucc fzero))).
+Theorem build_zip_join_schema :
+  build_zip_at (join_at w3 w2)
+    (app (app (app (app (lift_closed good_join) w3) w2) w1) w0) =ᵝ
+    app (app (app (app (app (app (lift_closed CMP.pair_pair_zip)
+      (left_at w3)) (left_at w2)) (right_at w3)) (right_at w2))
+      (build_zip_at w3 w1)) (build_zip_at w2 w0).
+Proof. apply (RkEval.convert_equal_sound 4096); vm_compute; reflexivity. Qed.
+
+End InternalJointTraversal.

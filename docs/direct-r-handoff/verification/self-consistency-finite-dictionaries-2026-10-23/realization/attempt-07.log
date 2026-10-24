@@ -1,0 +1,11 @@
+Warning:
+/private/tmp/pts-rk-fragments-fresh.d7RHpo/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-dictionary-realization.KorrfC/FiniteDictionaryRealization.v", line 13, characters 0-35:
+Warning: Trying to mask the absolute name "FiniteDictionaryRealization"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "/tmp/pts-rk-dictionary-realization.KorrfC/FiniteDictionaryRealization.v", line 214, characters 6-16:
+Error: Found no subterm matching "nth i cs FD.padding_witness"
+in the current goal.
+

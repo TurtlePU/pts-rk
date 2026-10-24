@@ -1,0 +1,37 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 227 - 269 [From~Stdlib~Require~Import~Ari...] 0.034 secs (0.028u,0.005s)
+Chars 270 - 316 [From~PTSrk~Require~Import-(not...] 0.023 secs (0.018u,0.005s)
+Chars 317 - 377 [From~PTSrk~Require~Import~DefE...] 0.001 secs (0.001u,0.s)
+Chars 378 - 469 [From~Interpretation_of_R~Requi...] 0.053 secs (0.043u,0.009s)
+Chars 470 - 527 [From~PTSrk.SelfConsistency~Req...] 0. secs (0.u,0.s)
+Chars 529 - 546 [Module~NamedBeta.] 0. secs (0.u,0.s)
+Chars 547 - 612 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 614 - 753 [Lemma~update_substitution~{n}~...] 0. secs (0.u,0.s)
+Chars 754 - 760 [Proof.] 0. secs (0.u,0.s)
+Chars 763 - 825 [unfold~update,~extend;~destruc...] 0. secs (0.u,0.s)
+Chars 828 - 885 [destruct~(e~y)~as~[a|~];~cbn[o...] 0. secs (0.u,0.s)
+Chars 888 - 950 [unfold~subst;~rewrite~replace_...] 0. secs (0.u,0.s)
+Chars 951 - 955 [Qed.] 0. secs (0.u,0.s)
+Chars 957 - 1128 [Theorem~evaluate_substitution~...] 0. secs (0.u,0.s)
+Chars 1129 - 1135 [Proof.] 0. secs (0.u,0.s)
+Chars 1138 - 1167 [intros~n~e~x~u;~unfold~subst.] 0. secs (0.u,0.s)
+Chars 1170 - 1229 [apply~evaluate_replace;~intro~...] 0. secs (0.u,0.s)
+Chars 1230 - 1234 [Qed.] 0. secs (0.u,0.s)
+Chars 1236 - 1424 [Theorem~evaluated_beta~{n}~(e~...] 0. secs (0.u,0.s)
+Chars 1425 - 1431 [Proof.] 0. secs (0.u,0.s)
+Chars 1434 - 1512 [intros~Hb~Hr;~rewrite~evaluate...] 0. secs (0.u,0.s)
+Chars 1515 - 1558 [injection~Hr~as~<-;~apply~eq_i...] 0. secs (0.u,0.s)
+Chars 1559 - 1563 [Qed.] 0. secs (0.u,0.s)
+Chars 1565 - 1763 [Theorem~named_application_beta...] 0. secs (0.u,0.s)
+Chars 1764 - 1770 [Proof.] 0. secs (0.u,0.s)
+Chars 1773 - 1909 [cbn[evaluate];~destruct~(evalu...] 0.002 secs (0.001u,0.s)
+Chars 1912 - 1981 [intros~Hf~Hr;~injection~Hf~as~...] 0. secs (0.u,0.s)
+Chars 1982 - 1986 [Qed.] 0.001 secs (0.001u,0.s)
+Chars 1988 - 2002 [End~NamedBeta.] 0. secs (0.u,0.s)

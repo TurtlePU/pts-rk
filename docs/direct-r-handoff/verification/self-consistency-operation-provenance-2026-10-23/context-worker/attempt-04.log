@@ -1,0 +1,16 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 829 - 867 [From~Stdlib~Require~Import~Lis...] 0.037 secs (0.03u,0.006s)
+Chars 868 - 914 [From~PTSrk~Require~Import-(not...] 0.019 secs (0.014u,0.004s)
+Chars 915 - 999 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 1000 - 1106 [From~Interpretation_of_R~Requi...] 0.052 secs (0.041u,0.011s)
+Chars 1107 - 1295 [From~PTSrk.SelfConsistency~Req...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/InternalContextLookup.v", line 21, characters 19-41:
+Error: Unable to locate library
+InternalJointTraversal with prefix PTSrk.SelfConsistency (while searching for a .vos file).

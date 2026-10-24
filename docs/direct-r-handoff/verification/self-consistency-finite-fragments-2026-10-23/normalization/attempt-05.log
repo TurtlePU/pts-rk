@@ -1,0 +1,11 @@
+File "/tmp/pts-rk-fragment-normalization.mLwZIp/FiniteFragmentNormalization.v", line 196, characters 39-41:
+Error:
+In environment
+qs : list code
+q : code
+HQ : In q qs
+p' : Certificate 0
+HD : decode_certificate q 0 = Some p'
+The term "HD" has type "decode_certificate q 0 = Some p'"
+while it is expected to have type "Some p' = Some p'".
+

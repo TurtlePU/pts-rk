@@ -1,0 +1,6 @@
+label	original_root
+uniform-horn	/tmp/pts-rk-uniform-horn.mgPTYI
+finite-raw-decoding	/tmp/pts-rk-finite-raw-decoding.aSN7Ui
+uniform-reindex	/tmp/pts-rk-uniform-reindex.saoh4V
+finite-raw-tables	/tmp/pts-rk-finite-raw-tables.ldYIeE
+uniform-guarded-horn	/tmp/pts-rk-uniform-guarded-horn.sjyP9e

@@ -1,0 +1,16 @@
+git rev-parse HEAD
+opam exec -- rocq -v
+opam exec -- dune --version
+opam list --installed --columns=name\,version
+df -h . /tmp
+working_tree_manifest
+operation_manifest
+previous_sources
+registration_normalization
+registered_modules
+declaration_coverage
+git archive --output=/Users/akuklev/air/pts-rk/_build/self-consistency-operation-provenance-audit.dLxE0S/pristine.tar 723cf2ec61c737ae82ba33d2e7db44f650122b0e
+tar -xf /Users/akuklev/air/pts-rk/_build/self-consistency-operation-provenance-audit.dLxE0S/pristine.tar -C /tmp/pts-rk-operation-provenance-pristine.Smzrtd
+opam exec -- timeout 600 dune build --root /tmp/pts-rk-operation-provenance-pristine.Smzrtd --display=short --no-buffer -j 2 theories/Ranks.vo
+opam exec -- timeout 600 rocq check -silent -o -Q /tmp/pts-rk-operation-provenance-pristine.Smzrtd/_build/default/theories PTSrk PTSrk.Ranks
+opam exec -- timeout 3600 dune build --build-dir /tmp/pts-rk-operation-provenance-fresh.DkOoCf --display=short --no-buffer -j 2 @theories/self_consistency/operation-provenance-audit

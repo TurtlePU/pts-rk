@@ -1,0 +1,16 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 46 [From~PTSrk~Require~Import-(not...] 0.056 secs (0.046u,0.01s)
+Chars 47 - 100 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 101 - 205 [From~Interpretation_of_R~Requi...] 0.052 secs (0.043u,0.009s)
+Chars 206 - 297 [From~PTSrk.SelfConsistency~Req...] 0. secs (0.u,0.s)
+File "/tmp/pts-rk-comparison-graph.AaaC94/HelpersProbe.v", line 4, characters 0-91:
+Error: Required library NamedBeta matches several files in path (found
+/private/tmp/pts-rk-comparison-graph.AaaC94/NamedBeta.vo and
+/private/tmp/pts-rk-context-provenance.pPeQ4L/NamedBeta.vo).

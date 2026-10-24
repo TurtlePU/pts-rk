@@ -1,0 +1,28 @@
+shasum -a 256 -c /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/driver-before.sha256
+git rev-parse HEAD
+df -h . /private/tmp
+opam exec -- rocq -v
+opam exec -- dune --version
+opam list --installed --columns=name\,version
+python3 /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/driver/GATE-TESTS.py
+source_manifest
+previous_sources
+registration
+python3 /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/driver/gates.py declarations /Users/akuklev/air/pts-rk UniformHornAudit UniformHorn FiniteRawDecoding UniformHornReindex FiniteRawTables UniformGuardedHorn
+safety
+whitespace
+git archive --output=/Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/pristine.tar 723cf2ec61c737ae82ba33d2e7db44f650122b0e
+tar -xf /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/pristine.tar -C /tmp/pts-rk-uniform-horn-pristine.oSFBh4
+opam exec -- timeout 600 dune build --root /tmp/pts-rk-uniform-horn-pristine.oSFBh4 --display=short --no-buffer -j 2 theories/Ranks.vo
+opam exec -- timeout 600 rocq check -silent -o -bytecode-compiler yes -Q /tmp/pts-rk-uniform-horn-pristine.oSFBh4/_build/default/theories PTSrk PTSrk.Ranks
+opam exec -- timeout 3600 dune build --build-dir /tmp/pts-rk-uniform-horn-fresh.cCcZgE --display=short --no-buffer -j 2 @theories/self_consistency/uniform-horn-audit
+python3 /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/driver/gates.py reports /Users/akuklev/air/pts-rk /tmp/pts-rk-uniform-horn-fresh.cCcZgE /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/fresh-build.log
+opam exec -- timeout 3600 rocq check -silent -o -bytecode-compiler yes -Q /tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories PTSrk -Q /tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency PTSrk.SelfConsistency PTSrk.SelfConsistency.UniformHornAudit
+python3 /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/driver/gates.py inventory /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/pristine-kernel.log /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/kernel.log
+git diff --exit-code 723cf2ec61c737ae82ba33d2e7db44f650122b0e -- theories/Syntax.v theories/AbstractRewriting.v theories/Congruence.v theories/Reduction.v theories/Confluence.v theories/DefEq.v theories/Context.v theories/Typing.v theories/Inversions.v theories/Preservation.v theories/SN.v theories/Ranks.v
+git diff --exit-code ffa7131 -- theories/ZFC_model
+source_manifest
+cmp /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/source-before.log /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/source-after.log
+previous_sources
+registration
+shasum -a 256 -c /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.lD2nv7/driver-before.sha256

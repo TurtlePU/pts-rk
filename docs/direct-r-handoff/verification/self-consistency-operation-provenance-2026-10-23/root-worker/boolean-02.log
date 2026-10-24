@@ -1,0 +1,31 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 221 - 267 [From~PTSrk~Require~Import-(not...] 0.059 secs (0.047u,0.011s)
+Chars 268 - 321 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 322 - 428 [From~Interpretation_of_R~Requi...] 0.055 secs (0.045u,0.009s)
+Chars 429 - 508 [From~PTSrk.SelfConsistency~Req...] 0.008 secs (0.006u,0.001s)
+Chars 510 - 534 [Module~BooleanAgreement.] 0. secs (0.u,0.s)
+Chars 535 - 570 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 571 - 630 [Module~EG:=~~InternalExecution...] 0.031 secs (0.026u,0.004s)
+Chars 631 - 672 [Module~GT:=~~GuardedTables.Gua...] 0.007 secs (0.006u,0.001s)
+Chars 674 - 734 [Definition~v1~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 735 - 807 [Definition~v2~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 808 - 892 [Definition~v3~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 894 - 967 [Definition~refl_type~:~closed_...] 0. secs (0.u,0.s)
+Chars 968 - 1023 [Theorem~refl_type_sorted~:~Typ...] 0. secs (0.u,0.s)
+Chars 1024 - 1030 [Proof.] 0. secs (0.u,0.s)
+Chars 1031 - 1056 [RkCheck.certify_with~256.] 0.035 secs (0.031u,0.003s)
+Chars 1057 - 1061 [Qed.] 0. secs (0.u,0.s)
+Chars 1062 - 1115 [Theorem~refl_typed~:~Typed~ε~E...] 0. secs (0.u,0.s)
+Chars 1116 - 1122 [Proof.] 0. secs (0.u,0.s)
+Chars 1125 - 1191 [eapply~tConv;~[~exact~EG.same_...] 0. secs (0.u,0.s)
+Chars 1194 - 1256 [apply~(RkCheck.check_conv_soun...] 0. secs (0.u,0.s)
+Chars 1257 - 1261 [Qed.] 0. secs (0.u,0.s)
+File "./theories/self_consistency/BooleanAgreement.v", line 33, characters 61-62:
+Error: Syntax error: '.' expected after [gallina] (in [vernac_aux]).

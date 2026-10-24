@@ -1,0 +1,858 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteFragmentRejection.v", line 14, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/FiniteFragmentRejection.v", line 14, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/self_consistency/FiniteFragmentRejection.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+FiniteFragmentRejection.variables_nth
+     : forall i : Syntax.Fin ?n,
+       List.nth_error (FiniteFragmentRejection.FN.variables ?n)
+         (DirectRStructural.Structural.fin_number i) =
+       Some i
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteFragmentRejection.points_nth
+     : forall (b : nat) (i : Syntax.Fin (FiniteFragmentTables.arity b)),
+       List.nth_error (FiniteFragmentRejection.points b)
+         (DirectRStructural.Structural.fin_number i) =
+       Some (FiniteFragmentTables.point b i)
+Closed under the global context
+FiniteFragmentRejection.points_typed
+     : forall b : nat,
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε c
+            (FiniteFragmentTables.domain b))
+         (FiniteFragmentRejection.points b)
+Closed under the global context
+FiniteFragmentRejection.guard_sorted
+     : forall (b n : nat) (G : Context.Ctx nat n) (x : Syntax.Term nat n),
+       DirectRKernel.Core.Typed G x
+         (DirectRCommonCodes.CommonCodes.lift_closed
+            (FiniteFragmentTables.domain b)) ->
+       DirectRKernel.Core.Typed G (FiniteFragmentRejection.guard b x)
+         (Syntax.𝓤 3)
+Closed under the global context
+FiniteFragmentRejection.canonical_typed
+     : forall (b : nat) (i : Syntax.Fin (FiniteFragmentTables.arity b)),
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteFragmentRejection.canonical b i)
+         (FiniteFragmentRejection.guard b (FiniteFragmentTables.point b i))
+Closed under the global context
+FiniteFragmentRejection.motive_typed
+     : forall b : nat,
+       DirectRKernel.Core.Typed Context.ε (FiniteFragmentRejection.motive b)
+         (FiniteFragmentRejection.FG.motive_type
+            (FiniteFragmentTables.domain b))
+Closed under the global context
+FiniteFragmentRejection.branches_typed
+     : forall b : nat,
+       List.Forall2
+         (fun c h : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε h
+            (Syntax.app (FiniteFragmentRejection.motive b) c))
+         (FiniteFragmentRejection.points b)
+         (FiniteFragmentRejection.branches b)
+Closed under the global context
+FiniteFragmentRejection.rejection_type_sorted
+     : forall b : nat,
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteFragmentRejection.rejection_type b) 
+         (Syntax.𝓤 4)
+Closed under the global context
+FiniteFragmentRejection.rejection_typed
+     : forall b : nat,
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteFragmentRejection.rejection b)
+         (FiniteFragmentRejection.rejection_type b)
+Closed under the global context
+FiniteFragmentRejection.bounded_code_covered
+     : forall (b : nat) (q : StructuralCodes.code),
+       StructuralCodes.code_size q <= b ->
+       exists i : Syntax.Fin (length (codes b)),
+         fragment_index b q = Some i /\
+         fragment_decode b i = q /\
+         DirectRKernel.Core.Typed Context.ε (FiniteFragmentTables.point b i)
+           (FiniteFragmentTables.domain b) /\
+         DirectRKernel.Core.Typed Context.ε
+           (FiniteFragmentRejection.canonical b i)
+           (FiniteFragmentRejection.guard b (FiniteFragmentTables.point b i)) /\
+         Reduction.reduces_to nat 0
+           (Syntax.app (FiniteFragmentTables.bottom_program b)
+              (FiniteFragmentTables.point b i))
+           (FiniteFragmentTables.FC.boolean 0
+              (CertificateSerialization.raw_bottom_check q))
+Closed under the global context
+FiniteFragmentRejection.every_raw_code_covered
+     : forall q : StructuralCodes.code,
+       exists i : Syntax.Fin (length (codes (StructuralCodes.code_size q))),
+         fragment_index (StructuralCodes.code_size q) q = Some i /\
+         DirectRKernel.Core.Typed Context.ε
+           (FiniteFragmentRejection.canonical (StructuralCodes.code_size q) i)
+           (FiniteFragmentRejection.guard (StructuralCodes.code_size q)
+              (FiniteFragmentTables.point (StructuralCodes.code_size q) i))
+Closed under the global context
+FiniteFragmentRejection.source_quotation_faithful
+     : forall (b : nat) (q q' : StructuralCodes.code)
+         (i j : Syntax.Fin (length (codes b))),
+       fragment_index b q = Some i ->
+       fragment_index b q' = Some j ->
+       DefEq.def_equiv nat 0 (FiniteFragmentTables.point b i)
+         (FiniteFragmentTables.point b j) ->
+       q = q'
+Closed under the global context
+FiniteFragmentRejection.source_family_coverage
+     : forall (b : nat) (q : StructuralCodes.code)
+         (p : NativeProofCodes.NativeProofCodes.Certificate 0),
+       StructuralCodes.code_size q <= b ->
+       CertificateSerialization.decode_certificate q 0 = Some p ->
+       List.In p (FiniteFragmentRejection.source_family b)
+Closed under the global context
+FiniteFragmentRejection.bounded_code_normalization
+     : forall (b : nat) (q : StructuralCodes.code)
+         (p : NativeProofCodes.NativeProofCodes.Certificate 0),
+       StructuralCodes.code_size q <= b ->
+       CertificateSerialization.decode_certificate q 0 = Some p ->
+       NativeProofCodes.NativeProofCodes.check Context.ε p = true ->
+       FiniteFragmentRejection.NF.CarrierSteps
+         (FiniteFragmentRejection.FN.sizedTerms
+            (Bounds.tower
+               (FiniteFragmentRejection.NF.family_rank
+                  (FiniteFragmentRejection.source_family b))
+               (FiniteFragmentRejection.NF.family_seed
+                  (FiniteFragmentRejection.source_family b)))
+            0
+            (FiniteFragmentRejection.NF.family_alphabet
+               (FiniteFragmentRejection.source_family b)))
+         (NativeProofCodes.NativeProofCodes.subject p)
+         (Greedy.rounds
+            (FiniteFragmentRejection.NF.family_rank
+               (FiniteFragmentRejection.source_family b))
+            (NativeProofCodes.NativeProofCodes.subject p)) /\
+       Greedy.normalb
+         (Greedy.rounds
+            (FiniteFragmentRejection.NF.family_rank
+               (FiniteFragmentRejection.source_family b))
+            (NativeProofCodes.NativeProofCodes.subject p)) =
+       true /\
+       DirectRKernel.Core.Typed Context.ε
+         (Greedy.rounds
+            (FiniteFragmentRejection.NF.family_rank
+               (FiniteFragmentRejection.source_family b))
+            (NativeProofCodes.NativeProofCodes.subject p))
+         (NativeProofCodes.NativeProofCodes.type p) /\
+       List.In
+         (Greedy.rounds
+            (FiniteFragmentRejection.NF.family_rank
+               (FiniteFragmentRejection.source_family b))
+            (NativeProofCodes.NativeProofCodes.subject p))
+         (FiniteFragmentRejection.FN.normalForms
+            (Bounds.tower
+               (FiniteFragmentRejection.NF.family_rank
+                  (FiniteFragmentRejection.source_family b))
+               (FiniteFragmentRejection.NF.family_seed
+                  (FiniteFragmentRejection.source_family b)))
+            (FiniteFragmentRejection.NF.family_alphabet
+               (FiniteFragmentRejection.source_family b)))
+Closed under the global context
+FiniteFragmentNormalization.bounded_steps_carrier
+     : forall (limit : nat) (alphabet : list nat) (t u : Syntax.Term nat ?n),
+       QuantitativeNormalization.BoundedSteps limit t u ->
+       FiniteNormalForms.FiniteNormalForms.Uses alphabet t ->
+       FiniteFragmentNormalization.CarrierSteps
+         (FiniteNormalForms.FiniteNormalForms.sizedTerms limit ?n alphabet) t
+         u
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteFragmentNormalization.carrier_steps_sound
+     : forall (carrier : list (Syntax.Term nat ?n))
+         (t u : Syntax.Term nat ?n),
+       FiniteFragmentNormalization.CarrierSteps carrier t u ->
+       Reduction.reduces_to nat ?n t u
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteFragmentNormalization.certificate_rank_sound
+     : forall p : NativeProofCodes.NativeProofCodes.Certificate 0,
+       NativeProofCodes.NativeProofCodes.check Context.ε p = true ->
+       RedexRanks.RedexBound Context.ε
+         (NativeProofCodes.NativeProofCodes.subject p)
+         (FiniteFragmentNormalization.fragment_rank p)
+Closed under the global context
+FiniteFragmentNormalization.certificate_bounded_normalization
+     : forall p : NativeProofCodes.NativeProofCodes.Certificate 0,
+       NativeProofCodes.NativeProofCodes.check Context.ε p = true ->
+       QuantitativeNormalization.BoundedSteps
+         (FiniteFragmentNormalization.fragment_peak p)
+         (NativeProofCodes.NativeProofCodes.subject p)
+         (FiniteFragmentNormalization.certificate_normal_form p) /\
+       Greedy.normalb (FiniteFragmentNormalization.certificate_normal_form p) =
+       true /\
+       Typing.typ Context.ε
+         (FiniteFragmentNormalization.certificate_normal_form p)
+         (NativeProofCodes.NativeProofCodes.type p)
+Closed under the global context
+FiniteFragmentNormalization.certificate_finite_normalization
+     : forall p : NativeProofCodes.NativeProofCodes.Certificate 0,
+       NativeProofCodes.NativeProofCodes.check Context.ε p = true ->
+       FiniteFragmentNormalization.CarrierSteps
+         (FiniteFragmentNormalization.fragment_carrier p)
+         (NativeProofCodes.NativeProofCodes.subject p)
+         (FiniteFragmentNormalization.certificate_normal_form p) /\
+       Greedy.normalb (FiniteFragmentNormalization.certificate_normal_form p) =
+       true /\
+       Typing.typ Context.ε
+         (FiniteFragmentNormalization.certificate_normal_form p)
+         (NativeProofCodes.NativeProofCodes.type p) /\
+       List.In (FiniteFragmentNormalization.certificate_normal_form p)
+         (FiniteFragmentNormalization.fragment_normal_forms p)
+Closed under the global context
+FiniteFragmentNormalization.fragment_carrier_capacity
+     : forall p : NativeProofCodes.NativeProofCodes.Certificate 0,
+       length (FiniteFragmentNormalization.fragment_carrier p) <=
+       Bounds.tower (FiniteFragmentNormalization.fragment_rank p + 2)
+         (4 * Bounds.nodes (NativeProofCodes.NativeProofCodes.subject p) + 4)
+Closed under the global context
+FiniteFragmentNormalization.fragment_normal_forms_capacity
+     : forall p : NativeProofCodes.NativeProofCodes.Certificate 0,
+       length (FiniteFragmentNormalization.fragment_normal_forms p) <=
+       Bounds.tower (FiniteFragmentNormalization.fragment_rank p + 2)
+         (4 * Bounds.nodes (NativeProofCodes.NativeProofCodes.subject p) + 4)
+Closed under the global context
+FiniteFragmentNormalization.bounded_fragment_normalization
+     : forall (p : NativeProofCodes.NativeProofCodes.Certificate 0)
+         (d N : nat) (alphabet : list nat),
+       NativeProofCodes.NativeProofCodes.check Context.ε p = true ->
+       FiniteFragmentNormalization.fragment_rank p <= d ->
+       Bounds.nodes (NativeProofCodes.NativeProofCodes.subject p) <= N ->
+       FiniteNormalForms.FiniteNormalForms.Uses alphabet
+         (NativeProofCodes.NativeProofCodes.subject p) ->
+       FiniteFragmentNormalization.CarrierSteps
+         (FiniteNormalForms.FiniteNormalForms.sizedTerms 
+            (Bounds.tower d N) 0 alphabet)
+         (NativeProofCodes.NativeProofCodes.subject p)
+         (Greedy.rounds d (NativeProofCodes.NativeProofCodes.subject p)) /\
+       Greedy.normalb
+         (Greedy.rounds d (NativeProofCodes.NativeProofCodes.subject p)) =
+       true /\
+       Typing.typ Context.ε
+         (Greedy.rounds d (NativeProofCodes.NativeProofCodes.subject p))
+         (NativeProofCodes.NativeProofCodes.type p) /\
+       List.In
+         (Greedy.rounds d (NativeProofCodes.NativeProofCodes.subject p))
+         (FiniteNormalForms.FiniteNormalForms.normalForms 
+            (Bounds.tower d N) alphabet)
+Closed under the global context
+FiniteFragmentNormalization.bounded_fragment_capacity
+     : forall (d N : nat) (alphabet : list nat),
+       length alphabet <= N ->
+       length
+         (FiniteNormalForms.FiniteNormalForms.sizedTerms 
+            (Bounds.tower d N) 0 alphabet) <=
+       Bounds.tower (d + 2) (4 * N + 4)
+Closed under the global context
+FiniteFragmentNormalization.member_fold_bound
+     : forall (f : ?A -> nat) (xs : list ?A) (x : ?A),
+       List.In x xs ->
+       f x <=
+       List.fold_right (fun (y : ?A) (N : nat) => PeanoNat.Nat.max (f y) N) 0
+         xs
+where
+?A : [ |- Type]
+Closed under the global context
+FiniteFragmentNormalization.certificate_family_bounds
+     : forall (ps : list (NativeProofCodes.NativeProofCodes.Certificate 0))
+         (p : NativeProofCodes.NativeProofCodes.Certificate 0),
+       List.In p ps ->
+       FiniteFragmentNormalization.fragment_rank p <=
+       FiniteFragmentNormalization.family_rank ps /\
+       Bounds.nodes (NativeProofCodes.NativeProofCodes.subject p) <=
+       FiniteFragmentNormalization.family_seed ps /\
+       FiniteNormalForms.FiniteNormalForms.Uses
+         (FiniteFragmentNormalization.family_alphabet ps)
+         (NativeProofCodes.NativeProofCodes.subject p)
+Closed under the global context
+FiniteFragmentNormalization.certificate_family_normalization
+     : forall (ps : list (NativeProofCodes.NativeProofCodes.Certificate 0))
+         (p : NativeProofCodes.NativeProofCodes.Certificate 0),
+       List.In p ps ->
+       NativeProofCodes.NativeProofCodes.check Context.ε p = true ->
+       FiniteFragmentNormalization.CarrierSteps
+         (FiniteNormalForms.FiniteNormalForms.sizedTerms
+            (Bounds.tower (FiniteFragmentNormalization.family_rank ps)
+               (FiniteFragmentNormalization.family_seed ps))
+            0 (FiniteFragmentNormalization.family_alphabet ps))
+         (NativeProofCodes.NativeProofCodes.subject p)
+         (Greedy.rounds (FiniteFragmentNormalization.family_rank ps)
+            (NativeProofCodes.NativeProofCodes.subject p)) /\
+       Greedy.normalb
+         (Greedy.rounds (FiniteFragmentNormalization.family_rank ps)
+            (NativeProofCodes.NativeProofCodes.subject p)) =
+       true /\
+       Typing.typ Context.ε
+         (Greedy.rounds (FiniteFragmentNormalization.family_rank ps)
+            (NativeProofCodes.NativeProofCodes.subject p))
+         (NativeProofCodes.NativeProofCodes.type p) /\
+       List.In
+         (Greedy.rounds (FiniteFragmentNormalization.family_rank ps)
+            (NativeProofCodes.NativeProofCodes.subject p))
+         (FiniteNormalForms.FiniteNormalForms.normalForms
+            (Bounds.tower (FiniteFragmentNormalization.family_rank ps)
+               (FiniteFragmentNormalization.family_seed ps))
+            (FiniteFragmentNormalization.family_alphabet ps))
+Closed under the global context
+FiniteFragmentNormalization.certificate_family_capacity
+     : forall ps : list (NativeProofCodes.NativeProofCodes.Certificate 0),
+       length
+         (FiniteNormalForms.FiniteNormalForms.sizedTerms
+            (Bounds.tower (FiniteFragmentNormalization.family_rank ps)
+               (FiniteFragmentNormalization.family_seed ps))
+            0 (FiniteFragmentNormalization.family_alphabet ps)) <=
+       Bounds.tower (FiniteFragmentNormalization.family_rank ps + 2)
+         (4 * FiniteFragmentNormalization.family_seed ps + 4)
+Closed under the global context
+FiniteFragmentNormalization.decoded_certificates_spec
+     : forall (qs : list StructuralCodes.code)
+         (p : NativeProofCodes.NativeProofCodes.Certificate 0),
+       List.In p (FiniteFragmentNormalization.decoded_certificates qs) <->
+       (exists q : StructuralCodes.code,
+          List.In q qs /\
+          CertificateSerialization.decode_certificate q 0 = Some p)
+Closed under the global context
+FiniteFragmentNormalization.raw_accepted_finite_normalization
+     : forall (q : StructuralCodes.code)
+         (p : NativeProofCodes.NativeProofCodes.Certificate 0),
+       CertificateSerialization.decode_certificate q 0 = Some p ->
+       NativeProofCodes.NativeProofCodes.check Context.ε p = true ->
+       q = CertificateSerialization.encode_certificate p /\
+       FiniteFragmentNormalization.CarrierSteps
+         (FiniteFragmentNormalization.fragment_carrier p)
+         (NativeProofCodes.NativeProofCodes.subject p)
+         (FiniteFragmentNormalization.certificate_normal_form p) /\
+       Greedy.normalb (FiniteFragmentNormalization.certificate_normal_form p) =
+       true /\
+       Typing.typ Context.ε
+         (FiniteFragmentNormalization.certificate_normal_form p)
+         (NativeProofCodes.NativeProofCodes.type p) /\
+       List.In (FiniteFragmentNormalization.certificate_normal_form p)
+         (FiniteFragmentNormalization.fragment_normal_forms p)
+Closed under the global context
+FiniteFragmentNormalization.certificate_bottom_rejected
+     : forall p : NativeProofCodes.NativeProofCodes.Certificate 0,
+       NativeProofCodes.NativeProofCodes.accepts_bottom p = false
+Closed under the global context
+FiniteFragmentNormalization.raw_bottom_rejected
+     : forall q : StructuralCodes.code,
+       CertificateSerialization.raw_bottom_check q = false
+Closed under the global context
+FiniteFragmentTables.domain_sorted
+     : forall b : nat,
+       DirectRKernel.Core.Typed Context.ε (FiniteFragmentTables.domain b)
+         (Syntax.𝓤 1)
+Closed under the global context
+FiniteFragmentTables.point_typed
+     : forall (b : nat) (i : Syntax.Fin (FiniteFragmentTables.arity b)),
+       DirectRKernel.Core.Typed Context.ε (FiniteFragmentTables.point b i)
+         (FiniteFragmentTables.domain b)
+Closed under the global context
+FiniteFragmentTables.program_typed
+     : forall (check : StructuralCodes.code -> bool) (b : nat),
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteFragmentTables.program check b)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            (FiniteFragmentTables.domain b)
+            (FiniteFragmentTables.CF.choice_type 0 2))
+Closed under the global context
+FiniteFragmentTables.program_sorted
+     : forall b : nat,
+       DirectRKernel.Core.Typed Context.ε
+         (DirectRCommonCodes.CommonCodes.Arrow
+            (FiniteFragmentTables.domain b)
+            (FiniteFragmentTables.CF.choice_type 0 2))
+         (Syntax.𝓤 2)
+Closed under the global context
+FiniteFragmentTables.program_beta
+     : forall (check : StructuralCodes.code -> bool) 
+         (b : nat) (i : Syntax.Fin (FiniteFragmentTables.arity b)),
+       Reduction.reduces_to nat 0
+         (Syntax.app (FiniteFragmentTables.program check b)
+            (FiniteFragmentTables.point b i))
+         (FiniteFragmentTables.FC.boolean 0 (check (fragment_decode b i)))
+Closed under the global context
+FiniteFragmentTables.program_output_exact
+     : forall (check : StructuralCodes.code -> bool) 
+         (b : nat) (i : Syntax.Fin (FiniteFragmentTables.arity b))
+         (answer : bool),
+       Reduction.reduces_to nat 0
+         (Syntax.app (FiniteFragmentTables.program check b)
+            (FiniteFragmentTables.point b i))
+         (FiniteFragmentTables.FC.boolean 0 answer) <->
+       check (fragment_decode b i) = answer
+Closed under the global context
+FiniteFragmentTables.program_covers
+     : forall (check : StructuralCodes.code -> bool) 
+         (b : nat) (q : StructuralCodes.code),
+       StructuralCodes.code_size q <= b ->
+       exists i : Syntax.Fin (length (codes b)),
+         fragment_index b q = Some i /\
+         fragment_decode b i = q /\
+         Reduction.reduces_to nat 0
+           (Syntax.app (FiniteFragmentTables.program check b)
+              (FiniteFragmentTables.point b i))
+           (FiniteFragmentTables.FC.boolean 0 (check q))
+Closed under the global context
+FiniteFragmentTables.bottom_program_rejects
+     : forall (b : nat) (i : Syntax.Fin (FiniteFragmentTables.arity b)),
+       Reduction.reduces_to nat 0
+         (Syntax.app (FiniteFragmentTables.bottom_program b)
+            (FiniteFragmentTables.point b i))
+         (FiniteFragmentTables.FC.boolean 0 false)
+Closed under the global context
+FiniteFragmentTables.judgment_program_exact
+     : forall (b : nat) (i : Syntax.Fin (FiniteFragmentTables.arity b))
+         (answer : bool),
+       Reduction.reduces_to nat 0
+         (Syntax.app (FiniteFragmentTables.judgment_program b)
+            (FiniteFragmentTables.point b i))
+         (FiniteFragmentTables.FC.boolean 0 answer) <->
+       CertificateSerialization.raw_check (fragment_decode b i) = answer
+Closed under the global context
+FiniteFragmentTables.top_sorted
+     : DirectRKernel.Core.Typed Context.ε DirectRCommonCodes.CommonCodes.Top
+         (Syntax.𝓤 1)
+Closed under the global context
+FiniteFragmentTables.holds_sorted
+     : forall (G : Context.Ctx nat ?n) (v : Syntax.Term nat ?n),
+       DirectRKernel.Core.Typed G v (FiniteFragmentTables.CF.choice_type 0 2) ->
+       DirectRKernel.Core.Typed G (FiniteFragmentTables.holds v) (Syntax.𝓤 1)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteFragmentTables.holds_subst
+     : forall (v : Syntax.Term nat (S ?n)) (u : Syntax.Term nat ?n),
+       Syntax.subst (FiniteFragmentTables.holds v) u =
+       FiniteFragmentTables.holds (Syntax.subst v u)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteFragmentTables.holds_equiv
+     : forall x y : Syntax.Term nat ?n,
+       DefEq.def_equiv nat ?n x y ->
+       DefEq.def_equiv nat ?n (FiniteFragmentTables.holds x)
+         (FiniteFragmentTables.holds y)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteFragmentTables.rejection_motive_typed
+     : forall A f : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε f
+         (DirectRCommonCodes.CommonCodes.Arrow A
+            (FiniteFragmentTables.CF.choice_type 0 2)) ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteFragmentTables.rejection_motive A f)
+         (DirectRCommonCodes.CommonCodes.Arrow A (Syntax.𝓤 2))
+Closed under the global context
+FiniteFragmentTables.rejection_motive_beta
+     : forall (A f : DirectRCommonCodes.CommonCodes.closed_term)
+         (x : Syntax.Term nat 0),
+       DefEq.def_equiv nat 0
+         (Syntax.app (FiniteFragmentTables.rejection_motive A f) x)
+         (DirectRCommonCodes.CommonCodes.Neg
+            (FiniteFragmentTables.holds (Syntax.app f x)))
+Closed under the global context
+FiniteFragmentTables.false_holds
+     : DefEq.def_equiv nat 0
+         (FiniteFragmentTables.holds
+            (FiniteFragmentTables.FC.boolean 0 false))
+         DirectRCommonCodes.CommonCodes.Bottom
+Closed under the global context
+FiniteFragmentTables.bottom_identity_typed
+     : DirectRKernel.Core.Typed Context.ε
+         FiniteFragmentTables.bottom_identity
+         (DirectRCommonCodes.CommonCodes.Neg
+            DirectRCommonCodes.CommonCodes.Bottom)
+Closed under the global context
+FiniteFragmentTables.rejection_branch_typed
+     : forall (b : nat) (i : Syntax.Fin (FiniteFragmentTables.arity b)),
+       DirectRKernel.Core.Typed Context.ε
+         FiniteFragmentTables.bottom_identity
+         (Syntax.app
+            (FiniteFragmentTables.rejection_motive
+               (FiniteFragmentTables.domain b)
+               (FiniteFragmentTables.bottom_program b))
+            (FiniteFragmentTables.point b i))
+Closed under the global context
+FiniteCaseGuards.positive_guard_rank
+     : forall (a : nat)
+         (cs : list DirectRCommonCodes.CommonCodes.closed_term),
+       1 <= a -> FiniteCaseGuards.guard_rank a cs = S (S a)
+Closed under the global context
+FiniteCaseGuards.motive_type_rename
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term) 
+         (m n : nat) (rho : Syntax.Fin m -> Syntax.Fin n),
+       Syntax.rename rho (FiniteCaseGuards.motive_type A) =
+       FiniteCaseGuards.motive_type A
+Closed under the global context
+FiniteCaseGuards.motive_type_replace
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term) 
+         (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n),
+       Syntax.replace sigma (FiniteCaseGuards.motive_type A) =
+       FiniteCaseGuards.motive_type A
+Closed under the global context
+FiniteCaseGuards.point_type_rename
+     : forall (m n : nat) (rho : Syntax.Fin m -> Syntax.Fin n)
+         (P : Syntax.Term nat m)
+         (c : DirectRCommonCodes.CommonCodes.closed_term),
+       Syntax.rename rho (FiniteCaseGuards.point_type P c) =
+       FiniteCaseGuards.point_type (Syntax.rename rho P) c
+Closed under the global context
+FiniteCaseGuards.point_type_replace
+     : forall (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (P : Syntax.Term nat m)
+         (c : DirectRCommonCodes.CommonCodes.closed_term),
+       Syntax.replace sigma (FiniteCaseGuards.point_type P c) =
+       FiniteCaseGuards.point_type (Syntax.replace sigma P) c
+Closed under the global context
+FiniteCaseGuards.cases_type_rename
+     : forall (cs : list DirectRCommonCodes.CommonCodes.closed_term)
+         (m n : nat) (rho : Syntax.Fin m -> Syntax.Fin n)
+         (P R : Syntax.Term nat m),
+       Syntax.rename rho (FiniteCaseGuards.cases_type cs P R) =
+       FiniteCaseGuards.cases_type cs (Syntax.rename rho P)
+         (Syntax.rename rho R)
+Closed under the global context
+FiniteCaseGuards.cases_type_replace
+     : forall (cs : list DirectRCommonCodes.CommonCodes.closed_term)
+         (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (P R : Syntax.Term nat m),
+       Syntax.replace sigma (FiniteCaseGuards.cases_type cs P R) =
+       FiniteCaseGuards.cases_type cs (Syntax.replace sigma P)
+         (Syntax.replace sigma R)
+Closed under the global context
+FiniteCaseGuards.guard_type_rename
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term)
+         (cs : list DirectRCommonCodes.CommonCodes.closed_term) 
+         (m n : nat) (rho : Syntax.Fin m -> Syntax.Fin n)
+         (x : Syntax.Term nat m),
+       Syntax.rename rho (FiniteCaseGuards.guard_type A cs x) =
+       FiniteCaseGuards.guard_type A cs (Syntax.rename rho x)
+Closed under the global context
+FiniteCaseGuards.guard_type_replace
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term)
+         (cs : list DirectRCommonCodes.CommonCodes.closed_term) 
+         (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (x : Syntax.Term nat m),
+       Syntax.replace sigma (FiniteCaseGuards.guard_type A cs x) =
+       FiniteCaseGuards.guard_type A cs (Syntax.replace sigma x)
+Closed under the global context
+FiniteCaseGuards.motive_type_sorted
+     : forall (A : Syntax.Term nat 0) (a : nat),
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 a) ->
+       forall (n : nat) (G : Context.Ctx nat n),
+       DirectRKernel.Core.Typed G (FiniteCaseGuards.motive_type A)
+         (Syntax.𝓤 (S a))
+Closed under the global context
+FiniteCaseGuards.point_type_sorted
+     : forall (A c : Syntax.Term nat 0) (n : nat) 
+         (G : Context.Ctx nat n) (P : Syntax.Term nat n),
+       DirectRKernel.Core.Typed Context.ε c A ->
+       DirectRKernel.Core.Typed G P (FiniteCaseGuards.motive_type A) ->
+       DirectRKernel.Core.Typed G (FiniteCaseGuards.point_type P c)
+         (Syntax.𝓤 2)
+Closed under the global context
+FiniteCaseGuards.cases_type_sorted
+     : forall (A : Syntax.Term nat 0) (cs : list (Syntax.Term nat 0))
+         (n : nat) (G : Context.Ctx nat n) (P R : Syntax.Term nat n),
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c A)
+         cs ->
+       DirectRKernel.Core.Typed G P (FiniteCaseGuards.motive_type A) ->
+       DirectRKernel.Core.Typed G R (Syntax.𝓤 2) ->
+       DirectRKernel.Core.Typed G (FiniteCaseGuards.cases_type cs P R)
+         (Syntax.𝓤 (FiniteCaseGuards.cases_rank cs))
+Closed under the global context
+FiniteCaseGuards.guard_type_sorted
+     : forall (A : Syntax.Term nat 0) (a : nat)
+         (cs : list (Syntax.Term nat 0)) (n : nat) 
+         (G : Context.Ctx nat n) (x : Syntax.Term nat n),
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 a) ->
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c A)
+         cs ->
+       DirectRKernel.Core.Typed G x
+         (DirectRCommonCodes.CommonCodes.lift_closed A) ->
+       DirectRKernel.Core.Typed G (FiniteCaseGuards.guard_type A cs x)
+         (Syntax.𝓤 (FiniteCaseGuards.guard_rank a cs))
+Closed under the global context
+FiniteCaseGuards.ignore_cases_typed
+     : forall (A : Syntax.Term nat 0) (cs : list (Syntax.Term nat 0))
+         (n : nat) (G : Context.Ctx nat n) (P t R : Syntax.Term nat n),
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c A)
+         cs ->
+       DirectRKernel.Core.Typed G P (FiniteCaseGuards.motive_type A) ->
+       DirectRKernel.Core.Typed G t R ->
+       DirectRKernel.Core.Typed G (FiniteCaseGuards.ignore_cases cs P t)
+         (FiniteCaseGuards.cases_type cs P R)
+Closed under the global context
+FiniteCaseGuards.select_case_typed
+     : forall (A : Syntax.Term nat 0) (cs : list (Syntax.Term nat 0))
+         (i : nat) (c : Syntax.Term nat 0) (n : nat) 
+         (G : Context.Ctx nat n) (P : Syntax.Term nat n),
+       ListDef.Forall
+         (fun c0 : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε c0 A)
+         cs ->
+       DirectRKernel.Core.Typed G P (FiniteCaseGuards.motive_type A) ->
+       List.nth_error cs i = Some c ->
+       DirectRKernel.Core.Typed G (FiniteCaseGuards.select_case cs i P)
+         (FiniteCaseGuards.cases_type cs P (FiniteCaseGuards.point_type P c))
+Closed under the global context
+FiniteCaseGuards.guard_witness_typed
+     : forall (A : Syntax.Term nat 0) (a : nat)
+         (cs : list (Syntax.Term nat 0)) (i : nat) 
+         (c : Syntax.Term nat 0),
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 a) ->
+       ListDef.Forall
+         (fun c0 : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε c0 A)
+         cs ->
+       List.nth_error cs i = Some c ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteCaseGuards.guard_witness A cs i)
+         (FiniteCaseGuards.guard_type A cs c)
+Closed under the global context
+FiniteCaseGuards.supply_cases_typed
+     : forall (cs : list DirectRCommonCodes.CommonCodes.closed_term)
+         (n : nat) (G : Context.Ctx nat n) (P R g : Syntax.Term nat n)
+         (hs : list (Syntax.Term nat n)),
+       List.Forall2
+         (fun (c : DirectRCommonCodes.CommonCodes.closed_term)
+            (h : Syntax.Term nat n) =>
+          DirectRKernel.Core.Typed G h (FiniteCaseGuards.point_type P c))
+         cs hs ->
+       DirectRKernel.Core.Typed G g (FiniteCaseGuards.cases_type cs P R) ->
+       DirectRKernel.Core.Typed G (FiniteCaseGuards.supply_cases hs g) R
+Closed under the global context
+FiniteCaseGuards.guarded_elimination
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term)
+         (cs : list DirectRCommonCodes.CommonCodes.closed_term) 
+         (n : nat) (G : Context.Ctx nat n) (x g P : Syntax.Term nat n)
+         (hs : list (Syntax.Term nat n)),
+       DirectRKernel.Core.Typed G g (FiniteCaseGuards.guard_type A cs x) ->
+       DirectRKernel.Core.Typed G P (FiniteCaseGuards.motive_type A) ->
+       List.Forall2
+         (fun (c : DirectRCommonCodes.CommonCodes.closed_term)
+            (h : Syntax.Term nat n) =>
+          DirectRKernel.Core.Typed G h (FiniteCaseGuards.point_type P c))
+         cs hs ->
+       DirectRKernel.Core.Typed G
+         (FiniteCaseGuards.supply_cases hs (Syntax.app g P)) 
+         (Syntax.app P x)
+Closed under the global context
+FiniteCaseGuards.closed_branches_lift
+     : forall (n : nat) (G : Context.Ctx nat n) (P : Syntax.Term nat 0)
+         (cs hs : list (Syntax.Term nat 0)),
+       List.Forall2
+         (fun c h : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε h (Syntax.app P c))
+         cs hs ->
+       List.Forall2
+         (fun (c : DirectRCommonCodes.CommonCodes.closed_term)
+            (h : Syntax.Term nat n) =>
+          DirectRKernel.Core.Typed G h
+            (FiniteCaseGuards.point_type
+               (DirectRCommonCodes.CommonCodes.lift_closed P) c))
+         cs (ListDef.map DirectRCommonCodes.CommonCodes.lift_closed hs)
+Closed under the global context
+FiniteCaseGuards.closed_motive_lift
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term)
+         (P : Syntax.Term nat 0) (n : nat) (G : Context.Ctx nat n),
+       DirectRKernel.Core.Typed Context.ε P (FiniteCaseGuards.motive_type A) ->
+       DirectRKernel.Core.Typed G
+         (DirectRCommonCodes.CommonCodes.lift_closed P)
+         (FiniteCaseGuards.motive_type A)
+Closed under the global context
+FiniteCaseGuards.elimination_type_sorted
+     : forall (A : Syntax.Term nat 0) (a : nat)
+         (cs : list (Syntax.Term nat 0)) (P : Syntax.Term nat 0),
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 a) ->
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c A)
+         cs ->
+       DirectRKernel.Core.Typed Context.ε P (FiniteCaseGuards.motive_type A) ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteCaseGuards.elimination_type A cs P)
+         (Syntax.𝓤 (S (FiniteCaseGuards.guard_rank a cs)))
+Closed under the global context
+FiniteCaseGuards.elimination_typed
+     : forall (A : Syntax.Term nat 0) (a : nat)
+         (cs : list (Syntax.Term nat 0)) (P : Syntax.Term nat 0)
+         (hs : list (Syntax.Term nat 0)),
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 a) ->
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c A)
+         cs ->
+       DirectRKernel.Core.Typed Context.ε P (FiniteCaseGuards.motive_type A) ->
+       List.Forall2
+         (fun c h : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε h (Syntax.app P c))
+         cs hs ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteCaseGuards.elimination A cs P hs)
+         (FiniteCaseGuards.elimination_type A cs P)
+Closed under the global context
+FiniteSelectorSeparation.fin_number_injective
+     : forall i j : Syntax.Fin ?k,
+       StructuralCodes.fin_number i = StructuralCodes.fin_number j -> i = j
+where
+?k : [ |- nat]
+Closed under the global context
+FiniteSelectorSeparation.selector_syntax_injective
+     : forall (r k : nat) (i j : Syntax.Fin k),
+       FiniteSelectorSeparation.CF.selector r k i =
+       FiniteSelectorSeparation.CF.selector r k j -> 
+       i = j
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteSelectorSeparation.selector_equiv_injective
+     : forall (r k : nat) (i j : Syntax.Fin k),
+       DefEq.def_equiv nat ?n (FiniteSelectorSeparation.CF.selector r k i)
+         (FiniteSelectorSeparation.CF.selector r k j) ->
+       i = j
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteSelectorSeparation.selector_equiv_iff
+     : forall (r k : nat) (i j : Syntax.Fin k),
+       DefEq.def_equiv nat ?n (FiniteSelectorSeparation.CF.selector r k i)
+         (FiniteSelectorSeparation.CF.selector r k j) <->
+       i = j
+where
+?n : [ |- nat]
+Closed under the global context
+tags_length
+     : length tags = 29
+Closed under the global context
+tags_complete
+     : forall t : StructuralCodes.tag, List.In t tags
+Closed under the global context
+code_size_positive
+     : forall c : StructuralCodes.code, 1 <= StructuralCodes.code_size c
+Closed under the global context
+pairs_spec
+     : forall (xs : list StructuralCodes.code) (c : StructuralCodes.code),
+       List.In c (pairs xs) <->
+       (exists a b : StructuralCodes.code,
+          List.In a xs /\ List.In b xs /\ c = StructuralCodes.Pair a b)
+Closed under the global context
+codes_spec
+     : forall (budget : nat) (c : StructuralCodes.code),
+       List.In c (codes budget) <-> StructuralCodes.code_size c <= budget
+Closed under the global context
+codes_monotone
+     : forall (b d : nat) (c : StructuralCodes.code),
+       b <= d -> List.In c (codes b) -> List.In c (codes d)
+Closed under the global context
+code_covered
+     : forall c : StructuralCodes.code,
+       List.In c (codes (StructuralCodes.code_size c))
+Closed under the global context
+codes_nonempty
+     : forall b : nat, codes (S b) <> nil
+Closed under the global context
+fin_number_bound
+     : forall i : Syntax.Fin ?n, StructuralCodes.fin_number i < ?n
+where
+?n : [ |- nat]
+Closed under the global context
+lookup_in
+     : forall (xs : list StructuralCodes.code) (i : Syntax.Fin (length xs)),
+       List.In (lookup xs i) xs
+Closed under the global context
+locate_sound
+     : forall (c : StructuralCodes.code) (xs : list StructuralCodes.code)
+         (i : Syntax.Fin (length xs)),
+       locate c xs = Some i -> lookup xs i = c
+Closed under the global context
+locate_complete
+     : forall (c : StructuralCodes.code) (xs : list StructuralCodes.code),
+       List.In c xs ->
+       exists i : Syntax.Fin (length xs), locate c xs = Some i
+Closed under the global context
+locate_none
+     : forall (c : StructuralCodes.code) (xs : list StructuralCodes.code),
+       locate c xs = None <-> ~ List.In c xs
+Closed under the global context
+fragment_decode_bound
+     : forall (budget : nat) (i : Syntax.Fin (length (codes budget))),
+       StructuralCodes.code_size (fragment_decode budget i) <= budget
+Closed under the global context
+fragment_index_complete
+     : forall (budget : nat) (c : StructuralCodes.code),
+       StructuralCodes.code_size c <= budget ->
+       exists i : Syntax.Fin (length (codes budget)),
+         fragment_index budget c = Some i
+Closed under the global context
+fragment_index_roundtrip
+     : forall (budget : nat) (c : StructuralCodes.code)
+         (i : Syntax.Fin (length (codes budget))),
+       fragment_index budget c = Some i -> fragment_decode budget i = c
+Closed under the global context
+fragment_index_none
+     : forall (budget : nat) (c : StructuralCodes.code),
+       fragment_index budget c = None <->
+       budget < StructuralCodes.code_size c
+Closed under the global context
+fragment_index_injective
+     : forall (budget : nat) (c d : StructuralCodes.code)
+         (i : Syntax.Fin (length (codes budget))),
+       fragment_index budget c = Some i ->
+       fragment_index budget d = Some i -> c = d
+Closed under the global context
+bounded_index_injective
+     : forall (budget : nat) (c d : StructuralCodes.code),
+       StructuralCodes.code_size c <= budget ->
+       StructuralCodes.code_size d <= budget ->
+       fragment_index budget c = fragment_index budget d -> c = d
+Closed under the global context
+serialized_input_covered
+     : forall (serialize : ?A -> StructuralCodes.code) (a : ?A),
+       exists
+         i : Syntax.Fin
+               (length (codes (StructuralCodes.code_size (serialize a)))),
+         fragment_index (StructuralCodes.code_size (serialize a))
+           (serialize a) =
+         Some i /\
+         fragment_decode (StructuralCodes.code_size (serialize a)) i =
+         serialize a
+where
+?A : [ |- Type]
+Closed under the global context
+        rocq theories/self_consistency/FiniteFragmentAudit.{glob,vo}

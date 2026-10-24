@@ -1,0 +1,13 @@
+shasum -a 256 -c /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.WBo9qV/driver-before.sha256
+git rev-parse HEAD
+df -h . /private/tmp
+opam exec -- rocq -v
+opam exec -- dune --version
+opam list --installed --columns=name\,version
+python3 /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.WBo9qV/driver/GATE-TESTS.py
+source_manifest
+previous_sources
+registration
+python3 /Users/akuklev/air/pts-rk/_build/self-consistency-uniform-horn-audit.WBo9qV/driver/gates.py declarations /Users/akuklev/air/pts-rk UniformHornAudit UniformHorn FiniteRawDecoding UniformHornReindex FiniteRawTables UniformGuardedHorn
+safety
+whitespace

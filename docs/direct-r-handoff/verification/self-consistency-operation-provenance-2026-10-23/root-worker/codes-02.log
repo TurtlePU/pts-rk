@@ -1,0 +1,17 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 296 - 338 [From~Stdlib~Require~Import~Ari...] 0.036 secs (0.029u,0.006s)
+Chars 339 - 379 [From~Equations~Require~Import~...] 0.024 secs (0.018u,0.005s)
+Chars 380 - 426 [From~PTSrk~Require~Import-(not...] 0.001 secs (0.u,0.s)
+Chars 427 - 461 [From~PTSrk~Require~Import~Cont...] 0.001 secs (0.001u,0.s)
+Chars 462 - 556 [From~PTSrk.SelfConsistency~Req...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/ContextLookupCodes.v", line 9, characters 0-94:
+Error: Required library StructuralCodes matches several files in path (found
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency/StructuralCodes.vo and
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/self_consistency/StructuralCodes.vo).

@@ -1,0 +1,23 @@
+test_closed_count_positive (__main__.AuditGateTests.test_closed_count_positive) ... ok
+test_coverage_positive (__main__.AuditGateTests.test_coverage_positive) ... ok
+test_dependency_change_rejected (__main__.AuditGateTests.test_dependency_change_rejected) ... ok
+test_duplicate_registration_rejected (__main__.AuditGateTests.test_duplicate_registration_rejected) ... ok
+test_duplicate_report_rejected (__main__.AuditGateTests.test_duplicate_report_rejected) ... ok
+test_duplicate_summary_rejected (__main__.AuditGateTests.test_duplicate_summary_rejected) ... ok
+test_existing_module_deletion_rejected (__main__.AuditGateTests.test_existing_module_deletion_rejected) ... ok
+test_extra_assumption_rejected (__main__.AuditGateTests.test_extra_assumption_rejected) ... ok
+test_extra_axiom_rejected (__main__.AuditGateTests.test_extra_axiom_rejected) ... ok
+test_inventory_positive (__main__.AuditGateTests.test_inventory_positive) ... ok
+test_missing_alias_rejected (__main__.AuditGateTests.test_missing_alias_rejected) ... ok
+test_missing_check_rejected_even_with_all_prints (__main__.AuditGateTests.test_missing_check_rejected_even_with_all_prints) ... ok
+test_missing_closed_report_rejected (__main__.AuditGateTests.test_missing_closed_report_rejected) ... ok
+test_missing_print_rejected_even_with_extra_check (__main__.AuditGateTests.test_missing_print_rejected_even_with_extra_check) ... ok
+test_old_audit_body_change_rejected (__main__.AuditGateTests.test_old_audit_body_change_rejected) ... ok
+test_old_audit_positive (__main__.AuditGateTests.test_old_audit_positive) ... ok
+test_registration_positive (__main__.AuditGateTests.test_registration_positive) ... ok
+test_unsafe_flag_rejected (__main__.AuditGateTests.test_unsafe_flag_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.001s
+
+OK

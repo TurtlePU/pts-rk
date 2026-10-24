@@ -1,0 +1,15 @@
+layout-01-build.log	raw-ok	normalized-ok	133c1dc531da30c833c0eada348558dd2b9f331bff729fb8f6756d8be7d349ba
+layout-01-latex.log	raw-ok	normalized-ok	cb579f0431786be19bcb36df83189d4399aefd654782763f794206ecec5cfbe9
+layout-01-versions.log	raw-ok	normalized-ok	659a0da0d01c8cd2a0f437dc4d900c6b0a9e90123b3ef209df97d090f0cc5da3
+layout-01-build.exit	raw-ok	normalized-ok	9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+layout-02-build.log	raw-ok	normalized-ok	17d3a798e535b92f2534f765d65e6acb393fd9568b962b385b817b7abb93d3c2
+layout-02-latex.log	raw-ok	normalized-ok	269b8a1ed94d14e9cc8e0ad0ab40b53cb5f0db7ea453157ac4c7bb15e73e74e6
+layout-02-versions.log	raw-ok	normalized-ok	659a0da0d01c8cd2a0f437dc4d900c6b0a9e90123b3ef209df97d090f0cc5da3
+layout-02-build.exit	raw-ok	normalized-ok	9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+final-build.log	raw-ok	normalized-ok	1d5b7b4ff9d9416b64f3301197b5a2e61d107341e9f74c37bb0726e2dcf47143
+final-latex.log	raw-ok	normalized-ok	3fba8f8214a154490ce21cd5dc54616269ede3f397c43f617f544e46c4ae28ea
+final-versions.log	raw-ok	normalized-ok	659a0da0d01c8cd2a0f437dc4d900c6b0a9e90123b3ef209df97d090f0cc5da3
+final-build.exit	raw-ok	normalized-ok	9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa
+layout-01-review-text.txt	raw-ok	normalized-ok	bc705ca325c4ae990e1ec80d282311febc5a0fc57dd5e3d7b45ac918b2d5e3d2
+final-inspection-text.txt	raw-ok	normalized-ok	edb5625bd88e0b997f5d123c3ea5b8f18dd6aa59540229aa3152000558fc3823
+TOTAL	14	raw-ok	14	normalized-ok

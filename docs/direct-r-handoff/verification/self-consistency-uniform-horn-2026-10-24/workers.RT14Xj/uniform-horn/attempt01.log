@@ -1,0 +1,43 @@
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 713 - 766 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.031u,0.006s)
+Chars 767 - 813 [From~PTSrk~Require~Import-(not...] 0.02 secs (0.015u,0.004s)
+Chars 814 - 885 [From~PTSrk~Require~Import~Cont...] 0.004 secs (0.002u,0.s)
+Chars 886 - 992 [From~Interpretation_of_R~Requi...] 0.051 secs (0.04u,0.009s)
+Chars 993 - 1060 [From~PTSrk.SelfConsistency~Req...] 0.001 secs (0.u,0.s)
+Chars 1061 - 1082 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 1084 - 1103 [Module~UniformHorn.] 0. secs (0.u,0.s)
+Chars 1104 - 1139 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 1140 - 1183 [Module~NT:=~~NamedTemplates.Na...] 0.001 secs (0.u,0.s)
+Chars 1184 - 1217 [Module~NB:=~~NamedBeta.NamedBeta.] 0.001 secs (0.001u,0.s)
+Chars 1219 - 1242 [Definition~D~:=~NVar~0.] 0. secs (0.u,0.s)
+Chars 1243 - 1266 [Definition~A~:=~NVar~1.] 0. secs (0.u,0.s)
+Chars 1267 - 1307 [Definition~Clauses~d~:=~NApp~(...] 0. secs (0.u,0.s)
+Chars 1308 - 1358 [Definition~Positions~d~c~:=~na...] 0. secs (0.u,0.s)
+Chars 1359 - 1412 [Definition~Premise~d~c~i~:=~na...] 0. secs (0.u,0.s)
+Chars 1413 - 1458 [Definition~Head~d~c~:=~napps~(...] 0. secs (0.u,0.s)
+Chars 1460 - 1771 [Definition~interface_fields~at...] 0.002 secs (0.001u,0.s)
+Chars 1772 - 1816 [Definition~Assignment~:=~nArro...] 0. secs (0.u,0.s)
+Chars 1817 - 1900 [Definition~Prem~X~d~c~:=~~~NPi...] 0. secs (0.u,0.s)
+Chars 1901 - 2006 [Definition~Handler~X~d~:=~~~NP...] 0. secs (0.u,0.s)
+Chars 2007 - 2082 [Definition~proof_fields~d~:=~[...] 0. secs (0.u,0.s)
+Chars 2083 - 2148 [Definition~Proof~d~q~:=~npis~(...] 0. secs (0.u,0.s)
+Chars 2290 - 2414 [Definition~premise_fields~atom...] 0. secs (0.u,0.s)
+Chars 2415 - 2512 [Definition~premise_type~atom_r...] 0. secs (0.u,0.s)
+Chars 2513 - 2633 [Definition~premise~atom_rank~:...] 0.001 secs (0.u,0.s)
+Chars 2634 - 2733 [Definition~handler_fields~atom...] 0. secs (0.u,0.s)
+Chars 2734 - 2831 [Definition~handler_type~atom_r...] 0. secs (0.u,0.s)
+Chars 2832 - 2945 [Definition~handler~atom_rank~:...] 0.001 secs (0.u,0.s)
+Chars 2946 - 3035 [Definition~family_fields~atom_...] 0. secs (0.u,0.s)
+Chars 3036 - 3131 [Definition~family_type~atom_ra...] 0. secs (0.u,0.s)
+Chars 3132 - 3241 [Definition~family~atom_rank~:=...] 0.001 secs (0.u,0.s)
+Chars 3243 - 3368 [Theorem~premise_sorted~atom_ra...] 0. secs (0.u,0.s)
+Chars 3369 - 3375 [Proof.] 0. secs (0.u,0.s)
+File "./theories/self_consistency/UniformHorn.v", line 70, characters 17-19:
+Error: Syntax error: '|' or ']' expected (in [or_and_intropattern]).

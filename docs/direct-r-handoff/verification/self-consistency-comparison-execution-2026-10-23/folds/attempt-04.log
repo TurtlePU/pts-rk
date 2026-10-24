@@ -1,0 +1,11 @@
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/InternalComparisonFolds.v", line 185, characters 33-44:
+Error: No applicable tactic.
+

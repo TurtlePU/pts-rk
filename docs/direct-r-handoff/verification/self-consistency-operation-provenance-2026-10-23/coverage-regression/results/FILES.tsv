@@ -1,0 +1,14 @@
+AUDIT.sh-positive.expected-declarations.txt	/tmp/pts-rk-operation-coverage.tsAGJA/AUDIT.sh-positive/expected-declarations.txt
+AUDIT.sh-positive.audited-declarations.txt	/tmp/pts-rk-operation-coverage.tsAGJA/AUDIT.sh-positive/audited-declarations.txt
+AUDIT.sh-positive.checked-declarations.txt	/tmp/pts-rk-operation-coverage.tsAGJA/AUDIT.sh-positive/checked-declarations.txt
+AUDIT.sh-positive.result.log	/tmp/pts-rk-operation-coverage.tsAGJA/AUDIT.sh-positive/result.log
+AUDIT.sh-negative.expected-declarations.txt	/tmp/pts-rk-operation-coverage.tsAGJA/AUDIT.sh-negative/expected-declarations.txt
+AUDIT.sh-negative.audited-declarations.txt	/tmp/pts-rk-operation-coverage.tsAGJA/AUDIT.sh-negative/audited-declarations.txt
+AUDIT.sh-negative.result.log	/tmp/pts-rk-operation-coverage.tsAGJA/AUDIT.sh-negative/result.log
+FINAL-CHECKS.sh-positive.expected-declarations.txt	/tmp/pts-rk-operation-coverage.tsAGJA/FINAL-CHECKS.sh-positive/expected-declarations.txt
+FINAL-CHECKS.sh-positive.audited-declarations.txt	/tmp/pts-rk-operation-coverage.tsAGJA/FINAL-CHECKS.sh-positive/audited-declarations.txt
+FINAL-CHECKS.sh-positive.checked-declarations.txt	/tmp/pts-rk-operation-coverage.tsAGJA/FINAL-CHECKS.sh-positive/checked-declarations.txt
+FINAL-CHECKS.sh-positive.result.log	/tmp/pts-rk-operation-coverage.tsAGJA/FINAL-CHECKS.sh-positive/result.log
+FINAL-CHECKS.sh-negative.expected-declarations.txt	/tmp/pts-rk-operation-coverage.tsAGJA/FINAL-CHECKS.sh-negative/expected-declarations.txt
+FINAL-CHECKS.sh-negative.audited-declarations.txt	/tmp/pts-rk-operation-coverage.tsAGJA/FINAL-CHECKS.sh-negative/audited-declarations.txt
+FINAL-CHECKS.sh-negative.result.log	/tmp/pts-rk-operation-coverage.tsAGJA/FINAL-CHECKS.sh-negative/result.log

@@ -1,0 +1,1041 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+        rocq theories/.PTSrk.theory.d
+        rocq theories/Interpretation_of_R/.Interpretation_of_R.theory.d
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Literals.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Morphisms.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.SortBounds exactly matches several files in path
+    (found SortBounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.AutomaticBound exactly matches several files in path
+    (found AutomaticBound.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file STLCEmbedding.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file STLCEmbedding.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.EstimatorChecks exactly matches several files in path
+    (found EstimatorChecks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.SortBounds exactly matches several files in path
+    (found SortBounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.AutomaticBound exactly matches several files in path
+    (found AutomaticBound.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Normalization exactly matches several files in path
+    (found Normalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.STLCEmbedding exactly matches several files in path
+    (found STLCEmbedding.v in ../NormalizationComplexity and .; used the latter).
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+        rocq theories/CombinatoryLogic-rk/.PTSrk.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/GroundHorn.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Syntax.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/StructuralCodes.{glob,vo}
+Closed under the global context
+        rocq theories/Congruence.{glob,vo}
+Closed under the global context
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+        rocq theories/Interpretation_of_R/DirectRCommonCodes.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/NormalizationComplexity/Rank.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteHorn.{glob,vo}
+        rocq theories/self_consistency/FiniteCodeFragments.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+        rocq theories/NormalizationComplexity/Greedy.{glob,vo}
+        rocq theories/SN.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/NormalizationComplexity/Literals.{glob,vo}
+        rocq theories/self_consistency/NativeProofCodes.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+        rocq theories/NormalizationComplexity/Bounds.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Interpretation_of_R/DirectREval.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateAdequacy.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/Interpretation_of_R/DirectRKernel.{glob,vo}
+        rocq theories/NormalizationComplexity/RedexRanks.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/ChurchFinite.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/NormalizationComplexity/Runtime.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/SortRenaming.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRCheck.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRStructural.{glob,vo}
+        rocq theories/NormalizationComplexity/Morphisms.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteHornChurch.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/self_consistency/RankCompression.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+        rocq theories/self_consistency/InternalFiniteDictionaries.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/Core.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/FiniteCaseGuards.{glob,vo}
+        rocq theories/Interpretation_of_R/DirectRLogic.{glob,vo}
+        rocq theories/NormalizationComplexity/Safety.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/NormalizationComplexity/SortBounds.{glob,vo}
+        rocq theories/self_consistency/FiniteSelectorSeparation.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateSerialization.{glob,vo}
+        rocq theories/NormalizationComplexity/Descent.{glob,vo}
+        rocq theories/NormalizationComplexity/AutomaticBound.{glob,vo}
+        rocq theories/NormalizationComplexity/BoundedNormalization.{glob,vo}
+        rocq theories/NormalizationComplexity/Normalization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/self_consistency/FiniteDictionaryRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/QuantitativeNormalization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/NativeCanonicity.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteNormalForms.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/self_consistency/FiniteFragmentNormalization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteFragmentTables.v", line 12, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/FiniteFragmentTables.v", line 12, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/self_consistency/FiniteFragmentTables.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteFragmentRejection.v", line 14, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/FiniteFragmentRejection.v", line 14, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/self_consistency/FiniteFragmentRejection.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/DictionaryRejection.{glob,vo}
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-dictionaries-fresh.KOCLBv/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+InternalFiniteDictionaries.list_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalFiniteDictionaries.list_type
+         (DirectRCommonCodes.CommonCodes.Arrow (Syntax.𝓤 1) (Syntax.𝓤 3))
+Closed under the global context
+InternalFiniteDictionaries.nil_typed
+     : DirectRKernel.Core.Typed Context.ε InternalFiniteDictionaries.nil
+         InternalFiniteDictionaries.nil_type
+Closed under the global context
+InternalFiniteDictionaries.cons_typed
+     : DirectRKernel.Core.Typed Context.ε InternalFiniteDictionaries.cons
+         InternalFiniteDictionaries.cons_type
+Closed under the global context
+InternalFiniteDictionaries.append_typed
+     : DirectRKernel.Core.Typed Context.ε InternalFiniteDictionaries.append
+         InternalFiniteDictionaries.append_type
+Closed under the global context
+InternalFiniteDictionaries.telescope_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalFiniteDictionaries.telescope
+         InternalFiniteDictionaries.telescope_type
+Closed under the global context
+InternalFiniteDictionaries.all_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalFiniteDictionaries.all
+         InternalFiniteDictionaries.all_type
+Closed under the global context
+InternalFiniteDictionaries.padding_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalFiniteDictionaries.padding
+         (Syntax.𝓤 2)
+Closed under the global context
+InternalFiniteDictionaries.padding_witness_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalFiniteDictionaries.padding_witness
+         InternalFiniteDictionaries.padding
+Closed under the global context
+InternalFiniteDictionaries.guard_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalFiniteDictionaries.guard
+         InternalFiniteDictionaries.guard_type
+Closed under the global context
+InternalFiniteDictionaries.fill_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalFiniteDictionaries.fill
+         InternalFiniteDictionaries.fill_type
+Closed under the global context
+InternalFiniteDictionaries.all_nil_typed
+     : DirectRKernel.Core.Typed Context.ε InternalFiniteDictionaries.all_nil
+         InternalFiniteDictionaries.all_nil_type
+Closed under the global context
+InternalFiniteDictionaries.all_cons_typed
+     : DirectRKernel.Core.Typed Context.ε InternalFiniteDictionaries.all_cons
+         InternalFiniteDictionaries.all_cons_type
+Closed under the global context
+InternalFiniteDictionaries.all_append_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalFiniteDictionaries.all_append
+         InternalFiniteDictionaries.all_append_type
+Closed under the global context
+InternalFiniteDictionaries.fill_nil_typed
+     : DirectRKernel.Core.Typed Context.ε InternalFiniteDictionaries.fill_nil
+         InternalFiniteDictionaries.fill_nil_type
+Closed under the global context
+InternalFiniteDictionaries.fill_cons_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalFiniteDictionaries.fill_cons
+         InternalFiniteDictionaries.fill_cons_type
+Closed under the global context
+InternalFiniteDictionaries.fill_append_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalFiniteDictionaries.fill_append
+         InternalFiniteDictionaries.fill_append_type
+Closed under the global context
+InternalFiniteDictionaries.guard_head_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalFiniteDictionaries.guard_head
+         InternalFiniteDictionaries.guard_head_type
+Closed under the global context
+InternalFiniteDictionaries.guard_tail_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalFiniteDictionaries.guard_tail
+         InternalFiniteDictionaries.guard_tail_type
+Closed under the global context
+InternalFiniteDictionaries.eliminate_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalFiniteDictionaries.eliminate_type 
+         (Syntax.𝓤 5)
+Closed under the global context
+InternalFiniteDictionaries.eliminate_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalFiniteDictionaries.eliminate
+         InternalFiniteDictionaries.eliminate_type
+Closed under the global context
+FiniteDictionaryRealization.list_sorted
+     : forall E : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteDictionaryRealization.List E) (Syntax.𝓤 3)
+Closed under the global context
+FiniteDictionaryRealization.nil_typed
+     : forall E : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε (FiniteDictionaryRealization.Nil E)
+         (FiniteDictionaryRealization.List E)
+Closed under the global context
+FiniteDictionaryRealization.cons_typed
+     : forall E x L : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε x E ->
+       DirectRKernel.Core.Typed Context.ε L
+         (FiniteDictionaryRealization.List E) ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteDictionaryRealization.Cons E x L)
+         (FiniteDictionaryRealization.List E)
+Closed under the global context
+FiniteDictionaryRealization.telescope_sorted
+     : forall E L P R : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε L
+         (FiniteDictionaryRealization.List E) ->
+       DirectRKernel.Core.Typed Context.ε P
+         (DirectRCommonCodes.CommonCodes.Arrow E (Syntax.𝓤 2)) ->
+       DirectRKernel.Core.Typed Context.ε R (Syntax.𝓤 3) ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteDictionaryRealization.Tel E L P R) 
+         (Syntax.𝓤 3)
+Closed under the global context
+FiniteDictionaryRealization.all_sorted
+     : forall E L P : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε L
+         (FiniteDictionaryRealization.List E) ->
+       DirectRKernel.Core.Typed Context.ε P
+         (DirectRCommonCodes.CommonCodes.Arrow E (Syntax.𝓤 2)) ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteDictionaryRealization.All E L P) (Syntax.𝓤 4)
+Closed under the global context
+FiniteDictionaryRealization.guard_sorted
+     : forall E L x : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε L
+         (FiniteDictionaryRealization.List E) ->
+       DirectRKernel.Core.Typed Context.ε x E ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteDictionaryRealization.Guard E L x) 
+         (Syntax.𝓤 3)
+Closed under the global context
+FiniteDictionaryRealization.fill_sorted
+     : forall E L : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε L
+         (FiniteDictionaryRealization.List E) ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteDictionaryRealization.Fill E L) (Syntax.𝓤 4)
+Closed under the global context
+FiniteDictionaryRealization.eliminate_typed
+     : forall E L x g P a : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε L
+         (FiniteDictionaryRealization.List E) ->
+       DirectRKernel.Core.Typed Context.ε x E ->
+       DirectRKernel.Core.Typed Context.ε g
+         (FiniteDictionaryRealization.Guard E L x) ->
+       DirectRKernel.Core.Typed Context.ε P
+         (DirectRCommonCodes.CommonCodes.Arrow E (Syntax.𝓤 2)) ->
+       DirectRKernel.Core.Typed Context.ε a
+         (FiniteDictionaryRealization.All E L P) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app
+                        (Syntax.app FiniteDictionaryRealization.FD.eliminate
+                           E)
+                        L)
+                     x)
+                  g)
+               P)
+            a)
+         (Syntax.app P x)
+Closed under the global context
+FiniteDictionaryRealization.all_nil_typed
+     : forall E P : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε P
+         (DirectRCommonCodes.CommonCodes.Arrow E (Syntax.𝓤 2)) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app (Syntax.app FiniteDictionaryRealization.FD.all_nil E) P)
+         (FiniteDictionaryRealization.All E
+            (FiniteDictionaryRealization.Nil E) P)
+Closed under the global context
+FiniteDictionaryRealization.all_cons_typed
+     : forall E x L P h a : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε x E ->
+       DirectRKernel.Core.Typed Context.ε L
+         (FiniteDictionaryRealization.List E) ->
+       DirectRKernel.Core.Typed Context.ε P
+         (DirectRCommonCodes.CommonCodes.Arrow E (Syntax.𝓤 2)) ->
+       DirectRKernel.Core.Typed Context.ε h (Syntax.app P x) ->
+       DirectRKernel.Core.Typed Context.ε a
+         (FiniteDictionaryRealization.All E L P) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app
+                        (Syntax.app FiniteDictionaryRealization.FD.all_cons E)
+                        x)
+                     L)
+                  P)
+               h)
+            a)
+         (FiniteDictionaryRealization.All E
+            (FiniteDictionaryRealization.Cons E x L) P)
+Closed under the global context
+FiniteDictionaryRealization.fill_nil_typed
+     : forall E : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app FiniteDictionaryRealization.FD.fill_nil E)
+         (FiniteDictionaryRealization.Fill E
+            (FiniteDictionaryRealization.Nil E))
+Closed under the global context
+FiniteDictionaryRealization.fill_cons_typed
+     : forall E x L f : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε x E ->
+       DirectRKernel.Core.Typed Context.ε L
+         (FiniteDictionaryRealization.List E) ->
+       DirectRKernel.Core.Typed Context.ε f
+         (FiniteDictionaryRealization.Fill E L) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app FiniteDictionaryRealization.FD.fill_cons E) x)
+               L)
+            f)
+         (FiniteDictionaryRealization.Fill E
+            (FiniteDictionaryRealization.Cons E x L))
+Closed under the global context
+FiniteDictionaryRealization.guard_head_typed
+     : forall E x L f : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε x E ->
+       DirectRKernel.Core.Typed Context.ε L
+         (FiniteDictionaryRealization.List E) ->
+       DirectRKernel.Core.Typed Context.ε f
+         (FiniteDictionaryRealization.Fill E L) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app FiniteDictionaryRealization.FD.guard_head E) x)
+               L)
+            f)
+         (FiniteDictionaryRealization.Guard E
+            (FiniteDictionaryRealization.Cons E x L) x)
+Closed under the global context
+FiniteDictionaryRealization.guard_tail_typed
+     : forall E x L y g : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε x E ->
+       DirectRKernel.Core.Typed Context.ε L
+         (FiniteDictionaryRealization.List E) ->
+       DirectRKernel.Core.Typed Context.ε y E ->
+       DirectRKernel.Core.Typed Context.ε g
+         (FiniteDictionaryRealization.Guard E L y) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app FiniteDictionaryRealization.FD.guard_tail E)
+                     x)
+                  L)
+               y)
+            g)
+         (FiniteDictionaryRealization.Guard E
+            (FiniteDictionaryRealization.Cons E x L) y)
+Closed under the global context
+FiniteDictionaryRealization.quote_list_typed
+     : forall (E : Syntax.Term nat 0) (cs : list (Syntax.Term nat 0)),
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c E)
+         cs ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteDictionaryRealization.quote_list E cs)
+         (FiniteDictionaryRealization.List E)
+Closed under the global context
+FiniteDictionaryRealization.quote_fill_typed
+     : forall (E : Syntax.Term nat 0) (cs : list (Syntax.Term nat 0)),
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c E)
+         cs ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteDictionaryRealization.quote_fill E cs)
+         (FiniteDictionaryRealization.Fill E
+            (FiniteDictionaryRealization.quote_list E cs))
+Closed under the global context
+FiniteDictionaryRealization.quote_all_typed
+     : forall (E P : Syntax.Term nat 0) (cs hs : list (Syntax.Term nat 0)),
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε P
+         (DirectRCommonCodes.CommonCodes.Arrow E (Syntax.𝓤 2)) ->
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c E)
+         cs ->
+       List.Forall2
+         (fun c h : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε h (Syntax.app P c))
+         cs hs ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteDictionaryRealization.quote_all E P cs hs)
+         (FiniteDictionaryRealization.All E
+            (FiniteDictionaryRealization.quote_list E cs) P)
+Closed under the global context
+FiniteDictionaryRealization.quote_guard_typed
+     : forall (E : Syntax.Term nat 0) (cs : list (Syntax.Term nat 0))
+         (i : nat) (c : Syntax.Term nat 0),
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       ListDef.Forall
+         (fun x : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε x E)
+         cs ->
+       List.nth_error cs i = Some c ->
+       DirectRKernel.Core.Typed Context.ε
+         (FiniteDictionaryRealization.quote_guard E cs i)
+         (FiniteDictionaryRealization.Guard E
+            (FiniteDictionaryRealization.quote_list E cs) c)
+Closed under the global context
+FiniteDictionaryRealization.telescope_nil_schema
+     : DefEq.def_equiv nat 3
+         (FiniteDictionaryRealization.Tel FiniteDictionaryRealization.v2
+            (FiniteDictionaryRealization.Nil FiniteDictionaryRealization.v2)
+            FiniteDictionaryRealization.v1 DirectRCommonCodes.CommonCodes.V0)
+         DirectRCommonCodes.CommonCodes.V0
+Closed under the global context
+FiniteDictionaryRealization.telescope_cons_schema
+     : DefEq.def_equiv nat 5
+         (FiniteDictionaryRealization.Tel FiniteDictionaryRealization.v4
+            (FiniteDictionaryRealization.Cons FiniteDictionaryRealization.v4
+               FiniteDictionaryRealization.v3 FiniteDictionaryRealization.v2)
+            FiniteDictionaryRealization.v1 DirectRCommonCodes.CommonCodes.V0)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            (Syntax.app FiniteDictionaryRealization.v1
+               FiniteDictionaryRealization.v3)
+            (FiniteDictionaryRealization.Tel FiniteDictionaryRealization.v4
+               FiniteDictionaryRealization.v2 FiniteDictionaryRealization.v1
+               DirectRCommonCodes.CommonCodes.V0))
+Closed under the global context
+FiniteDictionaryRealization.telescope_nil_beta
+     : forall E P R : DirectRCommonCodes.CommonCodes.closed_term,
+       DefEq.def_equiv nat 0
+         (FiniteDictionaryRealization.Tel E
+            (FiniteDictionaryRealization.Nil E) P R)
+         R
+Closed under the global context
+FiniteDictionaryRealization.telescope_cons_beta
+     : forall E x L P R : DirectRCommonCodes.CommonCodes.closed_term,
+       DefEq.def_equiv nat 0
+         (FiniteDictionaryRealization.Tel E
+            (FiniteDictionaryRealization.Cons E x L) P R)
+         (DirectRCommonCodes.CommonCodes.Arrow (Syntax.app P x)
+            (FiniteDictionaryRealization.Tel E L P R))
+Closed under the global context
+FiniteDictionaryRealization.quote_telescope_beta
+     : forall (E : Syntax.Term nat 0)
+         (cs : list DirectRCommonCodes.CommonCodes.closed_term)
+         (P R : Syntax.Term nat 0),
+       DefEq.def_equiv nat 0
+         (FiniteDictionaryRealization.Tel E
+            (FiniteDictionaryRealization.quote_list E cs) P R)
+         (FiniteDictionaryRealization.case_telescope cs P R)
+Closed under the global context
+FiniteDictionaryRealization.quote_list_injective
+     : forall (E : DirectRCommonCodes.CommonCodes.closed_term)
+         (cs ds : list DirectRCommonCodes.CommonCodes.closed_term),
+       FiniteDictionaryRealization.quote_list E cs =
+       FiniteDictionaryRealization.quote_list E ds -> 
+       cs = ds
+Closed under the global context
+DictionaryRejection.consumer_type_sorted
+     : DirectRKernel.Core.Typed Context.ε DictionaryRejection.consumer_type
+         (Syntax.𝓤 5)
+Closed under the global context
+DictionaryRejection.consumer_typed
+     : DirectRKernel.Core.Typed Context.ε DictionaryRejection.consumer
+         DictionaryRejection.consumer_type
+Closed under the global context
+DictionaryRejection.specialize_typed
+     : forall E L P a : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε E (Syntax.𝓤 1) ->
+       DirectRKernel.Core.Typed Context.ε L (DictionaryRejection.DR.List E) ->
+       DirectRKernel.Core.Typed Context.ε P
+         (DirectRCommonCodes.CommonCodes.Arrow E (Syntax.𝓤 2)) ->
+       DirectRKernel.Core.Typed Context.ε a
+         (DictionaryRejection.DR.All E L P) ->
+       DirectRKernel.Core.Typed Context.ε
+         (DictionaryRejection.specialize E L P a)
+         (DictionaryRejection.case_type E L P)
+Closed under the global context
+DictionaryRejection.dictionary_typed
+     : forall b : nat,
+       DirectRKernel.Core.Typed Context.ε (DictionaryRejection.dictionary b)
+         (DictionaryRejection.DR.List (DictionaryRejection.FT.domain b))
+Closed under the global context
+DictionaryRejection.filler_typed
+     : forall b : nat,
+       DirectRKernel.Core.Typed Context.ε (DictionaryRejection.filler b)
+         (DictionaryRejection.DR.Fill (DictionaryRejection.FT.domain b)
+            (DictionaryRejection.dictionary b))
+Closed under the global context
+DictionaryRejection.motive_typed
+     : forall b : nat,
+       DirectRKernel.Core.Typed Context.ε (DictionaryRejection.FR.motive b)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            (DictionaryRejection.FT.domain b) (Syntax.𝓤 2))
+Closed under the global context
+DictionaryRejection.branch_package_typed
+     : forall b : nat,
+       DirectRKernel.Core.Typed Context.ε
+         (DictionaryRejection.branch_package b)
+         (DictionaryRejection.DR.All (DictionaryRejection.FT.domain b)
+            (DictionaryRejection.dictionary b)
+            (DictionaryRejection.FR.motive b))
+Closed under the global context
+DictionaryRejection.canonical_typed
+     : forall (b : nat) (i : Syntax.Fin (DictionaryRejection.FT.arity b)),
+       DirectRKernel.Core.Typed Context.ε (DictionaryRejection.canonical b i)
+         (DictionaryRejection.admission b (DictionaryRejection.FT.point b i))
+Closed under the global context
+DictionaryRejection.rejection_typed
+     : forall b : nat,
+       DirectRKernel.Core.Typed Context.ε (DictionaryRejection.rejection b)
+         (DictionaryRejection.case_type (DictionaryRejection.FT.domain b)
+            (DictionaryRejection.dictionary b)
+            (DictionaryRejection.FR.motive b))
+Closed under the global context
+DictionaryRejection.rejection_application_typed
+     : forall (b : nat) (x g : Syntax.Term nat 0),
+       DirectRKernel.Core.Typed Context.ε x (DictionaryRejection.FT.domain b) ->
+       DirectRKernel.Core.Typed Context.ε g
+         (DictionaryRejection.admission b x) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app (Syntax.app (DictionaryRejection.rejection b) x) g)
+         (DirectRCommonCodes.CommonCodes.Neg
+            (DictionaryRejection.FT.holds
+               (Syntax.app (DictionaryRejection.FT.bottom_program b) x)))
+Closed under the global context
+DictionaryRejection.bounded_code_covered
+     : forall (b : nat) (q : StructuralCodes.code),
+       StructuralCodes.code_size q <= b ->
+       exists i : Syntax.Fin (length (FiniteCodeFragments.codes b)),
+         FiniteCodeFragments.fragment_index b q = Some i /\
+         FiniteCodeFragments.fragment_decode b i = q /\
+         DirectRKernel.Core.Typed Context.ε
+           (DictionaryRejection.canonical b i)
+           (DictionaryRejection.admission b
+              (DictionaryRejection.FT.point b i)) /\
+         Reduction.reduces_to nat 0
+           (Syntax.app (DictionaryRejection.FT.bottom_program b)
+              (DictionaryRejection.FT.point b i))
+           (DictionaryRejection.FT.FC.boolean 0
+              (CertificateSerialization.raw_bottom_check q)) /\
+         DirectRKernel.Core.Typed Context.ε
+           (Syntax.app
+              (Syntax.app (DictionaryRejection.rejection b)
+                 (DictionaryRejection.FT.point b i))
+              (DictionaryRejection.canonical b i))
+           (DirectRCommonCodes.CommonCodes.Neg
+              (DictionaryRejection.FT.holds
+                 (Syntax.app (DictionaryRejection.FT.bottom_program b)
+                    (DictionaryRejection.FT.point b i))))
+Closed under the global context
+DictionaryRejection.every_raw_code_covered
+     : forall q : StructuralCodes.code,
+       exists
+         i : Syntax.Fin
+               (length
+                  (FiniteCodeFragments.codes (StructuralCodes.code_size q))),
+         FiniteCodeFragments.fragment_index (StructuralCodes.code_size q) q =
+         Some i /\
+         DirectRKernel.Core.Typed Context.ε
+           (DictionaryRejection.canonical (StructuralCodes.code_size q) i)
+           (DictionaryRejection.admission (StructuralCodes.code_size q)
+              (DictionaryRejection.FT.point (StructuralCodes.code_size q) i))
+Closed under the global context
+        rocq theories/self_consistency/FiniteDictionaryAudit.{glob,vo}

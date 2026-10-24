@@ -1,0 +1,10 @@
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 12, characters 0-24:
+Warning: Trying to mask the absolute name "FiniteCaseGuards"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 216, characters 59-61:
+Error: The variable cs was not found in the current environment.
+

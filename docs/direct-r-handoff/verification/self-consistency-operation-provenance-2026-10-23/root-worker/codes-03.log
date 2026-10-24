@@ -1,0 +1,54 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 296 - 338 [From~Stdlib~Require~Import~Ari...] 0.035 secs (0.029u,0.006s)
+Chars 339 - 379 [From~Equations~Require~Import~...] 0.024 secs (0.018u,0.005s)
+Chars 380 - 426 [From~PTSrk~Require~Import-(not...] 0. secs (0.u,0.s)
+Chars 427 - 461 [From~PTSrk~Require~Import~Cont...] 0.001 secs (0.001u,0.s)
+Chars 462 - 556 [From~PTSrk.SelfConsistency~Req...] 0.053 secs (0.041u,0.011s)
+Chars 558 - 584 [Module~ContextLookupCodes.] 0. secs (0.u,0.s)
+Chars 586 - 623 [Definition~empty_code~:=~Atom~...] 0. secs (0.u,0.s)
+Chars 624 - 685 [Definition~extend_code~G~A~:=~...] 0. secs (0.u,0.s)
+Chars 686 - 834 [Fixpoint~encode_ctx~{n}~(G~:~C...] 0. secs (0.u,0.s)
+Chars 835 - 1164 [Fixpoint~decode_ctx~(g~:~code)...] 0.002 secs (0.002u,0.s)
+Chars 1166 - 1249 [Theorem~ctx_roundtrip~{n}~(G~:...] 0. secs (0.u,0.s)
+Chars 1250 - 1256 [Proof.] 0. secs (0.u,0.s)
+Chars 1259 - 1397 [induction~G;~cbn[encode_ctx~em...] 0.001 secs (0.u,0.s)
+Chars 1398 - 1402 [Qed.] 0. secs (0.u,0.s)
+Chars 1403 - 1495 [Theorem~encode_ctx_injective~{...] 0. secs (0.u,0.s)
+Chars 1496 - 1502 [Proof.] 0. secs (0.u,0.s)
+Chars 1505 - 1595 [intro~E;~pose~proof~(ctx_round...] 0. secs (0.u,0.s)
+Chars 1596 - 1600 [Qed.] 0. secs (0.u,0.s)
+Chars 1601 - 1703 [Theorem~ctx_decode_encode~g~:~...] 0. secs (0.u,0.s)
+Chars 1704 - 1710 [Proof.] 0. secs (0.u,0.s)
+Chars 1713 - 1748 [revert~g;~fix~IH~1;~intros~g~n...] 0. secs (0.u,0.s)
+Chars 1751 - 1776 [destruct~g~as~[t|~h~args].] 0. secs (0.u,0.s)
+Chars 1779 - 1780 [-] 0. secs (0.u,0.s)
+Chars 1781 - 1840 [destruct~t;~try~discriminate;~...] 0.005 secs (0.003u,0.001s)
+Chars 1845 - 1870 [inversion~H;~reflexivity.] 0. secs (0.u,0.s)
+Chars 1873 - 1874 [-] 0. secs (0.u,0.s)
+Chars 1875 - 1914 [destruct~h~as~[t|~h~a];~[~~|~d...] 0. secs (0.u,0.s)
+Chars 1919 - 1948 [destruct~t;~try~discriminate.] 0.004 secs (0.003u,0.001s)
+Chars 1953 - 1995 [destruct~args~as~[t|~g~A];~[~d...] 0. secs (0.u,0.s)
+Chars 2000 - 2051 [destruct~n;~[~discriminate~|~~...] 0. secs (0.u,0.s)
+Chars 2056 - 2122 [parse_options~H;~inversion~H;~...] 0.002 secs (0.001u,0.s)
+Chars 2127 - 2196 [f_equal;~f_equal;~[~eapply~IH~...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/ContextLookupCodes.v", line 57, characters 30-32:
+Error:
+In environment
+IH :
+  forall (g : code) (n : nat) (G : Ctx nat n),
+  decode_ctx g n = Some G -> encode_ctx G = g
+g, A : code
+n : nat
+c : Ctx nat n
+E : decode_ctx g n = Some c
+t : Term nat n
+E0 : decode_term A n = Some t
+H : Some (c & t) = Some (c & t)
+Unable to unify "Ctx nat ?n" with "encode_ctx c = Atom GExtend".

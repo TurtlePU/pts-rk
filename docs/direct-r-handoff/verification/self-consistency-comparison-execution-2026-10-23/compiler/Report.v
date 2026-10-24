@@ -1,0 +1,20 @@
+From PTSrk.SelfConsistency Require Import CheckerComparisons.
+Import CheckerComparisons.CheckerComparisons.
+Print Assumptions tag_eqb_correct.
+Print Assumptions code_eqb_correct.
+Print Assumptions code_eqb_false.
+Print Assumptions code_eqb_reflexive.
+Print Assumptions code_eqb_encoded_terms.
+Print Assumptions eval_matches_expression.
+Print Assumptions eval_equality_expression.
+Print Assumptions eval_check_expression.
+Print Assumptions eval_context_expression.
+Print Assumptions eval_raw_check_expression.
+Print Assumptions eval_raw_bottom_expression.
+Print Assumptions malformed_input_expression.
+Print Assumptions malformed_bottom_expression.
+Print Assumptions comparison_count_bound.
+Print Assumptions accepted_input.
+Print Assumptions rejected_scoped_input.
+Print Assumptions malformed_input.
+Print Assumptions rejected_bottom_input.

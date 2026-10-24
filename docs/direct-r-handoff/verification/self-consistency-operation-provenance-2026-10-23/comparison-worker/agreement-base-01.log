@@ -1,0 +1,26 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 38 [From~Stdlib~Require~Import~Lis...] 0.037 secs (0.03u,0.006s)
+Chars 39 - 85 [From~PTSrk~Require~Import-(not...] 0.02 secs (0.015u,0.005s)
+Chars 86 - 139 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.001s)
+Chars 140 - 226 [From~Interpretation_of_R~Requi...] 0.05 secs (0.04u,0.009s)
+Chars 227 - 293 [From~PTSrk.SelfConsistency~Req...] 0.012 secs (0.01u,0.002s)
+Chars 294 - 315 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 316 - 388 [Import~CommonCodes~Core~Intern...] 0. secs (0.u,0.s)
+Chars 389 - 543 [Definition~agree_motive~:=~~~n...] 0.005 secs (0.004u,0.001s)
+Chars 544 - 716 [Definition~agree_atom~t~:=~~~n...] 0.008 secs (0.006u,0.002s)
+Chars 717 - 937 [Definition~agree_pair_atom~t~:...] 0.038 secs (0.035u,0.003s)
+Chars 938 - 1549 [Definition~agree_pair~:=~~~nla...] 0.031 secs (0.03u,0.s)
+Chars 1550 - 1633 [Definition~agree_args~:=~~~ind...] 0. secs (0.u,0.s)
+Chars 1634 - 1750 [Definition~agreement_type~:=~~...] 0. secs (0.u,0.s)
+Chars 1751 - 1915 [Definition~agreement~:=~~~clos...] 0.23 secs (0.223u,0.006s)
+Chars 1916 - 1981 [Theorem~agreement_type_sorted~...] 0. secs (0.u,0.s)
+Chars 1982 - 1988 [Proof.] 0. secs (0.u,0.s)
+Chars 1989 - 2015 [RkCheck.certify_with~2048.] 50.57 secs (49.712u,0.641s)
+Chars 2016 - 2020 [Qed.] 45.921 secs (45.198u,0.522s)

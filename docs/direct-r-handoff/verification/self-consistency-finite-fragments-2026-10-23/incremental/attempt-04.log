@@ -1,0 +1,69 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteFragmentTables.v", line 11, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/FiniteFragmentTables.v", line 11, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/FiniteFragmentTables.v", line 92, characters 13-31:
+Error: Abstracting over the terms "n0" and "i" leads to a term
+fun (n1 : nat) (i0 : Fin n1) =>
+Typed G v (CF.choice_type 0 n1) ->
+G
+⊢ fin_match (lift_closed Top)
+    (fin_match (lift_closed Bottom)
+       (fun i1 : Fin 0 =>
+        match
+          i1 in Fin n2
+          return match n2 with
+                 | 0 => Term nat n
+                 | S _ => IDProp
+                 end
+        with
+        | fzero | _ => idProp
+        end))
+    i0
+⇐ 𝓤 1 which is ill-typed.
+Reason is: Illegal application: 
+The term "@fin_match" of type
+ "forall (A : Type) (n : nat), A -> (Fin n -> A) -> Fin (S n) -> A"
+cannot be applied to the terms
+ "Term nat n" : "Type"
+ "1" : "nat"
+ "lift_closed Top" : "Term nat n"
+ "fin_match (lift_closed Bottom)
+    (fun i : Fin 0 =>
+     match
+       i in Fin n0 return match n0 with
+                          | 0 => Term nat n
+                          | S _ => IDProp
+                          end
+     with
+     | fzero | _ => idProp
+     end)"
+   : "Fin 1 -> Term nat n"
+ "i0" : "Fin n1"
+The 5th term has type "Fin n1" which should be a subtype of 
+"Fin 2".
+
+File "theories/self_consistency/dune", lines 1-18, characters 0-1116:
+ 1 | (rocq.theory
+ 2 |  (name PTSrk.SelfConsistency)
+ 3 |  (package pts-rk)
+....
+16 |    FiniteCodeFragments FiniteFragmentNormalization FiniteFragmentTables Audit)
+17 |  (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity
+18 |    PTSrk.Combinatory Interpretation_of_R))
+        rocq theories/self_consistency/FiniteFragmentTables.{glob,vo} (exit 1)

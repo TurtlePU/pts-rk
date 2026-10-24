@@ -1,0 +1,27 @@
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 433 - 486 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.032u,0.006s)
+Chars 487 - 533 [From~PTSrk~Require~Import-(not...] 0.019 secs (0.015u,0.004s)
+Chars 534 - 620 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 621 - 712 [From~Interpretation_of_R~Requi...] 0.05 secs (0.041u,0.009s)
+Chars 713 - 865 [From~PTSrk.Combinatory~Require...] 0.059 secs (0.051u,0.007s)
+Chars 866 - 987 [From~PTSrk.SelfConsistency~Req...] 0.006 secs (0.003u,0.001s)
+Chars 988 - 1009 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 1011 - 1036 [Module~FiniteRawDecoding.] 0. secs (0.u,0.s)
+Chars 1037 - 1072 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 1073 - 1112 [Module~CF:=~~ChurchFinite.Chur...] 0.002 secs (0.002u,0.s)
+Chars 1113 - 1167 [Module~H:=~~HornProofRealizati...] 0.056 secs (0.053u,0.003s)
+Chars 1168 - 1220 [Module~I:=~~IndexedHornEncodin...] 0.004 secs (0.004u,0.s)
+Chars 1221 - 1275 [Module~F:=~~FiniteGeneratedCod...] 0.134 secs (0.131u,0.002s)
+Chars 1276 - 1324 [Module~V:=~~FiniteNormalForms....] 0.001 secs (0.001u,0.s)
+Chars 1325 - 1375 [Module~D:=~~FiniteTypeDispatch...] 0.005 secs (0.005u,0.s)
+Chars 1376 - 1420 [Module~C:=~~InternalCarrier.In...] 0.005 secs (0.005u,0.s)
+Chars 1421 - 1473 [Module~B:=~~FiniteCodeFragment...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/FiniteRawDecoding.v", line 26, characters 12-51:
+Error: FiniteCodeFragments.FiniteCodeFragments is not a module.

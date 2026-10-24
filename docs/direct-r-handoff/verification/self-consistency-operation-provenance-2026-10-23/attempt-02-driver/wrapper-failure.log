@@ -1,0 +1,6 @@
+fresh-build exit 0, 2026-10-23T19:28:08Z--2026-10-23T19:56:57Z (1729 seconds).
+Original driver then exited 2 before closed-reports/kernel:
+docs/direct-r-handoff/verification/self-consistency-operation-provenance-2026-10-23/AUDIT.sh: line 188: unexpected EOF while looking for matching `"'
+The reusable script was edited while Bash was waiting for compilation.
+The original snapshot and corrected reusable script both pass bash -n.
+This is not an all-pass original driver invocation.

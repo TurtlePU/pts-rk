@@ -1,0 +1,28 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 46 [From~PTSrk~Require~Import-(not...] 0.057 secs (0.044u,0.012s)
+Chars 47 - 100 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 101 - 205 [From~Interpretation_of_R~Requi...] 0.049 secs (0.04u,0.009s)
+Chars 206 - 272 [From~PTSrk.SelfConsistency~Req...] 0.011 secs (0.009u,0.002s)
+Chars 273 - 356 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 357 - 459 [Definition~trace_at~{n}~(x~y~z...] 0. secs (0.u,0.s)
+Chars 460 - 520 [Definition~v1~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 521 - 593 [Definition~v2~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 594 - 678 [Definition~v3~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 679 - 919 [Lemma~trace_application~{n}~(G...] 0. secs (0.u,0.s)
+Chars 920 - 926 [Proof.] 0. secs (0.u,0.s)
+Chars 929 - 948 [intros~Hx~Hy~Hz~Hb.] 0. secs (0.u,0.s)
+Chars 951 - 1006 [pose~proof~(lift_closed_typed~...] 0. secs (0.u,0.s)
+Chars 1009 - 1187 [change~~~(Typed~G~(lift_closed...] 5.111 secs (4.981u,0.117s)
+Chars 1190 - 1219 [pose~proof~(tApp~H~Hx)~as~H1.] 0. secs (0.u,0.s)
+Chars 1222 - 1285 [unfold~CMP.zip_at,~v1,~V0~in~H...] 0.014 secs (0.013u,0.s)
+Chars 1288 - 1349 [pose~proof~(tApp~H1~Hy)~as~H2;...] 0.013 secs (0.013u,0.s)
+Chars 1352 - 1413 [pose~proof~(tApp~H2~Hz)~as~H3;...] 0.002 secs (0.002u,0.s)
+Chars 1416 - 1480 [unfold~trace_at;~eapply~arrow_...] 0. secs (0.u,0.s)
+Chars 1481 - 1485 [Qed.] 4.546 secs (4.451u,0.085s)

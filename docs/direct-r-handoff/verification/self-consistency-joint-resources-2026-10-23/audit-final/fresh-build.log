@@ -1,0 +1,805 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+        rocq theories/.PTSrk.theory.d
+        rocq theories/Interpretation_of_R/.Interpretation_of_R.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Congruence.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/StructuralCodes.{glob,vo}
+        rocq theories/Interpretation_of_R/DirectRCommonCodes.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Reduction.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/ResourcePaths.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/self_consistency/FiniteCodeFragments.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/SN.{glob,vo}
+        rocq theories/self_consistency/NativeProofCodes.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectREval.{glob,vo}
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/Interpretation_of_R/DirectRKernel.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateAdequacy.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRCheck.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRStructural.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/SortRenaming.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/GuardedTables.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/RankCompression.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateSerialization.{glob,vo}
+        rocq theories/self_consistency/InternalCarrier.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CheckerComparisons.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalResources.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalComparisonFolds.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/ResourceRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalPaths.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/LookupHistory.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/PathSubstitution.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalCapacity.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/PathRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/HistoryRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CapacityBounds.{glob,vo}
+        rocq theories/self_consistency/InternalCodeComparison.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalJointTraversal.{glob,vo}
+        rocq theories/self_consistency/CodeComparisonRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CheckerExecution.{glob,vo}
+        rocq theories/self_consistency/CheckerResourceBounds.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/ComputationBoundary.{glob,vo}
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+InternalJointTraversal.carrier_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalJointTraversal.carrier
+         (Syntax.𝓤 4)
+Closed under the global context
+InternalJointTraversal.atom_left_typed
+     : forall t : StructuralCodes.tag,
+       DirectRKernel.Core.Typed Context.ε
+         (InternalJointTraversal.atom_left t)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalJointTraversal.IC.carrier InternalJointTraversal.carrier)
+Closed under the global context
+InternalJointTraversal.pair_atom_typed
+     : forall t : StructuralCodes.tag,
+       DirectRKernel.Core.Typed Context.ε
+         (InternalJointTraversal.pair_atom t)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalJointTraversal.IC.carrier
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalJointTraversal.IC.carrier
+               InternalJointTraversal.carrier))
+Closed under the global context
+InternalJointTraversal.join_typed
+     : DirectRKernel.Core.Typed Context.ε InternalJointTraversal.join
+         (DirectRCommonCodes.CommonCodes.Arrow InternalJointTraversal.carrier
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalJointTraversal.carrier InternalJointTraversal.carrier))
+Closed under the global context
+InternalJointTraversal.projection_typed
+     : forall side : bool,
+       DirectRKernel.Core.Typed Context.ε
+         (InternalJointTraversal.projection side)
+         (DirectRCommonCodes.CommonCodes.Arrow InternalJointTraversal.carrier
+            InternalJointTraversal.IC.carrier)
+Closed under the global context
+InternalJointTraversal.good_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalJointTraversal.good
+         (DirectRCommonCodes.CommonCodes.Arrow InternalJointTraversal.carrier
+            (Syntax.𝓤 6))
+Closed under the global context
+InternalJointTraversal.telescope_context_prefix_wf
+     : forall (T : DirectRStructural.Structural.telescope ?n ?m)
+         (G : Context.Ctx nat ?n),
+       Preservation.wf (DirectRStructural.Structural.telescope_context T G) ->
+       Preservation.wf G
+where
+?n : [ |- nat]
+?m : [ |- nat]
+Closed under the global context
+InternalJointTraversal.telescope_abstraction_from_context
+     : forall (T : DirectRStructural.Structural.telescope ?n ?m)
+         (G : Context.Ctx nat ?n) (t A : Syntax.Term nat ?m),
+       Preservation.wf (DirectRStructural.Structural.telescope_context T G) ->
+       DirectRKernel.Core.Typed
+         (DirectRStructural.Structural.telescope_context T G) t A ->
+       DirectRKernel.Core.Typed G
+         (DirectRStructural.Structural.telescope_abstract T t)
+         (DirectRStructural.Structural.telescope_product T A)
+where
+?n : [ |- nat]
+?m : [ |- nat]
+Closed under the global context
+InternalJointTraversal.product_head_step_sound
+     : forall t u : Syntax.Term nat ?n,
+       InternalJointTraversal.product_head_step t = Some u ->
+       Reduction.step nat ?n t u
+where
+?n : [ |- nat]
+Closed under the global context
+InternalJointTraversal.product_head_step_equiv
+     : forall t u : Syntax.Term nat ?n,
+       InternalJointTraversal.product_head_step t = Some u ->
+       DefEq.def_equiv nat ?n u t
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerResourceBounds.comparisons_length
+     : forall e : CheckerResourceBounds.CC.Expr,
+       length (CheckerResourceBounds.comparisons e) =
+       CheckerResourceBounds.CC.comparison_count e
+Closed under the global context
+CheckerResourceBounds.traversal_pairs_length
+     : forall x y : StructuralCodes.code,
+       length (CheckerResourceBounds.traversal_pairs x y) =
+       CheckerResourceBounds.CR.traversal_nodes x y
+Closed under the global context
+CheckerResourceBounds.traversal_pairs_root
+     : forall x y : StructuralCodes.code,
+       List.In (x, y) (CheckerResourceBounds.traversal_pairs x y)
+Closed under the global context
+CheckerResourceBounds.traversal_operands_contained
+     : forall x y : StructuralCodes.code,
+       ResourcePaths.ResourcePaths.extends x
+         (CheckerResourceBounds.traversal_data x y) /\
+       ResourcePaths.ResourcePaths.extends y
+         (CheckerResourceBounds.traversal_data x y)
+Closed under the global context
+CheckerResourceBounds.traversal_subdata_contained
+     : forall x y u v : StructuralCodes.code,
+       List.In (u, v) (CheckerResourceBounds.traversal_pairs x y) ->
+       ResourcePaths.ResourcePaths.extends
+         (CheckerResourceBounds.traversal_data u v)
+         (CheckerResourceBounds.traversal_data x y)
+Closed under the global context
+CheckerResourceBounds.traversal_data_size_bound
+     : forall x y : StructuralCodes.code,
+       StructuralCodes.code_size (CheckerResourceBounds.traversal_data x y) <=
+       (3 + StructuralCodes.code_size x + StructuralCodes.code_size y) *
+       CheckerResourceBounds.CR.traversal_nodes x y
+Closed under the global context
+CheckerResourceBounds.traversal_data_quadratic
+     : forall x y : StructuralCodes.code,
+       StructuralCodes.code_size (CheckerResourceBounds.traversal_data x y) <=
+       (3 + StructuralCodes.code_size x + StructuralCodes.code_size y) *
+       PeanoNat.Nat.min (StructuralCodes.code_size x)
+         (StructuralCodes.code_size y)
+Closed under the global context
+CheckerResourceBounds.traversal_root_exact
+     : forall x y : StructuralCodes.code,
+       CheckerResourceBounds.traversal_root
+         (CheckerResourceBounds.traversal_data x y) =
+       Some (x, y)
+Closed under the global context
+CheckerResourceBounds.traversal_data_injective
+     : forall x y u v : StructuralCodes.code,
+       CheckerResourceBounds.traversal_data x y =
+       CheckerResourceBounds.traversal_data u v -> 
+       x = u /\ y = v
+Closed under the global context
+CheckerResourceBounds.expression_data_injective
+     : forall e f : CheckerResourceBounds.CC.Expr,
+       CheckerResourceBounds.expression_data e =
+       CheckerResourceBounds.expression_data f -> 
+       e = f
+Closed under the global context
+CheckerResourceBounds.expression_comparison_contained
+     : forall (e : CheckerResourceBounds.CC.Expr)
+         (x y : StructuralCodes.code),
+       List.In (x, y) (CheckerResourceBounds.comparisons e) ->
+       ResourcePaths.ResourcePaths.extends
+         (CheckerResourceBounds.traversal_data x y)
+         (CheckerResourceBounds.expression_data e)
+Closed under the global context
+CheckerResourceBounds.expression_data_size_exact
+     : forall e : CheckerResourceBounds.CC.Expr,
+       StructuralCodes.code_size (CheckerResourceBounds.expression_data e) =
+       CheckerResourceBounds.expression_overhead e +
+       CheckerResourceBounds.traversal_payload e
+Closed under the global context
+CheckerResourceBounds.expression_overhead_bound
+     : forall e : CheckerResourceBounds.CC.Expr,
+       CheckerResourceBounds.expression_overhead e <=
+       3 * CheckerResourceBounds.CC.expression_size e
+Closed under the global context
+CheckerResourceBounds.traversal_payload_bound
+     : forall e : CheckerResourceBounds.CC.Expr,
+       CheckerResourceBounds.traversal_payload e <=
+       CheckerResourceBounds.payload_bound e
+Closed under the global context
+CheckerResourceBounds.expression_data_size_bound
+     : forall e : CheckerResourceBounds.CC.Expr,
+       StructuralCodes.code_size (CheckerResourceBounds.expression_data e) <=
+       3 * CheckerResourceBounds.CC.expression_size e +
+       CheckerResourceBounds.payload_bound e
+Closed under the global context
+CheckerResourceBounds.extension_capacity
+     : forall a b : StructuralCodes.code,
+       ResourcePaths.ResourcePaths.extends a b ->
+       CheckerResourceBounds.CapacityWitness a b
+Closed under the global context
+CheckerResourceBounds.envelope_contains_source
+     : forall (q : StructuralCodes.code)
+         (e f : CheckerResourceBounds.CC.Expr),
+       ResourcePaths.ResourcePaths.extends q
+         (CheckerResourceBounds.envelope q e f)
+Closed under the global context
+CheckerResourceBounds.envelope_contains_expressions
+     : forall (q : StructuralCodes.code)
+         (e f : CheckerResourceBounds.CC.Expr),
+       ResourcePaths.ResourcePaths.extends
+         (CheckerResourceBounds.expression_data e)
+         (CheckerResourceBounds.envelope q e f) /\
+       ResourcePaths.ResourcePaths.extends
+         (CheckerResourceBounds.expression_data f)
+         (CheckerResourceBounds.envelope q e f)
+Closed under the global context
+CheckerResourceBounds.envelope_capacity
+     : forall (q : StructuralCodes.code)
+         (e f : CheckerResourceBounds.CC.Expr),
+       CheckerResourceBounds.CapacityWitness q
+         (CheckerResourceBounds.envelope q e f) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.expression_data e)
+         (CheckerResourceBounds.envelope q e f) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.expression_data f)
+         (CheckerResourceBounds.envelope q e f)
+Closed under the global context
+CheckerResourceBounds.envelope_comparison_contained
+     : forall (q : StructuralCodes.code)
+         (e f : CheckerResourceBounds.CC.Expr) (x y : StructuralCodes.code),
+       List.In (x, y) (CheckerResourceBounds.comparisons e) \/
+       List.In (x, y) (CheckerResourceBounds.comparisons f) ->
+       ResourcePaths.ResourcePaths.extends
+         (CheckerResourceBounds.traversal_data x y)
+         (CheckerResourceBounds.envelope q e f)
+Closed under the global context
+CheckerResourceBounds.envelope_traversal_contained
+     : forall (q : StructuralCodes.code)
+         (e f : CheckerResourceBounds.CC.Expr)
+         (x y u v : StructuralCodes.code),
+       List.In (x, y) (CheckerResourceBounds.comparisons e) \/
+       List.In (x, y) (CheckerResourceBounds.comparisons f) ->
+       List.In (u, v) (CheckerResourceBounds.traversal_pairs x y) ->
+       ResourcePaths.ResourcePaths.extends u
+         (CheckerResourceBounds.envelope q e f) /\
+       ResourcePaths.ResourcePaths.extends v
+         (CheckerResourceBounds.envelope q e f) /\
+       ResourcePaths.ResourcePaths.extends
+         (CheckerResourceBounds.traversal_data u v)
+         (CheckerResourceBounds.envelope q e f)
+Closed under the global context
+CheckerResourceBounds.envelope_comparison_fits
+     : forall (q : StructuralCodes.code)
+         (e f : CheckerResourceBounds.CC.Expr) (x y : StructuralCodes.code),
+       List.In (x, y) (CheckerResourceBounds.comparisons e) \/
+       List.In (x, y) (CheckerResourceBounds.comparisons f) ->
+       CheckerResourceBounds.CB.fits x (CheckerResourceBounds.envelope q e f) /\
+       CheckerResourceBounds.CB.fits y (CheckerResourceBounds.envelope q e f) /\
+       CheckerResourceBounds.CB.fits
+         (CheckerResourceBounds.traversal_data x y)
+         (CheckerResourceBounds.envelope q e f)
+Closed under the global context
+CheckerResourceBounds.envelope_traversal_capacity
+     : forall (q : StructuralCodes.code)
+         (e f : CheckerResourceBounds.CC.Expr)
+         (x y u v : StructuralCodes.code),
+       List.In (x, y) (CheckerResourceBounds.comparisons e) \/
+       List.In (x, y) (CheckerResourceBounds.comparisons f) ->
+       List.In (u, v) (CheckerResourceBounds.traversal_pairs x y) ->
+       CheckerResourceBounds.CapacityWitness u
+         (CheckerResourceBounds.envelope q e f) /\
+       CheckerResourceBounds.CapacityWitness v
+         (CheckerResourceBounds.envelope q e f) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.traversal_data u v)
+         (CheckerResourceBounds.envelope q e f)
+Closed under the global context
+CheckerResourceBounds.envelope_comparison_capacity
+     : forall (q : StructuralCodes.code)
+         (e f : CheckerResourceBounds.CC.Expr) (x y : StructuralCodes.code),
+       List.In (x, y) (CheckerResourceBounds.comparisons e) \/
+       List.In (x, y) (CheckerResourceBounds.comparisons f) ->
+       CheckerResourceBounds.CapacityWitness x
+         (CheckerResourceBounds.envelope q e f) /\
+       CheckerResourceBounds.CapacityWitness y
+         (CheckerResourceBounds.envelope q e f) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.traversal_data x y)
+         (CheckerResourceBounds.envelope q e f)
+Closed under the global context
+CheckerResourceBounds.envelope_size
+     : forall (q : StructuralCodes.code)
+         (e f : CheckerResourceBounds.CC.Expr),
+       StructuralCodes.code_size (CheckerResourceBounds.envelope q e f) =
+       4 + StructuralCodes.code_size q +
+       StructuralCodes.code_size (CheckerResourceBounds.expression_data e) +
+       StructuralCodes.code_size (CheckerResourceBounds.expression_data f)
+Closed under the global context
+CheckerResourceBounds.envelope_size_bound
+     : forall (q : StructuralCodes.code)
+         (e f : CheckerResourceBounds.CC.Expr),
+       StructuralCodes.code_size (CheckerResourceBounds.envelope q e f) <=
+       4 + StructuralCodes.code_size q +
+       3 *
+       (CheckerResourceBounds.CC.expression_size e +
+        CheckerResourceBounds.CC.expression_size f) +
+       CheckerResourceBounds.payload_bound e +
+       CheckerResourceBounds.payload_bound f
+Closed under the global context
+CheckerResourceBounds.source_capacity
+     : forall q : StructuralCodes.code,
+       CheckerResourceBounds.CapacityWitness q
+         (CheckerResourceBounds.source_envelope q)
+Closed under the global context
+CheckerResourceBounds.source_expression_capacity
+     : forall q : StructuralCodes.code,
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.expression_data
+            (CheckerResourceBounds.CC.raw_check_expression q))
+         (CheckerResourceBounds.source_envelope q) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.expression_data
+            (CheckerResourceBounds.CC.raw_bottom_expression q))
+         (CheckerResourceBounds.source_envelope q)
+Closed under the global context
+CheckerResourceBounds.source_traversal_capacity
+     : forall q x y u v : StructuralCodes.code,
+       List.In (x, y)
+         (CheckerResourceBounds.comparisons
+            (CheckerResourceBounds.CC.raw_check_expression q)) \/
+       List.In (x, y)
+         (CheckerResourceBounds.comparisons
+            (CheckerResourceBounds.CC.raw_bottom_expression q)) ->
+       List.In (u, v) (CheckerResourceBounds.traversal_pairs x y) ->
+       CheckerResourceBounds.CapacityWitness u
+         (CheckerResourceBounds.source_envelope q) /\
+       CheckerResourceBounds.CapacityWitness v
+         (CheckerResourceBounds.source_envelope q) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.traversal_data u v)
+         (CheckerResourceBounds.source_envelope q)
+Closed under the global context
+CheckerResourceBounds.source_comparison_capacity
+     : forall q x y : StructuralCodes.code,
+       List.In (x, y)
+         (CheckerResourceBounds.comparisons
+            (CheckerResourceBounds.CC.raw_check_expression q)) \/
+       List.In (x, y)
+         (CheckerResourceBounds.comparisons
+            (CheckerResourceBounds.CC.raw_bottom_expression q)) ->
+       CheckerResourceBounds.CapacityWitness x
+         (CheckerResourceBounds.source_envelope q) /\
+       CheckerResourceBounds.CapacityWitness y
+         (CheckerResourceBounds.source_envelope q) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.traversal_data x y)
+         (CheckerResourceBounds.source_envelope q)
+Closed under the global context
+CheckerResourceBounds.fragment_contains_source_envelope
+     : forall (b : nat) (q : StructuralCodes.code),
+       StructuralCodes.code_size q <= b ->
+       ResourcePaths.ResourcePaths.extends
+         (CheckerResourceBounds.source_envelope q)
+         (CheckerResourceBounds.fragment_envelope b)
+Closed under the global context
+CheckerResourceBounds.fragment_source_capacity
+     : forall (b : nat) (q : StructuralCodes.code),
+       StructuralCodes.code_size q <= b ->
+       CheckerResourceBounds.CapacityWitness q
+         (CheckerResourceBounds.fragment_envelope b)
+Closed under the global context
+CheckerResourceBounds.fragment_expression_capacity
+     : forall (b : nat) (q : StructuralCodes.code),
+       StructuralCodes.code_size q <= b ->
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.expression_data
+            (CheckerResourceBounds.CC.raw_check_expression q))
+         (CheckerResourceBounds.fragment_envelope b) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.expression_data
+            (CheckerResourceBounds.CC.raw_bottom_expression q))
+         (CheckerResourceBounds.fragment_envelope b)
+Closed under the global context
+CheckerResourceBounds.fragment_traversal_capacity
+     : forall (b : nat) (q x y u v : StructuralCodes.code),
+       StructuralCodes.code_size q <= b ->
+       List.In (x, y)
+         (CheckerResourceBounds.comparisons
+            (CheckerResourceBounds.CC.raw_check_expression q)) \/
+       List.In (x, y)
+         (CheckerResourceBounds.comparisons
+            (CheckerResourceBounds.CC.raw_bottom_expression q)) ->
+       List.In (u, v) (CheckerResourceBounds.traversal_pairs x y) ->
+       CheckerResourceBounds.CapacityWitness u
+         (CheckerResourceBounds.fragment_envelope b) /\
+       CheckerResourceBounds.CapacityWitness v
+         (CheckerResourceBounds.fragment_envelope b) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.traversal_data u v)
+         (CheckerResourceBounds.fragment_envelope b)
+Closed under the global context
+CheckerResourceBounds.fragment_comparison_capacity
+     : forall (b : nat) (q x y : StructuralCodes.code),
+       StructuralCodes.code_size q <= b ->
+       List.In (x, y)
+         (CheckerResourceBounds.comparisons
+            (CheckerResourceBounds.CC.raw_check_expression q)) \/
+       List.In (x, y)
+         (CheckerResourceBounds.comparisons
+            (CheckerResourceBounds.CC.raw_bottom_expression q)) ->
+       CheckerResourceBounds.CapacityWitness x
+         (CheckerResourceBounds.fragment_envelope b) /\
+       CheckerResourceBounds.CapacityWitness y
+         (CheckerResourceBounds.fragment_envelope b) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.traversal_data x y)
+         (CheckerResourceBounds.fragment_envelope b)
+Closed under the global context
+CheckerResourceBounds.fragment_envelope_size
+     : forall b : nat,
+       StructuralCodes.code_size (CheckerResourceBounds.fragment_envelope b) =
+       1 + length (FiniteCodeFragments.codes b) +
+       CheckerResourceBounds.CB.total_size
+         (ListDef.map CheckerResourceBounds.source_envelope
+            (FiniteCodeFragments.codes b))
+Closed under the global context
+CheckerResourceBounds.fragment_storage_bound
+     : forall (b : nat) (q : StructuralCodes.code),
+       StructuralCodes.code_size q <= b ->
+       StructuralCodes.code_size (CheckerResourceBounds.source_envelope q) <=
+       1 + length (FiniteCodeFragments.codes b) +
+       CheckerResourceBounds.CB.total_size
+         (ListDef.map CheckerResourceBounds.source_envelope
+            (FiniteCodeFragments.codes b))
+Closed under the global context
+CheckerResourceBounds.all_raw_sources_have_capacity
+     : forall q : StructuralCodes.code,
+       CheckerResourceBounds.CapacityWitness q
+         (CheckerResourceBounds.fragment_envelope
+            (StructuralCodes.code_size q)) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.expression_data
+            (CheckerResourceBounds.CC.raw_check_expression q))
+         (CheckerResourceBounds.fragment_envelope
+            (StructuralCodes.code_size q)) /\
+       CheckerResourceBounds.CapacityWitness
+         (CheckerResourceBounds.expression_data
+            (CheckerResourceBounds.CC.raw_bottom_expression q))
+         (CheckerResourceBounds.fragment_envelope
+            (StructuralCodes.code_size q))
+Closed under the global context
+ComputationBoundary.resources_realized
+     : forall (q : StructuralCodes.code) (e : ComputationBoundary.CC.Expr)
+         (f : ComputationBoundary.RB.CC.Expr),
+       ComputationBoundary.Resources q e
+         (ComputationBoundary.RB.envelope q e f)
+Closed under the global context
+ComputationBoundary.self_comparison_resources
+     : forall q : StructuralCodes.code,
+       ComputationBoundary.Resources q
+         (ComputationBoundary.self_comparison q)
+         (ComputationBoundary.self_comparison_budget q)
+Closed under the global context
+ComputationBoundary.self_comparison_evaluates
+     : forall q : StructuralCodes.code,
+       ComputationBoundary.CC.eval (ComputationBoundary.self_comparison q) =
+       true
+Closed under the global context
+ComputationBoundary.self_comparison_executes
+     : forall q : StructuralCodes.code,
+       Reduction.reduces_to nat 0
+         (ComputationBoundary.CE.run (ComputationBoundary.self_comparison q))
+         (ComputationBoundary.B.point true)
+Closed under the global context
+ComputationBoundary.rejected_source_decodes
+     : CertificateSerialization.decode_input
+         ComputationBoundary.rejected_source =
+       Some
+         (existT
+            (fun n : nat =>
+             (NativeProofCodes.NativeProofCodes.ContextCode n *
+              NativeProofCodes.NativeProofCodes.Certificate n)%type)
+            0
+            (ComputationBoundary.NC.EmptyContext,
+             ComputationBoundary.CC.bad_application))
+Closed under the global context
+ComputationBoundary.rejected_source_rejected
+     : CertificateSerialization.raw_check ComputationBoundary.rejected_source =
+       false
+Closed under the global context
+ComputationBoundary.rejected_source_actual_program
+     : Reduction.reduces_to nat 0
+         (ComputationBoundary.CE.raw_program
+            ComputationBoundary.rejected_source)
+         (ComputationBoundary.B.point false)
+Closed under the global context
+ComputationBoundary.resource_only_counterexample
+     : (exists parsed : CertificateSerialization.packed_input,
+          CertificateSerialization.decode_input
+            ComputationBoundary.rejected_source =
+          Some parsed) /\
+       ComputationBoundary.Resources ComputationBoundary.rejected_source
+         (ComputationBoundary.self_comparison
+            ComputationBoundary.rejected_source)
+         (ComputationBoundary.self_comparison_budget
+            ComputationBoundary.rejected_source) /\
+       CertificateSerialization.raw_check ComputationBoundary.rejected_source =
+       false /\
+       Reduction.reduces_to nat 0
+         (ComputationBoundary.CE.run
+            (ComputationBoundary.self_comparison
+               ComputationBoundary.rejected_source))
+         (ComputationBoundary.B.point true)
+Closed under the global context
+ComputationBoundary.resource_only_agreement_false
+     : ~ ComputationBoundary.ResourceOnlyAgreement
+Closed under the global context
+ComputationBoundary.rejected_source_operations_differ
+     : ComputationBoundary.self_comparison
+         ComputationBoundary.rejected_source <>
+       ComputationBoundary.CC.raw_check_expression
+         ComputationBoundary.rejected_source
+Closed under the global context
+ComputationBoundary.rejected_source_programs_not_convertible
+     : ~
+       DefEq.def_equiv nat 0
+         (ComputationBoundary.CE.run
+            (ComputationBoundary.self_comparison
+               ComputationBoundary.rejected_source))
+         (ComputationBoundary.CE.raw_program
+            ComputationBoundary.rejected_source)
+Closed under the global context
+        rocq theories/self_consistency/JointResourceAudit.{glob,vo}

@@ -1,0 +1,19 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 38 [From~Stdlib~Require~Import~Lis...] 0.037 secs (0.03u,0.006s)
+Chars 39 - 85 [From~PTSrk~Require~Import-(not...] 0.02 secs (0.015u,0.004s)
+Chars 86 - 139 [From~PTSrk~Require~Import~Cont...] 0.002 secs (0.002u,0.s)
+Chars 140 - 226 [From~Interpretation_of_R~Requi...] 0.049 secs (0.039u,0.009s)
+Chars 227 - 307 [From~PTSrk.SelfConsistency~Req...] 0.011 secs (0.009u,0.001s)
+Chars 308 - 394 [Import~ListNotations~CommonCod...] 0. secs (0.u,0.s)
+Chars 395 - 480 [Definition~atom_agreement~t~:=...] 0.077 secs (0.067u,0.009s)
+Chars 481 - 665 [Definition~atom_agreement_type...] 0.024 secs (0.022u,0.001s)
+Chars 666 - 749 [Lemma~atom_agreement_typed~t~:...] 0. secs (0.u,0.s)
+Chars 750 - 756 [Proof.] 0. secs (0.u,0.s)
+Chars 757 - 795 [destruct~t;~RkCheck.certify_wi...] 162.242 secs (159.928u,1.875s)

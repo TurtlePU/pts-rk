@@ -1,0 +1,9 @@
+git rev-parse HEAD 
+cmp /Users/akuklev/air/pts-rk/_build/self-consistency-joint-resources-final.EFjJT3/head.log docs/direct-r-handoff/verification/self-consistency-joint-resources-2026-10-23/audit-final/head.log 
+source_manifest 
+cmp /Users/akuklev/air/pts-rk/_build/self-consistency-joint-resources-final.EFjJT3/current-sources.log docs/direct-r-handoff/verification/self-consistency-joint-resources-2026-10-23/audit-final/source-after.log 
+shasum -a 256 -c docs/direct-r-handoff/verification/self-consistency-joint-resources-2026-10-23/audit-final/previous-sources.sha256 
+git diff --exit-code 723cf2ec61c737ae82ba33d2e7db44f650122b0e -- theories/Syntax.v theories/AbstractRewriting.v theories/Congruence.v theories/Reduction.v theories/Confluence.v theories/DefEq.v theories/Context.v theories/Typing.v theories/Inversions.v theories/Preservation.v theories/SN.v theories/Ranks.v 
+git diff --exit-code ffa7131 -- theories/ZFC_model 
+note_hashes 
+whitespace 

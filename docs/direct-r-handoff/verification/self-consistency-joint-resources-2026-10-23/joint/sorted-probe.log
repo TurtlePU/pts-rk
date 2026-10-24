@@ -1,0 +1,86 @@
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-comparisons-fresh.IyPIZj/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 301 - 354 [From~Stdlib~Require~Import~Lis...] 0.07 secs (0.032u,0.013s)
+Chars 355 - 395 [From~Equations~Require~Import~...] 0.03 secs (0.015u,0.006s)
+Chars 396 - 442 [From~PTSrk~Require~Import-(not...] 0.001 secs (0.u,0.s)
+Chars 443 - 537 [From~PTSrk~Require~Import~Cont...] 0.007 secs (0.002u,0.001s)
+Chars 538 - 656 [From~Interpretation_of_R~Requi...] 0.08 secs (0.042u,0.017s)
+Chars 657 - 756 [From~PTSrk.SelfConsistency~Req...] 0.005 secs (0.002u,0.001s)
+Chars 757 - 778 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 780 - 810 [Module~InternalJointTraversal.] 0. secs (0.u,0.s)
+Chars 811 - 846 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 847 - 892 [Module~IC:=~~InternalCarrier.I...] 0.006 secs (0.004u,0.001s)
+Chars 893 - 953 [Module~CMP:=~~InternalCodeComp...] 0.025 secs (0.02u,0.004s)
+Chars 955 - 990 [Definition~C~:=~NClosed~IC.car...] 0. secs (0.u,0.s)
+Chars 991 - 1242 [Definition~fields~:=~~~[(90,~N...] 0.003 secs (0.002u,0.001s)
+Chars 1243 - 1303 [Definition~carrier~:=~close~(n...] 0.178 secs (0.164u,0.014s)
+Chars 1304 - 1336 [Definition~J~:=~NClosed~carrier.] 0. secs (0.u,0.s)
+Chars 1337 - 1509 [Definition~dispatch~j~:=~~~nap...] 0.001 secs (0.001u,0.s)
+Chars 1511 - 1656 [Definition~atom_left~t~:=~~~cl...] 2.717 secs (2.689u,0.026s)
+Chars 1657 - 1823 [Definition~pair_atom~t~:=~~~cl...] 2.535 secs (2.507u,0.026s)
+Chars 1824 - 1953 [Definition~join~:=~~~close~~~~...] 0.321 secs (0.318u,0.002s)
+Chars 1954 - 2012 [Definition~AtomLeft~t~y~:=~NAp...] 0. secs (0.u,0.s)
+Chars 2013 - 2079 [Definition~PairAtom~t~a~b~:=~n...] 0. secs (0.u,0.s)
+Chars 2080 - 2131 [Definition~Join~j~k~:=~napps~(...] 0. secs (0.u,0.s)
+Chars 2133 - 2184 [Theorem~carrier_sorted~:~Typed...] 0. secs (0.u,0.s)
+Chars 2185 - 2191 [Proof.] 0. secs (0.u,0.s)
+Chars 2192 - 2217 [RkCheck.certify_with~512.] 0.018 secs (0.015u,0.s)
+Chars 2218 - 2222 [Qed.] 0.008 secs (0.008u,0.s)
+Chars 2223 - 2301 [Theorem~atom_left_typed~t~:~Ty...] 0. secs (0.u,0.s)
+Chars 2302 - 2308 [Proof.] 0. secs (0.u,0.s)
+Chars 2309 - 2346 [destruct~t;~RkCheck.certify_wi...] 0.836 secs (0.826u,0.009s)
+Chars 2347 - 2351 [Qed.] 0.808 secs (0.8u,0.007s)
+Chars 2352 - 2451 [Theorem~pair_atom_typed~t~:~~~...] 0. secs (0.u,0.s)
+Chars 2452 - 2458 [Proof.] 0. secs (0.u,0.s)
+Chars 2459 - 2496 [destruct~t;~RkCheck.certify_wi...] 0.919 secs (0.906u,0.012s)
+Chars 2497 - 2501 [Qed.] 0.901 secs (0.893u,0.006s)
+Chars 2502 - 2577 [Theorem~join_typed~:~Typed~ε~j...] 0. secs (0.u,0.s)
+Chars 2578 - 2584 [Proof.] 0. secs (0.u,0.s)
+Chars 2585 - 2611 [RkCheck.certify_with~1024.] 0.728 secs (0.72u,0.007s)
+Chars 2612 - 2616 [Qed.] 0.671 secs (0.664u,0.007s)
+Chars 2760 - 3126 [Definition~projection~(left~:~...] 0.02 secs (0.019u,0.s)
+Chars 3127 - 3170 [Definition~project_left~:=~pro...] 0. secs (0.u,0.s)
+Chars 3171 - 3216 [Definition~project_right~:=~pr...] 0. secs (0.u,0.s)
+Chars 3217 - 3268 [Definition~Left~j~:=~NApp~(NCl...] 0. secs (0.u,0.s)
+Chars 3269 - 3322 [Definition~Right~j~:=~NApp~(NC...] 0. secs (0.u,0.s)
+Chars 3323 - 3409 [Theorem~projection_typed~side~...] 0. secs (0.u,0.s)
+Chars 3410 - 3416 [Proof.] 0. secs (0.u,0.s)
+Chars 3417 - 3458 [destruct~side;~RkCheck.certify...] 0.724 secs (0.718u,0.004s)
+Chars 3459 - 3463 [Qed.] 0.725 secs (0.722u,0.003s)
+Chars 3465 - 3550 [Definition~good_atom_case~t~:=...] 0.002 secs (0.002u,0.s)
+Chars 3551 - 3668 [Definition~good_pair_atom_case...] 0.002 secs (0.002u,0.s)
+Chars 3669 - 3859 [Definition~good_join_case~:=~~...] 0.005 secs (0.005u,0.s)
+Chars 3860 - 4088 [Definition~good_fields~:=~~~[(...] 0.005 secs (0.005u,0.s)
+Chars 4089 - 4181 [Definition~good~:=~~~close~(NL...] 0.496 secs (0.489u,0.005s)
+Chars 4182 - 4225 [Definition~Good~j~:=~NApp~(NCl...] 0. secs (0.u,0.s)
+Chars 4226 - 4405 [Definition~dispatch_good~g~:=~...] 0.005 secs (0.005u,0.s)
+Chars 4406 - 4467 [Theorem~good_sorted~:~Typed~ε~...] 0. secs (0.u,0.s)
+Chars 4468 - 4474 [Proof.] 0. secs (0.u,0.s)
+Chars 4475 - 4501 [RkCheck.certify_with~1024.] 7.2 secs (7.13u,0.064s)
+Chars 4502 - 4506 [Qed.] 6.471 secs (6.472u,0.047s)
+Chars 4508 - 4624 [Definition~good_atom_left_type...] 0.001 secs (0.001u,0.s)
+Chars 4625 - 4762 [Lemma~lift_arrow~{n}~(G~:~Ctx~...] 0. secs (0.u,0.s)
+Chars 4763 - 4769 [Proof.] 0. secs (0.u,0.s)
+Chars 4772 - 4825 [intro~H;~pose~proof~(lift_clos...] 0. secs (0.u,0.s)
+Chars 4828 - 4893 [unfold~lift_closed~at~2~in~K;~...] 0. secs (0.u,0.s)
+Chars 4894 - 4898 [Qed.] 0. secs (0.u,0.s)
+Chars 4899 - 5036 [Lemma~good_application_sorted~...] 0. secs (0.u,0.s)
+Chars 5037 - 5043 [Proof.] 0. secs (0.u,0.s)
+Chars 5044 - 5127 [intro~H;~eapply~arrow_applicat...] 0. secs (0.u,0.s)
+File "/tmp/pts-rk-joint-traversal.97rvlT/SortedProbe.v", line 101, characters 49-59:
+Error:
+In environment
+n : nat
+G : Ctx nat n
+j : Term nat n
+H : Typed G j (lift_closed carrier)
+Unable to unify
+ "?G ⊢ lift_closed ?f ⇐ Arrow (lift_closed ?A) (lift_closed ?B)"
+with "G ⊢ lift_closed good ⇐ Arrow ?A (𝓤 6)".
+

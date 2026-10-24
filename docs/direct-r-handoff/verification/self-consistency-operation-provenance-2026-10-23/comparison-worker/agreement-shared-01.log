@@ -1,0 +1,34 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 38 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.03u,0.007s)
+Chars 39 - 85 [From~PTSrk~Require~Import-(not...] 0.02 secs (0.015u,0.004s)
+Chars 86 - 152 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 153 - 257 [From~Interpretation_of_R~Requi...] 0.053 secs (0.042u,0.011s)
+Chars 258 - 374 [From~PTSrk.SelfConsistency~Req...] 0.014 secs (0.011u,0.002s)
+Chars 375 - 472 [Import~ListNotations~CommonCod...] 0.001 secs (0.001u,0.s)
+Chars 473 - 532 [Module~JT:=~~InternalJointTrav...] 0.07 secs (0.061u,0.009s)
+Chars 533 - 800 [Fixpoint~lambda_parts~{n}~(t~:...] 0.002 secs (0.001u,0.s)
+Chars 801 - 900 [Definition~assembled_or_sort~e...] 0. secs (0.u,0.s)
+Chars 901 - 1005 [Definition~agreement_telescope...] 0.225 secs (0.218u,0.005s)
+Chars 1006 - 1138 [Definition~base_context~:~Ctx~...] 0. secs (0.u,0.s)
+Chars 1139 - 1196 [Lemma~base_context_wf~:~@wf~na...] 0. secs (0.u,0.s)
+Chars 1197 - 1203 [Proof.] 0. secs (0.u,0.s)
+Chars 1204 - 1265 [apply~(RkCheck.check_ctx_sound...] 0.339 secs (0.33u,0.009s)
+Chars 1266 - 1270 [Qed.] 0.227 secs (0.223u,0.002s)
+Chars 1271 - 1344 [Definition~agreement_context~:...] 0. secs (0.u,0.s)
+Chars 1345 - 1412 [Lemma~agreement_context_wf~:~@...] 0. secs (0.u,0.s)
+Chars 1413 - 1419 [Proof.] 0. secs (0.u,0.s)
+Chars 1422 - 1489 [change~(@wf~nat~RankSorts~_~(b...] 6.135 secs (6.02u,0.098s)
+Chars 1492 - 1534 [eapply~wf_cons;~[~exact~base_c...] 0. secs (0.u,0.s)
+Chars 1537 - 1651 [apply~trace_application;~~(app...] 0.257 secs (0.252u,0.004s)
+Chars 1652 - 1656 [Qed.] 5.678 secs (5.573u,0.091s)
+Chars 1657 - 1824 [Definition~agreement_body~:=~~...] 0. secs (0.u,0.s)
+Chars 1825 - 1941 [Definition~agreement_result~:=...] 0. secs (0.u,0.s)
+Chars 1942 - 2027 [Lemma~agreement_body_typed~:~~...] 0. secs (0.u,0.s)
+Chars 2028 - 2034 [Proof.] 0. secs (0.u,0.s)

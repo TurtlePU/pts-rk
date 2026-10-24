@@ -1,0 +1,20 @@
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-checker-comparisons.bAGHxQ/CheckerComparisons.v", line 123, characters 44-55:
+Error: Cannot infer the implicit parameter n of encode_term whose type is
+"nat" in
+environment:
+context_expression : forall n : nat, NC.ContextCode n -> Expr
+n : nat
+c0 : NC.ContextCode n
+n0 : nat
+c : NC.ContextCode n0
+r : nat
+p : NC.Certificate n0
+

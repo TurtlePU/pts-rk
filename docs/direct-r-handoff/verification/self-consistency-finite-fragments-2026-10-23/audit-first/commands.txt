@@ -1,0 +1,21 @@
+git rev-parse HEAD 
+opam exec -- rocq -v 
+opam exec -- dune --version 
+opam list --installed --columns=name\,version 
+source_manifest 
+git archive --output=/Users/akuklev/air/pts-rk/_build/self-consistency-fragments-audit.kEDr7s/pristine.tar 723cf2ec61c737ae82ba33d2e7db44f650122b0e 
+tar -xf /Users/akuklev/air/pts-rk/_build/self-consistency-fragments-audit.kEDr7s/pristine.tar -C /tmp/pts-rk-fragments-pristine.6cpzUd 
+opam exec -- timeout 600 dune build --root /tmp/pts-rk-fragments-pristine.6cpzUd --display=short --no-buffer -j 2 theories/Ranks.vo 
+opam exec -- timeout 600 rocq check -silent -o -Q /tmp/pts-rk-fragments-pristine.6cpzUd/_build/default/theories PTSrk PTSrk.Ranks 
+opam exec -- timeout 900 dune build --build-dir /tmp/pts-rk-fragments-fresh.vHHK7n --display=short --no-buffer -j 2 @theories/self_consistency/finite-fragment-audit 
+reports 
+opam exec -- timeout 900 rocq check -silent -o -bytecode-compiler yes -Q /tmp/pts-rk-fragments-fresh.vHHK7n/default/theories PTSrk -Q /tmp/pts-rk-fragments-fresh.vHHK7n/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-fragments-fresh.vHHK7n/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-fragments-fresh.vHHK7n/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-fragments-fresh.vHHK7n/default/theories/self_consistency PTSrk.SelfConsistency PTSrk.SelfConsistency.FiniteFragmentAudit 
+compare_inventory 
+git diff --exit-code 723cf2ec61c737ae82ba33d2e7db44f650122b0e -- theories/Syntax.v theories/AbstractRewriting.v theories/Congruence.v theories/Reduction.v theories/Confluence.v theories/DefEq.v theories/Context.v theories/Typing.v theories/Inversions.v theories/Preservation.v theories/SN.v theories/Ranks.v 
+shasum -a 256 -c docs/direct-r-handoff/verification/combinatory-quantified-models-2026-10-23/audit-final/source-before.log 
+previous_sources 
+git diff --exit-code ffa7131 -- theories/ZFC_model 
+safety_scan 
+source_manifest 
+cmp /Users/akuklev/air/pts-rk/_build/self-consistency-fragments-audit.kEDr7s/source-before.log /Users/akuklev/air/pts-rk/_build/self-consistency-fragments-audit.kEDr7s/source-after.log 
+git diff --check -- theories/self_consistency docs/direct-r-handoff/verification/self-consistency-finite-fragments-2026-10-23 

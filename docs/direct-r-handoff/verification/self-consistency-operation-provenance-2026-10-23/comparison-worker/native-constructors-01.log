@@ -1,0 +1,16 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 38 [From~Stdlib~Require~Import~Lis...] 0.036 secs (0.03u,0.005s)
+Chars 39 - 85 [From~PTSrk~Require~Import-(not...] 0.019 secs (0.015u,0.003s)
+Chars 86 - 152 [From~PTSrk~Require~Import~Cont...] 0.002 secs (0.002u,0.s)
+Chars 153 - 269 [From~Interpretation_of_R~Requi...] 0.051 secs (0.043u,0.008s)
+Chars 270 - 385 [From~PTSrk.SelfConsistency~Req...] 0.01 secs (0.001u,0.001s)
+File "/tmp/pts-rk-comparison-graph.AaaC94/NativeConstructorProbe.v", line 5, characters 0-115:
+Error:
+Compiled library PTSrk.SelfConsistency.NamedBeta (in file /private/tmp/pts-rk-context-provenance.pPeQ4L/NamedBeta.vo) makes inconsistent assumptions over library PTSrk.SelfConsistency.NamedTemplates

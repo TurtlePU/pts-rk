@@ -1,0 +1,25 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 38 [From~Stdlib~Require~Import~Lis...] 0.037 secs (0.031u,0.005s)
+Chars 39 - 85 [From~PTSrk~Require~Import-(not...] 0.02 secs (0.015u,0.004s)
+Chars 86 - 139 [From~PTSrk~Require~Import~Cont...] 0.002 secs (0.002u,0.s)
+Chars 140 - 231 [From~Interpretation_of_R~Requi...] 0.05 secs (0.042u,0.008s)
+Chars 232 - 331 [From~PTSrk.SelfConsistency~Req...] 0.016 secs (0.013u,0.002s)
+Chars 332 - 429 [Import~ListNotations~CommonCod...] 0. secs (0.u,0.s)
+Chars 430 - 477 [Module~BA:=~~BooleanAgreement....] 0.077 secs (0.07u,0.006s)
+Chars 478 - 537 [Definition~v1~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 538 - 607 [Definition~v2~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 608 - 687 [Definition~v3~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 688 - 816 [Ltac~~comparison_substitution~...] 0. secs (0.u,0.s)
+Chars 817 - 975 [Lemma~zip_application~{n}~(G~:...] 0. secs (0.u,0.s)
+Chars 976 - 982 [Proof.] 0. secs (0.u,0.s)
+Chars 984 - 1055 [intros~Hx~Hy;~pose~proof~(lift...] 0. secs (0.u,0.s)
+Chars 1057 - 1084 [rewrite~!rename_arrow~in~H.] 0. secs (0.u,0.s)
+File "/tmp/pts-rk-comparison-graph.AaaC94/ScopedComparisonProbe.v", line 19, characters 1-27:
+Error: Found no subterm matching "rename ?M1151 (Arrow ?M1152 ?M1153)" in H.

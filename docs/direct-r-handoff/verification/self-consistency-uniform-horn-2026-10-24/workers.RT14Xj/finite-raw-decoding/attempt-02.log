@@ -1,0 +1,17 @@
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 433 - 486 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.031u,0.006s)
+Chars 487 - 533 [From~PTSrk~Require~Import-(not...] 0.02 secs (0.015u,0.004s)
+Chars 534 - 620 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 621 - 712 [From~Interpretation_of_R~Requi...] 0.049 secs (0.04u,0.009s)
+Chars 713 - 865 [From~PTSrk.Combinatory~Require...] 0.065 secs (0.055u,0.009s)
+Chars 866 - 987 [From~PTSrk.SelfConsistency~Req...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/FiniteRawDecoding.v", line 14, characters 18-37:
+Error: Unable to locate library
+FiniteCodeFragments with prefix PTSrk.SelfConsistency (while searching for a .vos file).

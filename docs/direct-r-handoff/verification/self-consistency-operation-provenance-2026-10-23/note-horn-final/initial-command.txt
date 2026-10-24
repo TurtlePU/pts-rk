@@ -1,0 +1,1 @@
+bash theories/self_consistency/build-note.sh DIRECT_ROADMAP

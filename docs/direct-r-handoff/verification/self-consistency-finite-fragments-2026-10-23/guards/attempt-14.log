@@ -1,0 +1,21 @@
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 12, characters 0-24:
+Warning: Trying to mask the absolute name "FiniteCaseGuards"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/self_consistency/FiniteCaseGuards.v", line 224, characters 12-21:
+Error:
+In environment
+A : Term nat 0
+a : nat
+cs : list (Term nat 0)
+P : Term nat 0
+HA : Typed ε A (𝓤 a)
+Hcs : Forall (fun c : Term nat 0 => Typed ε c A) cs
+HP : Typed ε P (motive_type A)
+Unable to unify "?Γ & ?U ⊢ shift ?t ⇐ shift ?T" with
+ "ε & A & guard_type A cs (var fzero)
+  ⊢ shift (app (lift_closed P) (var fzero)) ⇐ 𝓤 2".
+

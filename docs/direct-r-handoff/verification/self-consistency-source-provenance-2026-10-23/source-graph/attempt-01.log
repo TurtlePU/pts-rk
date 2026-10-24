@@ -1,0 +1,20 @@
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/CheckerSourceGraph.v", line 236, characters 60-71:
+Error: Cannot infer the implicit parameter n of encode_term whose type is
+"nat" in
+environment:
+ContextGraph : forall n : nat, NC.ContextCode n -> CC.Expr -> Prop
+n : nat
+c : NC.ContextCode n
+r : nat
+p : NC.Certificate n
+ec, ep : CC.Expr
+t, A : Term nat n
+

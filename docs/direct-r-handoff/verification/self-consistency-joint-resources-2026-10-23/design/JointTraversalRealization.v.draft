@@ -1,0 +1,276 @@
+(** UNVERIFIED DESIGN ONLY: never compiled, not part of the Rocq library.
+    Depends on unfinished build_zip/generation laws in the joint-traversal draft.
+    Intended claim: every raw pair has an independently generated joint traversal.
+    The fixed internal build_zip constructs its comparison evidence; standard
+    projection and computation laws connect it to the unchanged comparator.
+    Alignment of separately represented inputs remains external. *)
+From Stdlib Require Import Lists.List Bool.Bool.
+From PTSrk Require Import -(notations) Syntax.
+From PTSrk Require Import Context Typing Ranks DefEq Reduction.
+From Interpretation_of_R Require Import DirectRCommonCodes DirectRKernel
+  DirectRStructural DirectRCheck DirectREval.
+From PTSrk.SelfConsistency Require Import StructuralCodes InternalCarrier
+  GuardedTables InternalCodeComparison InternalJointTraversal
+  CodeComparisonRealization CheckerComparisons InternalComparisonFolds
+  CertificateSerialization NativeProofCodes.
+
+Module JointTraversalRealization.
+Import CommonCodes DirectRKernel.Core Structural.
+Module IC := InternalCarrier.InternalCarrier.
+Module J := InternalJointTraversal.InternalJointTraversal.
+Module CMP := InternalCodeComparison.InternalCodeComparison.
+Module CR := CodeComparisonRealization.CodeComparisonRealization.
+Module CC := CheckerComparisons.CheckerComparisons.
+Module F := InternalComparisonFolds.InternalComparisonFolds.
+Module B := GuardedTables.GuardedTables.
+Module NC := NativeProofCodes.NativeProofCodes.
+
+Definition v1 {n} : Term nat (S (S n)) := var (fsucc fzero).
+
+Ltac joint_substitution H :=
+  unfold J.atom_left_at, J.pair_atom_at, J.join_at, J.left_at, J.right_at,
+    J.good_at, J.build_zip_at, CMP.zip_at, CMP.pair_at,
+    J.w0, J.w1, J.w2, J.w3, v1, V0 in H;
+  structural_substitution_in H.
+
+Lemma atom_left_application t y : Typed ε y IC.carrier ->
+  Typed ε (J.atom_left_at t y) J.carrier.
+Proof. intro H; unfold J.atom_left_at; rewrite lift_closed_zero.
+  eapply arrow_application; [apply J.atom_left_typed |exact H]. Qed.
+Lemma pair_atom_application t a b : Typed ε a IC.carrier -> Typed ε b IC.carrier ->
+  Typed ε (J.pair_atom_at t a b) J.carrier.
+Proof. intros Ha Hb; unfold J.pair_atom_at; rewrite lift_closed_zero.
+  eapply arrow_application; [eapply arrow_application;
+    [apply J.pair_atom_typed |exact Ha] |exact Hb]. Qed.
+Lemma join_application j k : Typed ε j J.carrier -> Typed ε k J.carrier ->
+  Typed ε (J.join_at j k) J.carrier.
+Proof. intros Hj Hk; unfold J.join_at; rewrite lift_closed_zero.
+  eapply arrow_application; [eapply arrow_application;
+    [apply J.join_typed |exact Hj] |exact Hk]. Qed.
+
+Lemma good_atom_application t y : Typed ε y IC.carrier ->
+  Typed ε (app (J.good_atom_left t) y) (J.good_at (J.atom_left_at t y)).
+Proof.
+  intro Hy; pose proof (J.good_atom_left_typed t) as H.
+  change (Typed ε (J.good_atom_left t)
+    (Π IC.carrier (J.good_at (J.atom_left_at t V0)))) in H.
+  pose proof (tApp H Hy) as K; joint_substitution K.
+  unfold J.good_at, J.atom_left_at; rewrite !lift_closed_zero; exact K.
+Qed.
+Lemma good_pair_atom_application t a b :
+  Typed ε a IC.carrier -> Typed ε b IC.carrier ->
+  Typed ε (app (app (J.good_pair_atom t) a) b)
+    (J.good_at (J.pair_atom_at t a b)).
+Proof.
+  intros Ha Hb; pose proof (J.good_pair_atom_typed t) as H.
+  change (Typed ε (J.good_pair_atom t)
+    (Π IC.carrier (Π (lift_closed IC.carrier)
+      (J.good_at (J.pair_atom_at t v1 V0))))) in H.
+  pose proof (tApp H Ha) as H1; joint_substitution H1.
+  pose proof (tApp H1 Hb) as H2; joint_substitution H2.
+  unfold J.good_at, J.pair_atom_at; rewrite !lift_closed_zero; exact H2.
+Qed.
+Lemma good_join_application j k gj gk :
+  Typed ε j J.carrier -> Typed ε k J.carrier ->
+  Typed ε gj (J.good_at j) -> Typed ε gk (J.good_at k) ->
+  Typed ε (app (app (app (app J.good_join j) k) gj) gk)
+    (J.good_at (J.join_at j k)).
+Proof.
+  intros Hj Hk Hgj Hgk; pose proof J.good_join_typed as H.
+  change (Typed ε J.good_join (Π J.carrier (Π (lift_closed J.carrier)
+    (Arrow (J.good_at v1) (Arrow (J.good_at V0)
+      (J.good_at (J.join_at v1 V0))))))) in H.
+  pose proof (tApp H Hj) as H1; joint_substitution H1.
+  pose proof (tApp H1 Hk) as H2; joint_substitution H2.
+  unfold J.good_at, J.join_at in *; rewrite !lift_closed_zero in *.
+  eapply arrow_application; [eapply arrow_application; [exact H2 |exact Hgj] |exact Hgk].
+Qed.
+
+Fixpoint quote_align (x y : code) : closed_term :=
+  match x,y with
+  | Atom t, y => J.atom_left_at t (IC.quote y)
+  | Pair a b, Atom t => J.pair_atom_at t (IC.quote a) (IC.quote b)
+  | Pair a b, Pair c d => J.join_at (quote_align a c) (quote_align b d)
+  end.
+Fixpoint generation_align (x y : code) : closed_term :=
+  match x,y with
+  | Atom t, y => app (J.good_atom_left t) (IC.quote y)
+  | Pair a b, Atom t => app (app (J.good_pair_atom t) (IC.quote a)) (IC.quote b)
+  | Pair a b, Pair c d => app (app (app (app J.good_join
+      (quote_align a c)) (quote_align b d)) (generation_align a c)) (generation_align b d)
+  end.
+Theorem quote_align_typed x y : Typed ε (quote_align x y) J.carrier.
+Proof.
+  revert y; induction x as [t|a IHa b IHb]; intro y.
+  - apply atom_left_application, IC.quote_typed.
+  - destruct y; cbn [quote_align];
+      auto using pair_atom_application, join_application, IC.quote_typed.
+Qed.
+Theorem generation_align_typed x y :
+  Typed ε (generation_align x y) (J.good_at (quote_align x y)).
+Proof.
+  revert y; induction x as [t|a IHa b IHb]; intro y.
+  - apply good_atom_application, IC.quote_typed.
+  - destruct y as [t|c d]; cbn [quote_align generation_align].
+    + apply good_pair_atom_application; apply IC.quote_typed.
+    + apply good_join_application; auto using quote_align_typed.
+Qed.
+
+Lemma left_atom_beta t (y : closed_term) :
+  J.left_at (J.atom_left_at t y) =ᵝ IC.atom t.
+Proof. pose proof (replace_equiv (fin_match y (fun i : Fin 0 => match i with end))
+  _ _ (J.left_atom_schema t)) as H; joint_substitution H; exact H. Qed.
+Lemma right_atom_beta t (y : closed_term) :
+  J.right_at (J.atom_left_at t y) =ᵝ y.
+Proof. pose proof (replace_equiv (fin_match y (fun i : Fin 0 => match i with end))
+  _ _ (J.right_atom_schema t)) as H; joint_substitution H; exact H. Qed.
+Lemma left_pair_atom_beta t (a b : closed_term) :
+  J.left_at (J.pair_atom_at t a b) =ᵝ CMP.pair_at a b.
+Proof. pose proof (replace_equiv (fin_match b (fin_match a (fun i : Fin 0 => match i with end)))
+  _ _ (J.left_pair_atom_schema t)) as H; joint_substitution H; exact H. Qed.
+Lemma right_pair_atom_beta t (a b : closed_term) :
+  J.right_at (J.pair_atom_at t a b) =ᵝ IC.atom t.
+Proof. pose proof (replace_equiv (fin_match b (fin_match a (fun i : Fin 0 => match i with end)))
+  _ _ (J.right_pair_atom_schema t)) as H; joint_substitution H; exact H. Qed.
+Lemma left_join_beta (j k : closed_term) :
+  J.left_at (J.join_at j k) =ᵝ CMP.pair_at (J.left_at j) (J.left_at k).
+Proof. pose proof (replace_equiv (fin_match k (fin_match j (fun i : Fin 0 => match i with end)))
+  _ _ J.left_join_schema) as H; joint_substitution H; exact H. Qed.
+Lemma right_join_beta (j k : closed_term) :
+  J.right_at (J.join_at j k) =ᵝ CMP.pair_at (J.right_at j) (J.right_at k).
+Proof. pose proof (replace_equiv (fin_match k (fin_match j (fun i : Fin 0 => match i with end)))
+  _ _ J.right_join_schema) as H; joint_substitution H; exact H. Qed.
+
+Theorem left_quote_beta x y : J.left_at (quote_align x y) =ᵝ IC.quote x.
+Proof.
+  revert y; induction x as [t|a IHa b IHb]; intro y.
+  - apply left_atom_beta.
+  - destruct y as [t|c d]; cbn [quote_align IC.quote].
+    + apply left_pair_atom_beta.
+    + transitivity (CMP.pair_at (J.left_at (quote_align a c)) (J.left_at (quote_align b d))).
+      * apply left_join_beta.
+      * unfold CMP.pair_at; rewrite lift_closed_zero.
+        apply beta_app; [apply beta_app; [reflexivity |apply IHa] |apply IHb].
+Qed.
+Theorem right_quote_beta x y : J.right_at (quote_align x y) =ᵝ IC.quote y.
+Proof.
+  revert y; induction x as [t|a IHa b IHb]; intro y.
+  - apply right_atom_beta.
+  - destruct y as [t|c d]; cbn [quote_align IC.quote].
+    + apply right_pair_atom_beta.
+    + transitivity (CMP.pair_at (J.right_at (quote_align a c)) (J.right_at (quote_align b d))).
+      * apply right_join_beta.
+      * unfold CMP.pair_at; rewrite lift_closed_zero.
+        apply beta_app; [apply beta_app; [reflexivity |apply IHa] |apply IHb].
+Qed.
+
+Lemma build_atom_beta t (y : closed_term) :
+  J.build_zip_at (J.atom_left_at t y) (app (J.good_atom_left t) y)
+    =ᵝ app (CMP.atom_zip t) y.
+Proof. pose proof (replace_equiv (fin_match y (fun i : Fin 0 => match i with end))
+  _ _ (J.build_zip_atom_schema t)) as H; joint_substitution H; exact H. Qed.
+Lemma build_pair_atom_beta t (a b : closed_term) :
+  J.build_zip_at (J.pair_atom_at t a b) (app (app (J.good_pair_atom t) a) b)
+    =ᵝ app (app (CMP.pair_atom_zip t) a) b.
+Proof. pose proof (replace_equiv (fin_match b (fin_match a (fun i : Fin 0 => match i with end)))
+  _ _ (J.build_zip_pair_atom_schema t)) as H; joint_substitution H; exact H. Qed.
+Lemma build_join_beta (j k gj gk : closed_term) :
+  J.build_zip_at (J.join_at j k) (app (app (app (app J.good_join j) k) gj) gk) =ᵝ
+  app (app (app (app (app (app CMP.pair_pair_zip (J.left_at j)) (J.left_at k))
+    (J.right_at j)) (J.right_at k)) (J.build_zip_at j gj)) (J.build_zip_at k gk).
+Proof. pose proof (replace_equiv (fin_match gk (fin_match gj
+  (fin_match k (fin_match j (fun i : Fin 0 => match i with end)))))
+  _ _ J.build_zip_join_schema) as H; joint_substitution H; exact H. Qed.
+
+Definition built_zip x y := J.build_zip_at (quote_align x y) (generation_align x y).
+Theorem built_zip_beta x y : built_zip x y =ᵝ CR.quote_zip x y.
+Proof.
+  revert y; induction x as [t|a IHa b IHb]; intro y.
+  - apply build_atom_beta.
+  - destruct y as [t|c d].
+    + apply build_pair_atom_beta.
+    + unfold built_zip at 1; cbn [quote_align generation_align CR.quote_zip].
+      transitivity (app (app (app (app (app (app CMP.pair_pair_zip
+        (J.left_at (quote_align a c))) (J.left_at (quote_align b d)))
+        (J.right_at (quote_align a c))) (J.right_at (quote_align b d)))
+        (built_zip a c)) (built_zip b d)).
+      * apply build_join_beta.
+      * apply beta_app; [|apply IHb].
+        apply beta_app; [|apply IHa].
+        apply beta_app; [|apply right_quote_beta].
+        apply beta_app; [|apply right_quote_beta].
+        apply beta_app; [|apply left_quote_beta].
+        apply beta_app; [reflexivity |apply left_quote_beta].
+Qed.
+
+(** One fixed PTS operation constructs Zip internally and immediately consumes
+    it. Its guard is only joint-constructor generation, never an answer. *)
+Definition compare_joint_fields := [(0, J.J); (1, J.Good (NVar 0))].
+Definition compare_joint_type := close
+  (npis compare_joint_fields (NClosed B.boolean)) eq_refl.
+Definition compare_joint := close (nlams compare_joint_fields
+  (napps (NClosed CMP.compare) [J.Left (NVar 0); J.Right (NVar 0);
+    napps (NClosed J.build_zip) [NVar 0; NVar 1]])) eq_refl.
+Theorem compare_joint_type_sorted : Typed ε compare_joint_type (𝓤 7).
+Proof. RkCheck.certify_with 4096. Qed.
+Theorem compare_joint_typed : Typed ε compare_joint compare_joint_type.
+Proof. RkCheck.certify_with 4096. Qed.
+Lemma compare_joint_application j g : Typed ε j J.carrier ->
+  Typed ε g (J.good_at j) -> Typed ε (app (app compare_joint j) g) B.boolean.
+Proof.
+  intros Hj Hg; pose proof compare_joint_typed as H.
+  change (Typed ε compare_joint (Π J.carrier
+    (Arrow (J.good_at V0) (lift_closed B.boolean)))) in H.
+  pose proof (tApp H Hj) as H1; joint_substitution H1.
+  eapply arrow_application; [exact H1 |exact Hg].
+Qed.
+Lemma compare_joint_schema :
+  app (app (@lift_closed 2 compare_joint) (var (fsucc fzero))) (var fzero) =ᵝ
+  CMP.compare_at (J.left_at (var (fsucc fzero))) (J.right_at (var (fsucc fzero)))
+    (J.build_zip_at (var (fsucc fzero)) (var fzero)).
+Proof. apply (RkEval.convert_equal_sound 4096); vm_compute; reflexivity. Qed.
+Lemma compare_joint_beta (j g : closed_term) : app (app compare_joint j) g =ᵝ
+  CMP.compare_at (J.left_at j) (J.right_at j) (J.build_zip_at j g).
+Proof.
+  pose proof (replace_equiv (fin_match g (fin_match j (fun i : Fin 0 => match i with end)))
+    _ _ compare_joint_schema) as H.
+  unfold CMP.compare_at in H; joint_substitution H; exact H.
+Qed.
+Definition comparison x y := app (app compare_joint (quote_align x y)) (generation_align x y).
+Theorem comparison_typed x y : Typed ε (comparison x y) B.boolean.
+Proof. apply compare_joint_application; auto using quote_align_typed, generation_align_typed. Qed.
+Theorem comparison_beta x y : comparison x y =ᵝ B.point (CC.code_eqb x y).
+Proof.
+  transitivity (CR.comparison x y); [|apply CR.comparison_beta].
+  unfold comparison; transitivity (CMP.compare_at (J.left_at (quote_align x y))
+    (J.right_at (quote_align x y)) (built_zip x y)).
+  - apply compare_joint_beta.
+  - unfold CMP.compare_at, CR.comparison; rewrite lift_closed_zero.
+    apply beta_app; [|apply built_zip_beta].
+    apply beta_app; [|apply right_quote_beta].
+    apply beta_app; [reflexivity |apply left_quote_beta].
+Qed.
+
+(** Exact original-checker execution is retained after replacing the external
+    Zip builder by the fixed internal operation. Source compilation and the
+    joint alignment data are still supplied by executable native generators. *)
+Definition expression e := F.quote_with comparison e.
+Definition run e := app F.evaluate (expression e).
+Theorem expression_typed e : Typed ε (expression e) F.expression.
+Proof. apply F.quote_with_typed, comparison_typed. Qed.
+Theorem run_typed e : Typed ε (run e) B.boolean.
+Proof. apply F.evaluate_quote_typed, comparison_typed. Qed.
+Theorem run_reduces e : reduces_to nat 0 (run e) (B.point (CC.eval e)).
+Proof. apply F.evaluate_quote_reduces, comparison_beta. Qed.
+Theorem run_output_exact e b : reduces_to nat 0 (run e) (B.point b) <-> CC.eval e = b.
+Proof. apply F.evaluate_quote_output_exact, comparison_beta. Qed.
+Definition raw_program q := run (CC.raw_check_expression q).
+Definition bottom_program q := run (CC.raw_bottom_expression q).
+Theorem raw_program_exact q b :
+  reduces_to nat 0 (raw_program q) (B.point b) <-> raw_check q = b.
+Proof. unfold raw_program; rewrite run_output_exact, CC.eval_raw_check_expression; reflexivity. Qed.
+Theorem bottom_program_exact q b :
+  reduces_to nat 0 (bottom_program q) (B.point b) <-> raw_bottom_check q = b.
+Proof. unfold bottom_program; rewrite run_output_exact, CC.eval_raw_bottom_expression; reflexivity. Qed.
+
+End JointTraversalRealization.

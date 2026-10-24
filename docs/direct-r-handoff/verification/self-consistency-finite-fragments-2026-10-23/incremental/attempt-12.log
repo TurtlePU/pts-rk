@@ -1,0 +1,50 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/FiniteSelectorSeparation.{glob,vo}
+        rocq theories/self_consistency/FiniteCaseGuards.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteFragmentRejection.v", line 13, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/FiniteFragmentRejection.v", line 13, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/FiniteFragmentRejection.v", line 35, characters 2-28:
+Error: Found no subterm matching "nth_error (map ?M1255 ?M1257) ?M1256"
+in the current goal.
+
+File "theories/self_consistency/dune", lines 1-19, characters 0-1185:
+ 1 | (rocq.theory
+ 2 |  (name PTSrk.SelfConsistency)
+ 3 |  (package pts-rk)
+....
+17 |    FiniteFragmentNormalization FiniteFragmentTables FiniteFragmentRejection Audit)
+18 |  (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity
+19 |    PTSrk.Combinatory Interpretation_of_R))
+        rocq theories/self_consistency/FiniteFragmentRejection.{glob,vo} (exit 1)

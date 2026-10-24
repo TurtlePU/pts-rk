@@ -1,0 +1,35 @@
+(rocq.theory
+ (name PTSrk.Combinatory)
+ (package pts-rk)
+ (modules Core Presentation FiniteBasis ProductCatalogue Hilbert ProductHilbert
+   IdentityCatalogue ConstantCatalogue SubstitutionCatalogue CatalogueHilbert
+   CatalogueEconomy ContextualHilbert ProductExposure ContextualSubstitution
+   HilbertAbstraction CatalogueShapes HilbertReplay
+   AffineDuplication QuantitativeNormalization FiniteNormalForms GroundHorn
+   BCKW KnuthBounds ChurchFinite NativeCanonicity GroundHornConsistency
+   FiniteHorn HilbertGrounding HilbertFiniteModels FiniteHornChurch
+   FiniteModelBoundary FiniteUniversalHorn FiniteNativeModelBoundary
+   FiniteAlgebraSearch FiniteOperationAlgebras FiniteModelRealization
+   MM0FiniteSignature MM0FiniteAxioms MM0FiniteSearch MM0ProjectionModel
+   FiniteModelSoundness MM0SyntaxSoundness MM0InternalSoundness
+   GuardedFiniteCarriers GuardedHornFragments MM0GuardedQuantification
+   GuardedHilbertModels)
+ (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity Interpretation_of_R))
+
+(alias
+ (name audit)
+ (deps Core.vo Presentation.vo FiniteBasis.vo ProductCatalogue.vo Hilbert.vo
+   ProductHilbert.vo IdentityCatalogue.vo ConstantCatalogue.vo
+   SubstitutionCatalogue.vo CatalogueHilbert.vo CatalogueEconomy.vo
+   ContextualHilbert.vo ProductExposure.vo ContextualSubstitution.vo
+   HilbertAbstraction.vo CatalogueShapes.vo HilbertReplay.vo
+   AffineDuplication.vo QuantitativeNormalization.vo FiniteNormalForms.vo
+   GroundHorn.vo BCKW.vo KnuthBounds.vo ChurchFinite.vo NativeCanonicity.vo
+   GroundHornConsistency.vo FiniteHorn.vo HilbertGrounding.vo
+   HilbertFiniteModels.vo FiniteHornChurch.vo FiniteModelBoundary.vo
+   FiniteUniversalHorn.vo FiniteNativeModelBoundary.vo FiniteAlgebraSearch.vo
+   FiniteOperationAlgebras.vo FiniteModelRealization.vo MM0FiniteSignature.vo
+   MM0FiniteAxioms.vo MM0FiniteSearch.vo MM0ProjectionModel.vo
+   FiniteModelSoundness.vo MM0SyntaxSoundness.vo MM0InternalSoundness.vo
+   GuardedFiniteCarriers.vo GuardedHornFragments.vo MM0GuardedQuantification.vo
+   GuardedHilbertModels.vo))

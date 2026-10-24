@@ -1,0 +1,53 @@
+(rocq.theory
+ (name PTSrk.Combinatory)
+ (package pts-rk)
+ (modules Core Presentation FiniteBasis ProductCatalogue Hilbert ProductHilbert
+   IdentityCatalogue ConstantCatalogue SubstitutionCatalogue CatalogueHilbert
+   CatalogueEconomy ContextualHilbert ProductExposure ContextualSubstitution
+   HilbertAbstraction CatalogueShapes HilbertReplay
+   AffineDuplication QuantitativeNormalization FiniteNormalForms GroundHorn
+   BCKW KnuthBounds ChurchFinite NativeCanonicity GroundHornConsistency
+   FiniteHorn HilbertGrounding HilbertFiniteModels FiniteHornChurch
+   FiniteModelBoundary FiniteUniversalHorn FiniteNativeModelBoundary
+   FiniteAlgebraSearch FiniteOperationAlgebras FiniteModelRealization
+   MM0FiniteSignature MM0FiniteAxioms MM0FiniteSearch MM0ProjectionModel
+   FiniteModelSoundness MM0SyntaxSoundness MM0InternalSoundness
+   GuardedFiniteCarriers GuardedHornFragments MM0GuardedQuantification
+   GuardedHilbertModels GuardedBetaGraphs GuardedHilbertTables
+   GuardedHilbertCoverage MM0NativeSyntax MM0ComputationalAdequacy
+   MM0NativeReduction MM0CatalogueAdequacy MM0CatalogueRealization
+   MM0GuardedSyntaxAlgebra MM0GuardedReflection MM0HilbertAdequacy
+   HornProofEncoding HornProofRealization GuardedFiniteSupport
+   HornInternalSoundness MM0GuardedInternalReflection
+   FiniteTypeDispatch IndexedHornEncoding IndexedHornRealization
+   MM0GuardProvenance IndexedHornSoundness MM0IndexedReflection
+   IndexedHornTransport FiniteGeneratedCodes FiniteMapCoherence
+   MM0InternalDecoder MM0InternalGuard)
+ (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity Interpretation_of_R))
+
+(alias
+ (name audit)
+ (deps Core.vo Presentation.vo FiniteBasis.vo ProductCatalogue.vo Hilbert.vo
+   ProductHilbert.vo IdentityCatalogue.vo ConstantCatalogue.vo
+   SubstitutionCatalogue.vo CatalogueHilbert.vo CatalogueEconomy.vo
+   ContextualHilbert.vo ProductExposure.vo ContextualSubstitution.vo
+   HilbertAbstraction.vo CatalogueShapes.vo HilbertReplay.vo
+   AffineDuplication.vo QuantitativeNormalization.vo FiniteNormalForms.vo
+   GroundHorn.vo BCKW.vo KnuthBounds.vo ChurchFinite.vo NativeCanonicity.vo
+   GroundHornConsistency.vo FiniteHorn.vo HilbertGrounding.vo
+   HilbertFiniteModels.vo FiniteHornChurch.vo FiniteModelBoundary.vo
+   FiniteUniversalHorn.vo FiniteNativeModelBoundary.vo FiniteAlgebraSearch.vo
+   FiniteOperationAlgebras.vo FiniteModelRealization.vo MM0FiniteSignature.vo
+   MM0FiniteAxioms.vo MM0FiniteSearch.vo MM0ProjectionModel.vo
+   FiniteModelSoundness.vo MM0SyntaxSoundness.vo MM0InternalSoundness.vo
+   GuardedFiniteCarriers.vo GuardedHornFragments.vo MM0GuardedQuantification.vo
+   GuardedHilbertModels.vo GuardedBetaGraphs.vo GuardedHilbertTables.vo
+   GuardedHilbertCoverage.vo MM0NativeSyntax.vo MM0ComputationalAdequacy.vo
+   MM0NativeReduction.vo MM0CatalogueAdequacy.vo MM0CatalogueRealization.vo
+   MM0GuardedSyntaxAlgebra.vo MM0GuardedReflection.vo MM0HilbertAdequacy.vo
+   HornProofEncoding.vo HornProofRealization.vo GuardedFiniteSupport.vo
+   HornInternalSoundness.vo MM0GuardedInternalReflection.vo
+   FiniteTypeDispatch.vo IndexedHornEncoding.vo IndexedHornRealization.vo
+   MM0GuardProvenance.vo IndexedHornSoundness.vo MM0IndexedReflection.vo
+   IndexedHornTransport.vo FiniteGeneratedCodes.vo FiniteMapCoherence.vo
+   MM0InternalDecoder.vo MM0InternalGuard.vo))

@@ -1,0 +1,473 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+        rocq theories/.PTSrk.theory.d
+        rocq theories/CombinatoryLogic-rk/.PTSrk.theory.d
+        rocq theories/Interpretation_of_R/.Interpretation_of_R.theory.d
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Bounds.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Literals.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Morphisms.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v, 
+    required library PTSrk.NormalizationComplexity.SortBounds exactly matches several files in path
+    (found SortBounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v, 
+    required library PTSrk.NormalizationComplexity.AutomaticBound exactly matches several files in path
+    (found AutomaticBound.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file STLCEmbedding.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file STLCEmbedding.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.EstimatorChecks exactly matches several files in path
+    (found EstimatorChecks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.SortBounds exactly matches several files in path
+    (found SortBounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.AutomaticBound exactly matches several files in path
+    (found AutomaticBound.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.Normalization exactly matches several files in path
+    (found Normalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v, 
+    required library PTSrk.NormalizationComplexity.STLCEmbedding exactly matches several files in path
+    (found STLCEmbedding.v in ../NormalizationComplexity and .; used the latter).
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/GroundHorn.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Syntax.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/StructuralCodes.{glob,vo}
+Closed under the global context
+        rocq theories/Congruence.{glob,vo}
+Closed under the global context
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRCommonCodes.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/NormalizationComplexity/Rank.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteHorn.{glob,vo}
+        rocq theories/self_consistency/FiniteCodeFragments.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+        rocq theories/NormalizationComplexity/Greedy.{glob,vo}
+        rocq theories/SN.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/NormalizationComplexity/Literals.{glob,vo}
+        rocq theories/self_consistency/NativeProofCodes.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+        rocq theories/NormalizationComplexity/Bounds.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Interpretation_of_R/DirectREval.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateAdequacy.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/ChurchFinite.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/NormalizationComplexity/Runtime.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/Interpretation_of_R/DirectRKernel.{glob,vo}
+        rocq theories/NormalizationComplexity/RedexRanks.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/SortRenaming.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteHornChurch.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/Interpretation_of_R/DirectRCheck.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+        rocq theories/Interpretation_of_R/DirectRStructural.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/Core.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/NormalizationComplexity/Morphisms.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRLogic.{glob,vo}
+        rocq theories/self_consistency/RankCompression.{glob,vo}
+        rocq theories/NormalizationComplexity/Safety.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/NormalizationComplexity/SortBounds.{glob,vo}
+        rocq theories/NormalizationComplexity/Descent.{glob,vo}
+        rocq theories/self_consistency/CertificateSerialization.{glob,vo}
+        rocq theories/NormalizationComplexity/AutomaticBound.{glob,vo}
+        rocq theories/NormalizationComplexity/BoundedNormalization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/NormalizationComplexity/Normalization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/NativeCanonicity.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/QuantitativeNormalization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteNormalForms.{glob,vo}
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-finite-fragments.EzatGM/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteFragmentNormalization.v", line 21, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/FiniteFragmentNormalization.v", line 21, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/self_consistency/FiniteFragmentNormalization.v", line 164, characters 12-29:
+Error:
+In environment
+ps : list (Certificate 0)
+p : Certificate 0
+H : In p ps
+y : Certificate 0
+Unable to unify "nodes (subject y)" with "nodes y".
+
+File "theories/self_consistency/dune", lines 1-18, characters 0-1116:
+ 1 | (rocq.theory
+ 2 |  (name PTSrk.SelfConsistency)
+ 3 |  (package pts-rk)
+....
+16 |    FiniteCodeFragments FiniteFragmentNormalization FiniteFragmentTables Audit)
+17 |  (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity
+18 |    PTSrk.Combinatory Interpretation_of_R))
+        rocq theories/self_consistency/FiniteFragmentNormalization.{glob,vo} (exit 1)

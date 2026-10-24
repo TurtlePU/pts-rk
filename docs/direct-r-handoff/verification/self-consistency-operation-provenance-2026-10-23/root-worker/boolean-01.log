@@ -1,0 +1,24 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 221 - 267 [From~PTSrk~Require~Import-(not...] 0.056 secs (0.045u,0.01s)
+Chars 268 - 321 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 322 - 428 [From~Interpretation_of_R~Requi...] 0.053 secs (0.044u,0.009s)
+Chars 429 - 508 [From~PTSrk.SelfConsistency~Req...] 0.008 secs (0.006u,0.001s)
+Chars 510 - 534 [Module~BooleanAgreement.] 0. secs (0.u,0.s)
+Chars 535 - 570 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 571 - 630 [Module~EG:=~~InternalExecution...] 0.031 secs (0.026u,0.004s)
+Chars 631 - 672 [Module~GT:=~~GuardedTables.Gua...] 0.007 secs (0.006u,0.001s)
+Chars 674 - 734 [Definition~v1~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 735 - 807 [Definition~v2~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 808 - 892 [Definition~v3~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 894 - 967 [Definition~refl_type~:~closed_...] 0. secs (0.u,0.s)
+Chars 968 - 1023 [Theorem~refl_type_sorted~:~Typ...] 0.001 secs (0.001u,0.s)
+File "./theories/self_consistency/BooleanAgreement.v", line 21, characters 47-51:
+Error: The reference 𝓐 was not found in the current environment. Did you mean
+𝓤, ε, Π, S, O or I?

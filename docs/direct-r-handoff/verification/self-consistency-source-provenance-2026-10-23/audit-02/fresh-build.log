@@ -1,0 +1,1050 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+        rocq theories/.PTSrk.theory.d
+        rocq theories/Interpretation_of_R/.Interpretation_of_R.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Congruence.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/StructuralCodes.{glob,vo}
+        rocq theories/Interpretation_of_R/DirectRCommonCodes.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Reduction.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/ResourcePaths.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/self_consistency/FiniteCodeFragments.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/SN.{glob,vo}
+        rocq theories/self_consistency/NativeProofCodes.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectREval.{glob,vo}
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/Interpretation_of_R/DirectRKernel.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateAdequacy.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRCheck.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRStructural.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/SortRenaming.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/GuardedTables.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/RankCompression.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateSerialization.{glob,vo}
+        rocq theories/self_consistency/InternalCarrier.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CheckerComparisons.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalResources.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CheckerSourceGraph.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalComparisonFolds.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/ResourceRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalPaths.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalExecutionGraph.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/LookupHistory.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/PathSubstitution.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/InternalCapacity.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/PathRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/HistoryRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CapacityBounds.{glob,vo}
+        rocq theories/self_consistency/InternalCodeComparison.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CodeComparisonRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CheckerExecution.{glob,vo}
+        rocq theories/self_consistency/CheckerResourceBounds.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/ComputationBoundary.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CheckerGraphRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+CheckerSourceGraph.source_fields_agreement
+     : forall (p : CheckerSourceGraph.NC.Certificate ?n)
+         (t A : Syntax.Term nat ?n),
+       CheckerSourceGraph.SourceFields p t A ->
+       t = CheckerSourceGraph.NC.subject p /\
+       A = CheckerSourceGraph.NC.type p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.source_fields_coverage
+     : forall p : CheckerSourceGraph.NC.Certificate ?n,
+       CheckerSourceGraph.SourceFields p (CheckerSourceGraph.NC.subject p)
+         (CheckerSourceGraph.NC.type p)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.source_fields_unique
+     : forall (p : CheckerSourceGraph.NC.Certificate ?n)
+         (t A u B : Syntax.Term nat ?n),
+       CheckerSourceGraph.SourceFields p t A ->
+       CheckerSourceGraph.SourceFields p u B -> t = u /\ A = B
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.step_fields_agreement
+     : forall (p : CheckerSourceGraph.NC.StepCode ?n)
+         (t u : Syntax.Term nat ?n),
+       CheckerSourceGraph.StepFields p t u ->
+       t = CheckerSourceGraph.NC.step_source p /\
+       u = CheckerSourceGraph.NC.step_target p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.step_fields_coverage
+     : forall p : CheckerSourceGraph.NC.StepCode ?n,
+       CheckerSourceGraph.StepFields p (CheckerSourceGraph.NC.step_source p)
+         (CheckerSourceGraph.NC.step_target p)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.step_fields_unique
+     : forall (p : CheckerSourceGraph.NC.StepCode ?n)
+         (t u v w : Syntax.Term nat ?n),
+       CheckerSourceGraph.StepFields p t u ->
+       CheckerSourceGraph.StepFields p v w -> t = v /\ u = w
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_fields_agreement
+     : forall (p : CheckerSourceGraph.NC.EqualityCode ?n)
+         (t u : Syntax.Term nat ?n),
+       CheckerSourceGraph.EqualityFields p t u ->
+       t = CheckerSourceGraph.NC.equality_source p /\
+       u = CheckerSourceGraph.NC.equality_target p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_fields_coverage
+     : forall p : CheckerSourceGraph.NC.EqualityCode ?n,
+       CheckerSourceGraph.EqualityFields p
+         (CheckerSourceGraph.NC.equality_source p)
+         (CheckerSourceGraph.NC.equality_target p)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_fields_unique
+     : forall (p : CheckerSourceGraph.NC.EqualityCode ?n)
+         (t u v w : Syntax.Term nat ?n),
+       CheckerSourceGraph.EqualityFields p t u ->
+       CheckerSourceGraph.EqualityFields p v w -> t = v /\ u = w
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.lookup_agreement
+     : forall (G : Context.Ctx nat ?n) (i : Syntax.Fin ?n)
+         (A : Syntax.Term nat ?n),
+       CheckerSourceGraph.Lookup G i A -> A = Context.index G i
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.lookup_coverage
+     : forall (G : Context.Ctx nat ?n) (i : Syntax.Fin ?n),
+       CheckerSourceGraph.Lookup G i (Context.index G i)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.matches_agreement
+     : forall (p : CheckerSourceGraph.NC.Certificate ?n)
+         (t A : Syntax.Term nat ?n) (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.Matches p t A e ->
+       e = CheckerSourceGraph.CC.matches_expression p t A
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.matches_coverage
+     : forall (p : CheckerSourceGraph.NC.Certificate ?n)
+         (t A : Syntax.Term nat ?n),
+       CheckerSourceGraph.Matches p t A
+         (CheckerSourceGraph.CC.matches_expression p t A)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_graph_agreement
+     : forall (p : CheckerSourceGraph.NC.EqualityCode ?n)
+         (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.EqualityGraph p e ->
+       e = CheckerSourceGraph.CC.equality_expression p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_graph_coverage
+     : forall p : CheckerSourceGraph.NC.EqualityCode ?n,
+       CheckerSourceGraph.EqualityGraph p
+         (CheckerSourceGraph.CC.equality_expression p)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_graph_unique
+     : forall (p : CheckerSourceGraph.NC.EqualityCode ?n)
+         (e f : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.EqualityGraph p e ->
+       CheckerSourceGraph.EqualityGraph p f -> e = f
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.equality_graph_output
+     : forall (p : CheckerSourceGraph.NC.EqualityCode ?n)
+         (e : CheckerSourceGraph.CC.Expr) (b : bool),
+       CheckerSourceGraph.EqualityGraph p e ->
+       CheckerSourceGraph.CC.eval e = b <->
+       CheckerSourceGraph.NC.equality_check p = b
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.check_graph_agreement
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerSourceGraph.NC.Certificate ?n)
+         (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.CheckGraph G p e ->
+       e = CheckerSourceGraph.CC.check_expression G p
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.check_graph_coverage
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerSourceGraph.NC.Certificate ?n),
+       CheckerSourceGraph.CheckGraph G p
+         (CheckerSourceGraph.CC.check_expression G p)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.check_graph_unique
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerSourceGraph.NC.Certificate ?n)
+         (e f : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.CheckGraph G p e ->
+       CheckerSourceGraph.CheckGraph G p f -> e = f
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.check_graph_output
+     : forall (G : Context.Ctx nat ?n)
+         (p : CheckerSourceGraph.NC.Certificate ?n)
+         (e : CheckerSourceGraph.CC.Expr) (b : bool),
+       CheckerSourceGraph.CheckGraph G p e ->
+       CheckerSourceGraph.CC.eval e = b <->
+       CheckerSourceGraph.NC.check G p = b
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.context_graph_agreement
+     : forall (c : CheckerSourceGraph.NC.ContextCode ?n)
+         (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.ContextGraph c e ->
+       e = CheckerSourceGraph.CC.context_expression c
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.context_graph_coverage
+     : forall c : CheckerSourceGraph.NC.ContextCode ?n,
+       CheckerSourceGraph.ContextGraph c
+         (CheckerSourceGraph.CC.context_expression c)
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.context_graph_unique
+     : forall (c : CheckerSourceGraph.NC.ContextCode ?n)
+         (e f : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.ContextGraph c e ->
+       CheckerSourceGraph.ContextGraph c f -> e = f
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.context_graph_output
+     : forall (c : CheckerSourceGraph.NC.ContextCode ?n)
+         (e : CheckerSourceGraph.CC.Expr) (b : bool),
+       CheckerSourceGraph.ContextGraph c e ->
+       CheckerSourceGraph.CC.eval e = b <->
+       CheckerSourceGraph.NC.context_check c = b
+where
+?n : [ |- nat]
+Closed under the global context
+CheckerSourceGraph.raw_graph_agreement
+     : forall (q : StructuralCodes.code) (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.RawGraph q e ->
+       e = CheckerSourceGraph.CC.raw_check_expression q
+Closed under the global context
+CheckerSourceGraph.raw_graph_coverage
+     : forall q : StructuralCodes.code,
+       CheckerSourceGraph.RawGraph q
+         (CheckerSourceGraph.CC.raw_check_expression q)
+Closed under the global context
+CheckerSourceGraph.raw_graph_unique
+     : forall (q : StructuralCodes.code) (e f : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.RawGraph q e ->
+       CheckerSourceGraph.RawGraph q f -> e = f
+Closed under the global context
+CheckerSourceGraph.raw_graph_output
+     : forall (q : StructuralCodes.code) (e : CheckerSourceGraph.CC.Expr)
+         (b : bool),
+       CheckerSourceGraph.RawGraph q e ->
+       CheckerSourceGraph.CC.eval e = b <->
+       CertificateSerialization.raw_check q = b
+Closed under the global context
+CheckerSourceGraph.bottom_graph_agreement
+     : forall (q : StructuralCodes.code) (e : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.BottomGraph q e ->
+       e = CheckerSourceGraph.CC.raw_bottom_expression q
+Closed under the global context
+CheckerSourceGraph.bottom_graph_coverage
+     : forall q : StructuralCodes.code,
+       CheckerSourceGraph.BottomGraph q
+         (CheckerSourceGraph.CC.raw_bottom_expression q)
+Closed under the global context
+CheckerSourceGraph.bottom_graph_unique
+     : forall (q : StructuralCodes.code) (e f : CheckerSourceGraph.CC.Expr),
+       CheckerSourceGraph.BottomGraph q e ->
+       CheckerSourceGraph.BottomGraph q f -> e = f
+Closed under the global context
+CheckerSourceGraph.bottom_graph_output
+     : forall (q : StructuralCodes.code) (e : CheckerSourceGraph.CC.Expr)
+         (b : bool),
+       CheckerSourceGraph.BottomGraph q e ->
+       CheckerSourceGraph.CC.eval e = b <->
+       CertificateSerialization.raw_bottom_check q = b
+Closed under the global context
+CheckerSourceGraph.rejected_source_self_comparison_excluded
+     : forall q : StructuralCodes.code,
+       CertificateSerialization.raw_check q = false ->
+       ~ CheckerSourceGraph.RawGraph q (CheckerSourceGraph.CC.Compare q q)
+Closed under the global context
+CheckerSourceGraph.scoped_counterexample_excluded
+     : let q :=
+         CertificateSerialization.encode_input
+           CheckerSourceGraph.NC.EmptyContext
+           CheckerSourceGraph.CC.bad_application
+         in
+       ~ CheckerSourceGraph.RawGraph q (CheckerSourceGraph.CC.Compare q q)
+Closed under the global context
+InternalExecutionGraph.same_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalExecutionGraph.same
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalExecutionGraph.GT.boolean
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalExecutionGraph.GT.boolean (Syntax.𝓤 3)))
+Closed under the global context
+InternalExecutionGraph.same_refl_typed
+     : DirectRKernel.Core.Typed Context.ε InternalExecutionGraph.same_refl
+         InternalExecutionGraph.same_refl_type
+Closed under the global context
+InternalExecutionGraph.same_and_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalExecutionGraph.same_and_type (Syntax.𝓤 4)
+Closed under the global context
+InternalExecutionGraph.same_and_typed
+     : DirectRKernel.Core.Typed Context.ε InternalExecutionGraph.same_and
+         InternalExecutionGraph.same_and_type
+Closed under the global context
+InternalExecutionGraph.run_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalExecutionGraph.run
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalExecutionGraph.F.expression
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalExecutionGraph.GT.boolean (Syntax.𝓤 5)))
+Closed under the global context
+InternalExecutionGraph.leaf_run_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalExecutionGraph.leaf_run_type (Syntax.𝓤 5)
+Closed under the global context
+InternalExecutionGraph.leaf_run_typed
+     : DirectRKernel.Core.Typed Context.ε InternalExecutionGraph.leaf_run
+         InternalExecutionGraph.leaf_run_type
+Closed under the global context
+InternalExecutionGraph.both_run_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalExecutionGraph.both_run_type (Syntax.𝓤 6)
+Closed under the global context
+InternalExecutionGraph.both_run_typed
+     : DirectRKernel.Core.Typed Context.ε InternalExecutionGraph.both_run
+         InternalExecutionGraph.both_run_type
+Closed under the global context
+InternalExecutionGraph.agreement_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalExecutionGraph.agreement_type (Syntax.𝓤 6)
+Closed under the global context
+InternalExecutionGraph.agreement_typed
+     : DirectRKernel.Core.Typed Context.ε InternalExecutionGraph.agreement
+         InternalExecutionGraph.agreement_type
+Closed under the global context
+InternalExecutionGraph.holds_agreement_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalExecutionGraph.holds_agreement_type 
+         (Syntax.𝓤 6)
+Closed under the global context
+InternalExecutionGraph.holds_agreement_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalExecutionGraph.holds_agreement
+         InternalExecutionGraph.holds_agreement_type
+Closed under the global context
+InternalExecutionGraph.rejection_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalExecutionGraph.rejection_type (Syntax.𝓤 6)
+Closed under the global context
+InternalExecutionGraph.rejection_typed
+     : DirectRKernel.Core.Typed Context.ε InternalExecutionGraph.rejection
+         InternalExecutionGraph.rejection_type
+Closed under the global context
+InternalExecutionGraph.holds_application
+     : forall b : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε b InternalExecutionGraph.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε (InternalExecutionGraph.holds_at b)
+         (Syntax.𝓤 1)
+Closed under the global context
+InternalExecutionGraph.holds_point_true_beta
+     : DefEq.def_equiv nat 0
+         (InternalExecutionGraph.holds_at
+            (InternalExecutionGraph.GT.point true))
+         DirectRCommonCodes.CommonCodes.Top
+Closed under the global context
+InternalExecutionGraph.holds_point_false_beta
+     : DefEq.def_equiv nat 0
+         (InternalExecutionGraph.holds_at
+            (InternalExecutionGraph.GT.point false))
+         DirectRCommonCodes.CommonCodes.Bottom
+Closed under the global context
+InternalExecutionGraph.top_proof_typed
+     : DirectRKernel.Core.Typed Context.ε
+         DirectRCommonCodes.CommonCodes.top_proof
+         DirectRCommonCodes.CommonCodes.Top
+Closed under the global context
+InternalExecutionGraph.run_application
+     : forall e b : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε e
+         InternalExecutionGraph.F.expression ->
+       DirectRKernel.Core.Typed Context.ε b InternalExecutionGraph.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε (InternalExecutionGraph.run_at e b)
+         (Syntax.𝓤 5)
+Closed under the global context
+InternalExecutionGraph.same_application
+     : forall b c : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε b InternalExecutionGraph.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε c InternalExecutionGraph.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε
+         (InternalExecutionGraph.same_at b c) (Syntax.𝓤 3)
+Closed under the global context
+InternalExecutionGraph.leaf_run_application
+     : forall b : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε b InternalExecutionGraph.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app InternalExecutionGraph.leaf_run b)
+         (InternalExecutionGraph.run_at (InternalExecutionGraph.leaf_at b) b)
+Closed under the global context
+InternalExecutionGraph.both_run_application
+     : forall e f b c he hf : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε e
+         InternalExecutionGraph.F.expression ->
+       DirectRKernel.Core.Typed Context.ε f
+         InternalExecutionGraph.F.expression ->
+       DirectRKernel.Core.Typed Context.ε b InternalExecutionGraph.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε c InternalExecutionGraph.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε he
+         (InternalExecutionGraph.run_at e b) ->
+       DirectRKernel.Core.Typed Context.ε hf
+         (InternalExecutionGraph.run_at f c) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (Syntax.app
+                     (Syntax.app
+                        (Syntax.app InternalExecutionGraph.both_run e) f)
+                     b)
+                  c)
+               he)
+            hf)
+         (InternalExecutionGraph.run_at (InternalExecutionGraph.both_at e f)
+            (InternalExecutionGraph.and_at b c))
+Closed under the global context
+InternalExecutionGraph.agreement_application
+     : forall e b h : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε e
+         InternalExecutionGraph.F.expression ->
+       DirectRKernel.Core.Typed Context.ε b InternalExecutionGraph.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε h
+         (InternalExecutionGraph.run_at e b) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app (Syntax.app InternalExecutionGraph.agreement e) b) h)
+         (InternalExecutionGraph.same_at (InternalExecutionGraph.eval_at e) b)
+Closed under the global context
+InternalExecutionGraph.holds_agreement_application
+     : forall e b h : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε e
+         InternalExecutionGraph.F.expression ->
+       DirectRKernel.Core.Typed Context.ε b InternalExecutionGraph.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε h
+         (InternalExecutionGraph.run_at e b) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app
+            (Syntax.app (Syntax.app InternalExecutionGraph.holds_agreement e)
+               b)
+            h)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            (InternalExecutionGraph.holds_at
+               (InternalExecutionGraph.eval_at e))
+            (InternalExecutionGraph.holds_at b))
+Closed under the global context
+InternalExecutionGraph.rejection_application
+     : forall e h : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε e
+         InternalExecutionGraph.F.expression ->
+       DirectRKernel.Core.Typed Context.ε h
+         (InternalExecutionGraph.run_at e
+            (InternalExecutionGraph.GT.point false)) ->
+       DirectRKernel.Core.Typed Context.ε
+         (Syntax.app (Syntax.app InternalExecutionGraph.rejection e) h)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            (InternalExecutionGraph.holds_at
+               (InternalExecutionGraph.eval_at e))
+            DirectRCommonCodes.CommonCodes.Bottom)
+Closed under the global context
+InternalExecutionGraph.agreement_leaf_schema
+     : DefEq.def_equiv nat 1
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app
+                  (DirectRCommonCodes.CommonCodes.lift_closed
+                     InternalExecutionGraph.agreement)
+                  (InternalExecutionGraph.leaf_at
+                     DirectRCommonCodes.CommonCodes.V0))
+               DirectRCommonCodes.CommonCodes.V0)
+            (Syntax.app
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  InternalExecutionGraph.leaf_run)
+               DirectRCommonCodes.CommonCodes.V0))
+         (Syntax.app
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               InternalExecutionGraph.same_refl)
+            DirectRCommonCodes.CommonCodes.V0)
+Closed under the global context
+InternalExecutionGraph.agreement_leaf_beta
+     : forall b : DirectRCommonCodes.CommonCodes.closed_term,
+       DefEq.def_equiv nat 0
+         (Syntax.app
+            (Syntax.app
+               (Syntax.app InternalExecutionGraph.agreement
+                  (InternalExecutionGraph.leaf_at b))
+               b)
+            (Syntax.app InternalExecutionGraph.leaf_run b))
+         (Syntax.app InternalExecutionGraph.same_refl b)
+Closed under the global context
+CheckerGraphRealization.result_typed
+     : forall e : CheckerGraphRealization.F.CC.Expr,
+       DirectRKernel.Core.Typed Context.ε (CheckerGraphRealization.result e)
+         CheckerGraphRealization.GT.boolean
+Closed under the global context
+CheckerGraphRealization.result_beta
+     : forall e : CheckerGraphRealization.F.CC.Expr,
+       DefEq.def_equiv nat 0 (CheckerGraphRealization.result e)
+         (CheckerGraphRealization.GT.point
+            (CheckerGraphRealization.CC.eval e))
+Closed under the global context
+CheckerGraphRealization.execution_witness_typed
+     : forall e : CheckerGraphRealization.CC.Expr,
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.execution_witness e)
+         (CheckerGraphRealization.EG.run_at
+            (CheckerGraphRealization.CE.expression e)
+            (CheckerGraphRealization.result e))
+Closed under the global context
+CheckerGraphRealization.run_output_conversion
+     : forall e b c h : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε e
+         CheckerGraphRealization.F.expression ->
+       DirectRKernel.Core.Typed Context.ε c
+         CheckerGraphRealization.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε h
+         (CheckerGraphRealization.EG.run_at e b) ->
+       DefEq.def_equiv nat 0 b c ->
+       DirectRKernel.Core.Typed Context.ε h
+         (CheckerGraphRealization.EG.run_at e c)
+Closed under the global context
+CheckerGraphRealization.same_output_conversion
+     : forall b c d h : Syntax.Term nat 0,
+       DirectRKernel.Core.Typed Context.ε b
+         CheckerGraphRealization.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε d
+         CheckerGraphRealization.GT.boolean ->
+       DirectRKernel.Core.Typed Context.ε h
+         (CheckerGraphRealization.EG.same_at b c) ->
+       DefEq.def_equiv nat 0 c d ->
+       DirectRKernel.Core.Typed Context.ε h
+         (CheckerGraphRealization.EG.same_at b d)
+Closed under the global context
+CheckerGraphRealization.execution_witness_canonical
+     : forall e : CheckerGraphRealization.CC.Expr,
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.execution_witness e)
+         (CheckerGraphRealization.EG.run_at
+            (CheckerGraphRealization.CE.expression e)
+            (CheckerGraphRealization.GT.point
+               (CheckerGraphRealization.CC.eval e)))
+Closed under the global context
+CheckerGraphRealization.execution_agreement_typed
+     : forall e : CheckerGraphRealization.CE.F.CC.Expr,
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.execution_agreement e)
+         (CheckerGraphRealization.EG.same_at
+            (CheckerGraphRealization.CE.run e)
+            (CheckerGraphRealization.result e))
+Closed under the global context
+CheckerGraphRealization.execution_agreement_canonical
+     : forall e : CheckerGraphRealization.CE.F.CC.Expr,
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.execution_agreement e)
+         (CheckerGraphRealization.EG.same_at
+            (CheckerGraphRealization.CE.run e)
+            (CheckerGraphRealization.GT.point
+               (CheckerGraphRealization.CC.eval e)))
+Closed under the global context
+CheckerGraphRealization.raw_graph_execution_exact
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.SG.CC.Expr) 
+         (b : bool),
+       CheckerGraphRealization.SG.RawGraph q e ->
+       Reduction.reduces_to nat 0 (CheckerGraphRealization.CE.run e)
+         (CheckerGraphRealization.GT.point b) <->
+       CertificateSerialization.raw_check q = b
+Closed under the global context
+CheckerGraphRealization.bottom_graph_execution_exact
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.SG.CC.Expr) 
+         (b : bool),
+       CheckerGraphRealization.SG.BottomGraph q e ->
+       Reduction.reduces_to nat 0 (CheckerGraphRealization.CE.run e)
+         (CheckerGraphRealization.GT.point b) <->
+       CertificateSerialization.raw_bottom_check q = b
+Closed under the global context
+CheckerGraphRealization.raw_graph_execution_witness
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.SG.CC.Expr),
+       CheckerGraphRealization.SG.RawGraph q e ->
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.execution_witness e)
+         (CheckerGraphRealization.EG.run_at
+            (CheckerGraphRealization.CE.expression e)
+            (CheckerGraphRealization.GT.point
+               (CertificateSerialization.raw_check q)))
+Closed under the global context
+CheckerGraphRealization.bottom_graph_execution_witness
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.SG.CC.Expr),
+       CheckerGraphRealization.SG.BottomGraph q e ->
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.execution_witness e)
+         (CheckerGraphRealization.EG.run_at
+            (CheckerGraphRealization.CE.expression e)
+            (CheckerGraphRealization.GT.point
+               (CertificateSerialization.raw_bottom_check q)))
+Closed under the global context
+CheckerGraphRealization.raw_graph_internal_agreement
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.SG.CC.Expr),
+       CheckerGraphRealization.SG.RawGraph q e ->
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.execution_agreement e)
+         (CheckerGraphRealization.EG.same_at
+            (CheckerGraphRealization.CE.run e)
+            (CheckerGraphRealization.GT.point
+               (CertificateSerialization.raw_check q)))
+Closed under the global context
+CheckerGraphRealization.bottom_graph_internal_agreement
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.SG.CC.Expr),
+       CheckerGraphRealization.SG.BottomGraph q e ->
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.execution_agreement e)
+         (CheckerGraphRealization.EG.same_at
+            (CheckerGraphRealization.CE.run e)
+            (CheckerGraphRealization.GT.point
+               (CertificateSerialization.raw_bottom_check q)))
+Closed under the global context
+CheckerGraphRealization.sourced_resources_cover
+     : forall q : StructuralCodes.code,
+       CheckerGraphRealization.SourcedResources q
+         (CheckerGraphRealization.CC.raw_check_expression q)
+         (CheckerGraphRealization.RB.source_envelope q)
+Closed under the global context
+CheckerGraphRealization.sourced_resources_agreement
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.CC.Expr)
+         (budget : StructuralCodes.code) (answer : bool),
+       CheckerGraphRealization.SourcedResources q e budget ->
+       Reduction.reduces_to nat 0 (CheckerGraphRealization.CE.run e)
+         (CheckerGraphRealization.GT.point answer) <->
+       CertificateSerialization.raw_check q = answer
+Closed under the global context
+CheckerGraphRealization.sourced_resources_execution
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.CC.Expr)
+         (budget : StructuralCodes.code),
+       CheckerGraphRealization.SourcedResources q e budget ->
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.execution_witness e)
+         (CheckerGraphRealization.EG.run_at
+            (CheckerGraphRealization.CE.expression e)
+            (CheckerGraphRealization.GT.point
+               (CertificateSerialization.raw_check q)))
+Closed under the global context
+CheckerGraphRealization.all_raw_sources_have_execution
+     : forall q : StructuralCodes.code,
+       CheckerGraphRealization.SourcedResources q
+         (CheckerGraphRealization.CC.raw_check_expression q)
+         (CheckerGraphRealization.RB.source_envelope q) /\
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.execution_witness
+            (CheckerGraphRealization.CC.raw_check_expression q))
+         (CheckerGraphRealization.EG.run_at
+            (CheckerGraphRealization.CE.expression
+               (CheckerGraphRealization.CC.raw_check_expression q))
+            (CheckerGraphRealization.GT.point
+               (CertificateSerialization.raw_check q)))
+Closed under the global context
+CheckerGraphRealization.old_counterexample_excluded
+     : forall budget : StructuralCodes.code,
+       ~
+       CheckerGraphRealization.SourcedResources
+         CheckerGraphRealization.CB.rejected_source
+         (CheckerGraphRealization.CB.self_comparison
+            CheckerGraphRealization.CB.rejected_source)
+         budget
+Closed under the global context
+CheckerGraphRealization.false_execution_rejection
+     : forall e : CheckerGraphRealization.CC.Expr,
+       CheckerGraphRealization.CC.eval e = false ->
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.reject_execution e)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            (CheckerGraphRealization.EG.holds_at
+               (CheckerGraphRealization.CE.run e))
+            DirectRCommonCodes.CommonCodes.Bottom)
+Closed under the global context
+CheckerGraphRealization.source_rejection_realized
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.SG.CC.Expr),
+       CheckerGraphRealization.SG.RawGraph q e ->
+       CertificateSerialization.raw_check q = false ->
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.reject_execution e)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            (CheckerGraphRealization.EG.holds_at
+               (CheckerGraphRealization.CE.run e))
+            DirectRCommonCodes.CommonCodes.Bottom)
+Closed under the global context
+CheckerGraphRealization.bottom_rejection_realized
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.SG.CC.Expr),
+       CheckerGraphRealization.SG.BottomGraph q e ->
+       CertificateSerialization.raw_bottom_check q = false ->
+       DirectRKernel.Core.Typed Context.ε
+         (CheckerGraphRealization.reject_execution e)
+         (DirectRCommonCodes.CommonCodes.Arrow
+            (CheckerGraphRealization.EG.holds_at
+               (CheckerGraphRealization.CE.run e))
+            DirectRCommonCodes.CommonCodes.Bottom)
+Closed under the global context
+CheckerGraphRealization.holds_congruence
+     : forall b c : DirectRCommonCodes.CommonCodes.closed_term,
+       DefEq.def_equiv nat 0 b c ->
+       DefEq.def_equiv nat 0 (CheckerGraphRealization.EG.holds_at b)
+         (CheckerGraphRealization.EG.holds_at c)
+Closed under the global context
+CheckerGraphRealization.true_execution_acceptance
+     : forall e : CheckerGraphRealization.CC.Expr,
+       CheckerGraphRealization.CC.eval e = true ->
+       DirectRKernel.Core.Typed Context.ε
+         DirectRCommonCodes.CommonCodes.top_proof
+         (CheckerGraphRealization.EG.holds_at
+            (CheckerGraphRealization.CE.run e))
+Closed under the global context
+CheckerGraphRealization.source_acceptance_realized
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.SG.CC.Expr),
+       CheckerGraphRealization.SG.RawGraph q e ->
+       CertificateSerialization.raw_check q = true ->
+       DirectRKernel.Core.Typed Context.ε
+         DirectRCommonCodes.CommonCodes.top_proof
+         (CheckerGraphRealization.EG.holds_at
+            (CheckerGraphRealization.CE.run e))
+Closed under the global context
+CheckerGraphRealization.bottom_acceptance_realized
+     : forall (q : StructuralCodes.code)
+         (e : CheckerGraphRealization.SG.CC.Expr),
+       CheckerGraphRealization.SG.BottomGraph q e ->
+       CertificateSerialization.raw_bottom_check q = true ->
+       DirectRKernel.Core.Typed Context.ε
+         DirectRCommonCodes.CommonCodes.top_proof
+         (CheckerGraphRealization.EG.holds_at
+            (CheckerGraphRealization.CE.run e))
+Closed under the global context
+CheckerGraphRealization.accepted_sort_realized
+     : DirectRKernel.Core.Typed Context.ε
+         DirectRCommonCodes.CommonCodes.top_proof
+         (CheckerGraphRealization.EG.holds_at
+            (CheckerGraphRealization.CE.raw_program
+               (CertificateSerialization.encode_input
+                  NativeProofCodes.NativeProofCodes.EmptyContext
+                  (NativeProofCodes.NativeProofCodes.SortRule 0))))
+Closed under the global context
+        rocq theories/self_consistency/SourceProvenanceAudit.{glob,vo}

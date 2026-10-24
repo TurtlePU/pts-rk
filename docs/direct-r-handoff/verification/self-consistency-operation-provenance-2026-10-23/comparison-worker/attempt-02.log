@@ -1,0 +1,48 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 290 - 328 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.03u,0.007s)
+Chars 329 - 375 [From~PTSrk~Require~Import-(not...] 0.02 secs (0.015u,0.004s)
+Chars 376 - 429 [From~PTSrk~Require~Import~Cont...] 0.002 secs (0.002u,0.s)
+Chars 430 - 536 [From~Interpretation_of_R~Requi...] 0.051 secs (0.041u,0.01s)
+Chars 537 - 688 [From~PTSrk.SelfConsistency~Req...] 0.009 secs (0.007u,0.001s)
+Chars 689 - 710 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 712 - 743 [Module~InternalComparisonGraph.] 0. secs (0.u,0.s)
+Chars 744 - 779 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 780 - 825 [Module~IC:=~~InternalCarrier.I...] 0.005 secs (0.004u,0.s)
+Chars 826 - 886 [Module~CMP:=~~InternalCodeComp...] 0.023 secs (0.02u,0.003s)
+Chars 887 - 946 [Module~EG:=~~InternalExecution...] 0.058 secs (0.052u,0.005s)
+Chars 947 - 988 [Module~GT:=~~GuardedTables.Gua...] 0.006 secs (0.006u,0.s)
+Chars 990 - 1025 [Definition~C~:=~NClosed~IC.car...] 0. secs (0.u,0.s)
+Chars 1026 - 1061 [Definition~B~:=~NClosed~GT.boo...] 0. secs (0.u,0.s)
+Chars 1062 - 1116 [Definition~Pair~a~b~:=~napps~(...] 0. secs (0.u,0.s)
+Chars 1117 - 1170 [Definition~Zip~a~b~:=~napps~(N...] 0. secs (0.u,0.s)
+Chars 1171 - 1237 [Definition~Compare~a~b~z~:=~na...] 0. secs (0.u,0.s)
+Chars 1238 - 1299 [Definition~And~b~c~:=~napps~(N...] 0. secs (0.u,0.s)
+Chars 1300 - 1360 [Definition~AtomZip~t~y~:=~NApp...] 0. secs (0.u,0.s)
+Chars 1361 - 1438 [Definition~PairAtomZip~t~a~b~:...] 0. secs (0.u,0.s)
+Chars 1439 - 1521 [Definition~PairZip~a~b~c~d~z~w...] 0. secs (0.u,0.s)
+Chars 1522 - 1578 [Definition~Test~t~y~:=~NApp~(N...] 0. secs (0.u,0.s)
+Chars 1579 - 1633 [Definition~Same~b~c~:=~napps~(...] 0. secs (0.u,0.s)
+Chars 1635 - 1732 [Definition~predicate~:=~~~npis...] 0.002 secs (0.002u,0.s)
+Chars 1733 - 1785 [Definition~At~x~y~z~b~:=~napps...] 0.001 secs (0.u,0.s)
+Chars 1786 - 1905 [Definition~atom_case~t~:=~~~NP...] 0.001 secs (0.001u,0.s)
+Chars 1906 - 2087 [Definition~pair_atom_case~t~:=...] 0.01 secs (0.01u,0.s)
+Chars 2088 - 2233 [Definition~pair_args~:=~~~[(20...] 0.004 secs (0.004u,0.s)
+Chars 2234 - 2433 [Definition~pair_conclusion~:=~...] 0.005 secs (0.004u,0.s)
+Chars 2434 - 2611 [Definition~pair_case~:=~~~npis...] 0.003 secs (0.003u,0.s)
+Chars 2612 - 2801 [Definition~fields~:=~~~[(200,~...] 0.003 secs (0.003u,0.s)
+Chars 2802 - 2870 [Definition~indices~:=~[(0,~C);...] 0. secs (0.u,0.s)
+Chars 2871 - 2935 [Definition~trace_type~:=~close...] 0. secs (0.u,0.s)
+Chars 2936 - 3043 [Definition~trace~:=~~~close~~~...] 0.407 secs (0.396u,0.009s)
+Chars 3044 - 3104 [Definition~Trace~x~y~z~b~:=~na...] 0. secs (0.u,0.s)
+Chars 3105 - 3154 [Theorem~trace_sorted~:~Typed~ε...] 0. secs (0.u,0.s)
+Chars 3155 - 3161 [Proof.] 0. secs (0.u,0.s)
+Chars 3162 - 3188 [RkCheck.certify_with~2048.] 47.854 secs (46.71u,1.03s)
+Chars 3189 - 3193 [Qed.] 45.182 secs (44.238u,0.814s)
+Chars 3195 - 3223 [End~InternalComparisonGraph.] 0.003 secs (0.003u,0.s)

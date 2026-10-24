@@ -1,0 +1,1941 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+        rocq theories/.PTSrk.theory.d
+        rocq theories/CombinatoryLogic-rk/.PTSrk.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/Interpretation_of_R/.Interpretation_of_R.theory.d
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/GroundHorn.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+*** Warning: in file Bounds.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Bounds.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Literals.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Morphisms.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v,
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v,
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v,
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v,
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v,
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v,
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v,
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.SortBounds exactly matches several files in path
+    (found SortBounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.AutomaticBound exactly matches several files in path
+    (found AutomaticBound.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file STLCEmbedding.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file STLCEmbedding.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.EstimatorChecks exactly matches several files in path
+    (found EstimatorChecks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.SortBounds exactly matches several files in path
+    (found SortBounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.AutomaticBound exactly matches several files in path
+    (found AutomaticBound.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Normalization exactly matches several files in path
+    (found Normalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.STLCEmbedding exactly matches several files in path
+    (found STLCEmbedding.v in ../NormalizationComplexity and .; used the latter).
+        rocq theories/NormalizationComplexity/.PTSrk.theory.d
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+        rocq theories/self_consistency/StructuralCodes.{glob,vo}
+Closed under the global context
+        rocq theories/Congruence.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+        rocq theories/Interpretation_of_R/DirectRCommonCodes.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/NormalizationComplexity/Rank.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteHorn.{glob,vo}
+        rocq theories/self_consistency/FiniteCodeFragments.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/FiniteUniversalHorn.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+        rocq theories/Context.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/SN.{glob,vo}
+Closed under the global context
+        rocq theories/Confluence.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/NormalizationComplexity/Greedy.{glob,vo}
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/NormalizationComplexity/Literals.{glob,vo}
+Closed under the global context
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/CombinatoryLogic-rk/FiniteUniversalHorn.{glob,vo}
+        rocq theories/self_consistency/NativeProofCodes.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+        rocq theories/NormalizationComplexity/Bounds.{glob,vo}
+        rocq theories/Typing.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectREval.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateAdequacy.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/ChurchFinite.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/NormalizationComplexity/Runtime.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/Interpretation_of_R/DirectRKernel.v", line 7, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+        rocq theories/Interpretation_of_R/DirectRKernel.{glob,vo}
+        rocq theories/NormalizationComplexity/RedexRanks.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/SortRenaming.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/HornProofEncoding.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRStructural.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+        rocq theories/Interpretation_of_R/DirectRCheck.{glob,vo}
+        rocq theories/NormalizationComplexity/Morphisms.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/self_consistency/RankCompression.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/Core.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteTypeDispatch.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/self_consistency/NamedTemplates.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/IndexedHornEncoding.{glob,vo}
+        rocq theories/NormalizationComplexity/Safety.{glob,vo}
+        rocq theories/NormalizationComplexity/SortBounds.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/CertificateSerialization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/NamedBeta.{glob,vo}
+        rocq theories/NormalizationComplexity/Descent.{glob,vo}
+        rocq theories/NormalizationComplexity/AutomaticBound.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/UniformHorn.{glob,vo}
+        rocq theories/NormalizationComplexity/BoundedNormalization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/UniformGuardedHorn.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+        rocq theories/self_consistency/UniformHornReindex.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/QuantitativeNormalization.{glob,vo}
+        rocq theories/NormalizationComplexity/Normalization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteNormalForms.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/NativeCanonicity.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteModelRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteModelSoundness.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/HornProofRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/HornInternalSoundness.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/IndexedHornRealization.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/IndexedHornSoundness.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/CombinatoryLogic-rk/FiniteGeneratedCodes.{glob,vo}
+        rocq theories/self_consistency/InternalCarrier.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteRawDecoding.v", line 19, characters 6-14:
+Warning: Use of "Notation" keyword for abbreviations is deprecated, use
+"Abbreviation" instead.
+[notation-for-abbreviation,deprecated-since-9.2,deprecated,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/self_consistency/FiniteRawDecoding.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/FiniteRawTables.v", line 24, characters 6-14:
+Warning: Use of "Notation" keyword for abbreviations is deprecated, use
+"Abbreviation" instead.
+[notation-for-abbreviation,deprecated-since-9.2,deprecated,default]
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+        rocq theories/self_consistency/FiniteRawTables.{glob,vo}
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-uniform-horn-fresh.cCcZgE/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+UniformHorn.premise_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (UniformHorn.premise atom_rank)
+         (UniformHorn.premise_type atom_rank)
+Closed under the global context
+UniformHorn.handler_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (UniformHorn.handler atom_rank)
+         (UniformHorn.handler_type atom_rank)
+Closed under the global context
+UniformHorn.family_type_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (UniformHorn.family_type atom_rank)
+         (Syntax.𝓤 3)
+Closed under the global context
+UniformHorn.family_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (UniformHorn.family atom_rank)
+         (UniformHorn.family_type atom_rank)
+Closed under the global context
+UniformHorn.node_type_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (UniformHorn.node_type atom_rank)
+         (Syntax.𝓤 5)
+Closed under the global context
+UniformHorn.node_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (UniformHorn.node atom_rank)
+         (UniformHorn.node_type atom_rank)
+Closed under the global context
+UniformHorn.consume_type_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHorn.consume_type atom_rank) (Syntax.𝓤 5)
+Closed under the global context
+UniformHorn.consume_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (UniformHorn.consume atom_rank)
+         (UniformHorn.consume_type atom_rank)
+Closed under the global context
+UniformHorn.apply_spine_beta
+     : forall (f g : Syntax.Term nat ?n) (xs : list (Syntax.Term nat ?n)),
+       DefEq.def_equiv nat ?n f g ->
+       DefEq.def_equiv nat ?n (UniformHorn.NB.apply_spine f xs)
+         (UniformHorn.NB.apply_spine g xs)
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHorn.named_spine_beta
+     : forall (G : Context.Ctx nat ?n)
+         (fields : list (nat * DirectRCommonCodes.CommonCodes.named))
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n),
+       UniformHorn.NB.NamedSpine G fields e xs final ->
+       forall (body : DirectRCommonCodes.CommonCodes.named)
+         (f r : Syntax.Term nat ?n),
+       UniformHorn.NT.evaluate
+         (DirectRCommonCodes.CommonCodes.nlams fields body) e =
+       Some f ->
+       UniformHorn.NT.evaluate body final = Some r ->
+       DefEq.def_equiv nat ?n (UniformHorn.NB.apply_spine f xs) r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHorn.family_application
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n),
+       atom_rank = 1 \/ atom_rank = 2 ->
+       UniformHorn.NB.NamedSpine G (UniformHorn.family_fields atom_rank) e xs
+         final ->
+       DirectRKernel.Core.Typed G
+         (UniformHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformHorn.family atom_rank))
+            xs)
+         (Syntax.𝓤 4)
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHorn.family_beta
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       UniformHorn.NB.NamedSpine G (UniformHorn.family_fields atom_rank) e xs
+         final ->
+       UniformHorn.NT.evaluate
+         (UniformHorn.Proof (DirectRCommonCodes.CommonCodes.NVar 10)
+            (DirectRCommonCodes.CommonCodes.NVar 13))
+         final =
+       Some r ->
+       DefEq.def_equiv nat ?n
+         (UniformHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformHorn.family atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHorn.node_application
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       atom_rank = 1 \/ atom_rank = 2 ->
+       UniformHorn.NB.NamedSpine G (UniformHorn.node_fields atom_rank) e xs
+         final ->
+       UniformHorn.NT.evaluate
+         (UniformHorn.Proof (DirectRCommonCodes.CommonCodes.NVar 10)
+            (UniformHorn.Head (DirectRCommonCodes.CommonCodes.NVar 10)
+               (DirectRCommonCodes.CommonCodes.NVar 11)))
+         final =
+       Some r ->
+       DirectRKernel.Core.Typed G
+         (UniformHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformHorn.node atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHorn.node_beta
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       UniformHorn.NB.NamedSpine G
+         (UniformHorn.node_fields atom_rank ++
+          UniformHorn.proof_fields (DirectRCommonCodes.CommonCodes.NVar 10))
+         e xs final ->
+       UniformHorn.NT.evaluate UniformHorn.node_body final = Some r ->
+       DefEq.def_equiv nat ?n
+         (UniformHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformHorn.node atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHorn.consume_application
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       atom_rank = 1 \/ atom_rank = 2 ->
+       UniformHorn.NB.NamedSpine G (UniformHorn.consume_fields atom_rank) e
+         xs final ->
+       UniformHorn.NT.evaluate
+         (DirectRCommonCodes.CommonCodes.NApp
+            (DirectRCommonCodes.CommonCodes.NVar 30)
+            (DirectRCommonCodes.CommonCodes.NVar 13))
+         final =
+       Some r ->
+       DirectRKernel.Core.Typed G
+         (UniformHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformHorn.consume atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHorn.consume_beta
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       UniformHorn.NB.NamedSpine G (UniformHorn.consume_fields atom_rank) e
+         xs final ->
+       UniformHorn.NT.evaluate UniformHorn.consume_body final = Some r ->
+       DefEq.def_equiv nat ?n
+         (UniformHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformHorn.consume atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHorn.node_fold_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε (UniformHorn.node_fold atom_rank)
+         (UniformHorn.node_fold_type atom_rank)
+Closed under the global context
+UniformHorn.node_fold_result_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHorn.node_fold_result atom_rank)
+         (UniformHorn.node_fold_type atom_rank)
+Closed under the global context
+UniformHorn.node_fold_beta
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DefEq.def_equiv nat 0 (UniformHorn.node_fold atom_rank)
+         (UniformHorn.node_fold_result atom_rank)
+Closed under the global context
+UniformHornReindex.handler_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHornReindex.handler atom_rank)
+         (UniformHornReindex.handler_type atom_rank)
+Closed under the global context
+UniformHornReindex.family_type_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHornReindex.family_type atom_rank)
+         (Syntax.𝓤 3)
+Closed under the global context
+UniformHornReindex.family_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHornReindex.family atom_rank)
+         (UniformHornReindex.family_type atom_rank)
+Closed under the global context
+UniformHornReindex.transport_type_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHornReindex.transport_type atom_rank)
+         (Syntax.𝓤 5)
+Closed under the global context
+UniformHornReindex.transport_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHornReindex.transport atom_rank)
+         (UniformHornReindex.transport_type atom_rank)
+Closed under the global context
+UniformHornReindex.family_application
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n),
+       atom_rank = 1 \/ atom_rank = 2 ->
+       UniformHornReindex.NB.NamedSpine G
+         (UniformHornReindex.family_fields atom_rank) e xs final ->
+       DirectRKernel.Core.Typed G
+         (UniformHornReindex.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformHornReindex.family atom_rank))
+            xs)
+         (Syntax.𝓤 4)
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHornReindex.family_beta
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       UniformHornReindex.NB.NamedSpine G
+         (UniformHornReindex.family_fields atom_rank) e xs final ->
+       UniformHornReindex.NT.evaluate
+         (UniformHornReindex.SourceProof
+            (DirectRCommonCodes.CommonCodes.NVar 10)
+            (DirectRCommonCodes.CommonCodes.NVar 13))
+         final =
+       Some r ->
+       DefEq.def_equiv nat ?n
+         (UniformHornReindex.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformHornReindex.family atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHornReindex.transport_application
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       atom_rank = 1 \/ atom_rank = 2 ->
+       UniformHornReindex.NB.NamedSpine G
+         (UniformHornReindex.transport_fields atom_rank) e xs final ->
+       UniformHornReindex.NT.evaluate
+         (UniformHornReindex.UH.Proof
+            (DirectRCommonCodes.CommonCodes.NVar 10)
+            (DirectRCommonCodes.CommonCodes.NVar 13))
+         final =
+       Some r ->
+       DirectRKernel.Core.Typed G
+         (UniformHornReindex.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformHornReindex.transport atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHornReindex.transport_beta
+     : forall (G : Context.Ctx nat ?n) (atom_rank : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       UniformHornReindex.NB.NamedSpine G
+         (UniformHornReindex.transport_fields atom_rank ++
+          UniformHornReindex.UH.proof_fields
+            (DirectRCommonCodes.CommonCodes.NVar 10))
+         e xs final ->
+       UniformHornReindex.NT.evaluate UniformHornReindex.transport_body final =
+       Some r ->
+       DefEq.def_equiv nat ?n
+         (UniformHornReindex.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformHornReindex.transport atom_rank))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformHornReindex.fold_left_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHornReindex.fold_left atom_rank)
+         (UniformHornReindex.fold_type atom_rank)
+Closed under the global context
+UniformHornReindex.fold_right_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHornReindex.fold_right atom_rank)
+         (UniformHornReindex.fold_type atom_rank)
+Closed under the global context
+UniformHornReindex.fold_beta
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DefEq.def_equiv nat 0 (UniformHornReindex.fold_left atom_rank)
+         (UniformHornReindex.fold_right atom_rank)
+Closed under the global context
+UniformHornReindex.composition_type_sorted
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHornReindex.composition_type atom_rank)
+         (Syntax.𝓤 5)
+Closed under the global context
+UniformHornReindex.composition_left_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHornReindex.composition_left atom_rank)
+         (UniformHornReindex.composition_type atom_rank)
+Closed under the global context
+UniformHornReindex.composition_right_typed
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformHornReindex.composition_right atom_rank)
+         (UniformHornReindex.composition_type atom_rank)
+Closed under the global context
+UniformHornReindex.composition_beta
+     : forall atom_rank : nat,
+       atom_rank = 1 \/ atom_rank = 2 ->
+       DefEq.def_equiv nat 0 (UniformHornReindex.composition_left atom_rank)
+         (UniformHornReindex.composition_right atom_rank)
+Closed under the global context
+UniformGuardedHorn.handler_sorted
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (UniformGuardedHorn.handler a g)
+         (UniformGuardedHorn.handler_type a g)
+Closed under the global context
+UniformGuardedHorn.family_type_sorted
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformGuardedHorn.family_type a g) (Syntax.𝓤 3)
+Closed under the global context
+UniformGuardedHorn.family_sorted
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (UniformGuardedHorn.family a g)
+         (UniformGuardedHorn.family_type a g)
+Closed under the global context
+UniformGuardedHorn.node_type_sorted
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (UniformGuardedHorn.node_type a g)
+         (Syntax.𝓤 (g + 3))
+Closed under the global context
+UniformGuardedHorn.node_typed
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (UniformGuardedHorn.node a g)
+         (UniformGuardedHorn.node_type a g)
+Closed under the global context
+UniformGuardedHorn.consume_type_sorted
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformGuardedHorn.consume_type a g) (Syntax.𝓤 (g + 3))
+Closed under the global context
+UniformGuardedHorn.consume_typed
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (UniformGuardedHorn.consume a g)
+         (UniformGuardedHorn.consume_type a g)
+Closed under the global context
+UniformGuardedHorn.family_application
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n),
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       UniformGuardedHorn.NB.NamedSpine G
+         (UniformGuardedHorn.family_fields a g) e xs final ->
+       DirectRKernel.Core.Typed G
+         (UniformGuardedHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformGuardedHorn.family a g))
+            xs)
+         (Syntax.𝓤 (g + 2))
+where
+?n : [ |- nat]
+Closed under the global context
+UniformGuardedHorn.family_beta
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       UniformGuardedHorn.NB.NamedSpine G
+         (UniformGuardedHorn.family_fields a g) e xs final ->
+       UniformGuardedHorn.NT.evaluate
+         (UniformGuardedHorn.Proof (DirectRCommonCodes.CommonCodes.NVar 10)
+            (DirectRCommonCodes.CommonCodes.NVar 13))
+         final =
+       Some r ->
+       DefEq.def_equiv nat ?n
+         (UniformGuardedHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformGuardedHorn.family a g))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformGuardedHorn.node_application
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       UniformGuardedHorn.NB.NamedSpine G
+         (UniformGuardedHorn.node_fields a g) e xs final ->
+       UniformGuardedHorn.NT.evaluate
+         (UniformGuardedHorn.Proof (DirectRCommonCodes.CommonCodes.NVar 10)
+            (UniformGuardedHorn.UH.Head
+               (DirectRCommonCodes.CommonCodes.NVar 10)
+               (DirectRCommonCodes.CommonCodes.NVar 11)))
+         final =
+       Some r ->
+       DirectRKernel.Core.Typed G
+         (UniformGuardedHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformGuardedHorn.node a g))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformGuardedHorn.node_beta
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       UniformGuardedHorn.NB.NamedSpine G
+         (UniformGuardedHorn.node_fields a g ++
+          UniformGuardedHorn.proof_fields
+            (DirectRCommonCodes.CommonCodes.NVar 10))
+         e xs final ->
+       UniformGuardedHorn.NT.evaluate UniformGuardedHorn.node_body final =
+       Some r ->
+       DefEq.def_equiv nat ?n
+         (UniformGuardedHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformGuardedHorn.node a g))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformGuardedHorn.consume_application
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       UniformGuardedHorn.NB.NamedSpine G
+         (UniformGuardedHorn.consume_fields a g) e xs final ->
+       UniformGuardedHorn.NT.evaluate
+         (DirectRCommonCodes.CommonCodes.NApp
+            (DirectRCommonCodes.CommonCodes.NVar 30)
+            (DirectRCommonCodes.CommonCodes.NVar 13))
+         final =
+       Some r ->
+       DirectRKernel.Core.Typed G
+         (UniformGuardedHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformGuardedHorn.consume a g))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformGuardedHorn.consume_beta
+     : forall (G : Context.Ctx nat ?n) (a g : nat)
+         (e : NamedTemplates.NamedTemplates.environment ?n)
+         (xs : list (Syntax.Term nat ?n))
+         (final : NamedTemplates.NamedTemplates.environment ?n)
+         (r : Syntax.Term nat ?n),
+       UniformGuardedHorn.NB.NamedSpine G
+         (UniformGuardedHorn.consume_fields a g) e xs final ->
+       UniformGuardedHorn.NT.evaluate UniformGuardedHorn.consume_body final =
+       Some r ->
+       DefEq.def_equiv nat ?n
+         (UniformGuardedHorn.NB.apply_spine
+            (DirectRCommonCodes.CommonCodes.lift_closed
+               (UniformGuardedHorn.consume a g))
+            xs)
+         r
+where
+?n : [ |- nat]
+Closed under the global context
+UniformGuardedHorn.node_fold_typed
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε (UniformGuardedHorn.node_fold a g)
+         (UniformGuardedHorn.node_fold_type a g)
+Closed under the global context
+UniformGuardedHorn.node_fold_result_typed
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DirectRKernel.Core.Typed Context.ε
+         (UniformGuardedHorn.node_fold_result a g)
+         (UniformGuardedHorn.node_fold_type a g)
+Closed under the global context
+UniformGuardedHorn.node_fold_beta
+     : forall a g : nat,
+       a = 1 \/ a = 2 ->
+       g = 3 \/ g = 4 ->
+       DefEq.def_equiv nat 0 (UniformGuardedHorn.node_fold a g)
+         (UniformGuardedHorn.node_fold_result a g)
+Closed under the global context
+FiniteRawDecoding.filling_lift
+     : forall (k : nat) (xs : list (Syntax.Fin k))
+         (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (values : Syntax.Fin k -> Syntax.Term nat n)
+         (t : Syntax.Term nat m),
+       Syntax.replace (FiniteRawDecoding.filling xs sigma values)
+         (FiniteRawDecoding.CF.lift
+            (length (FiniteRawDecoding.F.facts_on xs)) t) =
+       Syntax.replace sigma t
+Closed under the global context
+FiniteRawDecoding.supply_reduces
+     : forall (k : nat) (xs : list (Syntax.Fin k))
+         (n : nat) (values : Syntax.Fin k -> Syntax.Term nat n)
+         (p q : Syntax.Term nat n),
+       Reduction.reduces_to nat n p q ->
+       Reduction.reduces_to nat n (FiniteRawDecoding.F.supply xs values p)
+         (FiniteRawDecoding.F.supply xs values q)
+Closed under the global context
+FiniteRawDecoding.supply_replace
+     : forall (k : nat) (xs : list (Syntax.Fin k))
+         (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (values : Syntax.Fin k -> Syntax.Term nat m)
+         (p : Syntax.Term nat m),
+       Syntax.replace sigma (FiniteRawDecoding.F.supply xs values p) =
+       FiniteRawDecoding.F.supply xs
+         (fun i : Syntax.Fin k => Syntax.replace sigma (values i))
+         (Syntax.replace sigma p)
+Closed under the global context
+FiniteRawDecoding.supply_ext
+     : forall (k : nat) (xs : list (Syntax.Fin k))
+         (n : nat) (values others : Syntax.Fin k -> Syntax.Term nat n)
+         (p : Syntax.Term nat n),
+       (forall i : Syntax.Fin k, values i = others i) ->
+       FiniteRawDecoding.F.supply xs values p =
+       FiniteRawDecoding.F.supply xs others p
+Closed under the global context
+FiniteRawDecoding.supply_bind_beta
+     : forall (k : nat) (xs : list (Syntax.Fin k))
+         (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (env : Syntax.Fin k -> Syntax.Term nat m)
+         (body : Syntax.Term nat
+                   (FiniteRawDecoding.H.CF.scope
+                      (length (FiniteRawDecoding.F.facts_on xs)) m))
+         (values : Syntax.Fin k -> Syntax.Term nat n),
+       Reduction.reduces_to nat n
+         (FiniteRawDecoding.F.supply xs values
+            (Syntax.replace sigma
+               (FiniteRawDecoding.H.bind_handlers
+                  (FiniteRawDecoding.F.facts_on xs) env body)))
+         (Syntax.replace (FiniteRawDecoding.filling xs sigma values) body)
+Closed under the global context
+FiniteRawDecoding.filling_handler
+     : forall (k : nat) (xs : list (Syntax.Fin k)) (i : Syntax.Fin k),
+       List.In i xs ->
+       forall (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (values : Syntax.Fin k -> Syntax.Term nat n),
+       Syntax.replace (FiniteRawDecoding.filling xs sigma values)
+         (FiniteRawDecoding.H.handler (FiniteRawDecoding.F.facts_on xs)
+            (nil, i)) =
+       values i
+Closed under the global context
+FiniteRawDecoding.generated_point_beta
+     : forall (k r : nat) (P : Syntax.Term nat ?n)
+         (branches : Syntax.Fin k -> Syntax.Term nat ?n)
+         (i : Syntax.Fin k) (q : Syntax.Term nat ?n),
+       Reduction.reduces_to nat ?n
+         (FiniteRawDecoding.F.eliminate k r P branches q
+            (FiniteRawDecoding.F.point k r i))
+         (branches i)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.raw_type_replace
+     : forall (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n),
+       Syntax.replace sigma FiniteRawDecoding.raw_type =
+       FiniteRawDecoding.raw_type
+Closed under the global context
+FiniteRawDecoding.quoted_replace
+     : forall (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (c : StructuralCodes.code),
+       Syntax.replace sigma (FiniteRawDecoding.quoted c) =
+       FiniteRawDecoding.quoted c
+Closed under the global context
+FiniteRawDecoding.motive_replace
+     : forall (k m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n),
+       Syntax.replace sigma (FiniteRawDecoding.motive k) =
+       FiniteRawDecoding.motive k
+Closed under the global context
+FiniteRawDecoding.raw_type_sorted
+     : forall G : Context.Ctx nat ?n,
+       Typing.typ G FiniteRawDecoding.raw_type (Syntax.𝓤 2)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.quoted_typed
+     : forall (G : Context.Ctx nat ?n) (c : StructuralCodes.code),
+       Typing.typ G (FiniteRawDecoding.quoted c) FiniteRawDecoding.raw_type
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.motive_typed
+     : forall (G : Context.Ctx nat ?n) (k : nat),
+       Typing.typ G (FiniteRawDecoding.motive k)
+         (FiniteRawDecoding.F.predicate_type k 2)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.motive_beta
+     : forall (k : nat) (q : Syntax.Term nat ?n),
+       Reduction.reduces_to nat ?n
+         (Syntax.app (FiniteRawDecoding.motive k) q)
+         FiniteRawDecoding.raw_type
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.quoted_branch_typed
+     : forall (G : Context.Ctx nat ?n) (k : nat)
+         (values : Syntax.Fin k -> StructuralCodes.code)
+         (i : Syntax.Fin k),
+       Typing.typ G (FiniteRawDecoding.quoted (values i))
+         (Syntax.app (FiniteRawDecoding.motive k)
+            (FiniteRawDecoding.CF.selector 0 k i))
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.body_replace
+     : forall (k : nat) (values : Syntax.Fin k -> StructuralCodes.code)
+         (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (q e : Syntax.Term nat m),
+       Syntax.replace sigma (FiniteRawDecoding.body k values q e) =
+       FiniteRawDecoding.body k values (Syntax.replace sigma q)
+         (Syntax.replace sigma e)
+Closed under the global context
+FiniteRawDecoding.body_typed
+     : forall (G : Context.Ctx nat ?n) (k : nat)
+         (values : Syntax.Fin k -> StructuralCodes.code)
+         (q e : Syntax.Term nat ?n),
+       Typing.typ G e (FiniteRawDecoding.F.generated k 2 q) ->
+       Typing.typ G (FiniteRawDecoding.body k values q e)
+         FiniteRawDecoding.raw_type
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.decoder_typed
+     : forall (G : Context.Ctx nat ?n) (k : nat)
+         (values : Syntax.Fin k -> StructuralCodes.code),
+       Typing.typ G (FiniteRawDecoding.decoder k values)
+         (FiniteRawDecoding.decoder_type k)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.decoder_type_sorted
+     : forall (G : Context.Ctx nat ?n) (k : nat),
+       Typing.typ G (FiniteRawDecoding.decoder_type k) (Syntax.𝓤 4)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.arbitrary_decode_typed
+     : forall (G : Context.Ctx nat ?n) (k : nat)
+         (values : Syntax.Fin k -> StructuralCodes.code)
+         (q e : Syntax.Term nat ?n),
+       Typing.typ G q (FiniteRawDecoding.I.code_type k) ->
+       Typing.typ G e (FiniteRawDecoding.F.generated k 2 q) ->
+       Typing.typ G
+         (Syntax.app (Syntax.app (FiniteRawDecoding.decoder k values) q) e)
+         FiniteRawDecoding.raw_type
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.decoder_beta
+     : forall (k : nat) (values : Syntax.Fin k -> StructuralCodes.code)
+         (q e : Syntax.Term nat ?n),
+       Reduction.reduces_to nat ?n
+         (Syntax.app (Syntax.app (FiniteRawDecoding.decoder k values) q) e)
+         (FiniteRawDecoding.body k values q e)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.canonical_decode_beta
+     : forall (k : nat) (values : Syntax.Fin k -> StructuralCodes.code)
+         (i : Syntax.Fin k),
+       Reduction.reduces_to nat ?n
+         (Syntax.app
+            (Syntax.app (FiniteRawDecoding.decoder k values)
+               (FiniteRawDecoding.CF.selector 0 k i))
+            (FiniteRawDecoding.F.point k 2 i))
+         (FiniteRawDecoding.quoted (values i))
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.canonical_decode_typed
+     : forall (G : Context.Ctx nat ?n) (k : nat)
+         (values : Syntax.Fin k -> StructuralCodes.code)
+         (i : Syntax.Fin k),
+       Typing.typ G
+         (Syntax.app
+            (Syntax.app (FiniteRawDecoding.decoder k values)
+               (FiniteRawDecoding.CF.selector 0 k i))
+            (FiniteRawDecoding.F.point k 2 i))
+         FiniteRawDecoding.raw_type
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.fragment_decoder_typed
+     : forall (G : Context.Ctx nat ?n) (budget : nat),
+       Typing.typ G (FiniteRawDecoding.fragment_decoder budget)
+         (FiniteRawDecoding.decoder_type
+            (length (FiniteRawDecoding.B.codes budget)))
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.fragment_decoder_type_rank
+     : forall (G : Context.Ctx nat ?n) (budget : nat),
+       Typing.typ G
+         (FiniteRawDecoding.decoder_type
+            (length (FiniteRawDecoding.B.codes budget)))
+         (Syntax.𝓤 4)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.fragment_decode_beta
+     : forall (budget : nat) (c : StructuralCodes.code)
+         (i : Syntax.Fin (length (FiniteRawDecoding.B.codes budget))),
+       FiniteRawDecoding.B.fragment_index budget c = Some i ->
+       Reduction.reduces_to nat ?n
+         (Syntax.app
+            (Syntax.app (FiniteRawDecoding.fragment_decoder budget)
+               (FiniteRawDecoding.CF.selector 0
+                  (length (FiniteRawDecoding.B.codes budget)) i))
+            (FiniteRawDecoding.F.point
+               (length (FiniteRawDecoding.B.codes budget)) 2 i))
+         (FiniteRawDecoding.quoted c)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawDecoding.all_raw_codes_covered
+     : forall c : StructuralCodes.code,
+       exists
+         i : Syntax.Fin
+               (length
+                  (FiniteRawDecoding.B.codes (StructuralCodes.code_size c))),
+         FiniteRawDecoding.B.fragment_index (StructuralCodes.code_size c) c =
+         Some i /\
+         Reduction.reduces_to nat 0
+           (Syntax.app
+              (Syntax.app
+                 (FiniteRawDecoding.fragment_decoder
+                    (StructuralCodes.code_size c))
+                 (FiniteRawDecoding.CF.selector 0
+                    (length
+                       (FiniteRawDecoding.B.codes
+                          (StructuralCodes.code_size c)))
+                    i))
+              (FiniteRawDecoding.F.point
+                 (length
+                    (FiniteRawDecoding.B.codes (StructuralCodes.code_size c)))
+                 2 i))
+           (FiniteRawDecoding.C.quote c)
+Closed under the global context
+FiniteRawDecoding.output_quotation_injective
+     : forall c d : StructuralCodes.code,
+       FiniteRawDecoding.quoted c = FiniteRawDecoding.quoted d -> c = d
+Closed under the global context
+FiniteRawDecoding.serialized_input_output_injective
+     : forall v w : FiniteRawDecoding.S.packed_input,
+       FiniteRawDecoding.quoted (FiniteRawDecoding.S.encode_packed v) =
+       FiniteRawDecoding.quoted (FiniteRawDecoding.S.encode_packed w) ->
+       v = w
+Closed under the global context
+FiniteRawDecoding.serialized_input_covered
+     : forall v : FiniteRawDecoding.S.packed_input,
+       exists
+         i : Syntax.Fin
+               (length
+                  (FiniteRawDecoding.B.codes
+                     (StructuralCodes.code_size
+                        (FiniteRawDecoding.S.encode_packed v)))),
+         FiniteRawDecoding.B.fragment_index
+           (StructuralCodes.code_size (FiniteRawDecoding.S.encode_packed v))
+           (FiniteRawDecoding.S.encode_packed v) =
+         Some i /\
+         FiniteRawDecoding.S.decode_input
+           (FiniteRawDecoding.B.fragment_decode
+              (StructuralCodes.code_size
+                 (FiniteRawDecoding.S.encode_packed v))
+              i) =
+         Some v /\
+         Reduction.reduces_to nat 0
+           (Syntax.app
+              (Syntax.app
+                 (FiniteRawDecoding.fragment_decoder
+                    (StructuralCodes.code_size
+                       (FiniteRawDecoding.S.encode_packed v)))
+                 (FiniteRawDecoding.CF.selector 0
+                    (length
+                       (FiniteRawDecoding.B.codes
+                          (StructuralCodes.code_size
+                             (FiniteRawDecoding.S.encode_packed v))))
+                    i))
+              (FiniteRawDecoding.F.point
+                 (length
+                    (FiniteRawDecoding.B.codes
+                       (StructuralCodes.code_size
+                          (FiniteRawDecoding.S.encode_packed v))))
+                 2 i))
+           (FiniteRawDecoding.C.quote (FiniteRawDecoding.S.encode_packed v))
+Closed under the global context
+FiniteRawDecoding.canonical_raw_admission
+     : forall c : StructuralCodes.code,
+       exists
+         i : Syntax.Fin
+               (length
+                  (FiniteRawDecoding.B.codes (StructuralCodes.code_size c))),
+         FiniteRawDecoding.B.fragment_index (StructuralCodes.code_size c) c =
+         Some i /\
+         Typing.typ Context.ε
+           (FiniteRawDecoding.CF.selector 0
+              (length
+                 (FiniteRawDecoding.B.codes (StructuralCodes.code_size c)))
+              i)
+           (FiniteRawDecoding.I.code_type
+              (length
+                 (FiniteRawDecoding.B.codes (StructuralCodes.code_size c)))) /\
+         Typing.typ Context.ε
+           (FiniteRawDecoding.F.point
+              (length
+                 (FiniteRawDecoding.B.codes (StructuralCodes.code_size c)))
+              2 i)
+           (FiniteRawDecoding.F.generated
+              (length
+                 (FiniteRawDecoding.B.codes (StructuralCodes.code_size c)))
+              2
+              (FiniteRawDecoding.CF.selector 0
+                 (length
+                    (FiniteRawDecoding.B.codes (StructuralCodes.code_size c)))
+                 i)) /\
+         Typing.typ Context.ε
+           (Syntax.app
+              (Syntax.app
+                 (FiniteRawDecoding.fragment_decoder
+                    (StructuralCodes.code_size c))
+                 (FiniteRawDecoding.CF.selector 0
+                    (length
+                       (FiniteRawDecoding.B.codes
+                          (StructuralCodes.code_size c)))
+                    i))
+              (FiniteRawDecoding.F.point
+                 (length
+                    (FiniteRawDecoding.B.codes (StructuralCodes.code_size c)))
+                 2 i))
+           FiniteRawDecoding.C.carrier /\
+         Reduction.reduces_to nat 0
+           (Syntax.app
+              (Syntax.app
+                 (FiniteRawDecoding.fragment_decoder
+                    (StructuralCodes.code_size c))
+                 (FiniteRawDecoding.CF.selector 0
+                    (length
+                       (FiniteRawDecoding.B.codes
+                          (StructuralCodes.code_size c)))
+                    i))
+              (FiniteRawDecoding.F.point
+                 (length
+                    (FiniteRawDecoding.B.codes (StructuralCodes.code_size c)))
+                 2 i))
+           (FiniteRawDecoding.C.quote c)
+Closed under the global context
+FiniteRawTables.frame_spine
+     : forall (G : Context.Ctx nat ?n) (j : nat) (T : Syntax.Term nat ?n),
+       FiniteRawTables.Frame G j T -> FiniteRawTables.spine j T = true
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.lifted_application
+     : forall (G : Context.Ctx nat ?n) (f A : Syntax.Term nat ?n)
+         (B : Syntax.Term nat (S ?n)),
+       Typing.typ G f (Syntax.Π A B) ->
+       Typing.typ (Context.cons G A)
+         (Syntax.app (Syntax.shift f) (Syntax.var Syntax.fzero)) B
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.abstract_typed
+     : forall (G : Context.Ctx nat ?n) (j : nat) (T : Syntax.Term nat ?n),
+       FiniteRawTables.Frame G j T ->
+       forall (k : nat) (q : Syntax.Term nat ?n)
+         (values : Syntax.Fin k -> Syntax.Term nat ?n),
+       Typing.typ G q (FiniteRawTables.I.code_type k) ->
+       (forall i : Syntax.Fin k, Typing.typ G (values i) T) ->
+       Typing.typ G (FiniteRawTables.abstract k j T q values) T
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.expand_replace
+     : forall (j m n : nat) (T t : Syntax.Term nat m)
+         (sigma : Syntax.Fin m -> Syntax.Term nat n),
+       FiniteRawTables.spine j T = true ->
+       Syntax.replace sigma (FiniteRawTables.expand j T t) =
+       FiniteRawTables.expand j (Syntax.replace sigma T)
+         (Syntax.replace sigma t)
+Closed under the global context
+FiniteRawTables.abstract_values_ext
+     : forall (j k n : nat) (T q : Syntax.Term nat n)
+         (values others : Syntax.Fin k -> Syntax.Term nat n),
+       (forall i : Syntax.Fin k, values i = others i) ->
+       FiniteRawTables.abstract k j T q values =
+       FiniteRawTables.abstract k j T q others
+Closed under the global context
+FiniteRawTables.abstract_replace
+     : forall (j k m n : nat) (T q : Syntax.Term nat m)
+         (values : Syntax.Fin k -> Syntax.Term nat m)
+         (sigma : Syntax.Fin m -> Syntax.Term nat n),
+       FiniteRawTables.spine j T = true ->
+       Syntax.replace sigma (FiniteRawTables.abstract k j T q values) =
+       FiniteRawTables.abstract k j (Syntax.replace sigma T)
+         (Syntax.replace sigma q)
+         (fun i : Syntax.Fin k => Syntax.replace sigma (values i))
+Closed under the global context
+FiniteRawTables.abstract_selector_beta
+     : forall (j k n : nat) (T : Syntax.Term nat n)
+         (values : Syntax.Fin k -> Syntax.Term nat n)
+         (i : Syntax.Fin k),
+       FiniteRawTables.spine j T = true ->
+       Reduction.reduces_to nat n
+         (FiniteRawTables.abstract k j T (FiniteRawTables.CF.selector 0 k i)
+            values)
+         (FiniteRawTables.expand j T (values i))
+Closed under the global context
+FiniteRawTables.raw_spine
+     : FiniteRawTables.spine FiniteRawTables.raw_depth
+         FiniteRawTables.R.raw_type =
+       true
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.raw_frame
+     : forall G : Context.Ctx nat ?n,
+       FiniteRawTables.Frame G FiniteRawTables.raw_depth
+         FiniteRawTables.R.raw_type
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.table_typed
+     : forall (G : Context.Ctx nat ?n) (k : nat)
+         (values : Syntax.Fin k -> StructuralCodes.code),
+       Typing.typ G (FiniteRawTables.table k values)
+         (FiniteRawTables.table_type k)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.table_type_sorted
+     : forall (G : Context.Ctx nat ?n) (k : nat),
+       Typing.typ G (FiniteRawTables.table_type k) (Syntax.𝓤 2)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.arbitrary_query_typed
+     : forall (G : Context.Ctx nat ?n) (k : nat)
+         (values : Syntax.Fin k -> StructuralCodes.code)
+         (q : Syntax.Term nat ?n),
+       Typing.typ G q (FiniteRawTables.I.code_type k) ->
+       Typing.typ G (Syntax.app (FiniteRawTables.table k values) q)
+         FiniteRawTables.R.raw_type
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.table_beta
+     : forall (k : nat) (values : Syntax.Fin k -> StructuralCodes.code)
+         (q : Syntax.Term nat ?n),
+       Reduction.reduces_to nat ?n
+         (Syntax.app (FiniteRawTables.table k values) q)
+         (FiniteRawTables.abstract k FiniteRawTables.raw_depth
+            FiniteRawTables.R.raw_type q
+            (fun i : Syntax.Fin k => FiniteRawTables.R.quoted (values i)))
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.canonical_table_beta
+     : forall (k : nat) (values : Syntax.Fin k -> StructuralCodes.code)
+         (i : Syntax.Fin k),
+       Reduction.reduces_to nat ?n
+         (Syntax.app (FiniteRawTables.table k values)
+            (FiniteRawTables.CF.selector 0 k i))
+         (FiniteRawTables.expanded_quote (values i))
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.pair_expansion_beta
+     : DefEq.def_equiv nat 2
+         (FiniteRawTables.expand FiniteRawTables.raw_depth
+            FiniteRawTables.R.raw_type FiniteRawTables.pair_source)
+         FiniteRawTables.pair_source
+Closed under the global context
+FiniteRawTables.arbitrary_pair_expansion
+     : forall x y : Syntax.Term nat ?n,
+       DefEq.def_equiv nat ?n
+         (FiniteRawTables.expand FiniteRawTables.raw_depth
+            FiniteRawTables.R.raw_type
+            (Syntax.app
+               (Syntax.app
+                  (DirectRCommonCodes.CommonCodes.lift_closed
+                     FiniteRawTables.C.pair)
+                  x)
+               y))
+         (Syntax.app
+            (Syntax.app
+               (DirectRCommonCodes.CommonCodes.lift_closed
+                  FiniteRawTables.C.pair)
+               x)
+            y)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.expanded_quote_beta
+     : forall c : StructuralCodes.code,
+       DefEq.def_equiv nat ?n (FiniteRawTables.expanded_quote c)
+         (FiniteRawTables.R.quoted c)
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.canonical_output_agreement
+     : forall (k : nat) (values : Syntax.Fin k -> StructuralCodes.code)
+         (i : Syntax.Fin k),
+       DefEq.def_equiv nat ?n
+         (Syntax.app (FiniteRawTables.table k values)
+            (FiniteRawTables.CF.selector 0 k i))
+         (FiniteRawTables.R.quoted (values i))
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.canonical_decoder_agreement
+     : forall (k : nat) (values : Syntax.Fin k -> StructuralCodes.code)
+         (i : Syntax.Fin k),
+       DefEq.def_equiv nat ?n
+         (Syntax.app (FiniteRawTables.table k values)
+            (FiniteRawTables.CF.selector 0 k i))
+         (Syntax.app
+            (Syntax.app (FiniteRawTables.R.decoder k values)
+               (FiniteRawTables.CF.selector 0 k i))
+            (FiniteRawTables.R.F.point k 2 i))
+where
+?n : [ |- nat]
+Closed under the global context
+FiniteRawTables.expand_injective
+     : forall (j n : nat) (T x y : Syntax.Term nat n),
+       FiniteRawTables.expand j T x = FiniteRawTables.expand j T y -> x = y
+Closed under the global context
+FiniteRawTables.expanded_quotation_injective
+     : forall c d : StructuralCodes.code,
+       FiniteRawTables.expanded_quote c = FiniteRawTables.expanded_quote d ->
+       c = d
+Closed under the global context
+FiniteRawTables.expanded_serialized_input_injective
+     : forall v w : FiniteRawTables.R.S.packed_input,
+       FiniteRawTables.expanded_quote (FiniteRawTables.R.S.encode_packed v) =
+       FiniteRawTables.expanded_quote (FiniteRawTables.R.S.encode_packed w) ->
+       v = w
+Closed under the global context
+        rocq theories/self_consistency/UniformHornAudit.{glob,vo}

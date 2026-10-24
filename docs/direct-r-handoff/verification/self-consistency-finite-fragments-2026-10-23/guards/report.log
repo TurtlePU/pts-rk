@@ -1,0 +1,212 @@
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+positive_guard_rank
+     : forall (a : nat)
+         (cs : list DirectRCommonCodes.CommonCodes.closed_term),
+       1 <= a -> guard_rank a cs = S (S a)
+Closed under the global context
+motive_type_rename
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term) 
+         (m n : nat) (rho : Syntax.Fin m -> Syntax.Fin n),
+       Syntax.rename rho (motive_type A) = motive_type A
+Closed under the global context
+motive_type_replace
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term) 
+         (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n),
+       Syntax.replace sigma (motive_type A) = motive_type A
+Closed under the global context
+point_type_rename
+     : forall (m n : nat) (rho : Syntax.Fin m -> Syntax.Fin n)
+         (P : Syntax.Term nat m)
+         (c : DirectRCommonCodes.CommonCodes.closed_term),
+       Syntax.rename rho (point_type P c) =
+       point_type (Syntax.rename rho P) c
+Closed under the global context
+point_type_replace
+     : forall (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (P : Syntax.Term nat m)
+         (c : DirectRCommonCodes.CommonCodes.closed_term),
+       Syntax.replace sigma (point_type P c) =
+       point_type (Syntax.replace sigma P) c
+Closed under the global context
+cases_type_rename
+     : forall (cs : list DirectRCommonCodes.CommonCodes.closed_term)
+         (m n : nat) (rho : Syntax.Fin m -> Syntax.Fin n)
+         (P R : Syntax.Term nat m),
+       Syntax.rename rho (cases_type cs P R) =
+       cases_type cs (Syntax.rename rho P) (Syntax.rename rho R)
+Closed under the global context
+cases_type_replace
+     : forall (cs : list DirectRCommonCodes.CommonCodes.closed_term)
+         (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (P R : Syntax.Term nat m),
+       Syntax.replace sigma (cases_type cs P R) =
+       cases_type cs (Syntax.replace sigma P) (Syntax.replace sigma R)
+Closed under the global context
+guard_type_rename
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term)
+         (cs : list DirectRCommonCodes.CommonCodes.closed_term) 
+         (m n : nat) (rho : Syntax.Fin m -> Syntax.Fin n)
+         (x : Syntax.Term nat m),
+       Syntax.rename rho (guard_type A cs x) =
+       guard_type A cs (Syntax.rename rho x)
+Closed under the global context
+guard_type_replace
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term)
+         (cs : list DirectRCommonCodes.CommonCodes.closed_term) 
+         (m n : nat) (sigma : Syntax.Fin m -> Syntax.Term nat n)
+         (x : Syntax.Term nat m),
+       Syntax.replace sigma (guard_type A cs x) =
+       guard_type A cs (Syntax.replace sigma x)
+Closed under the global context
+motive_type_sorted
+     : forall (A : Syntax.Term nat 0) (a : nat),
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 a) ->
+       forall (n : nat) (G : Context.Ctx nat n),
+       DirectRKernel.Core.Typed G (motive_type A) (Syntax.𝓤 (S a))
+Closed under the global context
+point_type_sorted
+     : forall (A c : Syntax.Term nat 0) (n : nat) 
+         (G : Context.Ctx nat n) (P : Syntax.Term nat n),
+       DirectRKernel.Core.Typed Context.ε c A ->
+       DirectRKernel.Core.Typed G P (motive_type A) ->
+       DirectRKernel.Core.Typed G (point_type P c) (Syntax.𝓤 2)
+Closed under the global context
+cases_type_sorted
+     : forall (A : Syntax.Term nat 0) (cs : list (Syntax.Term nat 0))
+         (n : nat) (G : Context.Ctx nat n) (P R : Syntax.Term nat n),
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c A)
+         cs ->
+       DirectRKernel.Core.Typed G P (motive_type A) ->
+       DirectRKernel.Core.Typed G R (Syntax.𝓤 2) ->
+       DirectRKernel.Core.Typed G (cases_type cs P R)
+         (Syntax.𝓤 (cases_rank cs))
+Closed under the global context
+guard_type_sorted
+     : forall (A : Syntax.Term nat 0) (a : nat)
+         (cs : list (Syntax.Term nat 0)) (n : nat) 
+         (G : Context.Ctx nat n) (x : Syntax.Term nat n),
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 a) ->
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c A)
+         cs ->
+       DirectRKernel.Core.Typed G x
+         (DirectRCommonCodes.CommonCodes.lift_closed A) ->
+       DirectRKernel.Core.Typed G (guard_type A cs x)
+         (Syntax.𝓤 (guard_rank a cs))
+Closed under the global context
+ignore_cases_typed
+     : forall (A : Syntax.Term nat 0) (cs : list (Syntax.Term nat 0))
+         (n : nat) (G : Context.Ctx nat n) (P t R : Syntax.Term nat n),
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c A)
+         cs ->
+       DirectRKernel.Core.Typed G P (motive_type A) ->
+       DirectRKernel.Core.Typed G t R ->
+       DirectRKernel.Core.Typed G (ignore_cases cs P t) (cases_type cs P R)
+Closed under the global context
+select_case_typed
+     : forall (A : Syntax.Term nat 0) (cs : list (Syntax.Term nat 0))
+         (i : nat) (c : Syntax.Term nat 0) (n : nat) 
+         (G : Context.Ctx nat n) (P : Syntax.Term nat n),
+       ListDef.Forall
+         (fun c0 : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε c0 A)
+         cs ->
+       DirectRKernel.Core.Typed G P (motive_type A) ->
+       List.nth_error cs i = Some c ->
+       DirectRKernel.Core.Typed G (select_case cs i P)
+         (cases_type cs P (point_type P c))
+Closed under the global context
+guard_witness_typed
+     : forall (A : Syntax.Term nat 0) (a : nat)
+         (cs : list (Syntax.Term nat 0)) (i : nat) 
+         (c : Syntax.Term nat 0),
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 a) ->
+       ListDef.Forall
+         (fun c0 : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε c0 A)
+         cs ->
+       List.nth_error cs i = Some c ->
+       DirectRKernel.Core.Typed Context.ε (guard_witness A cs i)
+         (guard_type A cs c)
+Closed under the global context
+supply_cases_typed
+     : forall (cs : list DirectRCommonCodes.CommonCodes.closed_term)
+         (n : nat) (G : Context.Ctx nat n) (P R g : Syntax.Term nat n)
+         (hs : list (Syntax.Term nat n)),
+       List.Forall2
+         (fun (c : DirectRCommonCodes.CommonCodes.closed_term)
+            (h : Syntax.Term nat n) =>
+          DirectRKernel.Core.Typed G h (point_type P c))
+         cs hs ->
+       DirectRKernel.Core.Typed G g (cases_type cs P R) ->
+       DirectRKernel.Core.Typed G (supply_cases hs g) R
+Closed under the global context
+guarded_elimination
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term)
+         (cs : list DirectRCommonCodes.CommonCodes.closed_term) 
+         (n : nat) (G : Context.Ctx nat n) (x g P : Syntax.Term nat n)
+         (hs : list (Syntax.Term nat n)),
+       DirectRKernel.Core.Typed G g (guard_type A cs x) ->
+       DirectRKernel.Core.Typed G P (motive_type A) ->
+       List.Forall2
+         (fun (c : DirectRCommonCodes.CommonCodes.closed_term)
+            (h : Syntax.Term nat n) =>
+          DirectRKernel.Core.Typed G h (point_type P c))
+         cs hs ->
+       DirectRKernel.Core.Typed G (supply_cases hs (Syntax.app g P))
+         (Syntax.app P x)
+Closed under the global context
+closed_branches_lift
+     : forall (n : nat) (G : Context.Ctx nat n) (P : Syntax.Term nat 0)
+         (cs hs : list (Syntax.Term nat 0)),
+       List.Forall2
+         (fun c h : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε h (Syntax.app P c))
+         cs hs ->
+       List.Forall2
+         (fun (c : DirectRCommonCodes.CommonCodes.closed_term)
+            (h : Syntax.Term nat n) =>
+          DirectRKernel.Core.Typed G h
+            (point_type (DirectRCommonCodes.CommonCodes.lift_closed P) c))
+         cs (ListDef.map DirectRCommonCodes.CommonCodes.lift_closed hs)
+Closed under the global context
+closed_motive_lift
+     : forall (A : DirectRCommonCodes.CommonCodes.closed_term)
+         (P : Syntax.Term nat 0) (n : nat) (G : Context.Ctx nat n),
+       DirectRKernel.Core.Typed Context.ε P (motive_type A) ->
+       DirectRKernel.Core.Typed G
+         (DirectRCommonCodes.CommonCodes.lift_closed P) 
+         (motive_type A)
+Closed under the global context
+elimination_type_sorted
+     : forall (A : Syntax.Term nat 0) (a : nat)
+         (cs : list (Syntax.Term nat 0)) (P : Syntax.Term nat 0),
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 a) ->
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c A)
+         cs ->
+       DirectRKernel.Core.Typed Context.ε P (motive_type A) ->
+       DirectRKernel.Core.Typed Context.ε (elimination_type A cs P)
+         (Syntax.𝓤 (S (guard_rank a cs)))
+Closed under the global context
+elimination_typed
+     : forall (A : Syntax.Term nat 0) (a : nat)
+         (cs : list (Syntax.Term nat 0)) (P : Syntax.Term nat 0)
+         (hs : list (Syntax.Term nat 0)),
+       DirectRKernel.Core.Typed Context.ε A (Syntax.𝓤 a) ->
+       ListDef.Forall
+         (fun c : Syntax.Term nat 0 => DirectRKernel.Core.Typed Context.ε c A)
+         cs ->
+       DirectRKernel.Core.Typed Context.ε P (motive_type A) ->
+       List.Forall2
+         (fun c h : Syntax.Term nat 0 =>
+          DirectRKernel.Core.Typed Context.ε h (Syntax.app P c))
+         cs hs ->
+       DirectRKernel.Core.Typed Context.ε (elimination A cs P hs)
+         (elimination_type A cs P)
+Closed under the global context

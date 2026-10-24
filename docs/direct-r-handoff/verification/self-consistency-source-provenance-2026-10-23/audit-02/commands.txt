@@ -1,0 +1,24 @@
+git rev-parse HEAD 
+opam exec -- rocq -v 
+opam exec -- dune --version 
+opam list --installed --columns=name\,version 
+df -h . /tmp 
+working_tree_manifest 
+source_manifest 
+previous_sources 
+registration_normalization 
+registered_modules 
+declaration_coverage 
+git archive --output=/Users/akuklev/air/pts-rk/_build/self-consistency-source-provenance-audit.RB1ktf/pristine.tar 723cf2ec61c737ae82ba33d2e7db44f650122b0e 
+tar -xf /Users/akuklev/air/pts-rk/_build/self-consistency-source-provenance-audit.RB1ktf/pristine.tar -C /tmp/pts-rk-source-provenance-pristine.D4McFy 
+opam exec -- timeout 600 dune build --root /tmp/pts-rk-source-provenance-pristine.D4McFy --display=short --no-buffer -j 2 theories/Ranks.vo 
+opam exec -- timeout 600 rocq check -silent -o -Q /tmp/pts-rk-source-provenance-pristine.D4McFy/_build/default/theories PTSrk PTSrk.Ranks 
+opam exec -- timeout 3600 dune build --build-dir /tmp/pts-rk-source-provenance-fresh.yW2QOO --display=short --no-buffer -j 2 @theories/self_consistency/source-provenance-audit 
+reports 
+opam exec -- timeout 3600 rocq check -silent -o -bytecode-compiler yes -Q /tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories PTSrk -Q /tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency PTSrk.SelfConsistency PTSrk.SelfConsistency.SourceProvenanceAudit 
+compare_inventory 
+git diff --exit-code 723cf2ec61c737ae82ba33d2e7db44f650122b0e -- theories/Syntax.v theories/AbstractRewriting.v theories/Congruence.v theories/Reduction.v theories/Confluence.v theories/DefEq.v theories/Context.v theories/Typing.v theories/Inversions.v theories/Preservation.v theories/SN.v theories/Ranks.v 
+git diff --exit-code ffa7131 -- theories/ZFC_model 
+safety_scan 
+source_manifest 
+cmp /Users/akuklev/air/pts-rk/_build/self-consistency-source-provenance-audit.RB1ktf/source-before.log /Users/akuklev/air/pts-rk/_build/self-consistency-source-provenance-audit.RB1ktf/source-after.log 

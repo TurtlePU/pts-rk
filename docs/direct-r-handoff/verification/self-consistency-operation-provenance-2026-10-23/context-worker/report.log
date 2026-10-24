@@ -1,0 +1,92 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+InternalContextLookup.empty_context_typed
+     : DirectRKernel.Core.Typed Context.ε InternalContextLookup.empty_context
+         InternalCarrier.InternalCarrier.carrier
+Closed under the global context
+InternalContextLookup.context_cons_typed
+     : DirectRKernel.Core.Typed Context.ε InternalContextLookup.context_cons
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalCarrier.InternalCarrier.carrier
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalCarrier.InternalCarrier.carrier
+               InternalCarrier.InternalCarrier.carrier))
+Closed under the global context
+InternalContextLookup.context_guard_sorted
+     : DirectRKernel.Core.Typed Context.ε InternalContextLookup.context_guard
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalCarrier.InternalCarrier.carrier
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalCarrier.InternalCarrier.carrier
+               (Syntax.𝓤 14)))
+Closed under the global context
+InternalContextLookup.context_guard_empty_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_guard_empty_type
+         (Syntax.𝓤 14)
+Closed under the global context
+InternalContextLookup.context_guard_empty_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_guard_empty
+         InternalContextLookup.context_guard_empty_type
+Closed under the global context
+InternalContextLookup.context_guard_cons_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_guard_cons_type
+         (Syntax.𝓤 15)
+Closed under the global context
+InternalContextLookup.context_guard_cons_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_guard_cons
+         InternalContextLookup.context_guard_cons_type
+Closed under the global context
+InternalContextLookup.context_lookup_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup
+         InternalContextLookup.context_lookup_sort_type
+Closed under the global context
+InternalContextLookup.context_lookup_zero_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_zero_type
+         (Syntax.𝓤 18)
+Closed under the global context
+InternalContextLookup.context_lookup_zero_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_zero
+         InternalContextLookup.context_lookup_zero_type
+Closed under the global context
+InternalContextLookup.context_lookup_step_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_step_type
+         (Syntax.𝓤 19)
+Closed under the global context
+InternalContextLookup.context_lookup_step_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_step
+         InternalContextLookup.context_lookup_step_type
+Closed under the global context
+InternalContextLookup.context_lookup_scope_type_sorted
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_scope_type
+         (Syntax.𝓤 19)
+Closed under the global context
+InternalContextLookup.context_lookup_scope_template_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_scope_template
+         (DirectRCommonCodes.CommonCodes.Arrow
+            InternalRenamingLookup.InternalRenamingLookup.bounded_shift_bound_type
+            (DirectRCommonCodes.CommonCodes.Arrow
+               InternalRenaming.InternalRenaming.renaming_scope_type
+               InternalContextLookup.context_lookup_scope_type))
+Closed under the global context
+InternalContextLookup.context_lookup_scope_typed
+     : DirectRKernel.Core.Typed Context.ε
+         InternalContextLookup.context_lookup_scope
+         InternalContextLookup.context_lookup_scope_type
+Closed under the global context

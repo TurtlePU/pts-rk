@@ -1,0 +1,56 @@
+Warning:
+/private/tmp/pts-rk-fragments-fresh.d7RHpo/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-dictionary-realization.KorrfC/FiniteDictionaryRealization.v", line 10, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "/tmp/pts-rk-dictionary-realization.KorrfC/FiniteDictionaryRealization.v", line 10, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "/tmp/pts-rk-dictionary-realization.KorrfC/FiniteDictionaryRealization.v", line 12, characters 0-35:
+Warning: Trying to mask the absolute name "FiniteDictionaryRealization"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "/tmp/pts-rk-dictionary-realization.KorrfC/FiniteDictionaryRealization.v", line 63, characters 22-24:
+Error:
+In environment
+E, x, L : Term nat 0
+HE : Typed ε E (𝓤 1)
+Hx : Typed ε x E
+HL : Typed ε L (List E)
+H : Typed ε FD.cons (Π (𝓤 1) (Π V0 (Π (List v1) (List v2))))
+H1 :
+  Typed ε (FD.cons $ E)
+    (Π (replace (fin_match E (fun x : Fin 0 => var x)) V0)
+       (Π
+          (lift_closed FD.list_type $
+           replace (transpose (fin_match E (fun x : Fin 0 => var x))) v1)
+          (lift_closed FD.list_type $
+           replace
+             (transpose (transpose (fin_match E (fun x : Fin 0 => var x))))
+             v2)))
+H2 :
+  Typed ε (FD.cons $ E $ x)
+    (Π
+       (FD.list_type $
+        replace (fin_match x (fun x : Fin 0 => var x))
+          (replace (transpose (fin_match E (fun x : Fin 0 => var x))) v1))
+       (lift_closed FD.list_type $
+        replace (transpose (fin_match x (fun x : Fin 0 => var x)))
+          (replace
+             (transpose (transpose (fin_match E (fun x : Fin 0 => var x))))
+             v2)))
+The term "HL" has type "Typed ε L (List E)" while it is expected to have type
+ "Typed ε L
+    (FD.list_type $
+     replace (fin_match x (fun x : Fin 0 => var x))
+       (replace (transpose (fin_match E (fun x : Fin 0 => var x))) v1))"
+(cannot unify "List E" and
+"FD.list_type $
+ replace (fin_match x (fun x : Fin 0 => var x))
+   (replace (transpose (fin_match E (fun x : Fin 0 => var x))) v1)").
+

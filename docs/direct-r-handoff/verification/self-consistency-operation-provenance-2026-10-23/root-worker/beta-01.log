@@ -1,0 +1,23 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 227 - 269 [From~Stdlib~Require~Import~Ari...] 0.037 secs (0.029u,0.007s)
+Chars 270 - 316 [From~PTSrk~Require~Import-(not...] 0.024 secs (0.018u,0.005s)
+Chars 317 - 377 [From~PTSrk~Require~Import~DefE...] 0.001 secs (0.001u,0.s)
+Chars 378 - 469 [From~Interpretation_of_R~Requi...] 0.055 secs (0.044u,0.01s)
+Chars 470 - 527 [From~PTSrk.SelfConsistency~Req...] 0.001 secs (0.u,0.s)
+Chars 529 - 546 [Module~NamedBeta.] 0. secs (0.u,0.s)
+Chars 547 - 612 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 614 - 753 [Lemma~update_substitution~{n}~...] 0. secs (0.u,0.s)
+Chars 754 - 760 [Proof.] 0. secs (0.u,0.s)
+Chars 763 - 825 [unfold~update,~extend;~destruc...] 0. secs (0.u,0.s)
+Chars 828 - 885 [destruct~(e~y)~as~[a|~];~cbn[o...] 0. secs (0.u,0.s)
+Chars 888 - 975 [unfold~subst;~rewrite~replace_...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/NamedBeta.v", line 18, characters 16-37:
+Error: Found no subterm matching "replace (transpose ?M1169) (shift ?M1170)"
+in the current goal.

@@ -1,0 +1,16 @@
+Entering directory '/private/tmp/pts-rk-joint-resources-pristine.d7jjko'
+        rocq theories/.PTSrk.theory.d
+        rocq theories/AbstractRewriting.{glob,vo}
+        rocq theories/Syntax.{glob,vo}
+        rocq theories/Congruence.{glob,vo}
+        rocq theories/Reduction.{glob,vo}
+        rocq theories/Context.{glob,vo}
+        rocq theories/SN.{glob,vo}
+        rocq theories/Confluence.{glob,vo}
+        rocq theories/DefEq.{glob,vo}
+        rocq theories/Typing.{glob,vo}
+        rocq theories/Inversions.{glob,vo}
+        rocq theories/Preservation.{glob,vo}
+Closed under the global context
+        rocq theories/Ranks.{glob,vo}
+Leaving directory '/private/tmp/pts-rk-joint-resources-pristine.d7jjko'

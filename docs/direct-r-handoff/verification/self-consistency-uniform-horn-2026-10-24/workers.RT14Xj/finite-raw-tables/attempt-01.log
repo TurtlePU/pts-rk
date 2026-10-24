@@ -1,0 +1,51 @@
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 355 - 408 [From~Stdlib~Require~Import~Lis...] 0.037 secs (0.031u,0.006s)
+Chars 409 - 455 [From~PTSrk~Require~Import-(not...] 0.018 secs (0.014u,0.004s)
+Chars 456 - 548 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 549 - 655 [From~Interpretation_of_R~Requi...] 0.048 secs (0.039u,0.008s)
+Chars 656 - 746 [From~PTSrk.Combinatory~Require...] 0.005 secs (0.004u,0.001s)
+Chars 747 - 839 [From~PTSrk.SelfConsistency~Req...] 0.133 secs (0.12u,0.013s)
+Chars 840 - 861 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 863 - 886 [Module~FiniteRawTables.] 0. secs (0.u,0.s)
+Chars 887 - 917 [Import~CommonCodes~Structural.] 0. secs (0.u,0.s)
+Chars 918 - 952 [Module~Core:=~~DirectRKernel.C...] 0. secs (0.u,0.s)
+Chars 953 - 992 [Module~CF:=~~ChurchFinite.Chur...] 0.001 secs (0.001u,0.s)
+Chars 993 - 1045 [Module~I:=~~IndexedHornEncodin...] 0.004 secs (0.004u,0.s)
+Chars 1046 - 1096 [Module~D:=~~FiniteTypeDispatch...] 0.003 secs (0.003u,0.s)
+Chars 1097 - 1141 [Module~C:=~~InternalCarrier.In...] 0.004 secs (0.004u,0.s)
+Chars 1142 - 1190 [Module~R:=~~FiniteRawDecoding....] 0.204 secs (0.2u,0.003s)
+File "./theories/self_consistency/FiniteRawTables.v", line 23, characters 6-14:
+Warning: Use of "Notation" keyword for abbreviations is deprecated, use
+"Abbreviation" instead.
+[notation-for-abbreviation,deprecated-since-9.2,deprecated,default]
+Chars 1191 - 1238 [#[local]~Abbreviation~Typed~:=...] 0. secs (0.u,0.s)
+Chars 1391 - 1599 [Inductive~Frame~{n}~(G~:~Ctx~n...] 0.002 secs (0.002u,0.s)
+Chars 1601 - 1723 [Fixpoint~spine~{n}~j~(T~:~Term...] 0. secs (0.u,0.s)
+Chars 1724 - 1882 [Fixpoint~expand~{n}~j~(T~t~:~T...] 0. secs (0.u,0.s)
+Chars 1883 - 2152 [Fixpoint~abstract~{n}~k~j~(T~q...] 0. secs (0.u,0.s)
+Chars 2153 - 2229 [Lemma~frame_spine~{n}~(G~:~Ctx...] 0. secs (0.u,0.s)
+Chars 2230 - 2236 [Proof.] 0. secs (0.u,0.s)
+Chars 2237 - 2277 [intro~H;~induction~H;~cbn[spin...] 0. secs (0.u,0.s)
+Chars 2278 - 2282 [Qed.] 0. secs (0.u,0.s)
+Chars 2284 - 2405 [Lemma~lifted_application~{n}~(...] 0. secs (0.u,0.s)
+Chars 2406 - 2412 [Proof.] 0. secs (0.u,0.s)
+Chars 2415 - 2480 [intro~HF;~pose~proof~(weakenin...] 0. secs (0.u,0.s)
+Chars 2483 - 2561 [change~(Typed~(G~&~A)~(shift~f...] 0. secs (0.u,0.s)
+Chars 2564 - 2629 [assert~(HV~:~Typed~(G~&~A)~(va...] 0. secs (0.u,0.s)
+Chars 2632 - 2667 [pose~proof~(Core.tApp~HS~HV)~a...] 0. secs (0.u,0.s)
+Chars 2670 - 2719 [unfold~subst~in~HA;~rewrite~re...] 0. secs (0.u,0.s)
+Chars 2722 - 2827 [replace~(fun~x~=>~fin_match~(v...] 0. secs (0.u,0.s)
+Chars 2830 - 2831 [-] 0. secs (0.u,0.s)
+Chars 2832 - 2862 [now~rewrite~replace_var~in~HA.] 0. secs (0.u,0.s)
+Chars 2865 - 2866 [-] 0. secs (0.u,0.s)
+Chars 2867 - 2933 [apply~functional_extensionalit...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/FiniteRawTables.v", line 60, characters 10-35:
+Error: The variable functional_extensionality was not found in the current
+environment.

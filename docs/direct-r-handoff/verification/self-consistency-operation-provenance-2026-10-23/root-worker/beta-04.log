@@ -1,0 +1,30 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 227 - 280 [From~Stdlib~Require~Import~Ari...] 0.043 secs (0.034u,0.008s)
+Chars 281 - 327 [From~PTSrk~Require~Import-(not...] 0.02 secs (0.015u,0.004s)
+Chars 328 - 409 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 410 - 501 [From~Interpretation_of_R~Requi...] 0.052 secs (0.042u,0.01s)
+Chars 502 - 559 [From~PTSrk.SelfConsistency~Req...] 0. secs (0.u,0.s)
+Chars 561 - 578 [Module~NamedBeta.] 0. secs (0.u,0.s)
+Chars 579 - 644 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 645 - 666 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 741 - 993 [Inductive~TypedSpine~{n}~(G~:~...] 0.002 secs (0.002u,0.s)
+Chars 994 - 1143 [Fixpoint~apply_spine~{n}~(f~:~...] 0. secs (0.u,0.s)
+Chars 1144 - 1278 [Theorem~apply_spine_typed~{n}~...] 0. secs (0.u,0.s)
+Chars 1279 - 1285 [Proof.] 0. secs (0.u,0.s)
+Chars 1288 - 1354 [intro~H;~induction~H;~intros~f...] 0. secs (0.u,0.s)
+Chars 1357 - 1395 [apply~IHTypedSpine;~exact~(tAp...] 0. secs (0.u,0.s)
+Chars 1396 - 1400 [Qed.] 0. secs (0.u,0.s)
+Chars 1401 - 1518 [Lemma~apply_spine_append~{n}~(...] 0. secs (0.u,0.s)
+Chars 1519 - 1525 [Proof.] 0. secs (0.u,0.s)
+Chars 1526 - 1583 [revert~f;~induction~xs;~intro~...] 0. secs (0.u,0.s)
+Chars 1584 - 1588 [Qed.] 0. secs (0.u,0.s)
+File "./theories/self_consistency/NamedBeta.v", line 30, characters 65-69:
+Error:  (in proof apply_spine_append): Attempt to save an incomplete proof
+(there are remaining open goals).

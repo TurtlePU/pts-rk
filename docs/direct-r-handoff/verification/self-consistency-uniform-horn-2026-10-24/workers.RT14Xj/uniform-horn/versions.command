@@ -1,0 +1,1 @@
+opam exec -- rocq --version

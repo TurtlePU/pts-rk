@@ -1,0 +1,4 @@
+Warning:
+/private/tmp/pts-rk-replacement-fresh.87Hwa9/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]

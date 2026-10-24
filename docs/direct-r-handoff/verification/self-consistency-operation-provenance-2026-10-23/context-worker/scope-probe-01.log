@@ -1,0 +1,27 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 829 - 867 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.032u,0.006s)
+Chars 868 - 914 [From~PTSrk~Require~Import-(not...] 0.019 secs (0.015u,0.004s)
+Chars 915 - 999 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 1000 - 1106 [From~Interpretation_of_R~Requi...] 0.049 secs (0.041u,0.008s)
+Chars 1107 - 1320 [From~PTSrk.SelfConsistency~Req...] 0.007 secs (0.005u,0.001s)
+Chars 1321 - 1342 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 1344 - 1373 [Module~InternalContextLookup.] 0. secs (0.u,0.s)
+Chars 1374 - 1621 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 1622 - 1681 [Module~JT:=~~InternalJointTrav...] 0.065 secs (0.059u,0.005s)
+Chars 1682 - 1725 [Module~NT:=~~NamedTemplates.Na...] 0. secs (0.u,0.s)
+Chars 1726 - 1759 [Module~NB:=~~NamedBeta.NamedBeta.] 0.001 secs (0.001u,0.s)
+Chars 1913 - 2183 [#[local]~Fixpoint~lambda_parts...] 0.001 secs (0.001u,0.s)
+Chars 2184 - 2289 [#[local]~Definition~assembled_...] 0. secs (0.u,0.s)
+Chars 2291 - 2331 [Definition~empty_context~:=~at...] 0. secs (0.u,0.s)
+Chars 2332 - 2399 [Definition~CtxCons~g~a~:=~node...] 0. secs (0.u,0.s)
+Chars 2400 - 2496 [Definition~context_cons~:=~~~c...] 0. secs (0.u,0.s)
+Chars 2498 - 2630 [Definition~context_lookup_step...] 0.002 secs (0.002u,0.s)
+File "/tmp/pts-rk-context-lookup.9QUeXr/ScopeProbe.v", line 52, characters 8-17:
+Error: The reference CtxLookup was not found in the current environment.

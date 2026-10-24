@@ -1,0 +1,65 @@
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-operation-provenance-fresh.DkOoCf/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 433 - 486 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.032u,0.006s)
+Chars 487 - 533 [From~PTSrk~Require~Import-(not...] 0.018 secs (0.014u,0.003s)
+Chars 534 - 620 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 621 - 712 [From~Interpretation_of_R~Requi...] 0.049 secs (0.04u,0.008s)
+Chars 713 - 865 [From~PTSrk.Combinatory~Require...] 0.065 secs (0.057u,0.008s)
+Chars 866 - 987 [From~PTSrk.SelfConsistency~Req...] 0.003 secs (0.002u,0.s)
+Chars 988 - 1009 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 1011 - 1036 [Module~FiniteRawDecoding.] 0. secs (0.u,0.s)
+Chars 1037 - 1072 [Import~CommonCodes~Core~Struct...] 0. secs (0.u,0.s)
+Chars 1073 - 1112 [Module~CF:=~~ChurchFinite.Chur...] 0.002 secs (0.001u,0.s)
+Chars 1113 - 1167 [Module~H:=~~HornProofRealizati...] 0.053 secs (0.049u,0.003s)
+Chars 1168 - 1220 [Module~I:=~~IndexedHornEncodin...] 0.004 secs (0.004u,0.s)
+Chars 1221 - 1275 [Module~F:=~~FiniteGeneratedCod...] 0.128 secs (0.126u,0.002s)
+Chars 1276 - 1324 [Module~V:=~~FiniteNormalForms....] 0.001 secs (0.001u,0.s)
+Chars 1325 - 1375 [Module~D:=~~FiniteTypeDispatch...] 0.004 secs (0.004u,0.s)
+Chars 1376 - 1420 [Module~C:=~~InternalCarrier.In...] 0.005 secs (0.004u,0.s)
+Chars 1421 - 1453 [Module~B:=~~FiniteCodeFragments.] 0.032 secs (0.032u,0.s)
+Chars 1454 - 1491 [Module~S:=~~CertificateSeriali...] 0.002 secs (0.002u,0.s)
+Chars 1566 - 1841 [Fixpoint~filling~{k}~{m}~{n}~(...] 0.001 secs (0.001u,0.s)
+Chars 1842 - 2036 [Lemma~filling_lift~k~xs~:~~~fo...] 0. secs (0.u,0.s)
+Chars 2037 - 2043 [Proof.] 0. secs (0.u,0.s)
+Chars 2046 - 2128 [induction~xs;~intros;~cbn[fill...] 0. secs (0.u,0.s)
+Chars 2131 - 2216 [etransitivity;~~[~exact~(IHxs~...] 0. secs (0.u,0.s)
+Chars 2219 - 2269 [unfold~shift;~rewrite~replace_...] 0. secs (0.u,0.s)
+Chars 2270 - 2274 [Qed.] 0. secs (0.u,0.s)
+Chars 2275 - 2437 [Lemma~supply_reduces~k~xs~:~~~...] 0. secs (0.u,0.s)
+Chars 2438 - 2444 [Proof.] 0. secs (0.u,0.s)
+Chars 2447 - 2499 [induction~xs;~intros;~cbn[F.su...] 0. secs (0.u,0.s)
+Chars 2502 - 2561 [apply~IHxs;~(now~apply~(@app_c...] 0. secs (0.u,0.s)
+Chars 2562 - 2566 [Qed.] 0. secs (0.u,0.s)
+Chars 2567 - 2781 [Lemma~supply_replace~k~xs~:~~~...] 0. secs (0.u,0.s)
+Chars 2782 - 2788 [Proof.] 0. secs (0.u,0.s)
+Chars 2789 - 2860 [induction~xs;~intros;~cbn[F.su...] 0. secs (0.u,0.s)
+Chars 2861 - 2865 [Qed.] 0. secs (0.u,0.s)
+Chars 2866 - 3021 [Lemma~supply_ext~k~xs~:~~~fora...] 0. secs (0.u,0.s)
+Chars 3022 - 3028 [Proof.] 0. secs (0.u,0.s)
+Chars 3031 - 3084 [induction~xs;~intros;~cbn[F.su...] 0. secs (0.u,0.s)
+Chars 3087 - 3111 [rewrite~H;~apply~IHxs,~H.] 0. secs (0.u,0.s)
+Chars 3112 - 3116 [Qed.] 0. secs (0.u,0.s)
+Chars 3117 - 3379 [Lemma~supply_bind_beta~k~xs~:~...] 0. secs (0.u,0.s)
+Chars 3380 - 3386 [Proof.] 0. secs (0.u,0.s)
+Chars 3389 - 3493 [induction~xs;~intros;~~cbn[F.f...] 0. secs (0.u,0.s)
+Chars 3496 - 3557 [eapply~rtc_trans;~[~apply~supp...] 0. secs (0.u,0.s)
+Chars 3560 - 3600 [rewrite~CF.substituted_body;~a...] 0. secs (0.u,0.s)
+Chars 3601 - 3605 [Qed.] 0.001 secs (0.001u,0.s)
+Chars 3606 - 3805 [Lemma~filling_handler~k~xs~i~:...] 0. secs (0.u,0.s)
+Chars 3806 - 3812 [Proof.] 0. secs (0.u,0.s)
+Chars 3815 - 3888 [induction~xs~as~[|~j~xs~IH];~i...] 0. secs (0.u,0.s)
+Chars 3891 - 3922 [cbn[F.facts_on~map~H.handler].] 0. secs (0.u,0.s)
+Chars 3925 - 3977 [destruct~(H.clause_eq_dec~([],...] 0. secs (0.u,0.s)
+Chars 3980 - 3981 [-] 0. secs (0.u,0.s)
+Chars 3982 - 4051 [injection~HE~as~->;~cbn[fillin...] 0. secs (0.u,0.s)
+File "./theories/self_consistency/FiniteRawDecoding.v", line 80, characters 39-59:
+Error: Found no subterm matching
+"replace (filling ?M1278 ?M1281 ?M1282)
+   (CF.lift (length (F.facts_on ?M1278)) ?M1283)"
+in the current goal.

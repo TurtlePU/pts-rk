@@ -1,0 +1,76 @@
+     4216     24724 theories/AbstractRewriting.v
+    22950     79064 theories/CombinatoryLogic-rk/ChurchFinite.v
+     7735    114392 theories/CombinatoryLogic-rk/Core.v
+    15061    835907 theories/CombinatoryLogic-rk/FiniteGeneratedCodes.v
+    15317     59701 theories/CombinatoryLogic-rk/FiniteHorn.v
+    22312     61575 theories/CombinatoryLogic-rk/FiniteModelRealization.v
+     7795     45195 theories/CombinatoryLogic-rk/FiniteModelSoundness.v
+    18466    114357 theories/CombinatoryLogic-rk/FiniteNormalForms.v
+     6061     51211 theories/CombinatoryLogic-rk/FiniteTypeDispatch.v
+    11459     37903 theories/CombinatoryLogic-rk/FiniteUniversalHorn.v
+     3407     11378 theories/CombinatoryLogic-rk/GroundHorn.v
+     7161     92214 theories/CombinatoryLogic-rk/HornInternalSoundness.v
+     9544     50317 theories/CombinatoryLogic-rk/HornProofEncoding.v
+    13699    106542 theories/CombinatoryLogic-rk/HornProofRealization.v
+     7392     56461 theories/CombinatoryLogic-rk/IndexedHornEncoding.v
+     9917    216732 theories/CombinatoryLogic-rk/IndexedHornRealization.v
+    10220    386896 theories/CombinatoryLogic-rk/IndexedHornSoundness.v
+     5617     39410 theories/CombinatoryLogic-rk/NativeCanonicity.v
+    14682     61804 theories/CombinatoryLogic-rk/QuantitativeNormalization.v
+     2447     17067 theories/Congruence.v
+     2765     41171 theories/Context.v
+     2227     21524 theories/DefEq.v
+     9082     50037 theories/Interpretation_of_R/DirectRCheck.v
+     7837     22979 theories/Interpretation_of_R/DirectRCommonCodes.v
+     7749     47739 theories/Interpretation_of_R/DirectREval.v
+     3299     10655 theories/Interpretation_of_R/DirectRKernel.v
+    14697     45122 theories/Interpretation_of_R/DirectRStructural.v
+     3133    104164 theories/Inversions.v
+     6639     63217 theories/NormalizationComplexity/AutomaticBound.v
+     1566      6049 theories/NormalizationComplexity/BoundedNormalization.v
+     7879     71603 theories/NormalizationComplexity/Bounds.v
+     3900     23788 theories/NormalizationComplexity/Descent.v
+     2589     13834 theories/NormalizationComplexity/Greedy.v
+     2703     18284 theories/NormalizationComplexity/Literals.v
+     4441     23159 theories/NormalizationComplexity/Morphisms.v
+     3763     16598 theories/NormalizationComplexity/Normalization.v
+     8755     84447 theories/NormalizationComplexity/Rank.v
+    12538     75891 theories/NormalizationComplexity/RedexRanks.v
+    21170    194825 theories/NormalizationComplexity/Runtime.v
+     9990     59287 theories/NormalizationComplexity/Safety.v
+    12098     98654 theories/NormalizationComplexity/SortBounds.v
+     5742     65819 theories/Preservation.v
+     8348     57658 theories/Ranks.v
+     3384     39065 theories/Reduction.v
+     6582     94550 theories/Syntax.v
+     4447     91354 theories/Typing.v
+     8189     55115 theories/self_consistency/CertificateAdequacy.v
+    23296    162412 theories/self_consistency/CertificateSerialization.v
+     6608         0 theories/self_consistency/FiniteCodeFragments.v
+    15280         0 theories/self_consistency/FiniteRawDecoding.v
+     8284         0 theories/self_consistency/FiniteRawTables.v
+     8055     42462 theories/self_consistency/InternalCarrier.v
+     6655         0 theories/self_consistency/NamedBeta.v
+    12456         0 theories/self_consistency/NamedTemplates.v
+     6986     36084 theories/self_consistency/NativeProofCodes.v
+    12318     63324 theories/self_consistency/RankCompression.v
+    10145     70626 theories/self_consistency/SortRenaming.v
+     7500     56342 theories/self_consistency/StructuralCodes.v
+    12057         0 theories/self_consistency/UniformHorn.v
+    10987         0 theories/self_consistency/UniformHornReindex.v
+Native import closure estimate: 60 modules; source bytes: 541597
+Existing object bytes (partial, not an upper bound): 4390688
+ 10 theories
+ 18 theories/CombinatoryLogic-rk
+  5 theories/Interpretation_of_R
+ 13 theories/NormalizationComplexity
+ 14 theories/self_consistency
+Missing compiled objects:
+theories/self_consistency/FiniteCodeFragments.v
+theories/self_consistency/FiniteRawDecoding.v
+theories/self_consistency/FiniteRawTables.v
+theories/self_consistency/NamedBeta.v
+theories/self_consistency/NamedTemplates.v
+theories/self_consistency/UniformHorn.v
+theories/self_consistency/UniformHornReindex.v
+External Stdlib/Equations and build metadata are excluded; this is not proof verification.

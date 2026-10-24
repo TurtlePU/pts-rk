@@ -1,0 +1,110 @@
+        rocq theories/self_consistency/.PTSrk.theory.d
+Warning:
+/private/tmp/pts-rk-fragments-fresh.d7RHpo/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-fragments-fresh.d7RHpo/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+File "./theories/self_consistency/DictionaryRejection.v", line 56, characters 8-10:
+Error:
+In environment
+E, L, P, a : Term nat 0
+HE : Typed ε E (𝓤 1)
+HL : Typed ε L (DR.List E)
+HP : Typed ε P (Arrow E (𝓤 2))
+Ha : Typed ε a (DR.All E L P)
+H :
+  Typed ε consumer
+    (Π (𝓤 1)
+       (Π (DR.List V0)
+          (Π (Arrow DR.v1 (𝓤 2))
+             (Π (DR.All DR.v2 DR.v1 V0)
+                (Π DR.v3 (Π (DR.Guard DR.v4 DR.v3 V0) (app DR.v3 DR.v1)))))))
+H1 :
+  Typed ε (app consumer E)
+    (Π (app DR.FD.list_type E)
+       (Π
+          (Arrow (shift E)
+             (replace (transpose (fin_match E (fun x : Fin 0 => var x)))
+                (𝓤 2)))
+          (Π
+             (app
+                (app (app (lift_closed DR.FD.all) (shift (shift E)))
+                   (shift (var fzero)))
+                (var fzero))
+             (Π (shift (shift (shift E)))
+                (Π
+                   (app
+                      (app
+                         (app (lift_closed DR.FD.guard)
+                            (shift (shift (shift (shift E)))))
+                         (shift (shift (shift (var fzero)))))
+                      (var fzero))
+                   (app (shift (shift (shift (var fzero))))
+                      (shift (var fzero))))))))
+H2 :
+  Typed ε (app (app consumer E) L)
+    (Π
+       (Arrow E
+          (replace (fin_match L (fun x : Fin 0 => var x))
+             (replace (transpose (fin_match E (fun x : Fin 0 => var x)))
+                (𝓤 2))))
+       (Π
+          (app (app (app (lift_closed DR.FD.all) (shift E)) (shift L))
+             (var fzero))
+          (Π (shift (shift E))
+             (Π
+                (app
+                   (app
+                      (app (lift_closed DR.FD.guard)
+                         (shift (shift (shift E))))
+                      (shift (shift (shift L))))
+                   (var fzero))
+                (app (shift (shift (shift (var fzero)))) (shift (var fzero)))))))
+H3 :
+  Typed ε (app (app (app consumer E) L) P)
+    (Π (app (app (app DR.FD.all E) L) P)
+       (Π (shift E)
+          (Π
+             (app
+                (app (app (lift_closed DR.FD.guard) (shift (shift E)))
+                   (shift (shift L)))
+                (var fzero))
+             (app (shift (shift (shift P))) (shift (var fzero))))))
+H4 :
+  Typed ε (app (app (app (app consumer E) L) P) a)
+    (Π E
+       (Π
+          (app
+             (app (app (shift (lift_closed DR.FD.guard)) (shift E)) (shift L))
+             (var fzero))
+          (app (shift (shift P)) (shift (var fzero)))))
+The term "H4" has type
+ "Typed ε (app (app (app (app consumer E) L) P) a)
+    (Π E
+       (Π
+          (app
+             (app (app (shift (lift_closed DR.FD.guard)) (shift E)) (shift L))
+             (var fzero))
+          (app (shift (shift P)) (shift (var fzero)))))"
+while it is expected to have type
+ "Typed ε (app (app (app (app consumer E) L) P) a)
+    (Π E
+       (Π
+          (app
+             (app (app (lift_closed DR.FD.guard) (lift_closed E))
+                (lift_closed L))
+             V0)
+          (app (lift_closed P) (var (fsucc fzero)))))".
+
+File "theories/self_consistency/dune", lines 1-21, characters 0-1286:
+ 1 | (rocq.theory
+ 2 |  (name PTSrk.SelfConsistency)
+ 3 |  (package pts-rk)
+....
+19 |    FiniteFragmentAudit Audit)
+20 |  (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity
+21 |    PTSrk.Combinatory Interpretation_of_R))
+        rocq theories/self_consistency/DictionaryRejection.{glob,vo} (exit 1)

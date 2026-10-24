@@ -1,0 +1,51 @@
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-source-provenance-fresh.yW2QOO/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 38 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.032u,0.006s)
+Chars 39 - 85 [From~PTSrk~Require~Import-(not...] 0.019 secs (0.015u,0.004s)
+Chars 86 - 139 [From~PTSrk~Require~Import~Cont...] 0.002 secs (0.002u,0.s)
+Chars 140 - 231 [From~Interpretation_of_R~Requi...] 0.052 secs (0.043u,0.007s)
+Chars 232 - 331 [From~PTSrk.SelfConsistency~Req...] 0.016 secs (0.014u,0.002s)
+Chars 332 - 429 [Import~ListNotations~CommonCod...] 0. secs (0.u,0.s)
+Chars 430 - 477 [Module~BA:=~~BooleanAgreement....] 0.081 secs (0.074u,0.006s)
+Chars 478 - 537 [Definition~v1~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 538 - 607 [Definition~v2~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 608 - 687 [Definition~v3~{n}~:~Term~nat~(...] 0. secs (0.u,0.s)
+Chars 688 - 816 [Ltac~~comparison_substitution~...] 0. secs (0.u,0.s)
+Chars 817 - 975 [Lemma~zip_application~{n}~(G~:...] 0. secs (0.u,0.s)
+Chars 976 - 982 [Proof.] 0. secs (0.u,0.s)
+Chars 984 - 1055 [intros~Hx~Hy;~pose~proof~(lift...] 0. secs (0.u,0.s)
+Chars 1057 - 1173 [change~~~(Typed~G~(lift_closed...] 0.178 secs (0.172u,0.s)
+Chars 1175 - 1193 [unfold~CMP.zip_at.] 0. secs (0.u,0.s)
+Chars 1195 - 1277 [eapply~arrow_application;~~[~e...] 0. secs (0.u,0.s)
+Chars 1278 - 1282 [Qed.] 0.05 secs (0.049u,0.s)
+Chars 1283 - 1459 [Lemma~pair_application~{n}~(G~...] 0. secs (0.u,0.s)
+Chars 1460 - 1466 [Proof.] 0. secs (0.u,0.s)
+Chars 1468 - 1538 [intros~Hx~Hy;~pose~proof~(lift...] 0. secs (0.u,0.s)
+Chars 1540 - 1676 [change~~~(Typed~G~(lift_closed...] 0.171 secs (0.169u,0.s)
+Chars 1678 - 1697 [unfold~CMP.pair_at.] 0. secs (0.u,0.s)
+Chars 1699 - 1781 [eapply~arrow_application;~~[~e...] 0. secs (0.u,0.s)
+Chars 1782 - 1786 [Qed.] 0.087 secs (0.087u,0.s)
+Chars 1787 - 1960 [Lemma~atom_zip_application~{n}...] 0. secs (0.u,0.s)
+Chars 1961 - 1967 [Proof.] 0. secs (0.u,0.s)
+Chars 1969 - 2018 [intro~Hy;~pose~proof~(CMP.atom...] 0. secs (0.u,0.s)
+Chars 2020 - 2117 [change~~~(Typed~ε~(CMP.atom_zi...] 2.621 secs (2.604u,0.009s)
+Chars 2119 - 2163 [pose~proof~(lift_closed_typed~...] 0. secs (0.u,0.s)
+Chars 2165 - 2194 [unfold~lift_closed~at~2~in~H.] 0. secs (0.u,0.s)
+Chars 2196 - 2224 [rewrite~rename_product~in~H.] 0. secs (0.u,0.s)
+Chars 2226 - 2249 [unfold~CMP.zip_at~in~H.] 0. secs (0.u,0.s)
+Chars 2251 - 2305 [rewrite~!rename_application,~!...] 0.001 secs (0.001u,0.s)
+Chars 2307 - 2426 [change~~~(Typed~G~(lift_closed...] 0.092 secs (0.091u,0.s)
+Chars 2428 - 2491 [pose~proof~(tApp~H~Hy)~as~J;~c...] 0.004 secs (0.004u,0.s)
+Chars 2492 - 2496 [Qed.] 0.034 secs (0.03u,0.s)
+Chars 2497 - 2742 [Lemma~pair_atom_zip_applicatio...] 0. secs (0.u,0.s)
+Chars 2743 - 2749 [Proof.] 0. secs (0.u,0.s)
+Chars 2751 - 2834 [intros~Ha~Hb;~~pose~proof~(lif...] 0. secs (0.u,0.s)
+Chars 2836 - 3007 [change~~~(Typed~G~(lift_closed...] 0.028 secs (0.028u,0.s)
+File "/tmp/pts-rk-comparison-graph.AaaC94/ScopedComparisonProbe.v", line 56, characters 1-171:
+Error: Not convertible.

@@ -1,0 +1,65 @@
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Warning:
+/private/tmp/pts-rk-joint-resources-fresh.TqBIPV/default/theories/self_consistency
+was previously bound to PTSrk.self_consistency; it is remapped to
+PTSrk.SelfConsistency [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 65 [From~PTSrk.SelfConsistency~Req...] 0.106 secs (0.085u,0.02s)
+Closed under the global context
+Chars 66 - 148 [Print~Assumptions~InternalExec...] 0.012 secs (0.01u,0.002s)
+Closed under the global context
+Chars 149 - 235 [Print~Assumptions~InternalExec...] 0.004 secs (0.003u,0.s)
+Closed under the global context
+Chars 236 - 323 [Print~Assumptions~InternalExec...] 0.004 secs (0.003u,0.s)
+Closed under the global context
+Chars 324 - 404 [Print~Assumptions~InternalExec...] 0.01 secs (0.008u,0.001s)
+Closed under the global context
+Chars 405 - 481 [Print~Assumptions~InternalExec...] 0.034 secs (0.031u,0.003s)
+Closed under the global context
+Chars 482 - 562 [Print~Assumptions~InternalExec...] 0.008 secs (0.008u,0.s)
+Closed under the global context
+Chars 563 - 648 [Print~Assumptions~InternalExec...] 0.008 secs (0.008u,0.s)
+Closed under the global context
+Chars 649 - 728 [Print~Assumptions~InternalExec...] 0.008 secs (0.008u,0.s)
+Closed under the global context
+Chars 729 - 804 [Print~Assumptions~InternalExec...] 0.015 secs (0.014u,0.s)
+Closed under the global context
+Chars 805 - 890 [Print~Assumptions~InternalExec...] 0.009 secs (0.008u,0.s)
+Closed under the global context
+Chars 891 - 970 [Print~Assumptions~InternalExec...] 0.009 secs (0.008u,0.s)
+Closed under the global context
+Chars 971 - 1056 [Print~Assumptions~InternalExec...] 0.009 secs (0.009u,0.s)
+Closed under the global context
+Chars 1057 - 1136 [Print~Assumptions~InternalExec...] 0.008 secs (0.008u,0.s)
+Closed under the global context
+Chars 1137 - 1223 [Print~Assumptions~InternalExec...] 0.009 secs (0.008u,0.s)
+Closed under the global context
+Chars 1224 - 1304 [Print~Assumptions~InternalExec...] 0.009 secs (0.008u,0.s)
+Closed under the global context
+Chars 1305 - 1397 [Print~Assumptions~InternalExec...] 0.014 secs (0.013u,0.s)
+Closed under the global context
+Chars 1398 - 1484 [Print~Assumptions~InternalExec...] 0.008 secs (0.008u,0.s)
+Closed under the global context
+Chars 1485 - 1571 [Print~Assumptions~InternalExec...] 0.008 secs (0.008u,0.s)
+Closed under the global context
+Chars 1572 - 1652 [Print~Assumptions~InternalExec...] 0.009 secs (0.008u,0.s)
+Closed under the global context
+Chars 1653 - 1733 [Print~Assumptions~InternalExec...] 0.009 secs (0.008u,0.s)
+Closed under the global context
+Chars 1734 - 1815 [Print~Assumptions~InternalExec...] 0.008 secs (0.008u,0.s)
+Closed under the global context
+Chars 1816 - 1901 [Print~Assumptions~InternalExec...] 0.008 secs (0.008u,0.s)
+Closed under the global context
+Chars 1902 - 1987 [Print~Assumptions~InternalExec...] 0.015 secs (0.014u,0.s)
+Closed under the global context
+Chars 1988 - 2074 [Print~Assumptions~InternalExec...] 0.009 secs (0.009u,0.s)
+Closed under the global context
+Chars 2075 - 2167 [Print~Assumptions~InternalExec...] 0.011 secs (0.01u,0.s)
+Closed under the global context
+Chars 2168 - 2254 [Print~Assumptions~InternalExec...] 0.043 secs (0.042u,0.001s)
+Closed under the global context
+Chars 2255 - 2341 [Print~Assumptions~InternalExec...] 0.004 secs (0.003u,0.s)
+Closed under the global context
+Chars 2342 - 2426 [Print~Assumptions~InternalExec...] 0.004 secs (0.004u,0.s)

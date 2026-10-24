@@ -1,0 +1,15 @@
+AUDIT.sh-positive.expected-declarations.txt	raw-ok	normalized-ok	b5eb63d708890867e24fb165e27654f1e3e78520ab788f0c4ff9766495f3e41b
+AUDIT.sh-positive.audited-declarations.txt	raw-ok	normalized-ok	b5eb63d708890867e24fb165e27654f1e3e78520ab788f0c4ff9766495f3e41b
+AUDIT.sh-positive.checked-declarations.txt	raw-ok	normalized-ok	b5eb63d708890867e24fb165e27654f1e3e78520ab788f0c4ff9766495f3e41b
+AUDIT.sh-positive.result.log	raw-ok	normalized-ok	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+AUDIT.sh-negative.expected-declarations.txt	raw-ok	normalized-ok	b5eb63d708890867e24fb165e27654f1e3e78520ab788f0c4ff9766495f3e41b
+AUDIT.sh-negative.audited-declarations.txt	raw-ok	normalized-ok	dbe05295536f0bc99974a4f7021cf8cb52f8066e4f1193408beeab13a4dc65d8
+AUDIT.sh-negative.result.log	raw-ok	normalized-ok	30a0f032f91987f7741b11a049f3ecb80a937c34530167118b3ed5c21fc12b81
+FINAL-CHECKS.sh-positive.expected-declarations.txt	raw-ok	normalized-ok	b5eb63d708890867e24fb165e27654f1e3e78520ab788f0c4ff9766495f3e41b
+FINAL-CHECKS.sh-positive.audited-declarations.txt	raw-ok	normalized-ok	b5eb63d708890867e24fb165e27654f1e3e78520ab788f0c4ff9766495f3e41b
+FINAL-CHECKS.sh-positive.checked-declarations.txt	raw-ok	normalized-ok	b5eb63d708890867e24fb165e27654f1e3e78520ab788f0c4ff9766495f3e41b
+FINAL-CHECKS.sh-positive.result.log	raw-ok	normalized-ok	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+FINAL-CHECKS.sh-negative.expected-declarations.txt	raw-ok	normalized-ok	b5eb63d708890867e24fb165e27654f1e3e78520ab788f0c4ff9766495f3e41b
+FINAL-CHECKS.sh-negative.audited-declarations.txt	raw-ok	normalized-ok	dbe05295536f0bc99974a4f7021cf8cb52f8066e4f1193408beeab13a4dc65d8
+FINAL-CHECKS.sh-negative.result.log	raw-ok	normalized-ok	b67a4c155016c9c6576504dfff613f6b7f615ad362e8a0219c56fc9335ba0092
+TOTAL	14	raw-ok	14	normalized-ok

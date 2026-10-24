@@ -1,0 +1,178 @@
+#!/usr/bin/env bash
+# Fresh complete closure check: comparison and context-operation provenance.
+set -euo pipefail
+OPERATION_ROOT="$(git rev-parse --show-toplevel)"
+cd "$OPERATION_ROOT"
+OPERATION_LOCAL="${XDG_DATA_HOME:-$HOME/.local/share}/pts-rk-ci"
+export PATH="$OPERATION_LOCAL/bin:$PATH"
+export OPAMROOT="$OPERATION_LOCAL/opam"
+export OPAMSWITCH=pts-rk-ci
+OPERATION_BASE=723cf2ec61c737ae82ba33d2e7db44f650122b0e
+OPERATION_DIR=theories/self_consistency
+OPERATION_EVIDENCE=docs/direct-r-handoff/verification/self-consistency-operation-provenance-2026-10-23
+OPERATION_PREVIOUS="$OPERATION_EVIDENCE/baseline/sources.sha256"
+# The explicit list is finalized only after all worker/integration sources freeze.
+source "$OPERATION_EVIDENCE/SCOPE.sh"
+if [[ "$OPERATION_FROZEN" != yes ]]; then
+  printf 'Operation-provenance scope is not frozen; no audit has run.\n' >&2
+  exit 2
+fi
+OPERATION_LOG="$(mktemp -d "$OPERATION_ROOT/_build/self-consistency-operation-provenance-audit.XXXXXX")"
+OPERATION_BUILD="$(mktemp -d /tmp/pts-rk-operation-provenance-fresh.XXXXXX)"
+OPERATION_PRISTINE="$(mktemp -d /tmp/pts-rk-operation-provenance-pristine.XXXXXX)"
+OPERATION_SOURCES=("$OPERATION_DIR/$OPERATION_AUDIT.v")
+for operation_module in "${OPERATION_MODULES[@]}"; do
+  OPERATION_SOURCES+=("$OPERATION_DIR/$operation_module.v")
+done
+printf 'Logs: %s\nBuild: %s\nPristine: %s\n' "$OPERATION_LOG" "$OPERATION_BUILD" "$OPERATION_PRISTINE" | tee "$OPERATION_LOG/paths.txt"
+printf 'stage\texit\tstart_utc\tend_utc\n' > "$OPERATION_LOG/status.tsv"
+run() {
+  local label="$1" started finished result
+  shift
+  started="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+  printf '%q ' "$@" >> "$OPERATION_LOG/commands.txt"
+  printf '\n' >> "$OPERATION_LOG/commands.txt"
+  set +e
+  "$@" > "$OPERATION_LOG/$label.log" 2>&1
+  result=$?
+  set -e
+  finished="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+  printf '%s\t%s\t%s\t%s\n' "$label" "$result" "$started" "$finished" | tee -a "$OPERATION_LOG/status.tsv"
+  if [[ "$result" -ne 0 ]]; then tail -70 "$OPERATION_LOG/$label.log"; exit "$result"; fi
+}
+registered_modules() {
+  local operation_module
+  for operation_module in "${OPERATION_MODULES[@]}"; do
+    rg -q "(^|[[:space:]])$operation_module([[:space:])]|$)" "$OPERATION_DIR/dune" || return 1
+    printf '%s\n' "$operation_module"
+  done
+}
+working_tree_manifest() {
+  rg --files theories -g '*.v' -g dune | LC_ALL=C sort | while IFS= read -r operation_file; do
+    shasum -a 256 "$operation_file"
+  done
+}
+operation_manifest() {
+  # Freeze every baseline source plus this continuation's new proof files.
+  # Unrelated concurrent new modules are recorded, but not claimed checked.
+  {
+    awk '{print $2}' "$OPERATION_PREVIOUS"
+    printf '%s\n' "${OPERATION_SOURCES[@]}"
+  } | LC_ALL=C sort -u | while IFS= read -r operation_file; do
+    shasum -a 256 "$operation_file"
+  done
+}
+registration_normalization() {
+  # Accept only the reviewed one-line import, two-line module block and alias.
+  perl -0pe '
+    my $n = s/^From PTSrk\.SelfConsistency Require Import OperationProvenanceAudit\.\n//mg;
+    die "expected exactly one added audit import\n" unless $n == 1;
+  ' theories/self_consistency/Audit.v > "$OPERATION_LOG/Audit.normalized.v" || return "$?"
+  cmp "$OPERATION_EVIDENCE/baseline/Audit.v.snapshot" "$OPERATION_LOG/Audit.normalized.v" || return "$?"
+  perl -0pe '
+    my $n = s/^   NamedBeta BooleanAgreement ContextLookupCodes InternalContextLookup ContextLookupRealization\n   InternalComparisonGraph ComparisonGraphRealization OperationProvenanceAudit\n//mg;
+    die "expected exactly one added module block\n" unless $n == 1;
+    my $a = s/\n\(alias\n \(name operation-provenance-audit\)\n \(deps OperationProvenanceAudit\.vo\)\)\n\z//;
+    die "expected exactly one terminal audit alias\n" unless $a == 1;
+  ' theories/self_consistency/dune > "$OPERATION_LOG/dune.normalized" || return "$?"
+  cmp "$OPERATION_EVIDENCE/baseline/self-consistency-dune.txt" "$OPERATION_LOG/dune.normalized" || return "$?"
+  shasum -a 256 "$OPERATION_LOG/Audit.normalized.v" "$OPERATION_LOG/dune.normalized"
+}
+declaration_coverage() {
+  local operation_module
+  for operation_module in "${OPERATION_MODULES[@]}"; do
+    awk -v module="$operation_module" \
+      '/^[[:space:]]*(Theorem|Lemma|Example|Corollary|Fact|Proposition) / {name=$2; sub(/:$/, "", name); print module "." module "." name}' \
+      "$OPERATION_DIR/$operation_module.v"
+  done | LC_ALL=C sort > "$OPERATION_LOG/expected-declarations.txt"
+  awk '$1 == "Print" && $2 == "Assumptions" {name=$3; sub(/\.$/, "", name); print name}' \
+    "$OPERATION_DIR/$OPERATION_AUDIT.v" | LC_ALL=C sort > "$OPERATION_LOG/audited-declarations.txt"
+  cmp "$OPERATION_LOG/expected-declarations.txt" "$OPERATION_LOG/audited-declarations.txt"
+  awk '$1 == "Check" {name=$2; sub(/\.$/, "", name); print name}' \
+    "$OPERATION_DIR/$OPERATION_AUDIT.v" | LC_ALL=C sort > "$OPERATION_LOG/checked-declarations.txt"
+  cmp "$OPERATION_LOG/expected-declarations.txt" "$OPERATION_LOG/checked-declarations.txt"
+}
+reports() {
+  local expected actual
+  expected="$(wc -l < "$OPERATION_LOG/expected-declarations.txt")"
+  actual="$(rg -c '^Closed under the global context$' "$OPERATION_LOG/fresh-build.log")"
+  printf 'New public endpoints: %s\nAggregate fresh closed reports: %s\n' "$expected" "$actual"
+  [[ "$expected" -gt 0 && "$actual" -ge "$expected" ]] || return 1
+  if rg -n '^Axioms:|^Assumptions:' "$OPERATION_LOG/fresh-build.log"; then return 1; fi
+}
+compare_inventory() {
+  [[ "$(rg -c '^CONTEXT SUMMARY$' "$OPERATION_LOG/pristine-kernel.log")" -eq 1 ]] || return 1
+  [[ "$(rg -c '^CONTEXT SUMMARY$' "$OPERATION_LOG/kernel.log")" -eq 1 ]] || return 1
+  awk '/^CONTEXT SUMMARY$/ {report=1} report' "$OPERATION_LOG/pristine-kernel.log" > "$OPERATION_LOG/pristine-inventory.txt"
+  awk '/^CONTEXT SUMMARY$/ {report=1} report' "$OPERATION_LOG/kernel.log" > "$OPERATION_LOG/inventory.txt"
+  cmp "$OPERATION_LOG/pristine-inventory.txt" "$OPERATION_LOG/inventory.txt"
+}
+previous_sources() {
+  # Every baseline body and the combinatory registration remain frozen.
+  # Only the two owned additive registrations receive exact normalization.
+  awk '$2 != "theories/self_consistency/Audit.v" && $2 != "theories/self_consistency/dune"' \
+    "$OPERATION_PREVIOUS" > "$OPERATION_LOG/previous-sources.sha256"
+  shasum -a 256 -c "$OPERATION_LOG/previous-sources.sha256"
+}
+safety_scan() {
+  if rg -n '\b(Admitted|admit|Axiom|Axioms|Parameter|Parameters|Conjecture|Conjectures)\b|Unset (Guard|Positivity|Universe) Checking|bypass_check' "${OPERATION_SOURCES[@]}"; then return 1; fi
+}
+whitespace() {
+  local operation_file operation_result
+  local operation_files=("${OPERATION_SOURCES[@]}" "$OPERATION_DIR/dune"
+    "$OPERATION_DIR/Audit.v" "$OPERATION_DIR/README.md" "$OPERATION_DIR/EVIDENCE.md"
+    "$OPERATION_DIR/DIRECT_ROADMAP.tex" docs/direct-r-handoff/STATE.md
+    docs/direct-r-handoff/DECISIONS.md docs/direct-r-handoff/BUILD.md)
+  while IFS= read -r operation_file; do
+    operation_files+=("$operation_file")
+  done < <(rg --files "$OPERATION_EVIDENCE" -g '*.sh' -g '*.md' -g '*.v' | LC_ALL=C sort)
+  git diff --check -- "${operation_files[@]}" || return "$?"
+  for operation_file in "${operation_files[@]}"; do
+    if ! git ls-files --error-unmatch -- "$operation_file" >/dev/null 2>&1; then
+      if git diff --no-index --check -- /dev/null "$operation_file"; then
+        operation_result=0
+      else
+        operation_result=$?
+      fi
+      if [[ "$operation_result" -gt 1 ]]; then return "$operation_result"; fi
+    fi
+  done
+}
+run head git rev-parse HEAD
+run versions opam exec -- rocq -v
+run dune-version opam exec -- dune --version
+run packages opam list --installed --columns=name,version
+run disk df -h . /tmp
+run working-tree-before working_tree_manifest
+run source-before operation_manifest
+run previous-proofs-unchanged previous_sources
+run registration-normalization registration_normalization
+run registered-modules registered_modules
+run declaration-coverage declaration_coverage
+run pristine-archive git archive --output="$OPERATION_LOG/pristine.tar" "$OPERATION_BASE"
+run pristine-extract tar -xf "$OPERATION_LOG/pristine.tar" -C "$OPERATION_PRISTINE"
+run pristine-build opam exec -- timeout 600 dune build --root "$OPERATION_PRISTINE" --display=short --no-buffer -j 2 theories/Ranks.vo
+run pristine-kernel opam exec -- timeout 600 rocq check -silent -o -Q "$OPERATION_PRISTINE/_build/default/theories" PTSrk PTSrk.Ranks
+run fresh-build opam exec -- timeout 3600 dune build --build-dir "$OPERATION_BUILD" --display=short --no-buffer -j 2 "@theories/self_consistency/$OPERATION_ALIAS"
+run closed-reports reports
+run kernel opam exec -- timeout 3600 rocq check -silent -o -bytecode-compiler yes \
+  -Q "$OPERATION_BUILD/default/theories" PTSrk \
+  -Q "$OPERATION_BUILD/default/theories/NormalizationComplexity" PTSrk.NormalizationComplexity \
+  -Q "$OPERATION_BUILD/default/theories/Interpretation_of_R" Interpretation_of_R \
+  -Q "$OPERATION_BUILD/default/theories/CombinatoryLogic-rk" PTSrk.Combinatory \
+  -Q "$OPERATION_BUILD/default/theories/self_consistency" PTSrk.SelfConsistency \
+  "PTSrk.SelfConsistency.$OPERATION_AUDIT"
+run inventory-compare compare_inventory
+run original-kernel-unchanged git diff --exit-code "$OPERATION_BASE" -- \
+  theories/Syntax.v theories/AbstractRewriting.v theories/Congruence.v \
+  theories/Reduction.v theories/Confluence.v theories/DefEq.v theories/Context.v \
+  theories/Typing.v theories/Inversions.v theories/Preservation.v theories/SN.v theories/Ranks.v
+run frozen-zfc git diff --exit-code ffa7131 -- theories/ZFC_model
+run safety-scan safety_scan
+run source-after operation_manifest
+run source-stable cmp "$OPERATION_LOG/source-before.log" "$OPERATION_LOG/source-after.log"
+run previous-proofs-still-unchanged previous_sources
+run registration-still-additive registration_normalization
+run working-tree-after working_tree_manifest
+run whitespace whitespace
+printf 'PASS: fresh operation-provenance closure. Logs: %s\n' "$OPERATION_LOG"
