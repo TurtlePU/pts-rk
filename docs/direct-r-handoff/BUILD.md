@@ -1,5 +1,1017 @@
 # Build, logs, and recovery
 
+Second-paper planning checkpoint, 24 October 2026: documentation only. All 156
+proof/configuration files match the dependent-normal checkpoint: 79 Agda,
+73 Rocq, Dune, MM0 and both build drivers. No proof builds/checks or new
+formalization. The existing 79-module safe Agda result remains the last check.
+
+```sh
+bash theories/CombinatoryLogic-rk/build-note.sh
+bash docs/direct-r-handoff/verification/combinatory-paper-plan-2026-10-24/inspection/RUN.sh
+bash docs/direct-r-handoff/verification/combinatory-paper-plan-2026-10-24/inspection/CHECK-INTRO.sh
+```
+
+Note build PASS 03:13:21–03:13:37 UTC, exit 0,
+/tmp/pts-rk-combinatory-note.ibxHbk. Inspection PASS 03:14:25–03:14:27 UTC:
+42 pages, three-page MM0 appendix, 72 Rocq/55 Agda badges, 172 links. Every
+page rendered; 1–3 and 42 visually reviewed. Six-goal/development-order check
+PASS. Exact commands, versions, statuses and unchanged-source hashes:
+verification/combinatory-paper-plan-2026-10-24/COMMANDS.md.
+The user requested the plan only; no formal implementation should resume
+without a new request.
+
+Dependent normal-first checkpoint, 24 October 2026: fresh complete 79-module
+Agda closure PASS 02:38:49–02:42:19 UTC, exit 0/zero warnings. Seven new
+sources, 1,523 lines; aggregate at /tmp/pts-rk-combinatory-agda.UHjrtk.
+Pinned Agda 2.8.0-3d04bac/Cubical v0.9, copied sources, isolated config/data,
+--safe --ignore-interfaces. All 146 retained baseline hashes unchanged
+(73 combinatory Rocq, 71 preceding Agda, Dune/MM0). No Rocq/MM0/full-CI rerun.
+
+```sh
+AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh
+bash theories/CombinatoryLogic-rk/build-note.sh
+inspection_dir=$(mktemp -d /tmp/pts-rk-dependent-normal-pdf.XXXXXX)
+swift docs/direct-r-handoff/verification/combinatory-dependent-normal-2026-10-24/inspect.swift theories/CombinatoryLogic-rk/CombinatoryPTS-rk.pdf "$inspection_dir"
+```
+
+Final note PASS 02:37:19–02:37:36 UTC,
+/tmp/pts-rk-combinatory-note.SOSFxc. PDF inspection PASS02:38:10–12UTC:
+41 pages, MM0 appendix3, 72 Rocq/55 Agda badges, 171 links. All pages rendered;
+1, 13–17 and 39–41 visually reviewed. Exact actual commands, versions,
+statuses, hashes and diagnostics are in
+verification/combinatory-dependent-normal-2026-10-24/COMMANDS.md.
+Its VERIFY.sh is the final one-shot evidence wrapper; the commands above
+can be rerun with fresh build directories without replacing that evidence.
+
+All seven modules have fresh worker checks. Final Products/Examples pass
+with zero warnings under a 2 GiB heap cap. Early resource interruptions and
+metavariable failures are retained. Explicit normalization input parameters,
+small beta-chain lemmas and smart typed casts resolve elaboration without
+weakening statements. Context check03 and product check10 had recorded
+driver/source-copy overlap limitations and are not stable positive evidence.
+No new axioms, unsafe flags, staging, commit or push. Original raw typing
+decision and dependent normal operations are checked; literal QIIRT
+interpretation, full simultaneous IIRT and binder-free dependent completeness
+remain open.
+
+Normal-first checkpoint, 24 October 2026: fresh complete 72-module Agda
+closure PASS 01:48:29–01:49:30 UTC, exit 0/zero warnings. Eight new sources,
+852 lines, plus integrated syntax budget in SKSourceNormal. All 137 retained
+baseline files unchanged (73 Rocq, 62 prior Agda, Dune/MM0). No Rocq/MM0/full-CI
+rerun. Build /tmp/pts-rk-combinatory-agda.5X76wW; pinned Agda
+2.8.0-3d04bac/Cubical v0.9, copied sources, isolated config/data,
+--safe --ignore-interfaces.
+
+```sh
+AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh
+bash theories/CombinatoryLogic-rk/build-note.sh
+inspection_dir=$(mktemp -d /tmp/pts-rk-normal-first-pdf.XXXXXX)
+swift docs/direct-r-handoff/verification/combinatory-normal-first-2026-10-24/inspect.swift theories/CombinatoryLogic-rk/CombinatoryPTS-rk.pdf "$inspection_dir"
+```
+
+Final note PASS 01:49:44–01:50:00 UTC,
+/tmp/pts-rk-combinatory-note.RqAKcy: 39 pages, three-page MM0 appendix,
+72 Rocq/48 Agda badges, 164 links; every page rendered, 15 visually reviewed.
+The exact actual inspection command is retained in the evidence ledger.
+Verification/failed checks/source snapshots:
+verification/combinatory-normal-first-2026-10-24/COMMANDS.md.
+Root substitution attempts include interruption 143 and heap exhaustion 251;
+final nested-truncation implementation passes freshly under 1500 MiB. The
+early root shell-command spelling was not retained and is explicitly marked
+as an evidence limitation; final worker/aggregate commands are exact.
+No new axioms, unsafe checker flags, staging, commit or push. Arbitrary-output
+direct canonical evaluation and full dependent normal-first integration remain
+open; the simple compiler atom-output bound and substitution laws are proved.
+
+Canonical SK checkpoint,24October2026: fresh complete64-module Agda
+closure PASS01:06:10–01:07:02UTC,exit0/zero warnings. Six new sources,
+972lines;57preceding non-aggregate Agda/73Rocq,Dune,MM0 unchanged by
+SHA256 comparison (132files). No Rocq/MM0/full-CI rerun. Build
+/tmp/pts-rk-combinatory-agda.viXBft; pinned Agda2.8.0-3d04bac/Cubicalv0.9,
+copied sources/isolated config/data,--safe --ignore-interfaces.
+
+```sh
+AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh
+bash theories/CombinatoryLogic-rk/build-note.sh
+swift docs/direct-r-handoff/verification/combinatory-sk-canonical-2026-10-24/inspect.swift theories/CombinatoryLogic-rk/CombinatoryPTS-rk.pdf /tmp/pts-rk-sk-canonical-pdf.XqR7k0
+```
+
+Final PDF PASS01:07:46–01:08:02UTC,/tmp/pts-rk-combinatory-note.S8ADt6;
+37pages,appendix3,72Rocq/40Agda badges,156links. All pages render;
+10–12 visually reviewed. Ledger with exact commands/failures/snapshots:
+verification/combinatory-sk-canonical-2026-10-24/COMMANDS.md.
+Root import error was fixed, not suppressed. Two optional large evaluation
+checks were stopped for memory growth (exit143); final general proofs and
+small regressions check freshly. No fast evaluation benchmark is claimed.
+No staging/commit/push; existing user index/worktree preserved. Direct
+canonical evaluation and dependent catalogue/QIIRT adequacy remain open.
+
+SK checkpoint,24October2026: full active73-module Rocq audit PASS,
+00:36:32–00:39:56UTC,exit0. Fresh compilation161s,1215own/1216aggregate
+closed reports including23SK endpoints; recursive kernel32s,VM enabled.
+Full context inventory equals fresh pristine byte-for-byte (inherited
+functional_extensionality_dep only, unsafe none). Build
+/tmp/pts-rk-sk-audit.puvKDx; pristine/tmp/pts-rk-sk-pristine.vT6zKA;
+durable audit.MhPQbr under verification/combinatory-sk-2026-10-24.
+Retained72Rocq/native/MM0 bodies unchanged; source/safety/whitespace pass.
+
+```sh
+bash docs/direct-r-handoff/verification/combinatory-sk-2026-10-24/AUDIT.sh
+AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh
+bash theories/CombinatoryLogic-rk/build-note.sh
+swift docs/direct-r-handoff/verification/combinatory-sk-2026-10-24/inspect.swift theories/CombinatoryLogic-rk/CombinatoryPTS-rk.pdf /tmp/pts-rk-sk-pdf.3wB4UI
+```
+
+Fresh full58-module Agda closure PASS00:36:05–53UTC,zero warnings,
+/tmp/pts-rk-combinatory-agda.snmnV0,isolated copies/config/data,
+--safe --ignore-interfaces,pinned2.8.0-3d04bac/Cubicalv0.9. All48
+unaffected files match pre-edit snapshot. Note final PASS00:38:11–26UTC,
+/tmp/pts-rk-combinatory-note.cJu4ye;36pages,appendix3,72Rocq/34Agda badges,
+150links; all pages rendered,2/10/11 visually inspected. Historical logs,
+worker failures and missing intermediate-status limitations are documented
+in verification/combinatory-sk-2026-10-24/COMMANDS.md. No staging/commit,
+push,full-CI or unchanged MM0 checker rerun. Native-normal reification,
+canonical SK outputs and dependent coverage remain open.
+
+Combinatory binder-free checkpoint, 24 October 2026: six new safe Cubical
+modules and six Everything imports. Fresh complete closure PASS, exit0,
+**zero warnings**, 00:03:14–00:04:04 UTC; 58 project modules, pinned Agda
+2.8.0-3d04bac and Cubical b150186d2544e7efeddd31e5d14a8b9ecbb100f7.
+All sources are copied; config/data isolated; --safe --ignore-interfaces.
+Build /tmp/pts-rk-combinatory-agda.At6TF2, final driver/evidence
+/tmp/pts-rk-binderfree-final.j8zDif. Source hashes remain stable. All51 prior
+non-aggregate Agda,74 combinatory Rocq,Dune,MM0 sources match baseline;
+no original typing/quotient rules changed. No Rocq/full-CI/MM0 rerun.
+
+```sh
+AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh
+bash theories/CombinatoryLogic-rk/build-note.sh
+swift docs/direct-r-handoff/verification/combinatory-binderfree-2026-10-24/inspect.swift theories/CombinatoryLogic-rk/CombinatoryPTS-rk.pdf /tmp/pts-rk-binderfree-pdf.9amwDy
+```
+
+Final note build PASS00:04:39–54UTC; build
+/tmp/pts-rk-combinatory-note.sfYn4J; inspection exit0,35pages,appendix3,
+72Rocq/33Agda badges,149links,all pages rendered,9–11 visually reviewed.
+First inspection failed on a wrapped reference title; whitespace-normalized
+extraction fixes the test without removing any requirement. First baseline
+check mistakenly included the in-progress NEW Boundary source; excluding
+new files gives all127 preceding-source hashes unchanged. Both diagnostics
+are retained. Worker development failures and final checks are documented
+in verification/combinatory-binderfree-2026-10-24/COMMANDS.md. No staging,
+commit, push or cleanup. Full dependent PTS integration remains open.
+
+Self-consistency uniform-Horn checkpoint (24 October locally): five modules,
+104 public endpoints(19/16/16/31/22). Fresh audit PASSES exit0/archive0,
+2026-10-23 23:33:49–23:35:50 UTC. Actual64-module closure compilation takes69s,
+23:34:06–23:35:15, with exactly414 closed reports. Recursive VM-enabled kernel
+check takes27s,23:35:15–23:35:42. Complete raw inventory is byte-equal to fresh
+pristine: inherited functional_extensionality_dep only, all unsafe categories
+empty. Original kernel/frozen ZFC and preceding proof bodies are unchanged;
+source, driver, additive registration and public coverage gates all pass.
+No full repository CI or unchanged older aggregate audit was rerun.
+
+Live _build/self-consistency-uniform-horn-audit.lD2nv7;
+fresh /tmp/pts-rk-uniform-horn-fresh.cCcZgE;
+pristine /tmp/pts-rk-uniform-horn-pristine.oSFBh4;
+archive verification/self-consistency-uniform-horn-2026-10-24/audit.V54reH.
+The first immutable run stopped before compilation on one terminal blank in
+the new aggregate; it is retained as audit.9lGA47. Only that blank was removed.
+Worker evidence is workers.RT14Xj, with all available commands/times/exits,
+raw logs and source hashes. Historical intermediate source bytes are missing
+for Decoding and Tables01–07, explicitly disclosed; final sources are pinned.
+
+```sh
+bash docs/direct-r-handoff/verification/self-consistency-uniform-horn-2026-10-24/AUDIT.sh
+bash docs/direct-r-handoff/verification/self-consistency-uniform-horn-2026-10-24/NOTE-CHECK.sh
+```
+
+Note build/inspection PASS23:33:23–29UTC:9pages,6links, all-page rendering;
+pages1/3/7/8/9 visually reviewed. Live
+_build/self-consistency-uniform-horn-note.J4mfLT; retained note.e1xHbA under
+the same checkpoint. TeX SHA2560894b5bf876fce2823083a718da78b98ab2d364f59e51da5f2e3d387f35d6822;
+PDF SHA256380978727e328dacf4cdfa609bf9f70c04f019db933c07dad3392ca036a49798.
+No caches/renderings added to evidence, cleanup, staging, commit or push.
+
+Combinatory raw-internal checkpoint (24 October 2026 locally; UTC runs on
+23 October): five new modules, 130 public reports (27/23/25/27/28). Fresh
+74-module audit PASSES all gates, exit 0, 22:55:34–22:59:07 UTC. Compilation
+22:55:45–22:58:31 (166s) prints 1230 own / 1231 aggregate closed reports.
+Complete recursive kernel check 22:58:31–22:59:05 (34s) passes; full inventory
+equals freshly built pristine byte-for-byte, inherited functional_extensionality_dep
+only, no unsafe entries. All 77 hashes are stable, every preceding 69 proof
+source and native kernel/MM0/52 Agda sources are unchanged. Dune adds exactly
+five registrations; safety/integrity/whitespace all pass.
+Live _build/combinatory-raw-internal-audit.i7AcKM; absolute build
+/tmp/pts-rk-raw-internal.Cw6I7V; pristine
+/tmp/pts-rk-raw-internal-pristine.mI4P4i; archive
+verification/combinatory-raw-internal-2026-10-24/audit.lNl9UC.
+
+```sh
+bash docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24/AUDIT.sh
+bash docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24/NOTE-CHECK.sh
+```
+
+The checkpoint ledger preserves all compiler failures and actual commands,
+timestamps, exits and source hashes. Isolated inventory comparisons that mixed
+whitespace-normalized and raw reports are retained; the decisive fresh audit
+compares both raw full inventories directly. No proof premise is weakened.
+Internal decoder/graph/coherence typing is canonicity-free. Canonical source
+reconstruction and wrong-answer exclusion retain external canonicity.
+
+Note build 22:56:41–56 and full PDF inspection 22:56:56–58 pass: 33 pages,
+appendix 3, 72 Rocq / 27 Agda badges, 44 Agda links, 140 total links. All pages
+render; pages 26/27/28 visually reviewed. Logs
+_build/combinatory-raw-internal-note.22TUMz; archive note.v704EG under the same
+checkpoint. No full repository CI or new Agda/MM0 checker execution, staging,
+commit, push, cleanup or unrelated source edits.
+
+Combinatory indexed-provenance checkpoint (2026-10-23): six new modules,
+120public endpoints (14/17/17/33/16/23). Fresh69-module audit PASSES all gates,
+exit0,20:49:13–20:52:38UTC. Fresh compilation20:49:23–20:52:08(165s) prints
+1100own/1101aggregate closed reports,120new. Full recursive kernel check
+20:52:08–35(27s) passes; full inventory equals fresh pristine byte-for-byte,
+inherited functional_extensionality_dep only, no unsafe entries. All72
+source/Dune/shared-equality/MM0 hashes are stable; previous63proofs, native
+kernel, MM0 and52Agda sources are unchanged. Dune normalization verifies
+exactly six additive registrations; safety/integrity/whitespace all pass.
+Live _build/combinatory-indexed-provenance-audit.rya6B6; fresh absolute build
+/tmp/pts-rk-indexed-provenance.cjt8S0; pristine
+/tmp/pts-rk-indexed-provenance-pristine.8LBsHH; archive
+verification/combinatory-indexed-provenance-2026-10-23/audit.emobKi.
+
+```sh
+bash docs/direct-r-handoff/verification/combinatory-indexed-provenance-2026-10-23/AUDIT.sh
+bash docs/direct-r-handoff/verification/combinatory-indexed-provenance-2026-10-23/NOTE-CHECK.sh
+```
+
+The checkpoint COMMANDS.md links every isolated compiler failure and exact
+worker command/timestamp/exit ledger. Isolated checks reuse prior dependencies;
+the fresh integrated check above is the decisive final evidence. No statement
+was weakened to repair elaboration. Generic arbitrary-query typing is
+canonicity-free; canonical closed exactness/Void retain external canonicity.
+Raw provenance is external, including the raw support's query parameter.
+
+Note build20:48:12–27 and inspection20:48:27–29 pass, exit0:32pages,appendix3,
+67Rocq/27Agda badges,44Agda links,135total. Every page renders; pages1/25/26
+visually reviewed. Logs _build/combinatory-indexed-provenance-note.OWcpHq;
+archive note.5KCYYS under the same checkpoint. No full repository CI,
+new Agda/MM0 checker run, staging, commit, push, cleanup or unrelated edits.
+
+Combinatory internal-Horn checkpoint (2026-10-23): five new modules,
+95 public reports (18/13/36/11/17), all individually compiled. Proof sources
+and five additive Dune registrations frozen. Fresh 63-module audit PASSES
+all gates, exit0,19:53:09–19:56:22 UTC. Compilation19:53:19–19:55:55 (156s)
+prints980 own/981 aggregate closed reports,95 new. Complete recursive kernel
+passes19:55:55–19:56:20 (25s), with full inventory byte-equal to fresh pristine:
+inherited functional_extensionality_dep only, no unsafe entries. All66 hashes
+are stable, all58 preceding proofs/kernel/MM0/52Agda sources unchanged, and
+Dune normalization proves exactly the five additive registrations.
+Live _build/combinatory-internal-horn-audit.JMyhh0; absolute build
+/tmp/pts-rk-internal-horn.6x5cr6; pristine
+/tmp/pts-rk-internal-horn-pristine.LZ2nx4; archive
+verification/combinatory-internal-horn-2026-10-23/audit.td6KVY.
+
+```sh
+bash docs/direct-r-handoff/verification/combinatory-internal-horn-2026-10-23/AUDIT.sh
+bash docs/direct-r-handoff/verification/combinatory-internal-horn-2026-10-23/NOTE-CHECK.sh
+```
+
+Root isolated checks reuse the preceding final dependency objects, not fresh
+evidence: internal/attempt-01 through03 pass (10 then11 endpoints); guarded
+attempts01/02 fail on an iff application and unresolved query placeholder,
+03 passes11 endpoints,04 fails at goal-distribution syntax,05/06 pass all17.
+Worker attempts are retained under encoding/realization and the separate
+verification/combinatory-internal-reflection-2026-10-23/finite-support folder.
+The realization's first inventory wrapper compared raw and whitespace-clean
+reports; the corrected comparison uses the raw pristine inventory, with no
+proof edit or weakened checker. No full repository CI/new Agda/MM0 run,
+commit, push, staging or cleanup is claimed.
+
+Final note build19:55:35–19:55:50 and inspection19:55:50–52 pass, exit0:
+31pages, appendix3,61Rocq/27Agda badges,44Agda links,129total links. All pages
+render; pages1/24/25 are visually reviewed. Live note logs
+_build/combinatory-internal-horn-note.fi3gJi; archive note.nVOBmg. Initial
+note validation rejects an 80.34396pt overwide display and retains the old
+PDF; aligned display layout fixes it. Both attempts are retained in the ledger.
+
+Combinatory literal-MM0 checkpoint (2026-10-23): eight new modules,
+192 public endpoints,58 total modules. Fresh compilation PASSES
+19:29:58–19:32:42UTC (164s):885own/886aggregate closed reports,192new.
+Full recursive kernel checking PASSES19:32:42–19:33:06 (24s), with complete
+inventory equal to fresh pristine: inherited functional_extensionality_dep
+only, no unsafe entries. All61source hashes are stable and all preceding50
+proofs/kernel/Agda/MM0/shared equality are unchanged. Exact additive-eight
+Dune registration, textual MM0 comparison and strong safety checks pass.
+Final snapshot uses FitsSyntax: live _build/combinatory-mm0-bridge-audit.BLPblO,
+build /tmp/pts-rk-mm0-bridge.IH9mrh,
+pristine /tmp/pts-rk-mm0-bridge-pristine.2MonTA,
+archive verification/combinatory-mm0-bridge-2026-10-23/audit.HRs4x3.
+
+```sh
+bash docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/AUDIT.sh
+bash docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/NOTE-CHECK.sh
+bash docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/FINAL-CHECKS.sh
+```
+
+Attempt01 compiles/kernel-checks the earlier Hilbert snapshot but fails strict
+source stability. Its885aggregate reports also exposed shell assertion
+fallthrough; original script/statuses and corrected negative gate tests remain.
+Attempt02 compiles885own/886aggregate reports,192new,19:25:29–19:28:02UTC;
+full recursive kernel checking passes19:28:02–26. Complete inventory equals
+fresh pristine; all61source hashes and old50/kernel/Agda/MM0/registration
+checks pass. The lexical safety gate then flags a pure predicate named
+Admitted, not a proof command. Rename it FitsSyntax and repeat the full
+fresh audit without weakening any checker or proof. Attempt03 passes every
+proof/integrity gate but ends at the whitespace wrapper: git no-index implies
+exit-code and returns1 on a clean new file, with empty output. Preserve that
+failed driver status; separate final checks correct the exit-code handling,
+exercise clean/failing fixtures and reverify unchanged fresh sources/reports.
+All ten final recovery gates PASS19:35:43–19:35:44UTC, exit0. Current proof
+and note hashes match the successful fresh compilation/kernel and note runs;
+clean-file acceptance and whitespace/missing-file/wrong-count rejection are
+tested. Live final logs _build/combinatory-mm0-bridge-final.LNIhbh; archive
+verification/combinatory-mm0-bridge-2026-10-23/final.MjHIDx.
+
+Final note build/inspection passes19:25:55–19:26:12UTC. Archive note.rQGnBx:
+30pages, appendix3,56Rocq/27Agda badges,44Agda links,124links. All pages render;
+changed pages and final theorem page visually checked. The first inspector
+copy was truncated and failed Swift compilation; full restoration and final
+successful checks are recorded in NOTE.md. No fullCI/new Agda/MM0 checker
+run, commits/staging/pushes or cleanup.
+
+Operation-provenance continuation (2026-10-23), SOURCE FROZEN: seven modules
+freshly compile and pass kernel checking; OperationProvenanceAudit covers
+all 80 public endpoints
+(11/8/13/15/16/14/3). Context lookup includes all original shifts, an independent
+whole-context guard, arbitrary-output scope and executable exact standard
+witnesses. Comparison has formation and all three open-input local agreement
+cases, NOT full Trace constructors or arbitrary-Trace induction. Milestone4
+remains open. Native NamedBeta/BooleanAgreement helpers add no PTS rules.
+
+Root development logs: /tmp/pts-rk-context-provenance.pPeQ4L. Retained attempts
+codes01--04 exit 1,1,1,0; beta01--07 exit 1,0,0,1,0,1,0; symbolic01 exits 0.
+The symbolic experiment is not completed comparison-graph realization.
+Exact commands, hashes, start/end times and failures are archived under
+verification/self-consistency-operation-provenance-2026-10-23/root-worker,
+with compressed raw originals and whitespace-clean readable copies. These
+isolated checks reuse previous dependency objects and are not fresh evidence.
+
+Final scope additionally includes BooleanAgreement. Context's attempt13 passes
+in251s with15closed reports; comparison's checkpoint01 in137s with14closed.
+Root realization05 passes after replacing large annotation conversions by
+NamedSpine; attempts01--03 retain the interruption/name/elaboration failures.
+All commands, failed candidates, source hashes and exact raw outputs are in
+the context-worker, comparison-worker and root-worker/final evidence folders.
+
+Fresh attempt01 stopped at19:25:39 before compilation: concurrent combinatory
+Dune additions only. Root reviewed the exact8module/vo delta. The preserved
+driver/log is followed by exact normalization recovering the old baseline;
+no old proof body is exempted. Attempt02 started19:27:45: 514 nonregistration
+old paths frozen, three exact registration normalizers,525 current frozen
+paths and all80 declaration pairs. Fresh pristine compilation/kernel pass;
+new complete-closure compilation PASSES 19:28:08–19:56:57 UTC (1729s), exit 0,
+with 80 new closed reports and 81 aggregate. Live logs
+`_build/self-consistency-operation-provenance-audit.dLxE0S`, absolute build
+`/tmp/pts-rk-operation-provenance-fresh.DkOoCf`, pristine
+`/tmp/pts-rk-operation-provenance-pristine.Smzrtd`. The driver then exits 2
+before kernel checking: a correction to its reusable file during the long
+build disturbed Bash's later reads (unexpected EOF). Both versions and raw
+failure are retained; this invocation is NOT all-pass. First recovery stops
+on five further concurrent additive registrations; all other 524 raw hashes
+match. Root reviewed exact 13-entry normalization. Immutable continuation 02
+passes those checks, pins 525 current paths and passes corrected coverage
+and report gates. Full recursive VM-enabled kernel checking PASSES
+20:03:03–20:24:26 UTC (1283s), exit 0, on the SAME fresh build. Complete
+inventory equals fresh pristine exactly: inherited functional_extensionality_dep
+only, no unsafe entries. All 18 continuation gates pass by 20:24:40, including
+525-path source stability, 514 preceding source/registration entries,
+original kernel, frozen ZFC,
+exact registrations, safety and whitespace. Declaration coverage additionally
+has retained positive/negative tests: removing one Print while retaining all
+80 Checks fails both corrected wrappers. No proof source changed, no commit,
+push or cleanup performed. The old full audit and repository CI were not run.
+All 14 FINAL-CHECKS gates PASS, 20:26:43–20:26:50 UTC, exit 0. Live logs:
+`_build/self-consistency-operation-provenance-final.o9Z9IF`; audit-final and
+final-checks archives retain exact raw logs and normalized readable copies.
+
+Final Horn-aware roadmap build /tmp/pts-rk-consistency-note.eIehU6 passes;
+inspection /tmp/pts-rk-operation-horn-review.XkGmmU passes 8 pages/6 links.
+All pages render; pages 1/7/8 visually reviewed anew, pages 2--6 byte-identical
+to earlier reviewed renders. Separate note-horn-final archive retains all
+four attempts, both literal-text inspection failures and orphan-page repair.
+The inspector is unchanged. Current source/PDF hashes match that archive;
+earlier note-final evidence is preserved as history.
+
+Combinatory guarded-fragment checkpoint (2026-10-23): fresh compilation and
+complete recursive kernel checking PASSED for all50 modules. Compilation
+18:28:44–18:30:57 UTC (133s), kernel18:30:57–18:31:19 (22s), both exit0.
+693 own closed reports, 195 new, 694 aggregate. The complete context inventory
+matches freshly built pristine exactly: inherited functional_extensionality_dep
+only, no unsafe entries. All53 current hashes match before/after; original
+kernel, all43 previous combinatory sources, MM0 and all52 Agda sources unchanged.
+
+```sh
+bash docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/AUDIT.sh
+bash docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/FINAL-CHECKS.sh
+```
+
+Fresh logs _build/combinatory-guarded-fragments-audit.ACxpVa; absolute build
+/tmp/pts-rk-guarded-fragments.Hzzxi9; pristine/tmp/pts-rk-guarded-pristine.HmTbHx.
+That driver exits2 ONLY at archival whitespace after all proof/inventory/
+source-integrity stages pass. Raw generated logs are preserved as gzip;
+readable copies were whitespace-normalized, without changing any proof.
+FINAL-CHECKS reruns whitespace plus the unchanged fresh-proof/note manifests.
+This is not a claim that the original driver run was entirely green.
+All nine final gates pass at18:37:10 UTC, exit0, with unchanged proof sources
+and note manifest; live logs _build/combinatory-guarded-final.ftRIP5.
+
+Earlier49-module run _build/combinatory-guarded-fragments-audit.fX2mac failed
+with explicit disk-exhaustion output; its stalled task-owned Dune process was
+terminated (exit137). Other processes/data were untouched. Writes recovered
+when free space rose from about120MiB to260MiB; no cleanup was performed.
+Coverage subsequently compiled and passed isolated and integrated checking.
+All individual failures, commands, timestamps and final worker hashes remain
+in verification/combinatory-guarded-fragments-2026-10-23.
+
+Final note build /tmp/pts-rk-combinatory-note.lDshJ1 passes18:27:19–18:27:34;
+inspection /tmp/pts-rk-guarded-note-final.oiiONe passes: 30pages, appendix3,
+48Rocq/27Agda badges, 116links. Changed pages22–24 visually reviewed; all pages
+render. First build passed LaTeX but PDF inspection found a raw math delimiter;
+the trailing-backslash repair and two subsequent successful builds are logged.
+No new full-CI, Agda or MM0 checker run; no staging/commit/push.
+
+Source-provenance checkpoint (2026-10-23): fresh compilation PASSED,
+18:09:36–18:14:39 UTC (303s), exit 0. All 90 new endpoint reports closed;
+91 aggregate. Complete recursive VM-enabled kernel verification PASSES
+18:14:39–18:22:11 UTC (452s), exit 0, without skips/admissions. The entire
+inventory exactly matches pristine: inherited functional_extensionality_dep
+only, no unsafe entries. Attempt 02 then stops at the raw post-build source
+gate because of another concurrent registration-only change; not an all-pass
+driver run. All 13 recovery/final checks PASS, 18:28:16–18:28:24 UTC,
+exit 0; live logs `_build/self-consistency-source-provenance-final.ddsFzI`.
+All 509 other scoped entries agree across before/after/current; all 503 prior
+bodies and all three exact registration-normalization checks pass.
+
+```sh
+bash docs/direct-r-handoff/verification/self-consistency-source-provenance-2026-10-23/AUDIT.sh
+```
+
+Live logs `_build/self-consistency-source-provenance-audit.RB1ktf`; fresh
+absolute Dune directory `/tmp/pts-rk-source-provenance-fresh.yW2QOO`;
+pristine `/tmp/pts-rk-source-provenance-pristine.D4McFy`. Pinned Rocq 9.2,
+OCaml 4.14.2, Dune 3.23.1, Stdlib 9.1.0, Equations 1.3.2+9.2. The driver
+checks all 90 public declarations in the three new modules. Old full audit
+and whole-repository CI are not rerun.
+
+Attempt 01 exits 1 at the previous-source gate, 18:05:15–18:05:22 UTC, before
+compilation. Only concurrent additive combinatory Dune registrations differ.
+Attempt 02 begins 18:09:13 with explicit exact normalization of all three
+registration files to their previous hashes. All 503 prior nonregistration
+bodies stay frozen; the 510-path scoped manifest covers all 506 previous
+entries plus four new proof files. Newly added independent guarded-model
+proofs are not part of this continuation's claims. Full-tree snapshots remain
+archived informationally; no actual kernel dependency is skipped. Failed
+attempt 01 and the scope adjustment are documented in COMMANDS.md.
+
+After successful fresh compilation/kernel verification, source-stable exits 1
+at 18:22:18. Only combinatory Dune differs; all other 509 hashes match exactly.
+Two additional unrelated module/alias entries were added concurrently.
+Removing exactly the six new registrations recovers the old Dune SHA256
+b09b748ec0da0da4980558d6d778df950918fb77ef1c4ce9273e68c04642d2a8.
+Preserve the raw mismatch and original attempt-02 script. The reviewed recovery
+compares all other paths byte-for-byte and checks this exact normalization;
+it does not claim kernel verification of the six independent new modules.
+A seventh registration, GuardedHilbertCoverage, appeared during archival.
+Its exact module/alias additions also normalize to the same prior hash;
+the final recovery checks use this seven-entry registration snapshot.
+The first final-wrapper run had an overescaped safety-scan word boundary;
+the audit worker corrected the wrapper and reran all 13 checks. The fresh
+build's original safety scan was correct. Both wrapper runs are retained.
+
+Isolated source-graph attempt 01 fails at explicit scope inference; attempt 02
+passes. Internal-execution attempts 01–05 pass, with the later attempts adding
+application/acceptance interfaces. Root realization attempt 01 fails because
+the AbstractRewriting reflexivity instance was not imported; attempts 02–03
+pass. Sources and exact wrapper commands/statuses are archived, not hidden by
+the successful fresh build. No unsafe proof shortcuts were added.
+
+A broad diagnostic `git diff --check -- theories/self_consistency
+docs/direct-r-handoff/STATE.md docs/direct-r-handoff/BUILD.md
+docs/direct-r-handoff/DECISIONS.md` exits 2 on the pre-existing trailing blank
+line at NamedTemplates.v:283. Its previous/current SHA256 is unchanged
+(e5c79f9ee738abd90af916a7727b6b8910dd6746f9ef8af099afd00c49d718a4);
+the frozen body was preserved. The check scoped to this continuation's changed
+files passes. Do not describe that as a clean whole-worktree whitespace check.
+
+Roadmap build `/tmp/pts-rk-consistency-note.eGdpop` passes validation. Swift
+inspection finds eight nonempty pages, seven links, required mathematics and
+successful all-page rendering. All eight pages visually reviewed. Exact
+source/PDF hashes and commands are in the new NOTE-REVIEW.md. The note has
+492 source lines and preserves all six remaining acceptance gates.
+First remaining goal is internal source/endpoint provenance, not a larger
+storage envelope; internal finite-fragment soundness remains open.
+
+Joint-interface/resource checkpoint (2026-10-23): fresh verification PASSED,
+all 24 stages, 11:17:16–11:28:25 UTC, exit 0.
+
+```sh
+bash docs/direct-r-handoff/verification/self-consistency-joint-resources-2026-10-23/AUDIT.sh
+```
+
+Live logs `_build/self-consistency-joint-resources-audit.VWulyQ`; fresh
+absolute build `/tmp/pts-rk-joint-resources-fresh.TqBIPV`; pristine
+`/tmp/pts-rk-joint-resources-pristine.d7jjko`. Fresh compilation passes
+11:17:31–11:22:22 UTC (291s), exit 0: 59 new closed reports, 60 aggregate.
+All 59 public declarations and the three registered proof modules are covered.
+Complete recursive VM-enabled kernel checking passes 11:22:22–11:28:19
+(357s), without dependency skips/admissions. Entire context inventory equals
+fresh pristine exactly: only inherited functional_extensionality_dep, no
+unsafe entries. All 500 frozen previous entries and all 506 before/after
+hashes agree; original kernel, frozen ZFC, safety and whitespace checks pass.
+The older full audit/repository CI were not rerun.
+All ten final light checks pass, 11:33:35–11:33:41 UTC; live logs
+`_build/self-consistency-joint-resources-final.FWuKdZ`. Earlier failures were
+archival-draft EOF whitespace only; original bytes and both failed runs remain
+recorded. No checked source changed after the fresh audit.
+
+The joint worker's full constructor/fold attempt did not finish: repeated
+large conversions were interrupted or killed; attempt 06 exited 137.
+Compiled-prefix fallback attempt 07 passes 11:15:28–11:15:54 UTC with ten
+closed reports. The prefix is the actual library source. All larger
+candidates, probes and the never-compiled root integration are outside
+theories as explicitly unverified design evidence. Exact commands/statuses
+are in the archived joint ledger. Resource and boundary modules compile
+individually with 38 and 11 closed reports. No unsafe checking was introduced.
+
+Roadmap attempt 01 fails with unsupported display tag (exit 12); attempt 02
+compiles but fails wide-table validation (wrapper exit 1). Attempt 03 passes;
+final attempt 04 incorporates pointwise-rank notation corrections and passes.
+Final directory `/tmp/pts-rk-consistency-note.0mBTXO`: seven nonempty pages,
+seven links, required text and all-page rendering pass. All seven pages were
+visually reviewed. NOTE-REVIEW.md records exact commands and final hashes.
+No staging, commit, push, cleanup or unrelated proof changes this turn.
+
+The first remaining obligation is independently certified source-to-operation
+agreement, not more storage coverage. Joint buildZip is also unverified.
+Internal finite-fragment soundness (milestone 4) remains open. Read the new
+seven-page DIRECT_ROADMAP and current STATE entry before resuming.
+
+Comparison-execution checkpoint (2026-10-23), fresh verification PASSED:
+
+`bash docs/direct-r-handoff/verification/self-consistency-comparison-execution-2026-10-23/AUDIT.sh`
+
+All 23 stages exit0, 09:56:05–10:04:43 UTC. Live logs
+`_build/self-consistency-comparisons-audit.ftbRbY`; fresh absolute Dune
+directory `/tmp/pts-rk-comparisons-fresh.IyPIZj`; fresh pristine directory
+`/tmp/pts-rk-comparisons-pristine.7FBUEo`. All 92 new public declarations
+are covered by fully qualified reports. Fresh compilation passes
+09:56:21–10:01:22 (301s): 92 new/93 aggregate closed reports. Complete
+recursive VM-enabled kernel checking passes 10:01:22–10:04:36 (194s), no
+skip/admission flags. Entire inventory matches fresh pristine exactly:
+inherited functional_extensionality_dep only, no unsafe entries. All 494
+frozen prior entries and all 502 before/after current hashes match. Original
+kernel, frozen ZFC, safety and tracked/untracked whitespace pass. The old
+full audit/repository CI was not rerun. Isolated five-module compilation passes.
+
+Root integration attempts01–05 exit1 (duplicate/missing worker loadpaths,
+subject/arity inference, incompatible Boolean syntax); attempt06 and
+CheckerExecution execution01 exit0. Worker failures and exact successful
+commands are preserved separately. Initial root setup wrappers were not
+retained as a separate ledger; do not claim full command reproducibility
+for those diagnostic attempts. Final fresh audit records exact commands,
+times, exits and source manifests for every stage. See
+`verification/self-consistency-comparison-execution-2026-10-23/COMMANDS.md`.
+
+Roadmap build `/tmp/pts-rk-consistency-note.k6uAuy` passes validation and
+inspection: 21 nonempty pages, seven links, all pages rendered; pages1/9/10/
+20/21 visually reviewed across the initial/final builds; pages10/21 were
+reviewed again after the final boundary refinement. Initial B4XQac evidence
+is retained separately. Final hashes are recorded in NOTE-REVIEW.md.
+No commit, staging, push, cleanup or unrelated proof
+changes. Next proof work is internal compilation/traversal generation and
+resource sufficiency, then separate internal rejection evidence.
+All ten post-documentation light checks also pass, 10:08:51–10:08:57 UTC;
+logs are archived in the same verification folder under final-checks/.
+The later joint-traversal candidate recorded in STATE/DECISIONS is design
+only, not an additional verified module or theorem.
+
+Represented-dictionary checkpoint (2026-10-23), fresh verification PASSED:
+
+`bash docs/direct-r-handoff/verification/self-consistency-finite-dictionaries-2026-10-23/AUDIT.sh`
+
+All 22 stages exit0, **09:04:26–09:05:22 UTC**. Fresh absolute build
+`/tmp/pts-rk-dictionaries-fresh.KOCLBv` compiles the new closure
+09:04:41–09:05:04: 56 new closed endpoint reports, 160 aggregate.
+Complete recursive VM-enabled checking passes 09:05:04–09:05:17, with
+no skip/admission flags. Entire context inventory equals fresh pristine
+exactly: only inherited functional_extensionality_dep, no unsafe entries.
+All previous theory proof hashes (except Audit/Dune registration), original
+kernel and frozen ZFC remain unchanged. Source before/after hashes agree;
+tracked and untracked whitespace checks pass. Old full audit/repository CI
+are not rerun. Live logs `_build/self-consistency-dictionaries-audit.PkYzEJ`.
+
+Incremental DictionaryRejection attempts01–03 exit1 (notation conflict,
+closed-term lifting, unresolved Fin arity); attempt04 exits0. All preserved.
+Worker failures and namespace correction are likewise recorded, separately
+from the successful complete fresh audit. Exact commands, times, versions,
+hashes and logs: `verification/self-consistency-finite-dictionaries-2026-10-23/COMMANDS.md`.
+
+Roadmap/PDF build `/tmp/pts-rk-consistency-note.QJT5ss` passes validation and
+inspection: 20 nonempty pages, seven links, all pages rendered; pages1/7/8/9/
+19/20 visually reviewed. No commit, staging, push or cleanup. Next proof goal
+is internally generated checker-specific All evidence and sufficient-resource
+coverage, not another externally specialized proof or elimination wrapper.
+
+Finite-fragment consistency checkpoint (2026-10-23), fresh verification PASSED:
+
+`bash docs/direct-r-handoff/verification/self-consistency-finite-fragments-2026-10-23/AUDIT.sh`
+
+All 21 stages pass, **08:23:08–08:24:10 UTC**, exit 0. Fresh absolute build
+`/tmp/pts-rk-fragments-fresh.d7RHpo`: 95 new endpoint reports closed, 199
+aggregate with imported/repeated reports. Complete recursive VM-enabled
+check passes 08:23:51–08:24:04 with no skip/admission flags. Entire context
+inventory equals fresh pristine exactly: inherited functional_extensionality_dep
+only, no unsafe entries. Previous self-consistency/common/combinatory proofs,
+original kernel and frozen ZFC remain unchanged; all before/after hashes agree.
+Logs: `_build/self-consistency-fragments-audit.qOXzIr`, archived in the
+verification folder. First fresh run kEDr7s passes proofs then exits 2 on
+pre-existing whitespace in unchanged NamedTemplates; it is not a success.
+The final whitespace scope checks actual changes, retaining the old file.
+Whole 495-report older audit and full repository CI were not rerun.
+
+Roadmap build `/tmp/pts-rk-consistency-note.KAQ0ho` and PDF inspection pass:
+19 nonempty pages, seven links, all pages rendered; 1/7/8/18/19 visually reviewed.
+Exact commands, preserved incremental failures and hashes are in
+`verification/self-consistency-finite-fragments-2026-10-23/COMMANDS.md`.
+No index action, commit, push or cleanup. Next proof goal is fixed-interface
+internalization of the finite case dictionaries, not another external schema.
+
+Combinatory quantified-model checkpoint (2026-10-23), fresh verification PASSED:
+
+`bash docs/direct-r-handoff/verification/combinatory-quantified-models-2026-10-23/AUDIT.sh`
+passes all 22 stages, 07:43:26–07:45:14 UTC, exit 0. Fresh absolute build
+`/tmp/pts-rk-quantified-models.uhpkYv` compiles 43 modules
+07:43:35–07:44:52 UTC: 498 own closed reports (140 new), 499 with Ranks.
+Complete recursive checking passes 07:44:52–07:45:14 UTC, no admission/skip
+flags. The complete context inventory equals fresh pristine exactly:
+functional_extensionality_dep only, no unsafe entries. All original kernel
+files, the 32 preceding combinatory proofs/shared equality/MM0 and all 52
+Agda sources are unchanged; current before/after manifests agree. Literal
+expanded MM0/AST crosscheck passes all 55 axioms. Pinned Rocq/Stdlib/Equations/
+OCaml/Dune versions are recorded, with warnings left visible.
+
+Live logs: `_build/combinatory-quantified-models-audit.fUUdPV`; archived under
+`verification/combinatory-quantified-models-2026-10-23/audit-final/`.
+Isolated failed attempts and deliberate interruptions are preserved in worker
+ledgers. In particular, implicit theorem application tried to expand concrete
+saturation and was interrupted; fully explicit applications avoid that work.
+Final integrated audit passes as one unit; no fresh timeout/cancellation is
+relabelled successful. No source/cache object was copied into the repository.
+
+Note build `/tmp/pts-rk-combinatory-note.zcT1xM`,
+07:41:38–07:41:53 UTC, build/validation and inspector exit 0:
+28 pages, three-page MM0 appendix, 41 Rocq / 27 Agda badges, 109 links.
+All pages rendered, changed pages 1,18,20–22 reviewed. Exact commands, times,
+statuses, hashes and proof limitations are in the verification COMMANDS.md.
+No new Agda/MM0 checker/full-CI run, index changes, commit or push.
+
+Combinatory consistent-Horn checkpoint (2026-10-23), fresh verification PASSED:
+
+`bash docs/direct-r-handoff/verification/combinatory-consistent-horn-2026-10-23/AUDIT.sh`
+passes all 19 stages, 06:50:50–06:51:47 UTC, exit 0. Fresh absolute build
+`/tmp/pts-rk-consistent-horn.2l5WGN` compiles all 32 combinatory modules
+06:51:00–06:51:26: 358 own closed reports, 117 new, plus one imported Ranks
+report. Full recursive checking of all roots/dependencies passes
+06:51:26–06:51:47, without admission/skip flags. Complete context inventory
+equals the fresh pristine build exactly: inherited
+functional_extensionality_dep only, no unsafe entries. Original kernel and
+all 52 previous Agda files match their audited sources. Before/after proof,
+Dune and shared-equality source manifests match. Pinned Rocq 9.2.0,
+Stdlib 9.1.0, Equations 1.3.2+9.2, OCaml 4.14.2, Dune 3.23.1.
+
+Final logs: `_build/combinatory-consistent-horn-audit.QbsFPC`, archived under
+`verification/combinatory-consistent-horn-2026-10-23/audit-final/`.
+First attempt exits 1 on duplicate isolated generated objects; only those
+three task-generated objects were moved recoverably out of the source tree.
+Second build/check pass, but raw-log comparison exits 1 on a pre-inventory
+load-path warning. Final comparison requires one context heading and compares
+the complete inventories through EOF; all raw diagnostics are retained.
+Both failed attempts and isolated proof failures remain archived.
+
+Final note build `/tmp/pts-rk-combinatory-note.gKhpiC`,
+06:48:39–06:48:53 UTC, build/validation/inspection exit 0: 27 pages,
+three-page MM0 appendix, 30 Rocq / 27 Agda badges, 98 links. All pages
+rendered; changed pages visually reviewed. First visual failure, corrections,
+exact commands and final hashes are in the verification COMMANDS/NOTE-REVIEW.
+No new Agda/MM0/full-repository CI run; no index changes, commit or push.
+The quantified PTS candidate-existence and internal-reflection obligations
+remain open; these successful checks do not establish them.
+
+Replacement checkpoint (2026-10-23), focused verification PASSED:
+
+All six new modules compile in isolation, with all 69 new public assumption
+reports closed (495 total registrations). Optimized InternalReplacement
+passes 04:47:42–05:09:34 UTC, 1312s, exit 0, in
+`/tmp/pts-rk-replacement-optimized.tifSP4`; its 12 reports are closed.
+ReplacementRealization passes 05:10:04–05:28:10 UTC, 1086s, exit 0, in
+`/tmp/pts-rk-replacement-realization.Fcusuc`; its 11 reports are closed.
+The complete recursive VM-enabled check passes 05:29:20–06:11:50 UTC,
+2550s, exit 0, over the coherent isolated closure: both new roots, no module
+admission/skip flags, and explicit source mapping to all current old/new
+sources. Complete inventory equals fresh pristine exactly: inherited
+functional_extensionality_dep only, no unsafe entries. All mapped source
+copies and before/after manifests match the frozen fresh snapshot.
+The fresh integrated build passes 04:49:40–05:43:05 UTC, 3205s, exit 0:
+exactly 495 fresh closed reports, no reported axioms, and identical
+before/build source manifests.
+
+All 15 independent alternate-closure final stages pass at 06:13:32 UTC,
+including repeated report/inventory/snapshot checks, original kernel/frozen
+ZFC equality, all 74 prior entries and final 82-entry source stability.
+The redundant fresh checker was then deliberately stopped: actual exit 143,
+05:43:05–06:14:19 UTC, recorded in staged-status.tsv. It is superseded,
+not passed. The successful complete isolated check supplies that stage's
+verification; no cancellation or timeout is relabelled successful.
+
+Preserved earlier results: original inlined replacement timed out after
+2400s (exit 124) during application checking; binder check/Qed had passed
+in 807.268/836.205s. Generic template checks and exact literal type
+specializations pass. The unchanged scope probe passes 04:36:26–04:47:30 UTC,
+exit 0, including actual original closed application. Realization launcher
+attempt 01 failed 127 before invoking Rocq because `opam exec` was missing.
+
+First fresh audit: deliberately interrupted before source changes, exit 130
+at 04:45:34 UTC. Logs: `_build/self-consistency-replacement-audit.vyvjwb`.
+Snapshot 2 retains its SAME fresh absolute directory,
+`/tmp/pts-rk-replacement-fresh.87Hwa9`, and started 04:49:40 UTC. It checked
+Audit.vo absent, so all 495 reports must rerun. Initial frozen manifest,
+safety, registration and 74 previous-source checks pass. Scripts, exact
+commands and statuses are in
+`_build/self-consistency-replacement-progress.aS3W5y`. The actual staged
+build limit is 3600s; a future wholly fresh one-shot run allows 7200s for
+compilation and 3600s for complete recursive checking. That updated script
+is syntax-checked, not claimed to have passed as one unit.
+
+Final roadmap build 04 and PDF inspection pass, exit 0: 18 nonempty pages,
+7 links, required text/math and all-page rendering. Final source/PDF hashes
+are in `final-note.sha256` in the progress directory. Full commands and
+historical failures are recorded in
+`verification/self-consistency-replacement-2026-10-23/COMMANDS.md`.
+No full repository CI, CI changes, staging, commit, push or cleanup.
+
+Standard renaming/environment checkpoint (2026-10-23):
+
+Fresh integrated compilation passes 03:09:08–03:22:09 UTC, 781 seconds, exit0;
+426/426 reports closed, 41 new in four modules. Build:
+/tmp/pts-rk-renaming-fresh.T1RZXE. Logs:
+_build/self-consistency-renaming-progress.R8eFUQ/complete-build.log.
+This successful command supersedes the interrupted initial fresh-base wrapper
+(no recorded exit), not a claimed success inferred from leftover objects.
+Exact isolated failures and commands:
+verification/self-consistency-renaming-2026-10-23/COMMANDS.md.
+
+Previous seven-module complete dependency closure now passes VM-enabled
+recursive checking, exit0, 02:06:14–02:16:57 UTC including pristine check.
+Logs _build/self-consistency-renaming-vm.gH0ToE; exact pristine inventory
+equality, inherited functional_extensionality_dep only, no unsafe entries.
+Supported -bytecode-compiler yes checks every proof body via the standard
+VM conversion/serialized-bytecode path; no -admit/-norec. The older VM-disabled
+2400-second timeout remains a distinct recorded result, not retroactive success.
+New four-module complete dependency checking PASSES 03:22:22–03:36:57 UTC,
+875 seconds, exit0, within timeout1800, same flag; roots
+RenamingRealization/SubstitutionEnvironmentRealization. Complete inventory
+equals pristine exactly; no unsafe entries and only inherited
+functional_extensionality_dep. kernel.log, kernel-exit.txt/kernel-end.txt and
+current-inventory.txt in the progress directory record the result. All 76
+source-manifest entries verify before and after checking.
+All 34 preceding proof modules and original/common sources are unchanged.
+Final note build 02 passes in /tmp/pts-rk-consistency-note.SzSwbM; inspector
+passes: 15 nonempty pages, four links, required math/text, all-page renders; pages 12/13/15
+visually reviewed. Final hashes in the progress directory's final-sha256.log.
+Frozen PR#1 ZFC comparison and empty-index checks pass. New one-shot AUDIT.sh
+is syntax-checked, not run as one unit; the staged commands are the evidence.
+No full CI, changed CI settings, staging, commit/push or cleanup.
+
+Substitution/renaming checkpoint (2026-10-23) — build passes, recheck timeout:
+
+Default CodeSubstitution/InternalBinary/BinaryRealization, InternalScope,
+ScopeRealization/InternalRenamingLookup builds pass. Logs:
+_build/self-consistency-substitution-progress/attempt-01.log through attempt-03.log.
+InternalRenaming isolated attempt 05 PASSES, exit 0, using the coherent default
+closure: 00:44:53–00:58:24 UTC (811 seconds by filesystem timestamps).
+Both binder cases previously passed at 65536, application had exhausted 16384.
+Final budgets: binder/app 65536, preservation formation 16384, fold 262144.
+All 11 endpoints compile, including the actual rank-17 output-scope term;
+final term checking took about 182 seconds. Source frozen throughout fresh audit.
+Earlier failures and the intentional early attempt 04 cancellation are recorded
+in verification/self-consistency-substitution-2026-10-23/COMMANDS.md.
+
+The fresh audit began 00:46:00 UTC; pristine build/check pass at 00:46:03/00:46:10.
+Logs _build/self-consistency-substitution-audit.FlM4MI; fresh absolute Dune
+/tmp/pts-rk-substitution-fresh.NONg0M; pristine
+/tmp/pts-rk-substitution-pristine.qcNAzd. Source snapshot frozen. All 385
+public report registrations include 102 new Theorem/Example declarations.
+Fresh dependencies pass at 01:05:26 UTC (1156 seconds); all 385/385 public
+reports are closed at 01:06:20. Recursive checking ran 01:06:20–01:46:20,
+exiting 124 at its 2400-second limit without reporting a proof error. No
+complete current context inventory was produced, so comparison did NOT run.
+The audit did not pass completely. Recursive check
+covers the COMPLETE NEW dependency closure only, not the older optional
+modules; all 27 older proof sources match their preceding full audit hashes.
+Up-front fresh-build/new-kernel limits 1800/2400 seconds. CI unchanged.
+Command: bash docs/direct-r-handoff/verification/self-consistency-substitution-2026-10-23/AUDIT.sh
+
+The script stopped before its original/source-stability stages. Separate
+post-timeout checks all pass: full manifest equality against sources-before,
+all eleven frozen source/note/PDF hashes, old 27 modules/common-source hashes,
+and original kernel comparison with pristine. Logs in the progress directory:
+sources-after-timeout.log, final-hashes-checked.log, prior-unchanged-final.log,
+original-unchanged-final.log. COMMANDS.md records exact commands and a proposed
+7200-second independent-check retry on the frozen fresh objects, NOT RUN.
+No complete new-closure inventory equality or full audit pass is claimed.
+
+Roadmap build 02 passes cleanly in /tmp/pts-rk-consistency-note.PjosAi;
+PDFKit checks 15 nonempty pages, 4 links, text/math and all-page rendering;
+changed pages 11–15 visually reviewed. Build 01 validation found two overfull
+lines; split the formula and shortened a module-name list, retaining all logs.
+No full CI, staging, commit/push or cleanup.
+
+Consumer-preservation checkpoint (2026-10-23 local; UTC 2026-10-22–23):
+
+`bash docs/direct-r-handoff/verification/self-consistency-relational-2026-10-23/AUDIT.sh`
+started 23:29:14. Fresh dependency build passes 23:33:26 (242 seconds),
+separate public reports pass 23:33:33: 283/283 closed, 41 new. Recursive
+kernel check passes 23:33:33–00:03:42 UTC, 1809 seconds. Complete inventory
+equals pristine exactly: unchanged functional_extensionality_dep only,
+no unsafe entries. Inventory, original-source and before/after source
+stability checks pass; EVERY stage exit 0, no timeout. Logs:
+_build/self-consistency-relational-audit.ILJDGV; fresh
+/tmp/pts-rk-relational-fresh.ZbkLf6; pristine
+/tmp/pts-rk-relational-pristine.yosufK. Up-front limits 900 seconds for fresh
+build, 2400 for recursive checking; no checks omitted or CI settings changed.
+All 23 prior proof modules and original/common sources match initial hashes.
+
+Incremental RelationalTransport, LookupHomomorphisms and OccurrenceSafety
+compilation pass; SimulationRealization passes isolated and fresh Dune builds.
+One Ltac syntax error in the nonzero-atom case split was fixed before
+continuing. Exact commands, contracts, errors and note validation:
+verification/self-consistency-relational-2026-10-23/COMMANDS.md.
+Progress logs: _build/self-consistency-relational-progress. No full CI,
+commit or push. Global lookup functionality/matching inversion remain open
+but optional; actual source operation invariants and sufficiency remain open.
+Roadmap/PDF build 05 passes in /tmp/pts-rk-consistency-note.mqU7eX with clean
+diagnostics. PDFKit validates 14 nonempty pages, four links, required math/
+text and all-page renders; changed pages 4, 10–12/14 reviewed. Intermediate
+underfull lines and a two-line overflow page were corrected; all attempts
+remain in the progress logs. The note distinguishes minimal forward
+acceptance realization from stronger exact-checker reflection.
+
+History/inversion/capacity checkpoint (2026-10-23 local; UTC 2026-10-22):
+
+`bash docs/direct-r-handoff/verification/self-consistency-closure-2026-10-23/AUDIT.sh`
+passes EVERY stage, 22:21:28–22:41:15 UTC. Logs
+_build/self-consistency-closure-audit.lZcvKp; fresh
+/tmp/pts-rk-closure-fresh.e4JV26; pristine /tmp/pts-rk-closure-pristine.j8Tmf6.
+Pristine build/kernel pass; fresh dependencies pass 22:24:58 (200 seconds),
+separate public audit 22:25:04: 242/242 closed reports, 48 new. Recursive
+kernel checking passes 22:25:04–22:41:15 (971 seconds). Complete context
+inventory exactly equals pristine: unchanged functional_extensionality_dep
+only, no unsafe entries. Original-source and before/after stability checks
+pass. All seventeen prior proof modules and common infrastructure match their
+starting hashes. Up-front resource allocations for the enlarged closure:
+600 seconds fresh build, 1500 seconds recursive kernel, no timeout or check
+removed; repository CI unchanged. This is a focused audit, not full CI.
+
+All new proof modules compile. One incremental exact-size proof had a redundant
+tactic after `lia` closed the goal; removing it fixes the first error. All
+attempts retained in _build/self-consistency-closure-progress. Exact commands,
+contracts, failures and source/PDF hashes:
+verification/self-consistency-closure-2026-10-23/COMMANDS.md.
+
+`bash theories/self_consistency/build-note.sh DIRECT_ROADMAP` passes four
+times; final /tmp/pts-rk-consistency-note.plrNsb. PDFKit checks 13 nonempty
+pages, four links, required text/math and all-page rendering; changed pages
+8–10/12 visually reviewed. Initial underfull prose line fixed; final clean
+diagnostics. No staging, commit, push or cleanup. Full functionality/matching
+inversion and operation/proof-history bounds remain open; the new iteration
+is via histories, and capacity is structural with native-to-PTS realization,
+not an internal numerical comparison or all-budget soundness theorem.
+
+Path-composition/root-separation checkpoint (2026-10-22):
+
+`bash docs/direct-r-handoff/verification/self-consistency-paths-2026-10-22/AUDIT.sh`
+passes every stage, 18:05:33–18:16:53 UTC. Logs _build/self-consistency-paths-audit.8JCUle;
+fresh /tmp/pts-rk-paths-fresh.AZL231; pristine
+/tmp/pts-rk-paths-pristine.uhXgwn. Pristine build/kernel pass; fresh dependency
+build passes 18:08:11 and separate public audit 18:08:17, 194/194 closed
+reports. Recursive kernel check passes 18:08:17–18:16:53 (516 seconds).
+Complete inventory exactly equals pristine: only unchanged upstream
+functional_extensionality_dep, no unsafe entries. Source stability and
+original-source checks pass. The new focused script allocates 900 seconds to the larger closure;
+compile limits remain 300 seconds and repository CI is unchanged. Prior
+thirteen proof modules, original kernel and common infrastructure match hashes.
+
+`bash theories/self_consistency/build-note.sh DIRECT_ROADMAP` passes three
+times; final /tmp/pts-rk-consistency-note.10Zuu9. PDFKit inspector passes:
+12 nonempty pages, four links, all-page rendering; pages 8–9/11 reviewed.
+Final diagnostics clean. Initial missing inspector-output-directory failure,
+two intermediate underfull boxes and all compiler errors retained/resolved.
+Exact commands, contracts and hashes:
+verification/self-consistency-paths-2026-10-22/COMMANDS.md.
+No full CI, stage/commit/push or cleanup. Stratified composition and root/leaf
+laws do not close arbitrary-path functionality, same-rank iteration, internal
+size/capacity, resource admission or bounded soundness.
+
+Fixed-rank structural-resource checkpoint (2026-10-22):
+
+`bash docs/direct-r-handoff/verification/self-consistency-resources-2026-10-22/AUDIT.sh`
+passes every stage, 17:36:43–17:43:35 UTC. Logs:
+_build/self-consistency-resources-audit.X6R16B. Fresh:
+/tmp/pts-rk-resources-fresh.6MyMwd; pristine:
+/tmp/pts-rk-resources-pristine.fTbPzV. 166/166 closed public reports (39 new).
+Recursive kernel check passes in 295 seconds within the unchanged 300-second
+limit; no timeout/termination. Complete inventory equals pristine: only
+unchanged upstream functional_extensionality_dep, no unsafe entries. Safety,
+source stability, original-source comparison and prior ten-proof/shared-source
+hash checks pass. Original PTS carrier/guard and shared infrastructure unchanged.
+
+`bash theories/self_consistency/build-note.sh DIRECT_ROADMAP` and PDFKit
+inspection pass twice; final build /tmp/pts-rk-consistency-note.Mv8Vt6.
+Eleven nonempty pages, four links, required text/math, all-page renders,
+changed pages 7–8 visually reviewed. No layout/reference/glyph failures;
+two inherited math-bookmark warnings are documented. Progress/error logs:
+_build/self-consistency-resources-progress. Exact commands/failures/hashes:
+verification/self-consistency-resources-2026-10-22/COMMANDS.md.
+No full CI, staging, commit or push. Internal path composition/functionality,
+size/capacity and full resource admission remain the next gates; fixed-rank
+resource relations are not an all-budget soundness or consistency theorem.
+
+Fixed-carrier/guarded-finite-pilot checkpoint (2026-10-22):
+
+`bash docs/direct-r-handoff/verification/self-consistency-guards-2026-10-22/AUDIT.sh`
+passes every stage, 17:09:43–17:11:55 UTC. Logs:
+_build/self-consistency-guards-audit.fLkaOG. Fresh:
+/tmp/pts-rk-guards-fresh.wn4TgK; pristine:
+/tmp/pts-rk-guards-pristine.fhrnxL. 127/127 closed public reports (42 new),
+recursive kernel inventory exactly pristine: unchanged upstream
+functional_extensionality_dep only, no unsafe entries. Source manifests
+include shared infrastructure; before/after stability, original-source
+comparison and safety scans pass. Prior seven proof hashes match and common
+infrastructure has no Git diff. New Dune dependency is the common annotated
+assembler/checker library, not either arithmetic interpretation.
+
+`bash theories/self_consistency/build-note.sh DIRECT_ROADMAP` and the
+documented PDFKit inspector pass twice; final build
+/tmp/pts-rk-consistency-note.AZ6Pl2, ten pages/four links, required text/math,
+all-page renders, changed pages 5–7 visually reviewed, clean diagnostics.
+Incremental compiler failures and one deliberately terminated expensive
+injectivity proof are retained and fixed. Commands/hashes/boundaries:
+verification/self-consistency-guards-2026-10-22/COMMANDS.md.
+No full CI, internal all-budget theorem, commit or push. Next: fixed-carrier
+resource graph laws with exact motive ranks, then guarded internal soundness.
+
+Homogeneous serialization checkpoint (2026-10-22):
+
+`bash docs/direct-r-handoff/verification/self-consistency-serialization-2026-10-22/AUDIT.sh`
+passes every stage, 16:34:14–16:34:45 UTC. Logs:
+_build/self-consistency-serialization-audit.IjtwrQ. Fresh build:
+/tmp/pts-rk-serialization-fresh.ZI6rB9; pristine:
+/tmp/pts-rk-serialization-pristine.RnLWyC. 85/85 public reports closed;
+recursive kernel inventories exactly equal, with only unchanged upstream
+functional_extensionality_dep and no unsafe entries. Source stability,
+original-source comparison and safety scan pass. Prior four proof modules
+are byte-for-byte unchanged. All incremental failures and source hashes:
+verification/self-consistency-serialization-2026-10-22/COMMANDS.md.
+
+`bash theories/self_consistency/build-note.sh DIRECT_ROADMAP` passes first try
+in /tmp/pts-rk-consistency-note.M0yWcS. PDFKit inspection 0: nine nonempty
+pages, four links, required text/math, all-page renders; changed pages 2/5
+visually checked. No layout/reference/glyph diagnostics. Shell syntax and
+scoped whitespace pass. No full CI run or new internal consistency theorem.
+Three new proof modules, expanded Audit/Dune and documentation remain
+uncommitted. Next: actual PTS fixed-carrier generation guards and finite laws.
+
+Native certificate/compression checkpoint (2026-10-22):
+
+`bash docs/direct-r-handoff/verification/self-consistency-native-2026-10-22/AUDIT.sh`
+passes every stage, 12:38:45–12:39:13 UTC. Logs:
+_build/self-consistency-native-audit.4cor29. Fresh build:
+/tmp/pts-rk-consistency-fresh.o7EKTJ; pristine:
+/tmp/pts-rk-consistency-pristine.Bxzfmz. Original kernel builds/checks fresh;
+43/43 new public reports closed; recursive inventories exactly equal, with
+only unchanged upstream functional_extensionality_dep and no unsafe entries.
+Original-source and before/after-manifest comparisons pass. Initial count
+harness failure and all incremental errors are retained and documented in
+verification/self-consistency-native-2026-10-22/COMMANDS.md.
+
+`bash theories/self_consistency/build-note.sh DIRECT_ROADMAP` passes in
+/tmp/pts-rk-consistency-note.86KaLm. PDFKit inspection exits 0: nine nonempty
+pages, four links, required text/math, all-page renders; changed pages 1–2
+visually reviewed. First overflow validator failure fixed, no validation
+weakened. New CI stage 01-self-consistency; shell syntax/whitespace pass.
+No complete CI rerun or internal consistency theorem claimed. Four proof
+modules and Audit remain uncommitted; no original calculus edits.
+
 Direct internal-consistency roadmap (2026-10-22, documentation only):
 
 `bash theories/self_consistency/build-note.sh DIRECT_ROADMAP` final build

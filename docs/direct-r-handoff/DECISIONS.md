@@ -1,5 +1,1362 @@
 # Decisions and proof-engineering history
 
+## 2026-10-24 — second-paper scope; planning only
+
+The user requests a plan, explicitly not further development. The six goals
+are three principal binder-free Agda presentations (Church-encodable
+natural-model QIIRT; normal-form-first (Q)IIRT with closed definitional beta
+agreement; cumulative whole-rank/length-bounded models with Church application
+and native extraction), Hilbert/MM0 correspondence, partial finite models and
+internal bounded soundness toward the specified consistency target, and an
+indexed self-interpreter with source folds and typed CPS.
+
+Record them in the paper's introduction and SECOND-PAPER-PLAN.md. Do not
+create three placeholder modules or begin proof work. First freeze contracts,
+then natural/Hilbert adequacy, normal-first feasibility, bounded hierarchy,
+Church/internal soundness, interpretation/CPS and finally uniform consistency.
+Closed definitional agreement is stronger than a propositional normalization
+law or equality of code projections. Church realization of quotient equations
+and dependent elimination is not automatic. Whole-input rank/label/annotation
+bounds and grade-raising application are explicit. Fixed-grade programs do
+not constitute a uniform evaluator; TOWER hardness alone does not establish
+its representation-independent impossibility. Source folds must retain
+intensional codes or respect quotient equations. Preserve the exact internal
+proof predicate/domain and audit uniformity/incompleteness obligations.
+
+## 2026-10-24 — dependent normal algebra and original raw typing decision
+
+Extend normal substitutions to typed-normal families over ORIGINAL contexts.
+Keep normal syntax explicit and truncate only typing witnesses; use original
+normalization uniqueness for actual substitution/coherence paths. A smart
+cast transports typing evidence without changing the subject and is proved
+equal to ordinary record transport. This avoids making Cubical proof transport
+part of the normalizer's input. Pi/lambda are structural normal operations;
+application normalizes both the dependent result type and its inhabitant.
+Universe decoding is the identity on the appropriate normal family.
+
+Prove comprehension, normalized lifting, beta and product/lambda/application
+naturality before claiming a model of the QIIRT signature. Its Sub direction
+is opposite to native SubNF. The analogous laws do not yet constitute an
+eliminator respecting every path, S/K/P template and computed-type guard.
+Context eta is structural, never function eta. Retain the existing QIIRT.
+
+Separate three interfaces: typed normal fibres; normal subjects with mere
+typability and a computed unique type; and structural raw inference/checking.
+The last must accept/refute ORIGINAL Typ and recursively check annotations,
+normalizing inferred types only after constructing original typing evidence.
+Its raw-context entry decides well-formedness AND typing, not bare Typ in an
+arbitrary malformed context. The original native rules are unchanged.
+
+The normal-context experiment is genuine induction--recursion: Con extends
+by a normal declaration over its recursively decoded native context. Derive
+mere well-formedness internally and eliminate it via witness independence,
+not choice. Explicit normalization source/type parameters prevent expensive
+metavariable reconstruction; this repairs elaboration without changing the
+mathematics. Dependent refl examples test actual computation, including type
+changes under substitution and polymorphic identity application.
+
+This is not a simultaneous IIRT of all dependent normal syntax and hereditary
+evaluation. Existing native binders/metatheory still implement normalization.
+IR context sethood/adequacy, literal QIIRT interpretation and dependent source
+completeness remain open. Quotient elimination disappears from the normal
+carriers; coherence remains as proved operation laws. Do not claim a smaller
+full presentation by comparing this implementation with a bare signature.
+
+## 2026-10-24 — normal-first operations without assumed coherence
+
+Integrate a syntax-only sufficient redex budget into the existing source
+normalizer instead of maintaining parallel fast/canonical adapters. Prove
+agreement with independently sufficient native budgets. Computation should
+not inspect normalization typing witnesses; public refl regressions now test
+the integrated canonicalizer. Compiler output size requires its own theorem:
+count open variables as atoms, use the computed budget, and exclude indexed
+payloads and working memory from the resulting atom-count bound.
+
+Use direct weak SK evaluation as native-beta canonicalization only where
+proved: ground output. A checked function-output counterexample shows the
+chosen canonical compiler image is not closed under weak application, even
+on canonical inputs. Seek an abstraction-sensitive closure/spine evaluator
+for arbitrary output; do not add eta or declare weak conversion complete.
+
+A normal-form-first presentation should make application/substitution smart
+operations returning normal forms, not unrestricted normal constructors.
+Use ordinary Sigma when simple types do not depend on terms. For original
+dependent substitution, store normal images and truncate only typing proofs;
+prove composition independent of those witnesses, then identity and
+associativity as actual paths. A point-computing nested truncation recursor
+avoids the library product-equivalence expansion's memory blow-up without
+changing logical statements or assuming proof irrelevance of native Typ.
+
+Mutual IIRT syntax and hereditary operations can eliminate conversion-quotient
+path elimination and repeated guard handling, not the need for termination,
+positivity, naturality or source adequacy. Normalized dependent type action,
+comprehension and products remain unconstructed. The CPP QIIRT example's
+substitution-calculus normalization and strictification of a given model
+are not initial full-PTS normalization. Retain the original QIIRT as the
+reference until the beta-only dependent equivalence is proved. No full-system
+code saving or completed mutual IIRT is claimed at this checkpoint.
+
+## 2026-10-24 — canonical SK image through intrinsic source provenance
+
+Lift the native greedy passes to intrinsic simply typed lambda source and
+prove exact erasure commutation. This preserves compiler-domain membership
+constructively; do not parse arbitrary native normal forms or assume that
+normalization preserves the surface fragment. Prove source erasure
+injective, recovering hidden application domains from annotations and
+typing, before invoking native normal-form uniqueness.
+
+Use deterministic beta-only bracket compilation. Its output on closed
+native-normal sources is an actual weak SK normal form, but the canonical
+image is stricter than the full weak-normal family. Define Canonical A as
+the fixed points of compile-after-source-normalization. The native-beta
+set quotient is isomorphic to this family, and canonical application agrees
+with quotient application. Independent bidirectional checking may return
+these outputs; it does not establish full original PTS completeness.
+
+Retain the distinction between binder-free OUTPUTS and a binder-free
+ALGORITHM. This reference still uses lambda source and native-derived
+rank computation. Optional large definitional evaluation tests consumed
+excessive memory and were stopped; this is not an efficient runtime claim.
+Keep general proofs and small regressions, with failed checks preserved.
+Do not transfer native size bounds through bracket compilation without a
+new output-size theorem. Direct canonical evaluation and dependent QIIRT
+compatibility remain substantive proof obligations, not consequences of
+switching bases or strengthening the normal-form definition alone.
+
+## 2026-10-24 — SK surface with two explicitly different equalities
+
+Use S/K only for the surface; identity is the deterministic derived SKK.
+Remove redundant basis-specific implementations rather than retaining
+parallel active calculi. Preserve historical evidence and the independently
+complete native Hilbert catalogue: its identity-shaped logical axiom is
+not a primitive of the SK surface, and eliminating all such catalogue
+leaves requires a separately proved dependent compiler.
+
+Keep weak SK conversion distinct from original beta of annotated expansions.
+The direct weak normalizer/quotient shares its computation with independent
+bidirectional checking. A second, beta-faithful reference uses the proved
+native expansion typing bridge and existing rank-computing native normalizer.
+Its actual quotient embeds injectively into native normal syntax, with
+decidable equality and application, but has no claimed SK reification.
+
+Bracket abstraction uses no eta optimization; compiled expansions reduce
+forward to the literal annotated simply typed source. On normal source
+expansions, native beta equality is literal equality. This does not prove
+equality of arbitrarily chosen hidden-indexed SK trees. Canonical code
+construction still needs domain-preserving reification and deterministic
+hidden indices. C(NF(E(c))) is a reference specification until that bridge
+is constructed; direct canonical application and full dependent adequacy
+must be proved afterward, not assumed in a new checker relation.
+
+## 2026-10-24 — binder-free normalization without changing native conversion
+
+Separate an independent simply typed BCKWI experiment from original PTS-rk.
+Unsaturated combinator spines form ordinary indexed inductive normal syntax;
+type-recursive computability supplies total normalizing application and
+structural induction supplies the computability of every normal form.
+Do not call an input reducibility hypothesis a termination proof: here the
+hypothesis is actually constructed. The algorithm never expands to lambdas.
+Intrinsic indices preserve types along the literal combinator trace.
+
+Bidirectional checking decides a separately declared raw typing judgment.
+Use inductive identity witnesses for positive computational casts; Cubical
+path transport on indexed derivations can block concrete evaluation.
+Generic source-recursive inversion families remove UnsupportedIndexedMatch
+warnings without suppressing them or disabling checks. Typing proof
+irrelevance and annotated-code retractions give discrete normal forms.
+Proved rule/context coherence then gives the actual weak-conversion quotient
+isomorphism; its operation shares the same normalizing application.
+
+Weak normal forms are not canonical for original annotated beta conversion:
+BII and I are a checked counterexample. An extensional completion is not an
+acceptable shortcut either: BI and I at arrow type are beta-distinct.
+The extensional simply typed/untyped algebraic-equivalence literature does
+not supply the missing dependent beta-only theorem. Preserve original
+QIIRT/native IIR and normalization until native adequacy, dependent coverage
+and path compatibility are proved. No inference to PTS Void canonicity,
+fixed-rank/length finiteness, quantitative bounds or strong normalization of
+all strategies. The prototype's arbitrary natural labels already defeat
+fixed-length finiteness. Compare code size only after matching theorem scope.
+
+## 2026-10-24 — uniform clause algebras and raw-table re-abstraction
+
+Separate an internally parameterized generic proof algebra from its concrete
+source/model instance. UniformHorn binds fragment/clause/position carriers
+and projections in original PTS. Its positive proof family contains no model
+or native typing premise. The consumer receives its interpretation handler
+explicitly; constructing that handler is a remaining theorem, not admission.
+Clause restriction pulls back positions and endpoints literally; proof
+transport and composition then use beta only, without selector bijectivity
+or an equality assumption. Exact atom ranks1/2 are certified separately.
+
+A rank-one selector cannot directly take the rank-two raw carrier as its
+rank-zero answer argument. This does NOT rule out a bare raw-field table:
+re-abstract the raw carrier's algebra, dispatch at its final X:U0, and recover
+an actual table of full-type rank2. Canonical forward output is the explicit
+algebra-expanded quotation. Its identification with constructor quotations
+is proved by beta, never eta for arbitrary raw inhabitants. Preserve syntax
+injection independently of arbitrary-input semantic coherence. The Enum_2
+decoder remains useful for dependent elimination and literal forward output;
+it is not necessary merely to type this nondependent table.
+
+Dependent clause soundness remains separate: Prem_V(c)->V(head(c)) has rank3.
+Finite elimination at that motive can use independent Enum_3(c), whose exact
+rank is4 for nonempty supports and3 for empty supports. UniformGuardedHorn
+therefore checks guard ranks3/4 separately; proof fibers have rank g+2 and
+node/consumer types g+3. Do not pad the empty case by cumulativity or silently
+pack a high-rank guard into a rank-one clause carrier. Concrete guard families,
+dependent premise projections, source coverage and model handlers remain open.
+
+## 2026-10-24 — proof-preserving decoding and explicit finite generation
+
+Translate independent indexed Horn PROOFS across literal finite atom maps,
+not just into a truth family. Pull back the target rank-one predicate along
+the actual Church map and select mapped clause handlers. This keeps the
+translator type at rank4 and accepts arbitrary open queries/proofs, without
+canonicity or a source-generation premise. Semantic/raw supports must both
+be fixed before the query. Reserve lists enlarge indexing only; they are
+neither denial constraints nor extra inference constructors.
+
+Separate bare finite Church codes from independent generation evidence.
+Enum_r(q) quantifies P:Code->U_r and has only the canonical selector cases;
+it contains no target guard property or model. Its rank is at most max(3,r+1),
+with dependent-consumer type rank at most max(4,r+2). Empty alphabets keep
+their exact ranks: no cumulativity may pad them. Enum_1 and Enum_3 are
+different required evidence types; neither is inferred from the other or
+from arbitrary bare codes. Every canonical selector has constructors at
+every motive rank, using the original annotated lambda syntax.
+
+Ordinary rank-one Leibniz equality over codes has rank3. Finite composition,
+identity and retraction admit INTERNAL equality consumers at type rank<=5,
+using Enum_3 and canonical beta/reflexivity branches. Do not infer native
+conversion or unrestricted universe-polymorphic equality from these terms.
+
+The raw guard graph is independently specified by facts (i,raw_guard(entry_i)),
+with a rejected sentinel and both Boolean alternatives retained in support.
+Its compiler consumes Enum_1 to produce an independent graph proof. Separate
+Enum_3 inputs prove both input-projection identity and Boolean-projection
+agreement with the direct guard table. A graph proof alone would not prove
+these arbitrary-input coherence properties; keep the equality terms explicit.
+Canonical accepted-source reconstruction and wrong-answer exclusion remain
+external closed-inhabitant theorems using prior canonicity. Fixed table
+realization does not yet internally return raw Expr/substitution records or
+uniformly interpret fragment budgets. No new independent consistency or
+generated-size/runtime claim follows from the constant type ranks.
+
+## 2026-10-23 — internally quantified finite queries and raw provenance
+
+Index independent proofs by an arbitrary ORIGINAL PTS Church atom code q.
+Quantify one predicate P:Code->U1, then all actual positive clause handlers,
+returning P q. Code has rank1, the predicate type rank2, and Proof(q) rank3.
+Finite type dispatch uses answer rank zero: U1:U0 permits q U1 T0 ... Tm.
+No dependent selector eliminator, cumulativity or parametricity is assumed.
+The actual uniform consumer has TYPE rank4 and accepts arbitrary open typed
+queries and proofs. Its result is the syntactic family T(q); reduction to a
+specific truth proposition is asserted at canonical selectors only.
+
+Keep a fixed anchor when generating support, so varying the internal query
+does not regenerate the domain, clauses or truth table. Duplicate positions
+need not receive proofs of all aliases: exact source correspondence uses
+the canonical index of a supported atom. Reified semantic truth is not the
+least indexed closure at every alias. Typed bridges between encodings at
+canonical queries are not claimed to be mutually inverse proof bijections.
+
+Raw observations distinguish None overflow from Some EZ and every other
+closed constructor tree. Independently compute structural guard acceptance;
+no native typing, source derivation, model or agreement is an admission test.
+Active entries reconstruct the selected literal rule, sorted substitution
+and exact argument observations. Inactive entries are tautologies. Prove
+source reflection by induction on arbitrary raw derivations, rather than
+inferring it from surjective clause images (which could merge proof aliases).
+Retain executable semantic-to-raw proof translation and exact finite-union
+source coverage. Do not claim fixed-budget raw/semantic derivability iff.
+
+Raw provenance remains an external verified computation; compiling its
+invariants and the fragment/budget parameters into one internal PTS program
+is still open. Generic consumer typing is canonicity-free. The source/closed
+inhabitation converse and Void specialization retain external canonicity;
+they are not an independent consistency proof or a normalization-cost bound.
+
+## 2026-10-23 — arbitrary represented proofs of a fixed finite fragment
+
+Use a model-independent Church encoding of finite positive Horn deduction:
+quantify a rank-one proposition for each finite atom, then all actual selected
+clause handlers, then return the query proposition. Do not specialize its
+domain to a truth table, assume a desired soundness predicate, or restrict
+the input to externally generated proof codes. Original product ranks give
+proof-type rank <=3 and soundness-function type rank <=4 without cumulativity.
+
+Finite positional support contains the query, all positive clause atoms and
+all denial atoms. Duplicated positions are harmless aliases; supported atoms
+have exact encoding/decoding and injective encoding. Derivability and Boolean
+checks are preserved exactly, with all guarded valuation instances included.
+The Church type contains only positive inference constructors. Model denials
+are enforced by separately typed internal refuters, not used as source rules.
+
+The soundness term instantiates arbitrary encoded proofs at the independent
+rank-one truth propositions and supplies valid clause witnesses. Its typing
+does not use canonicity. Source compilation and introduction from arbitrary
+encoded premises validate the intended proof reading. External exactness and
+the guarded-MM0 Void specialization explicitly retain native canonicity.
+Fragment/query/budget/model remain metalevel parameters of the generator;
+uniform internal raw-source decoder/guard provenance is not claimed.
+Do not confuse these type ranks with global normalization redex-rank bounds
+or bounds on generated syntax/runtime allocations. Freeze all five sources
+before a fresh 63-module build and complete recursive inventory comparison.
+
+## 2026-10-23 — literal MM0 adequacy and consistent guarded models
+
+Interpret the existing sorted, independent MM0 source derivation datatype;
+do not replace it with a bespoke native calculus. Injective quotation and an
+exact scoped decoder connect raw constructor trees to original annotated
+terms. Prove all nine computational graphs in both directions, reconstruct
+native reduction endpoints from native starts, and identify all17 numerical
+axiom-row families with the65 catalogue schemes in both source directions.
+Literal PH derivability then equals independent catalogue derivability.
+This does not prove original-PTS-to-catalogue completeness or verify a parser
+for external MM0 text; the unchanged transcription is separately crosschecked.
+
+Use a concrete finite overflow algebra of closed first-order-sorted Expr
+trees. All nine constructors are total on three copies of the fixed carrier.
+Guards check declared variable sorts, size/depth of every value and every
+premise/head argument, never typing, consistency or desired agreement.
+Inactive positive instances are tautologies; universal Void denial is never
+guarded away. At N>=5,D>=3 Void is genuinely represented. Every accepted
+query reflects to an independent source derivation; actual source derivations
+compute sufficient guards and exact decoding. Raising bounds to the Void
+threshold yields exact coverage by accepted consistent finite models.
+
+Full55 GUARDED model existence is now unconditional apart from these numeric
+bounds. Nonempty universe typing is proved separately. Source Void exclusion
+is derived through native catalogue typing and external canonicity; this is
+not a new internal or independent consistency proof. Generated satisfaction
+certificate TYPES have rank<=4. Do not confuse expression depth D, certificate
+type rank, and the normalization development's global redex-rank bounds.
+Uniform internal source/reflection invariants remain open.
+
+Freeze final proof sources before fresh verification. A late21st Hilbert
+endpoint raced the first audit snapshot; preserve its failed source-stability
+gate and rerun from a fresh absolute build. The first wrapper also let bare
+assertions fall through inside set+e. Explicit failure propagation and
+negative count/whitespace regression tests repair that audit mechanism;
+the first count-stage0 is not valid final-count evidence. No proof-hash change
+may be normalized away. Raw failed outputs and script snapshots are retained.
+The second audit's fresh compilation/kernel/inventory/source checks pass,
+then its textual safety scan flags a pure structural predicate named Admitted.
+Rename that predicate FitsSyntax, preserving every statement/proof otherwise,
+and run a third fresh audit. Keep the simple safety scan unchanged; this was
+an identifier collision, not a proof admitted to the kernel.
+
+## 2026-10-23 — local operation provenance and its exact boundary
+
+Keep literal original contexts distinct from certificate-context serialization.
+The former stores each declaration term; the latter stores a declaration
+certificate and rank. Native erasure is not an internal extraction theorem.
+Original Context.index weakens the selected declaration at zero and once for
+each further crossed extension. Its local zero graph need not inspect the
+prefix; a separate ContextGuard certifies whole-context scoping, not typing.
+An arbitrary-output scope fold is weaker than endpoint coherence and must
+not be described as internal lookup functionality.
+
+Index a comparison Trace by the actual Zip witness executed by the comparator,
+as well as both endpoints and the symbolic Boolean output. Local clauses
+record constructor operations, not an evaluator equation or desired answer.
+Keep atom tests and conjunctions symbolic when constructing standard traces;
+external canonical computation is a subsequent bridge. The intended agreement
+consumer uses the already defined Same at exact predicate rank one. Such
+transport can support Holds and conditional rejection, but is neither beta
+equality nor arbitrary endpoint coherence; an atom-left clause on arbitrary
+right input does not provide root-generation or inversion evidence.
+
+NamedBeta factors structural beta and dependent application-spine lemmas over
+the ORIGINAL annotated Syntax/Typing/DefEq judgments. Named environments are
+native assembler data; they add no object-language primitives or axioms.
+Avoid expanding closed payload annotations merely to prove fixed head steps.
+The complete context constructors, arbitrary-output scope consumer and
+executable standard realization compile. BooleanAgreement supplies reusable
+scoped uses of existing Same/refl/congruence, not a new equality principle.
+Comparison formation and all three arbitrary-open-input local agreement
+cases compile; full Trace constructors and the arbitrary-Trace fold do not.
+Preserve failed large-annotation attempts as evidence, never as library proofs.
+A symbolic named-context lookup lemma can improve the current constructor
+implementation. The agreement fold can independently abstract the checked
+local cases and assemble them with NamedSpine; do not elevate constructor
+lookup into a mathematically necessary soundness premise. Internal
+finite-fragment soundness remains open; live verification status belongs in
+STATE.md and BUILD.md.
+
+The concurrent Horn development changes the preferred soundness backend:
+its actual original-PTS consumer handles arbitrary inhabitants of an
+independent finite Horn proof type, not only externally quoted proofs.
+Reuse that consumer instead of rebuilding dependent preservation when an
+internal source-to-Horn bridge suffices. The present comparison/lookup route
+is one way to supply provenance, not an unconditional prerequisite. Fixed
+proof/consumer rank bounds (3/4) do not internalize fragment parameters;
+original-PTS catalogue coverage and the raw-source bridge remain obligations.
+The Void specialization's native-canonicity dependency remains explicit.
+
+## 2026-10-23 — explicit guarded quantified Hilbert fragments
+
+Use original annotated syntax on finite positional carriers with one overflow
+value. Admission bounds node count, tree depth and universe labels, including
+constructor/substitution outputs. Never use Typ, desired semantic agreement,
+normalization or consistency as an admission test. Scope-changing binder
+operations are total between the appropriate fixed finite carriers.
+
+Separate two constructions. The qualitative model has predicates P_0..P_H
+and increments proof height on each rule; original beta/conversion side
+conditions retain their native meaning. Its displayed-judgment bounds do not
+bound those witnesses. Same-height closure is explicitly refuted. The
+executable model instead bounds every beta-path state and path length, selects
+finitely many numerical catalogue labels, and enumerates every bounded
+parameter tuple of ALL six rules. Finite Horn saturation has no proof-height
+cutoff. Its rule graph is Boolean, all semantic valuations are covered, and
+Void is represented nontrivially for node bound>=3 and depth bound>=2.
+
+Increasing syntax/path bounds and catalogue lists preserves the executable
+model's positive queries. Every finite native catalogue-rule support fits
+one budget, including intermediate reduction witnesses; union coverage is
+exact for independent catalogue derivability and true finite-carrier queries.
+This is not the still-open original-PTS-to-catalogue completeness theorem.
+
+Finite satisfaction certificates and recursive deduction translations are
+actual original PTS terms; certificate rank is at most four. Their native
+Void exclusion uses external canonicity. Do not describe this externally
+indexed family as a uniform internal reflection/consistency proof. The
+separate literal-MM0 guarded compiler proves conditional schema/grounding
+and certificate correspondence; it does not silently identify its full55
+graph theory with the native six-rule fragment or assume the adequacy bridge.
+Path/state bounds do not bound all host allocations or generated program size.
+
+## 2026-10-23 — independent source graphs and internal residual agreement
+
+Repair the resource-only contract with independent source-to-operation
+clauses, never an assumed checker/evaluator equation. CheckerSourceGraph
+covers all six rules, step/equality endpoints, original context lookup,
+context checks and raw decoding failures. Native induction derives compiler
+agreement, uniqueness, complete raw coverage and both outputs. Lookup,
+substitution, encoding and decoding remain native here; do not call this an
+internal raw-source relation.
+
+Separate that native boundary from internal execution. InternalExecutionGraph
+represents Run by leaf and conjunction clauses, with no evaluator equation
+in its constructors. One original-PTS term of full-type rank six transports
+rank-one Boolean predicates from evaluation to the reported output for
+arbitrary represented Run witnesses. Same is exact-rank predicate transport,
+not beta equality, symmetry or unrestricted Church parametricity. Conditional
+rejection consumes a false Run proof; such a proof is never a resource field.
+
+Generate standard execution witnesses with symbolic comparator applications
+and conjunctions. CheckerGraphRealization converts them to canonical answers
+only by proved computation. It realizes ordinary acceptance, including an
+accepted sort example, without external Bottom emptiness. SourcedResources
+combines old independent storage witnesses with the native source graph and
+excludes the prior counterexample; this repair is native, not the final
+internal consistency contract. No source injectivity is claimed for residual
+programs or execution witnesses.
+
+Next represent context/certificate/subject/type/expression provenance and
+share chosen endpoints across consumers. Original context lookup needs all
+enclosing shifts, not just substitution-environment lookup. Existing generic
+replacement environments can be multivalued: prove the coherence needed by
+the actual single-substitution consumer, not unconditional functionality.
+Product-rank maximum and complete certificate/context parser traces also
+remain to represent. A total compiler and the proposed joint Zip builder
+are optional routes; internal local agreement and standard coverage are not.
+Milestone 4 remains open after this continuation.
+
+Fresh verification pins all 506 prior source paths plus the four new proof
+files. Preserve 503 old bodies byte-for-byte and normalize only the three
+additive registration files to their prior hashes. The third is a concurrent
+combinatory Dune edit registering exactly seven new guarded-model modules;
+those new independent files are outside this continuation's closure. Archive
+full-tree snapshots informationally, but compare the scoped 510 hashes exactly.
+Do not skip any actual kernel dependency. The first strict-gate failure is
+retained; this scope adjustment does not exempt any prior proof body. Four
+registrations were present before the fresh build; two more appeared during
+the successful kernel check. Preserve the resulting raw post-gate failure,
+verify all other 509 hashes exactly and the additive normalization separately.
+A seventh entry appeared during archival; review and normalize it exactly too.
+Do not call that driver run all-pass or claim to audit the concurrent modules.
+
+Keep the roadmap concise and number the README's six remaining gates
+identically. Historical finite-schema completion must not be confused with
+the still-open internal finite-fragment soundness milestone.
+
+## 2026-10-23 — separate storage, source provenance and internal soundness
+
+Keep the complete operands and recursive payloads in residual resource data.
+CheckerResourceBounds proves injectivity, size accounting and actual original
+capacity witnesses for every raw source in a size-bounded fragment. These
+are storage theorems only: do not infer compiler/runtime bounds or internal
+agreement between an arbitrary source and a stored program.
+
+ComputationBoundary refutes exactly that inference. A fully decoded scoped
+bad_application source is rejected, while Compare(q,q) returns true with
+actual generation, capacity and correct traversal evidence. The native Rocq
+counterexample concerns a contract collecting actual PTS witnesses; it is
+not an internal PTS negation or an impossibility theorem for the programme.
+Require independent local source-indexed compilation/checking clauses and
+internal correctness for both outputs, then prove standard coverage. An
+admission field asserting evaluator/native-checker agreement is not a repair.
+
+Retain the checked joint carrier J:U4, its constructors/projections and the
+independent GoodJ: J->U6 interface. The proposed generation constructors,
+buildZip fold and standard realization are unverified; archive their drafts
+outside theories. Large repeated conversion expansion was interrupted or
+killed (one probe reached about31.6GB RSS); this is an engineering limitation,
+not a rank contradiction. Reuse the checked telescope abstraction/head-step
+lemmas for structural conversion proofs, not further whole-term expansion.
+
+Stop the current continuation at the proved resource-only contract failure,
+before milestone4. The further soundness obligation remains independent:
+derive a sufficient dependent invariant, bounded normalization/negative
+continuation and terminal exclusion INSIDE PTS. Native scope/substitution
+agreement and external canonicity do not supply these laws. A source-indexed
+relational trace is still a viable alternative to a total internal compiler.
+
+Streamline DIRECT_ROADMAP around target, completed foundations, this precise
+boundary and six acceptance gates; keep experimental history in handoff and
+verification records. Preserve the Pakhomov/Willard logical-scope audit and
+the distinction between the finite internal schema and all-budget soundness.
+
+## 2026-10-23 — execute residual comparisons before proving rejection
+
+Keep computation correctness independent of consistency. Compile the literal
+unchanged checker to Truth/Compare/Both expressions, retaining complete raw
+operands in Compare. Cover all six rules, equality/context certificates,
+malformed inputs and BOTH Boolean outcomes. Parsing, context lookup and
+endpoint computation (including original substitution) remain external.
+Do not describe that compiler as an internal raw-code checker.
+
+Use independent synchronized traversal Zip(x,y), not a field giving equality
+or its Boolean result. Its constructor cases are atom/arbitrary, pair/atom
+and pair/pair with corresponding child witnesses. One fixed original-PTS
+comparator consumes it and computes actual tag tests/conjunction. C:U2,
+Zip(x,y):U4, full comparator type:U5. A root test opens the Boolean's X:U0
+before folding raw C; Bool:U1 cannot simply be used as its U0 fold argument.
+The generated traversal covers all raw pairs, regardless of parsing/checking.
+Correctness is proved for canonical quotations plus these generated witnesses,
+not arbitrary inhabitants of Zip. Prove any stronger admission contract
+separately; do not invoke unproved Church parametricity.
+
+Use one rank3 Church conjunction-expression carrier and one evaluator whose
+type has rank4. Leaves retain actual comparator applications. Their exact
+native output correspondence strengthens to forward beta reduction using
+common reducts and normal, distinct Boolean points, not global normalization
+or Bottom emptiness. Raw source serialization/quotation remains injective.
+Residual checking programs deliberately need not be: distinct sort certificates
+give the same program (checked counterexample). Never transfer source
+faithfulness to this lossy residual program.
+
+Next internalize independently certified compilation/traversal evidence and
+prove resource sufficiency for the actual operations. A total internal compiler
+is optional for a relational formulation: independently defined resource
+witnesses could replace it, provided standard coverage and internal checker
+agreement are proved, not assumed as admission fields. Rejecting all Bottom
+inputs still requires internal terminal separation/preservation or another
+independent soundness argument; output correctness alone cannot manufacture
+All branch evidence. Traversal node count is not emitted syntax or runtime.
+Freeze all earlier proof sources except additive audit/module registration;
+fresh-audit every new public Lemma/Theorem/Example (92) and the full dependency
+closure against fresh pristine. Preserve setup/proof failures and do not
+rerun the unrelated complete older audit merely to check this extension.
+
+Design follow-up, not formalized: do not implement a naive double fold over
+Good_r and silently assume its child guards. Good_r has calculated rank
+max(4,r+2); forall y:C, Good_r y -> Zip x y has rank max(5,r+3), above r.
+An asymmetric higher outer guard fixes only this first mismatch; the inner
+fold still supplies Zip conclusions instead of the Good_r child witnesses
+required by the outer induction hypothesis. Retaining that same guard inside
+the inner motive repeats the rank mismatch. This does not rule out other
+representations or resource-relative constructions.
+
+A narrow candidate is a Church joint-traversal carrier J, folding at X:U2,
+with 29 C->X cases, 29 C->C->X cases and one X->X->X case. Calculated J:U4.
+Project L,R:J->C by folding at C; define independent generation GoodJ_4:J->U6.
+One fold at motive j -> Zip(Lj)(Rj):U4 should produce a rank7-type buildZip
+term from GoodJ_4. Existing Zip constructors match its recursive evidence.
+These are unverified design calculations: next construct the literal terms
+and original typing derivations, then exact standard coverage. They replace
+external generation from a represented joint resource, not the alignment
+of two independent arbitrary C inhabitants or internal checker soundness.
+
+## 2026-10-23 — represented dictionaries separate elimination from generation
+
+Use a Church list of E:U1 elements, with X:U0 iteration. Because U3:U0,
+it can fold into a homogeneous rank3 type telescope P(e1)->...->P(ek)->R
+for P:E->U2 and R:U3. Pad ONLY the final result with an inhabited D:U2
+when selecting a member. Padding the telescope accumulator differently or
+silently lifting exact ranks breaks this construction; no cumulativity is used.
+All is the separate branch-proof package; Fill ignores branch arguments;
+Guard quantifies over arbitrary motives and is independent of checking.
+Standard admission uses list membership plus Fill, never All or rejection.
+Nil/cons/append operate internally, and one rank5 eliminator handles arbitrary
+represented lists and guards. Reordering its arguments supplies a fixed
+consumer whose dictionary and branch package are ordinary arguments.
+
+Retain the exact original checker tables and all malformed/rejected raw-code
+coverage when connecting existing finite fragments. This removes the varying
+case telescope from the interface, not the remaining internal generator.
+The external native-normalization proof still certifies each branch identity;
+no conversion law exists for a symbolic arbitrary checker application.
+An internal branch generator must consume independently justified computation/
+normalization evidence and derive All, not require All as resource admission.
+Independent budget/dictionary generation, faithful checker correspondence
+and sufficient resources/costs remain explicit tasks. The implemented E:U1
+specialization does not instantiate the existing C:U2 raw-code carrier; a
+separate rank adaptation is possible work, not an established obstruction.
+Output-neutral checker-trace reflection is a suitable next subgoal: retain
+arbitrary Boolean outputs and certify actual local transitions. It establishes
+computation correctness, not absence of accepting runs. Derive the latter
+from independent finite local preservation/terminal exclusion, rather than
+assuming every trace returns false. A genuinely fragment-relative finite
+model or normalization history may avoid full dependent reconstruction.
+
+Fresh audit the 56 new endpoints and their complete dependency closure; freeze
+every previous proof source except additive Dune/Audit registration. Do not
+repeat the expensive unrelated old audit or change it to make this target green.
+Preserve failed incremental attempts and compare the complete kernel inventory
+against a fresh pristine build. No Git index change is authorized this turn.
+
+## 2026-10-23 — finite-fragment normalization bypasses dependent reconstruction
+
+Follow the user's selected finite-fragment route and the improved combinatory
+interfaces. Bound COMPLETE serialized raw certificates by tree size, including
+binary labels, annotations and raw conversion instructions. Enumerate every
+raw tree; do not filter admission by parsing, acceptance or rejection. The
+common normalization envelope decodes scoped certificates but does not filter
+by acceptance. It computes maximum conservative rank, maximum subject size
+and concatenated label alphabet before checking; accepted subjects then
+normalize in one finite carrier with exact original typing and every state
+covered. Do not normalize arbitrary supplied conversion intermediates.
+
+Compile the ACTUAL checker entries into finite Church tables. Generic table
+correspondence and the general-judgment checker remain independent of Bottom
+emptiness. Use normalization plus canonical-form exclusion externally to
+certify the rejection branches. The internal proof is finite elimination
+with an independent guard over ALL rank-two motives, not an assumed soundness
+predicate: each branch is the literal identity on Bottom after conversion.
+Every external bound gives an originally typed rank-four rejection term;
+its arbitrary guarded inputs are not restricted to canonical quotations.
+Source quotation remains beta-injective at each fixed bound.
+
+This is a substantive bounded-consistency schema, but fixed rank does not
+mean fixed type: arity, carrier, case telescope, table and proof vary externally.
+No single represented-budget theorem or enumeration/generator cost bound is
+claimed. Next internalize finite dictionaries and case evidence at one fixed
+resource-relative interface. Do not assume full dependent typing reconstruction
+is necessary, nor insert rejection/model validity into resource admission.
+The full-ungraded native finite-model target is already refuted by the new
+combinatory boundary theorem; it is not this guarded/growing fragment route.
+
+Keep all prior proof sources unchanged. The focused audit checks every new
+endpoint and its complete transitive closure; older unrelated branches retain
+their prior full audits. The first integrated run's broad whitespace check
+reported a pre-existing NamedTemplates EOF blank line; preserve that file and
+record the failure. The final audit scopes whitespace to actual changed files,
+while hash-checking all previous proofs unchanged. No existing CI stage changes.
+
+## 2026-10-23 — quantified constructor search, internal proofs and native no-go
+
+Replace the candidate-only interface by complete enumeration of every total
+operation table at fixed finite cardinalities. Keys are operation symbols
+paired with semantic argument vectors; completeness is pointwise, avoiding
+functional extensionality. Every row is present, so total lookup never falls
+back on an absent semantic tuple. Use separate copies of the same D for the
+three MM0 sorts; do not silently claim completeness for unequal cardinalities.
+
+Represent all nine constructors, eleven predicates and 55 literal universal
+axioms as sorted expression trees. Selection retains entire named axioms.
+Sorting is proved equivalent to an independent inductive judgment;
+substitution preserves it and commutes with evaluation. Independent Type-valued
+source proof trees compile to finite semantic Horn proofs, then original PTS
+terms; no source tree contains a native typing or desired soundness premise.
+Textually comparing both expanded source presentations is useful independent
+test evidence, not a kernel-verified MM0 parser/native adequacy bridge.
+
+The explicit projection model is intentionally a weaker test, not a nearly
+complete PTS model. Removing sveq permits identity substitution; removing f0
+permits empty form/ax, so every catalogue-introduction antecedent is false.
+Both omitted axioms fail explicitly. Nonempty typing, enabled application and
+universal Void exclusion are still real, all-valuations properties. Existence
+implies successful two-element search analytically; do not execute or claim
+execution of 2^28 constructor candidates. Full55 unit rejection is computed.
+
+Internal semantic proof production uses independent Top/Void interpretations
+of truth-table entries. Implication-chain proofs are composed structurally
+with compiled subproofs. The finite universal-axiom package is the continuation
+conjunction (C1 -> ... -> Cq -> Void) -> Void, with rank at most four. Its
+inhabitability iff is externally exact; reverse exclusion explicitly uses
+native canonicity. The forward proof generator does not. The actual projection
+model discharges acceptance, yielding a closed native certificate. This is
+not an unguarded Church-domain induction principle or one internal uniform
+reflection theorem over represented fragments/proof codes.
+
+Do not keep calling the full ungraded finite native-model interface open:
+FiniteNativeModelBoundary disproves it, even for directed reduction. Apply
+two collided Church selectors to a vector of same-sort U1 types containing
+Void and inhabited E^0_1; conversion followed by type reduction sends an
+inhabitant to Void. Therefore every Fin k selector family is injective.
+The finite-test version needs only finitely many test facts and forces k
+distinct values; it does not say each fixed guarded fragment is infinite.
+Literal MM0 impossibility still needs a native/catalogue adequacy bridge.
+
+A further constructive continuation must choose explicit size/proof-depth
+guards or a graded interface and prove bounded original-source coverage.
+Adding those guards changes universal axioms; neither that weakening nor the
+two missing base axioms may be presented as unchanged full PTS-rk. No such
+target switch was made in this checkpoint.
+
+## 2026-10-23 — Void-denying Horn targets and exact finite candidate checking
+
+Positive Horn satisfiability is insufficient: its all-true model populates
+every alleged Void judgment. Retain GroundHorn as the positive kernel, but
+use actual negative constraints (finite premises imply False) in the target.
+Prove model existence iff no denied conjunction is derivable, least-model
+reflection and constructive finite derivation support. Do not use an extra
+positive 'false' atom, which arbitrary models could again declare true.
+
+Discharge consistency for the explicit 65-shape Hilbert catalogue, rather
+than taking it as an assumption. NativeCanonicity.v uses the ORIGINAL
+normalizer and canonical-form inversion to exclude closed Void inhabitants;
+HilbertGrounding independently reproduces the six rules and proves exact
+grounding and soundness. Native substitution/conversion side conditions are
+not the MM0 graph encoding, so MM0 adequacy and original-PTS-to-catalogue
+completeness remain separate. No PTS typing rule or set-model premise changes.
+
+FiniteHorn saturates a finite ground clause list in at most its clause count.
+HilbertFiniteModels reuses shared DirectREval structural equality and proves
+native typing and exclusion of ALL closed Void subjects, not merely selected
+tests. The singleton first-order domain has distinct nullary predicates;
+it is neither an all-true model nor a finite quotient of the syntax algebra.
+Add a signed least-model diagram only for explicitly chosen observations.
+This completion reflects every supported propositional formula but strengthens
+the theory: its negative facts can disappear when more rules are admitted.
+Do not treat nonderivability as negation in the uncompleted Horn theory.
+
+FiniteHornChurch generates literal original-PTS truth-table terms, with exact
+external true/false beta correspondence and nonempty-input map rank r+2.
+Saturation and table generation occur externally. Canonical-query correctness
+is not internal uniform reflection or a theorem about every Church inhabitant.
+
+FiniteUniversalHorn enumerates all semantic vectors over a supplied complete
+finite domain, including values not represented by chosen native terms.
+Positive/negative schema satisfaction equals compiled-ground satisfaction;
+the executable denial check decides whether predicate interpretations exist
+for that candidate's already interpreted constructor functions. This is a
+complete candidate-schema checker, not a proved MM0 compiler, constructor
+algebra search completeness, or existence theorem for all PTS fragments.
+If equality is encoded as a predicate, its actual finite diagram must be fixed.
+
+FiniteModelBoundary proves the narrow obstruction: a finite total UNTYPED
+applicative algebra satisfying (K x) y=x is singleton (K embeds the carrier
+into itself; finite injectivity gives surjectivity and collapse). Thus such
+equational models cannot also have a positive typing fact and empty Void.
+Typed/rank-indexed, partial/guarded and directed-reduction semantics are NOT
+covered by the hypothesis. Selinger's finite reduction models motivate a
+remaining route, not an already proved PTS model. Next construct a successful
+finite candidate for a precisely specified quantified typed/resource fragment,
+prove template agreement and standard coverage, and then internalize soundness.
+
+## 2026-10-23 — finite-fragment sufficiency versus uniform reflection
+
+Analysis requested by the user; no target/checker switch or implementation
+is authorized by this entry. The prior dependent-coherence gate was specific
+to our selected direct invariant and must not be reported as a general
+obstacle to bounded consistency.
+
+Actual combinatory results: fixed_rank_peak_normalization retains original
+typing and bounds every state; normalizer_in_finite_carrier supplies finite
+coverage; ChurchFinite.map_typed/map_selector_beta and
+repeat_map_typed/repeat_map_beta compile finite tables and iterations into
+original PTS terms. FragmentModelSoundness.model-soundness is an external
+Agda theorem on independently accepted complete contextual inputs. The note's
+sec-internal-consistency explicitly distinguishes these from fixed finite
+first-order models and internal reflection. A finite run envelope is not
+closure under all operations/valuations: graded application enlarges the
+carrier, and overflow fallbacks are justified only on bounded intended runs.
+
+For each externally fixed finite domain of complete proof codes, finite
+checker tabulation plus a genuinely independent finite-case guard provides
+a different route: construct every rejection branch and combine them.
+FiniteRejection.rejection_typed is an existing complete two-code pilot.
+Its generalization would give an external family of internal proofs, not
+one internal proof with a represented budget argument. General guards,
+all-case rejection generation and exact acceptance correspondence remain
+to be built. Bounding only the subject term does not bound its types,
+conversion witnesses or proof tree. Neither a fixed rank for E_K/maps nor
+canonical-input beta equations supply this uniform logical step; K, the
+interface and emitted program size still depend on external budgets.
+
+Re-read the original Downloads Zermelo revision, sec:internal-consistency
+(lines 1068–2668), rather than assuming it merely asserts preservation.
+Its relevant construction is genuinely weaker than full dependent semantic
+preservation in original PTS:
+
+- lem:ea-constant-separation transports non-idempotent resource typings along
+  supplied untyped equations and separates inert constants, without normalizing
+  arbitrary intermediates or constructing Church–Rosser joins.
+- lem:tagged-projection uses auxiliary tagged Church tuples to recover product
+  ranks and domain/codomain equations with polynomial overhead.
+- sec:graded-calculus retains scope and declared grades, but not type-formation
+  or context-validity proof requirements. Conversion has no target-formation
+  premise. These are analysis rules, never changes to original PTS.
+- lem:source-tag-coherence and lem:source-elaboration provide the one-way source
+  lift via finite packets. Generated regularity witnesses are not recursively
+  elaborated again. This is a substantial unformalized construction, not an
+  evident assumption of the bounded-soundness conclusion.
+- lem:aux-one-step preserves the weaker G certificate polynomially. Product
+  projections supply the precise beta domain/codomain alignment that our
+  current native-typing route still lacks. Active evaluation ignores annotation
+  and product fields; substitution still updates/counts them.
+- lem:aux-terminal only excludes a weak-head-normal grade-zero inhabitant of
+  a fresh type. Full normal forms, canonical target certificates and a total
+  internal normalizer are unnecessary.
+
+For supplied tower B, thm:bs-proved uses K<=B and
+s_(i+1)<=(s_i+B+2)^d to bound the whole proof history by a fixed elementary
+function of B, then uses EA bounded induction. We found no concrete flaw in
+the packet/transport construction in this review; this is not kernel or
+independent peer verification of the paper. These lemmas remain proof tasks.
+
+The final step is not computational representability: EA proves a uniformly
+resource-relativized negative sentence; thm:conditional-self-consistency uses
+Pakhomov Corollary 5.3 and J to obtain the specified translated PTS sentence.
+The published Corollary was checked directly in arXiv:1907.00877v2, page22.
+Histories may lie outside the interpreted cut; only source proof/checker
+witnesses are relativized. Compiling a finite normalizer does not replace
+that bounded-induction/transfer proof. An EA/H-free route still needs an
+internal counterpart, but can use the weaker G invariant or proof-carrying
+finite-table rejection instead of preserving full original derivations.
+
+Also keep the predicates distinct: the draft fixes explicit typed-equality
+T^e, whereas NativeProofCodes accepts raw conversion trees. The source lift
+in the draft needs only T^e-to-analysis, not an internal converse. Our checked
+non-normalizing conversion detour is not a T^e certificate. Retaining the
+current exact consistency predicate adds a transfer/lift obligation; selecting
+the draft's predicate is a different legitimate target only after that choice
+is explicit. External equivalence of full PTS presentations does not identify
+their internal arithmetic formulas. No switch was made in this analysis.
+
+## 2026-10-23 — closed-template specialization without payload expansion
+
+The new replacement graph and literal public constructor types stay unchanged.
+Check binder/application templates with a PTS parameter for term_at, then
+discharge it by original tApp and term_at_sorted. Public constructor TERMS
+gain that outer application; no consumer inspects their old bodies. Native
+NamedTemplates proves exact assembler/substitution and closed-fragment
+congruence, so specialization has the literal original type without expanding
+large closed payloads. Its native lemmas add no PTS primitive or typing rule.
+All internal helper proofs remain checked; no target hypothesis survives.
+
+This replaces an inlined check that timed out after2400s while checking
+application. Its binder checking/Qed had already taken807/836s. Generic
+binder/app checking takes about175/77s including Qed, with exact type
+specialization under a second. Preserve the failed naive concrete-body
+specialization attempts (cancelled143 due memory growth), isolated timeout124,
+and deliberately superseded fresh audit130. Snapshot2 reuses the same fresh
+Dune directory's unchanged dependencies; Audit.vo was absent, so all495reports
+will genuinely rerun. Status/evidence, not the optimization alone, determines
+whether the integrated development is verified.
+
+## 2026-10-23 — exact invariant-rank and conversion restrictions
+
+Refinement after challenging the stopping gate: a single WHOLE-HISTORY fold
+can avoid the bare high-source/low-target iteration gap. With independent
+H_b(t,history,u):U_j and low observation L(G,u,A):U_l, set
+M_b(G,t,A)=forall history,u:C.H_b(t,history,u)->L(G,u,A), rankR=max(3,j+1,l).
+The independently defined source acceptance can fold once at motiveU_R;
+its own rank and the history length do not occur in M. This is a rank-feasible
+candidate, not an available soundness theorem or a same-index no-go target.
+The genuine next gate is hereditary/dependent application beta-splicing:
+combine function/argument invariants, lambda exposure and a continuation
+through annotated substitution, also respecting arbitrary supplied conversion.
+LookupHistory is only structural lookup iteration; InternalReplacement proves
+Scope, not this closure. Construct L and the independent actual reduction graph
+and prove all six laws; do not postulate the beta law as a new target premise.
+
+Choosing L=low typing does not give this beta law: the function IH returns
+only low typing of the exposed lambda. Its high original derivation is gone;
+recovering body typing and substituting the argument require low-graph
+inversion/substitution with their local motive-rank problem. LookupInversion
+offers high-source to low-child extraction, not low-to-high promotion.
+A possible hereditary alternative quantifies first-order codes for environment,
+elimination stack and whole execution, returns low head separation, and uses
+independent fixed-rank query guards. The concrete open obligation is validating
+images/frames plus beta-splicing/query composition and standard coverage.
+Scope alone is insufficient; low typing returns the inversion issue; a guard
+containing the hereditary predicate itself can reintroduce the rank cycle.
+OccurrenceSafety only transports structural Ext-absence, not typed-head
+incompatibility under beta replacement. None of these observations is a
+no-go theorem against all hereditary interpretations.
+
+A further candidate avoids reconstructing target typing proofs: a
+derivation-directed closure/stack machine whose closures pair original
+source-proof nodes with raw environments. A fixed finite source-node table
+checks local syntactic rule equations and acyclic premise links; it does not
+assume hereditary validity. Beta extends the environment and follows the
+lambda-body node. The first concrete proof is the environment-extension/type-
+closure square: the body context/type interpreted in the extended environment
+must agree with the application codomain after annotated substitution, while
+retaining arbitrary supplied conversion certificates. Then establish machine
+closure/resource laws and terminal head separation. Scope-only replacement
+and structural lookup histories do not supply this coherence. This is an
+unimplemented alternative that may weaken the required invariant, not a
+proved impossibility or an available theorem being withheld.
+
+First constructor target for that alternative: a function certificate can end
+in ConversionRule, expect Pi A.B, and expose a lambda whose body node carries
+Pi a.B'. Beta must transport the argument from A to a and align B[u] with
+B'[u]. Thus realize product-conversion injectivity and conversion preservation
+under represented environments, without normalizing arbitrary zigzag nodes.
+Native DefEq.equiv_Π_inversion and replace_equiv specify these laws but are
+not internal PTS inhabitants. This gives a concrete independent syntactic
+coherence target before selecting a hereditary semantics; it does not assume
+bounded soundness as a premise.
+
+InvariantObstructions proves in original typing that implication from rank r
+to rank s has the UNIQUE rank max(r+1,s). In particular a homogeneous P->P
+clause cannot inhabit P's own rank. An opened-algebra callback E->P fits the
+rank-r motive iff rank(E)<r. The numerical graph-premise cycle is separate
+from these typing theorems and is NOT an impossibility result for every
+encoding. A same-index typing-preservation induction mentioning its own
+Church judgment or an operation graph that must eliminate into that judgment
+cannot be repaired by increasing the common index. Generalizing over a
+same-rank environment contract has the same problem even after opening the
+target algebra.
+
+One-step finite stratification remains viable: low target judgment of rank l,
+independent operation graph of rank o able to eliminate at l, source acceptance
+with motive o+1. Its low result does not automatically feed the next high
+source. The still-missing history-stable invariant/synchronized transformer
+must be constructed before asserting repeated dependent soundness. Current
+TermAt/Replace exact motive12 scope folds intentionally do not claim this.
+Do not add arbitrary rank lifting, successful normalization, or model validity
+as a hidden resource premise. An actual fixed transformation with pointwise
+algebra homomorphism could avoid the all-output operation premise, but it
+must be constructed and proved sufficient, not postulated.
+
+Checked the fuelled-machine escape against actual APIs. For a fixed state
+type S:U_s, the monomorphic iterator (S->S)->S->S has rank s+2, so internal
+fuel itself is not the obstacle. We still need an actual step:S->S, guarded
+raw initialization and every-state transition/closure laws. NormalizationComplexity
+supplies native Rocq algorithms/bounds; the self-interpreter README explicitly
+marks the general elementary-function compiler as unformalized. ChurchFinite
+uses externally selected tables/dimensions/iteration counts. None is the
+missing homogeneous raw-code machine. Current C:U2 folds only into X:U0,
+so using X=C for a direct destructor is ill-typed; fused maps do not supply
+that destructor. Higher generation guards or a different state encoding
+remain possible new constructions, not a proved impossibility. Resource-
+certified finite semantic tables are another option, but their validity
+must be constructed, not assumed by the envelope.
+
+The same module gives an accepted ConversionRule proving U1:U0 with equality
+U0 <- (lambda z:U0.U0) Omega -> U0, Omega=(lambda x:U0.x x)^2. It proves the
+middle term has an original beta self-loop, is not sn, and is untypable in
+the empty context. Hence normalizing/typing ALL raw equality intermediates
+is a false bridge, not just an unfinished lemma. Preserve the independent
+checker and use arbitrary-term conversion transport. These results constrain
+milestones 2–4 but do not refute the direct relational consistency programme.
+
+## 2026-10-23 — weak finite satisfiability and Willard: goal 5 preparation
+
+Working hypothesis requested by the user: the weak local finite satisfiability
+in CombinatoryPTS-rk.tex, sec-ground-horn, is probably highly relevant to a
+non-Gödelian consistency interpretation. Preserve it as a research direction,
+not a theorem about PTS-rk. GroundHorn.singleton_model is generic for ANY
+rule relation, including one with an axiom deriving the contradiction atom.
+Its all-true valuation therefore gives no negative-query separation. Positive
+ground-consequence equivalence is not preservation of falsity or of arbitrary
+quantified formulas. The vocabulary is recursive, infinite and nullary.
+
+Primary reference: Dan E. Willard, https://arxiv.org/pdf/1108.6330v8,
+Definitions 3.4, 4.2–4.4, 5.10 and Theorem 5.11. A configuration fixes language,
+bounded formulas, standard-true Sigma1-complete base, deduction and proof coding.
+0-stability requires every bounded consequence of B union theta with proof
+length Log(p) <= #theta+1 to be standard-true, for every r.e. Pi1 theta,
+including false theta. Here #theta measures truth under quantifier bounds
+2^N. The conclusion concerns B + SelfCons^0(B,d), not unchanged B.
+Definitions 5.1/5.3 and Theorem 5.9 give stronger stability variants.
+
+Second primary reference: https://arxiv.org/pdf/1307.0150v2, Definition 3.2,
+Theorem 4.1 and following discussion. Its consistency-preserving construction
+requires standard-true source axioms and the specified tableaux/Tab-1 deduction;
+the analogous construction fails for Hilbert/Tab-2. This is not a prohibition
+on every Hilbert-based self-justifying theory, nor a classification of our PTS.
+
+Concrete next checks (our proposed application, not claims from those papers):
+
+- Specify the exact represented deduction/acceptance predicate and quantify
+  over its actual proof resources. A finite catalogue named Hilbert does not
+  identify Willard's deduction system or coding.
+- Refine the local models to make the translated contradiction false while
+  validating used rules. Do not insert that separation as an unexplained
+  hypothesis: for a whole system it is the consistency problem itself.
+- Define independent bounded truth and prove resource-sensitive preservation.
+  Rank compression/finite packing may control the construction; neither
+  implies the stability law or internal all-budget soundness.
+- Realize the preservation argument internally and connect its domain and
+  proof predicate to Cons_dir. Standard-code coverage is not this transfer.
+- No new axiom is authorized: prove an original PTS inhabitant, or prove an
+  interpretation transferring an applicable result to the exact target.
+- Identify the actual diagonalization/derivability/domain-closure boundary.
+  Do not infer its failure merely from a relational presentation, pointwise
+  admission, or the existence of finite models.
+
+The roadmap now records this preparation. It is independent of progress on
+milestones 1–4 and does not discharge their normalization/soundness gates.
+
+## 2026-10-23 — standard realization before term-valued binder lifting
+
+RenamingLookupRealization constructs the pointwise fixed-environment lookup
+family under weak rho. RenamingRealization reuses original tApp/substitution
+proofs to apply each already typed constructor, then recursively generates
+the graph witness for every original annotated term. Its standard shift
+specialization supplies the entire family itself. Exact raw/decoded endpoints
+come from existing codec/operation equations; the output-scope witness actually
+applies renaming_scope, not a native scope theorem. These are executable
+external witness generators, not an internal uniform renamer or arbitrary-
+inhabitant reflection. Interface ranks do not grow with binder nesting.
+
+Use the minimal nonrecursive single-substitution environment first: zero maps
+to the supplied image, successors to old variables from independent Index/Succ
+evidence. The graph has exact motive12 and rank13; no rank14 padding or general
+finite-environment decoder is needed. Its rank14 TermFBound theorem assumes
+only scope of the supplied image, independently constructed for every original
+term. Neither environment clause assumes its output-scope conclusion.
+
+Next keep this term-valued environment fixed under binders. A successor lookup
+clause may carry the existing Rename(ShiftEnv n,n',n,n',0,u,v) graph directly;
+avoid another Church wrapper. Derive its scope using bounded_shift_bound and
+renaming_scope with the SAME successor edge. This suggests exact motive12 and
+lookup rank18 (Rename has rank16), but this lifted graph is not yet implemented.
+Preserve its recursive lookup premise for standard operational coverage even
+if the scope fold does not need that induction hypothesis. Dependent typing
+requires its own stronger invariant; scope preservation alone is insufficient.
+
+Independent recursive verification may use supported -bytecode-compiler yes.
+Pinned checker sources confirm that it still traverses and checks all proof
+bodies; it changes VM conversion, not admission of modules. It uses serialized
+VM bytecode and is therefore distinct from the VM-disabled reduction path.
+Record the flag, source manifest, complete inventory and actual exit status;
+never hide the earlier timeout or use -admit/-norec. This does not alter project
+proofs, kernel rules, checker definitions or repository CI settings.
+
+## 2026-10-23 — source-directed scope and one environment across binders
+
+Keep native correctness distinct from internal realization. CodeSubstitution
+implements raw annotated renaming/replacement/substitution and proves exact
+Syntax agreement, independent Replaced/computation agreement, scope preservation
+and scoped totality. InternalBinary and InternalScope instead construct actual
+PTS relations/terms. Their independent binary successor/index/scope rules do
+not mention typing, normalization or the preservation target. Standard witnesses
+cover every bounded index and original annotated term, including untyped terms.
+
+Avoid repeated Church re-encoding of a lifted environment: this naive design
+raises the environment rank with binder depth. Keep a fixed F:C²->U12 and
+represent depth/current bound explicitly in RenAt:U14. Its exact motive10
+fold proves Index(currentTarget,output) under FBound(base,F). The source-bounded
+successor graph independently supplies this premise; do not assert it of an
+unrestricted successor graph. RenAt does not assert currentTarget=base+depth.
+Its all-output bound is proved, not an exact arbitrary-inhabitant decoder.
+Restoring that global equation is not a prerequisite: standard witness
+generation can thread the coherent canonical states needed by weakening.
+No impossibility claim is made about other fixed-rank encodings.
+
+Source-directed Rename carries local source Num/Index guards, independent
+RenAt evidence and successor edges, with recursive annotation/body operations.
+The annotation stays at the current depth; only the body uses successor depths.
+The environment/base never change. No graph clause contains output Scope or
+FBound. Fold with exact Scope motive12, obtaining relation rank16 and preservation
+type rank17. This avoids inversion of a separate scope proof and needs neither
+environment functionality nor global lookup inversion. Compilation status is in
+STATE/BUILD, not inferred from this design record.
+
+Next prove exact forward standard realization of the existing bounded-shift
+graph on every original t -> shift t. Then term-valued lookup can lift images
+using that witnessed weakening. Begin with the single-substitution environment
+(zero maps to the supplied term, successors to old variables), deriving its
+local scope contract independently. General environment reflection, global
+functionality and complete certificate reconstruction are not prerequisites.
+Native substitution correctness plus internal scope coverage does NOT itself
+realize internal renaming/replacement. Dependent typing/conversion preservation,
+operation sufficiency, resource admission and consistency remain separate.
+
+A concrete realization plan avoids arithmetic casts for n+depth: parameterize
+the native term induction by rho:Fin m->Fin n and a supplied family of actual
+RenAt witnesses for its points, keeping F/base fixed. Under a binder, build
+the lifted family with ren_at_zero/ren_at_step and standard successor witnesses.
+Instantiate the family at depth zero with bounded_shift_intro, index_witness
+and natural_successor_witness to cover original shift. The final shift theorem
+must CONSTRUCT this family, not retain it as an assumption. This is a plan,
+not an already checked bridge or a requirement of global state coherence.
+
+Verification is a documented delta audit: all public endpoints are rebuilt in
+a fresh absolute Dune directory; recursive kernel checking covers every new
+module and its complete dependency closure, compared with fresh pristine
+upstream. Old optional modules outside that closure retain their preceding
+full recursive audit and must match its source hashes. No CI checks/settings
+are removed or weakened; neither this nor earlier focused runs is full CI.
+
+The 811-second isolated renaming compilation exposes a proof-engineering cost:
+recertifying expanded closed graph terms repeatedly normalizes nested dependent
+types. Higher layers should prefer compositional original-typing/application
+proofs that reuse established lower-layer typings, or a genuinely proved open
+algebra interface followed by original substitution. Do not hide a typing
+assumption in an interface, disable conversion checks, or alter the shared
+checker to obtain a faster green result. This is an optimization opportunity,
+not an additional mathematical prerequisite or a weaker verification contract.
+
+## 2026-10-23 — consumer-directed preservation instead of global decoding laws
+
+Dependency review finds no implemented consumer of arbitrary-path Eq_0
+functionality or matching-constructor inversion. Keep their statements and
+partial infrastructure, but remove them as mandatory prerequisites. Use
+independent constructor-indexed operation/checker relations and preserve an
+explicit consumer invariant for EVERY related output. Thread the same output
+through dependent uses; do not identify independently obtained outputs
+without the coherence theorem actually needed. Actual forward realization
+of general accepted standard judgments and all six original rule clauses
+remain obligatory. Reverse canonical agreement identifies the EXACT checker,
+but is stronger than the negative implication needs: an independently defined
+overapproximation is safe only if soundness handles EVERY acceptance proof.
+Keep exactness as the stronger specification, not a logical prerequisite.
+Pointwise realization is not an internal consistency-sentence implication;
+that additionally requires uniform internal acceptance/domain translation.
+
+RelationalTransport proves positive descent for exact rank-4 predicates and
+dual negative safety for upward-closed predicates, with explicit local laws.
+OccurrenceSafety supplies a nontrivial negative example, Absent(seed,a) =
+Ext(seed,a) -> Bottom. Its rank-7 family propagates through Look_5 by factoring
+through lookup-to-extension and transitivity, not by illegal rank-7 elimination.
+The Stop observation and positive rank-3 padding construct absence of every
+nonzero leaf and every pair from stop. This is represented Ext-absence, not
+a complete native absence characterization or the target consistency claim.
+Tag-erasing Cap cannot substitute for label-sensitive Ext here.
+
+LookupHomomorphisms opens target lookup/history before folding the source.
+Actual shape and generated filling preserve Look_5, Look_6 and Hist at the
+unchanged motive ranks, preserving the path and mapping root/value. Native
+specifications are separate from original PTS application/realization in
+SimulationRealization: apply the literal internal maps to prior witnesses,
+then convert endpoints by proved beta equations. Filling may introduce new
+successful paths; only forward preservation is claimed. These operations
+are not dependent source substitution. All previous proof modules unchanged.
+
+Fixed-rank histories already bypass same-rank composition. Structural
+operation closure and independently constructed standard resources may
+replace internal numerical capacity comparison; this is a prospective
+soundness design, not a proved sufficiency result. The final resource CPS
+package needs no internal selector. Preserve a sufficient independently
+defined invariant rather than reifying complete transported derivations if
+possible, but charge all represented data and derive normalization/history
+existence or its negative continuation internally. Actual binder/substitution/
+conversion laws, terminal source separation, full resource sufficiency and
+standard raw-input admission remain mandatory. No impossibility claim.
+
+## 2026-10-23 — fixed-rank histories, stratified cases and structural capacity
+
+Preserve C, Good_1, Look_5, Look_6 and every earlier proof module. A history
+has independent root and segment rules: each segment supplies Look_6 and
+the recursive history, never the final Look_5 conclusion. Folding its exact
+rank-7 invariant with the existing root/composition terms proves Hist ->
+Look_5 at rank 11; Hist itself has rank 10. This supports arbitrary finite
+length at one interface, not same-rank Look_6 closure or an arbitrary lift.
+An executable history generator has exact sequential-lookup erasure and
+original typing; the integrated theorem applies internal soundness.
+
+One-step case elimination separately uses Look_9, defined by the same local
+rules. A rank-9 continuation pair retains a low lookup and a rank-5 motive
+result; projecting gives case handlers with ACTUAL Look_5 child witnesses.
+The relation, view and inversion theorem have ranks 11, 9 and 12. Standard
+Look_9 coverage is independently computed, not assumed from Look_5.
+This is stratified case elimination, NOT matching-pair injectivity/inversion.
+The exact full functionality target is only formed at U8, with no inhabitant
+or hypothesis. Its direct induction motive exceeds Look_5's motive rank;
+Eq_0 does not automatically transport higher-rank predicates. Do not confuse
+native syntax injection with internal pair/path injection. No impossibility
+theorem is claimed; alternatives using weaker sufficient invariants remain.
+
+Capacity is Ext(shape a, shape b), where the literal Church fold erases leaf
+tags and preserves pairs. Its rank is 6. Internal laws include generation,
+reflexivity/transitivity, extension/join and lookup/history capacity. This
+has native subtree-capacity semantics, stronger than numerical size order, not a resource
+sufficiency oracle. Prove exact beta correspondence on ALL raw trees and
+realize every native shape-subtree inclusion in original PTS. Finite-family
+packing supplies one explicit common budget; it does not supply missing
+normalizer/checker intermediate data. Packing/fill and flattened-path/result
+size estimates remain external arithmetic, not bounds on complete written proof
+histories. No source acceptance, normalization,
+consistency, axiom or stronger carrier guard enters these definitions.
+The size implication concerns native shape-subtree inclusion; do not infer
+native size bounds from arbitrary Cap inhabitants without a converse theorem.
+
+## 2026-10-22 — structural substitution and stratified lookup composition
+
+Retain the original C : U2, Good_1 guard and Look_5 relation unchanged.
+Define plug by replacing NZero leaves via the existing Church fold. It is
+total structural substitution, not a partial path parser; on standard paths
+it is beta-exact concatenation. Prove generation, associativity and guarded
+units internally. Preserve quotation's syntax injection; never equate beta
+correspondence with literal syntax equality or add eta conversion.
+
+Define Look_6 independently with the SAME root/left/right rules and motive
+rank 6. The new relation has rank 8. Opening the target Look_5 first exposes
+a rank-6 continuation motive; this yields an actual rank-9 composition term
+Look_6(a,p,b) -> Look_5(b,q,c) -> Look_5(a,plug(p,q),c). No composition clause
+or soundness assumption is added to the relation. An executable external
+generator proves all standard successful lookups have Look_6 witnesses.
+The composed standard theorem applies the actual internal term, then uses
+the independently proved beta equation for concatenated paths.
+
+Do not call this same-rank composition or infer a lift of arbitrary Look_5
+proofs. This technique consumes a higher motive level; it does not prove
+that all alternative fixed-rank approaches are impossible. Uniform iteration
+at one interface still needs its own argument.
+
+For the first inversion/functionality laws, fold the carrier into U1:U0 to
+define independent Atom and Stop observations. Their literal leaf/pair cases
+are Top or Bottom. Internal laws yield Atom(root) -> Stop(path) and, under
+Stop(path), both directions of rank-0 Leibniz equality of root/value. Derive
+root functionality and step rejection from leaf-like resources, for arbitrary
+represented arguments. Eq_0 has rank 4 and is NOT native syntax equality.
+Positive rank-4 padding gives exact rank-5 lookup motives. No normalization,
+parametricity, resource sufficiency or target consistency hypothesis is used.
+Full arbitrary-path inversion/functionality and size/capacity remain open.
+
+## 2026-10-22 — fixed-rank structural resource graphs
+
+Keep the ORIGINAL carrier C : U2 and Good_1 guard unchanged. Resources
+are binary trees; structural paths use an empty tag and left/right tagged
+pairs, without Church numeral conversion. Distinguish append-only left-spine
+prefix from two-sided subresource extension. Pairing joins resources; it
+does not pretend to be flat-list concatenation.
+
+Define prefix/extension by transport of rank-4 predicates closed under local
+pair growth with independently generated siblings. Both relations have
+rank 6. Reflexivity and transitivity follow by identity/composition at the
+same predicate; transitivity is not an added rule or hypothesis. Generation
+preservation instantiates the predicate with the ORIGINAL Good_1 family.
+The join inclusions require generation of the respective other sibling.
+
+Define lookup independently by root/left/right rules at exact motive rank 5.
+The root rule requires a generated value; steps require a generated sibling.
+Lookup has rank 7. Original PTS terms prove step laws, root/path/value
+generation and lookup-to-extension, with fully quantified types of rank 8.
+The transport motive P(value) -> P(root) has exactly rank 5. Guard extraction
+uses the inhabited rank-4 type I = Good_1(atom NZero): I -> Good_1(x) has
+rank 5 and applies back to the existing inhabitant of I. This is explicit
+positive rank padding, not cumulativity or a new premise.
+
+An independent external algorithm finds the selected subtree. Executable
+witness generation erases exactly to that algorithm and returns literal
+original-PTS proof terms for every successful standard lookup. All standard
+prefixes/extensions also have realizations. External size bounds count the
+entire structural path and selected value; they are not internal arithmetic
+or operation-cost results.
+
+Do NOT infer a converse/parametricity theorem for arbitrary Church-relation
+inhabitants. No internal total decoder, arbitrary-input lookup functionality,
+path-composition graph or size/capacity comparison is yet established. Ext
+transports rank-4 constructor-closed predicates only; it does not automatically
+transport rank-7 lookup claims. Concrete join steps have explicit path/witness
+updates. Audit any further higher-rank interface rather than silently raising
+the existing guard. None of these definitions includes source acceptance,
+normalization, budget sufficiency or the target consistency theorem.
+
+## 2026-10-22 — literal PTS carrier and guarded finite-table witnesses
+
+Realize the homogeneous serialized alphabet directly as 29 Church leaf
+arguments plus binary pairing at one original PTS type C : U2. Keep
+certificates structural; this adds no raw HOAS envelope to the interpreter.
+The meta-level tag positions are a fixed finite telescope, not runtime
+Church numerals. Executable quotation and generation cover every raw tree,
+and quotation remains syntactically injective.
+
+Use an independently specified constructor guard Good_1(x) : U4, with
+exact rank-1 motives. Pair generation has type rank 5. Do not identify
+generation with parsing, acceptance or resource admission, or assert that
+all Church inhabitants satisfy it. Future graph/induction motives still
+require their own exact-rank guard design; no cumulativity is available.
+
+Reuse the unchanged shared annotated assembler and sound native successful-
+run checker, rather than duplicate them. Original PTS typing is every witness
+endpoint. Neither arithmetic interpretation, a set model nor an EA/H transfer
+is imported. Retain the seven prior certificate/serialization files unchanged.
+
+For the internal finite pilot use Boolean selectors E : U1. Can_1 and Can_2
+both have rank 3 but eliminate at DIFFERENT exact motive ranks. Open output
+guards/equality predicates before input elimination. The binary laws then
+use rank-1 motives and have fully quantified type rank 4. Tables and four
+entries are ordinary fixed-type arguments. Selector dispatch yields explicit
+expansion, not beta equality to an arbitrary entry: prove guarded expansion
+closure/equality and never invoke eta conversion.
+
+Close a small complete rejection gate: all closed height-zero certificates
+with recorded labels <= 1, independently classified as the two sort rules.
+Generate the finite PTS table from the native raw checker and prove its
+computation/coverage. Refute its acceptance on ALL Can_2 inputs using a
+rank-2 implication motive; the two branches are identity on Bottom after
+local syntax checking. This is not global normalization or external
+Bottom emptiness, and the bound is not silently generalized. Next construct
+variable-size resource graphs and guarded closure/joining at a fixed carrier.
+
+## 2026-10-22 — homogeneous binary certificates with exact decoding
+
+Use one external code tree, Atom over a fixed finite tag type plus binary
+Pair. Encode every natural label/index by canonical positive bits with a
+separate zero. No unbounded natural occurs as an Atom payload. Complete inputs
+carry the scope index and both context and typing certificates, including all
+annotations and equality instructions. The decoder reconstructs ORIGINAL
+scoped syntax; acceptance is the existing independent native Boolean checker.
+
+Require both inverse laws. Re-encoding every successful decode gives the
+literal input tree, so missing/extra fields, wrong tags and noncanonical bits
+are rejected instead of repaired. Encoding is injective, including complete
+inputs across scope indices. Use shared proof tactics for the repeated parser
+fields while retaining each explicit grammar clause.
+
+Raw compression is partial only at the structural decoding boundary and
+preserves acceptance. A well-scoped rejected input can still be compressed;
+the domain theorem contains no acceptance/soundness condition. Malformed trees
+remain raw carrier values, rejected by the checker; eventual resource admission
+must include them too. Successful parsing is not the final admitted-domain guard.
+
+Charge all nodes in the serialized tree, including binary labels and repeated
+fields. Prove the whole-input support bound and every compressed label bounded
+by that node count, plus the exact positive-bit encoding size. This settles a
+representation-size obligation, not a binary machine cost or proof-transport
+bound. The new fixed homogeneous carrier is still Rocq data; its PTS realization
+and guarded internal finite elimination are the next construction.
+
+## 2026-10-22 — native certificate adequacy and complete-input compression
+
+Start the direct consistency library with the explicit-location Agda certificate
+format, using ORIGINAL scoped Term nat, Ctx, Typing.typ and RankSorts. Keep the
+six-rule grammar and executable Boolean acceptance free of native typing and
+normalization premises. Context declaration proofs are separate checked inputs;
+original sort/variable typing alone does not certify context well-formedness.
+Completeness from Prop-valued typing is an existential Rocq theorem, not an
+extracted derivation-directed program or an original PTS inhabitant.
+
+Count distinct support labels below each source label. Preserve successor at
+supported predecessors, monotonicity everywhere, and hence each used max(S a,b)
+product equation. Include context PROOFS, annotations, conversion instructions,
+explicit rule ranks and computed product ranks. Compression preserves checking,
+original typing, term node counts and Bottom; support labels remain distinct.
+Charge repeated data on expansion. The proved bound is on label occurrences;
+binary serialization cost, checker/substitution output size and transported
+proof/history size are separate obligations. Raw beta intermediates are never
+required to be typed or normalizing.
+
+Use only PTSrk/Stdlib/Equations dependencies. Neither arithmetic interpretation,
+the set model nor an Agda axiom is imported. Intrinsic scoping simplifies this
+first external interface, but does not replace the next homogeneous structural
+serialization/decoder and fixed-carrier guarded finite-elimination construction.
+Do not present this external milestone as the roadmap's internal compression
+gate, all-budget soundness or consistency proof.
+
 ## 2026-10-22 — direct resource-relativized internal consistency
 
 Prefer proof-local syntactic soundness and normal-Bottom separation to full

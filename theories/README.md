@@ -30,7 +30,9 @@ directory; BZC is ongoing and the self-interpreter has its separate
 | [functional](Interpretation_of_R/functional/README.md) | `Interpretation_of_R.functional` | `@theories/Interpretation_of_R/functional/audit` |
 | [ZFC_model](ZFC_model/README.md) | `PTSrkModel` | `@theories/ZFC_model/audit` |
 | [NormalizationComplexity](NormalizationComplexity/README.md) | `PTSrk.NormalizationComplexity` | `@theories/NormalizationComplexity/audit` |
+| [CombinatoryLogic-rk](CombinatoryLogic-rk/README.md) | `PTSrk.Combinatory` | `@theories/CombinatoryLogic-rk/audit` |
 | [self_interpreter](self_interpreter/README.md) | `PTSrk.SelfInterpreter` | `@theories/self_interpreter/audit` |
+| [self_consistency](self_consistency/README.md) | `PTSrk.SelfConsistency` | `@theories/self_consistency/audit` |
 
 Each folder has its own Dune theory stanza. Both arithmetic interpretations
 depend on the shared arithmetic library and kernel, not on one another or

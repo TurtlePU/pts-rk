@@ -24,8 +24,9 @@ infrastructure, theorem statements, key proof arguments and limitations.
 | [functional](theories/Interpretation_of_R/functional/README.md) | `Interpretation_of_R.functional` | Theorem 7 and effective original-PTS witnesses, including `Kernel.Theorem5Target` |
 | [ZFC_model](theories/ZFC_model/README.md) | `PTSrkModel` | Original typing soundness with explicit set-theoretic parameters; material BZC reduction remains open |
 | [NormalizationComplexity](theories/NormalizationComplexity/README.md) | `PTSrk.NormalizationComplexity` | Costed TOWER upper bound, fixed-rank ELEMENTARY bound, linear rank-bound traversal, STLC reduction preserving and reflecting conversion |
-| [CombinatoryLogic-rk](theories/CombinatoryLogic-rk/README.md) | `PTSrk.Combinatory` | Sound 65-shape Hilbert catalogue and graded syntactic soundness; source completeness remains open |
-| [self_interpreter](theories/self_interpreter/README.md) | `PTSrk.SelfInterpreter` | Shared algebra folds, tag-free dependent unquotation and numeral-free combinatory CPS; rank-only dependent algebra remains open |
+| [CombinatoryLogic-rk](theories/CombinatoryLogic-rk/README.md) | `PTSrk.Combinatory` | Sound 65-shape Hilbert catalogue, proof-code extraction, finite-basis obstruction; source completeness remains open |
+| [self_interpreter](theories/self_interpreter/README.md) | `PTSrk.SelfInterpreter` | Shared algebra folds, tag-free dependent unquotation, faithful compatibility codes and numeral-free combinatory CPS; rank-only dependent algebra remains open |
+| [self_consistency](theories/self_consistency/README.md) | `PTSrk.SelfConsistency` | Native certificate adequacy/compression, fixed-rank resource histories, capacity and relational preservation; all-budget bounded soundness remains open |
 
 The checked STLC reduction supports the paper's lower-bound argument using an
 external hardness theorem; that theorem and machine-level TOWER-completeness
@@ -47,6 +48,7 @@ dune build @theories/ZFC_model/audit
 dune build @theories/NormalizationComplexity/audit
 dune build @theories/CombinatoryLogic-rk/audit
 dune build @theories/self_interpreter/audit
+dune build @theories/self_consistency/audit
 ```
 
 Audits print public theorem types and/or transitive assumptions on compilation.

@@ -1,4 +1,1837 @@
-# Live proof-development state — 2026-10-22
+# Live proof-development state — 2026-10-24
+
+## Requested publication checkpoint
+
+User authorized committing and pushing the combinatory presentations,
+self-interpreter and internal-consistency developments. Combinatory sources
+and their retained verification records are committed as aa70054; internal
+consistency sources and records as a9fed96. Self-interpreter sources were
+already committed (7854d1d); no pending source changes were found there.
+Shared documentation and the self-consistency CI stage are being committed
+separately. Unrelated BZC/prose changes remain in the working tree.
+Existing focused verification remains the proof evidence. Publication check:
+`OPAMROOT=/Users/akuklev/.local/share/pts-rk-ci/opam /Users/akuklev/.local/share/pts-rk-ci/bin/opam exec --switch=pts-rk-ci -- dune build @theories/CombinatoryLogic-rk/audit @theories/self_interpreter/audit @theories/self_consistency/audit`
+was intentionally interrupted with SIGINT (exit 130) during dependency
+recompilation, after about four minutes. No compiler error was observed;
+load-path/deprecation warnings occurred. Output was streamed to the session,
+not retained as a complete raw log; this is NOT a successful audit or fresh
+assumption inventory. Shell syntax and staged documentation whitespace pass.
+The existing NamedTemplates.v EOF blank-line warning is preserved to avoid
+changing audited proof bytes. Mathematical goals remain as below; no new
+proof source was edited for publication. Next exact command: `git push origin main`.
+
+## Second-paper plan: documentation only; no new development requested
+
+The user explicitly requested planning, not further implementation. The
+introduction now states six goals: three principal binder-free Agda sources
+(Church-encodable natural-model QIIRT, definitionally beta-canonical normal
+model, cumulative whole-rank/length-bounded fragments with Church application
+and native extraction); Hilbert/MM0 correspondence; partial finite models
+and internal bounded soundness toward the specified consistency sentence;
+indexed self-interpretation with source folds and typed CPS.
+theories/CombinatoryLogic-rk/SECOND-PAPER-PLAN.md records seven milestones,
+acceptance gates, existing components and exact remaining obligations.
+
+No Agda, Rocq, MM0, Dune or build-driver changes. All 156 proof/configuration
+files match the preceding checkpoint (79 Agda, 73 Rocq, Dune/MM0/two drivers).
+No proof checks rerun. Documentation build PASS 03:13:21–03:13:37 UTC; PDF
+inspection PASS 03:14:25–03:14:27 UTC: 42 pages, appendix 3, 72 Rocq/55 Agda
+badges, 172 links. All pages rendered; 1–3 and 42 reviewed. Six-goal/order
+check PASS.
+Evidence: verification/combinatory-paper-plan-2026-10-24/COMMANDS.md.
+Existing user changes preserved; no staging/commit/push.
+
+Do not resume formal construction until the user requests it. The first
+planned step is to freeze the three shared interfaces, closed definitional
+equality target, internal-rank/label/size grades, Church/extraction contracts,
+source-fold interface and precise internal consistency predicate. Earlier
+proof checkpoints below describe reusable work, not completion of this plan.
+Next documentation check: `bash theories/CombinatoryLogic-rk/build-note.sh`.
+
+## Combinatory logic: dependent normal algebra and original raw checker
+
+Seven new safe Cubical modules, 1,523 lines. NormalizedFamilies constructs
+normal types/inhabitants with ORIGINAL truncated typing, dependent substitution
+action, identity/composition paths and beta correspondence. castNF changes
+only typing evidence and agrees with whole-record transport. Comprehension
+gives terminal/projection/pairing/last-variable operations, actual beta/eta/
+uniqueness/naturality paths and lifting into normalized extensions. Products
+gives structural Pi/lambda, universe/El, normalizing dependent application,
+original beta and typed product/lambda/application naturality. No function eta.
+
+NormalizedInference computes the normal type/rank from mere original
+typability, proves witness independence and the typed-fibre isomorphism,
+and covers every original derivation. NormalizedContexts is genuine IR of
+contexts and decoding, extending by normal declarations. Mere well-formedness
+is derived internally; normalization/action/computed types require no supplied
+witness. NormalizedExamples computes dependent substitution f U0, polymorphic
+identity's two applications, and witness-free IR operations by refl.
+
+NativeBidirectional now structurally decides ORIGINAL Typ for arbitrary raw
+annotated subject/type in a well-formed context. It constructs original typing
+before normalizing types; rejection refutes all original derivations. The raw
+context entry decides WellFormed Γ × Typ Γ t A, not bare Typ in malformed Γ.
+Nine positive/negative/reducible-type tests compute by refl. This closes raw
+original typing decision, beyond the preceding certificate-only interface.
+
+Fresh aggregate 79 Agda PASS 02:38:49–02:42:19 UTC, exit 0/zero warnings;
+pinned Agda 2.8.0-3d04bac/Cubical v0.9, copied sources/isolated config/data,
+--safe --ignore-interfaces. All 146 baseline files unchanged: 73 combinatory
+Rocq, 71 preceding non-aggregate Agda, Dune/MM0. No Rocq/MM0/full-CI rerun.
+Note PASS 02:37:19–02:37:36 UTC; PDF inspection PASS: 41 pages, appendix3,
+72 Rocq/55 Agda badges, 171 links. All pages rendered; nine visually reviewed.
+Evidence: verification/combinatory-dependent-normal-2026-10-24/COMMANDS.md.
+Final Products/Examples fresh passes also succeed under a 2 GiB heap cap.
+Earlier interrupted/metavariable checks and two overlapping-driver diagnostic
+limitations are retained; no positivity/termination checks were disabled.
+HEAD 6a8dc984 unchanged, existing staged/unstaged user work preserved;
+no staging/commit/push. Seven new proof sources are untracked.
+
+Full combinatory QIIRT replacement remains OPEN. Current normal operations
+use native binders and the proved native normalizer. The mutual IR only
+defines contexts/decoding, not all normal syntax/hereditary evaluation.
+First remaining goal: package a literal QIIRT interpretation (its Sub index
+order is reversed), proving context sethood/adequacy, exact dependent S/K/P
+template/guard realization, and every path. Then source completeness,
+equality reflection and the full positive/terminating mutual IIRT. A direct
+arbitrary-output SK canonical evaluator and whole-presentation code savings
+remain separate obligations. Next exact check:
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`.
+
+## Combinatory logic: normal-first operations and direct ground evaluation
+
+Eight new safe Cubical modules (852 lines). SKSourceRank supplies a pure
+syntax budget, integrated into SKSourceNormal (+7 lines), avoiding proof
+evaluation; SKCanonicalExamples now computes public canonical operations by
+refl. Parallel draft adapters were consolidated, not retained as a second
+active normalizer. Existing canonical soundness/coherence/reflection remain.
+SKBracketSize proves compiler output <=4^source-nodes and canonical output
+<=4^(tower d N), with computed source budget d and annotated expansion size
+N. This counts S/K/ground atoms, not payloads, intermediates or memory.
+
+SKDirectSoundness proves weak SK traces expand forward to native beta at
+all simple types. SKDirectGround gives directly binder-free canonical
+normalization/application/conversion decision at ground output. The checked
+SKDirectBoundary counterexample has canonical inputs but a four-atom weak
+function output versus an eight-atom canonical output. Weak application alone
+is insufficient at function output; stronger direct evaluation is not ruled out.
+
+CanonicalAlgebra gives computed-type fibres and normalizing application
+using ordinary Sigma, not a full dependent IIRT. NormalizedSubstitution
+normalizes ORIGINAL dependent valuations. Its SubNF stores normal images
+and truncated original typing witnesses; witness independence, actual
+identity/associativity paths, retraction and exact beta correspondence are
+proved. No category law is imposed as a quotient constructor. This is not
+normalized dependent type action/comprehension/products or QIIRT initiality.
+The note explains mutual normal syntax/hereditary operations as a design
+target: quotient elimination can disappear, but termination, positivity,
+substitution/product coherence and original-typing adequacy still need proofs.
+
+Fresh aggregate 72 Agda PASS 01:48:29–01:49:30 UTC, exit 0/zero warnings;
+pinned Agda 2.8.0-3d04bac/Cubical v0.9, copied sources/isolated config/data,
+--safe --ignore-interfaces. All 73 Rocq and 62 unchanged prior Agda,
+Dune/MM0 hashes agree (137 files). No Rocq/MM0/full-CI rerun.
+Final PDF PASS 01:49:44–01:50:00 UTC: 39 pages, appendix 3,
+72 Rocq/48 Agda badges, 164 links; all pages rendered, 15 visually reviewed.
+Evidence: verification/combinatory-normal-first-2026-10-24/COMMANDS.md.
+Early memory failures/interruption are retained; a smaller proved truncation
+eliminator fixes the final dependent-substitution check, including a fresh
+1500 MiB-capped worker run. No checks or statements were weakened.
+HEAD 6a8dc984 unchanged. Existing staged/unstaged user work preserved;
+no staging/commit/push. Eight new sources are untracked.
+
+First remaining goals: normalized dependent type action, context extension
+and product naturality over SubNF; and an arbitrary-result, beta-sensitive
+closure/spine evaluator agreeing with SKCanonical without lambda intermediates.
+Then prove the positive/terminating simultaneous IIRT and full dependent
+catalogue/QIIRT adequacy. Do not assume eta or identify weak SK equality with
+native beta. Atom-output bounds are closed; payload/runtime bounds and full
+presentation code savings remain open. Next exact check:
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`.
+
+## Combinatory logic: canonical SK outputs for native beta
+
+Six new Cubical modules,972lines: SKSource261,SKSourceEquality146,
+SKSourceNormal54,SKBracket264,SKCanonicalNormal97,SKCanonical150.
+Source greedy passes commute with original annotated erasure. Erasure is
+injective at fixed context/simple type, recovering hidden application
+domains. Native rank coverage supplies total source normalization, not a
+partial native parser. Deterministic bracket compilation has forward native
+beta correctness; compiling normal closed sources gives actual Core.Nf.
+The composition returns irreducible SK outputs and proves native-beta
+soundness/coherence/reflection/idempotence. Its fixed-point family is
+isomorphic to the native-beta quotient; application agrees. check-canonical
+decides the independent simple SK judgment and returns a canonical output.
+
+This is not direct binder-free evaluation or full dependent PTS coverage.
+Typed lambda syntax remains internal; soundness is native beta equivalence,
+not a forward weak-SK trace. No new output-size/runtime bound, eta rule or
+replacement of original Typ is introduced. Optional large computation tests
+caused excessive memory use and were stopped, then removed; logs preserve
+exit143 and snapshots. General proofs and small regressions pass.
+
+Fresh aggregate64Agda PASS01:06:10–01:07:02UTC,exit0/zero warnings,
+Agda2.8.0-3d04bac/Cubicalv0.9,copied sources/isolated config/data,
+--safe --ignore-interfaces. All73preceding Rocq/57non-aggregate Agda,
+Dune/MM0 hashes unchanged (132files). No Rocq/MM0/full-CI rerun.
+Final note PASS01:07:46–01:08:02UTC:37pages,appendix3,
+72Rocq/40Agda badges,156links; all pages render,10–12 reviewed.
+Evidence: verification/combinatory-sk-canonical-2026-10-24/COMMANDS.md.
+HEAD6a8dc984 unchanged; existing staged/unstaged user work preserved.
+No staging/commit/push. Six new Agda sources remain untracked.
+
+First remaining goal: direct canonical-image application agreeing with
+SKCanonical.apply-and-normalize, without native lambda intermediate.
+Then dependent catalogue coverage and QIIRT path compatibility against
+original typing; compiler-output size bounds and economical integration
+are separate obligations. Next exact check:
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`.
+
+## Combinatory logic: SK surface and beta-faithful reference
+
+Latest requested SK migration is implemented. Active sources/paper contain
+no superseded basis implementation; historical logs remain historical.
+SK.v (473 lines) gives a deterministic intrinsic simple-type compiler into
+S/K with original annotated typing and forward beta correctness. Conversion
+is preserved/reflected on source expansions; normal source expansions are
+equal iff their compiled expansions are beta equal. Numerals have10n+4
+atoms; ranks, arithmetic and unapplied native normal forms are proved.
+No native-NF parser, canonical SK code equality or dependent compiler is claimed.
+
+Six direct Agda modules now1021 lines versus1168, retaining total weak
+normalization, independent checking and the weak quotient isomorphism.
+Every SK expansion is natively typed. SKNativeCanonical (121 lines) adds
+actual native-beta normalization/decision, native-output idempotence and
+apply-and-normalize, and a native-beta quotient with injective normalization,
+decidable equality and application. It still returns native binder syntax.
+Contextual QIIRT now has S/K/P, no primitive identity; certified SKK
+computation is derived. Its full polymorphic/dependent coverage is open.
+Native Hilbert catalogue logical identity schemes remain independently valid.
+
+Fresh full active73-module Rocq audit PASS00:36:32–00:39:56UTC:1215own/
+1216aggregate closed reports,23new SK endpoints. Recursive kernel32s;
+full inventory byte-equals fresh pristine, inherited funext only, unsafe none.
+All72 retained Rocq bodies/native kernel/MM0 unchanged. Fresh complete
+58-module Agda closure PASS00:36:05–53UTC,exit0/zero warnings; all48
+unaffected Agda sources stable. Note/PDF PASS00:38:11–26UTC,36pages,
+appendix3,72Rocq/34Agda badges,150links; all pages render,2/10/11 reviewed.
+Evidence: verification/combinatory-sk-2026-10-24/COMMANDS.md.
+No staging/commit/push/full-repository-CI/MM0 rerun. Existing dirty work kept.
+
+First remaining goal: reify the native normalizer's output into intrinsic
+simple-type source syntax, fixing all hidden type choices deterministically;
+then compose with SK.compile to obtain actual canonical SK codes. Prove
+direct canonical application agrees with that reference before extending
+dependent coverage/QIIRT path compatibility. The native reference quotient
+does not discharge these obligations. Next verification:
+`bash docs/direct-r-handoff/verification/combinatory-sk-2026-10-24/AUDIT.sh`
+and the pinned `check-agda.sh` invocation in the evidence ledger.
+
+## Combinatory logic: direct binder-free normalizer and quotient
+
+Latest user task concerns a binder-free normalization/QIIRT integration,
+not further finite-Horn work. Six additive safe Cubical modules implement
+an independent simply typed BCKWI calculus: Core409, Bidirectional293,
+Coherence126, Equality123, Quotient77, Boundary140 lines. Total direct
+normalization constructs forward typed traces; normal forms are irreducible.
+Independent declarative typing is decidable. Weak conversion iff equality
+of normal forms, discrete annotated normal syntax, actual quotient/Nf
+isomorphism and shared normalizing application are proved. No fuel,
+native-expansion oracle, postulates or unsafe pragmas. Ground labels are
+inert test-calculus data, not new PTS primitives.
+
+The full requested dependent replacement is NOT achieved. Native-typed
+counterexamples show B I I and I weak-normal but beta-equal in original PTS;
+B I and arrow-typed I are beta-distinct, so eta is not a valid repair.
+Current QIIRT/native IIR/normalizer and finite bounds remain intact.
+No new PTS rank/size bound, arbitrary-strategy strong normalization or
+reduction in full-system code size is claimed. The original typing judgment
+has not been replaced by the prototype's checker.
+
+Fresh complete 58-module Agda closure PASS, exit0/zero warnings,
+2026-10-24 00:03:14–00:04:04 UTC. Pinned Agda2.8.0-3d04bac/Cubicalv0.9,
+isolated copies/config/data, --safe --ignore-interfaces. Build
+/tmp/pts-rk-combinatory-agda.At6TF2, final logs
+/tmp/pts-rk-binderfree-final.j8zDif; source stability passes. All51 preceding
+non-aggregate Agda,74 combinatory Rocq,Dune,MM0 hashes unchanged;
+Everything adds six imports. No Rocq/MM0/full-CI rerun or git index change.
+Final note build PASS00:04:39–54UTC,35pages,appendix3,72Rocq/33Agda badges,
+149links; all pages rendered,9–11 visually reviewed.
+Evidence: verification/combinatory-binderfree-2026-10-24/COMMANDS.md.
+
+First remaining goal: develop a beta-sensitive combinatory canonical form
+retaining native annotations, prove its original-beta soundness/completeness,
+then supply dependent catalogue coverage and QIIRT path compatibility.
+Only then extend bidirectional checking and compare equal-coverage code size.
+Next exact check:
+`AGDA_BIN=/tmp/pts-rk-agda-2.8.0.MvVO53/agda CUBICAL_DIR=/tmp/pts-rk-agda-2.8.0.MvVO53/cubical bash theories/CombinatoryLogic-rk/check-agda.sh`.
+
+## Self-consistency: uniform Horn interfaces and finite raw tables
+
+Five new frozen modules, 104 public endpoints: UniformHorn 19,
+UniformHornReindex 16, UniformGuardedHorn 16, FiniteRawDecoding 31,
+FiniteRawTables 22. UniformHornAudit checks/prints every endpoint; exactly
+six additive module registrations, one alias and one full-Audit import.
+Existing proof bodies remain unchanged. No staging, commit, push or cleanup.
+
+Fresh focused audit PASSES, exit 0/archive 0, 23:33:49–23:35:50 UTC
+(24 October locally). Compilation 69s, 23:34:06–23:35:15: 64 actual native
+modules, 414 closed reports including 104 new aggregate endpoints. Complete
+recursive kernel 27s, 23:35:15–23:35:42, VM enabled. Full inventory equals fresh
+pristine exactly: inherited functional_extensionality_dep only, unsafe none.
+Old-body/source/registration/driver stability, original kernel and frozen
+ZFC all pass. Live _build/self-consistency-uniform-horn-audit.lD2nv7;
+fresh /tmp/pts-rk-uniform-horn-fresh.cCcZgE; pristine
+/tmp/pts-rk-uniform-horn-pristine.oSFBh4; archive
+verification/self-consistency-uniform-horn-2026-10-24/audit.V54reH.
+Attempt 1 stopped before compilation on one terminal blank in the aggregate;
+failure retained, blank alone removed. Worker history archived separately;
+Decoding intermediate source snapshots and Tables01–07 snapshots were not
+available, but commands/logs/hashes/times/exits and final sources are retained.
+No full repository CI or unchanged older aggregate audit rerun.
+
+Actual generic Horn terms bind fragment/clause/position data internally.
+Unguarded proof fibers U4, node/consumer types U5, exact atom ranks 1/2.
+Clause selection transports arbitrary proofs with typed fold/composition
+beta laws. Explicit independent guards at exact ranks g=3/4 yield proof
+rank g+2 and node/consumer type rank g+3. Empty/nonempty Enum_3 ranks remain
+distinct. No concrete guard or interpretation handler is inferred.
+
+Bare finite raw decoding now has exact type rank 2, no Enum premise, by
+re-abstracting the raw algebra and dispatching only at X:U0. Canonical forward
+reduction reaches an expanded quotation; literal beta laws identify it with
+the old quote and canonical Enum_2 decoder. Both quoted forms retain syntax
+injection. The separate Enum_2 route has type rank 4, literal forward output,
+and independently typed standard admission of every raw tree at serialized
+size. No arbitrary-output coherence, internal parser, eta or parametricity.
+
+First remaining goal: instantiate actual raw clause/head/premise projections
+and independent clause-generation guards, construct the corresponding
+interpretation handler, and prove source-rule coverage/endpoint coherence.
+See verification/self-consistency-uniform-horn-2026-10-24/NEXT-PROOF.md.
+Generic elimination/reindexing is not this concrete model/source bridge.
+Original-PTS-to-catalogue completeness, operational resource sufficiency,
+milestone 4 and internally budget-uniform bounded soundness remain open.
+Next exact verification command:
+`bash docs/direct-r-handoff/verification/self-consistency-uniform-horn-2026-10-24/AUDIT.sh`.
+Roadmap/PDF build and inspection pass 23:33:23–29 UTC: 9 pages, 6 links,
+all pages rendered; 1/3/7/8/9 visually reviewed. Archive note.e1xHbA under the
+same checkpoint. Final TeX/PDF hashes are recorded there.
+
+## Combinatory logic: internal raw decoding and guarded computation
+
+Five new frozen modules compile, with 130 closed public reports:
+IndexedHornTransport 27, FiniteGeneratedCodes 23, FiniteMapCoherence 25,
+MM0InternalDecoder 27, MM0InternalGuard 28. Five additive Dune registrations.
+Fresh 74-module audit PASSES all gates, exit 0, 2026-10-23 22:55:34–22:59:07 UTC
+(24 October locally):
+live _build/combinatory-raw-internal-audit.i7AcKM; absolute build
+/tmp/pts-rk-raw-internal.Cw6I7V; pristine
+/tmp/pts-rk-raw-internal-pristine.mI4P4i; archive
+verification/combinatory-raw-internal-2026-10-24/audit.lNl9UC.
+Compilation 22:55:45–22:58:31 (166s) prints 1230 own / 1231 aggregate closed
+reports, 130 new. Complete recursive kernel check 22:58:31–22:59:05 (34s)
+passes; full inventory equals fresh pristine exactly, inherited
+functional_extensionality_dep only, no unsafe entries. All 77 hashes are
+stable; all 69 preceding proofs and the native kernel/MM0/52 Agda sources
+are unchanged. Exactly five additive registrations, safety and whitespace pass.
+
+Actual rank-four proof-to-proof translation accepts arbitrary open queries and
+independent source proof inhabitants. The semantic-to-raw instance fixes
+both supports before the query and proves every mapped-clause inclusion.
+Reserve lists enlarge indexing only, not denials or inference constructors.
+Raw least-model soundness composes separately at type rank four.
+
+Independent Enum_r(q) contains only canonical finite generation, not a target
+property. Formation rank<=max(3,r+1), consumer type rank<=max(4,r+2).
+The guard graph producer uses Enum_1; separate Enum_3 inputs prove input and
+Boolean projection coherence via rank-one Leibniz equality, with type rank five.
+No bare-code exhaustiveness, cumulativity between evidence ranks or native
+conversion is inferred. Canonical point constructors exist at every rank.
+The structural raw graph is independent of the program; both Boolean outputs
+are in support but only the correct one is a fact. Wrong answers have no
+closed proof, accepted proofs externally reconstruct source-instance records,
+and rejected entries are inert. These closed converses retain canonicity.
+
+First remaining goal: internally reconstruct raw source Expr/substitution
+records and their structural invariants, then abstract fragment/budget inputs.
+Fixed table certificates do not supply a recursive raw-tree interpreter or
+uniform budget-polymorphic soundness. Independent internal consistency and
+original-PTS-to-catalogue completeness remain open; no new runtime/size bound.
+Next exact verification command:
+`bash docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24/AUDIT.sh`.
+Note/PDF build and inspection PASS 22:56:41–58 UTC: 33 pages, appendix 3,
+72 Rocq / 27 Agda badges, 44 Agda links, 140 total; all pages render and 26/27/28
+visually reviewed. Archive note.v704EG under the same checkpoint.
+No earlier proof/kernel/Agda/MM0 edits, staging, commit, push or cleanup.
+
+## Combinatory logic: internally indexed queries and raw guard provenance
+
+Six new frozen modules compile individually,120 closed public reports:
+FiniteTypeDispatch14, IndexedHornEncoding17, IndexedHornRealization17,
+MM0GuardProvenance33, IndexedHornSoundness16, MM0IndexedReflection23.
+Six additive Dune registrations; all63 prior proofs are unchanged.
+Fresh69-module audit PASSES all gates,exit0,20:49:13–20:52:38UTC: live
+_build/combinatory-indexed-provenance-audit.rya6B6; absolute build
+/tmp/pts-rk-indexed-provenance.cjt8S0; pristine
+/tmp/pts-rk-indexed-provenance-pristine.8LBsHH; archive
+verification/combinatory-indexed-provenance-2026-10-23/audit.emobKi.
+Compilation20:49:23–20:52:08(165s) prints1100own/1101aggregate closed
+reports,120new. Complete recursive kernel20:52:08–35(27s) passes; full
+inventory equals fresh pristine exactly, inherited functional_extensionality_dep
+only, no unsafe entries. All72source/Dune/shared-equality/MM0 hashes are
+stable, all63preceding proofs and original kernel/MM0/52Agda sources are
+unchanged, and Dune adds exactly six registrations. Safety/whitespace pass.
+
+The independent indexed family Proof(q) has rank3. One actual original-PTS
+consumer binds arbitrary query q and proof p internally, with function TYPE
+rank4. It returns T(q); only canonical selectors reduce to a particular
+truth proposition. Generic typing is canonicity-free. Canonical source
+exactness and Void specialization still use external canonicity. Semantic
+support is fixed once; its duplicate positions need not have identical
+indexed derivability. A checked negative regression enforces this boundary.
+
+Raw structural guard/evaluator provenance independently distinguishes
+overflow from zero, reconstructs actual selected source substitutions, and
+reflects arbitrary raw proofs without alias-induced spurious derivations.
+The separate indexed raw encoding externally reflects arbitrary CLOSED
+inhabitants to source proofs, excludes overflow/Void, and covers exactly the
+source theory over finite budgets. Its support remains externally query-
+seeded; this is not yet an internal raw-Expr decoder/guard consumer.
+
+First remaining goal: Church-realize raw source-instance/guard/decoder
+provenance with internal correctness, first at fixed bounds, then represent
+fragment budgets uniformly. No independent internal consistency theorem,
+original-PTS-to-catalogue completeness or code-size/runtime bound is added.
+Next exact verification command:
+`bash docs/direct-r-handoff/verification/combinatory-indexed-provenance-2026-10-23/AUDIT.sh`.
+Note/PDF build and inspection PASS20:48:12–29UTC,32pages,appendix3,
+67Rocq/27Agda badges,44Agda links,135total; all pages render and pages1/25/26
+visually reviewed. Archive note.5KCYYS under the same checkpoint.
+No old proof/kernel/Agda/MM0 source changes, staging, commit, push or cleanup.
+Other-thread state below is preserved.
+
+## Combinatory logic: internal arbitrary-proof fixed-fragment soundness
+
+Five new modules compile individually, with 95 closed public reports:
+HornProofEncoding 18, HornProofRealization 13, GuardedFiniteSupport 36,
+HornInternalSoundness 11, MM0GuardedInternalReflection 17. Sources and the
+five additive Dune registrations are frozen. Fresh integrated audit PASSES
+all gates, exit0, 19:53:09–19:56:22 UTC. Live logs
+_build/combinatory-internal-horn-audit.JMyhh0, fresh absolute build
+/tmp/pts-rk-internal-horn.6x5cr6, pristine
+/tmp/pts-rk-internal-horn-pristine.LZ2nx4, archive
+verification/combinatory-internal-horn-2026-10-23/audit.td6KVY.
+Fresh 63-module compilation passes19:53:19–19:55:55 (156s):980 own/981
+aggregate closed reports,95 new. Complete recursive kernel passes
+19:55:55–19:56:20 (25s); its full inventory equals fresh pristine exactly,
+inherited functional_extensionality_dep only, no unsafe entries. All66
+source/Dune/shared-equality/MM0 hashes are unchanged before/after, all58
+previous proofs and original kernel/Agda/MM0 are preserved, and Dune is
+exactly five additive registrations. Whitespace/integrity/safety gates pass.
+
+The independent Church type quantifies one X_a:U1 per finite atom, followed
+by precisely the positive clause handlers and the query proposition. It
+contains no model, truth table or source-typing premise. Its rank is <=3;
+the original-PTS soundness-function TYPE has rank <=4. This is a real
+internal consumer of ANY native inhabitant of the proof encoding, not only
+externally emitted proofs. Every source proof compiles, and each clause
+accepts arbitrary encoded premise inhabitants. Exact finite indexing
+preserves proof trees, models, queries and denials, including every semantic
+valuation and universal Void atom. Denials are enforced by separate internal
+refuters, not encoded as positive inference constructors.
+
+The fixed guarded-MM0 positive model premise is discharged. At N>=5,D>=3
+every semantic Void query has an internal refuter. External inhabitation iff
+finite derivability, source-code realization and exact source/catalogue union
+coverage are proved, retaining faithful decoding and consistent-model bounds.
+Generic consumer typing uses no canonicity; the Void specialization and
+external converse retain the previous native canonicity dependency.
+
+First remaining goal: internally represent raw source proof/guard/decoder
+provenance and fragment parameters. Fragment, query, budgets and truth table
+are still metalevel parameters; this is NOT one internally budget-polymorphic
+raw-source reflection theorem or independent consistency proof. Original-PTS
+catalogue completeness remains separate. No code-size/runtime bound is added.
+Next exact verification command:
+`bash docs/direct-r-handoff/verification/combinatory-internal-horn-2026-10-23/AUDIT.sh`.
+No previous proof, native kernel, Agda or MM0 source is edited; no staging,
+commit, push, cleanup or unrelated process action. Other thread state below
+is preserved. Final note build/inspection passes19:55:35–19:55:52 UTC:
+31pages, appendix3,61Rocq/27Agda badges,44Agda links,129 total links.
+Every page renders; changed pages1/24/25 visually reviewed. Archive
+verification/combinatory-internal-horn-2026-10-23/note.nVOBmg. The first note
+attempt's overwide display failure is retained; aligned layout repairs it.
+
+## Combinatory logic: literal MM0 adequacy and guarded model existence
+
+Eight new modules,192 public endpoints: MM0NativeSyntax42,
+MM0ComputationalAdequacy37, MM0NativeReduction19, MM0CatalogueAdequacy12,
+MM0CatalogueRealization7, MM0GuardedSyntaxAlgebra39, MM0GuardedReflection15,
+MM0HilbertAdequacy21. All nine computational graphs and all65 catalogue
+instances have exact independent source correspondence. Literal PH iff
+native catalogue derivability is proved, reconstructing original closed
+terms/types and typing without native source admission premises.
+
+For EVERY N>=5,D>=3, all55 size/depth/sorting-GUARDED MM0 schemas have a
+fixed finite total constructor algebra/model under EVERY valuation, with
+UNGUARDED universal Void denial and nonempty universe typing. Selected
+subsets also have models. Source reflection and external native canonicity
+discharge consistency/model-existence premises. consistent_finite_union_exact
+covers every catalogue proof by an actually accepted model at bounds
+representing Void, with exact query decoding. Generated native certificate
+TYPES have rank<=4; D measures Expr depth, not native type rank.
+
+Fresh58-module compilation PASSES19:29:58–19:32:42UTC (164s), with885own,
+886aggregate closed reports,192new. Full recursive kernel checking PASSES
+19:32:42–19:33:06 (24s); its complete context inventory equals fresh pristine
+exactly: inherited functional_extensionality_dep only, no unsafe entries.
+All61 before/after hashes agree; all50 earlier proofs, original12kernel files,
+shared equality, MM0 and52Agda sources are unchanged; Dune changes only
+the eight additive registrations. Two earlier audit runs are retained:
+first a late Hilbert source addition races the snapshot (plus a repaired
+count-gate assertion fallthrough); second complete fresh compilation/kernel/
+inventory/source checks pass885own/886aggregate reports but the lexical safety
+scan flags a pure predicate named Admitted. It is renamed FitsSyntax without
+weakening the scanner. Final attempt03 passes all proof/integrity gates,
+but its no-index whitespace command returns1 for clean new-file differences
+with no diagnostic. The driver is NOT all-pass. Separate final recovery
+checks correct this exit-code handling and verify unchanged fresh sources.
+All ten final recovery gates PASS19:35:43–19:35:44UTC, exit0, including
+unchanged proof/note hashes and clean/failing whitespace/count fixtures.
+Live final logs _build/combinatory-mm0-bridge-final.LNIhbh; archive
+verification/combinatory-mm0-bridge-2026-10-23/final.MjHIDx.
+All proof/Dune sources remain frozen.
+Live logs _build/combinatory-mm0-bridge-audit.BLPblO;
+build /tmp/pts-rk-mm0-bridge.IH9mrh;
+pristine /tmp/pts-rk-mm0-bridge-pristine.2MonTA;
+archive verification/combinatory-mm0-bridge-2026-10-23/audit.HRs4x3.
+
+Final note build/inspection passes19:25:55–19:26:12UTC:30pages, appendix3,
+56Rocq/27Agda badges,44Agda links,124links. All pages render; changed pages and
+the final theorem page visually checked. Final manifest: verification/
+combinatory-mm0-bridge-2026-10-23/note.rQGnBx. All failures/commands retained.
+
+Next exact verification command:
+`bash docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/FINAL-CHECKS.sh`.
+First remaining mathematical goal: internally represent guarded source proofs
+and decoder provenance and prove reflection for arbitrary represented
+witnesses, not an externally indexed family of emitted certificates.
+Original-PTS-to-catalogue completeness and verified external MM0 text parsing
+remain separate. This does not close the other self-consistency thread's
+milestone4 or prove independent internal consistency. No commits/staging/
+pushes, original kernel/Agda/MM0 edits, cleanup or unrelated-process changes.
+HEAD remains6a8dc984fb59a9b3743503cd405ffe59a31d1978.
+
+## Operation provenance — fresh compilation and kernel verification complete
+
+Milestone 4 remains open. Seven new modules are freshly compiled and
+kernel-checked, with 80 public endpoints: NamedBeta (11), BooleanAgreement (8),
+ContextLookupCodes (13), InternalContextLookup (15),
+ContextLookupRealization (16), InternalComparisonGraph (14),
+ComparisonGraphRealization (3). All 80 appear in
+OperationProvenanceAudit. Proof sources are frozen. Attempt01 stopped before
+compilation on eight concurrent additive combinatory module registrations;
+exact normalization was reviewed, with all old proof bodies retained.
+Fresh attempt02 started19:27:45 UTC. Live logs
+`_build/self-consistency-operation-provenance-audit.dLxE0S`, absolute build
+`/tmp/pts-rk-operation-provenance-fresh.DkOoCf`, pristine
+`/tmp/pts-rk-operation-provenance-pristine.Smzrtd`.
+Fresh complete-closure compilation PASSES 19:28:08–19:56:57 UTC (1729s):
+80 new closed reports, 81 aggregate. The driver then exits 2 before kernel
+checking: editing its reusable file during the long build disturbed Bash's
+later reads (unexpected EOF). Preserve both versions and the raw failure.
+The first recovery stops on five more concurrent additive registrations;
+all other 524 raw hashes match. Root reviewed exact normalization of all 13
+additions. Immutable continuation 02 rechecks those inputs, pins 525 current
+paths, and passes corrected declaration/report gates. Full recursive kernel
+checking PASSES 20:03:03–20:24:26 UTC (1283s), exit 0, on the SAME fresh build.
+Its complete inventory equals pristine exactly: inherited
+functional_extensionality_dep only, no unsafe entries. All 18 continuation
+gates pass by 20:24:40, including exact 525-path before/after agreement,
+514 preceding source/registration checks, exact normalization, original kernel, frozen
+ZFC, safety and whitespace. The original invocation is NOT an all-pass audit.
+The declaration gate's earlier shell failure-propagation gap is corrected
+and tested: missing one Print with all 80 Checks intact fails both wrappers.
+The older full audit and repository-wide CI are not rerun.
+All 14 final documentation/source gates PASS, 20:26:43–20:26:50 UTC, exit 0;
+live logs `_build/self-consistency-operation-provenance-final.o9Z9IF`.
+The audit-final and final-checks archives preserve exact raw logs and readable
+copies, including all failures and empty outputs. Final note hashes agree.
+
+Literal context codecs are faithful and distinct from certificate-context
+serialization. The independent rank-18 lookup graph performs every original
+Context.index shift, including zero; its rank-19-type output-scope consumer
+applies to arbitrary represented witnesses. Whole-context scoping is a
+separate rank-14 guard. Executable standard witnesses, original/raw lookup
+agreement and context quotation injectivity compile. Internal extraction,
+arbitrary endpoint coherence and dependent typing remain open.
+
+Comparison Trace(x,y,z,b):U6 retains the actual Zip witness z and symbolic
+outputs. Formation, scoped applications and all three local Same1 agreement
+cases are checked for arbitrary open inputs. Full Trace constructors and
+arbitrary-Trace induction are NOT proved. Several inference/conversion
+attempts timed out; the unfinished candidates are outside theories. A
+symbolic named-context lookup lemma would help the present constructor
+implementation; the agreement fold may instead assemble the checked local
+branches directly with NamedSpine, independently of constructor lookup.
+This is a proof-engineering gap, not a mathematical obstruction.
+
+Local next proof step: lambda-abstract those local cases, convert the four motive
+heads structurally, and assemble the arbitrary-Trace fold. Then connect the
+remaining endpoint/source graph internally; operational sufficiency and
+finite-fragment dependent soundness are still separate obligations.
+The read-only plan in verification/self-consistency-operation-provenance-2026-10-23/
+NEXT-PROOF.md avoids constructor lookup: use exact applied-motive branch
+annotations and NamedSpine. First establish the expanded Trace telescope's
+formation by four FORWARD head reductions and subject reduction, not beta
+equivalence alone. Its proposed final type rank is 7, still to be checked.
+The concurrent Horn checkpoint above changes the preferred soundness backend:
+reuse its arbitrary-proof consumer and target an INTERNAL original-source-to-
+Horn bridge. Local comparison completion is needed only if that bridge uses
+the present checker route. Original-PTS coverage and represented fragment
+parameters remain open; this checkpoint does not inherit a completed
+raw-source soundness theorem from the independently audited Horn modules.
+UNIFORM-HORN-PLAN.md in the same evidence directory records an UNCOMPILED
+fixed-carrier proposal: one X:A->U1 and represented premise positions give
+proof rank max(a+2,c+2,p+3). First implement exact-rank premise-position/All
+formation and independent guards; native list folds have varying result
+ranks and do not supply that interface. Then derive actual model handlers
+and source translation, not assume them as admission fields.
+Next exact verification command:
+`bash docs/direct-r-handoff/verification/self-consistency-operation-provenance-2026-10-23/FINAL-CHECKS.sh`.
+All worker attempts are archived there. Preserve the earlier audits below.
+The final roadmap builds/validates as eight pages and six links; final pages
+2--6 are byte-identical to reviewed renders, and pages 1/7/8 are visually
+reviewed anew. The new note-horn-final archive retains four build attempts,
+two literal-text inspection failures and the repaired orphan-page layout.
+It incorporates the concurrent arbitrary-proof Horn soundness advance
+without claiming a uniform internal raw-source bridge or original-PTS
+catalogue completeness. Final TeX/PDF hashes begin 85749fa0/97381411.
+No staging, commit, push, cleanup, original-kernel or frozen-ZFC changes.
+
+## Combinatory logic: explicit guarded quantified fragments
+
+Seven new modules are individually compiled and recursively kernel-checked:
+GuardedFiniteCarriers (28 closed reports), GuardedHornFragments (19),
+GuardedHilbertModels (27), GuardedBetaGraphs (36), GuardedHilbertTables (36),
+GuardedHilbertCoverage (20), MM0GuardedQuantification (29): 195 new endpoints.
+All worker inventories match pristine inherited functional_extensionality_dep
+only, with no unsafe entries. Fresh 50-module compilation passes
+18:28:44–18:30:57 UTC: 693 own reports, 195 new, 694 aggregate. Complete
+recursive kernel checking passes18:30:57–18:31:19; the entire inventory
+equals fresh pristine exactly. All53 source/Dune/shared-equality/MM0 hashes
+are unchanged. Original kernel, all43 preceding combinatory sources, MM0
+and all52 Agda sources remain unchanged. No new Agda/MM0/full-CI run.
+Live logs _build/combinatory-guarded-fragments-audit.ACxpVa; absolute build
+/tmp/pts-rk-guarded-fragments.Hzzxi9; pristine
+/tmp/pts-rk-guarded-pristine.HmTbHx. The final archival whitespace gate failed
+(exit2); exact raw logs are retained as gzip and readable copies normalized.
+Separate FINAL-CHECKS.sh reruns the gate and verifies all proof-source hashes;
+do not describe the original driver invocation as all-pass.
+All nine final gates PASS at18:37:10 UTC, exit0; live logs
+_build/combinatory-guarded-final.ftRIP5. No proof-source or note hash changed.
+
+Fixed finite positional native-syntax carriers have total app/Pi/lam/subst,
+numeric input/output guards and explicit overflow. The qualitative model
+advances P_h to P_(h+1); the executable model instead closes the entire finite
+guarded clause set. All six Hilbert rule forms and ALL finite parameter
+tuples are retained subject to independent syntax/path guards. The Boolean
+beta graph bounds EVERY witness state. Semantic rule correspondence,
+universal Void exclusion, nonempty typing and genuine Void representation
+are proved. Generated native satisfaction certificates have rank at most4;
+arbitrary fragment deductions compile to actual original PTS proofs.
+
+Executable union coverage is exact for the INDEPENDENT catalogue, including
+actual finite-carrier quoted queries, monotone budget enlargement and one
+common budget for a finite proof family. This does not supply original-PTS
+catalogue completeness, full55 MM0/native graph adequacy or uniform internal
+reflection. Native canonicity supplies external Void exclusion. The separate
+literal-MM0 guarded compiler has exact all-valuation conditional checking and
+source/certificate correspondence, not unconditional full55 model existence.
+State/path bounds are not bounds on all host allocations or generated terms.
+
+The first fresh49-module audit hit `No space left on device` and was stopped
+(exit137). No unrelated data/processes were changed. About260MiB subsequently
+became available and writes recovered. Coverage then compiled and passed full
+recursive kernel verification. First note build compiled but inspection found
+a literal display caused by a trailing backslash; it was repaired. All
+failures and exact worker commands are in
+verification/combinatory-guarded-fragments-2026-10-23. Final note build and
+validation pass18:27:19–18:27:34 UTC; PDF inspection passes: 30pages,
+three-page MM0 appendix, 48Rocq/27Agda badges, 116links. All pages render;
+guarded-content pages22–24 visually reviewed. Final source/PDF hashes are
+recorded in note-final.sha256. No verified proof sources changed afterward.
+
+Next verification command:
+`bash docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/AUDIT.sh`.
+First remaining mathematical goal: bridge the literal guarded MM0 graph
+theory to this native guarded presentation, and internally represent the
+source/provenance and bounded soundness invariant. External finite
+certificates/coverage do not complete the separate self-consistency milestone4.
+No commits, staging, pushes or changes to original kernel/Agda/MM0 sources.
+
+## Source provenance and internal residual execution
+
+Continuation adds CheckerSourceGraph (35 public endpoints),
+InternalExecutionGraph (28), CheckerGraphRealization (27), and the complete
+90-endpoint SourceProvenanceAudit. Fresh compilation passes
+18:09:36–18:14:39 UTC (303s): all 90 new reports closed, 91 aggregate.
+Complete recursive VM-enabled kernel verification passes 18:14:39–18:22:11
+UTC (452s), without dependency skips/admissions. Its entire context inventory
+matches fresh pristine: inherited functional_extensionality_dep only, no
+unsafe entries. The post-build raw hash gate then stops on a concurrent
+registration-only change; see below. Do not label attempt02 all-pass. Live logs
+`_build/self-consistency-source-provenance-audit.RB1ktf`; fresh absolute build
+`/tmp/pts-rk-source-provenance-fresh.yW2QOO`; pristine
+`/tmp/pts-rk-source-provenance-pristine.D4McFy`.
+
+The native source graph independently specifies all six local rules,
+step/equality fields, context lookup, context checks and raw failures.
+Induction derives compiler agreement, uniqueness, complete raw coverage and
+both Boolean outputs. SourcedResources adds this graph to the existing
+storage contract and excludes its previous self-comparison counterexample.
+No graph/resource field assumes evaluator agreement, typing or rejection.
+Native substitution, lookup and decoding remain explicit external operations.
+
+The actual original-PTS Run relation has independent leaf/conjunction
+constructors and rank five. One full-type-rank-six term proves agreement for
+arbitrary represented Run witnesses by exact-rank-one predicate transport,
+not beta equality or unproved parametricity. Standard execution witnesses
+retain symbolic comparator applications and conjunctions. The integration
+supplies both-output realization, actual ordinary acceptance (including a
+sort example), and conditional rejection. False execution is a theorem
+premise to establish, never resource admission. No source injection is
+claimed for residual programs or their execution witnesses.
+
+First remaining goal: represent source/endpoint provenance internally and
+combine it with the residual execution law. Retain context, certificate,
+subject, type and expression indices. Original context lookup requires all
+enclosing shifts; the existing environment lookup is not that operation.
+For annotated substitution, use the single-substitution environment and prove
+the coherence actually consumed; general replacement environments may be
+multivalued. Product-rank maximum and complete certificate/context parsing
+(including failures) remain. Standard realization and arbitrary-output scope
+do not discharge these internal endpoint laws. A total compiler and the
+joint Zip builder are optional routes, not mandatory prerequisites.
+
+Milestone 4 remains open. Even internal source agreement must be followed by
+operational resource sufficiency and internal dependent preservation/terminal
+exclusion or an adequate negative continuation. Do not derive those from
+external soundness/canonicity. DIRECT_ROADMAP now separates these boundaries
+in 492 lines/eight pages; build, validation, text/link checks and visual
+review of all eight pages pass. README now uses the same six milestone numbers.
+
+Audit attempt01 stopped at the old-source hash gate, exit1,
+18:05:15–18:05:22 UTC: concurrent combinatory Dune additions only. Attempt02
+started 18:09:13. It pins 510 paths (506 previous plus four new), preserves
+all 503 prior nonregistration bodies, and checks exact normalization of
+three additive registration files. After successful compilation/kernel checks,
+the source-stable gate exits1 at 18:22:18: the same combinatory Dune file gained
+two more independent module registrations. All other 509 hashes agree exactly.
+Read-only review confirms that removing exactly the six new module/alias
+entries recovers the previous hash; all prior dependencies/registrations are
+intact. A seventh registration appeared during archival and received the
+same exact read-only normalization check. These concurrent guarded-model
+modules remain outside this proof closure; no prior body or actual kernel
+dependency is exempted. All 13 post-build recovery/final checks PASS,
+18:28:16–18:28:24 UTC, exit 0. All 509 other entries agree across
+before/after/current; all 503 older bodies remain frozen and all three exact
+registration normalizations pass. Live final logs
+`_build/self-consistency-source-provenance-final.ddsFzI`. Full-tree snapshots
+are informational. The original full audit and repository CI were not rerun.
+All attempts, worker failures, exact commands and note evidence are in
+`verification/self-consistency-source-provenance-2026-10-23/`.
+
+Next exact verification command after source changes:
+
+```sh
+bash docs/direct-r-handoff/verification/self-consistency-source-provenance-2026-10-23/AUDIT.sh
+```
+
+HEAD remains 6a8dc984fb59a9b3743503cd405ffe59a31d1978. Work is uncommitted;
+no staging, commit, push, cleanup or unrelated proof edits were performed.
+
+## Joint interface, storage coverage and a precise checker blocker
+
+Current continuation stops before milestone 4 (internal finite-fragment
+soundness). Three new modules add 59 public endpoints: InternalJointTraversal
+(10), CheckerResourceBounds (38), ComputationBoundary (11). Fresh compilation
+passes 11:17:31–11:22:22 UTC: all 59 new reports closed (60 aggregate).
+Fresh audit PASSES all 24 stages, 11:17:16–11:28:25 UTC, exit 0. Complete
+recursive VM-enabled kernel verification passes 11:22:22–11:28:19 (357s),
+without dependency skips/admissions. Its entire context inventory equals
+fresh pristine exactly: inherited functional_extensionality_dep only,
+no unsafe entries. All 500 frozen previous entries remain unchanged and
+all 506 current before/after hashes agree. Original kernel, frozen ZFC,
+safety and whitespace checks pass. Old full audit/repository CI not rerun.
+All ten final light checks pass, 11:33:35–11:33:41 UTC. Two earlier attempts
+found only trailing blank lines in archived draft displays; byte-exact
+originals and failed logs are preserved. Verified proof sources are unchanged.
+Live logs `_build/self-consistency-joint-resources-audit.VWulyQ`,
+fresh absolute build `/tmp/pts-rk-joint-resources-fresh.TqBIPV`, pristine
+`/tmp/pts-rk-joint-resources-pristine.d7jjko`.
+
+InternalJointTraversal retains literal J:U4, constructors, projections to
+C:U2, independent GoodJ: J->U6 formation, and native telescope/head-reduction
+lemmas. It does NOT provide generation constructors or buildZip. Large
+conversion expansion was interrupted/killed; the compiled prefix passed
+11:15:28–11:15:54 UTC. Unverified candidates and root realization draft are
+archived outside theories. This is a proof-engineering limitation, not a
+mathematical refutation of the joint construction.
+
+CheckerResourceBounds faithfully serializes expressions and complete operands
+at EVERY synchronized comparison node. Its exact/quadratic storage bounds
+and original-PTS capacity witnesses cover source, residual expressions and
+all recursive traversal payloads. Complete raw-code size fragments receive
+one externally computed envelope, with malformed/rejected inputs included.
+No runtime, emitted-term, compiler-intermediate or internal budget-selector
+theorem is claimed.
+
+ComputationBoundary proves the proposed resource-only contract FALSE:
+scoped rejected bad_application q has actual generation/capacity/traversal
+witnesses, but Compare(q,q) executes to true; its proper checker executes to
+false and their PTS programs are not beta-convertible. The counterexample is
+a native Rocq theorem about a contract collecting actual PTS witnesses, not
+an internal PTS negation of the contract or a general consistency no-go.
+Independent source-to-operation local clauses are indispensable. Defining
+admission by evaluator/checker agreement would assume the missing theorem.
+
+DIRECT_ROADMAP now has 432 source lines and 7 PDF pages (previous 1390/21).
+All 7 pages visually reviewed; build/validation and text/link/render inspection
+pass. Exact final source/PDF hashes and four build attempts (two failures,
+one intermediate success, final success) are archived in
+`verification/self-consistency-joint-resources-2026-10-23/NOTE-REVIEW.md`.
+The note separates the finite internal schema from arbitrary-budget
+soundness, retains the six milestone numbers and parallel logical-scope audit.
+
+First remaining mathematical goal: a source-indexed checking/compilation
+relation, with independent clauses for every original source rule, context
+lookup and substituted endpoints, internal agreement for BOTH outputs and
+separate standard coverage. A total internal compiler is optional. The
+joint Zip builder is a narrower unfinished engineering step, not this theorem.
+Then prove operational resource sufficiency and an internal dependent
+invariant/normalization-or-negative-continuation with terminal exclusion.
+External certificate soundness/canonicity, scope alone and All supplied as
+admission cannot discharge milestone 4.
+
+Next exact verification command after source changes:
+
+```sh
+bash docs/direct-r-handoff/verification/self-consistency-joint-resources-2026-10-23/AUDIT.sh
+```
+
+HEAD remains 6a8dc984fb59a9b3743503cd405ffe59a31d1978. Work is uncommitted;
+no staging, commit, push, cleanup or unrelated proof edits were performed.
+
+## Residual checker execution verified, 10:04 UTC
+
+Five new proof modules plus ComparisonExecutionAudit add 92 public endpoints:
+InternalCodeComparison (14), CheckerComparisons (18), InternalComparisonFolds
+(24), CodeComparisonRealization (17), CheckerExecution (19). Fresh integrated
+compilation and full recursive kernel verification pass; all 92 new public
+assumption reports are closed (93 aggregate including imported Ranks).
+
+The unchanged native checker compiles externally to Truth/Compare/Both,
+retaining full comparison operands. Independent Zip(x,y):U4 carries only
+synchronized tree traversal, not equality/output/rejection. One literal PTS
+comparator of full-type rank5 consumes it and computes structural equality.
+One rank3 conjunction-expression carrier and evaluator of full-type rank4
+execute all residual comparisons/conjunctions. CheckerExecution proves exact
+forward-reduction iff correspondence with the original general and Bottom
+checkers, including malformed and scoped rejected inputs; no assumed callback,
+acceptance, normalization or rejection premise remains in those interfaces.
+
+IMPORTANT: this is not a closed C->Bool checker. Parsing, context lookup,
+endpoint/substitution computation and traversal generation remain external.
+Comparator correctness covers canonical raw quotations with generated Zip;
+expression correctness covers generated expressions. Do not claim arbitrary
+Church-inhabitant correctness. Raw serialization/quotation is still injective;
+distinct_sources_same_program formally shows residual programs are not.
+Traversal-node count is not an emitted-syntax or execution-cost theorem.
+Uniform dictionary branch generation and internal consistency remain open.
+
+Fresh audit passes all 23 stages, 09:56:05–10:04:43 UTC, exit0:
+`verification/self-consistency-comparison-execution-2026-10-23/AUDIT.sh`.
+Live logs `_build/self-consistency-comparisons-audit.ftbRbY`;
+fresh build `/tmp/pts-rk-comparisons-fresh.IyPIZj`;
+pristine `/tmp/pts-rk-comparisons-pristine.7FBUEo`.
+Fresh compilation passes 09:56:21–10:01:22 (301s). Complete recursive
+VM-enabled kernel checking passes 10:01:22–10:04:36 (194s), without skip
+or module-admission flags. Entire inventory equals fresh pristine exactly:
+only inherited functional_extensionality_dep, no unsafe entries. All 92
+declarations are covered; all 494 frozen prior entries unchanged, all 502
+current before/after hashes agree. Original kernel, frozen ZFC, safety and
+tracked/untracked whitespace checks pass. Old full audit/repository CI not rerun.
+
+Roadmap/PDF builds and inspection pass: 21 nonempty pages, seven links,
+all-page rendering; pages1/9/10/20/21 visually reviewed. Subsection4.4.2
+states exact computation and staging boundaries. Note build
+`/tmp/pts-rk-consistency-note.k6uAuy` (final); prior build B4XQac is preserved
+as intermediate evidence. Final source hash c1a0a46279efcdf8e7a567006416807b6d2cf34569ec99e20519a374d43ae30f;
+PDF hash 147e7a7824a499c742d3f8aabf77a230d604b38899f34c9c1d6e3ef70cb9a01a.
+Detailed worker/integration failures,
+successful commands and note evidence are archived in the verification folder.
+HEAD remains 6a8dc984fb59a9b3743503cd405ffe59a31d1978; work uncommitted.
+No index changes, commit, push, cleanup or unrelated proof changes this turn.
+
+First remaining goal: independently certified internal checker-compilation
+and traversal evidence, with exact source-checker correspondence and
+operation-specific resource sufficiency. A total internal compiler is optional
+if a relational resource package instead supplies independent witnesses with
+proved standard coverage and INTERNAL agreement. Never assume that agreement
+as admission. Keep both Boolean outputs.
+Then derive rejecting All branches by a separate internal finite-normalization
+or other soundness argument; All must not become resource admission.
+
+Concrete next candidate (DESIGN ONLY, not a checked theorem): replace a
+naive nested fold over two separate Good guards by one represented joint
+traversal J. Take J = forall X:U2, (C->X)^29 -> (C->C->X)^29 ->
+(X->X->X) -> X, with constructors atom-left/right-data, pair-left/atom-right,
+and paired child traversals. J has calculated rank4; folding at X=C gives
+projections L,R:J->C. An independent constructor guard GoodJ_4:J->U6
+would support one rank7-type term forall j:J, GoodJ_4 j -> Zip(L j)(R j)
+by a single fold, using existing Zip constructors. Verify these literal
+types/terms in Rocq first, then prove standard all-pair coverage. This does
+not yet align two separately represented inputs, certify arbitrary comparator
+inhabitants, supply full checker traces, or prove rejection. Naive nested
+Good_r folding lacks both sufficient motive rank and child Good_r witnesses;
+merely raising its outer rank does not fix the latter. This is a restriction
+of that proposed proof, not an impossibility theorem for internal generation.
+
+Next exact verification command after proof changes:
+
+```sh
+bash docs/direct-r-handoff/verification/self-consistency-comparison-execution-2026-10-23/AUDIT.sh
+```
+
+## Fixed internal dictionary elimination verified, 09:05 UTC
+
+The finite-fragment continuation now has ONE original-PTS consumer for
+represented finite dictionaries, rather than an externally varying case
+telescope. Three new modules plus FiniteDictionaryAudit add 56 endpoints:
+InternalFiniteDictionaries (20), FiniteDictionaryRealization (24), and
+DictionaryRejection (12). Existing proof sources are preserved; only Dune
+and Audit.v registration change among the previous proof infrastructure.
+
+For E:U1, List/Guard have rank3, All/Fill rank4, and the complete polymorphic
+eliminator/consumer type rank5. The Church fold constructs the type telescope
+internally using U3:U0. Only its final result is padded by D=(Top->Top):U2;
+this keeps every accumulator at exact rank3 without cumulativity. Nil/cons/
+append and separate All/Fill/Guard constructors are checked. Standard
+list/evidence quotation is executable, the telescope beta equation is exact,
+and list quotation is syntax-injective. Old source selectors retain their
+stronger beta-injectivity. DictionaryRejection instantiates one consumer for
+every complete-code bound and proves rejection for arbitrary admitted inputs,
+with independent canonical coverage for every raw code at its own size.
+
+IMPORTANT: uniform elimination is NOT uniform native-checker branch generation.
+The list, actual checker table and All package are still generated externally
+from b. The old branch proof uses external native normalization/canonicity
+to justify conversion. A symbolic checker call does not beta-reduce to false;
+folding identities cannot manufacture its All evidence. Never place that
+evidence in resource admission or claim the final consistency theorem. Current
+E:U1 fits selector domains, not the raw-tree carrier C:U2; exact-rank adaptation
+is separate and is not a proved impossibility.
+
+Fresh integrated audit PASSES all 22 stages, 09:04:26–09:05:22 UTC:
+56 new closed reports (160 aggregate), full recursive checking of the complete
+new closure, and exact complete pristine-inventory equality. Only inherited
+functional_extensionality_dep; no unsafe entries. All previous proof-source
+hashes, original kernel and frozen ZFC checks pass. Full older 495-report audit
+and repository CI were not rerun. Incremental failures and exact commands
+are preserved, not relabelled successful.
+
+Roadmap source/PDF build passes: 20 pages, seven links, all-page rendering;
+pages1/7/8/9/19/20 visually reviewed. Section4.4.1 states the checked interface
+and the remaining generation boundary. Logs and exact commands:
+`verification/self-consistency-finite-dictionaries-2026-10-23/COMMANDS.md`.
+Live logs `_build/self-consistency-dictionaries-audit.PkYzEJ`;
+fresh build `/tmp/pts-rk-dictionaries-fresh.KOCLBv`;
+note build `/tmp/pts-rk-consistency-note.QJT5ss`.
+HEAD remains 6a8dc984fb59a9b3743503cd405ffe59a31d1978; work uncommitted.
+No staging, commit, push, cleanup or unrelated source edit.
+
+First remaining goal: construct checker-specific All evidence internally
+from independent computation/finite-normalization certificates, with exact
+correspondence to the unchanged checker. Also represent dictionary/budget
+generation and prove sufficient-resource coverage/costs. A full dependent
+typing reconstruction remains optional; All must be a derived conclusion.
+A narrow next subgoal is output-neutral checker-trace reflection: independently
+defined CheckRun(resource,input,trace,boolean) should imply agreement with the
+represented checker for EITHER Boolean output. This is not rejection; a separate
+finite normalization/model-preservation and terminal-exclusion argument must
+exclude true. Never hide "every run returns false" in trace/resource validity.
+Next exact verification command after proof changes:
+
+```sh
+bash docs/direct-r-handoff/verification/self-consistency-finite-dictionaries-2026-10-23/AUDIT.sh
+```
+
+## Finite-fragment internal rejection schema verified, 08:24 UTC
+
+The user's selected route is implemented in six new proof modules plus
+FiniteFragmentAudit (95 new public endpoints). FiniteCodeFragments enumerates
+ALL complete raw codes by size, including malformed/rejected data, with exact
+finite indexing/roundtrip. FiniteFragmentNormalization uses the improved
+combinatory normalization and canonicity: accepted certificates share one
+computed finite carrier at each source-family bound; every beta state and
+the exact final native type are covered. Raw conversion intermediates are
+not assumed typed or normalizing. The original checker is unchanged.
+
+FiniteCaseGuards supplies independent arbitrary-arity internal case guards.
+FiniteFragmentTables compiles actual checker values, with exact general
+Boolean and judgment-checker correspondence. FiniteFragmentRejection proves
+rejection_typed b and rejection_type_sorted b: for EVERY EXTERNAL bound b,
+an actual original-PTS rejection term handles every guarded selector input,
+with type rank FOUR. Standard coverage includes every raw code at its full
+serialized size; FiniteSelectorSeparation retains beta-level injection.
+No rejection/normalization/typing conclusion is hidden in admission.
+
+IMPORTANT: rank uniformity is not interface uniformity. The arity, carrier,
+case telescope, table and generated proof still depend externally on b.
+There is no one internal all-budget consistency theorem and no proved
+operation-cost bound for enumeration/generation. Full dependent history
+reconstruction is now an optional alternative, not a gate to this completed
+finite schema. The improved native finite-model no-go is respected: these
+are genuinely growing guarded fragments, not one ungraded finite model.
+
+Fresh integrated audit PASSES all 21 stages, 08:23:08–08:24:10 UTC:
+95 new closed endpoint reports (199 aggregate), complete recursive checking
+of the full new dependency closure, and exact complete pristine inventory
+equality. Only inherited functional_extensionality_dep; no unsafe entries.
+Original/common/previous consistency/combinatory proofs and frozen ZFC are
+unchanged; before/after manifests match. Old full 495-report audit and full
+repository CI are not rerun. First fresh run's pre-existing whitespace failure
+is preserved; no previous proof was changed to fix it.
+
+Note/PDF build and inspection pass: 19 pages, seven links, all-page rendering;
+changed pages 1/7/8/18/19 visually reviewed. The roadmap's section 4.4 explains
+the schema, its actual ranks and remaining uniformity obligation; the stale
+all-true-model discussion now reflects the stronger combinatory results.
+
+Logs: `_build/self-consistency-fragments-audit.qOXzIr`.
+Fresh build: `/tmp/pts-rk-fragments-fresh.d7RHpo`.
+Exact commands, failures, source hashes and evidence:
+`verification/self-consistency-finite-fragments-2026-10-23/COMMANDS.md`.
+HEAD remains 6a8dc984fb59a9b3743503cd405ffe59a31d1978; all new work uncommitted.
+No staging, commit, push, cleanup or unrelated proof edit.
+
+First remaining construction: encode finite dictionaries and case evidence
+at one fixed resource-relative interface, with internal elimination and
+independent standard admission; prove generator/operation costs as needed.
+Do not infer this from the external family or place its rejection in a guard.
+Next exact verification command after proof changes:
+
+```sh
+bash docs/direct-r-handoff/verification/self-consistency-finite-fragments-2026-10-23/AUDIT.sh
+```
+
+## Quantified finite-model milestone verified; native boundary proved, 07:45 UTC
+
+Eleven new combinatory modules give complete total-constructor search on
+fixed finite domains, literal sorted MM0 schemas for all 55 axioms, exact
+universal semantic grounding and independent source-deduction translation
+into actual original PTS proofs. All constructor argument tuples and all
+axiom valuations are covered. Candidate certificate inhabitability exactly
+matches model existence for the supplied constructor algebra; certificates
+have rank at most four. Successful search supplies both constructor/model
+and native certificate. The explicit two-element subtheory has acceptance
+discharged analytically, not as an input premise.
+
+IMPORTANT: that subtheory omits sveq and f0. Substitution is identity and
+form/ax are empty, disabling the entire positive catalogue. Both omissions
+are explicitly refuted by the model; do not describe it as nearly full PTS.
+The full55 singleton candidate is computed false. Search at every fixed
+equicardinal domain is complete, but no full55 finite model or all-cardinality
+nonexistence is established. Two-element existence does not execute 2^28
+constructor tables. The textual MM0/AST crosscheck matches every expanded
+axiom but remains an untrusted parser test, not native adequacy.
+
+FiniteNativeModelBoundary proves the stronger requested full native interface
+IMPOSSIBLE on one ungraded finite term carrier, even with directed reduction:
+total compositional application + all native typing/beta soundness + semantic
+conversion/type reduction + empty Void imply injectivity of every Church
+selector family. A separate finite-test theorem proves the corresponding
+cardinality lower bound without the global native-soundness premise.
+This does not rule out genuine size guards, growing grades, or weaker selected
+schemas. It does not transfer automatically to literal MM0 without adequacy.
+
+Fresh integrated audit PASS, **07:43:26–07:45:14 UTC**, all 22 stages exit 0.
+43 modules; **498 own closed reports, 140 new**, plus one imported Ranks report.
+Complete recursive checking and full pristine inventory comparison pass:
+only inherited functional_extensionality_dep; no unsafe entries. Original
+kernel and all 32 previous combinatory sources/shared equality/MM0/52 Agda
+sources are unchanged; all before/after current hashes agree. No new
+Agda/MM0 checker/full repository CI run. All isolated failures/interruptions
+are preserved; the final fresh run succeeds as one unit.
+
+Final note/PDF build and inspection PASS, 07:41:38–07:41:53 UTC:
+28 pages, three-page MM0 appendix, 41 Rocq / 27 Agda badges, 109 links.
+All pages rendered; changed pages 1,18,20–22 visually reviewed.
+Exact commands, statuses, hashes and evidence:
+`verification/combinatory-quantified-models-2026-10-23/COMMANDS.md`.
+Live logs: `_build/combinatory-quantified-models-audit.fUUdPV`;
+fresh build: `/tmp/pts-rk-quantified-models.uhpkYv`.
+
+First remaining decision: specify a genuinely size-/proof-depth-guarded
+fragment and prove its exact bounded-source coverage, rather than silently
+weakening full quantified axioms. Alternatively establish the missing native/
+MM0 adequacy and transfer the obstruction. Finite proof translation is NOT
+one uniform internal theorem over arbitrary Church-coded proofs/budgets.
+No target switch or such uniform reflection theorem was made this turn.
+
+HEAD remains 6a8dc984fb59a9b3743503cd405ffe59a31d1978. Eleven new sources,
+Dune registration, note/PDF and documentation are uncommitted; all pre-existing
+dirty work preserved. No index action, commit, push or cleanup. Next exact
+proof-change verification command:
+
+```sh
+bash docs/direct-r-handoff/verification/combinatory-quantified-models-2026-10-23/AUDIT.sh
+```
+
+## Combinatory Void-denying models verified, 06:51 UTC
+
+The grounded-Horn loophole is repaired by actual negative constraints,
+not a positive false atom. Eight new Rocq modules prove original native
+Void canonicity, independent exact Hilbert-catalogue grounding and consistent
+model existence without a target-consistency premise. Every such model
+rejects all closed Void judgments. Finite ground fragments have executable
+exact least models, native soundness and finite signed propositional
+completion. The latter adds negative facts and is not the uncompleted theory.
+Original-PTS Church table terms have proved typing and true/false beta
+correspondence for these externally tabulated queries.
+
+FiniteUniversalHorn proves complete grounding over ALL semantic valuations
+of a supplied finite constructor interpretation and exact executable
+candidate-model checking. It does not establish candidate existence or
+schema adequacy for every quantified PTS fragment. FiniteModelBoundary
+proves only the total UNTYPED equational K collapse; typed/graded, guarded
+and directed-reduction candidates remain possible. Do not confuse the
+singleton ground-predicate model with a finite quotient of PTS syntax.
+
+Focused one-shot audit PASSES all 19 stages, 06:50:50–06:51:47 UTC, exit 0:
+fresh 32-module build, 358 own closed reports (117 new; 359 with Ranks),
+full recursive check and exact complete pristine inventory comparison.
+Only inherited functional_extensionality_dep; no unsafe entries. All original
+kernel files and all 52 previous Agda sources are unchanged. The source
+manifest is stable before/after checking. No new Agda/MM0/full-CI run.
+The two earlier failed audits are preserved, not relabelled successful.
+
+Final note/PDF build and inspection PASS, 06:48:39–06:48:53 UTC:
+27 pages, three-page MM0 appendix, 30 Rocq / 27 Agda badges, 98 links.
+Changed pages visually reviewed. Exact commands, failures, source hashes,
+inventories and logs:
+`verification/combinatory-consistent-horn-2026-10-23/COMMANDS.md`.
+Live final logs: `_build/combinatory-consistent-horn-audit.QbsFPC`;
+fresh build: `/tmp/pts-rk-consistent-horn.2l5WGN`.
+
+First remaining goal: construct an accepted finite constructor interpretation
+for a precisely specified quantified typed/resource PTS fragment; prove its
+schema agreement and coverage, then internalize soundness. External Church
+lookup compilation is not internal uniform saturation/reflection. The
+catalogue completeness/MM0/QIIRT bridges remain independent open obligations.
+
+HEAD remains 6a8dc984fb59a9b3743503cd405ffe59a31d1978. The eight modules,
+registration, note and documentation are uncommitted. Existing dirty work
+and simultaneous unrelated handoff additions are preserved; this work made
+no index changes, commit or push. Next exact focused verification command:
+
+```sh
+bash docs/direct-r-handoff/verification/combinatory-consistent-horn-2026-10-23/AUDIT.sh
+```
+
+## Finite-fragment/draft comparison — analysis only, 06:27 UTC
+
+The user's challenge corrects the scope of the preceding stopping gate.
+Failure of the selected homogeneous original-typing invariant does NOT block
+every bounded-consistency route. For an externally fixed finite domain of
+COMPLETE certificates, checker tabulation plus independent finite-case guards
+can yield internal rejection by exhaustive cases. FiniteRejection.rejection_typed
+already implements a two-code pilot. General all-index guard/rejection generation
+and its exact checker interface are still unformalized. This proposed family
+is not one internal theorem over arbitrary represented budgets.
+
+Read the original Zermelo draft consistency section and the actual combinatory
+note/modules. The latter establish bounded execution carriers, graded native
+soundness and actual fixed-table PTS programs; NOT fixed finite first-order
+models or an internal uniform reflection theorem. Program ranks 1/2 are fixed,
+but E_K interfaces, table size and unrolled iteration depend on external
+alphabet/size/pass bounds. Subject size alone does not bound full certificates.
+
+The draft offers a genuine weaker construction: its scoped graded analysis
+calculus G drops type-formation/context-validity reconstruction, retains grades
+and uses tagged-product projections plus elementary constant separation.
+Only active evaluation and negative grade-zero terminal exclusion are needed.
+No concrete mathematical flaw was identified in this review, but its source
+packet, separation and polynomial-transport claims remain unformalized.
+EA bounded induction and Pakhomov transfer supply the uniform logical step;
+an EA/H-free route must replace that apparatus, not merely compile the reducer.
+
+Important target difference: the draft fixes explicit typed-equality T^e;
+NativeProofCodes uses arbitrary raw conversion. External equivalence does not
+identify internal consistency formulas. No checker or target was changed.
+Do not treat an internal conversion between these predicates as mandatory if
+the user instead selects the draft's exact target. Design analysis and source
+labels are recorded in DECISIONS below the corresponding date heading.
+
+No proof/paper/PDF edits or new builds in this analysis turn; the preceding
+495-report/full-recursive verification remains the last proof checkpoint.
+Only STATE/DECISIONS were updated under the standing continuity instruction.
+No staging/commit/push. Next inspect the smaller invariant before extending
+the stronger route:
+
+```sh
+sed -n '1835,1925p' /Users/akuklev/Downloads/Logical_and_computational_strength_of_PTS_rk_Zermelo_revision.tex
+sed -n '2219,2470p' /Users/akuklev/Downloads/Logical_and_computational_strength_of_PTS_rk_Zermelo_revision.tex
+```
+
+## Replacement milestone verified; dependent-coherence gate open, 06:14 UTC
+
+Milestone 1 is complete. All six new modules pass isolated compilation and
+all 69 new public reports are closed. The integrated snapshot-2 build now
+also PASSES, **04:49:40–05:43:05 UTC**, 3205 seconds, exit 0, with exactly
+**495 fresh closed reports** and no reported axioms. Before/build source
+manifests are identical. Logs and exact staged commands:
+`_build/self-consistency-replacement-progress.aS3W5y`.
+
+The complete coherent isolated recursive check PASSES,
+**05:29:20–06:11:50 UTC**, 2550 seconds, exit 0. Both new roots and their
+entire dependency closure were checked with `-bytecode-compiler yes`, without
+admit/skip flags. Complete inventory equals fresh pristine exactly: inherited
+`functional_extensionality_dep` only, no unsafe entries. All mapped source
+copies and before/after manifests match. Evidence:
+`/tmp/pts-rk-replacement-realization.Fcusuc/kernel.*`, inventory-comparison
+and kernel-source-stability logs/exits.
+
+All 15 independent alternate-closure final stages pass at **06:13:32 UTC**:
+495 fresh reports, both snapshot comparisons, inventory equality, original
+kernel/frozen ZFC equality, all 74 previous-source entries and final 82-entry
+manifest stability. The redundant fresh checker was then deliberately
+terminated, **actual exit 143 at 06:14:19 UTC**; its staged record is not a
+pass. Snapshot 1 remains superseded, exit 130. The focused verification is
+complete through the explicitly recorded successful staged/isolated route;
+the reusable one-shot script is syntax-checked, not claimed as a successful
+one-shot run. Full repository CI was not rerun.
+
+First remaining mathematical target: internal dependent coherence under
+annotated substitution and arbitrary supplied conversion. The whole-history
+motive is rank-feasible. A source-node closure/stack machine may avoid
+reconstructing typing proofs, but first needs product-conversion injectivity
+and conversion transport under represented environments: align the exposed
+lambda's body context/type with the application's substituted codomain.
+Native `DefEq.equiv_Π_inversion` and `replace_equiv` specify these laws but
+do not supply internal PTS terms. Goals 2–4 remain open; the specific
+same-index and conversion-intermediate obstructions are not a general no-go.
+
+The requested weak-finite-satisfiability/Willard preparation is in the paper
+and DECISIONS. Final roadmap build **04** passes in
+`/tmp/pts-rk-consistency-note.kNYiVl`; PDF inspection passes: **18 nonempty
+pages, 7 links**, required text/math and all-page rendering. Pages 14, 16–18
+were visually reviewed. Source/PDF hashes are `final-note.sha256` in the
+progress directory. No proof changes after the snapshot freeze, no staging,
+commit, push or cleanup. HEAD remains
+`6a8dc984fb59a9b3743503cd405ffe59a31d1978`; pre-existing dirty work is preserved.
+Six new proof modules and their registration/documentation changes remain
+uncommitted. Next exact inspection command for the remaining coherence target:
+
+```sh
+rg -n 'equiv_Π_inversion|replace_equiv|ConversionRule' theories/DefEq.v theories/self_consistency/NativeProofCodes.v theories/self_consistency/CertificateAdequacy.v
+```
+
+After meaningful proof changes, use the pinned environment and the focused
+driver `bash docs/direct-r-handoff/verification/self-consistency-replacement-2026-10-23/AUDIT.sh`.
+Its future wholly fresh build/check allowances are 7200/3600 seconds. Do not
+weaken the independent checker, normalize all raw conversion intermediates,
+or retain a semantic-validity/target-soundness assumption in the resource guard.
+
+## Milestone1 complete; final audit running,05:29UTC
+
+ReplacementRealization isolated attempt02 PASSES05:10:04–05:28:10UTC,
+1086s,exit0;11freshclosed assumption reports,exit0. Logs/objects:
+/tmp/pts-rk-replacement-realization.Fcusuc. All69newpublic endpoints now
+compile with closed reports. Milestone1 fixed-environment annotated replacement
+and exact standard/raw/decoded substitution with internal output-scope witness
+is complete. No dependent soundness or consistency conclusion follows.
+
+Complete recursive VM-enabled check started05:29:20UTC,session1929, over
+the coherent isolated closure (both ReplacementRealization/InvariantObstructions
+roots, noadmit/norec,timeout3600). Preflight compares every old/newsourcecopy
+to currentrepo; its beforemanifest equals frozen snapshot2 byte-for-byte.
+Willard owns the process/pristineinventory/sourcecomparison. FreshDune in
+snapshot2 is compiling ReplacementRealization after all dependencies passed;
+term_lookup owns495freshreports and finalsource/inventory checks. See staged
+and alternative-continuation scripts/status in progress.aS3W5y. Do not claim
+these ongoing stages passed yet; snapshot1 remains cancelled130.
+
+First remaining mathematical gate: independently guarded hereditary
+application/beta-splicing/query composition with standard coverage. The
+whole-history motive avoids the bare rank cycle; low typing observations
+still require low-graph inversion/substitution. Goals2–4 are open, not ruled
+out. README/paper now identify milestone1 as completed. FinalPDF rebuild
+and finalstatus/evidence updates remain; no commit/push authorized.
+
+## Replacement template integration — in progress, snapshot 2
+
+The original inlined InternalReplacement isolated run ended at04:45:23UTC,
+exit124 (2400s timeout). Binder check and Qed passed807.268/836.205s;
+timeout occurred during application checking, not a reported proof error.
+The first fresh audit was deliberately interrupted BEFORE source edits:
+fresh-build exit130 at04:45:34UTC, preserved in audit.vyvjwb/status.tsv.
+Neither run is a pass. Its fresh Audit.vo had not been produced.
+
+Native NamedTemplates.v now proves assembler/substitution/closed-fragment
+congruence,16 public endpoints, isolated compilation exit0 in
+/tmp/pts-rk-named-templates.c4yc2f. Generic binder/app checks and exact literal
+PUBLIC TYPE specialization pass in temporary probes. New public constructor
+terms apply those templates to actual term_at; graph clauses/public types
+are unchanged. No target premise is retained. Helpers are local; public
+count is now69new/495total across six new modules. Shared common/original
+sources remain unchanged. This optimization is not a change of PTS rules.
+
+The exact frozen scope probe passes337.774s checking+320.2sQed, then original
+closed application, both assumptions reports closed. Logs:
+/tmp/pts-rk-replacement-template.BtTZx5/scope-01.*.
+Optimized full InternalReplacement compilation PASSES04:47:42–05:09:34UTC,
+1312s,exit0 in /tmp/pts-rk-replacement-optimized.tifSP4. Separate assumptions
+compilation passes,exit0,12closed reports. NamedTemplates also has16fresh
+closed reports,exit0. All public types/graph clauses unchanged;26declarations
+were compared literally against the first isolated copy and match.
+Agent term_lookup owns staged fresh audit snapshot2, started04:49:40UTC,
+session44302 in the SAME fresh /tmp/pts-rk-replacement-fresh.87Hwa9; it reuses
+unchanged completed dependencies, not old public reports (Audit.vo absent
+checked). Logs/scripts/status are in progress.aS3W5y. Initial snapshot,
+safety, registrations and74prior-source checks pass; Dune3600 is running.
+CompleteclosureVMcheck3600 follows. Agent willard reviewed integration with
+no capture/interface issue and will compile ReplacementRealization against
+the coherent isolated closure once InternalReplacement.vo exists. No source
+changes after this freeze without explicitly superseding the snapshot.
+Realization attempt01 exited127 because launcher omitted opam exec (no Rocq
+process ran). Corrected attempt02 started05:10:04UTC in
+/tmp/pts-rk-replacement-realization.Fcusuc,1800s. Willard then runs complete
+recursive VM-enabled closure checking over this coherent isolated closure,
+overlapping freshDune. If it passes, term_lookup will explicitly supersede
+the duplicate fresh-kernel stage and run the separately recorded tail checks;
+no cancelled stage will be relabelled passed. Fresh495reports still required.
+
+README/roadmap describe implemented replacement with verification explicitly
+pending. Goals2–4 remain open. A reviewed single WHOLE-HISTORY motive has
+rankmax(3,historyRank+1,observationRank), so avoids the bare iteration cycle.
+The concrete gate is independently guarded hereditary application/beta-splicing:
+low typing demands low-graph inversion/substitution; scope is insufficient;
+self-semantic environment guards risk recreating the cycle. Paper/DECISIONS
+record this candidate and limits, NOT a general impossibility theorem. The Willard
+preparation and earlier PDF build pass remain as recorded below. Rebuild PDF
+after final verification/status edits. No staging,commit,push or cleanup.
+
+## Replacement and invariant audit — in progress, 04:14 UTC
+
+Active request: finish milestones 1–4 unless a concrete blocker; prepare goal5
+by discussing weak local finite satisfiability and Willard in paper/internal
+notes. Five new modules are registered (53 endpoints;479 total):
+InternalTermLookup, TermLookupRealization, InternalReplacement,
+ReplacementRealization, InvariantObstructions. All earlier38 proof modules
+and original/common sources remain unchanged; only Audit/dune registrations
+extend them. Old76 hashes passed before registration; afterward old74 excluding
+Audit/dune pass. ZFC frozen comparison/index checks pass. No commit/push/cleanup.
+
+InternalTermLookup isolated attempt01 passes, exit0,9closed reports, exact
+relation18/bound19. Logs /tmp/pts-rk-term-lookup.LNt7Ed. TermLookupRealization
+attempt01 passes04:05:49–04:10:37UTC,288s,exit0,7closedreports, logs
+/tmp/pts-rk-term-lookup-realization.Q89Jed. InvariantObstructions attempt02,
+14closedreports and recursive VM-enabled dependency check pass, exit0, logs
+/tmp/pts-rk-invariant-obstructions.62zYsp. New InternalReplacement isolated
+attempt01 is RUNNING since04:05:23,timeout2400, logs
+/tmp/pts-rk-replacement.4FJeXN. ReplacementRealization is written/reviewed but
+has NOT yet compiled. Do not claim goal1 complete until both pass.
+
+New fresh one-shot audit started04:14:23UTC, shellsession18776:
+bash docs/direct-r-handoff/verification/self-consistency-replacement-2026-10-23/AUDIT.sh
+Fresh /tmp/pts-rk-replacement-fresh.87Hwa9; pristine
+/tmp/pts-rk-replacement-pristine.k3FQjN; logs
+_build/self-consistency-replacement-audit.vyvjwb. Limits3600freshbuild/3600kernel;
+complete newclosure rootsReplacementRealization/InvariantObstructions,
+supportedVMflag, noadmit/norec. Initial metadata/safety/registration stages
+pass. Audit still RUNNING, not a pass. Sources frozen at launch; if a compiler
+error requires edits, preserve this run's failure and record the changed source.
+Progress/source manifest: _build/self-consistency-replacement-progress.aS3W5y.
+
+Concrete goal2 restrictions now proved: implication has unique rankmax(r+1,s),
+callbackE->P fitsP's rankr iff rankE<r, so a same-index graph-premise fold
+cannot be repaired by raising the common index. A valid conversion certificate
+forU1:U0 includes an untypable beta-self-loop intermediate; requiring all its
+nodes strongly normalizing is false. These refute specific proof patterns,
+not all interpretations. A low-target/high-source one-step theorem remains
+possible, but needs a separately constructed history-stable invariant to
+iterate. A fuelled homogeneous machine is also not supplied by the current
+native normalization/finite-table APIs. Goals2–4 remain open.
+
+Willard primary references1108.6330v8(Def5.10/Thm5.11) and1307.0150v2(Thm4.1)
+are checked; DECISIONS and DIRECT_ROADMAP.tex now record the requested promising
+direction and precise limits. All-true Horn singleton models do not separate
+the contradiction atom; self-justifying extensions are not proofs in unchanged
+PTS-rk. Roadmap build01 passes in /tmp/pts-rk-consistency-note.HjyM9x;
+PDF inspector passes17nonempty pages/7links/all-page renders, changedpages13/15/16
+visually reviewed. Logs note-build-01/pdf-inspection-01 in progressdirectory.
+Substitution status prose still awaits final verification/update/rebuild.
+
+Performance diagnostic at04:30UTC: inlined replacement binder tactic passed
+in807s, Qed replay stillrunning; this is not yet completed modulecompilation.
+A TEMPORARY generic-lookup template check passed in88.9s plus86.4sQed, but
+naive eager specialization explodedmemory and that temp attempt was deliberately
+cancelled(exit143), not a proof failure. Agents are testing lazy/structural
+specialization in /tmp/pts-rk-replacement-template.BtTZx5; nothing adopted in
+frozen repo sources yet. If adopting it, explicitly supersede this audit
+snapshot; do not claim its old before/after manifests match changed sources.
+
+Next: inspect current isolated/audit logs, compile ReplacementRealization once
+InternalReplacement.vo exists, fix first compiler error if any; then finish
+fresh reports/kernel inventory, update paper/README/evidence and rebuild PDF.
+
+## Standard shift realization and substitution environments — checked
+
+Four new modules: RenamingLookupRealization, RenamingRealization,
+InternalSubstitutionEnvironment, SubstitutionEnvironmentRealization. They add
+41 public Lemma/Theorem reports (426 total). Independent source review finds
+no binder/annotation/rank or target-integrity issue. The generic renaming
+generator assumes pointwise RenAt witnesses; its standard shift specialization
+constructs them. Exact decoded/raw endpoints and application of the actual
+internal renaming_scope term are included. The single-substitution environment
+has rank13 and no output-scope premise in its clauses; its separate bound has
+rank14. This is not yet binder-lifted term lookup or full internal substitution.
+
+InternalSubstitutionEnvironment isolated attempt01 PASSES, exit0, in
+/tmp/pts-rk-substitution-environment.1e757d. Lookup/environment-realization
+compiled copies match final sources; their original shell exit statuses were
+not recovered after user resume. The isolated RenamingRealization attempt01
+was interrupted before binder-helper Qed and has no .vo: NOT a successful run.
+Fresh Dune integration PASSES in /tmp/pts-rk-renaming-fresh.T1RZXE;
+logs _build/self-consistency-renaming-progress.R8eFUQ/complete-build.log,
+03:09:08–03:22:09 UTC, 781 seconds, exit0, all 426/426 reports closed.
+Initial fresh-base wrapper was interrupted with no exit file; completion is
+established by this separate successful command:
+opam exec -- timeout 1200 dune build --build-dir /tmp/pts-rk-renaming-fresh.T1RZXE --display=short --no-buffer -j 2 @theories/self_consistency/audit
+
+The PREVIOUS seven-module dependency closure now passes full recursive checking
+with Rocq's supported -bytecode-compiler yes, no -admit/-norec: exit0,
+02:06:14–02:16:57 UTC including pristine check; exact pristine inventory
+(functional_extensionality_dep only, no unsafe entries). Logs:
+_build/self-consistency-renaming-vm.gH0ToE. This uses the standard VM conversion
+backend, including serialized bytecode; it does not erase the earlier
+VM-disabled timeout or claim that that conversion path completed. Current
+four-module recursive verification PASSES 03:22:22–03:36:57 UTC, 875 seconds,
+exit0 within timeout1800, same VM flag. Roots RenamingRealization and
+SubstitutionEnvironmentRealization and their COMPLETE dependency closure:
+exact pristine inventory equality, inherited functional_extensionality_dep
+only, no unsafe entries. Logs kernel.log, kernel-exit.txt/kernel-end.txt,
+current-inventory.txt in the progress directory. Before/after frozen-source
+checks both pass (76 entries); all 34 earlier proof sources and original/common
+files remain unchanged, except the intentionally extended Audit/dune registration.
+The frozen PR#1 ZFC model also matches. Note/PDF build 02 passes in
+/tmp/pts-rk-consistency-note.SzSwbM, with clean diagnostics; inspector verifies
+15 nonempty pages, four links, required math/text and all-page renders.
+Changed pages 12/13/15 visually reviewed. Final source/TeX/PDF hashes:
+_build/self-consistency-renaming-progress.R8eFUQ/final-sha256.log.
+
+First mathematical goal after the shift bridge: fixed term-valued lookup with
+independent weakening steps, then constructor-directed replacement and exact
+Syntax.subst realization. Dependent typing/conversion, resource sufficiency,
+raw admission, terminal separation and all-budget soundness remain open.
+Audit the precise relational statement/derivability conditions alongside those
+steps. No commit, push, staging or cleanup. Existing work remains intact.
+HEAD remains 6a8dc984fb59a9b3743503cd405ffe59a31d1978; index empty.
+The next implementation is the independently defined binder-indexed term lookup
+outlined in DECISIONS, not an assumed replacement theorem. After that change,
+the exact fresh audit command is:
+bash docs/direct-r-handoff/verification/self-consistency-renaming-2026-10-23/AUDIT.sh
+That one-shot script is syntax-checked but was not run as one unit at this
+checkpoint; the staged commands/results above are the actual evidence.
+
+## Annotated substitution and fixed-environment renaming — built; recheck timed out
+
+New CodeSubstitution, InternalBinary/BinaryRealization, InternalScope/
+ScopeRealization and InternalRenamingLookup compile in the pinned environment.
+Native raw replacement has exact annotated Syntax.replace/subst agreement,
+independent relational agreement, scope preservation and scoped totality.
+Internal binary carry and scope relations have actual original-PTS constructors
+and executable standard witnesses, including every untyped original term.
+Binder-indexed renaming lookup retains one F:C²->U12 under binders and proves
+every output Index at fixed rank. Independent source-bounded shift supplies
+the required FBound instance. No global functionality or inversion used.
+
+InternalRenaming.v PASSES isolated compilation, attempt 05 exit 0:
+00:44:53–00:58:24 UTC (811 seconds, filesystem timestamps). All 11 endpoints
+compile: independent source-directed graph U16, exact output Scope motive12,
+and actual preservation term with type U17. Final proof alone took about
+182 seconds. Only evaluation fuel changed after earlier Undecided results:
+binder/app 65536, final formation 16384, final fold 262144. An earlier restart
+had inconsistent isolated dependency checksums; coherent default closure fixes
+that. Attempt 04 was deliberately cancelled early (exit143), not a proof
+failure or timeout. No checker/CI or mathematical contract changed. Fresh
+dependencies pass at 01:05:26 UTC (1156 seconds); all 385/385 public reports
+are closed at 01:06:20. Independent recursive checking exits 124 at 01:46:20
+after its 2400-second limit, without reporting a proof error. It did not finish
+or produce a complete inventory; this is NOT a passing complete audit.
+Root progress logs:
+_build/self-consistency-substitution-progress; isolated renaming logs:
+/tmp/pts-rk-internal-renaming.LM9OJj.
+
+Important boundary: RenAt does not assert target=base+depth; its checked
+contract is boundedness, not an exact lifted-environment decoder. Native
+substitution correctness and internal scope coverage do not themselves
+realize the internal renaming graph. First subsequent goal: exact forward
+realization of bounded-shift renaming on every original t -> shift t; then
+fixed-base term-valued lookup and single substitution, followed by dependent
+typing/conversion preservation. Resource sufficiency and consistency open.
+
+Original/common sources and all 27 prior proof modules match the preceding
+fully checked source manifest; Audit.v/dune register all 385 endpoints. Manual
+post-timeout checks pass: fresh-audit before/after manifest equality, all eleven
+frozen source/note/PDF hashes, prior original/common/proof hashes, and original
+kernel comparison with pristine. Logs in the progress directory:
+sources-after-timeout.log, final-hashes-checked.log, prior-unchanged-final.log,
+original-unchanged-final.log. HEAD remains 6a8dc984fb59a9b3743503cd405ffe59a31d1978;
+index empty. No staging, commit/push or cleanup. Fresh audit started 00:46:00
+UTC against the unchanged snapshot; all public reports pass. Its recursive
+check ran 01:06:20–01:46:20 and
+covers the complete NEW dependency closure only; unchanged older optional
+modules retain the preceding full kernel audit below. Logs:
+_build/self-consistency-substitution-audit.FlM4MI; fresh
+/tmp/pts-rk-substitution-fresh.NONg0M; pristine
+/tmp/pts-rk-substitution-pristine.qcNAzd. Reproducible audit command:
+bash docs/direct-r-handoff/verification/self-consistency-substitution-2026-10-23/AUDIT.sh
+
+First verification goal: finish the independent new-closure check and compare
+its completed context inventory with pristine. COMMANDS.md in that directory
+records the exact proposed 7200-second retry against the frozen fresh objects;
+it has NOT been run. No CI check or timeout was changed to obtain success.
+First mathematical goal remains exact forward bounded-shift realization above.
+Roadmap/PDF build 02 passes with clean diagnostics; inspector checks all 15
+nonempty pages, four links and required text/math; changed pages 11–15 reviewed.
+
+## Consumer-directed preservation; mandatory obligations reviewed — checked
+
+Four new modules, 488 lines: RelationalTransport, LookupHomomorphisms,
+OccurrenceSafety, SimulationRealization. All 23 previous proof modules,
+original kernel, C/Good/Look interfaces and common infrastructure match
+their initial hashes. No existing rules, guards or proof definitions changed.
+
+Original PTS terms prove rank-4 consumer descent and negative safety for
+lookup/history; concrete Ext-absence propagates by transitivity, with actual
+nonzero-leaf/pair absence from stop proved using independent observations
+and exact padding. No external Bottom emptiness. Shape and generated filling
+preserve Look_5/Look_6/Hist at the same motive ranks and with unchanged paths.
+Standard realizations APPLY those maps to earlier lookup witnesses and
+convert endpoints by proved beta laws. Filling is forward-only, with a
+native non-reflection counterexample. These are not dependent substitution
+or source typing/normalization soundness.
+
+Review: full arbitrary-path functionality and matching-constructor inversion
+have no implemented consumers; optional lemmas, no longer mandatory next
+gates. For each actual consumer, prove every-output invariant preservation
+and thread the same result, or prove the needed coherence. Structural
+closure may replace internal numerical comparison. Preserving an independent
+invariant may avoid complete typing-certificate reconstruction. Neither
+option weakens independent acceptance, standard raw admission or actual
+operation/resource sufficiency. Source terminal separation remains necessary.
+
+Fresh audit started 23:29:14 UTC (22 October; 23 October local). Pristine
+build/kernel pass. Fresh dependencies pass 23:33:26 (242 seconds); separate
+reports 23:33:33, 283/283 closed (41 new). Recursive kernel checking passes
+23:33:33–00:03:42 UTC (22–23 October), 1809 seconds within the up-front
+2400-second limit. Complete inventory equals pristine exactly: unchanged
+functional_extensionality_dep only, no unsafe entries. Inventory comparison,
+original-source comparison and before/after source stability all pass at
+00:03:42; EVERY audit stage exits 0, no timeout. Logs:
+_build/self-consistency-relational-audit.ILJDGV; fresh
+/tmp/pts-rk-relational-fresh.ZbkLf6; pristine
+/tmp/pts-rk-relational-pristine.yosufK. Exact failures/contracts:
+verification/self-consistency-relational-2026-10-23/COMMANDS.md.
+Roadmap/PDF includes the obligation review and proposed exact substitution
+contract; final build /tmp/pts-rk-consistency-note.mqU7eX passes with clean
+diagnostics. Full PDFKit inspector: 14 nonempty pages, four links, required
+text/math and all-page renders; changed pages 4, 10–12 and 14 reviewed.
+No full CI, staging, commit, push or cleanup. HEAD remains
+6a8dc984fb59a9b3743503cd405ffe59a31d1978; index empty; prior dirty work preserved.
+
+FIRST NEXT GOAL: independent capture-avoiding replacement on annotated
+source codes, scoped-environment lookup/lifting, internal scope preservation
+and exact standard agreement with original Syntax.subst. Keep binary indices
+and lambda annotations. This serves dependent ApplicationRule and beta
+Contract; scope preservation alone is NOT their semantic/typing soundness.
+Then prove the actual source invariant and substitution/conversion contracts,
+operation sufficiency, standard resource admission and all-budget soundness.
+Generic Good_1/Look_5 motives do not automatically support these new invariants;
+check exact ranks without adding the preservation conclusion to graph rules.
+Next exact verification command:
+bash docs/direct-r-handoff/verification/self-consistency-relational-2026-10-23/AUDIT.sh
+
+## Histories, stratified cases and structural capacity — checked
+
+Six new modules (670 lines): LookupInversion, InversionRealization,
+LookupHistory, HistoryRealization, InternalCapacity, CapacityBounds. The
+original kernel, common infrastructure and all seventeen prior proof modules
+match their initial hashes. C, Good_1, Look_5 and Look_6 remain unchanged.
+
+Independent Look_9 supplies a rank-12 constructor-case eliminator with actual
+Look_5 child proofs and executable standard coverage. This is not matching
+constructor inversion. Full two-Look_5 functionality has only its precise
+type formed at U8, not an inhabitant. Independent Hist (rank 10) uses root
+and Look_6-segment rules; its rank-11 soundness term folds into the existing
+Look_5 relation using the previous composition term. Executable histories
+cover arbitrary finite successful segment lists, with exact sequential
+erasure/typing and application of actual internal soundness. This is
+fixed-rank history iteration, not same-rank Look_6 closure or arbitrary lifting.
+
+Tag-erasing shape preserves generation. Cap = Ext(shape a,shape b), rank 6,
+has original-PTS reflexivity/transitivity, extension/join and lookup/history
+laws. Exact beta correspondence and native-to-PTS realization yield a common
+structural budget for every supplied finite family. Packing/fill and flattened-
+path/result bounds are EXTERNAL; no bound is extracted from arbitrary Cap inhabitants
+and no full operation envelope is claimed.
+
+Fresh audit passes EVERY stage, 22:21:28–22:41:15 UTC (22 October,
+23 October local): pristine build/kernel pass; fresh dependencies pass
+22:24:58; separate audit passes 22:25:04, 242/242 closed reports (48 new).
+Recursive kernel checking passes 22:25:04–22:41:15 (971 seconds), within
+the up-front 1500-second allocation, no timeout. Complete inventory equals
+pristine exactly: only unchanged functional_extensionality_dep, no unsafe
+entries. Original-source and before/after source-stability checks pass. Logs:
+_build/self-consistency-closure-audit.lZcvKp, fresh
+/tmp/pts-rk-closure-fresh.e4JV26, pristine /tmp/pts-rk-closure-pristine.j8Tmf6.
+Exact commands/failures/contracts in
+verification/self-consistency-closure-2026-10-23/COMMANDS.md.
+Roadmap/PDF rebuilt and inspected: 13 nonempty pages, four links, all-page
+renders; changed pages 8–10/12 visually reviewed. Final build
+/tmp/pts-rk-consistency-note.plrNsb has clean diagnostics.
+No full CI, staging, commit, push or cleanup. HEAD remains
+6a8dc984fb59a9b3743503cd405ffe59a31d1978; index empty; prior dirty work preserved.
+
+FIRST NEXT GOAL: internally justified matching-constructor inversion and
+arbitrary-path functionality at the actual equality/motive ranks, or a proved
+relational invariant sufficient to replace their use in soundness. Direct
+functionality induction needs a rank-8 motive, above Look_5's exact rank 5;
+native syntax injection and higher-rank standard coverage do not fix this.
+No impossibility theorem is claimed. Operation-specific resource/proof-history
+bounds, standard admission, all-budget soundness and consistency remain open.
+Next exact verification command:
+bash docs/direct-r-handoff/verification/self-consistency-closure-2026-10-23/AUDIT.sh
+
+## Path composition and root/leaf separation — checked
+
+Four new modules, 551 lines: InternalPaths, ResourceSeparation,
+PathSubstitution, PathRealization. Original carrier/guard/Look_5 and all
+thirteen prior proof modules unchanged. Originally typed total plug with
+generation, associativity and guarded unit laws; exact beta correspondence
+on every raw tree and on quoted path concatenation. Independent Look_6
+has the same local rules at motive rank 6. Actual rank-9 composition term:
+Look_6(a,p,b) -> Look_5(b,q,c) -> Look_5(a,plug(p,q),c).
+Executable higher-rank witness generation has exact erasure/typing and
+standard coverage. The integrated standard theorem applies the actual
+composition term, then converts to the exact concatenated-path type.
+
+Independent Atom/Stop observations give internal root equality in BOTH
+directions, root functionality for Eq_0 (predicate rank 0), and leaf/step
+rejection. These use explicit padding, not normalization or assumed
+functionality. Eq_0 is not native syntax equality or higher-rank transport.
+
+Fresh audit passes EVERY stage, 18:05:33–18:16:53 UTC: dependencies pass
+18:08:11, separate public audit 18:08:17, 194/194 closed reports (28 new).
+Recursive kernel check passes 18:08:17–18:16:53 (516 seconds), within the
+new focused script's 900-second limit for the larger closure; no timeout.
+Complete inventory exactly matches pristine upstream: only unchanged
+functional_extensionality_dep, no unsafe entries. Original-source and
+before/after source-stability checks pass; prior thirteen proof modules
+and shared infrastructure match their starting hashes.
+Logs _build/self-consistency-paths-audit.8JCUle; exact commands/failures:
+verification/self-consistency-paths-2026-10-22/COMMANDS.md.
+
+Roadmap/PDF rebuilt/inspected: 12 pages, four links, all-page renders;
+changed pages 8–9/11 visually reviewed. Final build:
+/tmp/pts-rk-consistency-note.10Zuu9. First inspector output-directory error
+fixed; all build/inspection attempts retained. Final clean diagnostics.
+No full CI or commit/push. HEAD remains 6a8dc984fb59a9b3743503cd405ffe59a31d1978;
+index empty; prior user changes preserved; this continuation uncommitted.
+
+FIRST NEXT GOAL: arbitrary-path constructor inversion/functionality with
+the exact required equality motives, then justify the fixed-interface
+iteration/transport needed by the resource invariant. Stratified composition
+does NOT lift arbitrary Look_5 to Look_6 or establish same-rank closure.
+No impossibility theorem for alternatives is claimed. Size/capacity,
+full envelope, standard admission and all-budget soundness remain open;
+there is still no internal consistency theorem.
+Next exact verification command:
+bash docs/direct-r-handoff/verification/self-consistency-paths-2026-10-22/AUDIT.sh
+
+## Fixed-rank structural resource graphs — checked
+
+New ResourcePaths, InternalResources, ResourceRealization (548 lines).
+Independent tree lookup and injective structural paths; append-only left-spine
+prefix is distinct from two-sided subresource extension. Actual original-PTS
+rank-6 prefix/extension relations have reflexivity, transitivity, joining and
+generation-preservation witnesses. Independent rank-7 lookup has root/step
+witnesses, root/path/value generation and lookup-to-extension. Step/extraction/
+extension law types have rank 8 (root law rank 7). The carrier C : U2 and
+Good_1 : C -> U4 are unchanged; explicit inhabited rank-4 padding provides
+exact rank-5 motives, without cumulativity or stronger guards.
+
+Executable external witness generation erases exactly to independent lookup
+and returns an originally typed PTS proof for every successful standard lookup.
+Every standard prefix/extension also has a realization. Exact EXTERNAL size
+bound counts the selected subtree and complete serialized path. Definitions
+assume no source acceptance, normalization, resource sufficiency or consistency.
+
+Fresh focused audit 17:36:43–17:43:35 UTC, every stage exit 0: 166/166 closed
+public reports (39 new); recursive kernel inventory exactly pristine, only
+unchanged upstream functional_extensionality_dep, no unsafe entries. Kernel
+check takes 295 seconds within unchanged 300-second timeout; no timeout or
+termination this turn. Original kernel, common infrastructure and ten prior
+proof modules match previous hashes. Before/after manifests stable.
+Logs: _build/self-consistency-resources-audit.X6R16B; progress:
+_build/self-consistency-resources-progress. Commands/failures/hashes:
+verification/self-consistency-resources-2026-10-22/COMMANDS.md.
+
+Roadmap/PDF updated and validated: 11 nonempty pages, four links, all-page
+renders; changed pages 7–8 visually reviewed. Final note build:
+/tmp/pts-rk-consistency-note.Mv8Vt6. No layout/reference/glyph failures;
+two inherited hyperref math-bookmark warnings documented. No full CI run.
+HEAD 6a8dc984fb59a9b3743503cd405ffe59a31d1978; index empty, no commit/push
+or cleanup. Existing unrelated user work preserved; changes uncommitted.
+
+FIRST NEXT GOAL: witnessed internal path composition and arbitrary-input
+lookup functionality/no-junk at explicit motive ranks, then internal size/
+capacity comparison and the complete resource envelope/admission. Ext only
+transports rank-4 constructor-closed predicates, NOT arbitrary rank-7 lookup
+claims; concrete joins have explicit path/witness updates. No converse
+parametricity, internal total decoder, all-budget soundness or internal
+consistency theorem has been constructed. Internal checker/compression,
+operation/transport/history bounds remain open.
+Next exact verification command:
+bash docs/direct-r-handoff/verification/self-consistency-resources-2026-10-22/AUDIT.sh
+
+## Fixed PTS carrier and guarded finite pilot — checked
+
+New InternalCarrier, GuardedTables, FiniteRejection modules (465 lines).
+Actual ORIGINAL PTS carrier C : U2 for all 29 tags and binary pairing;
+independent constructor guard Good_1(x) : U4; pair generation type rank 5.
+Executable quotation/generation covers ALL raw trees, including malformed
+and rejected inputs; quotation is syntactically injective. Structural
+generation is not parsing, acceptance or resource admission.
+
+Actual closed PTS terms give binary case elimination, closure and pointwise
+Leibniz equality for arbitrary guarded Boolean selectors. Four table entries
+are ordinary arguments at one fixed type. Separate guarded expansion laws
+handle lookup without eta. Exact motives have rank 1; quantified laws rank 4.
+Can_2 supports the rank-2 rejection motive. The rejection pilot covers the
+COMPLETE closed height-zero/labels<=1 native fragment (two sort rules),
+with table generated from the independent raw checker and computation/
+coverage proved. Local syntax checking supplies branch evidence, not global
+normalization or Bottom emptiness. This does NOT extend to unbounded proofs.
+
+Reuse unchanged common annotated builder/checker infrastructure, not either
+arithmetic interpretation. Original kernel and seven earlier proof modules
+match previous hashes. Fresh audit 17:09:43–17:11:55 UTC, all exits 0:
+127/127 public reports closed; recursive kernel inventory exactly pristine,
+only unchanged upstream functional_extensionality_dep, no unsafe entries.
+Before/after source manifests include common infrastructure and are stable.
+Logs: _build/self-consistency-guards-audit.fLkaOG. Exact commands/failures/
+hashes: verification/self-consistency-guards-2026-10-22/COMMANDS.md.
+
+Updated roadmap/PDF builds and validates: ten pages, four links, all-page
+renders, changed pages 5–7 visually reviewed, clean diagnostics. Final note
+build /tmp/pts-rk-consistency-note.AZ6Pl2. Progress logs/renderings:
+_build/self-consistency-guards-progress. No full CI run. HEAD remains
+6a8dc984fb59a9b3743503cd405ffe59a31d1978; no stage, commit or push.
+Unrelated user work preserved; new proof modules and updates uncommitted.
+
+FIRST NEXT GOAL: fixed-carrier resource graphs for lookup, prefix, size and
+joining, with actual guarded operation/closure witnesses and explicit exact
+motive ranks. Good_1 is not a cumulative induction principle. Internal scope/
+checker/compression relations, standard resource admission (also malformed
+inputs), cost/transport/history bounds and all-budget soundness remain open.
+No internal consistency proof has been constructed.
+Next exact verification command:
+bash docs/direct-r-handoff/verification/self-consistency-guards-2026-10-22/AUDIT.sh
+
+## Homogeneous serialization and scope decoding — checked
+
+Three new modules: StructuralCodes, CertificateSerialization,
+SerializationBounds. One finite-alphabet external tree carrier; canonical
+binary labels and indices; exact scope decoders for ORIGINAL annotated terms,
+all beta/equality/typing constructors, context certificates and complete inputs.
+Both inverse laws and injectivity hold, including complete inputs across
+scope indices. Successful decoding re-encodes the literal input tree; malformed
+tags/arity/bits/scope are rejected, never repaired. Raw acceptance is sound and
+covers every original derivable judgment in a well-formed context.
+
+Raw compression preserves acceptance and has domain exactly successful parsing,
+independent of acceptance. Well-scoped rejected inputs still compress; malformed
+trees remain raw values to be admitted by the eventual resource interpretation.
+Every compressed label is bounded by the complete serialized input node count,
+including all binary payloads, annotations, context proofs, conversion witnesses
+and repeated fields. This is a data-size theorem, not a machine cost bound.
+
+Final fresh focused audit 16:34:14–16:34:45 UTC, all exits 0: 85/85 closed
+reports (43 prior, 42 new); recursive kernel inventory exactly matches fresh
+pristine, only unchanged upstream functional_extensionality_dep, no unsafe
+entries. Original kernel and four prior certificate/compression files unchanged;
+before/after source manifests stable. Logs:
+_build/self-consistency-serialization-audit.IjtwrQ; incremental attempts:
+_build/self-consistency-serialization-progress. Exact commands/errors/hashes:
+verification/self-consistency-serialization-2026-10-22/COMMANDS.md.
+
+Roadmap/PDF updated: first build/inspection pass, nine pages, four links,
+clean diagnostics, all-page renders, changed pages 2/5 visually reviewed.
+No full CI rerun. HEAD 6a8dc984fb59a9b3743503cd405ffe59a31d1978; no staging,
+commit or push; existing unrelated changes preserved.
+
+FIRST NEXT GOAL: realize the fixed finite-alphabet carrier and generation guards
+as actual PTS terms, then prove internal finite-table laws for arbitrary guarded
+inputs with explicit motive-rank calculations. Keep structural generation,
+scope/acceptance and resource admission distinct. Internal decoder/compression
+relations, proof-transport/history bounds and all-budget bounded soundness remain
+open. The present external representation is not an internal consistency proof.
+Next exact verification command:
+bash docs/direct-r-handoff/verification/self-consistency-serialization-2026-10-22/AUDIT.sh
+
+## Native certificate adequacy and source-rank compression — checked
+
+New PTSrk.SelfConsistency library: NativeProofCodes, CertificateAdequacy,
+SortRenaming, RankCompression and Audit. Independent executable six-rule
+certificates, raw annotated beta instructions, conversion trees and context
+declaration certificates. Exact original typing and context soundness/completeness;
+no typing or normalization premise in acceptance. Compression counts distinct
+support labels below each source label, fixes 0/1/Bottom, preserves used product
+equations, checking and original typing, and preserves term node counts.
+Support includes context PROOFS, annotations, explicit/computed ranks and
+conversion instructions. Every original judgment in a well-formed context
+has a compressible accepted input. Compressed labels are bounded by two plus
+recorded label occurrences; support labels remain distinct.
+
+Final fresh focused audit 12:38:45–12:39:13 UTC, every exit 0. 43/43 own
+closed reports; recursive kernel inventory identical to fresh pristine,
+only unchanged upstream functional_extensionality_dep, no unsafe entries.
+Original sources unchanged; source manifests stable. An earlier counting
+harness defect (43 own plus one upstream report; missing failure propagation)
+was corrected and the entire fresh audit rerun. Logs:
+_build/self-consistency-native-audit.4cor29; incremental attempts/note builds:
+_build/self-consistency-native-progress. Full commands, contracts and hashes:
+verification/self-consistency-native-2026-10-22/COMMANDS.md.
+
+Updated roadmap PDF: nine pages; final build/inspection 0, all-page renders,
+changed pages 1–2 reviewed. First overflow failure retained and fixed.
+CI stage 01-self-consistency added; shell syntax and scoped whitespace pass.
+No full CI claim. HEAD 6a8dc984fb59a9b3743503cd405ffe59a31d1978; no stage,
+commit or push in this continuation. Existing unrelated changes preserved.
+
+FIRST NEXT GOAL: homogeneous serialization and a scope/certificate decoder,
+then fixed-carrier guards and internal finite-table elimination. The present
+certificates are intrinsically scoped Rocq data; completeness is existential
+in Prop. Binary operation costs, transported proof/history bounds, internal
+compression and arbitrary-budget soundness remain open. No internal PTS
+consistency inhabitant has been constructed.
+Next exact verification command:
+bash docs/direct-r-handoff/verification/self-consistency-native-2026-10-22/AUDIT.sh
 
 ## Scoped publication — three developments
 

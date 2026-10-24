@@ -1,5 +1,76 @@
 # PTS-rk continuous integration
 
+## Direct consistency certificates (23 October 2026)
+
+The current finite-fragment continuation has a separate fresh focused
+[audit](direct-r-handoff/verification/self-consistency-finite-fragments-2026-10-23/AUDIT.sh):
+95 new public endpoints, full recursive checking of the complete new closure,
+and pristine inventory equality pass, 08:23:08–08:24:10 UTC. The full audit
+imports this new coverage; `@theories/self_consistency/finite-fragment-audit`
+is the focused build alias. It proves a rank-four internal rejection schema
+for every external complete-certificate size bound, not one internal
+all-budget theorem. The library now imports the improved combinatory and
+normalization libraries directly. Exact commands and limitations are in the
+[verification record](direct-r-handoff/verification/self-consistency-finite-fragments-2026-10-23/COMMANDS.md).
+The following 495-report figures describe the earlier replacement checkpoint,
+whose proof sources are unchanged; the whole staged CI has not been rerun.
+
+Stage `01-self-consistency` builds `@theories/self_consistency/audit`.
+The library `PTSrk.SelfConsistency` uses the original kernel, Stdlib,
+Equations and the shared assembler/native checker, not either arithmetic
+interpretation. Its [focused audit](direct-r-handoff/verification/self-consistency-replacement-2026-10-23/AUDIT.sh)
+rebuilds 495 public reports. The current staged fresh build passes in 3205 seconds,
+and 495/495 reports are closed, with identical before/build source hashes.
+Complete new dependency-closure checking passes in 2550 seconds over
+explicitly source-mapped coherent isolated objects, with the supported VM
+flag, exact pristine inventory equality and stable before/after source hashes.
+All final snapshot/original-source checks pass. The redundant fresh-object
+check was deliberately stopped afterward (exit 143), not reported as passed.
+The previous
+426-report checkpoint passed complete recursive checking with supported
+`-bytecode-compiler yes` in 875 seconds, with exact pristine inventory equality
+(inherited functional_extensionality_dep only, no unsafe entries).
+The previous seven-module closure
+also passes with that backend and exact pristine inventory equality; its earlier
+VM-disabled 2400-second timeout remains recorded, not relabelled a pass.
+Every requested proof body is checked; no module admission/skip flags are used.
+The 27 unchanged older proof
+sources retain their [full previous audit](direct-r-handoff/verification/self-consistency-relational-2026-10-23/COMMANDS.md):
+283 closed reports, recursive checking in 1809 seconds and exact pristine
+inventory equality (unchanged functional_extensionality_dep only, no unsafe
+entries). The continuation audit does not repeat that entire older closure
+and is not full repository CI. The linked one-shot script is syntax-checked;
+the [verification record](direct-r-handoff/verification/self-consistency-replacement-2026-10-23/COMMANDS.md)
+documents the actual separately executed stages and earlier interruptions.
+Coverage includes external certificate adequacy, faithful
+serialization, scope checking, source-rank compression, and actual original-PTS
+carrier/generation/guarded finite-table witnesses. The complete closed-leaf
+fragment with labels at most 1 has an internal guarded rejection pilot.
+Fixed-rank resource lookup/prefix/extension now have actual PTS closure,
+joining and generation witnesses, with executable standard-lookup realization.
+Stratified path composition, exact beta correspondence with path concatenation,
+executable higher-rank witnesses and internal root/leaf separation are
+kernel-checked. The new modules add stratified constructor-case elimination,
+fixed-rank histories with executable standard coverage, structural capacity
+and finite-family budgets. The numerical bounds remain external, and the
+full-functionality target has only been formed, not inhabited. Consumer
+preservation, concrete occurrence safety, shape/fill forward simulations and
+their standard original-PTS realizations now have witnesses. Global lookup
+functionality/matching inversion are optional open lemmas, not mandatory
+gates. Native annotated substitution now has exact Syntax agreement and scope
+preservation. Independent internal binary/scope relations have all-standard
+witnesses; fixed-environment renaming has an actual rank-17 output-scope term.
+Standard shift now has exact original-PTS realization, including raw decoder
+endpoints and application of the internal scope theorem. An independent
+single-substitution environment has a proved local bound and standard witnesses.
+Binder-lifted term lookup and full annotated internal replacement now have
+fixed-rank output-scope folds and exact standard substitution realization.
+Dependent invariants, conversion transport, operation sufficiency, admission
+and all-budget soundness remain open. The precise same-index motive obstruction
+does not rule out the rank-feasible whole-history/closure-machine alternatives.
+All 38 prior proof modules and common infrastructure are unchanged.
+The complete staged CI driver has not been rerun at this checkpoint.
+
 ## Combinatory Hilbert development (22 October 2026)
 
 Stage `01-combinatory` builds `@theories/CombinatoryLogic-rk/audit`, retaining

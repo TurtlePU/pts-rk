@@ -129,6 +129,7 @@ stage 01-upstream "$BASELINE_DIR" theories/Ranks.vo
 stage 01-normalization-complexity "$ROOT" theories/NormalizationComplexity/Audit.vo
 stage 01-combinatory "$ROOT" @theories/CombinatoryLogic-rk/audit
 stage 01-self-interpreter "$ROOT" @theories/self_interpreter/audit
+stage 01-self-consistency "$ROOT" @theories/self_consistency/audit
 
 stage 02-kernel "$ROOT" theories/Interpretation_of_R/DirectRKernel.vo
 stage 02-common-codes "$ROOT" theories/Interpretation_of_R/DirectRCommonCodes.vo
