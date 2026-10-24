@@ -1,0 +1,8 @@
+Warning:
+/private/tmp/pts-rk-mm0-bridge.IH9mrh/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/HornProofRealization.v", line 129, characters 4-29:
+Error: Found no subterm matching
+"H.rule_type ?M1332 ?M1333 (fun i : Fin ?M1331 => CF.lift ?M1334 (?M1336 i))"
+in the current goal.

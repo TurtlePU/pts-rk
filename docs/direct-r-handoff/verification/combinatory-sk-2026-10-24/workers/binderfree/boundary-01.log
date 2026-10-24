@@ -1,0 +1,11 @@
+Checking BinderFreeBoundary (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/BinderFreeBoundary.agda).
+ Checking BoundedReduction (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/BoundedReduction.agda).
+  Checking FiniteSyntax (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/FiniteSyntax.agda).
+ Checking NativeTyping (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/NativeTyping.agda).
+ Checking NativeConfluence (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/NativeConfluence.agda).
+  Checking NativeAlgebra (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/NativeAlgebra.agda).
+/private/tmp/pts-rk-sk-binderfree.tCrz00/source/BinderFreeBoundary.agda:97.1-16: error: [ClashingDefinition]
+Multiple definitions of identity-normal. Previous definition at
+/private/tmp/pts-rk-sk-binderfree.tCrz00/source/BoundedReduction.agda:414.1-16
+when scope checking the declaration
+  identity-normal : SK.Nf (ι ⇒ ι)

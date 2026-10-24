@@ -1,0 +1,2 @@
+  PID  PPID    RSS ELAPSED COMMAND
+83336 83333 14353168   01:03 /tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries -i /tmp/pts-rk-sk-direct.pmQ7rC/source -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical /tmp/pts-rk-sk-direct.pmQ7rC/source/SKDirectBoundary.agda

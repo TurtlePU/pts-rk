@@ -1,0 +1,21 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-indexed-soundness.wHrIDF/FiniteTypeDispatch.v", line 104, characters 52-53:
+Error:
+In environment
+k : nat
+a0 : Fin k
+ps : list (Fin k)
+a : Fin k
+IHps :
+  forall (n : nat) (env env' : Fin k -> Term nat n),
+  (forall i : Fin k, env i ↠ᵝ env' i) ->
+  E.rule_type ps a env ↠ᵝ E.rule_type ps a env'
+n : nat
+env, env' : Fin k -> Term nat n
+H : forall i : Fin k, env i ↠ᵝ env' i
+Unable to unify "forall i : Fin k, env i ↠ᵝ env' i" with
+ "forall n : nat, RelationClasses.Transitive (reduces_to nat n)".
+

@@ -1,0 +1,61 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+2 goals
+  
+  a, b, c, d, e, k : nat
+  f : FormInput
+  H :
+    (if k <=? 3
+     then
+      Some
+        {|
+          exposure := e;
+          telescope :=
+            telescope_prefix (3 + k) (substitution_telescope a b c);
+          body := EU (quote_nat d);
+          body_type := EU EZ
+        |}
+     else None) =
+    Some f
+  H1 :
+    (if k <=? 3
+     then
+      Some
+        {|
+          exposure := e;
+          telescope :=
+            ECons (EU (quote_nat a)) EZ
+              (ECons (EPi v0 (EU (quote_nat b))) (ES (quote_nat a))
+                 (ECons (EPi v1 (EPi (EApp v1 v0) (EU (quote_nat c))))
+                    (ES (quote_nat (Nat.max a b)))
+                    (telescope_prefix k
+                       (ECons
+                          (EPi v2 (EPi (EApp v2 v0) (EApp (EApp v2 v1) v0)))
+                          (quote_nat
+                             match c with
+                             | 0 => S (Nat.max a b)
+                             | S m' => S (Nat.max (Nat.max a b) m')
+                             end)
+                          (ECons (EPi v3 (EApp v3 v0))
+                             (quote_nat
+                                match b with
+                                | 0 => S a
+                                | S m' => S (Nat.max a m')
+                                end)
+                             (ECons v4 (quote_nat a) ENil))))));
+          body := EU (quote_nat d);
+          body_type := EU EZ
+        |}
+     else None) =
+    Some f
+  ============================
+  SortedExpr [] (body f) TM
+
+goal 2 is:
+ SortedExpr [] (body_type f) TM
+File "/tmp/pts-rk-mm0-realization.8ricsy/MM0CatalogueRealization.v", line 70, characters 0-4:
+Error:  (in proof row_input_sorted): Attempt to save an incomplete proof
+(there are remaining open goals).
+

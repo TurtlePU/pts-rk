@@ -1,0 +1,23 @@
+File "./theories/CombinatoryLogic-rk/FiniteHorn.v", line 9, characters 0-18:
+Warning: Trying to mask the absolute name "FiniteHorn"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/CombinatoryLogic-rk/FiniteHorn.v", line 123, characters 31-36:
+Error:
+In environment
+Atom : Type
+atom_eq_dec : forall a b : Atom, {a = b} + {a <> b}
+clauses : list (list Atom * Atom)
+k : nat
+IHk :
+  forall known : list Atom,
+  NoDup known ->
+  incl known heads ->
+  length heads <= k + length known -> Closed (rounds k known)
+known : list Atom
+Hnd : NoDup known
+Hheads : incl known heads
+Hlen : length heads <= S k + length known
+E : length known = length (round known)
+The term "known" has type "list Atom" while it is expected to have type
+ "NoDup ?l".
+

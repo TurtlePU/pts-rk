@@ -1,0 +1,1 @@
+/tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical -i /tmp/pts-rk-skbracket.Cjke1Y/source /tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda

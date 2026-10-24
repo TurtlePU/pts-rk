@@ -1,0 +1,1 @@
+AGDA_DIR=<fresh>/config XDG_DATA_HOME=<fresh>/data agda --safe --no-default-libraries --ignore-interfaces -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical -i <fresh>/source <fresh>/source/BinderFreeCore.agda

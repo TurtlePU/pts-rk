@@ -1,0 +1,15 @@
+Warning:
+/private/tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v", line 227, characters 56-74:
+Error:
+In environment
+size, depth, scope : nat
+alphabet : list nat
+Unable to unify
+ "length (native_terms ?size ?depth ?scope ?alphabet) <=
+  tower 2 (3 * ?depth + ?scope + length ?alphabet + 4)"
+with
+ "S (S (length (native_terms size depth scope alphabet))) <=
+  S (S (tower 2 (3 * depth + scope + length alphabet + 4)))".

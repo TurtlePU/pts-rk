@@ -1,0 +1,3 @@
+Log: /Users/akuklev/air/pts-rk/_build/combinatory-mm0-note.9Zr8PO
+Render: /tmp/pts-rk-mm0-note-final.iIjcEY
+Archive: docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/note.rQGnBx

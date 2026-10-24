@@ -1,0 +1,4 @@
+File "./theories/CombinatoryLogic-rk/FiniteHorn.v", line 150, characters 0-4:
+Error:  (in proof round_sound): Attempt to save an incomplete proof
+(there are remaining open goals).
+

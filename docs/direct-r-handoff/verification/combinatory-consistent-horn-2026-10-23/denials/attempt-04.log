@@ -1,0 +1,7 @@
+2026-10-23T06:32:53Z
+File "./theories/CombinatoryLogic-rk/GroundHornConsistency.v", line 177, characters 39-49:
+Error: Cannot infer the implicit parameter Atom of GH.Derives whose type is
+"Type" in environment:
+Atom : Type
+Rules : list Atom -> Atom -> Prop
+

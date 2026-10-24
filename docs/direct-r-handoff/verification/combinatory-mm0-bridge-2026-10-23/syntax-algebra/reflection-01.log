@@ -1,0 +1,60 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+Chars 0 - 67 [From~Stdlib~Require~Import~Lis...] 0.101 secs (0.081u,0.018s)
+File "/tmp/pts-rk-mm0-syntax-algebra.UuB45x/MM0GuardedReflection.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+Chars 68 - 103 [From~Stdlib~Require~Vectors.Ve...] 0.006 secs (0.003u,0.s)
+Chars 104 - 150 [From~PTSrk~Require~Import-(not...] 0.014 secs (0.011u,0.003s)
+Chars 151 - 198 [From~PTSrk~Require~Import~Cont...] 0.003 secs (0.002u,0.s)
+Chars 199 - 407 [From~PTSrk.Combinatory~Require...] 0.025 secs (0.021u,0.003s)
+Chars 408 - 429 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 724 - 752 [Module~MM0GuardedReflection.] 0. secs (0.u,0.s)
+Chars 753 - 814 [Import~MM0FiniteSignature~MM0F...] 0. secs (0.u,0.s)
+Chars 815 - 851 [Module~A:=~~MM0GuardedSyntaxAl...] 0.028 secs (0.024u,0.003s)
+Chars 852 - 889 [Module~G:=~~MM0GuardedQuantifi...] 0.012 secs (0.01u,0.001s)
+Chars 890 - 922 [Module~U:=~~FiniteUniversalHorn.] 0.045 secs (0.041u,0.003s)
+Chars 923 - 958 [Module~FMS:=~~FiniteModelSound...] 0.003 secs (0.003u,0.s)
+Chars 959 - 983 [Module~GH:=~~GroundHorn.] 0. secs (0.u,0.s)
+Chars 985 - 1090 [Definition~decoded_atom~N~d~(a...] 0. secs (0.u,0.s)
+Chars 1091 - 1264 [Definition~SourceTruth~N~d~nam...] 0. secs (0.u,0.s)
+Chars 1266 - 1418 [Lemma~decoded_values_exact~N~d...] 0. secs (0.u,0.s)
+Chars 1419 - 1425 [Proof.] 0. secs (0.u,0.s)
+Chars 1428 - 1512 [revert~ys;~induction~xs~as~[|~...] 0.001 secs (0.001u,0.s)
+Chars 1515 - 1516 [-] 0. secs (0.u,0.s)
+Chars 1517 - 1552 [split;~[~constructor~|~reflexi...] 0. secs (0.u,0.s)
+Chars 1555 - 1556 [-] 0. secs (0.u,0.s)
+Chars 1557 - 1610 [injection~H~as~HX~HT;~destruct...] 0. secs (0.u,0.s)
+Chars 1615 - 1679 [assert~(HR~:~A.raw~N~d~x~=~y)~...] 0. secs (0.u,0.s)
+Chars 1684 - 1690 [split.] 0. secs (0.u,0.s)
+Chars 1695 - 1696 [+] 0. secs (0.u,0.s)
+Chars 1697 - 1761 [constructor;~[~apply~A.active_...] 0. secs (0.u,0.s)
+Chars 1766 - 1767 [+] 0. secs (0.u,0.s)
+Chars 1768 - 1792 [cbn;~(now~rewrite~HR,~HE).] 0. secs (0.u,0.s)
+Chars 1793 - 1797 [Qed.] 0.001 secs (0.001u,0.s)
+Chars 1799 - 2237 [Theorem~guarded_atom_represent...] 0.001 secs (0.001u,0.s)
+Chars 2238 - 2244 [Proof.] 0. secs (0.u,0.s)
+Chars 2247 - 2322 [intros~HG~HA;~pose~proof~(A.gu...] 0. secs (0.u,0.s)
+Chars 2325 - 2389 [apply~decoded_values_exact~in~...] 0. secs (0.u,0.s)
+Chars 2392 - 2475 [unfold~decoded_atom,~evaluate_...] 0.001 secs (0.001u,0.s)
+Chars 2476 - 2480 [Qed.] 0.001 secs (0.001u,0.s)
+Chars 2482 - 2605 [Lemma~source_premises~names~ps...] 0. secs (0.u,0.s)
+Chars 2606 - 2612 [Proof.] 0. secs (0.u,0.s)
+Chars 2615 - 2708 [intro~H;~induction~H~as~[|~a~p...] 0. secs (0.u,0.s)
+Chars 2709 - 2713 [Qed.] 0. secs (0.u,0.s)
+Chars 2715 - 2880 [Theorem~source_truth_guarded_m...] 0. secs (0.u,0.s)
+Chars 2881 - 2887 [Proof.] 0. secs (0.u,0.s)
+Chars 2890 - 2912 [intros~r~HR~env~HG~HP.] 0. secs (0.u,0.s)
+Chars 2915 - 2959 [apply~in_map_iff~in~HR~as~[nam...] 0. secs (0.u,0.s)
+Chars 2962 - 3085 [pose~proof~~(guarded_atom_repr...] 0. secs (0.u,0.s)
+Chars 3088 - 3108 [split;~[~exact~HA~|~~].] 0. secs (0.u,0.s)
+Chars 3111 - 3122 [rewrite~HE.] 0. secs (0.u,0.s)
+File "/tmp/pts-rk-mm0-syntax-algebra.UuB45x/MM0GuardedReflection.v", line 70, characters 2-12:
+Error: Found no subterm matching
+"decoded_atom N d
+   (evaluate_atom None (A.algebra N d) (Vector.to_list env)
+      (conclusion (axiom_rule name)))"
+in the current goal.

@@ -1,0 +1,15 @@
+Checking SKSourceNormal (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/SKSourceNormal.agda).
+ Checking SKSourceEquality (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/SKSourceEquality.agda).
+ Checking NativeRankCoverage (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/NativeRankCoverage.agda).
+  Checking NativeRanks (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/NativeRanks.agda).
+   Checking NativeInversion (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/NativeInversion.agda).
+   Checking NativeSubstitution (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/NativeSubstitution.agda).
+   Checking NativePreservation (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/NativePreservation.agda).
+  Checking NativeSafety (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/NativeSafety.agda).
+  Checking NativeNormalization (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/NativeNormalization.agda).
+   Checking NativeDescent (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/NativeDescent.agda).
+   Checking NativeRankPreservation (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/NativeRankPreservation.agda).
+   Checking BoundedTrace (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/BoundedTrace.agda).
+    Checking RawSizeBounds (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/RawSizeBounds.agda).
+     Checking FiniteBounds (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/FiniteBounds.agda).
+     Checking ExponentialBounds (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/ExponentialBounds.agda).

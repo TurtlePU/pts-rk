@@ -1,0 +1,14 @@
+Warning:
+/private/tmp/pts-rk-mm0-bridge.IH9mrh/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-horn-internal.VBqV4a/MM0GuardedInternalReflection.v", line 68, characters 38-39:
+Error: Cannot infer this placeholder of type
+"Fin (F.cardinality (F.A.clauses N d names) (F.guarded_denials N d) q)" in
+environment:
+n : nat
+ctx : Ctx nat n
+N, d : nat
+names : list AxiomName
+q : GroundAtom (option (Fin (length (A.syntax_list N d))))
+

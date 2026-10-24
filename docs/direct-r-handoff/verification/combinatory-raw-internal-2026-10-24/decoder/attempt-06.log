@@ -1,0 +1,9 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-internal-decoder.3D2W4B/MM0InternalDecoder.v", line 264, characters 20-156:
+Error: Found no subterm matching
+"I.proof_type (Old.clauses N d names seed) (rename fsucc q)"
+in the current goal.
+

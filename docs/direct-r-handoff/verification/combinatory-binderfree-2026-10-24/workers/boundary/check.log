@@ -1,0 +1,19 @@
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-23 23:58:27 UTC
++ /tmp/pts-rk-agda-2.8.0.MvVO53/agda --version
+Agda version 2.8.0-3d04bac
+Built with flags (cabal -f)
+ - optimise-heavily: extra optimisations
+ - use-xdg-data-home: install and locate data files under $XDG_DATA_HOME/agda/$AGDA_VERSION by default instead of the location defined by Cabal
++ shasum -a 256 theories/CombinatoryLogic-rk/agda/BinderFreeBoundary.agda theories/CombinatoryLogic-rk/agda/BinderFreeCoherence.agda
+9940958607cc7feff3cdf757a47313fb898f9e616746c409ce91fe61a8f6618c  theories/CombinatoryLogic-rk/agda/BinderFreeBoundary.agda
+e805aa5c8561f2b45f45b8eabc4ccf0af7c0eb4d5d16424b66e3c08335ffd67e  theories/CombinatoryLogic-rk/agda/BinderFreeCoherence.agda
++ /tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical -i theories/CombinatoryLogic-rk/agda theories/CombinatoryLogic-rk/agda/BinderFreeBoundary.agda
+Checking BinderFreeBoundary (/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BinderFreeBoundary.agda).
++ boundary_status=0
++ /tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical -i theories/CombinatoryLogic-rk/agda theories/CombinatoryLogic-rk/agda/BinderFreeCoherence.agda
++ coherence_status=0
++ printf 'boundary=%s coherence=%s\n' 0 0
+boundary=0 coherence=0
++ date -u '+%Y-%m-%d %H:%M:%S UTC'
+2026-10-23 23:58:28 UTC

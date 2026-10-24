@@ -1,0 +1,3 @@
+Logs: /Users/akuklev/air/pts-rk/docs/direct-r-handoff/verification/combinatory-sk-2026-10-24/audit.MhPQbr
+Build: /tmp/pts-rk-sk-audit.puvKDx
+Pristine: /tmp/pts-rk-sk-pristine.vT6zKA

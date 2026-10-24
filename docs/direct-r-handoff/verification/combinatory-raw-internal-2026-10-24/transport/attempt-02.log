@@ -1,0 +1,21 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-indexed-transport.rdQzB4/IndexedHornTransport.v", line 110, characters 35-54:
+Error:
+In environment
+k, l : nat
+f : Fin k -> Fin l
+ps : list (Fin k)
+a : Fin k
+rest : list (I.E.Clause k)
+IH :
+  forall (n : nat) (P q : Term nat n),
+  I.body rest (pullback f P) q
+  ↠ᵝ I.body (map_clauses f rest) P (app (code_map f) q)
+n : nat
+P, q : Term nat n
+Unable to unify "snd (map_clause f (ps, a))" with 
+"a".
+

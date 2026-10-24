@@ -1,29 +1,126 @@
 \documentclass[preamble=combinatory-preamble.tex]{markdown}
 title: A combinatory formulation of PTS-rk
-date: October 22, 2026
+date: October 24, 2026
 
 :::Abstract
 PTS-rk admits a complete Hilbert presentation by finitely many numerically
 indexed axiom schemes, by the supersorted-system theorem of Bunder and
 Dekkers. A finite basis of fixed closed typed combinators is nevertheless
 impossible: application cannot increase the rank of its function's type.
-We give rank-typed BCKW arithmetic, an explicit Hilbert catalogue and a
+We give a rank-typed SK interface, an explicit Hilbert catalogue and a
 first-order algebraic presentation using quotient
 inductive-inductive-recursive syntax. Checked soundness and extraction
 are distinguished from the remaining formal completeness and adequacy
 proofs. All expansions retain the original annotations and use beta
-conversion only. Elementary bounds control normalization and every
+conversion only. The simply typed surface has canonical SK outputs for
+native beta equality, a quotient isomorphism and typed normalizing application.
+A normal-form algebra covers original dependent typing, with normalized
+substitution and computed types; a structural checker decides the original
+typing judgment in well-formed contexts. These results are not yet an
+equivalence with the combinatory QIIRT.
+Elementary bounds control native normalization and every
 intermediate term; fixing the input's universe labels gives finite syntax
 carriers and a total, typed Agda apply-and-normalize function.
 Independent certificate checking gives contextual soundness in graded finite
 carriers and external exclusion of a closed proof of Void.
 Finite Church encodings give explicit rank-bounded code-to-code
 reduction programs, separated from the proposed internal consistency proof.
-A ground-query Horn reduction gives a precise, weaker sense of
-reduction to a locally finitely satisfiable theory.
+A ground-query Horn reduction with explicit Void denials excludes
+contradictory models. Finite ground fragments have exact, computable
+models; signed completion reflects all formulas in their finite atom
+language. Quantified MM0 fragments have a complete fixed-domain constructor
+search and proof-producing finite satisfaction certificates. The literal
+MM0 theory agrees with the independent catalogue; all size/depth-guarded
+schemas have finite models with empty Void. Each fixed finite fragment has
+an independent Church proof encoding and an internal soundness function
+for internally quantified queries and arbitrary proof inhabitants, with proof-type rank at most three and
+soundness-function type rank at most four. One finite,
+ungraded carrier cannot, however, support all original PTS typings and
+conversion while keeping Void empty.
 :::
 
-# The calculus and its logical reading {#sec-calculus}
+# Introduction and goals {#sec-introduction}
+
+This note develops the programme of a second paper on PTS-rk: combinatory
+presentations, bounded models and internal interpretation. Its intended
+deliverables are the following six goals. They are research targets, not
+a claim that the constructions below already establish all of them.
+
+1. **A Church-encodable natural-model QIIRT.** Give an intrinsically typed,
+   binder-free presentation of the full original PTS-rk, with contexts,
+   substitutions, types and terms in the natural-model style. The first
+   principal Agda source should specify its constructors, computed typing
+   and equations, prove correspondence with original PTS-rk, and admit a
+   Church realization in PTS-rk. Encoding the quotient equations and their
+   elimination interface is part of the goal, not a consequence of merely
+   encoding raw syntax.
+
+2. **A normal-form-first presentation.** Give a second intrinsically typed,
+   binder-free (Q)IIRT with recursive dependent apply-and-normalize. The
+   target is that beta-equal closed terms and types compute to definitionally
+   equal canonical representations, including their normalized type indices.
+   Proof witnesses must not obstruct this computational agreement. Prove
+   the general soundness, completeness and termination statements separately;
+   a propositional equality theorem alone does not meet the definitional
+   target. This unrestricted normalizing model is not intended as one
+   fixed-rank internal evaluator. The anticipated obstruction must connect
+   the TOWER lower bound to the chosen encoding and cost model [8]; it is
+   not inferred from the complexity label alone.
+
+3. **A cumulative hierarchy of bounded fragments.** Give a third Agda source
+   defining indexed models of the kind in (2), bounded by length and by
+   every relevant rank occurring inside terms, types, annotations and
+   declarations, not only the outer rank. Bound universe labels as well.
+   Prove coherent inclusions, coverage of every finite input, and application
+   into an explicitly computed larger grade. At each fixed grade, Church
+   encode the carriers, apply-and-normalize and extraction into native PTS-rk
+   terms, with explicit ranks and correctness laws. Cumulativity here means
+   inclusions of fragments, not new universe-cumulativity rules for PTS-rk.
+
+4. **A Hilbert-style logical theory.** Present PTS-rk by indexed logical
+   axioms and inference rules, explain terms as proofs, and establish
+   original-PTS soundness and completeness. Formalize the literal theory
+   and its correspondence proofs in Metamath Zero, not only example
+   derivations of an independently declared specification.
+
+5. **Partial finite models and internal bounded soundness.** Construct partial
+   models of finite fragments with empty Void, and use their PTS-rk
+   realizations to establish bounded soundness inside PTS-rk. The ultimate
+   target is an internal statement expressing that no closed proof of
+   $\mathsf{Void}=\Pi X:U_0.X$ exists, with its construction verified in MM0.
+   The proof predicate, represented domain and internal consistency sentence
+   must be fixed explicitly. Results for every external fixed bound do not
+   by themselves provide one internal proof covering all bounds; the precise
+   target and remaining transfer obligations are in
+   Section <#sec-internal-consistency>.
+
+6. **An indexed self-interpreter with source folds.** Construct PTS-rk
+   interpreters in PTS-rk, indexed by the required ranks and resources, with
+   quotation, native extraction and folds over source code. A typed CPS
+   translation should exemplify a non-evaluation fold. Retain intensional
+   source codes when needed: a fold defined on a beta quotient must instead
+   be proved to respect every quotient equation.
+
+The three Agda presentations should share one original typing/equality
+contract and explicit adequacy maps. ``Binder-free'' excludes object-level
+lambda binders from their computational syntax; it does not exclude Agda
+functions, contexts, or a codomain in an extended context. Merely returning
+combinators after normalization through native binders does not yet meet
+the direct binder-free algorithmic goal.
+
+**Development order.** First fix the common interfaces, resource indices
+and encoding contracts, then complete the natural-model and Hilbert/MM0
+correspondences. Test closed definitional computation in a small dependent
+normal-first prototype before consolidating the second source. Next derive
+the bounded hierarchy, Church compilation and native extraction; use these
+to internalize bounded soundness and indexed interpretation/CPS. Finally
+address the separate all-budget consistency obligation. Each stage requires
+safe Agda checking and the stated adequacy proofs, not only computational
+examples. The detailed milestones and acceptance criteria are recorded in
+[the second-paper plan](SECOND-PAPER-PLAN.md). Existing proofs below are
+reusable components; new construction is deferred until this plan is resumed.
+
+## The calculus and its logical reading {#sec-calculus}
 
 Terms of PTS-rk are variables, universes $U_i$ ($i\in\mathbb N$), products
 $\Pi x:A.B$, annotated abstractions $\lambda x:A.t$, and applications $tu$.
@@ -61,94 +158,80 @@ encodes discharge through closed axioms and application. A derivation
 certifies the judgment, while its subject term is the object-level proof.
 Beta reduction computes within that proof without changing its type.
 
-# Rank-typed BCKW arithmetic {#sec-bckw}
+# The rank-typed SK interface {#sec-sk}
 
-The standard basis separates composition $B$, exchange $C$, weakening $K$
-and duplication $W$; we retain identity $I$ as an additional atom.
-Their types and computation rules are
-
-$$
-\begin{array}{c|c|l}
- &\text{type}&\text{beta rule}\\ \hline
-B&(Y\to Z)\to(X\to Y)\to X\to Z&Bfgx\longrightarrow_\beta^*f(gx)\\
-C&(X\to Y\to Z)\to Y\to X\to Z&Cfxy\longrightarrow_\beta^*fyx\\
-K&X\to Y\to X&Kxy\longrightarrow_\beta^*x\\
-W&(X\to X\to Y)\to X\to Y&Wfx\longrightarrow_\beta^*fxx\\
-I&X\to X&Ix\longrightarrow_\beta^*x .
-\end{array}
-$$
-
-Each atom expands to the corresponding annotated lambda term. Type
-instantiations are implicit in these formulas, but retained in the checked
-syntax; arrow ranks are computed by $r(a,b)=\max(a+1,b)$, not by an
-untyped interpretation. The $B,C,K,I$ fragment is affine in its value
-arguments: their computation rules do not duplicate them; $W$ does [7].
-This does not require type parameters to occur affinely in annotations.
-
-Fix $X=U_i$, put $E=X\to X$ and $\mathsf{Ch}=E\to E$, and define
-
-$$
-H=C(BB(CB))B,\qquad
-\overline0=KI,\qquad
-\overline{n+1}=W(H\overline n).
-$$
-
-Here $Hnfgx\longrightarrow_\beta^*f(ngx)$. Thus the first codes are
-
-$$
-\overline0=KI,\qquad
-\overline1=W(H(KI)),\qquad
-\overline2=W(H(W(H(KI)))).
-$$
-
-After expanding $H$ without sharing, $\overline n$ contains exactly
-$n$ occurrences of $W$ and **$7n+2$ combinator atoms in total**:
-$H$ has six atoms, and each successor layer adds one $W$.
-The count treats $I$ as one atom and does not count implicit type indices.
-For this family those indices have fixed shapes independent of $n$.
-
-Successor, addition and multiplication are the following typed codes,
-with independent type instantiations at each occurrence of an atom:
+The surface syntax has two combinators, with independently instantiated
+type parameters at every occurrence:
 
 $$
 \begin{aligned}
-\mathsf{succ}&=BWH
-  &&:\mathsf{Ch}\to\mathsf{Ch},\\
-\mathsf{add}&=B\bigl(B(BW)(BBC)\bigr)(BB)
-  &&:\mathsf{Ch}\to\mathsf{Ch}\to\mathsf{Ch},\\
-\mathsf{mul}&=B
-  &&:\mathsf{Ch}\to\mathsf{Ch}\to\mathsf{Ch}.
+K&:X\to Y\to X,& Kxy&\longrightarrow x,\\
+S&:(X\to Y\to Z)\to(X\to Y)\to X\to Z,
+  &Sfgx&\longrightarrow fx(gx).
 \end{aligned}
 $$
 
-Their atom counts are $8,9,1$, respectively. Applied to Church arguments,
-their expansions satisfy
+Expansion replaces these heads by their annotated lambda definitions.
+Ranks use $r(a,b)=\max(a+1,b)$. Identity is the three-atom abbreviation
+$\mathsf{id}_X=S_{X,Y\to X,X}K_{X,Y\to X}K_{X,Y}$, not a primitive;
+one may choose $Y=X$. Indices are suppressed below, never discarded by
+the formal syntax.
+
+Bracket abstraction eliminates a variable by
 
 $$
-\begin{aligned}
-\mathsf{succ}\;\overline n\,f\,x&\longrightarrow_\beta^*f^{n+1}x,\\
-\mathsf{add}\;\overline m\;\overline n\,f\,x
-  &\longrightarrow_\beta^*f^{m+n}x,\\
-\mathsf{mul}\;\overline m\;\overline n\,f\,x
-  &\longrightarrow_\beta^*f^{mn}x.
-\end{aligned}
+[x]x=\mathsf{id},\qquad [x]a=Ka\ (a\ne x\text{ a leaf}),\qquad
+[x](uv)=S([x]u)([x]v).
 $$
 
-:::Theorem[Rank-typed BCKW arithmetic]
-For simple-type instances over $U_i$, every displayed code has its stated
-original PTS-rk type. The type
-$\mathsf{Ch}$ has rank $2$, and the three operation types have rank $3$.
-The exact counts, arithmetic laws, and forward reduction of
-$\overline n$ to the unapplied annotated normal form
-$\lambda f:E.\lambda x:X.f^n x$ are checked.
-%proof{rocq-local:BCKW.v}
+The definition applies to variables and instantiated combinator leaves;
+abstractions are compiled from the inside out. It has no eta optimization
+$[x](tx)=t$. Each step preserves the simple type and its expansion is
+beta-convertible to the corresponding annotated abstraction. This gives
+an actual SK compiler for the simply typed fragment, not a compiler for
+arbitrary dependent products or annotations.
+
+For a carrier $X=U_i$, let $E=X\to X$ and $\mathsf{Ch}=E\to E$. A convenient
+linear family, with all abbreviations expanded when counting, is
+
+$$
+\begin{gathered}
+h=S(KS)(S(KK)\mathsf{id}),\qquad
+\mathsf{succ}=Sh,\qquad
+\overline0=K\mathsf{id},\qquad
+\overline{n+1}=\mathsf{succ}\;\overline n,\\
+\overline1=Sh(K\mathsf{id}),\qquad
+\overline2=Sh(Sh(K\mathsf{id})).
+\end{gathered}
+$$
+
+Here $hf\longrightarrow^*S(Kf)$, so
+$\overline nfx\longrightarrow^*f^nx$. The code has $10n+4$ atoms:
+$h$ has nine, $\mathsf{succ}$ ten, and $\overline0$ four. Type payloads are
+not included in this count; their shapes are fixed for this family.
+Addition and multiplication can be specified without long expanded trees:
+
+$$
+\mathsf{add}=[m][n][f][x]\,mf(nfx),\qquad
+\mathsf{mul}=[m][n][f]\,m(nf).
+$$
+
+These are finite SK expressions by the displayed algorithm and implement
+$m+n$ and $mn$. The numeral type has rank $2$ and the operation types rank
+$3$.
+
+:::Theorem[Typed SK compilation]
+The intrinsic simply typed compiler preserves original PTS typing, and
+its expanded output reduces forward to the literal annotated source term.
+It preserves and reflects native beta conversion of source expansions.
+For normal source expansions this is equivalent to their literal equality.
+The numeral counts, ranks and arithmetic beta laws above are checked,
+including reduction of an unapplied numeral to
+$\lambda f:E.\lambda x:X.f^n x$.
+%proof{rocq-local:SK.v}
 :::
 
-This establishes the numeral fragment, not completeness for arbitrary
-dependent proofs. The BCKW QIIRT of Section <#sec-qiirt> likewise checks as
-an independent signature. To replace the complete Hilbert catalogue one
-must additionally derive its dependent substitution schemes, with their
-literal annotations and types. That translation remains open.
+This interface does not replace the dependent Hilbert catalogue below.
 
 # Why a fixed finite typed basis is impossible {#sec-finite-basis}
 
@@ -182,11 +265,17 @@ available. The representing application tree must itself be originally
 typable. %proof{rocq-local:FiniteBasis.v}
 :::
 
-This excludes a fixed typed BCKW basis or a single fixed typed combinator,
+This excludes a fixed typed SK basis or a single fixed typed combinator,
 but not numerically indexed families with unbounded type ranks. Such
 families supply the economical presentation below.
 
 # Dependent logical schemes {#sec-core}
+
+These native logical axioms belong to the independent Hilbert backend.
+Its identity scheme $I_a$ is not an additional SK surface symbol.
+Uniform compilation of the entire catalogue to dependent SK remains an
+obligation; deleting a catalogue family without that proof would change
+the Hilbert system.
 
 Only the natural numbers in the subscripts are external indices. Every
 displayed type or family parameter is an ordinary term argument. Define
@@ -481,13 +570,13 @@ same file; it is longer than one page.
 
 A generalized algebraic theory (GAT) specifies dependent sorts, operations
 and equations; its initial algebra is syntax modulo those equations [3, 4].
-Here we present the contextual BCKW(I) signature with a product former,
+Here we present a contextual dependent SK signature with a product former,
 separately from the full Hilbert catalogue.
 The natural-model presentation [5] keeps the context as an index and computes
 each term's type recursively. The result is a quotient
 inductive-inductive-recursive type (QIIRT): its sorts, paths and typing
 function are defined together. The following excerpts come directly from
-the checked Cubical Agda source, [BCKW.agda](agda/BCKW.agda).
+the checked Cubical Agda source, [Combinatory.agda](agda/Combinatory.agda).
 
 %begin{minipage}{\linewidth}
 %CombinatoryAgdaListing{agda-signature}
@@ -555,13 +644,12 @@ The primitive guard uses $A[\mathrm{id}]$ to keep recursive definitions
 strictly positive; the displayed wrapper derives it from the identity law.
 Substitution is natural for universes, decoding and products, with
 $(\Pi A B)[\sigma]=\Pi(A[\sigma])(B[\sigma\uparrow_A])$.
-The closed atoms are $B_{a,b,c},C_{a,b,c},K_{a,b},W_{a,b},I_a$
-and $P_{a,b}$. The first five explicitly quantify over their type
-arguments at the ranks indicated by the subscripts, then have the types
-of Section <#sec-bckw>; $P$ has the type of Section <#sec-core>.
-Their literal telescopes are defined directly in the source.
-Typed application spines fix the saturation arities of the
-guarded $B,C,K,W,I$ laws. The $P$ law is
+The closed atoms are $S_{a,b,c},K_{a,b}$ and $P_{a,b}$, with the dependent
+telescopes of Section <#sec-core>. Typed application spines fix the saturation
+arities of the guarded $S,K$ laws. Identity is not an additional atom.
+The derived `skk-computes` law composes the $S$ and $K$ laws for certified
+instantiation spines; constructing every needed closed polymorphic
+instantiation remains a coverage obligation. The $P$ law is
 $\mathrm{El}_{r(a,b)}(P_{a,b}AB)=\Pi x:\mathrm{El}_a(A).\mathrm{El}_b(Bx)$,
 with the displayed applications and decodings well typed.
 There is no abstraction constructor, function eta or unrestricted quotation
@@ -579,7 +667,7 @@ in $\Gamma\triangleright A$, the substitution
 $(\mathrm{id},q_A)$ maps into
 $\Gamma\triangleright A\triangleright A[p]$. Substituting along it shares
 one variable. This is distinct from compiling every dependent term into
-closed $B,C,K,W,I$ atoms; ordinary contextual application itself permits
+closed $S,K$ atoms; ordinary contextual application itself permits
 shared variables.
 
 This gives executable, intrinsically typed quotient syntax. The source
@@ -587,6 +675,349 @@ derives the structural guards; general admissibility of the logical
 equations' coherence guards, interpretation in original annotated PTS-rk,
 equality reflection and dependent combinatory completeness remain separate
 obligations.
+
+## Binder-free normalization and bidirectional checking {#sec-binderfree}
+
+A direct binder-free normalizer is possible without expanding combinators
+to lambda terms. The checked core [BinderFreeCore.agda](agda/BinderFreeCore.agda)
+uses simple types $A::=\iota\mid A\to A$, explicitly instantiated
+$S,K$, application and inert ground labels. This is an independent
+test calculus, not an extension of PTS-rk by ground constants.
+Its normal forms are unsaturated heads with normal arguments:
+$S,Sf,Sfg,K,Kx$, and ground labels. Their typing is
+intrinsic. Since types do not depend on terms, ordinary indexed induction
+suffices; induction--recursion adds no benefit here.
+
+Normalizing application contracts a head when its last argument arrives.
+Termination is proved by a computability family, recursive on simple types:
+
+$$
+\begin{aligned}
+\mathsf{Good}_{\iota}(n)&=1,\\
+\mathsf{Good}_{A\to D}(f)&=
+ \prod_{x:\mathsf{Nf}(A)}\bigl(\mathsf{Good}_A(x)\to
+ \sum_{y:\mathsf{Nf}(D)}(f\mathbin{\bullet}x\Downarrow y)
+ \times\mathsf{Good}_D(y)\bigr).
+\end{aligned}
+$$
+
+Here $\Downarrow$ is independently generated by the literal combinator
+rules. Structural induction on normal forms constructs `good`; it is
+not an input termination assumption. The same construction yields both
+application and its forward reduction certificate:
+
+%CombinatoryAgdaListing{agda-binderfree-apply}
+
+The full normalizer folds over application trees. Every output is
+irreducible, every intermediate in its certificate retains the input type,
+and a ground normal form is a ground label. These are statements about
+weak combinatory reduction, including reduction in all saved arguments;
+they do not assert termination of every possible reduction sequence or
+transfer the PTS rank/size bounds to this encoding.
+%proof{agda-local:BinderFreeCore.agda}
+
+The bidirectional interface synthesizes each explicitly typed head, checks
+an application's argument at the synthesized domain, and compares simple
+types structurally. `check-normalize` decides an independently defined
+declarative typing judgment and returns its elaborated normal form.
+Rejection refutes every such typing derivation; successful checking cannot
+be followed by normalization failure. No type-inference oracle or fuel is
+supplied. Inductive equality witnesses implement positive casts so that
+the executable examples compute even in Cubical Agda.
+%proof{agda-local:BinderFreeBidirectional.agda}
+
+This also integrates with a genuine quotient. Let $\equiv_w$ be the
+equivalence generated by the two combinator rules in application contexts.
+Normalization respects every rule and reflects conversion:
+
+$$
+t\equiv_w u\quad\Longleftrightarrow\quad
+\mathsf{nf}(t)=\mathsf{nf}(u).
+$$
+
+Decidable equality of normal forms therefore decides weak conversion.
+The set quotient by $\equiv_w$ is isomorphic to the normal-form family:
+
+%CombinatoryAgdaListing{agda-binderfree-quotient}
+
+The quotient's application uses the same `appNF` as the checker and
+normalizer, with a proof that it represents ordinary application. Thus the
+quotient requires no second normalization algorithm.
+%proof{agda-local:BinderFreeCoherence.agda}
+%proof{agda-local:BinderFreeEquality.agda}
+%proof{agda-local:BinderFreeQuotient.agda}
+
+**The exact PTS boundary.** This quotient cannot replace the PTS-rk QIIRT:
+at $A=U_0$, the distinct weak normal forms $SKK$ and $SK(SKK)$,
+with the appropriate independent type instances, have the same annotated
+beta-normal expansion $\lambda x:A.x$.
+Conversely, $S(K(SKK))$ has beta-normal expansion
+$\lambda g:A\to A.\lambda x:A.gx$, which is not beta-convertible to
+$SKK$ instantiated at $A\to A$, whose normal expansion is
+$\lambda g:A\to A.g$.
+Both claims, including native typing and the latter non-conversion,
+are checked in [BinderFreeBoundary.agda](agda/BinderFreeBoundary.agda).
+Thus weak normal-form comparison is too discriminating, while adding
+function eta would identify too much. Neither issue is fixed by
+bidirectional typing.
+%proof{agda-local:BinderFreeBoundary.agda}
+
+## Canonical beta representatives {#sec-canonical-sk}
+
+Write $E$ for annotated SK expansion and $\operatorname{NF}_\beta$ for the
+native normalizer. Every intrinsic SK term has an originally typed
+expansion. The native normalizer computes a sufficient rank from that
+derivation, so `source-beta?` decides beta equality of expansions without
+fuel or a termination assumption. Its reference output retains original
+typing, normality and a bounded forward trace.
+%proof{agda-local:SKNativeCanonical.agda}
+
+Canonical SK outputs require retaining the compiler's source fragment.
+`Source Γ A` is intrinsic annotated simple lambda syntax, with a proof of
+original PTS typing after erasure $e$. Capture-avoiding substitution and
+the native greedy passes lift to this syntax; for every budget $d$,
+
+$$
+e(\mathsf{rounds}_{\mathrm{Source}}(d,s))
+ =\mathsf{rounds}_{\mathrm{native}}(d,e(s)).
+$$
+
+The source normalizer $n$ uses a syntax-only budget: variables and ground
+labels contribute zero, abstraction keeps its body's budget, and application
+takes the maximum of its children's budgets and its head-redex rank.
+The last contribution is the simple type order of a literal lambda head,
+and zero for other heads. Simple-type annotations are already normal.
+This budget is proved sufficient for the original native rank relation;
+computing it never evaluates typing proofs. On normal source arguments,
+the application budget is exactly that head contribution.
+%proof{agda-local:SKSourceRank.agda}
+
+Erasure is injective at each fixed context and simple type, including the
+hidden intermediate types of applications. Thus $e(ns)=\operatorname{NF}_\beta(e(s))$
+and beta-equal erasures yield literally equal normalized sources.
+No parser for arbitrary native terms, or replacement for original typing,
+is assumed.
+%proof{agda-local:SKSource.agda}
+%proof{agda-local:SKSourceEquality.agda}
+%proof{agda-local:SKSourceNormal.agda}
+
+Deterministic bracket compilation $C$ satisfies
+$E(Cs)\longrightarrow_\beta^* e(s)$. Every closed native-normal source
+compiles to an actual irreducible SK normal form. Combining expansion into
+`Source`, its normalizer, and compilation gives the checked operation
+$\kappa(c)=C(n(\mathsf{expandSource}(c)))$:
+%proof{agda-local:SKBracket.agda}
+%proof{agda-local:SKCanonicalNormal.agda}
+
+%CombinatoryAgdaListing{agda-sk-canonical}
+
+For codes of the same simple type, the resulting laws are
+
+$$
+E(\kappa c)=_\beta E(c),\qquad
+\kappa(\kappa c)=\kappa c,\qquad
+\kappa c=\kappa d\ \Longleftrightarrow\ E(c)=_\beta E(d).
+$$
+
+Define the stricter family
+$\mathsf{Canonical}(A)=\sum_{c:\mathsf{Code}(A)}(\kappa c=c)$.
+Its members are irreducible SK terms with decidable equality. The actual
+set quotient of SK codes by native beta equality is isomorphic to this
+family, and the isomorphism respects application:
+
+%begin{minipage}{\linewidth}
+%CombinatoryAgdaListing{agda-sk-canonical-apply}
+%end{minipage}
+
+`check-canonical` decides the independent declarative SK typing judgment
+and returns a beta-faithful canonical elaboration. Identity, both identity
+spines, identity application and canonical application compute by `refl`
+in the checked examples; the eta pair remains provably distinct.
+%proof{agda-local:SKCanonical.agda}
+%proof{agda-local:SKCanonicalExamples.agda}
+
+**Scope.** Outputs are binder-free, but this reference algorithm uses
+typed lambda syntax internally. Its soundness is native beta equivalence,
+not a forward weak-SK trace from the input. Full PTS integration still
+requires dependent catalogue coverage, compatibility with all QIIRT paths,
+and soundness/completeness against the original six typing rules;
+bidirectional checking alone supplies neither. Requiring
+$E(c)$ itself to be normal is too restrictive because SK expansions have
+administrative beta redexes. Eta expansion is not permitted.
+The algebraic equivalence
+of [12] concerns the extensional simply typed/untyped case; it is not that
+missing beta-only dependent theorem. The compact core shares its normalizer,
+but covers a smaller theory: a reduction in the code needed for the full
+PTS presentation is not yet established.
+
+## Direct evaluation and its canonical-image boundary
+
+Every weak SK step expands to a forward original annotated beta trace.
+Consequently direct weak normalization can precede $\kappa$ without
+changing its result, and the map from the weak quotient to the native-beta
+quotient preserves application. This map need not be injective.
+%proof{agda-local:SKDirectSoundness.agda}
+
+At **ground output type** $\iota$, every weak normal form is a ground label,
+which $\kappa$ fixes. Thus direct normalization already equals $\kappa$
+for every ground-typed input. Weak conversion and native beta conversion
+coincide there, giving a direct conversion decision and the following
+canonical application, whose computational projection constructs no lambda
+intermediate:
+
+%begin{minipage}{\linewidth}
+%CombinatoryAgdaListing{agda-sk-direct-ground}
+%end{minipage}
+%proof{agda-local:SKDirectGround.agda}
+
+Function-valued results require more. With independent type instances
+understood, the canonical inputs
+$F=S(KK)(SKK)$ and $a=SKK$ represent
+$\lambda f:\iota\to\iota.\lambda x:\iota.f$ and
+$\lambda y:\iota.y$. Direct weak application yields $K(SKK)$, with four
+atoms, whereas $\kappa(Fa)=S(S(KS)(KK))(KK)$ has eight. Their inequality
+and failure of canonical-image closure are proved, not just evaluated.
+This rules out using weak application alone, not a stronger direct evaluator.
+An abstraction-sensitive closure/spine evaluator must preserve arrow-typed
+neutrals without eta expansion and prove agreement with $\kappa$.
+%proof{agda-local:SKDirectBoundary.agda}
+
+## A normal-form-first dependent algebra {#sec-normal-first}
+
+Normal forms can replace syntax modulo conversion: store canonical types
+and terms, and make application and substitution **operations returning
+normal forms**, not unrestricted constructors of that family. In the
+simply typed fragment this needs only an ordinary dependent pair:
+
+%begin{minipage}{\linewidth}
+%CombinatoryAgdaListing{agda-canonical-algebra}
+%end{minipage}
+
+The computed-type fibre is proved isomorphic to `Canonical A`;
+application has its result type by computation and agrees with canonical
+application. No beta-quotient path constructor is needed in this carrier.
+This is not a dependent IIRT: simple types are independent of terms.
+%proof{agda-local:CanonicalAlgebra.agda}
+
+There is also a genuinely dependent, checked ingredient. Over original
+contexts, substitutions can store normal images and mere original typing
+evidence:
+
+%begin{minipage}{\linewidth}
+%CombinatoryAgdaListing{agda-normal-sub-carrier}
+%end{minipage}
+
+Normalize every image after composition. Reducing those images also reduces
+each substituted context lookup; original subject reduction supplies the
+sorting premise required to convert the image's dependent type.
+Normalization coherence makes the result independent of the truncated
+typing witnesses. The resulting set has proved left/right identity and
+associativity paths. These are actual carrier equalities, not equality
+constructors imposed by a quotient. Conversion of substitutions is exactly
+equality of their normalized images. Only typing witnesses are truncated.
+%proof{agda-local:NormalizedSubstitution.agda}
+
+The dependent families use the original six-rule judgment directly:
+
+%begin{minipage}{\linewidth}
+%CombinatoryAgdaListing{agda-normal-families}
+%end{minipage}
+
+For a normal type $A$, its inhabitants are `NfAt` at the stored code of $A$.
+Normalize both the substituted subject and its type. This defines
+$A[\sigma]$ and $t[\sigma]$ on these families, with proved identity and
+composition paths; term equations include transport along the corresponding
+type equation. The smart cast `castNF` transports only the typing certificate,
+leaving the stored syntax definitionally unchanged. It is proved equal to
+ordinary transport of the entire record. Thus proof transport need not
+enter the normalizer's computational input.
+%proof{agda-local:NormalizedFamilies.agda}
+
+Context comprehension has terminal substitutions, projections, pairing and
+last-variable operations. Their projection, uniqueness and context-eta laws
+are literal carrier paths. Lifting targets the extension by the **normalized**
+pulled-back declaration; original context conversion proves its typing.
+Pairing is natural under composition, and the projection--lifting square
+commutes. Context eta here is not function eta.
+%proof{agda-local:NormalizedComprehension.agda}
+
+Products and abstractions of normal components are normal structurally.
+Application computes a normal dependent result type and a normal inhabitant:
+
+%begin{minipage}{\linewidth}
+%CombinatoryAgdaListing{agda-normal-application}
+%end{minipage}
+
+The result's original typing and normality are fields, not assumed closure
+laws. Annotated beta, product/abstraction/application naturality and universe
+substitution are proved. Decoding a normal inhabitant of $U_r$ is literally
+the same family as `TyNF` at rank $r$; no separate decoding quotient is needed.
+%proof{agda-local:NormalizedProducts.agda}
+
+The computed-type interface stores a normal subject and mere original
+typability, with no chosen type. Type uniqueness determines its normal
+`tyOf` and rank independently of all witnesses. Its fibre at each normal
+type is isomorphic to `NfAt`; every original derivation normalizes into this
+interface, with forward beta reduction and conversion preservation/reflection.
+%proof{agda-local:NormalizedInference.agda}
+
+Normal declarations also support an actual inductive-recursive context
+presentation:
+
+%CombinatoryAgdaListing{agda-normal-contexts}
+
+The mutual context/decoding definition is checked with positivity and
+termination enabled. Every such context is merely well formed; coherence
+allows normalization and type/term action without choosing a well-formedness
+witness from that truncation.
+%proof{agda-local:NormalizedContexts.agda}
+
+The dependent tests include the neutral type $f\,U_0$ under
+$\sigma(f)=\lambda X:U_0.U_0$: its pulled-back type computes to $U_0$.
+The polymorphic identity $\lambda A:U_0.\lambda x:A.x$, its specialization
+at $U_0$, and subsequent application to $U_7$ test dependent type changes,
+not only simply typed application.
+%proof{agda-local:NormalizedExamples.agda}
+
+### Raw typing and the remaining presentation boundary
+
+For arbitrary original annotated input, structural synthesis returns either
+a normalized inferred type with original typing evidence, or a refutation
+of every original typing derivation:
+
+%begin{minipage}{\linewidth}
+%CombinatoryAgdaListing{agda-native-inference}
+%end{minipage}
+
+`infer` recurses on raw syntax, including annotations. It normalizes a type
+only after proving that type sorted. Application inspects the inferred
+normal function type and compares the normal argument type with its domain.
+Original inversion, type uniqueness and confluence prove all rejection
+branches complete. Consequently `check wf t A` decides the original
+$\Gamma\vdash t:A$ for well-formed $\Gamma$, with no certificate input or
+replacement typing relation. `check-context` also decides context validity;
+on an arbitrary raw context it decides the conjunction of well-formedness
+and typing, not bare typing in a malformed context.
+%proof{agda-local:NativeBidirectional.agda}
+
+This establishes the normal-form-first algebra for dependent operations and
+the original raw typing decision. It does **not** yet replace the combinatory
+QIIRT: the normalizer still uses annotated native binders. Its algebra laws
+must be assembled into an interpretation respecting every QIIRT path and
+the dependent $S/K/P$ families, with source completeness, context adequacy
+and sethood of the inductive-recursive context carrier.
+The checked mutual definition above concerns contexts and decoding, not a
+new simultaneous definition of all normal syntax and hereditary evaluation.
+The latter still needs a positive, terminating definition covering redexes
+inside annotations. No reduction in the total full-presentation code is claimed.
+
+Normal-form-first removes conversion-quotient elimination and repeated guard
+handling; it does not remove coherence, which becomes laws of normalizing
+operations. These laws need not be judgmental on open inputs, and no function
+eta is introduced. The QIIRT paper [5, Sections 3.2, 4.3--4.4 and 5] similarly
+distinguishes deferred guards from proved laws and strictification of an
+existing model from defining initial syntax; its normalization example is
+only the substitution calculus.
 
 # Elementary normalization and finite syntax carriers {#sec-finite-normalization}
 
@@ -636,9 +1067,25 @@ shape-dependent constant $C$. Thus
 $\max(2,C\ell)\uparrow\uparrow(d+1)$ bounds normalization of its expansion.
 For type-indexed atoms the bound requires fixed type shapes, as in the
 numeral family; arbitrary type-index payloads must also be charged.
-This does not yet bound the length of a normal **binder-free BCKW output**:
-an annotation-preserving compiler back to that syntax, with a size theorem,
-is still needed. Numerical labels count as one node here;
+For the simply typed compiler, let $a(c)$ count SK/ground leaves, counting
+each variable as one atom on open codes, and let $s(t)$ count source
+constructors. Bracket abstraction satisfies
+$1+a([x]c)\leq4a(c)$; consequently
+$a(Ct)\leq4^{s(t)}$. Source node count is at most annotated native node count.
+For $N=|E(c)|$ and $d=\mathsf{budget}(\mathsf{expandSource}(c))$,
+normalization and compilation therefore give the output bound
+
+$$
+a(\kappa(c))\leq4^{\max(2,N)\uparrow\uparrow(d+1)}.
+$$
+
+The source proves the sharper executable bound `4^(tower d N)`;
+the displayed form uses the tower comparison above. This is elementary at
+fixed $d$, with one additional exponential. It bounds output **atoms**, not their type-index payloads,
+all compilation intermediates, or runtime memory. The dependent compiler
+remains open.
+%proof{agda-local:SKBracketSize.agda}
+Numerical labels count as one node here;
 their bit lengths must be charged in a machine-level complexity claim.
 
 ## Finite normal families and dependent application
@@ -1122,15 +1569,52 @@ These are Agda metatheorems, not internal PTS consistency proofs.
 
 The result above is all-six-rule contextual soundness in a graded syntactic
 interpretation. Every fixed typed input has computed finite coverage, and
-larger grades cover more inputs. It is not yet a theorem that each stage is
-a **finite first-order model of a logical fragment**. That requires a total
+larger grades cover more inputs. These graded results alone do not make each
+stage a **finite first-order model of a logical fragment**. That requires a total
 interpretation of the chosen signature on fixed finite domains, coherent
 dependent fibres, and all chosen axioms under every semantic valuation.
 Operations that increase grades do not automatically supply this closure.
+The explicitly guarded construction below supplies fixed finite domains;
+its axioms retain their bounds rather than asserting unrestricted closure.
 For example, iterating $A_0=U_0$ and $A_{k+1}=\Pi x:U_0.A_k$ gives normal
 types of rank one for $k>0$, using only label zero and $2k+1$ nodes: a fixed
 size-bounded faithful type carrier cannot contain the whole family. This
 does not rule out nonfaithful finite models.
+
+There is a sharper obstruction if raw computation is interpreted as equality
+in a total, untyped applicative algebra. On a finite carrier, the equation
+$(Kx)y=x$ makes $x\mapsto Kx$ injective, hence surjective. Choose $a$ with
+$Ka=K$. Then $Kx=(Ka)x=a$ for every $x$, so injectivity makes the carrier
+a singleton. Any positive typing fact then contradicts an empty Void fibre.
+Neither extensionality nor another combinator is needed.
+%proof{rocq-local:FiniteModelBoundary.v}
+This theorem does not apply to typed or resource-indexed application, or
+to MM0's directed `red` predicate, which is not equality. Finite models of
+reduction and partial interpretations are a possible alternative [11];
+their dependent typing and conversion soundness for PTS-rk must still be
+established. A finite model of selected ground instances, constructed below,
+does not assert closure under all quantified instances.
+
+:::Theorem[The finite native-model boundary]
+Suppose a single term domain has total application, a compositional
+interpretation of closed terms, soundness for original closed typing and
+directed beta reduction, the Hilbert conversion and type-reduction rules,
+and an empty Void fibre. Then its interpretation of the $k$ Church selectors
+is injective for every $k$. Consequently the domain is infinite.
+%proof{rocq-local:FiniteNativeModelBoundary.v}
+:::
+
+To distinguish two selectors, instantiate them at $U_1$ and choose branches
+between Void and the inhabited type $\mathsf E^0_1$, both of sort $U_1$. Equal
+selector values would give one semantic test value reducing to both types.
+Conversion followed by type reduction would then transport an inhabitant
+into Void. No symmetry or antisymmetry of reduction is assumed. The finite
+version needs only these $k$ selectors and their finitely many tests, and
+forces at least $k$ semantic values. Thus this is not a prohibition on
+size-guarded fragments or growing graded carriers. It does rule out obtaining
+the full native soundness interface on one fixed finite carrier. The literal
+MM0 theory is identified with the independent catalogue below; extending
+this obstruction to it still requires the original-PTS completeness bridge.
 
 The independent checker and its external soundness provide a precise
 starting point for internal reflection. Their translation into PTS remains
@@ -1162,8 +1646,9 @@ Church construction supplies computational ingredients, not those soundness
 and interpretation proofs. External results for every fixed budget are not
 one internal proof quantifying over all budgets. This distinction leaves
 the Pakhomov-style self-consistency objective plausible without identifying
-it with an unrestricted arithmetical consistency sentence. It also avoids
-inferring consistency from the unrelated all-true Horn models below.
+it with an unrestricted arithmetical consistency sentence. The external
+consistency needed by the ground models below is proved separately; it is
+not inferred from positive Horn satisfiability.
 
 ## A locally finitely satisfiable target {#sec-ground-horn}
 
@@ -1178,34 +1663,597 @@ J_1,\ldots,J_k\Rightarrow J
 (p_{J_1}\land\cdots\land p_{J_k})\Rightarrow p_J.
 $$
 
-This is an effective positive Horn theory in a countably infinite recursive
-vocabulary. Finite conversion certificates can be enumerated; no decision
-procedure for untyped conversion is assumed. Grounding all the explicit
-MM0 graph rules is a concrete version of the same construction.
+Purely positive clauses allow the valuation making every atom true,
+including every alleged proof of Void. To exclude it, add the **denials**
 
-:::Theorem[Ground derivability reduction]
-A judgment $J$ has a finite source derivation exactly when the grounded
-Horn theory entails $p_J$. Every finite fragment of the target has a
-one-element first-order model.
-%proof{rocq-local:GroundHorn.v}
+$$
+p_{\,t:\mathsf{Void}}\Rightarrow\bot
+\qquad\text{for every closed subject }t.
+$$
+
+More generally a denial forbids simultaneous truth of a finite list of
+atoms. A constrained model satisfies the positive clauses and makes every
+denial's premises false jointly. Thus every model, not merely the chosen
+least one, has an empty ground Void fibre. This is an effective Horn theory
+with constraints in a countably infinite recursive vocabulary; finite
+conversion certificates can be enumerated without deciding raw conversion.
+
+:::Theorem[Consistency-sensitive ground reduction]
+The constrained theory has a model exactly when no forbidden list is
+jointly derivable. Under this consistency condition, $J$ is derivable
+exactly when every constrained model satisfies $p_J$. The least model
+interprets $p_J$ as derivability and reflects every atom. Every finite
+ground subtheory has a one-element-domain constrained model.
+%proof{rocq-local:GroundHornConsistency.v}
 :::
 
-For preservation, induct on a derivation. For reflection, interpret $p_J$
-as ``$J$ has a finite derivation'': this is the least model of the rules.
-For finite satisfiability, use a singleton domain and make every $p_J$ true;
-indeed this satisfies the whole positive theory. The badge proves the
-generic Horn theorem; the effective Hilbert instantiation is the preceding
-mathematical construction, not a checked MM0/native adequacy bridge.
-Together with the external completeness theorem of Section <#sec-hilbert>,
-it yields the stated ground-query reduction for original closed judgments.
+Soundness is induction on derivations; reflection uses the least model.
+Its satisfaction of the denials is the consistency obligation, not an
+automatic property of Horn clauses. Restricting the rules preserves this
+obligation. Conversely, every derivation uses finitely many rule instances,
+so satisfiability of all finite ground subtheories implies that no forbidden
+derivation exists. The singleton domain carries no syntax: independent
+nullary predicates retain the judgment distinctions. A singleton domain
+does not mean that these predicates are all true.
 
-This conclusion holds independently of the normalization bounds. Those
-bounds additionally give finite representations of individual computations;
-they do not supply a finite-signature interpretation preserving arbitrary
-quantified formulas. Requiring finite models to contain faithful free
-natural-number syntax would already fail: injective successor with zero
-outside its image has no finite model. Thus neither a finite faithful
-syntax model nor that stronger first-order reduction is claimed.
+For the checked Hilbert catalogue, grounding preserves and reflects its
+inductive derivations, and catalogue soundness transports them to original
+typing. %proof{rocq-local:HilbertGrounding.v}
+External Void exclusion therefore supplies the required denials; the
+Agda native theorem above separately covers all six original typing rules.
+The Rocq bridge uses the same external canonical-form argument and original
+normalization, with no consistency premise.
+%proof{rocq-local:NativeCanonicity.v}
+Original-PTS-to-catalogue completeness remains unformalized. The literal
+MM0/native catalogue correspondence, including its computational graphs,
+is established below; it does not supply that separate completeness proof.
+
+### Exact finite ground fragments
+
+For a finite list $F$ of positive ground clauses, compute
+
+$$
+S_0=\varnothing,\qquad
+S_{i+1}=S_i\cup
+ \{J\mid (P\Rightarrow J)\in F,\ P\subseteq S_i\}.
+$$
+
+Only clause heads can be added. Consequently $S_{|F|}$ is closed and has
+at most $|F|$ atoms, and
+
+$$
+J\in S_{|F|}\quad\Longleftrightarrow\quad F\vdash J.
+$$
+
+Testing each retained denial against this finite saturation decides whether
+a constrained model exists and constructs one when the test succeeds.
+Every constrained model excludes the denied atoms; the constructed model
+also reflects underivability. These are executable results, not an assumed
+normalization oracle. %proof{rocq-local:FiniteHorn.v}
+
+Specializing this construction to literal closed PTS judgment pairs gives
+an unconditional model for every finite list of valid catalogue-rule
+instances. All ground Void judgments are false, including subjects outside
+the observed atom set. Saturation implies original typing and exactly
+reflects derivability within the selected fragment. The concrete models
+and universe/identity/application regressions are checked separately.
+%proof{rocq-local:HilbertFiniteModels.v}
+
+Arbitrary constrained models may still assign additional, nonderivable
+atoms true. To reflect a finite fragment completely on an observed finite
+atom set $Q$, add its **signed diagram**:
+
+$$
+\{p_J\mid J\in Q\cap S_{|F|}\}
+\quad\cup\quad
+\{\neg p_J\mid J\in Q\setminus S_{|F|}\}.
+$$
+
+Every model of this completion agrees with finite saturation on every
+propositional formula over $Q$, including negation and implication. The
+canonical finite model satisfies the completion exactly when the denial
+test succeeds. Completion deliberately adds negative information; it is
+not a claim that underivability entails negation in the uncompleted Horn
+theory. Its negatives are relative to $F$ and need not survive adding more
+source rules. Neither saturation nor completion decides derivability in
+the infinite source theory.
+
+These finite models also yield literal original-PTS programs. For a finite
+nonempty query list, Church table compilation gives a rank-$r+2$ map from
+its selector carrier to rank-$r+1$ Booleans. Applied to a canonical query
+code, `query_program` reduces to true exactly for $F$-derivable atoms and
+to false exactly for underivable ones. For consistent fragments,
+`formula_program` similarly computes completed-diagram truth;
+`denial_program` returns true exactly when the
+constrained fragment has a model. Typing and these forward-beta equivalences
+are checked, with confluence distinguishing the two normal Boolean outputs.
+%proof{rocq-local:FiniteHornChurch.v}
+Saturation and table generation here occur externally. The emitted PTS
+term evaluates the resulting finite table; it is not a uniform internal
+saturation algorithm or an internal proof of its own reflection theorem.
+
+### Checking all valuations in a fixed finite candidate
+
+There is also a complete check for a specified finite candidate algebra.
+Fix a nonempty finite domain $D$ and total interpretations of the constructor
+symbols. Represent a universally quantified positive or negative rule by
+its semantic template on $D^k$. Enumerate **all** vectors in $D^k$, not just
+values named by designated source terms, and saturate the resulting finite
+clauses. `check_candidate` succeeds exactly when some predicate
+interpretation satisfies every supplied template under every valuation;
+on success its least interpretation is such a model on the same fixed $D$.
+A denial of typing at Void therefore excludes every semantic subject, not
+merely the named ones. This semantic-grounding theorem is checked, including
+a regression whose violation occurs at the second domain element.
+%proof{rocq-local:FiniteUniversalHorn.v}
+
+The actual MM0 signature is now represented by sorted expression trees:
+nine constructors, eleven predicates and all 55 named universal axioms.
+Selection retains whole axioms, not selected valuations. Every axiom and the
+added universal Void denial pass a proved sort/arity checker. Expression
+evaluation, semantic grounding and universal satisfaction agree; evaluation
+of well-scoped terms never uses an out-of-range-variable fallback.
+%proof{rocq-local:MM0FiniteSignature.v}
+%proof{rocq-local:MM0FiniteAxioms.v}
+The transcription is independently compared with the expanded MM0 source;
+that textual checker is not a kernel-verified MM0 parser or native adequacy
+proof. If equality is added as a predicate, its actual finite diagram must
+still be imposed; saturation cannot choose its meaning freely.
+First-order substitution preserves sorting and commutes with evaluation.
+Independent source derivations instantiate the selected axioms with closed,
+sorted expressions; they contain no native typing premise. Their recursive
+grounding compiler produces finite semantic Horn proof trees, proving
+soundness under every interpretation satisfying the selected schemas.
+%proof{rocq-local:MM0SyntaxSoundness.v}
+
+### Total constructor search and internal certificates
+
+Interpret each of the three sorts on a separate copy of an $m$-element
+nonempty domain. Enumerating all operation tables gives exactly
+
+$$
+m^{\,2+3m+3m^2+m^3}
+$$
+
+candidates: the exponent counts the rows for two nullary, three unary,
+three binary and one ternary constructor. Every total constructor
+interpretation occurs pointwise. Lookup is total and every operation row
+is present, so the table fallback is never used.
+%proof{rocq-local:FiniteAlgebraSearch.v}
+%proof{rocq-local:FiniteOperationAlgebras.v}
+For each selected axiom list, exhaustive search returns a model exactly
+when one exists at these fixed sort cardinalities. Failure excludes all
+such interpretations. This is a complete decision procedure for the fixed
+domain, not an existence theorem for every fragment or an efficient search.
+The current specialization uses equal sort cardinalities.
+%proof{rocq-local:MM0FiniteSearch.v}
+
+A concrete two-element interpretation satisfies all valuations of the
+subtheory omitting `sveq` and `f0`, and has an empty Void fibre.
+%proof{rocq-local:MM0ProjectionModel.v}
+These omissions are substantial: substitution is interpreted as identity,
+and the empty `form` relation disables positive catalogue introduction.
+The example tests genuine total operations and quantified satisfaction;
+it is not a model of full PTS-rk. The full axiom list is rejected on the
+one-element domain.
+
+For internal certificates, interpret each semantic atom with truth value
+$b$ by $\top=\Pi X:U_0.\,U_0$ when $b$ is true, and by Void otherwise.
+A ground clause becomes its implication chain. Every valid clause has an
+explicit original-PTS proof: return a witness of $\top$, or a false premise
+when the conclusion is false. For all valuation instances $C_1,\ldots,C_q$,
+the generated finite satisfaction certificate has type
+
+$$
+(C_1\to\cdots\to C_q\to\mathsf{Void})\to\mathsf{Void}
+$$
+
+of rank at most four. Its closed inhabitability is equivalent to acceptance
+of the candidate checker and hence to existence of a predicate interpretation
+satisfying all selected axioms and denials under every valuation.
+%proof{rocq-local:FiniteModelRealization.v}
+The forward proof generator does not use canonicity; the external converse
+uses native Void exclusion. This is a finite continuation conjunction, not
+an unguarded quantifier over arbitrary Church inhabitants. Nor is this
+externally indexed family a single internal reflection theorem over all
+represented fragments. The finite native-model boundary above prevents
+silently extending these finite certificates to the full ungraded interface.
+
+Deduction preservation is also proof-producing: a recursive compiler applies
+each realized clause to its compiled premises, yielding an original-PTS
+inhabitant of the independently interpreted conclusion. This covers source
+derivations of arbitrary finite depth, not just a bounded list of proof
+examples. %proof{rocq-local:FiniteModelSoundness.v}
+For the literal MM0 schemas, successful constructor search supplies both
+the fixed-domain model and its native satisfaction certificate. The explicit
+two-element subtheory has an unconditional certificate and deduction
+translation: acceptance is proved from its constructor interpretation, not
+assumed. %proof{rocq-local:MM0InternalSoundness.v}
+
+### Explicit size/depth-guarded quantified fragments {#sec-guarded-fragments}
+
+Fix a finite universe alphabet $L$, annotated-node budget $N$ and syntax-depth
+budget $D$. At each required de Bruijn scope $n$, enumerate the original
+terms satisfying these bounds and adjoin an overflow value:
+
+$$
+\mathcal D_n=\{\bot\}\sqcup\operatorname{Fin}|E_n|,
+\qquad
+E_n=\{t:\operatorname{Term}\,n\mid
+ |t|\le N,\ \operatorname{depth}(t)\le D,\ \operatorname{labels}(t)\subseteq L\}.
+$$
+
+The implementation stores enumeration positions, not membership proofs.
+Decoding an encoded admitted term returns that term. Its complete carrier
+enumeration has length at most $1+2^{2^{3D+n+|L|+4}}$.
+Application, product, annotated lambda and substitution are total: decode
+their arguments, perform the original constructor or substitution, and
+encode the result; failed decoding or an out-of-bounds result returns
+$\bot$. Thus a product consumes $\mathcal D_n\times\mathcal D_{n+1}$,
+and substitution consumes $\mathcal D_{n+1}\times\mathcal D_n$.
+The exact operation laws require the **output** bound as well as the input
+bounds. Neither guard mentions typing or the desired soundness conclusion.
+%proof{rocq-local:GuardedFiniteCarriers.v}
+
+Proof height is a separate parameter. Let $P_h(M,A)$ mean that the independent
+Hilbert rules derive $M:A$ using height at most $h$, with every displayed
+judgment inside the syntax bounds. For $h<H$, a guarded inference has form
+
+$$
+\operatorname{Rule}_j(a_1,\ldots,a_j,a)\ \land
+\bigwedge_{i=1}^{j}P_h(a_i)\ \Longrightarrow\ P_{h+1}(a),
+\qquad j\in\{0,1,2\}.
+$$
+
+There are finitely many predicates $P_0,\ldots,P_H$ on the fixed finite
+judgment domain $\mathcal D_0^2$. The three rule graphs decode to the six
+original Hilbert inference forms; they do not assert that the conclusion
+is already derivable. Every semantic valuation is included. Overflow
+judgments are false. The stage increment is essential: even a one-premise
+rule on constant-size atoms can exceed a proof-height cutoff.
+Independent proof trees compute sufficient common size, depth and height
+bounds; every finite family of derivations has one common envelope.
+%proof{rocq-local:GuardedHornFragments.v}
+
+The concrete model chooses $L=\{0,\ldots,D\}$ and includes the maximum
+universe index in its depth measure. Here $D$ is a syntax/label bound, **not
+type rank**. Its predicates exactly reflect bounded catalogue derivations,
+and all six quantified inference forms preserve them. Every true $P_h$
+judgment has its original native typing, and every semantic subject has an
+empty Void fibre. For $N\ge3$ and $D\ge2$, Void itself is represented without
+overflow; the universe judgment is also inhabited when $H\ge1$.
+These are models of the stated guarded rules, not of the
+unrestricted theory. Catalogue derivations, and finite families of them,
+are covered by increasing the bounds; this does not supply the separate
+original-PTS-to-catalogue completeness theorem.
+%proof{rocq-local:GuardedHilbertModels.v}
+This qualitative model bounds displayed judgments; its original
+beta/conversion side conditions do not yet bound their intermediate states.
+
+Reduction witnesses can also be bounded explicitly. Enumerate **all**
+one-step original beta successors, including reductions in annotations.
+The Boolean graph $\operatorname{Reach}_{k,E}(t,u)$ checks a path of at most
+$k$ steps with every state in the finite syntax list $E$; conversion checks
+two such paths to a common reduct in $E$. These checks are exact for the
+specified bounded paths and sound for original reduction/conversion.
+Every original finite path or conversion has a finite numerical envelope
+covering its intermediate states. Composition adds path budgets, $k+\ell$;
+it does not make a fixed cutoff transitively closed.
+%proof{rocq-local:GuardedBetaGraphs.v}
+
+An executable version fixes a finite list of numerical catalogue instances
+and a path budget $k$. Enumerate every parameter tuple for **all six**
+Hilbert rules. Retain precisely the clauses whose displayed judgments fit
+and whose reduction/common-reduct checks pass. This does not omit a rule
+form or consult a typing oracle. Finite saturation gives the least predicate
+interpretation, with exact fragment-query reflection and an empty Void
+fibre. The Boolean rule graph and its all-valuation schema correspondence
+are proved, including the actual total application/product/substitution
+operations. Its original-PTS satisfaction certificate has rank at most
+four; arbitrary deductions in the fragment compile to native proofs.
+%proof{rocq-local:GuardedHilbertTables.v}
+Here proof height is not truncated: saturation closes a finite set of
+guarded clauses. This differs from the $P_h$ presentation above. The bounds
+control represented syntax and path states, not the host evaluator's entire
+working memory or the size of its generated certificate.
+
+The executable fragments also cover the entire independent catalogue:
+
+$$
+\mathsf H\vdash M:A
+\quad\Longleftrightarrow\quad
+\exists b\;\operatorname{query}_b(M,A)=\mathsf{true},
+$$
+
+where $b$ comprises syntax, label and path bounds and a finite catalogue
+list. Enlarging these data preserves truth. Every finite collection of
+catalogue proofs has one common budget, including all intermediate beta
+witnesses; true queries have faithful finite-carrier representations.
+%proof{rocq-local:GuardedHilbertCoverage.v}
+This is external coverage and soundness. Void exclusion uses the proved
+native canonicity theorem; neither the generated certificates nor their
+external coverage constitute uniform internal reflection or an independent
+consistency proof of original PTS-rk.
+
+For the literal MM0 syntax, a structural guard bounds every substituted
+metavariable value and every argument in every premise and conclusion.
+The whole source derivation computes such bounds. Guarded semantic schemas
+are compiled over **all** finite valuations; an inactive positive instance
+becomes a tautology, while universal Void denials remain unchanged. The
+finite checker is exact for this guarded theory, and accepted candidates
+produce the rank-at-most-four satisfaction certificates and deduction
+translations above. A separate exact-decoding law connects source guards to
+semantic guards; it contains no typing or consistency premise.
+%proof{rocq-local:MM0GuardedQuantification.v}
+
+### Literal MM0 adequacy and finite models
+
+Quote each original annotated term into the MM0 constructor trees, retaining
+every de Bruijn index and universe label. Quotation is injective, has an
+exact scoped decoder, and commutes with the original renaming and
+substitution operations, including arbitrary binder cutoffs.
+%proof{rocq-local:MM0NativeSyntax.v}
+The nine computational predicates---numerical comparison/maximum, lift,
+substitution, reduction, telescope formation, prefix and exposure---have
+their intended meanings **if and only if** their first-order-sorted ground instances have
+independent MM0 derivations. In particular, `form` computes syntax; it is
+not a typing oracle. %proof{rocq-local:MM0ComputationalAdequacy.v}
+A raw reduction starting at a quoted native term reconstructs a native
+reduction and a scoped endpoint; no endpoint-scoping premise is needed.
+Common-reduct conversion likewise agrees exactly with original beta
+conversion. %proof{rocq-local:MM0NativeReduction.v}
+
+The 17 numerical axiom-row families generate exactly the 65 checked
+catalogue shapes. Exposure beyond the telescope length is rejected, and
+the substitution-family prefixes have lengths three through six. Every
+source `ax` derivation yields a catalogue entry,
+%proof{rocq-local:MM0CatalogueAdequacy.v}
+and every catalogue entry has an actual source derivation, for arbitrary
+numerical parameters. %proof{rocq-local:MM0CatalogueRealization.v}
+The six Hilbert inference rules then give
+
+$$
+\mathsf{MM0}\vdash h(\ulcorner M\urcorner,\ulcorner A\urcorner)
+\quad\Longleftrightarrow\quad \mathsf H\vdash M:A.
+$$
+
+For fixed $N,D$, enumerate the closed, first-order-sorted MM0 expressions
+of size at most $N$ and depth at most $D$, and add overflow. The three
+signature sorts use copies of this fixed finite carrier. All nine
+constructors are total: malformed, wrong-sort or oversized results return
+overflow. The positive rule guard checks the declared sorts and bounds of
+**every** metavariable value and premise/conclusion argument. It includes
+every semantic valuation; failed guards make positive instances tautologies.
+The previously stated exact-decoding premise is proved for this concrete
+algebra. Here $D$ measures constructor depth, not PTS type rank; unary
+numerals count towards size. %proof{rocq-local:MM0GuardedSyntaxAlgebra.v}
+
+Finite Horn saturation reflects accepted queries into independent source
+derivations of their decoded atoms. Conversely, each source derivation has
+computed bounds at which its query is accepted and decodes exactly to the
+source atom. Thus the union of these finite fragments reflects the entire
+literal source theory, not merely selected proof examples.
+%proof{rocq-local:MM0GuardedReflection.v}
+
+:::Theorem[Consistent finite models of all guarded MM0 schemas]
+For every $N\ge5$ and $D\ge3$, the concrete finite algebra admits a predicate
+interpretation satisfying all 55 size/depth/sorting-guarded MM0 axioms under
+every semantic valuation, together with the **unguarded** universal Void
+denial. Void is represented without overflow and the universe judgment is
+true. Any subset of the 55 schemas has the same existence guarantee.
+The resulting original-PTS satisfaction certificate's type has rank at most four.
+%proof{rocq-local:MM0HilbertAdequacy.v}
+:::
+
+The proof reflects finite queries to MM0, reconstructs native catalogue
+derivations, and applies external native canonicity. No consistency or model
+existence premise remains. This establishes models of the explicitly
+guarded axioms, not the unrestricted theory. The generated certificates are
+externally indexed native terms, not uniform internal reflection over all
+represented fragments. Original-PTS-to-catalogue completeness and an
+independent internal consistency proof remain separate obligations.
+
+### Internal soundness for arbitrary fixed-fragment proofs
+
+Fix a finite positive Horn theory $\mathcal C$ and query $q$.
+Give finite indices to the query and every atom in the clauses and denials.
+Encoding followed by decoding is the identity on this support; indexed
+derivations and Boolean queries agree exactly with their original versions.
+For guarded MM0 fragments, the support includes every semantic valuation
+instance and every Void-denial atom, including overflow subjects.
+%proof{rocq-local:GuardedFiniteSupport.v}
+
+Write its atom indices as $0,\ldots,m-1$ and clauses as
+$c_j=(a_{j1},\ldots,a_{js_j}\Rightarrow b_j)$. Define
+
+$$
+\begin{aligned}
+C_j(X)&=X_{a_{j1}}\to\cdots\to X_{a_{js_j}}\to X_{b_j},\\
+\mathsf{Proof}_{\mathcal C}(q)&=
+\Pi X_0:U_1\cdots\Pi X_{m-1}:U_1.\,
+C_1(X)\to\cdots\to C_k(X)\to X_q.
+\end{aligned}
+$$
+
+This type encodes only the selected **positive inference rules**, not a
+truth table, a model, or an assumed soundness property. Its rank is at most
+three, independently of the number of atoms and rules.
+%proof{rocq-local:HornProofEncoding.v}
+Every source proof has an explicit inhabitant. Clause introduction also
+accepts arbitrary encoded premise proofs, not merely outputs of that
+source compiler. %proof{rocq-local:HornProofRealization.v}
+
+For a Boolean model $v$, let $T_a$ be $\top$ or Void according to $v(a)$;
+both have rank one. Each valid clause has the explicit proof $h_j:C_j(T)$
+constructed above. Consequently the literal original-PTS term
+
+$$
+\mathsf{sound}_{\mathcal C,v,q}
+ =\lambda p:\mathsf{Proof}_{\mathcal C}(q).\,
+ p\,T_0\cdots T_{m-1}\,h_1\cdots h_k
+ :\mathsf{Proof}_{\mathcal C}(q)\to T_q
+$$
+
+works for **every** inhabitant $p$ of the independent encoding. Its type
+has rank at most four. This typing proof uses model validity, not native
+canonicity or induction over an externally supplied proof tree. Taking the
+least Boolean model and then using external Void exclusion proves the
+separate exactness statement
+
+$$
+(\exists p\;\vdash p:\mathsf{Proof}_{\mathcal C}(q))
+\quad\Longleftrightarrow\quad \mathcal C\vdash q.
+$$
+
+%proof{rocq-local:HornInternalSoundness.v}
+For each fixed guarded MM0 fragment, the least-model validity premise is
+discharged. For $N\ge5,D\ge3$, every semantic Void query has an internal
+refuter $\mathsf{Proof}_{\mathcal C}(q)\to\mathsf{Void}$; denials are
+enforced by these refuters, not added as positive proof constructors.
+Source proofs compile to the independent encoding, and its finite-fragment
+union has the same exact source/catalogue coverage, retaining faithful
+query decoding. %proof{rocq-local:MM0GuardedInternalReflection.v}
+
+### Internally quantified queries and raw guard provenance
+
+The query can also be internal. Fix the finite support once, using an
+arbitrary anchor atom, and put $Q_m=\mathsf{ChFin}_m(U_0)$. For an arbitrary
+$q:Q_m$, replace the separate propositions by a predicate $P:Q_m\to U_1$:
+
+$$
+\begin{aligned}
+\mathsf{IProof}_{\mathcal C}(q)
+ &=\Pi P:(Q_m\to U_1).\,
+ C_1(P\overline{0},\ldots,P\overline{m-1})\to\cdots\\
+ &\hspace{25mm}\to C_k(P\overline{0},\ldots,P\overline{m-1})\to Pq.
+\end{aligned}
+$$
+
+Here $\overline{i}:Q_m$ is the canonical selector. This independent family
+has rank three and contains no model or assumed soundness property.
+%proof{rocq-local:IndexedHornEncoding.v}
+At each canonical query, explicit originally typed functions translate
+between this encoding and $\mathsf{Proof}_{\mathcal C}(i)$. Every source
+proof compiles, arbitrary encoded premises support clause introduction,
+and closed inhabitation is equivalent to finite derivability. The latter
+converse uses external canonicity; no mutual-inverse or parametricity
+principle is asserted. %proof{rocq-local:IndexedHornRealization.v}
+
+The finite truth family is the actual PTS term
+
+$$
+T_v=\lambda q:Q_m.\,q\,U_1\,T_0\cdots T_{m-1}:Q_m\to U_1.
+$$
+
+This dispatch is legal because $U_1:U_0$ in the original PTS; it reduces
+to $T_i$ at $\overline{i}$. %proof{rocq-local:FiniteTypeDispatch.v}
+Instantiating the motive with $T_v$ and supplying the valid clause handlers
+gives a closed term
+
+$$
+\mathsf{isound}_{\mathcal C,v}:
+\Pi q:Q_m.\,\mathsf{IProof}_{\mathcal C}(q)\to T_v(q).
+$$
+
+Its type has rank four. Both arguments are internal: its typing holds for
+arbitrary typed query and proof terms, including open ones, without
+assuming that the query is a selector. %proof{rocq-local:IndexedHornSoundness.v}
+For a fixed guarded MM0 fragment, the least model discharges the model
+premise. Every supported canonical query agrees exactly with finite
+derivability, and every semantic Void query is refuted at $N\ge5,D\ge3$.
+Duplicate positions in the support are harmless for soundness; exact
+source correspondence uses the canonical index of each atom.
+%proof{rocq-local:MM0IndexedReflection.v}
+
+Raw instance provenance is checked independently. Its finite observations
+are either $\mathsf{None}$ (overflow) or $\mathsf{Some}(e)$ for an admitted
+closed constructor tree; overflow is not identified with zero. Direct
+tree evaluation, sorting and size/depth guards agree with every semantic
+valuation. Each active entry records a selected axiom and a sorted source
+substitution with exact arguments; an inactive entry is the tautology
+$a\Rightarrow a$. Induction on raw derivations reconstructs actual literal
+source derivations, so merging observations creates no spurious proofs.
+Every source derivation occurs at finite computed budgets.
+%proof{rocq-local:MM0GuardProvenance.v}
+The indexed raw proof type also reflects every closed inhabitant to a
+literal source derivation, excludes overflow and Void proofs, and has exact
+source coverage over the union of finite budgets. These are the raw-query
+endpoints of `MM0IndexedReflection`, using the external inhabitation
+converse above.
+
+The fragment, budgets and truth table remain external parameters.
+The internal constructions below realize fixed tables, not a recursive raw-tree interpreter
+or one budget-polymorphic PTS correctness theorem.
+The Void specialization still uses external canonicity; this is not an
+independent internal consistency proof. These ranks bound types, not
+generated program size or all normalization redexes.
+
+### Internal decoding and guarded computation
+
+Proof translation can preserve an independent proof type, not just truth.
+If a finite atom map $f$ sends every clause of $\mathcal C$ to a clause of
+$\mathcal D$, an explicit original-PTS term has type
+
+$$
+\Pi q:Q_k.\,\mathsf{IProof}_{\mathcal C}(q)\to
+\mathsf{IProof}_{\mathcal D}(\mathsf{map}_f(q)).
+$$
+
+Its type has rank four. Abstract the target predicate $P$ and instantiate
+the source proof at $\lambda x.P(\mathsf{map}_f(x))$; mapped clause handlers
+then suffice. No selector canonicity is used, and clause order or duplicates
+do not matter. %proof{rocq-local:IndexedHornTransport.v}
+For the semantic-to-raw decoder, both supports are fixed before $q$ is
+supplied. Exact guard provenance proves the required clause membership.
+Consequently arbitrary open queries and proofs translate internally to raw
+proofs at their decoded queries. Composition with raw least-model soundness
+also has type rank four. %proof{rocq-local:MM0InternalDecoder.v}
+
+Dependent finite case analysis needs a separate, property-independent
+generation certificate:
+
+$$
+\mathsf{Enum}_r(q)=\Pi P:(Q_k\to U_r).\,
+P\overline0\to\cdots\to P\overline{k-1}\to Pq.
+$$
+
+Each selector has an explicit constructor, and arbitrary inhabitants of
+this family eliminate dependently. Its rank is at most $\max(3,r+1)$;
+the uniform consumer's type has rank at most $\max(4,r+2)$. No such
+certificate is assumed for an arbitrary **bare** Church code, and different
+motive ranks are not related by cumulativity. %proof{rocq-local:FiniteGeneratedCodes.v}
+
+Using $\mathsf{Enum}_3$, pointwise equal finite-map programs have internal
+rank-one Leibniz equality
+$\mathsf{Eq}(x,y)=\Pi P:(Q_k\to U_1).P x\to P y$.
+Composition, identity and retraction laws are represented by terms whose
+types have rank at most five. This is a logical equality, not an assertion
+of native conversion for arbitrary open codes. %proof{rocq-local:FiniteMapCoherence.v}
+
+For raw guards, enumerate the selected axiom names with their complete
+valuation tuples, adding a rejected sentinel. Independently specify the
+finite graph by the facts $\varnothing\Rightarrow(i,b_i)$, where $b_i$ is
+the structural raw guard. Both Boolean answers are retained in the atom
+support, but only the correct answer is a graph fact. A graph program $g$
+and Boolean projection $\pi_b$ have internal certificates:
+
+$$
+\begin{aligned}
+\mathsf{Enum}_1(q)&\to\mathsf{IProof}_{\mathrm{graph}}(g(q)),\\
+\mathsf{Enum}_3(q)&\to\mathsf{Eq}(\pi_i(g(q)),q),\\
+\mathsf{Enum}_3(q)&\to\mathsf{Eq}(\pi_b(g(q)),\mathsf{guard}(q)).
+\end{aligned}
+$$
+
+The first consumer has type rank four; the equality consumers have type
+rank five. Their generation certificates are separate inputs, with explicit
+constructors at every canonical entry. At canonical entries, Boolean
+evaluation is exact; accepted graph proofs reconstruct a selected rule,
+sorted source substitution and all size/depth guards. Wrong answers have no
+closed graph proof, and rejected entries are inert. These last reconstruction
+and exclusion statements remain external and use the closed-inhabitation
+converse: the internal terms do not yet return raw source trees or
+substitution records. %proof{rocq-local:MM0InternalGuard.v}
 
 # The exact typed expansion quotient {#sec-exact-quotient}
 
@@ -1236,12 +2284,13 @@ typing representation: a beta class can contain untypable representatives.
 All accompanying Agda modules are checked with Agda 2.8.0, Cubical v0.9 and
 the safe checker, without postulates, holes or disabled checks. This
 establishes well-formedness of the constructions, not an Agda-to-Rocq
-adequacy theorem or completeness of the BCKW signature.
+adequacy theorem or completeness of the dependent SK signature.
 
 # Future work {#sec-future-work}
 
-The following three directions concern proposed systems, not changes to
-the original calculus or results established above.
+Beyond the second-paper programme in Section <#sec-introduction>, the
+following three directions concern proposed systems, not changes to the
+original calculus or results established above.
 
 1. **A quadratically checkable PTS-rk variant.** Apply the ideas of van den
    Berg and den Besten [10]: replace implicit definitional conversion by
@@ -1296,8 +2345,10 @@ the original calculus or results established above.
    inside the system in (2). Specify the translations of typing, explicit
    computation witnesses and contradiction, with sufficient reflection or
    model soundness to support the intended consistency application. This
-   must go beyond the all-true ground-Horn reduction: finite satisfiability
-   alone does not exclude the translated contradiction.
+   must go beyond constrained ground-query reduction: retain contradiction
+   exclusion while interpreting the quantified signature and justifying
+   the required internal reflection. Positive finite satisfiability alone
+   does not exclude the translated contradiction.
 
 # References
 
@@ -1352,6 +2403,18 @@ the original calculus or results established above.
     type theory*, arXiv:2102.00905, 2021.
     [Paper](https://arxiv.org/abs/2102.00905).
     Sections 2--3, especially Theorem 7.
+
+11. P. Selinger, *Order-incompleteness and finite lambda reduction models*,
+    Theoretical Computer Science **309**, 2003, pp. 43--63.
+    [doi:10.1016/S0304-3975(02)00038-5](https://doi.org/10.1016/S0304-3975(02)00038-5).
+    [Author manuscript](https://www.mathstat.dal.ca/~selinger/papers/cmaa.pdf),
+    Section 4. Finite reduction models are distinct from equational models.
+
+12. T. Altenkirch, A. Kaposi, A. Šinkarovs and T. Végh,
+    *Combinatory Logic and Lambda Calculus Are Equal, Algebraically*,
+    FSCD 2023, LIPIcs **260**, pp. 24:1--24:19.
+    [Open-access paper](https://doi.org/10.4230/LIPIcs.FSCD.2023.24).
+    Sections 1 and 7 specify the extensional equivalence and its scope.
 
 %clearpage{}
 %appendix{}

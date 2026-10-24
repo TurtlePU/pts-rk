@@ -1,0 +1,10 @@
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v:113:Definition Admitted N d e :=
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v:116:Theorem syntax_list_exact N d e : In e (syntax_list N d) <-> Admitted N d e.
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v:118:  unfold syntax_list, Admitted; rewrite filter_In, Nat.leb_le.
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v:136:Theorem quote_decode_exact N d e : decode N d (quote N d e) = Some e <-> Admitted N d e.
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v:138:Theorem decode_admitted N d a e : decode N d a = Some e -> Admitted N d e.
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v:142:Theorem quote_injective N d e f : Admitted N d e -> Admitted N d f ->
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v:169:  decode N d a = Some x -> Admitted N d (f x) ->
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v:176:  decode N d a = Some x -> decode N d b = Some y -> Admitted N d (f x y) ->
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v:184:  Admitted N d (f x y z) -> decode N d (ternary N d f a b c) = Some (f x y z).
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v:242:Theorem closed_evaluate_decodes N d e : Admitted N d e ->

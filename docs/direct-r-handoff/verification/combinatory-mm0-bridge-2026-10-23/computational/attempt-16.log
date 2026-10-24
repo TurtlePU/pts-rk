@@ -1,0 +1,27 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-computational.3tS6OZ/MM0ComputationalAdequacy.v", line 307, characters 10-14:
+Error:
+In environment
+e1, e2 : Expr
+IHe1 :
+  forall sigma : nat -> Expr,
+  SortedExpr [] e1 TM ->
+  (forall i : nat, SortedExpr [] (sigma i) TM) ->
+  SortedExpr [] (raw_replace sigma e1) TM
+IHe2 :
+  forall sigma : nat -> Expr,
+  SortedExpr [] e2 TM ->
+  (forall i : nat, SortedExpr [] (sigma i) TM) ->
+  SortedExpr [] (raw_replace sigma e2) TM
+sigma : nat -> Expr
+H : SortedExpr [] (EPi e1 e2) TM
+HS : forall i : nat, SortedExpr [] (sigma i) TM
+H2 : SortedExpr [] e1 TM
+H3 : SortedExpr [] e2 TM
+Unable to unify "SortedExpr [] (raw_replace ?sigma e2) TM" with
+ "SortedExpr []
+    (EPi (raw_replace sigma e1) (raw_replace (transpose_expr sigma) e2)) TM".
+

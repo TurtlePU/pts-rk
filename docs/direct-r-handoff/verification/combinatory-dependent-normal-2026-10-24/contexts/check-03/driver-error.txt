@@ -1,0 +1,16 @@
+Agda was deliberately sent SIGTERM after the diagnostic process inspection:
+PID 93309, RSS 1902848 KiB, elapsed 01:18, CPU 100.0 percent.
+The Agda command had been recorded in command.txt before execution.
+
+The worker modified the scratch check.sh driver to support probe targets
+while this invocation was still running. Bash read its remaining script
+from changed line offsets after Agda termination and emitted:
+
+/tmp/pts-rk-normal-contexts.KPvTCg/check.sh: line 12: 93309 Terminated: 15
+/tmp/pts-rk-normal-contexts.KPvTCg/check.sh: line 19: unexpected EOF while looking for matching `"'
+/tmp/pts-rk-normal-contexts.KPvTCg/check.sh: line 20: syntax error: unexpected end of file
+
+The tool-reported DRIVER exit code is 2. The intended Agda interruption is
+SIGTERM (normally 143), but the post-command numeric Agda exit and finished
+timestamp were NOT retained by this broken driver. Do not treat this run
+as a compiler rejection, a positivity failure, or a successful check.

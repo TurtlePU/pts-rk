@@ -1,0 +1,3 @@
+Log: /Users/akuklev/air/pts-rk/_build/combinatory-raw-internal-note.22TUMz
+Render: /tmp/pts-rk-raw-internal-note.NUOaJI
+Archive: docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24/note.v704EG

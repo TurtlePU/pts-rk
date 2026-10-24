@@ -1,0 +1,20 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+1 focused goal (shelved: 1)
+  
+  n : nat
+  G : Ctx nat n
+  k, l : nat
+  f : Fin k -> Fin l
+  cs : list (I.E.Clause k)
+  q, p : Term nat n
+  HQ : G ⊢ q ⇐ I.code_type k
+  HP : G ⊢ p ⇐ I.proof_type cs q
+  ============================
+  G & I.predicate_type l ⊢ shift p ⇐ I.proof_type cs (shift q)
+File "/tmp/pts-rk-indexed-transport.rdQzB4/IndexedHornTransport.v", line 138, characters 14-68:
+Error: Found no subterm matching "I.proof_type cs (rename fsucc q)"
+in the current goal.
+

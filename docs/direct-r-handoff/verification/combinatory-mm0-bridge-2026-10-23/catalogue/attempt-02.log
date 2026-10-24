@@ -1,0 +1,29 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+(evaluate_row (coreS a b c) =
+ option_map quote_label (row_label (coreS a b c)))
+(evaluate_row (coreP a b) = option_map quote_label (row_label (coreP a b)))
+(evaluate_row (typeI a e) = option_map quote_label (row_label (typeI a e)))
+(evaluate_row (typeK a b e) =
+ option_map quote_label (row_label (typeK a b e)))
+(evaluate_row (typeS a b c e) =
+ option_map quote_label (row_label (typeS a b c e)))
+(evaluate_row (exposeP a b) =
+ option_map quote_label (row_label (exposeP a b)))
+(evaluate_row (sortP2 a b d e) =
+ option_map quote_label (row_label (sortP2 a b d e)))
+(evaluate_row (sortP3 a b d e) =
+ option_map quote_label (row_label (sortP3 a b d e)))
+(evaluate_row (sortI a d e) =
+ option_map quote_label (row_label (sortI a d e)))
+(evaluate_row (sortK3 a b d e) =
+ option_map quote_label (row_label (sortK3 a b d e)))
+(evaluate_row (sortK4 a b d e) =
+ option_map quote_label (row_label (sortK4 a b d e)))
+(evaluate_row (sortS a b c d e k) =
+ option_map quote_label (row_label (sortS a b c d e k)))
+File "/tmp/pts-rk-mm0-catalogue.XiGatK/MM0CatalogueAdequacy.v", line 198, characters 11-12:
+Error: The variable k was not found in the current environment.
+

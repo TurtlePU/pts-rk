@@ -1,0 +1,24 @@
+Warning:
+/private/tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v", line 249, characters 74-85:
+Error:
+In environment
+N, d, Hmax, h : nat
+f, x, A : D 0
+B : D 1
+HH : h < Hmax
+f', x' : Term nat 0
+HFG : C.NativeGuard N d (seq 0 (S d)) (app f' x')
+B' : Term nat 1
+HTG : C.NativeGuard N d (seq 0 (S d)) (subst B' x')
+HF : dec 0 f = Some f'
+A' : Term nat 0
+HB : C.native_decode N d 1 (seq 0 (S d)) B = Some B'
+HG : C.NativeGuard N d (seq 0 (S d)) (Π A' B')
+HFB : G.staged H.Rules atom_size atom_depth Hmax N d h (f', Π A' B')
+HX : dec 0 x = Some x'
+HA : dec 0 A = Some A'
+HXB : G.staged H.Rules atom_size atom_depth Hmax N d h (x', A')
+Unable to unify "N" with "nodes (app f' x')".

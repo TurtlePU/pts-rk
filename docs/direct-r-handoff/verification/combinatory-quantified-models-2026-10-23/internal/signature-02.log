@@ -1,0 +1,16 @@
+File "/tmp/pts-rk-finite-internal.6wfWep/MM0FiniteSignature.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+File "/tmp/pts-rk-finite-internal.6wfWep/MM0FiniteSignature.v", line 161, characters 2-37:
+Error:
+In environment
+D : Type
+default : D
+algebra : Algebra D
+positive : list PositiveRule
+negative : ?T
+truth : GroundAtom D -> Prop
+The term "PositiveSatisfaction positive truth" has type 
+"Prop" while it is expected to have type "nat".
+

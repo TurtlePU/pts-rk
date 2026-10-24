@@ -13,9 +13,6 @@ universe-check r = refl
 universe-decode : (r : Nat) → El zero (univ {Γ = empty} r) refl ≡ U r
 universe-decode r = El-univ r
 
-identity-check : (a : Nat) → TmAt empty (IType a)
-identity-check a = I-atom a , refl
-
 constant-check : (a b : Nat) → TmAt empty (KType a b)
 constant-check a b = K-atom a b , refl
 
@@ -24,11 +21,6 @@ product-check a b = P-atom a b , refl
 
 substitution-check : (a b c : Nat) → TmAt empty (SType a b c)
 substitution-check a b c = S a b c , S-type a b c
-
--- The identity combinator at rank zero can be applied to the code U₀.
-I₀U₀ : Tm empty
-I₀U₀ = app (U zero) (Pi (varEl zero) (subTy (varEl zero) (fstS id)))
-  (I-atom zero) (univ zero) refl refl
 
 variable-check : (Γ : Con) (r : Nat)
                → tyOf (sndS {A = U {Γ = Γ} r} id) ≡ (zero , U r)
@@ -43,9 +35,6 @@ projection-check = beta-snd-derived
 max-next : (n : Nat) → max (suc n) n ≡ suc n
 max-next zero = refl
 max-next (suc n) = cong suc (max-next n)
-
-i-rank : (a : Nat) → iRank a ≡ suc a
-i-rank a = cong (max 1) (max-next a)
 
 k-core-rank : (a b : Nat)
             → max (suc a) (max (suc b) a) ≡ max (suc a) (suc b)

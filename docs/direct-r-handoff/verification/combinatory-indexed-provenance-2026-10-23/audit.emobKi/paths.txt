@@ -1,0 +1,4 @@
+Logs: /Users/akuklev/air/pts-rk/_build/combinatory-indexed-provenance-audit.rya6B6
+Build: /tmp/pts-rk-indexed-provenance.cjt8S0
+Pristine: /tmp/pts-rk-indexed-provenance-pristine.8LBsHH
+Archive: /Users/akuklev/air/pts-rk/docs/direct-r-handoff/verification/combinatory-indexed-provenance-2026-10-23/audit.emobKi

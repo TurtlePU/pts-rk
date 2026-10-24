@@ -1,0 +1,7 @@
+File "/tmp/pts-rk-finite-internal.6wfWep/MM0FiniteSignature.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+File "/tmp/pts-rk-finite-internal.6wfWep/MM0FiniteSignature.v", line 238, characters 11-23:
+Error: The variable flat_map_map was not found in the current environment.
+

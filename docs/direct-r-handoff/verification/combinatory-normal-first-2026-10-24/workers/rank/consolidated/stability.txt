@@ -1,0 +1,3 @@
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKSourceRank.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKSourceNormal.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKCanonicalExamples.agda: OK

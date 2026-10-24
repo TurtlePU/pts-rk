@@ -1,0 +1,5 @@
+2026-10-23T06:33:00Z
+File "./theories/CombinatoryLogic-rk/GroundHornConsistency.v", line 185, characters 12-168:
+Error: Not the right number of induction arguments (expected 1 parameter and
+2 arguments).
+

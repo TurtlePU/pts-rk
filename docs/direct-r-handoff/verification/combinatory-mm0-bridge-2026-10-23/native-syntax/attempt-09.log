@@ -1,0 +1,15 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-native-syntax.Lz2EQU/MM0NativeSyntax.v", line 88, characters 23-27:
+Error:
+In environment
+decode_term : forall n : nat, Expr -> option (Term nat n)
+n : nat
+e : Expr
+i : Expr
+The term "𝓤" has type "forall (L : Type) (n : nat), L -> Term L n"
+while it is expected to have type "Type -> ?B" (cannot instantiate
+"?B" because "L" is not in its scope: available arguments are
+"decode_term" "n" "e" "i").

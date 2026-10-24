@@ -1,0 +1,9 @@
+PASS: 1. A Church-encodable natural-model QIIRT.
+PASS: 2. A normal-form-first presentation.
+PASS: 3. A cumulative hierarchy of bounded fragments.
+PASS: 4. A Hilbert-style logical theory.
+PASS: 5. Partial finite models and internal bounded soundness.
+PASS: 6. An indexed self-interpreter with source folds.
+PASS: Development order.
+PASS: new construction is deferred until this plan is resumed.
+PASS: 1.1 The calculus and its logical reading

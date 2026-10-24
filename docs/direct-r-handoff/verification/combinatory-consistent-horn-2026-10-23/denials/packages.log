@@ -1,0 +1,7 @@
+# Packages matching: (name-match(rocq-core) | name-match(rocq-stdlib) | name-match(rocq-equations) | name-match(ocaml) | name-match(dune)) & installed
+# Name         # Version
+dune           3.23.1
+ocaml          4.14.2
+rocq-core      9.2.0
+rocq-equations 1.3.2+9.2
+rocq-stdlib    9.1.0

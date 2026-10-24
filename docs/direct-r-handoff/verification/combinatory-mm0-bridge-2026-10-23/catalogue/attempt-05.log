@@ -1,0 +1,13 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+(evaluate_row (typeK a b e) =
+ option_map quote_label (row_label (typeK a b e)))
+(evaluate_row (typeS a b c e) =
+ option_map quote_label (row_label (typeS a b c e)))
+(evaluate_row (sortS a b c d e k) =
+ option_map quote_label (row_label (sortS a b c d e k)))
+File "/tmp/pts-rk-mm0-catalogue.XiGatK/MM0CatalogueAdequacy.v", line 208, characters 11-12:
+Error: The variable k was not found in the current environment.
+

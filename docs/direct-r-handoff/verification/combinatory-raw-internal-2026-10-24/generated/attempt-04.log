@@ -1,0 +1,14 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-generated-codes.gGpVFd/FiniteGeneratedCodes.v", line 172, characters 0-121:
+Error:
+The following term contains unresolved implicit arguments:
+  (fun (n k : nat) (_ : ?T) (P : Term nat n) (branches : Fin k -> Term nat n)
+     (_ p : Term nat n) =>
+   supply (F.variables k) branches (app p P))
+More precisely: 
+- ?T: Cannot infer the type of r in environment:
+  n, k : nat
+

@@ -1,0 +1,3 @@
+File "/tmp/pts-rk-guarded-horn.VJZbDb/GuardedHornFragments.v", line 202, characters 12-105:
+Error: Not the right number of induction arguments (expected 3 parameters and
+5 arguments).

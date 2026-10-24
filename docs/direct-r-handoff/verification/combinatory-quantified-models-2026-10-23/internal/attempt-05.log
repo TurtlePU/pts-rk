@@ -1,0 +1,4 @@
+File "/tmp/pts-rk-finite-internal.6wfWep/FiniteModelRealization.v", line 134, characters 0-154:
+Error: Cannot infer the 2nd argument of the inductive type (prod) of this
+term.
+

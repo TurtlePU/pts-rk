@@ -1,0 +1,17 @@
+Warning:
+/private/tmp/pts-rk-mm0-bridge.IH9mrh/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-horn-encoding.vF7hVq/HornProofEncoding.v", line 70, characters 45-56:
+Error:
+In environment
+k : nat
+ps : list (Fin k)
+a : Fin k
+m, n : nat
+rho : Fin m -> Fin n
+env : Fin k -> Term nat m
+Unable to unify "rule_type ps a (fun i : Fin k => rename rho (env i))" with
+ "rule_type ps a
+    (fun i : Fin k => replace (fun i0 : Fin m => rename rho (var i0)) (env i))".
+

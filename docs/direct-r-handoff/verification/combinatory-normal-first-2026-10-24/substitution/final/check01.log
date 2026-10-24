@@ -1,0 +1,64 @@
+Checking NormalizedSubstitution (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NormalizedSubstitution.agda).
+ Checking PTSPrelude (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/PTSPrelude.agda).
+    Checking Agda.Builtin.Cubical.Sub (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Sub.agda).
+    Checking Agda.Builtin.Cubical.Glue (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Glue.agda).
+     Checking Agda.Builtin.Cubical.Equiv (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Equiv.agda).
+      Checking Agda.Builtin.Sigma (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Sigma.agda).
+      Checking Agda.Builtin.Cubical.Path (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Path.agda).
+      Checking Agda.Builtin.Cubical.HCompU (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/HCompU.agda).
+        Checking Agda.Builtin.FromNeg (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/FromNeg.agda).
+         Checking Agda.Builtin.Nat (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Nat.agda).
+          Checking Agda.Builtin.Bool (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Bool.agda).
+         Checking Agda.Builtin.Unit (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Unit.agda).
+        Checking Agda.Builtin.FromNat (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/FromNat.agda).
+           Checking Agda.Builtin.Reflection (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Reflection.agda).
+            Checking Agda.Builtin.Word (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Word.agda).
+            Checking Agda.Builtin.List (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/List.agda).
+            Checking Agda.Builtin.String (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/String.agda).
+             Checking Agda.Builtin.Char (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Char.agda).
+             Checking Agda.Builtin.Maybe (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Maybe.agda).
+            Checking Agda.Builtin.Float (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Float.agda).
+             Checking Agda.Builtin.Int (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Int.agda).
+ Checking BoundedReduction (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/BoundedReduction.agda).
+  Checking FiniteSyntax (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/FiniteSyntax.agda).
+ Checking NativeTyping (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeTyping.agda).
+ Checking NativeSubstitution (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeSubstitution.agda).
+  Checking NativeAlgebra (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeAlgebra.agda).
+ Checking NativePreservation (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativePreservation.agda).
+  Checking NativeInversion (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeInversion.agda).
+   Checking NativeConfluence (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeConfluence.agda).
+ Checking NativeRankCoverage (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeRankCoverage.agda).
+  Checking NativeRanks (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeRanks.agda).
+  Checking NativeSafety (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeSafety.agda).
+  Checking NativeNormalization (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeNormalization.agda).
+   Checking NativeDescent (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeDescent.agda).
+   Checking NativeRankPreservation (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeRankPreservation.agda).
+   Checking BoundedTrace (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/BoundedTrace.agda).
+    Checking RawSizeBounds (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/RawSizeBounds.agda).
+     Checking FiniteBounds (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/FiniteBounds.agda).
+     Checking ExponentialBounds (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/ExponentialBounds.agda).
+ Checking NativeCertificates (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeCertificates.agda).
+ Checking NativeValuations (/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NativeValuations.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  f a′ b
+    = _y_619 (cset = cset) (f = f) (coherent = coherent) (y = y)
+      (a′ = a′) (a = ∣ b ∣₁)
+    : C
+    (blocked on _y_619)
+  f a b
+    = _x_618 (cset = cset) (f = f) (coherent = coherent) (y = y)
+      (a = a) (a = ∣ b ∣₁)
+    : C
+    (blocked on _x_618)
+  _y_619 (a = y) = PT.rec→Set cset (f a′) (coherent a′ a′) y : C
+    (blocked on _y_619)
+  _x_618 (a = y) = PT.rec→Set cset (f a) (coherent a a) y : C
+    (blocked on _x_618)
+
+/private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NormalizedSubstitution.agda:144.15-145.34: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NormalizedSubstitution.agda:144.15-145.34
+  /private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NormalizedSubstitution.agda:144.35-36
+  /private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NormalizedSubstitution.agda:144.37-38
+  /private/tmp/pts-rk-normal-sub-finish.pAp4MF/source/NormalizedSubstitution.agda:145.14-31

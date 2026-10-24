@@ -1,0 +1,35 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/IndexedHornRealization.v", line 198, characters 56-60:
+Error:
+In environment
+k : nat
+cs : list (list (Fin k) * Fin k)
+a : Fin k
+n : nat
+G : Ctx nat n
+x : Fin k
+l : list (Fin k)
+HR : In (x :: l, a) cs
+y : Term nat n
+l' : list (Term nat n)
+H : G ⊢ y ⇐ I.proof_type cs (CF.selector 0 k x)
+HQ :
+  Forall2
+    (fun (b : Fin k) (p : Term nat n) =>
+     G ⊢ p ⇐ I.proof_type cs (CF.selector 0 k b))
+    l l'
+IHHQ :
+  In (l, a) cs ->
+  Forall2 (fun (b : Fin k) (p : Term nat n) => G ⊢ p ⇐ H.H.proof_type k cs b)
+    l (map (unindex_proof k) l')
+The term "IHHQ" has type
+ "In (l, a) cs ->
+  Forall2 (fun (b : Fin k) (p : Term nat n) => G ⊢ p ⇐ H.H.proof_type k cs b)
+    l (map (unindex_proof k) l')"
+while it is expected to have type
+ "Forall2 (fun (b : Fin k) (p : Term nat n) => G ⊢ p ⇐ H.H.proof_type k cs b)
+    l (map (unindex_proof k) l')".
+

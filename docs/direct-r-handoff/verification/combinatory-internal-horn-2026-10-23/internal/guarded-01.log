@@ -1,0 +1,39 @@
+Warning:
+/private/tmp/pts-rk-mm0-bridge.IH9mrh/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-horn-internal.VBqV4a/MM0GuardedInternalReflection.v", line 52, characters 8-29:
+Error:
+In environment
+N, d : nat
+names : list AxiomName
+q : GroundAtom (F.A.C.Carrier (F.A.syntax_list N d))
+Unable to unify
+ "(F.H.Model (F.indexed_clauses ?atom_eq_dec ?clauses ?denials ?query)
+     (fun i : F.Index ?clauses ?denials ?query =>
+      ?truth (F.reify ?clauses ?denials ?query i)) ->
+   F.H.Model ?clauses ?truth) /\
+  (F.H.Model ?clauses ?truth ->
+   F.H.Model (F.indexed_clauses ?atom_eq_dec ?clauses ?denials ?query)
+     (fun i : F.Index ?clauses ?denials ?query =>
+      ?truth (F.reify ?clauses ?denials ?query i)))"
+with
+ "forall
+    (premises : list
+                  (F.Index (F.A.clauses N d names) (F.guarded_denials N d) q))
+    (conclusion : F.Index (F.A.clauses N d names) (F.guarded_denials N d) q),
+  FiniteHorn.Rules
+    (F.indexed_clauses (ground_atom_eq_dec (F.A.value_eq_dec N d))
+       (F.A.clauses N d names) (F.guarded_denials N d) q)
+    premises conclusion ->
+  Forall
+    (fun i : F.Index (F.A.clauses N d names) (F.guarded_denials N d) q =>
+     R.query N d names
+       (F.reify (A.clauses N d names) (F.guarded_denials N d) q i) =
+     true)
+    premises ->
+  (fun i : F.Index (F.A.clauses N d names) (F.guarded_denials N d) q =>
+   R.query N d names
+     (F.reify (A.clauses N d names) (F.guarded_denials N d) q i) =
+   true) conclusion".
+

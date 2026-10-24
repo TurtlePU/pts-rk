@@ -1,0 +1,10 @@
+File "/tmp/pts-rk-finite-internal.6wfWep/FiniteModelRealization.v", line 177, characters 32-41:
+Error:
+In environment
+n : nat
+G : Ctx nat n
+clauses : list BoolClause
+Unable to unify "Nat.max ?n ?m = ?n" with
+ "S (continuation_rank clauses) =
+  Init.Nat.max (S (continuation_rank clauses)) 1".
+

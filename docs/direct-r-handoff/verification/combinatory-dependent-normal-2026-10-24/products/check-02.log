@@ -1,0 +1,47 @@
+Checking NormalizedProducts (/private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda).
+ Checking NormalizedFamilies (/private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedFamilies.agda).
+ Checking NormalizedComprehension (/private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedComprehension.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  term
+  (PT.rec→Set nf-isSet (normalizeAt wf)
+   (λ ht hu → normalizeAt-coherent wf wf ht hu beta-refl) _ht_552)
+    = term
+      (PT.rec→Set nf-isSet (normalizeAt wf)
+       (λ ht hu → normalizeAt-coherent wf wf ht hu beta-refl)
+       (PT.rec2 squash₁ (λ ht hx → ∣ substitution ht hx ∣₁) (typed t)
+        (typed x)))
+    : Raw Nat n
+    (blocked on _ht_552)
+  term
+  (PT.rec→Set nf-isSet (normalizeAt wf)
+   (λ ht hu → normalizeAt-coherent wf wf ht hu beta-refl) _ht_418)
+    = term
+      (PT.rec→Set nf-isSet (normalizeAt wf)
+       (λ ht hu → normalizeAt-coherent wf wf ht hu beta-refl)
+       (PT.rec2 squash₁ (λ hf hx → ∣ application hf hx ∣₁) (typed f)
+        (typed x)))
+    : Raw Nat n
+    (blocked on _ht_418)
+  term
+  (PT.rec→Set nf-isSet (normalizeAt wf)
+   (λ ht hu → normalizeAt-coherent wf wf ht hu beta-refl) _ht_286)
+    = term
+      (PT.rec→Set nf-isSet (normalizeAt wf)
+       (λ ht hu → normalizeAt-coherent wf wf ht hu beta-refl)
+       (PT.rec2 squash₁ (λ hB hx → ∣ substitution hB hx ∣₁) (typed B)
+        (typed x)))
+    : Raw Nat n
+    (blocked on _ht_286)
+
+/private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:56.26-86.58: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:56.26-46
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:56.26-51
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:56.50-51
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:72.26-46
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:72.26-51
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:72.50-51
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:86.33-53
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:86.33-58
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:86.57-58

@@ -1,0 +1,7 @@
+Checking SKFastCanonical (/private/tmp/pts-rk-skfast.TSEzs7/source/SKFastCanonical.agda).
+ Checking SKBracket (/private/tmp/pts-rk-skfast.TSEzs7/source/SKBracket.agda).
+ Checking SKCanonical (/private/tmp/pts-rk-skfast.TSEzs7/source/SKCanonical.agda).
+  Checking BinderFreeEquality (/private/tmp/pts-rk-skfast.TSEzs7/source/BinderFreeEquality.agda).
+  Checking SKCanonicalNormal (/private/tmp/pts-rk-skfast.TSEzs7/source/SKCanonicalNormal.agda).
+  Checking SKNativeCanonical (/private/tmp/pts-rk-skfast.TSEzs7/source/SKNativeCanonical.agda).
+   Checking NativeCertificates (/private/tmp/pts-rk-skfast.TSEzs7/source/NativeCertificates.agda).

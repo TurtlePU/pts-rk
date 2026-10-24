@@ -1,0 +1,19 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-native-syntax.Lz2EQU/MM0NativeSyntax.v", line 304, characters 12-31:
+Error:
+In environment
+m, n : nat
+X : Term nat n
+i : Fin (S m + n)
+IHm :
+  forall i : Fin (S m + n),
+  quote_term (push X i) =
+  sub_index m (quote_term (rename up X)) (quote_fin i)
+Unable to unify
+ "transpose_expr (sub_index ?k ?X) ?i = sub_index (S ?k) (raw_lift 0 ?X) ?i"
+with
+ "raw_lift 0 (sub_index m (quote_term (rename up X)) (quote_fin i)) =
+  sub_index (S m) (raw_lift 0 (quote_term (rename up X))) (S (quote_fin i))".

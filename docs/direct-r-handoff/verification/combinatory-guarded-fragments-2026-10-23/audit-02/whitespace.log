@@ -1,0 +1,445 @@
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/commands.txt:1: trailing whitespace.
++git rev-parse HEAD
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/commands.txt:2: trailing whitespace.
++opam exec -- dune --version
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/commands.txt:3: trailing whitespace.
++opam exec -- rocq -v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/commands.txt:4: trailing whitespace.
++opam list --installed --columns=name\,version
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/commands.txt:5: trailing whitespace.
++shasum -a 256 theories/CombinatoryLogic-rk/Core.v theories/CombinatoryLogic-rk/Presentation.v theories/CombinatoryLogic-rk/FiniteBasis.v theories/CombinatoryLogic-rk/ProductCatalogue.v theories/CombinatoryLogic-rk/Hilbert.v theories/CombinatoryLogic-rk/ProductHilbert.v theories/CombinatoryLogic-rk/IdentityCatalogue.v theories/CombinatoryLogic-rk/ConstantCatalogue.v theories/CombinatoryLogic-rk/SubstitutionCatalogue.v theories/CombinatoryLogic-rk/CatalogueHilbert.v theories/CombinatoryLogic-rk/CatalogueEconomy.v theories/CombinatoryLogic-rk/ContextualHilbert.v theories/CombinatoryLogic-rk/ProductExposure.v theories/CombinatoryLogic-rk/ContextualSubstitution.v theories/CombinatoryLogic-rk/HilbertAbstraction.v theories/CombinatoryLogic-rk/CatalogueShapes.v theories/CombinatoryLogic-rk/HilbertReplay.v theories/CombinatoryLogic-rk/AffineDuplication.v theories/CombinatoryLogic-rk/QuantitativeNormalization.v theories/CombinatoryLogic-rk/FiniteNormalForms.v theories/CombinatoryLogic-rk/GroundHorn.v theories/CombinatoryLogic-rk/BCKW.v theories/CombinatoryLogic-rk/KnuthBounds.v theories/CombinatoryLogic-rk/ChurchFinite.v theories/CombinatoryLogic-rk/NativeCanonicity.v theories/CombinatoryLogic-rk/GroundHornConsistency.v theories/CombinatoryLogic-rk/FiniteHorn.v theories/CombinatoryLogic-rk/HilbertGrounding.v theories/CombinatoryLogic-rk/HilbertFiniteModels.v theories/CombinatoryLogic-rk/FiniteHornChurch.v theories/CombinatoryLogic-rk/FiniteModelBoundary.v theories/CombinatoryLogic-rk/FiniteUniversalHorn.v theories/CombinatoryLogic-rk/FiniteNativeModelBoundary.v theories/CombinatoryLogic-rk/FiniteAlgebraSearch.v theories/CombinatoryLogic-rk/FiniteOperationAlgebras.v theories/CombinatoryLogic-rk/FiniteModelRealization.v theories/CombinatoryLogic-rk/MM0FiniteSignature.v theories/CombinatoryLogic-rk/MM0FiniteAxioms.v theories/CombinatoryLogic-rk/MM0FiniteSearch.v theories/CombinatoryLogic-rk/MM0ProjectionModel.v theories/CombinatoryLogic-rk/FiniteModelSoundness.v theories/CombinatoryLogic-rk/MM0SyntaxSoundness.v theories/CombinatoryLogic-rk/MM0InternalSoundness.v theories/CombinatoryLogic-rk/GuardedFiniteCarriers.v theories/CombinatoryLogic-rk/GuardedHornFragments.v theories/CombinatoryLogic-rk/MM0GuardedQuantification.v theories/CombinatoryLogic-rk/GuardedHilbertModels.v theories/CombinatoryLogic-rk/GuardedBetaGraphs.v theories/CombinatoryLogic-rk/GuardedHilbertTables.v theories/CombinatoryLogic-rk/dune theories/Interpretation_of_R/DirectREval.v theories/CombinatoryLogic-rk/CombinatoryPTS-rk.mm0
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/commands.txt:6: trailing whitespace.
++git archive --output=/Users/akuklev/air/pts-rk/_build/combinatory-guarded-fragments-audit.fX2mac/upstream.tar 723cf2ec61c737ae82ba33d2e7db44f650122b0e
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/commands.txt:7: trailing whitespace.
++tar -xf /Users/akuklev/air/pts-rk/_build/combinatory-guarded-fragments-audit.fX2mac/upstream.tar -C /tmp/pts-rk-guarded-pristine.9tU6QO
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/commands.txt:8: trailing whitespace.
++opam exec -- timeout 600 dune build --root /tmp/pts-rk-guarded-pristine.9tU6QO --display=short --no-buffer -j 2 theories/Ranks.vo
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/commands.txt:9: trailing whitespace.
++opam exec -- timeout 600 rocq check -silent -o -Q /tmp/pts-rk-guarded-pristine.9tU6QO/_build/default/theories PTSrk PTSrk.Ranks
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/commands.txt:10: trailing whitespace.
++opam exec -- timeout 900 dune build --build-dir /tmp/pts-rk-guarded-fragments.HkLVv5 --display=short --no-buffer -j 2 @theories/CombinatoryLogic-rk/audit
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:41: trailing whitespace.
++*** Warning: in file Bounds.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:44: trailing whitespace.
++*** Warning: in file Bounds.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:47: trailing whitespace.
++*** Warning: in file Literals.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:50: trailing whitespace.
++*** Warning: in file Runtime.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:53: trailing whitespace.
++*** Warning: in file Runtime.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:56: trailing whitespace.
++*** Warning: in file Runtime.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:59: trailing whitespace.
++*** Warning: in file RedexRanks.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:62: trailing whitespace.
++*** Warning: in file RedexRanks.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:65: trailing whitespace.
++*** Warning: in file Morphisms.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:68: trailing whitespace.
++*** Warning: in file Safety.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:71: trailing whitespace.
++*** Warning: in file Safety.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:74: trailing whitespace.
++*** Warning: in file Safety.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:77: trailing whitespace.
++*** Warning: in file Descent.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:80: trailing whitespace.
++*** Warning: in file Descent.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:83: trailing whitespace.
++*** Warning: in file Descent.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:86: trailing whitespace.
++*** Warning: in file Descent.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:89: trailing whitespace.
++*** Warning: in file BoundedNormalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:92: trailing whitespace.
++*** Warning: in file BoundedNormalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:95: trailing whitespace.
++*** Warning: in file BoundedNormalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:98: trailing whitespace.
++*** Warning: in file BoundedNormalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:101: trailing whitespace.
++*** Warning: in file BoundedNormalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:104: trailing whitespace.
++*** Warning: in file EstimatorChecks.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:107: trailing whitespace.
++*** Warning: in file EstimatorChecks.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:110: trailing whitespace.
++*** Warning: in file SortBounds.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:113: trailing whitespace.
++*** Warning: in file SortBounds.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:116: trailing whitespace.
++*** Warning: in file SortBounds.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:119: trailing whitespace.
++*** Warning: in file SortBounds.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:122: trailing whitespace.
++*** Warning: in file AutomaticBound.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:125: trailing whitespace.
++*** Warning: in file AutomaticBound.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:128: trailing whitespace.
++*** Warning: in file AutomaticBound.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:131: trailing whitespace.
++*** Warning: in file AutomaticBound.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:134: trailing whitespace.
++*** Warning: in file AutomaticBound.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:137: trailing whitespace.
++*** Warning: in file AutomaticBound.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:140: trailing whitespace.
++*** Warning: in file Normalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:143: trailing whitespace.
++*** Warning: in file Normalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:146: trailing whitespace.
++*** Warning: in file Normalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:149: trailing whitespace.
++*** Warning: in file Normalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:152: trailing whitespace.
++*** Warning: in file Normalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:155: trailing whitespace.
++*** Warning: in file Normalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:158: trailing whitespace.
++*** Warning: in file Normalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:161: trailing whitespace.
++*** Warning: in file Normalization.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:164: trailing whitespace.
++*** Warning: in file STLCEmbedding.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:167: trailing whitespace.
++*** Warning: in file STLCEmbedding.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:170: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:173: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:176: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:179: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:182: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:185: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:188: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:191: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:194: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:197: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:200: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:203: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:206: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:209: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/fresh-build.log:212: trailing whitespace.
++*** Warning: in file Audit.v,
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/upstream-kernel.log:6: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/upstream-kernel.log:8: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/upstream-kernel.log:11: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/upstream-kernel.log:13: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/upstream-kernel.log:15: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/upstream-kernel.log:17: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/audit-01/upstream-kernel.log:17: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/attempt-01.log:15: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/attempt-02.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/attempt-03.log:9: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/attempt-05.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/attempt-06.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel-final.log:9: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel-final.log:11: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel-final.log:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel-final.log:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel-final.log:18: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel-final.log:20: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel-final.log:20: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel.log:9: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel.log:11: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel.log:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel.log:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel.log:18: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel.log:20: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-beta/kernel.log:20: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-01.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-01.log:17: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-02.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-02.log:8: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-03.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-03.log:8: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-04.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-04.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-05.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-05.log:8: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-06.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-06.log:8: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-07.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-07.log:49: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-08.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-08.log:16: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-09.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-10.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-10.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-11.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-11.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/attempt-12.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory /tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/inventory.txt:5: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/inventory.txt:7: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/inventory.txt:10: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/inventory.txt:12: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/inventory.txt:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/inventory.txt:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/inventory.txt:16: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/kernel.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq check -silent -o -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory PTSrk.Combinatory.GuardedFiniteCarriers
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/kernel.log:9: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/kernel.log:11: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/kernel.log:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/kernel.log:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/kernel.log:18: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/kernel.log:20: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-carriers/kernel.log:20: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/attempt-01.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-beta.LXnPKw PTSrk.Combinatory -Q /tmp/pts-rk-guarded-tables.8mxXI2 PTSrk.Combinatory -Q /tmp/pts-rk-guarded-coverage.iomdo5 PTSrk.Combinatory /tmp/pts-rk-guarded-coverage.iomdo5/GuardedHilbertCoverage.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/attempt-01.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/attempt-02.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-beta.LXnPKw PTSrk.Combinatory -Q /tmp/pts-rk-guarded-tables.8mxXI2 PTSrk.Combinatory -Q /tmp/pts-rk-guarded-coverage.iomdo5 PTSrk.Combinatory /tmp/pts-rk-guarded-coverage.iomdo5/GuardedHilbertCoverage.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/attempt-03.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-beta.LXnPKw PTSrk.Combinatory -Q /tmp/pts-rk-guarded-tables.8mxXI2 PTSrk.Combinatory -Q /tmp/pts-rk-guarded-coverage.iomdo5 PTSrk.Combinatory /tmp/pts-rk-guarded-coverage.iomdo5/GuardedHilbertCoverage.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/inventory.txt:5: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/inventory.txt:7: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/inventory.txt:10: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/inventory.txt:12: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/inventory.txt:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/inventory.txt:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/inventory.txt:16: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/kernel.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq check -silent -o -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-beta.LXnPKw PTSrk.Combinatory -Q /tmp/pts-rk-guarded-tables.8mxXI2 PTSrk.Combinatory -Q /tmp/pts-rk-guarded-coverage.iomdo5 PTSrk.Combinatory PTSrk.Combinatory.GuardedHilbertCoverage
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/kernel.log:9: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/kernel.log:11: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/kernel.log:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/kernel.log:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/kernel.log:18: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/kernel.log:20: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-coverage/kernel.log:20: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-01.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory /tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-01.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-02.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory /tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-02.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-03.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory /tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-03.log:25: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-04.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory /tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-04.log:8: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-05.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory /tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-05.log:10: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-06.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory /tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-07.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory /tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-07.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-08.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory /tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-08.log:7: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-09.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory /tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/attempt-10.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq compile -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory /tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/inventory.txt:5: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/inventory.txt:7: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/inventory.txt:10: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/inventory.txt:12: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/inventory.txt:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/inventory.txt:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/inventory.txt:16: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/kernel.command:1: trailing whitespace.
++/Users/akuklev/.local/share/pts-rk-ci/bin/opam exec -- rocq check -silent -o -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories PTSrk -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/NormalizationComplexity PTSrk.NormalizationComplexity -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R Interpretation_of_R -Q /tmp/pts-rk-quantified-models.uhpkYv/default/theories/CombinatoryLogic-rk PTSrk.Combinatory -Q /tmp/pts-rk-guarded-carriers.mPsQdQ PTSrk.Combinatory -Q /tmp/pts-rk-guarded-horn.VJZbDb PTSrk.Combinatory -Q /tmp/pts-rk-guarded-hilbert.ZjBk3c PTSrk.Combinatory PTSrk.Combinatory.GuardedHilbertModels
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/kernel.log:9: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/kernel.log:11: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/kernel.log:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/kernel.log:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/kernel.log:18: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/kernel.log:20: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-hilbert/kernel.log:20: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/attempt-01.log:4: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/attempt-02.log:4: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/attempt-03.log:3: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/attempt-04.log:4: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/kernel.log:6: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/kernel.log:8: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/kernel.log:10: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/kernel.log:12: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/kernel.log:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/kernel.log:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-horn/kernel.log:16: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/attempt-01.log:11: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/attempt-02.log:24: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/attempt-03.log:119: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/attempt-05.log:166: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/attempt-07.log:81: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/attempt-08.log:262: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/kernel.log:9: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/kernel.log:11: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/kernel.log:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/kernel.log:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/kernel.log:18: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/kernel.log:20: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-quantification/kernel.log:20: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/attempt-01.log:61: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/attempt-02.log:103: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/attempt-03.log:202: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/attempt-04.log:221: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/attempt-05.log:258: trailing whitespace.
++More precisely:
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/attempt-05.log:264: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/attempt-07.log:298: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/kernel.log:9: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/kernel.log:11: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/kernel.log:14: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/kernel.log:16: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/kernel.log:18: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/kernel.log:20: trailing whitespace.
++
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/guarded-tables/kernel.log:20: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:9: trailing whitespace.
++Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:67: trailing whitespace.
++Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:79: trailing whitespace.
++markdown class: extracted base class `article' with options `11pt,a4paper' from
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:470: trailing whitespace.
++Package: expl3 2026-01-19 L3 programming layer (loader)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:645: trailing whitespace.
++Package fontspec Info:
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:649: trailing whitespace.
++(fontspec)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:652: trailing whitespace.
++(fontspec)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:757: trailing whitespace.
++* modes:
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:836: trailing whitespace.
++Package fontspec Info:
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:918: trailing whitespace.
++File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/CombinatoryPTS-rk.log:1232: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/build.log:17: trailing whitespace.
++This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/build.log:252: trailing whitespace.
++This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/build.log:471: trailing whitespace.
++This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-01/build.log:674: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:9: trailing whitespace.
++Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:67: trailing whitespace.
++Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:79: trailing whitespace.
++markdown class: extracted base class `article' with options `11pt,a4paper' from
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:470: trailing whitespace.
++Package: expl3 2026-01-19 L3 programming layer (loader)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:645: trailing whitespace.
++Package fontspec Info:
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:649: trailing whitespace.
++(fontspec)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:652: trailing whitespace.
++(fontspec)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:757: trailing whitespace.
++* modes:
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:836: trailing whitespace.
++Package fontspec Info:
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:918: trailing whitespace.
++File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/CombinatoryPTS-rk.log:1232: new blank line at EOF.
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/build.log:17: trailing whitespace.
++This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/build.log:252: trailing whitespace.
++This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/build.log:471: trailing whitespace.
++This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)
+docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-build-02/build.log:674: new blank line at EOF.

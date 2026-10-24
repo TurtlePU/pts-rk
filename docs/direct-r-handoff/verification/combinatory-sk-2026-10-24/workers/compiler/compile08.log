@@ -1,0 +1,30 @@
+File "theories/CombinatoryLogic-rk/dune", lines 1-26, characters 0-1586:
+ 1 | (rocq.theory
+ 2 |  (name PTSrk.Combinatory)
+ 3 |  (package pts-rk)
+....
+24 |    IndexedHornTransport FiniteGeneratedCodes FiniteMapCoherence
+25 |    MM0InternalDecoder MM0InternalGuard)
+26 |  (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity Interpretation_of_R))
+Warning:
+/private/tmp/pts-rk-sk-worker.IuJaUA/build/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/SK.v", line 98, characters 20-24:
+Error:
+In environment
+n, n0 : nat
+ren : Fin n0 -> Fin n
+t1 : Term nat n0
+t2 : Term nat (S n0)
+IHt1 :
+  forall ren : Fin n0 -> Fin n,
+  replace (fun j : Fin n0 => var (ren j)) t1 = rename ren t1
+IHt2 :
+  forall ren : Fin (S n0) -> Fin n,
+  replace (fun j : Fin (S n0) => var (ren j)) t2 = rename ren t2
+The term "IHt1" has type
+ "forall ren : Fin n0 -> Fin n,
+  replace (fun j : Fin n0 => var (ren j)) t1 = rename ren t1"
+while it is expected to have type
+ "replace (fun j : Fin n0 => var (ren j)) t1 = rename ren t1".

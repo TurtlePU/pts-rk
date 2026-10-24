@@ -1,0 +1,5 @@
+Checking BinderFreeQuotient (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/BinderFreeQuotient.agda).
+ Checking BinderFreeCoherence (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/BinderFreeCoherence.agda).
+ Checking BinderFreeEquality (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/BinderFreeEquality.agda).
+  Checking BinderFreeBidirectional (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/BinderFreeBidirectional.agda).
+   Checking PTSPrelude (/private/tmp/pts-rk-sk-binderfree.tCrz00/source/PTSPrelude.agda).

@@ -2,7 +2,34 @@
 module Everything where
 
 import Combinatory
-import BCKW
+import BinderFreeCore
+import BinderFreeBidirectional
+import BinderFreeCoherence
+import BinderFreeEquality
+import BinderFreeQuotient
+import BinderFreeBoundary
+import SKNativeCanonical
+import SKSource
+import SKSourceEquality
+import SKSourceNormal
+import SKBracket
+import SKCanonicalNormal
+import SKCanonical
+import SKSourceRank
+import SKCanonicalExamples
+import SKBracketSize
+import SKDirectSoundness
+import SKDirectGround
+import SKDirectBoundary
+import CanonicalAlgebra
+import NormalizedSubstitution
+import NormalizedFamilies
+import NormalizedComprehension
+import NormalizedProducts
+import NormalizedInference
+import NormalizedContexts
+import NormalizedExamples
+import NativeBidirectional
 import SCanonical
 import SGuardIrrelevance
 import Exact

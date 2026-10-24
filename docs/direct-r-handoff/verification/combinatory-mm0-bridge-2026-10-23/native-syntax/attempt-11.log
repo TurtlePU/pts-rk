@@ -1,0 +1,7 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-native-syntax.Lz2EQU/MM0NativeSyntax.v", line 299, characters 36-60:
+Error: Found no subterm matching "quote_term (shift ?M1210)"
+in the current goal.

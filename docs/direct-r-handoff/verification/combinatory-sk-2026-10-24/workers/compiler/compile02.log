@@ -1,0 +1,206 @@
+*** Warning: in file Bounds.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Bounds.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Literals.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Runtime.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file RedexRanks.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Morphisms.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Safety.v,
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v,
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Descent.v,
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v,
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file BoundedNormalization.v,
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file EstimatorChecks.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v,
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file SortBounds.v,
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file AutomaticBound.v,
+    required library PTSrk.NormalizationComplexity.SortBounds exactly matches several files in path
+    (found SortBounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Normalization.v,
+    required library PTSrk.NormalizationComplexity.AutomaticBound exactly matches several files in path
+    (found AutomaticBound.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file STLCEmbedding.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file STLCEmbedding.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Rank exactly matches several files in path
+    (found Rank.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Greedy exactly matches several files in path
+    (found Greedy.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Bounds exactly matches several files in path
+    (found Bounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Literals exactly matches several files in path
+    (found Literals.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Runtime exactly matches several files in path
+    (found Runtime.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.RedexRanks exactly matches several files in path
+    (found RedexRanks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Morphisms exactly matches several files in path
+    (found Morphisms.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Safety exactly matches several files in path
+    (found Safety.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Descent exactly matches several files in path
+    (found Descent.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.BoundedNormalization exactly matches several files in path
+    (found BoundedNormalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.EstimatorChecks exactly matches several files in path
+    (found EstimatorChecks.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.SortBounds exactly matches several files in path
+    (found SortBounds.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.AutomaticBound exactly matches several files in path
+    (found AutomaticBound.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.Normalization exactly matches several files in path
+    (found Normalization.v in ../NormalizationComplexity and .; used the latter).
+*** Warning: in file Audit.v,
+    required library PTSrk.NormalizationComplexity.STLCEmbedding exactly matches several files in path
+    (found STLCEmbedding.v in ../NormalizationComplexity and .; used the latter).
+Closed under the global context
+File "theories/CombinatoryLogic-rk/dune", lines 1-26, characters 0-1586:
+ 1 | (rocq.theory
+ 2 |  (name PTSrk.Combinatory)
+ 3 |  (package pts-rk)
+....
+24 |    IndexedHornTransport FiniteGeneratedCodes FiniteMapCoherence
+25 |    MM0InternalDecoder MM0InternalGuard)
+26 |  (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity Interpretation_of_R))
+Warning:
+/private/tmp/pts-rk-sk-worker.IuJaUA/build/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/SK.v", line 155, characters 32-36:
+Error:
+In environment
+V : Ty -> Type
+A, A0, B : Ty
+p1 : Code (Extend V A) (A0 ⇒ B)
+p2 : Code (Extend V A) A0
+IHp1 :
+  forall (n i : nat) (rho : forall B : Ty, V B -> Term nat n)
+    (a : Term nat n),
+  expand i (abstract p1) rho $ a ↠ᵝ expand i p1 (plug_env rho a)
+IHp2 :
+  forall (n i : nat) (rho : forall B : Ty, V B -> Term nat n)
+    (a : Term nat n),
+  expand i (abstract p2) rho $ a ↠ᵝ expand i p2 (plug_env rho a)
+n, i : nat
+rho : forall B : Ty, V B -> Term nat n
+a : Term nat n
+Unable to unify "Term nat ?n" with "nat".

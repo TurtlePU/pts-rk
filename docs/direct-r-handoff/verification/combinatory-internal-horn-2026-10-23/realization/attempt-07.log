@@ -1,0 +1,25 @@
+Warning:
+/private/tmp/pts-rk-mm0-bridge.IH9mrh/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/HornProofRealization.v", line 140, characters 46-47:
+Error:
+In environment
+k : nat
+qs : list (Fin k)
+b : Fin k
+rest : list (list (Fin k) * Fin k)
+IH :
+  forall (n : nat) (G : Ctx nat n) (env : Fin k -> Term nat n)
+    (ps : list (Fin k)) (a : Fin k),
+  In (ps, a) rest ->
+  handler_context rest G env ⊢ handler rest (ps, a)
+  ⇐ H.rule_type ps a (handler_env rest env)
+n : nat
+G : Ctx nat n
+env : Fin k -> Term nat n
+ps : list (Fin k)
+a : Fin k
+E : (qs, b) = (ps, a)
+N : (ps, a) <> (qs, b)
+Unable to unify "(ps, a) <> (qs, b)" with "In (ps, a) rest".

@@ -1,0 +1,15 @@
+File "/tmp/pts-rk-finite-internal.6wfWep/FiniteModelSoundness.v", line 122, characters 18-30:
+Error:
+In environment
+Atom : Type
+clauses : list (list Atom * Atom)
+truth : Atom -> bool
+model : FiniteHorn.Model clauses (fun a : Atom => truth a = true)
+denials : list (list Atom)
+denied : FiniteHorn.Denials denials (fun a : Atom => truth a = true)
+ps : list Atom
+p : Proofs ps
+HP : In ps denials
+Unable to unify "ε ⊢ supply ?p ?q ⇐ R.truth_type ?b" with
+ "ε ⊢ compile_denial ps p ⇐ NativeCanonicity.Void".
+

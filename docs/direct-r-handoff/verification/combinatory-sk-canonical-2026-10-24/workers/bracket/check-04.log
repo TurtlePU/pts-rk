@@ -1,0 +1,50 @@
+Checking SKBracket (/private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda).
+ Checking SKSource (/private/tmp/pts-rk-skbracket.Cjke1Y/source/SKSource.agda).
+/private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:122.1-127.44: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of bracket
+
+/private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:140.1-141.33: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of extendEnv
+
+/private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:144.1-145.25: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of plugEnv
+
+/private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:157.1-164.64: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of abstract-applied
+
+/private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:181.6-56: error: [UnequalTerms]
+plugEnv (λ x₁ → shift (ρ x₁)) (var fzero) x₁ != extendEnv ρ x₁ of
+type Raw Nat (suc n)
+when checking that the expression
+abstract-applied f (λ x₁ → shift (ρ x₁)) (var fzero) has type
+Steps
+(app (eval (bracket f) (λ x₁ → rename fsuc (ρ x₁))) (var fzero))
+(eval f (extendEnv ρ))

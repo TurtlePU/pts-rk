@@ -1,0 +1,7 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-generated-codes.gGpVFd/FiniteGeneratedCodes.v", line 78, characters 12-20:
+Error: The variable Fin_case was not found in the current environment.
+

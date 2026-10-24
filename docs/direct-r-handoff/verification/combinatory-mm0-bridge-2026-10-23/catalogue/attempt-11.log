@@ -1,0 +1,29 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-catalogue.XiGatK/MM0CatalogueAdequacy.v", line 357, characters 51-66:
+Error:
+In environment
+sigma : nat -> Expr
+HS :
+  ClosedSubstitution [NAT; NAT; NAT; NAT; NAT; NAT; TEL; TEL; TM; TM] sigma
+a, b, c : nat
+H1 : sigma 6 = s_telescope a b c
+k : nat
+H3 : sigma 7 = telescope_prefix (S (S (S k))) (s_telescope a b c)
+d, e : nat
+H2 :
+  Form e (telescope_prefix (S (S (S k))) (s_telescope a b c))
+    (EU (quote_nat d)) (EU EZ) (sigma 8) (sigma 9)
+H5 : Forall Meaning []
+Hnat : sigma 0 = quote_nat a
+Hnat0 : sigma 1 = quote_nat b
+Hnat1 : sigma 2 = quote_nat c
+Hnat2 : sigma 3 = quote_nat d
+Hnat3 : sigma 4 = quote_nat e
+Hnat4 : sigma 5 = quote_nat k
+HK : k <= 3
+Unable to unify "fold_form ?L ?e ?D ?E = Some (?M, ?T)" with
+ "evaluate_row (sortS a b c d e k) = Some (sigma 8, sigma 9)".
+

@@ -1,0 +1,6 @@
+File "./theories/CombinatoryLogic-rk/FiniteHorn.v", line 9, characters 0-18:
+Warning: Trying to mask the absolute name "FiniteHorn"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/CombinatoryLogic-rk/FiniteHorn.v", line 122, characters 85-88:
+Error: Tactic failure:  Cannot find witness.
+

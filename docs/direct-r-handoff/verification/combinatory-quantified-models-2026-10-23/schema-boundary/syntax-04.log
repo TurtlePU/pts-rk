@@ -1,0 +1,22 @@
+File "/tmp/pts-rk-native-model-boundary.iBL2hu/MM0SyntaxSoundness.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+File "/tmp/pts-rk-native-model-boundary.iBL2hu/MM0SyntaxSoundness.v", line 135, characters 21-32:
+Error:
+In environment
+D : Type
+default : D
+algebra : Algebra D
+vars : list Sort
+p : Predicate
+es : list Expr
+sigma : nat -> Expr
+Unable to unify
+ "map
+    (evaluate default algebra
+       (Vector.to_list (substitution_valuation (length vars) sigma)))
+    es"
+with
+ "map (fun x : Expr => evaluate default algebra [] (substitute sigma x)) es".
+

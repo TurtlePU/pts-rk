@@ -1,0 +1,7 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-indexed-transport.rdQzB4/IndexedHornTransport.v", line 110, characters 6-184:
+Error: Not convertible.
+

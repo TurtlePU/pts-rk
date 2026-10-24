@@ -30,8 +30,19 @@ extract_agda() {
   ' "$source" > "$build_dir/$output.agda"
   test -s "$build_dir/$output.agda"
 }
-extract_agda "$note_dir/agda/BCKW.agda" HEADSIGNATURE agda-signature
-extract_agda "$note_dir/agda/BCKW.agda" APPSIGNATURE agda-application
+extract_agda "$note_dir/agda/Combinatory.agda" HEADSIGNATURE agda-signature
+extract_agda "$note_dir/agda/Combinatory.agda" APPSIGNATURE agda-application
+extract_agda "$note_dir/agda/BinderFreeCore.agda" BINDERFREEAPPLY agda-binderfree-apply
+extract_agda "$note_dir/agda/BinderFreeQuotient.agda" BINDERFREEQUOTIENT agda-binderfree-quotient
+extract_agda "$note_dir/agda/SKCanonical.agda" SKCANONICAL agda-sk-canonical
+extract_agda "$note_dir/agda/SKCanonical.agda" SKCANONICALAPPLY agda-sk-canonical-apply
+extract_agda "$note_dir/agda/SKDirectGround.agda" SKDIRECTGROUND agda-sk-direct-ground
+extract_agda "$note_dir/agda/CanonicalAlgebra.agda" CANONICALALGEBRA agda-canonical-algebra
+extract_agda "$note_dir/agda/NormalizedSubstitution.agda" NORMALSUBCARRIER agda-normal-sub-carrier
+extract_agda "$note_dir/agda/NormalizedFamilies.agda" NORMALFAMILIES agda-normal-families
+extract_agda "$note_dir/agda/NormalizedContexts.agda" NORMALCONTEXTS agda-normal-contexts
+extract_agda "$note_dir/agda/NormalizedProducts.agda" NORMALAPPLICATION agda-normal-application
+extract_agda "$note_dir/agda/NativeBidirectional.agda" NATIVEINFERENCE agda-native-inference
 extract_agda "$note_dir/agda/Exact.agda" EXACT agda-exact
 extract_agda "$note_dir/agda/NormalForms.agda" NORMALIIR agda-normal-iir
 extract_agda "$note_dir/agda/NormalForms.agda" NORMALFAMILY agda-normal-family
@@ -51,9 +62,25 @@ done
 for proof in Core.v Presentation.v FiniteBasis.v Hilbert.v ProductCatalogue.v \
   IdentityCatalogue.v ConstantCatalogue.v SubstitutionCatalogue.v CatalogueHilbert.v \
   CatalogueEconomy.v CatalogueShapes.v ContextualHilbert.v ContextualSubstitution.v \
-  ProductExposure.v HilbertAbstraction.v HilbertReplay.v AffineDuplication.v \
-  QuantitativeNormalization.v FiniteNormalForms.v GroundHorn.v BCKW.v KnuthBounds.v \
-  ChurchFinite.v; do
+  ProductExposure.v HilbertAbstraction.v HilbertReplay.v \
+  QuantitativeNormalization.v FiniteNormalForms.v GroundHorn.v SK.v KnuthBounds.v \
+  ChurchFinite.v GroundHornConsistency.v FiniteHorn.v HilbertGrounding.v \
+  FiniteModelBoundary.v NativeCanonicity.v FiniteHornChurch.v \
+  HilbertFiniteModels.v FiniteUniversalHorn.v FiniteNativeModelBoundary.v \
+  FiniteAlgebraSearch.v FiniteOperationAlgebras.v FiniteModelRealization.v \
+  MM0FiniteSignature.v MM0FiniteAxioms.v MM0FiniteSearch.v MM0ProjectionModel.v \
+  FiniteModelSoundness.v MM0SyntaxSoundness.v MM0InternalSoundness.v \
+  GuardedFiniteCarriers.v GuardedHornFragments.v GuardedHilbertModels.v \
+  MM0GuardedQuantification.v GuardedBetaGraphs.v GuardedHilbertTables.v \
+  GuardedHilbertCoverage.v MM0NativeSyntax.v MM0ComputationalAdequacy.v \
+  MM0NativeReduction.v MM0CatalogueAdequacy.v MM0CatalogueRealization.v \
+  MM0GuardedSyntaxAlgebra.v MM0GuardedReflection.v MM0HilbertAdequacy.v \
+  HornProofEncoding.v HornProofRealization.v GuardedFiniteSupport.v \
+  HornInternalSoundness.v MM0GuardedInternalReflection.v \
+  FiniteTypeDispatch.v IndexedHornEncoding.v IndexedHornRealization.v \
+  MM0GuardProvenance.v IndexedHornSoundness.v MM0IndexedReflection.v \
+  IndexedHornTransport.v FiniteGeneratedCodes.v FiniteMapCoherence.v \
+  MM0InternalDecoder.v MM0InternalGuard.v; do
   test -f "$note_dir/$proof"
 done
 cd "$build_dir"

@@ -1,0 +1,8 @@
+Warning:
+/private/tmp/pts-rk-mm0-bridge.IH9mrh/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/HornProofRealization.v", line 129, characters 4-90:
+Error: Found no subterm matching
+"H.rule_type ps a (fun i : Fin k => CF.lift (length rest) (shift (env i)))"
+in the current goal.

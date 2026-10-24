@@ -1,0 +1,19 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+1 goal
+  
+  sigma : nat -> Expr
+  HS : ClosedSubstitution [NAT; NAT] sigma
+  H1 :
+    Meaning
+      (substitute_atom sigma
+         (aLe MM0FiniteAxioms.MM0FiniteAxioms.x0
+            MM0FiniteAxioms.MM0FiniteAxioms.x1))
+  H2 : Forall Meaning []
+  ============================
+  S (number (sigma 0)) <= S (number (sigma 1))
+File "/tmp/pts-rk-mm0-computational.3tS6OZ/MM0ComputationalAdequacy.v", line 96, characters 10-13:
+Error: Tactic failure:  Cannot find witness.
+

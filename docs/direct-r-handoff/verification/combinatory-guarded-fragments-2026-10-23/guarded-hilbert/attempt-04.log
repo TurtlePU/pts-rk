@@ -1,0 +1,7 @@
+Warning:
+/private/tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v", line 260, characters 17-20:
+Error: The reference ᵝ was not found in the current environment. Did you mean
+𝓤, ε, Π, d, S, O, N, I or D?

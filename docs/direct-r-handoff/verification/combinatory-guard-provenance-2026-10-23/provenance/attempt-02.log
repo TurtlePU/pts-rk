@@ -1,0 +1,13 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guard-provenance.I3682u/MM0GuardProvenance.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+File "/tmp/pts-rk-guard-provenance.I3682u/MM0GuardProvenance.v", line 84, characters 4-40:
+Error: The first term has type
+"option (Syntax.Fin (length (A.syntax_list N d)))" while the second term has
+incompatible type "option Expr".
+

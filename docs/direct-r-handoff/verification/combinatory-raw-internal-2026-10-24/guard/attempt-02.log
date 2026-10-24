@@ -1,0 +1,14 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-internal-guard.9aN6Rk/MM0InternalGuard.v", line 106, characters 10-16:
+Error:
+In environment
+N, d : nat
+names : list AxiomName
+i : Fin (count N d names)
+b : bool
+i0 : Fin (count N d names)
+Unable to unify "[(i0, true); (i0, false)]" with "(i, true) :: i0".
+

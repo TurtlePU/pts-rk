@@ -1,0 +1,11 @@
+Checking SKBracketSize (/private/tmp/pts-rk-sksize.flfBIE/source/SKBracketSize.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  _n_261 (b = b) · (4 ^ source-nodes b) = 0 : Nat (blocked on _n_261)
+  _n_261 · open-atoms (C.compile-open b) = 0 : Nat
+    (blocked on _n_261)
+
+/private/tmp/pts-rk-sksize.flfBIE/source/SKBracketSize.agda:91.32-93.51: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /private/tmp/pts-rk-sksize.flfBIE/source/SKBracketSize.agda:91.32-93.51
+  /private/tmp/pts-rk-sksize.flfBIE/source/SKBracketSize.agda:93.4-50

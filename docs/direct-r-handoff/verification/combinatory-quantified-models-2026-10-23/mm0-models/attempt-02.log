@@ -1,0 +1,11 @@
+Chars 0 - 48 [From~Stdlib~Require~Import~Lis...] 0.037 secs (0.03u,0.006s)
+File "./theories/CombinatoryLogic-rk/MM0FiniteSearch.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+Chars 49 - 84 [From~Stdlib~Require~Vectors.Ve...] 0.005 secs (0.004u,0.001s)
+Chars 85 - 204 [From~PTSrk.Combinatory~Require...] 0.014 secs (0.009u,0.004s)
+File "./theories/CombinatoryLogic-rk/MM0FiniteSearch.v", line 3, characters 0-119:
+Error:
+Compiled library PTSrk.Combinatory.MM0FiniteAxioms (in file /private/tmp/pts-rk-native-model-boundary.iBL2hu/MM0FiniteAxioms.vo) makes inconsistent assumptions over library PTSrk.Combinatory.MM0FiniteSignature
+

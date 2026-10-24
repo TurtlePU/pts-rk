@@ -1,0 +1,4 @@
+File "/tmp/pts-rk-finite-internal.6wfWep/FiniteModelSoundness.v", line 45, characters 11-95:
+Error: Not the right number of induction arguments (expected 1 parameter and
+2 arguments).
+

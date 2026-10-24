@@ -1,0 +1,16 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-native-syntax.Lz2EQU/MM0NativeSyntax.v", line 178, characters 57-68:
+Error:
+In environment
+k : nat
+X : Expr
+i : nat
+Hlt : (i <? k) = true
+Unable to unify
+ "if S i <? S k
+  then EV (quote_nat (S i))
+  else if i =? k then raw_lift 0 X else EV (quote_nat (Nat.pred (S i)))"
+with "EV (quote_nat (if 0 <=? i then S i else i))".

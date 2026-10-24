@@ -1,0 +1,29 @@
+Warning:
+/private/tmp/pts-rk-mm0-bridge.IH9mrh/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+(@typ nat RankSorts
+   (CF.scope (S (@length (prod (list (Fin k)) (Fin k)) rest)) n)
+   (@handler_context k (S n) rest (@cons nat n G (@H.rule_type k n ps a env))
+      (fun i : Fin k => @shift nat n (env i)))
+   (@CF.lift (@length (H.Clause k) rest) (S n) (@var nat (S n) (@fzero n)))
+   (@H.rule_type k (CF.scope (S (@length (H.Clause k) rest)) n) ps a
+      (fun i : Fin k =>
+       @CF.lift (@length (H.Clause k) rest) (S n) (@shift nat n (env i)))))
+(@eq (Term nat (CF.scope (@length (prod (list (Fin k)) (Fin k)) rest) (S n)))
+   (@CF.lift (@length (prod (list (Fin k)) (Fin k)) rest)
+      (S n)
+      (@H.rule_type k (S n) ps a (fun i : Fin k => @shift nat n (env i))))
+   (@H.rule_type k
+      (CF.scope (@length (prod (list (Fin k)) (Fin k)) rest) (S n)) ps a
+      (fun i : Fin k =>
+       @CF.lift (@length (prod (list (Fin k)) (Fin k)) rest)
+         (S n) ((fun i0 : Fin k => @shift nat n (env i0)) i))))
+File "./theories/CombinatoryLogic-rk/HornProofRealization.v", line 134, characters 4-17:
+Error: Found no subterm matching
+"@H.rule_type k (CF.scope (@length (prod (list (Fin k)) (Fin k)) rest) (S n))
+   ps a
+   (fun i : Fin k =>
+    @CF.lift (@length (prod (list (Fin k)) (Fin k)) rest)
+      (S n) (@shift nat n (env i)))"
+in the current goal.

@@ -1,0 +1,7 @@
+Recorded during archive collection, not a fresh proof check.
+2026-10-24 02:40:54 UTC
+Agda version 2.8.0-3d04bac
+Built with flags (cabal -f)
+ - optimise-heavily: extra optimisations
+ - use-xdg-data-home: install and locate data files under $XDG_DATA_HOME/agda/$AGDA_VERSION by default instead of the location defined by Cabal
+b150186d2544e7efeddd31e5d14a8b9ecbb100f7

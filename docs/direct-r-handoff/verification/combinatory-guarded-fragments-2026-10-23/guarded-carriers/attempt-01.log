@@ -1,0 +1,16 @@
+Warning:
+/private/tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v", line 6, characters 0-34:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "/tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v", line 6, characters 0-34:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "/tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v", line 20, characters 5-6:
+Error: Syntax error: [pattern level 200] expected after '[' (in [pattern]).

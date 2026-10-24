@@ -1,0 +1,216 @@
+Checking SKSource (/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  _A_829 (x = x) (y = y) = E : Ty (blocked on _A_829)
+  _A_829 (x = x) (y = y) = x₁ : Ty (blocked on _A_829)
+  _A_829 = A : Ty (blocked on _A_829)
+  _A_829 = A₁ : Ty (blocked on _A_829)
+  E = _A_829 (x = x) (y = y) : Ty (blocked on _A_829)
+  A₁ = _A_829 : Ty (blocked on _A_829)
+  _A_639 (h = h) (x = x) = A : Ty (blocked on _A_639)
+  _A_610 (h = h) (x = x) = x₁ : Ty (blocked on _A_610)
+  _A_610 = A₁ : Ty (blocked on _A_610)
+  _A_639 = A : Ty (blocked on _A_639)
+  _A_610 (h = h) (x = x) = E : Ty (blocked on _A_610)
+  _A_613 = _A_639 : Ty (blocked on any(_A_613, _A_639))
+  _D_629 = _A_639 (h = h) (x = x) : Ty
+    (blocked on any(_D_629, _A_639))
+  E = _A_610 (h = h) (x = x) : Ty (blocked on _A_610)
+  _A_613 = _A_610 : Ty (blocked on any(_A_610, _A_613))
+  _A_354 (h = h) (x = x) = E : Ty (blocked on _A_354)
+  _A_354 (h = h) (x = x) = x₁ : Ty (blocked on _A_354)
+  _A_374 (h = h) (x = x) = A : Ty (blocked on _A_374)
+  _A_354 = A₁ : Ty (blocked on _A_354)
+  _A_374 = A : Ty (blocked on _A_374)
+  _A_358 = _A_374 : Ty (blocked on any(_A_358, _A_374))
+  _D_365 = _A_374 (h = h) (x = x) : Ty
+    (blocked on any(_D_365, _A_374))
+  E = _A_354 (h = h) (x = x) : Ty (blocked on _A_354)
+  _A_358 = _A_354 : Ty (blocked on any(_A_354, _A_358))
+  Is usable at irrelevant modality: Agda.Primitive.Cubical.primTransp
+                                    (λ i →
+                                       CaseVarRel Rel (x i) A
+                                       (SKSource.transpX-Var
+                                        (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                        (Agda.Primitive.Cubical.primComp
+                                         (λ i₁ →
+                                            Agda.Primitive.Cubical.primComp (λ j → Ty)
+                                            (λ i₂ →
+                                               Agda.Primitive.Cubical.primPOr
+                                               (Agda.Primitive.Cubical.primIMax
+                                                (Agda.Primitive.Cubical.primINeg i₁)
+                                                (Agda.Primitive.Cubical.primIMax
+                                                 (Agda.Primitive.Cubical.primINeg i) φ))
+                                               i (λ .o → A)
+                                               (λ .o → x₁ (Agda.Primitive.Cubical.primINeg i₂)))
+                                            A
+                                            ≡ A)
+                                         (λ i₁ →
+                                            Agda.Primitive.Cubical.primPOr
+                                            (Agda.Primitive.Cubical.primIMax
+                                             (Agda.Primitive.Cubical.primINeg i) φ)
+                                            i (λ .o i₂ → A)
+                                            (λ .o j →
+                                               x₁
+                                               (Agda.Primitive.Cubical.primIMax j
+                                                (Agda.Primitive.Cubical.primINeg i₁))))
+                                         (λ i₁ → A))
+                                        (Agda.Primitive.Cubical.primIMax
+                                         (Agda.Primitive.Cubical.primINeg i) φ)
+                                        (vs
+                                         (Agda.Primitive.Cubical.primComp
+                                          (λ i₁ →
+                                             Var Γ
+                                             (Agda.Primitive.Cubical.primComp (λ j → Ty)
+                                              (λ i₂ →
+                                                 Agda.Primitive.Cubical.primPOr
+                                                 (Agda.Primitive.Cubical.primIMax
+                                                  (Agda.Primitive.Cubical.primINeg i₁)
+                                                  (Agda.Primitive.Cubical.primIMax
+                                                   (Agda.Primitive.Cubical.primINeg i) φ))
+                                                 i (λ .o → A)
+                                                 (λ .o → x₁ (Agda.Primitive.Cubical.primINeg i₂)))
+                                              A))
+                                          (λ i₁ →
+                                             Agda.Primitive.Cubical.primPOr
+                                             (Agda.Primitive.Cubical.primIMax
+                                              (Agda.Primitive.Cubical.primINeg i) φ)
+                                             i
+                                             (λ .o →
+                                                Agda.Primitive.Cubical.primTransp
+                                                (λ i₂ → Var Γ (x₁ i₂)) φ x₂)
+                                             (λ .o →
+                                                Agda.Primitive.Cubical.primTransp
+                                                (λ i₂ →
+                                                   Var Γ
+                                                   (x₁
+                                                    (Agda.Primitive.Cubical.primIMin i₂
+                                                     (Agda.Primitive.Cubical.primINeg i₁))))
+                                                (Agda.Primitive.Cubical.primIMax i₁ φ) x₂))
+                                          (Agda.Primitive.Cubical.primTransp (λ i₁ → Var Γ (x₁ i₁))
+                                           φ x₂)))))
+                                    φ
+                                    (caseVar-rel Rel
+                                     (vs
+                                      (Agda.Primitive.Cubical.primComp
+                                       (λ i →
+                                          Var Γ
+                                          (Agda.Primitive.Cubical.primComp (λ j → Ty)
+                                           (λ i₁ →
+                                              Agda.Primitive.Cubical.primPOr i1 i0 (λ .o → A)
+                                              (λ .o → x₁ (Agda.Primitive.Cubical.primINeg i₁)))
+                                           A))
+                                       (λ i →
+                                          Agda.Primitive.Cubical.primPOr i1 i0
+                                          (λ .o →
+                                             Agda.Primitive.Cubical.primTransp
+                                             (λ i₁ → Var Γ (x₁ i₁)) φ x₂)
+                                          (λ .o →
+                                             Agda.Primitive.Cubical.primTransp
+                                             (λ i₁ →
+                                                Var Γ
+                                                (x₁
+                                                 (Agda.Primitive.Cubical.primIMin i₁
+                                                  (Agda.Primitive.Cubical.primINeg i))))
+                                             (Agda.Primitive.Cubical.primIMax i φ) x₂))
+                                       (Agda.Primitive.Cubical.primTransp (λ i → Var Γ (x₁ i)) φ
+                                        x₂))))
+    (blocked on _A_135)
+  Is usable at irrelevant modality: Agda.Primitive.Cubical.primTransp
+                                    (λ i →
+                                       CaseVarRel Rel
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Γ ▻ x i₁ ≡ Γ₁) φ
+                                        x₁ i)
+                                       A
+                                       (SKSource.transpX-Var
+                                        (Agda.Primitive.Cubical.primComp
+                                         (λ i₁ →
+                                            Γ ▻
+                                            Agda.Primitive.Cubical.primComp (λ j → Ty)
+                                            (λ i₂ →
+                                               Agda.Primitive.Cubical.primPOr
+                                               (Agda.Primitive.Cubical.primIMax
+                                                (Agda.Primitive.Cubical.primINeg i₁)
+                                                (Agda.Primitive.Cubical.primIMax
+                                                 (Agda.Primitive.Cubical.primINeg i) φ))
+                                               i (λ .o → A)
+                                               (λ .o → x (Agda.Primitive.Cubical.primINeg i₂)))
+                                            A
+                                            ≡
+                                            Agda.Primitive.Cubical.primTransp (λ i₂ → Γ ▻ x i₂ ≡ Γ₁)
+                                            φ x₁ i)
+                                         (λ i₁ →
+                                            Agda.Primitive.Cubical.primPOr
+                                            (Agda.Primitive.Cubical.primIMax
+                                             (Agda.Primitive.Cubical.primINeg i) φ)
+                                            i
+                                            (λ .o j →
+                                               Agda.Primitive.Cubical.primTransp
+                                               (λ i₂ → Γ ▻ x i₂ ≡ Γ₁) φ x₁
+                                               (Agda.Primitive.Cubical.primIMin j i))
+                                            (λ .o →
+                                               Agda.Primitive.Cubical.primTransp
+                                               (λ i₂ →
+                                                  Γ ▻
+                                                  x
+                                                  (Agda.Primitive.Cubical.primIMin i₂
+                                                   (Agda.Primitive.Cubical.primINeg i₁))
+                                                  ≡ Γ₁)
+                                               (Agda.Primitive.Cubical.primIMax i₁ φ) x₁))
+                                         (λ j →
+                                            Agda.Primitive.Cubical.primTransp (λ i₁ → Γ ▻ x i₁ ≡ Γ₁)
+                                            φ x₁ (Agda.Primitive.Cubical.primIMin j i)))
+                                        (Agda.Primitive.Cubical.primComp
+                                         (λ i₁ →
+                                            Agda.Primitive.Cubical.primComp (λ j → Ty)
+                                            (λ i₂ →
+                                               Agda.Primitive.Cubical.primPOr
+                                               (Agda.Primitive.Cubical.primIMax
+                                                (Agda.Primitive.Cubical.primINeg i₁)
+                                                (Agda.Primitive.Cubical.primIMax
+                                                 (Agda.Primitive.Cubical.primINeg i) φ))
+                                               i (λ .o → A)
+                                               (λ .o → x (Agda.Primitive.Cubical.primINeg i₂)))
+                                            A
+                                            ≡ A)
+                                         (λ i₁ →
+                                            Agda.Primitive.Cubical.primPOr
+                                            (Agda.Primitive.Cubical.primIMax
+                                             (Agda.Primitive.Cubical.primINeg i) φ)
+                                            i (λ .o i₂ → A)
+                                            (λ .o j →
+                                               x
+                                               (Agda.Primitive.Cubical.primIMax j
+                                                (Agda.Primitive.Cubical.primINeg i₁))))
+                                         (λ i₁ → A))
+                                        (Agda.Primitive.Cubical.primIMax
+                                         (Agda.Primitive.Cubical.primINeg i) φ)
+                                        vz))
+                                    φ (caseVar-rel Rel vz)
+    (blocked on _A_135)
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:63.64-169.42: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:63.64-67
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:113.3-115.28
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:113.24-32
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:113.37-38
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:114.5-7
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:114.15-17
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:114.15-23
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:115.12-27
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:146.3-148.73
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:146.24-29
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:146.34-35
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:147.6-9
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:147.6-12
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:147.10-12
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:147.21-36
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:147.28-30
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:148.12-72
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:168.21-169.42
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:168.42-47
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:169.3-4
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:169.5-8
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:169.25-29
+  /private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:169.37-41

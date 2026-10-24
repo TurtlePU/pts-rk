@@ -1,0 +1,1 @@
+bash docs/direct-r-handoff/verification/combinatory-paper-plan-2026-10-24/inspection/CHECK-INTRO.sh

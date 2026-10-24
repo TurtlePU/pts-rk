@@ -1,0 +1,4 @@
+Agda version 2.8.0-3d04bac
+Built with flags (cabal -f)
+ - optimise-heavily: extra optimisations
+ - use-xdg-data-home: install and locate data files under $XDG_DATA_HOME/agda/$AGDA_VERSION by default instead of the location defined by Cabal

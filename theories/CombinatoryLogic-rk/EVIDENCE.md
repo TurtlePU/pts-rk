@@ -1,6 +1,511 @@
-# Combinatory exploration — evidence, 22 October 2026
+# Combinatory exploration — evidence, 24 October 2026
 
-## Current checkpoint: contextual certificate soundness and finite packages
+## Documentation update: second-paper programme
+
+The introduction and [second-paper plan](SECOND-PAPER-PLAN.md) state six
+research goals and staged acceptance criteria. No formal development was
+started: all 156 preceding proof/configuration hashes are unchanged, including
+all 79 Agda and 73 Rocq modules. No proof checks were rerun or new results
+claimed. The current proof checkpoint remains the one below.
+
+Documentation build PASS 03:13:21–03:13:37 UTC; PDF inspection PASS:
+42 pages, three-page MM0 appendix, 72 Rocq/55 Agda badges, 172 links.
+All pages rendered; introduction pages 1–3 and appendix page 42 visually
+reviewed. All six goals and the development order are present.
+Exact evidence: [planning ledger](../../docs/direct-r-handoff/verification/combinatory-paper-plan-2026-10-24/COMMANDS.md).
+
+## Current checkpoint: dependent normal algebra and raw original checking
+
+Seven new safe Cubical modules (1,523 lines) extend the normal-first
+presentation to original dependent types and inhabitants, normalized
+substitution action, context comprehension and dependent product operations.
+Identity/composition, comprehension beta/eta/uniqueness, normalized lifting,
+original beta and product/lambda/application/universe naturality are actual
+paths. Smart casts transport typing evidence while leaving normal subjects
+definitionally unchanged; their agreement with ordinary transport is proved.
+
+Computed normal type/rank depends only on a merely typable normal subject;
+the typed fibre is isomorphic to the explicitly typed normal carrier.
+Every original derivation normalizes into this interface. A genuine
+inductive-recursive context/decoding definition supports operations without
+supplied well-formedness witnesses. Dependent substitution, polymorphic
+identity applications and witness-free context operations compute by refl.
+
+NativeBidirectional decides ORIGINAL Typ on arbitrary annotated subject/type
+in a well-formed context, including reducible types. All rejection branches
+refute original derivations. Its untrusted-context entry decides the
+conjunction of well-formedness and typing, not bare Typ in malformed contexts.
+There is no replacement declarative relation or normalization premise.
+
+Fresh complete 79-module Agda closure PASS 02:38:49–02:42:19 UTC, exit0,
+zero warnings, pinned Agda 2.8.0-3d04bac/Cubical v0.9, copied sources,
+isolated config/data, --safe --ignore-interfaces. All 146 preceding proof/
+configuration hashes unchanged (73 combinatory Rocq, 71 prior Agda,
+Dune/MM0). No Rocq/MM0/full-CI rerun. PDF build PASS02:37:19–02:37:36UTC:
+41 pages, three-page MM0 appendix, 72 Rocq/55 Agda badges, 171 links.
+Every page rendered; pages1,13–17,39–41 visually reviewed. Exact commands,
+failed checks, source snapshots and hashes:
+[dependent normal-first ledger](../../docs/direct-r-handoff/verification/combinatory-dependent-normal-2026-10-24/COMMANDS.md).
+
+This is not yet the literal QIIRT interpretation or a simultaneous IIRT of
+all normal syntax and hereditary normalization. Native binders and existing
+normalization metatheory remain internal. Context sethood/adequacy, exact
+dependent S/K/P template/guard/path realization, source completeness and
+full-presentation code economy remain open. No eta, original rule change,
+new runtime bound or assumed target theorem is introduced.
+
+## Previous checkpoint: normal-first operations and SK output bounds
+
+Eight new safe Cubical modules (852 lines) add a syntax-only sufficient
+rank budget, executable canonical examples, direct SK/native-beta
+compatibility, ground-output canonical evaluation, a function-output
+counterexample, a computed-type canonical algebra, normalized dependent
+substitutions and compiler-output size bounds. SKSourceNormal integrates
+the budget in seven additional lines; the parallel draft adapters were
+removed. The 74-line saving compares only those prototype designs, not a
+complete dependent PTS presentation.
+
+Canonical identity/application examples compute by `refl`. Direct weak
+evaluation agrees with native-beta canonicalization at ground output type;
+at function output, canonical inputs can yield a noncanonical weak result
+(four versus eight atoms). Normalized substitutions retain original
+dependent typing, with only typing witnesses propositionally truncated.
+Normalization coherence proves witness independence and actual identity
+and associativity paths; no category equations are imposed as quotient
+constructors. The simple-type computed-type fibres are isomorphic to the
+existing canonical family and reuse its application.
+
+The compiler bound is `atoms(C s) ≤ 4^(source-nodes s)`; canonical outputs
+have at most `4^(tower d N)` atoms, where d is the computed source budget
+and N counts annotated native expansion nodes. Type-index payloads, label
+bit lengths, compiler intermediates and runtime memory are excluded.
+General function-output direct canonical evaluation, normalized dependent
+type action/comprehension/products, mutually defined dependent IIRT,
+catalogue/QIIRT adequacy and full-system economy remain open. No eta,
+native typing change or assumed target theorem is introduced.
+
+Fresh complete 72-module Agda closure PASS 01:48:29–01:49:30 UTC,
+exit 0/zero warnings, pinned Agda 2.8.0-3d04bac/Cubical, copied sources,
+isolated data/config, --safe --ignore-interfaces. All 137 baseline files
+are unchanged: 73 Rocq, 62 preceding Agda excluding Everything and
+SKSourceNormal, plus Dune/MM0. No Rocq/MM0/full-CI rerun. Final PDF PASS
+01:49:44–01:50:00 UTC, exit 0: 39 pages, three-page appendix,
+72 Rocq/48 Agda badges, 164 links; all pages render. Pages 1, 2, 10–15,
+20, 21, 27, 30 and 37–39 were visually reviewed without material defects.
+Exact commands, source snapshots, failures and hashes are recorded in the
+[normal-first ledger](../../docs/direct-r-handoff/verification/combinatory-normal-first-2026-10-24/COMMANDS.md).
+
+## Previous checkpoint: canonical SK outputs
+
+Six new safe Cubical modules (972 lines) construct intrinsic lambda-source
+normalization commuting with native erasure, erasure injectivity including
+hidden application types, and deterministic SK bracket compilation with
+forward native beta correctness. SKCanonical composes these into actual
+irreducible SK outputs. At each fixed simple type, canonical equality is
+equivalent to original beta equality of expansions; soundness, reflection,
+coherence and idempotence are proved. The canonical fixed-point family is
+isomorphic to the actual native-beta quotient, with decidable equality and
+application agreement. check-canonical reuses independent declarative SK
+checking. No new native rule, eta law or target-theorem assumption is used.
+
+Fresh complete64-module Agda closure PASS,exit0/zero warnings,
+01:06:10–01:07:02UTC, pinned Agda2.8.0-3d04bac/Cubicalv0.9, isolated
+copies/config/data, --safe --ignore-interfaces. All73 preceding Rocq and57
+non-aggregate Agda sources,Dune,MM0 match preceding hashes (132 files).
+No Rocq/MM0/full-repository-CI rerun. Final PDF PASS01:07:46–01:08:02UTC:
+37pages,3-page appendix,72Rocq/40Agda badges,156links. All pages render;
+pages10–12 visually reviewed. Exact failures, source hashes and commands:
+[canonical SK ledger](../../docs/direct-r-handoff/verification/combinatory-sk-canonical-2026-10-24/COMMANDS.md).
+
+Outputs are binder-free; the algorithm still uses typed lambda syntax.
+Its correctness is beta equivalence, not a forward weak-SK trace. Optional
+large definitional-computation tests exhausted practical memory and were
+stopped, with both outcomes retained; general proofs and small regressions
+pass. A direct canonical evaluator, dependent catalogue/QIIRT adequacy and
+compiled-output/runtime size bounds remain open. No full-system economy
+claim follows from this simply typed checkpoint.
+
+## Previous checkpoint: SK surface and native-beta reference
+
+The active surface and QIIRT now use S/K, with no primitive identity.
+SK.v proves original annotated typing and forward beta correctness of
+intrinsic simple-type bracket compilation, conversion faithfulness on
+source expansions, and rank-typed Church arithmetic (10n+4 atoms).
+The six direct Agda modules retain weak normalization/checking/quotient
+proofs in1,021 lines. Every SK expansion is natively typed; the new121-line
+SKNativeCanonical module adds actual native-beta normalization/decision
+and a native-beta quotient with injective normalization and application.
+Its output remains native binder syntax, not canonical SK codes.
+
+Fresh full73-module Rocq audit PASS,exit0,00:36:32–00:39:56UTC;
+1215own/1216aggregate closed reports,23SK endpoints. Recursive kernel32s;
+inventory equals fresh pristine exactly, inherited funext only, unsafe none.
+Every retained prior Rocq body and original kernel/MM0 source is unchanged.
+Fresh complete58-module Agda check PASS,exit0/zero warnings,00:36:05–53UTC,
+pinned Agda2.8.0-3d04bac/Cubicalv0.9,isolated copied sources/config/data.
+All48 unaffected Agda files are unchanged. Final note PASS00:38:11–26UTC:
+36pages,3-page MM0 appendix,72Rocq/34Agda badges,150links; all pages render,
+2/10/11 visually reviewed. No full repository CI or unchanged MM0 rerun.
+
+Native-normal-to-simple-source reification, literal canonical SK outputs,
+direct canonical application, dependent catalogue coverage and QIIRT
+adequacy remain open. No eta, original typing change or assumed target
+theorem is used. Earlier checkpoint descriptions below are historical,
+including source names removed by the authorized surface migration.
+Exact commands/logs/failures/limitations:
+[SK verification ledger](../../docs/direct-r-handoff/verification/combinatory-sk-2026-10-24/COMMANDS.md).
+
+## Previous checkpoint: direct binder-free normalization experiment
+
+Six additive Cubical Agda modules, 1,168 lines including proofs/comments:
+BinderFreeCore 409; BinderFreeBidirectional 293; BinderFreeCoherence 126;
+BinderFreeEquality 123; BinderFreeQuotient 77; BinderFreeBoundary 140.
+The first five form an independent simply typed weak BCKWI calculus.
+Type-recursive computability constructs a total direct normalizer, forward
+typed traces and irreducible outputs. Checking decides an independently
+declared typing judgment; positive casts use computational identity
+witnesses. Literal rule/context coherence, injective annotated normal codes,
+decidable equality and the actual set-quotient/normal-form isomorphism are
+proved. There is no fuel, native expansion, postulate or termination premise.
+The native boundary module separately proves BII/I beta equality and
+BI/I-at-arrow beta inequality with original annotations and typing.
+
+Fresh full 58-module Agda closure PASSES, exit 0, **zero warnings**,
+2026-10-24 00:03:14–00:04:04 UTC, Agda 2.8.0-3d04bac, pinned Cubical v0.9.
+The driver uses copied sources, isolated data/config, --safe and
+--ignore-interfaces. Build /tmp/pts-rk-combinatory-agda.At6TF2;
+all final source hashes are stable. All 51 preceding non-aggregate Agda
+files and 74 combinatory Rocq sources, Dune and MM0 match the initial
+manifest. Everything adds exactly six imports. No Rocq audit, MM0 checker
+or full repository CI was rerun; their sources were not changed here.
+
+Note section 6.2 includes literal highlighted excerpts and six new badges.
+Final build PASS 00:04:39–00:04:54 UTC, inspection PASS: 35 pages,
+3-page MM0 appendix, 72 Rocq / 33 Agda badges, 149 links. All pages render;
+pages 9–11 visually checked. Native/PTS dependent normalization, quotient
+adequacy, finite rank/length carriers and a smaller full presentation are
+not inferred from this smaller calculus. No function eta or original
+typing change; no staging, commit or push.
+
+Exact commands, earlier failed attempts, source hashes and remaining goals:
+[verification ledger](../../docs/direct-r-handoff/verification/combinatory-binderfree-2026-10-24/COMMANDS.md).
+
+## Previous checkpoint: internal decoding and certified guard tables
+
+Five new modules add 130 closed reports: IndexedHornTransport 27,
+FiniteGeneratedCodes 23, FiniteMapCoherence 25, MM0InternalDecoder 27,
+MM0InternalGuard 28. The rank-four decoder transports arbitrary open queries
+and proof inhabitants to independent raw proofs; both supports are fixed
+before the query. The required literal clause correspondence is proved,
+not supplied as an adequacy assumption or replaced by truth specialization.
+
+Independent Enum_r generation evidence gives actual dependent finite cases.
+Raw guard graph production consumes Enum_1; separate Enum_3 inputs support
+internal input/Boolean projection coherence in rank-one Leibniz equality.
+The corresponding consumer types have ranks four and five. No bare-code
+exhaustiveness, inter-rank cumulativity or native conversion is inferred.
+The graph is specified independently from structural raw_guard computation;
+reserve atoms enlarge indexing, not axioms. Accepted canonical graph proofs
+externally reconstruct selected source instances, while wrong answers are
+uninhabited. These closed converses retain native canonicity. The internal
+terms do not yet return raw Expr or substitution records or vary budgets.
+
+Fresh 74-module audit PASSES all gates, exit 0, 2026-10-23 22:55:34–22:59:07 UTC
+(24 October locally). Compilation 22:55:45–22:58:31 (166s) prints 1230 own /
+1231 aggregate closed reports, 130 new. Complete recursive kernel check
+22:58:31–22:59:05 (34s) passes; its full inventory equals fresh pristine
+exactly, inherited functional_extensionality_dep only, no unsafe entries.
+All 77 hashes are stable; all 69 preceding proofs and native kernel/MM0/
+52 Agda sources are unchanged. Dune adds exactly five registrations.
+Safety/integrity/whitespace pass. Exact commands and every development
+failure are retained in the
+[verification ledger](../../docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24/COMMANDS.md).
+
+Note/PDF build and inspection pass 22:56:41–58 UTC: 33 pages, appendix 3,
+72 Rocq / 27 Agda badges, 44 Agda links, 140 total. Every page renders;
+pages 26/27/28 visually reviewed. No full repository CI or new Agda/MM0
+checker run, staging, commit, push or cleanup. Internal structural source
+record reconstruction, uniform budget reflection, independent consistency
+and original-PTS-to-catalogue completeness remain open; no new cost bound.
+
+## Previous checkpoint: internally indexed queries and raw provenance
+
+Six new modules add120 closed public reports: finite type dispatch14;
+indexed independent proof encoding17; original-PTS realization bridges17;
+raw source/guard provenance33; arbitrary-query internal soundness16;
+guarded-MM0 integration23. The proof family has rank3 and the actual
+uniform consumer TYPE rank4. Both query and proof are internal, unrestricted
+typed arguments; the result is the syntactic dispatch family T(q), reducing
+to a particular truth proposition at canonical selectors. Generic typing
+uses no canonicity. External closed exactness and Void retain canonicity.
+
+The semantic support is fixed once, including every valuation and universal
+Void atom. Canonical indexing preserves exact source/query correspondence;
+duplicate positions need not share indexed derivability. A computed regression
+checks that distinction. Independent raw guards distinguish overflow from
+zero, reconstruct actual selected source rules/substitutions and reflect
+arbitrary raw proofs, despite observation aliases. Indexed raw inhabitants
+externally reconstruct source derivations and have exact finite-union source
+coverage, with no overflow or Void proofs. Raw support remains externally
+query-seeded: this is not yet an internal raw decoder/guard program.
+
+Fresh69-module audit PASSES all gates,exit0,20:49:13–20:52:38UTC. Compilation
+20:49:23–20:52:08(165s) prints1100own/1101aggregate closed reports,120new.
+Complete recursive kernel20:52:08–35(27s) passes. Full inventory equals freshly
+built pristine exactly: inherited functional_extensionality_dep only, no
+unsafe entries. All72source/Dune/shared-equality/MM0 hashes are stable;
+all63preceding proofs and kernel/MM0/52Agda sources are unchanged. Dune adds
+exactly six registrations. Safety/integrity/whitespace pass. Exact commands,
+failures, versions, hashes and boundaries are in the
+[verification ledger](../../docs/direct-r-handoff/verification/combinatory-indexed-provenance-2026-10-23/COMMANDS.md).
+
+Note/PDF build and inspection PASS20:48:12–29UTC:32pages,appendix3,
+67Rocq/27Agda badges,44Agda links,135total; all pages render, pages1/25/26
+visually reviewed. Uniform internal raw provenance and fragment budgets,
+independent internal consistency and original-PTS-to-catalogue completeness
+remain open. No new cost bound or full repository CI/Agda/MM0 checker run
+is claimed. No staging, commit, push or cleanup.
+
+## Previous checkpoint: internal soundness for arbitrary fixed-fragment proofs
+
+Five new modules, 95 closed public reports: independent Church proof encoding
+18; proof constructors/source realization 13; faithful finite support 36;
+generic internal soundness 11; guarded MM0 integration 17. Each compiles in
+isolation. Proof-type rank <=3 and soundness-function type rank <=4 are
+checked in the original annotated PTS. The proof type contains no model or
+truth table. Internal consumption and clause introduction apply to arbitrary
+native encoded witnesses, not only source-compiler outputs.
+
+Exact finite support preserves clauses, all semantic valuations, denials,
+models, derivations and Boolean checks. Every source proof has a code;
+external closed inhabitation iff derivability and exact guarded source/
+catalogue union coverage retain faithful decoding. Positive-model validity
+is discharged for each guarded MM0 fragment. Void queries have internal
+refuters at N>=5,D>=3. The generic consumer's typing needs no canonicity;
+external exactness and the actual Void specialization retain native canonicity.
+Denials are separate refuters, not constructors of the positive proof type.
+
+Fragment descriptions, budgets, queries and tables remain external parameters.
+Uniform internal raw-source decoder/guard provenance and an independent
+internal consistency proof remain open. No runtime/code-size bound is added.
+The unchanged original typing relation is used throughout.
+
+Final fresh 63-module verification PASSES all gates, exit0. Compilation
+19:53:19–19:55:55 UTC (156s):980 own/981 aggregate closed reports,95 new.
+Complete recursive kernel checking19:55:55–19:56:20 (25s) passes; full inventory
+equals fresh pristine exactly, inherited functional_extensionality_dep only,
+no unsafe entries. All66 source/Dune/shared-equality/MM0 hashes are stable,
+all58 earlier proofs and kernel/MM0/52Agda sources unchanged; Dune adds
+exactly five registrations. Safety/integrity/whitespace pass. Exact
+commands/failures are retained in the
+[verification ledger](../../docs/direct-r-handoff/verification/combinatory-internal-horn-2026-10-23/COMMANDS.md).
+The note/PDF build and inspection pass19:55:35–19:55:52 UTC:31pages,
+appendix3,61Rocq/27Agda badges,44Agda links,129 total links. All pages render;
+pages1/24/25 visually reviewed. Initial overwide-display validation failure
+is retained; aligned layout repairs it. No new Agda/MM0 checker or full
+repository CI run is claimed; those sources are unchanged.
+
+## Previous checkpoint: literal MM0 adequacy and consistent guarded models
+
+Eight modules add192 closed public endpoints: native quotations/scoped
+decoding42; all nine exact computational source graphs37; original native
+reduction/conversion19; numerical catalogue/source-axiom soundness12;
+all65 source catalogue realizations7; concrete finite constructor algebra39;
+accepted-query/source reflection15; full Hilbert iff and consistent models21.
+
+The literal55-schema source transcription is now equivalent to the
+independent65-shape catalogue, including both directions of computational
+and catalogue graphs. Native PH scope and typing are reconstructed, not
+source admission requirements. For EVERY N>=5,D>=3, the concrete finite
+overflow algebra satisfies all55 size/depth/sorting-GUARDED schemas under
+every semantic valuation, with an UNGUARDED universal Void denial and
+nonempty universe typing. No consistency/model-existence premise remains.
+Every catalogue derivation is accepted, with exact decoding, in some such
+consistent finite model. Native satisfaction-certificate types have rank<=4.
+
+Void exclusion explicitly uses external native canonicity. This is not an
+unguarded full55 model, original-PTS-to-catalogue completeness, a verified
+external MM0 parser, uniform internal reflection or an independent internal
+consistency proof. The unchanged literal text is separately crosschecked.
+Depth D is MM0 constructor depth, not PTS type rank. Runtime memory and
+generated program/certificate size are not bounded by these theorems.
+
+All individual modules compile and have complete recursive kernel evidence.
+The first fresh58-module audit races a final Hilbert endpoint, so its strict
+source-hash gate fails. Its count gate also exposed a shell failure-propagation
+bug; the original stage0 is not valid count evidence. The repaired driver has
+negative count/whitespace tests. Attempt02 compiles885 own/886 aggregate
+closed reports (192new), recursively kernel-checks every dependency and
+matches fresh pristine exactly, but its safety scanner flags a structural
+predicate named Admitted, not a proof command. Rename it FitsSyntax and
+repeat the fresh audit without weakening that scanner. Attempt03 final
+verification is recorded in the linked ledger; no original source is altered.
+Raw failures, exact commands, versions, exits and script snapshots are kept.
+
+Final fresh compilation PASSES19:29:58–19:32:42UTC (164s): all58modules,
+885own/886aggregate closed reports,192new. Complete recursive kernel checking
+PASSES19:32:42–19:33:06 (24s). Its entire inventory equals freshly built
+pristine exactly: inherited functional_extensionality_dep only, no unsafe
+entries. All61source hashes remain stable; previous50proof sources, original
+kernel, shared equality, MM0 and all52Agda sources are unchanged. Exact
+additive-eight Dune registration, literal-source crosscheck and safety pass.
+The last whitespace wrapper returns1 on clean new-file no-index differences,
+with empty diagnostic output; the driver is NOT all-pass. Separate final
+checks repair that exit-code handling and reverify the same fresh evidence.
+All ten final recovery gates PASS19:35:43–19:35:44UTC, exit0, including
+current proof/note hashes and clean/failing whitespace/count fixtures.
+Live final logs _build/combinatory-mm0-bridge-final.LNIhbh; archive
+final.MjHIDx. No proof source changed after the successful fresh checks.
+Live logs: _build/combinatory-mm0-bridge-audit.BLPblO; fresh absolute build:
+/tmp/pts-rk-mm0-bridge.IH9mrh; archive: audit.HRs4x3 in this checkpoint's ledger.
+
+Final note build passes19:25:55–19:26:11UTC; PDF inspection passes19:26:11–12:
+30pages, three-page MM0 appendix,56Rocq/27Agda badges,44Agda source links,
+124links. All pages render; new content on pages22–24 was visually reviewed.
+The final new theorem page was rechecked after wording refinements.
+See [proof audit](../../docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/COMMANDS.md)
+and [note audit](../../docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/NOTE.md).
+No full repository CI, new Agda build or MM0 checker run is claimed.
+
+## Previous checkpoint: explicit guarded quantified fragments
+
+Seven modules add 195 closed endpoints: finite positional native-syntax
+carriers and total operations (28); independent size/depth/height fragments
+(19); qualitative all-valuation Hilbert models (27); executable bounded
+beta/common-reduct graphs and five regressions (36); all-six-rule executable
+finite models and native certificates (36); exact executable coverage (20);
+literal-MM0 guarded schemas and conditional internal certificates (29).
+
+Every constructor guard includes the output bound. Proof-height strata advance
+on inference; the separate executable model saturates its whole finite guarded
+clause list without truncating proof height. Every bounded semantic parameter
+tuple is enumerated, with independently checked syntax and beta witnesses.
+Its fixed finite model excludes every Void subject; Void itself is active for
+node bound>=3 and depth bound>=2, and typing is nonempty. Native satisfaction
+certificates have rank<=4, and fragment proofs compile to original PTS terms.
+
+The union of the executable models exactly reflects the independent Hilbert
+catalogue, including actual finite-carrier quoted queries. Budget enlargement
+is monotone and every finite proof family has a common budget covering all
+beta-witness states. This is not original-PTS-to-catalogue completeness,
+native/MM0 graph adequacy, guarded full55 model existence or uniform internal
+reflection. External Void exclusion uses native canonicity; represented-state
+bounds do not bound all host allocations or generated certificates.
+
+Fresh 50-module compilation passes **18:28:44–18:30:57 UTC**, exit0:
+693 own closed reports, 195 new, 694 aggregate. Complete recursive kernel
+checking passes **18:30:57–18:31:19**, exit0; the whole context inventory is
+byte-identical to fresh pristine (inherited functional_extensionality_dep
+only; no unsafe entries). Original kernel, all43 previous combinatory modules,
+shared equality, MM0 and all52 Agda sources are unchanged. All53 current
+source/Dune/shared-equality/MM0 before/after hashes agree.
+
+The driver then failed only its archival whitespace gate (exit2). Raw logs
+are retained in gzip form while readable copies have trailing whitespace
+normalized. The separate final checks rerun this gate and source stability;
+do not label the original driver invocation all-pass. An earlier49-module
+attempt hit disk exhaustion and was terminated (exit137). All nine final
+gates pass at18:37:10 UTC, exit0; proof and note manifests are unchanged.
+No unrelated data
+or processes were removed. No full repository CI, new Agda run or MM0 checker
+run is claimed.
+
+Final note build/validation passes **18:27:19–18:27:34 UTC**. PDF inspection
+passes: 30 pages, three-page MM0 appendix, 48 Rocq and27 Agda badges, 116 links;
+all pages rendered and changed guarded-content pages22–24 visually reviewed.
+The initial display-formatting failure and all proof attempts are retained.
+See the [verification ledger](../../docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/COMMANDS.md).
+
+## Previous checkpoint: quantified constructors and proof-producing soundness
+
+Eleven new Rocq modules prove exhaustive total-constructor search over fixed
+finite domains, the literal nine-constructor/eleven-predicate MM0 signature
+and all 55 named universal axioms, sorting/substitution/evaluation agreement,
+and exact model decision under ALL semantic valuations. Every operation row
+is present. Selection removes whole axioms, not inconvenient valuations.
+A separate textual crosscheck matches all expanded MM0 schemas exactly;
+it is not a kernel-verified parser or the native/MM0 adequacy bridge.
+
+An explicit two-element model satisfies the subtheory omitting sveq/f0,
+with empty Void and enabled application. These omissions disable correct
+variable substitution and positive catalogue introduction; the model is not
+a full PTS interpretation. Full55 singleton rejection is proved. Search
+success on two elements is established analytically, not by running 2^28
+constructor tables. Equal sort cardinalities are the current specialization.
+
+Finite satisfaction certificates are actual original PTS terms, of rank at
+most four. Their independently defined types are inhabited exactly when the
+finite candidate accepts. Independent source derivations in Type compile
+structurally through finite Horn proofs to native terms, at every finite
+derivation depth. The explicit weaker model has an unconditional certificate
+and deduction translation; model acceptance is discharged, not assumed.
+This is an externally indexed proof-producing interpretation, not uniform
+internal reflection over every represented fragment or Church inhabitant.
+
+FiniteNativeModelBoundary proves a stronger negative result: full native
+typing/beta soundness, total application, semantic conversion/type reduction
+and empty Void cannot coexist on one ungraded finite term carrier. Every
+Church selector family must be injective. A separate finite-test theorem
+gives a cardinality lower bound using only that finite family. Neither this
+nor the weaker model settles the full55 MM0 theory without native adequacy.
+
+Fresh one-shot audit passes all 22 stages, **07:43:26–07:45:14 UTC**, exit 0:
+43 modules, **498 own closed reports (140 new)**, 499 including imported
+Ranks. Full recursive kernel checking matches the complete pristine inventory:
+inherited functional_extensionality_dep only, no unsafe entries. Original
+kernel, all 32 preceding combinatory sources, shared equality, MM0 and all
+52 Agda sources are unchanged; current before/after hashes agree.
+No new Agda/MM0/full-CI run. Isolated failures/cancellations remain recorded.
+
+Note build/inspection pass: **28 pages**, three-page appendix, 41 Rocq /
+27 Agda badges, 109 links; changed pages visually reviewed. Exact commands,
+logs, hashes, omitted-axiom counterexamples and limitations:
+[verification record](../../docs/direct-r-handoff/verification/combinatory-quantified-models-2026-10-23/COMMANDS.md).
+
+**Next:** specify genuinely size-/proof-depth-guarded fragments, their exact
+axioms and bounded-source coverage, or prove the native/MM0 bridge. The full
+ungraded native finite-model target is now disproved, not just open. No
+implicit guard insertion or internal uniform consistency theorem is claimed.
+
+## Previous checkpoint: Void-denying models and complete finite candidate checking
+
+Eight new Rocq modules prove native Void canonicity, genuine Horn denials,
+exact grounding of the explicit Hilbert catalogue, and its nonvacuous
+Void-denying model existence. Finite ground fragments have executable
+saturation, exact least-model queries and exclusion of every closed Void
+subject. Adding a signed diagram for chosen observations reflects all
+supported propositional formulas, but strengthens the original Horn fragment.
+Literal original-PTS Church tables compute these externally tabulated answers.
+
+FiniteUniversalHorn completely enumerates semantic valuations over a supplied
+finite constructor interpretation. Its executable check succeeds iff predicate
+interpretations satisfying every positive schema and denial exist. This is
+complete checking of a candidate, not candidate existence for every PTS
+fragment. FiniteModelBoundary separately excludes finite nontrivial total
+untyped equational K models, not typed/graded or directed-reduction models.
+
+Fresh focused audit passes all 19 stages, 23 October 2026,
+06:50:50–06:51:47 UTC. All 32 Rocq modules compile in a fresh absolute Dune
+directory: 358 own closed reports, 117 new, plus one imported Ranks report.
+Full recursive kernel checking passes; the entire inventory equals pristine:
+inherited functional_extensionality_dep only, no unsafe entries. Original
+kernel files and all 52 prior Agda sources are unchanged. No new Agda/MM0 or
+full-repository CI run is claimed. Raw failures and warnings are retained.
+
+Final note build/validation and PDF inspection pass, 06:48:39–06:48:53 UTC:
+27 pages, three-page MM0 appendix, 30 Rocq / 27 Agda badges, 98 links.
+Exact commands, hashes, all failed attempts and final logs:
+[verification record](../../docs/direct-r-handoff/verification/combinatory-consistent-horn-2026-10-23/COMMANDS.md).
+
+**Remaining:** construct successful finite constructor interpretations for
+explicit quantified PTS fragments, prove schema adequacy and all-valuation
+coverage, and internalize their soundness. Ground nullary predicates do not
+provide a finite syntax algebra; canonical Church lookup computation does not
+provide internal uniform reflection. Original-PTS-to-catalogue completeness,
+the MM0 graph bridge, QIIRT adequacy and binary Church compiler correspondence
+remain separate obligations. No internal consistency theorem is asserted.
+
+## Previous checkpoint: contextual certificate soundness and finite packages
 
 Thirteen new Agda modules prove independent decidable certificates for all
 six original rules, context/valuation soundness, automatic semantic rank

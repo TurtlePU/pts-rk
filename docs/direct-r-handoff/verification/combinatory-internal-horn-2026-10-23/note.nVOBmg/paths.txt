@@ -1,0 +1,3 @@
+Log: /Users/akuklev/air/pts-rk/_build/combinatory-internal-horn-note.fi3gJi
+Render: /tmp/pts-rk-internal-horn-note.dyMeWT
+Archive: docs/direct-r-handoff/verification/combinatory-internal-horn-2026-10-23/note.nVOBmg

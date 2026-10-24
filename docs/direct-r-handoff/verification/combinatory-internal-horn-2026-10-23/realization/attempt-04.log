@@ -1,0 +1,12 @@
+Warning:
+/private/tmp/pts-rk-mm0-bridge.IH9mrh/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+(handler_context rest (G & H.rule_type ps a env)
+   (fun i : Fin k => shift (env i))
+ ⊢ CF.lift (length rest) (var fzero)
+ ⇐ H.rule_type ps a (fun i : Fin k => CF.lift (length rest) (shift (env i))))
+File "./theories/CombinatoryLogic-rk/HornProofRealization.v", line 130, characters 4-29:
+Error: Found no subterm matching
+"H.rule_type ?M1332 ?M1333 (fun i : Fin ?M1331 => CF.lift ?M1334 (?M1336 i))"
+in the current goal.

@@ -1,0 +1,7 @@
+Checking NormalizedProducts (/private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda).
+ Checking NormalizedFamilies (/private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedFamilies.agda).
+ Checking NormalizedComprehension (/private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedComprehension.agda).
+/private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:28.44-42.20: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:28.44-48
+  /private/tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda:42.16-20

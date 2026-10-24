@@ -1,0 +1,9 @@
+File "/tmp/pts-rk-finite-internal.6wfWep/FiniteModelRealization.v", line 324, characters 42-56:
+Error: Unable to apply lemma of type
+ "forall (A : Type) (f : A -> bool) (l : list A),
+  forallb f l = true <-> (forall x : A, In x l -> f x = true)"
+on hypothesis of type
+ "forallb (fun c : list bool * bool => clause_valid (fst c) (snd c))
+    (semantic_clauses positive negative) =
+  true".
+

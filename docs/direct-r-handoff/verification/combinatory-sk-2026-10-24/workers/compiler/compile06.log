@@ -1,0 +1,35 @@
+File "theories/CombinatoryLogic-rk/dune", lines 1-26, characters 0-1586:
+ 1 | (rocq.theory
+ 2 |  (name PTSrk.Combinatory)
+ 3 |  (package pts-rk)
+....
+24 |    IndexedHornTransport FiniteGeneratedCodes FiniteMapCoherence
+25 |    MM0InternalDecoder MM0InternalGuard)
+26 |  (theories Stdlib Equations PTSrk PTSrk.NormalizationComplexity Interpretation_of_R))
+1 goal
+
+  V : Ty -> Type
+  A, X, Y : Ty
+  f : Code (Extend V A) (X ⇒ Y)
+  x : Code (Extend V A) X
+  n, i : nat
+  rho : forall B : Ty, V B -> Term nat n
+  ============================
+  replace
+    (fun i0 : Fin n =>
+     transpose
+       (fin_match (expand i (abstract x) rho) (fun x0 : Fin n => var x0))
+       (fsucc (fsucc i0)))
+    (expand i (abstract f) rho) $
+  v0 $
+  (expand i (abstract x)
+     (fun (B : Ty) (x0 : V B) =>
+      rename (fun x1 : Fin n => fsucc x1) (rho B x0)) $
+   v0)
+  ↠ᵝ expand i f (extend_env rho) $ expand i x (extend_env rho)
+Warning:
+/private/tmp/pts-rk-sk-worker.IuJaUA/build/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/SK.v", line 173, characters 4-263:
+Error: Not convertible.

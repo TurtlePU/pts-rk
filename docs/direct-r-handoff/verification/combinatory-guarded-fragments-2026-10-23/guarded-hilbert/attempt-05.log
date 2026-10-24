@@ -1,0 +1,9 @@
+Warning:
+/private/tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guarded-hilbert.ZjBk3c/GuardedHilbertModels.v", line 307, characters 2-131:
+Error: In environment
+Hmax, N, d : nat
+Unable to unify "Forall ?P (?x :: ?l)" with
+ "Forall (fun raw : H.Atom => holds N d Hmax Hmax (encode_atom N d raw)) []".

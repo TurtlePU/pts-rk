@@ -1,0 +1,16 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-native-syntax.Lz2EQU/MM0HilbertAdequacy.v", line 53, characters 62-85:
+Error:
+In environment
+sigma : nat -> Expr
+HS : ClosedSubstitution [NAT] sigma
+HP : Forall Meaning []
+HC : Forall CatalogueMeaning []
+HN : Forall NativeMeaning []
+r : nat
+Er : sigma 0 = quote_nat r
+Unable to unify "Hilbert.Derives ?atom_subject ?atom_type (𝓤 ?i) (𝓤 0)" with
+ "EU (sigma 0) = EU (quote_nat r)".

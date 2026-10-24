@@ -1,0 +1,6 @@
+File "/tmp/pts-rk-native-model-boundary.iBL2hu/FiniteNativeModelBoundary.v", line 47, characters 22-45:
+Error: [noConfusion] Trying to use a non-definitional noConfusion rule on
+(Fin (S n1)), which does not have a [NoConfusionHom] instance. Either [Derive
+NoConfusionHom for Fin], or [Derive NoConfusion for Fin] if it requires
+uniqueness of identity proofs and enable [Equations With UIP] to allow this
+

@@ -1,0 +1,3 @@
+Log: /Users/akuklev/air/pts-rk/_build/combinatory-indexed-provenance-note.OWcpHq
+Render: /tmp/pts-rk-indexed-provenance-note.dVJuNB
+Archive: docs/direct-r-handoff/verification/combinatory-indexed-provenance-2026-10-23/note.5KCYYS

@@ -1,0 +1,3 @@
+PASS: all 55 literal named axioms match exactly after definition expansion.
+Checked binder sorts/order, premise order and every constructor occurrence.
+This textual test is untrusted; Rocq separately checks expression sorting.

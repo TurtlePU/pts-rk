@@ -1,0 +1,22 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+1 goal
+  
+  N, d : nat
+  names : list AxiomName
+  i : Fin (count N d names)
+  b : bool
+  ============================
+  FiniteHorn.Derives
+    (F.indexed_clauses (atom_eq_dec N d names) (graph N d names)
+       (reserve N d names) (anchor N d names))
+    (F.index (atom_eq_dec N d names) (graph N d names) 
+       (reserve N d names) (anchor N d names) (i, b)) <->
+  b = answer N d names i
+File "/tmp/pts-rk-internal-guard.9aN6Rk/MM0InternalGuard.v", line 179, characters 2-72:
+Error: Found no subterm matching
+"F.H.Derives (F.indexed_clauses ?s ?l ?l0 ?y) (F.index ?s ?l ?l0 ?y ?y0)"
+in the current goal.
+

@@ -1,0 +1,26 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+1 goal
+  
+  k, l : nat
+  f : Fin k -> Fin l
+  ps : list (Fin k)
+  a : Fin k
+  rest : list (I.E.Clause k)
+  IH :
+    forall (n : nat) (P q : Term nat n),
+    I.body rest (pullback f P) q
+    ↠ᵝ I.body (map_clauses f rest) P (app (code_map f) q)
+  n : nat
+  P, q : Term nat n
+  ============================
+  IS.E.rule_type ps a
+    (fun i : Fin k => app (pullback f P) (IS.CF.selector 0 k i))
+  ↠ᵝ I.E.rule_type (map fsucc (fst (map_clause f (ps, a))))
+       (fsucc (snd (map_clause f (ps, a))))
+       (I.atom_env P (app (code_map f) q))
+File "/tmp/pts-rk-indexed-transport.rdQzB4/IndexedHornTransport.v", line 110, characters 12-190:
+Error: Not convertible.
+

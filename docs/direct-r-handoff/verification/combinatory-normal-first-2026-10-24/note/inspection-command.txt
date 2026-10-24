@@ -1,0 +1,1 @@
+swift docs/direct-r-handoff/verification/combinatory-normal-first-2026-10-24/inspect.swift theories/CombinatoryLogic-rk/CombinatoryPTS-rk.pdf /tmp/pts-rk-normal-first-pdf.zNuce2

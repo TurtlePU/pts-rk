@@ -1,0 +1,9 @@
+bash -n docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/AUDIT.sh docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/FINAL-CHECKS.sh theories/CombinatoryLogic-rk/build-note.sh
+shasum -a 256 -c /Users/akuklev/air/pts-rk/_build/combinatory-guarded-fragments-audit.ACxpVa/source-after.log
+cmp /Users/akuklev/air/pts-rk/_build/combinatory-guarded-fragments-audit.ACxpVa/source-before.log /Users/akuklev/air/pts-rk/_build/combinatory-guarded-fragments-audit.ACxpVa/source-after.log
+cmp /Users/akuklev/air/pts-rk/_build/combinatory-guarded-fragments-audit.ACxpVa/inventory.txt /Users/akuklev/air/pts-rk/_build/combinatory-guarded-fragments-audit.ACxpVa/upstream-inventory.txt
+reports
+git diff --exit-code 723cf2ec61c737ae82ba33d2e7db44f650122b0e -- theories/Syntax.v theories/AbstractRewriting.v theories/Congruence.v theories/Reduction.v theories/Confluence.v theories/DefEq.v theories/Context.v theories/Typing.v theories/Inversions.v theories/Preservation.v theories/SN.v theories/Ranks.v
+shasum -a 256 -c docs/direct-r-handoff/verification/combinatory-fragment-soundness-2026-10-22/agda-sources.sha256
+shasum -a 256 -c docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23/note-final.sha256
+git diff --check -- theories/CombinatoryLogic-rk docs/direct-r-handoff/verification/combinatory-guarded-fragments-2026-10-23 docs/direct-r-handoff/STATE.md docs/direct-r-handoff/DECISIONS.md docs/direct-r-handoff/BUILD.md

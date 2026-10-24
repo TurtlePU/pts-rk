@@ -1,0 +1,7 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-catalogue.XiGatK/MM0CatalogueAdequacy.v", line 198, characters 11-12:
+Error: The variable k was not found in the current environment.
+

@@ -1,0 +1,29 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guard-provenance.I3682u/MM0GuardProvenance.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+File "/tmp/pts-rk-guard-provenance.I3682u/MM0GuardProvenance.v", line 89, characters 23-33:
+Error:
+In environment
+N, d : nat
+env : list (A.C.Carrier (A.syntax_list N d))
+e, e0 : Expr
+IHe : evaluate_raw N d (map (A.decode N d) env) e = Some e0
+Unable to unify "A.decode ?N ?d (A.quote ?N ?d ?e) = clip ?N ?d ?e" with
+ "A.decode N d
+    match
+      A.decode N d
+        (Vector.hd
+           (Vector.cons (option (Syntax.Fin (length (A.syntax_list N d))))
+              (evaluate None (A.algebra N d) env e) 0
+              (Vector.nil (option (Syntax.Fin (length (A.syntax_list N d)))))))
+    with
+    | Some x => A.C.encode A.expr_eq_dec (A.syntax_list N d) (ES x)
+    | None => None
+    end =
+  clip N d (ES e0)".
+

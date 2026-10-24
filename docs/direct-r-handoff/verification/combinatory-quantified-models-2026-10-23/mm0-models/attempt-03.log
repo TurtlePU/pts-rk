@@ -1,0 +1,18 @@
+Chars 0 - 48 [From~Stdlib~Require~Import~Lis...] 0.038 secs (0.03u,0.007s)
+File "./theories/CombinatoryLogic-rk/MM0FiniteSearch.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+Chars 49 - 84 [From~Stdlib~Require~Vectors.Ve...] 0.007 secs (0.004u,0.001s)
+Chars 85 - 204 [From~PTSrk.Combinatory~Require...] 0.052 secs (0.042u,0.009s)
+Chars 205 - 226 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 899 - 922 [Module~MM0FiniteSearch.] 0. secs (0.u,0.s)
+Chars 923 - 965 [Import~MM0FiniteSignature~MM0F...] 0. secs (0.u,0.s)
+Chars 967 - 982 [Section~Search.] 0. secs (0.u,0.s)
+Chars 983 - 1002 [Context~{D~:~Type}.] 0. secs (0.u,0.s)
+Chars 1003 - 1024 [Variable~(default~:~D).] 0. secs (0.u,0.s)
+Chars 1025 - 1052 [Variable~(elements~:~list~D).] 0. secs (0.u,0.s)
+Chars 1053 - 1112 [Variable~(value_eq_dec~:~foral...] 0. secs (0.u,0.s)
+Chars 1114 - 1264 [Definition~checker~names~(alge...] 0. secs (0.u,0.s)
+Chars 1266 - 1374 [Lemma~checker_respects_operati...] 0. secs (0.u,0.s)
+Chars 1375 - 1381 [Proof.] 0. secs (0.u,0.s)

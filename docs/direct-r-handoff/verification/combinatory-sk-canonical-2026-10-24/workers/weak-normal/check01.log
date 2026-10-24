@@ -1,0 +1,45 @@
+Checking SKCanonicalNormal (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/SKCanonicalNormal.agda).
+ Checking PTSPrelude (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/PTSPrelude.agda).
+    Checking Agda.Builtin.Cubical.Sub (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Sub.agda).
+    Checking Agda.Builtin.Cubical.Glue (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Glue.agda).
+     Checking Agda.Builtin.Cubical.Equiv (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Equiv.agda).
+      Checking Agda.Builtin.Sigma (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Sigma.agda).
+      Checking Agda.Builtin.Cubical.Path (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Path.agda).
+      Checking Agda.Builtin.Cubical.HCompU (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/HCompU.agda).
+        Checking Agda.Builtin.FromNeg (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/FromNeg.agda).
+         Checking Agda.Builtin.Nat (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Nat.agda).
+          Checking Agda.Builtin.Bool (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Bool.agda).
+         Checking Agda.Builtin.Unit (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Unit.agda).
+        Checking Agda.Builtin.FromNat (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/FromNat.agda).
+           Checking Agda.Builtin.Reflection (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Reflection.agda).
+            Checking Agda.Builtin.Word (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Word.agda).
+            Checking Agda.Builtin.List (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/List.agda).
+            Checking Agda.Builtin.String (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/String.agda).
+             Checking Agda.Builtin.Char (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Char.agda).
+             Checking Agda.Builtin.Maybe (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Maybe.agda).
+            Checking Agda.Builtin.Float (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Float.agda).
+             Checking Agda.Builtin.Int (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Int.agda).
+ Checking BoundedReduction (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/BoundedReduction.agda).
+  Checking FiniteSyntax (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/FiniteSyntax.agda).
+ Checking BinderFreeCore (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/BinderFreeCore.agda).
+ Checking SKSource (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/SKSource.agda).
+  Checking NativeTyping (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/NativeTyping.agda).
+  Checking BinderFreeBoundary (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/BinderFreeBoundary.agda).
+   Checking NativeConfluence (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/NativeConfluence.agda).
+    Checking NativeAlgebra (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/NativeAlgebra.agda).
+ Checking SKBracket (/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/SKBracket.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  L.caseVar x SK.identityNF (λ y → no-fin (L.eraseVar y))
+    = L.caseVar x SK.identityNF (λ y → no-fin (L.eraseVar y))
+    : SK.Nf (A ⇒ D)
+    (blocked on _89)
+  SK.Nf (_A_87 ⇒ _A_87) =< _P_86 A (blocked on _P_86)
+  _P_86 D =< SK.Nf (A ⇒ D) (blocked on _P_86)
+
+/private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/SKCanonicalNormal.agda:46.29-59.73: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/SKCanonicalNormal.agda:46.29-38
+  /private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/SKCanonicalNormal.agda:46.29-47.32
+  /private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/SKCanonicalNormal.agda:46.41-54
+  /private/tmp/pts-rk-sk-canonical-normal.7ItOho/source/SKCanonicalNormal.agda:56.3-59.73

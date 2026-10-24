@@ -1,0 +1,775 @@
+Checking NormalizedSubstitution (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda).
+ Checking PTSPrelude (/private/tmp/pts-rk-normal-sub.JGiC6D/source/PTSPrelude.agda).
+  Checking Cubical.Foundations.Prelude (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Prelude.agda).
+   Checking Cubical.Core.Primitives (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Core/Primitives.agda).
+    Checking Agda.Builtin.Cubical.Path (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Path.agda).
+    Checking Agda.Builtin.Cubical.Sub (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Sub.agda).
+    Checking Agda.Builtin.Cubical.Glue (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Glue.agda).
+     Checking Agda.Builtin.Cubical.Equiv (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Equiv.agda).
+      Checking Agda.Builtin.Sigma (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Sigma.agda).
+      Checking Agda.Builtin.Cubical.HCompU (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/HCompU.agda).
+  Checking Cubical.Foundations.HLevels (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/HLevels.agda).
+   Checking Cubical.Foundations.Function (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Function.agda).
+   Checking Cubical.Foundations.Structure (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Structure.agda).
+    Checking Cubical.Foundations.Equiv (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Equiv.agda).
+     Checking Cubical.Foundations.Isomorphism (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Isomorphism.agda).
+      Checking Cubical.Core.Glue (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Core/Glue.agda).
+      Checking Cubical.Foundations.GroupoidLaws (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/GroupoidLaws.agda).
+      Checking Cubical.Foundations.Equiv.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Equiv/Base.agda).
+     Checking Cubical.Data.Sigma.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Sigma/Base.agda).
+      Checking Cubical.HITs.PropositionalTruncation.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/HITs/PropositionalTruncation/Base.agda).
+   Checking Cubical.Functions.FunExtEquiv (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Functions/FunExtEquiv.agda).
+    Checking Cubical.Foundations.CartesianKanOps (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/CartesianKanOps.agda).
+     Checking Cubical.Foundations.Transport (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Transport.agda).
+      Checking Cubical.Foundations.Univalence (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Univalence.agda).
+       Checking Cubical.Reflection.StrictEquiv (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Reflection/StrictEquiv.agda).
+        Checking Cubical.Data.List.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/List/Base.agda).
+         Checking Agda.Builtin.List (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/List.agda).
+         Checking Cubical.Data.Maybe.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Maybe/Base.agda).
+         Checking Cubical.Data.Nat.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Nat/Base.agda).
+          Checking Agda.Builtin.Nat (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Nat.agda).
+           Checking Agda.Builtin.Bool (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Bool.agda).
+          Checking Cubical.Data.Nat.Literals (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Nat/Literals.agda).
+           Checking Agda.Builtin.FromNat (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/FromNat.agda).
+           Checking Agda.Builtin.FromNeg (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/FromNeg.agda).
+           Checking Cubical.Data.Unit.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Unit/Base.agda).
+            Checking Agda.Builtin.Unit (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Unit.agda).
+          Checking Cubical.Data.Bool.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Bool/Base.agda).
+           Checking Cubical.Data.Empty (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Empty.agda).
+            Checking Cubical.Data.Empty.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Empty/Base.agda).
+            Checking Cubical.Data.Empty.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Empty/Properties.agda).
+           Checking Cubical.Data.Sum.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Sum/Base.agda).
+            Checking Cubical.Relation.Nullary.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Relation/Nullary/Base.agda).
+             Checking Cubical.Functions.Fixpoint (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Functions/Fixpoint.agda).
+        Checking Agda.Builtin.Reflection (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Reflection.agda).
+         Checking Agda.Builtin.Word (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Word.agda).
+         Checking Agda.Builtin.String (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/String.agda).
+          Checking Agda.Builtin.Char (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Char.agda).
+          Checking Agda.Builtin.Maybe (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Maybe.agda).
+         Checking Agda.Builtin.Float (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Float.agda).
+          Checking Agda.Builtin.Int (/private/tmp/pts-rk-normal-sub.JGiC6D/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Int.agda).
+        Checking Cubical.Reflection.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Reflection/Base.agda).
+     Checking Cubical.Foundations.Interpolate (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Interpolate.agda).
+    Checking Cubical.Data.Vec.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Vec/Base.agda).
+     Checking Cubical.Data.Nat (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Nat.agda).
+      Checking Cubical.Data.Nat.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Nat/Properties.agda).
+       Checking Cubical.Data.Sigma (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Sigma.agda).
+        Checking Cubical.Data.Sigma.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Sigma/Properties.agda).
+         Checking Cubical.Foundations.Equiv.HalfAdjoint (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Equiv/HalfAdjoint.agda).
+         Checking Cubical.Foundations.Path (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Path.agda).
+         Checking Cubical.Relation.Nullary (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Relation/Nullary.agda).
+          Checking Cubical.Relation.Nullary.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Relation/Nullary/Properties.agda).
+     Checking Cubical.Data.FinData.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/FinData/Base.agda).
+    Checking Cubical.Data.Vec.NAry (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Vec/NAry.agda).
+   Checking Cubical.Foundations.Pointed.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Pointed/Base.agda).
+ Checking BoundedReduction (/private/tmp/pts-rk-normal-sub.JGiC6D/source/BoundedReduction.agda).
+  Checking FiniteSyntax (/private/tmp/pts-rk-normal-sub.JGiC6D/source/FiniteSyntax.agda).
+  Checking Cubical.Data.Unit (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Unit.agda).
+   Checking Cubical.Data.Unit.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Unit/Properties.agda).
+    Checking Cubical.Data.Prod.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Prod/Base.agda).
+ Checking NativeTyping (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeTyping.agda).
+  Checking Cubical.Data.Nat.Order (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Nat/Order.agda).
+   Checking Cubical.Data.Sum (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Sum.agda).
+    Checking Cubical.Data.Sum.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Sum/Properties.agda).
+     Checking Cubical.Functions.Embedding (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Functions/Embedding.agda).
+      Checking Cubical.Foundations.Equiv.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Equiv/Properties.agda).
+      Checking Cubical.Foundations.Powerset (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Powerset.agda).
+      Checking Cubical.Functions.Fibration (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Functions/Fibration.agda).
+      Checking Cubical.Structures.Axioms (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Structures/Axioms.agda).
+       Checking Cubical.Foundations.SIP (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/SIP.agda).
+   Checking Cubical.Induction.WellFounded (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Induction/WellFounded.agda).
+ Checking NativeSubstitution (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeSubstitution.agda).
+  Checking NativeAlgebra (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeAlgebra.agda).
+ Checking NativePreservation (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativePreservation.agda).
+  Checking NativeInversion (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeInversion.agda).
+   Checking NativeConfluence (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeConfluence.agda).
+ Checking NativeRankCoverage (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeRankCoverage.agda).
+  Checking NativeRanks (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeRanks.agda).
+  Checking NativeSafety (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeSafety.agda).
+  Checking NativeNormalization (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeNormalization.agda).
+   Checking NativeDescent (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeDescent.agda).
+   Checking NativeRankPreservation (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeRankPreservation.agda).
+   Checking BoundedTrace (/private/tmp/pts-rk-normal-sub.JGiC6D/source/BoundedTrace.agda).
+    Checking RawSizeBounds (/private/tmp/pts-rk-normal-sub.JGiC6D/source/RawSizeBounds.agda).
+     Checking FiniteBounds (/private/tmp/pts-rk-normal-sub.JGiC6D/source/FiniteBounds.agda).
+      Checking Cubical.Tactics.NatSolver (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Tactics/NatSolver.agda).
+       Checking Cubical.Tactics.NatSolver.Reflection (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Tactics/NatSolver/Reflection.agda).
+        Checking Cubical.Functions.Logic (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Functions/Logic.agda).
+         Checking Cubical.HITs.PropositionalTruncation (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/HITs/PropositionalTruncation.agda).
+          Checking Cubical.HITs.PropositionalTruncation.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/HITs/PropositionalTruncation/Properties.agda).
+           Checking Cubical.Data.FinData (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/FinData.agda).
+            Checking Cubical.Data.FinData.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/FinData/Properties.agda).
+             Checking Cubical.Data.Maybe (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Maybe.agda).
+              Checking Cubical.Data.Maybe.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Maybe/Properties.agda).
+             Checking Cubical.Structures.Pointed (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Structures/Pointed.agda).
+          Checking Cubical.HITs.PropositionalTruncation.MagicTrick (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/HITs/PropositionalTruncation/MagicTrick.agda).
+           Checking Cubical.Foundations.Pointed (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Pointed.agda).
+            Checking Cubical.Foundations.Pointed.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Pointed/Properties.agda).
+            Checking Cubical.Foundations.Pointed.FunExt (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Pointed/FunExt.agda).
+             Checking Cubical.Foundations.Pointed.Homotopy (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Pointed/Homotopy.agda).
+              Checking Cubical.Foundations.Equiv.Fiberwise (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Equiv/Fiberwise.agda).
+              Checking Cubical.Homotopy.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Homotopy/Base.agda).
+            Checking Cubical.Foundations.Pointed.Homogeneous (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Pointed/Homogeneous.agda).
+        Checking Cubical.Data.List (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/List.agda).
+         Checking Cubical.Data.List.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/List/Properties.agda).
+          Checking Cubical.HITs.SetTruncation (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/HITs/SetTruncation.agda).
+           Checking Cubical.HITs.SetTruncation.Base (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/HITs/SetTruncation/Base.agda).
+           Checking Cubical.HITs.SetTruncation.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/HITs/SetTruncation/Properties.agda).
+        Checking Cubical.Data.Bool (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Bool.agda).
+         Checking Cubical.Data.Bool.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Bool/Properties.agda).
+          Checking Cubical.Functions.Involution (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Functions/Involution.agda).
+        Checking Cubical.Data.Bool.SwitchStatement (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Bool/SwitchStatement.agda).
+        Checking Cubical.Data.Vec (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Vec.agda).
+         Checking Cubical.Data.Vec.Properties (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Data/Vec/Properties.agda).
+        Checking Cubical.Tactics.NatSolver.NatExpression (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Tactics/NatSolver/NatExpression.agda).
+        Checking Cubical.Tactics.NatSolver.Solver (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Tactics/NatSolver/Solver.agda).
+         Checking Cubical.Tactics.NatSolver.HornerForms (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Tactics/NatSolver/HornerForms.agda).
+         Checking Cubical.Tactics.NatSolver.EvalHom (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Tactics/NatSolver/EvalHom.agda).
+        Checking Cubical.Tactics.Reflection (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Tactics/Reflection.agda).
+        Checking Cubical.Tactics.Reflection.Variables (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Tactics/Reflection/Variables.agda).
+        Checking Cubical.Tactics.Reflection.Utilities (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Tactics/Reflection/Utilities.agda).
+     Checking ExponentialBounds (/private/tmp/pts-rk-normal-sub.JGiC6D/source/ExponentialBounds.agda).
+ Checking NativeCertificates (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeCertificates.agda).
+ Checking NativeValuations (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NativeValuations.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  replace σ₁ (lookup _Γ_1215 i) = replace σ₁ (lookup Γ i) : Raw Nat n
+    (blocked on _Γ_1215)
+  rounds
+  (NativeRankCoverage.safe-coverage (τ .images i) wf
+   (images-typed τ i) .fst)
+  (τ .images i)
+    = _fst_436 (i = i) i
+    : Raw Nat n
+    (blocked on _fst_436)
+  rounds
+  (NativeRankCoverage.safe-coverage (σ .images i) wf
+   (images-typed σ i) .fst)
+  (σ .images i)
+    = _fst_431 (i = i) i
+    : Raw Nat n
+    (blocked on _fst_431)
+  replace σ₁ (lookup _Γ_1173 i) = replace σ₁ (lookup Γ i) : Raw Nat n
+    (blocked on _Γ_1173)
+  images σ i = _fst_436 (i = i) i : Raw Nat n (blocked on _fst_436)
+  composeNF wfΞ (composeNF wfΘ (σ , ns , hs) (τ , nt , ht))
+  (υ , nu , hu)
+    = PT.rec2→Set sub-isSet
+      (λ ps pt →
+         normalizeSub wfΞ
+         (compose
+          (valuation
+           (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+            (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .fst)
+           ps)
+          (valuation υ pt)))
+      (λ ps qs pt qt →
+         sub-path
+         (normalize-coherent wfΞ
+          (valuation
+           (_σ.images_598 (wf = wfΞ)
+            (σ =
+             (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+              (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .fst))
+            (ns =
+             (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+              (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .snd .fst))
+            (hs =
+             (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+              (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .snd .snd))
+            (τ = υ) (nt = nu) (ht = hu) (ps = ps) (qs = qs) (pt = pt)
+            (qt = qt))
+           (_σ.images-typed_599 (wf = wfΞ)
+            (σ =
+             (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+              (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .fst))
+            (ns =
+             (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+              (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .snd .fst))
+            (hs =
+             (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+              (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .snd .snd))
+            (τ = υ) (nt = nu) (ht = hu) (ps = ps) (qs = qs) (pt = pt)
+            (qt = qt)))
+          (valuation
+           (λ z →
+              _σ.images_598 (wf = wfΞ)
+              (σ =
+               (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+                (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .fst))
+              (ns =
+               (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+                (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .snd .fst))
+              (hs =
+               (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+                (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .snd .snd))
+              (τ = υ) (nt = nu) (ht = hu) (ps = ps) (qs = qs) (pt = pt) (qt = qt)
+              z)
+           (_τ.images-typed_597 (wf = wfΞ)
+            (σ =
+             (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+              (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .fst))
+            (ns =
+             (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+              (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .snd .fst))
+            (hs =
+             (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+              (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .snd .snd))
+            (τ = υ) (nt = nu) (ht = hu) (ps = ps) (qs = qs) (pt = pt)
+            (qt = qt)))
+          (λ i → beta-refl)))
+      (_1053 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+       (τ = (τ , nt , ht)) (υ = (υ , nu , hu)) .snd .snd)
+      hu
+    : Σ (Fin k → Term n)
+      (λ σ₁ →
+         Σ ((i : Fin k) → Normal (σ₁ i))
+         (λ z →
+            ∥
+            ((i : Fin k) →
+             Typ Ξ (σ₁ i)
+             (replace σ₁
+              (lookup
+               (_Γ_1070 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (ns = ns) (hs = hs)
+                (τ = τ) (nt = nt) (ht = ht) (υ = υ) (nu = nu) (hu = hu) (ps = hs)
+                (pt = ht) (pu = hu))
+               i)))
+            ∥₁))
+    (blocked on any(_607, _1090))
+  replace σ₁
+  (lookup
+   (_Γ_1070 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (ns = ns) (hs = hs)
+    (τ = τ) (nt = nt) (ht = ht) (υ = υ) (nu = nu) (hu = hu) (ps = hs)
+    (pt = ht) (pu = hu))
+   i)
+    = replace σ₁
+      (lookup
+       (_Γ_1050 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = (σ , ns , hs))
+        (τ = (τ , nt , ht)) (υ = (υ , nu , hu)))
+       i)
+    : Raw Nat n
+    (blocked on any(_Γ_1050, _Γ_1070))
+  replace τ (lookup _Γ_1103 i) = replace τ (lookup Δ i) : Raw Nat m
+    (blocked on _Γ_1103)
+  replace σ₁ (lookup _Γ_1103 i) = replace σ₁ (lookup Δ i) : Raw Nat n
+    (blocked on _Γ_1103)
+  replace σ (lookup _Γ_1081 i) = replace σ (lookup Γ i) : Raw Nat l
+    (blocked on _Γ_1081)
+  replace σ (lookup _Γ_1094 i) = replace σ (lookup Γ i) : Raw Nat l
+    (blocked on _Γ_1094)
+  replace σ (lookup _Γ_1122 i) = replace σ (lookup Γ i) : Raw Nat l
+    (blocked on _Γ_1122)
+  replace σ₁ (lookup _Γ_1114 i)
+    = replace σ₁
+      (lookup
+       (_Γ_1070 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (ns = ns) (hs = hs)
+        (τ = τ) (nt = nt) (ht = ht) (υ = υ) (nu = nu) (hu = hu)
+        (ps = ∣ ps ∣₁) (pt = ∣ pt ∣₁) (pu = ∣ pu ∣₁))
+       i)
+    : Raw Nat n
+    (blocked on any(_Γ_1070, _Γ_1114))
+  rounds
+  (NativeRankCoverage.safe-coverage
+   (replace
+    (images
+     (normalize-valuation wfΞ
+      (compose (valuation τ pt) (valuation υ pu))))
+    (σ i))
+   wfΞ
+   (subst
+    (Typ Ξ
+     (act
+      (normalize-valuation wfΞ
+       (compose (valuation τ pt) (valuation υ pu)))
+      (σ i)))
+    (NativeAlgebra.replace-compose σ
+     (images
+      (normalize-valuation wfΞ
+       (compose (valuation τ pt) (valuation υ pu))))
+     (lookup _Γ_1122 i))
+    (act-typed
+     (normalize-valuation wfΞ
+      (compose (valuation τ pt) (valuation υ pu)))
+     (ps i)))
+   .fst)
+  (replace
+   (images
+    (normalize-valuation wfΞ
+     (compose (valuation τ pt) (valuation υ pu))))
+   (σ i))
+    = _fst_436 (i = i) i
+    : Raw Nat n
+    (blocked on _fst_436)
+  rounds
+  (NativeRankCoverage.safe-coverage
+   (replace υ
+    (rounds
+     (NativeRankCoverage.safe-coverage (replace τ (σ i)) wfΘ
+      (subst (Typ Θ (act (valuation τ pt) (σ i)))
+       (NativeAlgebra.replace-compose σ τ (lookup _Γ_1122 i))
+       (act-typed (valuation τ pt) (ps i)))
+      .fst)
+     (replace τ (σ i))))
+   wfΞ
+   (subst
+    (Typ Ξ
+     (act (valuation υ pu)
+      (nf
+       (Normalize.result wfΘ
+        (valuation (λ i₁ → act (valuation τ pt) (σ i₁))
+         (λ i₁ →
+            subst (Typ Θ (act (valuation τ pt) (σ i₁)))
+            (NativeAlgebra.replace-compose σ τ (lookup _Γ_1122 i₁))
+            (act-typed (valuation τ pt) (ps i₁))))
+        i))))
+    (NativeAlgebra.replace-compose
+     (λ i₁ →
+        nf
+        (Normalize.result wfΘ
+         (valuation (λ i₂ → act (valuation τ pt) (σ i₂))
+          (λ i₂ →
+             subst (Typ Θ (act (valuation τ pt) (σ i₂)))
+             (NativeAlgebra.replace-compose σ τ (lookup _Γ_1122 i₂))
+             (act-typed (valuation τ pt) (ps i₂))))
+         i₁))
+     υ (lookup _Γ_1122 i))
+    (act-typed (valuation υ pu)
+     (Normalize.normal-typing wfΘ
+      (valuation (λ i₁ → act (valuation τ pt) (σ i₁))
+       (λ i₁ →
+          subst (Typ Θ (act (valuation τ pt) (σ i₁)))
+          (NativeAlgebra.replace-compose σ τ (lookup _Γ_1122 i₁))
+          (act-typed (valuation τ pt) (ps i₁))))
+      i)))
+   .fst)
+  (replace υ
+   (rounds
+    (NativeRankCoverage.safe-coverage (replace τ (σ i)) wfΘ
+     (subst (Typ Θ (act (valuation τ pt) (σ i)))
+      (NativeAlgebra.replace-compose σ τ (lookup _Γ_1122 i))
+      (act-typed (valuation τ pt) (ps i)))
+     .fst)
+    (replace τ (σ i))))
+    = _fst_431 (i = i) i
+    : Raw Nat n
+    (blocked on _fst_431)
+  replace σ₁ (lookup _Γ_1094 i) = replace σ₁ (lookup _Γ_1070 i)
+    : Raw Nat n
+    (blocked on any(_Γ_1070, _Γ_1094))
+  replace σ₁ (lookup _Γ_1075 i) = replace σ₁ (lookup _Γ_1070 i)
+    : Raw Nat n
+    (blocked on any(_Γ_1070, _Γ_1075))
+  replace σ₁ (lookup _Γ_1081 i) = replace σ₁ (lookup _Γ_1075 i)
+    : Raw Nat m
+    (blocked on any(_Γ_1075, _Γ_1081))
+  replace σ₁
+  (lookup (_Γ_1056 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (τ = τ) (υ = υ))
+   i)
+    = replace σ₁ (lookup Δ i)
+    : Raw Nat m
+    (blocked on _Γ_1056)
+  replace σ₁
+  (lookup (_Γ_1056 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (τ = τ) (υ = υ))
+   i)
+    = replace σ₁ (lookup Δ i)
+    : Raw Nat n
+    (blocked on _Γ_1056)
+  replace σ₁
+  (lookup (_Γ_1054 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (τ = τ) (υ = υ))
+   i)
+    = replace σ₁ (lookup Γ i)
+    : Raw Nat l
+    (blocked on _Γ_1054)
+  replace σ₁
+  (lookup (_Γ_1054 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (τ = τ) (υ = υ))
+   i)
+    = replace σ₁
+      (lookup (_Γ_1050 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (τ = τ) (υ = υ))
+       i)
+    : Raw Nat n
+    (blocked on any(_Γ_1050, _Γ_1054))
+  replace σ₁
+  (lookup (_Γ_1051 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (τ = τ) (υ = υ))
+   i)
+    = replace σ₁ (lookup Γ i)
+    : Raw Nat l
+    (blocked on _Γ_1051)
+  replace σ₁
+  (lookup (_Γ_1051 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (τ = τ) (υ = υ))
+   i)
+    = replace σ₁
+      (lookup (_Γ_1050 (wfΘ = wfΘ) (wfΞ = wfΞ) (σ = σ) (τ = τ) (υ = υ))
+       i)
+    : Raw Nat m
+    (blocked on any(_Γ_1050, _Γ_1051))
+  composeNF wf (σ , ns , hs) (idNF Δ)
+    = PT.rec2→Set sub-isSet
+      (λ ps pt →
+         normalizeSub wf
+         (compose (valuation (_912 (wf = wf) (σ = (σ , ns , hs)) .fst) ps)
+          (valuation (idNF Δ .fst) pt)))
+      (λ ps qs pt qt →
+         sub-path
+         (normalize-coherent wf
+          (valuation
+           (_σ.images_598 (wf = wf)
+            (σ = (_912 (wf = wf) (σ = (σ , ns , hs)) .fst))
+            (ns = (_912 (wf = wf) (σ = (σ , ns , hs)) .snd .fst))
+            (hs = (_912 (wf = wf) (σ = (σ , ns , hs)) .snd .snd))
+            (τ = (idNF Δ .fst)) (nt = (idNF Δ .snd .fst))
+            (ht = (idNF Δ .snd .snd)) (ps = ps) (qs = qs) (pt = pt) (qt = qt))
+           (_σ.images-typed_599 (wf = wf)
+            (σ = (_912 (wf = wf) (σ = (σ , ns , hs)) .fst))
+            (ns = (_912 (wf = wf) (σ = (σ , ns , hs)) .snd .fst))
+            (hs = (_912 (wf = wf) (σ = (σ , ns , hs)) .snd .snd))
+            (τ = (idNF Δ .fst)) (nt = (idNF Δ .snd .fst))
+            (ht = (idNF Δ .snd .snd)) (ps = ps) (qs = qs) (pt = pt) (qt = qt)))
+          (valuation
+           (λ z →
+              _σ.images_598 (wf = wf)
+              (σ = (_912 (wf = wf) (σ = (σ , ns , hs)) .fst))
+              (ns = (_912 (wf = wf) (σ = (σ , ns , hs)) .snd .fst))
+              (hs = (_912 (wf = wf) (σ = (σ , ns , hs)) .snd .snd))
+              (τ = (idNF Δ .fst)) (nt = (idNF Δ .snd .fst))
+              (ht = (idNF Δ .snd .snd)) (ps = ps) (qs = qs) (pt = pt) (qt = qt)
+              z)
+           (_τ.images-typed_597 (wf = wf)
+            (σ = (_912 (wf = wf) (σ = (σ , ns , hs)) .fst))
+            (ns = (_912 (wf = wf) (σ = (σ , ns , hs)) .snd .fst))
+            (hs = (_912 (wf = wf) (σ = (σ , ns , hs)) .snd .snd))
+            (τ = (idNF Δ .fst)) (nt = (idNF Δ .snd .fst))
+            (ht = (idNF Δ .snd .snd)) (ps = ps) (qs = qs) (pt = pt) (qt = qt)))
+          (λ i → beta-refl)))
+      (_912 (wf = wf) (σ = (σ , ns , hs)) .snd .snd) (idNF Δ .snd .snd)
+    : Σ (Fin m → Term n)
+      (λ σ₁ →
+         Σ ((i : Fin m) → Normal (σ₁ i))
+         (λ z →
+            ∥
+            ((i : Fin m) →
+             Typ Δ (σ₁ i)
+             (replace σ₁
+              (lookup (_Γ_920 (wf = wf) (σ = σ) (ns = ns) (hs = hs) (h = hs))
+               i)))
+            ∥₁))
+    (blocked on any(_607, _935))
+  replace σ₁
+  (lookup (_Γ_920 (wf = wf) (σ = σ) (ns = ns) (hs = hs) (h = hs)) i)
+    = replace σ₁ (lookup (_Γ_911 (wf = wf) (σ = (σ , ns , hs))) i)
+    : Raw Nat n
+    (blocked on any(_Γ_911, _Γ_920))
+  replace σ (lookup _Γ_925 i) = replace σ (lookup Γ i) : Raw Nat n
+    (blocked on _Γ_925)
+  replace σ (lookup _Γ_920 i) = replace σ (lookup Γ i) : Raw Nat n
+    (blocked on _Γ_920)
+  replace σ (lookup _Γ_952 i₁) = replace σ (lookup Γ i₁) : Raw Nat n
+    (blocked on _Γ_952)
+  replace σ (lookup _Γ_973 i₁) = replace σ (lookup Γ i₁) : Raw Nat n
+    (blocked on _Γ_973)
+  replace σ₁ (lookup _Γ_940 i)
+    = replace σ₁
+      (lookup
+       (_Γ_920 (wf = wf) (σ = σ) (ns = ns) (hs = hs) (h = ∣ ps ∣₁)) i)
+    : Raw Nat n
+    (blocked on any(_Γ_920, _Γ_940))
+  σ i = _fst_436 (i = i) i : Raw Nat n (blocked on _fst_436)
+  rounds
+  (NativeRankCoverage.safe-coverage
+   (replace (images (identity Δ)) (σ i)) wf
+   (subst (Typ Δ (act (identity Δ) (σ i)))
+    (NativeAlgebra.replace-compose σ (images (identity Δ))
+     (lookup _Γ_952 i))
+    (act-typed (identity Δ) (ps i)))
+   .fst)
+  (replace (images (identity Δ)) (σ i))
+    = _fst_431 (i = i) i
+    : Raw Nat n
+    (blocked on _fst_431)
+  replace σ₁ (lookup _Γ_925 i) = replace σ₁ (lookup _Γ_920 i)
+    : Raw Nat n
+    (blocked on any(_Γ_920, _Γ_925))
+  replace σ₁ (lookup (_Γ_911 (wf = wf) (σ = σ)) i)
+    = replace σ₁ (lookup Γ i)
+    : Raw Nat n
+    (blocked on _Γ_911)
+  composeNF wf (idNF Γ) (σ , ns , hs)
+    = PT.rec2→Set sub-isSet
+      (λ ps pt →
+         normalizeSub wf
+         (compose (valuation (_830 (wf = wf) (σ = (σ , ns , hs)) .fst) ps)
+          (valuation σ pt)))
+      (λ ps qs pt qt →
+         sub-path
+         (normalize-coherent wf
+          (valuation
+           (_σ.images_598 (wf = wf)
+            (σ = (_830 (wf = wf) (σ = (σ , ns , hs)) .fst))
+            (ns = (_830 (wf = wf) (σ = (σ , ns , hs)) .snd .fst))
+            (hs = (_830 (wf = wf) (σ = (σ , ns , hs)) .snd .snd)) (τ = σ)
+            (nt = ns) (ht = hs) (ps = ps) (qs = qs) (pt = pt) (qt = qt))
+           (_σ.images-typed_599 (wf = wf)
+            (σ = (_830 (wf = wf) (σ = (σ , ns , hs)) .fst))
+            (ns = (_830 (wf = wf) (σ = (σ , ns , hs)) .snd .fst))
+            (hs = (_830 (wf = wf) (σ = (σ , ns , hs)) .snd .snd)) (τ = σ)
+            (nt = ns) (ht = hs) (ps = ps) (qs = qs) (pt = pt) (qt = qt)))
+          (valuation
+           (λ z →
+              _σ.images_598 (wf = wf)
+              (σ = (_830 (wf = wf) (σ = (σ , ns , hs)) .fst))
+              (ns = (_830 (wf = wf) (σ = (σ , ns , hs)) .snd .fst))
+              (hs = (_830 (wf = wf) (σ = (σ , ns , hs)) .snd .snd)) (τ = σ)
+              (nt = ns) (ht = hs) (ps = ps) (qs = qs) (pt = pt) (qt = qt) z)
+           (_τ.images-typed_597 (wf = wf)
+            (σ = (_830 (wf = wf) (σ = (σ , ns , hs)) .fst))
+            (ns = (_830 (wf = wf) (σ = (σ , ns , hs)) .snd .fst))
+            (hs = (_830 (wf = wf) (σ = (σ , ns , hs)) .snd .snd)) (τ = σ)
+            (nt = ns) (ht = hs) (ps = ps) (qs = qs) (pt = pt) (qt = qt)))
+          (λ i → beta-refl)))
+      (_830 (wf = wf) (σ = (σ , ns , hs)) .snd .snd) hs
+    : Σ (Fin m → Term n)
+      (λ σ₁ →
+         Σ ((i : Fin m) → Normal (σ₁ i))
+         (λ z →
+            ∥
+            ((i : Fin m) →
+             Typ Δ (σ₁ i)
+             (replace σ₁
+              (lookup (_Γ_838 (wf = wf) (σ = σ) (ns = ns) (hs = hs) (h = hs))
+               i)))
+            ∥₁))
+    (blocked on any(_607, _850))
+  replace σ₁
+  (lookup (_Γ_838 (wf = wf) (σ = σ) (ns = ns) (hs = hs) (h = hs)) i)
+    = replace σ₁ (lookup (_Γ_829 (wf = wf) (σ = (σ , ns , hs))) i)
+    : Raw Nat n
+    (blocked on any(_Γ_829, _Γ_838))
+  replace σ₁ (lookup _Γ_855 i)
+    = replace σ₁
+      (lookup
+       (_Γ_838 (wf = wf) (σ = σ) (ns = ns) (hs = hs) (h = ∣ ps ∣₁)) i)
+    : Raw Nat n
+    (blocked on any(_Γ_838, _Γ_855))
+  rounds
+  (NativeRankCoverage.safe-coverage (σ i) wf
+   (subst (Typ Δ (act (valuation σ ps) (var i)))
+    (NativeAlgebra.replace-compose var σ (lookup Γ i))
+    (act-typed (valuation σ ps)
+     (subst (Typ Γ (var i))
+      (λ i₁ →
+         NativeAlgebra.replace-id (lookup Γ i)
+         (Cubical.Foundations.Prelude.~ i₁))
+      (lookup-var i))))
+   .fst)
+  (σ i)
+    = _fst_431 (i = i) i
+    : Raw Nat n
+    (blocked on _fst_431)
+  replace σ (lookup _Γ_838 i) = replace σ (lookup Γ i) : Raw Nat n
+    (blocked on _Γ_838)
+  replace σ₁ (lookup _Γ_843 i) = replace σ₁ (lookup _Γ_838 i)
+    : Raw Nat n
+    (blocked on any(_Γ_838, _Γ_843))
+  replace σ₁ (lookup _Γ_843 i) = replace σ₁ (lookup Γ i) : Raw Nat m
+    (blocked on _Γ_843)
+  replace σ₁ (lookup (_Γ_829 (wf = wf) (σ = σ)) i)
+    = replace σ₁ (lookup Γ i)
+    : Raw Nat m
+    (blocked on _Γ_829)
+  replace σ₁ (lookup (_Γ_829 (wf = wf) (σ = σ)) i)
+    = replace σ₁ (lookup Γ i)
+    : Raw Nat n
+    (blocked on _Γ_829)
+  rounds
+  (NativeRankCoverage.safe-coverage
+   (replace
+    (λ z →
+       rounds
+       (NativeRankCoverage.safe-coverage (replace (images υ) (images τ z))
+        wfΞ
+        (subst (Typ Ξ (act υ (images τ z)))
+         (NativeAlgebra.replace-compose (images τ) (images υ) (lookup Δ z))
+         (act-typed υ (images-typed τ z)))
+        .fst)
+       (replace (images υ) (images τ z)))
+    (_σ.images_785 i))
+   wfΞ (_τ.images-typed_798 i) .fst)
+  (replace
+   (λ z →
+      rounds
+      (NativeRankCoverage.safe-coverage (replace (images υ) (images τ z))
+       wfΞ
+       (subst (Typ Ξ (act υ (images τ z)))
+        (NativeAlgebra.replace-compose (images τ) (images υ) (lookup Δ z))
+        (act-typed υ (images-typed τ z)))
+       .fst)
+      (replace (images υ) (images τ z)))
+   (_σ.images_785 i))
+    = rounds
+      (NativeRankCoverage.safe-coverage
+       (replace (images (normalize-valuation wfΞ (compose τ υ)))
+        (images σ i))
+       wfΞ
+       (subst
+        (Typ Ξ (act (normalize-valuation wfΞ (compose τ υ)) (images σ i)))
+        (NativeAlgebra.replace-compose (images σ)
+         (images (normalize-valuation wfΞ (compose τ υ))) (lookup Γ i))
+        (act-typed (normalize-valuation wfΞ (compose τ υ))
+         (images-typed σ i)))
+       .fst)
+      (replace (images (normalize-valuation wfΞ (compose τ υ)))
+       (images σ i))
+    : Raw Nat n
+    (blocked on _σ.images_785)
+  replace
+  (λ z →
+     replace (images υ)
+     (rounds
+      (NativeRankCoverage.safe-coverage (replace (images τ) (images σ z))
+       wfΘ
+       (subst (Typ Θ (act τ (images σ z)))
+        (NativeAlgebra.replace-compose (images σ) (images τ) (lookup Γ z))
+        (act-typed τ (images-typed σ z)))
+       .fst)
+      (replace (images τ) (images σ z))))
+  (lookup _Γ_677 i)
+    = replace
+      (λ i₁ →
+         act υ
+         (nf
+          (Normalize.result wfΘ
+           (valuation (λ i₂ → act τ (images σ i₂))
+            (λ i₂ →
+               subst (Typ Θ (act τ (images σ i₂)))
+               (NativeAlgebra.replace-compose (images σ) (images τ) (lookup Γ i₂))
+               (act-typed τ (images-typed σ i₂))))
+           i₁)))
+      (lookup Γ i)
+    : Raw Nat n
+    (blocked on _Γ_677)
+  replace (λ z → replace (images υ) (images τ z)) (_σ.images_785 i)
+    = replace (images (compose τ υ)) (images σ i)
+    : Raw Nat n
+    (blocked on _σ.images_785)
+  replace σ₁ (lookup _Γ_566 i) = replace σ₁ (lookup Γ i) : Raw Nat n
+    (blocked on _Γ_566)
+  replace σ (lookup _Γ_570 i) = replace σ (lookup Γ i) : Raw Nat m
+    (blocked on _Γ_570)
+  replace σ₁ (lookup _Γ_585 i) = replace σ₁ (lookup _Γ_566 i)
+    : Raw Nat n
+    (blocked on any(_Γ_566, _Γ_585))
+  rounds
+  (NativeRankCoverage.safe-coverage (_σ.images_598 i) wf
+   (_τ.images-typed_597 i) .fst)
+  (_σ.images_598 i)
+    = _fst_436 (i = i) i
+    : Raw Nat n
+    (blocked on _fst_436)
+  rounds
+  (NativeRankCoverage.safe-coverage (_σ.images_598 i) wf
+   (_σ.images-typed_599 i) .fst)
+  (_σ.images_598 i)
+    = _fst_431 (i = i) i
+    : Raw Nat n
+    (blocked on _fst_431)
+  replace σ₁ (lookup _Γ_570 i) = replace σ₁ (lookup _Γ_566 i)
+    : Raw Nat n
+    (blocked on any(_Γ_566, _Γ_570))
+  _fst_436 (i = x) x = τ .fst x : Raw Nat n (blocked on _fst_436)
+  _fst_431 (i = x) x = σ .fst x : Raw Nat n (blocked on _fst_431)
+  replace σ₁ (lookup (_Γ_396 (i = i)) i₁) = replace σ₁ (lookup Γ i₁)
+    : Raw Nat n
+    (blocked on _Γ_396)
+  replace σ₁ (lookup (_Γ_394 (i = i)) i₁) = replace σ₁ (lookup Γ i₁)
+    : Raw Nat n
+    (blocked on _Γ_394)
+
+/private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:105.12-180.72: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:105.12-22
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:105.23-24
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:105.29-39
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:105.40-41
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:106.14-107.13
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:126.44-128.81
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:126.56-65
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:127.14-26
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:127.14-73
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:127.52-54
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:128.20-28
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:128.20-74
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:128.30-48
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:128.30-73
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:128.52-53
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:128.54-55
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:138.42-60
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:138.42-143.69
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:138.67-68
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:139.4-20
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:140.6-24
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:141.6-22
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:141.24-39
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:142.8-26
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:142.8-143.66
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:143.10-24
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:146.41-50
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:146.55-61
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:146.67-68
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:147.42-150.90
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:148.10-19
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:148.21-30
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:148.21-55
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:148.35-41
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:148.67-68
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:149.11-19
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:149.11-150.86
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:149.27-150.85
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:153.41-50
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:153.54-55
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:153.67-68
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:154.43-158.80
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:155.10-19
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:155.21-30
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:155.21-55
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:155.44-45
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:155.67-68
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:156.11-19
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:156.11-158.76
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:156.27-158.75
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:157.6-22
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:157.48-50
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:158.22-44
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:158.58-60
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:163.5-14
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:163.20-29
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:163.20-37
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:163.34-35
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:164.7-16
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:164.7-42
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:164.21-22
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:164.24-33
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:164.24-41
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:164.38-39
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:165.65-170.66
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:166.17-26
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:167.6-15
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:167.6-77
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:167.21-30
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:167.21-62
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:167.45-47
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:168.6-15
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:168.6-77
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:168.30-32
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:168.35-44
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:168.35-76
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:168.59-61
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:169.17-25
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:169.17-170.56
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:169.27-51
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:169.27-170.55
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:170.18-20
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:175.33-41
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:175.33-75
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:175.43-74
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:180.34-42
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:180.34-72
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:180.44-71

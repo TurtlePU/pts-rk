@@ -1,0 +1,14 @@
+File "./theories/CombinatoryLogic-rk/FiniteUniversalHorn.v", line 1, characters 0-78:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+File "./theories/CombinatoryLogic-rk/FiniteUniversalHorn.v", line 19, characters 48-63:
+Error:
+In environment
+D : Type
+Atom : Type
+domain_elements : list D
+x : D
+The term "domain_elements" has type "list D"
+while it is expected to have type "t D ?n".
+

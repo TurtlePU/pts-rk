@@ -1,0 +1,30 @@
+Chars 0 - 64 [From~Stdlib~Require~Import~Lis...] 0.089 secs (0.074u,0.014s)
+File "./theories/CombinatoryLogic-rk/MM0FiniteSearch.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+Chars 65 - 100 [From~Stdlib~Require~Vectors.Ve...] 0.003 secs (0.002u,0.s)
+Chars 101 - 220 [From~PTSrk.Combinatory~Require...] 0.003 secs (0.002u,0.s)
+Chars 221 - 242 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 767 - 790 [Module~MM0FiniteSearch.] 0. secs (0.u,0.s)
+Chars 791 - 833 [Import~MM0FiniteSignature~MM0F...] 0. secs (0.u,0.s)
+Chars 835 - 850 [Section~Search.] 0. secs (0.u,0.s)
+Chars 851 - 870 [Context~{D~:~Type}.] 0. secs (0.u,0.s)
+Chars 871 - 892 [Variable~(default~:~D).] 0. secs (0.u,0.s)
+Chars 893 - 920 [Variable~(elements~:~list~D).] 0. secs (0.u,0.s)
+Chars 921 - 980 [Variable~(value_eq_dec~:~foral...] 0. secs (0.u,0.s)
+Chars 982 - 1132 [Definition~checker~names~(alge...] 0. secs (0.u,0.s)
+Chars 1134 - 1242 [Lemma~checker_respects_operati...] 0. secs (0.u,0.s)
+Chars 1243 - 1249 [Proof.] 0. secs (0.u,0.s)
+Chars 1252 - 1265 [intros~a~b~H.] 0. secs (0.u,0.s)
+Chars 1268 - 1373 [exact~~~(checker_extensional~d...] 0. secs (0.u,0.s)
+Chars 1374 - 1378 [Qed.] 0. secs (0.u,0.s)
+Chars 1380 - 1521 [Definition~find_model~names~:=...] 0. secs (0.u,0.s)
+Chars 1523 - 1728 [Definition~returned_algebra~~~...] 0. secs (0.u,0.s)
+Chars 1730 - 1914 [Theorem~constructor_key_count~...] 0. secs (0.u,0.s)
+Chars 1915 - 1921 [Proof.] 0. secs (0.u,0.s)
+Chars 1924 - 1978 [rewrite~FiniteOperationAlgebra...] 0. secs (0.u,0.s)
+Chars 1981 - 2030 [cbn[operations~arity~map~list_...] 0.004 secs (0.001u,0.s)
+File "./theories/CombinatoryLogic-rk/MM0FiniteSearch.v", line 48, characters 47-50:
+Error: Tactic failure:  Cannot find witness.
+

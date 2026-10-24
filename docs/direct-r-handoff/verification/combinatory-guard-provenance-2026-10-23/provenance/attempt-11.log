@@ -1,0 +1,49 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guard-provenance.I3682u/MM0GuardProvenance.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+File "/tmp/pts-rk-guard-provenance.I3682u/MM0GuardProvenance.v", line 294, characters 50-51:
+Error:
+In environment
+N, d : nat
+name : AxiomName
+a : Atom
+valuation : Vector.t (A.Domain N d) (length (variables (axiom_rule name)))
+HG : A.guard N d (axiom_rule name) valuation = true
+HE :
+  In (map (A.decode N d) (Vector.to_list valuation))
+    (tuples (observations N d) (length (variables (axiom_rule name))))
+HA : In a (conclusion (axiom_rule name) :: premises (axiom_rule name))
+H :
+  map (A.decode N d)
+    (snd (evaluate_atom None (A.algebra N d) (Vector.to_list valuation) a)) =
+  map Some
+    (snd
+       (substitute_atom
+          (A.decoded_substitution N d (Vector.to_list valuation)) a))
+The term "H" has type
+ "map (A.decode N d)
+    (snd (evaluate_atom None (A.algebra N d) (Vector.to_list valuation) a)) =
+  map Some
+    (snd
+       (substitute_atom
+          (A.decoded_substitution N d (Vector.to_list valuation)) a))"
+while it is expected to have type
+ "map
+    (fun x : Expr =>
+     A.decode N d
+       (evaluate None (A.algebra N d) (Vector.to_list valuation) x))
+    (snd a) =
+  map Some
+    (map
+       (substitute
+          (fun i : nat =>
+           nth i
+             (map fallback (map (A.decode N d) (Vector.to_list valuation)))
+             EZ))
+       (snd a))".
+

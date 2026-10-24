@@ -1,0 +1,4 @@
+Logs: /Users/akuklev/air/pts-rk/_build/combinatory-internal-horn-audit.JMyhh0
+Build: /tmp/pts-rk-internal-horn.6x5cr6
+Pristine: /tmp/pts-rk-internal-horn-pristine.LZ2nx4
+Archive: /Users/akuklev/air/pts-rk/docs/direct-r-handoff/verification/combinatory-internal-horn-2026-10-23/audit.td6KVY

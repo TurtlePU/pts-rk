@@ -1,0 +1,3 @@
+Logs: /Users/akuklev/air/pts-rk/_build/combinatory-guarded-fragments-audit.fX2mac
+Build: /tmp/pts-rk-guarded-fragments.HkLVv5
+Pristine: /tmp/pts-rk-guarded-pristine.9tU6QO

@@ -1,0 +1,19 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+1 goal
+
+  n : nat
+  G : Ctx nat n
+  k : nat
+  cs : list (list (Fin k) * Fin k)
+  truth : Fin k -> bool
+  q : Term nat n
+  HM : FiniteHorn.Model cs (fun i : Fin k => truth i = true)
+  HQ : G ⊢ q ⇐ I.code_type k
+  ============================
+  G & I.proof_type cs q ⊢ var fzero ⇐ I.proof_type cs (shift q)
+File "/tmp/pts-rk-indexed-consumer.qBciO2/IndexedHornSoundness.v", line 115, characters 4-58:
+Error: Found no subterm matching "I.proof_type cs (rename fsucc q)"
+in the current goal.

@@ -1,0 +1,1 @@
+/tmp/pts-rk-agda-2.8.0.MvVO53/agda --safe --no-default-libraries -i /tmp/pts-rk-agda-2.8.0.MvVO53/cubical -i /tmp/pts-rk-normal-products.5ZaaRR/source /tmp/pts-rk-normal-products.5ZaaRR/source/NormalizedProducts.agda +RTS -M2G -RTS

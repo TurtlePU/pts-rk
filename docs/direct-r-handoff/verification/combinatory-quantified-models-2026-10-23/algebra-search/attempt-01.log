@@ -1,0 +1,5 @@
+File "./theories/CombinatoryLogic-rk/FiniteAlgebraSearch.v", line 193, characters 11-50:
+Error: Unable to apply lemma of type
+ "search check = None <-> (forall f : Key -> Value, check f = false)"
+on hypothesis of type "search check = None".
+

@@ -1,0 +1,2 @@
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKSourceFast.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKFastCanonical.agda: OK

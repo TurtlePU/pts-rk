@@ -1,0 +1,6 @@
+2026-10-23T06:36:04Z
+File "./theories/CombinatoryLogic-rk/HilbertGrounding.v", line 4, characters 0-115:
+Error: Required library GroundHorn matches several files in path (found
+/private/tmp/pts-rk-horn-denials.ab2F9f/GroundHorn.vo and
+/Users/akuklev/air/pts-rk/_build/default/theories/CombinatoryLogic-rk/GroundHorn.vo).
+

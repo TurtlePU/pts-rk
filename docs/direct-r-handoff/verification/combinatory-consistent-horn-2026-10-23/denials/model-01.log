@@ -1,0 +1,37 @@
+2026-10-23T06:40:18Z
+Warning:
+/Users/akuklev/air/pts-rk/_build/default/theories/Interpretation_of_R/relational
+was previously bound to PTSrk.Interpretation_of_R.relational; it is remapped
+to Interpretation_of_R.relational
+[overriding-logical-loadpath,filesystem,default]
+Warning:
+/Users/akuklev/air/pts-rk/_build/default/theories/Interpretation_of_R/functional
+was previously bound to PTSrk.Interpretation_of_R.functional; it is remapped
+to Interpretation_of_R.functional
+[overriding-logical-loadpath,filesystem,default]
+Warning:
+/Users/akuklev/air/pts-rk/_build/default/theories/Interpretation_of_R was
+previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/HilbertFiniteModels.v", line 64, characters 39-53:
+Error:
+In environment
+clauses : list (list H.Atom * H.Atom)
+valid :
+  forall (ps : list H.Atom) (a : H.Atom), In (ps, a) clauses -> H.Rules ps a
+M : Term nat 0
+E :
+  FH.member atom_eq_dec (M, NativeCanonicity.Void)
+    (FH.saturation atom_eq_dec clauses) =
+  true
+Unable to unify
+ "(FH.member ?atom_eq_dec ?a ?known = true -> In ?a ?known) /\
+  (In ?a ?known -> FH.member ?atom_eq_dec ?a ?known = true)"
+with
+ "(fix In (a : H.Atom) (l : list H.Atom) {struct l} : Prop :=
+     match l with
+     | nil => False
+     | b :: l' => b = a \/ In a l'
+     end)
+    (M, NativeCanonicity.Void) (FH.saturation atom_eq_dec clauses)".
+

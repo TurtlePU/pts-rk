@@ -1,0 +1,16 @@
+Warning:
+/private/tmp/pts-rk-mm0-bridge.IH9mrh/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/HornProofRealization.v", line 208, characters 0-176:
+Error:
+The following term contains unresolved implicit arguments:
+  (forall k n : nat,
+   list (H.Clause ?k) ->
+   Fin k ->
+   (Fin k -> Term nat n) ->
+   (H.Clause ?k -> Term nat n) -> Term nat n -> Term nat n)
+More precisely:
+- ?k: Cannot infer the implicit parameter k of apply_handlers whose type is
+  "nat" in environment:
+  k, n : nat

@@ -1,0 +1,17 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/IndexedHornRealization.v", line 196, characters 2-85:
+Error:
+In environment
+k : nat
+cs : list (list (Fin k) * Fin k)
+a : Fin k
+n : nat
+G : Ctx nat n
+HR : In ([], a) cs
+Unable to unify "Forall2 ?R (?x :: ?l) (?y :: ?l')" with
+ "Forall2 (fun (b : Fin k) (p : Term nat n) => G ⊢ p ⇐ H.H.proof_type k cs b)
+    [] []".
+

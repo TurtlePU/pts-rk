@@ -1,0 +1,182 @@
+Checking SKDirectBoundary (/private/tmp/pts-rk-sk-direct.pmQ7rC/source/SKDirectBoundary.agda).
+ Checking SKSourceNormal (/private/tmp/pts-rk-sk-direct.pmQ7rC/source/SKSourceNormal.agda).
+  Checking SKSourceRank (/private/tmp/pts-rk-sk-direct.pmQ7rC/source/SKSourceRank.agda).
+ Checking SKCanonical (/private/tmp/pts-rk-sk-direct.pmQ7rC/source/SKCanonical.agda).
+ Checking SKDirectSoundness (/private/tmp/pts-rk-sk-direct.pmQ7rC/source/SKDirectSoundness.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  C.close
+  (C.compile-open
+   (L.rounds
+    (max
+     (max
+      (max
+       (max
+        (max
+         (max (SKSourceRank.budget (C.expand-source-at _f_188))
+          (SKSourceRank.budget (C.expand-source-at (_f_193 SK.· _x_194))))
+         (SKSourceRank.head-order (C.expand-source-at _f_188)))
+        (SKSourceRank.budget
+         (C.expand-source-at (_f_203 SK.· _x_204 SK.· _x_199))))
+       (SKSourceRank.head-order
+        (L.app (C.expand-source-at _f_188)
+         (C.expand-source-at (_f_193 SK.· _x_194)))))
+      (SKSourceRank.budget
+       (C.expand-source-at (_f_213 SK.· _x_214 SK.· _x_209))))
+     (SKSourceRank.head-order
+      (L.app
+       (L.app (C.expand-source-at _f_188)
+        (C.expand-source-at (_f_193 SK.· _x_194)))
+       (C.expand-source-at (_f_203 SK.· _x_204 SK.· _x_199)))))
+    (L.app
+     (L.app
+      (L.app (C.expand-source-at _f_188)
+       (C.expand-source-at (_f_193 SK.· _x_194)))
+      (C.expand-source-at (_f_203 SK.· _x_204 SK.· _x_199)))
+     (C.expand-source-at (_f_213 SK.· _x_214 SK.· _x_209)))))
+    = C.close (C.s C.· C.bracket (C.s C.· C.k)) SK.·
+      C.close (C.bracket C.k)
+    : SK.Tm (SK.ι SK.⇒ E)
+    (blocked on _f_188)
+  C.close
+  (C.compile-open
+   (L.rounds
+    (max
+     (max
+      (max
+       (max (SKSourceRank.budget (C.expand-source-at _f_223))
+        (SKSourceRank.budget
+         (C.expand-source-at
+          (_f_233 SK.· (_f_238 SK.· _x_239) SK.· (_f_243 SK.· _x_244)))))
+       (SKSourceRank.head-order (C.expand-source-at _f_223)))
+      (SKSourceRank.budget (C.expand-source-at (_f_248 SK.· _x_249))))
+     (SKSourceRank.head-order
+      (L.app (C.expand-source-at _f_223)
+       (C.expand-source-at
+        (_f_233 SK.· (_f_238 SK.· _x_239) SK.· (_f_243 SK.· _x_244))))))
+    (L.app
+     (L.app (C.expand-source-at _f_223)
+      (C.expand-source-at
+       (_f_233 SK.· (_f_238 SK.· _x_239) SK.· (_f_243 SK.· _x_244))))
+     (C.expand-source-at (_f_248 SK.· _x_249)))))
+    = C.close (C.s C.· C.bracket (C.s C.· C.k)) SK.·
+      C.close (C.bracket C.k)
+    : SK.Tm (SK.ι SK.⇒ E)
+    (blocked on _f_223)
+  B.expand _x_249
+    = R.lam (B.decode SK.ι)
+      (R.lam (B.decode SK.ι) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _x_249)
+  B.expand _f_248
+    = R.lam (B.decode (SK.ι SK.⇒ SK.ι SK.⇒ SK.ι))
+      (R.lam (B.decode SK.ι) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _f_248)
+  B.expand _x_244
+    = R.lam (B.decode SK.ι)
+      (R.lam (B.decode (SK.ι SK.⇒ SK.ι)) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _x_244)
+  B.expand _f_243
+    = R.lam (B.decode (SK.ι SK.⇒ (SK.ι SK.⇒ SK.ι) SK.⇒ SK.ι))
+      (R.lam (B.decode SK.ι) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _f_243)
+  B.expand _x_239
+    = R.lam (B.decode (SK.ι SK.⇒ (SK.ι SK.⇒ SK.ι) SK.⇒ SK.ι))
+      (R.lam (B.decode (SK.ι SK.⇒ SK.ι SK.⇒ SK.ι))
+       (R.lam (B.decode SK.ι)
+        (R.app (R.app (R.var (R.fsuc (R.fsuc R.fzero))) (R.var R.fzero))
+         (R.app (R.var (R.fsuc R.fzero)) (R.var R.fzero)))))
+    : R.Raw Nat zero
+    (blocked on _x_239)
+  B.expand _f_238
+    = R.lam
+      (B.decode
+       ((SK.ι SK.⇒ (SK.ι SK.⇒ SK.ι) SK.⇒ SK.ι) SK.⇒
+        (SK.ι SK.⇒ SK.ι SK.⇒ SK.ι) SK.⇒ SK.ι SK.⇒ SK.ι))
+      (R.lam (B.decode SK.ι) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _f_238)
+  B.expand _f_233
+    = R.lam
+      (B.decode
+       (SK.ι SK.⇒
+        (SK.ι SK.⇒ (SK.ι SK.⇒ SK.ι) SK.⇒ SK.ι) SK.⇒
+        (SK.ι SK.⇒ SK.ι SK.⇒ SK.ι) SK.⇒ SK.ι SK.⇒ SK.ι))
+      (R.lam (B.decode (SK.ι SK.⇒ SK.ι SK.⇒ (SK.ι SK.⇒ SK.ι) SK.⇒ SK.ι))
+       (R.lam (B.decode SK.ι)
+        (R.app (R.app (R.var (R.fsuc (R.fsuc R.fzero))) (R.var R.fzero))
+         (R.app (R.var (R.fsuc R.fzero)) (R.var R.fzero)))))
+    : R.Raw Nat zero
+    (blocked on _f_233)
+  B.expand _f_223
+    = R.lam
+      (B.decode
+       (SK.ι SK.⇒ (SK.ι SK.⇒ SK.ι SK.⇒ SK.ι) SK.⇒ SK.ι SK.⇒ SK.ι))
+      (R.lam (B.decode (SK.ι SK.⇒ SK.ι SK.⇒ SK.ι SK.⇒ SK.ι))
+       (R.lam (B.decode SK.ι)
+        (R.app (R.app (R.var (R.fsuc (R.fsuc R.fzero))) (R.var R.fzero))
+         (R.app (R.var (R.fsuc R.fzero)) (R.var R.fzero)))))
+    : R.Raw Nat zero
+    (blocked on _f_223)
+  B.expand _x_209
+    = R.lam (B.decode SK.ι)
+      (R.lam (B.decode SK.ι) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _x_209)
+  B.expand _x_214
+    = R.lam (B.decode SK.ι)
+      (R.lam (B.decode (SK.ι SK.⇒ SK.ι)) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _x_214)
+  B.expand _f_213
+    = R.lam (B.decode (SK.ι SK.⇒ (SK.ι SK.⇒ SK.ι) SK.⇒ SK.ι))
+      (R.lam (B.decode (SK.ι SK.⇒ SK.ι SK.⇒ SK.ι))
+       (R.lam (B.decode SK.ι)
+        (R.app (R.app (R.var (R.fsuc (R.fsuc R.fzero))) (R.var R.fzero))
+         (R.app (R.var (R.fsuc R.fzero)) (R.var R.fzero)))))
+    : R.Raw Nat zero
+    (blocked on _f_213)
+  B.expand _x_199
+    = R.lam (B.decode E) (R.lam (B.decode E) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _x_199)
+  B.expand _x_204
+    = R.lam (B.decode E)
+      (R.lam (B.decode (E SK.⇒ E)) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _x_204)
+  B.expand _f_203
+    = R.lam (B.decode (E SK.⇒ (E SK.⇒ E) SK.⇒ E))
+      (R.lam (B.decode (E SK.⇒ E SK.⇒ E))
+       (R.lam (B.decode E)
+        (R.app (R.app (R.var (R.fsuc (R.fsuc R.fzero))) (R.var R.fzero))
+         (R.app (R.var (R.fsuc R.fzero)) (R.var R.fzero)))))
+    : R.Raw Nat zero
+    (blocked on _f_203)
+  B.expand _x_194
+    = R.lam (B.decode E)
+      (R.lam (B.decode SK.ι) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _x_194)
+  B.expand _f_193
+    = R.lam (B.decode (E SK.⇒ SK.ι SK.⇒ E))
+      (R.lam (B.decode E) (R.var (R.fsuc R.fzero)))
+    : R.Raw Nat zero
+    (blocked on _f_193)
+  B.expand _f_188
+    = R.lam (B.decode (E SK.⇒ E SK.⇒ SK.ι SK.⇒ E))
+      (R.lam (B.decode (E SK.⇒ E))
+       (R.lam (B.decode E)
+        (R.app (R.app (R.var (R.fsuc (R.fsuc R.fzero))) (R.var R.fzero))
+         (R.app (R.var (R.fsuc R.fzero)) (R.var R.fzero)))))
+    : R.Raw Nat zero
+    (blocked on _f_188)
+
+/private/tmp/pts-rk-sk-direct.pmQ7rC/source/SKDirectBoundary.agda:70.20-71.48: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /private/tmp/pts-rk-sk-direct.pmQ7rC/source/SKDirectBoundary.agda:70.20-71.48
+  /private/tmp/pts-rk-sk-direct.pmQ7rC/source/SKDirectBoundary.agda:70.43-59
+  /private/tmp/pts-rk-sk-direct.pmQ7rC/source/SKDirectBoundary.agda:71.5-48

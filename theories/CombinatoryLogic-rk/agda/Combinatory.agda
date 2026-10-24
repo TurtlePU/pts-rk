@@ -80,14 +80,9 @@ module _ where
   varEl : (r : Nat) → Ty (ext Γ (U r)) r
   varEl r = El r (sndS id) (varUType r)
 
-  iRank : Nat → Nat
-  iRank a = max (suc zero) (max (suc a) a)
   kRank : Nat → Nat → Nat
   kRank a b = max (suc zero)
     (max (suc zero) (max (suc a) (max (suc b) a)))
-
-  IType : (a : Nat) → Ty empty (iRank a)
-  IType a = Pi (U a) (Pi (varEl a) (subTy (varEl a) (fstS id)))
 
   KType : (a b : Nat) → Ty empty (kRank a b)
   KType a b = Pi (U a) (Pi (U b)
@@ -340,13 +335,9 @@ module _ where
     app' : (A : Ty Γ a) (B : Ty (ext Γ A) b) (f x : Tm Γ)
          → tyOf f ≡ (max (suc a) b , Pi A B)
          → (px : tyOf x ≡ (a , subTy A id)) → Tm Γ
-    I-atom : Nat → Tm empty
     K-atom P-atom : Nat → Nat → Tm empty
     S-guarded : (a b c : Nat) → Template.Guards a b c → Tm empty
     -- These laws have fixed heads and fixed saturation arities.
-    beta-I : (a : Nat) (sp : Spine (subTm (I-atom a) (eps {Γ = Γ})) 1)
-             (x : Tm Γ) (dx : Ap (run sp) x)
-           → apTy dx ≡ tyOf x → runAp dx ≡ x
     beta-K : (a b : Nat) (sp : Spine (subTm (K-atom a b) (eps {Γ = Γ})) 2)
              (x y : Tm Γ) (dx : Ap (run sp) x) (dy : Ap (runAp dx) y)
            → apTy dy ≡ tyOf x → runAp dy ≡ x
@@ -417,11 +408,9 @@ module _ where
   tyOf (univ' i) = zero , U zero
   tyOf (univ-sub i σ j) = zero , U-sub zero σ j
   tyOf (app' {b = b} A B f x pf px) = b , subTy B (single A x px)
-  tyOf (I-atom a) = iRank a , IType a
   tyOf (K-atom a b) = kRank a b , KType a b
   tyOf (P-atom a b) = suc (suc a) , PType a b
   tyOf (S-guarded a b c guards) = sRank a b c , Template.typeOfS a b c guards
-  tyOf (beta-I a sp x dx e i) = e i
   tyOf (beta-K a b sp x y dx dy e i) = e i
   tyOf (beta-S a b c guards sp f g x df dg dx fx gx fxgx e i) = e i
   tyOf (app-sub d σ e p i) = p i
@@ -489,3 +478,23 @@ El-sub-derived : ∀ {Γ Δ} (r : Nat) (t : Tm Δ) (p : tyOf t ≡ (zero , U r))
                 (σ : Sub Γ Δ) → subTy (El r t p) σ
                 ≡ El r (subTm t σ) (El-sub-guard r t p σ)
 El-sub-derived r t p σ = El-sub r t p σ _
+
+-- Identity is a derived SK expression, not a primitive term or equation.
+-- This law applies to certified instantiations of S K K. Its arguments
+-- expose the necessary type instantiations; it is not a construction of
+-- a closed universe-polymorphic identity or a completeness theorem.
+skk-computes : ∀ {Γ} (a b c ka kb la lb : Nat)
+  (guards : Template.Guards a b c)
+  (s : Spine (subTm (S-guarded a b c guards) (eps {Γ = Γ})) 3)
+  (k : Spine (subTm (K-atom ka kb) (eps {Γ = Γ})) 2)
+  (l : Spine (subTm (K-atom la lb) (eps {Γ = Γ})) 2)
+  (x : Tm Γ)
+  (df : Ap (run s) (run k)) (dg : Ap (runAp df) (run l))
+  (dx : Ap (runAp dg) x)
+  (fx : Ap (run k) x) (gx : Ap (run l) x)
+  (fxgx : Ap (runAp fx) (runAp gx))
+  → apTy dx ≡ apTy fxgx → apTy fxgx ≡ tyOf x
+  → runAp dx ≡ x
+skk-computes a b c ka kb la lb guards s k l x df dg dx fx gx fxgx p q =
+  beta-S a b c guards s (run k) (run l) x df dg dx fx gx fxgx p ∙
+  beta-K ka kb k x (runAp gx) fx fxgx q

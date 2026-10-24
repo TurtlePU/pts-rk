@@ -1,0 +1,4 @@
+Checking NormalizedSubstitution (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda).
+agda: Heap exhausted;
+agda: Current maximum heap size is 2147483648 bytes (2048 MB).
+agda: Use `+RTS -M<size>' to increase it.

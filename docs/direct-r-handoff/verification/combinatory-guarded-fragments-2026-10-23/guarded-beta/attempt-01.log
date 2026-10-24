@@ -1,0 +1,14 @@
+Warning:
+/private/tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guarded-beta.LXnPKw/GuardedBetaGraphs.v", line 55, characters 33-39:
+Error:
+In environment
+n : nat
+T, T' : Term nat n
+U : Term nat (S n)
+H : T →ᵝ T'
+IHstep : In T' (successors T)
+A' : Term nat n
+Unable to unify "Π A' U" with "Π T' A'".

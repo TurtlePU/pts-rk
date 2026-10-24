@@ -1,0 +1,26 @@
+Logs: /Users/akuklev/air/pts-rk/_build/combinatory-quantified-models-audit.fUUdPV
+Build: /tmp/pts-rk-quantified-models.uhpkYv
+Pristine: /tmp/pts-rk-quantified-pristine.9rwXrE
+head	0	2026-10-23T07:43:26Z	2026-10-23T07:43:26Z
+dune-version	0	2026-10-23T07:43:26Z	2026-10-23T07:43:26Z
+rocq-version	0	2026-10-23T07:43:26Z	2026-10-23T07:43:26Z
+packages	0	2026-10-23T07:43:26Z	2026-10-23T07:43:26Z
+source-before	0	2026-10-23T07:43:26Z	2026-10-23T07:43:26Z
+upstream-archive	0	2026-10-23T07:43:26Z	2026-10-23T07:43:26Z
+upstream-extract	0	2026-10-23T07:43:26Z	2026-10-23T07:43:26Z
+upstream-build	0	2026-10-23T07:43:26Z	2026-10-23T07:43:29Z
+upstream-kernel	0	2026-10-23T07:43:29Z	2026-10-23T07:43:35Z
+fresh-build	0	2026-10-23T07:43:35Z	2026-10-23T07:44:52Z
+closed-reports	0	2026-10-23T07:44:52Z	2026-10-23T07:44:52Z
+kernel	0	2026-10-23T07:44:52Z	2026-10-23T07:45:14Z
+inventory-compare	0	2026-10-23T07:45:14Z	2026-10-23T07:45:14Z
+original-kernel-unchanged	0	2026-10-23T07:45:14Z	2026-10-23T07:45:14Z
+previous-sources-unchanged	0	2026-10-23T07:45:14Z	2026-10-23T07:45:14Z
+mm0-unchanged	0	2026-10-23T07:45:14Z	2026-10-23T07:45:14Z
+literal-axioms-crosscheck	0	2026-10-23T07:45:14Z	2026-10-23T07:45:14Z
+agda-unchanged	0	2026-10-23T07:45:14Z	2026-10-23T07:45:14Z
+source-after	0	2026-10-23T07:45:14Z	2026-10-23T07:45:14Z
+source-stable	0	2026-10-23T07:45:14Z	2026-10-23T07:45:14Z
+safety-scan	0	2026-10-23T07:45:14Z	2026-10-23T07:45:14Z
+whitespace	0	2026-10-23T07:45:14Z	2026-10-23T07:45:14Z
+PASS: fresh 43-module quantified-model audit. Logs: /Users/akuklev/air/pts-rk/_build/combinatory-quantified-models-audit.fUUdPV

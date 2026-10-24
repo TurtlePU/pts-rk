@@ -1,0 +1,10 @@
+File "./theories/CombinatoryLogic-rk/FiniteUniversalHorn.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+File "./theories/CombinatoryLogic-rk/FiniteUniversalHorn.v", line 50, characters 23-33:
+Error: Illegal application (Non-functional construction): 
+The expression "projT2 s" of type "?P (projT1 s)"
+cannot be applied to the term
+ "v" : "Vector.t D (projT1 s)"
+

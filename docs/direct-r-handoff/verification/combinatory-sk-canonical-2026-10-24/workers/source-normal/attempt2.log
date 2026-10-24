@@ -1,0 +1,11 @@
+Checking SKSourceNormal (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/SKSourceNormal.agda).
+ Checking SKSourceEquality (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/SKSourceEquality.agda).
+  Checking BinderFreeBidirectional (/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/BinderFreeBidirectional.agda).
+/private/tmp/pts-rk-sk-source-normal.OEpsnr/source/SKSourceEquality.agda:112.31-54: error: [UnequalTerms]
+(px : Source _Γ_353 _x_354) → subst (Source _Γ_353) refl px ≡ px
+!=<
+elaborate Γ (forget (ground i)) ι (forget-check (ground i)) ≡
+ground i
+when checking that the expression substRefl {B = Source _} has type
+elaborate Γ (forget (ground i)) ι (forget-check (ground i)) ≡
+ground i

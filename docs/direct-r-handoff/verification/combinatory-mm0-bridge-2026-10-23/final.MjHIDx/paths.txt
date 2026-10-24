@@ -1,0 +1,3 @@
+Fresh evidence: /Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.BLPblO
+Final logs: /Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-final.LNIhbh
+Archive: /Users/akuklev/air/pts-rk/docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/final.MjHIDx

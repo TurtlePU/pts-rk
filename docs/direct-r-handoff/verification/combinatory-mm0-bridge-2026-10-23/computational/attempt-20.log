@@ -1,0 +1,24 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-computational.3tS6OZ/MM0ComputationalAdequacy.v", line 438, characters 26-45:
+Error:
+In environment
+A, M, X : Expr
+HS : SortedExpr [] (EApp (ELam A M) X) TM
+H1 : SortedExpr [] (ELam A M) TM
+H2 : SortedExpr [] X TM
+H3 : SortedExpr [] A TM
+H4 : SortedExpr [] M TM
+Unable to unify
+ "inhabited
+    (Derivation all_axioms (aSub (quote_nat ?k) ?X ?M (raw_sub ?k ?X ?M)))"
+with
+ "inhabited
+    (Derivation all_axioms
+       (substitute_atom (arguments [A; M; X; raw_sub 0 X M])
+          (aSub EZ MM0FiniteAxioms.MM0FiniteAxioms.x2
+             MM0FiniteAxioms.MM0FiniteAxioms.x1
+             MM0FiniteAxioms.MM0FiniteAxioms.x3)))".
+

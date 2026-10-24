@@ -1,0 +1,19 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-generated-codes.gGpVFd/FiniteGeneratedCodes.v", line 183, characters 11-18:
+Error:
+In environment
+n : nat
+G : Ctx nat n
+k, r : nat
+P : Term nat n
+branches : Fin k -> Term nat n
+q, p : Term nat n
+HP : G ⊢ P ⇐ predicate_type k r
+HB : forall i : Fin k, G ⊢ branches i ⇐ app P (CF.selector 0 k i)
+Hp : G ⊢ p ⇐ generated k r q
+Unable to unify "?Γ ⊢ app ?t ?u ⇐ subst ?T ?u" with
+ "G ⊢ app p P ⇐ I.body (facts_on (F.variables k)) P q".
+

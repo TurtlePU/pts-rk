@@ -1,0 +1,13 @@
+2026-10-23T06:30:40Z
+File "./theories/CombinatoryLogic-rk/GroundHornConsistency.v", line 52, characters 2-99:
+Error:
+In environment
+Atom : Type
+Rules : list Atom -> Atom -> Prop
+Denials : list Atom -> Prop
+valuation : Atom -> Prop
+HM : GH.Model Rules valuation
+HN : Rejects valuation
+Hden : Denials []
+Unable to unify "Forall ?P (?x :: ?l)" with "Forall valuation []".
+

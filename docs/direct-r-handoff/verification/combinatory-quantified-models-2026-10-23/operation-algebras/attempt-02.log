@@ -1,0 +1,24 @@
+File "./theories/CombinatoryLogic-rk/FiniteOperationAlgebras.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+File "./theories/CombinatoryLogic-rk/FiniteOperationAlgebras.v", line 98, characters 13-45:
+Error:
+In environment
+Op : Type
+D : Type
+arity : Op -> nat
+op_eq_dec : forall x y : Op, {x = y} + {x <> y}
+value_eq_dec : forall x y : D, {x = y} + {x <> y}
+operations : list Op
+values : list D
+default : D
+check : Checker
+table : FiniteAlgebraSearch.Table
+e :
+  FiniteAlgebraSearch.search ?M1082 ?M1083 ?M1084 ?M1085 ?M1086 = Some ?M1087
+Unable to unify
+ "In ?table (FiniteAlgebraSearch.tables ?keys ?values) /\
+  ?check (FiniteAlgebraSearch.interpret ?key_eq_dec ?default ?table) = true"
+with "In table tables /\ check (interpret table) = true".
+

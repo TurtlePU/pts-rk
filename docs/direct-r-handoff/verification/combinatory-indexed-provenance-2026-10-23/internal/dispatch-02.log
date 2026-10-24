@@ -1,0 +1,8 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-indexed-soundness.wHrIDF/FiniteTypeDispatch.v", line 41, characters 46-54:
+Error:
+Syntax error: [ltac_use_default] expected after [tactic] (in [tactic_command]).
+

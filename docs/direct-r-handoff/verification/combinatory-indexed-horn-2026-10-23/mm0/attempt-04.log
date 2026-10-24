@@ -1,0 +1,8 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/MM0IndexedReflection.v", line 225, characters 19-52:
+Error: The reference HornProofRealization.index_eq_dec was not found
+in the current environment.
+

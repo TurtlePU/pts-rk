@@ -1,0 +1,7 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-indexed-horn.MHrkIn/IndexedHornEncoding.v", line 151, characters 4-30:
+Error: Found no subterm matching "subst (shift ?M1324) ?M1325"
+in the current goal.

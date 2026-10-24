@@ -1,0 +1,471 @@
+theories/CombinatoryLogic-rk/CatalogueEconomy.v: OK
+theories/CombinatoryLogic-rk/CatalogueHilbert.v: OK
+theories/CombinatoryLogic-rk/CatalogueShapes.v: OK
+theories/CombinatoryLogic-rk/ChurchFinite.v: OK
+theories/CombinatoryLogic-rk/ConstantCatalogue.v: OK
+theories/CombinatoryLogic-rk/ContextualHilbert.v: OK
+theories/CombinatoryLogic-rk/ContextualSubstitution.v: OK
+theories/CombinatoryLogic-rk/Core.v: OK
+theories/CombinatoryLogic-rk/FiniteAlgebraSearch.v: OK
+theories/CombinatoryLogic-rk/FiniteBasis.v: OK
+theories/CombinatoryLogic-rk/FiniteGeneratedCodes.v: OK
+theories/CombinatoryLogic-rk/FiniteHorn.v: OK
+theories/CombinatoryLogic-rk/FiniteHornChurch.v: OK
+theories/CombinatoryLogic-rk/FiniteMapCoherence.v: OK
+theories/CombinatoryLogic-rk/FiniteModelBoundary.v: OK
+theories/CombinatoryLogic-rk/FiniteModelRealization.v: OK
+theories/CombinatoryLogic-rk/FiniteModelSoundness.v: OK
+theories/CombinatoryLogic-rk/FiniteNativeModelBoundary.v: OK
+theories/CombinatoryLogic-rk/FiniteNormalForms.v: OK
+theories/CombinatoryLogic-rk/FiniteOperationAlgebras.v: OK
+theories/CombinatoryLogic-rk/FiniteTypeDispatch.v: OK
+theories/CombinatoryLogic-rk/FiniteUniversalHorn.v: OK
+theories/CombinatoryLogic-rk/GroundHorn.v: OK
+theories/CombinatoryLogic-rk/GroundHornConsistency.v: OK
+theories/CombinatoryLogic-rk/GuardedBetaGraphs.v: OK
+theories/CombinatoryLogic-rk/GuardedFiniteCarriers.v: OK
+theories/CombinatoryLogic-rk/GuardedFiniteSupport.v: OK
+theories/CombinatoryLogic-rk/GuardedHilbertCoverage.v: OK
+theories/CombinatoryLogic-rk/GuardedHilbertModels.v: OK
+theories/CombinatoryLogic-rk/GuardedHilbertTables.v: OK
+theories/CombinatoryLogic-rk/GuardedHornFragments.v: OK
+theories/CombinatoryLogic-rk/Hilbert.v: OK
+theories/CombinatoryLogic-rk/HilbertAbstraction.v: OK
+theories/CombinatoryLogic-rk/HilbertFiniteModels.v: OK
+theories/CombinatoryLogic-rk/HilbertGrounding.v: OK
+theories/CombinatoryLogic-rk/HilbertReplay.v: OK
+theories/CombinatoryLogic-rk/HornInternalSoundness.v: OK
+theories/CombinatoryLogic-rk/HornProofEncoding.v: OK
+theories/CombinatoryLogic-rk/HornProofRealization.v: OK
+theories/CombinatoryLogic-rk/IdentityCatalogue.v: OK
+theories/CombinatoryLogic-rk/IndexedHornEncoding.v: OK
+theories/CombinatoryLogic-rk/IndexedHornRealization.v: OK
+theories/CombinatoryLogic-rk/IndexedHornSoundness.v: OK
+theories/CombinatoryLogic-rk/IndexedHornTransport.v: OK
+theories/CombinatoryLogic-rk/KnuthBounds.v: OK
+theories/CombinatoryLogic-rk/MM0CatalogueAdequacy.v: OK
+theories/CombinatoryLogic-rk/MM0CatalogueRealization.v: OK
+theories/CombinatoryLogic-rk/MM0ComputationalAdequacy.v: OK
+theories/CombinatoryLogic-rk/MM0FiniteAxioms.v: OK
+theories/CombinatoryLogic-rk/MM0FiniteSearch.v: OK
+theories/CombinatoryLogic-rk/MM0FiniteSignature.v: OK
+theories/CombinatoryLogic-rk/MM0GuardProvenance.v: OK
+theories/CombinatoryLogic-rk/MM0GuardedInternalReflection.v: OK
+theories/CombinatoryLogic-rk/MM0GuardedQuantification.v: OK
+theories/CombinatoryLogic-rk/MM0GuardedReflection.v: OK
+theories/CombinatoryLogic-rk/MM0GuardedSyntaxAlgebra.v: OK
+theories/CombinatoryLogic-rk/MM0HilbertAdequacy.v: OK
+theories/CombinatoryLogic-rk/MM0IndexedReflection.v: OK
+theories/CombinatoryLogic-rk/MM0InternalDecoder.v: OK
+theories/CombinatoryLogic-rk/MM0InternalGuard.v: OK
+theories/CombinatoryLogic-rk/MM0InternalSoundness.v: OK
+theories/CombinatoryLogic-rk/MM0NativeReduction.v: OK
+theories/CombinatoryLogic-rk/MM0NativeSyntax.v: OK
+theories/CombinatoryLogic-rk/MM0ProjectionModel.v: OK
+theories/CombinatoryLogic-rk/MM0SyntaxSoundness.v: OK
+theories/CombinatoryLogic-rk/NativeCanonicity.v: OK
+theories/CombinatoryLogic-rk/Presentation.v: OK
+theories/CombinatoryLogic-rk/ProductCatalogue.v: OK
+theories/CombinatoryLogic-rk/ProductExposure.v: OK
+theories/CombinatoryLogic-rk/ProductHilbert.v: OK
+theories/CombinatoryLogic-rk/QuantitativeNormalization.v: OK
+theories/CombinatoryLogic-rk/SK.v: OK
+theories/CombinatoryLogic-rk/SubstitutionCatalogue.v: OK
+theories/CombinatoryLogic-rk/agda/AlphabetCoverage.agda: OK
+theories/CombinatoryLogic-rk/agda/ApplicationExamples.agda: OK
+theories/CombinatoryLogic-rk/agda/BinderFreeBidirectional.agda: OK
+theories/CombinatoryLogic-rk/agda/BinderFreeBoundary.agda: OK
+theories/CombinatoryLogic-rk/agda/BinderFreeCoherence.agda: OK
+theories/CombinatoryLogic-rk/agda/BinderFreeCore.agda: OK
+theories/CombinatoryLogic-rk/agda/BinderFreeEquality.agda: OK
+theories/CombinatoryLogic-rk/agda/BinderFreeQuotient.agda: OK
+theories/CombinatoryLogic-rk/agda/BoundedReduction.agda: OK
+theories/CombinatoryLogic-rk/agda/BoundedTrace.agda: OK
+theories/CombinatoryLogic-rk/agda/CertificateContexts.agda: OK
+theories/CombinatoryLogic-rk/agda/ChurchFinite.agda: OK
+theories/CombinatoryLogic-rk/agda/Combinatory.agda: OK
+theories/CombinatoryLogic-rk/agda/ContextualNormalization.agda: OK
+theories/CombinatoryLogic-rk/agda/Exact.agda: OK
+theories/CombinatoryLogic-rk/agda/Examples.agda: OK
+theories/CombinatoryLogic-rk/agda/ExponentialBounds.agda: OK
+theories/CombinatoryLogic-rk/agda/FiniteApplication.agda: OK
+theories/CombinatoryLogic-rk/agda/FiniteBounds.agda: OK
+theories/CombinatoryLogic-rk/agda/FiniteCarriers.agda: OK
+theories/CombinatoryLogic-rk/agda/FiniteMachine.agda: OK
+theories/CombinatoryLogic-rk/agda/FiniteSyntax.agda: OK
+theories/CombinatoryLogic-rk/agda/FiniteTrace.agda: OK
+theories/CombinatoryLogic-rk/agda/FragmentAlphabet.agda: OK
+theories/CombinatoryLogic-rk/agda/FragmentApplication.agda: OK
+theories/CombinatoryLogic-rk/agda/FragmentEmbeddings.agda: OK
+theories/CombinatoryLogic-rk/agda/FragmentInterpretation.agda: OK
+theories/CombinatoryLogic-rk/agda/FragmentMachineSoundness.agda: OK
+theories/CombinatoryLogic-rk/agda/FragmentModelExamples.agda: OK
+theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda: OK
+theories/CombinatoryLogic-rk/agda/FragmentPackages.agda: OK
+theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeAlgebra.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeCanonicity.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeCertificates.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeConfluence.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeDescent.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeInversion.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeNormalization.agda: OK
+theories/CombinatoryLogic-rk/agda/NativePreservation.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeRankCoverage.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeRankPreservation.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeRanks.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeSafety.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeTyping.agda: OK
+theories/CombinatoryLogic-rk/agda/NativeValuations.agda: OK
+theories/CombinatoryLogic-rk/agda/NormalForms.agda: OK
+theories/CombinatoryLogic-rk/agda/PTSPrelude.agda: OK
+theories/CombinatoryLogic-rk/agda/RawSizeBounds.agda: OK
+theories/CombinatoryLogic-rk/agda/SCanonical.agda: OK
+theories/CombinatoryLogic-rk/agda/SCoherence.agda: OK
+theories/CombinatoryLogic-rk/agda/SGuardIrrelevance.agda: OK
+theories/CombinatoryLogic-rk/agda/SKNativeCanonical.agda: OK
+theories/CombinatoryLogic-rk/agda/TargetView.agda: OK
+theories/CombinatoryLogic-rk/agda/TypedApplication.agda: OK
+theories/CombinatoryLogic-rk/agda/TypedNormalFibres.agda: OK
+theories/CombinatoryLogic-rk/dune: OK
+theories/CombinatoryLogic-rk/CombinatoryPTS-rk.mm0: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/AlphabetCoverage.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ApplicationExamples.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BinderFreeBidirectional.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BinderFreeBoundary.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BinderFreeCoherence.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BinderFreeCore.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BinderFreeEquality.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BinderFreeQuotient.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BoundedReduction.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/BoundedTrace.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/CertificateContexts.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ChurchFinite.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/Combinatory.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ContextualNormalization.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/Everything.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/Exact.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/Examples.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/ExponentialBounds.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FiniteApplication.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FiniteBounds.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FiniteCarriers.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FiniteMachine.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FiniteSyntax.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FiniteTrace.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentAlphabet.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentApplication.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentEmbeddings.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentInterpretation.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentMachineSoundness.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelExamples.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentModelSoundness.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentPackages.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/FragmentUniverses.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeAlgebra.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeCanonicity.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeCertificates.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeConfluence.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeDescent.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeInversion.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeNormalization.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativePreservation.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeRankCoverage.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeRankPreservation.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeRanks.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSafety.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeSubstitution.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeTyping.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NativeValuations.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/NormalForms.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/PTSPrelude.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/RawSizeBounds.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SCanonical.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SCoherence.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SGuardIrrelevance.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKBracket.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKCanonical.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKCanonicalNormal.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKNativeCanonical.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKSource.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKSourceEquality.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/SKSourceNormal.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/TargetView.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/TypedApplication.agda: OK
+/Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/agda/TypedNormalFibres.agda: OK
+shasum: COLLECT.sh: No such file or directory
+COLLECT.sh: FAILED open or read
+shasum: WORKERS.md: No such file or directory
+WORKERS.md: FAILED open or read
+shasum: bracket/COMMANDS.md: No such file or directory
+bracket/COMMANDS.md: FAILED open or read
+shasum: bracket/check-01.log: No such file or directory
+bracket/check-01.log: FAILED open or read
+shasum: bracket/check-02.log: No such file or directory
+bracket/check-02.log: FAILED open or read
+shasum: bracket/check-03.log: No such file or directory
+bracket/check-03.log: FAILED open or read
+shasum: bracket/check-04.log: No such file or directory
+bracket/check-04.log: FAILED open or read
+shasum: bracket/check-05.log: No such file or directory
+bracket/check-05.log: FAILED open or read
+shasum: bracket/check-06.log: No such file or directory
+bracket/check-06.log: FAILED open or read
+shasum: bracket/check-07.log: No such file or directory
+bracket/check-07.log: FAILED open or read
+shasum: bracket/check.sh: No such file or directory
+bracket/check.sh: FAILED open or read
+shasum: bracket/command-01.txt: No such file or directory
+bracket/command-01.txt: FAILED open or read
+shasum: bracket/command-01.txt.raw.gz: No such file or directory
+bracket/command-01.txt.raw.gz: FAILED open or read
+shasum: bracket/command-02.txt: No such file or directory
+bracket/command-02.txt: FAILED open or read
+shasum: bracket/command-02.txt.raw.gz: No such file or directory
+bracket/command-02.txt.raw.gz: FAILED open or read
+shasum: bracket/command-03.txt: No such file or directory
+bracket/command-03.txt: FAILED open or read
+shasum: bracket/command-03.txt.raw.gz: No such file or directory
+bracket/command-03.txt.raw.gz: FAILED open or read
+shasum: bracket/command-04.txt: No such file or directory
+bracket/command-04.txt: FAILED open or read
+shasum: bracket/command-04.txt.raw.gz: No such file or directory
+bracket/command-04.txt.raw.gz: FAILED open or read
+shasum: bracket/command-05.txt: No such file or directory
+bracket/command-05.txt: FAILED open or read
+shasum: bracket/command-05.txt.raw.gz: No such file or directory
+bracket/command-05.txt.raw.gz: FAILED open or read
+shasum: bracket/command-06.txt: No such file or directory
+bracket/command-06.txt: FAILED open or read
+shasum: bracket/command-06.txt.raw.gz: No such file or directory
+bracket/command-06.txt.raw.gz: FAILED open or read
+shasum: bracket/command-07.txt: No such file or directory
+bracket/command-07.txt: FAILED open or read
+shasum: bracket/command-07.txt.raw.gz: No such file or directory
+bracket/command-07.txt.raw.gz: FAILED open or read
+shasum: bracket/end-01.txt: No such file or directory
+bracket/end-01.txt: FAILED open or read
+shasum: bracket/end-02.txt: No such file or directory
+bracket/end-02.txt: FAILED open or read
+shasum: bracket/end-03.txt: No such file or directory
+bracket/end-03.txt: FAILED open or read
+shasum: bracket/end-04.txt: No such file or directory
+bracket/end-04.txt: FAILED open or read
+shasum: bracket/end-05.txt: No such file or directory
+bracket/end-05.txt: FAILED open or read
+shasum: bracket/end-06.txt: No such file or directory
+bracket/end-06.txt: FAILED open or read
+shasum: bracket/end-07.txt: No such file or directory
+bracket/end-07.txt: FAILED open or read
+shasum: bracket/exit-01.txt: No such file or directory
+bracket/exit-01.txt: FAILED open or read
+shasum: bracket/exit-02.txt: No such file or directory
+bracket/exit-02.txt: FAILED open or read
+shasum: bracket/exit-03.txt: No such file or directory
+bracket/exit-03.txt: FAILED open or read
+shasum: bracket/exit-04.txt: No such file or directory
+bracket/exit-04.txt: FAILED open or read
+shasum: bracket/exit-05.txt: No such file or directory
+bracket/exit-05.txt: FAILED open or read
+shasum: bracket/exit-06.txt: No such file or directory
+bracket/exit-06.txt: FAILED open or read
+shasum: bracket/exit-07.txt: No such file or directory
+bracket/exit-07.txt: FAILED open or read
+shasum: bracket/fresh.sh: No such file or directory
+bracket/fresh.sh: FAILED open or read
+shasum: bracket/fresh/check.log: No such file or directory
+bracket/fresh/check.log: FAILED open or read
+shasum: bracket/fresh/command.txt: No such file or directory
+bracket/fresh/command.txt: FAILED open or read
+shasum: bracket/fresh/command.txt.raw.gz: No such file or directory
+bracket/fresh/command.txt.raw.gz: FAILED open or read
+shasum: bracket/fresh/cubical-commit.txt: No such file or directory
+bracket/fresh/cubical-commit.txt: FAILED open or read
+shasum: bracket/fresh/end.txt: No such file or directory
+bracket/fresh/end.txt: FAILED open or read
+shasum: bracket/fresh/exit-code.txt: No such file or directory
+bracket/fresh/exit-code.txt: FAILED open or read
+shasum: bracket/fresh/final-source/SKBracket.agda: No such file or directory
+bracket/fresh/final-source/SKBracket.agda: FAILED open or read
+shasum: bracket/fresh/source.sha256: No such file or directory
+bracket/fresh/source.sha256: FAILED open or read
+shasum: bracket/fresh/stability.txt: No such file or directory
+bracket/fresh/stability.txt: FAILED open or read
+shasum: bracket/fresh/start.txt: No such file or directory
+bracket/fresh/start.txt: FAILED open or read
+shasum: bracket/fresh/version.txt: No such file or directory
+bracket/fresh/version.txt: FAILED open or read
+shasum: bracket/snapshots/01/SKBracket.agda: No such file or directory
+bracket/snapshots/01/SKBracket.agda: FAILED open or read
+shasum: bracket/snapshots/01/SKSource.agda: No such file or directory
+bracket/snapshots/01/SKSource.agda: FAILED open or read
+shasum: bracket/snapshots/02/SKBracket.agda: No such file or directory
+bracket/snapshots/02/SKBracket.agda: FAILED open or read
+shasum: bracket/snapshots/02/SKSource.agda: No such file or directory
+bracket/snapshots/02/SKSource.agda: FAILED open or read
+shasum: bracket/snapshots/03/SKBracket.agda: No such file or directory
+bracket/snapshots/03/SKBracket.agda: FAILED open or read
+shasum: bracket/snapshots/03/SKSource.agda: No such file or directory
+bracket/snapshots/03/SKSource.agda: FAILED open or read
+shasum: bracket/snapshots/04/SKBracket.agda: No such file or directory
+bracket/snapshots/04/SKBracket.agda: FAILED open or read
+shasum: bracket/snapshots/04/SKSource.agda: No such file or directory
+bracket/snapshots/04/SKSource.agda: FAILED open or read
+shasum: bracket/snapshots/05/SKBracket.agda: No such file or directory
+bracket/snapshots/05/SKBracket.agda: FAILED open or read
+shasum: bracket/snapshots/05/SKSource.agda: No such file or directory
+bracket/snapshots/05/SKSource.agda: FAILED open or read
+shasum: bracket/snapshots/06/SKBracket.agda: No such file or directory
+bracket/snapshots/06/SKBracket.agda: FAILED open or read
+shasum: bracket/snapshots/06/SKSource.agda: No such file or directory
+bracket/snapshots/06/SKSource.agda: FAILED open or read
+shasum: bracket/snapshots/07/SKBracket.agda: No such file or directory
+bracket/snapshots/07/SKBracket.agda: FAILED open or read
+shasum: bracket/snapshots/07/SKSource.agda: No such file or directory
+bracket/snapshots/07/SKSource.agda: FAILED open or read
+shasum: bracket/start-01.txt: No such file or directory
+bracket/start-01.txt: FAILED open or read
+shasum: bracket/start-02.txt: No such file or directory
+bracket/start-02.txt: FAILED open or read
+shasum: bracket/start-03.txt: No such file or directory
+bracket/start-03.txt: FAILED open or read
+shasum: bracket/start-04.txt: No such file or directory
+bracket/start-04.txt: FAILED open or read
+shasum: bracket/start-05.txt: No such file or directory
+bracket/start-05.txt: FAILED open or read
+shasum: bracket/start-06.txt: No such file or directory
+bracket/start-06.txt: FAILED open or read
+shasum: bracket/start-07.txt: No such file or directory
+bracket/start-07.txt: FAILED open or read
+shasum: source-normal/COMMANDS.md: No such file or directory
+source-normal/COMMANDS.md: FAILED open or read
+shasum: source-normal/attempt1-SKSourceEquality.agda: No such file or directory
+source-normal/attempt1-SKSourceEquality.agda: FAILED open or read
+shasum: source-normal/attempt2-SKSourceEquality.agda: No such file or directory
+source-normal/attempt2-SKSourceEquality.agda: FAILED open or read
+shasum: source-normal/attempt2-exit.txt: No such file or directory
+source-normal/attempt2-exit.txt: FAILED open or read
+shasum: source-normal/attempt2-finished.txt: No such file or directory
+source-normal/attempt2-finished.txt: FAILED open or read
+shasum: source-normal/attempt2-source.sha256: No such file or directory
+source-normal/attempt2-source.sha256: FAILED open or read
+shasum: source-normal/attempt2-started.txt: No such file or directory
+source-normal/attempt2-started.txt: FAILED open or read
+shasum: source-normal/attempt2.log: No such file or directory
+source-normal/attempt2.log: FAILED open or read
+shasum: source-normal/attempt3-SKSourceEquality.agda: No such file or directory
+source-normal/attempt3-SKSourceEquality.agda: FAILED open or read
+shasum: source-normal/attempt3-exit.txt: No such file or directory
+source-normal/attempt3-exit.txt: FAILED open or read
+shasum: source-normal/attempt3-finished.txt: No such file or directory
+source-normal/attempt3-finished.txt: FAILED open or read
+shasum: source-normal/attempt3-source.sha256: No such file or directory
+source-normal/attempt3-source.sha256: FAILED open or read
+shasum: source-normal/attempt3-started.txt: No such file or directory
+source-normal/attempt3-started.txt: FAILED open or read
+shasum: source-normal/attempt3.log: No such file or directory
+source-normal/attempt3.log: FAILED open or read
+shasum: source-normal/check.log: No such file or directory
+source-normal/check.log: FAILED open or read
+shasum: source-normal/exit-code.txt: No such file or directory
+source-normal/exit-code.txt: FAILED open or read
+shasum: source-normal/final/COMMANDS.md: No such file or directory
+source-normal/final/COMMANDS.md: FAILED open or read
+shasum: source-normal/final/check.log: No such file or directory
+source-normal/final/check.log: FAILED open or read
+shasum: source-normal/final/exit-code.txt: No such file or directory
+source-normal/final/exit-code.txt: FAILED open or read
+shasum: source-normal/final/final-source/SKSourceEquality.agda: No such file or directory
+source-normal/final/final-source/SKSourceEquality.agda: FAILED open or read
+shasum: source-normal/final/final-source/SKSourceNormal.agda: No such file or directory
+source-normal/final/final-source/SKSourceNormal.agda: FAILED open or read
+shasum: source-normal/final/finished.txt: No such file or directory
+source-normal/final/finished.txt: FAILED open or read
+shasum: source-normal/final/sources.sha256: No such file or directory
+source-normal/final/sources.sha256: FAILED open or read
+shasum: source-normal/final/started.txt: No such file or directory
+source-normal/final/started.txt: FAILED open or read
+shasum: source-normal/finished.txt: No such file or directory
+source-normal/finished.txt: FAILED open or read
+shasum: source-normal/sources.sha256: No such file or directory
+source-normal/sources.sha256: FAILED open or read
+shasum: source-normal/started.txt: No such file or directory
+source-normal/started.txt: FAILED open or read
+shasum: source/COMMANDS.md: No such file or directory
+source/COMMANDS.md: FAILED open or read
+shasum: source/check01-exit.txt: No such file or directory
+source/check01-exit.txt: FAILED open or read
+shasum: source/check01-finished.txt: No such file or directory
+source/check01-finished.txt: FAILED open or read
+shasum: source/check01-started.txt: No such file or directory
+source/check01-started.txt: FAILED open or read
+shasum: source/check01.log: No such file or directory
+source/check01.log: FAILED open or read
+shasum: source/check02-exit.txt: No such file or directory
+source/check02-exit.txt: FAILED open or read
+shasum: source/check02-finished.txt: No such file or directory
+source/check02-finished.txt: FAILED open or read
+shasum: source/check02-started.txt: No such file or directory
+source/check02-started.txt: FAILED open or read
+shasum: source/check02.log: No such file or directory
+source/check02.log: FAILED open or read
+shasum: source/check03-exit.txt: No such file or directory
+source/check03-exit.txt: FAILED open or read
+shasum: source/check03-finished.txt: No such file or directory
+source/check03-finished.txt: FAILED open or read
+shasum: source/check03-started.txt: No such file or directory
+source/check03-started.txt: FAILED open or read
+shasum: source/check03.log: No such file or directory
+source/check03.log: FAILED open or read
+shasum: source/final-check.log: No such file or directory
+source/final-check.log: FAILED open or read
+shasum: source/final-exit.txt: No such file or directory
+source/final-exit.txt: FAILED open or read
+shasum: source/final-finished.txt: No such file or directory
+source/final-finished.txt: FAILED open or read
+shasum: source/final-source.sha256: No such file or directory
+source/final-source.sha256: FAILED open or read
+shasum: source/final-source/SKSource.agda: No such file or directory
+source/final-source/SKSource.agda: FAILED open or read
+shasum: source/final-started.txt: No such file or directory
+source/final-started.txt: FAILED open or read
+shasum: weak-normal/COMMANDS.md: No such file or directory
+weak-normal/COMMANDS.md: FAILED open or read
+shasum: weak-normal/check01-exit.txt: No such file or directory
+weak-normal/check01-exit.txt: FAILED open or read
+shasum: weak-normal/check01-finished.txt: No such file or directory
+weak-normal/check01-finished.txt: FAILED open or read
+shasum: weak-normal/check01-started.txt: No such file or directory
+weak-normal/check01-started.txt: FAILED open or read
+shasum: weak-normal/check01.log: No such file or directory
+weak-normal/check01.log: FAILED open or read
+shasum: weak-normal/check02-exit.txt: No such file or directory
+weak-normal/check02-exit.txt: FAILED open or read
+shasum: weak-normal/check02-finished.txt: No such file or directory
+weak-normal/check02-finished.txt: FAILED open or read
+shasum: weak-normal/check02-started.txt: No such file or directory
+weak-normal/check02-started.txt: FAILED open or read
+shasum: weak-normal/check02.log: No such file or directory
+weak-normal/check02.log: FAILED open or read
+shasum: weak-normal/final-check.log: No such file or directory
+weak-normal/final-check.log: FAILED open or read
+shasum: weak-normal/final-exit.txt: No such file or directory
+weak-normal/final-exit.txt: FAILED open or read
+shasum: weak-normal/final-finished.txt: No such file or directory
+weak-normal/final-finished.txt: FAILED open or read
+shasum: weak-normal/final-source.sha256: No such file or directory
+weak-normal/final-source.sha256: FAILED open or read
+shasum: weak-normal/final-source/SKCanonicalNormal.agda: No such file or directory
+weak-normal/final-source/SKCanonicalNormal.agda: FAILED open or read
+shasum: weak-normal/final-started.txt: No such file or directory
+weak-normal/final-started.txt: FAILED open or read
+shasum: weak-normal/safety-scan-exit.txt: No such file or directory
+weak-normal/safety-scan-exit.txt: FAILED open or read
+shasum: weak-normal/safety-scan.log: No such file or directory
+weak-normal/safety-scan.log: FAILED open or read
+shasum: weak-normal/whitespace-exit.txt: No such file or directory
+weak-normal/whitespace-exit.txt: FAILED open or read
+shasum: weak-normal/whitespace.log: No such file or directory
+weak-normal/whitespace.log: FAILED open or read
+shasum: WARNING: 137 listed files could not be read

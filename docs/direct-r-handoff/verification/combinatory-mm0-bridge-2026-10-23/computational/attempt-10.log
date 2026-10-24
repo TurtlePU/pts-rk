@@ -1,0 +1,50 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-computational.3tS6OZ/MM0ComputationalAdequacy.v", line 143, characters 53-64:
+Error:
+In environment
+sigma : nat -> Expr
+HS : ClosedSubstitution [NAT; NAT; NAT; NAT; NAT; NAT] sigma
+k, k0, k1 : nat
+H5 : Forall Meaning []
+Hk : sigma 0 = quote_nat k
+Hk0 : sigma 1 = quote_nat k0
+Hk1 : sigma 2 = quote_nat k1
+Hk2 : sigma 3 = quote_nat (Nat.max (S k) (S k0))
+Hk3 : sigma 4 = quote_nat (Nat.max (Nat.max (S k) (S k0)) k1)
+Hk4 : sigma 5 = quote_nat (Nat.max (S k) k0)
+Unable to unify
+ "ECons (EU (quote_nat k)) EZ
+    (ECons (EPi v0 (EU (quote_nat k0))) (ES (quote_nat k))
+       (ECons (EPi v1 (EPi (EApp v1 v0) (EU (quote_nat k1))))
+          (quote_nat (Nat.max (S k) (S k0)))
+          (ECons (EPi v2 (EPi (EApp v2 v0) (EApp (EApp v2 v1) v0)))
+             (quote_nat (Nat.max (Nat.max (S k) (S k0)) k1))
+             (ECons (EPi v3 (EApp v3 v0)) (quote_nat (Nat.max (S k) k0))
+                (ECons v4 (quote_nat k) ENil)))))"
+with
+ "ECons (EU (substitute sigma MM0FiniteAxioms.MM0FiniteAxioms.x0)) EZ
+    (ECons
+       (EPi (substitute sigma v0)
+          (EU (substitute sigma MM0FiniteAxioms.MM0FiniteAxioms.x1)))
+       (ES (substitute sigma MM0FiniteAxioms.MM0FiniteAxioms.x0))
+       (ECons
+          (EPi (substitute sigma v1)
+             (EPi (EApp (substitute sigma v1) (substitute sigma v0))
+                (EU (substitute sigma MM0FiniteAxioms.MM0FiniteAxioms.x2))))
+          (substitute sigma MM0FiniteAxioms.MM0FiniteAxioms.x3)
+          (ECons
+             (EPi (substitute sigma v2)
+                (EPi (EApp (substitute sigma v2) (substitute sigma v0))
+                   (EApp (EApp (substitute sigma v2) (substitute sigma v1))
+                      (substitute sigma v0))))
+             (substitute sigma MM0FiniteAxioms.MM0FiniteAxioms.x4)
+             (ECons
+                (EPi (substitute sigma v3)
+                   (EApp (substitute sigma v3) (substitute sigma v0)))
+                (substitute sigma MM0FiniteAxioms.MM0FiniteAxioms.x5)
+                (ECons (substitute sigma v4)
+                   (substitute sigma MM0FiniteAxioms.MM0FiniteAxioms.x0) ENil)))))".
+

@@ -1,0 +1,13 @@
+File "/tmp/pts-rk-native-model-boundary.iBL2hu/FiniteNativeModelBoundary.v", line 5, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "/tmp/pts-rk-native-model-boundary.iBL2hu/FiniteNativeModelBoundary.v", line 5, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "/tmp/pts-rk-native-model-boundary.iBL2hu/FiniteNativeModelBoundary.v", line 46, characters 18-19:
+Error: The variable j was not found in the current environment.
+

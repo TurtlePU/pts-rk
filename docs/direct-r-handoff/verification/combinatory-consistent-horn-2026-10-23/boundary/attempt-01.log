@@ -1,0 +1,6 @@
+File "./theories/CombinatoryLogic-rk/FiniteModelBoundary.v", line 9, characters 0-27:
+Warning: Trying to mask the absolute name "FiniteModelBoundary"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/CombinatoryLogic-rk/FiniteModelBoundary.v", line 60, characters 2-35:
+Error: Found no subterm matching "app (app k ?M746) ?M747" in Happly.
+

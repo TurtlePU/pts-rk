@@ -1,0 +1,30 @@
+Chars 0 - 68 [From~Stdlib~Require~Import~Lis...] 0.074 secs (0.061u,0.013s)
+File "./theories/CombinatoryLogic-rk/MM0FiniteSearch.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+Chars 69 - 104 [From~Stdlib~Require~Vectors.Ve...] 0.008 secs (0.004u,0.001s)
+Chars 105 - 224 [From~PTSrk.Combinatory~Require...] 0.015 secs (0.012u,0.002s)
+Chars 225 - 246 [Import~ListNotations.] 0. secs (0.u,0.s)
+Chars 771 - 794 [Module~MM0FiniteSearch.] 0. secs (0.u,0.s)
+Chars 795 - 837 [Import~MM0FiniteSignature~MM0F...] 0. secs (0.u,0.s)
+Chars 839 - 854 [Section~Search.] 0. secs (0.u,0.s)
+Chars 855 - 874 [Context~{D~:~Type}.] 0. secs (0.u,0.s)
+Chars 875 - 896 [Variable~(default~:~D).] 0. secs (0.u,0.s)
+Chars 897 - 924 [Variable~(elements~:~list~D).] 0. secs (0.u,0.s)
+Chars 925 - 984 [Variable~(value_eq_dec~:~foral...] 0. secs (0.u,0.s)
+Chars 986 - 1136 [Definition~checker~names~(alge...] 0. secs (0.u,0.s)
+Chars 1138 - 1246 [Lemma~checker_respects_operati...] 0. secs (0.u,0.s)
+Chars 1247 - 1253 [Proof.] 0. secs (0.u,0.s)
+Chars 1256 - 1269 [intros~a~b~H.] 0. secs (0.u,0.s)
+Chars 1272 - 1377 [exact~~~(checker_extensional~d...] 0. secs (0.u,0.s)
+Chars 1378 - 1382 [Qed.] 0. secs (0.u,0.s)
+Chars 1384 - 1525 [Definition~find_model~names~:=...] 0. secs (0.u,0.s)
+Chars 1527 - 1732 [Definition~returned_algebra~~~...] 0. secs (0.u,0.s)
+Chars 1734 - 1918 [Theorem~constructor_key_count~...] 0. secs (0.u,0.s)
+Chars 1919 - 1925 [Proof.] 0. secs (0.u,0.s)
+Chars 1928 - 1982 [rewrite~FiniteOperationAlgebra...] 0. secs (0.u,0.s)
+Chars 1985 - 2027 [cbn[operations~arity~map~list_...] 0. secs (0.u,0.s)
+File "./theories/CombinatoryLogic-rk/MM0FiniteSearch.v", line 48, characters 39-43:
+Error: Cannot find a declared ring structure over "nat".
+

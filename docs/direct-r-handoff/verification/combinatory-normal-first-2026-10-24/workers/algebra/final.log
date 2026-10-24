@@ -1,0 +1,15 @@
+Checking CanonicalAlgebra (/private/tmp/pts-rk-canonical-algebra.pAIEvR/source/CanonicalAlgebra.agda).
+ Checking PTSPrelude (/private/tmp/pts-rk-canonical-algebra.pAIEvR/source/PTSPrelude.agda).
+  Checking Cubical.Foundations.Prelude (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Foundations/Prelude.agda).
+   Checking Cubical.Core.Primitives (/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Core/Primitives.agda).
+/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Core/Primitives.agda:8.1-45: error: [InfectiveImport]
+Importing module Agda.Builtin.Cubical.Path using the
+--cubical/--erased-cubical flag from a module which does not.
+when scope checking the declaration
+  open import Agda.Builtin.Cubical.Path public
+
+/private/tmp/pts-rk-agda-2.8.0.MvVO53/cubical/Cubical/Core/Primitives.agda:8.1-45: error: [InfectiveImport]
+Importing module Agda.Builtin.Cubical.Path using the --two-level
+flag from a module which does not.
+when scope checking the declaration
+  open import Agda.Builtin.Cubical.Path public

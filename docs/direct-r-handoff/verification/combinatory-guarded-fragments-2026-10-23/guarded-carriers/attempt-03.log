@@ -1,0 +1,7 @@
+Warning:
+/private/tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v", line 53, characters 0-4:
+Error:  (in proof lookup_member): Attempt to save an incomplete proof
+(there are remaining open goals).

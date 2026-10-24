@@ -1,0 +1,776 @@
+Checking SKBracket (/private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda).
+ Checking SKSource (/private/tmp/pts-rk-skbracket.Cjke1Y/source/SKSource.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  Is usable at irrelevant modality: BoundedReduction.transpSteps
+                                    (λ i →
+                                       eval
+                                       (bracket
+                                        (SKBracket.transpX-Code
+                                         (λ j →
+                                            x
+                                            (Agda.Primitive.Cubical.primIMax j
+                                             (Agda.Primitive.Cubical.primINeg i)))
+                                         (Agda.Primitive.Cubical.primIMax
+                                          (Agda.Primitive.Cubical.primINeg i) φ)
+                                         (Agda.Primitive.Cubical.primTransp
+                                          (λ i₁ →
+                                             Code (Γ ▻ A)
+                                             (A₁ ⇒
+                                              x
+                                              (Agda.Primitive.Cubical.primIMin i₁
+                                               (Agda.Primitive.Cubical.primINeg i))))
+                                          (Agda.Primitive.Cubical.primIMax i φ) p
+                                          · p₁)))
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                        (Agda.Primitive.Cubical.primIMax i φ) ρ))
+                                    (λ i →
+                                       lam (decode A)
+                                       (eval
+                                        (SKBracket.transpX-Code
+                                         (λ j →
+                                            x
+                                            (Agda.Primitive.Cubical.primIMax j
+                                             (Agda.Primitive.Cubical.primINeg i)))
+                                         (Agda.Primitive.Cubical.primIMax
+                                          (Agda.Primitive.Cubical.primINeg i) φ)
+                                         (Agda.Primitive.Cubical.primTransp
+                                          (λ i₁ →
+                                             Code (Γ ▻ A)
+                                             (A₁ ⇒
+                                              x
+                                              (Agda.Primitive.Cubical.primIMin i₁
+                                               (Agda.Primitive.Cubical.primINeg i))))
+                                          (Agda.Primitive.Cubical.primIMax i φ) p
+                                          · p₁))
+                                        (extendEnv
+                                         (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                          (Agda.Primitive.Cubical.primIMax i φ) ρ))))
+                                    φ
+                                    (steps-trans
+                                     (BoundedReduction.transpSteps
+                                      (λ i →
+                                         eval
+                                         (bracket
+                                          (Agda.Primitive.Cubical.primTransp
+                                           (λ i₁ → Code (Γ ▻ A) (A₁ ⇒ x i₁)) φ p
+                                           · p₁))
+                                         (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n) φ ρ))
+                                      (λ i →
+                                         lam (decode A)
+                                         (app
+                                          (app
+                                           (eval-rename fsuc
+                                            (bracket
+                                             (Agda.Primitive.Cubical.primTransp
+                                              (λ i₁ → Code (Γ ▻ A) (A₁ ⇒ x i₁)) φ p))
+                                            (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n) φ ρ)
+                                            i)
+                                           (var fzero))
+                                          (app
+                                           (eval-rename fsuc (bracket p₁)
+                                            (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n) φ ρ)
+                                            i)
+                                           (var fzero))))
+                                      i0
+                                      (s-head
+                                       (eval
+                                        (bracket
+                                         (Agda.Primitive.Cubical.primTransp
+                                          (λ i → Code (Γ ▻ A) (A₁ ⇒ x i)) φ p))
+                                        (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ))
+                                       (eval (bracket p₁)
+                                        (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ))))
+                                     (steps-lam done
+                                      (steps-app
+                                       (abstract-applied
+                                        (Agda.Primitive.Cubical.primTransp
+                                         (λ i → Code (Γ ▻ A) (A₁ ⇒ x i)) φ p)
+                                        (λ x₁ →
+                                           shift
+                                           (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ
+                                            x₁))
+                                        (var fzero))
+                                       (abstract-applied p₁
+                                        (λ x₁ →
+                                           shift
+                                           (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ
+                                            x₁))
+                                        (var fzero)))))
+    (blocked on _A_965)
+  Is usable at irrelevant modality: BoundedReduction.transpSteps
+                                    (λ i →
+                                       eval
+                                       (bracket
+                                        (SKBracket.transpX-Code
+                                         (λ j →
+                                            x
+                                            (Agda.Primitive.Cubical.primIMax j
+                                             (Agda.Primitive.Cubical.primINeg i)))
+                                         (Agda.Primitive.Cubical.primIMax
+                                          (Agda.Primitive.Cubical.primINeg i) φ)
+                                         (cv
+                                          (Agda.Primitive.Cubical.primTransp
+                                           (λ i₁ →
+                                              Var (Γ ▻ A)
+                                              (x
+                                               (Agda.Primitive.Cubical.primIMin i₁
+                                                (Agda.Primitive.Cubical.primINeg i))))
+                                           (Agda.Primitive.Cubical.primIMax i φ) x₁))))
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                        (Agda.Primitive.Cubical.primIMax i φ) ρ))
+                                    (λ i →
+                                       lam (decode A)
+                                       (eval
+                                        (SKBracket.transpX-Code
+                                         (λ j →
+                                            x
+                                            (Agda.Primitive.Cubical.primIMax j
+                                             (Agda.Primitive.Cubical.primINeg i)))
+                                         (Agda.Primitive.Cubical.primIMax
+                                          (Agda.Primitive.Cubical.primINeg i) φ)
+                                         (cv
+                                          (Agda.Primitive.Cubical.primTransp
+                                           (λ i₁ →
+                                              Var (Γ ▻ A)
+                                              (x
+                                               (Agda.Primitive.Cubical.primIMin i₁
+                                                (Agda.Primitive.Cubical.primINeg i))))
+                                           (Agda.Primitive.Cubical.primIMax i φ) x₁)))
+                                        (extendEnv
+                                         (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                          (Agda.Primitive.Cubical.primIMax i φ) ρ))))
+                                    φ
+                                    (L.caseVar-rel
+                                     (λ z p t →
+                                        Steps
+                                        (eval p
+                                         (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ))
+                                        (lam (decode A) t))
+                                     (SKSource.transpVar (λ i → Γ ▻ A) (λ i → x i) φ x₁) identity
+                                     (λ y → k · cv y) (var fzero)
+                                     (λ j →
+                                        shift
+                                        (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ j))
+                                     identity-head
+                                     (λ y →
+                                        k-head
+                                        (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ
+                                         (L.eraseVar y))))
+    (blocked on _A_965)
+  Is usable at irrelevant modality: BoundedReduction.transpSteps
+                                    (λ i →
+                                       eval
+                                       (bracket
+                                        (SKBracket.transpX-Code
+                                         (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                         (Agda.Primitive.Cubical.primIMax
+                                          (Agda.Primitive.Cubical.primINeg i) φ)
+                                         (label x₁)))
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                        (Agda.Primitive.Cubical.primIMax i φ) ρ))
+                                    (λ i →
+                                       lam (decode A)
+                                       (eval
+                                        (SKBracket.transpX-Code
+                                         (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                         (Agda.Primitive.Cubical.primIMax
+                                          (Agda.Primitive.Cubical.primINeg i) φ)
+                                         (label x₁))
+                                        (extendEnv
+                                         (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                          (Agda.Primitive.Cubical.primIMax i φ) ρ))))
+                                    φ (k-head (U x₁))
+    (blocked on _A_965)
+  Is usable at irrelevant modality: BoundedReduction.transpSteps
+                                    (λ i →
+                                       eval
+                                       (bracket
+                                        (SKBracket.transpX-Code
+                                         (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                         (Agda.Primitive.Cubical.primIMax
+                                          (Agda.Primitive.Cubical.primINeg i) φ)
+                                         k))
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                        (Agda.Primitive.Cubical.primIMax i φ) ρ))
+                                    (λ i →
+                                       lam (decode A)
+                                       (eval
+                                        (SKBracket.transpX-Code
+                                         (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                         (Agda.Primitive.Cubical.primIMax
+                                          (Agda.Primitive.Cubical.primINeg i) φ)
+                                         k)
+                                        (extendEnv
+                                         (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                          (Agda.Primitive.Cubical.primIMax i φ) ρ))))
+                                    φ
+                                    (BoundedReduction.transpSteps
+                                     (λ i →
+                                        eval (bracket k)
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n) φ ρ))
+                                     (λ i → lam (decode A) (expand-rename fsuc SK.K i)) i0
+                                     (k-head (BinderFreeBoundary.expand SK.K)))
+    (blocked on _A_965)
+  Is usable at irrelevant modality: BoundedReduction.transpSteps
+                                    (λ i →
+                                       eval
+                                       (bracket
+                                        (SKBracket.transpX-Code
+                                         (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                         (Agda.Primitive.Cubical.primIMax
+                                          (Agda.Primitive.Cubical.primINeg i) φ)
+                                         s))
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                        (Agda.Primitive.Cubical.primIMax i φ) ρ))
+                                    (λ i →
+                                       lam (decode A)
+                                       (eval
+                                        (SKBracket.transpX-Code
+                                         (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                         (Agda.Primitive.Cubical.primIMax
+                                          (Agda.Primitive.Cubical.primINeg i) φ)
+                                         s)
+                                        (extendEnv
+                                         (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                          (Agda.Primitive.Cubical.primIMax i φ) ρ))))
+                                    φ
+                                    (BoundedReduction.transpSteps
+                                     (λ i →
+                                        eval (bracket s)
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n) φ ρ))
+                                     (λ i → lam (decode A) (expand-rename fsuc SK.S i)) i0
+                                     (k-head (BinderFreeBoundary.expand SK.S)))
+    (blocked on _A_965)
+  _A_719 (ρ = ρ) = A : Ty (blocked on _A_719)
+  decode _D_1139 = decode (_D_720 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_D_720, _D_1139))
+  decode _E_1140 = decode (_E_721 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_E_721, _E_1140))
+  decode _D_1139 = decode (_D_720 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_720, _D_1139))
+  _D_725 (ρ = ρ) = A : Ty (blocked on _D_725)
+  decode _A_1061 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_1061))
+  _E_721 (ρ = ρ) = A : Ty (blocked on _E_721)
+  _A_724 (ρ = ρ) = A : Ty (blocked on _A_724)
+  decode (_D_725 (ρ = ρ)) = pi (decode A) (decode A)
+    : Raw Nat (suc n)
+    (blocked on _D_725)
+  decode (_D_720 (ρ = ρ)) = pi (decode A) (decode A)
+    : Raw Nat (suc (suc n))
+    (blocked on _D_720)
+  decode (_D_720 (ρ = ρ)) = pi (decode A) (decode A)
+    : Raw Nat (suc n)
+    (blocked on _D_720)
+  decode _A_1033 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_1033))
+  rename (liftRenaming fsuc) (decode _D_1029)
+    = rename (liftRenaming fsuc) (decode _D_1020)
+    : Raw Nat (suc (suc n))
+    (blocked on any(_D_1020, _D_1029))
+  rename fsuc (decode _A_1028) = rename fsuc (decode _A_1019)
+    : Raw Nat (suc n)
+    (blocked on any(_A_1019, _A_1028))
+  decode _D_1029 = decode (_D_725 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_725, _D_1029))
+  decode _A_1028 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_1028))
+  decode _A_1024 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_1024))
+  decode _D_1020
+    = decode
+      (_D_725
+       (ρ = (λ i → caseFin i (var fzero) (λ j → rename fsuc (ρ j)))))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_D_725, _D_1020))
+  decode _A_1019
+    = decode
+      (_A_724
+       (ρ = (λ i → caseFin i (var fzero) (λ j → rename fsuc (ρ j)))))
+    : Raw Nat (suc n)
+    (blocked on any(_A_724, _A_1019))
+  rename (liftRenaming (liftRenaming fsuc)) (decode _A_997)
+    = rename (liftRenaming (liftRenaming fsuc)) (decode _A_987)
+    : Raw Nat (suc (suc (suc n)))
+    (blocked on any(_A_987, _A_997))
+  rename (liftRenaming (liftRenaming fsuc)) (decode _D_998)
+    = rename (liftRenaming (liftRenaming fsuc)) (decode _D_988)
+    : Raw Nat (suc (suc (suc n)))
+    (blocked on any(_D_988, _D_998))
+  rename (liftRenaming fsuc) (decode _A_997)
+    = rename (liftRenaming fsuc) (decode _A_987)
+    : Raw Nat (suc (suc n))
+    (blocked on any(_A_987, _A_997))
+  rename (liftRenaming (liftRenaming fsuc)) (decode _E_999)
+    = rename (liftRenaming (liftRenaming fsuc)) (decode _E_989)
+    : Raw Nat (suc (suc (suc n)))
+    (blocked on any(_E_989, _E_999))
+  rename (liftRenaming fsuc) (decode _D_998)
+    = rename (liftRenaming fsuc) (decode _D_988)
+    : Raw Nat (suc (suc n))
+    (blocked on any(_D_988, _D_998))
+  rename fsuc (decode _A_997) = rename fsuc (decode _A_987)
+    : Raw Nat (suc n)
+    (blocked on any(_A_987, _A_997))
+  decode _A_997 = decode (_A_719 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_A_719, _A_997))
+  decode _D_998 = decode (_D_720 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_D_720, _D_998))
+  decode _A_997 = decode (_A_719 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_A_719, _A_997))
+  decode _E_999 = decode (_E_721 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_E_721, _E_999))
+  decode _D_998 = decode (_D_720 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_720, _D_998))
+  decode _A_997 = decode (_A_719 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_719, _A_997))
+  decode _A_993 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_993))
+  decode _A_987
+    = decode
+      (_A_719
+       (ρ = (λ i → caseFin i (var fzero) (λ j → rename fsuc (ρ j)))))
+    : Raw Nat (suc (suc (suc n)))
+    (blocked on any(_A_719, _A_987))
+  decode _D_988
+    = decode
+      (_D_720
+       (ρ = (λ i → caseFin i (var fzero) (λ j → rename fsuc (ρ j)))))
+    : Raw Nat (suc (suc (suc n)))
+    (blocked on any(_D_720, _D_988))
+  decode _A_987
+    = decode
+      (_A_719
+       (ρ = (λ i → caseFin i (var fzero) (λ j → rename fsuc (ρ j)))))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_A_719, _A_987))
+  decode _E_989
+    = decode
+      (_E_721
+       (ρ = (λ i → caseFin i (var fzero) (λ j → rename fsuc (ρ j)))))
+    : Raw Nat (suc (suc (suc n)))
+    (blocked on any(_E_721, _E_989))
+  decode _D_988
+    = decode
+      (_D_720
+       (ρ = (λ i → caseFin i (var fzero) (λ j → rename fsuc (ρ j)))))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_D_720, _D_988))
+  decode _A_987
+    = decode
+      (_A_719
+       (ρ = (λ i → caseFin i (var fzero) (λ j → rename fsuc (ρ j)))))
+    : Raw Nat (suc n)
+    (blocked on any(_A_719, _A_987))
+  Is usable at irrelevant modality: BoundedReduction.transpSteps
+                                    (λ i →
+                                       app
+                                       (eval
+                                        (bracket
+                                         (SKBracket.transpX-Code
+                                          (λ j →
+                                             x
+                                             (Agda.Primitive.Cubical.primIMax j
+                                              (Agda.Primitive.Cubical.primINeg i)))
+                                          (Agda.Primitive.Cubical.primIMax
+                                           (Agda.Primitive.Cubical.primINeg i) φ)
+                                          (Agda.Primitive.Cubical.primTransp
+                                           (λ i₁ →
+                                              Code (Γ ▻ A)
+                                              (A₁ ⇒
+                                               x
+                                               (Agda.Primitive.Cubical.primIMin i₁
+                                                (Agda.Primitive.Cubical.primINeg i))))
+                                           (Agda.Primitive.Cubical.primIMax i φ) p
+                                           · p₁)))
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) ρ))
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Term n)
+                                        (Agda.Primitive.Cubical.primIMax i φ) a))
+                                    (λ i →
+                                       eval
+                                       (SKBracket.transpX-Code
+                                        (λ j →
+                                           x
+                                           (Agda.Primitive.Cubical.primIMax j
+                                            (Agda.Primitive.Cubical.primINeg i)))
+                                        (Agda.Primitive.Cubical.primIMax
+                                         (Agda.Primitive.Cubical.primINeg i) φ)
+                                        (Agda.Primitive.Cubical.primTransp
+                                         (λ i₁ →
+                                            Code (Γ ▻ A)
+                                            (A₁ ⇒
+                                             x
+                                             (Agda.Primitive.Cubical.primIMin i₁
+                                              (Agda.Primitive.Cubical.primINeg i))))
+                                         (Agda.Primitive.Cubical.primIMax i φ) p
+                                         · p₁))
+                                       (plugEnv
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) ρ)
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Term n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) a)))
+                                    φ
+                                    (steps-trans
+                                     (s-applied
+                                      (eval
+                                       (bracket
+                                        (Agda.Primitive.Cubical.primTransp
+                                         (λ i → Code (Γ ▻ A) (A₁ ⇒ x i)) φ p))
+                                       (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ))
+                                      (eval (bracket p₁)
+                                       (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ))
+                                      (Agda.Primitive.Cubical.primTransp (λ i → Term n) φ a))
+                                     (steps-app
+                                      (abstract-applied
+                                       (Agda.Primitive.Cubical.primTransp
+                                        (λ i → Code (Γ ▻ A) (A₁ ⇒ x i)) φ p)
+                                       (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ)
+                                       (Agda.Primitive.Cubical.primTransp (λ i → Term n) φ a))
+                                      (abstract-applied p₁
+                                       (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ)
+                                       (Agda.Primitive.Cubical.primTransp (λ i → Term n) φ a))))
+    (blocked on _A_845)
+  Is usable at irrelevant modality: BoundedReduction.transpSteps
+                                    (λ i →
+                                       app
+                                       (eval
+                                        (bracket
+                                         (SKBracket.transpX-Code
+                                          (λ j →
+                                             x
+                                             (Agda.Primitive.Cubical.primIMax j
+                                              (Agda.Primitive.Cubical.primINeg i)))
+                                          (Agda.Primitive.Cubical.primIMax
+                                           (Agda.Primitive.Cubical.primINeg i) φ)
+                                          (cv
+                                           (Agda.Primitive.Cubical.primTransp
+                                            (λ i₁ →
+                                               Var (Γ ▻ A)
+                                               (x
+                                                (Agda.Primitive.Cubical.primIMin i₁
+                                                 (Agda.Primitive.Cubical.primINeg i))))
+                                            (Agda.Primitive.Cubical.primIMax i φ) x₁))))
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) ρ))
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Term n)
+                                        (Agda.Primitive.Cubical.primIMax i φ) a))
+                                    (λ i →
+                                       eval
+                                       (SKBracket.transpX-Code
+                                        (λ j →
+                                           x
+                                           (Agda.Primitive.Cubical.primIMax j
+                                            (Agda.Primitive.Cubical.primINeg i)))
+                                        (Agda.Primitive.Cubical.primIMax
+                                         (Agda.Primitive.Cubical.primINeg i) φ)
+                                        (cv
+                                         (Agda.Primitive.Cubical.primTransp
+                                          (λ i₁ →
+                                             Var (Γ ▻ A)
+                                             (x
+                                              (Agda.Primitive.Cubical.primIMin i₁
+                                               (Agda.Primitive.Cubical.primINeg i))))
+                                          (Agda.Primitive.Cubical.primIMax i φ) x₁)))
+                                       (plugEnv
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) ρ)
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Term n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) a)))
+                                    φ
+                                    (L.caseVar-rel
+                                     (λ z p →
+                                        Steps
+                                        (app
+                                         (eval p
+                                          (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ))
+                                         (Agda.Primitive.Cubical.primTransp (λ i → Term n) φ a)))
+                                     (SKSource.transpVar (λ i → Γ ▻ A) (λ i → x i) φ x₁) identity
+                                     (λ y → k · cv y)
+                                     (Agda.Primitive.Cubical.primTransp (λ i → Term n) φ a)
+                                     (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ)
+                                     (identity-applied
+                                      (Agda.Primitive.Cubical.primTransp (λ i → Term n) φ a))
+                                     (λ y →
+                                        k-applied
+                                        (Agda.Primitive.Cubical.primTransp (λ i → Env Γ n) φ ρ
+                                         (L.eraseVar y))
+                                        (Agda.Primitive.Cubical.primTransp (λ i → Term n) φ a)))
+    (blocked on _A_845)
+  Is usable at irrelevant modality: BoundedReduction.transpSteps
+                                    (λ i →
+                                       app
+                                       (eval
+                                        (bracket
+                                         (SKBracket.transpX-Code
+                                          (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                          (Agda.Primitive.Cubical.primIMax
+                                           (Agda.Primitive.Cubical.primINeg i) φ)
+                                          (label x₁)))
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) ρ))
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Term n)
+                                        (Agda.Primitive.Cubical.primIMax i φ) a))
+                                    (λ i →
+                                       eval
+                                       (SKBracket.transpX-Code
+                                        (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                        (Agda.Primitive.Cubical.primIMax
+                                         (Agda.Primitive.Cubical.primINeg i) φ)
+                                        (label x₁))
+                                       (plugEnv
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) ρ)
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Term n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) a)))
+                                    φ
+                                    (k-applied (U x₁)
+                                     (Agda.Primitive.Cubical.primTransp (λ i → Term n) φ a))
+    (blocked on _A_845)
+  Is usable at irrelevant modality: BoundedReduction.transpSteps
+                                    (λ i →
+                                       app
+                                       (eval
+                                        (bracket
+                                         (SKBracket.transpX-Code
+                                          (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                          (Agda.Primitive.Cubical.primIMax
+                                           (Agda.Primitive.Cubical.primINeg i) φ)
+                                          k))
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) ρ))
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Term n)
+                                        (Agda.Primitive.Cubical.primIMax i φ) a))
+                                    (λ i →
+                                       eval
+                                       (SKBracket.transpX-Code
+                                        (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                        (Agda.Primitive.Cubical.primIMax
+                                         (Agda.Primitive.Cubical.primINeg i) φ)
+                                        k)
+                                       (plugEnv
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) ρ)
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Term n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) a)))
+                                    φ
+                                    (k-applied (BinderFreeBoundary.expand SK.K)
+                                     (Agda.Primitive.Cubical.primTransp (λ i → Term n) φ a))
+    (blocked on _A_845)
+  Is usable at irrelevant modality: BoundedReduction.transpSteps
+                                    (λ i →
+                                       app
+                                       (eval
+                                        (bracket
+                                         (SKBracket.transpX-Code
+                                          (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                          (Agda.Primitive.Cubical.primIMax
+                                           (Agda.Primitive.Cubical.primINeg i) φ)
+                                          s))
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) ρ))
+                                       (Agda.Primitive.Cubical.primTransp (λ i₁ → Term n)
+                                        (Agda.Primitive.Cubical.primIMax i φ) a))
+                                    (λ i →
+                                       eval
+                                       (SKBracket.transpX-Code
+                                        (λ j → x (Agda.Primitive.Cubical.primIMin j i))
+                                        (Agda.Primitive.Cubical.primIMax
+                                         (Agda.Primitive.Cubical.primINeg i) φ)
+                                        s)
+                                       (plugEnv
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Env Γ n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) ρ)
+                                        (Agda.Primitive.Cubical.primTransp (λ i₁ → Term n)
+                                         (Agda.Primitive.Cubical.primIMax i φ) a)))
+                                    φ
+                                    (k-applied (BinderFreeBoundary.expand SK.S)
+                                     (Agda.Primitive.Cubical.primTransp (λ i → Term n) φ a))
+    (blocked on _A_845)
+  decode _A_906 = decode (_A_719 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_A_719, _A_906))
+  decode _D_907 = decode (_D_720 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_D_720, _D_907))
+  decode _A_906 = decode (_A_719 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_A_719, _A_906))
+  decode _E_908 = decode (_E_721 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_E_721, _E_908))
+  decode _D_907 = decode (_D_720 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_720, _D_907))
+  decode _A_906 = decode (_A_719 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_719, _A_906))
+  decode _D_895 = decode (_D_725 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_725, _D_895))
+  decode _A_894 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_894))
+  decode _A_890 = decode (_D_725 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_725, _A_890))
+  decode _A_890 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_890))
+  decode (_D_725 (ρ = ρ)) = pi (decode _A_890) (decode _A_890)
+    : Raw Nat (suc n)
+    (blocked on _D_725)
+  decode _A_890 = decode (_A_719 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_A_719, _A_890))
+  decode (_D_720 (ρ = ρ)) = pi (decode _A_890) (decode _A_890)
+    : Raw Nat (suc (suc n))
+    (blocked on _D_720)
+  decode _A_890 = decode (_A_719 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_A_719, _A_890))
+  decode _A_890 = decode (_E_721 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_E_721, _A_890))
+  decode (_D_720 (ρ = ρ)) = pi (decode _A_890) (decode _A_890)
+    : Raw Nat (suc n)
+    (blocked on _D_720)
+  decode _A_890 = decode (_A_719 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_719, _A_890))
+  decode _D_871 = decode (_D_725 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_725, _D_871))
+  decode _A_870 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_870))
+  decode _D_866 = decode (_D_725 (ρ = (plugEnv ρ a)))
+    : Raw Nat (suc n)
+    (blocked on any(_D_725, _D_866))
+  decode _A_865 = decode (_A_724 (ρ = (plugEnv ρ a))) : Raw Nat n
+    (blocked on any(_A_724, _A_865))
+  decode _D_866 = decode (_D_725 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_725, _D_866))
+  decode _A_865 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_865))
+  decode _D_862 = decode (_D_725 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_725, _D_862))
+  decode _A_861 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_861))
+  decode _A_855 = decode (_A_719 (ρ = (plugEnv ρ a)))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_A_719, _A_855))
+  decode _D_856 = decode (_D_720 (ρ = (plugEnv ρ a)))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_D_720, _D_856))
+  decode _A_855 = decode (_A_719 (ρ = (plugEnv ρ a)))
+    : Raw Nat (suc n)
+    (blocked on any(_A_719, _A_855))
+  decode _E_857 = decode (_E_721 (ρ = (plugEnv ρ a)))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_E_721, _E_857))
+  decode _D_856 = decode (_D_720 (ρ = (plugEnv ρ a)))
+    : Raw Nat (suc n)
+    (blocked on any(_D_720, _D_856))
+  decode _A_855 = decode (_A_719 (ρ = (plugEnv ρ a))) : Raw Nat n
+    (blocked on any(_A_719, _A_855))
+  decode _A_855 = decode (_A_719 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_A_719, _A_855))
+  decode _D_856 = decode (_D_720 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_D_720, _D_856))
+  decode _A_855 = decode (_A_719 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_A_719, _A_855))
+  decode _E_857 = decode (_E_721 (ρ = ρ)) : Raw Nat (suc (suc n))
+    (blocked on any(_E_721, _E_857))
+  decode _D_856 = decode (_D_720 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_720, _D_856))
+  decode _A_855 = decode (_A_719 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_719, _A_855))
+  decode _D_852 = decode (_D_725 (ρ = ρ)) : Raw Nat (suc n)
+    (blocked on any(_D_725, _D_852))
+  decode _A_851 = decode (_A_724 (ρ = ρ)) : Raw Nat n
+    (blocked on any(_A_724, _A_851))
+  decode _D_788 = decode (_D_725 (ρ = (λ x → rename ren (ρ x))))
+    : Raw Nat (suc n)
+    (blocked on any(_D_725, _D_788))
+  decode _A_787 = decode (_A_724 (ρ = (λ x → rename ren (ρ x))))
+    : Raw Nat n
+    (blocked on any(_A_724, _A_787))
+  rename (liftRenaming ren) (decode _D_788)
+    = rename (liftRenaming ren) (decode (_D_725 (ρ = ρ)))
+    : Raw Nat (suc n)
+    (blocked on any(_D_725, _D_788))
+  rename ren (decode _A_787) = rename ren (decode (_A_724 (ρ = ρ)))
+    : Raw Nat n
+    (blocked on any(_A_724, _A_787))
+  decode _A_779 = decode (_A_719 (ρ = (λ x → rename ren (ρ x))))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_A_719, _A_779))
+  decode _D_780 = decode (_D_720 (ρ = (λ x → rename ren (ρ x))))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_D_720, _D_780))
+  decode _A_779 = decode (_A_719 (ρ = (λ x → rename ren (ρ x))))
+    : Raw Nat (suc n)
+    (blocked on any(_A_719, _A_779))
+  decode _E_781 = decode (_E_721 (ρ = (λ x → rename ren (ρ x))))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_E_721, _E_781))
+  decode _D_780 = decode (_D_720 (ρ = (λ x → rename ren (ρ x))))
+    : Raw Nat (suc n)
+    (blocked on any(_D_720, _D_780))
+  decode _A_779 = decode (_A_719 (ρ = (λ x → rename ren (ρ x))))
+    : Raw Nat n
+    (blocked on any(_A_719, _A_779))
+  rename (liftRenaming (liftRenaming ren)) (decode _A_779)
+    = rename (liftRenaming (liftRenaming ren))
+      (decode (_A_719 (ρ = ρ)))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_A_719, _A_779))
+  rename (liftRenaming (liftRenaming ren)) (decode _D_780)
+    = rename (liftRenaming (liftRenaming ren))
+      (decode (_D_720 (ρ = ρ)))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_D_720, _D_780))
+  rename (liftRenaming ren) (decode _A_779)
+    = rename (liftRenaming ren) (decode (_A_719 (ρ = ρ)))
+    : Raw Nat (suc n)
+    (blocked on any(_A_719, _A_779))
+  rename (liftRenaming (liftRenaming ren)) (decode _E_781)
+    = rename (liftRenaming (liftRenaming ren))
+      (decode (_E_721 (ρ = ρ)))
+    : Raw Nat (suc (suc n))
+    (blocked on any(_E_721, _E_781))
+  rename (liftRenaming ren) (decode _D_780)
+    = rename (liftRenaming ren) (decode (_D_720 (ρ = ρ)))
+    : Raw Nat (suc n)
+    (blocked on any(_D_720, _D_780))
+  rename ren (decode _A_779) = rename ren (decode (_A_719 (ρ = ρ)))
+    : Raw Nat n
+    (blocked on any(_A_719, _A_779))
+
+/private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:132.28-182.54: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:132.28-32
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:133.28-32
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:146.23-45
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:146.41-45
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:147.23-45
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:147.41-45
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:153.49-56
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:154.26-35
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:154.26-60
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:154.53-57
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:155.26-35
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:155.26-60
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:155.53-57
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:156.34-43
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:156.34-51
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:160.36-52
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:160.36-54
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:161.12-21
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:161.12-42
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:163.4-13
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:163.4-57
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:167.57-66
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:168.32-70
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:168.65-69
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:169.4-10
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:169.4-33
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:169.28-32
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:170.32-70
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:170.65-69
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:171.4-10
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:171.4-33
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:171.28-32
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:172.32-38
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:172.32-44
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:177.5-18
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:177.26-32
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:177.26-51
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:182.6-12
+  /private/tmp/pts-rk-skbracket.Cjke1Y/source/SKBracket.agda:182.6-54

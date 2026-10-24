@@ -1,0 +1,16 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-finite-map-coherence.yhY8kT/FiniteMapCoherence.v", line 245, characters 13-36:
+Error:
+In environment
+n : nat
+G : Ctx nat n
+k, l, m : nat
+f : Fin k -> Fin l
+g : Fin l -> Fin m
+h : Fin k -> Fin m
+i : Fin ?M1264
+Unable to unify "run ?p i = run ?r i" with "g (f i) = h i".
+

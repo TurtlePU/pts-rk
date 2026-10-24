@@ -1,0 +1,5 @@
+shasum -a 256 -c docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24/audit.lNl9UC/source-after.log
+shasum -a 256 -c docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24/note.v704EG/final-manifest.log
+git diff --check -- theories/CombinatoryLogic-rk docs/direct-r-handoff/STATE.md docs/direct-r-handoff/DECISIONS.md docs/direct-r-handoff/BUILD.md docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24
+new_file_whitespace
+shasum -a 256 docs/direct-r-handoff/STATE.md docs/direct-r-handoff/DECISIONS.md docs/direct-r-handoff/BUILD.md theories/CombinatoryLogic-rk/EVIDENCE.md theories/CombinatoryLogic-rk/README.md docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24/COMMANDS.md

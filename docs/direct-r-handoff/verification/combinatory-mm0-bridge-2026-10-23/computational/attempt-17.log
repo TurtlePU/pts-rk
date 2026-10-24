@@ -1,0 +1,32 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-computational.3tS6OZ/MM0ComputationalAdequacy.v", line 351, characters 26-30:
+Error:
+In environment
+M1, M2 : Expr
+IHM1 :
+  SortedExpr [] M1 TM ->
+  forall k : nat,
+  inhabited (Derivation all_axioms (aLift (quote_nat k) M1 (raw_lift k M1)))
+IHM2 :
+  SortedExpr [] M2 TM ->
+  forall k : nat,
+  inhabited (Derivation all_axioms (aLift (quote_nat k) M2 (raw_lift k M2)))
+HT : SortedExpr [] (EPi M1 M2) TM
+k : nat
+H1 : SortedExpr [] M1 TM
+H2 : SortedExpr [] M2 TM
+Unable to unify
+ "inhabited
+    (Derivation all_axioms (aLift (quote_nat ?k) M2 (raw_lift ?k M2)))"
+with
+ "inhabited
+    (Derivation all_axioms
+       (substitute_atom
+          (arguments [quote_nat k; M1; raw_lift k M1; M2; raw_lift (S k) M2])
+          (aLift (ES MM0FiniteAxioms.MM0FiniteAxioms.x0)
+             MM0FiniteAxioms.MM0FiniteAxioms.x3
+             MM0FiniteAxioms.MM0FiniteAxioms.x4)))".
+

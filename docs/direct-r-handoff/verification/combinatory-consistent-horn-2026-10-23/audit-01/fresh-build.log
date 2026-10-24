@@ -1,0 +1,5 @@
+Error: Multiple rules generated for
+/tmp/pts-rk-consistent-horn.zEqVhw/default/theories/CombinatoryLogic-rk/NativeCanonicity.glob:
+- theories/CombinatoryLogic-rk/dune:1
+- file present in source tree
+Hint: rm -f theories/CombinatoryLogic-rk/NativeCanonicity.glob

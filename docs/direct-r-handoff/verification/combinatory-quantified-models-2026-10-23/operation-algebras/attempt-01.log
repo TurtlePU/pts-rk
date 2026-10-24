@@ -1,0 +1,7 @@
+File "./theories/CombinatoryLogic-rk/FiniteOperationAlgebras.v", line 2, characters 0-35:
+Warning: Using Vector.t is known to be technically difficult, see
+<https://github.com/coq/stdlib/blob/master/theories/Vectors/Vector.v>.
+[warn-library-file-stdlib-vector,stdlib-vector,warn-library-file,user-warn,default]
+File "./theories/CombinatoryLogic-rk/FiniteOperationAlgebras.v", line 48, characters 58-69:
+Error: No applicable tactic.
+

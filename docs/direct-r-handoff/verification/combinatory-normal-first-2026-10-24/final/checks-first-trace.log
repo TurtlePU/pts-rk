@@ -1,0 +1,33 @@
++ set -euo pipefail
+++ dirname docs/direct-r-handoff/verification/combinatory-normal-first-2026-10-24/FINAL-CHECKS.sh
++ cd docs/direct-r-handoff/verification/combinatory-normal-first-2026-10-24/../../../..
++ evidence=docs/direct-r-handoff/verification/combinatory-normal-first-2026-10-24
++ shasum -a 256 -c docs/direct-r-handoff/verification/combinatory-normal-first-2026-10-24/agda/sources.sha256
++ shasum -a 256 -c docs/direct-r-handoff/verification/combinatory-normal-first-2026-10-24/final/baseline-sources.sha256
++ shasum -a 256 -c docs/direct-r-handoff/verification/combinatory-normal-first-2026-10-24/note/inspection-pdf.sha256
++ owned=(CanonicalAlgebra NormalizedSubstitution SKBracketSize SKCanonicalExamples SKDirectBoundary SKDirectGround SKDirectSoundness SKSourceRank)
++ source_files=()
++ for name in '"${owned[@]}"'
++ source_files+=("theories/CombinatoryLogic-rk/agda/$name.agda")
++ for name in '"${owned[@]}"'
++ source_files+=("theories/CombinatoryLogic-rk/agda/$name.agda")
++ for name in '"${owned[@]}"'
++ source_files+=("theories/CombinatoryLogic-rk/agda/$name.agda")
++ for name in '"${owned[@]}"'
++ source_files+=("theories/CombinatoryLogic-rk/agda/$name.agda")
++ for name in '"${owned[@]}"'
++ source_files+=("theories/CombinatoryLogic-rk/agda/$name.agda")
++ for name in '"${owned[@]}"'
++ source_files+=("theories/CombinatoryLogic-rk/agda/$name.agda")
++ for name in '"${owned[@]}"'
++ source_files+=("theories/CombinatoryLogic-rk/agda/$name.agda")
++ for name in '"${owned[@]}"'
++ source_files+=("theories/CombinatoryLogic-rk/agda/$name.agda")
++ set +e
++ rg -n 'TERMINATING|NON_TERMINATING|NO_POSITIVITY_CHECK|NO_UNIVERSE_CHECK|allow-unsolved|postulate|Admitted|unsafe' theories/CombinatoryLogic-rk/agda/CanonicalAlgebra.agda theories/CombinatoryLogic-rk/agda/NormalizedSubstitution.agda theories/CombinatoryLogic-rk/agda/SKBracketSize.agda theories/CombinatoryLogic-rk/agda/SKCanonicalExamples.agda theories/CombinatoryLogic-rk/agda/SKDirectBoundary.agda theories/CombinatoryLogic-rk/agda/SKDirectGround.agda theories/CombinatoryLogic-rk/agda/SKDirectSoundness.agda theories/CombinatoryLogic-rk/agda/SKSourceRank.agda
++ scan=1
++ printf '%s\n' 1
++ set -e
++ test 1 = 1
++ for file in '"${source_files[@]}"' '"$evidence/COMMANDS.md"' '"$evidence/inspect.swift"' '"$evidence/COLLECT.sh"' '"$evidence/FINAL-CHECKS.sh"'
++ git diff --no-index --check /dev/null theories/CombinatoryLogic-rk/agda/CanonicalAlgebra.agda

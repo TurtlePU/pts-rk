@@ -1,0 +1,178 @@
+From Stdlib Require Import Lists.List Bool.Bool Arith.PeanoNat Lia.
+From Stdlib Require Vectors.Vector.
+From PTSrk.Combinatory Require Import GuardedFiniteCarriers FiniteUniversalHorn
+  MM0FiniteSignature MM0FiniteAxioms MM0SyntaxSoundness
+  MM0GuardedQuantification MM0GuardedSyntaxAlgebra.
+Import ListNotations.
+
+(** Finite raw source-instance provenance.  Observation None is genuine
+    overflow, distinct from Some EZ.  Constructor evaluation and guards below
+    inspect only closed first-order trees, sorting and numerical bounds.
+    No relation model, native typing or source deduction is an input. *)
+Module MM0GuardProvenance.
+Import MM0FiniteSignature MM0FiniteAxioms MM0SyntaxSoundness.
+Module A := MM0GuardedSyntaxAlgebra.
+Module C := GuardedFiniteCarriers.
+Module G := MM0GuardedQuantification.
+Module U := FiniteUniversalHorn.
+
+Definition Observation := option Expr.
+Definition observations N d := None :: map (@Some Expr) (A.syntax_list N d).
+Definition fallback (x : Observation) := match x with Some e => e | None => EZ end.
+Definition present (x : Observation) := match x with Some _ => true | None => false end.
+Definition reify N d (x : Observation) : A.Domain N d :=
+  match x with Some e => A.quote N d e | None => None end.
+Definition clip N d e : Observation :=
+  if in_dec A.expr_eq_dec e (A.syntax_list N d) then Some e else None.
+
+Theorem observation_exact N d x : In x (observations N d) <->
+  x = None \/ exists e, x = Some e /\ A.FitsSyntax N d e.
+Proof.
+  unfold observations; cbn; rewrite in_map_iff; split.
+  - intros [H | [e [H HE]]]; [left; symmetry; exact H | right].
+    exists e; split; [symmetry; exact H | now apply A.syntax_list_exact].
+  - intros [-> | [e [-> HE]]]; [left; reflexivity | right].
+    exists e; split; [reflexivity | now apply A.syntax_list_exact].
+Qed.
+
+Theorem decode_observation N d a : In (A.decode N d a) (observations N d).
+Proof.
+  apply observation_exact; destruct (A.decode N d a) as [e|] eqn:HE; [right|now left].
+  exists e; split; [reflexivity | now apply A.decode_admitted with (a := a)].
+Qed.
+
+Theorem reify_decodes N d x : In x (observations N d) ->
+  A.decode N d (reify N d x) = x.
+Proof.
+  rewrite observation_exact; intros [-> | [e [-> HE]]]; [reflexivity |].
+  now apply A.quote_decode_exact.
+Qed.
+
+Theorem clip_quote N d e : A.decode N d (A.quote N d e) = clip N d e.
+Proof.
+  unfold clip; destruct (in_dec A.expr_eq_dec e (A.syntax_list N d)) as [H|H].
+  - apply A.quote_decode_exact, A.syntax_list_exact, H.
+  - unfold A.decode, A.quote; rewrite (proj2 (C.encode_overflow _ _ _ _) H); reflexivity.
+Qed.
+
+Definition unary N d (f : Expr -> Expr) x := match x with Some e => clip N d (f e) | None => None end.
+Definition binary N d (f : Expr -> Expr -> Expr) x y :=
+  match x,y with Some e,Some e' => clip N d (f e e') | _,_ => None end.
+Definition ternary N d (f : Expr -> Expr -> Expr -> Expr) x y z :=
+  match x,y,z with Some e,Some e',Some e'' => clip N d (f e e' e'') | _,_,_ => None end.
+
+Fixpoint evaluate_raw N d (env : list Observation) e : Observation :=
+  match e with
+  | EVar i => nth i env None
+  | EZ => clip N d EZ
+  | ES x => unary N d ES (evaluate_raw N d env x)
+  | EU x => unary N d EU (evaluate_raw N d env x)
+  | EV x => unary N d EV (evaluate_raw N d env x)
+  | EApp x y => binary N d EApp (evaluate_raw N d env x) (evaluate_raw N d env y)
+  | EPi x y => binary N d EPi (evaluate_raw N d env x) (evaluate_raw N d env y)
+  | ELam x y => binary N d ELam (evaluate_raw N d env x) (evaluate_raw N d env y)
+  | ENil => clip N d ENil
+  | ECons x y z => ternary N d ECons (evaluate_raw N d env x)
+      (evaluate_raw N d env y) (evaluate_raw N d env z)
+  end.
+
+Theorem evaluate_raw_exact N d env e :
+  evaluate_raw N d (map (A.decode N d) env) e =
+  A.decode N d (evaluate None (A.algebra N d) env e).
+Proof.
+  induction e; cbn [evaluate_raw evaluate A.algebra];
+    cbv beta iota zeta delta [Vector.hd Vector.tl Vector.caseS].
+  - change (nth n (map (A.decode N d) env) (A.decode N d None) =
+      A.decode N d (nth n env None)); apply map_nth.
+  - symmetry; apply clip_quote.
+  - rewrite IHe; unfold A.unary, C.lift1, unary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e));
+      [symmetry; apply clip_quote | reflexivity].
+  - rewrite IHe; unfold A.unary, C.lift1, unary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e));
+      [symmetry; apply clip_quote | reflexivity].
+  - rewrite IHe; unfold A.unary, C.lift1, unary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e));
+      [symmetry; apply clip_quote | reflexivity].
+  - rewrite IHe1, IHe2; unfold A.binary, C.lift2, binary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e1));
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e2));
+      try reflexivity; symmetry; apply clip_quote.
+  - rewrite IHe1, IHe2; unfold A.binary, C.lift2, binary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e1));
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e2));
+      try reflexivity; symmetry; apply clip_quote.
+  - rewrite IHe1, IHe2; unfold A.binary, C.lift2, binary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e1));
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e2));
+      try reflexivity; symmetry; apply clip_quote.
+  - symmetry; apply clip_quote.
+  - rewrite IHe1, IHe2, IHe3; unfold A.ternary, C.lift3, ternary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e1));
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e2));
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e3));
+      try reflexivity; symmetry; apply clip_quote.
+Qed.
+
+Definition raw_atom N d env (a : Atom) : GroundAtom Observation :=
+  (fst a, map (evaluate_raw N d env) (snd a)).
+Definition observe_atom N d (a : GroundAtom (A.Domain N d)) : GroundAtom Observation :=
+  (fst a, map (A.decode N d) (snd a)).
+
+Theorem raw_atom_exact N d env a :
+  raw_atom N d (map (A.decode N d) env) a =
+  observe_atom N d (evaluate_atom None (A.algebra N d) env a).
+Proof.
+  unfold raw_atom, observe_atom, evaluate_atom; cbn; rewrite map_map; f_equal.
+  apply map_ext, evaluate_raw_exact.
+Qed.
+
+Definition raw_substitution (env : list Observation) i := nth i (map fallback env) EZ.
+Definition raw_guard N d r (env : list Observation) :=
+  forallb present env && G.instance_guard N d r (raw_substitution env) &&
+  arguments_sorted [] (map fallback env) (variables r).
+
+Lemma vector_to_list_map X Y (f : X -> Y) n (v : Vector.t X n) :
+  Vector.to_list (Vector.map f v) = map f (Vector.to_list v).
+Proof.
+  induction v; [reflexivity |].
+  change (f h :: Vector.to_list (Vector.map f v) = f h :: map f (Vector.to_list v)).
+  now rewrite IHv.
+Qed.
+
+Lemma forallb_map X Y (f : X -> Y) p xs :
+  forallb p (map f xs) = forallb (fun x => p (f x)) xs.
+Proof. induction xs; cbn; congruence. Qed.
+
+Lemma forallb_ext X (p q : X -> bool) xs :
+  (forall x, p x = q x) -> forallb p xs = forallb q xs.
+Proof. intro H; induction xs; cbn; [reflexivity | now rewrite H, IHxs]. Qed.
+
+Theorem raw_guard_exact N d r env :
+  raw_guard N d r (map (A.decode N d) (Vector.to_list env)) = A.guard N d r env.
+Proof.
+  unfold raw_guard, A.guard, G.structural_guard, raw_substitution,
+    A.decoded_substitution; rewrite !map_map, forallb_map.
+  assert (HR : (fun x => fallback (A.decode N d x)) = A.raw N d) by reflexivity.
+  rewrite HR; f_equal; f_equal; apply forallb_ext; intros [i|]; reflexivity.
+Qed.
+
+Theorem raw_guard_spec N d r env : raw_guard N d r env = true <->
+  Forall (fun x => present x = true) env /\
+  G.Bounds N d (G.instance_expressions r (raw_substitution env)) /\
+  Forall2 (SortedExpr []) (map fallback env) (variables r).
+Proof.
+  unfold raw_guard, G.instance_guard; rewrite !andb_true_iff,
+    G.expressions_guard_exact, arguments_sorted_exact, forallb_forall, Forall_forall.
+  tauto.
+Qed.
+
+Print Assumptions observation_exact.
+Print Assumptions decode_observation.
+Print Assumptions reify_decodes.
+Print Assumptions clip_quote.
+Print Assumptions evaluate_raw_exact.
+Print Assumptions raw_atom_exact.
+Print Assumptions raw_guard_exact.
+Print Assumptions raw_guard_spec.
+End MM0GuardProvenance.

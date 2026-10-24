@@ -1,0 +1,11 @@
+File "/tmp/pts-rk-finite-internal.6wfWep/FiniteModelRealization.v", line 48, characters 0-81:
+Error:
+The following term contains unresolved implicit arguments:
+  (fun premises : list ?T => match premises with
+                             | [] => 1
+                             | _ :: _ => 2
+                             end)
+More precisely: 
+- ?T: Cannot infer the 1st argument of the inductive type (list) of this
+  term.
+

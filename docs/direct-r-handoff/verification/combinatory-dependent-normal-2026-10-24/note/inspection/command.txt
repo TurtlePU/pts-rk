@@ -1,0 +1,1 @@
+swift /Users/akuklev/air/pts-rk/docs/direct-r-handoff/verification/combinatory-dependent-normal-2026-10-24/inspect.swift /Users/akuklev/air/pts-rk/theories/CombinatoryLogic-rk/CombinatoryPTS-rk.pdf /tmp/pts-rk-dependent-normal-pdf.Mz2e0Y

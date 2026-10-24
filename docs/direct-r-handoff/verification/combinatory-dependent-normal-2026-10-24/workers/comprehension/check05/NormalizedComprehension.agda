@@ -1,0 +1,219 @@
+{-# OPTIONS --cubical --safe --guardedness #-}
+module NormalizedComprehension where
+
+-- Comprehension of ORIGINAL dependent contexts by normal substitutions.
+-- Only typing witnesses are truncated; equations compare literal images.
+open import PTSPrelude
+open import BoundedReduction
+open import NativeTyping
+open import NativeAlgebra using (fin-cases; replace-rename)
+open import NativeSubstitution using (TypedSub; typed-replace; typed-lift)
+open import NativePreservation using (context-last-change)
+open import NativeValuations
+open import NativeNormalization using (normal-convertible-unique)
+open import NativeInversion using (beta-path)
+open import NormalizedSubstitution
+open import NormalizedFamilies
+open import Cubical.Data.Unit using (tt)
+open import Cubical.HITs.PropositionalTruncation using (∥_∥₁; ∣_∣₁; squash₁)
+import Cubical.HITs.PropositionalTruncation as PT
+
+private
+  variable
+    l m n : Nat
+
+terminalNF : (Δ : Context n) → SubNF empty Δ
+terminalNF Δ = pack (terminal Δ) (λ ())
+
+terminal-unique : {Δ : Context n} (σ : SubNF empty Δ)
+  → σ ≡ terminalNF Δ
+terminal-unique σ = sub-path (λ ())
+
+projectionNF : (Γ : Context n) (A : Term n) → SubNF Γ (extend Γ A)
+projectionNF Γ A = pack (projection Γ A) (λ i → tt)
+
+restrictNF : {Γ : Context m} {Δ : Context n} {A : Term m}
+  → SubNF (extend Γ A) Δ → SubNF Γ Δ
+restrictNF {Γ = Γ} {Δ} {A} (sub σ ns hs) = sub
+  (λ i → σ (fsuc i)) (λ i → ns (fsuc i))
+  (PT.map (λ ps → images-typed (restrict
+    (valuation {Γ = extend Γ A} {Δ = Δ} σ ps))) hs)
+
+lastNF : {Γ : Context m} {Δ : Context n} {A : Term m}
+  → SubNF (extend Γ A) Δ → Term n
+lastNF σ = sub-images σ fzero
+
+last-normal : {Γ : Context m} {Δ : Context n} {A : Term m}
+  (σ : SubNF (extend Γ A) Δ) → Normal (lastNF σ)
+last-normal σ = sub-normal σ fzero
+
+last-typing : {Γ : Context m} {Δ : Context n} {A : Term m}
+  (σ : SubNF (extend Γ A) Δ)
+  → ∥ Typ Δ (lastNF σ) (replace (sub-images (restrictNF σ)) A) ∥₁
+last-typing {Γ = Γ} {Δ} {A} (sub σ ns hs) = PT.map
+  (λ ps → last-typed (valuation {Γ = extend Γ A} {Δ = Δ} σ ps)) hs
+
+-- BEGINNORMALCOMPREHENSION
+pairNF : {Γ : Context m} {Δ : Context n} {A : Term m}
+  (σ : SubNF Γ Δ) (y : Term n) → Normal y
+  → ∥ Typ Δ y (replace (sub-images σ) A) ∥₁
+  → SubNF (extend Γ A) Δ
+pairNF {Γ = Γ} {Δ} {A} (sub σ ns hs) y ny hy = sub
+  (λ i → caseFin i y σ)
+  (λ i → fin-cases (λ i → Normal (caseFin i y σ)) i ny ns)
+  (PT.rec2 squash₁ (λ ps py → ∣ images-typed
+    (extend-valuation {A = A} (valuation {Γ = Γ} {Δ = Δ} σ ps) y py) ∣₁) hs hy)
+
+restrict-pair : {Γ : Context m} {Δ : Context n} {A : Term m}
+  (σ : SubNF Γ Δ) (y : Term n) (ny : Normal y)
+  (hy : ∥ Typ Δ y (replace (sub-images σ) A) ∥₁)
+  → restrictNF (pairNF {A = A} σ y ny hy) ≡ σ
+restrict-pair σ y ny hy = sub-path (λ i → refl)
+
+last-pair : {Γ : Context m} {Δ : Context n} {A : Term m}
+  (σ : SubNF Γ Δ) (y : Term n) (ny : Normal y)
+  (hy : ∥ Typ Δ y (replace (sub-images σ) A) ∥₁)
+  → lastNF (pairNF {A = A} σ y ny hy) ≡ y
+last-pair σ y ny hy = refl
+
+pair-eta : {Γ : Context m} {Δ : Context n} {A : Term m}
+  (σ : SubNF (extend Γ A) Δ)
+  → pairNF (restrictNF σ) (lastNF σ) (last-normal σ) (last-typing σ) ≡ σ
+pair-eta σ = sub-path (λ i → fin-cases
+  (λ i → caseFin i (lastNF σ) (sub-images (restrictNF σ)) ≡ sub-images σ i)
+  i refl (λ j → refl))
+-- ENDNORMALCOMPREHENSION
+
+pair-unique : {Γ : Context m} {Δ : Context n} {A : Term m}
+  {σ τ : SubNF (extend Γ A) Δ}
+  → restrictNF σ ≡ restrictNF τ → lastNF σ ≡ lastNF τ → σ ≡ τ
+pair-unique {σ = σ} {τ} e p = sub-path (λ i → fin-cases
+  (λ i → sub-images σ i ≡ sub-images τ i) i p
+  (λ j → cong (λ ρ → sub-images ρ j) e))
+
+projection-identity : {Γ : Context n} {A : Term n}
+  → restrictNF (idNF (extend Γ A)) ≡ projectionNF Γ A
+projection-identity = sub-path (λ i → refl)
+
+projection-composition : {Γ : Context m} {Δ : Context n} {A : Term m}
+  (wf : WellFormed Δ) (σ : SubNF (extend Γ A) Δ)
+  → composeNF wf (projectionNF Γ A) σ ≡ restrictNF σ
+projection-composition {Γ = Γ} {Δ} {A} wf (sub σ ns hs) = PT.elim
+  (λ h → sub-isSet (composeNF wf (projectionNF Γ A) (sub σ ns h))
+    (restrictNF (sub σ ns h)))
+  (λ ps → sub-path (λ i → normal-convertible-unique
+    (Normalize.result wf (compose (projection Γ A)
+      (valuation {Γ = extend Γ A} {Δ = Δ} σ ps)) i) (ns (fsuc i)) beta-refl)) hs
+
+-- Renaming preserves normality, including every retained annotation.
+not-lambda-renaming : (ρ : Fin m → Fin n) (t : Term m)
+  → NotLambda t → NotLambda (rename ρ t)
+not-lambda-renaming ρ (U i) h = tt
+not-lambda-renaming ρ (var i) h = tt
+not-lambda-renaming ρ (pi A B) h = tt
+not-lambda-renaming ρ (lam A b) h = h
+not-lambda-renaming ρ (app f y) h = tt
+
+normal-renaming : (ρ : Fin m → Fin n) (t : Term m)
+  → Normal t → Normal (rename ρ t)
+normal-renaming ρ (U i) h = tt
+normal-renaming ρ (var i) h = tt
+normal-renaming ρ (pi A B) h = normal-renaming ρ A (fst h)
+  , normal-renaming (liftRenaming ρ) B (snd h)
+normal-renaming ρ (lam A b) h = normal-renaming ρ A (fst h)
+  , normal-renaming (liftRenaming ρ) b (snd h)
+normal-renaming ρ (app f y) h = normal-renaming ρ f (fst h)
+  , normal-renaming ρ y (fst (snd h)) , not-lambda-renaming ρ f (snd (snd h))
+
+normal-lift-images : {σ : Fin m → Term n}
+  → (∀ i → Normal (σ i)) → ∀ i → Normal (liftSubstitution σ i)
+normal-lift-images {σ = σ} h i = fin-cases
+  (λ i → Normal (liftSubstitution σ i)) i tt
+  (λ j → normal-renaming fsuc (σ j) (h j))
+
+-- Lifting changes the target declaration by original beta conversion.
+-- The term images stay literal lifted images; no renormalization is needed.
+lift-normal-target : {Γ : Context m} {Δ : Context n} {r : Nat}
+  (σ : SubNF Γ Δ) (A : Term m) (T : Term n)
+  → ∥ Typ Γ A (U r) ∥₁
+  → ∥ Beta (replace (sub-images σ) A) T ∥₁
+  → SubNF (extend Γ A) (extend Δ T)
+lift-normal-target {Γ = Γ} {Δ} σ A T hA e = sub
+  (liftSubstitution (sub-images σ)) (normal-lift-images (sub-normal σ))
+  (PT.rec3 squash₁ (λ ps pA p → ∣ (λ i → context-last-change
+    (typed-replace ps pA) p (typed-lift {Γ = Γ} {Δ} ps A i)) ∣₁)
+    (sub-typed σ) hA e)
+
+-- BEGINNORMALCOMPREHENSIONTYPED
+liftNF : {Γ : Context m} {Δ : Context n} {r : Nat}
+  (wf : WellFormed Δ) (σ : SubNF Γ Δ) (A : TyNF Γ r)
+  → SubNF (extend Γ (term A)) (extend Δ (term (pullTy wf σ A)))
+liftNF wf σ A = lift-normal-target σ (term A) (term (pullTy wf σ A))
+  (typed A) (pullTy-sound wf σ A)
+
+pairTypedNF : {Γ : Context m} {Δ : Context n} {r : Nat}
+  (wf : WellFormed Δ) (σ : SubNF Γ Δ) (A : TyNF Γ r)
+  → NfAt Δ (term (pullTy wf σ A)) → SubNF (extend Γ (term A)) Δ
+pairTypedNF wf σ A y = pairNF σ (term y) (normal y)
+  (PT.rec3 squash₁ (λ py pA e → ∣ conversion py pA (beta-sym e) ∣₁)
+    (typed y) (raw-act-typed σ (typed A)) (pullTy-sound wf σ A))
+
+lastTypedNF : {Γ : Context m} {Δ : Context n} {r : Nat}
+  (wf : WellFormed Δ) (A : TyNF Γ r) (σ : SubNF (extend Γ (term A)) Δ)
+  → NfAt Δ (term (pullTy wf (restrictNF σ) A))
+lastTypedNF wf A σ = normal-at (lastNF σ) (last-normal σ)
+  (PT.rec3 squash₁ (λ py pA e → ∣ conversion py pA e ∣₁)
+    (last-typing σ) (typed (pullTy wf (restrictNF σ) A))
+    (pullTy-sound wf (restrictNF σ) A))
+-- ENDNORMALCOMPREHENSIONTYPED
+
+lift-images : {Γ : Context m} {Δ : Context n} {r : Nat}
+  (wf : WellFormed Δ) (σ : SubNF Γ Δ) (A : TyNF Γ r)
+  → sub-images (liftNF wf σ A) ≡ liftSubstitution (sub-images σ)
+lift-images wf σ A = refl
+
+restrict-pairTyped : {Γ : Context m} {Δ : Context n} {r : Nat}
+  (wf : WellFormed Δ) (σ : SubNF Γ Δ) (A : TyNF Γ r)
+  (y : NfAt Δ (term (pullTy wf σ A)))
+  → restrictNF (pairTypedNF wf σ A y) ≡ σ
+restrict-pairTyped wf σ A y = sub-path (λ i → refl)
+
+last-pairTyped : {Γ : Context m} {Δ : Context n} {r : Nat}
+  (wf : WellFormed Δ) (σ : SubNF Γ Δ) (A : TyNF Γ r)
+  (y : NfAt Δ (term (pullTy wf σ A)))
+  → lastNF (pairTypedNF wf σ A y) ≡ term y
+last-pairTyped wf σ A y = refl
+
+-- Eta here is ONLY the context-comprehension equation, not function eta.
+pairTyped-eta : {Γ : Context m} {Δ : Context n} {r : Nat}
+  (wf : WellFormed Δ) (A : TyNF Γ r) (σ : SubNF (extend Γ (term A)) Δ)
+  → pairTypedNF wf (restrictNF σ) A (lastTypedNF wf A σ) ≡ σ
+pairTyped-eta wf A σ = sub-path (λ i → fin-cases
+  (λ i → caseFin i (lastNF σ) (sub-images (restrictNF σ)) ≡ sub-images σ i)
+  i refl (λ j → refl))
+
+-- Substitution commutes with pairing, with the necessary type transport
+-- supplied by the proved normal type-composition equation.
+pairTyped-naturality : {Γ : Context l} {Δ : Context m} {Θ : Context n} {r : Nat}
+  (wfΔ : WellFormed Δ) (wfΘ : WellFormed Θ)
+  (σ : SubNF Γ Δ) (τ : SubNF Δ Θ) (A : TyNF Γ r)
+  (y : NfAt Δ (term (pullTy wfΔ σ A)))
+  → composeNF wfΘ (pairTypedNF wfΔ σ A y) τ
+    ≡ pairTypedNF wfΘ (composeNF wfΘ σ τ) A
+      (subst (NfAt Θ) (cong term (pullTy-composition wfΔ wfΘ σ τ A))
+        (pullTm wfΘ τ (pullTy wfΔ σ A) y))
+pairTyped-naturality {Γ = Γ} {Δ} {Θ} wfΔ wfΘ σ τ A y = sub-path
+  (λ i → normal-equal (sub-normal left i) (sub-normal right i)
+    (fin-cases (λ i → ∥ Beta (sub-images left i) (sub-images right i) ∥₁) i
+      (PT.rec2 squash₁ (λ e p → ∣ beta-trans (beta-sym e)
+        (beta-trans p (beta-path (sym (term-transport path pulled)))) ∣₁)
+        (compose-action-sound wfΘ (pairTypedNF wfΔ σ A y) τ (var fzero))
+        (pullTm-sound wfΘ τ (pullTy wfΔ σ A) y))
+      (λ j → PT.rec2 squash₁ (λ p q → ∣ beta-trans (beta-sym p) q ∣₁)
+        (compose-action-sound wfΘ (pairTypedNF wfΔ σ A y) τ (var (fsuc j)))
+        (compose-action-sound wfΘ σ τ (var j)))))
+  where
+  path = cong term (pullTy-composition wfΔ wfΘ σ τ A)
+  pulled = pullTm wfΘ τ (pullTy wfΔ σ A) y
+  left = composeNF wfΘ (pairTypedNF wfΔ σ A y) τ
+  right = pairTypedNF wfΘ (composeNF wfΘ σ τ) A (subst (NfAt Θ) path pulled)

@@ -1,0 +1,14 @@
+./COLLECT.sh: OK
+./RUN.sh: OK
+./VISUAL.md: OK
+./command.txt: OK
+./command.txt.raw.gz: OK
+./exit-code.txt: OK
+./finished.txt: OK
+./inspection.log: OK
+./inspector.sha256: OK
+./live-pdf.sha256: OK
+./live-stability.log: OK
+./pdf-links.txt: OK
+./pdf-text.txt: OK
+./started.txt: OK

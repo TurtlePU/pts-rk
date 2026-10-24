@@ -1,0 +1,9 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/IndexedHornRealization.v", line 109, characters 2-14:
+Error: Cannot infer the implicit parameter k of I.proof_type whose type is
+"nat" in environment:
+k : nat
+

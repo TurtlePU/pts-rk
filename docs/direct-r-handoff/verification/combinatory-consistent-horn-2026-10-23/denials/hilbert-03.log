@@ -1,0 +1,4 @@
+2026-10-23T06:36:38Z
+File "./theories/CombinatoryLogic-rk/HilbertGrounding.v", line 88, characters 49-56:
+Error: Cannot find any non-recursive equality over A.
+

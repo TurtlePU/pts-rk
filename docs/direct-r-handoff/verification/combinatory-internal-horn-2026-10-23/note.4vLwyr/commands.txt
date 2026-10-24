@@ -1,0 +1,1 @@
+bash theories/CombinatoryLogic-rk/build-note.sh 

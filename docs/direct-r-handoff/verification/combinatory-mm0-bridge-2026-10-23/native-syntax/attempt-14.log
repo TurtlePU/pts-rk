@@ -1,0 +1,9 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+(raw_lift 0 (sub_index m (quote_term (rename up X)) (quote_fin i)) =
+ sub_index (S m) (quote_term (shift (rename up X))) (S (quote_fin i)))
+File "/tmp/pts-rk-mm0-native-syntax.Lz2EQU/MM0NativeSyntax.v", line 304, characters 4-23:
+Error: Found no subterm matching "quote_term (shift ?M1231)"
+in the current goal.

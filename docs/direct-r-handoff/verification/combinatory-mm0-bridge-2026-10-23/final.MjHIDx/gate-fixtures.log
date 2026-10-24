@@ -1,0 +1,22 @@
+Clean new file: accepted
+/Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.KjFF55/kernel.log:9: trailing whitespace.
++
+/Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.KjFF55/kernel.log:11: trailing whitespace.
++
+/Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.KjFF55/kernel.log:14: trailing whitespace.
++
+/Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.KjFF55/kernel.log:16: trailing whitespace.
++
+/Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.KjFF55/kernel.log:18: trailing whitespace.
++
+/Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.KjFF55/kernel.log:20: trailing whitespace.
++
+/Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.KjFF55/kernel.log:20: new blank line at EOF.
+Whitespace fixture: rejected
+Missing whitespace target: /Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-final.LNIhbh/not-created.whitespace-input
+Missing-file fixture: rejected
+Modules: 58
+Own reports: 885
+New reports: 192
+Aggregate closed reports: 885
+Wrong-count fixture: rejected

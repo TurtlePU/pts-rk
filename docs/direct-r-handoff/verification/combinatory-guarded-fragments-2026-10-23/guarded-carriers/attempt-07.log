@@ -1,0 +1,48 @@
+Warning:
+/private/tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+This subproof is complete, but there are some unfocused goals.
+Focus next goal with bullet -.
+
+7 goals
+
+goal 1 is:
+ decode zs None = Some z <->
+ (exists (w0 : W) (x0 : X) (y : Y),
+    Some w = Some w0 /\
+    Some x = Some x0 /\ None = Some y /\ In (f w0 x0 y) zs /\ z = f w0 x0 y)
+goal 2 is:
+ decode zs None = Some z <->
+ (exists (w0 : W) (x : X) (y0 : Y),
+    Some w = Some w0 /\
+    None = Some x /\ Some y = Some y0 /\ In (f w0 x y0) zs /\ z = f w0 x y0)
+goal 3 is:
+ decode zs None = Some z <->
+ (exists (w0 : W) (x : X) (y : Y),
+    Some w = Some w0 /\
+    None = Some x /\ None = Some y /\ In (f w0 x y) zs /\ z = f w0 x y)
+goal 4 is:
+ decode zs None = Some z <->
+ (exists (w : W) (x0 : X) (y0 : Y),
+    None = Some w /\
+    Some x = Some x0 /\
+    Some y = Some y0 /\ In (f w x0 y0) zs /\ z = f w x0 y0)
+goal 5 is:
+ decode zs None = Some z <->
+ (exists (w : W) (x0 : X) (y : Y),
+    None = Some w /\
+    Some x = Some x0 /\ None = Some y /\ In (f w x0 y) zs /\ z = f w x0 y)
+goal 6 is:
+ decode zs None = Some z <->
+ (exists (w : W) (x : X) (y0 : Y),
+    None = Some w /\
+    None = Some x /\ Some y = Some y0 /\ In (f w x y0) zs /\ z = f w x y0)
+goal 7 is:
+ decode zs None = Some z <->
+ (exists (w : W) (x : X) (y : Y),
+    None = Some w /\
+    None = Some x /\ None = Some y /\ In (f w x y) zs /\ z = f w x y)
+File "/tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v", line 173, characters 0-4:
+Error:  (in proof lift3_exact): Attempt to save an incomplete proof
+(there are remaining open goals).

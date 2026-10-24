@@ -1,0 +1,23 @@
+--- docs/direct-r-handoff/verification/combinatory-indexed-provenance-2026-10-23/audit.emobKi/upstream-inventory.txt	2026-10-23 22:52:38
++++ docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24/generated/inventory.txt	2026-10-24 00:47:02
+@@ -2,14 +2,15 @@
+ ===============
+ 
+ * Theory: Set is predicative
+-
++  
+ * Theory: Rewrite rules are not allowed
+-
++  
+ * Axioms:
+     Stdlib.Logic.FunctionalExtensionality.functional_extensionality_dep
+-
++  
+ * Constants/Inductives relying on type-in-type: <none>
+-
++  
+ * Constants/Inductives relying on unsafe (co)fixpoints: <none>
+-
++  
+ * Inductives whose positivity is assumed: <none>
++  

@@ -1,0 +1,18 @@
+2026-10-23T06:36:15Z
+File "./theories/CombinatoryLogic-rk/HilbertGrounding.v", line 6, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/CombinatoryLogic-rk/HilbertGrounding.v", line 6, characters 0-21:
+Warning: Notations "[ _ ] _" defined at level 30 with arguments constr
+and "[ _ ; _ ; .. ; _ ]" defined at level 0 with arguments constr
+have incompatible prefixes. One of them will likely not work.
+[notation-incompatible-prefix,parsing,default]
+File "./theories/CombinatoryLogic-rk/HilbertGrounding.v", line 38, characters 10-31:
+Error:
+In environment
+l : CatalogueEconomy.Label
+HP : Forall HilbertTruth []
+Unable to unify "snd" with "CatalogueEconomy.declared_type".
+

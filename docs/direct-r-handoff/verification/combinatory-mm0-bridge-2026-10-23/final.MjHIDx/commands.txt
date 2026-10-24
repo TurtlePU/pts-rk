@@ -1,0 +1,10 @@
+bash -n docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/AUDIT.sh docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/FINAL-CHECKS.sh
+shasum -a 256 docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/AUDIT.sh docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/FINAL-CHECKS.sh
+cmp /Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.BLPblO/source-before.log /Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.BLPblO/source-after.log
+shasum -a 256 -c /Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.BLPblO/source-after.log
+fresh_reports
+fresh_inventory
+safety_scan
+gate_fixtures
+shasum -a 256 -c docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/note.rQGnBx/final-manifest.log
+final_whitespace

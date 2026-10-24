@@ -1,0 +1,8 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-internal-guard.9aN6Rk/MM0InternalGuard.v", line 55, characters 4-41:
+Error: The reference MM0SyntaxSoundness.ClosedSubstitution was not found
+in the current environment.
+

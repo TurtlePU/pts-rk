@@ -1,0 +1,1025 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+(match decode_nat EZ with
+ | Some _ =>
+     match
+       match decode_nat (ES (quote_nat a)) with
+       | Some _ =>
+           Some
+             (ELam (EPi v0 (EU (quote_nat b)))
+                (ELam (EPi v1 (EPi (EApp v1 v0) (EU (quote_nat c))))
+                   (ELam (EPi v2 (EPi (EApp v2 v0) (EApp (EApp v2 v1) v0)))
+                      (ELam (EPi v3 (EApp v3 v0))
+                         (ELam v4 (EApp (EApp v2 v0) (EApp v1 v0)))))),
+              EPi (EPi v0 (EU (quote_nat b)))
+                (EPi (EPi v1 (EPi (EApp v1 v0) (EU (quote_nat c))))
+                   (EPi (EPi v2 (EPi (EApp v2 v0) (EApp (EApp v2 v1) v0)))
+                      (EPi (EPi v3 (EApp v3 v0))
+                         (EPi v4 (EApp (EApp v3 v0) (EApp v1 v0)))))))
+       | None => None
+       end
+     with
+     | Some (M, T) =>
+         Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+     | None => None
+     end
+ | None => None
+ end = Some (quote_label (substitution_label S.S1 a b c 0)))
+(match decode_nat EZ with
+ | Some _ =>
+     match
+       match decode_nat (ES (quote_nat a)) with
+       | Some _ =>
+           Some
+             (ELam (EPi v0 (EU (quote_nat b))) (EPi v1 (EApp v1 v0)),
+              EPi (EPi v0 (EU (quote_nat b)))
+                (EU (quote_nat (Nat.max (S a) b))))
+       | None => None
+       end
+     with
+     | Some (M, T) =>
+         Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+     | None => None
+     end
+ | None => None
+ end = Some (quote_label (C.Product (P.P1 a b))))
+(match decode_nat EZ with
+ | Some rank =>
+     match e with
+     | 0 =>
+         Some
+           (EPi (EU (quote_nat a)) (EPi v0 v1),
+            EU (quote_nat (Nat.max (S rank) (Nat.max (S a) a))))
+     | S k =>
+         match
+           match k with
+           | 0 => Some (EPi v0 v1, EU (quote_nat (Nat.max (S a) a)))
+           | S k0 =>
+               match
+                 match k0 with
+                 | 0 => Some (v1, EU (quote_nat a))
+                 | S _ => None
+                 end
+               with
+               | Some (M, T) => Some (ELam v0 M, EPi v0 T)
+               | None => None
+               end
+           end
+         with
+         | Some (M, T) =>
+             Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+         | None => None
+         end
+     end
+ | None => None
+ end =
+ option_map quote_label
+   match e with
+   | 0 => Some (C.Identity (I.I2 a))
+   | 1 => Some (C.Identity (I.I3 a))
+   | 2 => Some (C.Identity (I.I4 a))
+   | S (S (S _)) => None
+   end)
+(match decode_nat EZ with
+ | Some rank =>
+     match e with
+     | 0 =>
+         match
+           match decode_nat EZ with
+           | Some rank0 =>
+               Some
+                 (EPi (EU (quote_nat b)) (EPi v1 (EPi v1 v3)),
+                  EU
+                    (quote_nat
+                       (Nat.max (S rank0) (Nat.max (S a) (Nat.max (S b) a)))))
+           | None => None
+           end
+         with
+         | Some (M, EU b) =>
+             match decode_nat b with
+             | Some r =>
+                 Some
+                   (EPi (EU (quote_nat a)) M,
+                    EU (quote_nat (Nat.max (S rank) r)))
+             | None => None
+             end
+         | Some (M, EVar _) | Some (M, EZ) | Some (M, ES _) |
+           Some (M, EV _) | Some (M, EApp _ _) | Some (M, EPi _ _) |
+           Some (M, ELam _ _) | Some (M, ENil) | Some (M, ECons _ _ _) =>
+             None
+         | None => None
+         end
+     | S k =>
+         match
+           match decode_nat EZ with
+           | Some rank0 =>
+               match k with
+               | 0 =>
+                   Some
+                     (EPi (EU (quote_nat b)) (EPi v1 (EPi v1 v3)),
+                      EU
+                        (quote_nat
+                           (Nat.max (S rank0)
+                              (Nat.max (S a) (Nat.max (S b) a)))))
+               | S k0 =>
+                   match
+                     match k0 with
+                     | 0 =>
+                         Some
+                           (EPi v1 (EPi v1 v3),
+                            EU (quote_nat (Nat.max (S a) (Nat.max (S b) a))))
+                     | S k1 =>
+                         match
+                           match k1 with
+                           | 0 =>
+                               Some
+                                 (EPi v1 v3, EU (quote_nat (Nat.max (S b) a)))
+                           | S k2 =>
+                               match
+                                 match k2 with
+                                 | 0 => Some (v3, EU (quote_nat a))
+                                 | S _ => None
+                                 end
+                               with
+                               | Some (M, T) => Some (ELam v1 M, EPi v1 T)
+                               | None => None
+                               end
+                           end
+                         with
+                         | Some (M, T) => Some (ELam v1 M, EPi v1 T)
+                         | None => None
+                         end
+                     end
+                   with
+                   | Some (M, T) =>
+                       Some
+                         (ELam (EU (quote_nat b)) M, EPi (EU (quote_nat b)) T)
+                   | None => None
+                   end
+               end
+           | None => None
+           end
+         with
+         | Some (M, T) =>
+             Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+         | None => None
+         end
+     end
+ | None => None
+ end =
+ option_map quote_label
+   match e with
+   | 0 => Some (C.Constant (C.K2 a b))
+   | 1 => Some (C.Constant (C.K3 a b))
+   | 2 => Some (C.Constant (C.K4 a b))
+   | 3 => Some (C.Constant (C.K5 a b))
+   | 4 => Some (C.Constant (C.K6 a b))
+   | S (S (S (S (S _)))) => None
+   end)
+(match decode_nat EZ with
+ | Some rank =>
+     match e with
+     | 0 =>
+         match
+           match decode_nat (ES (quote_nat a)) with
+           | Some rank0 =>
+               Some
+                 (EPi (EPi v0 (EU (quote_nat b)))
+                    (EPi (EPi v1 (EPi (EApp v1 v0) (EU (quote_nat c))))
+                       (EPi
+                          (EPi v2 (EPi (EApp v2 v0) (EApp (EApp v2 v1) v0)))
+                          (EPi (EPi v3 (EApp v3 v0))
+                             (EPi v4 (EApp (EApp v3 v0) (EApp v1 v0)))))),
+                  EU
+                    (quote_nat
+                       (Nat.max (S rank0)
+                          (Nat.max (S (Nat.max (S a) (S b)))
+                             (Nat.max (S (Nat.max (Nat.max (S a) (S b)) c))
+                                (Nat.max (S (Nat.max (S a) b))
+                                   (Nat.max (S a) c)))))))
+           | None => None
+           end
+         with
+         | Some (M, EU b) =>
+             match decode_nat b with
+             | Some r =>
+                 Some
+                   (EPi (EU (quote_nat a)) M,
+                    EU (quote_nat (Nat.max (S rank) r)))
+             | None => None
+             end
+         | Some (M, EVar _) | Some (M, EZ) | Some (M, ES _) |
+           Some (M, EV _) | Some (M, EApp _ _) | Some (M, EPi _ _) |
+           Some (M, ELam _ _) | Some (M, ENil) | Some (M, ECons _ _ _) =>
+             None
+         | None => None
+         end
+     | S k =>
+         match
+           match decode_nat (ES (quote_nat a)) with
+           | Some rank0 =>
+               match k with
+               | 0 =>
+                   Some
+                     (EPi (EPi v0 (EU (quote_nat b)))
+                        (EPi (EPi v1 (EPi (EApp v1 v0) (EU (quote_nat c))))
+                           (EPi
+                              (EPi v2
+                                 (EPi (EApp v2 v0) (EApp (EApp v2 v1) v0)))
+                              (EPi (EPi v3 (EApp v3 v0))
+                                 (EPi v4 (EApp (EApp v3 v0) (EApp v1 v0)))))),
+                      EU
+                        (quote_nat
+                           (Nat.max (S rank0)
+                              (Nat.max (S (Nat.max (S a) (S b)))
+                                 (Nat.max
+                                    (S (Nat.max (Nat.max (S a) (S b)) c))
+                                    (Nat.max (S (Nat.max (S a) b))
+                                       (Nat.max (S a) c)))))))
+               | S k0 =>
+                   match
+                     match k0 with
+                     | 0 =>
+                         Some
+                           (EPi
+                              (EPi v1 (EPi (EApp v1 v0) (EU (quote_nat c))))
+                              (EPi
+                                 (EPi v2
+                                    (EPi (EApp v2 v0) (EApp (EApp v2 v1) v0)))
+                                 (EPi (EPi v3 (EApp v3 v0))
+                                    (EPi v4 (EApp (EApp v3 v0) (EApp v1 v0))))),
+                            EU
+                              (quote_nat
+                                 (Nat.max (S (Nat.max (S a) (S b)))
+                                    (Nat.max
+                                       (S (Nat.max (Nat.max (S a) (S b)) c))
+                                       (Nat.max (S (Nat.max (S a) b))
+                                          (Nat.max (S a) c))))))
+                     | S k1 =>
+                         match
+                           match k1 with
+                           | 0 =>
+                               Some
+                                 (EPi
+                                    (EPi v2
+                                       (EPi (EApp v2 v0)
+                                          (EApp (EApp v2 v1) v0)))
+                                    (EPi (EPi v3 (EApp v3 v0))
+                                       (EPi v4
+                                          (EApp (EApp v3 v0) (EApp v1 v0)))),
+                                  EU
+                                    (quote_nat
+                                       (Nat.max
+                                          (S
+                                             (Nat.max (Nat.max (S a) (S b)) c))
+                                          (Nat.max 
+                                             (S (Nat.max (S a) b))
+                                             (Nat.max (S a) c)))))
+                           | S k2 =>
+                               match
+                                 match k2 with
+                                 | 0 =>
+                                     Some
+                                       (EPi (EPi v3 (EApp v3 v0))
+                                          (EPi v4
+                                             (EApp (EApp v3 v0) (EApp v1 v0))),
+                                        EU
+                                          (quote_nat
+                                             (Nat.max 
+                                                (S (Nat.max (S a) b))
+                                                (Nat.max (S a) c))))
+                                 | S k3 =>
+                                     match
+                                       match k3 with
+                                       | 0 =>
+                                           Some
+                                             (EPi v4
+                                                (EApp 
+                                                 (EApp v3 v0) 
+                                                 (EApp v1 v0)),
+                                              EU
+                                                (quote_nat (Nat.max (...) c)))
+                                       | S k4 =>
+                                           match
+                                             match k4 with
+                                             | 0 => Some (..., ...)
+                                             | S _ => None
+                                             end
+                                           with
+                                           | Some (M, T) =>
+                                               Some (ELam v4 M, EPi v4 T)
+                                           | None => None
+                                           end
+                                       end
+                                     with
+                                     | Some (M, T) =>
+                                         Some
+                                           (ELam (EPi v3 (EApp v3 v0)) M,
+                                            EPi (EPi v3 (EApp v3 v0)) T)
+                                     | None => None
+                                     end
+                                 end
+                               with
+                               | Some (M, T) =>
+                                   Some
+                                     (ELam
+                                        (EPi v2
+                                           (EPi (EApp v2 v0)
+                                              (EApp (EApp v2 v1) v0)))
+                                        M,
+                                      EPi
+                                        (EPi v2
+                                           (EPi (EApp v2 v0)
+                                              (EApp (EApp v2 v1) v0)))
+                                        T)
+                               | None => None
+                               end
+                           end
+                         with
+                         | Some (M, T) =>
+                             Some
+                               (ELam
+                                  (EPi v1
+                                     (EPi (EApp v1 v0) (EU (quote_nat c))))
+                                  M,
+                                EPi
+                                  (EPi v1
+                                     (EPi (EApp v1 v0) (EU (quote_nat c))))
+                                  T)
+                         | None => None
+                         end
+                     end
+                   with
+                   | Some (M, T) =>
+                       Some
+                         (ELam (EPi v0 (EU (quote_nat b))) M,
+                          EPi (EPi v0 (EU (quote_nat b))) T)
+                   | None => None
+                   end
+               end
+           | None => None
+           end
+         with
+         | Some (M, T) =>
+             Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+         | None => None
+         end
+     end
+ | None => None
+ end =
+ option_map quote_label
+   match e with
+   | 0 => Some (substitution_label S.S2 a b c 0)
+   | 1 => Some (substitution_label S.S3 a b c 0)
+   | 2 => Some (substitution_label S.S4 a b c 0)
+   | 3 => Some (substitution_label S.S5 a b c 0)
+   | 4 => Some (substitution_label S.S6 a b c 0)
+   | 5 => Some (substitution_label S.S7 a b c 0)
+   | 6 => Some (substitution_label S.S8 a b c 0)
+   | S (S (S (S (S (S (S _)))))) => None
+   end)
+(match decode_nat EZ with
+ | Some _ =>
+     match
+       match decode_nat (ES (quote_nat a)) with
+       | Some _ =>
+           Some
+             (ELam (EPi v0 (EU (quote_nat b))) (ELam v1 (EApp v1 v0)),
+              EPi (EPi v0 (EU (quote_nat b))) (EPi v1 (EU (quote_nat b))))
+       | None => None
+       end
+     with
+     | Some (M, T) =>
+         Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+     | None => None
+     end
+ | None => None
+ end = Some (quote_label (C.Product (P.P6 a b))))
+(match decode_nat EZ with
+ | Some rank =>
+     match e with
+     | 0 =>
+         match
+           match decode_nat (ES (quote_nat a)) with
+           | Some rank0 =>
+               match decode_nat EZ with
+               | Some r =>
+                   Some
+                     (EPi (EPi v0 (EU (quote_nat b))) (EU (quote_nat d)),
+                      EU (quote_nat (Nat.max (S rank0) r)))
+               | None => None
+               end
+           | None => None
+           end
+         with
+         | Some (M, EU b) =>
+             match decode_nat b with
+             | Some r =>
+                 Some
+                   (EPi (EU (quote_nat a)) M,
+                    EU (quote_nat (Nat.max (S rank) r)))
+             | None => None
+             end
+         | Some (M, EVar _) | Some (M, EZ) | Some (M, ES _) |
+           Some (M, EV _) | Some (M, EApp _ _) | Some (M, EPi _ _) |
+           Some (M, ELam _ _) | Some (M, ENil) | Some (M, ECons _ _ _) =>
+             None
+         | None => None
+         end
+     | S k =>
+         match
+           match decode_nat (ES (quote_nat a)) with
+           | Some rank0 =>
+               match k with
+               | 0 =>
+                   match decode_nat EZ with
+                   | Some r =>
+                       Some
+                         (EPi (EPi v0 (EU (quote_nat b))) (EU (quote_nat d)),
+                          EU (quote_nat (Nat.max (S rank0) r)))
+                   | None => None
+                   end
+               | S k0 =>
+                   match
+                     match k0 with
+                     | 0 => Some (EU (quote_nat d), EU EZ)
+                     | S _ => None
+                     end
+                   with
+                   | Some (M, T) =>
+                       Some
+                         (ELam (EPi v0 (EU (quote_nat b))) M,
+                          EPi (EPi v0 (EU (quote_nat b))) T)
+                   | None => None
+                   end
+               end
+           | None => None
+           end
+         with
+         | Some (M, T) =>
+             Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+         | None => None
+         end
+     end
+ | None => None
+ end =
+ option_map quote_label
+   match e with
+   | 0 => Some (C.Product (P.P2 a b d))
+   | 1 => Some (C.Product (P.P3 a b d))
+   | 2 => Some (C.Product (P.P8 a b d))
+   | S (S (S _)) => None
+   end)
+(match decode_nat EZ with
+ | Some rank =>
+     match e with
+     | 0 =>
+         match
+           match decode_nat (ES (quote_nat a)) with
+           | Some rank0 =>
+               match
+                 match decode_nat EZ with
+                 | Some r =>
+                     Some
+                       (EPi v1 (EU (quote_nat d)),
+                        EU (quote_nat (Nat.max (S a) r)))
+                 | None => None
+                 end
+               with
+               | Some (M, EU b0) =>
+                   match decode_nat b0 with
+                   | Some r =>
+                       Some
+                         (EPi (EPi v0 (EU (quote_nat b))) M,
+                          EU (quote_nat (Nat.max (S rank0) r)))
+                   | None => None
+                   end
+               | Some (M, EVar _) | Some (M, EZ) | 
+                 Some (M, ES _) | Some (M, EV _) | 
+                 Some (M, EApp _ _) | Some (M, EPi _ _) |
+                 Some (M, ELam _ _) | Some (M, ENil) |
+                 Some (M, ECons _ _ _) => None
+               | None => None
+               end
+           | None => None
+           end
+         with
+         | Some (M, EU b) =>
+             match decode_nat b with
+             | Some r =>
+                 Some
+                   (EPi (EU (quote_nat a)) M,
+                    EU (quote_nat (Nat.max (S rank) r)))
+             | None => None
+             end
+         | Some (M, EVar _) | Some (M, EZ) | Some (M, ES _) |
+           Some (M, EV _) | Some (M, EApp _ _) | Some (M, EPi _ _) |
+           Some (M, ELam _ _) | Some (M, ENil) | Some (M, ECons _ _ _) =>
+             None
+         | None => None
+         end
+     | S k =>
+         match
+           match decode_nat (ES (quote_nat a)) with
+           | Some rank0 =>
+               match k with
+               | 0 =>
+                   match
+                     match decode_nat EZ with
+                     | Some r =>
+                         Some
+                           (EPi v1 (EU (quote_nat d)),
+                            EU (quote_nat (Nat.max (S a) r)))
+                     | None => None
+                     end
+                   with
+                   | Some (M, EU b0) =>
+                       match decode_nat b0 with
+                       | Some r =>
+                           Some
+                             (EPi (EPi v0 (EU (quote_nat b))) M,
+                              EU (quote_nat (Nat.max (S rank0) r)))
+                       | None => None
+                       end
+                   | Some (M, EVar _) | Some (M, EZ) | 
+                     Some (M, ES _) | Some (M, EV _) | 
+                     Some (M, EApp _ _) | Some (M, EPi _ _) |
+                     Some (M, ELam _ _) | Some (M, ENil) |
+                     Some (M, ECons _ _ _) => None
+                   | None => None
+                   end
+               | S k0 =>
+                   match
+                     match k0 with
+                     | 0 =>
+                         match decode_nat EZ with
+                         | Some r =>
+                             Some
+                               (EPi v1 (EU (quote_nat d)),
+                                EU (quote_nat (Nat.max (S a) r)))
+                         | None => None
+                         end
+                     | S k1 =>
+                         match
+                           match k1 with
+                           | 0 => Some (EU (quote_nat d), EU EZ)
+                           | S _ => None
+                           end
+                         with
+                         | Some (M, T) => Some (ELam v1 M, EPi v1 T)
+                         | None => None
+                         end
+                     end
+                   with
+                   | Some (M, T) =>
+                       Some
+                         (ELam (EPi v0 (EU (quote_nat b))) M,
+                          EPi (EPi v0 (EU (quote_nat b))) T)
+                   | None => None
+                   end
+               end
+           | None => None
+           end
+         with
+         | Some (M, T) =>
+             Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+         | None => None
+         end
+     end
+ | None => None
+ end =
+ option_map quote_label
+   match e with
+   | 0 => Some (C.Product (P.P7 a b d))
+   | 1 => Some (C.Product (P.P9 a b d))
+   | 2 => Some (C.Product (P.P10 a b d))
+   | 3 => Some (C.Product (P.P11 a b d))
+   | S (S (S (S _))) => None
+   end)
+(match decode_nat EZ with
+ | Some rank =>
+     match e with
+     | 0 =>
+         match
+           match decode_nat EZ with
+           | Some r =>
+               Some
+                 (EPi v0 (EU (quote_nat d)), EU (quote_nat (Nat.max (S a) r)))
+           | None => None
+           end
+         with
+         | Some (M, EU b) =>
+             match decode_nat b with
+             | Some r =>
+                 Some
+                   (EPi (EU (quote_nat a)) M,
+                    EU (quote_nat (Nat.max (S rank) r)))
+             | None => None
+             end
+         | Some (M, EVar _) | Some (M, EZ) | Some (M, ES _) |
+           Some (M, EV _) | Some (M, EApp _ _) | Some (M, EPi _ _) |
+           Some (M, ELam _ _) | Some (M, ENil) | Some (M, ECons _ _ _) =>
+             None
+         | None => None
+         end
+     | S k =>
+         match
+           match k with
+           | 0 =>
+               match decode_nat EZ with
+               | Some r =>
+                   Some
+                     (EPi v0 (EU (quote_nat d)),
+                      EU (quote_nat (Nat.max (S a) r)))
+               | None => None
+               end
+           | S k0 =>
+               match
+                 match k0 with
+                 | 0 => Some (EU (quote_nat d), EU EZ)
+                 | S _ => None
+                 end
+               with
+               | Some (M, T) => Some (ELam v0 M, EPi v0 T)
+               | None => None
+               end
+           end
+         with
+         | Some (M, T) =>
+             Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+         | None => None
+         end
+     end
+ | None => None
+ end =
+ option_map quote_label
+   match e with
+   | 0 => Some (C.Identity (I.I5 a d))
+   | 1 => Some (C.Identity (I.I6 a d))
+   | 2 => Some (C.Identity (I.I7 a d))
+   | S (S (S _)) => None
+   end)
+(match decode_nat EZ with
+ | Some rank =>
+     match e with
+     | 0 =>
+         match
+           match decode_nat EZ with
+           | Some rank0 =>
+               match
+                 match decode_nat EZ with
+                 | Some r =>
+                     Some
+                       (EPi v1 (EU (quote_nat d)),
+                        EU (quote_nat (Nat.max (S a) r)))
+                 | None => None
+                 end
+               with
+               | Some (M, EU b0) =>
+                   match decode_nat b0 with
+                   | Some r =>
+                       Some
+                         (EPi (EU (quote_nat b)) M,
+                          EU (quote_nat (Nat.max (S rank0) r)))
+                   | None => None
+                   end
+               | Some (M, EVar _) | Some (M, EZ) | 
+                 Some (M, ES _) | Some (M, EV _) | 
+                 Some (M, EApp _ _) | Some (M, EPi _ _) |
+                 Some (M, ELam _ _) | Some (M, ENil) |
+                 Some (M, ECons _ _ _) => None
+               | None => None
+               end
+           | None => None
+           end
+         with
+         | Some (M, EU b) =>
+             match decode_nat b with
+             | Some r =>
+                 Some
+                   (EPi (EU (quote_nat a)) M,
+                    EU (quote_nat (Nat.max (S rank) r)))
+             | None => None
+             end
+         | Some (M, EVar _) | Some (M, EZ) | Some (M, ES _) |
+           Some (M, EV _) | Some (M, EApp _ _) | Some (M, EPi _ _) |
+           Some (M, ELam _ _) | Some (M, ENil) | Some (M, ECons _ _ _) =>
+             None
+         | None => None
+         end
+     | S k =>
+         match
+           match decode_nat EZ with
+           | Some rank0 =>
+               match k with
+               | 0 =>
+                   match
+                     match decode_nat EZ with
+                     | Some r =>
+                         Some
+                           (EPi v1 (EU (quote_nat d)),
+                            EU (quote_nat (Nat.max (S a) r)))
+                     | None => None
+                     end
+                   with
+                   | Some (M, EU b0) =>
+                       match decode_nat b0 with
+                       | Some r =>
+                           Some
+                             (EPi (EU (quote_nat b)) M,
+                              EU (quote_nat (Nat.max (S rank0) r)))
+                       | None => None
+                       end
+                   | Some (M, EVar _) | Some (M, EZ) | 
+                     Some (M, ES _) | Some (M, EV _) | 
+                     Some (M, EApp _ _) | Some (M, EPi _ _) |
+                     Some (M, ELam _ _) | Some (M, ENil) |
+                     Some (M, ECons _ _ _) => None
+                   | None => None
+                   end
+               | S k0 =>
+                   match
+                     match k0 with
+                     | 0 =>
+                         match decode_nat EZ with
+                         | Some r =>
+                             Some
+                               (EPi v1 (EU (quote_nat d)),
+                                EU (quote_nat (Nat.max (S a) r)))
+                         | None => None
+                         end
+                     | S k1 =>
+                         match
+                           match k1 with
+                           | 0 => Some (EU (quote_nat d), EU EZ)
+                           | S _ => None
+                           end
+                         with
+                         | Some (M, T) => Some (ELam v1 M, EPi v1 T)
+                         | None => None
+                         end
+                     end
+                   with
+                   | Some (M, T) =>
+                       Some
+                         (ELam (EU (quote_nat b)) M, EPi (EU (quote_nat b)) T)
+                   | None => None
+                   end
+               end
+           | None => None
+           end
+         with
+         | Some (M, T) =>
+             Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+         | None => None
+         end
+     end
+ | None => None
+ end =
+ option_map quote_label
+   match e with
+   | 0 => Some (C.Constant (C.K15 a b d))
+   | 1 => Some (C.Constant (C.K16 a b d))
+   | 2 => Some (C.Constant (C.K17 a b d))
+   | 3 => Some (C.Constant (C.K18 a b d))
+   | S (S (S (S _))) => None
+   end)
+(match decode_nat EZ with
+ | Some rank =>
+     match e with
+     | 0 =>
+         match
+           match decode_nat EZ with
+           | Some rank0 =>
+               match
+                 match
+                   match decode_nat EZ with
+                   | Some r =>
+                       Some
+                         (EPi v1 (EU (quote_nat d)),
+                          EU (quote_nat (Nat.max (S b) r)))
+                   | None => None
+                   end
+                 with
+                 | Some (M, EU b) =>
+                     match decode_nat b with
+                     | Some r =>
+                         Some (EPi v1 M, EU (quote_nat (Nat.max (S a) r)))
+                     | None => None
+                     end
+                 | Some (M, EVar _) | Some (M, EZ) | 
+                   Some (M, ES _) | Some (M, EV _) | 
+                   Some (M, EApp _ _) | Some (M, EPi _ _) |
+                   Some (M, ELam _ _) | Some (M, ENil) |
+                   Some (M, ECons _ _ _) => None
+                 | None => None
+                 end
+               with
+               | Some (M, EU b0) =>
+                   match decode_nat b0 with
+                   | Some r =>
+                       Some
+                         (EPi (EU (quote_nat b)) M,
+                          EU (quote_nat (Nat.max (S rank0) r)))
+                   | None => None
+                   end
+               | Some (M, EVar _) | Some (M, EZ) | 
+                 Some (M, ES _) | Some (M, EV _) | 
+                 Some (M, EApp _ _) | Some (M, EPi _ _) |
+                 Some (M, ELam _ _) | Some (M, ENil) |
+                 Some (M, ECons _ _ _) => None
+               | None => None
+               end
+           | None => None
+           end
+         with
+         | Some (M, EU b) =>
+             match decode_nat b with
+             | Some r =>
+                 Some
+                   (EPi (EU (quote_nat a)) M,
+                    EU (quote_nat (Nat.max (S rank) r)))
+             | None => None
+             end
+         | Some (M, EVar _) | Some (M, EZ) | Some (M, ES _) |
+           Some (M, EV _) | Some (M, EApp _ _) | Some (M, EPi _ _) |
+           Some (M, ELam _ _) | Some (M, ENil) | Some (M, ECons _ _ _) =>
+             None
+         | None => None
+         end
+     | S k =>
+         match
+           match decode_nat EZ with
+           | Some rank0 =>
+               match k with
+               | 0 =>
+                   match
+                     match
+                       match decode_nat EZ with
+                       | Some r =>
+                           Some
+                             (EPi v1 (EU (quote_nat d)),
+                              EU (quote_nat (Nat.max (S b) r)))
+                       | None => None
+                       end
+                     with
+                     | Some (M, EU b) =>
+                         match decode_nat b with
+                         | Some r =>
+                             Some
+                               (EPi v1 M, EU (quote_nat (Nat.max (S a) r)))
+                         | None => None
+                         end
+                     | Some (M, EVar _) | Some (M, EZ) | 
+                       Some (M, ES _) | Some (M, EV _) | 
+                       Some (M, EApp _ _) | Some (M, EPi _ _) |
+                       Some (M, ELam _ _) | Some (M, ENil) |
+                       Some (M, ECons _ _ _) => None
+                     | None => None
+                     end
+                   with
+                   | Some (M, EU b0) =>
+                       match decode_nat b0 with
+                       | Some r =>
+                           Some
+                             (EPi (EU (quote_nat b)) M,
+                              EU (quote_nat (Nat.max (S rank0) r)))
+                       | None => None
+                       end
+                   | Some (M, EVar _) | Some (M, EZ) | 
+                     Some (M, ES _) | Some (M, EV _) | 
+                     Some (M, EApp _ _) | Some (M, EPi _ _) |
+                     Some (M, ELam _ _) | Some (M, ENil) |
+                     Some (M, ECons _ _ _) => None
+                   | None => None
+                   end
+               | S k0 =>
+                   match
+                     match k0 with
+                     | 0 =>
+                         match
+                           match decode_nat EZ with
+                           | Some r =>
+                               Some
+                                 (EPi v1 (EU (quote_nat d)),
+                                  EU (quote_nat (Nat.max (S b) r)))
+                           | None => None
+                           end
+                         with
+                         | Some (M, EU b) =>
+                             match decode_nat b with
+                             | Some r =>
+                                 Some
+                                   (EPi v1 M,
+                                    EU (quote_nat (Nat.max (S a) r)))
+                             | None => None
+                             end
+                         | Some (M, EVar _) | Some (M, EZ) | 
+                           Some (M, ES _) | Some (M, EV _) |
+                           Some (M, EApp _ _) | Some (M, EPi _ _) |
+                           Some (M, ELam _ _) | Some (M, ENil) |
+                           Some (M, ECons _ _ _) => None
+                         | None => None
+                         end
+                     | S k1 =>
+                         match
+                           match k1 with
+                           | 0 =>
+                               match decode_nat EZ with
+                               | Some r =>
+                                   Some
+                                     (EPi v1 (EU (quote_nat d)),
+                                      EU (quote_nat (Nat.max (S b) r)))
+                               | None => None
+                               end
+                           | S k2 =>
+                               match
+                                 match k2 with
+                                 | 0 => Some (EU (quote_nat d), EU EZ)
+                                 | S _ => None
+                                 end
+                               with
+                               | Some (M, T) => Some (ELam v1 M, EPi v1 T)
+                               | None => None
+                               end
+                           end
+                         with
+                         | Some (M, T) => Some (ELam v1 M, EPi v1 T)
+                         | None => None
+                         end
+                     end
+                   with
+                   | Some (M, T) =>
+                       Some
+                         (ELam (EU (quote_nat b)) M, EPi (EU (quote_nat b)) T)
+                   | None => None
+                   end
+               end
+           | None => None
+           end
+         with
+         | Some (M, T) =>
+             Some (ELam (EU (quote_nat a)) M, EPi (EU (quote_nat a)) T)
+         | None => None
+         end
+     end
+ | None => None
+ end =
+ option_map quote_label
+   match e with
+   | 0 => Some (C.Constant (C.K7 a b d))
+   | 1 => Some (C.Constant (C.K8 a b d))
+   | 2 => Some (C.Constant (C.K9 a b d))
+   | 3 => Some (C.Constant (C.K10 a b d))
+   | 4 => Some (C.Constant (C.K11 a b d))
+   | S (S (S (S (S _)))) => None
+   end)
+(evaluate_row (sortS a b c d e k) =
+ option_map quote_label
+   (option_map (fun p : S.Shape => substitution_label p a b c d)
+      match k with
+      | 0 =>
+          match e with
+          | 0 => Some S.S9
+          | 1 => Some S.S10
+          | 2 => Some S.S11
+          | 3 => Some S.S12
+          | S (S (S (S _))) => None
+          end
+      | 1 =>
+          match e with
+          | 0 => Some S.S13
+          | 1 => Some S.S14
+          | 2 => Some S.S15
+          | 3 => Some S.S16
+          | 4 => Some S.S17
+          | S (S (S (S (S _)))) => None
+          end
+      | 2 =>
+          match e with
+          | 0 => Some S.S18
+          | 1 => Some S.S19
+          | 2 => Some S.S20
+          | 3 => Some S.S21
+          | 4 => Some S.S22
+          | 5 => Some S.S23
+          | S (S (S (S (S (S _))))) => None
+          end
+      | 3 =>
+          match e with
+          | 0 => Some S.S24
+          | 1 => Some S.S25
+          | 2 => Some S.S26
+          | 3 => Some S.S27
+          | 4 => Some S.S28
+          | 5 => Some S.S29
+          | 6 => Some S.S30
+          | S (S (S (S (S (S (S _)))))) => None
+          end
+      | S (S (S (S _))) => None
+      end))
+File "/tmp/pts-rk-mm0-catalogue.XiGatK/MM0CatalogueAdequacy.v", line 199, characters 11-12:
+Error: The variable k was not found in the current environment.
+

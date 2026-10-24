@@ -1,0 +1,20 @@
+File "./theories/CombinatoryLogic-rk/FiniteHorn.v", line 123, characters 13-63:
+Error:
+In environment
+Atom : Type
+atom_eq_dec : forall a b : Atom, {a = b} + {a <> b}
+clauses : list (list Atom * Atom)
+k : nat
+IHk :
+  forall known : list Atom,
+  NoDup known ->
+  incl known heads ->
+  length heads <= k + length known -> Closed (rounds k known)
+known : list Atom
+Hnd : NoDup known
+Hheads : incl known heads
+Hlen : length heads <= S k + length known
+E : length known = length (round known)
+Unable to unify "incl (round known) known" with
+ "incl (round (round known)) (round known)".
+

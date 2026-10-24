@@ -1,0 +1,14 @@
+Warning:
+/private/tmp/pts-rk-guarded-fragments.Hzzxi9/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-computational.3tS6OZ/MM0ComputationalAdequacy.v", line 136, characters 11-22:
+Error:
+In environment
+sigma : nat -> Expr
+HS : ClosedSubstitution [TM; TM; TM; TM] sigma
+H1 : sigma 3 = raw_sub 0 (sigma 2) (sigma 1)
+H2 : Forall Meaning []
+Unable to unify "RawReduction (ELam ?A ?M) (ELam ?A' ?M')" with
+ "RawReduction (EApp (ELam (sigma 0) (sigma 1)) (sigma 2)) (sigma 3)".
+

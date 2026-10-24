@@ -1,0 +1,8 @@
+Warning:
+/private/tmp/pts-rk-internal-horn.6x5cr6/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "./theories/CombinatoryLogic-rk/MM0IndexedReflection.v", line 89, characters 4-30:
+Error: Found no subterm matching
+"rename ?M1321 (CF.selector ?M1317 ?M1318 ?M1322)" in the current goal.
+

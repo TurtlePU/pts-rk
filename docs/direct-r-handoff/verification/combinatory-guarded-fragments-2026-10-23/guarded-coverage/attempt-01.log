@@ -1,0 +1,6 @@
+Warning:
+/private/tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guarded-coverage.iomdo5/GuardedHilbertCoverage.v", line 176, characters 2-3:
+Error: [Focus] Wrong bullet -: Current bullet - is not finished.

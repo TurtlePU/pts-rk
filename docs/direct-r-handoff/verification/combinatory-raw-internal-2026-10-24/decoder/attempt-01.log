@@ -1,0 +1,14 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-mm0-internal-decoder.3D2W4B/MM0InternalDecoder.v", line 48, characters 47-53:
+Error:
+In environment
+N, d : nat
+names : list AxiomName
+seed, a : GroundAtom (option (Fin (length (F.A.syntax_list N d))))
+HA : In a (F.guarded_support N d names seed)
+a0 : GroundAtom (P.A.Domain N d)
+Unable to unify "[P.observe_atom N d a0]" with "P.observe_atom N d a :: a0".
+

@@ -1,0 +1,4 @@
+Logs: /Users/akuklev/air/pts-rk/_build/combinatory-mm0-bridge-audit.BLPblO
+Build: /tmp/pts-rk-mm0-bridge.IH9mrh
+Pristine: /tmp/pts-rk-mm0-bridge-pristine.2MonTA
+Archive: /Users/akuklev/air/pts-rk/docs/direct-r-handoff/verification/combinatory-mm0-bridge-2026-10-23/audit.HRs4x3

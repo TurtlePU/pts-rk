@@ -1,0 +1,4 @@
+212730d4c2270d420db8ac4ba1f01b163ee4c860cc552bff1cb332389f99f6c0  theories/CombinatoryLogic-rk/CombinatoryPTS-rk.tex
+6deef353742da084ec0c5bc58de6187289711420b1d039075cc5d7808fe25e47  theories/CombinatoryLogic-rk/CombinatoryPTS-rk.pdf
+c21a620849c98165f3d756ad58ad9cd51065aaff7f27f66c5bd5edd739c1dba8  theories/CombinatoryLogic-rk/build-note.sh
+9dfe485ffc64228e083c17b058f50c1df00530898b4e3cd5ee134198d9718526  docs/direct-r-handoff/verification/combinatory-internal-horn-2026-10-23/inspect.swift

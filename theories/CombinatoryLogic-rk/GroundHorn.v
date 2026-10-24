@@ -1,7 +1,11 @@
 From Stdlib Require Import Lists.List.
 Import ListNotations.
 
-(** A generic consequence theorem for GROUNDED Horn systems.  Atom can be
+(** Positive-rule kernel only. For models excluding Void or other forbidden
+    judgments use GroundHornConsistency and the concrete HilbertGrounding
+    instance. The all-true model below is NOT a consistency-separating model.
+
+    A generic consequence theorem for GROUNDED Horn systems.  Atom can be
     the countable decidable syntax of closed judgments, and Rules the
     effectively enumerable ground instances of independently specified
     inference rules.  The formal result below is structural: it does not

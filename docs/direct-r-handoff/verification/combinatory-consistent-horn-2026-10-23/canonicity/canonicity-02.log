@@ -1,0 +1,6 @@
+File "./theories/CombinatoryLogic-rk/NativeCanonicity.v", line 44, characters 42-59:
+Error: Cannot infer this placeholder of type "Type" in
+environment:
+n : nat
+i : Fin n
+

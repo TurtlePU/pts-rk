@@ -1,0 +1,4 @@
+Logs: /Users/akuklev/air/pts-rk/_build/combinatory-raw-internal-audit.i7AcKM
+Build: /tmp/pts-rk-raw-internal.Cw6I7V
+Pristine: /tmp/pts-rk-raw-internal-pristine.mI4P4i
+Archive: /Users/akuklev/air/pts-rk/docs/direct-r-handoff/verification/combinatory-raw-internal-2026-10-24/audit.lNl9UC

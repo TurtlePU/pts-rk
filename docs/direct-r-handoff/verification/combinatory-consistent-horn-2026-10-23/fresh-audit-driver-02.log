@@ -1,0 +1,17 @@
+Logs: /Users/akuklev/air/pts-rk/_build/combinatory-consistent-horn-audit.nW7Jd0
+Build: /tmp/pts-rk-consistent-horn.qzQEXT
+Pristine: /tmp/pts-rk-consistent-horn-pristine.2EzBcD
+head	0	2026-10-23T06:49:09Z	2026-10-23T06:49:09Z
+dune-version	0	2026-10-23T06:49:09Z	2026-10-23T06:49:10Z
+rocq-version	0	2026-10-23T06:49:10Z	2026-10-23T06:49:10Z
+packages	0	2026-10-23T06:49:10Z	2026-10-23T06:49:10Z
+source-before	0	2026-10-23T06:49:10Z	2026-10-23T06:49:10Z
+upstream-archive	0	2026-10-23T06:49:10Z	2026-10-23T06:49:10Z
+upstream-extract	0	2026-10-23T06:49:10Z	2026-10-23T06:49:10Z
+upstream-build	0	2026-10-23T06:49:10Z	2026-10-23T06:49:13Z
+upstream-kernel	0	2026-10-23T06:49:13Z	2026-10-23T06:49:19Z
+fresh-build	0	2026-10-23T06:49:19Z	2026-10-23T06:49:45Z
+closed-reports	0	2026-10-23T06:49:45Z	2026-10-23T06:49:45Z
+kernel	0	2026-10-23T06:49:45Z	2026-10-23T06:50:06Z
+inventory-compare	1	2026-10-23T06:50:06Z	2026-10-23T06:50:07Z
+/Users/akuklev/air/pts-rk/_build/combinatory-consistent-horn-audit.nW7Jd0/upstream-kernel.log /Users/akuklev/air/pts-rk/_build/combinatory-consistent-horn-audit.nW7Jd0/kernel.log differ: char 1, line 1

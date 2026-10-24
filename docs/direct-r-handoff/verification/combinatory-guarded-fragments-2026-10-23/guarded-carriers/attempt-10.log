@@ -1,0 +1,6 @@
+Warning:
+/private/tmp/pts-rk-quantified-models.uhpkYv/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-guarded-carriers.mPsQdQ/GuardedFiniteCarriers.v", line 40, characters 12-26:
+Error: The reference RkEval.fin_eqb was not found in the current environment.

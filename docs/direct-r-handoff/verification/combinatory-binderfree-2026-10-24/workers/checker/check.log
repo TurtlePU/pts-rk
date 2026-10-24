@@ -1,0 +1,481 @@
+Checking BinderFreeBidirectional (/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda).
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor b0, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor b1, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor b2, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor c0, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor c1, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor c2, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor i0, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor k0, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor k1, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor w0, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor w1, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:277.1-294.23: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _·_, which
+        is not yet supported
+
+when checking the definition of irreducible
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:298.1-36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor ι, which
+        is not yet supported
+
+when checking the definition of ground-canonical
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _$_, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor b, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor c, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor ground,
+        which is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor i, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor k, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor w, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:111.21-63: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _$_, which
+        is not yet supported
+
+when checking the definition of .extendedlambda0
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:112.27-113.41: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _$_, which
+        is not yet supported
+
+when checking the definition of .extendedlambda1
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:116.23-117.72: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _$_, which
+        is not yet supported
+
+when checking the definition of .extendedlambda2
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:206.1-38: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _$_, which
+        is not yet supported
+
+when checking the definition of ground-not-function
+
+———— All done; warnings encountered ————————————————————————
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor b0, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor b1, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor b2, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor c0, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor c1, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor c2, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor i0, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor k0, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor k1, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor w0, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:235.1-251.54: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor w1, which
+        is not yet supported
+
+when checking the definition of application-deterministic
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:277.1-294.23: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _·_, which
+        is not yet supported
+
+when checking the definition of irreducible
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeCore.agda:298.1-36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor ι, which
+        is not yet supported
+
+when checking the definition of ground-canonical
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _$_, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor b, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor c, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor ground,
+        which is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor i, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor k, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:88.1-95.36: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor w, which
+        is not yet supported
+
+when checking the definition of type-unique
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:111.21-63: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _$_, which
+        is not yet supported
+
+when checking the definition of .extendedlambda0
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:112.27-113.41: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _$_, which
+        is not yet supported
+
+when checking the definition of .extendedlambda1
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:116.23-117.72: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _$_, which
+        is not yet supported
+
+when checking the definition of .extendedlambda2
+
+/private/tmp/pts-rk-bidir-check.V1cH3T/BinderFreeBidirectional.agda:206.1-38: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _$_, which
+        is not yet supported
+
+when checking the definition of ground-not-function

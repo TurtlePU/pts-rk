@@ -1,0 +1,5 @@
+2026-10-23T06:30:53Z
+File "./theories/CombinatoryLogic-rk/GroundHornConsistency.v", line 87, characters 0-4:
+Error:  (in proof all_true_rejected): Attempt to save an incomplete proof
+(there are remaining open goals).
+

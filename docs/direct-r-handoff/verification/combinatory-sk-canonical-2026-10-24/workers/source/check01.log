@@ -1,0 +1,189 @@
+Checking SKSource (/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda).
+ Checking PTSPrelude (/private/tmp/pts-rk-sk-source.caRvqq/source/PTSPrelude.agda).
+    Checking Agda.Builtin.Cubical.Sub (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Sub.agda).
+    Checking Agda.Builtin.Cubical.Glue (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Glue.agda).
+     Checking Agda.Builtin.Cubical.Equiv (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Equiv.agda).
+      Checking Agda.Builtin.Sigma (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Sigma.agda).
+      Checking Agda.Builtin.Cubical.Path (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/Path.agda).
+      Checking Agda.Builtin.Cubical.HCompU (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Cubical/HCompU.agda).
+        Checking Agda.Builtin.FromNeg (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/FromNeg.agda).
+         Checking Agda.Builtin.Nat (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Nat.agda).
+          Checking Agda.Builtin.Bool (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Bool.agda).
+         Checking Agda.Builtin.Unit (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Unit.agda).
+        Checking Agda.Builtin.FromNat (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/FromNat.agda).
+           Checking Agda.Builtin.Reflection (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Reflection.agda).
+            Checking Agda.Builtin.Word (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Word.agda).
+            Checking Agda.Builtin.List (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/List.agda).
+            Checking Agda.Builtin.String (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/String.agda).
+             Checking Agda.Builtin.Char (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Char.agda).
+             Checking Agda.Builtin.Maybe (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Maybe.agda).
+            Checking Agda.Builtin.Float (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Float.agda).
+             Checking Agda.Builtin.Int (/private/tmp/pts-rk-sk-source.caRvqq/data/agda/2.8.0-3d04bac/lib/prim/Agda/Builtin/Int.agda).
+ Checking BinderFreeCore (/private/tmp/pts-rk-sk-source.caRvqq/source/BinderFreeCore.agda).
+ Checking BoundedReduction (/private/tmp/pts-rk-sk-source.caRvqq/source/BoundedReduction.agda).
+  Checking FiniteSyntax (/private/tmp/pts-rk-sk-source.caRvqq/source/FiniteSyntax.agda).
+ Checking NativeTyping (/private/tmp/pts-rk-sk-source.caRvqq/source/NativeTyping.agda).
+ Checking BinderFreeBoundary (/private/tmp/pts-rk-sk-source.caRvqq/source/BinderFreeBoundary.agda).
+  Checking NativeConfluence (/private/tmp/pts-rk-sk-source.caRvqq/source/NativeConfluence.agda).
+   Checking NativeAlgebra (/private/tmp/pts-rk-sk-source.caRvqq/source/NativeAlgebra.agda).
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:75.1-76.28: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of liftRen
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:89.1-90.43: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of lift-ren-agrees
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:107.1-108.35: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of liftSub
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:121.1-123.63: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of lift-sub-agrees
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:137.1-138.24: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of single
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:144.1-145.30: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of single-agrees
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:153.1-155.39: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _⇒_, which
+        is not yet supported
+
+when checking the definition of contract
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:159.1-161.34: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _⇒_, which
+        is not yet supported
+
+when checking the definition of erase-contract
+
+———— All done; warnings encountered ————————————————————————
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:75.1-76.28: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of liftRen
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:89.1-90.43: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of lift-ren-agrees
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:107.1-108.35: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of liftSub
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:121.1-123.63: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of lift-sub-agrees
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:137.1-138.24: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of single
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:144.1-145.30: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _▻_, which
+        is not yet supported
+
+when checking the definition of single-agrees
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:153.1-155.39: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _⇒_, which
+        is not yet supported
+
+when checking the definition of contract
+
+/private/tmp/pts-rk-sk-source.caRvqq/source/SKSource.agda:159.1-161.34: warning: -W[no]UnsupportedIndexedMatch
+This clause uses pattern-matching features that are not yet
+supported by Cubical Agda, the function to which it belongs will
+not compute when applied to transports.
+
+Reason: It relies on injectivity of the data constructor _⇒_, which
+        is not yet supported
+
+when checking the definition of erase-contract

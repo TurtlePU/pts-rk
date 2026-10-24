@@ -1,0 +1,9 @@
+Warning:
+/private/tmp/pts-rk-indexed-provenance.cjt8S0/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-internal-guard.9aN6Rk/MM0InternalGuard.v", line 178, characters 2-72:
+Error: Found no subterm matching
+"F.H.Derives (F.indexed_clauses ?s ?l ?l0 ?y) (F.index ?s ?l ?l0 ?y ?y0)"
+in the current goal.
+

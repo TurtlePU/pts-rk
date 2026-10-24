@@ -1,0 +1,3 @@
+Logs: /Users/akuklev/air/pts-rk/_build/combinatory-consistent-horn-audit.QbsFPC
+Build: /tmp/pts-rk-consistent-horn.2l5WGN
+Pristine: /tmp/pts-rk-consistent-horn-pristine.UNV9A0

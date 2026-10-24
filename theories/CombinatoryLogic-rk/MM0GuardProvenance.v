@@ -1,0 +1,484 @@
+From Stdlib Require Import Lists.List Bool.Bool Arith.PeanoNat Lia.
+From Stdlib Require Vectors.Vector.
+From PTSrk.Combinatory Require Import GroundHorn FiniteHorn FiniteModelSoundness
+  GuardedFiniteCarriers FiniteUniversalHorn
+  MM0FiniteSignature MM0FiniteAxioms MM0SyntaxSoundness
+  MM0GuardedQuantification MM0GuardedSyntaxAlgebra.
+Import ListNotations.
+
+(** Finite raw source-instance provenance.  Observation None is genuine
+    overflow, distinct from Some EZ.  Constructor evaluation and guards below
+    inspect only closed first-order trees, sorting and numerical bounds.
+    No relation model, native typing or source deduction is an input. *)
+Module MM0GuardProvenance.
+Import MM0FiniteSignature MM0FiniteAxioms MM0SyntaxSoundness.
+Module A := MM0GuardedSyntaxAlgebra.
+Module C := GuardedFiniteCarriers.
+Module G := MM0GuardedQuantification.
+Module U := FiniteUniversalHorn.
+Module F := FiniteModelSoundness.
+Module H := FiniteHorn.
+Module GH := GroundHorn.
+
+Definition Observation := option Expr.
+Definition observations N d := None :: map (@Some Expr) (A.syntax_list N d).
+Definition fallback (x : Observation) := match x with Some e => e | None => EZ end.
+Definition present (x : Observation) := match x with Some _ => true | None => false end.
+Definition reify N d (x : Observation) : A.Domain N d :=
+  match x with Some e => A.quote N d e | None => None end.
+Definition clip N d e : Observation :=
+  if in_dec A.expr_eq_dec e (A.syntax_list N d) then Some e else None.
+
+Theorem observation_exact N d x : In x (observations N d) <->
+  x = None \/ exists e, x = Some e /\ A.FitsSyntax N d e.
+Proof.
+  unfold observations; cbn; rewrite in_map_iff; split.
+  - intros [H | [e [H HE]]]; [left; symmetry; exact H | right].
+    exists e; split; [symmetry; exact H | now apply A.syntax_list_exact].
+  - intros [-> | [e [-> HE]]]; [left; reflexivity | right].
+    exists e; split; [reflexivity | now apply A.syntax_list_exact].
+Qed.
+
+Theorem decode_observation N d a : In (A.decode N d a) (observations N d).
+Proof.
+  apply observation_exact; destruct (A.decode N d a) as [e|] eqn:HE; [right|now left].
+  exists e; split; [reflexivity | now apply A.decode_admitted with (a := a)].
+Qed.
+
+Theorem reify_decodes N d x : In x (observations N d) ->
+  A.decode N d (reify N d x) = x.
+Proof.
+  rewrite observation_exact; intros [-> | [e [-> HE]]]; [reflexivity |].
+  now apply A.quote_decode_exact.
+Qed.
+
+Theorem clip_quote N d e : A.decode N d (A.quote N d e) = clip N d e.
+Proof.
+  unfold clip; destruct (in_dec A.expr_eq_dec e (A.syntax_list N d)) as [H|H].
+  - apply A.quote_decode_exact, A.syntax_list_exact, H.
+  - unfold A.decode, A.quote; rewrite (proj2 (C.encode_overflow _ _ _ _) H); reflexivity.
+Qed.
+
+Definition unary N d (f : Expr -> Expr) x := match x with Some e => clip N d (f e) | None => None end.
+Definition binary N d (f : Expr -> Expr -> Expr) x y :=
+  match x,y with Some e,Some e' => clip N d (f e e') | _,_ => None end.
+Definition ternary N d (f : Expr -> Expr -> Expr -> Expr) x y z :=
+  match x,y,z with Some e,Some e',Some e'' => clip N d (f e e' e'') | _,_,_ => None end.
+
+Fixpoint evaluate_raw N d (env : list Observation) e : Observation :=
+  match e with
+  | EVar i => nth i env None
+  | EZ => clip N d EZ
+  | ES x => unary N d ES (evaluate_raw N d env x)
+  | EU x => unary N d EU (evaluate_raw N d env x)
+  | EV x => unary N d EV (evaluate_raw N d env x)
+  | EApp x y => binary N d EApp (evaluate_raw N d env x) (evaluate_raw N d env y)
+  | EPi x y => binary N d EPi (evaluate_raw N d env x) (evaluate_raw N d env y)
+  | ELam x y => binary N d ELam (evaluate_raw N d env x) (evaluate_raw N d env y)
+  | ENil => clip N d ENil
+  | ECons x y z => ternary N d ECons (evaluate_raw N d env x)
+      (evaluate_raw N d env y) (evaluate_raw N d env z)
+  end.
+
+Theorem evaluate_raw_exact N d env e :
+  evaluate_raw N d (map (A.decode N d) env) e =
+  A.decode N d (evaluate None (A.algebra N d) env e).
+Proof.
+  induction e; cbn [evaluate_raw evaluate A.algebra];
+    cbv beta iota zeta delta [Vector.hd Vector.tl Vector.caseS].
+  - change (nth n (map (A.decode N d) env) (A.decode N d None) =
+      A.decode N d (nth n env None)); apply map_nth.
+  - symmetry; apply clip_quote.
+  - rewrite IHe; unfold A.unary, C.lift1, unary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e));
+      [symmetry; apply clip_quote | reflexivity].
+  - rewrite IHe; unfold A.unary, C.lift1, unary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e));
+      [symmetry; apply clip_quote | reflexivity].
+  - rewrite IHe; unfold A.unary, C.lift1, unary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e));
+      [symmetry; apply clip_quote | reflexivity].
+  - rewrite IHe1, IHe2; unfold A.binary, C.lift2, binary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e1));
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e2));
+      try reflexivity; symmetry; apply clip_quote.
+  - rewrite IHe1, IHe2; unfold A.binary, C.lift2, binary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e1));
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e2));
+      try reflexivity; symmetry; apply clip_quote.
+  - rewrite IHe1, IHe2; unfold A.binary, C.lift2, binary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e1));
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e2));
+      try reflexivity; symmetry; apply clip_quote.
+  - symmetry; apply clip_quote.
+  - rewrite IHe1, IHe2, IHe3; unfold A.ternary, C.lift3, ternary; cbn [Vector.hd Vector.tl]; fold (A.decode N d).
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e1));
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e2));
+    destruct (A.decode N d (evaluate None (A.algebra N d) env e3));
+      try reflexivity; symmetry; apply clip_quote.
+Qed.
+
+Definition raw_atom N d env (a : Atom) : GroundAtom Observation :=
+  (fst a, map (evaluate_raw N d env) (snd a)).
+Definition observe_atom N d (a : GroundAtom (A.Domain N d)) : GroundAtom Observation :=
+  (fst a, map (A.decode N d) (snd a)).
+
+Theorem raw_atom_exact N d env a :
+  raw_atom N d (map (A.decode N d) env) a =
+  observe_atom N d (evaluate_atom None (A.algebra N d) env a).
+Proof.
+  unfold raw_atom, observe_atom, evaluate_atom; cbn; rewrite map_map; f_equal.
+  apply map_ext, evaluate_raw_exact.
+Qed.
+
+Definition raw_substitution (env : list Observation) i := nth i (map fallback env) EZ.
+Definition raw_guard N d r (env : list Observation) :=
+  forallb present env && G.instance_guard N d r (raw_substitution env) &&
+  arguments_sorted [] (map fallback env) (variables r).
+
+Lemma vector_to_list_map X Y (f : X -> Y) n (v : Vector.t X n) :
+  Vector.to_list (Vector.map f v) = map f (Vector.to_list v).
+Proof.
+  induction v; [reflexivity |].
+  change (f h :: Vector.to_list (Vector.map f v) = f h :: map f (Vector.to_list v)).
+  now rewrite IHv.
+Qed.
+
+Lemma forallb_map X Y (f : X -> Y) p xs :
+  forallb p (map f xs) = forallb (fun x => p (f x)) xs.
+Proof. induction xs; cbn; congruence. Qed.
+
+Lemma forallb_ext X (p q : X -> bool) xs :
+  (forall x, p x = q x) -> forallb p xs = forallb q xs.
+Proof. intro H; induction xs; cbn; [reflexivity | now rewrite H, IHxs]. Qed.
+
+Theorem raw_guard_exact N d r env :
+  raw_guard N d r (map (A.decode N d) (Vector.to_list env)) = A.guard N d r env.
+Proof.
+  unfold raw_guard, A.guard, G.structural_guard, raw_substitution,
+    A.decoded_substitution; rewrite !map_map, forallb_map.
+  assert (HR : (fun x => fallback (A.decode N d x)) = A.raw N d) by reflexivity.
+  rewrite HR; f_equal; f_equal; apply forallb_ext; intros [i|]; reflexivity.
+Qed.
+
+Theorem raw_guard_spec N d r env : raw_guard N d r env = true <->
+  Forall (fun x => present x = true) env /\
+  G.Bounds N d (G.instance_expressions r (raw_substitution env)) /\
+  Forall2 (SortedExpr []) (map fallback env) (variables r).
+Proof.
+  unfold raw_guard, G.instance_guard; rewrite !andb_true_iff,
+    G.expressions_guard_exact, arguments_sorted_exact, forallb_forall, Forall_forall.
+  tauto.
+Qed.
+
+Fixpoint tuples {X : Type} (xs : list X) (k : nat) : list (list X) :=
+  match k with
+  | 0 => [[]]
+  | S j => flat_map (fun x => map (cons x) (tuples xs j)) xs
+  end.
+
+Theorem tuples_exact X (xs ys : list X) k : In ys (tuples xs k) <->
+  length ys = k /\ Forall (fun y => In y xs) ys.
+Proof.
+  revert ys; induction k as [|k IH]; intros ys; cbn [tuples].
+  - split.
+    + intros [<-|H]; [split; constructor | contradiction].
+    + intros [HL _]; apply length_zero_iff_nil in HL; subst; now left.
+  - rewrite in_flat_map; split.
+    + intros [x [HX HY]]; apply in_map_iff in HY as [zs [<- HZ]].
+      apply IH in HZ as [HL HF]; split; cbn; [congruence | now constructor].
+    + intros [HL HF]; destruct ys as [|y ys]; [discriminate |].
+      inversion HF; subst; exists y; split; [assumption |].
+      apply in_map, IH; split; [cbn in HL; lia | assumption].
+Qed.
+
+Theorem semantic_tuple_observed N d k (env : Vector.t (A.Domain N d) k) :
+  In (map (A.decode N d) (Vector.to_list env)) (tuples (observations N d) k).
+Proof.
+  apply tuples_exact; split; [rewrite length_map, Vector.length_to_list; reflexivity |].
+  apply Forall_map, Forall_forall; intros x _; apply decode_observation.
+Qed.
+
+Theorem raw_tuple_realized N d k xs : In xs (tuples (observations N d) k) ->
+  exists env : Vector.t (A.Domain N d) k,
+    map (A.decode N d) (Vector.to_list env) = xs.
+Proof.
+  rewrite tuples_exact; intros [HL HF].
+  revert k HL; induction HF as [|x xs HX HF IH]; intros [|k] HL; try discriminate.
+  - exists (Vector.nil _); reflexivity.
+  - cbn in HL; destruct (IH k (Nat.succ_inj _ _ HL)) as [env HE].
+    exists (Vector.cons _ (reify N d x) k env).
+    change (A.decode N d (reify N d x) :: map (A.decode N d) (Vector.to_list env) = x :: xs).
+    rewrite reify_decodes by exact HX; now rewrite HE.
+Qed.
+
+(** The source name and complete raw variable tuple remain in the table.
+    Failed guards are represented explicitly as identity clauses. *)
+Definition raw_entries N d names : list (AxiomName * list Observation) :=
+  flat_map (fun name => map (fun env => (name,env))
+    (tuples (observations N d) (length (variables (axiom_rule name))))) names.
+
+Definition raw_instance N d name env : list (GroundAtom Observation) * GroundAtom Observation :=
+  let r := axiom_rule name in
+  let head := raw_atom N d env (conclusion r) in
+  if raw_guard N d r env
+  then (map (raw_atom N d env) (premises r),head)
+  else ([head],head).
+
+Definition raw_clauses N d names :=
+  map (fun entry => raw_instance N d (fst entry) (snd entry)) (raw_entries N d names).
+Definition observe_clause N d (c : list (GroundAtom (A.Domain N d)) * GroundAtom (A.Domain N d)) :=
+  (map (observe_atom N d) (fst c),observe_atom N d (snd c)).
+
+Theorem raw_entry_exact N d names name env :
+  In (name,env) (raw_entries N d names) <->
+  In name names /\ In env (tuples (observations N d) (length (variables (axiom_rule name)))).
+Proof.
+  unfold raw_entries; rewrite in_flat_map; split.
+  - intros [x [HX HE]]; apply in_map_iff in HE as [ys [HE HY]].
+    injection HE as -> ->; auto.
+  - intros [HN HE]; exists name; split; [exact HN | now apply in_map].
+Qed.
+
+Theorem raw_instance_exact N d name env :
+  raw_instance N d name (map (A.decode N d) (Vector.to_list env)) =
+  observe_clause N d (projT2 (G.guarded_schema None (A.algebra N d) (A.guard N d)
+    (axiom_rule name)) env).
+Proof.
+  unfold raw_instance, G.guarded_schema; cbn; rewrite raw_guard_exact.
+  destruct (A.guard N d (axiom_rule name) env); unfold observe_clause; cbn.
+  - rewrite map_map, raw_atom_exact; f_equal; apply map_ext; intro a; apply raw_atom_exact.
+  - now rewrite raw_atom_exact.
+Qed.
+
+(** Exact membership correspondence, not an assertion that carrier aliases
+    are equal.  Every semantic valuation occurs, and every raw tuple has a
+    semantic realization.  None remains visible on both sides. *)
+Theorem raw_clauses_exact N d names c : In c (raw_clauses N d names) <->
+  exists semantic, In semantic (A.clauses N d names) /\ observe_clause N d semantic = c.
+Proof.
+  unfold raw_clauses; rewrite in_map_iff; split.
+  - intros [[name env] [HC HE]]; cbn in HC.
+    apply raw_entry_exact in HE as [HN HE].
+    destruct (raw_tuple_realized N d _ env HE) as [valuation HV].
+    rewrite <- HV, raw_instance_exact in HC.
+    eexists; split; [|exact HC].
+    unfold A.clauses, G.guarded_clauses.
+    apply U.positive_instance_in; [apply A.values_complete |].
+    apply in_map; unfold selected_rules; now apply in_map.
+  - intros [semantic [HC HE]].
+    unfold A.clauses, G.guarded_clauses in HC.
+    apply U.positive_instance_elim in HC as [s [HS [valuation HV]]].
+    unfold G.guarded_schemata in HS; apply in_map_iff in HS as [r [HRS HR]].
+    subst s; unfold selected_rules in HR; apply in_map_iff in HR as [name [<- HN]].
+    exists (name,map (A.decode N d) (Vector.to_list valuation)); split.
+    + cbn; rewrite raw_instance_exact, HV; exact HE.
+    + apply raw_entry_exact; split; [exact HN | apply semantic_tuple_observed].
+Qed.
+
+Theorem active_source_substitution N d name env :
+  raw_guard N d (axiom_rule name) env = true ->
+  ClosedSubstitution (variables (axiom_rule name)) (raw_substitution env) /\
+  G.Bounds N d (G.instance_expressions (axiom_rule name) (raw_substitution env)).
+Proof.
+  rewrite raw_guard_spec; intros [_ [HB HS]]; split; [|exact HB].
+  intros i s HI; exact (A.sorted_nth _ _ HS i s HI).
+Qed.
+
+Theorem active_argument_exact N d name env a :
+  In env (tuples (observations N d) (length (variables (axiom_rule name)))) ->
+  raw_guard N d (axiom_rule name) env = true ->
+  In a (conclusion (axiom_rule name) :: premises (axiom_rule name)) ->
+  snd (raw_atom N d env a) = map Some (snd (substitute_atom (raw_substitution env) a)).
+Proof.
+  intros HE HG HA; destruct (raw_tuple_realized N d _ env HE) as [valuation <-].
+  rewrite raw_guard_exact in HG; rewrite raw_atom_exact.
+  unfold observe_atom; cbn.
+  pose proof (A.guarded_atom_decode N d name valuation a HG HA) as H.
+  unfold raw_substitution; rewrite !map_map.
+  unfold evaluate_atom, substitute_atom in H; cbn in H; rewrite !map_map in H; exact H.
+Qed.
+
+Theorem inactive_instance_tautological N d name env :
+  raw_guard N d (axiom_rule name) env = false ->
+  raw_instance N d name env =
+    ([raw_atom N d env (conclusion (axiom_rule name))],
+      raw_atom N d env (conclusion (axiom_rule name))).
+Proof. intro H; unfold raw_instance; now rewrite H. Qed.
+
+Theorem clause_provenance N d names c : In c (raw_clauses N d names) ->
+  exists name env, In name names /\
+    In env (tuples (observations N d) (length (variables (axiom_rule name)))) /\
+    c = raw_instance N d name env /\
+    ((raw_guard N d (axiom_rule name) env = true /\
+      ClosedSubstitution (variables (axiom_rule name)) (raw_substitution env) /\
+      G.Bounds N d (G.instance_expressions (axiom_rule name) (raw_substitution env))) \/
+     (raw_guard N d (axiom_rule name) env = false /\ fst c = [snd c])).
+Proof.
+  unfold raw_clauses; intro H; apply in_map_iff in H as [[name env] [<- HE]]; cbn.
+  apply raw_entry_exact in HE as [HN HE]; exists name,env; repeat split; try assumption.
+  destruct (raw_guard N d (axiom_rule name) env) eqn:HG.
+  - left; split; [reflexivity | now apply active_source_substitution].
+  - right; split; [reflexivity | rewrite inactive_instance_tautological by exact HG; reflexivity].
+Qed.
+
+Definition quote_atom (a : Atom) : GroundAtom Observation := (fst a,map Some (snd a)).
+
+Lemma some_map_injective xs ys : map (@Some Expr) xs = map Some ys -> xs = ys.
+Proof.
+  revert ys; induction xs as [|x xs IH]; intros [|y ys] HE; cbn in HE; try discriminate.
+  - reflexivity.
+  - injection HE as -> HE; f_equal; now apply IH.
+Qed.
+
+Theorem quote_atom_injective a b : quote_atom a = quote_atom b -> a = b.
+Proof.
+  destruct a as [p xs], b as [q ys]; unfold quote_atom; cbn.
+  intro HE; injection HE as -> HE; f_equal; now apply some_map_injective.
+Qed.
+
+Theorem active_atom_exact N d name env a :
+  In env (tuples (observations N d) (length (variables (axiom_rule name)))) ->
+  raw_guard N d (axiom_rule name) env = true ->
+  In a (conclusion (axiom_rule name) :: premises (axiom_rule name)) ->
+  raw_atom N d env a = quote_atom (substitute_atom (raw_substitution env) a).
+Proof.
+  intros HE HG HA; pose proof (active_argument_exact N d name env a HE HG HA) as HX.
+  unfold raw_atom, quote_atom, substitute_atom in *; cbn in *; now rewrite HX.
+Qed.
+
+(** This invariant is proved of raw derivations, never required to accept a
+    raw entry.  In particular merging carrier aliases cannot introduce a
+    proof not justified by the independently generated literal source. *)
+Definition SourceConclusion names (a : GroundAtom Observation) :=
+  exists source, a = quote_atom source /\ inhabited (Derivation names source).
+
+Lemma source_premises names ps :
+  Forall (fun a => inhabited (Derivation names a)) ps -> inhabited (Derivations names ps).
+Proof.
+  intro HP; induction HP as [|a ps [p] HP [qs]]; constructor;
+    [constructor | now constructor].
+Qed.
+
+Theorem raw_source_model N d names :
+  H.Model (raw_clauses N d names) (SourceConclusion names).
+Proof.
+  intros ps a HC HP; unfold H.Rules,raw_clauses in HC.
+  apply in_map_iff in HC as [[name env] [HC HE]]; cbn in HC.
+  apply raw_entry_exact in HE as [HN HE].
+  unfold raw_instance in HC; destruct (raw_guard N d (axiom_rule name) env) eqn:HG.
+  - injection HC as <- <-.
+    exists (substitute_atom (raw_substitution env) (conclusion (axiom_rule name))); split.
+    + exact (active_atom_exact N d name env _ HE HG (or_introl eq_refl)).
+    + assert (HPS : inhabited (Derivations names
+        (map (substitute_atom (raw_substitution env)) (premises (axiom_rule name))))).
+      { apply source_premises; rewrite Forall_map, Forall_forall in *.
+        intros b HB; destruct (HP b HB) as [source [HS HD]].
+        rewrite (active_atom_exact N d name env b HE HG (or_intror HB)) in HS.
+        apply quote_atom_injective in HS; now rewrite HS. }
+      destruct HPS as [subs]; constructor; apply use_axiom; [exact HN | | exact subs].
+      exact (proj1 (active_source_substitution N d name env HG)).
+  - injection HC as <- <-; now inversion HP.
+Qed.
+
+Theorem raw_derivation_reflects N d names a :
+  H.Derives (raw_clauses N d names) a -> SourceConclusion names a.
+Proof.
+  intro HD; exact (GH.derivation_sound _ _ HD (SourceConclusion names)
+    (raw_source_model N d names)).
+Qed.
+
+Theorem raw_derivation_no_overflow N d names p xs :
+  H.Derives (raw_clauses N d names) (p,xs) -> ~ In None xs.
+Proof.
+  intro HD; apply raw_derivation_reflects in HD as [[q es] [HE _]].
+  unfold quote_atom in HE; cbn in HE; injection HE as -> ->.
+  intro HN; apply in_map_iff in HN as [e [HE _]]; discriminate.
+Qed.
+
+Section SemanticProofTranslation.
+Variables N d : nat.
+Variable names : list AxiomName.
+
+Fixpoint semantic_proof_observed a (p : F.Proof (A.clauses N d names) a) :
+  F.Proof (raw_clauses N d names) (observe_atom N d a)
+with semantic_proofs_observed ps (p : F.Proofs (A.clauses N d names) ps) :
+  F.Proofs (raw_clauses N d names) (map (observe_atom N d) ps).
+Proof.
+  - destruct p as [ps a HC subs]; eapply F.use_clause.
+    + apply raw_clauses_exact; exists (ps,a); split; [exact HC | reflexivity].
+    + exact (semantic_proofs_observed ps subs).
+  - destruct p as [|a ps p subs]; cbn; [constructor |].
+    constructor; [exact (semantic_proof_observed a p) | exact (semantic_proofs_observed ps subs)].
+Defined.
+End SemanticProofTranslation.
+
+Theorem guarded_query_observed N d names a h (p : G.GuardedDerivation names N d h a) :
+  observe_atom N d (evaluate_atom None (A.algebra N d) [] a) = quote_atom a.
+Proof.
+  unfold observe_atom, evaluate_atom, quote_atom; cbn; rewrite map_map; f_equal.
+  apply map_ext_in; intros e HE; exact (A.source_arguments_represented N d names a h p e HE).
+Qed.
+
+Theorem guarded_source_raw N d names a h (p : G.GuardedDerivation names N d h a) :
+  H.Derives (raw_clauses N d names) (quote_atom a).
+Proof.
+  rewrite <- (guarded_query_observed N d names a h p).
+  apply F.proof_derivable, semantic_proof_observed, (A.source_proof N d names a h p).
+Qed.
+
+Theorem raw_source_union_exact names a : inhabited (Derivation names a) <->
+  exists N d, H.Derives (raw_clauses N d names) (quote_atom a).
+Proof.
+  split.
+  - intros [p]; exists (G.source_size_budget names a p), (G.source_depth_budget names a p).
+    exact (guarded_source_raw _ _ _ _ _ (G.every_source_derivation_covered names a p)).
+  - intros [N [d HD]]; apply raw_derivation_reflects in HD as [source [HE HP]].
+    apply quote_atom_injective in HE; now rewrite HE.
+Qed.
+
+Example overflow_not_zero : (@None Expr) <> Some EZ.
+Proof. discriminate. Qed.
+Example raw_universe_active : raw_guard 2 2 (axiom_rule A_h_universe) [Some EZ] = true.
+Proof. reflexivity. Qed.
+Example raw_universe_wrong_sort : raw_guard 2 2 (axiom_rule A_h_universe) [Some ENil] = false.
+Proof. reflexivity. Qed.
+Example raw_universe_overflow : raw_guard 2 2 (axiom_rule A_h_universe) [None] = false.
+Proof. reflexivity. Qed.
+Example raw_universe_output_bound : raw_guard 1 2 (axiom_rule A_h_universe) [Some EZ] = false.
+Proof. reflexivity. Qed.
+
+Print Assumptions observation_exact.
+Print Assumptions decode_observation.
+Print Assumptions reify_decodes.
+Print Assumptions clip_quote.
+Print Assumptions evaluate_raw_exact.
+Print Assumptions raw_atom_exact.
+Print Assumptions raw_guard_exact.
+Print Assumptions raw_guard_spec.
+Print Assumptions tuples_exact.
+Print Assumptions semantic_tuple_observed.
+Print Assumptions raw_tuple_realized.
+Print Assumptions raw_entry_exact.
+Print Assumptions raw_instance_exact.
+Print Assumptions raw_clauses_exact.
+Print Assumptions active_source_substitution.
+Print Assumptions active_argument_exact.
+Print Assumptions inactive_instance_tautological.
+Print Assumptions clause_provenance.
+Print Assumptions quote_atom_injective.
+Print Assumptions active_atom_exact.
+Print Assumptions raw_source_model.
+Print Assumptions raw_derivation_reflects.
+Print Assumptions raw_derivation_no_overflow.
+Print Assumptions semantic_proof_observed.
+Print Assumptions semantic_proofs_observed.
+Print Assumptions guarded_query_observed.
+Print Assumptions guarded_source_raw.
+Print Assumptions raw_source_union_exact.
+Print Assumptions overflow_not_zero.
+Print Assumptions raw_universe_active.
+Print Assumptions raw_universe_wrong_sort.
+Print Assumptions raw_universe_overflow.
+Print Assumptions raw_universe_output_bound.
+End MM0GuardProvenance.

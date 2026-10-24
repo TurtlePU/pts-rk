@@ -1,0 +1,7 @@
+Warning:
+/private/tmp/pts-rk-mm0-bridge.IH9mrh/default/theories/Interpretation_of_R
+was previously bound to PTSrk.Interpretation_of_R; it is remapped to
+Interpretation_of_R [overriding-logical-loadpath,filesystem,default]
+File "/tmp/pts-rk-horn-internal.VBqV4a/MM0GuardedInternalReflection.v", line 184, characters 2-182:
+Error: Tactic failure: Incorrect number of goals (expected 4 tactics).
+

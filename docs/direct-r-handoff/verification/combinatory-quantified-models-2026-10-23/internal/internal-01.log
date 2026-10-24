@@ -1,0 +1,11 @@
+File "/tmp/pts-rk-finite-internal.6wfWep/MM0InternalSoundness.v", line 65, characters 64-65:
+Error: Cannot infer this placeholder of type "Prop" in
+environment:
+D : Type
+default : D
+elements : list D
+value_eq_dec : forall x y : D, {x = y} + {x <> y}
+elements_complete : forall x : D, In x elements
+algebra : S.Algebra D
+names : list A.AxiomName
+

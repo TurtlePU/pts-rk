@@ -1,0 +1,3 @@
+theories/CombinatoryLogic-rk/agda/SKDirectBoundary.agda:1:{-# OPTIONS --cubical --safe --guardedness #-}
+theories/CombinatoryLogic-rk/agda/SKDirectSoundness.agda:1:{-# OPTIONS --cubical --safe --guardedness #-}
+theories/CombinatoryLogic-rk/agda/SKDirectGround.agda:1:{-# OPTIONS --cubical --safe --guardedness #-}

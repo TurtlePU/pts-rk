@@ -1,0 +1,24 @@
+File "./theories/CombinatoryLogic-rk/SK.v", line 10, characters 0-10:
+Warning: Trying to mask the absolute name "SK"!
+[masking-absolute-name,deprecated-since-8.8,deprecated,default]
+File "./theories/CombinatoryLogic-rk/SK.v", line 155, characters 12-21:
+Error:
+In environment
+V : Ty -> Type
+A, A0, B : Ty
+p1 : Code (Extend V A) (A0 ⇒ B)
+p2 : Code (Extend V A) A0
+IHp1 :
+  forall (n i : nat) (rho : forall B : Ty, V B -> Term nat n),
+  expand i (abstract p1) rho ↠ᵝ [decode i A] expand i p1 (extend_env rho)
+IHp2 :
+  forall (n i : nat) (rho : forall B : Ty, V B -> Term nat n),
+  expand i (abstract p2) rho ↠ᵝ [decode i A] expand i p2 (extend_env rho)
+n, i : nat
+rho : forall B : Ty, V B -> Term nat n
+Unable to unify "?R" with "RTC"
+(unable to find a well-typed instantiation for "?R": cannot ensure that
+"Relation_Definitions.relation (Term nat n) ->
+ Relation_Definitions.relation (Term nat n)"
+is a subtype of
+"forall n0 : nat, Relation_Definitions.relation (Term ?L n0)").

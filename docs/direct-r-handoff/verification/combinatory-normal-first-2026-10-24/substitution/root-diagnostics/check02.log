@@ -1,0 +1,668 @@
+Checking NormalizedSubstitution (/private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda).
+error: [UnsolvedConstraints]
+Failed to solve the following constraints:
+  NativeTyping.transpTyp (λ i → Ξ)
+  (λ i →
+     act
+     (normalize-valuation wfΞ
+      (compose (valuation τ pt) (valuation υ pu)))
+     (σ x))
+  (λ i →
+     NativeAlgebra.replace-compose σ
+     (images
+      (normalize-valuation wfΞ
+       (compose (valuation τ pt) (valuation υ pu))))
+     (lookup _Γ_1139 x) i)
+  i0
+  (NativeSubstitution.typed-replace
+   (images-typed
+    (normalize-valuation wfΞ
+     (compose (valuation τ pt) (valuation υ pu))))
+   (ps x))
+    = NativeTyping.transpTyp (λ i → Ξ)
+      (λ i →
+         act
+         (valuation
+          (PT.rec→Set sub-isSet
+           (Cubical.Foundations.Function.uncurry
+            (λ ps₁ pt₁ →
+               normalizeSub wfΞ (compose (valuation τ ps₁) (valuation υ pt₁))))
+           (λ x₁ y →
+              sub-path
+              (normalize-coherent wfΞ
+               (compose (valuation τ (fst x₁)) (valuation υ (snd x₁)))
+               (compose (valuation τ (fst y)) (valuation υ (snd y)))
+               (λ i₁ → beta-refl)))
+           (PT.rec (isPropΠ (λ _ → squash₁)) (λ x₁ → PT.map (λ a′ → x₁ , a′))
+            ∣ pt ∣₁ ∣ pu ∣₁)
+           .sub-images)
+          (images-typed
+           (normalize-valuation wfΞ
+            (compose (valuation τ pt) (valuation υ pu)))))
+         (σ x))
+      (λ i →
+         NativeAlgebra.replace-compose σ
+         (PT.rec→Set sub-isSet
+          (Cubical.Foundations.Function.uncurry
+           (λ ps₁ pt₁ →
+              normalizeSub wfΞ (compose (valuation τ ps₁) (valuation υ pt₁))))
+          (λ x₁ y →
+             sub-path
+             (normalize-coherent wfΞ
+              (compose (valuation τ (fst x₁)) (valuation υ (snd x₁)))
+              (compose (valuation τ (fst y)) (valuation υ (snd y)))
+              (λ i₁ → beta-refl)))
+          (PT.rec (isPropΠ (λ _ → squash₁)) (λ x₁ → PT.map (λ a′ → x₁ , a′))
+           ∣ pt ∣₁ ∣ pu ∣₁)
+          .sub-images)
+         (lookup Γ x) i)
+      i0
+      (NativeSubstitution.typed-replace
+       (images-typed
+        (normalize-valuation wfΞ
+         (compose (valuation τ pt) (valuation υ pu))))
+       (ps x))
+    : Typ Ξ
+      (replace
+       (PT.rec→Set sub-isSet
+        (Cubical.Foundations.Function.uncurry
+         (λ ps₁ pt₁ →
+            normalizeSub wfΞ (compose (valuation τ ps₁) (valuation υ pt₁))))
+        (λ x₁ y →
+           sub-path
+           (normalize-coherent wfΞ
+            (compose (valuation τ (fst x₁)) (valuation υ (snd x₁)))
+            (compose (valuation τ (fst y)) (valuation υ (snd y)))
+            (λ i → beta-refl)))
+        (PT.rec (isPropΠ (λ _ → squash₁)) (λ x₁ → PT.map (λ a′ → x₁ , a′))
+         ∣ pt ∣₁ ∣ pu ∣₁)
+        .sub-images)
+       (σ x))
+      (replace
+       (λ i →
+          replace
+          (λ i₁ →
+             nf
+             (Normalize.result wfΞ (compose (valuation τ pt) (valuation υ pu))
+              i₁))
+          (σ i))
+       (lookup Γ x))
+    (blocked on _1145)
+  replace
+  (λ i →
+     act
+     (normalize-valuation wfΞ
+      (compose (valuation τ pt) (valuation υ pu)))
+     (σ i))
+  (lookup _Γ_1139 x)
+    = replace
+      (λ i →
+         act
+         (valuation
+          (PT.rec→Set sub-isSet
+           (Cubical.Foundations.Function.uncurry
+            (λ ps₁ pt₁ →
+               normalizeSub wfΞ (compose (valuation τ ps₁) (valuation υ pt₁))))
+           (λ x₁ y →
+              sub-path
+              (normalize-coherent wfΞ
+               (compose (valuation τ (fst x₁)) (valuation υ (snd x₁)))
+               (compose (valuation τ (fst y)) (valuation υ (snd y)))
+               (λ i₁ → beta-refl)))
+           (PT.rec (isPropΠ (λ _ → squash₁)) (λ x₁ → PT.map (λ a′ → x₁ , a′))
+            ∣ pt ∣₁ ∣ pu ∣₁)
+           .sub-images)
+          (images-typed
+           (normalize-valuation wfΞ
+            (compose (valuation τ pt) (valuation υ pu)))))
+         (σ i))
+      (lookup Γ x)
+    : Raw Nat n
+    (blocked on _Γ_1139)
+  NativeTyping.transpTyp (λ i → Θ) (λ i → act (valuation τ pt) (σ x))
+  (λ i → NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 x) i) i0
+  (NativeSubstitution.typed-replace pt (ps x))
+    = NativeTyping.transpTyp (λ i → Θ)
+      (λ i → act (valuation τ pt) (σ x))
+      (λ i → NativeAlgebra.replace-compose σ τ (lookup Γ x) i) i0
+      (NativeSubstitution.typed-replace pt (ps x))
+    : Typ Θ (replace τ (σ x))
+      (replace (λ i → act (valuation τ pt) (σ i)) (lookup Γ x))
+    (blocked on _1145)
+  replace (λ i → act (valuation τ pt) (σ i)) (lookup _Γ_1139 x)
+    = replace (λ i → act (valuation τ pt) (σ i)) (lookup Γ x)
+    : Raw Nat m
+    (blocked on _Γ_1139)
+  NativeTyping.transpBeta
+  (λ i →
+     Cubical.Foundations.Prelude.transp (λ j → Term n)
+     (Cubical.Foundations.Prelude.~ i Cubical.Foundations.Prelude.∨ i0)
+     (replace υ
+      (replace (λ i₁ → act (valuation τ pt) (σ i₁)) (lookup _Γ_1139 x))))
+  (λ i →
+     Cubical.Foundations.Prelude.transp (λ j → Term n)
+     (Cubical.Foundations.Prelude.~ i Cubical.Foundations.Prelude.∨ i0)
+     (replace υ
+      (replace
+       (λ i₁ →
+          nf
+          (Normalize.result wfΘ
+           (valuation (λ i₂ → act (valuation τ pt) (σ i₂))
+            (λ i₂ →
+               subst (Typ Θ (act (valuation τ pt) (σ i₂)))
+               (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 i₂))
+               (act-typed (valuation τ pt) (ps i₂))))
+           i₁))
+       (lookup _Γ_1139 x))))
+  i0
+  (NativeAlgebra.beta-replace υ
+   (steps-beta
+    (replace-image-steps
+     (Normalize.image-steps wfΘ
+      (valuation (λ i → act (valuation τ pt) (σ i))
+       (λ i →
+          subst (Typ Θ (act (valuation τ pt) (σ i)))
+          (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 i))
+          (act-typed (valuation τ pt) (ps i)))))
+     (lookup _Γ_1139 x))))
+    = NativeTyping.transpBeta
+      (λ i →
+         Cubical.Foundations.Prelude.transp (λ j → Term n)
+         (Cubical.Foundations.Prelude.~ i Cubical.Foundations.Prelude.∨ i0)
+         (replace υ
+          (replace (compose (valuation σ ps) (valuation τ pt) .images)
+           (lookup Γ x))))
+      (λ i →
+         Cubical.Foundations.Prelude.transp (λ j → Term n)
+         (Cubical.Foundations.Prelude.~ i Cubical.Foundations.Prelude.∨ i0)
+         (replace υ
+          (replace
+           (λ i₁ →
+              nf
+              (Normalize.result wfΘ
+               (valuation (λ i₂ → act (valuation τ pt) (σ i₂))
+                (λ i₂ →
+                   subst (Typ Θ (act (valuation τ pt) (σ i₂)))
+                   (NativeAlgebra.replace-compose σ τ (lookup Γ i₂))
+                   (act-typed (valuation τ pt) (ps i₂))))
+               i₁))
+           (lookup Γ x))))
+      i0
+      (NativeAlgebra.beta-replace υ
+       (steps-beta
+        (replace-image-steps
+         (Normalize.image-steps wfΘ
+          (compose (valuation σ ps) (valuation τ pt)))
+         (lookup Γ x))))
+    : Beta
+      (FiniteSyntax.transpRaw (λ i → Nat) (λ i → n) i0
+       (replace υ
+        (replace (λ i → act (valuation τ pt) (σ i)) (lookup Γ x))))
+      (Cubical.Foundations.Prelude.transp (λ i → Term n) i0
+       (replace υ
+        (replace
+         (λ i →
+            nf
+            (Normalize.result wfΘ
+             (valuation (λ i₁ → act (valuation τ pt) (σ i₁))
+              (λ i₁ →
+                 subst (Typ Θ (act (valuation τ pt) (σ i₁)))
+                 (NativeAlgebra.replace-compose σ τ (lookup Γ i₁))
+                 (act-typed (valuation τ pt) (ps i₁))))
+             i))
+         (lookup Γ x))))
+    (blocked on _Γ_1139)
+  NativeTyping.transpTyp (λ i → Ξ)
+  (λ i →
+     Cubical.Foundations.Prelude.transp (λ j → Term n)
+     (Cubical.Foundations.Prelude.~ i Cubical.Foundations.Prelude.∨ i0)
+     (replace υ
+      (replace
+       (λ i₁ →
+          nf
+          (Normalize.result wfΘ
+           (valuation (λ i₂ → act (valuation τ pt) (σ i₂))
+            (λ i₂ →
+               subst (Typ Θ (act (valuation τ pt) (σ i₂)))
+               (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 i₂))
+               (act-typed (valuation τ pt) (ps i₂))))
+           i₁))
+       (lookup _Γ_1139 x))))
+  (λ i →
+     U
+     (Cubical.Foundations.Prelude.transp (λ j → Nat)
+      (Cubical.Foundations.Prelude.~ i Cubical.Foundations.Prelude.∨ i0)
+      (type-correct wfΘ
+       (subst (Typ Θ (act (valuation τ pt) (σ x)))
+        (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 x))
+        (act-typed (valuation τ pt) (ps x)))
+       .fst)))
+  i0
+  (NativeSubstitution.typed-replace pu
+   (subject-reductions wfΘ
+    (snd
+     (type-correct wfΘ
+      (subst (Typ Θ (act (valuation τ pt) (σ x)))
+       (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 x))
+       (act-typed (valuation τ pt) (ps x)))))
+    (replace-image-steps
+     (Normalize.image-steps wfΘ
+      (valuation (λ i → act (valuation τ pt) (σ i))
+       (λ i →
+          subst (Typ Θ (act (valuation τ pt) (σ i)))
+          (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 i))
+          (act-typed (valuation τ pt) (ps i)))))
+     (lookup _Γ_1139 x))))
+    = NativeTyping.transpTyp (λ i → Ξ)
+      (λ i →
+         Cubical.Foundations.Prelude.transp (λ j → Term n)
+         (Cubical.Foundations.Prelude.~ i Cubical.Foundations.Prelude.∨ i0)
+         (replace υ
+          (replace
+           (λ i₁ →
+              nf
+              (Normalize.result wfΘ
+               (valuation (λ i₂ → act (valuation τ pt) (σ i₂))
+                (λ i₂ →
+                   subst (Typ Θ (act (valuation τ pt) (σ i₂)))
+                   (NativeAlgebra.replace-compose σ τ (lookup Γ i₂))
+                   (act-typed (valuation τ pt) (ps i₂))))
+               i₁))
+           (lookup Γ x))))
+      (λ i →
+         U
+         (Cubical.Foundations.Prelude.transp (λ j → Nat)
+          (Cubical.Foundations.Prelude.~ i Cubical.Foundations.Prelude.∨ i0)
+          (type-correct wfΘ
+           (images-typed (compose (valuation σ ps) (valuation τ pt)) x)
+           .fst)))
+      i0
+      (NativeSubstitution.typed-replace pu
+       (subject-reductions wfΘ
+        (snd
+         (type-correct wfΘ
+          (images-typed (compose (valuation σ ps) (valuation τ pt)) x)))
+        (replace-image-steps
+         (Normalize.image-steps wfΘ
+          (compose (valuation σ ps) (valuation τ pt)))
+         (lookup Γ x))))
+    : Typ Ξ
+      (Cubical.Foundations.Prelude.transp (λ i → Term n) i0
+       (replace υ
+        (replace
+         (λ i →
+            nf
+            (Normalize.result wfΘ
+             (valuation (λ i₁ → act (valuation τ pt) (σ i₁))
+              (λ i₁ →
+                 subst (Typ Θ (act (valuation τ pt) (σ i₁)))
+                 (NativeAlgebra.replace-compose σ τ (lookup Γ i₁))
+                 (act-typed (valuation τ pt) (ps i₁))))
+             i))
+         (lookup Γ x))))
+      (U
+       (type-correct wfΘ
+        (NativeTyping.transpTyp (λ i → Θ)
+         (λ i → act (valuation τ pt) (σ x))
+         (λ i → NativeAlgebra.replace-compose σ τ (lookup Γ x) i) i0
+         (NativeSubstitution.typed-replace pt (ps x)))
+        .fst))
+    (blocked on _Γ_1139)
+  replace (λ i → act (valuation τ pt) (σ i)) (lookup _Γ_1139 x)
+    = replace (compose (valuation σ ps) (valuation τ pt) .images)
+      (lookup Γ x)
+    : Raw Nat m
+    (blocked on _Γ_1139)
+  FiniteSyntax.transpRaw (λ i₁ → Nat) (λ i₁ → n)
+  (Cubical.Foundations.Prelude.~ i)
+  (replace υ
+   (replace (λ i₁ → act (valuation τ pt) (σ i₁)) (lookup _Γ_1139 x)))
+    = FiniteSyntax.transpRaw (λ i₁ → Nat) (λ i₁ → n)
+      (Cubical.Foundations.Prelude.~ i)
+      (replace υ
+       (replace (compose (valuation σ ps) (valuation τ pt) .images)
+        (lookup Γ x)))
+    : Raw Nat n
+    (blocked on _Γ_1139)
+  type-correct wfΘ
+  (NativeTyping.transpTyp (λ i → Θ)
+   (λ i → act (valuation τ pt) (σ x))
+   (λ i → NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 x) i) i0
+   (NativeSubstitution.typed-replace pt (ps x)))
+  .fst
+    = type-correct wfΘ
+      (NativeTyping.transpTyp (λ i → Θ)
+       (λ i → act (valuation τ pt) (σ x))
+       (λ i → NativeAlgebra.replace-compose σ τ (lookup Γ x) i) i0
+       (NativeSubstitution.typed-replace pt (ps x)))
+      .fst
+    : Nat
+    (blocked on _1145)
+  FiniteSyntax.transpRaw (λ i → Nat) (λ i → n) i0
+  (replace υ
+   (replace (λ i → act (valuation τ pt) (σ i)) (lookup _Γ_1139 x)))
+    = FiniteSyntax.transpRaw (λ i → Nat) (λ i → n) i0
+      (replace υ
+       (replace (compose (valuation σ ps) (valuation τ pt) .images)
+        (lookup Γ x)))
+    : Raw Nat n
+    (blocked on _Γ_1139)
+  Cubical.Foundations.Prelude.hcomp
+  (λ i .o →
+     Cubical.Foundations.Prelude.transp (λ i₂ → Term n) i
+     (Cubical.Foundations.Prelude.primPOr i0
+      (Cubical.Foundations.Prelude.~ (Cubical.Foundations.Prelude.~ i₁)
+       Cubical.Foundations.Prelude.∨
+       Cubical.Foundations.Prelude.~ i₁ Cubical.Foundations.Prelude.∨ i0)
+      (λ .o₁ →
+         Cubical.Foundations.Prelude.transp (λ i₂ → Term n)
+         (Cubical.Foundations.Prelude.~ (Cubical.Foundations.Prelude.~ i₁)
+          Cubical.Foundations.Prelude.∨ i0)
+         (replace υ
+          (replace
+           (λ i₂ →
+              nf
+              (Normalize.result wfΘ
+               (valuation (λ i₃ → act (valuation τ pt) (σ i₃))
+                (λ i₃ →
+                   subst (Typ Θ (act (valuation τ pt) (σ i₃)))
+                   (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 i₃))
+                   (act-typed (valuation τ pt) (ps i₃))))
+               i₂))
+           (lookup _Γ_1139 x))))
+      (Cubical.Foundations.Prelude.primPOr
+       (Cubical.Foundations.Prelude.~ (Cubical.Foundations.Prelude.~ i₁))
+       (Cubical.Foundations.Prelude.~ i₁ Cubical.Foundations.Prelude.∨ i0)
+       (λ .o₁ →
+          NativeAlgebra.replace-compose
+          (λ i₂ →
+             nf
+             (Normalize.result wfΘ
+              (valuation (λ i₃ → act (valuation τ pt) (σ i₃))
+               (λ i₃ →
+                  subst (Typ Θ (act (valuation τ pt) (σ i₃)))
+                  (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 i₃))
+                  (act-typed (valuation τ pt) (ps i₃))))
+              i₂))
+          υ (lookup _Γ_1139 x) i)
+       (λ .o₁ →
+          Cubical.Foundations.Prelude.transp (λ i₂ → Term n) i0
+          (replace υ
+           (replace
+            (λ i₂ →
+               nf
+               (Normalize.result wfΘ
+                (valuation (λ i₃ → act (valuation τ pt) (σ i₃))
+                 (λ i₃ →
+                    subst (Typ Θ (act (valuation τ pt) (σ i₃)))
+                    (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 i₃))
+                    (act-typed (valuation τ pt) (ps i₃))))
+                i₂))
+            (lookup _Γ_1139 x)))))
+      _))
+  (FiniteSyntax.transpRaw (λ i → Nat) (λ i → n) i0
+   (FiniteSyntax.transpRaw (λ i → Nat) (λ i → n) i₁
+    (replace υ
+     (replace
+      (λ i →
+         nf
+         (Normalize.result wfΘ
+          (valuation (λ i₂ → act (valuation τ pt) (σ i₂))
+           (λ i₂ →
+              subst (Typ Θ (act (valuation τ pt) (σ i₂)))
+              (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 i₂))
+              (act-typed (valuation τ pt) (ps i₂))))
+          i))
+      (lookup _Γ_1139 x)))))
+    = Cubical.Foundations.Prelude.hcomp
+      (λ i .o →
+         Cubical.Foundations.Prelude.transp (λ i₂ → Term n) i
+         (Cubical.Foundations.Prelude.primPOr i0
+          (Cubical.Foundations.Prelude.~ (Cubical.Foundations.Prelude.~ i₁)
+           Cubical.Foundations.Prelude.∨
+           Cubical.Foundations.Prelude.~ i₁ Cubical.Foundations.Prelude.∨ i0)
+          (λ .o₁ →
+             Cubical.Foundations.Prelude.transp (λ i₂ → Term n)
+             (Cubical.Foundations.Prelude.~ (Cubical.Foundations.Prelude.~ i₁)
+              Cubical.Foundations.Prelude.∨ i0)
+             (replace υ
+              (replace
+               (λ i₂ →
+                  nf
+                  (Normalize.result wfΘ
+                   (valuation (λ i₃ → act (valuation τ pt) (σ i₃))
+                    (λ i₃ →
+                       subst (Typ Θ (act (valuation τ pt) (σ i₃)))
+                       (NativeAlgebra.replace-compose σ τ (lookup Γ i₃))
+                       (act-typed (valuation τ pt) (ps i₃))))
+                   i₂))
+               (lookup Γ x))))
+          (Cubical.Foundations.Prelude.primPOr
+           (Cubical.Foundations.Prelude.~ (Cubical.Foundations.Prelude.~ i₁))
+           (Cubical.Foundations.Prelude.~ i₁ Cubical.Foundations.Prelude.∨ i0)
+           (λ .o₁ →
+              NativeAlgebra.replace-compose
+              (λ i₂ →
+                 nf
+                 (Normalize.result wfΘ
+                  (valuation (λ i₃ → act (valuation τ pt) (σ i₃))
+                   (λ i₃ →
+                      subst (Typ Θ (act (valuation τ pt) (σ i₃)))
+                      (NativeAlgebra.replace-compose σ τ (lookup Γ i₃))
+                      (act-typed (valuation τ pt) (ps i₃))))
+                  i₂))
+              υ (lookup Γ x) i)
+           (λ .o₁ →
+              Cubical.Foundations.Prelude.transp (λ i₂ → Term n) i0
+              (replace υ
+               (replace
+                (λ i₂ →
+                   nf
+                   (Normalize.result wfΘ
+                    (valuation (λ i₃ → act (valuation τ pt) (σ i₃))
+                     (λ i₃ →
+                        subst (Typ Θ (act (valuation τ pt) (σ i₃)))
+                        (NativeAlgebra.replace-compose σ τ (lookup Γ i₃))
+                        (act-typed (valuation τ pt) (ps i₃))))
+                    i₂))
+                (lookup Γ x)))))
+          _))
+      (FiniteSyntax.transpRaw (λ i → Nat) (λ i → n) i0
+       (FiniteSyntax.transpRaw (λ i → Nat) (λ i → n) i₁
+        (replace υ
+         (replace
+          (λ i →
+             nf
+             (Normalize.result wfΘ
+              (valuation (λ i₂ → act (valuation τ pt) (σ i₂))
+               (λ i₂ →
+                  subst (Typ Θ (act (valuation τ pt) (σ i₂)))
+                  (NativeAlgebra.replace-compose σ τ (lookup Γ i₂))
+                  (act-typed (valuation τ pt) (ps i₂))))
+              i))
+          (lookup Γ x)))))
+    : Raw Nat n
+    (blocked on _Γ_1139)
+  replace
+  (λ i →
+     act (valuation υ pu)
+     (nf
+      (Normalize.result wfΘ
+       (valuation (λ i₁ → act (valuation τ pt) (σ i₁))
+        (λ i₁ →
+           subst (Typ Θ (act (valuation τ pt) (σ i₁)))
+           (NativeAlgebra.replace-compose σ τ (lookup _Γ_1139 i₁))
+           (act-typed (valuation τ pt) (ps i₁))))
+       i)))
+  (lookup _Γ_1139 x)
+    = replace
+      (λ i →
+         act (valuation υ pu)
+         (nf
+          (Normalize.result wfΘ
+           (valuation (λ i₁ → act (valuation τ pt) (σ i₁))
+            (λ i₁ →
+               subst (Typ Θ (act (valuation τ pt) (σ i₁)))
+               (NativeAlgebra.replace-compose σ τ (lookup Γ i₁))
+               (act-typed (valuation τ pt) (ps i₁))))
+           i)))
+      (lookup Γ x)
+    : Raw Nat n
+    (blocked on _Γ_1139)
+  replace σ (lookup _Γ_1139 i) = replace σ (lookup Γ i) : Raw Nat l
+    (blocked on _Γ_1139)
+  NativeTyping.transpTyp (λ i → Δ) (λ i → act (identity Δ) (σ x))
+  (λ i →
+     NativeAlgebra.replace-compose σ (images (identity Δ))
+     (lookup
+      (_Γ_995 (wf = wf) (σ = σ) (ns = ns) (hs = hs) (ps = ps) (i = x)) x)
+     i)
+  i0
+  (NativeSubstitution.typed-replace (images-typed (identity Δ))
+   (ps x))
+    = NativeTyping.transpTyp (λ i → Δ) (λ i → act (identity Δ) (σ x))
+      (λ i →
+         NativeAlgebra.replace-compose σ (images (identity Δ)) (lookup Γ x)
+         i)
+      i0
+      (NativeSubstitution.typed-replace (images-typed (identity Δ))
+       (ps x))
+    : Typ Δ (replace (images (identity Δ)) (σ x))
+      (replace (λ i → replace (images (identity Δ)) (σ i)) (lookup Γ x))
+    (blocked on _1005)
+  replace (λ i → act (identity Δ) (σ i))
+  (lookup
+   (_Γ_995 (wf = wf) (σ = σ) (ns = ns) (hs = hs) (ps = ps) (i = x)) x)
+    = replace (λ i → act (identity Δ) (σ i)) (lookup Γ x)
+    : Raw Nat n
+    (blocked on _Γ_995)
+  replace σ (lookup _Γ_995 i₁) = replace σ (lookup Γ i₁) : Raw Nat n
+    (blocked on _Γ_995)
+  replace σ (lookup _Γ_1016 i₁) = replace σ (lookup Γ i₁) : Raw Nat n
+    (blocked on _Γ_1016)
+  rounds
+  (NativeRankCoverage.safe-coverage
+   (replace
+    (λ z →
+       rounds
+       (NativeRankCoverage.safe-coverage (replace (images υ) (images τ z))
+        wfΞ
+        (subst (Typ Ξ (act υ (images τ z)))
+         (NativeAlgebra.replace-compose (images τ) (images υ) (lookup Δ z))
+         (act-typed υ (images-typed τ z)))
+        .fst)
+       (replace (images υ) (images τ z)))
+    (_σ.images_856 i))
+   wfΞ (_τ.images-typed_869 i) .fst)
+  (replace
+   (λ z →
+      rounds
+      (NativeRankCoverage.safe-coverage (replace (images υ) (images τ z))
+       wfΞ
+       (subst (Typ Ξ (act υ (images τ z)))
+        (NativeAlgebra.replace-compose (images τ) (images υ) (lookup Δ z))
+        (act-typed υ (images-typed τ z)))
+       .fst)
+      (replace (images υ) (images τ z)))
+   (_σ.images_856 i))
+    = rounds
+      (NativeRankCoverage.safe-coverage
+       (replace (images (normalize-valuation wfΞ (compose τ υ)))
+        (images σ i))
+       wfΞ
+       (subst
+        (Typ Ξ (act (normalize-valuation wfΞ (compose τ υ)) (images σ i)))
+        (NativeAlgebra.replace-compose (images σ)
+         (images (normalize-valuation wfΞ (compose τ υ))) (lookup Γ i))
+        (act-typed (normalize-valuation wfΞ (compose τ υ))
+         (images-typed σ i)))
+       .fst)
+      (replace (images (normalize-valuation wfΞ (compose τ υ)))
+       (images σ i))
+    : Raw Nat n
+    (blocked on _σ.images_856)
+  replace
+  (λ z →
+     replace (images υ)
+     (rounds
+      (NativeRankCoverage.safe-coverage (replace (images τ) (images σ z))
+       wfΘ
+       (subst (Typ Θ (act τ (images σ z)))
+        (NativeAlgebra.replace-compose (images σ) (images τ) (lookup Γ z))
+        (act-typed τ (images-typed σ z)))
+       .fst)
+      (replace (images τ) (images σ z))))
+  (lookup _Γ_748 i)
+    = replace
+      (λ i₁ →
+         act υ
+         (nf
+          (Normalize.result wfΘ
+           (valuation (λ i₂ → act τ (images σ i₂))
+            (λ i₂ →
+               subst (Typ Θ (act τ (images σ i₂)))
+               (NativeAlgebra.replace-compose (images σ) (images τ) (lookup Γ i₂))
+               (act-typed τ (images-typed σ i₂))))
+           i₁)))
+      (lookup Γ i)
+    : Raw Nat n
+    (blocked on _Γ_748)
+  replace (λ z → replace (images υ) (images τ z)) (_σ.images_856 i)
+    = replace (images (compose τ υ)) (images σ i)
+    : Raw Nat n
+    (blocked on _σ.images_856)
+  replace σ (lookup _Γ_626 i) = replace σ (lookup Γ i) : Raw Nat m
+    (blocked on _Γ_626)
+  replace (λ i → act (valuation τ pt) (σ i)) (lookup _Γ_626 x)
+    = replace (λ i → act (valuation τ pt) (σ i)) (lookup Γ x)
+    : Raw Nat n
+    (blocked on _Γ_626)
+  replace (λ i → act (valuation τ qt) (σ i)) (lookup _Γ_626 x)
+    = replace (λ i → act (valuation τ qt) (σ i)) (lookup Γ x)
+    : Raw Nat n
+    (blocked on _Γ_626)
+  NativeTyping.transpTyp (λ i → Θ) (λ i → act (valuation τ qt) (σ x))
+  (λ i → NativeAlgebra.replace-compose σ τ (lookup _Γ_626 x) i) i0
+  (NativeSubstitution.typed-replace qt (qs x))
+    = NativeTyping.transpTyp (λ i → Θ)
+      (λ i → act (valuation τ qt) (σ x))
+      (λ i → NativeAlgebra.replace-compose σ τ (lookup Γ x) i) i0
+      (NativeSubstitution.typed-replace qt (qs x))
+    : Typ Θ (replace τ (σ x))
+      (replace (λ i → act (valuation τ qt) (σ i)) (lookup _Γ_626 x))
+    (blocked on _643)
+  NativeTyping.transpTyp (λ i → Θ) (λ i → act (valuation τ pt) (σ x))
+  (λ i → NativeAlgebra.replace-compose σ τ (lookup _Γ_626 x) i) i0
+  (NativeSubstitution.typed-replace pt (ps x))
+    = NativeTyping.transpTyp (λ i → Θ)
+      (λ i → act (valuation τ pt) (σ x))
+      (λ i → NativeAlgebra.replace-compose σ τ (lookup Γ x) i) i0
+      (NativeSubstitution.typed-replace pt (ps x))
+    : Typ Θ (replace τ (σ x))
+      (replace (λ i → act (valuation τ pt) (σ i)) (lookup _Γ_626 x))
+    (blocked on _635)
+
+/private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:140.20-184.56: error: [UnsolvedMetaVariables]
+Unsolved metas at the following locations:
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:140.20-142.67
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:140.30-48
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:141.27-29
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:142.27-29
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:152.42-60
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:152.42-157.69
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:152.67-68
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:153.4-20
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:154.6-24
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:155.6-22
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:155.24-39
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:156.8-26
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:156.8-157.66
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:157.10-24
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:170.11-172.76
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:171.6-22
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:171.48-50
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:172.22-44
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:172.58-60
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:183.17-184.56
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:183.27-51
+  /private/tmp/pts-rk-normal-sub.JGiC6D/source/NormalizedSubstitution.agda:184.18-20
