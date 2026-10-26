@@ -1,245 +1,267 @@
-%==============================================================================
-%== template for LATEX poster =================================================
-%==============================================================================
-%
-%--A0 beamer slide-------------------------------------------------------------
 \documentclass[final]{beamer}
 \usetheme{Warsaw}
 \usepackage[utf8]{inputenc}
-\usepackage[T2A]{fontenc}
- \usepackage[english,russian]{babel}
- \usepackage{amsmath,amssymb}
- \usepackage{amscd}
-\usepackage{amsthm}
-\usepackage[orientation=portrait,size=a1,
-            scale=1.25         % font scale factor
-           ]{beamerposter}
-
-\geometry{
-  hmargin=2.5cm,
-}
-
-
-
+\usepackage[orientation=portrait,size=a1,scale=1.25]
+{beamerposter}
+\geometry{hmargin=2.5cm}
 \linespread{1.15}
-
 \usetheme{sharelatex}
 
-\title[] % Если эта запись не нужна, удалите всё внутри квадратных скобок.
-%
-{\bf \huge % Poster title
-Название. Если слишком длинное,
-\texorpdfstring{\vspace{1cm}}{}
-то на две строки
-}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{bibliography.bib}
+\setbeamertemplate{bibliography item}{}
 
-\author{ % Authors
-Иванов Иван Иванович
+\usepackage{
+    amsmath,amssymb,array,mathpartir,mathtools,qrcode,
+    simplebnf,stmaryrd,tikz-cd,verified-badges
 }
+\newcommand{\rk}[1]{\mathsf{rk}_{#1}}
+\newcommand{\nc}{\mathop{\neg}}
+\newcommand{\ac}{\mathbin{\wedge}}
+\newcommand{\iffc}{\mathbin{\leftrightarrow}}
 
- % General University
- \institute{
-ФКН НИУ ВШЭ, Москва
+\usepackage{amsthm}
+\newtheorem*{theorem*}{Theorem}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage[T1]{fontenc}
+\usepackage{FiraMono}
+
+\title[]{\bf \huge A sound pure type system with ranks
+as sorts and Type-in-Type}
+
+\author{
+    Pavel Sokolov\inst{1} \and
+    Alexander Kuklev\inst{2}
 }
-
-\date{\today}
+\institute{
+    \inst{1} HSE University, Moscow \\
+    \inst{2} Radboud University, Nijmegen
+}
 
 \begin{document}
-
 \begin{frame}[t]
-%==============================================================================
-\begin{multicols}{2} %Если не зхватает места, можно изменить 2 на 3, будет 3 колонки. 
-%==============================================================================
-%==The poster content==========================================================
-%==============================================================================
+\begin{columns}[t]
+\begin{column}{0.48\textwidth}
+    \section{Historical Background}
 
-\section{Основные понятия}
+    Pure type systems (PTS) are a family of minimalistic
+    typed $\lambda$-calculi introduced independently by
+    Berardi and Terlouw. Their grammar is given in
+    Fig.~\ref{grammar}.
+    \begin{figure}[ht]
+        \begin{bnf}
+            $x$ : \textsf{Variable} :in: $X$;;
+            $s$ : \textsf{Sort} :in: $S$;;
+            $T$, $U$, $t$, $u$ : \textsf{Term} ::=
+            | $x$ : variable
+            | $s$ : sort as type
+            | $\Pi(x\colon T).\,U$
+            : type of dependent functions
+            | $\lambda(x\colon T).\,u$
+            : anonymous function
+            | $u\,t$ : function application
+            ;;
+        \end{bnf}
+        \caption{Grammar of pure type systems}
+        \label{grammar}
+    \end{figure}
+    Typing rules of a single PTS (given in
+    Fig.~\ref{typing}) are determined by two relations:
+    \begin{itemize}
+        \item \textit{axiom} relation $\mathsf{Ax}
+            \subseteq\mathcal{S}\times\mathcal{S}$
+            determines ``to which sort(s) a given sort
+            belongs as an element''.
+        \item \textit{rule} relation $\mathsf{Rule}
+            \subseteq\mathcal{S}^2\times\mathcal{S}$
+            places types of functions $\Pi(x:T).U$ into
+            sorts accounting for the sorts where $T$ and
+            $U$ are situated.
+    \end{itemize}
+    \begin{figure}[ht]
+        \begin{mathpar}
+            \inferrule[Ax]{ }{\Gamma\vdash s:s'}
+            (s, s')\in\mathsf{Ax}
+            \and
+            \inferrule[Rule]{
+                \Gamma\vdash T:s_T \\
+                \Gamma,x:T\vdash U:s_U
+            }{\Gamma\vdash\Pi(x:T).\,U:s}
+            (s_T, s_U, s)\in\mathsf{Rule}
+            \and
+            \inferrule[Var]{ }{\Gamma\vdash x:T}
+            (x:T)\in\Gamma
+            \and
+            \inferrule[Abs]{
+                \Gamma\vdash T:s_T \\
+                \Gamma,x:T\vdash u:U
+            }{\Gamma\vdash\lambda(x:T).u:\Pi(x:T).U}
+            \and
+            \inferrule[App]{
+                \Gamma\vdash u:\Pi(x:T).U \\
+                \Gamma\vdash t:T
+            }{\Gamma\vdash u\,t:U[t/x]}
+            \and
+            \inferrule[Conv]{
+                \Gamma\vdash t:T \\
+                \Gamma\vdash U:s \\
+                T =_\beta U
+            }{\Gamma\vdash t:U}
+        \end{mathpar}
+        \caption{Typing rules of pure type systems}
+        \label{typing}
+    \end{figure}
 
+    The main result in the theory of PTS is that some of
+    them are actually non-normalizing.
 
-Здесь введены основные определения. Также рассказаны базовые факты про них. Без лишних подробностей, но так, чтобы математик, не являющийся специалистом в узкой теме доклада, мог полностью понять дальнейшее.
+    \begin{theorem*}[Girard'72
+        \cite{hurkens1995simplification}]
+        The following PTS called System U is not
+        normalizing:
+        \[\begin{array}{c}
+            \mathcal{S}=\{*,\square,\triangle\},
+            \quad\mathsf{Ax}=\{
+                (*,\square),(\square,\triangle)
+            \},\\
+            \mathsf{Rule}=\{
+                (*,*,*),(\square,*,*),(\triangle,*,*),
+                (\square,\square,\square),
+                (\triangle,\square,\square)
+            \}
+        \end{array}\]
+        Furthermore, the offending term has type
+        $\Pi(P:*).P$.
+    \end{theorem*}
 
+    This result is dubbed ``Girard's paradox'' since it
+    renders System U inconsistent with respect to its
+    intended logical semantics: inhabitedness of
+    $\Pi(P:*).P$ would mean that every proposition $P$
+    is provable. Thus, any system where System U embeds
+    is inconsistent, too; for example, the following
+    PTS known as ``Type-in-Type'' is inconsistent:
+    \[\mathcal{S}=\{*\},\quad\mathsf{Ax}=\{*:*\},\quad
+    \mathsf{Rule}=\{(*,*,*)\}.\]
+    Long story short, it motivates an introduction of a
+    \textit{universe hierarchy} $\mathcal{S}=\{
+        \mathcal{U}_k\}_{k\in\mathbb{N}}$ with axioms
+    $\mathcal{U}_k:\mathcal{U}_{k+1}$ and rules
+    $(\mathcal{U}_k,\mathcal{U}_l,\mathcal{U}_{k\vee l}
+    )$ for each $k,l$; when interpreted in sets,
+    $\llbracket \mathcal{U}_k \rrbracket$ is taken to be
+    the $k$-th inaccessible cardinal
+    \cite{werner1997sets}.
 
-Безусловно, можно писать формулы 
+    \section{Our system}
 
-\begin{equation}
-H = \sum_{i=1}^{N} h_{D}(i) + \sum_{j>i=1}^{N} C_{ij}
-\end{equation}
+    We present the following PTS which we dub PTS-$rk$:
+    \[
+        \mathcal{S}=\{\mathsf{rk}_r\}_{r\in\mathbb{N}}
+        \quad
+        \mathsf{Ax}=
+        \{(\mathsf{rk}_r,\mathsf{rk}_0)
+        \}_{r\in\mathbb{N}}
+        \quad
+        \mathsf{Rule}=
+        \{(\mathsf{rk}_r,\mathsf{rk}_s,
+        \mathsf{rk}_{(r+1)\vee s})\}_{r,s\in\mathbb{N}}
+    \]
+    (Naming ``$\mathsf{rk}$'' comes from ``rank'', since
+    rules compute precisely the rank of functions, which
+    is the maximal nesting of $\Pi$ in the domain type.)
+\end{column}
 
-или ссылаться на литературу, такую как~\cite{ref1} или~\cite{ref1,ref2}...
+\begin{column}{0.48\textwidth}
+    \section{Main results}
 
-\vspace{0.8cm}
-\structure{\underline{Определение.}} Особо важным {\color{color2}объектам} стоит дать формальное определение.
-\vspace{0.8cm}
+    \begin{itemize}
+        \item PTS-$rk$ has a self-containing sort
+            $\mathsf{rk}_0:\mathsf{rk}_0$ but Girard's
+            paradox doesn't apply.
+        \item PTS-$rk$ is strongly normalizing; we
+            proved it in axiom-free Rocq.
+        \item Normalization of rank-bounded terms is
+            \textsc{ELEMENTARY}.
+        \item Typechecking is \textsc{TOWER}-complete.
+        \item All elementary recursive functions are
+            computable in PTS-$rk$.
+        \item PTS-$rk$ has a model in ZF+GCH.
+        \item PTS-$rk$ fully interprets
+            Tarski--Mostowski--Robinson arithmetic.
+    \end{itemize}
 
-Стиль оформления стоит стараться сохранить. 
+    \subsection{Proof Ideas}
 
+    Note that greedy reduction of lambda terms increases
+    term exponentially and decreases maximal rank of
+    redex arguments. This explains normalization and
+    typechecking behaviour; upper bound on computable
+    functions follows from bound on the size of normal
+    form. Representability of elementary recursive
+    functions follows from representability of basis
+    $(+,\times,\uparrow,\mathrm{mod})$ --- a
+    corresponding substitution-basis theorem can be
+    found in \cite{prunescu2026minimal}. Set-theoretic
+    model uses $\aleph$-s to encode dependent function
+    types; GCH is needed to validate rules of PTS-$rk$.
+    Interpretation of arithmetic uses double negation
+    to validate classical principles and domain
+    predicates are used to run induction when necessary.
 
+    \section{Examples}
 
+    Numeral-preserving lowering, exponentiation and
+    increment modulo $5$:
+    \begin{align*}
+        \delta_j&\triangleq\lambda\,n\,X\,f\,x.\,
+        n\,(X\to X)\,(\lambda\,h\,y.f\,(h\,y))\,
+        (\lambda\,y.y)\,x
+        :\mathcal{N}_{j+1}\to\mathcal{N}_j\\
+        \mathsf{Exp}_j &\triangleq
+        \lambda\,m\,n\,(X:\mathsf{rk}_j)\,f\,x.\,
+        n\,(X\to X)\,(m\,X)\,f\,x
+        :\mathcal{N}_j\to\mathcal{N}_{j+1}\to
+        \mathcal{N}_j\\
+        c_5 &\triangleq
+        \lambda\,s\,X\,x_1\,x_2\,x_3\,x_4\,x_5.
+        \,s\,X\,x_2\,x_3\,x_4\,x_5\,x_1:V_5\to V_5
+    \end{align*}
+    Some logical connectives and propositional equality
+    on numerals:
+    \begin{align*}
+        \bot&\triangleq\Pi(Z:\rk0).Z&:\quad&\rk1\\
+        \ac&\triangleq
+        \lambda\,P\,Q.\,(P\to Q\to\bot)\to\bot
+        &:\quad&\rk j\to\rk j\to\rk{j+2}\\
+        \equiv&\triangleq\lambda\,m\,n.\,\Pi(P:\mathcal{N}_1\to\rk1).\;
+        \nc(P\,m)\iffc\nc(P\,n)&:\quad&\mathcal{N}_1\to\mathcal{N}_1\to\rk5\\
+    \end{align*}
 
-\section{Историческая справка}
+    \printbibliography
 
-В работах~\cite{ref1} и~\cite{ref2} была доказана следующая теорема.
-
-\vspace{0.8cm}
-\structure{\underline{Теорема 1.}} Для $n=1$ и $2$ выполнены прекрасные свойства.
-\vspace{0.8cm}
-
-В работе~\cite{ref2} высказана гипотеза.  
-
-\vspace{0.8cm}
-\structure{\underline{Гипотеза.}} Прекрасные свойства выполнены для любого $n$.
-\vspace{0.8cm}
-
-В нашей работе доказана гипотеза для чётных $n$ вида $8k+7$. 
-
-\section{Основные результаты}
-
-Основным результатом работы является доказательство следующих утверждений. 
-
-\vspace{0.8cm}
-\structure{\underline{Предложение.}} Если число делится на 4, то оно возможно чётное.
-\vspace{0.8cm}
-
-\structure{\underline{Теорема 2.}} Если число не делится на 4, то оно возможно нечётное.
-\vspace{0.8cm}
-
-Несмотря на простоту формулировок, эти утверждения имеют очень технически сложные и довольно длинные доказательства. В них используется теория эллиптических кривых, фракталы, а также устный счёт в пределах от 1 до 10. Если использовать теорему Гёделя о неполноте и вероятностные методы, то можно использовать устный счёт только в пределах 8, что по силам среднестатистическому филдсовскому медалисту.
-
-\subsection{Идеи доказательств}
-
-
-Как видно из таблицы 
-
-\vskip1ex
-\begin{table}
-\centering
-\caption{Буквы и цифры.}
-\begin{tabular}{ccccc}
-\hline\hline
-1 & 2 & 3 & 4 & 5\\
-\hline
-aaa & bbb & ccc & ddd & eee\\
-aaaa & bbbb & cccc & dddd & eeee\\
-aaaaa & bbbbb & ccccc & ddddd & eeeee\\
-aaaaaa & bbbbbb & cccccc & dddddd & eeeeee\\
-1.000 & 2.000 & 3.000 & 4.000 & 5.000\\
-\hline\hline
-\end{tabular}
-\end{table}
-\vskip1ex
-
-
-теорема~1 выполняется для всех чётных чисел вида $8k+9$. Далее применяем логарифмирование с последующим взятием экспоненты. Поскольку процесс забавный, итерируем его много раз. Как видим, ничего не происходит. Отсюда и следуют наши утверждения.  
-
-
-\section{Примеры}
-
-Так как чётных чисел вида $8k+7$ не бывает, то и примеров у нашей теоремы нет. Зато мы можем предъявить отдельно чётное число и отдельно число вида $8k+7$. В принципе, эти 2 примера в достаточной степени иллюстрируют теорему и в лучших примерах она не нуждается. 
-
-
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст.
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст.
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст.
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст.
-
-
-
-
-\section{Выводы и дальнейшие направления исследований}
-
-Наш результат крайне важен для развития науки. Иначе как бы нам удалось сделать по нему постер на этой конференции. 
-
-\vskip1ex
-\begin{figure}
-\centering
-\includegraphics[width=0.9\columnwidth]{SCFCS-Poster-Template-2025/fcs-logo-wide.png}
-\caption{Логотип ФКН.}
-\end{figure}
-\vskip1ex
-
-В дальнейшем мы собираемся доказать нашу теорему для чётных $n$ вида $8k+5$, а также для нечётных $n$ вида $8k+2$. И тут внезапно очень захотелось подчеркнуть, что центральным в этой работе было понятие {\color{color4}чётности}.
-
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст.
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст.
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст.
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст.
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст.
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст. 
-Далее следует длинный текст.
-Далее следует длинный текст. 
- 
-
-
-
-
-%==============================================================================
-%==End of content==============================================================
-%==============================================================================
-
-%--References------------------------------------------------------------------
-
-\subsection{Список литературы}
-
-\begin{thebibliography}{99}
-
-\bibitem{ref1} C.P. Ramanujam. ''A note on automorphism group of algebraic variety''. Math. Ann. 156 (1964), 25-33.
-
-\bibitem{ref2} Э. Б. Винберг, ''Группа Вейля градуированной алгебры Ли'', Изв. АН СССР. Сер. матем., 40:3 (1976), 488–526.
-
-\end{thebibliography}
-%--End of references-----------------------------------------------------------
-
-\end{multicols}
-
-%==============================================================================
+    \begin{flushleft}
+    \begin{tikzpicture}[remember picture,overlay]
+    \shade [inner color=color2,outer color=color3] (0,0) rectangle (\columnwidth,0.3cm);
+    \end{tikzpicture}
+    \end{flushleft}
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}
+        {@{}
+        >{\centering\arraybackslash}p{0.48\textwidth}
+        >{\centering\arraybackslash}p{0.48\textwidth}}
+            \qrcode[height=4cm]
+            {https://arxiv.org/abs/2610.25085}&
+            \qrcode[height=4cm]
+            {https://github.com/TurtlePU/pts-rk}\\
+            \texttt{arxiv.org/abs/2610.25085}&
+            \texttt{github.com/TurtlePU/pts-rk}
+        \end{tabular}
+    \end{table}
+\end{column}
+\end{columns}
 \end{frame}
 \end{document}
