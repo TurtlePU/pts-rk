@@ -43,32 +43,37 @@ Definition reduces_to L n: relation (Term L n) :=
 Infix "↠ᵝ" := (reduces_to _ _)
   (at level 50, no associativity).
 
+Create HintDb red.
+Hint Constructors step : red.
+Hint Extern 1 => apply rtc_refl : red.
+Hint Extern 1 => eapply rtc_step : red.
+Hint Extern 1 => eapply rtc_trans : red.
+Hint Extern 1 => cong_par; try typeclasses eauto : red.
+Hint Extern 1 => progress autorewrite with syntax : red.
+
 Lemma rename_step {L m n}
   (f: Fin m -> Fin n) (t t': Term L m):
   t →ᵝ t' -> rename f t →ᵝ rename f t'.
 Proof.
-intro. generalize dependent n. induction H; simpl;
-try (constructor; apply IHstep). intros.
-autorewrite with syntax. constructor.
+intro H. generalize dependent n.
+induction H; simpl; auto with red.
 Qed.
+Hint Resolve rename_step : red.
 
 Lemma replace_step {L m n}
   (f: Fin m -> Term L n) (t t': Term L m):
   t →ᵝ t' -> replace f t →ᵝ replace f t'.
 Proof.
-intro. generalize dependent n. induction H; simpl;
-try (constructor; apply IHstep). intros.
-autorewrite with syntax. constructor.
+intro H. generalize dependent n.
+induction H; simpl; auto with red.
 Qed.
+Hint Resolve replace_step : red.
 
 Lemma rename_rtc {L m n}
   (f: Fin m -> Fin n) (t t': Term L m):
   t ↠ᵝ t' -> rename f t ↠ᵝ rename f t'.
-Proof. intros. induction H.
-- reflexivity.
-- apply rtc_step with (y := rename f y); auto.
-  apply rename_step. auto.
-Qed.
+Proof. induction 1; eauto with red. Qed.
+Hint Resolve rename_rtc : red.
 
 Lemma rtc_replace {L m n}
   (f f': Fin m -> Term L n) (t: Term L m):
@@ -79,45 +84,38 @@ assert (rtc_transpose: forall L m n
   (f f': Fin m -> Term L n),
   (forall i, f i ↠ᵝ f' i) ->
   forall i, transpose f i ↠ᵝ transpose f' i).
-  { clear. intros. dependent elimination i; simpl.
-    - reflexivity.
-    - apply rename_rtc. auto.
+  { clear. intros. dependent elimination i;
+    eauto with red.
   }
 intros. generalize dependent n.
-induction t; simpl; intros;
-try cong_par; auto; typeclasses eauto.
+induction t; simpl; eauto with red.
 Qed.
+Hint Extern 1 =>
+  apply rtc_replace; intros;
+  dependent elimination i : red.
 
 Corollary rtc_sub {L n} (t: Term L (S n)) u u':
   u ↠ᵝ u' -> t ◁ u ↠ᵝ t ◁ u'.
-Proof.
-intros. apply rtc_replace. intros.
-dependent elimination i; [ assumption | reflexivity ].
-Qed.
+Proof. auto with red. Qed.
 
 Lemma replace_rtc {L m n} (f: Fin m -> Term L n) t t':
   t ↠ᵝ t' -> replace f t ↠ᵝ replace f t'.
-Proof. intros. induction H.
-- reflexivity.
-- apply rtc_step with (y := replace f y).
-  apply replace_step. all: auto.
-Qed.
+Proof. induction 1; eauto with red. Qed.
 
 Lemma rtc_Π_repr {L n} (T t: Term L n)
   (U: Term L (S n)):
   Π T U ↠ᵝ t -> exists T' U', t = Π T' U'.
-Proof. intro. depind H.
-- exists T, U. reflexivity.
-- inversion H; subst; eapply IHRTC; reflexivity.
+Proof.
+  intro H. depind H;
+  try inversion H; subst;
+  eauto with ar.
 Qed.
 
 Corollary rtc_Π_inversion {L n} (T T': Term L n)
   (U U': Term L (S n)):
   Π T U ↠ᵝ Π T' U' -> T ↠ᵝ T' /\ U ↠ᵝ U'.
-Proof. intro. depind H. split; reflexivity.
-all: inversion H; subst;
-destruct (IHRTC _ _ _ _ eq_refl) as [H1 H2]; split;
-auto;
-[ apply rtc_step with T'0 | apply rtc_step with U'0 ];
-auto.
+Proof.
+  intro H. depind H; try inversion H; subst;
+  try destruct (IHRTC _ _ _ _ eq_refl);
+  eauto with red.
 Qed.

@@ -48,24 +48,24 @@ auto with cong.
 Qed.
 
 Lemma Π_cong_par L R
-  {trans: forall n, Transitive (R n)}
-  {cong: Congruence L R}:
+  `(trans: forall n, Transitive (R n))
+  `(cong: Congruence L R):
   forall n (T T': Term L n) U U',
   R _ T T' -> R _ U U' -> R _ (Π T U) (Π T' U').
 Proof. intros. transitivity (Π T U'); auto with cong.
 Qed.
 
 Lemma λ_cong_par L R
-  {trans: forall n, Transitive (R n)}
-  {cong: Congruence L R}:
+  `(trans: forall n, Transitive (R n))
+  `(cong: Congruence L R):
   forall n (T T': Term L n) t t',
   R _ T T' -> R _ t t' -> R _ ([T] t) ([T'] t').
 Proof. intros. transitivity ([T] t'); auto with cong.
 Qed.
 
 Lemma app_cong_par L R
-  {trans: forall n, Transitive (R n)}
-  {cong: Congruence L R}:
+  `(trans: forall n, Transitive (R n))
+  `(cong: Congruence L R):
   forall n (t t' u u': Term L n),
   R _ t t' -> R _ u u' -> R _ (t $ u) (t' $ u').
 Proof. intros. transitivity (t $ u'); auto with cong.

@@ -55,8 +55,7 @@ Fact sn_unsub {L m n} (t: Term L (S m + n)) u:
   sn (t ◁ᵢ u) -> sn t.
 Proof.
 intros. depind H. constructor. intros.
-inversion H1; subst; eapply H0; auto;
-apply replace_step; auto with cong.
+inversion H1; subst; eapply H0; eauto with red.
 Qed.
 
 Inductive Atomic {L n}: Term L n -> Prop :=

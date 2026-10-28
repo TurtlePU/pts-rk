@@ -8,20 +8,15 @@ Infix "=ᵝ" := (def_equiv _ _)
 
 Theorem def_equiv_prop {L n} (t t': Term L n):
   t =ᵝ t' <-> exists u, t ↠ᵝ u /\ t' ↠ᵝ u.
-Proof.
-constructor; intro.
-- induction H. exists x; repeat constructor.
-  inversion H; subst; destruct IHRTC as [u []].
-  + exists u. constructor; auto.
-    apply rtc_step with (y := y); auto.
-  + apply rtc_in in H1.
-    apply (step_diamond _ _ _ H1) in H2.
-    destruct H2 as [v []]. exists v. constructor. auto.
-    apply rtc_trans with (y := u); auto.
-- destruct H as [u []]. apply rtc_trans with (y := u).
-  + apply rtc_map with (Q := step L n).
-    intros. apply forward. auto. auto.
-  + apply inv_rtc_inv, rtc_map with (Q := step L n).
+Proof. split.
+- induction 1. eauto with red. inversion H; subst;
+  destruct IHRTC as [u []]; eauto with red.
+  apply rtc_in in H1.
+  apply (step_diamond _ _ _ H1) in H2.
+  destruct H2 as [v []]. eauto with red.
+- destruct 1 as [u []]. apply rtc_trans with (y := u).
+  + apply rtc_map with (Q := step L n); auto with ar.
+  + apply inv_rtc_inv, rtc_map with (Q := step L n);
     intros. apply backwards. auto. auto.
 Qed.
 
