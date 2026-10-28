@@ -77,15 +77,21 @@ Definition subst_at {L m n}
 Infix "◁ᵢ" :=
   subst_at (at level 45, left associativity).
 
+Create Rewrite HintDb syntax.
+Ltac syntax_simp :=
+  simpl; unfold shift, push, subst, subst_at; simpl;
+  autorewrite with syntax; auto.
+
 Lemma rename_ext {L m n} (f g: Fin m -> Fin n):
   (forall i, f i = g i) ->
   forall t: Term L m, rename f t = rename g t.
 Proof.
 intros. generalize dependent n.
-induction t; intros; auto; simpl; f_equal; auto;
-apply IHt2; intros; dependent elimination i; auto;
-simpl; rewrite H; reflexivity.
+induction t; intros; simpl; f_equal; auto;
+apply IHt2; intros; dependent elimination i;
+simpl; try rewrite H; reflexivity.
 Qed.
+Hint Rewrite @rename_ext : syntax.
 
 Lemma replace_ext {L m n} (f g: Fin m -> Term L n):
   (forall i, f i = g i) ->
@@ -95,18 +101,13 @@ assert (transpose_ext: forall L m n
   (f g: Fin m -> Term L n),
   (forall j, f j = g j) ->
   forall i, transpose f i = transpose g i).
-  { clear. intros. dependent elimination i.
-    - reflexivity.
-    - simpl. rewrite H. reflexivity.
+  { clear. intros. dependent elimination i;
+    simpl; try rewrite H; auto.
   }
 intros. generalize dependent n.
 induction t; intros; simpl; f_equal; auto.
 Qed.
-
-Create Rewrite HintDb syntax.
-Ltac syntax_simp :=
-  simpl; unfold shift, push, subst, subst_at; simpl;
-  autorewrite with syntax; auto.
+Hint Rewrite @replace_ext : syntax.
 
 Lemma rename_id {L n} (t: Term L n):
   rename (fun i => i) t = t.
@@ -121,11 +122,10 @@ Lemma rename_comp {L l m n}
   (f: Fin m -> Fin n) (g: Fin l -> Fin m) (t: Term L l):
   rename f (rename g t) = rename (fun i => f (g i)) t.
 Proof.
-generalize dependent n.
-generalize dependent m.
+generalize dependent n. generalize dependent m.
 induction t; intros; simpl; f_equal; auto;
-rewrite IHt2; apply rename_ext;
-intros; dependent elimination i; auto.
+rewrite IHt2; apply rename_ext; intros;
+dependent elimination i; auto.
 Qed.
 Hint Rewrite @rename_comp: syntax.
 
@@ -134,10 +134,9 @@ Lemma rename_replace {L l m n} (f: Fin m -> Fin n)
   rename f (replace g t) =
   replace (fun i => rename f (g i)) t.
 Proof.
-generalize dependent n.
-generalize dependent m.
-induction t; intros; simpl; f_equal; auto; rewrite IHt2;
-apply replace_ext; intros;
+generalize dependent n. generalize dependent m.
+induction t; intros; simpl; f_equal; auto;
+rewrite IHt2; apply replace_ext; intros;
 dependent elimination i; syntax_simp.
 Qed.
 Hint Rewrite @rename_replace: syntax.
@@ -146,8 +145,7 @@ Lemma replace_rename {L l m n} (f: Fin m -> Term L n)
   (g: Fin l -> Fin m) (t: Term L l):
   replace f (rename g t) = replace (fun i => f (g i)) t.
 Proof.
-generalize dependent n.
-generalize dependent m.
+generalize dependent n. generalize dependent m.
 induction t; intros; simpl; f_equal; auto;
 rewrite IHt2; apply replace_ext; intros;
 dependent elimination i; auto.
@@ -159,8 +157,8 @@ Lemma replace_var {L n} (t: Term L n):
 Proof.
 induction t; simpl; f_equal; auto;
 transitivity (replace (fun x => var x) t2); auto;
-apply replace_ext;
-intros; dependent elimination i; auto.
+apply replace_ext; intros;
+dependent elimination i; auto.
 Qed.
 Hint Rewrite @replace_var: syntax.
 
@@ -169,8 +167,7 @@ Lemma replace_replace {L l m n} (f: Fin m -> Term L n)
   replace f (replace g t) =
   replace (fun i => replace f (g i)) t.
 Proof.
-generalize dependent n.
-generalize dependent m.
+generalize dependent n. generalize dependent m.
 induction t; intros; simpl; f_equal; auto;
 rewrite IHt2; apply replace_ext; intros;
 dependent elimination i; syntax_simp.
