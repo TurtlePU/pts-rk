@@ -1,6 +1,9 @@
 From Equations Require Import Equations.
+Require Import Stdlib.Relations.Relations.
 Require Import Typing.
 Require Import Context Syntax DefEq Reduction AbstractRewriting Inversions Congruence.
+
+Create HintDb ctx.
 
 Inductive wf {L} {sig: Sort_sig L}:
   forall {n}, Ctx L n -> Type :=
@@ -9,6 +12,7 @@ Inductive wf {L} {sig: Sort_sig L}:
    wf Γ -> Γ ⊢ T ⇐ 𝓤 ℓ ->
 (* ---------------------- *)
         wf (Γ & T).
+Hint Constructors wf: ctx.
 
 Lemma wf_subst_at {L m n} (Γ: Ctx L (S m + n))
   (sig: Sort_sig L) u:
@@ -25,30 +29,39 @@ induction m; intros; dependent elimination X.
     auto.
 Qed.
 
+Reserved Notation "Γ →ˠ Δ" (at level 60).
+Inductive ctx_beta {L}:
+  forall {n}, relation (Ctx L n) :=
+| beta_here {n} {Γ: Ctx L n} {T U}:
+       T →ᵝ U ->
+(* -------------- *)
+   Γ & T →ˠ Γ & U
+| beta_there {n} {Γ Δ: Ctx L n} {T}:
+       Γ →ˠ Δ ->
+(* -------------- *)
+   Γ & T →ˠ Δ & T
+where "Γ →ˠ Δ" := (ctx_beta Γ Δ).
+Hint Constructors ctx_beta: ctx.
+
 Lemma context_reduction_strong {L n Δ} Γ
   (sig: Sort_sig L) (t T: Term L n):
    Γ ⊢ t ⇐ T -> wf Γ -> Γ →ˠ Δ ->
 (* ------------------------------ *)
              Δ ⊢ t ⇐ T.
-Proof. intros. induction H.
-- constructor. auto.
-- apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
-  apply IHtyp2.
-  + apply wf_cons with (ℓ := ℓₜ); assumption.
-  + apply beta_there. assumption.
-- induction i; dependent elimination H0;
+Proof.
+  intros. induction H; lazymatch goal with
+  | [ |- typ _ (var _) _ ] => idtac
+  | _ => simp_typ
+  end;
+  try apply IHtyp1; try apply IHtyp2; eauto with ctx.
+  induction i; dependent elimination H0;
   dependent elimination X; try (simpl; constructor).
-  + apply typ_conv with (T := shift U) (ℓ := ℓ).
+  - apply typ_conv with (T := shift U) (ℓ := ℓ).
     * constructor.
     * apply weakening with (T := 𝓤 ℓ). assumption.
     * apply rename_equiv. symmetry.
       apply eq_in. assumption.
-  + apply weakening with (t := var i). apply IHi; auto.
-- apply typ_λ with (ℓ := ℓ); auto. apply IHtyp2.
-  + apply wf_cons with (ℓ := ℓ); assumption.
-  + apply beta_there. assumption.
-- apply typ_app with (U := U); auto.
-- apply typ_conv with (T := T) (ℓ := ℓ); auto.
+  - apply weakening with (t := var i). apply IHi; auto.
 Qed.
 
 Lemma context_reduction {L n Γ} ℓ (sig: Sort_sig L)
@@ -56,10 +69,10 @@ Lemma context_reduction {L n Γ} ℓ (sig: Sort_sig L)
    Γ & U ⊢ t ⇐ T -> wf Γ -> Γ ⊢ U ⇐ 𝓤 ℓ -> U →ᵝ U' ->
 (* -------------------------------------------------- *)
                    Γ & U' ⊢ t ⇐ T.
-Proof. intros.
-apply context_reduction_strong with (Γ := Γ & U); auto.
-- apply wf_cons with (ℓ := ℓ); auto.
-- apply beta_here. auto.
+Proof.
+  intros.
+  apply context_reduction_strong with (Γ := Γ & U);
+  eauto with ctx.
 Qed.
 
 Theorem type_is_correct {L n Γ} `{Sort_total_sig L}
@@ -76,8 +89,7 @@ Proof. intros. depind H1.
   + exists ℓ. apply weakening with (T := 𝓤 _). auto.
   + specialize (IHX f) as [ℓ' H3].
     exists ℓ'. apply weakening with (T := 𝓤 _). auto.
-- assert (H3: wf (Γ & U)).
-  { apply wf_cons with (ℓ := ℓ); auto. }
+- assert (H3: wf (Γ & U)). { eauto with ctx. }
   apply IHtyp2 in H3. destruct H3 as [ℓ' H3].
   destruct (rule_t ℓ ℓ') as [ℓ'' H4].
   exists ℓ''. apply typ_Π with (ℓₜ := ℓ) (ℓᵤ := ℓ');
@@ -104,21 +116,17 @@ destruct H' as [ℓ H']; typ_inversion H1.
     auto.
   + symmetry. assumption.
 - apply typ_conv with (ℓ := ℓ) (T := 𝓤 ℓ0); auto.
-  + apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
-    apply IHstep; auto.
-    apply wf_cons with (ℓ := ℓₜ); auto.
+  + apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ);
+    eauto with ctx.
   + symmetry. assumption.
 - apply typ_conv with (ℓ := ℓ) (T := Π T' U); auto.
-  + apply typ_λ with (ℓ := ℓ0).
-    * apply IHstep; auto.
-    * apply context_reduction with (ℓ := ℓ0) (U := T0);
-      auto.
+  + apply typ_λ with (ℓ := ℓ0); auto.
+    apply context_reduction with (ℓ := ℓ0) (U := T0);
+    auto.
   + rewrite H5. cong_simple. symmetry. apply eq_in.
     auto.
 - apply typ_conv with (ℓ := ℓ) (T := Π T0 U); auto.
-  + apply typ_λ with (ℓ := ℓ0); auto.
-    apply IHstep; auto.
-    apply wf_cons with (ℓ := ℓ0); auto.
+  + apply typ_λ with (ℓ := ℓ0); eauto with ctx.
   + symmetry. auto.
 - apply typ_conv with (ℓ := ℓ) (T := T0 ◁ t); auto.
   + apply typ_app with (U := U); auto.

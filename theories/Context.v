@@ -1,5 +1,4 @@
 From Equations Require Import Equations.
-Require Import Stdlib.Relations.Relations.
 Require Import Syntax Reduction.
 
 Inductive Ctx L: nat -> Type :=
@@ -9,19 +8,6 @@ Arguments ε {_}.
 Arguments cons [_] [_] _ _.
 Infix "&" := cons (at level 50, left associativity).
 Derive Signature NoConfusionHom for Ctx.
-
-Reserved Notation "Γ →ˠ Δ" (at level 60).
-Inductive ctx_beta {L}:
-  forall {n}, relation (Ctx L n) :=
-| beta_here {n} {Γ: Ctx L n} {T U}:
-       T →ᵝ U ->
-(* -------------- *)
-   Γ & T →ˠ Γ & U
-| beta_there {n} {Γ Δ: Ctx L n} {T}:
-       Γ →ˠ Δ ->
-(* -------------- *)
-   Γ & T →ˠ Δ & T
-where "Γ →ˠ Δ" := (ctx_beta Γ Δ).
 
 Definition ctx_pred {L n} (Γ: Ctx L (S n)): Ctx L n :=
 match Γ with | Γ & _ => Γ end.

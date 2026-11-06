@@ -1,4 +1,5 @@
 From Equations Require Import Equations.
+Require Import Morphisms.
 
 Inductive Fin: nat -> Type :=
 | fzero {n}: Fin (S n)
@@ -77,36 +78,51 @@ Definition subst_at {L m n}
 Infix "◁ᵢ" :=
   subst_at (at level 45, left associativity).
 
+(* TODO: shorten proofs, improve syntax_simp. *)
+
 Create Rewrite HintDb syntax.
+
 Ltac syntax_simp :=
   simpl; unfold shift, push, subst, subst_at; simpl;
   autorewrite with syntax; auto.
 
+Ltac proper_fin :=
+  intros;
+  match goal with
+  | [H: forall i, _ i = _ i |- _ ?i = _ ?i] =>
+    dependent elimination i; simpl; try rewrite H; auto
+  end.
+
+Ltac proper_term H :=
+  intros;
+  match goal with
+  | [ m: nat, n: nat, t: Term _ ?m |- _ ?t = _ ?t] =>
+      generalize dependent n;
+      induction t; intros; simpl; f_equal;
+      auto using H
+  end.
+
+Lemma weak_proper {m n} (f g: Fin m -> Fin n):
+  (forall i, f i = g i) ->
+  forall i, weak f i = weak g i.
+Proof. proper_fin. Qed.
+Hint Rewrite @weak_proper : syntax.
+
 Lemma rename_ext {L m n} (f g: Fin m -> Fin n):
   (forall i, f i = g i) ->
   forall t: Term L m, rename f t = rename g t.
-Proof.
-intros. generalize dependent n.
-induction t; intros; simpl; f_equal; auto;
-apply IHt2; intros; dependent elimination i;
-simpl; try rewrite H; reflexivity.
-Qed.
+Proof. proper_term @weak_proper. Qed.
 Hint Rewrite @rename_ext : syntax.
+
+Lemma transpose_proper {L m n} (f g: Fin m -> Term L n):
+  (forall i, f i = g i) ->
+  forall i, transpose f i = transpose g i.
+Proof. proper_fin. Qed.
 
 Lemma replace_ext {L m n} (f g: Fin m -> Term L n):
   (forall i, f i = g i) ->
   forall t, replace f t = replace g t.
-Proof.
-assert (transpose_ext: forall L m n
-  (f g: Fin m -> Term L n),
-  (forall j, f j = g j) ->
-  forall i, transpose f i = transpose g i).
-  { clear. intros. dependent elimination i;
-    simpl; try rewrite H; auto.
-  }
-intros. generalize dependent n.
-induction t; intros; simpl; f_equal; auto.
-Qed.
+Proof. proper_term @transpose_proper. Qed.
 Hint Rewrite @replace_ext : syntax.
 
 Lemma rename_id {L n} (t: Term L n):

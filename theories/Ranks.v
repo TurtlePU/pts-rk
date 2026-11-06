@@ -45,13 +45,12 @@ Proof. unfold AL. intros r X. intros. induction H2.
   typ_inversion H.
   apply equiv_Π_inversion in H6. destruct H6.
   apply X with (m := 0) (j := ℓₜ) (Γ := Γ & T0)
-               (T := U0); auto.
+               (T := U0); eauto with ctx.
   + apply Nat.le_max_l.
   + simpl. replace ℓₜ with ℓ. auto.
     symmetry. eapply equiv_𝓤_inversion.
     apply type_stability with (t := T) (t' := T0)
                               (Γ := Γ); auto.
-  + apply wf_cons with (ℓ := ℓ); auto.
   + simpl. apply typ_conv with (T := T) (ℓ := ℓ); auto.
 - eapply SN_WHR. constructor. apply H2.
   apply IHSN with (Γ := Γ) (T := T) (U := U); auto.
@@ -75,8 +74,8 @@ Lemma AL_to_SL:
   forall r, (forall s, s <= r -> AL s) -> SL r.
 Proof. unfold SL, SL_skel. intros.
 enough (HH: SL_SN_Ind_hyp r (S m + n) t).
-unfold SL_SN_Ind_hyp, SL_ind_hyp, SL_skel in HH.
-apply HH with (Γ := Γ) (T := T) (H := eq_refl); auto.
+{ apply HH with (Γ := Γ) (T := T) (H := eq_refl);
+  auto. }
 clear dependent Γ. clear dependent u.
 pose proof H0 as HEND. clear H0 T.
 apply sn_whr_snx with (P := SL_ind_hyp r
@@ -101,8 +100,7 @@ try (simpl in H7).
   + apply H1 with (Γ := Γ) (T := 𝓤 ℓₜ) (H := eq_refl);
     auto.
   + apply (H3 (S m0) n1) with (Γ := Γ & T) (T := 𝓤 ℓᵤ)
-    (H := eq_refl); auto.
-    apply wf_cons with (ℓ := ℓₜ); auto.
+    (H := eq_refl); eauto with ctx.
 - destruct (subst_at_var i u); destruct H0.
   + right. constructor.
     apply eq_rect with (rename up u). apply rename_SN.
@@ -160,7 +158,7 @@ try (simpl in H7).
     auto.
   + change (SN (t0 ◁ᵢ u)).
     apply H3 with (Γ := Γ & T) (T := U) (H := eq_refl);
-    auto. apply wf_cons with (ℓ := ℓ); auto.
+    eauto with ctx.
 - apply H1 with (t2' := u) (Γ := Γ) (T := T)
   (H := eq_refl); auto.
   apply H3 with (Γ := Γ) (T := T) (H := eq_refl); auto.

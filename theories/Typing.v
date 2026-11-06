@@ -47,25 +47,54 @@ Inductive typ {L} {sig: Sort_sig L}:
 where "Γ ⊢ t ⇐ T" := (typ Γ t T).
 Derive Signature for typ.
 
+Ltac simp_typ := lazymatch goal with
+  | [ H: axiom ?l ?l' |- typ _ (𝓤 ?l) (𝓤 ?l') ] =>
+      apply typ_𝓤; exact H
+  | [ |- typ _ (𝓤 _) (𝓤 _) ] => apply typ_𝓤
+  | [ H: axiom ?l ?l' |- typ _ (𝓤 ?l) ?T ] =>
+      replace (T) with (𝓤 (l'));
+      try (apply typ_𝓤; exact H)
+  | [ |- typ _ (Π _ _) (𝓤 _) ] => eapply typ_Π
+  | [ |- @typ ?L _ _ _ (Π _ _) ?T ] =>
+      let l := fresh "l" in
+      (evar (l: (L));
+      replace (T) with (𝓤 ?l);
+      try eapply typ_Π)
+  | [ |- typ ?Γ (var ?i) (?Γ !! ?i) ] => apply typ_var
+  | [ |- typ ?Γ (var ?i) ?T ] =>
+      replace (T) with ((Γ) !! (i)); try apply typ_var
+  | [ |- typ _ ([?U] _) (Π ?U _) ] => eapply typ_λ
+  | [ |- typ _ ([?U] _) (Π ?U' _) ] =>
+      replace (U') with (U); try eapply typ_λ
+  | [ |- @typ ?L _ ?n _ ([?U] _) ?V ] =>
+      let T := fresh "T" in
+      (evar (T: Term (L) (S (n)));
+      replace (V) with (Π (U) ?T);
+      try eapply typ_λ)
+  | [ |- typ _ (_ $ ?u) (_ ◁ ?u) ] => eapply typ_app
+  | [ |- @typ ?L _ ?n _ (_ $ ?u) ?V ] =>
+      let T := fresh "T" in
+      (evar (T: Term (L) (S (n)));
+      replace (V) with (?T ◁ (u));
+      try eapply typ_app)
+  | [ |- typ _ _ _ ] => eapply typ_conv
+end.
+
 Lemma weakening_strong m {L n Γ} (sig: Sort_sig L)
   (t T : Term L (m + n)) (U: Term L n):
                   Γ ⊢ t ⇐ T ->
 (* --------------------------------------- *)
    insert Γ U ⊢ rename wr t ⇐ rename wr T.
-Proof. intros. depind H.
-- constructor. auto.
-- apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ).
-  2: apply IHtyp2 with (m := S m) (Γ := Γ & T)
-                       (T := 𝓤 ℓᵤ).
-  all: auto.
-- rewrite <- insert_index with (T := U). constructor.
-- apply typ_λ with (ℓ := ℓ).
-  2: apply IHtyp2 with (m := S m) (Γ := Γ & U).
-  all: auto.
-- rewrite rename_subst. simpl rename.
-  apply typ_app with (U := rename wr U); auto.
-- apply typ_conv with (T := rename wr T) (ℓ := ℓ); auto.
-  apply rename_equiv. auto.
+Proof.
+  intros. depind H; simpl; simp_typ;
+  try apply IHtyp1; try apply IHtyp2.
+  - apply IHtyp2 with (m := S m) (Γ := Γ & T)
+                      (T := 𝓤 ℓᵤ); auto.
+  - auto.
+  - apply insert_index.
+  - apply IHtyp2 with (m := S m) (Γ := Γ & U); auto.
+  - symmetry. apply rename_subst.
+  - apply rename_equiv. auto.
 Qed.
 
 Corollary weakening {L n Γ}
@@ -80,26 +109,27 @@ Lemma substitution_lemma_strong m
   (t T: Term L (S m + n)) (u: Term L n):
   Γ ⊢ t ⇐ T -> shrink Γ ⊢ u ⇐ squeeze Γ ->
   Γ ◁ⁱ u ⊢ t ◁ᵢ u ⇐ T ◁ᵢ u.
-Proof. intros. depind H.
-- constructor. auto.
-- apply typ_Π with (ℓₜ := ℓₜ) (ℓᵤ := ℓᵤ); auto.
-  apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & _)
-  (T := 𝓤 ℓᵤ); auto.
-- induction m.
-  + dependent elimination i as [fzero | fsucc i];
-    syntax_simp. apply typ_var.
-  + dependent elimination i as [fzero | fsucc i].
-    * apply eq_rect with (shift (ctx_top Γ ◁ᵢ u)).
-      constructor. syntax_simp.
-    * apply eq_rect with
-      (shift ((ctx_pred Γ !! i) ◁ᵢ u)).
-      apply weakening, IHm. all: syntax_simp.
-- apply typ_λ with (ℓ := ℓ); auto.
-  apply IHtyp2 with (m := S m) (Γ := Γ & _); auto.
-- unfold subst_at. rewrite replace_subst.
-  apply typ_app with (U := U ◁ᵢ u0); auto.
-- apply typ_conv with (ℓ := ℓ) (T := T ◁ᵢ u); auto.
-  apply replace_equiv. assumption.
+Proof.
+  intros. depind H; unfold subst_at; simpl;
+  lazymatch goal with
+  | [ |- typ _ (push _ _) _ ] => idtac
+  | _ => simp_typ
+  end; try apply IHtyp1; try apply IHtyp2; auto.
+  - apply IHtyp2 with (m := S m) (n := n0) (Γ := Γ & _)
+                      (T := 𝓤 ℓᵤ); auto.
+  - auto.
+  - induction m.
+    + dependent elimination i as [fzero | fsucc i];
+      syntax_simp. apply typ_var.
+    + dependent elimination i as [fzero | fsucc i].
+      * apply eq_rect with (shift (ctx_top Γ ◁ᵢ u)).
+        constructor. syntax_simp.
+      * apply eq_rect with
+        (shift ((ctx_pred Γ !! i) ◁ᵢ u)).
+        apply weakening, IHm. all: syntax_simp.
+  - apply IHtyp2 with (m := S m) (Γ := Γ & _); auto.
+  - symmetry. apply replace_subst.
+  - apply replace_equiv. assumption.
 Qed.
 
 Corollary substitution_lemma {L n Γ} (sig: Sort_sig L)

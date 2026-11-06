@@ -1,7 +1,13 @@
 From Equations Require Import Equations.
-Require Import Setoid.
+Require Import Setoid Morphisms.
 
 Create HintDb ar.
+Hint Extern 1 => symmetry : ar.
+Hint Unfold iff : ar.
+Hint Unfold Proper : ar.
+Hint Unfold respectful : ar.
+Hint Unfold same_relation : ar.
+Hint Unfold subrelation : ar.
 
 Inductive RTC {A} (R: relation A): relation A :=
 | rtc_refl x: RTC R x x
@@ -16,13 +22,16 @@ Hint Constructors Sym : ar.
 
 Definition Inv {A} (R: relation A): relation A :=
   fun x y => R y x.
+Hint Unfold Inv : ar.
 
 Definition EquivClosure {A} (R: relation A):
   relation A := RTC (Sym R).
+Hint Unfold EquivClosure : ar.
 
 Definition Preimage {A B} (R: relation B) (f: A -> B):
   relation A := fun x y => R (f x) (f y).
 Infix "@" := Preimage (at level 50).
+Hint Unfold Preimage : ar.
 
 Definition ChurchRosser {A} (R: relation A): Prop :=
   forall t t₁ t₂, R t t₁ -> R t t₂ ->
@@ -40,12 +49,7 @@ Hint Resolve rtc_in : ar.
 
 Lemma rtc_sym {A} (R: relation A) `(sym: Symmetric A R):
   forall x y, RTC R x y -> RTC R y x.
-Proof.
-  induction 1;
-  try match goal with | H : R _ _ |- _ =>
-      symmetry in H
-  end; eauto with ar.
-Qed.
+Proof. induction 1; eauto with ar. Qed.
 Hint Resolve rtc_sym : ar.
 
 Lemma sym_sym {A} (R : relation A):
@@ -75,7 +79,7 @@ Proof. split; typeclasses eauto. Qed.
 
 Lemma inv_rtc_inv {A} (R: relation A):
   forall x y, RTC (Inv R) x y -> Inv (RTC R) x y.
-Proof. unfold Inv. induction 1; eauto with ar. Qed.
+Proof. induction 1; eauto with ar. Qed.
 Hint Resolve inv_rtc_inv : ar.
 
 Lemma rtc_unmap {A B} (f: A -> B) R:
@@ -108,31 +112,41 @@ Hint Resolve eq_in : ar.
 Lemma eq_unmap {A B} (f: A -> B) R:
   forall x y, EquivClosure (R @ f) x y ->
   EquivClosure R (f x) (f y).
-Proof.
-intros.
-eapply rtc_unmap, rtc_map.
-apply sym_unmap.
-auto.
-Qed.
+Proof. intros. apply rtc_unmap. eauto with ar. Qed.
 Hint Resolve eq_unmap : ar.
 
 Lemma eq_map {A} (Q R: relation A):
   (forall x y, Q x y -> R x y) ->
   forall x y, EquivClosure Q x y -> EquivClosure R x y.
-Proof. intro. apply rtc_map, sym_map. assumption. Qed.
+Proof. eauto with ar. Qed.
 Hint Resolve eq_map : ar.
 
-(* TODO: refactor proof *)
 Lemma CR_ext {A} (Q R: relation A):
   (forall a b, Q a b <-> R a b) ->
   ChurchRosser Q <-> ChurchRosser R.
 Proof.
-unfold ChurchRosser. split. 1: symmetry in H.
-all:
-intros; repeat rewrite H in *;
-destruct (H0 _ _ _ H1 H2) as [u []];
-repeat rewrite <- H in *; exists u; auto.
+  intro H; split; intro CR; repeat intro.
+  1: symmetry in H. all:
+  setoid_rewrite H; repeat rewrite H in *;
+  eapply CR; eauto.
 Qed.
+Hint Resolve CR_ext : ar.
+
+Instance rtc_map_inst {A}:
+Proper (subrelation ++> subrelation) (@RTC A).
+Proof. eauto with ar. Qed.
+
+Instance sym_map_inst {A}:
+Proper (subrelation ++> subrelation) (@Sym A).
+Proof. eauto with ar. Qed.
+
+Instance eq_map_inst {A}:
+Proper (subrelation ++> subrelation) (@EquivClosure A).
+Proof. eauto with ar. Qed.
+
+Instance CR_ext_instance {A}:
+Proper (same_relation A ==> iff) ChurchRosser.
+Proof. repeat intro. apply CR_ext. firstorder. Qed.
 
 (* TODO: refactor proof more? *)
 Theorem CR_RTC {A} {R: relation A}:
