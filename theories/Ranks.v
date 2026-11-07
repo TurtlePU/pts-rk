@@ -37,7 +37,7 @@ Definition SL r := (* Substitution lemma *)
 Lemma SL_to_AL:
   forall r, (forall j, j < r -> SL j) -> AL r.
 Proof. unfold AL. intros r X. intros. induction H2.
-- constructor. constructor; auto.
+- auto using SN_SNx, SNx.
 - eapply SN_WHR. constructor; auto.
   typ_inversion H1.
   change (ℓ = max (S ℓₜ) ℓᵤ) in H1.
@@ -45,17 +45,16 @@ Proof. unfold AL. intros r X. intros. induction H2.
   typ_inversion H.
   apply equiv_Π_inversion in H6. destruct H6.
   apply X with (m := 0) (j := ℓₜ) (Γ := Γ & T0)
-               (T := U0); eauto with ctx.
-  + apply Nat.le_max_l.
-  + simpl. replace ℓₜ with ℓ. auto.
-    symmetry. eapply equiv_𝓤_inversion.
-    apply type_stability with (t := T) (t' := T0)
-                              (Γ := Γ); auto.
-  + simpl. apply typ_conv with (T := T) (ℓ := ℓ); auto.
+               (T := U0);
+               eauto using wf, typ_conv, Nat.le_max_l.
+  simpl. replace ℓₜ with ℓ. auto.
+  symmetry. eapply equiv_𝓤_inversion.
+  apply type_stability with (t := T) (t' := T0)
+                            (Γ := Γ); auto.
 - eapply SN_WHR. constructor. apply H2.
   apply IHSN with (Γ := Γ) (T := T) (U := U); auto.
-  apply subject_reduction with (t := t0); auto.
-  apply reduction_weakening. auto.
+  apply subject_reduction with (t := t0);
+  auto using reduction_weakening.
 Qed.
 
 Definition SL_ind_hyp
@@ -100,7 +99,7 @@ try (simpl in H7).
   + apply H1 with (Γ := Γ) (T := 𝓤 ℓₜ) (H := eq_refl);
     auto.
   + apply (H3 (S m0) n1) with (Γ := Γ & T) (T := 𝓤 ℓᵤ)
-    (H := eq_refl); eauto with ctx.
+    (H := eq_refl); eauto using wf.
 - destruct (subst_at_var i u); destruct H0.
   + right. constructor.
     apply eq_rect with (rename up u). apply rename_SN.
@@ -158,12 +157,12 @@ try (simpl in H7).
     auto.
   + change (SN (t0 ◁ᵢ u)).
     apply H3 with (Γ := Γ & T) (T := U) (H := eq_refl);
-    eauto with ctx.
+    eauto using wf.
 - apply H1 with (t2' := u) (Γ := Γ) (T := T)
   (H := eq_refl); auto.
   apply H3 with (Γ := Γ) (T := T) (H := eq_refl); auto.
-  apply subject_reduction with (t := t0); auto.
-  apply reduction_weakening. auto.
+  apply subject_reduction with (t := t0);
+  auto using reduction_weakening.
 - simpl in H8. typ_inversion H8. typ_inversion H4.
   assert (wh: WHR_SN
     ([U ◁ᵢ u0] (t0 ◁ᵢ u0) $ (u ◁ᵢ u0))
@@ -175,16 +174,14 @@ try (simpl in H7).
        - apply H3 with (Γ := Γ) (T := U0)
          (H := eq_refl); auto.
      }
-  split. auto. intros. eapply SN_WHR. apply wh. auto.
+  eauto using SN_WHR.
 - simpl in H6. typ_inversion H6.
   assert (HH: WHR_SN (t0 ◁ᵢ u0) (t' ◁ᵢ u0)
           /\ (SN (t' ◁ᵢ u0) -> SN (t0 ◁ᵢ u0))).
         { apply H1 with (Γ := Γ) (T := Π U T0)
           (H := eq_refl); auto. }
   destruct HH.
-  assert (wh: WHR_SN (t0 $ u ◁ᵢ u0) (t' $ u ◁ᵢ u0)).
-    { apply WHR_SN_there; auto. }
-  split. auto. intros. eapply SN_WHR. apply wh. auto.
+  eauto using SN_WHR, WHR_SN_there.
 Qed.
 
 Corollary AL_holds: forall r, AL r.
@@ -203,10 +200,8 @@ Lemma main_lemma {n} Γ (t T: Term nat n):
   wf Γ -> Γ ⊢ t ⇐ T -> SN t.
 Proof. intros. induction H;
 try solve [constructor; constructor]; auto.
-- constructor. constructor. auto.
-  apply IHtyp2, wf_cons with (ℓ := ℓₜ); auto.
-- apply SN_λ. auto.
-  apply IHtyp2, wf_cons with (ℓ := ℓ); auto.
+- apply SN_SNx. eauto using SNx, wf.
+- apply SN_λ; eauto using wf.
 - pose proof H. apply type_is_correct in H; auto.
   destruct H. pose proof (AL_holds x). unfold AL in H2.
   apply H2 with (Γ := Γ) (T := U) (U := T); auto.
@@ -214,10 +209,6 @@ Qed.
 
 Theorem strong_normalization {n} Γ (t T: Term nat n):
   wf Γ -> Γ ⊢ t ⇐ T -> sn t.
-Proof.
-intros.
-apply SN_soundness, main_lemma with (Γ := Γ) (T := T);
-auto.
-Qed.
+Proof. eauto using SN_soundness, main_lemma. Qed.
 
 Print Assumptions strong_normalization.

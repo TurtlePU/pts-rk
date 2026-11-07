@@ -8,14 +8,11 @@ Derive Signature for Acc.
 
 Fact acc_step {A} {R: relation A} x y:
   R x y -> Acc R x -> Acc R y.
-Proof. intros. destruct H0. apply H0, H. Qed.
+Proof. intros. destruct H0. auto. Qed.
 
 Fact acc_steps {A} {R: relation A} x y:
   RTC R x y -> Acc R x -> Acc R y.
-Proof.
-intros. induction H. auto.
-apply IHRTC, acc_step with (x := x); auto.
-Qed.
+Proof. intros. induction H; eauto using acc_step. Qed.
 
 Definition sn {L n}: Term L n -> Prop := Acc (step L n).
 
@@ -67,11 +64,9 @@ Inductive Atomic {L n}: Term L n -> Prop :=
 Lemma atomic_preservation {L n} (t t': Term L n):
   t →ᵝ t' -> Atomic t -> Atomic t'.
 Proof.
-intros. generalize dependent t'. induction H0; intros;
-inversion H; try constructor.
-- apply IHAtomic. auto.
-- auto.
-- subst. inversion H0.
+  intros H H0. generalize dependent t'.
+  induction H0; intros; inversion H; eauto using Atomic.
+  subst. easy.
 Qed.
 
 Lemma atomic_app_sn {L n} (t u: Term L n):
@@ -100,22 +95,19 @@ Lemma WHR_sn_comm {L n} (s t u: Term L n):
   WHR_sn s t -> s →ᵝ u ->
   t = u \/ exists v, WHR_sn u v /\ t ↠ᵝ v.
 Proof.
-intros. generalize dependent u. induction H; intros.
+intro H. generalize dependent u.
+induction H; intros u0 H1.
 - inversion H1. 3: left; auto. all: right. inversion H5.
-  all: subst; eexists; constructor.
-  1,3,5: apply whr_sn_here; auto.
-  + destruct H. apply H. auto.
-  + destruct H0. apply H0. auto.
-  + reflexivity.
-  + apply replace_rtc, rtc_in. auto.
-  + apply rtc_sub, rtc_in. auto.
-- inversion H0; subst.
-  + destruct (IHWHR_sn _ H4); subst. 1: left; auto.
-    right. destruct H1 as [H1 [HW HR]].
-    eexists. constructor.
-    * apply whr_sn_there, HW.
-    * auto with cong.
-  + right. eexists. constructor. apply whr_sn_there, H.
+  all: subst; repeat eexists; try apply whr_sn_here;
+  eauto using acc_step with red; match goal with
+  | [ _: ?t →ᵝ ?t' |- sn ?t' ] =>
+      apply acc_step with (x := (t)); auto
+  end.
+- inversion H1; subst.
+  + destruct (IHWHR_sn _ H4); subst; [left | right].
+    auto. destruct H0 as [v []].
+    eauto using WHR_sn with cong.
+  + right. repeat eexists. eauto using WHR_sn.
     cong_simple. apply rtc_in. auto.
   + inversion H.
 Qed.
