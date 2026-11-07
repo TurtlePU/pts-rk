@@ -1,6 +1,6 @@
 Require Import Stdlib.Relations.Relations.
 From Equations Require Import Equations.
-Require Import Syntax Congruence AbstractRewriting.
+From PTSrk.PTS Require Export Syntax Congruence.
 
 Reserved Notation "t →ᵝ t'"
   (at level 50, no associativity).
@@ -73,20 +73,21 @@ Lemma rename_rtc {L m n}
   (f: Fin m -> Fin n) (t t': Term L m):
   t ↠ᵝ t' -> rename f t ↠ᵝ rename f t'.
 Proof. induction 1; eauto with red. Qed.
-Hint Resolve rename_rtc : red.
+Hint Resolve rename_rtc: red.
+
+Lemma rtc_transpose {L m n}
+  (f f': Fin m -> Term L n):
+  (forall i, f i ↠ᵝ f' i) ->
+  forall i, transpose f i ↠ᵝ transpose f' i.
+Proof. intros. dependent elimination i; eauto with red.
+Qed.
+Hint Resolve rtc_transpose: red.
 
 Lemma rtc_replace {L m n}
   (f f': Fin m -> Term L n) (t: Term L m):
   (forall i, f i ↠ᵝ f' i) ->
   replace f t ↠ᵝ replace f' t.
 Proof.
-assert (rtc_transpose: forall L m n
-  (f f': Fin m -> Term L n),
-  (forall i, f i ↠ᵝ f' i) ->
-  forall i, transpose f i ↠ᵝ transpose f' i).
-  { clear. intros. dependent elimination i;
-    eauto with red.
-  }
 intros. generalize dependent n.
 induction t; simpl; eauto with red.
 Qed.

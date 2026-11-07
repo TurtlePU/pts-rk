@@ -1,5 +1,6 @@
 Require Import Stdlib.Relations.Relations.
-Require Import Syntax AbstractRewriting Reduction Confluence.
+From PTSrk.PTS Require Export Reduction.
+From PTSrk.PTS Require Import Confluence.
 
 Definition def_equiv L n: relation (Term L n) :=
   EquivClosure (step L n).
@@ -9,23 +10,21 @@ Infix "=ᵝ" := (def_equiv _ _)
 Theorem def_equiv_prop {L n} (t t': Term L n):
   t =ᵝ t' <-> exists u, t ↠ᵝ u /\ t' ↠ᵝ u.
 Proof. split.
-- induction 1. eauto with red. inversion H; subst;
-  destruct IHRTC as [u []]; eauto with red.
+- intro H. induction H. eauto with red.
+  inversion H as [x' y' H1 | y' x' H1]; subst;
+  destruct IHRTC as [u [H2 H3]]; eauto with red.
   apply rtc_in in H1.
-  apply (step_diamond _ _ _ H1) in H2.
-  destruct H2 as [v []]. eauto with red.
-- destruct 1 as [u []]. apply rtc_trans with (y := u).
-  + apply rtc_map with (Q := step L n); auto with ar.
-  + apply inv_rtc_inv, rtc_map with (Q := step L n);
-    intros. apply backwards. auto. auto.
+  destruct (step_diamond _ _ _ H1 H2) as [v []].
+  eauto with red.
+- destruct 1 as [u []]. transitivity u;
+  unfold def_equiv; eauto with ar.
 Qed.
 
 Lemma equiv_𝓤_inversion {L n} ℓ ℓ':
   def_equiv L n (𝓤 ℓ) (𝓤 ℓ') -> ℓ = ℓ'.
 Proof.
 rewrite def_equiv_prop. intros [u [H H']].
-inversion H; subst; try (inversion H0).
-inversion H'. auto. inversion H0.
+inversion H. 2: easy. subst. inversion H'; easy.
 Qed.
 
 Lemma equiv_Π_inversion {L n} (T T': Term L n)

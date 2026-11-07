@@ -1,5 +1,58 @@
+From Stdlib.Relations Require Import Relations.
 From Equations Require Import Equations.
-Require Import AbstractRewriting DefEq Typing Context Syntax Congruence Reduction.
+From PTSrk.PTS Require Import Typing.
+
+Ltac simple_inversion H :=
+  depind H; match goal with
+  | eq: _ =ᵝ _ |- _ => setoid_rewrite <- eq; eauto
+  | _ => eauto 7 with red
+  end.
+
+Lemma 𝓤_inversion {L n Γ} (sig: Sort_sig L)
+  (ℓ: L) (T: Term L n):
+  Γ ⊢ 𝓤 ℓ ⇐ T -> exists ℓ', axiom ℓ ℓ' /\ T =ᵝ 𝓤 ℓ'.
+Proof. intro H. simple_inversion H. Qed.
+
+Lemma Π_inversion {L n Γ} (sig: Sort_sig L)
+  (T V: Term L n) (U: Term L (S n)):
+  Γ ⊢ Π T U ⇐ V ->
+  exists ℓₜ ℓᵤ ℓ,
+  rule ℓₜ ℓᵤ ℓ
+  /\ Γ ⊢ T ⇐ 𝓤 ℓₜ
+  /\ Γ & T ⊢ U ⇐ 𝓤 ℓᵤ
+  /\ V =ᵝ 𝓤 ℓ.
+Proof. intro H. simple_inversion H. Qed.
+
+Lemma var_inversion {L n Γ} (sig: Sort_sig L)
+  (i: Fin n) (T: Term L n):
+  Γ ⊢ var i ⇐ T -> T =ᵝ (Γ !! i).
+Proof.
+  intro H. depind H; match goal with
+  | eq: _ =ᵝ _ |- _ =>
+      setoid_rewrite <- eq; symmetry; auto
+  | _ => reflexivity
+  end.
+Qed.
+
+Lemma λ_inversion {L n Γ} (sig: Sort_sig L)
+  (T V: Term L n) (t: Term L (S n)):
+  Γ ⊢ [T] t ⇐ V ->
+  exists ℓ U,
+  Γ ⊢ T ⇐ 𝓤 ℓ
+  /\ Γ & T ⊢ t ⇐ U
+  /\ V =ᵝ Π T U.
+Proof. intro H. simple_inversion H. Qed.
+
+Lemma app_inversion {L n Γ} (sig: Sort_sig L)
+  (t u V: Term L n):
+  Γ ⊢ t $ u ⇐ V ->
+  exists U T,
+  Γ ⊢ t ⇐ Π U T
+  /\ Γ ⊢ u ⇐ U
+  /\ V =ᵝ T ◁ u.
+Proof. intro H. simple_inversion H. Qed.
+
+(* TODO: improve situation with names *)
 
 Ltac unpack H :=
   lazymatch type of H with
@@ -11,63 +64,6 @@ Ltac unpack H :=
       destruct H as [y h]; unpack h
   | _ => idtac
   end.
-
-Lemma 𝓤_inversion {L n Γ} (sig: Sort_sig L)
-  (ℓ: L) (T: Term L n):
-  Γ ⊢ 𝓤 ℓ ⇐ T -> exists ℓ', axiom ℓ ℓ' /\ T =ᵝ 𝓤 ℓ'.
-Proof. intro. depind H.
-- repeat eexists; [ exact H | reflexivity ].
-- unpack IHtyp1. exists ℓ'. split.
-  2: rewrite <- H1. all: auto.
-Qed.
-
-Lemma Π_inversion {L n Γ} (sig: Sort_sig L)
-  (T V: Term L n) (U: Term L (S n)):
-  Γ ⊢ Π T U ⇐ V ->
-  exists ℓₜ ℓᵤ ℓ,
-  rule ℓₜ ℓᵤ ℓ
-  /\ Γ ⊢ T ⇐ 𝓤 ℓₜ
-  /\ Γ & T ⊢ U ⇐ 𝓤 ℓᵤ
-  /\ V =ᵝ 𝓤 ℓ.
-Proof. intro. depind H.
-- exists ℓₜ, ℓᵤ, ℓ. repeat constructor; auto.
-- unpack IHtyp1. exists ℓₜ, ℓᵤ, ℓ0.
-  intuition. rewrite <- H1. auto.
-Qed.
-
-Lemma var_inversion {L n Γ} (sig: Sort_sig L)
-  (i: Fin n) (T: Term L n):
-  Γ ⊢ var i ⇐ T -> T =ᵝ (Γ !! i).
-Proof. intro. depind H.
-- reflexivity.
-- rewrite <- H1. apply IHtyp1.
-Qed.
-
-Lemma λ_inversion {L n Γ} (sig: Sort_sig L)
-  (T V: Term L n) (t: Term L (S n)):
-  Γ ⊢ [T] t ⇐ V ->
-  exists ℓ U,
-  Γ ⊢ T ⇐ 𝓤 ℓ
-  /\ Γ & T ⊢ t ⇐ U
-  /\ V =ᵝ Π T U.
-Proof. intro. depind H.
-- exists ℓ, T. repeat constructor; auto.
-- unpack IHtyp1. exists ℓ0, U. intuition.
-  rewrite <- H1. auto.
-Qed.
-
-Lemma app_inversion {L n Γ} (sig: Sort_sig L)
-  (t u V: Term L n):
-  Γ ⊢ t $ u ⇐ V ->
-  exists U T,
-  Γ ⊢ t ⇐ Π U T
-  /\ Γ ⊢ u ⇐ U
-  /\ V =ᵝ T ◁ u.
-Proof. intro. depind H.
-- exists U, T. repeat constructor; auto.
-- unpack IHtyp1. exists U, T0. intuition.
-  rewrite <- H1. auto.
-Qed.
 
 Ltac typ_inversion H :=
   match type of H with

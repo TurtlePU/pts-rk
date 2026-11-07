@@ -1,5 +1,5 @@
 From Equations Require Import Equations.
-Require Import Syntax Reduction.
+From PTSrk.PTS Require Import Syntax.
 
 Inductive Ctx L: nat -> Type :=
 | ε: Ctx L 0

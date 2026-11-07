@@ -1,5 +1,6 @@
 Require Import Setoid.
-Require Import Syntax AbstractRewriting.
+From PTSrk.Lib Require Export AbstractRewriting.
+From PTSrk.PTS Require Import Syntax.
 
 Class Congruence L
   (R: forall {n}, relation (Term L n)) :=

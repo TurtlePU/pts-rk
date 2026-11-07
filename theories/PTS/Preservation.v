@@ -1,7 +1,6 @@
 From Equations Require Import Equations.
 Require Import Stdlib.Relations.Relations.
-Require Import Typing.
-Require Import Context Syntax DefEq Reduction AbstractRewriting Inversions Congruence.
+From PTSrk.PTS Require Export Typing Inversions.
 
 Inductive wf {L} {sig: Sort_sig L}:
   forall {n}, Ctx L n -> Type :=
@@ -17,7 +16,7 @@ Lemma wf_subst_at {L m n} (Γ: Ctx L (S m + n))
 (* ----------------------------------- *)
              wf (Γ ◁ⁱ u).
 Proof.
-  generalize dependent n. induction m; intros;
+  generalize dependent n. induction m; intros n Γ u X H;
   dependent elimination X; auto.
   apply wf_cons with (ℓ := ℓ); auto.
   change (Γ0 ◁ⁱ u ⊢ T ◁ᵢ u ⇐ 𝓤 ℓ).
@@ -43,7 +42,7 @@ Lemma context_reduction_strong {L n Δ} Γ
 (* ------------------------------ *)
              Δ ⊢ t ⇐ T.
 Proof.
-  intros. induction H; lazymatch goal with
+  intros H X H0. induction H; lazymatch goal with
   | [ |- typ _ (var _) _ ] => idtac
   | _ => simp_typ
   end; try apply IHtyp1; try apply IHtyp2;
@@ -74,7 +73,7 @@ Theorem type_is_correct {L n Γ} `{Sort_total_sig L}
     Γ ⊢ t ⇐ T -> wf Γ ->
 (* ---------------------- *)
    exists ℓ, Γ ⊢ T ⇐ 𝓤 ℓ.
-Proof. intros. depind H1.
+Proof. intros H1 X. depind H1.
 - destruct (axiom_t ℓ'). eauto using typ.
 - destruct (axiom_t ℓ). eauto using typ.
 - depind X; dependent elimination i.
@@ -94,13 +93,16 @@ Qed.
 Lemma eq_sym {L n} (t t': Term L n): t =ᵝ t' -> t' =ᵝ t.
 Proof. symmetry. auto. Qed.
 
+(* TODO: improve situation with names in typ_inversion
+*)
+
 Theorem subject_reduction {L n Γ} `{Sort_total_sig L}
   (t t' T: Term L n):
    Γ ⊢ t ⇐ T -> wf Γ -> t →ᵝ t' ->
 (* ------------------------------- *)
             Γ ⊢ t' ⇐ T.
 Proof.
-intros. induction H2; assert (H' := H1);
+intros H1 X H2. induction H2; assert (H' := H1);
 apply type_is_correct in H'; auto;
 destruct H' as [ℓ H']; typ_inversion H1.
 - apply typ_conv with (ℓ := ℓ) (T := 𝓤 ℓ0);
@@ -130,7 +132,7 @@ Corollary subject_reduction' {L n Γ} `{Sort_total_sig L}
    Γ ⊢ t ⇐ T -> wf Γ -> t ↠ᵝ t' ->
 (* ------------------------------- *)
             Γ ⊢ t' ⇐ T.
-Proof. intros. induction H2.
+Proof. intros H1 X H2. induction H2.
 - assumption.
 - apply IHRTC, subject_reduction with (t := x); auto.
 Qed.
@@ -143,7 +145,7 @@ Theorem type_stability {L n} `{sig: Sort_sig L}
 (* ---------------------------------------------- *)
                       T =ᵝ T'.
 Proof.
-intros.
+intros H1 H2 X H3.
 apply def_equiv_prop in H3. destruct H3 as [u []].
 apply uniqueness_of_typing with (Γ := Γ) (t := u).
 - apply subject_reduction' with (t := t); auto.

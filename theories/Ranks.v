@@ -1,12 +1,14 @@
 From Stdlib Require Import PeanoNat.
 From Stdlib.Arith Require Import Wf_nat.
 From Equations Require Import Equations.
-Require Import Typing Syntax Context SN Preservation Reduction Inversions DefEq.
+From PTSrk.PTS Require Import Preservation SN.
 
 Instance RankSorts : Sort_sig nat :=
   { axiom := fun x y => y = 0
   ; rule := fun x y z => z = max (S x) y
   }.
+
+(* TODO: improve naming in RankSorts_fun *)
 
 #[refine]
 Instance RankSorts_fun :
@@ -33,6 +35,8 @@ Definition SL_skel m n r (t: Term nat (S m + n)) P
 Definition SL r := (* Substitution lemma *)
   forall m n t, SN t ->
   SL_skel m n r t (fun _ _ u => SN (t ◁ᵢ u)).
+
+(* TODO: improve situation with names in SL_to_AL *)
 
 Lemma SL_to_AL:
   forall r, (forall j, j < r -> SL j) -> AL r.
@@ -68,6 +72,8 @@ Definition SL_ind_hyp
 
 Definition SL_SN_Ind_hyp r :=
   SL_ind_hyp r (fun _ _ t _ _ u => SN (t ◁ᵢ u)).
+
+(* TODO: improve situation with names in AL_to_SL *)
 
 Lemma AL_to_SL:
   forall r, (forall s, s <= r -> AL s) -> SL r.
@@ -184,6 +190,8 @@ try (simpl in H7).
   eauto using SN_WHR, WHR_SN_there.
 Qed.
 
+(* TODO: improve naming in AL_holds *)
+
 Corollary AL_holds: forall r, AL r.
 Proof.
 enough (H: forall r, AL r /\ SL r).
@@ -198,12 +206,13 @@ Qed.
 
 Lemma main_lemma {n} Γ (t T: Term nat n):
   wf Γ -> Γ ⊢ t ⇐ T -> SN t.
-Proof. intros. induction H;
+Proof. intros X H. induction H;
 try solve [constructor; constructor]; auto.
 - apply SN_SNx. eauto using SNx, wf.
 - apply SN_λ; eauto using wf.
 - pose proof H. apply type_is_correct in H; auto.
-  destruct H. pose proof (AL_holds x). unfold AL in H2.
+  destruct H. pose proof (AL_holds x) as H2.
+  unfold AL in H2.
   apply H2 with (Γ := Γ) (T := U) (U := T); auto.
 Qed.
 

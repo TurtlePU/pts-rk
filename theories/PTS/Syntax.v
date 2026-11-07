@@ -229,6 +229,8 @@ match m with
 | S m => fsucc division
 end.
 
+(* TODO: improve situation with names in subst_at_var *)
+
 Lemma subst_at_var {L m n}
   (f: Fin (S m + n)) (u: Term L n):
   (f = division /\ var f ◁ᵢ u = rename up u)

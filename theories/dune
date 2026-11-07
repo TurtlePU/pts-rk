@@ -1,6 +1,8 @@
+(include_subdirs qualified)
 (rocq.theory
   (name PTSrk)
   (package pts-rk)
-  (modules Syntax AbstractRewriting Congruence Reduction Confluence DefEq
-           Context Typing Inversions Preservation SN Ranks)
+  (modules Lib.AbstractRewriting PTS.Syntax PTS.Congruence PTS.Reduction
+           PTS.Confluence PTS.DefEq PTS.Context PTS.Typing PTS.Inversions
+           PTS.Preservation PTS.SN Ranks)
   (theories Stdlib Equations))

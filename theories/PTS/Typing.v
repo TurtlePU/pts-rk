@@ -1,5 +1,5 @@
 From Equations Require Import Equations.
-Require Import Context DefEq Syntax.
+From PTSrk.PTS Require Export Context DefEq.
 
 Class Sort_sig (L: Type) :=
   { axiom: L -> L -> Prop
@@ -86,7 +86,7 @@ Lemma weakening_strong m {L n Γ} (sig: Sort_sig L)
 (* --------------------------------------- *)
    insert Γ U ⊢ rename wr t ⇐ rename wr T.
 Proof.
-  intros. depind H; simpl; simp_typ;
+  intros H. depind H; simpl; simp_typ;
   try apply IHtyp1; try apply IHtyp2.
   - apply IHtyp2 with (m := S m) (Γ := Γ & T)
                       (T := 𝓤 ℓᵤ); auto.
@@ -110,7 +110,7 @@ Lemma substitution_lemma_strong m
   Γ ⊢ t ⇐ T -> shrink Γ ⊢ u ⇐ squeeze Γ ->
   Γ ◁ⁱ u ⊢ t ◁ᵢ u ⇐ T ◁ᵢ u.
 Proof.
-  intros. depind H; unfold subst_at; simpl;
+  intros H H0. depind H; unfold subst_at; simpl;
   lazymatch goal with
   | [ |- typ _ (push _ _) _ ] => idtac
   | _ => simp_typ

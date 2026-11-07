@@ -1,6 +1,6 @@
 From Equations Require Import Equations.
 Require Import Stdlib.Relations.Relations.
-Require Import Syntax Reduction AbstractRewriting Congruence.
+From PTSrk.PTS Require Import Reduction.
 
 Inductive Acc {A} (R: relation A) (x: A): Prop :=
 | acc: (forall y, R x y -> Acc R y) -> Acc R x.
@@ -8,19 +8,22 @@ Derive Signature for Acc.
 
 Fact acc_step {A} {R: relation A} x y:
   R x y -> Acc R x -> Acc R y.
-Proof. intros. destruct H0. auto. Qed.
+Proof. intros H H0. destruct H0. auto. Qed.
 
 Fact acc_steps {A} {R: relation A} x y:
   RTC R x y -> Acc R x -> Acc R y.
-Proof. intros. induction H; eauto using acc_step. Qed.
+Proof. intros H H0. induction H; eauto using acc_step.
+Qed.
 
 Definition sn {L n}: Term L n -> Prop := Acc (step L n).
 
 Fact var_sn {L n} x: @sn L n (var x).
-Proof. constructor. intros. inversion H. Qed.
+Proof. easy. Qed.
 
 Fact sort_sn {L n} ℓ: @sn L n (𝓤 ℓ).
-Proof. constructor. intros. inversion H. Qed.
+Proof. easy. Qed.
+
+(* TODO: improve situation with names in Π_sn *)
 
 Fact Π_sn {L n} (T: Term L n) U:
   sn T -> sn U -> sn (Π T U).
@@ -32,6 +35,8 @@ intros. inversion H3; subst.
   auto with cong.
 Qed.
 
+(* TODO: improve situation with names in λ_sn *)
+
 Fact λ_sn {L n} (T: Term L n) t:
   sn T -> sn t -> sn ([T] t).
 Proof. intros. induction H. induction H0. constructor.
@@ -42,11 +47,15 @@ intros. inversion H3; subst.
   auto with cong.
 Qed.
 
+(* TODO: improve situation with names in head_sn *)
+
 Fact head_sn {L n} (t u: Term L n): sn (t $ u) -> sn t.
 Proof.
-intro. depind H. constructor. intros.
+intro H. depind H. constructor. intros.
 apply H0 with (y := y $ u) (u := u); auto with cong.
 Qed.
+
+(* TODO: improve situation with names in sn_unsub *)
 
 Fact sn_unsub {L m n} (t: Term L (S m + n)) u:
   sn (t ◁ᵢ u) -> sn t.
@@ -68,6 +77,9 @@ Proof.
   induction H0; intros; inversion H; eauto using Atomic.
   subst. easy.
 Qed.
+
+(* TODO: improve situation with names in atomic_app_sn
+*)
 
 Lemma atomic_app_sn {L n} (t u: Term L n):
   Atomic t -> sn t -> sn u -> sn (t $ u).
@@ -91,6 +103,8 @@ Inductive WHR_sn {L n}:
     WHR_sn t t' -> WHR_sn (t $ u) (t' $ u)
 .
 
+(* TODO: improve situation with names in WHR_sn_comm *)
+
 Lemma WHR_sn_comm {L n} (s t u: Term L n):
   WHR_sn s t -> s →ᵝ u ->
   t = u \/ exists v, WHR_sn u v /\ t ↠ᵝ v.
@@ -111,6 +125,9 @@ induction H; intros u0 H1.
     cong_simple. apply rtc_in. auto.
   + inversion H.
 Qed.
+
+(* TODO: improve situation with names in
+   weak_head_expansion *)
 
 Lemma weak_head_expansion {L n} (T t: Term L n) u:
   sn T -> sn t -> sn (u ◁ t) -> sn ([T] u $ t).
@@ -139,6 +156,8 @@ all: subst.
 - auto.
 Qed.
 
+(* TODO: improve situation with names in whe_app *)
+
 Lemma whe_app {L n} (t t' u: Term L n):
   WHR_sn t t' -> sn t -> sn (t' $ u) -> sn (t $ u).
 Proof.
@@ -152,15 +171,14 @@ inversion H4; subst.
     change (t' $ u ↠ᵝ v $ u). all: auto with cong.
 - apply H2 with (y := t' $ t'0) (t' := t');
   auto with cong.
-- inversion H3.
+- easy.
 Qed.
 
 Lemma sn_backward_closure {L n} (t t': Term L n):
   WHR_sn t t' -> sn t' -> sn t.
-Proof. intros. induction H.
-- apply weak_head_expansion; auto.
-- apply whe_app with (t' := t'); auto.
-  apply IHWHR_sn, head_sn with (u := u). auto.
+Proof.
+  induction 1;
+  eauto using weak_head_expansion, whe_app, head_sn.
 Qed.
 
 Inductive SNx {L n}: Term L n -> Prop :=
@@ -195,20 +213,18 @@ apply sn_whr_snx with
   forall n (f: Fin m -> Fin n),
     WHR_SN (rename f t) (rename f t'));
 try solve [constructor; auto]; intros.
-- apply SN_WHR with (u := rename f u); auto.
+- eauto using SN_WHR.
 - rewrite rename_subst. constructor; auto.
 - auto.
 Qed.
 
 Lemma strong_neutral_weakening {L n} (t: Term L n):
   SNx t -> Atomic t.
-Proof. intros. induction H; constructor. auto. Qed.
+Proof. induction 1; auto using Atomic. Qed.
 
 Lemma reduction_weakening {L n} (t t': Term L n):
   WHR_SN t t' -> t →ᵝ t'.
-Proof.
-intros. induction H. apply step_beta. auto with cong.
-Qed.
+Proof. induction 1; eauto with red. Qed.
 
 Theorem SN_soundness {L n} (t: Term L n): SN t -> sn t.
 Proof. intros. apply sn_whr_snx with (P := fun _ => sn)
