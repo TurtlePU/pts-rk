@@ -1,0 +1,25 @@
+(rocq.theory
+ (name Interpretation_of_R)
+ (package pts-rk)
+ (modules DirectRCheck
+          DirectRCommonCodes
+          DirectREval
+          DirectRFiniteCertificates
+          DirectRFiniteObservations
+          DirectRFiniteTables
+          DirectRFiniteUp
+          DirectRIterations
+          DirectRKernel
+          DirectRLogic
+          DirectRPositive
+          DirectRStructural
+          DirectRSymbolic)
+ (theories Stdlib Equations PTSrk))
+
+(alias
+ (name audit)
+ (deps DirectRCheck.vo DirectRCommonCodes.vo DirectREval.vo
+       DirectRFiniteCertificates.vo DirectRFiniteObservations.vo
+       DirectRFiniteTables.vo DirectRFiniteUp.vo DirectRIterations.vo
+       DirectRKernel.vo DirectRLogic.vo DirectRPositive.vo
+       DirectRStructural.vo DirectRSymbolic.vo))

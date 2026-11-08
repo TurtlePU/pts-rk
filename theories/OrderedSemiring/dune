@@ -1,0 +1,19 @@
+(rocq.theory
+ (name OrderedSemiring)
+ (package pts-rk)
+ (modules RigCodes DomainClosure ObservationEquality RetainedInduction
+          ArithmeticCongruence NaturalOrder SuccessorSeparation
+          SemiringLaws FiniteCuts Cancellation Graphs OrderLaws
+          ModelInterface FirstOrderTranslation BoundedCases Source FirstOrderEquality OrderNumerals OrderCuts
+          RigAxiomRealization FirstOrderDeduction StrictBounded GroundFaithfulness RAxiomRealization
+          TheoremOrderedSemiring)
+ (theories Stdlib Equations PTSrk Interpretation_of_R Interpretation_of_R.relational))
+
+(alias
+ (name audit)
+ (deps RigCodes.vo DomainClosure.vo ObservationEquality.vo RetainedInduction.vo
+       ArithmeticCongruence.vo NaturalOrder.vo SuccessorSeparation.vo
+       SemiringLaws.vo FiniteCuts.vo Cancellation.vo Graphs.vo OrderLaws.vo
+       ModelInterface.vo FirstOrderTranslation.vo BoundedCases.vo Source.vo FirstOrderEquality.vo OrderNumerals.vo OrderCuts.vo
+       RigAxiomRealization.vo FirstOrderDeduction.vo StrictBounded.vo GroundFaithfulness.vo RAxiomRealization.vo
+       TheoremOrderedSemiring.vo))

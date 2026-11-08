@@ -1,0 +1,159 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=29mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+% Use only fonts distributed with TeX Live.  Verbatim does not run active
+% Unicode macros, so missing mathematical code glyphs need a font fallback.
+\directlua{
+  local mono = assert(kpse.find_file("DejaVuSansMono.ttf", "truetype fonts"))
+  local symbols = assert(kpse.find_file("DejaVuSans.ttf", "truetype fonts"))
+  local mathfont = assert(kpse.find_file("latinmodern-math.otf", "opentype fonts"))
+  token.set_macro("OrderedMonoPath", mono:match("^(.*[/])"), "global")
+  luaotfload.add_fallback("orderedsemiringmono", {
+    "[" .. mathfont .. "]:mode=node;",
+    "[" .. symbols .. "]:mode=node;"
+  })
+}
+\setmonofont{DejaVuSansMono.ttf}[
+  Path=\OrderedMonoPath,
+  Scale=MatchLowercase,RawFeature={fallback=orderedsemiringmono}]
+\usepackage{amsmath,amssymb,mathtools,amsthm,mathpartir}
+\usepackage{parskip}
+\usepackage{newunicodechar}
+\usepackage{fvextra}
+\usepackage{titling,authblk}
+\author{}
+\preauthor{}
+\postauthor{}
+\usepackage[unicode,hidelinks]{hyperref}
+\newcommand{\OrderedSourceBase}{https://github.com/akuklev/pts-rk/blob/5530d1e4130c28a741b48efbd902dd1127ac45c5/theories/OrderedSemiring/}
+\hyperbaseurl{\OrderedSourceBase}
+\setlength{\droptitle}{-2em}
+\predate{\begin{center}\normalsize}
+\postdate{\par\end{center}}
+\setlength{\emergencystretch}{2em}
+
+% AMS theorem typography, with one section-numbered statement counter.
+\newtheoremstyle{orderedplain}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {\itshape}{0pt}{\bfseries}{.}{5pt plus 1pt minus 1pt}{}
+\newtheoremstyle{ordereddefinition}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {\normalfont}{0pt}{\bfseries}{.}{5pt plus 1pt minus 1pt}{}
+\newtheoremstyle{orderedremark}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {.5\baselineskip plus .2\baselineskip minus .2\baselineskip}
+  {\normalfont}{0pt}{\itshape}{.}{5pt plus 1pt minus 1pt}{}
+\theoremstyle{orderedplain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{theorem*}{Theorem}
+\theoremstyle{ordereddefinition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{orderedremark}
+\newtheorem*{remark}{Remark}
+
+\DeclareRobustCommand{\PTSrk}{\textnormal{PTS-}\ensuremath{rk}}
+\pdfstringdefDisableCommands{\def\PTSrk{PTS-rk}}
+\newcommand{\rk}[1]{\mathsf{rk}_{#1}}
+\newcommand{\Good}[1]{\mathsf{Good}_{#1}}
+\newcommand{\Void}{\mathsf{Void}}
+\newcommand{\Add}{\mathsf{Add}}
+\newcommand{\Mul}{\mathsf{Mul}}
+\newcommand{\Eq}{\mathsf{E}}
+\newcommand{\Ord}{\mathsf{O}}
+\newcommand{\Cut}{\mathsf{Cut}}
+
+\newunicodechar{Γ}{\ensuremath{\Gamma}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Π}{\ensuremath{\Pi}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{ℓ}{\ensuremath{\ell}}
+\newunicodechar{ℕ}{\ensuremath{\mathbb{N}}}
+\newunicodechar{ℤ}{\ensuremath{\mathbb{Z}}}
+\newunicodechar{ℚ}{\ensuremath{\mathbb{Q}}}
+\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}
+\newunicodechar{→}{\ensuremath{\to}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{↦}{\ensuremath{\mapsto}}
+\newunicodechar{⟶}{\ensuremath{\longrightarrow}}
+\newunicodechar{⟺}{\ensuremath{\Longleftrightarrow}}
+\newunicodechar{⊢}{\ensuremath{\vdash}}
+\newunicodechar{⊬}{\ensuremath{\nvdash}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∉}{\ensuremath{\notin}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∃}{\ensuremath{\exists}}
+\newunicodechar{≤}{\ensuremath{\le}}
+\newunicodechar{≥}{\ensuremath{\ge}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{≡}{\ensuremath{\equiv}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newunicodechar{∼}{\ensuremath{\sim}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{⊕}{\ensuremath{\oplus}}
+\newunicodechar{⊗}{\ensuremath{\otimes}}
+\newunicodechar{∧}{\ensuremath{\land}}
+\newunicodechar{∨}{\ensuremath{\lor}}
+\newunicodechar{¬}{\ensuremath{\neg}}
+\newunicodechar{⊥}{\ensuremath{\bot}}
+\newunicodechar{⊤}{\ensuremath{\top}}
+\newunicodechar{⋅}{\ensuremath{\cdot}}
+\newunicodechar{∘}{\ensuremath{\circ}}
+\newunicodechar{∅}{\ensuremath{\varnothing}}
+\newunicodechar{≔}{\ensuremath{\coloneqq}}
+\newunicodechar{⋯}{\ensuremath{\cdots}}
+\newunicodechar{…}{\ensuremath{\ldots}}
+\newunicodechar{⋁}{\ensuremath{\bigvee}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{–}{\textendash\allowbreak}
+\newunicodechar{“}{``}
+\newunicodechar{”}{''}
+
+% The local runtime provides smartHybrid and fencedEnvs; stock Markdown
+% packages do not implement this manuscript dialect.
+\usepackage[
+  smartHybrid,fencedEnvs,headerAttributes,rawAttribute,
+  inlineCodeAttributes,fencedCode,inlineNotes,relativeReferences,
+  underscores=false,texMathDollars,texMathSingleBackslash
+]{markdown}
+% Explicitly render every code fence as verbatim, regardless of its language.
+% There is no minted/listings dependency and no external highlighter.
+\fvset{breaklines=true,breakanywhere=true,fontsize=\footnotesize,
+  breakautoindent=true,tabsize=2}
+\markdownSetup{rendererPrototypes={
+  inputVerbatim={\VerbatimInput{#1}},
+  inputFencedCode={\VerbatimInput{#1}}
+}}
+% Explicit absolute file-link annotations work even in PDF readers that ignore
+% the document URI base. Keep the original renderer for local label references.
+\ExplSyntaxOn
+\cs_new_eq:NN \ordered_original_link:nnnn \markdownRendererLinkPrototype
+\cs_gset_protected:Npn \markdownRendererLinkPrototype #1#2#3#4
+  {
+    \tl_set:Nn \l_tmpa_tl { #3 }
+    \tl_set:Nx \l_tmpb_tl { \tl_range:Nnn \l_tmpa_tl { 1 } { 1 } }
+    \str_if_eq:NNTF \l_tmpb_tl \c_hash_str
+      { \ordered_original_link:nnnn { #1 } { #2 } { #3 } { #4 } }
+      {
+        \regex_match:nnTF { \A [A-Za-z] [A-Za-z0-9+.\-]* : } { #3 }
+          { \href { #3 } { #1 } }
+          { \href { \OrderedSourceBase #3 } { #1 } }
+      }
+  }
+\ExplSyntaxOff
